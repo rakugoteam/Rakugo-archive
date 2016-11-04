@@ -1,10 +1,15 @@
-[gd_resource type="Theme" load_steps=7 format=1]
+[gd_resource type="Theme" load_steps=13 format=1]
 
-[ext_resource path="res://gui/themes/new_gui/imgs/button/check_selected_foreground.png" type="Texture" id=1]
-[ext_resource path="res://gui/themes/new_gui/imgs/button/radio_selected_foreground.png" type="Texture" id=2]
-[ext_resource path="res://gui/themes/new_gui/imgs/button/radio_foreground.png" type="Texture" id=3]
-[ext_resource path="res://gui/themes/new_gui/imgs/button/check_foreground.png" type="Texture" id=4]
-[ext_resource path="res://fonts/ubuntu-r32.fnt" type="BitmapFont" id=5]
+[ext_resource path="res://gui/themes/new_gui/mm_tres/button_hover.tres" type="StyleBox" id=1]
+[ext_resource path="res://gui/themes/new_gui/mm_tres/button_normal.tres" type="StyleBox" id=2]
+[ext_resource path="res://gui/themes/new_gui/mm_tres/panel.tres" type="StyleBox" id=3]
+[ext_resource path="res://gui/themes/new_gui/imgs/button/check_selected_foreground.png" type="Texture" id=4]
+[ext_resource path="res://gui/themes/new_gui/imgs/button/radio_selected_foreground.png" type="Texture" id=5]
+[ext_resource path="res://gui/themes/new_gui/imgs/button/radio_foreground.png" type="Texture" id=6]
+[ext_resource path="res://gui/themes/new_gui/imgs/button/check_foreground.png" type="Texture" id=7]
+[ext_resource path="res://gui/themes/new_gui/imgs/bar/right.png" type="Texture" id=8]
+[ext_resource path="res://gui/themes/new_gui/imgs/bar/left.png" type="Texture" id=9]
+[ext_resource path="res://fonts/ubuntu-r32.fnt" type="BitmapFont" id=10]
 
 [sub_resource type="StyleBoxTexture" id=1]
 
@@ -12,6 +17,24 @@ content_margin/left = -1.0
 content_margin/right = -1.0
 content_margin/top = -1.0
 content_margin/bottom = -1.0
+texture = ExtResource( 8 )
+margin/left = 0.0
+margin/right = 0.0
+margin/top = 0.0
+margin/bottom = 0.0
+expand_margin/left = 0.0
+expand_margin/right = 0.0
+expand_margin/top = 0.0
+expand_margin/bottom = 0.0
+draw_center = true
+
+[sub_resource type="StyleBoxTexture" id=2]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+texture = ExtResource( 9 )
 margin/left = 0.0
 margin/right = 0.0
 margin/top = 0.0
@@ -24,7 +47,7 @@ draw_center = true
 
 [resource]
 
-default_font = ExtResource( 5 )
+default_font = ExtResource( 10 )
 Button/colors/font_color = Color( 0.333333, 0.333333, 0.333333, 1 )
 Button/colors/font_color_disabled = Color( 0, 0, 0, 1 )
 Button/colors/font_color_hover = Color( 0, 0.4, 0.8, 1 )
@@ -33,10 +56,10 @@ Button/constants/hseparation = 0
 Button/fonts/font = null
 Button/styles/disabled = null
 Button/styles/focus = null
-Button/styles/hover = null
-Button/styles/normal = SubResource( 1 )
-Button/styles/pressed = null
-ButtonGroup/styles/panel = null
+Button/styles/hover = ExtResource( 1 )
+Button/styles/normal = ExtResource( 2 )
+Button/styles/pressed = ExtResource( 1 )
+ButtonGroup/styles/panel = ExtResource( 3 )
 CheckBox/colors/font_color = Color( 0.333333, 0.333333, 0.333333, 1 )
 CheckBox/colors/font_color_disabled = Color( 0, 0, 0, 1 )
 CheckBox/colors/font_color_hover = Color( 0, 0.4, 0.8, 1 )
@@ -44,10 +67,10 @@ CheckBox/colors/font_color_pressed = Color( 0, 0.352941, 0.705882, 1 )
 CheckBox/constants/check_vadjust = 0
 CheckBox/constants/hseparation = 0
 CheckBox/fonts/font = null
-CheckBox/icons/checked = ExtResource( 1 )
-CheckBox/icons/radio_checked = ExtResource( 2 )
-CheckBox/icons/radio_unchecked = ExtResource( 3 )
-CheckBox/icons/unchecked = ExtResource( 4 )
+CheckBox/icons/checked = ExtResource( 4 )
+CheckBox/icons/radio_checked = ExtResource( 5 )
+CheckBox/icons/radio_unchecked = ExtResource( 6 )
+CheckBox/icons/unchecked = ExtResource( 7 )
 CheckBox/styles/disabled = null
 CheckBox/styles/focus = null
 CheckBox/styles/hover = null
@@ -60,8 +83,8 @@ CheckButton/colors/font_color_pressed = Color( 0, 0.352941, 0.705882, 1 )
 CheckButton/constants/check_vadjust = 0
 CheckButton/constants/hseparation = 0
 CheckButton/fonts/font = null
-CheckButton/icons/off = ExtResource( 4 )
-CheckButton/icons/on = ExtResource( 1 )
+CheckButton/icons/off = ExtResource( 7 )
+CheckButton/icons/on = ExtResource( 4 )
 CheckButton/styles/disabled = null
 CheckButton/styles/focus = null
 CheckButton/styles/hover = null
@@ -192,9 +215,9 @@ MenuButton/constants/hseparation = 0
 MenuButton/fonts/font = null
 MenuButton/styles/disabled = null
 MenuButton/styles/focus = null
-MenuButton/styles/hover = null
-MenuButton/styles/normal = null
-MenuButton/styles/pressed = null
+MenuButton/styles/hover = ExtResource( 1 )
+MenuButton/styles/normal = ExtResource( 2 )
+MenuButton/styles/pressed = ExtResource( 1 )
 OptionButton/colors/font_color = Color( 0.333333, 0.333333, 0.333333, 1 )
 OptionButton/colors/font_color_disabled = Color( 0, 0, 0, 1 )
 OptionButton/colors/font_color_hover = Color( 0, 0.4, 0.8, 1 )
@@ -205,13 +228,13 @@ OptionButton/fonts/font = null
 OptionButton/icons/arrow = null
 OptionButton/styles/disabled = null
 OptionButton/styles/focus = null
-OptionButton/styles/hover = null
-OptionButton/styles/normal = null
-OptionButton/styles/pressed = null
-Panel/styles/panel = null
+OptionButton/styles/hover = ExtResource( 1 )
+OptionButton/styles/normal = ExtResource( 2 )
+OptionButton/styles/pressed = ExtResource( 1 )
+Panel/styles/panel = ExtResource( 3 )
 Panel/styles/panelf = null
 Panel/styles/panelnc = null
-PanelContainer/styles/panel = null
+PanelContainer/styles/panel = ExtResource( 3 )
 PopupMenu/colors/font_color = Color( 0.333333, 0.333333, 0.333333, 1 )
 PopupMenu/colors/font_color_accel = Color( 0, 0, 0, 1 )
 PopupMenu/colors/font_color_disabled = Color( 0, 0.4, 0.8, 1 )
@@ -223,15 +246,15 @@ PopupMenu/icons/checked = null
 PopupMenu/icons/submenu = null
 PopupMenu/icons/unchecked = null
 PopupMenu/styles/hover = null
-PopupMenu/styles/panel = null
+PopupMenu/styles/panel = ExtResource( 3 )
 PopupMenu/styles/panel_disabled = null
 PopupMenu/styles/separator = null
-PopupPanel/styles/panel = null
+PopupPanel/styles/panel = ExtResource( 3 )
 ProgressBar/colors/font_color = Color( 0.333333, 0.333333, 0.333333, 1 )
 ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
 ProgressBar/fonts/font = null
-ProgressBar/styles/bg = null
-ProgressBar/styles/fg = null
+ProgressBar/styles/bg = SubResource( 1 )
+ProgressBar/styles/fg = SubResource( 2 )
 ReferenceFrame/styles/border = null
 RichTextLabel/colors/default_color = Color( 0, 0, 0, 1 )
 RichTextLabel/colors/font_color_selected = Color( 0, 0.352941, 0.705882, 1 )
@@ -260,7 +283,7 @@ TabContainer/icons/increment = null
 TabContainer/icons/increment_hilite = null
 TabContainer/icons/menu = null
 TabContainer/icons/menu_hilite = null
-TabContainer/styles/panel = null
+TabContainer/styles/panel = ExtResource( 3 )
 TabContainer/styles/tab_bg = null
 TabContainer/styles/tab_fg = null
 Tabs/colors/font_color_bg = Color( 0.333333, 0.333333, 0.333333, 1 )
@@ -277,7 +300,7 @@ Tabs/icons/increment = null
 Tabs/icons/increment_hilite = null
 Tabs/styles/button = null
 Tabs/styles/button_pressed = null
-Tabs/styles/panel = null
+Tabs/styles/panel = ExtResource( 3 )
 Tabs/styles/tab_bg = null
 Tabs/styles/tab_fg = null
 TextEdit/colors/brace_mismatch_color = Color( 0, 0, 0, 1 )
@@ -325,7 +348,7 @@ TooltipLabel/colors/font_color_shadow = Color( 0, 0, 0, 1 )
 TooltipLabel/constants/shadow_offset_x = 0
 TooltipLabel/constants/shadow_offset_y = 0
 TooltipLabel/fonts/font = null
-TooltipPanel/styles/panel = null
+TooltipPanel/styles/panel = ExtResource( 3 )
 Tree/colors/cursor_color = Color( 0, 0, 0, 1 )
 Tree/colors/drop_position_color = Color( 0, 0, 0, 1 )
 Tree/colors/font_color = Color( 0.333333, 0.333333, 0.333333, 1 )
@@ -396,5 +419,5 @@ WindowDialog/constants/titlebar_height = 0
 WindowDialog/fonts/title_font = null
 WindowDialog/icons/close = null
 WindowDialog/icons/close_hilite = null
-WindowDialog/styles/panel = null
+WindowDialog/styles/panel = ExtResource( 3 )
 

@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=2 format=1]
 
 [ext_resource path="res://scenes/gui/MainMenu.tscn" type="PackedScene" id=1]
-[ext_resource path="res://gui/themes/new_gui/main_menu.tres" type="Theme" id=2]
 
 [node name="MainWindow" type="Panel"]
 
@@ -18,27 +17,37 @@ margin/bottom = 720.0
 
 [node name="Start" parent="MainMenu/Overlay/VBoxContainer"]
 
-theme/theme = ExtResource( 2 )
+margin/bottom = 31.0
 
 [node name="Load" parent="MainMenu/Overlay/VBoxContainer"]
 
-theme/theme = ExtResource( 2 )
+margin/top = 38.0
+margin/bottom = 69.0
 
 [node name="Preferences" parent="MainMenu/Overlay/VBoxContainer"]
 
-theme/theme = ExtResource( 2 )
+margin/top = 76.0
+margin/bottom = 107.0
 
 [node name="About" parent="MainMenu/Overlay/VBoxContainer"]
 
-theme/theme = ExtResource( 2 )
+margin/top = 114.0
+margin/bottom = 145.0
 
 [node name="Help" parent="MainMenu/Overlay/VBoxContainer"]
 
-theme/theme = ExtResource( 2 )
+margin/top = 152.0
+margin/bottom = 183.0
 
 [node name="Quit" parent="MainMenu/Overlay/VBoxContainer"]
 
-theme/theme = ExtResource( 2 )
+margin/top = 190.0
+margin/bottom = 221.0
+
+[node name="Version" parent="MainMenu/TitleNVersion/VBox"]
+
+margin/top = 62.0
+margin/bottom = 93.0
 
 
 [editable path="MainMenu"]

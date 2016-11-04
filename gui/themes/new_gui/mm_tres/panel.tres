@@ -1,0 +1,21 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=1]
+
+[ext_resource path="res://gui/themes/new_gui/imgs/frame.png" type="Texture" id=1]
+
+[resource]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+texture = ExtResource( 1 )
+margin/left = 0.0
+margin/right = 0.0
+margin/top = 0.0
+margin/bottom = 0.0
+expand_margin/left = 0.0
+expand_margin/right = 0.0
+expand_margin/top = 0.0
+expand_margin/bottom = 0.0
+draw_center = true
+
