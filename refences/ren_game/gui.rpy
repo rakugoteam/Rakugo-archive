@@ -64,22 +64,23 @@ define gui.name_font = "DejaVuSans.ttf"
 define gui.interface_font = "DejaVuSans.ttf"
 
 ## The size of normal dialogue text.
-define gui.text_size = 22
+define gui.text_size = 22 #done
 
 ## The size of character names.
-define gui.name_text_size = 30
+define gui.name_text_size = 30 #done
 
 ## The size of text in the game's user interface.
-define gui.interface_text_size = 24
+define gui.interface_text_size = 24 #done
 
 ## The size of labels in the game's user interface.
-define gui.label_text_size = 28
+define gui.label_text_size = 28 #done
 
 ## The size of text on the notify screen.
-define gui.notify_text_size = 16
+define gui.notify_text_size = 16 #done
 
 ## The size of the game's title.
-define gui.title_text_size = 50
+define gui.title_text_size = 50 #done
+
 
 
 ## Main and Game Menus #########################################################
@@ -454,6 +455,3 @@ init python:
 
         ## Quick buttons.
         gui.quick_button_text_size = 20
-
-
-
