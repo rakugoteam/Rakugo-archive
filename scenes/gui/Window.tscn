@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=1]
+[gd_scene load_steps=21 format=1]
 
 [ext_resource path="res://gui/themes/new_gui/tres/main.tres" type="Theme" id=1]
 [ext_resource path="res://gui/themes/new_gui/imgs/button/choice_hover_background.png" type="Texture" id=2]
@@ -11,9 +11,10 @@
 [ext_resource path="res://fonts/name_text_sizeI.fnt" type="BitmapFont" id=9]
 [ext_resource path="res://fonts/name_text_sizeB.fnt" type="BitmapFont" id=10]
 [ext_resource path="res://fonts/name_text_sizeR.fnt" type="BitmapFont" id=11]
-[ext_resource path="res://gui/themes/new_gui/imgs/notify.png" type="Texture" id=12]
-[ext_resource path="res://gui/themes/new_gui/imgs/skip.png" type="Texture" id=13]
-[ext_resource path="res://fonts/notify_text_sizeR.fnt" type="BitmapFont" id=14]
+[ext_resource path="res://scripts/RenGD/input_screen.gd" type="Script" id=12]
+[ext_resource path="res://gui/themes/new_gui/imgs/notify.png" type="Texture" id=13]
+[ext_resource path="res://gui/themes/new_gui/imgs/skip.png" type="Texture" id=14]
+[ext_resource path="res://fonts/notify_text_sizeR.fnt" type="BitmapFont" id=15]
 
 [sub_resource type="StyleBoxTexture" id=1]
 
@@ -65,6 +66,20 @@ expand_margin/right = 0.0
 expand_margin/top = 0.0
 expand_margin/bottom = 0.0
 draw_center = true
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
 
 [node name="Window" type="Control"]
 
@@ -172,7 +187,7 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 813.0
+margin/right = 756.0
 margin/bottom = 36.0
 texture = ExtResource( 6 )
 stretch_mode = 0
@@ -205,29 +220,29 @@ size_flags/horizontal = 3
 size_flags/vertical = 3
 margin/left = 0.0
 margin/top = 37.0
-margin/right = 813.0
-margin/bottom = 154.0
+margin/right = 756.0
+margin/bottom = 98.0
 bbcode/enabled = true
 bbcode/bbcode = "Dialog"
 visible_characters = -1
 
-[node name="TextEdit" type="TextEdit" parent="Say/VBoxContainer"]
+[node name="Input" type="LineEdit" parent="Say/VBoxContainer"]
 
-visibility/visible = false
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
 margin/left = 0.0
-margin/top = 96.0
-margin/right = 859.0
-margin/bottom = 154.0
-syntax_highlighting = false
-show_line_numbers = false
-highlight_all_occurrences = false
-caret/block_caret = false
+margin/top = 99.0
+margin/right = 756.0
+margin/bottom = 160.0
+custom_styles/focus = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+placeholder/alpha = 0.6
+focus_mode = 2
 caret/caret_blink = false
 caret/caret_blink_speed = 0.65
+script/script = ExtResource( 12 )
 
 [node name="QuickMenu" type="HBoxContainer" parent="Say/VBoxContainer"]
 
@@ -237,8 +252,8 @@ focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
-margin/top = 155.0
-margin/right = 813.0
+margin/top = 161.0
+margin/right = 756.0
 margin/bottom = 186.0
 custom_constants/separation = 20
 alignment = 1
@@ -249,10 +264,10 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 0.0
+margin/left = 35.0
 margin/top = 0.0
-margin/right = 70.0
-margin/bottom = 31.0
+margin/right = 92.0
+margin/bottom = 25.0
 toggle_mode = true
 click_on_press = true
 enabled_focus_mode = 2
@@ -267,10 +282,10 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 90.0
+margin/left = 112.0
 margin/top = 0.0
 margin/right = 197.0
-margin/bottom = 31.0
+margin/bottom = 25.0
 toggle_mode = true
 click_on_press = true
 enabled_focus_mode = 2
@@ -287,8 +302,8 @@ size_flags/horizontal = 2
 size_flags/vertical = 0
 margin/left = 217.0
 margin/top = 0.0
-margin/right = 279.0
-margin/bottom = 31.0
+margin/right = 268.0
+margin/bottom = 25.0
 toggle_mode = true
 click_on_press = true
 enabled_focus_mode = 2
@@ -303,10 +318,10 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 299.0
+margin/left = 288.0
 margin/top = 0.0
-margin/right = 370.0
-margin/bottom = 31.0
+margin/right = 342.0
+margin/bottom = 25.0
 toggle_mode = true
 click_on_press = true
 enabled_focus_mode = 2
@@ -321,10 +336,10 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 390.0
+margin/left = 362.0
 margin/top = 0.0
-margin/right = 459.0
-margin/bottom = 31.0
+margin/right = 420.0
+margin/bottom = 25.0
 toggle_mode = true
 click_on_press = true
 enabled_focus_mode = 2
@@ -339,10 +354,10 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 479.0
+margin/left = 440.0
 margin/top = 0.0
-margin/right = 587.0
-margin/bottom = 31.0
+margin/right = 533.0
+margin/bottom = 25.0
 toggle_mode = true
 click_on_press = true
 enabled_focus_mode = 2
@@ -357,10 +372,10 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 607.0
+margin/left = 553.0
 margin/top = 0.0
-margin/right = 718.0
-margin/bottom = 31.0
+margin/right = 644.0
+margin/bottom = 25.0
 toggle_mode = true
 click_on_press = true
 enabled_focus_mode = 2
@@ -375,10 +390,10 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 738.0
+margin/left = 664.0
 margin/top = 0.0
-margin/right = 813.0
-margin/bottom = 31.0
+margin/right = 721.0
+margin/bottom = 25.0
 toggle_mode = true
 click_on_press = true
 enabled_focus_mode = 2
@@ -411,7 +426,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 922.0
 margin/bottom = 43.0
-texture = ExtResource( 12 )
+texture = ExtResource( 13 )
 stretch_mode = 0
 
 [node name="Skip" type="TextureFrame" parent="NotifyArea"]
@@ -424,7 +439,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 240.0
 margin/bottom = 43.0
-texture = ExtResource( 13 )
+texture = ExtResource( 14 )
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="NotifyArea"]
@@ -437,7 +452,7 @@ margin/left = 10.0
 margin/top = 5.0
 margin/right = 72.0
 margin/bottom = 36.0
-custom_fonts/font = ExtResource( 14 )
+custom_fonts/font = ExtResource( 15 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Skip"
 align = 3
