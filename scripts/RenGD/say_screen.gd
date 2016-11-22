@@ -2,7 +2,8 @@
 extends Control
 
 # This is Ren'GD API
-# version: 0.01
+# version: 0.0.1
+
 var _bbcode = ""
 var _say_path = "VBoxContainer/"
 
@@ -17,15 +18,15 @@ var mat = 12 + 34
 func _ready():
 	_ren.define("mat", mat)
 	print(Globals.get("vars"))
-	_test()
+	#_test()
 	#pass
 
 func _test():
 	say("developer", "This is {b}just{/b} a {i}test{/i} [mat].")
 
 func say(how, what):
-	_say_screen.set_hidden(false)
-	_ren_input.set_hidden(true)
+	_say_screen.show()
+	_ren_input.hide()
 
 	_bbcode = _ren.sentence_passer(how)
 	_namebox_screen.set_bbcode(_bbcode)

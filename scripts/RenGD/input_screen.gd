@@ -2,7 +2,8 @@
 extends Control
 
 # This is Ren'GD API
-# version: 0.01
+# version: 0.0.1
+
 var _bbcode = ""
 var _say_path = "../"
 var _is_input_on = false
@@ -28,8 +29,8 @@ func input(ivar, what, temp):
 	_bbcode = _ren.sentence_passer(what)
 	_namebox_screen.set_bbcode(_bbcode)
 
-	_say_screen.set_hidden(true)
-	set_hidden(false)
+	_say_screen.hide()
+	show()
 	_input_var = ivar
 	_is_input_on = true
 

@@ -2,7 +2,7 @@
 extends Node
 
 # This is Ren'GD API
-# version: 0.01
+# version: 0.0.1
 
 var characters = []
 var screens = []
