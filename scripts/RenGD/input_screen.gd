@@ -23,10 +23,10 @@ func _test():
 	input("itest", "test", "type something and press enter")
 
 func input(ivar, what, temp):
-	_bbcode = _ren.sentence_passer(temp)
+	_bbcode = _ren.str_passer(temp)
 	set_text(_bbcode)
 
-	_bbcode = _ren.sentence_passer(what)
+	_bbcode = _ren.str_passer(what)
 	_namebox_screen.set_bbcode(_bbcode)
 
 	_say_screen.hide()

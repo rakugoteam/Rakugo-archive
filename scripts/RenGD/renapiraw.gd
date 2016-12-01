@@ -21,7 +21,21 @@ func define(var_name, var_value):
 func _get_var(var_name):
   return Globals.get("vars")[var_name]
 
-func sentence_passer(text):
+func line_passer(text):
+  if text.begins_with("$"):
+    fun = text.substr(1, spl - 1)
+    fun = fun.replace(" ", "")
+
+    args = text.substr(spl + 1, end - 1)
+    args = args.split(",")
+
+    for a in args:
+      a = str2var(a)
+
+    callv(fun, args)
+
+
+func str_passer(text):
 	var pstr = ""
 	var vstr = ""
 	var b = false

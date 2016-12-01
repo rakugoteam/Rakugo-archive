@@ -10,8 +10,8 @@ func _ready():
 
 func _test():
 	choice({
-				"say 1": "_ren.say('test', '1')",
-				"say 2": "_ren.say('test', '2')"
+				"say 1": "$ _ren.say('test', '1')",
+				"say 2": "$ _ren.say('test', '2')"
 				})
 
 func choice(items):
@@ -28,4 +28,4 @@ func choice(items):
 func _on_choice(id, items):
 	print(items)
 	hide()
-	call(items.values()[id])
+	

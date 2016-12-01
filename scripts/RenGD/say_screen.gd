@@ -28,8 +28,8 @@ func say(how, what):
 	_say_screen.show()
 	_ren_input.hide()
 
-	_bbcode = _ren.sentence_passer(how)
+	_bbcode = _ren.str_passer(how)
 	_namebox_screen.set_bbcode(_bbcode)
 
-	_bbcode = _ren.sentence_passer(what)
+	_bbcode = _ren.str_passer(what)
 	_say_screen.set_bbcode(_bbcode)
