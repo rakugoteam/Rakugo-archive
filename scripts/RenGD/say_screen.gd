@@ -7,7 +7,7 @@ extends Control
 var _bbcode = ""
 var _say_path = "VBoxContainer/"
 
-onready var _ren = get_node("/root/renapiraw")
+onready var _ren = get_node("/root/ren_basic")
 onready var _say_screen = get_node(_say_path + "Dialog")
 onready var _namebox_screen = get_node(_say_path + "NameBox/Label")
 onready var _ren_input = get_node(_say_path + "Input")

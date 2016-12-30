@@ -1,30 +1,29 @@
-
 extends Node
 
 # This is Ren'GD API
 # version: 0.0.1
 
-var characters = []
-var screens = []
-var images = []
-var vars = {}
+var _characters = []
+var _screens = []
+var _images = []
+var _vars = {}
 
-func _ready():
-  Globals.set("characters", characters)
-  Globals.set("screens", screens)
-  Globals.set("images", images)
-  Globals.set("vars", vars)
 
-func define(var_name, var_value):
-  Globals.get("vars")[var_name] = var_value
+func define(name_var, var_value):
+  _vars.name_var = var_value
 
-func _get_var(var_name):
-  return Globals.get("vars")[var_name]
 
 func line_passer(text):
+  var fun
+  var args
+
   if text.begins_with("$"):
+    var spl = text.find("(")
+    var end = text.find_last(")")
+
     fun = text.substr(1, spl - 1)
     fun = fun.replace(" ", "")
+    fun = fun.replace("$", "")
 
     args = text.substr(spl + 1, end - 1)
     args = args.split(",")

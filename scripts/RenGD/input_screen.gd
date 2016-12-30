@@ -9,7 +9,7 @@ var _say_path = "../"
 var _is_input_on = false
 var _input_var
 
-onready var _ren = get_node("/root/renapiraw")
+onready var _ren = get_node("/root/ren_basic")
 onready var _say_screen = get_node(_say_path + "Dialog")
 onready var _namebox_screen = get_node(_say_path + "NameBox/Label")
 
