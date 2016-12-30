@@ -8,10 +8,14 @@ var _screens = []
 var _images = []
 var _vars = {}
 
+# var quotes - it don't work :(
+# var apostrophe
 
-func define(name_var, var_value):
-  _vars.name_var = var_value
+func define(var_name, var_value):
+  _vars.var_name = var_value
 
+func get_var():
+  return _vars.var_name
 
 func line_passer(text):
   var fun
@@ -25,13 +29,22 @@ func line_passer(text):
     fun = fun.replace(" ", "")
     fun = fun.replace("$", "")
 
-    args = text.substr(spl + 1, end - 1)
+    args = text.substr(spl + 1, end - spl - 1)
+    args = args.c_escape()
     args = args.split(",")
 
     for a in args:
-      a = str2var(a)
 
-    callv(fun, args)
+      if(a.begins_with('\"'.c_escape())
+        or a.begins_with('\''.c_escape())):
+        a = a.c_unescape()
+
+      else:
+         a = str2var(a)
+
+    #callv(fun, args)
+
+    return [fun, args]
 
 
 func str_passer(text):

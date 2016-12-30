@@ -5,23 +5,21 @@ extends Control
 # version: 0.0.1
 
 var _bbcode = ""
-var _say_path = "VBoxContainer/"
 
 onready var _ren = get_node("/root/ren_basic")
-onready var _say_screen = get_node(_say_path + "Dialog")
-onready var _namebox_screen = get_node(_say_path + "NameBox/Label")
-onready var _ren_input = get_node(_say_path + "Input")
+onready var _say_screen = get_node("VBoxContainer/Dialog")
+onready var _namebox_screen = get_node("VBoxContainer/NameBox/Label")
+onready var _ren_input = get_node("VBoxContainer/Input")
 
-var itest
 var mat = 12 + 34
 
 func _ready():
-	_ren.define("mat", mat)
-	print(Globals.get("vars"))
-	#_test()
-	#pass
+	_test()
+	pass
 
 func _test():
+	_ren.define("mat", mat)
+	print(_ren.vars)
 	say("developer", "This is {b}just{/b} a {i}test{/i} [mat].")
 
 func say(how, what):

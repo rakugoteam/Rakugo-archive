@@ -8,10 +8,10 @@ onready var _say_screen = get_node("/root/Window/Say")
 onready var _input_screen = get_node("/root/Window/Say/VBoxContainer/Input")
 onready var _choice_screen = get_node("/root/Window/Choice")
 
-func _ready():
-  print(_choice_screen.get_name())
-  print(_say_screen.get_name())
-  print(_input_screen.get_name())
+# func _ready():
+#   print(_choice_screen.get_name())
+#   print(_say_screen.get_name())
+#   print(_input_screen.get_name())
 
 func say(how, what):
   _say_screen.say(how, what)
