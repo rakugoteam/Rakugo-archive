@@ -28,7 +28,6 @@ margin/bottom = 720.0
 
 [node name="MainMenuDecorations" type="Control" parent="."]
 
-editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -67,7 +66,6 @@ stretch_mode = 0
 
 [node name="TitleNVersion" type="Control" parent="MainMenuDecorations"]
 
-editor/display_folded = true
 anchor/right = 1
 anchor/bottom = 1
 focus/ignore_mouse = false
@@ -118,7 +116,7 @@ margin/left = 0.0
 margin/top = 62.0
 margin/right = 213.0
 margin/bottom = 93.0
-text = "0.1"
+text = "0.04"
 align = 1
 percent_visible = 1.0
 lines_skipped = 0
@@ -127,6 +125,7 @@ max_lines_visible = -1
 [node name="GameMenuDecorations" type="Control" parent="."]
 
 editor/display_folded = true
+visibility/visible = false
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
