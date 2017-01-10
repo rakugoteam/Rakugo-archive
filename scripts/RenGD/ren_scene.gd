@@ -1,6 +1,6 @@
 ## This is ren_script to gd_script compilator ##
 ## Ren'GD is Ren'Py for Godot ##
-## version: 0.04 ##
+## version: 0.05 ##
 ## License MIT ##
 ## Copyright (c) 2016 Jeremi Biernacki ##
 ## This part is hold on and don't work yet ##

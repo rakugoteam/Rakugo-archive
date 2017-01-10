@@ -1,36 +1,47 @@
-
 ## This is Ren'GD API ##
 ## Ren'GD is Ren'Py for Godot ##
-## version: 0.04 ##
+## version: 0.05 ##
 ## License MIT ##
 ## Copyright (c) 2016 Jeremi Biernacki ##
 
-extends Node
+extends Control
 
-onready var _choice_screen = get_node("Choice")
-onready var _input_screen = get_node("Say/VBoxContainer/Input")
-onready var _say_screen = get_node("Say/VBoxContainer/Dialog")
-onready var _namebox_screen = get_node("Say/VBoxContainer/NameBox/Label")
-onready var _input = get_node("Say/VBoxContainer/Input")
+ onready var input_screen = get_node("Say/VBoxContainer/Input")
+ onready var say_screen = get_node("Say/VBoxContainer/Dialog")
+ onready var namebox_screen = get_node("Say/VBoxContainer/NameBox/Label")
+ onready var label_manger = get_node("LabelManger")
 
 # var characters = []
-var objects = []
-var labels = {}
-var defs = {}
-
-var _is_input_on = false
-var _input_var
-var current_label 
-var current_scene
-var current_scene_path
+var nodes        = []
+var defs         = {}
 
 func _ready():
-    _input_screen.connect("text_entered", self, "_on_input")
+    connect("input_event", self, "_on_click")
 
     ## code borrow from:
     ## http://docs.godotengine.org/en/stable/tutorials/step_by_step/singletons_autoload.html
     var root = get_tree().get_root()
     current_scene = root.get_child( root.get_child_count() -1 )
+
+
+func add_node(_label, _node, args):
+    nodes.append({"label":_label, "node": _node.get_name(), "args": args})
+
+
+func get_node_by_int(i):
+    return nodes[i]
+
+
+func get_last_node():
+    var l = nodes.size() - 1
+    return get_node_by_int(l)
+
+
+func _on_click(event):
+    if event.is_action_pressed("ui_accept"):
+        if _is_input_on == false:
+            get_last_node().node.show()
+
 
 ## code borrow from: 
 ## http://docs.godotengine.org/en/stable/tutorials/step_by_step/singletons_autoload.html
@@ -46,6 +57,7 @@ func goto_scene(path):
     ## it is ensured that no code from the current scene is running:
 
     call_deferred("_deferred_goto_scene",path)
+
 
 ## code borrow from:
 ## http://docs.godotengine.org/en/stable/tutorials/step_by_step/singletons_autoload.html
@@ -71,112 +83,56 @@ func _deferred_goto_scene(path):
 func define(var_name, var_value = null):
     defs[var_name] = var_value
 
-
-class label extends Object:
-    func _init(label_name, scene_path, node_path = null,  func_name = null):
-        var name = label_name
-        var scene = scene_path
-        var node = node_path
-        var fun = func_name
-
-        labels[name] = self
-
-    func jump(args = []):
-
-        if scene != current_scene_path:
-            goto_scene(scene)
-            current_scene_path = scene
-
-        if node == null: ## asume that developer want to use parent of scene
-            node = current_scene
-        
-        else:
-            node = get_node(current_scene.get_path() + "/" + node)
-
-        if fun == null: ## asume that developer want to use _ready as label
-            pass
-        
-        else:
-            node.callv(fun, args)
-        
-        current_label = self
-        
-
-func add_object(_label, _object):
-    objects.append({"label":_label, "object": _object})
-
-
-class input extends Object:
-    func _init(_ivar, _what, _temp = "", use_renpy_fromat = true):
-        var temp = _temp
-        var what = _what
-       
-        var ivar = _ivar
-
-        if use_renpy_format:
-            temp = str_passer(temp)
-            what = str_passer(what)
-        
-        add_object(current_label, self)
-
-    func show():
-        _input.set_text(temp)
-        _namebox_screen.set_bbcodes(what)
-
-        _say_screen.hide()
-        _input.show()
-        _input_var = ivar
-        _is_input_on = true
-
-
-func _on_input(s):
-    set(_input_var, s)
-
-
-class say extends Object:
-    func _init(_how, _what, use_renpy_fromat = true):
-        var how = _how
-        var what = _what
-
-        if use_renpy_fromat:
-            how = say_passer(how)
-            what = say_passer(what)
-       
-        add_object(current_label, self)
-
-    func show():
-        _namebox_screen.set_bbcode(how)
-        _say_screen.set_bbcode(what)
-        
-        _say_screen.show()
-        _input.hide()
-
 func say_passer(text):
+
+
+
     var pstr = ""
     var vstr = ""
+   
     var b = false
 
     for t in text:
 
-    	if t == "[":
-    		b = true
-    		pstr += t
+        if t == "[":
+            b = true
+            pstr += t
 
-    	elif t == "]":
-    		b = false
-    		pstr += t
+        elif t == "]":
+            b = false
+            pstr += t
 
-            if not vstr.typeof(TYPE_STRING):
-                vstr = var2str(vstr)
+        elif b:
+            pstr += t
+            vstr += t
 
-    		text = text.replace(pstr, vstr)
+        if typeof(vstr) != TYPE_STRING:
+            vstr = var2str(vstr)
 
-    	elif b:
-    		pstr += t
-    		vstr += t
+        text = text.replace(pstr, vstr)
 
     text = text.replace("{image", "[img")
     text = text.replace("{", "[")
     text = text.replace("}", "]")
 
     return text
+
+
+func label(label_name, scene_path, node_path = null, func_name = null):
+    label_manger.label_name = label_name
+    label_manger.scene_path = scene_path
+    label_manger.node_path = node_path
+    label_manger.func_name = func_name
+
+func jump(label_name, args = []):
+    label_manger.jump(label_name, args)
+
+func set_label_current_label(label_name):
+    label_manager.set_label_current_label(label_name)
+
+func say(how, what, renpy_format = true):
+    say_screen.how = how
+    say_screen.what = what
+    say_screen.use_renpy_format(renpy_format)
+    
+
