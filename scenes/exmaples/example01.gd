@@ -19,20 +19,23 @@ func _ready():
 		another_time = true
 
 func first():
-	ren.label.new("example01", "res://scenes/exmaples/example01.tscn", "first")
+	ren.label("example01", "res://scenes/exmaples/example01.tscn", "first")
 	## It add this scene func to know labels
 	## It allows later to easy swich between scenes and thier labels
 	## It allows also to reuse scene with different labels
 	## using: ren.jump(label_name, [func_args_if_any])
 	## You must labeled func before 'jumping' to it!
+	
+	ren.set_label_current_label("example01")
+	## beacose it is first label in game I must write above method to get next things work
 
 	ren.define("guest") ## it add 'guest' var to 'defs' dict that will be saved
-	ren.input.new(ren.defs.guest, "What is your name?")
+	ren.input(ren.defs.guest, "What is your name?")
 	## ren.input will set guest var as what you type after pressing enter key
 	## It use renpy markup format iI discribed it more under first use of ren.say
 
 	var guest = ren.defs['guest'] ## it must done this way for now
-	var s = ren.say.new("Jeremi360", """Hi! My name is Jeremi360. Welcome [guest] to Ren'GD [version] example scene.
+	var s = ren.say("Jeremi360", """Hi! My name is Jeremi360. Welcome [guest] to Ren'GD [version] example scene.
 									Press MLB, Enter or Space to continue.""")
 	## It will set 'Jeremi360' in root/Window/Say/NameBox and second arg in root/Window/Say/Dialog
 	## It has markup format like in Ren'Py it means that all godot bbcode '[]' become '{}'
@@ -40,7 +43,7 @@ func first():
 	## you can disabled it set 3rd argumet as 'false'
 
 	var ex_path = "res://scenes/examples/example01"
-	s = ren.say.new("Jeremi360", """It's end for now to see how it is done see:
+	s = ren.say("Jeremi360", """It's end for now to see how it is done see:
 				 					- [ex_path].gd
 									- [ex_path].tscn""")
 	

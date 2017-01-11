@@ -6,10 +6,10 @@
 
 extends Control
 
- onready var input_screen = get_node("Say/VBoxContainer/Input")
- onready var say_screen = get_node("Say/VBoxContainer/Dialog")
- onready var namebox_screen = get_node("Say/VBoxContainer/NameBox/Label")
- onready var label_manger = get_node("LabelManger")
+onready var input_screen = get_node("Say/VBoxContainer/Input")
+onready var say_screen = get_node("Say/VBoxContainer/Dialog")
+onready var namebox_screen = get_node("Say/VBoxContainer/NameBox/Label")
+onready var label_manager = get_node("LabelManager")
 
 # var characters = []
 var nodes        = []
@@ -21,7 +21,7 @@ func _ready():
     ## code borrow from:
     ## http://docs.godotengine.org/en/stable/tutorials/step_by_step/singletons_autoload.html
     var root = get_tree().get_root()
-    current_scene = root.get_child( root.get_child_count() -1 )
+    label_manager.current_scene = root.get_child( root.get_child_count() -1 )
 
 
 func add_node(_label, _node, args):
@@ -39,7 +39,7 @@ func get_last_node():
 
 func _on_click(event):
     if event.is_action_pressed("ui_accept"):
-        if _is_input_on == false:
+        if input_screen._is_input_on == false:
             get_last_node().node.show()
 
 
@@ -65,19 +65,19 @@ func _deferred_goto_scene(path):
 
     ## Immediately free the current scene,
     ## there is no risk here.
-    current_scene.free()
+    label_manager.current_scene.free()
 
     ## Load new scene
     var s = load(path)
 
     ## Instance the new scene
-    current_scene = s.instance()
+    label_manager.current_scene = s.instance()
 
     ## Add it to the active scene, as child of root
-    get_tree().get_root().add_child(current_scene)
+    get_tree().get_root().add_child(label_manager.current_scene)
 
     ## optional, to make it compatible with the SceneTree.change_scene() API
-    get_tree().set_current_scene( current_scene )
+    get_tree().set_current_scene( label_manager.current_scene )
 
 
 func define(var_name, var_value = null):
@@ -119,16 +119,19 @@ func say_passer(text):
 
 
 func label(label_name, scene_path, node_path = null, func_name = null):
-    label_manger.label_name = label_name
-    label_manger.scene_path = scene_path
-    label_manger.node_path = node_path
-    label_manger.func_name = func_name
+    label_manager.label_name = label_name
+    label_manager.scene_path = scene_path
+    label_manager.node_path = node_path
+    label_manager.func_name = func_name
+
 
 func jump(label_name, args = []):
-    label_manger.jump(label_name, args)
+    label_manager.jump(label_name, args)
+
 
 func set_label_current_label(label_name):
     label_manager.set_label_current_label(label_name)
+
 
 func say(how, what, renpy_format = true):
     say_screen.how = how

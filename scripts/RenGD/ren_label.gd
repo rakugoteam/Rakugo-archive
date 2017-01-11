@@ -28,7 +28,7 @@ func jump(label, args = []):
     if label in labels.keys():
         label_name = label
         if scene_path != current_scene_path:
-            goto_scene(scene)
+            goto_scene(scene_path)
             current_scene_path = scene_path
 
         if node == null: ## asume that developer want to use parent of scene

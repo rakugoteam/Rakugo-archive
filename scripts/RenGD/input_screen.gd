@@ -13,7 +13,8 @@ onready var ren = get_node("/root/Window")
 var temp
 var what
 var ivar
-
+var _input_var
+var _is_input_on
 
 func _ready():
     connect("text_entered", self, "_on_input")
