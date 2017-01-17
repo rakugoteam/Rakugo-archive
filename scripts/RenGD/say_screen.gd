@@ -6,14 +6,10 @@
 
 extends VBoxContainer
 
-onready var input_screen = get_node("Input")
-onready var dialog_screen = get_node("Dialog")
-onready var namebox_screen = get_node("NameBox/Label")
-onready var ren = get_node("/root/Window")
-
 var how
 var what
 
+onready var ren = get_node("/root/Window")
 
 func use_renpy_format(use = true):
 
@@ -23,8 +19,8 @@ func use_renpy_format(use = true):
 
 
 func say():
-    namebox_screen.set_bbcode(how)
-    dialog_screen.set_bbcode(what)
+    ren.namebox_screen.set_bbcode(how)
+    ren.dialog_screen.set_bbcode(what)
         
-    dialog_screen.show()
-    input_screen.hide()
+    ren.dialog_screen.show()
+    ren.input_screen.hide()

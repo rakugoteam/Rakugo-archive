@@ -31,17 +31,17 @@ func jump(label, args = []):
             goto_scene(scene_path)
             current_scene_path = scene_path
 
-        if node == null: ## asume that developer want to use parent of scene
-            node = current_scene
+        if node_path == null: ## asume that developer want to use parent of scene
+            node_path = current_scene
         
         else:
-            node = get_node(current_scene.get_path() + "/" + node_path)
+            node_path = get_node(current_scene.get_path() + "/" + node_path)
 
-        if fun == null: ## asume that developer want to use _ready as label
+        if func_name == null: ## asume that developer want to use _ready as label
             pass
         
         else:
-            node.callv(func_name, args)
+            node_path.callv(func_name, args)
     
     else:
         print(label, " is not definited")

@@ -6,15 +6,14 @@
 
 extends LineEdit
 
-onready var say_screen = get_node("Dialog")
-onready var namebox_screen = get_node("NameBox/Label")
-onready var ren = get_node("/root/Window")
-
 var temp
 var what
 var ivar
 var _input_var
 var _is_input_on
+
+onready var ren = get_node("/root/Window")
+
 
 func _ready():
     connect("text_entered", self, "_on_input")
@@ -29,9 +28,9 @@ func use_renpy_format(use = true):
 
 func input():
     set_text(temp)
-    namebox_screen.set_bbcodes(what)
+    ren.namebox_screen.set_bbcodes(what)
 
-    say_screen.hide()
+    ren.say_screen.hide()
     show()
     _input_var = ivar
     _is_input_on = true

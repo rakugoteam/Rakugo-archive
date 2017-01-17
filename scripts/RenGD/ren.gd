@@ -137,5 +137,12 @@ func say(how, what, renpy_format = true):
     say_screen.how = how
     say_screen.what = what
     say_screen.use_renpy_format(renpy_format)
-    
+
+
+func input(ivar, what, temp = "", renpy_format = true):
+    input_screen.ivar = ivar
+    input_screen.what = what
+    input_screen.temp = temp
+    input_screen.use_renpy_format(renpy_format)
+
 
