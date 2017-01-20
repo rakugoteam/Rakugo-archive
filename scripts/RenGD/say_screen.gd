@@ -10,6 +10,8 @@ var how
 var what
 
 onready var ren = get_node("/root/Window")
+onready var dialog_screen = get_node("Dialog")
+onready var namebox_screen = get_node("NameBox/Label")
 
 func use_renpy_format(use = true):
 
@@ -19,8 +21,6 @@ func use_renpy_format(use = true):
 
 
 func say():
-    ren.namebox_screen.set_bbcode(how)
-    ren.dialog_screen.set_bbcode(what)
-        
-    ren.dialog_screen.show()
-    ren.input_screen.hide()
+    namebox_screen.set_bbcode(how)
+    dialog_screen.set_bbcode(what)
+    dialog_screen.show()

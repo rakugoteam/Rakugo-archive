@@ -15,8 +15,9 @@ var another_time = false
 
 func _ready():
 	if not another_time:
-		first()
 		another_time = true
+		first()
+		
 
 func first():
 	ren.label("example01", "res://scenes/exmaples/example01.tscn", "first")
@@ -35,17 +36,20 @@ func first():
 	## It use renpy markup format iI discribed it more under first use of ren.say
 
 	var guest = ren.defs['guest'] ## it must done this way for now
-	var s = ren.say("Jeremi360", """Hi! My name is Jeremi360. Welcome [guest] to Ren'GD [version] example scene.
-									Press MLB, Enter or Space to continue.""")
+	ren.say("Jeremi360",
+			"""Hi! My name is Jeremi360.
+				Welcome [guest] to Ren'GD [version] example scene.
+				Press MLB, Enter or Space to continue.""")
 	## It will set 'Jeremi360' in root/Window/Say/NameBox and second arg in root/Window/Say/Dialog
 	## It has markup format like in Ren'Py it means that all godot bbcode '[]' become '{}'
 	## '[guest]' will add guest var to your string and do the same for version var
 	## you can disabled it set 3rd argumet as 'false'
 
 	var ex_path = "res://scenes/examples/example01"
-	s = ren.say("Jeremi360", """It's end for now to see how it is done see:
-				 					- [ex_path].gd
-									- [ex_path].tscn""")
+	ren.say("Jeremi360", 
+			"""It's end for now to see how it is done see:
+			- [ex_path].gd
+			- [ex_path].tscn""")
 	
 	
 

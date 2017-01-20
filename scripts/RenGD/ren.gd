@@ -7,8 +7,7 @@
 extends Control
 
 onready var input_screen = get_node("Say/VBoxContainer/Input")
-onready var say_screen = get_node("Say/VBoxContainer/Dialog")
-onready var namebox_screen = get_node("Say/VBoxContainer/NameBox/Label")
+onready var say_screen = get_node("Say/VBoxContainer")
 onready var label_manager = get_node("LabelManager")
 
 # var characters = []
@@ -85,8 +84,6 @@ func define(var_name, var_value = null):
 
 func say_passer(text):
 
-
-
     var pstr = ""
     var vstr = ""
    
@@ -119,10 +116,7 @@ func say_passer(text):
 
 
 func label(label_name, scene_path, node_path = null, func_name = null):
-    label_manager.label_name = label_name
-    label_manager.scene_path = scene_path
-    label_manager.node_path = node_path
-    label_manager.func_name = func_name
+    label_manager.label(label_name, scene_path, node_path, func_name)
 
 
 func jump(label_name, args = []):
@@ -137,7 +131,7 @@ func say(how, what, renpy_format = true):
     say_screen.how = how
     say_screen.what = what
     say_screen.use_renpy_format(renpy_format)
-
+    say_screen.say()
 
 func input(ivar, what, temp = "", renpy_format = true):
     input_screen.ivar = ivar

@@ -13,7 +13,8 @@ var _input_var
 var _is_input_on
 
 onready var ren = get_node("/root/Window")
-
+onready var namebox_screen = get_node("../NameBox/Label")
+onready var dialog_screen = get_node("../Dialog")
 
 func _ready():
     connect("text_entered", self, "_on_input")
@@ -28,9 +29,9 @@ func use_renpy_format(use = true):
 
 func input():
     set_text(temp)
-    ren.namebox_screen.set_bbcodes(what)
+    namebox_screen.set_bbcodes(what)
 
-    ren.say_screen.hide()
+    dialog_screen.hide()
     show()
     _input_var = ivar
     _is_input_on = true
@@ -39,3 +40,4 @@ func input():
 func _on_input(s):
     set(_input_var, s)
     _is_input_on = true
+    hide()
