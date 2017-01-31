@@ -15,12 +15,14 @@ var nodes        = []
 var defs         = {}
 
 func _ready():
-    connect("input_event", self, "_on_click")
-
     ## code borrow from:
     ## http://docs.godotengine.org/en/stable/tutorials/step_by_step/singletons_autoload.html
     var root = get_tree().get_root()
     label_manager.current_scene = root.get_child( root.get_child_count() -1 )
+
+
+    connect("input_event", self, "_on_click")
+
 
 
 func add_node(_label, _node, args):
@@ -42,7 +44,7 @@ func _on_click(event):
             get_last_node().node.show()
 
 
-## code borrow from: 
+## code borrow from:
 ## http://docs.godotengine.org/en/stable/tutorials/step_by_step/singletons_autoload.html
 func goto_scene(path):
 
@@ -55,8 +57,7 @@ func goto_scene(path):
     ## The way around this is deferring the load to a later time, when
     ## it is ensured that no code from the current scene is running:
 
-    call_deferred("_deferred_goto_scene",path)
-
+    call_deferred("_deferred_goto_scene", path)
 
 ## code borrow from:
 ## http://docs.godotengine.org/en/stable/tutorials/step_by_step/singletons_autoload.html
@@ -83,10 +84,12 @@ func define(var_name, var_value = null):
     defs[var_name] = var_value
 
 func say_passer(text):
+    ## change using Sebastian Holc solution:
+    ## http://pastebin.com/K8zsWQtL
 
     var pstr = ""
     var vstr = ""
-   
+
     var b = false
 
     for t in text:
@@ -99,14 +102,19 @@ func say_passer(text):
             b = false
             pstr += t
 
+            vstr = str2var(vstr)
+
+            if typeof(vstr) != TYPE_STRING:
+                vstr = var2str(vstr)
+
+            text = text.replace(pstr, vstr)
+
+
         elif b:
             pstr += t
             vstr += t
 
-        if typeof(vstr) != TYPE_STRING:
-            vstr = var2str(vstr)
 
-        text = text.replace(pstr, vstr)
 
     text = text.replace("{image", "[img")
     text = text.replace("{", "[")
