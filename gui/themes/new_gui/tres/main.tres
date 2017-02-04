@@ -42,6 +42,7 @@ expand_margin/left = 0.0
 expand_margin/right = 0.0
 expand_margin/top = 0.0
 expand_margin/bottom = 0.0
+modulate/color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [sub_resource type="StyleBoxTexture" id=2]
@@ -59,6 +60,7 @@ expand_margin/left = 0.0
 expand_margin/right = 0.0
 expand_margin/top = 0.0
 expand_margin/bottom = 0.0
+modulate/color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [sub_resource type="StyleBoxTexture" id=3]
@@ -76,6 +78,7 @@ expand_margin/left = 0.0
 expand_margin/right = 0.0
 expand_margin/top = 0.0
 expand_margin/bottom = 0.0
+modulate/color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [sub_resource type="ImageTexture" id=4]
@@ -109,6 +112,7 @@ expand_margin/left = 0.0
 expand_margin/right = 0.0
 expand_margin/top = 0.0
 expand_margin/bottom = 0.0
+modulate/color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [sub_resource type="StyleBoxTexture" id=7]
@@ -126,6 +130,7 @@ expand_margin/left = 0.0
 expand_margin/right = 0.0
 expand_margin/top = 0.0
 expand_margin/bottom = 0.0
+modulate/color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [sub_resource type="StyleBoxTexture" id=8]
@@ -143,6 +148,7 @@ expand_margin/left = 0.0
 expand_margin/right = 0.0
 expand_margin/top = 0.0
 expand_margin/bottom = 0.0
+modulate/color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [sub_resource type="StyleBoxTexture" id=9]
@@ -160,6 +166,7 @@ expand_margin/left = 0.0
 expand_margin/right = 0.0
 expand_margin/top = 0.0
 expand_margin/bottom = 0.0
+modulate/color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [sub_resource type="StyleBoxTexture" id=10]
@@ -177,6 +184,7 @@ expand_margin/left = 0.0
 expand_margin/right = 0.0
 expand_margin/top = 0.0
 expand_margin/bottom = 0.0
+modulate/color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [sub_resource type="StyleBoxTexture" id=11]
@@ -194,6 +202,7 @@ expand_margin/left = 0.0
 expand_margin/right = 0.0
 expand_margin/top = 0.0
 expand_margin/bottom = 0.0
+modulate/color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [sub_resource type="ImageTexture" id=12]
@@ -227,6 +236,7 @@ expand_margin/left = 0.0
 expand_margin/right = 0.0
 expand_margin/top = 0.0
 expand_margin/bottom = 0.0
+modulate/color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [resource]

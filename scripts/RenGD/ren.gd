@@ -10,9 +10,8 @@ onready var input_screen = get_node("Say/VBoxContainer/Input")
 onready var say_screen = get_node("Say/VBoxContainer")
 onready var label_manager = get_node("LabelManager")
 
-# var characters = []
-var nodes        = []
-var defs         = {}
+
+var keywords = { "version":{"type":"text", "value":"0.2"} }
 
 func _ready():
     ## code borrow from:
@@ -22,20 +21,6 @@ func _ready():
 
 
     connect("input_event", self, "_on_click")
-
-
-
-func add_node(_label, _node, args):
-    nodes.append({"label":_label, "node": _node.get_name(), "args": args})
-
-
-func get_node_by_int(i):
-    return nodes[i]
-
-
-func get_last_node():
-    var l = nodes.size() - 1
-    return get_node_by_int(l)
 
 
 func _on_click(event):
@@ -80,41 +65,31 @@ func _deferred_goto_scene(path):
     get_tree().set_current_scene( label_manager.current_scene )
 
 
-func define(var_name, var_value = null):
-    defs[var_name] = var_value
+func define(key_name, key_value = null):
+    keywords[key_name] = {"type":"var", "value":key_value}
+
 
 func say_passer(text):
-    ## change using Sebastian Holc solution:
+    ## code from Sebastian Holc solution:
     ## http://pastebin.com/K8zsWQtL
 
-    var pstr = ""
-    var vstr = ""
+    for key_name in keywords:
+        if text.find(key_name) == -1:
+             continue # no keyword in this string
+        
+        var keyword = keywords[key_name]
 
-    var b = false
-
-    for t in text:
-
-        if t == "[":
-            b = true
-            pstr += t
-
-        elif t == "]":
-            b = false
-            pstr += t
-
-            vstr = str2var(vstr)
-
-            if typeof(vstr) != TYPE_STRING:
-                vstr = var2str(vstr)
-
-            text = text.replace(pstr, vstr)
-
-
-        elif b:
-            pstr += t
-            vstr += t
-
-
+        if keyword.type == "text":
+            text = text.replace("["+key_name+"]",str(keyword.value))
+        
+        elif keyword.type == "func":
+            var func_result = call(keyword.value)
+            text = text.replace("["+key_name+"]",str(func_result))
+        
+        elif keyword.type == "var":
+            var value = keyword.value
+            text = text.replace("["+key_name+"]",str(value))
+    
 
     text = text.replace("{image", "[img")
     text = text.replace("{", "[")
@@ -146,5 +121,6 @@ func input(ivar, what, temp = "", renpy_format = true):
     input_screen.what = what
     input_screen.temp = temp
     input_screen.use_renpy_format(renpy_format)
+    input_screen.input()
 
 

@@ -9,7 +9,6 @@ extends LineEdit
 var temp
 var what
 var ivar
-var _input_var
 var _is_input_on
 
 onready var ren = get_node("/root/Window")
@@ -29,15 +28,14 @@ func use_renpy_format(use = true):
 
 func input():
     set_text(temp)
-    namebox_screen.set_bbcodes(what)
+    namebox_screen.set_bbcode(what)
 
     dialog_screen.hide()
     show()
-    _input_var = ivar
     _is_input_on = true
 
 
 func _on_input(s):
-    set(_input_var, s)
+    ren.keywords[ivar] = {"type":"text", "value":s}
     _is_input_on = true
     hide()

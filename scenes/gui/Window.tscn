@@ -33,6 +33,7 @@ expand_margin/left = 0.0
 expand_margin/right = 0.0
 expand_margin/top = 0.0
 expand_margin/bottom = 0.0
+modulate/color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [sub_resource type="StyleBoxTexture" id=2]
@@ -50,6 +51,7 @@ expand_margin/left = 0.0
 expand_margin/right = 0.0
 expand_margin/top = 0.0
 expand_margin/bottom = 0.0
+modulate/color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [sub_resource type="StyleBoxTexture" id=3]
@@ -67,6 +69,7 @@ expand_margin/left = 0.0
 expand_margin/right = 0.0
 expand_margin/top = 0.0
 expand_margin/bottom = 0.0
+modulate/color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [sub_resource type="StyleBoxEmpty" id=4]
@@ -116,6 +119,7 @@ custom_styles/hover = SubResource( 1 )
 custom_styles/selected = SubResource( 2 )
 custom_styles/normal = SubResource( 3 )
 custom_constants/button_separator = 10
+flat = false
 button/count = 3
 button/min_button_size = 50.0
 button/align = 4
@@ -221,35 +225,32 @@ visible_characters = -1
 
 [node name="Dialog" type="RichTextLabel" parent="Say/VBoxContainer"]
 
-anchor/right = 1
-anchor/bottom = 3
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
 margin/left = 0.0
 margin/top = 37.0
-margin/right = 1.0
-margin/bottom = -62.0
+margin/right = 756.0
+margin/bottom = 98.0
 bbcode/enabled = true
 bbcode/bbcode = "Dialog"
 visible_characters = -1
 
 [node name="Input" type="LineEdit" parent="Say/VBoxContainer"]
 
-anchor/top = 3
-anchor/bottom = 1
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
-margin/left = -7.0
-margin/top = 58.0
-margin/right = 749.0
-margin/bottom = 121.0
+margin/left = 0.0
+margin/top = 99.0
+margin/right = 756.0
+margin/bottom = 160.0
 custom_styles/focus = SubResource( 4 )
 custom_styles/normal = SubResource( 5 )
 placeholder/alpha = 0.6
+expand_to_len = false
 focus_mode = 2
 caret/caret_blink = false
 caret/caret_blink_speed = 0.65
