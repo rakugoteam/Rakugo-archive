@@ -1,8 +1,7 @@
 ## This is Ren'GD API ##
 ## Ren'GD is Ren'Py for Godot ##
-## version: 0.05 ##
+## version: 0.6 ##
 ## License MIT ##
-## Copyright (c) 2016 Jeremi Biernacki ##
 
 extends Node
 

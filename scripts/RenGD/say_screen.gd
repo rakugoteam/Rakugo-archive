@@ -2,7 +2,6 @@
 ## Ren'GD is Ren'Py for Godot ##
 ## version: 0.05 ##
 ## License MIT ##
-## Copyright (c) 2016 Jeremi Biernacki ##
 
 extends VBoxContainer
 

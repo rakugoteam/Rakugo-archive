@@ -1,12 +1,12 @@
 ## This is Ren'GD example scene script##
 ## Ren'GD is Ren'Py for Godot ##
-## version: 0.05 ##
+## version: 0.6 ##
 ## License MIT ##
-## Copyright (c) 2016 Jeremi Biernacki ##
+
 
 extends Node2D
 
-## it's how import rengd framework if res://scenes/gui/Window.tscn is loaded as singleton
+## it's how import rengd framework when res://scenes/gui/Window.tscn is loaded as singleton
 onready var ren = get_node("/root/Window") 
 
 var another_time = false
@@ -16,6 +16,11 @@ func _ready():
 	if not another_time:
 		another_time = true
 		first()
+	
+	ren.first__statment()
+	## This must be at end of code.
+	## this start ren "magic" ;)
+	
 		
 
 func first():
@@ -33,7 +38,7 @@ func first():
 	ren.input("guest", "What is your name?")
 	## ren.input will set guest var as what you type after pressing enter key
 	## It use renpy markup format iI discribed it more under first use of ren.say
-
+	
 
 	ren.say("Jeremi360",
 			"""Hi! My name is Jeremi360.
@@ -49,6 +54,7 @@ func first():
 			"""It's end for now to see how it is done see:
 			- [ex_path].gd
 			- [ex_path].tscn""")
+	
 	
 	
 

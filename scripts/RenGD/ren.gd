@@ -1,8 +1,8 @@
 ## This is Ren'GD API ##
 ## Ren'GD is Ren'Py for Godot ##
-## version: 0.05 ##
+## version: 0.6 ##
 ## License MIT ##
-## Copyright (c) 2016 Jeremi Biernacki ##
+
 
 extends Control
 
@@ -10,24 +10,48 @@ onready var input_screen = get_node("Say/VBoxContainer/Input")
 onready var say_screen = get_node("Say/VBoxContainer")
 onready var label_manager = get_node("LabelManager")
 
-
-var keywords = { "version":{"type":"text", "value":"0.2"} }
+var snum = 0
+var statments = []
+var keywords = { "version":{"type":"text", "value":"0.6"} }
 
 func _ready():
     ## code borrow from:
     ## http://docs.godotengine.org/en/stable/tutorials/step_by_step/singletons_autoload.html
     var root = get_tree().get_root()
     label_manager.current_scene = root.get_child( root.get_child_count() -1 )
+    set_process_input(true)
 
 
-    connect("input_event", self, "_on_click")
+func _input(event):
+
+    if input_screen._is_input_on == false:
+        if event.is_action_pressed("ui_accept"):
+            next_statment()
+        
+
+func statment(num):
+    if num < statments.size() and num > 0:
+        var s = statments[num]
+        
+        if s.type == "say":
+            _say(s.args)
+        
+        elif s.type == "input":
+            _ren_input(s.args)
 
 
-func _on_click(event):
-    if event.is_action_pressed("ui_accept"):
-        if input_screen._is_input_on == false:
-            get_last_node().node.show()
+func next_statment():
+    snum += 1
+    statment(snum)
 
+
+func prev_statment():
+    snum -= 1
+    statment(snum)
+
+func first__statment():
+    statment(0)
+    
 
 ## code borrow from:
 ## http://docs.godotengine.org/en/stable/tutorials/step_by_step/singletons_autoload.html
@@ -111,16 +135,46 @@ func set_label_current_label(label_name):
 
 
 func say(how, what, renpy_format = true):
-    say_screen.how = how
-    say_screen.what = what
-    say_screen.use_renpy_format(renpy_format)
+    
+    var s = {"type":"say",
+                "args":{
+                        "how":how,
+                        "what":what,
+                        "format":renpy_format
+                        }
+            }
+    
+    statments.append(s)
+
+
+
+func _say(args):
+    say_screen.how = args.how
+    say_screen.what = args.what
+    say_screen.use_renpy_format(args.format)
     say_screen.say()
 
+
 func input(ivar, what, temp = "", renpy_format = true):
-    input_screen.ivar = ivar
-    input_screen.what = what
-    input_screen.temp = temp
-    input_screen.use_renpy_format(renpy_format)
+    
+    var s = {"type":"input",
+                "args":{
+                        "ivar":ivar,
+                        "what":what,
+                        "temp":temp,
+                        "format":renpy_format
+                        }
+            }
+    
+    statments.append(s)
+
+
+func _ren_input(args):
+    input_screen.ivar = args.ivar
+    input_screen.what = args.what
+    input_screen.temp = args.temp
+    input_screen.use_renpy_format(args.format)
     input_screen.input()
+
 
 

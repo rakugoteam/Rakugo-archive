@@ -1,8 +1,7 @@
 ## This is Ren'GD API ##
 ## Ren'GD is Ren'Py for Godot ##
-## version: 0.05 ##
+## version: 0.6 ##
 ## License MIT ##
-## Copyright (c) 2016 Jeremi Biernacki ##
 
 extends LineEdit
 
@@ -37,5 +36,6 @@ func input():
 
 func _on_input(s):
     ren.keywords[ivar] = {"type":"text", "value":s}
-    _is_input_on = true
+    _is_input_on = false
     hide()
+    ren.next_statment()
