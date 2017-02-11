@@ -14,6 +14,10 @@ var snum = 0
 var statments = []
 var keywords = { "version":{"type":"text", "value":"0.6"} }
 
+signal first_statment
+signal next_statment
+signal prev_statment
+
 func _ready():
     ## code borrow from:
     ## http://docs.godotengine.org/en/stable/tutorials/step_by_step/singletons_autoload.html
@@ -21,16 +25,25 @@ func _ready():
     label_manager.current_scene = root.get_child( root.get_child_count() -1 )
     set_process_input(true)
 
+    connect("first_statment", self, "use_statment", [0])
+    connect("next_statment", self, "use_statment", [snum + 1])
+    connect("prev_statment", self, "use_statment", [snum - 1])
+
+func start_ren():
+    emit_signal("first_statment")
 
 func _input(event):
 
     if input_screen._is_input_on == false:
-        if event.is_action_pressed("ui_accept"):
-            next_statment()
+        if event.is_action_pressed("ren_rollforward"):
+            emit_signal("next_statment")
+        
+        elif event.is_action_pressed("ren_rollback"):
+            emit_signal("prev_statment")
         
 
-func statment(num):
-    if num < statments.size() and num > 0:
+func use_statment(num):
+    if num <= statments.size() and num >= 0:
         var s = statments[num]
         
         if s.type == "say":
@@ -38,19 +51,19 @@ func statment(num):
         
         elif s.type == "input":
             _ren_input(s.args)
+        
+        snum = num
 
-
-func next_statment():
-    snum += 1
-    statment(snum)
-
-
-func prev_statment():
-    snum -= 1
-    statment(snum)
-
-func first__statment():
-    statment(0)
+        # reconnent
+        disconnect("first_statment", self, "use_statment")
+        disconnect("next_statment", self, "use_statment")
+        disconnect("prev_statment", self, "use_statment")
+        
+        connect("first_statment", self, "use_statment", [0])
+        connect("next_statment", self, "use_statment", [snum + 1])
+        connect("prev_statment", self, "use_statment", [snum - 1])
+        
+        
     
 
 ## code borrow from:

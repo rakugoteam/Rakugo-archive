@@ -17,7 +17,7 @@ func _ready():
 		another_time = true
 		first()
 	
-	ren.first__statment()
+	ren.start_ren()
 	## This must be at end of code.
 	## this start ren "magic" ;)
 	

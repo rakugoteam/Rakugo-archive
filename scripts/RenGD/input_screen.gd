@@ -31,6 +31,7 @@ func input():
 
     dialog_screen.hide()
     show()
+    grab_focus()
     _is_input_on = true
 
 
@@ -38,4 +39,4 @@ func _on_input(s):
     ren.keywords[ivar] = {"type":"text", "value":s}
     _is_input_on = false
     hide()
-    ren.next_statment()
+    ren.emit_signal("next_statment")
