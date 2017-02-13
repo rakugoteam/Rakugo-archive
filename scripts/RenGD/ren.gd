@@ -14,9 +14,6 @@ var snum = 0
 var statments = []
 var keywords = { "version":{"type":"text", "value":"0.6"} }
 
-signal first_statment
-signal next_statment
-signal prev_statment
 
 func _ready():
     ## code borrow from:
@@ -25,21 +22,27 @@ func _ready():
     label_manager.current_scene = root.get_child( root.get_child_count() -1 )
     set_process_input(true)
 
-    connect("first_statment", self, "use_statment", [0])
-    connect("next_statment", self, "use_statment", [snum + 1])
-    connect("prev_statment", self, "use_statment", [snum - 1])
 
 func start_ren():
-    emit_signal("first_statment")
+    use_statment(0)
+
+
+func next_statment():
+    use_statment(snum + 1)
+
+
+func perv_statment():
+    use_statment(snum - 1)
+
 
 func _input(event):
 
     if input_screen._is_input_on == false:
         if event.is_action_pressed("ren_rollforward"):
-            emit_signal("next_statment")
+            next_statment()
         
         elif event.is_action_pressed("ren_rollback"):
-            emit_signal("prev_statment")
+            prev_statment()
         
 
 func use_statment(num):
@@ -53,17 +56,6 @@ func use_statment(num):
             _ren_input(s.args)
         
         snum = num
-
-        # reconnent
-        disconnect("first_statment", self, "use_statment")
-        disconnect("next_statment", self, "use_statment")
-        disconnect("prev_statment", self, "use_statment")
-        
-        connect("first_statment", self, "use_statment", [0])
-        connect("next_statment", self, "use_statment", [snum + 1])
-        connect("prev_statment", self, "use_statment", [snum - 1])
-        
-        
     
 
 ## code borrow from:
@@ -117,15 +109,15 @@ func say_passer(text):
         var keyword = keywords[key_name]
 
         if keyword.type == "text":
-            text = text.replace("["+key_name+"]",str(keyword.value))
+            text = text.replace("[" + key_name + "]", str(keyword.value))
         
         elif keyword.type == "func":
             var func_result = call(keyword.value)
-            text = text.replace("["+key_name+"]",str(func_result))
+            text = text.replace("[" + key_name + "]", str(func_result))
         
         elif keyword.type == "var":
             var value = keyword.value
-            text = text.replace("["+key_name+"]",str(value))
+            text = text.replace("[" + key_name + "]", str(value))
     
 
     text = text.replace("{image", "[img")

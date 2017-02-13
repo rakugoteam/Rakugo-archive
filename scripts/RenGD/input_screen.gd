@@ -39,4 +39,4 @@ func _on_input(s):
     ren.keywords[ivar] = {"type":"text", "value":s}
     _is_input_on = false
     hide()
-    ren.emit_signal("next_statment")
+    ren.next_statment()
