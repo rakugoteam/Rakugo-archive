@@ -1,22 +1,23 @@
-[gd_scene load_steps=23 format=1]
+[gd_scene load_steps=24 format=1]
 
 [ext_resource path="res://gui/themes/new_gui/tres/main.tres" type="Theme" id=1]
 [ext_resource path="res://scripts/RenGD/ren.gd" type="Script" id=2]
 [ext_resource path="res://gui/themes/new_gui/imgs/button/choice_hover_background.png" type="Texture" id=3]
 [ext_resource path="res://gui/themes/new_gui/imgs/button/choice_idle_background.png" type="Texture" id=4]
-[ext_resource path="res://gui/themes/new_gui/imgs/textbox.png" type="Texture" id=5]
-[ext_resource path="res://scripts/RenGD/say_screen.gd" type="Script" id=6]
-[ext_resource path="res://gui/themes/new_gui/imgs/namebox.png" type="Texture" id=7]
-[ext_resource path="res://fonts/name_text_sizeM.fnt" type="BitmapFont" id=8]
-[ext_resource path="res://fonts/name_text_sizeIB.fnt" type="BitmapFont" id=9]
-[ext_resource path="res://fonts/name_text_sizeI.fnt" type="BitmapFont" id=10]
-[ext_resource path="res://fonts/name_text_sizeB.fnt" type="BitmapFont" id=11]
-[ext_resource path="res://fonts/name_text_sizeR.fnt" type="BitmapFont" id=12]
-[ext_resource path="res://scripts/RenGD/input_screen.gd" type="Script" id=13]
-[ext_resource path="res://gui/themes/new_gui/imgs/notify.png" type="Texture" id=14]
-[ext_resource path="res://gui/themes/new_gui/imgs/skip.png" type="Texture" id=15]
-[ext_resource path="res://fonts/notify_text_sizeR.fnt" type="BitmapFont" id=16]
-[ext_resource path="res://scripts/RenGD/ren_label.gd" type="Script" id=17]
+[ext_resource path="res://scripts/RenGD/choice_screen.gd" type="Script" id=5]
+[ext_resource path="res://gui/themes/new_gui/imgs/textbox.png" type="Texture" id=6]
+[ext_resource path="res://scripts/RenGD/say_screen.gd" type="Script" id=7]
+[ext_resource path="res://gui/themes/new_gui/imgs/namebox.png" type="Texture" id=8]
+[ext_resource path="res://fonts/name_text_sizeM.fnt" type="BitmapFont" id=9]
+[ext_resource path="res://fonts/name_text_sizeIB.fnt" type="BitmapFont" id=10]
+[ext_resource path="res://fonts/name_text_sizeI.fnt" type="BitmapFont" id=11]
+[ext_resource path="res://fonts/name_text_sizeB.fnt" type="BitmapFont" id=12]
+[ext_resource path="res://fonts/name_text_sizeR.fnt" type="BitmapFont" id=13]
+[ext_resource path="res://scripts/RenGD/input_screen.gd" type="Script" id=14]
+[ext_resource path="res://gui/themes/new_gui/imgs/notify.png" type="Texture" id=15]
+[ext_resource path="res://gui/themes/new_gui/imgs/skip.png" type="Texture" id=16]
+[ext_resource path="res://fonts/notify_text_sizeR.fnt" type="BitmapFont" id=17]
+[ext_resource path="res://scripts/RenGD/ren_label.gd" type="Script" id=18]
 
 [sub_resource type="StyleBoxTexture" id=1]
 
@@ -133,9 +134,11 @@ button/2/text = "Option 3"
 button/2/tooltip = ""
 button/2/icon = null
 button/selected = 0
+script/script = ExtResource( 5 )
 
 [node name="Say" type="Control" parent="."]
 
+editor/display_folded = true
 anchor/top = 1
 anchor/right = 1
 anchor/bottom = 1
@@ -159,7 +162,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 40.0
 margin/bottom = 40.0
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 stretch_mode = 0
 
 [node name="SideImage" type="Control" parent="Say"]
@@ -177,6 +180,7 @@ margin/bottom = 0.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Say"]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
@@ -187,7 +191,7 @@ margin/right = 1217.0
 margin/bottom = 186.0
 custom_constants/separation = 1
 alignment = 0
-script/script = ExtResource( 6 )
+script/script = ExtResource( 7 )
 
 [node name="NameBox" type="TextureFrame" parent="Say/VBoxContainer"]
 
@@ -200,7 +204,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 1044.0
 margin/bottom = 36.0
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 stretch_mode = 0
 
 [node name="Label" type="RichTextLabel" parent="Say/VBoxContainer/NameBox"]
@@ -214,11 +218,11 @@ margin/left = 0.0
 margin/top = 1.0
 margin/right = 813.0
 margin/bottom = 36.0
-custom_fonts/mono_font = ExtResource( 8 )
-custom_fonts/bold_italics_font = ExtResource( 9 )
-custom_fonts/italics_font = ExtResource( 10 )
-custom_fonts/bold_font = ExtResource( 11 )
-custom_fonts/normal_font = ExtResource( 12 )
+custom_fonts/mono_font = ExtResource( 9 )
+custom_fonts/bold_italics_font = ExtResource( 10 )
+custom_fonts/italics_font = ExtResource( 11 )
+custom_fonts/bold_font = ExtResource( 12 )
+custom_fonts/normal_font = ExtResource( 13 )
 bbcode/enabled = true
 bbcode/bbcode = "Speaker"
 visible_characters = -1
@@ -241,7 +245,7 @@ expand_to_len = false
 focus_mode = 2
 caret/caret_blink = false
 caret/caret_blink_speed = 0.65
-script/script = ExtResource( 13 )
+script/script = ExtResource( 14 )
 
 [node name="Dialog" type="RichTextLabel" parent="Say/VBoxContainer"]
 
@@ -439,7 +443,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 922.0
 margin/bottom = 43.0
-texture = ExtResource( 14 )
+texture = ExtResource( 15 )
 stretch_mode = 0
 
 [node name="Skip" type="TextureFrame" parent="NotifyArea"]
@@ -452,7 +456,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 240.0
 margin/bottom = 43.0
-texture = ExtResource( 15 )
+texture = ExtResource( 16 )
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="NotifyArea"]
@@ -465,7 +469,7 @@ margin/left = 10.0
 margin/top = 5.0
 margin/right = 72.0
 margin/bottom = 36.0
-custom_fonts/font = ExtResource( 16 )
+custom_fonts/font = ExtResource( 17 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Skip"
 align = 3
@@ -484,7 +488,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 40.0
 margin/bottom = 40.0
-script/script = ExtResource( 17 )
+script/script = ExtResource( 18 )
 
 [node name="Timer" type="Timer" parent="."]
 

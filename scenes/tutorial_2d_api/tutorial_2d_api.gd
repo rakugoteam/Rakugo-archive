@@ -13,25 +13,27 @@ var another_time = false
 
 func _ready():
 
-	if not another_time:
-		another_time = true
-		first()
+	# if not another_time:
+	# 	another_time = true
+	# 	first()
+
+	first()
 	
 	ren.start_ren()
 	## This must be at end of code.
 	## this start ren "magic" ;)
 	
-		
 
 func first():
-	ren.label("example01", "res://scenes/exmaples/example01.tscn", "first")
+	var tscn_path = "res://scenes/tutorial_2d_api/tutorial_2d_api.tscn"
+	ren.label("tutorial_2d_api", tscn_path, "first")
 	## It add this scene func to know labels
 	## It allows later to easy swich between scenes and thier labels
 	## It allows also to reuse scene with different labels
 	## using: ren.jump(label_name, [func_args_if_any])
 	## You must labeled func before 'jumping' to it!
 	
-	ren.set_label_current_label("example01")
+	ren.set_label_current_label("tutorial_2d_api")
 	## beacose it is first label in game I must write above method to get next things work
 
 	ren.define("guest") ## it add 'guest' var to 'keywords' dict that is global and will be saved
@@ -49,7 +51,22 @@ func first():
 	## '[guest]' will add guest var to your string and do the same for version var
 	## you can disabled it set 3rd argumet as 'false'
 
-	ren.define("ex_path", "res://scenes/examples/example01")
+	var choices = {
+		"What is Ren'GD ?": [
+			{"type":"say",
+                "args":{
+                        "how":"Jeremi360",
+                        "what":"This is Ren'Py for Godot.",
+                        "format":true
+                        }
+			}
+            
+		]
+	}
+
+	ren.menu(choices, "What you want to know?")
+
+	ren.define("ex_path", tscn_path)
 	ren.say("Jeremi360", 
 			"""It's end for now to see how it is done see:
 			- [ex_path].gd

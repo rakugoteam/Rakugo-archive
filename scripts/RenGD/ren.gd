@@ -9,8 +9,9 @@ extends Control
 onready var input_screen = get_node("Say/VBoxContainer/Input")
 onready var say_screen = get_node("Say/VBoxContainer")
 onready var label_manager = get_node("LabelManager")
+onready var choice_screen = get_node("Choice")
 
-var snum = 0
+var snum = 0 ## current statment number
 var statments = []
 var keywords = { "version":{"type":"text", "value":"0.6"} }
 
@@ -24,14 +25,18 @@ func _ready():
 
 
 func start_ren():
+    ## This must be at end of code using ren api
+	## this start ren "magic" ;)
     use_statment(0)
 
 
 func next_statment():
+    ## go to next statment
     use_statment(snum + 1)
 
 
 func perv_statment():
+    ## go to previous statment
     use_statment(snum - 1)
 
 
@@ -46,6 +51,7 @@ func _input(event):
         
 
 func use_statment(num):
+    ## go to statment with given number
     if num <= statments.size() and num >= 0:
         var s = statments[num]
         
@@ -54,6 +60,15 @@ func use_statment(num):
         
         elif s.type == "input":
             _ren_input(s.args)
+        
+        elif s.type == "menu":
+            _ren_menu(s.args)
+        
+        elif s.type == "g":
+            callv(s.fun, s.args)
+            
+            if num + 1 <= statments.size():
+                use_statment(num + 1)
         
         snum = num
     
@@ -95,10 +110,14 @@ func _deferred_goto_scene(path):
 
 
 func define(key_name, key_value = null):
+    ## add global var that ren will see
     keywords[key_name] = {"type":"var", "value":key_value}
 
 
 func say_passer(text):
+    ## passer for renpy markup format
+    ## its retrun bbcode
+
     ## code from Sebastian Holc solution:
     ## http://pastebin.com/K8zsWQtL
 
@@ -128,19 +147,19 @@ func say_passer(text):
 
 
 func label(label_name, scene_path, node_path = null, func_name = null):
+    ## this declare new label
+    ## that make ren see label and can jump to it
     label_manager.label(label_name, scene_path, node_path, func_name)
 
 
 func jump(label_name, args = []):
+    ## go to other declared label
     label_manager.jump(label_name, args)
 
 
-func set_label_current_label(label_name):
-    label_manager.set_label_current_label(label_name)
-
-
 func say(how, what, renpy_format = true):
-    
+    ## add say statment
+
     var s = {"type":"say",
                 "args":{
                         "how":how,
@@ -161,7 +180,8 @@ func _say(args):
 
 
 func input(ivar, what, temp = "", renpy_format = true):
-    
+    ## add input statment
+
     var s = {"type":"input",
                 "args":{
                         "ivar":ivar,
@@ -180,6 +200,34 @@ func _ren_input(args):
     input_screen.temp = args.temp
     input_screen.use_renpy_format(args.format)
     input_screen.input()
+
+func menu(choices, title = ""):
+    ## add menu statment
+    var s = {
+        "type":"menu",
+        "args":
+            {
+            "title":title,
+            "choices":choices
+            }
+    }
+
+    statments.append(s)
+
+func _ren_menu(args):
+    choice_screen.choices = args.choices
+    choice_screen.title = args.title
+    choice_screen.menu()
+
+func godot_line(fun, args = []):
+    ## add g statment
+    ## use it to execute godot func in rengd
+    var s = {"type":"g",
+            "fun":fun,
+            "args":args
+            }
+    
+    statments.append(s)
 
 
 
