@@ -25,18 +25,18 @@ func use_renpy_format(use = true):
         what = ren.say_passer(what)
 
 
-func input():
+func _input_func():
     set_text(temp)
     namebox_screen.set_bbcode(what)
 
     dialog_screen.hide()
     show()
     grab_focus()
-    _is_input_on = true
+    ren.can_roll = false
 
 
 func _on_input(s):
     ren.keywords[ivar] = {"type":"text", "value":s}
-    _is_input_on = false
+    ren.can_roll = true
     hide()
     ren.next_statment()

@@ -19,7 +19,7 @@ func use_renpy_format(use = true):
         what = ren.say_passer(what)
 
 
-func say():
+func _say():
     namebox_screen.set_bbcode(how)
     dialog_screen.set_bbcode(what)
     dialog_screen.show()

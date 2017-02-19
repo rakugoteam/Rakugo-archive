@@ -14,7 +14,7 @@ onready var choice_screen = get_node("Choice")
 var snum = 0 ## current statment number
 var statments = []
 var keywords = { "version":{"type":"text", "value":"0.6"} }
-
+var can_roll = true
 
 func _ready():
     ## code borrow from:
@@ -35,14 +35,14 @@ func next_statment():
     use_statment(snum + 1)
 
 
-func perv_statment():
+func prev_statment():
     ## go to previous statment
     use_statment(snum - 1)
 
 
 func _input(event):
 
-    if input_screen._is_input_on == false:
+    if can_roll:
         if event.is_action_pressed("ren_rollforward"):
             next_statment()
         
@@ -118,6 +118,11 @@ func say_passer(text):
     ## passer for renpy markup format
     ## its retrun bbcode
 
+    ## clean from tabs
+    text = text.c_escape()
+    text = text.replace("\t".c_escape(), "")
+    text = text.c_unescape()
+
     ## code from Sebastian Holc solution:
     ## http://pastebin.com/K8zsWQtL
 
@@ -140,6 +145,7 @@ func say_passer(text):
     
 
     text = text.replace("{image", "[img")
+    text = text.replace("{list}", "/t".c_unescape())
     text = text.replace("{", "[")
     text = text.replace("}", "]")
 
@@ -158,7 +164,7 @@ func jump(label_name, args = []):
 
 
 func say(how, what, renpy_format = true):
-    ## add say statment
+    ## return say statment
 
     var s = {"type":"say",
                 "args":{
@@ -168,15 +174,19 @@ func say(how, what, renpy_format = true):
                         }
             }
     
-    statments.append(s)
+    return s
 
+func append_say(how, what, renpy_format = true):
+    # append say statement 
+    var s = say(how, what, renpy_format)
+    statments.append(s)
 
 
 func _say(args):
     say_screen.how = args.how
     say_screen.what = args.what
     say_screen.use_renpy_format(args.format)
-    say_screen.say()
+    say_screen._say()
 
 
 func input(ivar, what, temp = "", renpy_format = true):
@@ -191,18 +201,23 @@ func input(ivar, what, temp = "", renpy_format = true):
                         }
             }
     
-    statments.append(s)
+    return s
 
+func append_input(ivar, what, temp = "", renpy_format = true):
+    ## append input statment
+    var s = input(ivar, what, temp, true)
+    statments.append(s)
+    
 
 func _ren_input(args):
     input_screen.ivar = args.ivar
     input_screen.what = args.what
     input_screen.temp = args.temp
     input_screen.use_renpy_format(args.format)
-    input_screen.input()
+    input_screen._input_func()
 
 func menu(choices, title = ""):
-    ## add menu statment
+    ## return menu statment
     var s = {
         "type":"menu",
         "args":
@@ -212,21 +227,32 @@ func menu(choices, title = ""):
             }
     }
 
+    return s
+
+func append_menu(choices, title = ""):
+    ## append menu statment
+    var s = menu(choices, title)
     statments.append(s)
 
 func _ren_menu(args):
     choice_screen.choices = args.choices
     choice_screen.title = args.title
-    choice_screen.menu()
+    choice_screen._menu()
 
 func godot_line(fun, args = []):
-    ## add g statment
+    ## append g statment
     ## use it to execute godot func in rengd
     var s = {"type":"g",
             "fun":fun,
             "args":args
             }
     
+    return s
+
+func append_godot_line(fun, args = []):
+    ## return g statment
+    ## use it to execute godot func in rengd
+    var s = append_godot_line(fun, args)
     statments.append(s)
 
 

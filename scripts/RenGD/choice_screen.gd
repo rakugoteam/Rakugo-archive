@@ -8,7 +8,10 @@ var _is_menu_on = false
 func _ready():
 	connect("button_selected", self, "_on_choice")
 
+
 func _menu():
+	ren.can_roll = false
+	clear()
 
 	if title != "":
 		var s = {
@@ -23,25 +26,38 @@ func _menu():
 	else:
 		ren.say_screen.hide()
 
-	_is_menu_on = true
+	
 	for k in choices.keys():
 		add_button(k)
 	
 	show()
 
+
 func _on_choice(i):
 	
-	var statments_before_menu = ren.statments[0:snum]
-	var statments_after_menu = ren.statments[snum+1:]
+	var statments_before_menu = array_slice(ren.statments, 0, ren.snum+1)
+	var statments_after_menu = array_slice(ren.statments, ren.snum+1, ren.statments.size()+1)
 
 	ren.statments = statments_before_menu
 	ren.statments += choices.values()[i]
 	ren.statments += statments_after_menu
 	
 	hide()
+	ren.can_roll = true
 	ren.next_statment()
-	_is_menu_on = false
-		
 
+
+func array_slice(array, from = 0, to = 0):
+	if from > to or from < 0 or to > array.size():
+		return array
+	
+	var _array = array
+
+	for i in range(0, from):
+		_array.remove(i)
+    
+	_array.resize(to - from)
+
+	return _array
 
 
