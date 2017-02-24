@@ -1,7 +1,7 @@
-[gd_resource type="Theme" load_steps=42 format=1]
+[gd_resource type="Theme" load_steps=41 format=1]
 
-[ext_resource path="res://gui/themes/new_gui/tres/button_hover.tres" type="StyleBox" id=1]
-[ext_resource path="res://gui/themes/new_gui/tres/button_normal.tres" type="StyleBox" id=2]
+[ext_resource path="res://gui/themes/new_gui/tres/button_hover_choice.tres" type="StyleBox" id=1]
+[ext_resource path="res://gui/themes/new_gui/tres/button_normal_choice.tres" type="StyleBox" id=2]
 [ext_resource path="res://gui/themes/new_gui/tres/panel.tres" type="StyleBox" id=3]
 [ext_resource path="res://gui/themes/new_gui/imgs/button/check_selected_foreground.png" type="Texture" id=4]
 [ext_resource path="res://gui/themes/new_gui/imgs/button/radio_selected_foreground.png" type="Texture" id=5]
@@ -14,19 +14,18 @@
 [ext_resource path="res://gui/themes/new_gui/imgs/scrollbar/gd_horizontal_hover_thumb.png" type="Texture" id=12]
 [ext_resource path="res://gui/themes/new_gui/imgs/scrollbar/horizontal_idle_bar.png" type="Texture" id=13]
 [ext_resource path="res://gui/themes/new_gui/imgs/slider/horizontal_idle_bar.png" type="Texture" id=14]
-[ext_resource path="res://gui/themes/new_gui/tres/button_normal_choice.tres" type="StyleBox" id=15]
-[ext_resource path="res://gui/themes/new_gui/imgs/bar/right.png" type="Texture" id=16]
-[ext_resource path="res://gui/themes/new_gui/imgs/bar/left.png" type="Texture" id=17]
-[ext_resource path="res://fonts/text_sizeB.fnt" type="BitmapFont" id=18]
-[ext_resource path="res://fonts/text_sizeIB.fnt" type="BitmapFont" id=19]
-[ext_resource path="res://fonts/text_sizeI.fnt" type="BitmapFont" id=20]
-[ext_resource path="res://fonts/text_sizeM.fnt" type="BitmapFont" id=21]
-[ext_resource path="res://fonts/text_sizeR.fnt" type="BitmapFont" id=22]
-[ext_resource path="res://fonts/notify_text_sizeR.fnt" type="BitmapFont" id=23]
-[ext_resource path="res://gui/themes/new_gui/imgs/scrollbar/gd_vertical_idle_thumb.png" type="Texture" id=24]
-[ext_resource path="res://gui/themes/new_gui/imgs/scrollbar/gd_vertical_hover_thumb.png" type="Texture" id=25]
-[ext_resource path="res://gui/themes/new_gui/imgs/scrollbar/vertical_idle_bar.png" type="Texture" id=26]
-[ext_resource path="res://gui/themes/new_gui/imgs/slider/vertical_idle_bar.png" type="Texture" id=27]
+[ext_resource path="res://gui/themes/new_gui/imgs/bar/right.png" type="Texture" id=15]
+[ext_resource path="res://gui/themes/new_gui/imgs/bar/left.png" type="Texture" id=16]
+[ext_resource path="res://fonts/text_sizeB.fnt" type="BitmapFont" id=17]
+[ext_resource path="res://fonts/text_sizeIB.fnt" type="BitmapFont" id=18]
+[ext_resource path="res://fonts/text_sizeI.fnt" type="BitmapFont" id=19]
+[ext_resource path="res://fonts/text_sizeM.fnt" type="BitmapFont" id=20]
+[ext_resource path="res://fonts/text_sizeR.fnt" type="BitmapFont" id=21]
+[ext_resource path="res://fonts/notify_text_sizeR.fnt" type="BitmapFont" id=22]
+[ext_resource path="res://gui/themes/new_gui/imgs/scrollbar/gd_vertical_idle_thumb.png" type="Texture" id=23]
+[ext_resource path="res://gui/themes/new_gui/imgs/scrollbar/gd_vertical_hover_thumb.png" type="Texture" id=24]
+[ext_resource path="res://gui/themes/new_gui/imgs/scrollbar/vertical_idle_bar.png" type="Texture" id=25]
+[ext_resource path="res://gui/themes/new_gui/imgs/slider/vertical_idle_bar.png" type="Texture" id=26]
 
 [sub_resource type="StyleBoxTexture" id=1]
 
@@ -122,7 +121,7 @@ content_margin/left = -1.0
 content_margin/right = -1.0
 content_margin/top = -1.0
 content_margin/bottom = -1.0
-texture = ExtResource( 16 )
+texture = ExtResource( 15 )
 margin/left = 0.0
 margin/right = 0.0
 margin/top = 0.0
@@ -140,7 +139,7 @@ content_margin/left = -1.0
 content_margin/right = -1.0
 content_margin/top = -1.0
 content_margin/bottom = -1.0
-texture = ExtResource( 17 )
+texture = ExtResource( 16 )
 margin/left = 0.0
 margin/right = 0.0
 margin/top = 0.0
@@ -158,7 +157,7 @@ content_margin/left = -1.0
 content_margin/right = -1.0
 content_margin/top = -1.0
 content_margin/bottom = -1.0
-texture = ExtResource( 24 )
+texture = ExtResource( 23 )
 margin/left = 0.0
 margin/right = 0.0
 margin/top = 0.0
@@ -176,7 +175,7 @@ content_margin/left = -1.0
 content_margin/right = -1.0
 content_margin/top = -1.0
 content_margin/bottom = -1.0
-texture = ExtResource( 25 )
+texture = ExtResource( 24 )
 margin/left = 0.0
 margin/right = 0.0
 margin/top = 0.0
@@ -194,7 +193,7 @@ content_margin/left = -1.0
 content_margin/right = -1.0
 content_margin/top = -1.0
 content_margin/bottom = -1.0
-texture = ExtResource( 26 )
+texture = ExtResource( 25 )
 margin/left = 0.0
 margin/right = 0.0
 margin/top = 0.0
@@ -228,7 +227,7 @@ content_margin/left = -1.0
 content_margin/right = -1.0
 content_margin/top = -1.0
 content_margin/bottom = -1.0
-texture = ExtResource( 27 )
+texture = ExtResource( 26 )
 margin/left = 0.0
 margin/right = 0.0
 margin/top = 0.0
@@ -245,8 +244,8 @@ draw_center = true
 default_font = ExtResource( 9 )
 Button/colors/font_color = Color( 0.333333, 0.333333, 0.333333, 1 )
 Button/colors/font_color_disabled = Color( 0.333333, 0.333333, 0.498039, 0.333333 )
-Button/colors/font_color_hover = Color( 0, 0.4, 0.8, 1 )
-Button/colors/font_color_pressed = Color( 0, 0.352941, 0.705882, 1 )
+Button/colors/font_color_hover = Color( 1, 1, 1, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
 Button/constants/hseparation = 0
 Button/fonts/font = null
 Button/styles/disabled = null
@@ -411,7 +410,7 @@ MenuButton/fonts/font = null
 MenuButton/styles/disabled = null
 MenuButton/styles/focus = null
 MenuButton/styles/hover = ExtResource( 1 )
-MenuButton/styles/normal = ExtResource( 15 )
+MenuButton/styles/normal = ExtResource( 2 )
 MenuButton/styles/pressed = ExtResource( 1 )
 OptionButton/colors/font_color = Color( 0.333333, 0.333333, 0.333333, 1 )
 OptionButton/colors/font_color_disabled = Color( 0.333333, 0.333333, 0.498039, 0.333333 )
@@ -424,7 +423,7 @@ OptionButton/icons/arrow = null
 OptionButton/styles/disabled = null
 OptionButton/styles/focus = null
 OptionButton/styles/hover = ExtResource( 1 )
-OptionButton/styles/normal = ExtResource( 15 )
+OptionButton/styles/normal = ExtResource( 2 )
 OptionButton/styles/pressed = ExtResource( 1 )
 Panel/styles/panel = ExtResource( 3 )
 Panel/styles/panelf = null
@@ -457,11 +456,11 @@ RichTextLabel/colors/selection_color = Color( 0, 0.4, 0.8, 1 )
 RichTextLabel/constants/line_separation = 0
 RichTextLabel/constants/table_hseparation = 0
 RichTextLabel/constants/table_vseparation = 0
-RichTextLabel/fonts/bold_font = ExtResource( 18 )
-RichTextLabel/fonts/bold_italics_font = ExtResource( 19 )
-RichTextLabel/fonts/italics_font = ExtResource( 20 )
-RichTextLabel/fonts/mono_font = ExtResource( 21 )
-RichTextLabel/fonts/normal_font = ExtResource( 22 )
+RichTextLabel/fonts/bold_font = ExtResource( 17 )
+RichTextLabel/fonts/bold_italics_font = ExtResource( 18 )
+RichTextLabel/fonts/italics_font = ExtResource( 19 )
+RichTextLabel/fonts/mono_font = ExtResource( 20 )
+RichTextLabel/fonts/normal_font = ExtResource( 21 )
 RichTextLabel/styles/focus = null
 SpinBox/icons/updown = null
 TabContainer/colors/font_color_bg = Color( 0.333333, 0.333333, 0.333333, 1 )
@@ -529,20 +528,20 @@ TextEdit/styles/focus = null
 TextEdit/styles/normal = ExtResource( 3 )
 ToolButton/colors/font_color = Color( 0.333333, 0.333333, 0.333333, 1 )
 ToolButton/colors/font_color_disabled = Color( 0.333333, 0.333333, 0.498039, 0.333333 )
-ToolButton/colors/font_color_hover = Color( 0, 0.4, 0.8, 1 )
-ToolButton/colors/font_color_pressed = Color( 0, 0.352941, 0.705882, 1 )
+ToolButton/colors/font_color_hover = Color( 1, 1, 1, 1 )
+ToolButton/colors/font_color_pressed = Color( 1, 1, 1, 1 )
 ToolButton/constants/hseparation = 0
 ToolButton/fonts/font = null
 ToolButton/styles/disabled = null
 ToolButton/styles/focus = null
 ToolButton/styles/hover = ExtResource( 1 )
-ToolButton/styles/normal = ExtResource( 15 )
+ToolButton/styles/normal = ExtResource( 2 )
 ToolButton/styles/pressed = ExtResource( 1 )
 TooltipLabel/colors/font_color = Color( 0, 0.4, 0.8, 1 )
 TooltipLabel/colors/font_color_shadow = Color( 0.333333, 0.333333, 0.333333, 1 )
 TooltipLabel/constants/shadow_offset_x = 0
 TooltipLabel/constants/shadow_offset_y = 0
-TooltipLabel/fonts/font = ExtResource( 23 )
+TooltipLabel/fonts/font = ExtResource( 22 )
 TooltipPanel/styles/panel = ExtResource( 3 )
 Tree/colors/cursor_color = Color( 0, 0, 0, 1 )
 Tree/colors/drop_position_color = Color( 0, 0, 0, 1 )

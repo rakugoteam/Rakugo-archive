@@ -1,17 +1,17 @@
-extends VButtonArray
+extends VBoxContainer
 
 onready var ren = get_node("/root/Window")
 var choices = {} # {"choice":[statments]}
 var title = ""
 var _is_menu_on = false
 
-func _ready():
-	connect("button_selected", self, "_on_choice")
-
 
 func _menu():
 	ren.can_roll = false
-	clear()
+	
+	for ch in get_children():
+		ch.disconnect("pressed", self, "_on_choice")
+		ch.free()
 
 	if title != "":
 		var s = {
@@ -25,11 +25,14 @@ func _menu():
 	
 	else:
 		ren.say_screen.hide()
-
 	
 	for k in choices.keys():
-		add_button(k)
+		var b = Button.new()
+		add_child(b)
+		b.set_text(k)
+		b.connect("pressed", self, "_on_choice", [b.get_index()])
 	
+
 	show()
 
 
