@@ -1,9 +1,13 @@
+## This is Ren'GD API ##
+## Ren'GD is Ren'Py for Godot ##
+## version: 0.6 ##
+## License MIT ##
+
 extends VBoxContainer
 
 onready var ren = get_node("/root/Window")
-var choices = {} # {"choice":[statments]}
+var choices = {} # {"choice":statment = []}
 var title = ""
-var _is_menu_on = false
 
 
 func _menu():
@@ -17,7 +21,6 @@ func _menu():
 		var s = {
 				"how":"",
 				"what":title,
-				"format":true
 				}
 				
 		ren._say(s)
@@ -28,11 +31,19 @@ func _menu():
 	
 	for k in choices.keys():
 		var b = Button.new()
+		var tr = RichTextLabel.new()
+		
 		add_child(b)
-		b.set_text(k)
+		b.add_child(tr)
+
+		k = ren.say_passer(k)
+
+		b.set_text("")
+		tr.set_use_bbcode(true)
+		tr.set_bbcode(k)
+
 		b.connect("pressed", self, "_on_choice", [b.get_index()])
 	
-
 	show()
 
 

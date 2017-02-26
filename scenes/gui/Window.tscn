@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=1]
+[gd_scene load_steps=22 format=1]
 
 [ext_resource path="res://gui/themes/new_gui/tres/main.tres" type="Theme" id=1]
 [ext_resource path="res://scripts/RenGD/ren.gd" type="Script" id=2]
@@ -13,10 +13,12 @@
 [ext_resource path="res://fonts/name_text_sizeB.fnt" type="BitmapFont" id=11]
 [ext_resource path="res://fonts/name_text_sizeR.fnt" type="BitmapFont" id=12]
 [ext_resource path="res://scripts/RenGD/input_screen.gd" type="Script" id=13]
-[ext_resource path="res://gui/themes/new_gui/imgs/notify.png" type="Texture" id=14]
-[ext_resource path="res://gui/themes/new_gui/imgs/skip.png" type="Texture" id=15]
-[ext_resource path="res://fonts/notify_text_sizeR.fnt" type="BitmapFont" id=16]
-[ext_resource path="res://scripts/RenGD/ren_label.gd" type="Script" id=17]
+[ext_resource path="res://gui/themes/new_gui/tres/quick.tres" type="Theme" id=14]
+[ext_resource path="res://scripts/RenGD/quick_screen.gd" type="Script" id=15]
+[ext_resource path="res://gui/themes/new_gui/imgs/notify.png" type="Texture" id=16]
+[ext_resource path="res://gui/themes/new_gui/imgs/skip.png" type="Texture" id=17]
+[ext_resource path="res://fonts/notify_text_sizeR.fnt" type="BitmapFont" id=18]
+[ext_resource path="res://scripts/RenGD/ren_label.gd" type="Script" id=19]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -46,6 +48,22 @@ margin/right = 40.0
 margin/bottom = 40.0
 script/script = ExtResource( 2 )
 
+[node name="InputArea" type="Button" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 1284.0
+margin/bottom = 692.0
+toggle_mode = false
+click_on_press = true
+enabled_focus_mode = 2
+shortcut = null
+flat = false
+
 [node name="Choice" type="VBoxContainer" parent="."]
 
 visibility/visible = false
@@ -67,7 +85,6 @@ script/script = ExtResource( 4 )
 
 [node name="Say" type="Control" parent="."]
 
-editor/display_folded = true
 anchor/top = 1
 anchor/right = 1
 anchor/bottom = 1
@@ -109,7 +126,6 @@ margin/bottom = 0.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Say"]
 
-editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
@@ -185,167 +201,162 @@ size_flags/vertical = 3
 margin/left = 0.0
 margin/top = 37.0
 margin/right = 1044.0
-margin/bottom = 155.0
+margin/bottom = 149.0
 bbcode/enabled = true
 bbcode/bbcode = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis. Nunc porttitor venenatis fermentum. Donec ac sem id velit commodo lobortis eu non lacus. Aliquam elementum placerat diam, sit amet pulvinar augue lacinia non. Aliquam pretium ipsum sit amet felis ullamcorper, ut finibus urna fringilla. Aliquam in scelerisque lectus. Praesent at pharetra lacus, eget suscipit lacus.\n\nMauris venenatis felis non nisl faucibus pellentesque id id purus. Sed posuere dolor arcu, quis tempus tortor dignissim a. Cras at hendrerit dui, non tempor metus. Ut pellentesque viverra odio. Duis fringilla mollis orci in hendrerit. Pellentesque quis est ac ante malesuada."
 visible_characters = -1
 
-[node name="QuickMenu" type="HBoxContainer" parent="Say/VBoxContainer"]
+[node name="Quick" type="HBoxContainer" parent="Say/VBoxContainer"]
 
-editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
+theme/theme = ExtResource( 14 )
 margin/left = 0.0
-margin/top = 156.0
+margin/top = 150.0
 margin/right = 1044.0
 margin/bottom = 181.0
 custom_constants/separation = 20
 alignment = 1
+script/script = ExtResource( 15 )
 
-[node name="Back" type="Button" parent="Say/VBoxContainer/QuickMenu"]
+[node name="Back" type="Button" parent="Say/VBoxContainer/Quick"]
 
-focus/ignore_mouse = true
+focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 179.0
+margin/left = 115.0
 margin/top = 0.0
-margin/right = 236.0
-margin/bottom = 25.0
-toggle_mode = true
+margin/right = 185.0
+margin/bottom = 31.0
+toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 2
 shortcut = null
 text = "Back"
-flat = false
-align = 0
+flat = true
 
-[node name="History" type="Button" parent="Say/VBoxContainer/QuickMenu"]
+[node name="History" type="Button" parent="Say/VBoxContainer/Quick"]
 
-focus/ignore_mouse = true
+focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 256.0
+margin/left = 205.0
 margin/top = 0.0
-margin/right = 341.0
-margin/bottom = 25.0
-toggle_mode = true
+margin/right = 312.0
+margin/bottom = 31.0
+toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 2
 shortcut = null
 text = "History"
-flat = false
-align = 0
+flat = true
 
-[node name="Skip" type="Button" parent="Say/VBoxContainer/QuickMenu"]
+[node name="Skip" type="Button" parent="Say/VBoxContainer/Quick"]
 
-focus/ignore_mouse = true
+focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 361.0
+margin/left = 332.0
 margin/top = 0.0
-margin/right = 412.0
-margin/bottom = 25.0
+margin/right = 394.0
+margin/bottom = 31.0
 toggle_mode = true
 click_on_press = true
 enabled_focus_mode = 2
 shortcut = null
 text = "Skip"
-flat = false
-align = 0
+flat = true
 
-[node name="Auto" type="Button" parent="Say/VBoxContainer/QuickMenu"]
+[node name="Auto" type="Button" parent="Say/VBoxContainer/Quick"]
 
-focus/ignore_mouse = true
+focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 432.0
+margin/left = 414.0
 margin/top = 0.0
-margin/right = 486.0
-margin/bottom = 25.0
+margin/right = 485.0
+margin/bottom = 31.0
 toggle_mode = true
 click_on_press = true
 enabled_focus_mode = 2
 shortcut = null
 text = "Auto"
-flat = false
-align = 0
+flat = true
 
-[node name="Save" type="Button" parent="Say/VBoxContainer/QuickMenu"]
+[node name="Save" type="Button" parent="Say/VBoxContainer/Quick"]
 
-focus/ignore_mouse = true
+focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 506.0
+margin/left = 505.0
 margin/top = 0.0
-margin/right = 564.0
-margin/bottom = 25.0
-toggle_mode = true
+margin/right = 574.0
+margin/bottom = 31.0
+toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 2
 shortcut = null
 text = "Save"
-flat = false
-align = 0
+flat = true
 
-[node name="QSave" type="Button" parent="Say/VBoxContainer/QuickMenu"]
+[node name="QSave" type="Button" parent="Say/VBoxContainer/Quick"]
 
-focus/ignore_mouse = true
+focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 584.0
+margin/left = 594.0
 margin/top = 0.0
-margin/right = 677.0
-margin/bottom = 25.0
-toggle_mode = true
+margin/right = 702.0
+margin/bottom = 31.0
+toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 2
 shortcut = null
 text = "Q. Save"
-flat = false
-align = 0
+flat = true
 
-[node name="QLoad" type="Button" parent="Say/VBoxContainer/QuickMenu"]
+[node name="QLoad" type="Button" parent="Say/VBoxContainer/Quick"]
 
-focus/ignore_mouse = true
+focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 697.0
+margin/left = 722.0
 margin/top = 0.0
-margin/right = 788.0
-margin/bottom = 25.0
-toggle_mode = true
+margin/right = 833.0
+margin/bottom = 31.0
+toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 2
 shortcut = null
 text = "Q. Load"
-flat = false
+flat = true
 align = 0
 
-[node name="Prefs" type="Button" parent="Say/VBoxContainer/QuickMenu"]
+[node name="Prefs" type="Button" parent="Say/VBoxContainer/Quick"]
 
-focus/ignore_mouse = true
+focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 808.0
+margin/left = 853.0
 margin/top = 0.0
-margin/right = 865.0
-margin/bottom = 25.0
-toggle_mode = true
+margin/right = 928.0
+margin/bottom = 31.0
+toggle_mode = false
 click_on_press = true
 enabled_focus_mode = 2
 shortcut = null
 text = "Prefs"
-flat = false
+flat = true
 align = 0
 
 [node name="NotifyArea" type="Control" parent="."]
@@ -372,7 +383,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 922.0
 margin/bottom = 43.0
-texture = ExtResource( 14 )
+texture = ExtResource( 16 )
 stretch_mode = 0
 
 [node name="Skip" type="TextureFrame" parent="NotifyArea"]
@@ -385,7 +396,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 240.0
 margin/bottom = 43.0
-texture = ExtResource( 15 )
+texture = ExtResource( 17 )
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="NotifyArea"]
@@ -398,7 +409,7 @@ margin/left = 10.0
 margin/top = 5.0
 margin/right = 72.0
 margin/bottom = 36.0
-custom_fonts/font = ExtResource( 16 )
+custom_fonts/font = ExtResource( 18 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Skip"
 align = 3
@@ -417,7 +428,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 40.0
 margin/bottom = 40.0
-script/script = ExtResource( 17 )
+script/script = ExtResource( 19 )
 
 [node name="Timer" type="Timer" parent="."]
 

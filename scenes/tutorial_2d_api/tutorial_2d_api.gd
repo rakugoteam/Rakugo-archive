@@ -41,9 +41,12 @@ func first():
 	## ren.append_input will set guest var as what you type after pressing enter key
 	## It use renpy markup format iI discribed it more under first use of ren.say
 	
+	var jer = ren.Character("Jeremi360", "#25c33e")
+	ren.define_ch("jer", jer)
+	## This is how you declare a new Character
 
-	ren.append_say("Jeremi360",
-			"""Hi! My name is Jeremi360.
+	ren.append_say("jer",
+			"""Hi! My name is [jer.name].
 			Welcome [guest] to Ren'GD [version] example scene.
 			Press MLB, Enter or Space to continue.""")
 	## It will set 'Jeremi360' in root/Window/Say/NameBox and second arg in root/Window/Say/Dialog
@@ -51,29 +54,27 @@ func first():
 	## '[guest]' will add guest var to your string and do the same for version var
 	## you can disabled it set 3rd argumet as 'false'
 
-	var first_choice = [ren.say("Jeremi360","This is Ren'Py for Godot.")]
+	var first_choice = [ren.say("jer","This is Ren'Py for Godot.")]
 	
 	var long_txt = "Becose you can make stuff like anims and gui faster and easier using Godot Editor."
-	var second_choice = [ren.say("Jeremi360", long_txt),#]
-						ren.say("Jeremi360", "You can use 3D models in your visual novel."),
-						ren.say("Jeremi360","Also is easier to make mini games this why.")
+	var second_choice = [ren.say("jer", long_txt),
+						ren.say("jer", "You can use 3D models in your visual novel."),
+						ren.say("jer","Also is easier to make mini games this why.")
 						]
-	# second_choice.append(ren.say("Jeremi360", "You can use 3D models in your visual novel."))
-	# second_choice.append(ren.say("Jeremi360","Also is easier to make mini games this why."))
-
 
 	var choices = {
 		"What is Ren'GD?": first_choice,
 		"Why use it instead of Ren'Py?": second_choice
 	}
 
+
 	ren.append_menu(choices, "What you want to know?")
 
 	ren.define("ex_path", tscn_path)
-	ren.append_say("Jeremi360", 
+	ren.append_say("jer", 
 			"""It's end for now to see how it is done see:
-			{list}- [ex_path].gd
-			{list}- [ex_path].tscn""")
+			{tab}- [ex_path].gd
+			{tab}- [ex_path].tscn""")
 	
 	
 	

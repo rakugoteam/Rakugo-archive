@@ -8,7 +8,6 @@ extends LineEdit
 var temp
 var what
 var ivar
-var _is_input_on
 
 onready var ren = get_node("/root/Window")
 onready var namebox_screen = get_node("../NameBox/Label")
