@@ -6,6 +6,7 @@
 extends VBoxContainer
 
 onready var ren = get_node("/root/Window")
+onready var chbutton = preload("res://scenes/gui/ChoiceButton.tscn")
 var choices = {} # {"choice":statment = []}
 var title = ""
 
@@ -30,16 +31,14 @@ func _menu():
 		ren.say_screen.hide()
 	
 	for k in choices.keys():
-		var b = Button.new()
-		var tr = RichTextLabel.new()
+		var b = chbutton.instance()
 		
 		add_child(b)
-		b.add_child(tr)
 
+		k = "{center}" + k + "{/center}"
 		k = ren.say_passer(k)
 
-		b.set_text("")
-		tr.set_use_bbcode(true)
+		var tr = b.get_child(0)
 		tr.set_bbcode(k)
 
 		b.connect("pressed", self, "_on_choice", [b.get_index()])

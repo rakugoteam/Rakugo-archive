@@ -208,6 +208,7 @@ visible_characters = -1
 
 [node name="Quick" type="HBoxContainer" parent="Say/VBoxContainer"]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2

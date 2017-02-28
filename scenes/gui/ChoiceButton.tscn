@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=1]
+
+[ext_resource path="res://gui/themes/new_gui/tres/choice.tres" type="Theme" id=1]
+
+[node name="ChoiceButton" type="Button"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+theme/theme = ExtResource( 1 )
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 971.0
+margin/bottom = 36.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+flat = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+
+anchor/left = 3
+anchor/top = 3
+anchor/right = 3
+anchor/bottom = 3
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+margin/left = 471.5
+margin/top = 14.0
+margin/right = -478.5
+margin/bottom = -14.0
+bbcode/enabled = true
+bbcode/bbcode = "[center]Lorem ipsum dolor sit amet, consectetur adipiscing elit.[/center]"
+visible_characters = -1
+
+
