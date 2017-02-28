@@ -181,18 +181,13 @@ func define(key_name, key_value = null):
 
 func define_ch(key_name, character_value = {}):
     ## add global Character var that ren will see
-    var chv = character_value
-    keywords[key_name] = {"type":"Character", "value":chv}
-    
-    for k in chv.keys():
-        keywords[key_name +"." + k] = {"type":"var", "value":chv[k]}
+    keywords[key_name] = {"type":"Character", "value":character_value}
 
 
 func Character(name="", color ="", what_prefix="", what_suffix="", kind=""):
     ## return new Character
     return {"name":name, "color":color, "what_prefix":what_prefix,
             "what_suffix":what_suffix, "kind":kind}
-
 
 
 func say_passer(text):
@@ -214,7 +209,8 @@ func say_passer(text):
         var keyword = keywords[key_name]
 
         if keyword.type == "text":
-            text = text.replace("[" + key_name + "]", str(keyword.value))
+            var value = keyword.value
+            text = text.replace("[" + key_name + "]", str(value))
         
         elif keyword.type == "func":
             var func_result = call(keyword.value)
@@ -223,6 +219,20 @@ func say_passer(text):
         elif keyword.type == "var":
             var value = keyword.value
             text = text.replace("[" + key_name + "]", str(value))
+        
+        elif keyword.type == "dict" or "Character":
+            var dict = keyword.value
+            text = text.replace("[" + key_name + "]", str(dict))
+            
+            for k in dict:
+                if text.find(key_name +"."+k) == -1:
+                    continue # no keyword in this string
+                
+                var value = dict[k]
+                text = text.replace("[" + key_name+"."+k + "]", str(value))
+
+        else:
+            print(key_name," is unsuported keyword type: ", keyword.type)
     
 
     text = text.replace("{image", "[img")
