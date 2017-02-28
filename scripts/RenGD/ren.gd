@@ -6,7 +6,7 @@
 
 extends Control
 
-say_path = "Say/VBoxContainer"
+var say_path = "Adv/VBoxContainer"
 
 onready var InputArea = get_node("InputArea")
 onready var input_screen = get_node(say_path + "/Input")
@@ -179,15 +179,19 @@ func define(key_name, key_value = null):
     keywords[key_name] = {"type":"var", "value":key_value}
 
 
-func define_ch(key_name, character_value = null):
+func define_ch(key_name, character_value = {}):
     ## add global Character var that ren will see
-    keywords[key_name] = {"type":"Character", "value":character_value}
+    var chv = character_value
+    keywords[key_name] = {"type":"Character", "value":chv}
+    
+    for k in chv.keys():
+        keywords[key_name +"." + k] = {"type":"var", "value":chv[k]}
 
 
-func Character(name="", color ="", what_prefix="", what_suffix="", what_style=""):
+func Character(name="", color ="", what_prefix="", what_suffix="", kind=""):
     ## return new Character
     return {"name":name, "color":color, "what_prefix":what_prefix,
-            "what_suffix":what_suffix, "what_style":what_style}
+            "what_suffix":what_suffix, "kind":kind}
 
 
 
@@ -217,10 +221,6 @@ func say_passer(text):
             text = text.replace("[" + key_name + "]", str(func_result))
         
         elif keyword.type == "var":
-            var value = keyword.value
-            text = text.replace("[" + key_name + "]", str(value))
-        
-        elif keyword.type == "Character":
             var value = keyword.value
             text = text.replace("[" + key_name + "]", str(value))
     

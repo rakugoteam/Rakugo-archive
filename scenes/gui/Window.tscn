@@ -83,7 +83,7 @@ margin/bottom = -379.0
 alignment = 0
 script/script = ExtResource( 4 )
 
-[node name="Say" type="Control" parent="."]
+[node name="Adv" type="Control" parent="."]
 
 anchor/top = 1
 anchor/right = 1
@@ -97,7 +97,7 @@ margin/top = -495.0
 margin/right = 40.0
 margin/bottom = -535.0
 
-[node name="TextureFrame" type="TextureFrame" parent="Say"]
+[node name="TextureFrame" type="TextureFrame" parent="Adv"]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
@@ -111,7 +111,7 @@ margin/bottom = 40.0
 texture = ExtResource( 5 )
 stretch_mode = 0
 
-[node name="SideImage" type="Control" parent="Say"]
+[node name="SideImage" type="Control" parent="Adv"]
 
 anchor/top = 1
 anchor/bottom = 1
@@ -124,7 +124,7 @@ margin/top = 40.0
 margin/right = 40.0
 margin/bottom = 0.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Say"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Adv"]
 
 focus/ignore_mouse = false
 focus/stop_mouse = false
@@ -138,7 +138,7 @@ custom_constants/separation = 1
 alignment = 0
 script/script = ExtResource( 6 )
 
-[node name="NameBox" type="TextureFrame" parent="Say/VBoxContainer"]
+[node name="NameBox" type="TextureFrame" parent="Adv/VBoxContainer"]
 
 editor/display_folded = true
 focus/ignore_mouse = true
@@ -152,7 +152,7 @@ margin/bottom = 36.0
 texture = ExtResource( 7 )
 stretch_mode = 0
 
-[node name="Label" type="RichTextLabel" parent="Say/VBoxContainer/NameBox"]
+[node name="Label" type="RichTextLabel" parent="Adv/VBoxContainer/NameBox"]
 
 rect/min_size = Vector2( 0, 35 )
 focus/ignore_mouse = true
@@ -172,7 +172,7 @@ bbcode/enabled = true
 bbcode/bbcode = "Speaker"
 visible_characters = -1
 
-[node name="Input" type="LineEdit" parent="Say/VBoxContainer"]
+[node name="Input" type="LineEdit" parent="Adv/VBoxContainer"]
 
 visibility/visible = false
 focus/ignore_mouse = false
@@ -192,7 +192,7 @@ caret/caret_blink = false
 caret/caret_blink_speed = 0.65
 script/script = ExtResource( 13 )
 
-[node name="Dialog" type="RichTextLabel" parent="Say/VBoxContainer"]
+[node name="Dialog" type="RichTextLabel" parent="Adv/VBoxContainer"]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
@@ -206,7 +206,7 @@ bbcode/enabled = true
 bbcode/bbcode = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis. Nunc porttitor venenatis fermentum. Donec ac sem id velit commodo lobortis eu non lacus. Aliquam elementum placerat diam, sit amet pulvinar augue lacinia non. Aliquam pretium ipsum sit amet felis ullamcorper, ut finibus urna fringilla. Aliquam in scelerisque lectus. Praesent at pharetra lacus, eget suscipit lacus.\n\nMauris venenatis felis non nisl faucibus pellentesque id id purus. Sed posuere dolor arcu, quis tempus tortor dignissim a. Cras at hendrerit dui, non tempor metus. Ut pellentesque viverra odio. Duis fringilla mollis orci in hendrerit. Pellentesque quis est ac ante malesuada."
 visible_characters = -1
 
-[node name="Quick" type="HBoxContainer" parent="Say/VBoxContainer"]
+[node name="Quick" type="HBoxContainer" parent="Adv/VBoxContainer"]
 
 editor/display_folded = true
 focus/ignore_mouse = false
@@ -222,7 +222,7 @@ custom_constants/separation = 20
 alignment = 1
 script/script = ExtResource( 15 )
 
-[node name="Back" type="Button" parent="Say/VBoxContainer/Quick"]
+[node name="Back" type="Button" parent="Adv/VBoxContainer/Quick"]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -239,7 +239,7 @@ shortcut = null
 text = "Back"
 flat = true
 
-[node name="History" type="Button" parent="Say/VBoxContainer/Quick"]
+[node name="History" type="Button" parent="Adv/VBoxContainer/Quick"]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -256,7 +256,7 @@ shortcut = null
 text = "History"
 flat = true
 
-[node name="Skip" type="Button" parent="Say/VBoxContainer/Quick"]
+[node name="Skip" type="Button" parent="Adv/VBoxContainer/Quick"]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -273,7 +273,7 @@ shortcut = null
 text = "Skip"
 flat = true
 
-[node name="Auto" type="Button" parent="Say/VBoxContainer/Quick"]
+[node name="Auto" type="Button" parent="Adv/VBoxContainer/Quick"]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -290,7 +290,7 @@ shortcut = null
 text = "Auto"
 flat = true
 
-[node name="Save" type="Button" parent="Say/VBoxContainer/Quick"]
+[node name="Save" type="Button" parent="Adv/VBoxContainer/Quick"]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -307,7 +307,7 @@ shortcut = null
 text = "Save"
 flat = true
 
-[node name="QSave" type="Button" parent="Say/VBoxContainer/Quick"]
+[node name="QSave" type="Button" parent="Adv/VBoxContainer/Quick"]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -324,7 +324,7 @@ shortcut = null
 text = "Q. Save"
 flat = true
 
-[node name="QLoad" type="Button" parent="Say/VBoxContainer/Quick"]
+[node name="QLoad" type="Button" parent="Adv/VBoxContainer/Quick"]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -342,7 +342,7 @@ text = "Q. Load"
 flat = true
 align = 0
 
-[node name="Prefs" type="Button" parent="Say/VBoxContainer/Quick"]
+[node name="Prefs" type="Button" parent="Adv/VBoxContainer/Quick"]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
