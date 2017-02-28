@@ -6,19 +6,21 @@
 
 extends Control
 
+say_path = "Say/VBoxContainer"
+
 onready var InputArea = get_node("InputArea")
-onready var input_screen = get_node("Say/VBoxContainer/Input")
-onready var say_screen = get_node("Say/VBoxContainer")
+onready var input_screen = get_node(say_path + "/Input")
+onready var say_screen = get_node(say_path)
 onready var label_manager = get_node("LabelManager")
 onready var choice_screen = get_node("Choice")
 
-var snum = 0 ## current statment number
-var seen_statments = []
-var statments = []
+var snum = 0 ## current statement number
+var seen_statements = []
+var statements = []
 var keywords = { "version":{"type":"text", "value":"0.6"} }
 var can_roll = true
 
-signal statment_changed
+signal statement_changed
 
 func _ready():
     
@@ -33,43 +35,43 @@ func _ready():
 func start_ren():
     ## This must be at end of code using ren api
 	## this start ren "magic" ;)
-    use_statment(0)
+    use_statement(0)
 
 
-func next_statment():
-    ## go to next statment
-    use_statment(snum + 1)
+func next_statement():
+    ## go to next statement
+    use_statement(snum + 1)
 
 
-func prev_statment():
-    ## go to previous statment
+func prev_statement():
+    ## go to previous statement
     
-    var prev = seen_statments.find(statments[snum])
-    prev = seen_statments[prev - 1]
-    prev = statments.find(prev)
+    var prev = seen_statements.find(statements[snum])
+    prev = seen_statements[prev - 1]
+    prev = statements.find(prev)
 
-    use_statment(prev)
+    use_statement(prev)
 
 
 func on_left_click():
     if can_roll:
-        next_statment()
+        next_statement()
 
 
 func _input(event):
 
     if can_roll and snum > 0:
         if event.is_action_pressed("ren_rollforward"):
-            next_statment()
+            next_statement()
         
         elif event.is_action_pressed("ren_rollback"):
-            prev_statment()
+            prev_statement()
         
 
-func use_statment(num):
-    ## go to statment with given number
-    if num < statments.size() and num >= 0:
-        var s = statments[num]
+func use_statement(num):
+    ## go to statement with given number
+    if num < statements.size() and num >= 0:
+        var s = statements[num]
         
         if s.type == "say":
             _say(s.args)
@@ -83,56 +85,56 @@ func use_statment(num):
         elif s.type == "g":
             callv(s.fun, s.args)
             
-        if num + 1 < statments.size():
-            if not is_statment_id_important(num + 1):
-                use_statment(num + 1)
+        if num + 1 < statements.size():
+            if not is_statement_id_important(num + 1):
+                use_statement(num + 1)
         
-        if is_statment_important(s):
+        if is_statement_important(s):
             mark_seen(s)
         
         snum = num
         
-        emit_signal("statment_changed")
+        emit_signal("statement_changed")
 
 
-func mark_seen(statment):
-    ## add statment to save
-    ## and make statment skipable
-    if statment in seen_statments:
+func mark_seen(statement):
+    ## add statement to save
+    ## and make statement skipable
+    if statement in seen_statements:
         pass
     else:
-        seen_statments.append(statment)
+        seen_statements.append(statement)
 
 
-func was_seen_id(statment_id):
-    ## check if player seen statment with this id already
-   return statments[statment_id] in seen_statments
+func was_seen_id(statement_id):
+    ## check if player seen statement with this id already
+   return statements[statement_id] in seen_statements
 
 
-func is_statment_id_important(statment_id):
-    ## return true if statment with this id is say, input or menu type
-    return is_statment_important(statments[statment_id])
+func is_statement_id_important(statement_id):
+    ## return true if statement with this id is say, input or menu type
+    return is_statement_important(statements[statement_id])
 
 
-func is_statment_important(statment):
-    ## return true if statment is say, input or menu type
+func is_statement_important(statement):
+    ## return true if statement is say, input or menu type
     var important = false
       
-    if statment.type == "say":
+    if statement.type == "say":
         important = true
     
-    elif statment.type == "input":
+    elif statement.type == "input":
         important = true
     
-    elif statment.type == "menu":
+    elif statement.type == "menu":
         important = true
     
     return important
 
 
-func was_seen(statment):
-    ## check if player seen this statment already
-    return statment in seen_statments
+func was_seen(statement):
+    ## check if player seen this statement already
+    return statement in seen_statements
 
 
 ## code borrow from:
@@ -243,7 +245,7 @@ func jump(label_name, args = []):
 
 
 func say(how, what, renpy_format = true):
-    ## return say statment
+    ## return say statement
 
     var s = {"type":"say",
                 "args":{
@@ -257,7 +259,7 @@ func say(how, what, renpy_format = true):
 func append_say(how, what):
     # append say statement 
     var s = say(how, what)
-    statments.append(s)
+    statements.append(s)
 
 
 func _say(args):
@@ -268,7 +270,7 @@ func _say(args):
 
 
 func input(ivar, what, temp = ""):
-    ## add input statment
+    ## add input statement
 
     var s = {"type":"input",
                 "args":{
@@ -281,9 +283,9 @@ func input(ivar, what, temp = ""):
     return s
 
 func append_input(ivar, what, temp = ""):
-    ## append input statment
+    ## append input statement
     var s = input(ivar, what, temp)
-    statments.append(s)
+    statements.append(s)
     
 
 func _ren_input(args):
@@ -295,7 +297,7 @@ func _ren_input(args):
 
 
 func menu(choices, title = ""):
-    ## return menu statment
+    ## return menu statement
     var s = {
         "type":"menu",
         "args":
@@ -309,9 +311,9 @@ func menu(choices, title = ""):
 
 
 func append_menu(choices, title = ""):
-    ## append menu statment
+    ## append menu statement
     var s = menu(choices, title)
-    statments.append(s)
+    statements.append(s)
 
 
 func _ren_menu(args):
@@ -321,7 +323,7 @@ func _ren_menu(args):
 
 
 func godot_line(fun, args = []):
-    ## append g statment
+    ## append g statement
     ## use it to execute godot func in rengd
     var s = {"type":"g",
             "fun":fun,
@@ -332,10 +334,10 @@ func godot_line(fun, args = []):
 
 
 func append_godot_line(fun, args = []):
-    ## return g statment
+    ## return g statement
     ## use it to execute godot func in rengd
     var s = append_godot_line(fun, args)
-    statments.append(s)
+    statements.append(s)
 
 
 

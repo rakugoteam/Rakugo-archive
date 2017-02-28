@@ -7,7 +7,7 @@ extends VBoxContainer
 
 onready var ren = get_node("/root/Window")
 onready var chbutton = preload("res://scenes/gui/ChoiceButton.tscn")
-var choices = {} # {"choice":statment = []}
+var choices = {} # {"choice":statement = []}
 var title = ""
 
 
@@ -48,16 +48,16 @@ func _menu():
 
 func _on_choice(i):
 	
-	var statments_before_menu = array_slice(ren.statments, 0, ren.snum+1)
-	var statments_after_menu = array_slice(ren.statments, ren.snum+1, ren.statments.size()+1)
+	var statements_before_menu = array_slice(ren.statements, 0, ren.snum+1)
+	var statements_after_menu = array_slice(ren.statements, ren.snum+1, ren.statements.size()+1)
 
-	ren.statments = statments_before_menu
-	ren.statments += choices.values()[i]
-	ren.statments += statments_after_menu
+	ren.statements = statements_before_menu
+	ren.statements += choices.values()[i]
+	ren.statements += statements_after_menu
 	
 	hide()
 	ren.can_roll = true
-	ren.next_statment()
+	ren.next_statement()
 
 
 func array_slice(array, from = 0, to = 0):

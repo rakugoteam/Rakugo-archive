@@ -38,4 +38,4 @@ func _on_input(s):
     ren.keywords[ivar] = {"type":"text", "value":s}
     ren.can_roll = true
     hide()
-    ren.next_statment()
+    ren.next_statement()

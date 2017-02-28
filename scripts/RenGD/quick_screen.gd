@@ -19,9 +19,9 @@ onready var Prefs   = get_node("Prefs")
 
 func _ready():
 
-	ren.connect("statment_changed", self, "on_statment_changed")
+	ren.connect("statement_changed", self, "on_statement_changed")
 
-	Back.connect("pressed", ren, "prev_statment")
+	Back.connect("pressed", ren, "prev_statement")
 	# Skip.connect("toggled", ren, "skip()")
 	# Auto.connect("toggled", ren, "auto()")
 	# History.connect("pressed", self, "print", ["History"])
@@ -30,7 +30,7 @@ func _ready():
 	# QLoad.connect("pressed", self, "print", ["QLoad"])
 	# Prefs.connect("pressed", self, "print", ["Prefs"])
 
-func on_statment_changed():
+func on_statement_changed():
 	if ren.snum == 0 or not ren.can_roll:
 		Back.set_disabled(true)
 	
