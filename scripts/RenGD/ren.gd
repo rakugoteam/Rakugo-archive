@@ -6,19 +6,29 @@
 
 extends Control
 
-var say_path = "Adv/VBoxContainer"
+var vbc = "VBoxContainer"
 
-onready var InputArea = get_node("InputArea")
-onready var input_screen = get_node(say_path + "/Input")
-onready var say_screen = get_node(say_path)
+## paths to nodes to use with special kinds of charcters
+var adv_path = "Adv/" + vbc
+var cen_path = "Center/" + vbc
+var fs_path = "FullScreen" + vbc
+
+onready var input_screen = get_node(adv_path + "/Input")
+onready var say_screen = get_node(adv_path)
+onready var nvl_scroll = get_node("Nvl")
+onready var nvl_screen = get_node("Nvl/" + vbc)
 onready var label_manager = get_node("LabelManager")
 onready var choice_screen = get_node("Choice")
+
+onready var say_scene = preload("res://scenes/gui/Say.tscn")
 
 var snum = 0 ## current statement number
 var seen_statements = []
 var statements = []
 var keywords = { "version":{"type":"text", "value":"0.6"} }
 var can_roll = true
+
+var important_types = ["say", "input", "menu"]
 
 signal statement_changed
 
@@ -28,8 +38,7 @@ func _ready():
     ## http://docs.godotengine.org/en/stable/tutorials/step_by_step/singletons_autoload.html
     var root = get_tree().get_root()
     label_manager.current_scene = root.get_child( root.get_child_count() -1 )
-   
-    InputArea.connect("pressed", self, "on_left_click")
+    
     set_process_input(true)
 
 func start_ren():
@@ -53,11 +62,6 @@ func prev_statement():
     use_statement(prev)
 
 
-func on_left_click():
-    if can_roll:
-        next_statement()
-
-
 func _input(event):
 
     if can_roll and snum > 0:
@@ -74,13 +78,13 @@ func use_statement(num):
         var s = statements[num]
         
         if s.type == "say":
-            _say(s.args)
+            say(s)
         
         elif s.type == "input":
-            _ren_input(s.args)
+            input(s)
         
         elif s.type == "menu":
-            _ren_menu(s.args)
+            menu(s)
         
         elif s.type == "g":
             callv(s.fun, s.args)
@@ -102,6 +106,7 @@ func mark_seen(statement):
     ## and make statement skipable
     if statement in seen_statements:
         pass
+
     else:
         seen_statements.append(statement)
 
@@ -120,13 +125,7 @@ func is_statement_important(statement):
     ## return true if statement is say, input or menu type
     var important = false
       
-    if statement.type == "say":
-        important = true
-    
-    elif statement.type == "input":
-        important = true
-    
-    elif statement.type == "menu":
+    if statement.type in important_types:
         important = true
     
     return important
@@ -183,8 +182,16 @@ func define_ch(key_name, character_value = {}):
     ## add global Character var that ren will see
     keywords[key_name] = {"type":"Character", "value":character_value}
 
+func define_dict(key_name, dict = {}):
+    ## add global dict var that ren will see
+    keywords[key_name] = {"type":"dict", "value":dict}
 
-func Character(name="", color ="", what_prefix="", what_suffix="", kind=""):
+# func define_list(key_name, list = []):
+#     ## add global dict var that ren will see
+#     keywords[key_name] = {"type":"list", "value":list}
+
+
+func Character(name="", color ="", what_prefix="", what_suffix="", kind="adv"):
     ## return new Character
     return {"name":name, "color":color, "what_prefix":what_prefix,
             "what_suffix":what_suffix, "kind":kind}
@@ -225,11 +232,23 @@ func say_passer(text):
             text = text.replace("[" + key_name + "]", str(dict))
             
             for k in dict:
-                if text.find(key_name +"."+k) == -1:
+                if text.find(key_name + "." + k) == -1:
                     continue # no keyword in this string
                 
                 var value = dict[k]
-                text = text.replace("[" + key_name+"."+k + "]", str(value))
+                text = text.replace("[" + key_name + "." + k + "]", str(value))
+        
+        # elif keyword.type == "list":
+        #     var list = keyword.value
+        #     text = text.replace("[" + key_name + "]", str(list))
+            
+        #     for v in list:
+        #         var i = list.find(v)
+               
+        #         if text.find(key_name +"["+i+"]") == -1:
+        #             continue # no keyword in this string
+                
+        #         text = text.replace("[" + key_name+"["+i+"]]", str(v))
 
         else:
             print(key_name," is unsuported keyword type: ", keyword.type)
@@ -254,82 +273,85 @@ func jump(label_name, args = []):
     label_manager.jump(label_name, args)
 
 
-func say(how, what, renpy_format = true):
-    ## return say statement
+func say_statement(how, what):
+    ## return input statement
+    return say_screen.statement(how, what)
 
-    var s = {"type":"say",
-                "args":{
-                        "how":how,
-                        "what":what
-                        }
-            }
-    
-    return s
 
 func append_say(how, what):
-    # append say statement 
-    var s = say(how, what)
+    ## append say statement 
+    var s = say_statement(how, what)
     statements.append(s)
 
 
-func _say(args):
-    say_screen.how = args.how
-    say_screen.what = args.what
-    say_screen.use_renpy_format()
-    say_screen._say()
+func say(statement):
+    ## "run" say statement
+    var how = statement.args.how
 
+    # if how.kind == "adv":
+    say_screen = get_node(adv_path)
 
-func input(ivar, what, temp = ""):
-    ## add input statement
-
-    var s = {"type":"input",
-                "args":{
-                        "ivar":ivar,
-                        "what":what,
-                        "temp":temp
-                        }
-            }
+    if how in keywords:
+        if keywords[how].type == "Character":
+            var kind = keywords[how].value.kind
+            
+            if kind == "center":
+                say_screen.hide()
+                get_node(fs_path).hide()
+                say_screen = get_node(cen_path)
+            
+            elif kind == "fullscreen":
+                say_screen.hide()
+                get_node(cen_path).hide()
+                say_screen = get_node(fs_path)
+            
+            elif kind == "nvl":
+                say_screen.hide()
+                get_node(fs_path).hide()
+                get_node(cen_path).hide()
+                say_screen = say_scene.instance()
+                nvl_screen.add_child(say_screen)
+                var y = say_screen.get_pos().y
+                nvl_scroll.set_v_scroll(y)
+                nvl_scroll.show()
     
-    return s
+            if kind != "nvl":
+                var ipath = str(say_screen.get_path()) + "/Input"
+                input_screen = get_node(ipath)
+
+    say_screen.use(statement)
+
+
+func input_statement(ivar, what, temp = ""):
+    ## return input statement
+    return input_screen.statement(ivar, what, temp)
+
 
 func append_input(ivar, what, temp = ""):
     ## append input statement
-    var s = input(ivar, what, temp)
+    var s = input_statement(ivar, what, temp)
     statements.append(s)
     
 
-func _ren_input(args):
-    input_screen.ivar = args.ivar
-    input_screen.what = args.what
-    input_screen.temp = args.temp
-    input_screen.use_renpy_format()
-    input_screen._input_func()
+func input(statement):
+   ## "run" input statement
+   input_screen.use(statement)
 
 
-func menu(choices, title = ""):
+func menu_statement(choices, title = ""):
     ## return menu statement
-    var s = {
-        "type":"menu",
-        "args":
-            {
-            "title":title,
-            "choices":choices
-            }
-    }
-
-    return s
+    return choice_screen.statement(choices, title)
 
 
 func append_menu(choices, title = ""):
     ## append menu statement
-    var s = menu(choices, title)
+    var s = menu_statement(choices, title)
     statements.append(s)
 
 
-func _ren_menu(args):
-    choice_screen.choices = args.choices
-    choice_screen.title = args.title
-    choice_screen._menu()
+func menu(statement):
+     ## "run" menu statement
+    choice_screen.use(statement)
 
 
 func godot_line(fun, args = []):

@@ -54,12 +54,17 @@ func first():
 	## '[guest]' will add guest var to your string and do the same for version var
 	## you can disabled it set 3rd argumet as 'false'
 
-	var first_choice = [ren.say("jer","This is Ren'Py for Godot.")]
+	# var test_list = ["test", "TEST"]
+	# ren.define_list("test_list", test_list)
+	# ren.append_say("jer","Test of list [test_list[1]].")
+
+
+	var first_choice = [ren.say_statement("jer","This is Ren'Py for Godot.")]
 	
 	var long_txt = "Becose you can make stuff like anims and gui faster and easier using Godot Editor."
-	var second_choice = [ren.say("jer", long_txt),
-						ren.say("jer", "You can use 3D models in your visual novel."),
-						ren.say("jer","Also is easier to make mini games this why.")
+	var second_choice = [ren.say_statement("jer", long_txt),
+						ren.say_statement("jer", "You can use 3D models in your visual novel."),
+						ren.say_statement("jer","Also is easier to make mini games this why.")
 						]
 
 	var choices = {

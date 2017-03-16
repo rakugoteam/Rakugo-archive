@@ -11,7 +11,31 @@ var choices = {} # {"choice":statement = []}
 var title = ""
 
 
-func _menu():
+func statement(choices, title = ""):
+	 ## return menu statement
+    var s = {
+        "type":"menu",
+        "args":
+            {
+            "title":title,
+            "choices":choices
+            }
+    }
+
+    return s
+
+
+func append(choices, title = ""):
+    ## append menu statement
+    var s = menu(choices, title)
+    ren.statements.append(s)
+
+
+func use(statement):
+	## "run" menu statement
+	var args = statement.args
+	choices = args.choices
+	title = args.title
 	ren.can_roll = false
 	
 	for ch in get_children():
@@ -19,13 +43,8 @@ func _menu():
 		ch.free()
 
 	if title != "":
-		var s = {
-				"how":"",
-				"what":title,
-				}
-				
-		ren._say(s)
-		ren.say_screen.show()
+		var s = ren.say_statement("", title)
+		ren.say(s)
 	
 	else:
 		ren.say_screen.hide()
