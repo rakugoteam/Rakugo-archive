@@ -28,22 +28,20 @@ script/script = ExtResource( 2 )
 
 [node name="Choice" type="VBoxContainer" parent="."]
 
-visibility/visible = false
-anchor/left = 3
 anchor/top = 3
-anchor/right = 3
+anchor/right = 1
 anchor/bottom = 3
 focus/ignore_mouse = false
-focus/stop_mouse = true
+focus/stop_mouse = false
 size_flags/horizontal = 3
 size_flags/vertical = 3
 theme/theme = ExtResource( 3 )
-margin/left = -147.0
-margin/top = -231.0
-margin/right = -1118.0
-margin/bottom = -379.0
+margin/left = 139.0
+margin/top = -138.0
+margin/right = -1147.0
+margin/bottom = -354.0
 custom_constants/separation = 5
-alignment = 0
+alignment = 1
 script/script = ExtResource( 4 )
 
 [node name="Nvl" type="ScrollContainer" parent="."]
