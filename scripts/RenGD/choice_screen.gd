@@ -7,18 +7,40 @@ extends VBoxContainer
 
 onready var ren = get_node("/root/Window")
 onready var chbutton = preload("res://scenes/gui/ChoiceButton.tscn")
+
 var choices = {} # {"choice":statement = []}
 var title = ""
+var node
+var func_name = ""
+
+var statements_before_menu = []
+var statements_after_menu = []
 
 
 func statement(choices, title = ""):
 	 ## return menu statement
     var s = {
-        "type":"menu",
+        "type": "menu",
         "args":
             {
-            "title":title,
-            "choices":choices
+            "title": title,
+            "choices": choices
+            }
+    }
+
+    return s
+
+
+func statement_func(choices, title, node, func_name):
+	 ## return menu statement
+    var s = {
+        "type": "menu_func",
+        "args":
+            {
+            "title": title,
+            "choices": choices,
+			"node": node,
+			"func_name": func_name
             }
     }
 
@@ -31,15 +53,12 @@ func append(choices, title = ""):
     ren.statements.append(s)
 
 
-func use(statement):
-	## "run" menu statement
-	var args = statement.args
-	choices = args.choices
-	title = args.title
+func use_with_func_raw(choices, title, node, func_name):
+	## "run" custom menu statement
+	## made to use menu statement easy to use with gdscript
 	ren.can_roll = false
 	
 	for ch in get_children():
-		ch.disconnect("pressed", self, "_on_choice")
 		ch.free()
 
 	if title != "":
@@ -49,7 +68,7 @@ func use(statement):
 	else:
 		ren.say_screen.hide()
 	
-	for k in choices.keys():
+	for k in choices:
 		var b = chbutton.instance()
 		
 		add_child(b)
@@ -60,23 +79,52 @@ func use(statement):
 		var tr = b.get_child(0)
 		tr.set_bbcode(k)
 
-		b.connect("pressed", self, "_on_choice", [b.get_index()])
+		b.connect("pressed", node, func_name, [b.get_index()])
 	
 	show()
 
 
-func _on_choice(i):
-	
-	var statements_before_menu = array_slice(ren.statements, 0, ren.snum+1)
-	var statements_after_menu = array_slice(ren.statements, ren.snum+1, ren.statements.size()+1)
+func use_with_func(statement):
+	## "run" custom menu statement
+	## made to use menu statement easy to use with gdscript
+	choices = statement.args.choices
+	title = statement.args.title
+	node = statement.args.node
+	func_name = statement.args.func_name
+	use_with_func_raw(choices, title, node, func_name)
 
+
+func use(statement):
+	## "run" menu statement
+	choices = statement.args.choices
+	title = statement.args.title
+	use_with_func(choices.keys(), title, self, "_on_choice")
+
+
+func before_menu():
+	## must be on begin of menu custom func
+	statements_before_menu = array_slice(ren.statements, 0, ren.snum+1)
+	statements_after_menu = array_slice(ren.statements, ren.snum+1, ren.statements.size()+1)
 	ren.statements = statements_before_menu
-	ren.statements += choices.values()[i]
+
+
+func after_menu():
+	## must be on end of menu custom func
 	ren.statements += statements_after_menu
 	
 	hide()
 	ren.can_roll = true
 	ren.next_statement()
+
+
+func _on_choice(i):
+	
+	before_menu()
+	
+	ren.statements += choices.values()[i]
+
+	after_menu()
+	
 
 
 func array_slice(array, from = 0, to = 0):

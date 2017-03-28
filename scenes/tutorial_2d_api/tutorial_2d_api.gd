@@ -58,22 +58,13 @@ func first():
 	# ren.define_list("test_list", test_list)
 	# ren.append_say("jer","Test of list [test_list[1]].")
 
-
-	var first_choice = [ren.say_statement("jer","This is Ren'Py for Godot.")]
-	
-	var long_txt = "Becose you can make stuff like anims and gui faster and easier using Godot Editor."
-	var second_choice = [ren.say_statement("jer", long_txt),
-						ren.say_statement("jer", "You can use 3D models in your visual novel."),
-						ren.say_statement("jer","Also is easier to make mini games this why.")
-						]
-
-	var choices = {
-		"What is Ren'GD?": first_choice,
-		"Why use it instead of Ren'Py?": second_choice
-	}
+	var choices = [
+		"What is Ren'GD?",
+		"Why use it instead of Ren'Py?"
+	]
 
 
-	ren.append_menu(choices, "What you want to know?")
+	ren.append_menu_func(choices, "What you want to know?", self, "first_choice")
 
 	ren.define("ex_path", tscn_path)
 	ren.append_say("jer", 
@@ -81,7 +72,18 @@ func first():
 			{tab}- [ex_path].gd
 			{tab}- [ex_path].tscn""")
 	
-	
-	
 
+func first_choice(choice):
+	ren.before_menu()
 
+	if choice == 0: #What is Ren'GD?
+		ren.append_say("jer", "This is Ren'Py for Godot.")
+	
+	elif choice == 1: #Why use it instead of Ren'Py?
+		var long_txt = "Becose you can make stuff like anims and gui faster and easier using Godot Editor."
+		ren.append_say("jer", long_txt)
+		ren.append_say("jer", "You can use 3D models in your visual novel.")
+		ren.append_say("jer","Also is easier to make mini games this why.")
+	
+	ren.after_menu()
+		

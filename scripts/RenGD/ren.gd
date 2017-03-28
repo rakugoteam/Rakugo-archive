@@ -62,6 +62,11 @@ func prev_statement():
     use_statement(prev)
 
 
+func jump_to_statement(statement):
+    var id = statements.find(statement)
+    use_statement(id)
+
+
 func _input(event):
 
     if can_roll and snum > 0:
@@ -85,6 +90,12 @@ func use_statement(num):
         
         elif s.type == "menu":
             menu(s)
+
+        elif s.type == "menu_func":
+            menu_func(s)
+        
+        elif s.type == "jump_to_statement":
+            jump_to_statement(s)
         
         elif s.type == "g":
             callv(s.fun, s.args)
@@ -182,6 +193,7 @@ func define_ch(key_name, character_value = {}):
     ## add global Character var that ren will see
     keywords[key_name] = {"type":"Character", "value":character_value}
 
+
 func define_dict(key_name, dict = {}):
     ## add global dict var that ren will see
     keywords[key_name] = {"type":"dict", "value":dict}
@@ -238,9 +250,9 @@ func say_passer(text):
                 var value = dict[k]
                 text = text.replace("[" + key_name + "." + k + "]", str(value))
         
-        # elif keyword.type == "list":
-        #     var list = keyword.value
-        #     text = text.replace("[" + key_name + "]", str(list))
+        elif keyword.type == "list":
+            var list = keyword.value
+            text = text.replace("[" + key_name + "]", str(list))
             
         #     for v in list:
         #         var i = list.find(v)
@@ -338,6 +350,33 @@ func input(statement):
    input_screen.use(statement)
 
 
+func before_menu():
+    ## must be on begin of menu custom func
+    choice_screen.before_menu()
+
+
+func after_menu():
+	## must be on end of menu custom func
+    choice_screen.after_menu()
+
+
+func menu_func_statement(choices, title, node, func_name):
+	## return custom menu statement
+	## made to use menu statement easy to use with gdscript
+    return choice_screen.statement_func(choices, title, node, func_name)
+
+
+func append_menu_func(choices, title, node, func_name):
+    ## append menu_func statement
+    var s = menu_func_statement(choices, title, node, func_name)
+    statements.append(s)
+
+
+func menu_func(statement):
+    ## "run" menu_func statement
+    choice_screen.use_with_func(statement)
+
+
 func menu_statement(choices, title = ""):
     ## return menu statement
     return choice_screen.statement(choices, title)
@@ -350,7 +389,7 @@ func append_menu(choices, title = ""):
 
 
 func menu(statement):
-     ## "run" menu statement
+    ## "run" menu statement
     choice_screen.use(statement)
 
 
