@@ -103,8 +103,8 @@ func use(statement):
 
 func before_menu():
 	## must be on begin of menu custom func
-	statements_before_menu = array_slice(ren.statements, 0, ren.snum+1)
-	statements_after_menu = array_slice(ren.statements, ren.snum+1, ren.statements.size()+1)
+	statements_before_menu = ren.array_slice(ren.statements, 0, ren.snum+1)
+	statements_after_menu = ren.array_slice(ren.statements, ren.snum+1, ren.statements.size()+1)
 	ren.statements = statements_before_menu
 
 
@@ -127,17 +127,5 @@ func _on_choice(i):
 	
 
 
-func array_slice(array, from = 0, to = 0):
-	if from > to or from < 0 or to > array.size():
-		return array
-	
-	var _array = array
-
-	for i in range(0, from):
-		_array.remove(i)
-    
-	_array.resize(to - from)
-
-	return _array
 
 
