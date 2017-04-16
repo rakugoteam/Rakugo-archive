@@ -1,2 +1,5 @@
 *.inc linguist-vendored
-*.gd gdscript
+*.gd diff=gdscript
+*.tscn diff=toml
+*.tres diff=toml
+*.cfg diff=toml
