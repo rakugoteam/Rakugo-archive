@@ -79,7 +79,7 @@ func _input(event):
 
 func use_statement(num):
     ## go to statement with given number
-    if num < statements.size() and num >= 0:
+    if num < statements.size() - 1 and num >= 0:
         var s = statements[num]
         
         if s.type == "say":
@@ -343,7 +343,21 @@ func append_input(ivar, what, temp = ""):
     ## append input statement
     var s = input_statement(ivar, what, temp)
     statements.append(s)
-    
+
+
+func array_slice(array, from = 0, to = 0):
+ 	if from > to or from < 0 or to > array.size():
+ 		return array
+ 	
+ 	var _array = array
+ 
+ 	for i in range(0, from):
+ 		_array.remove(i)
+     
+ 	_array.resize(to - from)
+ 
+ 	return _array
+
 
 func input(statement):
    ## "run" input statement

@@ -1,1 +1,2 @@
 *.inc linguist-vendored
+*.gd gdscript
