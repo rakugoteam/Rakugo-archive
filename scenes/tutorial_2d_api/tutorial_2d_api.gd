@@ -47,7 +47,7 @@ func first():
 
 	ren.append_say("jer",
 			"""Hi! My name is [jer.name].
-			Welcome [guest] to Ren'GD [version] example scene.
+			Welcome [guest] to Ren'GD [version] Tutorial.
 			Press MLB, Enter or Space to continue.""")
 	## It will set 'Jeremi360' in root/Window/Say/NameBox and second arg in root/Window/Say/Dialog
 	## It has markup format like in Ren'Py it means that all godot bbcode '[]' become '{}'
@@ -58,13 +58,18 @@ func first():
 	# ren.define_list("test_list", test_list)
 	# ren.append_say("jer","Test of list [test_list[1]].")
 
-	var choices = [
-		"What is Ren'GD?",
-		"Why use it instead of Ren'Py?"
+	var topics = [
+		"Basic",
+		"Say",
+		"Character"
+		"Input",
+		"Menu",
+		"Label",
+		"Node"
 	]
 
 
-	ren.append_menu_func(choices, "What you want to know?", self, "first_choice")
+	ren.append_menu_func(topics, "What you want to know?", self, "topic_choice")
 
 	ren.define("ex_path", tscn_path)
 	ren.append_say("jer", 
@@ -72,18 +77,41 @@ func first():
 			{tab}- [ex_path].gd
 			{tab}- [ex_path].tscn""")
 	
+	ren.append_say("jer", "Goodbye, [guest].")
+	ren.append_godot_line("ren.use_statement", [0])
+	
 
-func first_choice(choice):
+func topic_choice(choice):
 	ren.before_menu()
 
-	if choice == 0: #What is Ren'GD?
-		ren.append_say("jer", "This is Ren'Py for Godot.")
+	#if choice == 0: #Basic
+
+
+	if choice == 1: #Say
+		ren.append_say("jer", "Say statment/func is make character speaks.")
+		ren.append_say("jer", "The GDScript way to call it is:
+								{code}ren.append_say('how','what'){/code}")
+		ren.append_say("jer", "The Ren'GD Script way to call it is:
+								{code}how' 'what'{/code}")
 	
-	elif choice == 1: #Why use it instead of Ren'Py?
-		var long_txt = "Becose you can make stuff like anims and gui faster and easier using Godot Editor."
-		ren.append_say("jer", long_txt)
-		ren.append_say("jer", "You can use 3D models in your visual novel.")
-		ren.append_say("jer","Also is easier to make mini games this why.")
+	#if choice == 2: #Character
+
+	elif choice == 3: #Input
+		ren.append_say("jer", "Input statment/func is way to provide text input file for player.")
+		ren.append_say("jer", "The GDScript way to call it is:
+								{code}ren.append_input('var','what','temp'){/code}")
+		ren.append_say("jer", "The Ren'GD Script way to call it is:
+								{code}g: ren.input('var','what','temp'){/code}")
+	
+	#elif choice == 4: #Menu
+
+	#elif choice == 5: #Label
+
+	#elif choice == 6: # Node
+		
+	
+	else:
+		ren.append_say('', "To be done :(.")
 	
 	ren.after_menu()
 		

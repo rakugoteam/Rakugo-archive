@@ -66,7 +66,6 @@ func jump_to_statement(statement):
     var id = statements.find(statement)
     use_statement(id)
 
-
 func _input(event):
 
     if can_roll and snum > 0:
