@@ -51,8 +51,8 @@ func use(statement):
             what = how.what_prefix + what + how.what_suffix
             how = nhow
 
-    how = ren.say_passer(how)
-    what = ren.say_passer(what)
+    how = ren.text_passer(how)
+    what = ren.text_passer(what)
 
     namebox_screen.set_bbcode(how)
     dialog_screen.set_bbcode(what)

@@ -10,7 +10,7 @@
 [ext_resource path="res://gui/themes/new_gui/imgs/notify.png" type="Texture" id=8]
 [ext_resource path="res://gui/themes/new_gui/imgs/skip.png" type="Texture" id=9]
 [ext_resource path="res://fonts/notify_text_sizeR.fnt" type="BitmapFont" id=10]
-[ext_resource path="res://scripts/RenGD/ren_label.gd" type="Script" id=11]
+[ext_resource path="res://scripts/RenGD/label_manager.gd" type="Script" id=11]
 
 [node name="Window" type="Control"]
 
@@ -124,6 +124,7 @@ margin/bottom = 676.0
 
 [node name="Quick" type="HBoxContainer" parent="."]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2

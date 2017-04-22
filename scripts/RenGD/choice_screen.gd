@@ -74,7 +74,7 @@ func use_with_func_raw(choices, title, node, func_name):
 		add_child(b)
 
 		k = "{center}" + k + "{/center}"
-		k = ren.say_passer(k)
+		k = ren.text_passer(k)
 
 		var tr = b.get_child(0)
 		tr.set_bbcode(k)
