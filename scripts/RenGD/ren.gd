@@ -3,12 +3,9 @@
 ## version: 0.6 ##
 ## License MIT ##
 
-
-extends Node
-
+extends "choice_screen.gd"
 
 onready var label_manager = get_node("LabelManager")
-
 
 func start_ren():
     ## This must be at end of code using ren api
@@ -41,7 +38,7 @@ func append_godot_line(fun, args = []):
     ## return g statement
     ## use it to execute godot func in rengd
     var s = append_godot_line(fun, args)
-    statements.append(s)
+    self.statements.append(s) 
 
 
 

@@ -3,7 +3,7 @@
 ## version: 0.6 ##
 ## License MIT ##
 
-extends Node
+extends "ren_def.gd"
 
 var snum = 0 ## current statement number
 var seen_statements = []
@@ -13,7 +13,6 @@ var can_roll = true
 var important_types = ["say", "input", "menu"]
 
 signal statement_changed
-
 
 func next_statement():
     ## go to next statement

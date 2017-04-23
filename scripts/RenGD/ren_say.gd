@@ -3,7 +3,7 @@
 ## version: 0.6 ##
 ## License MIT ##
 
-extends Node
+extends "ren_text.gd"
 
 var vbc = "VBoxContainer"
 

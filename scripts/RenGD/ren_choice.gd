@@ -3,7 +3,7 @@
 ## version: 0.6 ##
 ## License MIT ##
 
-extends Node
+extends "ren_input.gd"
 
 onready var choice_screen = get_node("Choice")
 

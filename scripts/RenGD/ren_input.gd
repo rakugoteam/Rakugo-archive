@@ -3,7 +3,7 @@
 ## version: 0.6 ##
 ## License MIT ##
 
-extends Node
+extends "ren_say.gd"
 
 onready var input_screen = get_node(adv_path + "/Input")
 

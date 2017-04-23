@@ -3,8 +3,7 @@
 ## version: 0.6 ##
 ## License MIT ##
 
-
-extends Node
+extends "ren_statement.gd"
 
 func text_passer(text):
     ## passer for renpy markup format
