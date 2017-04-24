@@ -1,10 +1,10 @@
-## This is Ren'GD example scene script##
+## This is Ren'GD tutorial scene script##
 ## Ren'GD is Ren'Py for Godot ##
 ## version: 0.6 ##
 ## License MIT ##
 
 
-extends Node2D
+extends Node
 
 ## it's how import rengd framework when res://scenes/gui/Window.tscn is loaded as singleton
 onready var ren = get_node("/root/Window") 

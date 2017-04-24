@@ -3,7 +3,7 @@
 ## version: 0.6 ##
 ## License MIT ##
 
-extends "ren_statement.gd"
+extends Node
 
 func text_passer(text):
     ## passer for renpy markup format
@@ -17,11 +17,11 @@ func text_passer(text):
     ## code from Sebastian Holc solution:
     ## http://pastebin.com/K8zsWQtL
 
-    for key_name in keywords:
+    for key_name in self.keywords:
         if text.find(key_name) == -1:
              continue # no keyword in this string
         
-        var keyword = keywords[key_name]
+        var keyword = self.keywords[key_name]
 
         if keyword.type == "text":
             var value = keyword.value

@@ -3,42 +3,28 @@
 ## version: 0.6 ##
 ## License MIT ##
 
-extends "ren_text.gd"
+extends Node
 
-var vbc = "VBoxContainer"
+var adv_path
+var cen_path
+var fs_path
 
-## paths to nodes to use with special kinds of charcters
-var adv_path = "Adv/" + vbc
-var cen_path = "Center/" + vbc
-var fs_path = "FullScreen" + vbc
-
-onready var say_screen = get_node(adv_path)
-onready var nvl_scroll = get_node("Nvl")
-onready var nvl_screen = get_node("Nvl/" + vbc)
-
-onready var say_scene = preload("res://scenes/gui/Say.tscn")
-
-func say_statement(how, what):
-    ## return input statement
-    return say_screen.statement(how, what)
-
-
-func append_say(how, what):
-    ## append say statement 
-    var s = say_statement(how, what)
-    statements.append(s)
-
+var say_screen
+var nvl_scroll
+var nvl_screen
+var input_screen
+var say_scene
 
 func say(statement):
     ## "run" say statement
-    var how = statement.args.how
+    var how = slef.statement.args.how
 
     # if how.kind == "adv":
     say_screen = get_node(adv_path)
 
-    if how in keywords:
-        if keywords[how].type == "Character":
-            var kind = keywords[how].value.kind
+    if how in self.keywords:
+        if self.keywords[how].type == "Character":
+            var kind = self.keywords[how].value.kind
             
             if kind == "center":
                 say_screen.hide()

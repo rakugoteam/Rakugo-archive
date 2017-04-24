@@ -3,13 +3,16 @@
 ## version: 0.6 ##
 ## License MIT ##
 
-extends "ren_def.gd"
+extends Node
+
+var ren_say
+var choice_screen
+var input_screen
 
 var snum = 0 ## current statement number
 var seen_statements = []
 var statements = []
 var can_roll = true
-
 var important_types = ["say", "input", "menu"]
 
 signal statement_changed
@@ -33,6 +36,7 @@ func jump_to_statement(statement):
     var id = statements.find(statement)
     use_statement(id)
 
+
 func _input(event):
 
     if can_roll and snum > 0:
@@ -49,16 +53,16 @@ func use_statement(num):
         var s = statements[num]
         
         if s.type == "say":
-            say(s)
+            ren_say.say(s)
         
         elif s.type == "input":
-            input(s)
+            input_screen.use(s)
         
         elif s.type == "menu":
-            menu(s)
+             choice_screen..menu(s)
 
         elif s.type == "menu_func":
-            menu_func(s)
+             choice_screen.menu_func(s)
         
         elif s.type == "jump_to_statement":
             jump_to_statement(s)
@@ -90,7 +94,7 @@ func mark_seen(statement):
 
 func was_seen_id(statement_id):
     ## check if player seen statement with this id already
-   return statements[statement_id] in seen_statements
+    return statements[statement_id] in seen_statements
 
 
 func is_statement_id_important(statement_id):
@@ -111,3 +115,13 @@ func is_statement_important(statement):
 func was_seen(statement):
     ## check if player seen this statement already
     return statement in seen_statements
+
+
+func godot_line(fun, args = []):
+    ## append g statement
+    ## use it to execute godot func in rengd
+    var s = {"type":"g",
+            "fun":fun
+            }
+    
+    return s
