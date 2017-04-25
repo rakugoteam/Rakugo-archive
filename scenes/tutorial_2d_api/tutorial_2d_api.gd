@@ -61,7 +61,7 @@ func first():
 	var topics = [
 		"Basic",
 		"Say",
-		"Character"
+		"Character",
 		"Input",
 		"Menu",
 		"Label",

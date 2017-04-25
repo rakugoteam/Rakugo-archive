@@ -21,7 +21,7 @@ func define(key_name, key_value = null):
              keywords[key_name] = {"type":"dict", "value":key_value}
     
     elif key_value.type == typeof(TYPE_ARRAY):
-        keywords[key_name] = {"type":"list", "value":list}
+        keywords[key_name] = {"type":"list", "value":key_value}
     
     else:
         keywords[key_name] = {"type":"var", "value":key_value}

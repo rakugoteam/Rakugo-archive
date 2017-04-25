@@ -6,7 +6,7 @@
 extends Node
 
 ## import ren_statement
-cost REN_STA = preload("ren_statement.gd")
+const REN_STA = preload("ren_statement.gd")
 var ren_sta
 var statements = []
 var can_roll = true
@@ -17,7 +17,7 @@ var ren_def
 var keywords = { "version":{"type":"text", "value":"0.6"} }
 
 ## import ren_text
-const REN_TXT
+const REN_TXT = preload("ren_text.gd")
 var ren_txt
 
 ## import ren_say 
@@ -30,6 +30,8 @@ var cen_path = "Center/" + vbc
 var fs_path = "FullScreen" + vbc
 var nvl_path = "Nvl"
 var nvl_scroll_path = "Nvl/" + vbc
+
+onready var say_screen = get_node(adv_path)
 
 onready var say_scene = preload("res://scenes/gui/Say.tscn")
 
@@ -47,28 +49,28 @@ signal statement_changed
 func _ready():
 
     # setup ren_def
-    ren_def = REN_DEF.instance()
+    ren_def = new REN_DEF()
     ren_def.keywords = keywords
 
     # setup ren_text
-    ren_txt = REN_TXT
+    ren_txt = new REN_TXT()
     ren_txt.keywords = keywords
 
     # setup ren_say
-    ren_say = REN_SAY.instance()
+    ren_say = new REN_SAY()
 
     ren_say.adv_path = adv_path
     ren_say.cen_path = cen_path
     ren_say.fs_path = fs_path
     
-    ren_say.say_screen = get_node(adv_path)
+    ren_say.say_screen = say_screen
     ren_say.nvl_scroll = get_node(nvl_path)
     ren_say.nvl_screen = get_node(nvl_scroll_path)
     ren_say.input_screen = input_screen
     ren_say.say_scene = say_scene
 
     # setup ren_statement
-    ren_sta = REN_STA.instance()
+    ren_sta = new REN_STA()
 
     ren_sta.ren_say = ren_say
     ren_sta.choice_screen = choice_screen
@@ -76,7 +78,7 @@ func _ready():
     ren_sta.connect("statement_changed", self, "on_statement_changed")
 
     # setup ren_tools
-    ren_tls = REN_TLS.instance()
+    ren_tls = new REN_TLS()
 
 
 func on_statement_changed():
@@ -84,7 +86,7 @@ func on_statement_changed():
 
 
 func update_statements():
-    ren_sta.statement = statements
+    ren_sta.statements = statements
 
 
 func _input(event):

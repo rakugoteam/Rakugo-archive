@@ -59,11 +59,8 @@ func use_statement(num):
             input_screen.use(s)
         
         elif s.type == "menu":
-             choice_screen..menu(s)
+             choice_screen.use(s)
 
-        elif s.type == "menu_func":
-             choice_screen.menu_func(s)
-        
         elif s.type == "jump_to_statement":
             jump_to_statement(s)
         
