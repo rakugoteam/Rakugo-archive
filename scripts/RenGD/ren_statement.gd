@@ -12,10 +12,8 @@ var input_screen
 var snum = 0 ## current statement number
 var seen_statements = []
 var statements = []
-var can_roll = true
 var important_types = ["say", "input", "menu"]
 
-signal statement_changed
 
 func next_statement():
     ## go to next statement
@@ -35,16 +33,6 @@ func prev_statement():
 func jump_to_statement(statement):
     var id = statements.find(statement)
     use_statement(id)
-
-
-func _input(event):
-
-    if can_roll and snum > 0:
-        if event.is_action_pressed("ren_rollforward"):
-            next_statement()
-        
-        elif event.is_action_pressed("ren_rollback"):
-            prev_statement()
         
 
 func use_statement(num):

@@ -81,17 +81,41 @@ func _ready():
     ren_tls = new REN_TLS()
 
 
-func on_statement_changed():
+func update_statements():
+    ren_sta.statements = statements
     emit_signal("statement_changed")
 
 
-func update_statements():
-    ren_sta.statements = statements
+func prev_statement():
+    ## go to previous statement
+    ren_sta.prev_statement()
+    emit_signal("statement_changed")
+
+
+func next_statement():
+    ## go to next statement
+    ren_sta.next_statement()
+    emit_signal("statement_changed")
+
+
+func use_statement(num):
+    ## go to statement with given number
+    ren_sta.use_statement(num)
+    emit_signal("statement_changed")
+
+
+func jump_to_statement(statement):
+    ren_sta.jump_to_statement(statement)
+    emit_signal("statement_changed")
 
 
 func _input(event):
-    ren_sta.can_roll = can_roll
-    ren_sta._input(event)
+    if can_roll and snum > 0:
+        if event.is_action_pressed("ren_rollforward"):
+            next_statement()
+        
+        elif event.is_action_pressed("ren_rollback"):
+            prev_statement()
 
 
 func define(key_name, key_value = null):
