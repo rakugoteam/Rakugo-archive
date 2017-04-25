@@ -9,6 +9,7 @@ extends Node
 cost REN_STA = preload("ren_statement.gd")
 var ren_sta
 var statements = []
+var can_roll = true
 
 ## import ren_def
 const REN_DEF = preload("ren_def.gd")
@@ -82,11 +83,29 @@ func on_statement_changed():
     emit_signal("statement_changed")
 
 
+func update_statements():
+    ren_sta.statement = statements
+
+
+func _input(event):
+    ren_sta.can_roll = can_roll
+    ren_sta._input(event)
+
+
+func define(key_name, key_value = null):
+    ## add global var that ren will see
+    ren_def.define(key_name, key_value)
+
+
 func start_ren():
     ## This must be at end of code using ren api
-	## this start ren "magic" ;)
-    ren_sta.statements = 
+	## this start ren "magic" ;) 
+    update_statements()
     use_statement(0)
+
+
+func text_passer(text):
+    ren_txt.keywords = ren_def.keywords
 
 
 func say_statement(how, what):
@@ -122,7 +141,7 @@ func make_input(statement):
 
 
 func array_slice(array, from = 0, to = 0):
- 	ren_tls.array_slice(array, from, to)
+ 	return ren_tls.array_slice(array, from, to)
     
 
 func before_menu():
@@ -135,36 +154,20 @@ func after_menu():
     choice_screen.after_menu()
 
 
-func menu_func_statement(choices, title, node, func_name):
+func menu_statement(choices, title, node, func_name):
 	## return custom menu statement
 	## made to use menu statement easy to use with gdscript
     return choice_screen.statement_func(choices, title, node, func_name)
 
 
-func append_menu_func(choices, title, node, func_name):
+func append_menu(choices, title, node, func_name):
     ## append menu_func statement
-    var s = menu_func_statement(choices, title, node, func_name)
+    var s = menu_statement(choices, title, node, func_name)
     statements.append(s)
 
 
-func menu_func(statement):
+func make_menu(statement):
     ## "run" menu_func statement
-    choice_screen.use_with_func(statement)
-
-
-func menu_statement(choices, title = ""):
-    ## return menu statement
-    return choice_screen.statement(choices, title)
-
-
-func append_menu(choices, title = ""):
-    ## append menu statement
-    var s = menu_statement(choices, title)
-    self.statements.append(s)
-
-
-func menu(statement):
-    ## "run" menu statement
     choice_screen.use(statement)
 
 
@@ -180,13 +183,13 @@ func jump(label_name, args = []):
 
 
 func godot_line(fun, args = []):
-    ren_sta.godot_line(fun, args)
+    return ren_sta.godot_line(fun, args)
 
 
 func append_godot_line(fun, args = []):
     ## return g statement
     ## use it to execute godot func in rengd
-    var s = append_godot_line(fun, args)
+    var s = godot_line(fun, args)
     statements.append(s) 
 
 

@@ -9,22 +9,22 @@ var keywords
 
 func define(key_name, key_value = null):
     ## add global var that ren will see
-    keywords[key_name] = {"type":"var", "value":key_value}
+    if key_value.type == typeof(TYPE_STRING):
+        keywords[key_name] = {"type":"text", "value":key_value}
 
-
-func define_ch(key_name, character_value = {}):
-    ## add global Character var that ren will see
-    keywords[key_name] = {"type":"Character", "value":character_value}
-
-
-func define_dict(key_name, dict = {}):
-    ## add global dict var that ren will see
-    keywords[key_name] = {"type":"dict", "value":dict}
-
-
-# func define_list(key_name, list = []):
-#     ## add global dict var that ren will see
-#     keywords[key_name] = {"type":"list", "value":list}
+    elif key_value.type == typeof(TYPE_DICTIONARY):
+        
+        if key_value.keys() == Character().keys():
+            keywords[key_name] = {"type":"Character", "value":key_value}
+        
+        else:
+             keywords[key_name] = {"type":"dict", "value":key_value}
+    
+    elif key_value.type == typeof(TYPE_ARRAY):
+        keywords[key_name] = {"type":"list", "value":list}
+    
+    else:
+        keywords[key_name] = {"type":"var", "value":key_value}
 
 
 func Character(name="", color ="", what_prefix="", what_suffix="", kind="adv"):

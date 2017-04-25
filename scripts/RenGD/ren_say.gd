@@ -17,7 +17,7 @@ var say_scene
 
 func say(statement):
     ## "run" say statement
-    var how = slef.statement.args.how
+    var how = statement.args.how
 
     # if how.kind == "adv":
     say_screen = get_node(adv_path)
