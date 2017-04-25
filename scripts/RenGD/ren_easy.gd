@@ -39,9 +39,9 @@ func before_menu():
     ren.before_menu()
 
 
-func menu_statement(choices, title, node = null, func_name = null):
-	## return custom menu statement
-    ren.menu(choices, title, node, func_name)
+func menu(choices, title, node = null, func_name = null):
+	## append custom statement
+    ren.append_menu(choices, title, node, func_name)
 
 
 func after_menu():

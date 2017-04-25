@@ -200,7 +200,7 @@ func after_menu():
 
 
 func menu_statement(choices, title, node = null, func_name = null):
-	## return custom menu statement
+	## return menu statement
     return choice_screen.statement(choices, title, node, func_name)
 
 
@@ -211,7 +211,7 @@ func append_menu(choices, title, node = null, func_name = null):
 
 
 func make_menu(statement):
-    ## "run" menu_func statement
+    ## "run" menu statement
     choice_screen.use(statement)
 
 
