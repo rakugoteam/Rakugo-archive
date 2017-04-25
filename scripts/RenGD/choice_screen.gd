@@ -32,12 +32,6 @@ func statement(choices, title, node = null, func_name = null):
     return s
 
 
-func append(choices, title = ""):
-    ## append menu statement
-    var s = menu(choices, title)
-    ren.statements.append(s)
-
-
 func use_raw(choices, title, node, func_name):
 	## "run" custom menu statement
 	## made to use menu statement easy to use with gdscript

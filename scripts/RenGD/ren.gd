@@ -104,9 +104,9 @@ func define(key_name, key_value = null):
     ren_def.define(key_name, key_value)
 
 
-func Character(name="", color ="", what_prefix="", what_suffix="", kind="adv"):
+func Character(name="", color="", what_prefix="", what_suffix="", kind="adv"):
     ## return new Character
-    return Character(name, color, what_prefix, what_suffix, kind)
+    return ren_def.Character(name, color, what_prefix, what_suffix, kind)
 
 
 func update_statements():
@@ -201,8 +201,7 @@ func after_menu():
 
 func menu_statement(choices, title, node = null, func_name = null):
 	## return custom menu statement
-	## made to use menu statement easy to use with gdscript
-    return choice_screen.statement_func(choices, title, node, func_name)
+    return choice_screen.statement(choices, title, node, func_name)
 
 
 func append_menu(choices, title, node = null, func_name = null):
