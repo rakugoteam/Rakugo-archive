@@ -9,6 +9,7 @@ extends Node
 const REN_STA = preload("ren_statement.gd")
 var ren_sta
 var statements = []
+var snum = 0
 var can_roll = true
 
 ## import ren_def
@@ -49,15 +50,15 @@ signal statement_changed
 func _ready():
 
     # setup ren_def
-    ren_def = new REN_DEF()
+    ren_def = REN_DEF.new()
     ren_def.keywords = keywords
 
     # setup ren_text
-    ren_txt = new REN_TXT()
+    ren_txt = REN_TXT.new()
     ren_txt.keywords = keywords
 
     # setup ren_say
-    ren_say = new REN_SAY()
+    ren_say = REN_SAY.new()
 
     ren_say.adv_path = adv_path
     ren_say.cen_path = cen_path
@@ -70,43 +71,16 @@ func _ready():
     ren_say.say_scene = say_scene
 
     # setup ren_statement
-    ren_sta = new REN_STA()
+    ren_sta = REN_STA.new()
 
     ren_sta.ren_say = ren_say
     ren_sta.choice_screen = choice_screen
     ren_sta.input_screen = input_screen
-    ren_sta.connect("statement_changed", self, "on_statement_changed")
 
     # setup ren_tools
-    ren_tls = new REN_TLS()
+    ren_tls = REN_TLS.new()
 
-
-func update_statements():
-    ren_sta.statements = statements
-    emit_signal("statement_changed")
-
-
-func prev_statement():
-    ## go to previous statement
-    ren_sta.prev_statement()
-    emit_signal("statement_changed")
-
-
-func next_statement():
-    ## go to next statement
-    ren_sta.next_statement()
-    emit_signal("statement_changed")
-
-
-func use_statement(num):
-    ## go to statement with given number
-    ren_sta.use_statement(num)
-    emit_signal("statement_changed")
-
-
-func jump_to_statement(statement):
-    ren_sta.jump_to_statement(statement)
-    emit_signal("statement_changed")
+    set_process_input(true)
 
 
 func _input(event):
@@ -118,11 +92,6 @@ func _input(event):
             prev_statement()
 
 
-func define(key_name, key_value = null):
-    ## add global var that ren will see
-    ren_def.define(key_name, key_value)
-
-
 func start_ren():
     ## This must be at end of code using ren api
 	## this start ren "magic" ;) 
@@ -130,7 +99,57 @@ func start_ren():
     use_statement(0)
 
 
+func define(key_name, key_value = null):
+    ## add global var that ren will see
+    ren_def.define(key_name, key_value)
+
+
+func Character(name="", color ="", what_prefix="", what_suffix="", kind="adv"):
+    ## return new Character
+    return Character(name, color, what_prefix, what_suffix, kind)
+
+
+func update_statements():
+    ren_sta.snum = snum
+    ren_sta.statements = statements
+    emit_signal("statement_changed")
+
+
+func prev_statement():
+    ## go to previous statement
+    update_statements()
+    ren_sta.prev_statement()
+    emit_signal("statement_changed")
+
+
+func next_statement():
+    ## go to next statement
+    update_statements()
+    ren_sta.next_statement()
+    emit_signal("statement_changed")
+
+
+func use_statement(num):
+    ## go to statement with given number
+    update_statements()
+    ren_sta.use_statement(num)
+    emit_signal("statement_changed")
+
+
+func was_seen_id(statement_id):
+    ## check if player seen statement with this id already
+    update_statements()
+    return ren_sta.was_seen_id(statement_id)
+
+
+func jump_to_statement(statement):
+    ren_sta.jump_to_statement(statement)
+    emit_signal("statement_changed")
+
+
 func text_passer(text):
+    ## passer for renpy markup format
+    ## its retrun bbcode
     ren_txt.keywords = ren_def.keywords
 
 
@@ -180,13 +199,13 @@ func after_menu():
     choice_screen.after_menu()
 
 
-func menu_statement(choices, title, node, func_name):
+func menu_statement(choices, title, node = null, func_name = null):
 	## return custom menu statement
 	## made to use menu statement easy to use with gdscript
     return choice_screen.statement_func(choices, title, node, func_name)
 
 
-func append_menu(choices, title, node, func_name):
+func append_menu(choices, title, node = null, func_name = null):
     ## append menu_func statement
     var s = menu_statement(choices, title, node, func_name)
     statements.append(s)

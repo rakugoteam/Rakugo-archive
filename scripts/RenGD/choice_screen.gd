@@ -19,7 +19,7 @@ var statements_after_menu = []
 func statement(choices, title, node = null, func_name = null):
 	 ## return menu statement
     var s = {
-        "type": "menu_func",
+        "type": "menu",
         "args":
             {
             "title": title,
@@ -88,7 +88,7 @@ func before_menu():
 	statements_before_menu = ren.array_slice(ren.statements, 0, ren.snum+1)
 	statements_after_menu = ren.array_slice(ren.statements, ren.snum+1, ren.statements.size()+1)
 	ren.statements = statements_before_menu
-	update_statements()
+	ren.update_statements()
 
 
 func after_menu():
@@ -97,7 +97,7 @@ func after_menu():
 	
 	hide()
 	ren.can_roll = true
-	update_statements()
+	ren.update_statements()
 	ren.next_statement()
 
 

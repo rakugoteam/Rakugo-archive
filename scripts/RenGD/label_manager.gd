@@ -20,8 +20,6 @@ func _ready():
     ## http://docs.godotengine.org/en/stable/tutorials/step_by_step/singletons_autoload.html
     var root = get_tree().get_root()
     current_scene = root.get_child( root.get_child_count() -1 )
-    
-    set_process_input(true)
 
 
 func _Elabel(label):

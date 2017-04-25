@@ -45,10 +45,7 @@ func first():
 	ren.define_ch("jer", jer)
 	## This is how you declare a new Character
 
-	ren.append_say("jer",
-			"""Hi! My name is [jer.name].
-			Welcome [guest] to Ren'GD [version] Tutorial.
-			Press MLB, Enter or Space to continue.""")
+	ren.append_say("jer", """Hi! My name is [jer.name]. Welcome [guest] to Ren'GD [version] Tutorial. Press MLB, Enter or Space to continue.""")
 	## It will set 'Jeremi360' in root/Window/Say/NameBox and second arg in root/Window/Say/Dialog
 	## It has markup format like in Ren'Py it means that all godot bbcode '[]' become '{}'
 	## '[guest]' will add guest var to your string and do the same for version var
@@ -72,10 +69,7 @@ func first():
 	ren.append_menu_func(topics, "What you want to know?", self, "topic_choice")
 
 	ren.define("ex_path", tscn_path)
-	ren.append_say("jer", 
-			"""It's end for now to see how it is done see:
-			{tab}- [ex_path].gd
-			{tab}- [ex_path].tscn""")
+	ren.append_say("jer", """It's end for now to see how it is done see: {tab}- [ex_path].gd {tab}- [ex_path].tscn""")
 	
 	ren.append_say("jer", "Goodbye, [guest].")
 	ren.append_godot_line("ren.use_statement", [0])
@@ -89,19 +83,15 @@ func topic_choice(choice):
 
 	if choice == 1: #Say
 		ren.append_say("jer", "Say statment/func is make character speaks.")
-		ren.append_say("jer", "The GDScript way to call it is:
-								{code}ren.append_say('how','what'){/code}")
-		ren.append_say("jer", "The Ren'GD Script way to call it is:
-								{code}how' 'what'{/code}")
+		ren.append_say("jer", "The GDScript way to call it is: {code}ren.append_say('how','what'){/code}")
+		ren.append_say("jer", "The Ren'GD Script way to call it is: {code}how' 'what'{/code}")
 	
 	#if choice == 2: #Character
 
 	elif choice == 3: #Input
 		ren.append_say("jer", "Input statment/func is way to provide text input file for player.")
-		ren.append_say("jer", "The GDScript way to call it is:
-								{code}ren.append_input('var','what','temp'){/code}")
-		ren.append_say("jer", "The Ren'GD Script way to call it is:
-								{code}g: ren.input('var','what','temp'){/code}")
+		ren.append_say("jer", "The GDScript way to call it is: {code}ren.append_input('var','what','temp'){/code}")
+		ren.append_say("jer", "The Ren'GD Script way to call it is: {code}g: ren.input('var','what','temp'){/code}")
 	
 	#elif choice == 4: #Menu
 

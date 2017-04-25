@@ -63,8 +63,6 @@ func use_statement(num):
             mark_seen(s)
         
         snum = num
-        
-        emit_signal("statement_changed")
 
 
 func mark_seen(statement):
