@@ -5,16 +5,21 @@
 
 extends Node
 
-## "importing" ren_statement
+## import ren_statement
 cost REN_STA = preload("ren_statement.gd")
 var ren_sta
+var statements = []
 
-## "importing" ren_def
+## import ren_def
 const REN_DEF = preload("ren_def.gd")
 var ren_def
 var keywords = { "version":{"type":"text", "value":"0.6"} }
 
-## "importing" ren_say 
+## import ren_text
+const REN_TXT
+var ren_txt
+
+## import ren_say 
 const REN_SAY = preload("ren_say.gd")
 var ren_say
 var vbc = "VBoxContainer"
@@ -27,7 +32,7 @@ var nvl_scroll_path = "Nvl/" + vbc
 
 onready var say_scene = preload("res://scenes/gui/Say.tscn")
 
-## "importing" ren_tools
+## import ren_tools
 const REN_TLS = preload("ren_tools.gd")
 var ren_tls
 
@@ -43,6 +48,10 @@ func _ready():
     # setup ren_def
     ren_def = REN_DEF.instance()
     ren_def.keywords = keywords
+
+    # setup ren_text
+    ren_txt = REN_TXT
+    ren_txt.keywords = keywords
 
     # setup ren_say
     ren_say = REN_SAY.instance()
@@ -76,7 +85,7 @@ func on_statement_changed():
 func start_ren():
     ## This must be at end of code using ren api
 	## this start ren "magic" ;)
-    ren_sta 
+    ren_sta.statements = 
     use_statement(0)
 
 

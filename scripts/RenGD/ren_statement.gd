@@ -3,7 +3,7 @@
 ## version: 0.6 ##
 ## License MIT ##
 
-extends Node
+extends Object
 
 var ren_say
 var choice_screen
