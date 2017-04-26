@@ -44,8 +44,8 @@ func use(statement):
     what = args.what
     temp = args.temp
 
-    temp = ren.text_passer(temp)
-    what = ren.text_passer(what)
+    temp = ren.say_passer(temp)
+    what = ren.say_passer(what)
 
     set_text(temp)
     namebox_screen.set_bbcode(what)

@@ -1,17 +1,16 @@
-[gd_scene load_steps=13 format=1]
+[gd_scene load_steps=12 format=1]
 
 [ext_resource path="res://gui/themes/new_gui/tres/main.tres" type="Theme" id=1]
 [ext_resource path="res://scripts/RenGD/ren.gd" type="Script" id=2]
-[ext_resource path="res://scripts/RenGD/ren_easy.gd" type="Script" id=3]
-[ext_resource path="res://gui/themes/new_gui/tres/choice.tres" type="Theme" id=4]
-[ext_resource path="res://scripts/RenGD/choice_screen.gd" type="Script" id=5]
-[ext_resource path="res://scenes/gui/Say.tscn" type="PackedScene" id=6]
-[ext_resource path="res://gui/themes/new_gui/tres/quick.tres" type="Theme" id=7]
-[ext_resource path="res://scripts/RenGD/quick_screen.gd" type="Script" id=8]
-[ext_resource path="res://gui/themes/new_gui/imgs/notify.png" type="Texture" id=9]
-[ext_resource path="res://gui/themes/new_gui/imgs/skip.png" type="Texture" id=10]
-[ext_resource path="res://fonts/notify_text_sizeR.fnt" type="BitmapFont" id=11]
-[ext_resource path="res://scripts/RenGD/label_manager.gd" type="Script" id=12]
+[ext_resource path="res://gui/themes/new_gui/tres/choice.tres" type="Theme" id=3]
+[ext_resource path="res://scripts/RenGD/choice_screen.gd" type="Script" id=4]
+[ext_resource path="res://scenes/gui/Say.tscn" type="PackedScene" id=5]
+[ext_resource path="res://gui/themes/new_gui/tres/quick.tres" type="Theme" id=6]
+[ext_resource path="res://scripts/RenGD/quick_screen.gd" type="Script" id=7]
+[ext_resource path="res://gui/themes/new_gui/imgs/notify.png" type="Texture" id=8]
+[ext_resource path="res://gui/themes/new_gui/imgs/skip.png" type="Texture" id=9]
+[ext_resource path="res://fonts/notify_text_sizeR.fnt" type="BitmapFont" id=10]
+[ext_resource path="res://scripts/RenGD/ren_label.gd" type="Script" id=11]
 
 [node name="Window" type="Control"]
 
@@ -27,18 +26,6 @@ margin/right = 40.0
 margin/bottom = 40.0
 script/script = ExtResource( 2 )
 
-[node name="RenEasy" type="Control" parent="."]
-
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 40.0
-margin/bottom = 40.0
-script/script = ExtResource( 3 )
-
 [node name="Choice" type="VBoxContainer" parent="."]
 
 anchor/top = 3
@@ -48,14 +35,14 @@ focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 3
 size_flags/vertical = 3
-theme/theme = ExtResource( 4 )
+theme/theme = ExtResource( 3 )
 margin/left = 139.0
 margin/top = -138.0
 margin/right = -1147.0
 margin/bottom = -354.0
 custom_constants/separation = 5
 alignment = 1
-script/script = ExtResource( 5 )
+script/script = ExtResource( 4 )
 
 [node name="Nvl" type="ScrollContainer" parent="."]
 
@@ -86,7 +73,7 @@ margin/right = 0.0
 margin/bottom = 0.0
 alignment = 0
 
-[node name="Adv" parent="." instance=ExtResource( 6 )]
+[node name="Adv" parent="." instance=ExtResource( 5 )]
 
 anchor/left = 0
 anchor/top = 1
@@ -97,8 +84,9 @@ margin/top = -494.0
 margin/right = -1242.0
 margin/bottom = -684.0
 
-[node name="Center" parent="." instance=ExtResource( 6 )]
+[node name="Center" parent="." instance=ExtResource( 5 )]
 
+editor/display_folded = true
 visibility/visible = false
 anchor/top = 3
 anchor/bottom = 3
@@ -107,7 +95,25 @@ margin/top = -241.0
 margin/right = -1253.0
 margin/bottom = -431.0
 
-[node name="FullScreen" parent="." instance=ExtResource( 6 )]
+[node name="TextureFrame" parent="Center"]
+
+visibility/visible = false
+
+[node name="VBoxContainer" parent="Center"]
+
+margin/left = 194.0
+margin/bottom = 456.0
+
+[node name="NameBox" parent="Center/VBoxContainer"]
+
+margin/right = 1023.0
+
+[node name="Dialog" parent="Center/VBoxContainer"]
+
+margin/right = 1023.0
+margin/bottom = 451.0
+
+[node name="FullScreen" parent="." instance=ExtResource( 5 )]
 
 editor/display_folded = true
 visibility/visible = false
@@ -118,19 +124,18 @@ margin/bottom = 676.0
 
 [node name="Quick" type="HBoxContainer" parent="."]
 
-editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
-theme/theme = ExtResource( 7 )
+theme/theme = ExtResource( 6 )
 margin/left = 173.0
 margin/top = 690.0
 margin/right = 1217.0
 margin/bottom = 721.0
 custom_constants/separation = 20
 alignment = 1
-script/script = ExtResource( 8 )
+script/script = ExtResource( 7 )
 
 [node name="Back" type="Button" parent="Quick"]
 
@@ -294,7 +299,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 922.0
 margin/bottom = 43.0
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
 stretch_mode = 0
 
 [node name="Skip" type="TextureFrame" parent="NotifyArea"]
@@ -307,7 +312,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 240.0
 margin/bottom = 43.0
-texture = ExtResource( 10 )
+texture = ExtResource( 9 )
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="NotifyArea"]
@@ -320,7 +325,7 @@ margin/left = 10.0
 margin/top = 5.0
 margin/right = 72.0
 margin/bottom = 36.0
-custom_fonts/font = ExtResource( 11 )
+custom_fonts/font = ExtResource( 10 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Skip"
 align = 3
@@ -339,7 +344,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 40.0
 margin/bottom = 40.0
-script/script = ExtResource( 12 )
+script/script = ExtResource( 11 )
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -349,3 +354,4 @@ one_shot = false
 autostart = false
 
 
+[editable path="Center"]

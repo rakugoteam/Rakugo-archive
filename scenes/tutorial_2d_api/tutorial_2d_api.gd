@@ -1,14 +1,13 @@
-## Don't work now
-## This is Ren'GD tutorial scene script##
+## This is Ren'GD example scene script##
 ## Ren'GD is Ren'Py for Godot ##
 ## version: 0.6 ##
 ## License MIT ##
 
 
-extends Node
+extends Node2D
 
 ## it's how import rengd framework when res://scenes/gui/Window.tscn is loaded as singleton
-onready var ren = get_node("/root/Window/RenEasy") 
+onready var ren = get_node("/root/Window") 
 
 var another_time = false
 
@@ -38,15 +37,18 @@ func first():
 	## beacose it is first label in game I must write above method to get next things work
 
 	ren.define("guest") ## it add 'guest' var to 'keywords' dict that is global and will be saved
-	ren.input("guest", "What is your name?", "Godot Developer")
-	## ren.input will set guest var as what you type after pressing enter key
+	ren.append_input("guest", "What is your name?", "Godot Developer")
+	## ren.append_input will set guest var as what you type after pressing enter key
 	## It use renpy markup format iI discribed it more under first use of ren.say
 	
 	var jer = ren.Character("Jeremi360", "#25c33e")
-	ren.define("jer", jer)
+	ren.define_ch("jer", jer)
 	## This is how you declare a new Character
 
-	ren.say("jer", """Hi! My name is [jer.name]. Welcome [guest] to Ren'GD [version] Tutorial. Press MLB, Enter or Space to continue.""")
+	ren.append_say("jer",
+			"""Hi! My name is [jer.name].
+			Welcome [guest] to Ren'GD [version] Tutorial.
+			Press MLB, Enter or Space to continue.""")
 	## It will set 'Jeremi360' in root/Window/Say/NameBox and second arg in root/Window/Say/Dialog
 	## It has markup format like in Ren'Py it means that all godot bbcode '[]' become '{}'
 	## '[guest]' will add guest var to your string and do the same for version var
@@ -54,12 +56,12 @@ func first():
 
 	# var test_list = ["test", "TEST"]
 	# ren.define_list("test_list", test_list)
-	# ren.say("jer","Test of list [test_list[1]].")
+	# ren.append_say("jer","Test of list [test_list[1]].")
 
 	var topics = [
 		"Basic",
 		"Say",
-		"Character",
+		"Character"
 		"Input",
 		"Menu",
 		"Label",
@@ -67,13 +69,16 @@ func first():
 	]
 
 
-	ren.menu(topics, "What you want to know?", self, "topic_choice")
+	ren.append_menu_func(topics, "What you want to know?", self, "topic_choice")
 
 	ren.define("ex_path", tscn_path)
-	ren.say("jer", """It's end for now to see how it is done see: {tab}- [ex_path].gd {tab}- [ex_path].tscn""")
+	ren.append_say("jer", 
+			"""It's end for now to see how it is done see:
+			{tab}- [ex_path].gd
+			{tab}- [ex_path].tscn""")
 	
-	ren.say("jer", "Goodbye, [guest].")
-	#ren.godot_line("ren.use_statement", [0])
+	ren.append_say("jer", "Goodbye, [guest].")
+	ren.append_godot_line("ren.use_statement", [0])
 	
 
 func topic_choice(choice):
@@ -83,16 +88,20 @@ func topic_choice(choice):
 
 
 	if choice == 1: #Say
-		ren.say("jer", "Say statment/func is make character speaks.")
-		ren.say("jer", "The GDScript way to call it is: {code}ren.say('how','what'){/code}")
-		ren.say("jer", "The Ren'GD Script way to call it is: {code}how' 'what'{/code}")
+		ren.append_say("jer", "Say statment/func is make character speaks.")
+		ren.append_say("jer", "The GDScript way to call it is:
+								{code}ren.append_say('how','what'){/code}")
+		ren.append_say("jer", "The Ren'GD Script way to call it is:
+								{code}how' 'what'{/code}")
 	
 	#if choice == 2: #Character
 
 	elif choice == 3: #Input
-		ren.say("jer", "Input statment/func is way to provide text input file for player.")
-		ren.say("jer", "The GDScript way to call it is: {code}ren.input('var','what','temp'){/code}")
-		ren.say("jer", "The Ren'GD Script way to call it is: {code}g: ren.input('var','what','temp'){/code}")
+		ren.append_say("jer", "Input statment/func is way to provide text input file for player.")
+		ren.append_say("jer", "The GDScript way to call it is:
+								{code}ren.append_input('var','what','temp'){/code}")
+		ren.append_say("jer", "The Ren'GD Script way to call it is:
+								{code}g: ren.input('var','what','temp'){/code}")
 	
 	#elif choice == 4: #Menu
 
@@ -102,7 +111,7 @@ func topic_choice(choice):
 		
 	
 	else:
-		ren.say('', "To be done :(.")
+		ren.append_say('', "To be done :(.")
 	
 	ren.after_menu()
 		

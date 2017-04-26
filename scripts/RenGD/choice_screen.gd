@@ -16,10 +16,25 @@ var func_name = ""
 var statements_before_menu = []
 var statements_after_menu = []
 
-func statement(choices, title, node = null, func_name = null):
+
+func statement(choices, title = ""):
 	 ## return menu statement
     var s = {
         "type": "menu",
+        "args":
+            {
+            "title": title,
+            "choices": choices
+            }
+    }
+
+    return s
+
+
+func statement_func(choices, title, node, func_name):
+	 ## return menu statement
+    var s = {
+        "type": "menu_func",
         "args":
             {
             "title": title,
@@ -32,7 +47,13 @@ func statement(choices, title, node = null, func_name = null):
     return s
 
 
-func use_raw(choices, title, node, func_name):
+func append(choices, title = ""):
+    ## append menu statement
+    var s = menu(choices, title)
+    ren.statements.append(s)
+
+
+func use_with_func_raw(choices, title, node, func_name):
 	## "run" custom menu statement
 	## made to use menu statement easy to use with gdscript
 	ren.can_roll = false
@@ -53,7 +74,7 @@ func use_raw(choices, title, node, func_name):
 		add_child(b)
 
 		k = "{center}" + k + "{/center}"
-		k = ren.text_passer(k)
+		k = ren.say_passer(k)
 
 		var tr = b.get_child(0)
 		tr.set_bbcode(k)
@@ -63,18 +84,21 @@ func use_raw(choices, title, node, func_name):
 	show()
 
 
+func use_with_func(statement):
+	## "run" custom menu statement
+	## made to use menu statement easy to use with gdscript
+	choices = statement.args.choices
+	title = statement.args.title
+	node = statement.args.node
+	func_name = statement.args.func_name
+	use_with_func_raw(choices, title, node, func_name)
+
+
 func use(statement):
 	## "run" menu statement
 	choices = statement.args.choices
 	title = statement.args.title
-	
-	if typeof(choices) == TYPE_ARRAY:
-		use_raw(choices.keys(), title, self, "_on_choice")
-	
-	elif typeof(choices) == TYPE_DICTIONARY:
-		node = statement.args.node
-		func_name = statement.args.func_name
-		use_raw(choices.keys(), title, self, "_on_choice")
+	use_with_func(choices.keys(), title, self, "_on_choice")
 
 
 func before_menu():
@@ -82,7 +106,6 @@ func before_menu():
 	statements_before_menu = ren.array_slice(ren.statements, 0, ren.snum+1)
 	statements_after_menu = ren.array_slice(ren.statements, ren.snum+1, ren.statements.size()+1)
 	ren.statements = statements_before_menu
-	ren.update_statements()
 
 
 func after_menu():
@@ -91,7 +114,6 @@ func after_menu():
 	
 	hide()
 	ren.can_roll = true
-	ren.update_statements()
 	ren.next_statement()
 
 
