@@ -86,7 +86,6 @@ margin/bottom = -684.0
 
 [node name="Center" parent="." instance=ExtResource( 5 )]
 
-editor/display_folded = true
 visibility/visible = false
 anchor/top = 3
 anchor/bottom = 3
@@ -94,24 +93,6 @@ margin/left = 28.0
 margin/top = -241.0
 margin/right = -1253.0
 margin/bottom = -431.0
-
-[node name="TextureFrame" parent="Center"]
-
-visibility/visible = false
-
-[node name="VBoxContainer" parent="Center"]
-
-margin/left = 194.0
-margin/bottom = 456.0
-
-[node name="NameBox" parent="Center/VBoxContainer"]
-
-margin/right = 1023.0
-
-[node name="Dialog" parent="Center/VBoxContainer"]
-
-margin/right = 1023.0
-margin/bottom = 451.0
 
 [node name="FullScreen" parent="." instance=ExtResource( 5 )]
 
@@ -124,6 +105,7 @@ margin/bottom = 676.0
 
 [node name="Quick" type="HBoxContainer" parent="."]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
@@ -354,4 +336,3 @@ one_shot = false
 autostart = false
 
 
-[editable path="Center"]

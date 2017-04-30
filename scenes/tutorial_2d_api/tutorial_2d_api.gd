@@ -61,7 +61,7 @@ func first():
 	var topics = [
 		"Basic",
 		"Say",
-		"Character"
+		"Character",
 		"Input",
 		"Menu",
 		"Label",
@@ -78,7 +78,7 @@ func first():
 			{tab}- [ex_path].tscn""")
 	
 	ren.append_say("jer", "Goodbye, [guest].")
-	ren.append_godot_line("ren.use_statement", [0])
+	# ren.append_godot_line("ren.use_statement", [0])
 	
 
 func topic_choice(choice):
@@ -89,29 +89,31 @@ func topic_choice(choice):
 
 	if choice == 1: #Say
 		ren.append_say("jer", "Say statment/func is make character speaks.")
-		ren.append_say("jer", "The GDScript way to call it is:
-								{code}ren.append_say('how','what'){/code}")
-		ren.append_say("jer", "The Ren'GD Script way to call it is:
-								{code}how' 'what'{/code}")
+		ren.append_say("jer", """The GDScript way to call it is:
+								{code}ren.append_say('how','what'){/code}""")
+		ren.append_say("jer", """The Ren'GD Script way to call it is:
+								{code}'how' 'what'{/code} or {code}charcter_var 'what'{/code}""")
 	
 	#if choice == 2: #Character
 
 	elif choice == 3: #Input
 		ren.append_say("jer", "Input statment/func is way to provide text input file for player.")
-		ren.append_say("jer", "The GDScript way to call it is:
-								{code}ren.append_input('var','what','temp'){/code}")
-		ren.append_say("jer", "The Ren'GD Script way to call it is:
-								{code}g: ren.input('var','what','temp'){/code}")
+		ren.append_say("jer", """The GDScript way to call it is:
+								{code}ren.append_input('var','what','temp'){/code}""")
+		ren.append_say("jer", """The Ren'GD Script way to call it is:
+								{code}g: ren.input('var','what','temp'){/code}""")
 	
-	#elif choice == 4: #Menu
+	# #elif choice == 4: #Menu
 
-	#elif choice == 5: #Label
+	# #elif choice == 5: #Label
 
-	#elif choice == 6: # Node
+	# #elif choice == 6: # Node
 		
 	
 	else:
 		ren.append_say('', "To be done :(.")
+	
+
 	
 	ren.after_menu()
 		

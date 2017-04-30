@@ -93,11 +93,11 @@ func use_statement(num):
         elif s.type == "menu_func":
             menu_func(s)
         
-        elif s.type == "jump_to_statement":
-            jump_to_statement(s)
+        # elif s.type == "jump_to_statement":
+        #     jump_to_statement(s)
         
-        elif s.type == "g":
-            callv(s.fun, s.args)
+        # elif s.type == "g":
+        #     callv(s.fun, s.args)
             
         if num + 1 < statements.size():
             if not is_statement_id_important(num + 1):
@@ -405,23 +405,24 @@ func menu(statement):
     ## "run" menu statement
     choice_screen.use(statement)
 
+# don't work  for now :(
 
-func godot_line(fun, args = []):
-    ## append g statement
-    ## use it to execute godot func in rengd
-    var s = {"type":"g",
-            "fun":fun,
-            "args":args
-            }
+# func godot_line(fun, args = []):
+#     ## append g statement
+#     ## use it to execute godot func in rengd
+#     var s = {"type":"g",
+#             "fun":fun,
+#             "args":args
+#             }
     
-    return s
+#     return s
 
 
-func append_godot_line(fun, args = []):
-    ## return g statement
-    ## use it to execute godot func in rengd
-    var s = append_godot_line(fun, args)
-    statements.append(s)
+# func append_godot_line(fun, args = []):
+#     ## return g statement
+#     ## use it to execute godot func in rengd
+#     var s = append_godot_line(fun, args)
+#     statements.append(s)
 
 
 
