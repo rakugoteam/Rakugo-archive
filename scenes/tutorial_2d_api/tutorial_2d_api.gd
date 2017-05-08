@@ -1,6 +1,6 @@
 ## This is Ren'GD example scene script##
 ## Ren'GD is Ren'Py for Godot ##
-## version: 0.6 ##
+## version: 0.7 ##
 ## License MIT ##
 
 
