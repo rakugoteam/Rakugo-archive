@@ -42,7 +42,7 @@ func first():
 	## It use renpy markup format iI discribed it more under first use of ren.say
 	
 	var jer = ren.Character("Jeremi360", "#25c33e")
-	ren.define_ch("jer", jer)
+	ren.define("jer", jer)
 	## This is how you declare a new Character
 
 	ren.append_say("jer",

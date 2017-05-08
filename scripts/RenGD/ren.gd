@@ -32,8 +32,13 @@ var important_types = ["say", "input", "menu"]
 
 signal statement_changed
 
+const REN_DEF = preload("ren_def.gd")
+var ren_def
+
 func _ready():
     
+    ren_def = new(REN_DEF)
+
     ## code borrow from:
     ## http://docs.godotengine.org/en/stable/tutorials/step_by_step/singletons_autoload.html
     var root = get_tree().get_root()
@@ -65,6 +70,7 @@ func prev_statement():
 func jump_to_statement(statement):
     var id = statements.find(statement)
     use_statement(id)
+
 
 func _input(event):
 
@@ -185,27 +191,13 @@ func _deferred_goto_scene(path):
 
 func define(key_name, key_value = null):
     ## add global var that ren will see
-    keywords[key_name] = {"type":"var", "value":key_value}
-
-
-func define_ch(key_name, character_value = {}):
-    ## add global Character var that ren will see
-    keywords[key_name] = {"type":"Character", "value":character_value}
-
-
-func define_dict(key_name, dict = {}):
-    ## add global dict var that ren will see
-    keywords[key_name] = {"type":"dict", "value":dict}
-
-# func define_list(key_name, list = []):
-#     ## add global dict var that ren will see
-#     keywords[key_name] = {"type":"list", "value":list}
-
+    ren_def.define(keywords, key_name, key_value)
+    
 
 func Character(name="", color ="", what_prefix="", what_suffix="", kind="adv"):
     ## return new Character
-    return {"name":name, "color":color, "what_prefix":what_prefix,
-            "what_suffix":what_suffix, "kind":kind}
+    var ch = ren_def.Charater(name, color, what_prefix, what_suffix, kind)
+    return ch
 
 
 func say_passer(text):
