@@ -5,7 +5,7 @@
 
 extends Object
 
-func text_passer(text = "", keywords):
+func text_passer(keywords, text = ""):
     ## passer for renpy markup format
     ## its retrun bbcode
 

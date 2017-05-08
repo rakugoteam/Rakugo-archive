@@ -4,7 +4,7 @@
 ## License MIT ##
 
 
-extends Control
+extends Node
 
 var vbc = "VBoxContainer"
 
@@ -25,7 +25,7 @@ onready var say_scene = preload("res://scenes/gui/Say.tscn")
 var snum = 0 ## current statement number
 var seen_statements = []
 var statements = []
-var keywords = { "version":{"type":"text", "value":"0.6"} }
+var keywords = { "version":{"type":"text", "value":"0.7"} }
 var can_roll = true
 
 var important_types = ["say", "input", "menu"]
@@ -41,6 +41,7 @@ var ren_text
 func _ready():
     
     ren_def = new(REN_DEF)
+    ren_txt = new(REN_TXT)
 
     ## code borrow from:
     ## http://docs.godotengine.org/en/stable/tutorials/step_by_step/singletons_autoload.html
@@ -203,10 +204,10 @@ func Character(name="", color ="", what_prefix="", what_suffix="", kind="adv"):
     return ch
 
 
-func say_passer(text):
+func text_passer(text = ""):
     ## passer for renpy markup format
     ## its retrun bbcode
-    return text
+    return ren_txt.text_passer(keywords, text)
 
 
 func label(label_name, scene_path, node_path = null, func_name = null):
