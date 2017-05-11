@@ -69,7 +69,7 @@ func first():
 	]
 
 
-	ren.append_menu_func(topics, "What you want to know?", self, "topic_choice")
+	ren.append_menu(topics, "What you want to know?", self, "topic_choice")
 
 	ren.define("ex_path", tscn_path)
 	ren.append_say("jer", 

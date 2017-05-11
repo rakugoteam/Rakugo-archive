@@ -17,24 +17,10 @@ var statements_before_menu = []
 var statements_after_menu = []
 
 
-func statement(choices, title = ""):
-	 ## return menu statement
+func statement(choices, title, node = null, func_name = ""):
+	## return menu statement
     var s = {
         "type": "menu",
-        "args":
-            {
-            "title": title,
-            "choices": choices
-            }
-    }
-
-    return s
-
-
-func statement_func(choices, title, node, func_name):
-	 ## return menu statement
-    var s = {
-        "type": "menu_func",
         "args":
             {
             "title": title,
@@ -53,7 +39,7 @@ func append(choices, title = ""):
     ren.statements.append(s)
 
 
-func use_with_func_raw(choices, title, node, func_name):
+func _use(choices, title, node, func_name):
 	## "run" custom menu statement
 	## made to use menu statement easy to use with gdscript
 	ren.can_roll = false
@@ -84,21 +70,18 @@ func use_with_func_raw(choices, title, node, func_name):
 	show()
 
 
-func use_with_func(statement):
-	## "run" custom menu statement
-	## made to use menu statement easy to use with gdscript
-	choices = statement.args.choices
-	title = statement.args.title
-	node = statement.args.node
-	func_name = statement.args.func_name
-	use_with_func_raw(choices, title, node, func_name)
-
-
 func use(statement):
-	## "run" menu statement
+	## "run" custom menu statement
 	choices = statement.args.choices
 	title = statement.args.title
-	use_with_func(choices.keys(), title, self, "_on_choice")
+
+	if typeof(choices) == TYPE_ARRAY:
+		_use(choices.keys(), title, self, "_on_choice")
+	
+	elif typeof(choices) == TYPE_DICTIONARY:
+		node = statement.args.node
+		func_name = statement.args.func_name
+		_use(choices, title, node, func_name)
 
 
 func before_menu():

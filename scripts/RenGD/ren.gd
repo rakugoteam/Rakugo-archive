@@ -99,9 +99,6 @@ func use_statement(num):
         
         elif s.type == "menu":
             menu(s)
-
-        elif s.type == "menu_func":
-            menu_func(s)
         
         # elif s.type == "jump_to_statement":
         #     jump_to_statement(s)
@@ -310,31 +307,15 @@ func after_menu():
     choice_screen.after_menu()
 
 
-func menu_func_statement(choices, title, node, func_name):
+func menu_statement(choices, title = "", node = null, func_name = ""):
 	## return custom menu statement
 	## made to use menu statement easy to use with gdscript
-    return choice_screen.statement_func(choices, title, node, func_name)
+    return choice_screen.statement(choices, title, node, func_name)
 
 
-func append_menu_func(choices, title, node, func_name):
+func append_menu(choices, title = "", node = null, func_name = ""):
     ## append menu_func statement
-    var s = menu_func_statement(choices, title, node, func_name)
-    statements.append(s)
-
-
-func menu_func(statement):
-    ## "run" menu_func statement
-    choice_screen.use_with_func(statement)
-
-
-func menu_statement(choices, title = ""):
-    ## return menu statement
-    return choice_screen.statement(choices, title)
-
-
-func append_menu(choices, title = ""):
-    ## append menu statement
-    var s = menu_statement(choices, title)
+    var s = menu_statement(choices, title, node, func_name)
     statements.append(s)
 
 
