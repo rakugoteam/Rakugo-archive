@@ -75,7 +75,7 @@ func use(statement):
 	choices = statement.args.choices
 	title = statement.args.title
 
-	if typeof(choices) == TYPE_ARRAY:
+	if typeof(choices) == TYPE_DICTIONARY:
 		_use(choices.keys(), title, self, "_on_choice")
 	
 	elif typeof(choices) == TYPE_DICTIONARY:

@@ -36,12 +36,12 @@ const REN_DEF = preload("ren_def.gd")
 var ren_def
 
 const REN_TXT = preload("ren_text.gd")
-var ren_text
+var ren_txt
 
 func _ready():
     
-    ren_def = new(REN_DEF)
-    ren_txt = new(REN_TXT)
+    ren_def = REN_DEF.new()
+    ren_txt = REN_TXT.new()
 
     ## code borrow from:
     ## http://docs.godotengine.org/en/stable/tutorials/step_by_step/singletons_autoload.html
@@ -197,7 +197,7 @@ func define(key_name, key_value = null):
 
 func Character(name="", color ="", what_prefix="", what_suffix="", kind="adv"):
     ## return new Character
-    var ch = ren_def.Charater(name, color, what_prefix, what_suffix, kind)
+    var ch = ren_def.Character(name, color, what_prefix, what_suffix, kind)
     return ch
 
 
