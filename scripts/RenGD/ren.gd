@@ -84,7 +84,21 @@ func _input(event):
         
         elif event.is_action_pressed("ren_rollback"):
             prev_statement()
-        
+
+
+func print_statment(message):
+    ## to debug ren stuff in right order
+    return {"type": "print", "arg": message}
+
+
+func append_print_statment(message):
+    ## to debug ren stuff in right order
+    var s = print_statment(message)
+    statements.append(s)
+
+
+func use_print(s):
+    print(s.arg)
 
 func use_statement(num):
     ## go to statement with given number
@@ -99,6 +113,9 @@ func use_statement(num):
         
         elif s.type == "menu":
             menu(s)
+        
+        elif s.type == "print":
+            use_print(s)
         
         # elif s.type == "jump_to_statement":
         #     jump_to_statement(s)

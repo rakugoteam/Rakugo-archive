@@ -58,6 +58,7 @@ func first():
 	# ren.define_list("test_list", test_list)
 	# ren.append_say("jer","Test of list [test_list[1]].")
 
+	
 	var topics = [
 		"Basic",
 		"Say",
@@ -67,7 +68,6 @@ func first():
 		"Label",
 		"Node"
 	]
-
 
 	ren.append_menu(topics, "What you want to know?", self, "topic_choice")
 
@@ -114,6 +114,5 @@ func topic_choice(choice):
 		ren.append_say('', "To be done :(.")
 	
 
-	
 	ren.after_menu()
 		

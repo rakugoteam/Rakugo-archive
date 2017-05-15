@@ -33,9 +33,9 @@ func statement(choices, title, node = null, func_name = ""):
     return s
 
 
-func append(choices, title = ""):
+func append(choices, title = "", node = null, func_name = ""):
     ## append menu statement
-    var s = menu(choices, title)
+    var s = statement(choices, title, node, func_name)
     ren.statements.append(s)
 
 
@@ -75,13 +75,13 @@ func use(statement):
 	choices = statement.args.choices
 	title = statement.args.title
 
-	if typeof(choices) == TYPE_DICTIONARY:
-		_use(choices.keys(), title, self, "_on_choice")
+	if typeof(choices) == TYPE_ARRAY:
+		_use(choices, title, self, "_on_choice")
 	
 	elif typeof(choices) == TYPE_DICTIONARY:
 		node = statement.args.node
 		func_name = statement.args.func_name
-		_use(choices, title, node, func_name)
+		_use(choices.keys(), title, node, func_name)
 
 
 func before_menu():
