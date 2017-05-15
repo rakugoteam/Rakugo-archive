@@ -86,7 +86,6 @@ func topic_choice(choice):
 
 	#if choice == 0: #Basic
 
-
 	if choice == 1: #Say
 		ren.append_say("jer", "Say statment/func is make character speaks.")
 		ren.append_say("jer", """The GDScript way to call it is:
@@ -115,4 +114,5 @@ func topic_choice(choice):
 	
 
 	ren.after_menu()
+	
 		

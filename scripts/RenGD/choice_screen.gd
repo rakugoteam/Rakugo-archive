@@ -75,25 +75,29 @@ func use(statement):
 	choices = statement.args.choices
 	title = statement.args.title
 
-	if typeof(choices) == TYPE_ARRAY:
-		_use(choices, title, self, "_on_choice")
+	if typeof(choices) == TYPE_DICTIONARY:
+		_use(choices.keys(), title, self, "_on_choice")
 	
-	elif typeof(choices) == TYPE_DICTIONARY:
+	elif typeof(choices) == TYPE_ARRAY:
 		node = statement.args.node
 		func_name = statement.args.func_name
-		_use(choices.keys(), title, node, func_name)
+		_use(choices, title, node, func_name)
 
 
 func before_menu():
 	## must be on begin of menu custom func
+	print("statements: " + var2str(ren.statements))
 	statements_before_menu = ren.array_slice(ren.statements, 0, ren.snum+1)
+	print("statements: " + var2str(ren.statements))
 	statements_after_menu = ren.array_slice(ren.statements, ren.snum+1, ren.statements.size()+1)
+	print("statements: " + var2str(ren.statements))
 	ren.statements = statements_before_menu
 
 
 func after_menu():
 	## must be on end of menu custom func
 	ren.statements += statements_after_menu
+	
 	
 	hide()
 	ren.can_roll = true

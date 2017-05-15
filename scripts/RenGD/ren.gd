@@ -86,19 +86,19 @@ func _input(event):
             prev_statement()
 
 
-func print_statment(message):
-    ## to debug ren stuff in right order
-    return {"type": "print", "arg": message}
+# func print_statment(message):
+#     ## to debug ren stuff in right order
+#     return {"type": "print", "arg": message}
 
 
-func append_print_statment(message):
-    ## to debug ren stuff in right order
-    var s = print_statment(message)
-    statements.append(s)
+# func append_print_statment(message):
+#     ## to debug ren stuff in right order
+#     var s = print_statment(message)
+#     statements.append(s)
 
 
-func use_print(s):
-    print(s.arg)
+# func use_print(s):
+#     print(s.arg)
 
 func use_statement(num):
     ## go to statement with given number
@@ -114,8 +114,8 @@ func use_statement(num):
         elif s.type == "menu":
             menu(s)
         
-        elif s.type == "print":
-            use_print(s)
+        # elif s.type == "print":
+        #     use_print(s)
         
         # elif s.type == "jump_to_statement":
         #     jump_to_statement(s)
@@ -123,9 +123,9 @@ func use_statement(num):
         # elif s.type == "g":
         #     callv(s.fun, s.args)
             
-        if num + 1 < statements.size():
-            if not is_statement_id_important(num + 1):
-                use_statement(num + 1)
+        # if num + 1 < statements.size():
+        #     if not is_statement_id_important(num + 1):
+        #         use_statement(num + 1)
         
         if is_statement_important(s):
             mark_seen(s)
