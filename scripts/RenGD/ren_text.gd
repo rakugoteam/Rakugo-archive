@@ -65,7 +65,7 @@ func text_passer(keywords, text = ""):
         
             
         text = text.replace("{image", "[img")
-        text = text.replace("{tab}", "/t".c_unescape())
+        text = text.replace("{tab}", "/t".c_escape())
         text = text.replace("{", "[")
         text = text.replace("}", "]")
 

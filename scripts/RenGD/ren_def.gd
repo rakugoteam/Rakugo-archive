@@ -31,7 +31,7 @@ func define(keywords, key_name, key_value = null):
 
 
 
-func Character(name="", color ="", what_prefix="", what_suffix="", kind="adv"):
+func Character(name="", color="", what_prefix="", what_suffix="", kind="adv"):
     ## return new Character
     return {"name":name, "color":color, "what_prefix":what_prefix,
             "what_suffix":what_suffix, "kind":kind}

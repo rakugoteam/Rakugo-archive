@@ -58,6 +58,7 @@ func first():
 	# ren.define_list("test_list", test_list)
 	# ren.append_say("jer","Test of list [test_list[1]].")
 
+	
 	var topics = [
 		"Basic",
 		"Say",
@@ -68,8 +69,7 @@ func first():
 		"Node"
 	]
 
-
-	ren.append_menu_func(topics, "What you want to know?", self, "topic_choice")
+	ren.append_menu(topics, "What you want to know?", self, "topic_choice")
 
 	ren.define("ex_path", tscn_path)
 	ren.append_say("jer", 
@@ -85,7 +85,6 @@ func topic_choice(choice):
 	ren.before_menu()
 
 	#if choice == 0: #Basic
-
 
 	if choice == 1: #Say
 		ren.append_say("jer", "Say statment/func is make character speaks.")
@@ -114,6 +113,6 @@ func topic_choice(choice):
 		ren.append_say('', "To be done :(.")
 	
 
-	
 	ren.after_menu()
+	
 		

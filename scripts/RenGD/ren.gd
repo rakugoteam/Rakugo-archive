@@ -40,8 +40,8 @@ var ren_txt
 
 func _ready():
     
-    ren_def = new(REN_DEF)
-    ren_txt = new(REN_TXT)
+    ren_def = REN_DEF.new()
+    ren_txt = REN_TXT.new()
 
     ## code borrow from:
     ## http://docs.godotengine.org/en/stable/tutorials/step_by_step/singletons_autoload.html
@@ -84,7 +84,21 @@ func _input(event):
         
         elif event.is_action_pressed("ren_rollback"):
             prev_statement()
-        
+
+
+# func print_statment(message):
+#     ## to debug ren stuff in right order
+#     return {"type": "print", "arg": message}
+
+
+# func append_print_statment(message):
+#     ## to debug ren stuff in right order
+#     var s = print_statment(message)
+#     statements.append(s)
+
+
+# func use_print(s):
+#     print(s.arg)
 
 func use_statement(num):
     ## go to statement with given number
@@ -99,9 +113,9 @@ func use_statement(num):
         
         elif s.type == "menu":
             menu(s)
-
-        elif s.type == "menu_func":
-            menu_func(s)
+        
+        # elif s.type == "print":
+        #     use_print(s)
         
         # elif s.type == "jump_to_statement":
         #     jump_to_statement(s)
@@ -109,9 +123,9 @@ func use_statement(num):
         # elif s.type == "g":
         #     callv(s.fun, s.args)
             
-        if num + 1 < statements.size():
-            if not is_statement_id_important(num + 1):
-                use_statement(num + 1)
+        # if num + 1 < statements.size():
+        #     if not is_statement_id_important(num + 1):
+        #         use_statement(num + 1)
         
         if is_statement_important(s):
             mark_seen(s)
@@ -200,7 +214,7 @@ func define(key_name, key_value = null):
 
 func Character(name="", color ="", what_prefix="", what_suffix="", kind="adv"):
     ## return new Character
-    var ch = ren_def.Charater(name, color, what_prefix, what_suffix, kind)
+    var ch = ren_def.Character(name, color, what_prefix, what_suffix, kind)
     return ch
 
 
@@ -310,31 +324,15 @@ func after_menu():
     choice_screen.after_menu()
 
 
-func menu_func_statement(choices, title, node, func_name):
+func menu_statement(choices, title = "", node = null, func_name = ""):
 	## return custom menu statement
 	## made to use menu statement easy to use with gdscript
-    return choice_screen.statement_func(choices, title, node, func_name)
+    return choice_screen.statement(choices, title, node, func_name)
 
 
-func append_menu_func(choices, title, node, func_name):
+func append_menu(choices, title = "", node = null, func_name = ""):
     ## append menu_func statement
-    var s = menu_func_statement(choices, title, node, func_name)
-    statements.append(s)
-
-
-func menu_func(statement):
-    ## "run" menu_func statement
-    choice_screen.use_with_func(statement)
-
-
-func menu_statement(choices, title = ""):
-    ## return menu statement
-    return choice_screen.statement(choices, title)
-
-
-func append_menu(choices, title = ""):
-    ## append menu statement
-    var s = menu_statement(choices, title)
+    var s = menu_statement(choices, title, node, func_name)
     statements.append(s)
 
 
