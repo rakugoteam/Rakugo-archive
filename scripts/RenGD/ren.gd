@@ -36,7 +36,7 @@ const REN_DEF = preload("ren_def.gd")
 var ren_def
 
 const REN_TXT = preload("ren_text.gd")
-var ren_text
+var ren_txt
 
 func _ready():
     

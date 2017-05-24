@@ -14,6 +14,7 @@ margin/top = 0.0
 margin/right = 971.0
 margin/bottom = 67.0
 toggle_mode = false
+click_on_press = true
 enabled_focus_mode = 2
 shortcut = null
 flat = false
