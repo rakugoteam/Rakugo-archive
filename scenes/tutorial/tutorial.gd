@@ -4,10 +4,7 @@
 ## License MIT ##
 
 
-extends Node2D
-
-## it's how import rengd framework when res://scenes/gui/Window.tscn is loaded as singleton
-onready var ren = get_node("/root/Window") 
+extends "res://scripts/RenGD/ren_short.gd"
 
 var another_time = false
 
@@ -19,33 +16,33 @@ func _ready():
 
 	first()
 	
-	ren.start_ren()
+	start()
 	## This must be at end of code.
 	## this start ren "magic" ;)
 	
 
 func first():
-	var tscn_path = "res://scenes/tutorial_2d_api/tutorial_2d_api.tscn"
-	ren.label("tutorial_2d_api", tscn_path, "first")
+	var tscn_path = "res://scenes/tutorial/tutorial.tscn"
+	label("tutorial", tscn_path, "first")
 	## It add this scene func to know labels
 	## It allows later to easy swich between scenes and thier labels
 	## It allows also to reuse scene with different labels
-	## using: ren.jump(label_name, [func_args_if_any])
+	## using: jump(label_name, [func_args_if_any])
 	## You must labeled func before 'jumping' to it!
 	
-	## ren.set_label_current_label("tutorial_2d_api")
+	## set_label_current_label("tutorial_2d_api")
 	## beacose it is first label in game I must write above method to get next things work
 
-	ren.define("guest") ## it add 'guest' var to 'keywords' dict that is global and will be saved
-	ren.append_input("guest", "What is your name?", "Godot Developer")
-	## ren.append_input will set guest var as what you type after pressing enter key
-	## It use renpy markup format iI discribed it more under first use of ren.say
+	define("guest") ## it add 'guest' var to 'keywords' dict that is global and will be saved
+	input("guest", "What is your name?", "Godot Developer")
+	## input will set guest var as what you type after pressing enter key
+	## It use renpy markup format iI discribed it more under first use of say
 	
-	var jer = ren.Character("Jeremi360", "#25c33e")
-	ren.define("jer", jer)
+	var jer = Character("Jeremi360", "#25c33e")
+	define("jer", jer)
 	## This is how you declare a new Character
 
-	ren.append_say("jer",
+	say("jer",
 			"""Hi! My name is [jer.name].
 			Welcome [guest] to Ren'GD [version] Tutorial.
 			Press MLB, Enter or Space to continue.""")
@@ -55,8 +52,8 @@ func first():
 	## you can disabled it set 3rd argumet as 'false'
 
 	# var test_list = ["test", "TEST"]
-	# ren.define_list("test_list", test_list)
-	# ren.append_say("jer","Test of list [test_list[1]].")
+	# define_list("test_list", test_list)
+	# say("jer","Test of list [test_list[1]].")
 
 	
 	var topics = [
@@ -69,38 +66,37 @@ func first():
 		"Node"
 	]
 
-	ren.append_menu(topics, "What you want to know?", self, "topic_choice")
+	menu(topics, "What you want to know?", self, "topic_choice")
 
-	ren.define("ex_path", tscn_path)
-	ren.append_say("jer", 
+	define("ex_path", tscn_path)
+	say("jer", 
 			"""It's end for now to see how it is done see:
 			{tab}- [ex_path].gd
 			{tab}- [ex_path].tscn""")
 	
-	ren.append_say("jer", "Goodbye, [guest].")
-	# ren.append_godot_line("ren.use_statement", [0])
+	say("jer", "Goodbye, [guest].")
 	
 
 func topic_choice(choice):
-	ren.before_menu()
+	before_menu()
 
 	#if choice == 0: #Basic
 
 	if choice == 1: #Say
-		ren.append_say("jer", "Say statment/func is make character speaks.")
-		ren.append_say("jer", """The GDScript way to call it is:
-								{code}ren.append_say('how','what'){/code}""")
-		ren.append_say("jer", """The Ren'GD Script way to call it is:
+		say("jer", "Say statment/func is make character speaks.")
+		say("jer", """The GDScript way to call it is:
+								{code}say('how','what'){/code}""")
+		say("jer", """The Ren'GD Script way to call it is:
 								{code}'how' 'what'{/code} or {code}charcter_var 'what'{/code}""")
 	
 	#if choice == 2: #Character
 
 	elif choice == 3: #Input
-		ren.append_say("jer", "Input statment/func is way to provide text input file for player.")
-		ren.append_say("jer", """The GDScript way to call it is:
-								{code}ren.append_input('var','what','temp'){/code}""")
-		ren.append_say("jer", """The Ren'GD Script way to call it is:
-								{code}g: ren.input('var','what','temp'){/code}""")
+		say("jer", "Input statment/func is way to provide text input file for player.")
+		say("jer", """The GDScript way to call it is:
+								{code}input('var','what','temp'){/code}""")
+		say("jer", """The Ren'GD Script way to call it is:
+								{code}g: input('var','what','temp'){/code}""")
 	
 	# #elif choice == 4: #Menu
 
@@ -110,9 +106,9 @@ func topic_choice(choice):
 		
 	
 	else:
-		ren.append_say('', "To be done :(.")
+		say('', "To be done :(.")
 	
 
-	ren.after_menu()
+	after_menu()
 	
 		

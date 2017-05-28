@@ -33,16 +33,15 @@ var important_types = ["say", "input", "menu"]
 signal statement_changed
 
 const REN_DEF = preload("ren_def.gd")
-var ren_def
+onready var ren_def = REN_DEF.new()
 
 const REN_TXT = preload("ren_text.gd")
-var ren_txt
+onready var ren_txt = REN_TXT.new()
+
+const REN_TOOL = preload("ren_tools.gd")
+onready var ren_tl = REN_TOOL.new()
 
 func _ready():
-    
-    ren_def = REN_DEF.new()
-    ren_txt = REN_TXT.new()
-
     ## code borrow from:
     ## http://docs.godotengine.org/en/stable/tutorials/step_by_step/singletons_autoload.html
     var root = get_tree().get_root()
@@ -272,18 +271,7 @@ func append_input(ivar, what, temp = ""):
 
 
 func array_slice(array, from = 0, to = 0):
- 	if from > to or from < 0 or to > array.size():
- 		return array
- 	
- 	var _array = array
- 
- 	for i in range(0, from):
- 		_array.remove(i)
-     
- 	_array.resize(to - from)
- 
- 	return _array
-
+ 	return ren_tl.array_slice(array, from, to)
 
 func input(statement):
    ## "run" input statement
