@@ -50,6 +50,7 @@ func _ready():
     
     set_process_input(true)
 
+
 func start_ren():
     ## This must be at end of code using ren api
 	## this start ren "magic" ;)
@@ -63,11 +64,9 @@ func next_statement():
 
 func prev_statement():
     ## go to previous statement
-    
     var prev = seen_statements.find(statements[snum])
     prev = seen_statements[prev - 1]
     prev = statements.find(prev)
-
     use_statement(prev)
 
 
@@ -86,20 +85,6 @@ func _input(event):
             prev_statement()
 
 
-# func print_statment(message):
-#     ## to debug ren stuff in right order
-#     return {"type": "print", "arg": message}
-
-
-# func append_print_statment(message):
-#     ## to debug ren stuff in right order
-#     var s = print_statment(message)
-#     statements.append(s)
-
-
-# func use_print(s):
-#     print(s.arg)
-
 func use_statement(num):
     ## go to statement with given number
     if num < statements.size() - 1 and num >= 0:
@@ -113,19 +98,10 @@ func use_statement(num):
         
         elif s.type == "menu":
             menu(s)
-        
-        # elif s.type == "print":
-        #     use_print(s)
-        
-        # elif s.type == "jump_to_statement":
-        #     jump_to_statement(s)
-        
-        # elif s.type == "g":
-        #     callv(s.fun, s.args)
             
-        # if num + 1 < statements.size():
-        #     if not is_statement_id_important(num + 1):
-        #         use_statement(num + 1)
+        if num + 1 < statements.size():
+            if not is_statement_id_important(num + 1):
+                use_statement(num + 1)
         
         if is_statement_important(s):
             mark_seen(s)
@@ -340,24 +316,6 @@ func menu(statement):
     ## "run" menu statement
     choice_screen.use(statement)
 
-# don't work  for now :(
-
-# func godot_line(fun, args = []):
-#     ## append g statement
-#     ## use it to execute godot func in rengd
-#     var s = {"type":"g",
-#             "fun":fun,
-#             "args":args
-#             }
-    
-#     return s
-
-
-# func append_godot_line(fun, args = []):
-#     ## return g statement
-#     ## use it to execute godot func in rengd
-#     var s = append_godot_line(fun, args)
-#     statements.append(s)
 
 
 

@@ -86,30 +86,22 @@ func use(statement):
 
 func before_menu():
 	## must be on begin of menu custom func
-	print("statements: " + var2str(ren.statements))
 	statements_before_menu = ren.array_slice(ren.statements, 0, ren.snum+1)
-	print("statements: " + var2str(ren.statements))
 	statements_after_menu = ren.array_slice(ren.statements, ren.snum+1, ren.statements.size()+1)
-	print("statements: " + var2str(ren.statements))
 	ren.statements = statements_before_menu
 
 
 func after_menu():
 	## must be on end of menu custom func
 	ren.statements += statements_after_menu
-	
-	
 	hide()
 	ren.can_roll = true
 	ren.next_statement()
 
 
 func _on_choice(i):
-	
 	before_menu()
-	
 	ren.statements += choices.values()[i]
-
 	after_menu()
 	
 
