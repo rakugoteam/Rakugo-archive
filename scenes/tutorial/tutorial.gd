@@ -42,6 +42,12 @@ func first():
 	define("jer", jer)
 	## This is how you declare a new Character
 
+	node("jer", get_node("TestAvatar"))
+	ren_show("jer")
+	say("jer", "Hi this is how i look :)")
+	say("jer", "And now I will hide")
+	ren_hide("jer")
+
 	say("jer",
 			"""Hi! My name is [jer.name].
 			Welcome [guest] to Ren'GD [version] Tutorial.
@@ -49,13 +55,11 @@ func first():
 	## It will set 'Jeremi360' in root/Window/Say/NameBox and second arg in root/Window/Say/Dialog
 	## It has markup format like in Ren'Py it means that all godot bbcode '[]' become '{}'
 	## '[guest]' will add guest var to your string and do the same for version var
-	## you can disabled it set 3rd argumet as 'false'
 
 	# var test_list = ["test", "TEST"]
 	# define_list("test_list", test_list)
 	# say("jer","Test of list [test_list[1]].")
 
-	
 	var topics = [
 		"Basic",
 		"Say",

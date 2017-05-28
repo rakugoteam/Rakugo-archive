@@ -53,6 +53,20 @@ func after_menu():
 func menu(choices, title = "", node = null, func_name = ""):
     ## append menu_func statement
     ren.append_menu(choices, title, node, func_name)
+
+
+func node(node_name, node_path):
+    ## asign a global ren name for given node
+    ren.node(node_name, node_path)
+
+
+func ren_show(node_to_show):
+     ## append show statement
+     ren.append_show(node_to_show)
     
+
+func ren_hide(node_to_hide):
+     ## append hide statement
+     ren.append_hide(node_to_hide)
 
     

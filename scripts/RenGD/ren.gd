@@ -26,6 +26,7 @@ var snum = 0 ## current statement number
 var seen_statements = []
 var statements = []
 var keywords = { "version":{"type":"text", "value":"0.7"} }
+var nodes = {}
 var can_roll = true
 
 var important_types = ["say", "input", "menu"]
@@ -38,8 +39,12 @@ onready var ren_def = REN_DEF.new()
 const REN_TXT = preload("ren_text.gd")
 onready var ren_txt = REN_TXT.new()
 
-const REN_TOOL = preload("ren_tools.gd")
-onready var ren_tl = REN_TOOL.new()
+const REN_TOOLS = preload("ren_tools.gd")
+onready var ren_tls = REN_TOOLS.new()
+
+const REN_NODES = preload("ren_nodes.gd")
+onready var ren_nds =  REN_NODES.new()
+
 
 func _ready():
     ## code borrow from:
@@ -97,6 +102,12 @@ func use_statement(num):
         
         elif s.type == "menu":
             menu(s)
+        
+        elif s.type == "show":
+            s.arg.node.show()
+        
+        elif s.type == "hide":
+            s.arg.node.hide()
             
         if num + 1 < statements.size():
             if not is_statement_id_important(num + 1):
@@ -271,7 +282,7 @@ func append_input(ivar, what, temp = ""):
 
 
 func array_slice(array, from = 0, to = 0):
- 	return ren_tl.array_slice(array, from, to)
+ 	return ren_tls.array_slice(array, from, to)
 
 func input(statement):
    ## "run" input statement
@@ -305,5 +316,28 @@ func menu(statement):
     choice_screen.use(statement)
 
 
+func node(node_name, node_path):
+    ## asign a global ren name for given node
+    ren_nds.node(nodes, node_name, node_path)
 
 
+func show_statement(node_to_show):
+    ## return show statement
+    return ren_nds.show_statement(nodes, node_to_show)
+
+
+func append_show(node_to_show):
+    ## append show statment
+    var s = show_statement(node_to_show)
+    statements.append(s)
+
+
+func hide_statement(node_to_hide):
+    ## return hide statement
+    return ren_nds.hide_statement(nodes, node_to_hide)
+
+
+func append_hide(node_to_hide):
+    ## append hide statment
+    var s = hide_statement(node_to_hide)
+    statements.append(s)
