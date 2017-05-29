@@ -60,6 +60,11 @@ func node(node_name, node_path):
     ren.node(node_name, node_path)
 
 
+func auto_subnodes(node_name, node_path):
+    ## asign a global ren name for given node
+    ren.auto_subnodes(node_name, node_path)
+
+
 func ren_show(node_to_show):
      ## append show statement
      ren.append_show(node_to_show)

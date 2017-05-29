@@ -321,6 +321,11 @@ func node(node_name, node_path):
     ren_nds.node(nodes, node_name, node_path)
 
 
+func auto_subnodes(node_name, node_path):
+    ## auto asign a global ren name for children of given node
+    ren_nds.auto_subnodes(nodes, node_name, node_path)):
+    
+
 func show_statement(node_to_show):
     ## return show statement
     return ren_nds.show_statement(nodes, node_to_show)

@@ -5,10 +5,17 @@
 
 extends Object
 
-func node(nodes, ren_name, value):
+func node(nodes, ren_name, node):
     ## adds node do nodes
-    nodes[ren_name] = value
-    value.hide()
+    nodes[ren_name] = node
+    node.hide()
+
+
+func auto_subnodes(nodes, ren_name, node):
+    ## auto adds children of node as node's subnodes
+    for n in node.get_children():
+        var name = ren_name + " " + n.get_name()
+        node(nodes, name, n)
 
 
 func show_statement(nodes, node_to_show):
