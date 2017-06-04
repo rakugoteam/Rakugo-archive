@@ -44,7 +44,9 @@ func first():
 
 	node("jer", get_node("TestAvatar/Normal"))
 	auto_subnodes("jer", get_node("TestAvatar"), "Normal")
+	## This is how you create shortcuts to different sprites of your character 
 	ren_show("jer Smile")
+
 	say("jer", "Hi this is how i look.")
 	say("jer", "And now I will hide")
 	ren_hide("jer Smile")
