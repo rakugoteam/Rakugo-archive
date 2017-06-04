@@ -42,11 +42,12 @@ func first():
 	define("jer", jer)
 	## This is how you declare a new Character
 
-	node("jer", get_node("TestAvatar"))
-	ren_show("jer")
-	say("jer", "Hi this is how i look :)")
+	node("jer", get_node("TestAvatar/Normal"))
+	auto_subnodes("jer", get_node("TestAvatar"), "Normal")
+	ren_show("jer Smile")
+	say("jer", "Hi this is how i look.")
 	say("jer", "And now I will hide")
-	ren_hide("jer")
+	ren_hide("jer Smile")
 
 	say("jer",
 			"""Hi! My name is [jer.name].

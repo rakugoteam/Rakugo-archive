@@ -316,14 +316,14 @@ func menu(statement):
     choice_screen.use(statement)
 
 
-func node(node_name, node_path):
+func node(node_name, node_path, subnode = false):
     ## asign a global ren name for given node
-    ren_nds.node(nodes, node_name, node_path)
+    ren_nds.node(nodes, node_name, node_path, subnode)
 
 
-func auto_subnodes(node_name, node_path):
+func auto_subnodes(node_name, node_path, name_of_node_to_skip = ""):
     ## auto asign a global ren name for children of given node
-    ren_nds.auto_subnodes(nodes, node_name, node_path)):
+    ren_nds.auto_subnodes(nodes, node_name, node_path, name_of_node_to_skip)
     
 
 func show_statement(node_to_show):

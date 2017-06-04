@@ -5,30 +5,28 @@
 
 extends Object
 
-func node(nodes, ren_name, node):
+func node(nodes, ren_name, node, subnode = false):
     ## adds node do nodes
-    nodes[ren_name] = node
+    nodes[ren_name] = {"node": node, "sub": subnode}
     node.hide()
 
 
-func auto_subnodes(nodes, ren_name, node):
+func auto_subnodes(nodes, ren_name, node, name_of_node_to_skip = ""):
     ## auto adds children of node as node's subnodes
     for n in node.get_children():
-        var name = ren_name + " " + n.get_name()
-        node(nodes, name, n)
+        if n.get_name() != name_of_node_to_skip:
+            var name = ren_name + " " + n.get_name()
+            node(nodes, name, n, true)
 
 
 func show_statement(nodes, node_to_show):
     ## return show statement
     if node_to_show in nodes:
-        node_to_show = nodes[node_to_show]
+        node_to_show = nodes[node_to_show].node
 
     var s = {
         "type": "show",
-        "arg":
-            {
-			"node": node_to_show
-            }
+        "arg":{"node": node_to_show}
     }
 
     return s
@@ -39,14 +37,11 @@ func hide_statement(nodes, node_to_hide):
     var type = typeof(node_to_hide)
     
     if node_to_hide in nodes:
-        node_to_hide = nodes[node_to_hide]
+        node_to_hide = nodes[node_to_hide].node
 
     var s = {
         "type": "hide",
-        "arg":
-            {
-			"node": node_to_hide
-            }
+        "arg":{"node": node_to_hide}
     }
 
     return s

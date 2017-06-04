@@ -55,14 +55,14 @@ func menu(choices, title = "", node = null, func_name = ""):
     ren.append_menu(choices, title, node, func_name)
 
 
-func node(node_name, node_path):
+func node(node_name, node_path, subnode = false):
     ## asign a global ren name for given node
     ren.node(node_name, node_path)
 
 
-func auto_subnodes(node_name, node_path):
+func auto_subnodes(node_name, node_path, name_of_node_to_skip = ""):
     ## asign a global ren name for given node
-    ren.auto_subnodes(node_name, node_path)
+    ren.auto_subnodes(node_name, node_path, name_of_node_to_skip)
 
 
 func ren_show(node_to_show):
