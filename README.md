@@ -1,6 +1,6 @@
 # Ren-GD
 
-![Logo]("window_icon.png")
+![Logo](window_icon.png)
 
 Ren'Py for Godot.
 
