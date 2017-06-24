@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://scenes/tutorial/tutorial.gd" type="Script" id=1]
 [ext_resource path="res://fonts/title_text_sizeB.fnt" type="BitmapFont" id=2]
+[ext_resource path="res://scenes/tutorial/dialog.gd" type="Script" id=3]
+[ext_resource path="res://scenes/tutorial/menu.gd" type="Script" id=4]
+[ext_resource path="res://scenes/tutorial/scene.gd" type="Script" id=5]
+[ext_resource path="res://scenes/tutorial/label.gd" type="Script" id=6]
+[ext_resource path="res://scenes/tutorial/node.gd" type="Script" id=7]
+[ext_resource path="res://scenes/tutorial/character.gd" type="Script" id=8]
+[ext_resource path="res://scenes/tutorial/basic.gd" type="Script" id=9]
 
 [node name="Tutorial" type="Node2D"]
 
@@ -9,6 +16,7 @@ script/script = ExtResource( 1 )
 
 [node name="TestAvatar" type="Control" parent="."]
 
+editor/display_folded = true
 rect/rotation = -90.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
@@ -86,5 +94,33 @@ text = ":-)"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[node name="DialogLabel" type="Node2D" parent="."]
+
+script/script = ExtResource( 3 )
+
+[node name="MenuLabel" type="Node2D" parent="."]
+
+script/script = ExtResource( 4 )
+
+[node name="SceneLabel" type="Node2D" parent="."]
+
+script/script = ExtResource( 5 )
+
+[node name="LabelLabel" type="Node2D" parent="."]
+
+script/script = ExtResource( 6 )
+
+[node name="NodeLabel" type="Node2D" parent="."]
+
+script/script = ExtResource( 7 )
+
+[node name="CharacterLabel" type="Node2D" parent="."]
+
+script/script = ExtResource( 8 )
+
+[node name="BasicLabel" type="Node2D" parent="."]
+
+script/script = ExtResource( 9 )
 
 

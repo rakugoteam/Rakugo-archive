@@ -1,4 +1,4 @@
-## This is Ren'GD example scene script##
+## This is Ren'GD tutorial script ##
 ## Ren'GD is Ren'Py for Godot ##
 ## version: 0.7 ##
 ## License MIT ##
@@ -7,6 +7,7 @@
 extends "res://scripts/RenGD/ren_short.gd"
 
 var another_time = false
+var tscn_path = "res://scenes/tutorial/tutorial.tscn"
 
 func _ready():
 
@@ -22,15 +23,15 @@ func _ready():
 	
 
 func first():
-	var tscn_path = "res://scenes/tutorial/tutorial.tscn"
-	label("tutorial", tscn_path, "first")
+	
+	label("tutorial", tscn_path, func_name = "first")
 	## It add this scene func to know labels
 	## It allows later to easy swich between scenes and thier labels
 	## It allows also to reuse scene with different labels
 	## using: jump(label_name, [func_args_if_any])
 	## You must labeled func before 'jumping' to it!
 	
-	## set_label_current_label("tutorial_2d_api")
+	set_label_current_label("tutorial")
 	## beacose it is first label in game I must write above method to get next things work
 
 	define("guest") ## it add 'guest' var to 'keywords' dict that is global and will be saved
@@ -70,7 +71,8 @@ func first():
 		"Input",
 		"Menu",
 		"Label",
-		"Node"
+		"Node",
+		"Scene"
 	]
 
 	menu(topics, "What you want to know?", self, "topic_choice")
@@ -87,30 +89,41 @@ func first():
 func topic_choice(choice):
 	before_menu()
 
-	#if choice == 0: #Basic
+	#if choice == 0: # Basic
+		# go to other label
+		# jump("basic") 
 
-	if choice == 1: #Say
+	if choice == 1: # Say
 		say("jer", "Say statment/func is make character speaks.")
 		say("jer", """The GDScript way to call it is:
 								{code}say('how','what'){/code}""")
 		say("jer", """The Ren'GD Script way to call it is:
 								{code}'how' 'what'{/code} or {code}charcter_var 'what'{/code}""")
-	
-	#if choice == 2: #Character
+								
+		# jump("say")
 
-	elif choice == 3: #Input
+	#if choice == 2: # Character
+
+	elif choice == 3: # Input
 		say("jer", "Input statment/func is way to provide text input file for player.")
 		say("jer", """The GDScript way to call it is:
 								{code}input('var','what','temp'){/code}""")
 		say("jer", """The Ren'GD Script way to call it is:
 								{code}g: input('var','what','temp'){/code}""")
-	
-	# #elif choice == 4: #Menu
+		
+		# jump("input")
 
-	# #elif choice == 5: #Label
+	# #elif choice == 4: # Menu
+		# jump("menu")
+
+	# #elif choice == 5: # Label
+		# jump("label")
 
 	# #elif choice == 6: # Node
-		
+		# jump("node")
+	
+	# #elif choice == 7: # Scene
+		# jump("scene")
 	
 	else:
 		say('', "To be done :(.")
