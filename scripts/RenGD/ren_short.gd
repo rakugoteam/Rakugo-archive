@@ -19,7 +19,7 @@ func define(key_name, key_value = null):
     ren.define(key_name, key_value)
 
 
-func Character(name="", color="", what_prefix="", what_suffix="", kind="adv"):
+func Character(name = "", color = "", what_prefix = "", what_suffix = "", kind = "adv"):
     ## return new Character
     return ren.Character(name, color, what_prefix, what_suffix, kind)
 
@@ -28,6 +28,11 @@ func label(label_name, scene_path, node_path = null, func_name = null):
     ## this declare new label
     ## that make ren see label and can jump to it
     ren.label(label_name, scene_path, node_path, func_name)
+
+
+func jump(label_name, args = []):
+    ## go to other declared label
+    ren.jump(label_name, args)
     
 
 func say(how, what):
