@@ -11,18 +11,17 @@ var tscn_path = "res://scenes/tutorial/tutorial.tscn"
 
 func _ready():
 
+	start()
+
 	if not another_time:
 		another_time = true
 		first()
-		start()
-
-	## This must be at end of code.
-	## this start ren "magic" ;)
 	
+	end()
 
 func first():
 	
-	talk("tutorial", tscn_path, null, "first")
+	talk("tutorial", tscn_path, get_path(), "first")
 	## It add this scene func to know talks
 	## It allows later to easy swich between scenes and thier talks
 	## It allows also to reuse scene with different talks
@@ -41,14 +40,14 @@ func first():
 	define("jer", jer)
 	## This is how you declare a new Character
 
-	node("jer", get_node("TestAvatar/Normal"))
-	auto_subnodes("jer", get_node("TestAvatar"), "Normal")
-	## This is how you create shortcuts to different sprites of your character 
-	ren_show("jer Smile")
+	# node("jer", get_node("TestAvatar/Normal"))
+	# auto_subnodes("jer", get_node("TestAvatar"), "Normal")
+	# ## This is how you create shortcuts to different sprites of your character 
+	# ren_show("jer Smile")
 
-	say("jer", "Hi this is how i look.")
-	say("jer", "And now I will hide")
-	ren_hide("jer Smile")
+	# say("jer", "Hi this is how i look.")
+	# say("jer", "And now I will hide")
+	# ren_hide("jer Smile")
 
 	say("jer",
 			"""Hi! My name is [jer.name].
@@ -86,12 +85,14 @@ func first():
 
 func topic_choice(choice):
 	before_menu()
-
+	
+	# print("Choice is ", choice)
+	
 	if choice == 0: # Basic
 		# go to other talk
 		jump("basic") 
 
-	if choice == 1: # Say
+	elif choice == 1: # Say
 		say("jer", "Say statment/func is make character speaks.")
 		say("jer", """The GDScript way to call it is:
 								{code}say('how','what'){/code}""")

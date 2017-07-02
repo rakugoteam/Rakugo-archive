@@ -6,7 +6,6 @@
 extends Node
 
 var talk_name
-var scene_path
 var current_scene
 var current_scene_path
 var node_path
@@ -14,27 +13,29 @@ var func_name
 
 var talks = {}
 
+signal enter_talk
+
 func _Etalk(talk):
     print(talk, " is not definited")
 
 
-func _talk(talk, sc_path, n_path = null, f_name = null):
+func _talk(talk, sc_path, n_path = "", f_name = ""):
     talk_name = talk
-    scene_path = sc_path
+    current_scene_path = sc_path
     node_path = n_path
     func_name = f_name
 
 
-func talk(talk, sc_path, n_path = null, f_name = null):
+func talk(talk, sc_path, n_path = "", f_name = ""):
     _talk(talk, sc_path, n_path, f_name)
-    talks[talk] = [sc_path, n_path, f_name]
+    talks[talk] = {"scene_path":sc_path, "node_path":n_path, "func_name":f_name}
 
 
 func set_current_talk(talk):
     if talk in talks.keys():
         var l = talks[talk]
-        _talk(talk, l[0], l[1], l[2])
-    
+        _talk(talk, l.scene_path, l.node_path, l.func_name)
+        print("set_current_talk as ", talk, ", ", l.scene_path, ", ", l.node_path, ", ", l.func_name)
     else:
         _Etalk(talk)
 
@@ -79,22 +80,32 @@ func _deferred_goto_scene(path):
 func jump(talk, args = []):
 
     if talk in talks.keys():
+    
+        var vtalk = talks[talk]
         talk_name = talk
-        if scene_path != current_scene_path:
-            goto_scene(scene_path)
-            current_scene_path = scene_path
 
-        if node_path == null: ## asume that developer want to use root of scene
-            node_path = current_scene
-        
-        else:
-            node_path = get_node(current_scene.get_path() + "/" + node_path)
+        if current_scene_path != vtalk.scene_path:
+            goto_scene(vtalk.scene_path)
+            current_scene_path = vtalk.scene_path
 
-        if func_name == null: ## asume that developer want to use _ready as talk
+        print("old node path: ", node_path)
+
+        if vtalk.node_path == "": ## asume that developer want to use root of scene
+            node_path = get_node_path(current_scene)
+
+        elif node_path == vtalk.node_path:
             pass
-        
+
         else:
-            node_path.callv(func_name, args)
+            node_path = vtalk.node_path
+
+        print("new node path: ", node_path)
+
+        func_name = vtalk.func_name
+        
+        if func_name != "": ## else asume that developer want to use _ready as talk
+            connect("enter_talk", get_node(node_path), func_name, args)
+            emit_signal("enter_talk")
     
     else:
         print(talk, " is not definited")

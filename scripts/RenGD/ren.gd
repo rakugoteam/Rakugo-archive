@@ -56,8 +56,13 @@ func _ready():
 
 
 func start_ren():
+    ## This must be at beginig of code using ren api
+    snum = 0
+    statements = []
+
+
+func end_ren():
     ## This must be at end of code using ren api
-	## this start ren "magic" ;)
     use_statement(0)
 
 
@@ -108,6 +113,9 @@ func use_statement(num):
         
         elif s.type == "hide":
             s.arg.node.hide()
+
+        else:
+            print("wrong type of statment")
             
         if num + 1 < statements.size():
             if not is_statement_id_important(num + 1):
@@ -173,7 +181,7 @@ func text_passer(text = ""):
     return ren_txt.text_passer(keywords, text)
 
 
-func talk(talk_name, scene_path, node_path = null, func_name = null):
+func talk(talk_name, scene_path, node_path = "", func_name = ""):
     ## this declare new talk
     ## that make ren see talk and can jump to it
     talk_manager.talk(talk_name, scene_path, node_path, func_name)

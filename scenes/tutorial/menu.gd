@@ -5,11 +5,11 @@
 
 extends "res://scripts/RenGD/ren_short.gd"
 
-var tscn_path = get_tree().get_root().tscn_path
+var tscn_path
 
 func _ready():
-	talk("menu", tscn_path, get_path_to(self), '_menu')
-
+	tscn_path = get_parent().tscn_path
+	talk("menu", tscn_path, get_path(), '_menu')
 
 func _menu():
 	pass

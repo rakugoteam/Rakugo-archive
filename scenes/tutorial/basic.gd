@@ -5,13 +5,18 @@
 
 extends "res://scripts/RenGD/ren_short.gd"
 
-var tscn_path = get_tree().get_root().tscn_path
+var tscn_path
 
 func _ready():
-	talk("basic", tscn_path, get_path_to(self), 'basic')
+	tscn_path = get_parent().tscn_path
+	talk("basic", tscn_path, get_path(), 'basic')
+
 
 func basic():
-	say("Test", "RESULT_SUCCESS!!!")
 	start()
+	print("now you in basic talk")
+	say("Test", "RESULT_SUCCESS!!!")
+	end()
+	print(ren.statements)
 
 	

@@ -9,10 +9,12 @@ extends Node
 onready var ren = get_node("/root/Window")
 
 func start():
-    ## This must be at end of code using ren api
-	## this start ren "magic" ;)
+    ## This must be at beginning of code using ren api    
     ren.start_ren()
 
+func end():
+    ## This must be at end of code using ren api
+    ren.end_ren()
 
 func define(key_name, key_value = null):
     ## add global var that ren will see
@@ -24,7 +26,7 @@ func Character(name = "", color = "", what_prefix = "", what_suffix = "", kind =
     return ren.Character(name, color, what_prefix, what_suffix, kind)
 
 
-func talk(talk_name, scene_path, node_path = null, func_name = null):
+func talk(talk_name, scene_path, node_path = "", func_name = ""):
     ## this declare new talk
     ## that make ren see talk and can jump to it
     ren.talk(talk_name, scene_path, node_path, func_name)

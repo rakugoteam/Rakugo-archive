@@ -17,6 +17,7 @@ script/script = ExtResource( 1 )
 [node name="TestAvatar" type="Control" parent="."]
 
 editor/display_folded = true
+visibility/visible = false
 rect/rotation = -90.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
@@ -95,31 +96,31 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="DialogLabel" type="Node2D" parent="."]
+[node name="DialogTalk" type="Node2D" parent="."]
 
 script/script = ExtResource( 3 )
 
-[node name="MenuLabel" type="Node2D" parent="."]
+[node name="MenuTalk" type="Node2D" parent="."]
 
 script/script = ExtResource( 4 )
 
-[node name="SceneLabel" type="Node2D" parent="."]
+[node name="SceneTalk" type="Node2D" parent="."]
 
 script/script = ExtResource( 5 )
 
-[node name="LabelLabel" type="Node2D" parent="."]
+[node name="TalkTalk" type="Node2D" parent="."]
 
 script/script = ExtResource( 6 )
 
-[node name="NodeLabel" type="Node2D" parent="."]
+[node name="NodeTalk" type="Node2D" parent="."]
 
 script/script = ExtResource( 7 )
 
-[node name="CharacterLabel" type="Node2D" parent="."]
+[node name="CharacterTalk" type="Node2D" parent="."]
 
 script/script = ExtResource( 8 )
 
-[node name="BasicLabel" type="Node2D" parent="."]
+[node name="BasicTalk" type="Node2D" parent="."]
 
 script/script = ExtResource( 9 )
 
