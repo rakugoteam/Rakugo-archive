@@ -24,15 +24,20 @@ func Character(name = "", color = "", what_prefix = "", what_suffix = "", kind =
     return ren.Character(name, color, what_prefix, what_suffix, kind)
 
 
-func label(label_name, scene_path, node_path = null, func_name = null):
-    ## this declare new label
-    ## that make ren see label and can jump to it
-    ren.label(label_name, scene_path, node_path, func_name)
+func talk(talk_name, scene_path, node_path = null, func_name = null):
+    ## this declare new talk
+    ## that make ren see talk and can jump to it
+    ren.talk(talk_name, scene_path, node_path, func_name)
 
 
-func jump(label_name, args = []):
-    ## go to other declared label
-    ren.jump(label_name, args)
+func set_current_talk(talk):
+    ## this is need to be done in game first talk
+    ren.set_current_talk(talk)
+
+
+func jump(talk_name, args = []):
+    ## go to other declared talk
+    ren.jump(talk_name, args)
     
 
 func say(how, what):

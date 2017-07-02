@@ -5,13 +5,13 @@
 
 extends "res://scripts/RenGD/ren_short.gd"
 
-var tscn_path = "res://scenes/tutorial/tutorial.tscn"
+var tscn_path = get_tree().get_root().tscn_path
 
 func _ready():
-	label("label", tscn_path, get_path_to(self), '_label')
+	talk("talk", tscn_path, get_path_to(self), '_talk')
 
 
-func _label():
+func _talk():
 	pass
 
 	

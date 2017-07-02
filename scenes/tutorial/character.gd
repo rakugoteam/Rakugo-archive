@@ -5,10 +5,10 @@
 
 extends "res://scripts/RenGD/ren_short.gd"
 
-var tscn_path = "res://scenes/tutorial/tutorial.tscn"
+var tscn_path = get_tree().get_root().tscn_path
 
 func _ready():
-	label("character", tscn_path, get_path_to(self), '_character')
+	talk("character", tscn_path, get_path_to(self), '_character')
 
 
 func _character():

@@ -307,7 +307,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="LabelManager" type="Control" parent="."]
+[node name="TalkManager" type="Control" parent="."]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true

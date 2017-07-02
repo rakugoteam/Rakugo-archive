@@ -17,7 +17,7 @@ onready var input_screen = get_node(adv_path + "/Input")
 onready var say_screen = get_node(adv_path)
 onready var nvl_scroll = get_node("Nvl")
 onready var nvl_screen = get_node("Nvl/" + vbc)
-onready var label_manager = get_node("LabelManager")
+onready var talk_manager = get_node("TalkManager")
 onready var choice_screen = get_node("Choice")
 
 onready var say_scene = preload("res://scenes/gui/Say.tscn")
@@ -50,7 +50,7 @@ func _ready():
     ## code borrow from:
     ## http://docs.godotengine.org/en/stable/tutorials/step_by_step/singletons_autoload.html
     var root = get_tree().get_root()
-    label_manager.current_scene = root.get_child( root.get_child_count() -1 )
+    talk_manager.current_scene = root.get_child( root.get_child_count() -1 )
     
     set_process_input(true)
 
@@ -156,43 +156,6 @@ func was_seen(statement):
     return statement in seen_statements
 
 
-## code borrow from:
-## http://docs.godotengine.org/en/stable/tutorials/step_by_step/singletons_autoload.html
-func goto_scene(path):
-
-    ## This function will usually be called from a signal callback,
-    ## or some other function from the running scene.
-    ## Deleting the current scene at this point might be
-    ## a bad idea, because it may be inside of a callback or function of it.
-    ## The worst case will be a crash or unexpected behavior.
-
-    ## The way around this is deferring the load to a later time, when
-    ## it is ensured that no code from the current scene is running:
-
-    call_deferred("_deferred_goto_scene", path)
-
-
-## code borrow from:
-## http://docs.godotengine.org/en/stable/tutorials/step_by_step/singletons_autoload.html
-func _deferred_goto_scene(path):
-
-    ## Immediately free the current scene,
-    ## there is no risk here.
-    label_manager.current_scene.free()
-
-    ## Load new scene
-    var s = load(path)
-
-    ## Instance the new scene
-    label_manager.current_scene = s.instance()
-
-    ## Add it to the active scene, as child of root
-    get_tree().get_root().add_child(label_manager.current_scene)
-
-    ## optional, to make it compatible with the SceneTree.change_scene() API
-    get_tree().set_current_scene( label_manager.current_scene )
-
-
 func define(key_name, key_value = null):
     ## add global var that ren will see
     ren_def.define(keywords, key_name, key_value)
@@ -210,15 +173,20 @@ func text_passer(text = ""):
     return ren_txt.text_passer(keywords, text)
 
 
-func label(label_name, scene_path, node_path = null, func_name = null):
-    ## this declare new label
-    ## that make ren see label and can jump to it
-    label_manager.label(label_name, scene_path, node_path, func_name)
+func talk(talk_name, scene_path, node_path = null, func_name = null):
+    ## this declare new talk
+    ## that make ren see talk and can jump to it
+    talk_manager.talk(talk_name, scene_path, node_path, func_name)
 
 
-func jump(label_name, args = []):
-    ## go to other declared label
-    label_manager.jump(label_name, args)
+func set_current_talk(talk):
+    ## this is need to be done in game first talk
+    talk_manager.set_current_talk(talk)
+
+
+func jump(talk_name, args = []):
+    ## go to other declared talk
+    talk_manager.jump(talk_name, args)
 
 
 func say_statement(how, what):

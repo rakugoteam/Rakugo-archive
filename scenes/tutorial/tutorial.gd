@@ -11,28 +11,26 @@ var tscn_path = "res://scenes/tutorial/tutorial.tscn"
 
 func _ready():
 
-	# if not another_time:
-	# 	another_time = true
-	# 	first()
+	if not another_time:
+		another_time = true
+		first()
+		start()
 
-	first()
-	
-	start()
 	## This must be at end of code.
 	## this start ren "magic" ;)
 	
 
 func first():
 	
-	label("tutorial", tscn_path, func_name = "first")
-	## It add this scene func to know labels
-	## It allows later to easy swich between scenes and thier labels
-	## It allows also to reuse scene with different labels
-	## using: jump(label_name, [func_args_if_any])
-	## You must labeled func before 'jumping' to it!
+	talk("tutorial", tscn_path, null, "first")
+	## It add this scene func to know talks
+	## It allows later to easy swich between scenes and thier talks
+	## It allows also to reuse scene with different talks
+	## using: jump(talk_name, [func_args_if_any])
+	## You must talked func before 'jumping' to it!
 	
-	set_label_current_label("tutorial")
-	## beacose it is first label in game I must write above method to get next things work
+	set_current_talk("tutorial")
+	## beacose it is first talk in game I must write above method to get next things work
 
 	define("guest") ## it add 'guest' var to 'keywords' dict that is global and will be saved
 	input("guest", "What is your name?", "Godot Developer")
@@ -70,7 +68,7 @@ func first():
 		"Character",
 		"Input",
 		"Menu",
-		"Label",
+		"talk",
 		"Node",
 		"Scene"
 	]
@@ -89,9 +87,9 @@ func first():
 func topic_choice(choice):
 	before_menu()
 
-	#if choice == 0: # Basic
-		# go to other label
-		# jump("basic") 
+	if choice == 0: # Basic
+		# go to other talk
+		jump("basic") 
 
 	if choice == 1: # Say
 		say("jer", "Say statment/func is make character speaks.")
@@ -116,8 +114,8 @@ func topic_choice(choice):
 	# #elif choice == 4: # Menu
 		# jump("menu")
 
-	# #elif choice == 5: # Label
-		# jump("label")
+	# #elif choice == 5: # talk
+		# jump("talk")
 
 	# #elif choice == 6: # Node
 		# jump("node")
