@@ -13,10 +13,10 @@ func _ready():
 
 
 func basic():
-	start()
-	print("now you in basic talk")
+	say("Test", "RESULT_SUCCESS!")
+	say("Test", "RESULT_SUCCESS!!")
 	say("Test", "RESULT_SUCCESS!!!")
-	end()
 	print(ren.statements)
+	do_talk()
 
 	

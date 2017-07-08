@@ -55,16 +55,10 @@ func _ready():
     set_process_input(true)
 
 
-func start_ren():
-    ## This must be at beginig of code using ren api
-    snum = 0
-    statements = []
-
-
-func end_ren():
-    ## This must be at end of code using ren api
-    use_statement(0)
-
+func do_talk():
+    ## This must be at end of ren's talk
+    use_statement(-1)
+    
 
 func next_statement():
     ## go to next statement
@@ -96,6 +90,7 @@ func _input(event):
 
 func use_statement(num):
     ## go to statement with given number
+    print("using statement num: ", num)
     if num < statements.size() - 1 and num >= 0:
         var s = statements[num]
         

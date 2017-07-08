@@ -6,22 +6,11 @@
 
 extends "res://scripts/RenGD/ren_short.gd"
 
-var another_time = false
 var tscn_path = "res://scenes/tutorial/tutorial.tscn"
 
 func _ready():
-
-	start()
-
-	if not another_time:
-		another_time = true
-		first()
 	
-	end()
-
-func first():
-	
-	talk("tutorial", tscn_path, get_path(), "first")
+	talk("tutorial", tscn_path, get_path())
 	## It add this scene func to know talks
 	## It allows later to easy swich between scenes and thier talks
 	## It allows also to reuse scene with different talks
@@ -81,6 +70,9 @@ func first():
 			{tab}- [ex_path].tscn""")
 	
 	say("jer", "Goodbye, [guest].")
+	
+    ## This must be at end of ren's talk
+	do_talk()
 	
 
 func topic_choice(choice):

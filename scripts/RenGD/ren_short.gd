@@ -8,13 +8,10 @@ extends Node
 ## it's how import rengd framework when res://scenes/gui/Window.tscn is loaded as singleton
 onready var ren = get_node("/root/Window")
 
-func start():
-    ## This must be at beginning of code using ren api    
-    ren.start_ren()
+func do_talk():
+    ## This must be at end of ren's talk
+    ren.do_talk()
 
-func end():
-    ## This must be at end of code using ren api
-    ren.end_ren()
 
 func define(key_name, key_value = null):
     ## add global var that ren will see
