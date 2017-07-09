@@ -22,7 +22,7 @@ onready var choice_screen = get_node("Choice")
 
 onready var say_scene = preload("res://scenes/gui/Say.tscn")
 
-var snum = 0 ## current statement number
+var snum = -1 ## current statement number
 var seen_statements = []
 var statements = []
 var keywords = { "version":{"type":"text", "value":"0.7"} }
@@ -57,8 +57,7 @@ func _ready():
 
 func do_talk():
     ## This must be at end of ren's talk
-    use_statement(-1)
-    
+    next_statement()
 
 func next_statement():
     ## go to next statement
@@ -91,7 +90,7 @@ func _input(event):
 func use_statement(num):
     ## go to statement with given number
     print("using statement num: ", num)
-    if num < statements.size() - 1 and num >= 0:
+    if num <= statements.size() and num >= 0:
         var s = statements[num]
         
         if s.type == "say":

@@ -56,7 +56,7 @@ func _ready():
 		"Character",
 		"Input",
 		"Menu",
-		"talk",
+		"Talk",
 		"Node",
 		"Scene"
 	]
@@ -70,8 +70,7 @@ func _ready():
 			{tab}- [ex_path].tscn""")
 	
 	say("jer", "Goodbye, [guest].")
-	
-    ## This must be at end of ren's talk
+
 	do_talk()
 	
 

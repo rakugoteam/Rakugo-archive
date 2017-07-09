@@ -16,7 +16,7 @@ func basic():
 	say("Test", "RESULT_SUCCESS!")
 	say("Test", "RESULT_SUCCESS!!")
 	say("Test", "RESULT_SUCCESS!!!")
-	print(ren.statements)
+	
 	do_talk()
 
 	
