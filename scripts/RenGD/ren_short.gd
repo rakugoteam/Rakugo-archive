@@ -83,4 +83,9 @@ func ren_hide(node_to_hide):
 	## append hide statement
 	ren.append_hide(node_to_hide)
 
+
+func g(expression):
+	## append g statement
+	ren.append_g(expression)
+
 	

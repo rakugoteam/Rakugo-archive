@@ -9,16 +9,17 @@ extends Node
 var vbc = "VBoxContainer"
 
 ## paths to nodes to use with special kinds of charcters
-var adv_path = "Adv/" + vbc
-var cen_path = "Center/" + vbc
-var fs_path = "FullScreen" + vbc
+var adv_path	= "Adv/" + vbc
+var cen_path	= "Center/" + vbc
+var fs_path		= "FullScreen" + vbc
 
-onready var input_screen = get_node(adv_path + "/Input")
-onready var say_screen = get_node(adv_path)
-onready var nvl_scroll = get_node("Nvl")
-onready var nvl_screen = get_node("Nvl/" + vbc)
-onready var dialog_manager = get_node("DialogManager")
-onready var choice_screen = get_node("Choice")
+onready var input_screen	= get_node(adv_path + "/Input")
+onready var say_screen		= get_node(adv_path)
+onready var nvl_scroll		= get_node("Nvl")
+onready var nvl_screen		= get_node("Nvl/" + vbc)
+onready var dialog_manager	= get_node("DialogManager")
+onready var choice_screen	= get_node("Choice")
+onready var godot_con		= get_node("GodotConnect")
 
 onready var say_scene = preload("res://scenes/gui/Say.tscn")
 
@@ -65,6 +66,24 @@ func next_statement():
 	use_statement(snum + 1)
 
 
+func get_next_statement():
+	## return next statement
+	if snum + 1 <= statements.size() - 1:
+		return statements[snum + 1]
+	
+	else:
+		return {"type": "null", "arg": null}
+
+
+func get_prev_statement():
+	## return previous statement
+	if snum - 1 >= 0:
+		return statements[snum + 1]
+	
+	else:
+		return {"type": "null", "arg": null}
+
+
 func prev_statement():
 	## go to previous statement
 	var prev = seen_statements.find(statements[snum])
@@ -91,7 +110,7 @@ func _input(event):
 func use_statement(num):
 	## go to statement with given number
 	print("using statement num: ", num)
-	if num <= statements.size() and num >= 0:
+	if num <= statements.size() - 1 and num >= 0:
 		var s = statements[num]
 		
 		if s.type == "say":
@@ -108,7 +127,7 @@ func use_statement(num):
 		
 		elif s.type == "hide":
 			s.arg.node.hide()
-
+		
 		else:
 			print("wrong type of statment")
 			
@@ -210,33 +229,33 @@ func say(statement):
 	# if how.kind == "adv":
 	say_screen = get_node(adv_path)
 
-	if how in keywords:
-		if keywords[how].type == "Character":
-			var kind = keywords[how].value.kind
+	# if how in keywords:
+	# 	if keywords[how].type == "Character":
+	# 		var kind = keywords[how].value.kind
 			
-			if kind == "center":
-				say_screen.hide()
-				get_node(fs_path).hide()
-				say_screen = get_node(cen_path)
+	# 		if kind == "center":
+	# 			say_screen.hide()
+	# 			get_node(fs_path).hide()
+	# 			say_screen = get_node(cen_path)
 			
-			elif kind == "fullscreen":
-				say_screen.hide()
-				get_node(cen_path).hide()
-				say_screen = get_node(fs_path)
+	# 		elif kind == "fullscreen":
+	# 			say_screen.hide()
+	# 			get_node(cen_path).hide()
+	# 			say_screen = get_node(fs_path)
 			
-			elif kind == "nvl":
-				say_screen.hide()
-				get_node(fs_path).hide()
-				get_node(cen_path).hide()
-				say_screen = say_scene.instance()
-				nvl_screen.add_child(say_screen)
-				var y = say_screen.get_pos().y
-				nvl_scroll.set_v_scroll(y)
-				nvl_scroll.show()
+	# 		elif kind == "nvl":
+	# 			say_screen.hide()
+	# 			get_node(fs_path).hide()
+	# 			get_node(cen_path).hide()
+	# 			say_screen = say_scene.instance()
+	# 			nvl_screen.add_child(say_screen)
+	# 			var y = say_screen.get_pos().y
+	# 			nvl_scroll.set_v_scroll(y)
+	# 			nvl_scroll.show()
 	
-			if kind != "nvl":
-				var ipath = str(say_screen.get_path()) + "/Input"
-				input_screen = get_node(ipath)
+	# 		if kind != "nvl":
+	# 			var ipath = str(say_screen.get_path()) + "/Input"
+	# 			input_screen = get_node(ipath)
 
 	say_screen.use(statement)
 
@@ -254,6 +273,7 @@ func append_input(ivar, what, temp = ""):
 
 func array_slice(array, from = 0, to = 0):
 	return ren_tls.array_slice(array, from, to)
+
 
 func input(statement):
 	## "run" input statement
@@ -317,3 +337,4 @@ func append_hide(node_to_hide):
 	## append hide statment
 	var s = hide_statement(node_to_hide)
 	statements.append(s)
+

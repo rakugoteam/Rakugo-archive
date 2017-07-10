@@ -14,8 +14,7 @@ func _ready():
 
 func basic():
 	say("Test", "RESULT_SUCCESS!")
-	say("Test", "RESULT_SUCCESS!!")
-	say("Test", "RESULT_SUCCESS!!!")
+
 	
 	do_dialog()
 
