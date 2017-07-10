@@ -17,7 +17,7 @@ onready var input_screen = get_node(adv_path + "/Input")
 onready var say_screen = get_node(adv_path)
 onready var nvl_scroll = get_node("Nvl")
 onready var nvl_screen = get_node("Nvl/" + vbc)
-onready var talk_manager = get_node("TalkManager")
+onready var dialog_manager = get_node("DialogManager")
 onready var choice_screen = get_node("Choice")
 
 onready var say_scene = preload("res://scenes/gui/Say.tscn")
@@ -50,13 +50,13 @@ func _ready():
     ## code borrow from:
     ## http://docs.godotengine.org/en/stable/tutorials/step_by_step/singletons_autoload.html
     var root = get_tree().get_root()
-    talk_manager.current_scene = root.get_child( root.get_child_count() -1 )
+    dialog_manager.current_scene = root.get_child( root.get_child_count() -1 )
     
     set_process_input(true)
 
 
-func do_talk():
-    ## This must be at end of ren's talk
+func do_dialog():
+    ## This must be at end of ren's dialog
     next_statement()
 
 func next_statement():
@@ -175,20 +175,20 @@ func text_passer(text = ""):
     return ren_txt.text_passer(keywords, text)
 
 
-func talk(talk_name, scene_path, node_path = "", func_name = ""):
-    ## this declare new talk
-    ## that make ren see talk and can jump to it
-    talk_manager.talk(talk_name, scene_path, node_path, func_name)
+func dialog(dialog_name, scene_path, node_path = "", func_name = ""):
+    ## this declare new dialog
+    ## that make ren see dialog and can jump to it
+    dialog_manager.dialog(dialog_name, scene_path, node_path, func_name)
 
 
-func set_current_talk(talk):
-    ## this is need to be done in game first talk
-    talk_manager.set_current_talk(talk)
+func set_current_dialog(dialog):
+    ## this is need to be done in game first dialog
+    dialog_manager.set_current_dialog(dialog)
 
 
-func jump(talk_name, args = []):
-    ## go to other declared talk
-    talk_manager.jump(talk_name, args)
+func jump(dialog_name, args = []):
+    ## go to other declared dialog
+    dialog_manager.jump(dialog_name, args)
 
 
 func say_statement(how, what):

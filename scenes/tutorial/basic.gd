@@ -9,7 +9,7 @@ var tscn_path
 
 func _ready():
 	tscn_path = get_parent().tscn_path
-	talk("basic", tscn_path, get_path(), 'basic')
+	dialog("basic", tscn_path, get_path(), 'basic')
 
 
 func basic():
@@ -17,6 +17,6 @@ func basic():
 	say("Test", "RESULT_SUCCESS!!")
 	say("Test", "RESULT_SUCCESS!!!")
 	
-	do_talk()
+	do_dialog()
 
 	

@@ -9,10 +9,10 @@ var tscn_path
 
 func _ready():
 	tscn_path = get_parent().tscn_path
-	talk("talk", tscn_path, get_path(), '_talk')
+	dialog("dialog", tscn_path, get_path(), '_dialog')
 
 
-func _talk():
+func _dialog():
 	pass
 
 	

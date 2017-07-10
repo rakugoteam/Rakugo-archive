@@ -10,15 +10,15 @@ var tscn_path = "res://scenes/tutorial/tutorial.tscn"
 
 func _ready():
 	
-	talk("tutorial", tscn_path, get_path())
-	## It add this scene func to know talks
-	## It allows later to easy swich between scenes and thier talks
-	## It allows also to reuse scene with different talks
-	## using: jump(talk_name, [func_args_if_any])
-	## You must talked func before 'jumping' to it!
+	dialog("tutorial", tscn_path, get_path())
+	## It add this scene func to know dialogs
+	## It allows later to easy swich between scenes and thier dialogs
+	## It allows also to reuse scene with different dialogs
+	## using: jump(dialog_name, [func_args_if_any])
+	## You must dialoged func before 'jumping' to it!
 	
-	set_current_talk("tutorial")
-	## beacose it is first talk in game I must write above method to get next things work
+	set_current_dialog("tutorial")
+	## beacose it is first dialog in game I must write above method to get next things work
 
 	define("guest") ## it add 'guest' var to 'keywords' dict that is global and will be saved
 	input("guest", "What is your name?", "Godot Developer")
@@ -71,7 +71,7 @@ func _ready():
 	
 	say("jer", "Goodbye, [guest].")
 
-	do_talk()
+	do_dialog()
 	
 
 func topic_choice(choice):
@@ -80,7 +80,7 @@ func topic_choice(choice):
 	# print("Choice is ", choice)
 	
 	if choice == 0: # Basic
-		# go to other talk
+		# go to other dialog
 		jump("basic") 
 
 	elif choice == 1: # Say
@@ -106,8 +106,8 @@ func topic_choice(choice):
 	# #elif choice == 4: # Menu
 		# jump("menu")
 
-	# #elif choice == 5: # talk
-		# jump("talk")
+	# #elif choice == 5: # dialog
+		# jump("dialog")
 
 	# #elif choice == 6: # Node
 		# jump("node")

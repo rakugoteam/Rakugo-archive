@@ -96,31 +96,31 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="DialogTalk" type="Node2D" parent="."]
+[node name="SayInputDialog" type="Node2D" parent="."]
 
 script/script = ExtResource( 3 )
 
-[node name="MenuTalk" type="Node2D" parent="."]
+[node name="MenuDialog" type="Node2D" parent="."]
 
 script/script = ExtResource( 4 )
 
-[node name="SceneTalk" type="Node2D" parent="."]
+[node name="SceneDialog" type="Node2D" parent="."]
 
 script/script = ExtResource( 5 )
 
-[node name="TalkTalk" type="Node2D" parent="."]
+[node name="DDialog" type="Node2D" parent="."]
 
 script/script = ExtResource( 6 )
 
-[node name="NodeTalk" type="Node2D" parent="."]
+[node name="NodeDialog" type="Node2D" parent="."]
 
 script/script = ExtResource( 7 )
 
-[node name="CharacterTalk" type="Node2D" parent="."]
+[node name="CharacterDialog" type="Node2D" parent="."]
 
 script/script = ExtResource( 8 )
 
-[node name="BasicTalk" type="Node2D" parent="."]
+[node name="BasicDialog" type="Node2D" parent="."]
 
 script/script = ExtResource( 9 )
 

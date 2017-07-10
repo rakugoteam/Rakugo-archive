@@ -9,7 +9,7 @@ var tscn_path
 
 func _ready():
 	tscn_path = get_parent().tscn_path
-	talk("node", tscn_path, get_path(), '_node')
+	dialog("node", tscn_path, get_path(), '_node')
 
 
 func _node():

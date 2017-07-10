@@ -9,7 +9,7 @@ var tscn_path
 
 func _ready():
 	tscn_path = get_parent().tscn_path
-	talk("menu", tscn_path, get_path(), '_menu')
+	dialog("menu", tscn_path, get_path(), '_menu')
 
 func _menu():
 	pass

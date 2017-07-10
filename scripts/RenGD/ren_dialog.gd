@@ -5,39 +5,39 @@
 
 extends Node
 
-var talk_name
+var dialog_name
 var current_scene
 var current_scene_path
 var node_path
 var func_name
 
-var talks = {}
+var dialogs = {}
 
-signal enter_talk
+signal enter_dialog
 
-func _Etalk(talk):
-    print(talk, " is not definited")
+func _Edialog(dialog):
+    print(dialog, " is not definited")
 
 
-func _talk(talk, sc_path, n_path = "", f_name = ""):
-    talk_name = talk
+func _dialog(dialog, sc_path, n_path = "", f_name = ""):
+    dialog_name = dialog
     current_scene_path = sc_path
     node_path = n_path
     func_name = f_name
 
 
-func talk(talk, sc_path, n_path = "", f_name = ""):
-    _talk(talk, sc_path, n_path, f_name)
-    talks[talk] = {"scene_path":sc_path, "node_path":n_path, "func_name":f_name}
+func dialog(dialog, sc_path, n_path = "", f_name = ""):
+    _dialog(dialog, sc_path, n_path, f_name)
+    dialogs[dialog] = {"scene_path":sc_path, "node_path":n_path, "func_name":f_name}
 
 
-func set_current_talk(talk):
-    if talk in talks.keys():
-        var l = talks[talk]
-        _talk(talk, l.scene_path, l.node_path, l.func_name)
-        print("set_current_talk as ", talk, ", ", l.scene_path, ", ", l.node_path, ", ", l.func_name)
+func set_current_dialog(dialog):
+    if dialog in dialogs.keys():
+        var l = dialogs[dialog]
+        _dialog(dialog, l.scene_path, l.node_path, l.func_name)
+        print("set_current_dialog as ", dialog, ", ", l.scene_path, ", ", l.node_path, ", ", l.func_name)
     else:
-        _Etalk(talk)
+        _Edialog(dialog)
 
 
 ## code borrow from:
@@ -77,35 +77,35 @@ func _deferred_goto_scene(path):
     get_tree().set_current_scene(current_scene)
 
 
-func jump(talk, args = []):
+func jump(dialog, args = []):
 
-    if talk in talks.keys():
+    if dialog in dialogs.keys():
     
-        var vtalk = talks[talk]
-        talk_name = talk
+        var vdialog = dialogs[dialog]
+        dialog_name = dialog
 
-        if current_scene_path != vtalk.scene_path:
-            goto_scene(vtalk.scene_path)
-            current_scene_path = vtalk.scene_path
+        if current_scene_path != vdialog.scene_path:
+            goto_scene(vdialog.scene_path)
+            current_scene_path = vdialog.scene_path
 
         print("old node path: ", node_path)
 
-        if vtalk.node_path == "": ## asume that developer want to use root of scene
+        if vdialog.node_path == "": ## asume that developer want to use root of scene
             node_path = get_node_path(current_scene)
 
-        elif node_path == vtalk.node_path:
+        elif node_path == vdialog.node_path:
             pass
 
         else:
-            node_path = vtalk.node_path
+            node_path = vdialog.node_path
 
         print("new node path: ", node_path)
 
-        func_name = vtalk.func_name
+        func_name = vdialog.func_name
         
-        if func_name != "": ## else asume that developer want to use _ready as talk
-            connect("enter_talk", get_node(node_path), func_name, args)
-            emit_signal("enter_talk")
+        if func_name != "": ## else asume that developer want to use _ready as dialog
+            connect("enter_dialog", get_node(node_path), func_name, args)
+            emit_signal("enter_dialog")
     
     else:
-        print(talk, " is not definited")
+        print(dialog, " is not definited")

@@ -8,9 +8,9 @@ extends Node
 ## it's how import rengd framework when res://scenes/gui/Window.tscn is loaded as singleton
 onready var ren = get_node("/root/Window")
 
-func do_talk():
-    ## This must be at end of ren's talk
-    ren.do_talk()
+func do_dialog():
+    ## This must be at end of ren's dialog
+    ren.do_dialog()
 
 
 func define(key_name, key_value = null):
@@ -23,20 +23,20 @@ func Character(name = "", color = "", what_prefix = "", what_suffix = "", kind =
     return ren.Character(name, color, what_prefix, what_suffix, kind)
 
 
-func talk(talk_name, scene_path, node_path = "", func_name = ""):
-    ## this declare new talk
-    ## that make ren see talk and can jump to it
-    ren.talk(talk_name, scene_path, node_path, func_name)
+func dialog(dialog_name, scene_path, node_path = "", func_name = ""):
+    ## this declare new dialog
+    ## that make ren see dialog and can jump to it
+    ren.dialog(dialog_name, scene_path, node_path, func_name)
 
 
-func set_current_talk(talk):
-    ## this is need to be done in game first talk
-    ren.set_current_talk(talk)
+func set_current_dialog(dialog):
+    ## this is need to be done in game first dialog
+    ren.set_current_dialog(dialog)
 
 
-func jump(talk_name, args = []):
-    ## go to other declared talk
-    ren.jump(talk_name, args)
+func jump(dialog_name, args = []):
+    ## go to other declared dialog
+    ren.jump(dialog_name, args)
     
 
 func say(how, what):
