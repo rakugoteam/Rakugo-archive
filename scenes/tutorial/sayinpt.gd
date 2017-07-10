@@ -8,9 +8,9 @@ extends "res://scripts/RenGD/ren_short.gd"
 var tscn_path
 
 func _ready():
-    tscn_path = get_parent().tscn_path
-    dialog("say", tscn_path, get_path(), 'dialog_say')
-    dialog("input", tscn_path, get_path(), 'dialog_input')
+	tscn_path = get_parent().tscn_path
+	dialog("say", tscn_path, get_path(), 'dialog_say')
+	dialog("input", tscn_path, get_path(), 'dialog_input')
 
 
 func dialog_say():
@@ -18,5 +18,5 @@ func dialog_say():
 
 
 func dialog_input():
-    pass
+	pass
 	

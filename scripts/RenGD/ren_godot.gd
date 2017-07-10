@@ -24,9 +24,9 @@ func use(statement):
 	## "run" g statement
 	var expression = statement.arg
 
-	for key_name in ren.keywords:
-		if expression.find(key_name) == -1:
-			continue # no keyword in this string
+	# for key_name in ren.keywords:
+	# 	if expression.find(key_name) == -1:
+	# 		continue # no keyword in this string
 		
 
 
