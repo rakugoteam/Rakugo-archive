@@ -1,5 +1,5 @@
 ## This is Ren'GD API ##
-## Ren'GD is Ren'Py for Godot ##
+
 ## version: 0.7 ##
 ## License MIT ##
 
@@ -7,14 +7,14 @@ extends HBoxContainer
 
 onready var ren = get_node("/root/Window")
 
-onready var Back    = get_node("Back")
-onready var History = get_node("History")
-onready var Skip    = get_node("Skip")
-onready var Auto    = get_node("Auto")
-onready var Save    = get_node("Save")
-onready var QSave   = get_node("QSave")
-onready var QLoad   = get_node("QLoad")
-onready var Prefs   = get_node("Prefs")
+onready var Back	= get_node("Back")
+onready var History	= get_node("History")
+onready var Skip	= get_node("Skip")
+onready var Auto	= get_node("Auto")
+onready var Save	= get_node("Save")
+onready var QSave	= get_node("QSave")
+onready var QLoad	= get_node("QLoad")
+onready var Prefs	= get_node("Prefs")
 
 
 func _ready():

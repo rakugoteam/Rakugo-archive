@@ -1,5 +1,5 @@
 ## This is Ren'GD API ##
-## Ren'GD is Ren'Py for Godot ##
+
 ## version: 0.7 ##
 ## License MIT ##
 
@@ -19,24 +19,24 @@ var statements_after_menu = []
 
 func statement(choices, title, node = null, func_name = ""):
 	## return menu statement
-    var s = {
-        "type": "menu",
-        "args":
-            {
-            "title": title,
-            "choices": choices,
+	var s = {
+		"type": "menu",
+		"args":
+			{
+			"title": title,
+			"choices": choices,
 			"node": node,
 			"func_name": func_name
-            }
-    }
+			}
+	}
 
-    return s
+	return s
 
 
 func append(choices, title = "", node = null, func_name = ""):
-    ## append menu statement
-    var s = statement(choices, title, node, func_name)
-    ren.statements.append(s)
+	## append menu statement
+	var s = statement(choices, title, node, func_name)
+	ren.statements.append(s)
 
 
 func _use(choices, title, node, func_name):
