@@ -19,7 +19,7 @@ func text_passer(keywords, text = ""):
 		## code from Sebastian Holc solution:
 		## http://pastebin.com/K8zsWQtL
 
-		for key_name in keywords:
+		for key_name in keywords.keys():
 			if text.find(key_name) == -1:
 				continue # no keyword in this string
 			

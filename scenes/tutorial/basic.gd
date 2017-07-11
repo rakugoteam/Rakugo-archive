@@ -14,7 +14,8 @@ func _ready():
 
 func basic():
 	say("Test", "RESULT_SUCCESS!")
-
+	g("print(get_parent().get_name())")
+	# g("print(version)") # don't work yet
 	
 	do_dialog()
 

@@ -66,19 +66,19 @@ func next_statement():
 	use_statement(snum + 1)
 
 
-func get_next_statement():
+func get_next_statement(start_id = snum):
 	## return next statement
-	if snum + 1 <= statements.size() - 1:
-		return statements[snum + 1]
+	if start_id + 1 <= statements.size() - 1:
+		return statements[start_id + 1]
 	
 	else:
 		return {"type": "null", "arg": null}
 
 
-func get_prev_statement():
+func get_prev_statement(start_id = snum):
 	## return previous statement
-	if snum - 1 >= 0:
-		return statements[snum + 1]
+	if start_id - 1 >= 0:
+		return statements[start_id + 1]
 	
 	else:
 		return {"type": "null", "arg": null}
@@ -128,10 +128,13 @@ func use_statement(num):
 		elif s.type == "hide":
 			s.arg.node.hide()
 		
+		elif s.type == "godot":
+			g(s)
+		
 		else:
 			print("wrong type of statment")
 			
-		if num + 1 < statements.size():
+		if get_next_statement(num).type != "null":
 			if not is_statement_id_important(num + 1):
 				use_statement(num + 1)
 		
@@ -155,7 +158,8 @@ func mark_seen(statement):
 
 func was_seen_id(statement_id):
 	## check if player seen statement with this id already
-	return statements[statement_id] in seen_statements
+	if statement_id >= 0 and statement_id <= statements.size() - 1:
+		return statements[statement_id] in seen_statements
 
 
 func is_statement_id_important(statement_id):
@@ -338,3 +342,18 @@ func append_hide(node_to_hide):
 	var s = hide_statement(node_to_hide)
 	statements.append(s)
 
+
+func g_statement(expression):
+	## return g/godot statement
+	return godot_con.statement(expression)
+
+
+func append_g(expression):
+	## append g/godot statement
+	var s = g_statement(expression)
+	statements.append(s)
+
+
+func g(statement):
+	## "run" g/godot statement
+	godot_con.use(statement)
