@@ -32,7 +32,7 @@ func use(statement):
 		if expression.find(var_name) == -1:
 			continue # no keyword in this string
 		
-		expression = expression.replace(var_name, "ren.vars" + var_name + ".value")
+		expression = expression.replace(var_name, "ren.vars." + var_name + ".value")
 	
 	
 	if expression.find("var") != -1:
@@ -40,12 +40,7 @@ func use(statement):
 		var_name = var_name.replace("var", "")
 		var_name = var_name.replace(" ", "")
 		var_name = var_name.replace("\t", "")
-		define(var_name)
-
-	# if expression.find("define") != -1:
-	# 	var var_name = expression.split("'")[1]
-	# 	var_name = var_name.split('"')[1]
-	# 	define(var_name)
+		ren.define(var_name)
 	
 	script_lines.append(expression)
 

@@ -16,7 +16,7 @@ func basic():
 	say("Test", "RESULT_SUCCESS!")
 	g("print(get_parent().get_name())")
 	g("print(version)")
-	# g("""define("test", 1)""")
+	# g("""ren.define("test", 1)""")
 	g("var test = 1")
 	# g("test += 1") # don't work yet
 	# g("print(test)") # don't work yet
