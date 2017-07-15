@@ -37,9 +37,9 @@ func use(statement):
 	how = args.how
 	what = args.what
 
-	if how in ren.keywords:
-		if ren.keywords[how].type == "Character":
-			how = ren.keywords[how].value
+	if how in ren.vars:
+		if ren.vars[how].type == "Character":
+			how = ren.vars[how].value
 			
 			var nhow = ""
 			
