@@ -26,7 +26,7 @@ onready var say_scene = preload("res://scenes/gui/Say.tscn")
 var snum = -1 ## current statement number it must start from -1
 var seen_statements = []
 var statements = []
-var keywords = { "version":{"type":"text", "value":"0.7"} }
+var vars = { "version":{"type":"text", "value":"0.7"} }
 var nodes = {}
 var can_roll = true
 
@@ -182,9 +182,9 @@ func was_seen(statement):
 	return statement in seen_statements
 
 
-func define(key_name, key_value = null):
+func define(var_name, var_value = null):
 	## add global var that ren will see
-	ren_def.define(keywords, key_name, key_value)
+	ren_def.define(vars, var_name, var_value)
 	
 
 func Character(name="", color ="", what_prefix="", what_suffix="", kind="adv"):
@@ -196,7 +196,7 @@ func Character(name="", color ="", what_prefix="", what_suffix="", kind="adv"):
 func text_passer(text = ""):
 	## passer for renpy markup format
 	## its retrun bbcode
-	return ren_txt.text_passer(keywords, text)
+	return ren_txt.text_passer(vars, text)
 
 
 func dialog(dialog_name, scene_path, node_path = "", func_name = ""):
@@ -233,9 +233,9 @@ func say(statement):
 	# if how.kind == "adv":
 	say_screen = get_node(adv_path)
 
-	# if how in keywords:
-	# 	if keywords[how].type == "Character":
-	# 		var kind = keywords[how].value.kind
+	# if how in vars:
+	# 	if vars[how].type == "Character":
+	# 		var kind = vars[how].value.kind
 			
 	# 		if kind == "center":
 	# 			say_screen.hide()

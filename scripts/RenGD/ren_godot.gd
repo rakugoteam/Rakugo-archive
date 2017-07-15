@@ -28,11 +28,11 @@ func append(expression):
 func use(statement):
 	## "run" g/godot statement
 	var expression = statement.arg
-	for key_name in ren.keywords.keys():
-		if expression.find(key_name) == -1:
+	for var_name in ren.vars.keys():
+		if expression.find(var_name) == -1:
 			continue # no keyword in this string
 		
-		expression = expression.replace(key_name, "ren.keywords." + key_name + ".value")
+		expression = expression.replace(var_name, "ren.vars" + var_name + ".value")
 	
 	
 	if expression.find("var") != -1:
