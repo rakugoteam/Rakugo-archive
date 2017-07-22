@@ -29,11 +29,12 @@ var statements = []
 var vars = { "version":{"type":"text", "value":"0.7"} }
 var nodes = {}
 var can_roll = true
-
+var input_var
 var important_types = ["say", "input", "menu"]
 
 signal statement_changed
 signal say(how, what, kind)
+signal input(temp, what)
 
 const REN_DEF = preload("ren_def.gd")
 onready var ren_def = REN_DEF.new()
@@ -50,6 +51,8 @@ onready var ren_nds = REN_NODES.new()
 const REN_SAY = preload("ren_say.gd")
 onready var ren_say = REN_SAY.new()
 
+const REN_INP = preload("ren_input.gd")
+onready var ren_inp = REN_INP.new()
 
 func _ready():
 	## code borrow from:
@@ -220,7 +223,7 @@ func jump(dialog_name, args = []):
 
 
 func say_statement(how, what):
-	## return input statement
+	## return say statement
 	return ren_say.statement(how, what)
 
 
@@ -276,7 +279,7 @@ func say(statement):
 
 func input_statement(ivar, what, temp = ""):
 	## return input statement
-	return input_screen.statement(ivar, what, temp)
+	return ren_inp.statement(ivar, what, temp)
 
 
 func append_input(ivar, what, temp = ""):
@@ -291,7 +294,18 @@ func array_slice(array, from = 0, to = 0):
 
 func input(statement):
 	## "run" input statement
-	input_screen.use(statement)
+	var args = ren_inp.use(statement)
+	input_var = args.ivar
+	var what = text_passer(args.what)
+	var temp = text_passer(args.temp)
+	can_roll = false
+	emit_signal("input", what, temp)
+
+
+func set_input_var(value):
+	vars[input_var] = {"type":"text", "value":value}
+	can_roll = true
+	next_statement()
 
 
 func before_menu():

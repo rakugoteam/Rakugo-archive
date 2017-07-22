@@ -5,53 +5,25 @@
 
 extends LineEdit
 
-var temp
-var what
-var ivar
 
 onready var ren = get_node("/root/Window")
 onready var namebox_screen = get_node("../NameBox/Label")
 onready var dialog_screen = get_node("../Dialog")
 
 func _ready():
-	connect("text_entered", self, "_on_input")
+	ren.connect("input", self, "on_input")
+	connect("text_entered", self, "on_text_entered")
 
 
-func statement(ivar, what, temp = ""):
-	## add input statement
-
-	var s = {"type":"input",
-				"args":{
-						"ivar":ivar,
-						"what":what,
-						"temp":temp
-						}
-			}
-	
-	return s
-
-
-func use(statement):
-	## "run" input statement
-	var args = statement.args
-	ivar = args.ivar
-	what = args.what
-	temp = args.temp
-
-	temp = ren.text_passer(temp)
-	what = ren.text_passer(what)
-
+func on_input(what, temp):
 	set_text(temp)
 	namebox_screen.set_bbcode(what)
 
 	dialog_screen.hide()
 	show()
 	grab_focus()
-	ren.can_roll = false
 
 
-func _on_input(s):
-	ren.vars[ivar] = {"type":"text", "value":s}
-	ren.can_roll = true
+func on_text_entered(text):
+	ren.set_input_var(text)
 	hide()
-	ren.next_statement()
