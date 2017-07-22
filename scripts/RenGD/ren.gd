@@ -33,6 +33,7 @@ var can_roll = true
 var important_types = ["say", "input", "menu"]
 
 signal statement_changed
+signal say(how, what, kind)
 
 const REN_DEF = preload("ren_def.gd")
 onready var ren_def = REN_DEF.new()
@@ -45,6 +46,9 @@ onready var ren_tls = REN_TOOLS.new()
 
 const REN_NODES = preload("ren_nodes.gd")
 onready var ren_nds = REN_NODES.new()
+
+const REN_SAY = preload("ren_say.gd")
+onready var ren_say = REN_SAY.new()
 
 
 func _ready():
@@ -217,7 +221,7 @@ func jump(dialog_name, args = []):
 
 func say_statement(how, what):
 	## return input statement
-	return say_screen.statement(how, what)
+	return ren_say.statement(how, what)
 
 
 func append_say(how, what):
@@ -232,10 +236,12 @@ func say(statement):
 
 	# if how.kind == "adv":
 	say_screen = get_node(adv_path)
-
-	# if how in vars:
-	# 	if vars[how].type == "Character":
-	# 		var kind = vars[how].value.kind
+	
+	var kind = "adv"
+	
+	if how in vars:
+		if vars[how].type == "Character":
+			var kind = vars[how].value.kind
 			
 	# 		if kind == "center":
 	# 			say_screen.hide()
@@ -261,7 +267,11 @@ func say(statement):
 	# 			var ipath = str(say_screen.get_path()) + "/Input"
 	# 			input_screen = get_node(ipath)
 
-	say_screen.use(statement)
+	var args = ren_say.use(statement, vars)
+	var how = text_passer(args[0])
+	var what = text_passer(args[1])
+
+	emit_signal("say", how, what, kind)
 
 
 func input_statement(ivar, what, temp = ""):

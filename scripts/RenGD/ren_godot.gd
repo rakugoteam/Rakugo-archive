@@ -61,7 +61,7 @@ func exec(expression):
 	gdscript.set_source_code(script + "\t" + expression)
 	gdscript.reload()
 
-	var obj = Node.new() #So we can call get_node
+	var obj = Node.new() # So we can call get_node
 	obj.set_script(gdscript)
 	add_child(obj)
 	var ret_val = obj.eval()

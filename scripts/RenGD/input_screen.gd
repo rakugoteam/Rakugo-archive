@@ -31,12 +31,6 @@ func statement(ivar, what, temp = ""):
 	return s
 
 
-func append_input(ivar, what, temp = ""):
-	## append input statement
-	var s = input(ivar, what, temp)
-	ren.statements.append(s)
-
-
 func use(statement):
 	## "run" input statement
 	var args = statement.args
