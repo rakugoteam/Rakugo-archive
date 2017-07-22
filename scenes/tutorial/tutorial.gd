@@ -79,11 +79,11 @@ func topic_choice(choice):
 	
 	# print("Choice is ", choice)
 	
-	if choice == 0: # Basic
+	if choice == "Basic":
 		# go to other dialog
 		jump("basic") 
 
-	elif choice == 1: # Say
+	elif choice == "Say":
 		say("jer", "Say statment/func is make character speaks.")
 		say("jer", """The GDScript way to call it is:
 								{code}say('how','what'){/code}""")
@@ -92,9 +92,9 @@ func topic_choice(choice):
 								
 		# jump("say")
 
-	#if choice == 2: # Character
+	#if choice == "Character":
 
-	elif choice == 3: # Input
+	elif choice == "Input":
 		say("jer", "Input statment/func is way to provide text input file for player.")
 		say("jer", """The GDScript way to call it is:
 								{code}input('var','what','temp'){/code}""")
@@ -103,16 +103,16 @@ func topic_choice(choice):
 		
 		# jump("input")
 
-	# #elif choice == 4: # Menu
+	# #elif choice == "Menu":
 		# jump("menu")
 
-	# #elif choice == 5: # dialog
+	# #elif choice == "Dialog":
 		# jump("dialog")
 
-	# #elif choice == 6: # Node
+	# #elif choice == "Node":
 		# jump("node")
 	
-	# #elif choice == 7: # Scene
+	# #elif choice == "Scene":
 		# jump("scene")
 	
 	else:

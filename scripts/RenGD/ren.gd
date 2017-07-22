@@ -6,53 +6,12 @@
 
 extends Node
 
-var vbc = "VBoxContainer"
 
-## paths to nodes to use with special kinds of charcters
-var adv_path	= "Adv/" + vbc
-var cen_path	= "Center/" + vbc
-var fs_path		= "FullScreen" + vbc
+###					###
+###	Dialogs system	###
+###					###
 
-onready var input_screen	= get_node(adv_path + "/Input")
-onready var say_screen		= get_node(adv_path)
-onready var nvl_scroll		= get_node("Nvl")
-onready var nvl_screen		= get_node("Nvl/" + vbc)
 onready var dialog_manager	= get_node("DialogManager")
-onready var choice_screen	= get_node("Choice")
-onready var godot_con		= get_node("GodotConnect")
-
-onready var say_scene = preload("res://scenes/gui/Say.tscn")
-
-var snum = -1 ## current statement number it must start from -1
-var seen_statements = []
-var statements = []
-var vars = { "version":{"type":"text", "value":"0.7"} }
-var nodes = {}
-var can_roll = true
-var input_var
-var important_types = ["say", "input", "menu"]
-
-signal statement_changed
-signal say(how, what, kind)
-signal input(temp, what)
-
-const REN_DEF = preload("ren_def.gd")
-onready var ren_def = REN_DEF.new()
-
-const REN_TXT = preload("ren_text.gd")
-onready var ren_txt = REN_TXT.new()
-
-const REN_TOOLS = preload("ren_tools.gd")
-onready var ren_tls = REN_TOOLS.new()
-
-const REN_NODES = preload("ren_nodes.gd")
-onready var ren_nds = REN_NODES.new()
-
-const REN_SAY = preload("ren_say.gd")
-onready var ren_say = REN_SAY.new()
-
-const REN_INP = preload("ren_input.gd")
-onready var ren_inp = REN_INP.new()
 
 func _ready():
 	## code borrow from:
@@ -62,6 +21,33 @@ func _ready():
 	
 	set_process_input(true)
 
+func dialog(dialog_name, scene_path, node_path = "", func_name = ""):
+	## this declare new dialog
+	## that make ren see dialog and can jump to it
+	dialog_manager.dialog(dialog_name, scene_path, node_path, func_name)
+
+
+func set_current_dialog(dialog):
+	## this is need to be done in game first dialog
+	dialog_manager.set_current_dialog(dialog)
+
+
+func jump(dialog_name, args = []):
+	## go to other declared dialog
+	dialog_manager.jump(dialog_name, args)
+
+
+###						###
+###	Statements system	###
+###						###
+
+var snum = -1 ## current statement number it must start from -1
+var seen_statements = []
+var statements = []
+var can_roll = true
+var important_types = ["say", "input", "menu"]
+
+signal statement_changed
 
 func do_dialog():
 	## This must be at end of ren's dialog
@@ -189,6 +175,14 @@ func was_seen(statement):
 	return statement in seen_statements
 
 
+###						###
+###	Define / Characters	###
+###						###
+
+const REN_DEF = preload("ren_def.gd")
+onready var ren_def = REN_DEF.new()
+var vars = { "version":{"type":"text", "value":"0.7"} }
+
 func define(var_name, var_value = null):
 	## add global var that ren will see
 	ren_def.define(vars, var_name, var_value)
@@ -200,26 +194,27 @@ func Character(name="", color ="", what_prefix="", what_suffix="", kind="adv"):
 	return ch
 
 
+###					###
+###	Text Passer		###
+###					###
+
+const REN_TXT = preload("ren_text.gd")
+onready var ren_txt = REN_TXT.new()
+
 func text_passer(text = ""):
 	## passer for renpy markup format
 	## its retrun bbcode
 	return ren_txt.text_passer(vars, text)
 
 
-func dialog(dialog_name, scene_path, node_path = "", func_name = ""):
-	## this declare new dialog
-	## that make ren see dialog and can jump to it
-	dialog_manager.dialog(dialog_name, scene_path, node_path, func_name)
+###					###
+###	Say statements	###
+###					###
 
+const REN_SAY = preload("ren_say.gd")
+onready var ren_say = REN_SAY.new()
 
-func set_current_dialog(dialog):
-	## this is need to be done in game first dialog
-	dialog_manager.set_current_dialog(dialog)
-
-
-func jump(dialog_name, args = []):
-	## go to other declared dialog
-	dialog_manager.jump(dialog_name, args)
+signal say(how, what, kind)
 
 
 func say_statement(how, what):
@@ -237,38 +232,11 @@ func say(statement):
 	## "run" say statement
 	var how = statement.args.how
 
-	# if how.kind == "adv":
-	say_screen = get_node(adv_path)
-	
 	var kind = "adv"
 	
 	if how in vars:
 		if vars[how].type == "Character":
 			var kind = vars[how].value.kind
-			
-	# 		if kind == "center":
-	# 			say_screen.hide()
-	# 			get_node(fs_path).hide()
-	# 			say_screen = get_node(cen_path)
-			
-	# 		elif kind == "fullscreen":
-	# 			say_screen.hide()
-	# 			get_node(cen_path).hide()
-	# 			say_screen = get_node(fs_path)
-			
-	# 		elif kind == "nvl":
-	# 			say_screen.hide()
-	# 			get_node(fs_path).hide()
-	# 			get_node(cen_path).hide()
-	# 			say_screen = say_scene.instance()
-	# 			nvl_screen.add_child(say_screen)
-	# 			var y = say_screen.get_pos().y
-	# 			nvl_scroll.set_v_scroll(y)
-	# 			nvl_scroll.show()
-	
-	# 		if kind != "nvl":
-	# 			var ipath = str(say_screen.get_path()) + "/Input"
-	# 			input_screen = get_node(ipath)
 
 	var args = ren_say.use(statement, vars)
 	var how = text_passer(args[0])
@@ -276,6 +244,16 @@ func say(statement):
 
 	emit_signal("say", how, what, kind)
 
+
+###						###
+###	Input statements	###
+###						###
+
+const REN_INP = preload("ren_input.gd")
+onready var ren_inp = REN_INP.new()
+
+var input_var
+signal input(temp, what)
 
 func input_statement(ivar, what, temp = ""):
 	## return input statement
@@ -286,10 +264,6 @@ func append_input(ivar, what, temp = ""):
 	## append input statement
 	var s = input_statement(ivar, what, temp)
 	statements.append(s)
-
-
-func array_slice(array, from = 0, to = 0):
-	return ren_tls.array_slice(array, from, to)
 
 
 func input(statement):
@@ -308,32 +282,71 @@ func set_input_var(value):
 	next_statement()
 
 
+###					###
+###	Menu statements	###
+###					###
+const REN_CHO = preload("ren_choice.gd")
+onready var ren_cho = REN_CHO.new()
+
+var temp_choices
+signal menu(choices, title, node, func_name)
+signal after_menu
+
+
 func before_menu():
 	## must be on begin of menu custom func
-	choice_screen.before_menu()
+	ren_cho.before_menu(statements, snum)
 
 
 func after_menu():
 	## must be on end of menu custom func
-	choice_screen.after_menu()
+	ren_cho.after_menu(statements)
+	can_roll = true
+	next_statement()
+	emit_signal("after_menu")
 
 
-func menu_statement(choices, title = "", node = null, func_name = ""):
+func menu_statement(choices, question = "", node = null, func_name = ""):
 	## return custom menu statement
 	## made to use menu statement easy to use with gdscript
-	return choice_screen.statement(choices, title, node, func_name)
+	return ren_cho.statement(choices, question, node, func_name)
 
 
-func append_menu(choices, title = "", node = null, func_name = ""):
+func append_menu(choices, question = "", node = null, func_name = ""):
 	## append menu_func statement
-	var s = menu_statement(choices, title, node, func_name)
+	var s = menu_statement(choices, question, node, func_name)
 	statements.append(s)
 
 
 func menu(statement):
 	## "run" menu statement
-	choice_screen.use(statement)
+	var args = ren_cho.use(statement)
+	temp_choices = args.choices
+	var choices = args.choices
+	var func_name = args.func_name
+	var node = args.node
 
+	if typeof(choices) == TYPE_DICTIONARY:
+		choices = choices.keys()
+		func_name = "on_choice"
+		node = self
+	
+	emit_signal ("menu", choices, args.question, node, func_name)
+
+
+func on_choice(key):
+	before_menu()
+	statements += temp_choices[key]
+	after_menu()
+
+
+###								###
+###	Node + show/hide statements	###
+###								###
+
+const REN_NODES = preload("ren_nodes.gd")
+onready var ren_nds = REN_NODES.new()
+var nodes = {}
 
 func node(node_name, node_path, subnode = false):
 	## asign a global ren name for given node
@@ -366,6 +379,12 @@ func append_hide(node_to_hide):
 	var s = hide_statement(node_to_hide)
 	statements.append(s)
 
+
+###						###
+###	g:/godot: statements	###
+###						###
+
+onready var godot_con		= get_node("GodotConnect")
 
 func g_statement(expression):
 	## return g/godot statement
