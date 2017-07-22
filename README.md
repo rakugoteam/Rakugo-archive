@@ -1,6 +1,6 @@
 # Ren-GD
 
-Framemork and Langue(in future) for story driven games in Godot.
+Framemork(inspired by Ren'Py) for story driven games in Godot.
 
 ![Logo](window_icon.png)
 
