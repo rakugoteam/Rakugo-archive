@@ -1,16 +1,16 @@
 [gd_scene load_steps=14 format=1]
 
-[ext_resource path="res://gui/themes/new_gui/tres/main.tres" type="Theme" id=1]
-[ext_resource path="res://gui/themes/new_gui/tres/choice.tres" type="Theme" id=2]
-[ext_resource path="res://gui/themes/new_gui/imgs/textbox.png" type="Texture" id=3]
-[ext_resource path="res://scripts/RenGD/say_screen.gd" type="Script" id=4]
-[ext_resource path="res://gui/themes/new_gui/imgs/namebox.png" type="Texture" id=5]
+[ext_resource path="res://themes/new_gui/tres/main.tres" type="Theme" id=1]
+[ext_resource path="res://themes/new_gui/tres/choice.tres" type="Theme" id=2]
+[ext_resource path="res://themes/new_gui/imgs/textbox.png" type="Texture" id=3]
+[ext_resource path="res://scenes/gui/scripts/say_screen.gd" type="Script" id=4]
+[ext_resource path="res://themes/new_gui/imgs/namebox.png" type="Texture" id=5]
 [ext_resource path="res://fonts/name_text_sizeM.fnt" type="BitmapFont" id=6]
 [ext_resource path="res://fonts/name_text_sizeIB.fnt" type="BitmapFont" id=7]
 [ext_resource path="res://fonts/name_text_sizeI.fnt" type="BitmapFont" id=8]
 [ext_resource path="res://fonts/name_text_sizeB.fnt" type="BitmapFont" id=9]
 [ext_resource path="res://fonts/name_text_sizeR.fnt" type="BitmapFont" id=10]
-[ext_resource path="res://scripts/RenGD/input_screen.gd" type="Script" id=11]
+[ext_resource path="res://scenes/gui/scripts/input_screen.gd" type="Script" id=11]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -130,7 +130,6 @@ margin/bottom = 89.0
 custom_styles/focus = SubResource( 1 )
 custom_styles/normal = SubResource( 2 )
 placeholder/alpha = 0.6
-expand_to_len = false
 focus_mode = 2
 caret/caret_blink = false
 caret/caret_blink_speed = 0.65
@@ -147,7 +146,11 @@ margin/top = 37.0
 margin/right = 1044.0
 margin/bottom = 136.0
 bbcode/enabled = true
-bbcode/bbcode = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis.\nNunc porttitor venenatis fermentum. Donec ac sem id velit commodo lobortis eu non lacus.\n\n\n"
+bbcode/bbcode = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis.
+Nunc porttitor venenatis fermentum. Donec ac sem id velit commodo lobortis eu non lacus.
+
+
+"
 visible_characters = -1
 
 

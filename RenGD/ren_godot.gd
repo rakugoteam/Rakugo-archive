@@ -8,7 +8,7 @@ extends Node
 onready var ren = get_node("/root/Window")
 var script_lines = []
 var script = """
-extends "res://scripts/RenGD/ren_short.gd"
+extends "res://RenGD/ren_short.gd"
 func eval():
 """
 

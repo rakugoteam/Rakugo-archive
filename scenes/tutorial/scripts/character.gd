@@ -3,16 +3,16 @@
 ## version: 0.7 ##
 ## License MIT ##
 
-extends "res://scripts/RenGD/ren_short.gd"
+extends "res://RenGD/ren_short.gd"
 
 var tscn_path
 
 func _ready():
 	tscn_path = get_parent().tscn_path
-	dialog("dialog", tscn_path, get_path(), '_dialog')
+	dialog("character", tscn_path, get_path(), '_character')
 
 
-func _dialog():
+func _character():
 	pass
 
 	

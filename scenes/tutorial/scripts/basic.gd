@@ -3,7 +3,7 @@
 ## version: 0.7 ##
 ## License MIT ##
 
-extends "res://scripts/RenGD/ren_short.gd"
+extends "res://RenGD/ren_short.gd"
 
 var tscn_path
 

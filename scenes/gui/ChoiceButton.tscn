@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=1]
 
-[ext_resource path="res://gui/themes/new_gui/tres/choice.tres" type="Theme" id=1]
+[ext_resource path="res://themes/new_gui/tres/choice.tres" type="Theme" id=1]
 
 [node name="ChoiceButton" type="Button"]
 

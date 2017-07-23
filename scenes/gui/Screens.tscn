@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=1]
 
-[ext_resource path="res://gui/themes/new_gui/tres/quick.tres" type="Theme" id=1]
-[ext_resource path="res://gui/themes/new_gui/imgs/main_menu.png" type="Texture" id=2]
-[ext_resource path="res://gui/themes/new_gui/imgs/overlay/main_menu.png" type="Texture" id=3]
+[ext_resource path="res://themes/new_gui/tres/quick.tres" type="Theme" id=1]
+[ext_resource path="res://themes/new_gui/imgs/main_menu.png" type="Texture" id=2]
+[ext_resource path="res://themes/new_gui/imgs/overlay/main_menu.png" type="Texture" id=3]
 [ext_resource path="res://fonts/ubuntu-r64.fnt" type="BitmapFont" id=4]
-[ext_resource path="res://gui/themes/new_gui/imgs/game_menu.png" type="Texture" id=5]
-[ext_resource path="res://gui/themes/new_gui/imgs/overlay/game_menu.png" type="Texture" id=6]
+[ext_resource path="res://themes/new_gui/imgs/game_menu.png" type="Texture" id=5]
+[ext_resource path="res://themes/new_gui/imgs/overlay/game_menu.png" type="Texture" id=6]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 

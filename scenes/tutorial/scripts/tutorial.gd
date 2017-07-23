@@ -4,7 +4,7 @@
 ## License MIT ##
 
 
-extends "res://scripts/RenGD/ren_short.gd"
+extends "res://RenGD/ren_short.gd"
 
 var tscn_path = "res://scenes/tutorial/tutorial.tscn"
 
