@@ -11,7 +11,7 @@ onready var namebox_screen = get_node("../NameBox/Label")
 onready var dialog_screen = get_node("../Dialog")
 
 func _ready():
-	ren.connect("input", self, "on_input")
+	ren.connect("ren_input", self, "on_input")
 	connect("text_entered", self, "on_text_entered")
 
 
@@ -25,5 +25,5 @@ func on_input(what, temp):
 
 
 func on_text_entered(text):
-	ren.set_input_var(text)
+	ren.set_ren_input_var(text)
 	hide()

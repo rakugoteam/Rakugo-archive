@@ -21,8 +21,8 @@ func _ready():
 	## beacose it is first dialog in game I must write above method to get next things work
 
 	define("guest") ## it add 'guest' var to 'keywords' dict that is global and will be saved
-	input("guest", "What is your name?", "Godot Developer")
-	## input will set guest var as what you type after pressing enter key
+	ren_input("guest", "What is your name?", "Godot Developer")
+	## ren_input will set guest var as what you type after pressing enter key
 	## It use renpy markup format iI discribed it more under first use of say
 	
 	var jer = Character("Jeremi360", "#25c33e")

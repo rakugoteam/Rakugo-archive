@@ -1,4 +1,4 @@
-![Logo](logo.svg)
+![Logo](window_icon.png)
 # Ren-GD
 
 Framemork(inspired by Ren'Py) for story driven games in Godot.

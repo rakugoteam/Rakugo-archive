@@ -44,9 +44,9 @@ func say(how, what):
 	ren.append_say(how, what)
 
 
-func input(ivar, what, temp = ""):
+func ren_input(ivar, what, temp = ""):
 	## append input statement
-	ren.append_input(ivar, what, temp)
+	ren.append_ren_input(ivar, what, temp)
 
 
 func before_menu():
