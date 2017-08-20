@@ -18,5 +18,12 @@ func dialog_say():
 
 
 func dialog_input():
-	pass
+	say("jer", "Now we test your math skills.")
+	define("math_test", 0)
+	ren_input("math_test", "13 + 4?", "0")
+	g("print(math_test)")
+	ren_if("math_test == 17")
+	say("jer", "Good answer!!!")
+	ren_else()
+	say("jer", "Bad answer.")
 	

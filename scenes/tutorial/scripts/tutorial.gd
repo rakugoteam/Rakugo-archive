@@ -95,13 +95,13 @@ func topic_choice(choice):
 	#if choice == "Character":
 
 	elif choice == "Input":
-		say("jer", "Input statment/func is way to provide text input file for player.")
-		say("jer", """The GDScript way to call it is:
-								{code}input('var','what','temp'){/code}""")
-		say("jer", """The Ren'GD Script way to call it is:
-								{code}g: input('var','what','temp'){/code}""")
+		# say("jer", "Input statment/func is way to provide text input file for player.")
+		# say("jer", """The GDScript way to call it is:
+		# 						{code}input('var','what','temp'){/code}""")
+		# say("jer", """The Ren'GD Script way to call it is:
+		# 						{code}g: input('var','what','temp'){/code}""")
 		
-		# jump("input")
+		jump("input")
 
 	# #elif choice == "Menu":
 		# jump("menu")

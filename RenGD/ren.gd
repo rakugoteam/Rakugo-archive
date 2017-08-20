@@ -122,6 +122,13 @@ func use_statement(num):
 		elif s.type == "godot":
 			g(s)
 		
+		elif (s.type == "if"
+				or s.type == "elif"
+				or s.type == "else"
+				or s.type == "end"
+			 ):
+			 use_condition(s)
+		
 		else:
 			print("wrong type of statment")
 			
@@ -275,7 +282,18 @@ func ren_input(statement):
 
 
 func set_ren_input_var(value):
-	vars[input_var] = {"type":"text", "value":value}
+	var type = "text"
+	
+	if value.is_valid_integer():
+		value = int(value)
+	
+	elif value.is_valid_float():
+		value = float(value)
+
+	if typeof(value) != TYPE_STRING:
+		type = "var"
+
+	vars[input_var] = {"type":type, "value":value}
 	can_roll = true
 	next_statement()
 
@@ -338,6 +356,10 @@ func on_choice(key):
 	after_menu()
 
 
+func array_slice(array, from = 0, to = 0):
+	return ren_cho.array_slice(array, from, to)
+
+
 ###								###
 ###	Node + show/hide statements	###
 ###								###
@@ -378,11 +400,11 @@ func append_hide(node_to_hide):
 	statements.append(s)
 
 
-###						###
-###	g:/godot: statements	###
-###						###
+###										###
+###	g:/godot: and conditions statements	###
+###										###
 
-onready var godot_con		= get_node("GodotConnect")
+onready var godot_con = get_node("GodotConnect")
 
 func g_statement(expression):
 	## return g/godot statement
@@ -398,3 +420,54 @@ func append_g(expression):
 func g(statement):
 	## "run" g/godot statement
 	godot_con.use(statement)
+
+
+func if_statement(expression):
+	## return if statment
+	return godot_con.if_statement(expression)
+
+
+func append_if(expression):
+	## append if statement
+	var s = if_statement(expression)
+	statements.append(s)
+
+
+func elif_statement(expression):
+	## return elif statment
+	return godot_con.elif_statement(expression)
+
+
+func append_elif(expression):
+	## append if statement
+	var s = elif_statement(expression)
+	statements.append(s)
+
+
+func else_statement():
+	## return else statment
+	return godot_con.else_statement()
+
+
+func append_else():
+	## append if statement
+	var s = else_statement()
+	statements.append(s)
+
+
+func end_statement():
+	## return end statment
+	return godot_con.end_statement()
+
+
+func append_end():
+	## append if statement
+	var s = end_statement()
+	statements.append(s)
+
+
+func ren_condition(statement):
+	## "run" condition statement
+	godot_con.use_condition(statement)
+
+

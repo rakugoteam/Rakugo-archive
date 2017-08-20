@@ -12,17 +12,11 @@ extends "res://RenGD/ren_short.gd"
 func eval():
 """
 
-
+## Base statements: ##
 func statement(expression):
 	## return g/godot statement
 	var s = {"type":"godot", "arg":expression}
 	return s
-
-
-func append(expression):
-	## append g/godot statement
-	var s = statement(expression)
-	ren.statement.append(s)
 
 
 func use(statement):
@@ -46,7 +40,7 @@ func use(statement):
 
 	var nscript = ""
 	var s = ren.get_next_statement()
-	if s.type != "godot":
+	if statement.type != "godot":
 		for sl in script_lines:
 			sl += "\n\t"
 			
@@ -71,3 +65,57 @@ func exec(expression):
 
 
 
+func if_statement(expression):
+	## return if statement
+	var s = {"type":"if", "arg":expression}
+	return s
+
+
+func elif_statement(expression):
+	## return elif statement
+	var s = {"type":"elif", "arg":expression}
+	return s
+
+
+func else_statement():
+	## return else statement
+	var s = {"type":"else", "arg":true}
+	return s
+
+
+func end_statement():
+	## return end statement
+	var s = {"type":"end", "arg":true}
+	return s
+
+
+func use_condition(statement):
+	if (statement.type == "if"
+		or statement.type == "elif"):
+		if exec(statement.arg):
+			pass
+
+		else:
+			var statements_before_if = ren.array_slice(ren.statements, 0, ren.snum+1)
+			var statements_after_if = ren.array_slice(ren.statements, ren.snum+1,
+														ren.statements.size()+1)
+
+			var i = 0
+			for s in statements_after_if:
+				if (statement.type == "else"
+					or statement.type == "end"
+					or statement.type == "elif"
+					):
+					statements_after_if = ren.array_slice(ren.statements, i,
+															ren.statements.size()+1)
+					break
+
+				i+=1
+			
+			ren.statements = statements_before_if + statements_after_if
+	
+	elif (statement.type == "else"
+		or statement.type == "end"):
+		pass
+
+	ren.next_statement()

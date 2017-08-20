@@ -88,4 +88,22 @@ func g(expression):
 	## append g statement
 	ren.append_g(expression)
 
-	
+
+func ren_if(expression):
+	## append if statement
+	ren.if_statement(expression)
+
+
+func ren_elif(expression):
+	## append elif statement
+	ren.elif_statement(expression)
+
+
+func ren_else():
+	## append else statement
+	ren.else_statement()
+
+
+func ren_end():
+	## append end statement
+	ren.end_statement()
