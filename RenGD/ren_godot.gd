@@ -87,7 +87,8 @@ func end_statement():
 var current_condition 
 
 func use_condition(statement, statements, snum):
-	var statements_after = ren.array_slice(statements, snum+1, statements.size()+1)
+	var statements_after = ren.array_slice(statements, snum+1, statements.size())
+	print(statements_after)
 	current_condition = statement.arg
 	if exec(current_condition):
 		ren.next_statement()	

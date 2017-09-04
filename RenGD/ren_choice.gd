@@ -5,10 +5,6 @@
 
 extends Object
 
-var statements_before_menu = []
-var statements_after_menu = []
-
-
 func statement(choices, question, node = null, func_name = ""):
 	## return menu statement
 	var s = {

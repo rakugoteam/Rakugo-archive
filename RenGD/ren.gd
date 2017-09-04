@@ -149,7 +149,7 @@ func use_statement(num):
 			use_statement(num + 1)
 		
 		snum = num
-		print("used statement num: ", snum)
+		print("used statement num: ", snum , " : ", s)
 		emit_signal("statement_changed")
 
 
