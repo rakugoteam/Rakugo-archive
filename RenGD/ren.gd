@@ -33,7 +33,7 @@ func set_current_dialog(dialog):
 
 func jump_statement(dialog_name, args = []):
 	## return jump statement
-	return dialog_manager.jump_statement(dialog_name, args)
+	return dialog_manager.statement(dialog_name, args)
 
 
 func append_jump(dialog_name, args = []):
@@ -75,7 +75,7 @@ func next_statement():
 
 func get_next_statement(start_id = snum):
 	## return next statement
-	if start_id + 1 <= statements.size() - 1:
+	if start_id + 1 < statements.size():
 		return statements[start_id + 1]
 	
 	else:
@@ -165,7 +165,7 @@ func mark_seen(statement):
 
 func was_seen_id(statement_id):
 	## check if player seen statement with this id already
-	if statement_id >= 0 and statement_id <= statements.size() - 1:
+	if statement_id > -1 and statement_id < statements.size():
 		return statements[statement_id] in seen_statements
 
 
@@ -336,8 +336,7 @@ func after_menu():
 	## must be on end of menu custom func
 	#ren_cho.after_menu(statements)
 	can_roll = true
-	#next_statement()
-	use_statement(statements.size()+1)
+	use_statement(statements.size() - 1)
 	emit_signal("after_menu")
 
 
