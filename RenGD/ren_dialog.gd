@@ -36,6 +36,7 @@ func set_current_dialog(dialog):
 		var l = dialogs[dialog]
 		_dialog(dialog, l.scene_path, l.node_path, l.func_name)
 		print("set_current_dialog as ", dialog, ", ", l.scene_path, ", ", l.node_path, ", ", l.func_name)
+	
 	else:
 		_Edialog(dialog)
 
@@ -109,3 +110,13 @@ func jump(dialog, args = []):
 	
 	else:
 		print(dialog, " is not definited")
+
+
+func statement(dialog, args = []):
+	## return jump statement
+	return {"type":"jump", "dialog":dialog, "args":args}
+
+
+func use(statement):
+	## use jump statement
+	jump(statement.dialog, statement.args)

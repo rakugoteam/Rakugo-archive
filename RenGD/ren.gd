@@ -9,7 +9,7 @@ extends Node
 ###	Dialogs system	###
 ###					###
 
-onready var dialog_manager	= get_node("DialogManager")
+onready var dialog_manager = get_node("DialogManager")
 
 func _ready():
 	## code borrow from:
@@ -18,6 +18,7 @@ func _ready():
 	dialog_manager.current_scene = root.get_child( root.get_child_count() -1 )
 	
 	set_process_input(true)
+
 
 func dialog(dialog_name, scene_path, node_path = "", func_name = ""):
 	## this declare new dialog
@@ -30,15 +31,26 @@ func set_current_dialog(dialog):
 	dialog_manager.set_current_dialog(dialog)
 
 
-func jump(dialog_name, args = []):
-	## go to other declared dialog
-	dialog_manager.jump(dialog_name, args)
+func jump_statement(dialog_name, args = []):
+	## return jump statement
+	return dialog_manager.jump_statement(dialog_name, args)
 
+
+func append_jump(dialog_name, args = []):
+	## append jump statment
+	var s = jump_statement(dialog_name, args)
+	statements.append(s)	
+
+
+func jump(statement):
+	## go to other declared dialog
+	dialog_manager.use(statement)
 
 ###						###
 ###	Statements system	###
 ###						###
 
+var pnum = 0
 var snum = -1 ## current statement number it must start from -1
 var seen_statements = []
 var statements = []
@@ -50,6 +62,10 @@ signal statement_changed
 func do_dialog():
 	## This must be at end of ren's dialog
 	next_statement()
+
+
+func add_statement(statement):
+	statements.append(statement)
 
 
 func next_statement():
@@ -77,20 +93,12 @@ func get_prev_statement(start_id = snum):
 
 func prev_statement():
 	## go to previous statement
-	var prev = seen_statements.find(statements[snum])
-	prev = seen_statements[prev - 1]
-	prev = statements.find(prev)
-	use_statement(prev)
-
-
-func jump_to_statement(statement):
-	var id = statements.find(statement)
-	use_statement(id)
+	use_statement(pnum)
 
 
 func _input(event):
 
-	if can_roll and snum > 0:
+	if can_roll and snum > -1:
 		if event.is_action_pressed("ren_rollforward"):
 			next_statement()
 		
@@ -100,12 +108,18 @@ func _input(event):
 
 func use_statement(num):
 	## go to statement with given number
-	print("using statement num: ", num)
-	if num <= statements.size() - 1 and num >= 0:
+	print("try using statement num: ", num)
+	if not can_roll:
+		return
+
+	if num < statements.size() and num > -1:
 		var s = statements[num]
 		
 		if s.type == "say":
 			say(s)
+		
+		elif s.type == "jump":
+			jump(s)
 		
 		elif s.type == "input":
 			ren_input(s)
@@ -122,25 +136,20 @@ func use_statement(num):
 		elif s.type == "godot":
 			g(s)
 		
-		elif (s.type == "if"
-				or s.type == "elif"
-				or s.type == "else"
-				or s.type == "end"
-			 ):
+		elif s.type in ["if", "elif", "else", "end"]:
 			 use_condition(s)
 		
 		else:
 			print("wrong type of statment")
-			
-		if get_next_statement(num).type != "null":
-			if not is_statement_id_important(num + 1):
-				use_statement(num + 1)
 		
 		if is_statement_important(s):
 			mark_seen(s)
 		
-		snum = num
+		else:
+			use_statement(num + 1)
 		
+		snum = num
+		print("used statement num: ", snum)
 		emit_signal("statement_changed")
 
 
@@ -179,6 +188,16 @@ func was_seen(statement):
 	## check if player seen this statement already
 	return statement in seen_statements
 
+
+func find_statement_of_type(statements_list, types):
+	var i = -1
+	for s in statements_list:
+		if s.type in types:
+			break
+
+		i+=1
+	
+	return i
 
 ###						###
 ###	Define / Characters	###
@@ -229,8 +248,7 @@ func say_statement(how, what):
 
 func append_say(how, what):
 	## append say statement 
-	var s = say_statement(how, what)
-	statements.append(s)
+	add_statement(say_statement(how, what))
 
 
 func say(statement):
@@ -267,17 +285,16 @@ func ren_input_statement(ivar, what, temp = ""):
 
 func append_ren_input(ivar, what, temp = ""):
 	## append input statement
-	var s = ren_input_statement(ivar, what, temp)
-	statements.append(s)
+	add_statement(ren_input_statement(ivar, what, temp))
 
 
 func ren_input(statement):
 	## "run" input statement
+	can_roll = false
 	var args = ren_inp.use(statement)
 	input_var = args.ivar
 	var what = text_passer(args.what)
 	var temp = text_passer(args.temp)
-	can_roll = false
 	emit_signal("ren_input", what, temp)
 
 
@@ -311,14 +328,16 @@ signal after_menu
 
 func before_menu():
 	## must be on begin of menu custom func
-	ren_cho.before_menu(statements, snum)
-
+	## var num = get_statement_real_id_by_num(snum)
+	## ren_cho.before_menu(num, statements, statements)
+	pass
 
 func after_menu():
 	## must be on end of menu custom func
-	ren_cho.after_menu(statements)
+	#ren_cho.after_menu(statements)
 	can_roll = true
-	next_statement()
+	#next_statement()
+	use_statement(statements.size()+1)
 	emit_signal("after_menu")
 
 
@@ -330,8 +349,7 @@ func menu_statement(choices, question = "", node = null, func_name = ""):
 
 func append_menu(choices, question = "", node = null, func_name = ""):
 	## append menu_func statement
-	var s = menu_statement(choices, question, node, func_name)
-	statements.append(s)
+	add_statement(menu_statement(choices, question, node, func_name))
 
 
 func menu(statement):
@@ -385,8 +403,7 @@ func show_statement(node_to_show):
 
 func append_show(node_to_show):
 	## append show statment
-	var s = show_statement(node_to_show)
-	statements.append(s)
+	add_statement(show_statement(node_to_show))
 
 
 func hide_statement(node_to_hide):
@@ -396,8 +413,7 @@ func hide_statement(node_to_hide):
 
 func append_hide(node_to_hide):
 	## append hide statment
-	var s = hide_statement(node_to_hide)
-	statements.append(s)
+	add_statement(hide_statement(node_to_hide))
 
 
 ###										###
@@ -413,8 +429,7 @@ func g_statement(expression):
 
 func append_g(expression):
 	## append g/godot statement
-	var s = g_statement(expression)
-	statements.append(s)
+	add_statement(g_statement(expression))
 
 
 func g(statement):
@@ -429,8 +444,7 @@ func if_statement(expression):
 
 func append_if(expression):
 	## append if statement
-	var s = if_statement(expression)
-	statements.append(s)
+	add_statement(if_statement(expression))
 
 
 func elif_statement(expression):
@@ -440,8 +454,7 @@ func elif_statement(expression):
 
 func append_elif(expression):
 	## append if statement
-	var s = elif_statement(expression)
-	statements.append(s)
+	add_statement(elif_statement(expression))
 
 
 func else_statement():
@@ -451,8 +464,7 @@ func else_statement():
 
 func append_else():
 	## append if statement
-	var s = else_statement()
-	statements.append(s)
+	add_statement(else_statement())
 
 
 func end_statement():
@@ -462,12 +474,11 @@ func end_statement():
 
 func append_end():
 	## append if statement
-	var s = end_statement()
-	statements.append(s)
+	add_statement(end_statement())
 
 
 func ren_condition(statement):
 	## "run" condition statement
-	godot_con.use_condition(statement)
+	godot_con.use_condition(statement, statements, snum)
 
 

@@ -44,18 +44,14 @@ func array_slice(array, from = 0, to = 0):
 	return _array
 
 
-func before_menu(statements, snum):
+func before_menu(num, statements, current_statements):
 	## must be on begin of menu custom func
-	statements_before_menu = array_slice(statements, 0, snum+1)
-	statements_after_menu = array_slice(statements, snum+1, statements.size()+1)
-	statements = statements_before_menu
+	statements_before_menu = array_slice(statements, 0, num+1)
+	statements_after_menu = array_slice(statements, num+1, statements.size()+1)
+	current_statements = statements_before_menu
 
 
-func after_menu(statements):
+func after_menu(current_statements):
 	## must be on end of menu custom func
-	statements += statements_after_menu
-
-
-
-
+	current_statements += statements_after_menu
 

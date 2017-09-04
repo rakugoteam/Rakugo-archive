@@ -26,4 +26,4 @@ func dialog_input():
 	say("jer", "Good answer!!!")
 	ren_else()
 	say("jer", "Bad answer.")
-	
+	ren_end()

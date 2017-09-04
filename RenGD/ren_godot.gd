@@ -15,8 +15,7 @@ func eval():
 ## Base statements: ##
 func statement(expression):
 	## return g/godot statement
-	var s = {"type":"godot", "arg":expression}
-	return s
+	return {"type":"godot", "arg":expression}
 
 
 func use(statement):
@@ -40,13 +39,14 @@ func use(statement):
 
 	var nscript = ""
 	var s = ren.get_next_statement()
-	if statement.type != "godot":
+	if s.type != "godot":
 		for sl in script_lines:
 			sl += "\n\t"
 			
 			nscript += sl
 
 		exec(nscript)
+		ren.next_statement()
 
 
 func exec(expression):
@@ -89,33 +89,39 @@ func end_statement():
 	return s
 
 
-func use_condition(statement):
-	if (statement.type == "if"
-		or statement.type == "elif"):
-		if exec(statement.arg):
-			pass
+var use_else = false
+var current_condition 
+
+func use_condition(statement, statements, snum):
+	var statements_after = ren.array_slice(statements, snum+1, statements.size()+1)
+	use_else = true
+	current_condition = statement.arg
+	if statement.type in ["if", "elif"]:
+		if exec(current_condition):
+			ren.next_statement()	
 
 		else:
-			var statements_before_if = ren.array_slice(ren.statements, 0, ren.snum+1)
-			var statements_after_if = ren.array_slice(ren.statements, ren.snum+1,
-														ren.statements.size()+1)
-
-			var i = 0
-			for s in statements_after_if:
-				if (statement.type == "else"
-					or statement.type == "end"
-					or statement.type == "elif"
-					):
-					statements_after_if = ren.array_slice(ren.statements, i,
-															ren.statements.size()+1)
-					break
-
-				i+=1
-			
-			ren.statements = statements_before_if + statements_after_if
+			use_else = true
+			var i = ren.find_statement_of_type(statements_after, ["else", "end", "elif"])
+			if i > -1:
+				ren.use_statement(snum + i)
+			else:
+				print("no alternative or end for condition : ", current_condition)
 	
-	elif (statement.type == "else"
-		or statement.type == "end"):
-		pass
+	elif statement.type == "else":
+		if use_else:
+			ren.next_statement()
+		
+		else:
+			var i = ren.find_statement_of_type(statements_after, ["else", "end", "elif"])
+			if i > -1:
+				ren.use_statement(snum + i)
+			else:
+				print("no end for condition : ", current_condition)
 
-	ren.next_statement()
+			ren.use_statement(snum + i)
+		
+	elif statement.type == "end":
+		ren.next_statement()
+	
+	use_else = false

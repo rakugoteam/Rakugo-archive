@@ -36,7 +36,7 @@ func set_current_dialog(dialog):
 
 func jump(dialog_name, args = []):
 	## go to other declared dialog
-	ren.jump(dialog_name, args)
+	ren.append_jump(dialog_name, args)
 	
 
 func say(how, what):

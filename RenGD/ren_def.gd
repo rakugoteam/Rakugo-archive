@@ -28,8 +28,7 @@ func define(keywords, key_name, key_value = null):
 		
 	
 	keywords[key_name] = {"type":key_type, "value":key_value}
-
-
+	
 
 func Character(name="", color="", what_prefix="", what_suffix="", kind="adv"):
 	## return new Character

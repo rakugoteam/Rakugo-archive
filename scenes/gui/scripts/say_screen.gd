@@ -23,7 +23,7 @@ func on_say(how, what, kind):
 
 
 func on_input(what, temp):
-	input_screen.set_text(temp)
+	input_screen.set_placeholder(temp)
 	namebox_screen.set_bbcode(what)
 	dialog_screen.hide()
 	input_screen.show()
@@ -31,5 +31,9 @@ func on_input(what, temp):
 
 
 func on_text_entered(text):
+	if text == "":
+		text = input_screen.get_placeholder()
+	
 	ren.set_ren_input_var(text)
+
 	input_screen.hide()
