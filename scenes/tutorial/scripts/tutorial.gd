@@ -75,7 +75,6 @@ func _ready():
 	
 
 func topic_choice(choice):
-	before_menu()
 	
 	# print("Choice is ", choice)
 	

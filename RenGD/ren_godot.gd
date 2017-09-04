@@ -67,61 +67,36 @@ func exec(expression):
 
 func if_statement(expression):
 	## return if statement
-	var s = {"type":"if", "arg":expression}
-	return s
+	return {"type":"if", "arg":expression}
 
 
 func elif_statement(expression):
 	## return elif statement
-	var s = {"type":"elif", "arg":expression}
-	return s
+	return {"type":"elif", "arg":expression}
 
 
 func else_statement():
 	## return else statement
-	var s = {"type":"else", "arg":true}
-	return s
+	return {"type":"else", "arg":"true"}
 
 
 func end_statement():
 	## return end statement
-	var s = {"type":"end", "arg":true}
-	return s
+	return {"type":"end", "arg":"true"}
 
-
-var use_else = false
 var current_condition 
 
 func use_condition(statement, statements, snum):
 	var statements_after = ren.array_slice(statements, snum+1, statements.size()+1)
-	use_else = true
 	current_condition = statement.arg
-	if statement.type in ["if", "elif"]:
-		if exec(current_condition):
-			ren.next_statement()	
+	if exec(current_condition):
+		ren.next_statement()	
 
-		else:
-			use_else = true
-			var i = ren.find_statement_of_type(statements_after, ["else", "end", "elif"])
-			if i > -1:
-				ren.use_statement(snum + i)
-			else:
-				print("no alternative or end for condition : ", current_condition)
-	
-	elif statement.type == "else":
-		if use_else:
-			ren.next_statement()
+	else:
+		var i = ren.find_statement_of_type(statements_after, ["else", "end", "elif"])
 		
-		else:
-			var i = ren.find_statement_of_type(statements_after, ["else", "end", "elif"])
-			if i > -1:
-				ren.use_statement(snum + i)
-			else:
-				print("no end for condition : ", current_condition)
-
+		if i > -1:
 			ren.use_statement(snum + i)
-		
-	elif statement.type == "end":
-		ren.next_statement()
-	
-	use_else = false
+		else:
+			print("no alternative or end for condition : ", current_condition)
+

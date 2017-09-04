@@ -49,11 +49,6 @@ func ren_input(ivar, what, temp = ""):
 	ren.append_ren_input(ivar, what, temp)
 
 
-func before_menu():
-	## must be on begin of menu custom func
-	ren.before_menu()
-
-
 func after_menu():
 	## must be on end of menu custom func
 	ren.after_menu()

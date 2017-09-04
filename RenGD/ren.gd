@@ -326,12 +326,6 @@ signal menu(choices, title, node, func_name)
 signal after_menu
 
 
-func before_menu():
-	## must be on begin of menu custom func
-	## var num = get_statement_real_id_by_num(snum)
-	## ren_cho.before_menu(num, statements, statements)
-	pass
-
 func after_menu():
 	## must be on end of menu custom func
 	#ren_cho.after_menu(statements)
@@ -368,13 +362,22 @@ func menu(statement):
 
 
 func on_choice(key):
-	before_menu()
 	statements += temp_choices[key]
 	after_menu()
 
 
 func array_slice(array, from = 0, to = 0):
-	return ren_cho.array_slice(array, from, to)
+	if from > to or from < 0 or to > array.size():
+		return array
+	
+	var _array = array
+
+	for i in range(0, from):
+		_array.remove(i)
+	
+	_array.resize(to - from)
+
+	return _array
 
 
 ###								###
