@@ -1,6 +1,6 @@
 ## This is Ren'GD tutorial script ##
 
-## version: 0.7 ##
+## version: 0.1.0 ##
 ## License MIT ##
 
 

@@ -1,6 +1,6 @@
 ## This is Ren'GD example menu script##
 
-## version: 0.7 ##
+## version: 0.1.0 ##
 ## License MIT ##
 
 extends "res://RenGD/ren_short.gd"
