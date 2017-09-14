@@ -8,7 +8,7 @@ It means games that are for example:
  - Visual Novels (alomost complete)
  - Click & Point Adventures (soon) 
 
-Logo is now base on Godot icon from Linux Pop icon theme.</p>Is Godot head with hair like anime character.
+Logo is now base on Godot icon from Linux Pop icon theme.</p> Logo is Godot head with hair like anime character.
 
 [![Join the chat at https://gitter.im/jeremi360/Ren-GD](https://badges.gitter.im/jeremi360/Ren-GD.svg)](https://gitter.im/jeremi360/Ren-GD?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
