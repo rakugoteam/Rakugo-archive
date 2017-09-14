@@ -5,8 +5,9 @@ Framemork(inspired by Ren'Py) for story driven games in Godot.
 
 ## Story driven games?
 It means games that are for example:
- - Visual Novels (alomost complete)
- - Click & Point Adventures (soon) 
+ - Visual Novels (WIP)
+ - Click & Point Adventures (ToDo)
+ - RPG(ToDo)
 
 Logo is now base on Godot icon from Linux Pop icon theme.</p> Logo is Godot head with hair like anime character.
 
