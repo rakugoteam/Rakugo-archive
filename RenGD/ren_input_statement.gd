@@ -6,12 +6,28 @@
 
 extends "res://RenGD/statement.gd"
 
-type = "say"
+###						###
+###	Text Passer	import	###
+###						###
+
+const REN_TXT = preload("ren_text.gd")
+onready var ren_txt = REN_TXT.new()
+
+func text_passer(text = ""):
+	## passer for renpy markup format
+	## its retrun bbcode
+	return ren_txt.text_passer(ren.vars, text)
+
+###							###
+###	Input statement class	###
+###							###
+
+type = "input"
 _kwargs = {"ivar":"", "what":"", "temp":"", "vars":[]}
 
 func use():
     if what in _kwargs:
-        _kwargs.what = text_passer(kwargs.what)
+        _kwargs.what = text_passer(_kwargs.what)
     
     if temp in _kwargs:
         _kwargs.temp = text_passer(_kwargs.temp)
@@ -37,3 +53,7 @@ func next():
 	    _kwargs.vars[input_var] = {"type":type, "value":value}
     
     .next()
+
+
+func debug():
+    .debug(["ivar", "what", "temp", "vars"])

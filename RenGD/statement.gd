@@ -8,49 +8,51 @@ extends Node
 
 var type = "base"
 var id = 0
-var _statements = []
 var _kwargs = {}
+var _ren
 
 # move to ren.G6DOF_JOINT_ANGULAR_DAMPING
 # signal use_statemnet(type = "", _kwargs = {})
 
-func _init(kwargs, index, statemnets):
+func _init(kwargs, index, ren):
     id = index
-    _statements = statements
     _kwargs = kwargs
+    _ren = ren
 
 
-func use(use_input = true):
+func use():
+    debug()
     emit_signal("statement", type, _kwargs)
-    set_process_input(use_input)
 
-
-func next():
-    set_process_input(false)
-    var next_sid = find_next()
+    
+func next(types = []):
+    var next_sid = find_next(types)
     if next_sid > -1:
-        _statements[next_sid].use()
-
-
-func _input(event):
-    if event.is_action_released("ren_rollforward"):
-        next()
+        ren.statements[next_sid].use()
 
 
 func find_next(types = []):
     var next_sid = -1
     
-    if id + 1 <= _statements.size():
+    if id + 1 <= ren.statements.size():
         if stype == []:
             next_sid = id + 1
         
         else:
-            for i in range(id, _statements.size()):
-                if _statements[i].type in types:
-                    next_sid = _statements[i].id
+            for i in range(id, ren.statements.size()):
+                if ren.statements[i].type in types:
+                    next_sid = ren.statements[i].id
                     break
     
     return next_sid
 
-func debug():
-    print(type, kwargs)
+
+func debug(kw = []):
+    dbg = type + "("
+    
+    for k in _kwargs:
+        if k in kw:
+            dbg += k + " = " + _kwargs[k] +", "
+    
+    dbg += ")"
+    print(dbg)
