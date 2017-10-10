@@ -1,6 +1,6 @@
 fontconfig
 addons
 refences
-*.inc
-*.sv.png
-*.sv.png.flags
+.import
+
+
