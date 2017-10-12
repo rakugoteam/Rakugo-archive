@@ -4,16 +4,6 @@
 
 Ren is framemork(inspired by Ren'Py) for story driven games in Godot.
 
-## Important
-
-I started this project again from scratch beacause:
-
- 1. Wrong desing in previous implentacion
- 1. It was hard to write project like this in GDScript
-
-Now I use [Godot 3.0a with beta godot-python](https://github.com/touilleMan/godot-python).
-It means that now project will be written in Python.
-
 ## Story driven games
 
 It means games that are for example:
