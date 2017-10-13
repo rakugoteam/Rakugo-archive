@@ -6,61 +6,31 @@
 
 extends "res://RenGD/statement.gd"
 
-###						###
-###	Text Passer	import	###
-###						###
-
-const REN_TXT = preload("ren_text.gd")
-onready var ren_txt = REN_TXT.new()
-
-func text_passer(text = ""):
-	## passer for renpy markup format
-	## its retrun bbcode
-	return ren_txt.text_passer(ren.vars, text)
-
-###							###
-###	Say statement class		###
-###							###
-
-type = "say"
-_kwargs = {"how":"", "what":""}
+func _init(kwargs, index, statments):
+	type = "say"
+	kws = ["how", "what"]
+	._init(kwargs, index, statments)
 
 func use():
-    
-    if how in _kwargs:
-		if _kwargs.how.type == "Character":
-			how = _kwargs.how.value
-			
-			var nhow = ""
-			
-			if how.name != ("" or null):
-				nhow = "{color=" + how.color + "}"
-				nhow += how.name
-				nhow += "{/color}"
-			
-			    what = how.what_prefix + what + how.what_suffix
-            
-            _kwargs.how = nhow
-            _kwargs.how = text_passer(_kwargs.how)
-
-            if not kind in _kwargs:
-                _kwargs.kind = _kwargs.how.value.kind
-    
-    if what in _kwargs:
-	    _kwargs.what = text_passer(_kwargs.what)
-
+	
+	if "how" in kwargs:
+		if kwargs.how.type == "Character":
+			how = kwargs.how.value
+			kwargs.how = how.parse_character(kwargs.vars)
+			kwargs.what = how.parse_what(kwargs.what)
+	
+	if what in _kwargs:
+	    kwargs.what = text_passer(kwargs.what, kwargs.vars)
+	
 	.use()
 	
 	set_process_input(true) ## move to gui
 
 ## move to gui
 func _input(event):
-    if event.is_action_released("ren_rollforward"):
+	if event.is_action_released("ren_rollforward"):
 		next()
 
 func next():
 	set_process_input(false) ## move to gui
 	.next()
-
-func debug():
-	.debug(["how", "what"])
