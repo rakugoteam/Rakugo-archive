@@ -1,24 +1,24 @@
-## This is Ren'GD API ##
+## This is Ren API ##
 
 ## version: 0.1.0 ##
 ## License MIT ##
 ## ren_input statement class ##
 
-extends "res://RenGD/statement.gd"
+extends "res://ren/statement.gd"
 
-func _init(kwargs, index, statments):
+func _init(kwargs):
 	type = "input"
 	kws = ["ivar", "what", "temp", "vars"]
-	._init(kwargs, index, statments)
+	._init(kwargs)
 
 func use():
-    if "what" in kwargs:
-        kwargs.what = text_passer(kwargs.what)
-    
-    if temp in _kwargs:
-        kwargs.temp = text_passer(kwargs.temp)
+	if "what" in kwargs:
+		kwargs.what = text_passer(kwargs.what)
+	
+	if temp in _kwargs:
+		kwargs.temp = text_passer(kwargs.temp)
 
-    .use(false)
+	.use(false)
 
 func next():
 	var type = "text"
@@ -33,8 +33,8 @@ func next():
 
 	if typeof(value) != TYPE_STRING:
 		type = "var"
-    
+	
 	if vars in kwargs:
-	    kwargs.vars[input_var] = {"type":type, "value":value}
-    
+		kwargs.vars[input_var] = {"type":type, "value":value}
+	
 	.next()

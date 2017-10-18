@@ -1,4 +1,4 @@
-## This is Ren'GD API ##
+## This is Ren API ##
 
 ## version: 0.1.0 ##
 ## License MIT ##

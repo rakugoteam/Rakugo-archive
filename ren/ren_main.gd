@@ -1,4 +1,4 @@
-## This is Ren'GD API ##
+## This is Ren API ##
 
 ## version: 0.1.0 ##
 ## License MIT ##
@@ -7,25 +7,23 @@
 
 extends Control
 
-##							###
-###	Say statement import	###
-###							###
-
-const _SAY = preload("say_statement.gd")
-onready var _say = _SAY.new()
-
-func text_passer(text = "", values = {}):
-	## passer for renpy markup format
-	## its retrun bbcode
-	return ren_txt.text_passer(values, text)
-
-signal use_statemnet(type, kwargs)
-
-var statments = []
+var statements = []
 var values = {}
 
+const _SAY = preload("say_statement.gd")
+
+signal use_statement(type, id, kwargs)
+signal next_statement(id)
+
+func say(kwargs):
+	## crate statement of type say
+	## with keywords : how, what
+	var s = _SAY.new()
+	s.ren = self
+	s.kwargs = kwargs
+	statements.append(s)
+	s.id = statements.rfind(s)
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
+	# statements[0].use()
 	pass

@@ -36,5 +36,6 @@ margin/bottom = -14.0
 bbcode/enabled = true
 bbcode/bbcode = "[center]Lorem ipsum dolor sit amet, consectetur adipiscing elit.[/center]"
 visible_characters = -1
+percent_visible = 1.0
 
 

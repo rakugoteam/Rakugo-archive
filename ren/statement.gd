@@ -1,4 +1,4 @@
-## This is Ren'GD API ##
+## This is Ren API ##
 
 ## version: 0.1.0 ##
 ## License MIT ##
@@ -22,50 +22,46 @@ func text_passer(text = "", values = {}):
 ## Base class for statement ##
 
 var type = "base"
-var id = 0 # postion of statment in statements list
+var id = 0 # postion of statment in ren.statements list
 var kwargs = {} # dict of pairs keyword : argument
 				# they are passed from one statment to another
 var kws = [] # possible keywords for this type of statement
-var statments # statements list includning this statment
-var _ren # to attach node with main ren script (ren.gd)
-		# needed to send singals 
-
-func _init(kwargs, index, statments):
-    self.id = index
-    self.kwargs = kwargs
-    self.statments = statments
+var next_statement_type = [] # prefered types of next statement
+var ren # to attach node with main ren script (ren.gd)  needed to send singals 
 
 func use():
-    debug(kws)
-    ren.emit_signal("statement", type, kwargs)
-    
+	debug(kws)
+	ren.connect("next_statement", self, "next", [id])
+	ren.emit_signal("use_statement", type, id, kwargs)
+	
 func next(types = []):
-    var next_sid = find_next(types)
-    if next_sid > -1:
-        statements[next_sid].use()
+	ren.disconnect("next_statement", self, "next")
+	var next_sid = find_next(types)
+	if next_sid > -1:
+		ren.statements[next_sid].use()
 
 func find_next(types = []):
-    var next_sid = -1
-    
-    if id + 1 <= statements.size():
-        if stype == []:
-            next_sid = id + 1
-        
-        else:
-            for i in range(id, statements.size()):
-                if statements[i].type in types:
-                    next_sid = statements[i].id
-                    break
-    
-    return next_sid
+	var next_sid = -1
+	
+	if id + 1 <= ren.statements.size():
+		if next_statement_type == []:
+			next_sid = id + 1
+		
+		else:
+			for i in range(id, ren.statements.size()):
+				if ren.statements[i].type in types:
+					next_sid = ren.statements[i].id
+					break
+	
+	return next_sid
 
 
 func debug(kws = []):
-    dbg = type + "("
-    
-    for k in _kwargs:
-        if k in kws:
-            dbg += k + " = " + _kwargs[k] +", "
-    
-    dbg += ")"
-    print(dbg)
+	var dbg = type + "("
+	
+	for k in kwargs:
+		if k in kws:
+			dbg += k + " = " + kwargs[k] +", "
+	
+	dbg += ")"
+	print(dbg)

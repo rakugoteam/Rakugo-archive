@@ -1,14 +1,15 @@
-[gd_scene load_steps=12 format=1]
+[gd_scene load_steps=13 format=1]
 
 [ext_resource path="res://themes/new_gui/tres/main.tres" type="Theme" id=1]
-[ext_resource path="res://themes/new_gui/tres/choice.tres" type="Theme" id=2]
-[ext_resource path="res://themes/new_gui/imgs/textbox.png" type="Texture" id=3]
-[ext_resource path="res://themes/new_gui/imgs/namebox.png" type="Texture" id=4]
-[ext_resource path="res://fonts/name_text_sizeM.fnt" type="BitmapFont" id=5]
-[ext_resource path="res://fonts/name_text_sizeIB.fnt" type="BitmapFont" id=6]
-[ext_resource path="res://fonts/name_text_sizeI.fnt" type="BitmapFont" id=7]
-[ext_resource path="res://fonts/name_text_sizeB.fnt" type="BitmapFont" id=8]
-[ext_resource path="res://fonts/name_text_sizeR.fnt" type="BitmapFont" id=9]
+[ext_resource path="res://scenes/gui/say.gd" type="Script" id=2]
+[ext_resource path="res://themes/new_gui/tres/choice.tres" type="Theme" id=3]
+[ext_resource path="res://themes/new_gui/imgs/textbox.png" type="Texture" id=4]
+[ext_resource path="res://themes/new_gui/imgs/namebox.png" type="Texture" id=5]
+[ext_resource path="res://fonts/name_text_sizeM.fnt" type="BitmapFont" id=6]
+[ext_resource path="res://fonts/name_text_sizeIB.fnt" type="BitmapFont" id=7]
+[ext_resource path="res://fonts/name_text_sizeI.fnt" type="BitmapFont" id=8]
+[ext_resource path="res://fonts/name_text_sizeB.fnt" type="BitmapFont" id=9]
+[ext_resource path="res://fonts/name_text_sizeR.fnt" type="BitmapFont" id=10]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -38,6 +39,7 @@ margin/left = 640.0
 margin/top = 0.0
 margin/right = -641.0
 margin/bottom = 140.0
+script/script = ExtResource( 2 )
 
 [node name="TextureFrame" type="TextureFrame" parent="."]
 
@@ -45,12 +47,13 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-theme/theme = ExtResource( 2 )
-margin/left = 2.0
+theme/theme = ExtResource( 3 )
+margin/left = 0.0
 margin/top = 0.0
-margin/right = 1282.0
-margin/bottom = 185.0
-texture = ExtResource( 3 )
+margin/right = 1280.0
+margin/bottom = 200.0
+texture = ExtResource( 4 )
+expand = true
 stretch_mode = 0
 
 [node name="SideImage" type="Control" parent="."]
@@ -66,7 +69,7 @@ margin/top = 40.0
 margin/right = 40.0
 margin/bottom = 0.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBox" type="VBoxContainer" parent="."]
 
 focus/ignore_mouse = false
 focus/stop_mouse = false
@@ -79,9 +82,8 @@ margin/bottom = 141.0
 custom_constants/separation = 1
 alignment = 0
 
-[node name="NameBox" type="TextureFrame" parent="VBoxContainer"]
+[node name="NameBox" type="TextureFrame" parent="VBox"]
 
-editor/display_folded = true
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -90,10 +92,10 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 1044.0
 margin/bottom = 36.0
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 stretch_mode = 0
 
-[node name="Label" type="RichTextLabel" parent="VBoxContainer/NameBox"]
+[node name="Label" type="RichTextLabel" parent="VBox/NameBox"]
 
 rect/min_size = Vector2( 0, 35 )
 focus/ignore_mouse = true
@@ -104,17 +106,17 @@ margin/left = 0.0
 margin/top = 1.0
 margin/right = 813.0
 margin/bottom = 36.0
-custom_fonts/mono_font = ExtResource( 5 )
-custom_fonts/bold_italics_font = ExtResource( 6 )
-custom_fonts/italics_font = ExtResource( 7 )
-custom_fonts/bold_font = ExtResource( 8 )
-custom_fonts/normal_font = ExtResource( 9 )
+custom_fonts/mono_font = ExtResource( 6 )
+custom_fonts/bold_italics_font = ExtResource( 7 )
+custom_fonts/italics_font = ExtResource( 8 )
+custom_fonts/bold_font = ExtResource( 9 )
+custom_fonts/normal_font = ExtResource( 10 )
 bbcode/enabled = true
 bbcode/bbcode = "Speaker"
 visible_characters = -1
 percent_visible = 1.0
 
-[node name="Input" type="LineEdit" parent="VBoxContainer"]
+[node name="Input" type="LineEdit" parent="VBox"]
 
 visibility/visible = false
 focus/ignore_mouse = false
@@ -136,7 +138,7 @@ focus_mode = 2
 caret/caret_blink = false
 caret/caret_blink_speed = 0.65
 
-[node name="Dialog" type="RichTextLabel" parent="VBoxContainer"]
+[node name="Dialog" type="RichTextLabel" parent="VBox"]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
