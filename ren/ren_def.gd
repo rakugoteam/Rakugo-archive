@@ -12,25 +12,25 @@ extends Object
 const REN_CH = preload("character.gd")
 onready var ren_ch = REN_CH.new()
 
-func define(keywords, key_name, key_value = null):
+func define(values, val_name, val_value = null):
 	## add global var that ren will see
-	var key_type = "var"
+	var val_type = "var"
 
-	if key_value != null:
-		var type = typeof(key_value)
+	if val_value != null:
+		var type = typeof(val_value)
 
 		if type == TYPE_STRING:
-			key_type = "text"
+			val_type = "text"
 		
 		elif type == TYPE_DICTIONARY:
-			key_type = "dict"
+			val_type = "dict"
 		
 		elif type == typeof(ren_ch):
-			key_type = "Character"
+			val_type = "Character"
 		
 		elif type == TYPE_ARRAY:
-			key_type = "list"
+			val_type = "list"
 			print('list are not fully supported by text_passer')
 		
 	
-	keywords[key_name] = {"type":key_type, "value":key_value}
+	values[val_name] = {"type":val_type, "value":val_value}

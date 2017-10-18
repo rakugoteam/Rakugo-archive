@@ -1,15 +1,14 @@
-[gd_scene load_steps=13 format=1]
+[gd_scene load_steps=12 format=1]
 
 [ext_resource path="res://themes/new_gui/tres/main.tres" type="Theme" id=1]
 [ext_resource path="res://themes/new_gui/tres/choice.tres" type="Theme" id=2]
 [ext_resource path="res://themes/new_gui/imgs/textbox.png" type="Texture" id=3]
-[ext_resource path="res://scenes/gui/scripts/say_screen.gd" type="Script" id=4]
-[ext_resource path="res://themes/new_gui/imgs/namebox.png" type="Texture" id=5]
-[ext_resource path="res://fonts/name_text_sizeM.fnt" type="BitmapFont" id=6]
-[ext_resource path="res://fonts/name_text_sizeIB.fnt" type="BitmapFont" id=7]
-[ext_resource path="res://fonts/name_text_sizeI.fnt" type="BitmapFont" id=8]
-[ext_resource path="res://fonts/name_text_sizeB.fnt" type="BitmapFont" id=9]
-[ext_resource path="res://fonts/name_text_sizeR.fnt" type="BitmapFont" id=10]
+[ext_resource path="res://themes/new_gui/imgs/namebox.png" type="Texture" id=4]
+[ext_resource path="res://fonts/name_text_sizeM.fnt" type="BitmapFont" id=5]
+[ext_resource path="res://fonts/name_text_sizeIB.fnt" type="BitmapFont" id=6]
+[ext_resource path="res://fonts/name_text_sizeI.fnt" type="BitmapFont" id=7]
+[ext_resource path="res://fonts/name_text_sizeB.fnt" type="BitmapFont" id=8]
+[ext_resource path="res://fonts/name_text_sizeR.fnt" type="BitmapFont" id=9]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -79,7 +78,6 @@ margin/right = 1217.0
 margin/bottom = 141.0
 custom_constants/separation = 1
 alignment = 0
-script/script = ExtResource( 4 )
 
 [node name="NameBox" type="TextureFrame" parent="VBoxContainer"]
 
@@ -92,7 +90,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 1044.0
 margin/bottom = 36.0
-texture = ExtResource( 5 )
+texture = ExtResource( 4 )
 stretch_mode = 0
 
 [node name="Label" type="RichTextLabel" parent="VBoxContainer/NameBox"]
@@ -106,11 +104,11 @@ margin/left = 0.0
 margin/top = 1.0
 margin/right = 813.0
 margin/bottom = 36.0
-custom_fonts/mono_font = ExtResource( 6 )
-custom_fonts/bold_italics_font = ExtResource( 7 )
-custom_fonts/italics_font = ExtResource( 8 )
-custom_fonts/bold_font = ExtResource( 9 )
-custom_fonts/normal_font = ExtResource( 10 )
+custom_fonts/mono_font = ExtResource( 5 )
+custom_fonts/bold_italics_font = ExtResource( 6 )
+custom_fonts/italics_font = ExtResource( 7 )
+custom_fonts/bold_font = ExtResource( 8 )
+custom_fonts/normal_font = ExtResource( 9 )
 bbcode/enabled = true
 bbcode/bbcode = "Speaker"
 visible_characters = -1
@@ -135,7 +133,7 @@ custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 placeholder/alpha = 0.6
 focus_mode = 2
-caret/caret_blink = true
+caret/caret_blink = false
 caret/caret_blink_speed = 0.65
 
 [node name="Dialog" type="RichTextLabel" parent="VBoxContainer"]

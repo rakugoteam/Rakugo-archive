@@ -1,18 +1,21 @@
 ## This is Ren'GD API ##
 
+## version: 0.1.0 ##
+## License MIT ##
+
 extends Node
 
 ###						###
 ###	Text Passer	import	###
 ###						###
 
-const REN_TXT = preload("ren_text.gd")
-onready var ren_txt = REN_TXT.new()
+const _TXT = preload("ren_text.gd")
+onready var _txt = _TXT.new()
 
-func text_passer(text = "", vars = {}):
+func text_passer(text = "", values = {}):
 	## passer for renpy markup format
 	## its retrun bbcode
-	return ren_txt.text_passer(vars, text)
+	return _txt.text_passer(values, text)
 
 ## version: 0.1.0 ##
 ## License MIT ##
@@ -26,8 +29,6 @@ var kws = [] # possible keywords for this type of statement
 var statments # statements list includning this statment
 var _ren # to attach node with main ren script (ren.gd)
 		# needed to send singals 
-
-# signal use_statemnet(type, kwargs) # ToDo: move to ren.gd
 
 func _init(kwargs, index, statments):
     self.id = index

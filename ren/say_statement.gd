@@ -16,11 +16,11 @@ func use():
 	if "how" in kwargs:
 		if kwargs.how.type == "Character":
 			how = kwargs.how.value
-			kwargs.how = how.parse_character(kwargs.vars)
+			kwargs.how = how.parse_character(kwargs.values)
 			kwargs.what = how.parse_what(kwargs.what)
 	
 	if what in _kwargs:
-	    kwargs.what = text_passer(kwargs.what, kwargs.vars)
+	    kwargs.what = text_passer(kwargs.what, kwargs.values)
 	
 	.use()
 	

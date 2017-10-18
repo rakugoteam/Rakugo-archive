@@ -5,7 +5,7 @@
 
 extends Object
 
-func text_passer(keywords, text = ""):
+func text_passer(values, text = ""):
 	## passer for renpy markup format
 	## its retrun bbcode
 
@@ -19,49 +19,49 @@ func text_passer(keywords, text = ""):
 		## code from Sebastian Holc solution:
 		## http://pastebin.com/K8zsWQtL
 
-		for key_name in keywords.keys():
-			if text.find(key_name) == -1:
-				continue # no keyword in this string
+		for val_name in values.vals():
+			if text.find(val_name) == -1:
+				continue # no value in this string
 			
-			var keyword = keywords[key_name]
+			var value = values[val_name]
 
-			if keyword.type == "text":
-				var value = keyword.value
-				text = text.replace("[" + key_name + "]", str(value))
+			if value.type == "text":
+				var value = value.value
+				text = text.replace("[" + val_name + "]", str(value))
 			
-			elif keyword.type == "func":
-				var func_result = call(keyword.value)
-				text = text.replace("[" + key_name + "]", str(func_result))
+			elif value.type == "func":
+				var func_result = call(value.value)
+				text = text.replace("[" + val_name + "]", str(func_result))
 			
-			elif keyword.type == "var":
-				var value = keyword.value
-				text = text.replace("[" + key_name + "]", str(value))
+			elif value.type == "var":
+				var value = value.value
+				text = text.replace("[" + val_name + "]", str(value))
 			
-			elif keyword.type == "dict" or "Character":
-				var dict = keyword.value
-				text = text.replace("[" + key_name + "]", str(dict))
+			elif value.type == "dict" or "Character":
+				var dict = value.value
+				text = text.replace("[" + val_name + "]", str(dict))
 				
 				for k in dict:
-					if text.find(key_name + "." + k) == -1:
-						continue # no keyword in this string
+					if text.find(val_name + "." + k) == -1:
+						continue # no value in this string
 					
 					var value = dict[k]
-					text = text.replace("[" + key_name + "." + k + "]", str(value))
+					text = text.replace("[" + val_name + "." + k + "]", str(value))
 			
-			elif keyword.type == "list":
-				var list = keyword.value
-				text = text.replace("[" + key_name + "]", str(list))
+			elif value.type == "list":
+				var list = value.value
+				text = text.replace("[" + val_name + "]", str(list))
 				
 			#	for v in list:
 			#		var i = list.find(v)
 				
-			#		if text.find(key_name +"["+i+"]") == -1:
-			#			continue # no keyword in this string
+			#		if text.find(val_name +"["+i+"]") == -1:
+			#			continue # no value in this string
 					
-			#			text = text.replace("[" + key_name+"["+i+"]]", str(v))
+			#			text = text.replace("[" + val_name+"["+i+"]]", str(v))
 
 			else:
-				print(key_name," is unsuported keyword type: ", keyword.type)
+				print(val_name," is unsuported value type: ", value.type)
 		
 			
 		text = text.replace("{image", "[img")
