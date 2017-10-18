@@ -59,9 +59,11 @@ func find_next(types = []):
 func debug(kws = []):
 	var dbg = type + "("
 	
-	for k in kwargs:
-		if k in kws:
-			dbg += k + " = " + kwargs[k] +", "
+	for k in kws:
+		if k in kwargs:
+			dbg += k + " : " + kwargs[k] +", "
 	
+	dbg.erase( dbg.length() - 2,  2)
+
 	dbg += ")"
 	print(dbg)
