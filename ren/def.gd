@@ -13,7 +13,6 @@ const REN_CH = preload("character.gd")
 onready var ren_ch = REN_CH.new()
 
 func define(values, val_name, val_value = null):
-	## add global var that ren will see
 	var val_type = "var"
 
 	if val_value != null:

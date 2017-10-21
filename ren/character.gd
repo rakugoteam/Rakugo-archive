@@ -1,4 +1,4 @@
-## This is Ren'GD API ##
+## This is Ren API ##
 
 ## version: 0.1.0 ##
 ## License MIT ##
@@ -6,26 +6,21 @@
 
 extends Node
 
-var name = ""
-var color = ""
-var what_prefix = ""
-var what_suffix = ""
-var kind = ""
+var kwargs = {"kind":"adv"}
+var kw = ["name", "color", "what_prefix", "what_sufifx", "kind", "avatar"]
 
-func _init(name="", color="", what_prefix="", what_suffix="", kind="adv"):
-	## return new Character
-	self.name = name
-	self.color = color
-	self.what_prefix = what_prefix
-	self.what_suffix = what_suffix
-	self.kind = kind
+func set_kwargs(new_kwargs):
+	# update character
+	for kw in kwargs:
+		if kw in new_kwargs:
+			kwargs[kw] = new_kwargs[kw]
 
 func parse_character(vars):
 	var ncharacter= ""
 	
-	if self.name != ("" or null):
-		ncharacter= "{color=" + self.color + "}"
-		ncharacter+= self.name
+	if "name" in kwargs:
+		ncharacter= "{color=" + kwargs.color + "}"
+		ncharacter+= kwargs.name
 		ncharacter+= "{/color}"
 		
 		ncharacter = text_passer(ncharacter, vars)
@@ -33,5 +28,5 @@ func parse_character(vars):
 	return ncharacter
 
 func parse_what(what):
-	 return what_prefix + what + what_suffix
+	 return kwargs.what_prefix + what + kwargs.what_suffix
 

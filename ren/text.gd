@@ -5,7 +5,7 @@
 
 extends Object
 
-func text_passer(values, text = ""):
+func text_passer(text, values):
 	## passer for renpy markup format
 	## its retrun bbcode
 
@@ -19,26 +19,25 @@ func text_passer(values, text = ""):
 		## code from Sebastian Holc solution:
 		## http://pastebin.com/K8zsWQtL
 
-		for val_name in values.vals():
+		for val_name in values.keys():
 			if text.find(val_name) == -1:
 				continue # no value in this string
 			
-			var value = values[val_name]
-
-			if value.type == "text":
-				var value = value.value
-				text = text.replace("[" + val_name + "]", str(value))
+			var value = values[val_name].value
+			var type = values[val_name].type
 			
-			elif value.type == "func":
-				var func_result = call(value.value)
+			if type == "text":
+				text = text.replace("[" + val_name + "]", value)
+			
+			elif type == "func":
+				var func_result = call(value)
 				text = text.replace("[" + val_name + "]", str(func_result))
 			
-			elif value.type == "var":
-				var value = value.value
+			elif type == "var":
 				text = text.replace("[" + val_name + "]", str(value))
 			
-			elif value.type == "dict" or "Character":
-				var dict = value.value
+			elif type == "dict" or "Character":
+				var dict = value
 				text = text.replace("[" + val_name + "]", str(dict))
 				
 				for k in dict:
@@ -48,9 +47,8 @@ func text_passer(values, text = ""):
 					var value = dict[k]
 					text = text.replace("[" + val_name + "." + k + "]", str(value))
 			
-			elif value.type == "list":
-				var list = value.value
-				text = text.replace("[" + val_name + "]", str(list))
+			elif type == "list":
+				text = text.replace("[" + val_name + "]", str(value))
 				
 			#	for v in list:
 			#		var i = list.find(v)
@@ -61,7 +59,7 @@ func text_passer(values, text = ""):
 			#			text = text.replace("[" + val_name+"["+i+"]]", str(v))
 
 			else:
-				print(val_name," is unsuported value type: ", value.type)
+				print(val_name," is unsuported value type: ", type)
 		
 			
 		text = text.replace("{image", "[img")

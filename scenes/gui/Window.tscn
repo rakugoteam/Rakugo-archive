@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=1]
 
-[ext_resource path="res://ren/ren_main.gd" type="Script" id=1]
+[ext_resource path="res://ren/main.gd" type="Script" id=1]
 [ext_resource path="res://themes/new_gui/tres/choice.tres" type="Theme" id=2]
 [ext_resource path="res://scenes/gui/Say.tscn" type="PackedScene" id=3]
 [ext_resource path="res://themes/new_gui/tres/quick.tres" type="Theme" id=4]

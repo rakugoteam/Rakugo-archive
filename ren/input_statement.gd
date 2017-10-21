@@ -4,26 +4,27 @@
 ## License MIT ##
 ## ren_input statement class ##
 
-extends "res://ren/statement.gd"
+extends "say_statement.gd"
 
-func _init(kwargs):
+func _init():
 	type = "input"
-	kws = ["ivar", "what", "temp", "vars"]
-	._init(kwargs)
+	kws = ["how", "what", "temp", "value"]
 
 func use():
-	if "what" in kwargs:
-		kwargs.what = text_passer(kwargs.what)
-	
-	if temp in _kwargs:
+	org_kwargs = kwargs
+	if "temp" in kwargs:
 		kwargs.temp = text_passer(kwargs.temp)
+	
+	kwargs = org_kwargs
+	.use()
 
-	.use(false)
+func next(id, new_kwargs = {}):
+	if new_kwargs != {}:
+		set_kwargs(new_kwargs)
 
-func next():
 	var type = "text"
 	var value = kwargs.value
-	var input_var = kwargs.input_var
+	var input_value = kwargs.input_value
 	
 	if value.is_valid_integer():
 		value = int(value)
@@ -34,7 +35,6 @@ func next():
 	if typeof(value) != TYPE_STRING:
 		type = "var"
 	
-	if vars in kwargs:
-		kwargs.vars[input_var] = {"type":type, "value":value}
+	ren.values[input_value] = {"type":type, "value":value}
 	
-	.next()
+	.next({})

@@ -4,7 +4,7 @@
 ## License MIT ##
 ## Menu class statement ##
 
-extends "res://ren/statement.gd"
+extends "statement.gd"
 
 func _init(kwargs):
 	type = "menu"

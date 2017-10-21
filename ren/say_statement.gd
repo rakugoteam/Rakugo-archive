@@ -4,22 +4,26 @@
 ## License MIT ##
 ## Say class statement ##
 
-extends "res://ren/statement.gd"
+extends "statement.gd"
+
+var org_kwargs
 
 func _init():
 	type = "say"
 	kws = ["how", "what"]
 
 func use():
-	# if "how" in kwargs:
-	# 	if kwargs.how in ren.values:
-	# 		if kwargs.how.type == "Character":
-	# 			var how = kwargs.how.value
-	# 			kwargs.how = how.parse_character(kwargs.values)
-	# 			kwargs.what = how.parse_what(kwargs.what)
+	org_kwargs = kwargs
+	if "how" in kwargs:
+		if kwargs.how in ren.values:
+			if ren.values[kwargs.how].type == "Character":
+				var how = ren.values[kwargs.how].value
+				kwargs.how = how.parse_character(ren.values)
+				kwargs.what = how.parse_what(kwargs.what)
 		
-	# if "what" in kwargs:
-	# 	kwargs.what = text_passer(kwargs.what, kwargs.values)
+	if "what" in kwargs:
+		kwargs.what = text_passer(kwargs.what)
 	
 	.use()
+	kwargs = org_kwargs
 	
