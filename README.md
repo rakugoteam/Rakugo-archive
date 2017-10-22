@@ -8,7 +8,7 @@ Ren is framemork(inspired by Ren'Py) for story driven games in Godot.
 
 It means games that are for example:
 
-- Visual Novels (ToDo)
+- Visual Novels (WIP)
 - Click & Point Adventures (ToDo)
 - RPG(ToDo)
 
