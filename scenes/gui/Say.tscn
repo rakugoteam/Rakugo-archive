@@ -143,7 +143,27 @@ custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 placeholder/alpha = 0.6
 focus_mode = 2
-caret/caret_blink = false
+caret/caret_blink = true
 caret/caret_blink_speed = 0.65
+
+[node name="BBCode" type="RichTextLabel" parent="VBox"]
+
+visibility/visible = false
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+margin/left = 0.0
+margin/top = 102.0
+margin/right = 1044.0
+margin/bottom = 136.0
+bbcode/enabled = true
+bbcode/bbcode = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis.
+Nunc porttitor venenatis fermentum. Donec ac sem id velit commodo lobortis eu non lacus.
+
+
+"
+visible_characters = -1
+percent_visible = 1.0
 
 

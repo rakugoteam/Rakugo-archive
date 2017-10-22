@@ -8,17 +8,18 @@ extends "say_statement.gd"
 
 func _init():
 	type = "input"
-	kws = ["how", "what", "temp", "value"]
+	kws = ["how", "what", "temp", "input_value"]
 
-func use():
-	org_kwargs = kwargs
-	if "temp" in kwargs:
-		kwargs.temp = text_passer(kwargs.temp)
+func use(dbg = true):
+	if dbg:
+		debug(kws)
 	
-	kwargs = org_kwargs
-	.use()
+	if "value" in kwargs:
+		kwargs.value = text_passer(kwargs.value)
+	
+	.use(false)
 
-func next(id, new_kwargs = {}):
+func next(new_kwargs = {}):
 	if new_kwargs != {}:
 		set_kwargs(new_kwargs)
 

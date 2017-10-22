@@ -3,7 +3,7 @@
 ## version: 0.1.0 ##
 ## License MIT ##
 
-extends Object
+extends Node
 
 ###						###
 ###	Character	import	###
@@ -12,10 +12,9 @@ extends Object
 const REN_CH = preload("character.gd")
 onready var ren_ch = REN_CH.new()
 
-func define(values, val_name, val_value = null):
-	var val_type = "var"
-
-	if val_value != null:
+func define(values, val_name, val_value = null, val_type = null):
+	if val_value != null && val_type == null:
+		val_type = "var"
 		var type = typeof(val_value)
 
 		if type == TYPE_STRING:
@@ -24,12 +23,8 @@ func define(values, val_name, val_value = null):
 		elif type == TYPE_DICTIONARY:
 			val_type = "dict"
 		
-		elif type == typeof(ren_ch):
-			val_type = "Character"
-		
 		elif type == TYPE_ARRAY:
 			val_type = "list"
 			print('list are not fully supported by text_passer')
-		
 	
 	values[val_name] = {"type":val_type, "value":val_value}

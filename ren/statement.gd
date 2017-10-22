@@ -29,22 +29,28 @@ func text_passer(text = ""):
 var type = "base"
 var id = 0 # postion of statment in ren.statements list
 var kwargs = {} # dict of pairs keyword : argument
-				# they are passed from one statment to another
+var org_kwargs = {} # org version of kwargs 
 var kws = [] # possible keywords for this type of statement
 var next_statement_types = [] # prefered types of next statement
 var ren # to attach node with main ren script (ren.gd)  needed to send singals 
 
-func use():
-	debug(kws)
+func use(dbg = true):
+	if dbg:
+		debug(kws)
+		
 	ren.connect("next_statement", self, "next")
-	ren.emit_signal("use_statement", type, id, kwargs)
+	ren.emit_signal("use_statement", type, kwargs)
 
 func set_kwargs(new_kwargs):
-	# update character
+	# update statement
 	for kw in new_kwargs:
 		kwargs[kw] = new_kwargs[kw]
 	
-func next(id, new_kwargs = {}):
+	for kw in new_kwargs:
+		org_kwargs[kw] = new_kwargs[kw]
+
+	
+func next(new_kwargs = {}):
 	if new_kwargs != {}:
 		set_kwargs(new_kwargs)
 

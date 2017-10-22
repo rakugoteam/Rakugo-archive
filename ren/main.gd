@@ -17,8 +17,8 @@ const _CHR = preload("character.gd")
 const _SAY = preload("say_statement.gd")
 const _INP = preload("input_statement.gd")
 
-signal use_statement(type, id, kwargs)
-signal next_statement(id, kwargs)
+signal use_statement(type, kwargs)
+signal next_statement(kwargs)
 
 func define(name, value = null):
 	# add global value that ren will see
@@ -26,14 +26,14 @@ func define(name, value = null):
 
 func character(val_name, kwargs):
 	# crate  new  charater as  global value that ren will see
-	# possible kwargs: name, color, what_prefix, what_sufifx, kind, avatar
+	# possible kwargs: name, color, what_prefix, what_suffix, kind, avatar
 	var new_ch = _CHR.new()
 	new_ch.set_kwargs(kwargs)
-	define(val_name, new_ch)
+	_def.define(values, val_name, new_ch, "Character")
 
 func _init_statement(statement, kwargs):
 	statement.ren = self
-	statement.kwargs = kwargs
+	statement.set_kwargs(kwargs)
 	statements.append(statement)
 	statement.id = statements.rfind(statement)
 
@@ -44,8 +44,18 @@ func say(kwargs):
 
 func input(kwargs):
 	## crate statement of type input
-	## with keywords : how, what, temp, value
+	## with keywords : how, what, input_value, value
 	_init_statement(_INP.new(),  kwargs)
 
-
+func _exit_tree():
+	for val in values.values():
+		if val.type == "Character":
+			val.value.free()
+	
+	_def.free()
+	
+	for statement in statements:
+		statement.free()
+		
+	
 

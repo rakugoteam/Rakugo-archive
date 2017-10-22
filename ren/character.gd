@@ -1,29 +1,26 @@
 ## This is Ren API ##
 
+extends Node
+
 ## version: 0.1.0 ##
 ## License MIT ##
 ## Character Class ##
 
-extends Node
-
-var kwargs = {"kind":"adv"}
-var kw = ["name", "color", "what_prefix", "what_sufifx", "kind", "avatar"]
+var kwargs = {"kind":"adv", "what_prefix":"", "what_suffix":"", "color":"white"}
+var kw = ["name", "color", "what_prefix", "what_suffix", "kind", "avatar"]
 
 func set_kwargs(new_kwargs):
 	# update character
-	for kw in kwargs:
-		if kw in new_kwargs:
-			kwargs[kw] = new_kwargs[kw]
+	for kw in new_kwargs:
+		kwargs[kw] = new_kwargs[kw]
 
-func parse_character(vars):
+func parse_character():
 	var ncharacter= ""
 	
 	if "name" in kwargs:
 		ncharacter= "{color=" + kwargs.color + "}"
 		ncharacter+= kwargs.name
 		ncharacter+= "{/color}"
-		
-		ncharacter = text_passer(ncharacter, vars)
 	
 	return ncharacter
 

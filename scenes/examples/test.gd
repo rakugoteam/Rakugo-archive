@@ -9,8 +9,8 @@ onready var ren = get_node("/root/Window")
 
 func _ready():
 	ren.character("rench", {
-								"name": "Ren",
-								"avatar": "res://scenes/examples/RenAvatar.tscn"
+							"name": "Ren",
+							"avatar": "res://scenes/examples/RenAvatar.tscn"
 							})
 	
 	ren.define("player_name")
@@ -19,10 +19,10 @@ func _ready():
 					"rench",
 				"what":
 					"Hi! I'm Ren. What is your name?",
-				"temp":
-					"Developer",
+				"input_value":
+						"player_name",
 				"value":
-						"player_name"
+					"Developer"
 				})
 				
 	ren.say({
