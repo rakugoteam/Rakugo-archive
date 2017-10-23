@@ -38,8 +38,13 @@ func use(dbg = true):
 	if dbg:
 		debug(kws)
 		
-	ren.connect("next_statement", self, "next")
+	# ren.connect("next_statement", self, "next")
 	ren.emit_signal("use_statement", type, kwargs)
+	next(yield(ren, "next"))
+	# ren.disconnect("next_statement", self, "next")
+	# var next_sid = find_next(next_statement_types)
+	# if next_sid > -1:
+	# 	ren.statements[next_sid].use()
 
 func set_kwargs(new_kwargs):
 	# update statement
@@ -48,16 +53,13 @@ func set_kwargs(new_kwargs):
 	
 	for kw in new_kwargs:
 		org_kwargs[kw] = new_kwargs[kw]
-
 	
 func next(new_kwargs = {}):
 	if new_kwargs != {}:
 		set_kwargs(new_kwargs)
-
-	ren.disconnect("next_statement", self, "next")
-	var next_sid = find_next(next_statement_types)
-	if next_sid > -1:
-		ren.statements[next_sid].use()
+	
+	# func_state.resume()
+	
 
 func find_next(types = []):
 	var next_sid = -1

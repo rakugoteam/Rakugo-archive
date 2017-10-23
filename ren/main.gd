@@ -34,8 +34,9 @@ func character(val_name, kwargs):
 func _init_statement(statement, kwargs):
 	statement.ren = self
 	statement.set_kwargs(kwargs)
-	statements.append(statement)
-	statement.id = statements.rfind(statement)
+	# statements.append(statement)
+	# statement.id = statements.rfind(statement)
+	statement.use()
 
 func say(kwargs):
 	## crate statement of type say
