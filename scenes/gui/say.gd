@@ -17,19 +17,19 @@ var avatar
 var input_placeholder = ""
 
 func _ready():
-	ren.connect("use_statement", self, "_on_statement")
+	ren.connect("enter_statement", self, "_on_statement")
 	InputLine.hide()
 
 func _on_input(event):
 	if event.is_action_released("ren_rollforward"):
-		ren.emit_signal("next_statement", {})
+		ren.emit_signal("exit_statement", {})
 
 func _on_enter(text):
 	var final_value = input_placeholder
 	if not text.empty():
 		final_value = InputLine.get_text()
 	
-	ren.emit_signal("next_statement", {"value":final_value})
+	ren.emit_signal("exit_statement", {"value":final_value})
 
 func _on_statement(type, kwargs):
 	if not type in ["say", "input"]:

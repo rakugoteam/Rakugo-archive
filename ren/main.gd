@@ -17,8 +17,8 @@ const _CHR = preload("character.gd")
 const _SAY = preload("say_statement.gd")
 const _INP = preload("input_statement.gd")
 
-signal use_statement(type, kwargs)
-signal next_statement(kwargs)
+signal enter_statement(type, kwargs)
+signal exit_statement(kwargs)
 
 func define(name, value = null):
 	# add global value that ren will see
