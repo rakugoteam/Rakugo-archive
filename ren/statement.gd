@@ -34,12 +34,12 @@ var kws = [] # possible keywords for this type of statement
 var next_statement_types = [] # prefered types of next statement
 var ren # to attach node with main ren script (ren.gd)  needed to send singals 
 
-func use(dbg = true):
+func enter(dbg = true):
 	if dbg:
 		debug(kws)
 		
-	ren.connect("next_statement", self, "next")
-	ren.emit_signal("use_statement", type, kwargs)
+	ren.connect("exit_statement", self, "on_exit")
+	ren.emit_signal("enter_statement", type, kwargs)
 
 func set_kwargs(new_kwargs):
 	# update statement
@@ -50,14 +50,14 @@ func set_kwargs(new_kwargs):
 		org_kwargs[kw] = new_kwargs[kw]
 
 	
-func next(new_kwargs = {}):
+func on_exit(new_kwargs = {}):
 	if new_kwargs != {}:
 		set_kwargs(new_kwargs)
 
-	ren.disconnect("next_statement", self, "next")
+	ren.disconnect("exit_statement", self, "on_exit")
 	var next_sid = find_next(next_statement_types)
 	if next_sid > -1:
-		ren.statements[next_sid].use()
+		ren.statements[next_sid].enter()
 
 func find_next(types = []):
 	var next_sid = -1

@@ -10,13 +10,13 @@ func _init():
 	type = "say"
 	kws = ["how", "what"]
 
-func use(dbg = true):
+func enter(dbg = true):
 	if dbg:
 		debug(kws)
 	
 	if "how" in kwargs:
 		if kwargs.how in ren.values:
-			if ren.values[kwargs.how].type == "Character":
+			if ren.values[kwargs.how].type == "character":
 				var how = ren.values[kwargs.how].value
 				kwargs.how = how.parse_character()
 				
@@ -32,6 +32,6 @@ func use(dbg = true):
 	if "what" in kwargs:
 		kwargs.what = text_passer(kwargs.what)
 	
-	.use(false)
+	.enter(false)
 	kwargs = org_kwargs
 	

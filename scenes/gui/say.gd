@@ -14,11 +14,11 @@ var avatar_path = ""
 var avatar
 
 func _ready():
-	ren.connect("use_statement", self, "_on_statement")
+	ren.connect("enter_statement", self, "_on_statement")
 	
 func _on_input(event):
 	if event.is_action_released("ren_rollforward"):
-		ren.emit_signal("next_statement", {})
+		ren.emit_signal("exit_statement", {})
 
 func _on_statement(type, kwargs):
 	if not type in ["say", "input"]:

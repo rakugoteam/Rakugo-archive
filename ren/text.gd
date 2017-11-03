@@ -25,6 +25,8 @@ func text_passer(text, values):
 			
 			var value = values[val_name].value
 			var type = values[val_name].type
+
+			# print (val_name, " ",  type, " ",  value)
 			
 			if type == "text":
 				text = text.replace("[" + val_name + "]", value)
@@ -36,11 +38,15 @@ func text_passer(text, values):
 			elif type == "var":
 				text = text.replace("[" + val_name + "]", str(value))
 			
-			elif type == "dict" or "Character":
+			elif type in ["dict", "character"]:
 				var dict = value
+				
+				if type == "character":
+					dict = value.kwargs
+
 				text = text.replace("[" + val_name + "]", str(dict))
 				
-				for k in dict:
+				for k in dict.keys():
 					if text.find(val_name + "." + k) == -1:
 						continue # no value in this string
 					

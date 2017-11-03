@@ -11,7 +11,7 @@ func _init(kwargs):
 	kws = ["choices", "title", "node", "func_name"]
 	._inti(kwargs)
 
-func use():
+func enter():
 	if title in kwargs:
 		kwargs.title = text_passer(kwargs.title)
 	
@@ -28,7 +28,7 @@ func use():
 				kwargs.raw_choices[ch.key] = ch.value
 				ch.key = text_passer(ch.key)
 	
-	.use()
+	.enter()
 
 func next():
 	if raw_choices in kwargs:

@@ -7,15 +7,16 @@ onready var BBCode = get_node("BBCode") # use to parse bbcode for InputLine
 var input_placeholder = ""
 
 func _ready():
-	ren.connect("use_statement", self, "_on_statement")
+	ren.connect("enter_statement", self, "_on_statement")
 	InputLine.hide()
 
 func _on_enter(text):
 	var final_value = input_placeholder
-	if not text.empty():
+
+	if text != "":
 		final_value = InputLine.get_text()
 	
-	ren.emit_signal("next_statement", {"value":final_value})
+	ren.emit_signal("exit_statement", {"value":final_value})
 
 func _on_statement(type, kwargs):
 	if type != "input":

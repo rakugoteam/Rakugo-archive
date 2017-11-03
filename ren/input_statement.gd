@@ -10,20 +10,19 @@ func _init():
 	type = "input"
 	kws = ["how", "what", "temp", "input_value"]
 
-func use(dbg = true):
+func enter(dbg = true):
 	if dbg:
 		debug(kws)
 	
 	if "value" in kwargs:
 		kwargs.value = text_passer(kwargs.value)
 	
-	.use(false)
+	.enter(false)
 
-func next(new_kwargs = {}):
+func on_exit(new_kwargs = {}):
 	if new_kwargs != {}:
 		set_kwargs(new_kwargs)
 
-	var type = "text"
 	var value = kwargs.value
 	var input_value = kwargs.input_value
 	
@@ -33,9 +32,6 @@ func next(new_kwargs = {}):
 	elif value.is_valid_float():
 		value = float(value)
 
-	if typeof(value) != TYPE_STRING:
-		type = "var"
+	ren.define(input_value, value)
 	
-	ren.values[input_value] = {"type":type, "value":value}
-	
-	.next({})
+	.on_exit({})
