@@ -32,4 +32,4 @@ func _ready():
 					"Welcome [player_name] in Ren Framework Version 0.1.0"
 				})
 	
-#	ren.statements[0].use()
+	ren.statements[0].use()

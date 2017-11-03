@@ -4,26 +4,36 @@
 ## License MIT ##
 ## Menu class statement ##
 
-extends "say_statement.gd"
+extends "statement.gd"
 
-func _init():
+func _init(kwargs):
 	type = "menu"
-	kws = ["how", "what", "choices", "menu_name"]
+	kws = ["choices", "title", "node", "func_name"]
+	._inti(kwargs)
 
-func use(dbg = true):
-	if dbg:
-		debug(kws)
-
+func use():
+	if title in kwargs:
+		kwargs.title = text_passer(kwargs.title)
+	
 	if choices in kwargs:
+		if typeof(kwargs.choices) == TYPE_ARRAY:
 			kwargs["raw_choices"] = []
 			for ch in kwargs.choices:
 				kwargs.raw_choices.append(ch)
 				ch = text_passer(ch)
 		
-	.use(false)
+		elif typeof(kwargs.choices) == TYPE_DICTIONARY:
+			kwargs["raw_choices"] = {}
+			for ch in kwargs.choices:
+				kwargs.raw_choices[ch.key] = ch.value
+				ch.key = text_passer(ch.key)
+	
+	.use()
 
-func next(new_kwargs = {}):
-	if new_kwargs != {}:
-		set_kwargs(new_kwargs)
-		
-	.next({})
+func next():
+	if raw_choices in kwargs:
+		if typeof(kwargs.raw_choices) == TYPE_DICTIONARY:
+			if final_choice in kwargs:
+				ren.statements += kwargs.raw_choices[final_choice]
+	
+	.next()

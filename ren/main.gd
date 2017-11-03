@@ -17,8 +17,8 @@ const _CHR = preload("character.gd")
 const _SAY = preload("say_statement.gd")
 const _INP = preload("input_statement.gd")
 
-signal enter_statement(type, kwargs)
-signal exit_statement(kwargs)
+signal use_statement(type, kwargs)
+signal next_statement(kwargs)
 
 func define(name, value = null):
 	# add global value that ren will see
@@ -34,9 +34,8 @@ func character(val_name, kwargs):
 func _init_statement(statement, kwargs):
 	statement.ren = self
 	statement.set_kwargs(kwargs)
-	# statements.append(statement)
-	# statement.id = statements.rfind(statement)
-	statement.use()
+	statements.append(statement)
+	statement.id = statements.rfind(statement)
 
 func say(kwargs):
 	## crate statement of type say

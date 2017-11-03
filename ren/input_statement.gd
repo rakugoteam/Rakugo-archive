@@ -19,9 +19,9 @@ func use(dbg = true):
 	
 	.use(false)
 
-# func next(new_kwargs = {}):
-# 	if new_kwargs != {}:
-# 		set_kwargs(new_kwargs)
+func next(new_kwargs = {}):
+	if new_kwargs != {}:
+		set_kwargs(new_kwargs)
 
 	var type = "text"
 	var value = kwargs.value
@@ -38,4 +38,4 @@ func use(dbg = true):
 	
 	ren.values[input_value] = {"type":type, "value":value}
 	
-	# .next({})
+	.next({})
