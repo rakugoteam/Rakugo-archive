@@ -1,6 +1,6 @@
 ## This is RenAPI ##
 
-## version: 0.1.0 ##
+## version: 0.2.0 ##
 ## License MIT ##
 ## Say class statement ##
 
@@ -10,9 +10,9 @@ func _init():
 	type = "say"
 	kws = ["how", "what"]
 
-func enter(dbg = true):
-	if dbg:
-		debug(kws)
+func enter(dbg = true, new_kwargs = {}):
+	if not _init_enter(dbg, new_kwargs):
+		return
 	
 	if "how" in kwargs:
 		if kwargs.how in ren.values:
@@ -32,6 +32,10 @@ func enter(dbg = true):
 	if "what" in kwargs:
 		kwargs.what = text_passer(kwargs.what)
 	
+	else:
+		print("Error: None 'what' arg")
+		return
+	
 	.enter(false)
-	kwargs = org_kwargs
+	
 	

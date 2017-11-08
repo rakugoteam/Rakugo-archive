@@ -1,18 +1,11 @@
 ## This is Ren API ##
 
-## version: 0.1.0 ##
+## version: 0.2.0 ##
 ## License MIT ##
 
 extends Node
 
-###						###
-###	Character	import	###
-###						###
-
-const REN_CH = preload("character.gd")
-onready var ren_ch = REN_CH.new()
-
-func define(values, val_name, val_value = null, val_type = null):
+func define(values, val_name, val_value = null, val_type = null, dbg = true):
 	if val_value != null && val_type == null:
 		val_type = "var"
 		var type = typeof(val_value)
@@ -27,4 +20,14 @@ func define(values, val_name, val_value = null, val_type = null):
 			val_type = "list"
 			print('list are not fully supported by text_passer')
 	
+	if val_value == null:
+		val_value = "null"
+	
+	if val_type == null:
+		val_type = "none"
+	
+	if dbg:
+		print(val_type, " ", val_name, " = ", val_value)
+	
 	values[val_name] = {"type":val_type, "value":val_value}
+

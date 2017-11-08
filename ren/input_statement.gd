@@ -1,18 +1,19 @@
 ## This is Ren API ##
 
-## version: 0.1.0 ##
+## version: 0.2.0 ##
 ## License MIT ##
 ## ren_input statement class ##
 
 extends "say_statement.gd"
 
 func _init():
+	._init()
 	type = "input"
-	kws = ["how", "what", "temp", "input_value"]
+	kws += ["temp", "input_value"]
 
-func enter(dbg = true):
-	if dbg:
-		debug(kws)
+func enter(dbg = true, new_kwargs = {}):
+	if not _init_enter(dbg, new_kwargs):
+		return
 	
 	if "value" in kwargs:
 		kwargs.value = text_passer(kwargs.value)
