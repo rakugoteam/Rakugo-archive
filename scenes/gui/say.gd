@@ -1,5 +1,5 @@
 ## This is in-game gui example for Ren API ##
-## version: 0.2.0 ##
+## version: 0.1.0 ##
 ## License MIT ##
 
 extends Container
@@ -21,7 +21,7 @@ func _on_input(event):
 		ren.emit_signal("exit_statement", {})
 
 func _on_statement(type, kwargs):
-	if not type in ["say", "input", "menu"]:
+	if not type in ["say", "input"]:
 		return
 
 	if "how" in kwargs:
