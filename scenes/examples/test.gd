@@ -1,6 +1,6 @@
 ## This is example of script using Ren Framework ##
 
-## version: 0.1.0 ##
+## version: 0.2.0 ##
 ## License MIT ##
 
 extends Node2D
@@ -32,4 +32,4 @@ func _ready():
 					"Welcome [player_name] in Ren Framework Version 0.1.0"
 				})
 	
-	ren.statements[0].enter()
+	ren.start()
