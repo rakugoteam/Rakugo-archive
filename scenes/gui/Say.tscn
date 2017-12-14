@@ -145,7 +145,7 @@ custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 placeholder/alpha = 0.6
 focus_mode = 2
-caret/caret_blink = true
+caret/caret_blink = false
 caret/caret_blink_speed = 0.65
 
 [node name="BBCode" type="RichTextLabel" parent="VBox"]

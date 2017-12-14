@@ -21,7 +21,7 @@ func _on_input(event):
 		ren.emit_signal("exit_statement", {})
 
 func _on_statement(type, kwargs):
-	if not type in ["say", "input"]:
+	if not type in ["say", "input", "menu"]:
 		return
 
 	if "how" in kwargs:

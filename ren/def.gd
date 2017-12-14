@@ -5,13 +5,6 @@
 
 extends Node
 
-###						###
-###	Character	import	###
-###						###
-
-const REN_CH = preload("character.gd")
-onready var ren_ch = REN_CH.new()
-
 func define(values, val_name, val_value = null, val_type = null):
 	if val_value != null && val_type == null:
 		val_type = "var"

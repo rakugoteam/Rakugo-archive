@@ -12,7 +12,7 @@ func _init():
 
 func enter(dbg = true):
 	if dbg:
-		debug(kws)
+		print(debug(kws))
 	
 	if "value" in kwargs:
 		kwargs.value = text_passer(kwargs.value)

@@ -17,14 +17,13 @@ func _on_statement(type, kwargs):
 	
 	var i = 0
 	var choices = ren.current_menu.choices_labels
-	var ids = ren.current_menu.ids
 	for ch in choices:
 		var ch_button = ChoiceButton.instance()
 		add_child(ch_button)
 		var text = str((ch_button.get_path())) + "/RichTextLabel"
 		get_node(text).set_bbcode("[center]" + ch + "[/center]")
-		ch_button.connect("pressed", self, "_on_button_pressed", [ids[i]])
-		print("create button (", ch, ") with id : ", ids[i])
+		ch_button.connect("pressed", self, "_on_button_pressed", [i])
+		print("create button (", ch, ") with id : ", i)
 		i += 1
 	
 	show()

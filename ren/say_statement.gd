@@ -12,7 +12,7 @@ func _init():
 
 func enter(dbg = true):
 	if dbg:
-		debug(kws)
+		print(debug(kws))
 	
 	if "how" in kwargs:
 		if kwargs.how in ren.values:
@@ -33,5 +33,4 @@ func enter(dbg = true):
 		kwargs.what = text_passer(kwargs.what)
 	
 	.enter(false)
-	kwargs = org_kwargs
 	
