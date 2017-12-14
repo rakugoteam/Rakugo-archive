@@ -30,4 +30,4 @@ func _on_statement(type, kwargs):
 
 func _on_button_pressed(id):
 	print("final_choice ", id)
-	ren.emit_signal("exit_statement", {"final_choice":id})
+	ren.emit_signal("enter_block", {"final_choice":id})

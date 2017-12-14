@@ -16,13 +16,11 @@ func enter(dbg = true):
 	if dbg:
 		print(debug(kws))
 	
-	on_exit()
+	on_enter_block()
+
+func on_enter_block(new_kwargs = {}):
+	.on_enter_block(new_kwargs)
+	statements[0].enter()
 
 func on_exit(new_kwargs = {}):
-	if new_kwargs != {}:
-		set_kwargs(new_kwargs)
-	
-	if ren.is_connected("exit_statement", self, "on_exit"):
-		ren.disconnect("exit_statement", self, "on_exit")
-	
-	statements[0].enter()
+	condition_statement.on_exit(new_kwargs)

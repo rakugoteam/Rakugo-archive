@@ -40,6 +40,7 @@ func enter(dbg = true):
 	
 	ren.current_statement_id = id
 	ren.connect("exit_statement", self, "on_exit")
+	ren.connect("enter_block", self, "on_enter_block")
 	ren.emit_signal("enter_statement", type, kwargs)
 
 func set_kwargs(new_kwargs):
@@ -51,6 +52,13 @@ func set_dict(new_dict, dicts_array):
 		for kw in new_dict:
 			dict[kw] = new_dict[kw]
 	
+func on_enter_block(new_kwargs = {}):
+	if new_kwargs != {}:
+		set_kwargs(new_kwargs)
+	
+	if ren.is_connected("enter_block", self, "on_enter_block"):
+		ren.disconnect("enter_block", self, "on_enter_block")
+
 func on_exit(new_kwargs = {}):
 	if new_kwargs != {}:
 		set_kwargs(new_kwargs)
@@ -65,18 +73,7 @@ func on_exit(new_kwargs = {}):
 		
 	else:
 		if condition_statement != null:
-			if condition_statement.type != "menu":
-				next_sid = find_next(condition_statement.id,
-					condition_statement.condition_statement)
-			
-			else:
-				next_sid = find_next(condition_statement.id,
-					condition_statement.choices)
-			
-			if next_sid > -1:
-				enter_next(next_sid)
-				
-		# return
+			condition_statement.on_exit(new_kwargs)
 	
 	print("End of Label")
 
@@ -86,6 +83,7 @@ func enter_next(next_sid):
 		
 	else:
 		ren.statements[next_sid].enter()
+
 
 
 func find_next(start = id, _condition_statement = condition_statement):

@@ -31,7 +31,7 @@ func enter(dbg = true):
 	
 	.enter(false)
 
-func on_exit(new_kwargs = {}):
+func on_enter_block(new_kwargs = {}):
 	if new_kwargs != {}:
 		set_kwargs(new_kwargs)
 	

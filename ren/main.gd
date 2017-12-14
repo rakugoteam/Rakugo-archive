@@ -27,6 +27,7 @@ const _CHO = preload("choice_statement.gd")
 onready var _def = _DEF.new()
 
 signal enter_statement(type, kwargs)
+signal enter_block(kwargs)
 signal exit_statement(kwargs)
 
 # add global value that ren will see
@@ -107,16 +108,5 @@ func start():
 	current_local_statement_id = -1
 	using_passer = false
 	statements[0].enter()
-
-func _exit_tree():
-	for val in values.values():
-		if val.type == "Character":
-			val.value.free()
-	
-	_def.free()
-	
-	for statement in statements:
-		statement.free()
-		
 	
 
