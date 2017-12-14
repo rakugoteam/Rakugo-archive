@@ -12,6 +12,7 @@ var current_statement_id = -1
 var current_local_statement_id = -1
 var current_block = []
 var current_menu
+var choice_id = -1
 var values = {}
 var using_passer = false
 export(bool) var debug_inti = true
@@ -44,25 +45,30 @@ func character(val_name, kwargs):
 func _init_statement(statement, kwargs, condition_statement = null):
 	statement.ren = self
 	statement.set_kwargs(kwargs)
-	current_statement_id += 1
 	
 	if debug_inti:
 		statement.debug(statement.kws, "condition_statement: " + str(condition_statement) + ", ")
 		
 	if condition_statement != null:
 		current_block = condition_statement
-		current_local_statement_id += 1
-		statement.id = current_local_statement_id
 		statement.condition_statement = condition_statement
 		
 		if condition_statement.type == "menu":
+			current_local_statement_id = -1
+			choice_id += 1
+			statement.id = choice_id
 			condition_statement.choices.append(statement)
-
+			
 		else:
+			choice_id = -1
+			current_local_statement_id += 1
+			statement.id = current_local_statement_id
 			condition_statement.statements.append(statement)
 			
 	else:
+		choice_id = -1
 		current_local_statement_id = -1
+		current_statement_id += 1
 		statement.id = current_statement_id
 		statements.append(statement)
 
@@ -106,7 +112,8 @@ func start():
 	current_menu = []
 	current_statement_id = 0
 	current_local_statement_id = -1
+	choice_id = -1
 	using_passer = false
 	statements[0].enter()
-	
+
 
