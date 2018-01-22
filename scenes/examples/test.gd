@@ -75,12 +75,4 @@ func _ready():
 					"Docs are not ready yet"
 			}, choice_aq)
 	
-
-	ren.say({
-				"how":
-					"rench",
-				"what":
-					"Its all for now"
-			})
-
 	ren.start()

@@ -27,16 +27,16 @@ func text_passer(text, values):
 			var type = values[val_name].type
 
 			# print (val_name, " ",  type, " ",  value)
-			
+			var s = "[" + val_name + "]"
 			if type == "text":
-				text = text.replace("[" + val_name + "]", value)
+				text = text.replace(s, value)
 			
 			elif type == "func":
 				var func_result = call(value)
-				text = text.replace("[" + val_name + "]", str(func_result))
+				text = text.replace("[" + val_name + "()]", str(func_result))
 			
 			elif type == "var":
-				text = text.replace("[" + val_name + "]", str(value))
+				text = text.replace(s, str(value))
 			
 			elif type in ["dict", "character"]:
 				var dict = value
@@ -44,29 +44,28 @@ func text_passer(text, values):
 				if type == "character":
 					dict = value.kwargs
 
-				text = text.replace("[" + val_name + "]", str(dict))
+				text = text.replace(s, str(dict))
 				
 				for k in dict.keys():
-					if text.find(val_name + "." + k) == -1:
+					var sk = "[" + val_name + "." + k + "]"
+					if text.find(s) == -1:
 						continue # no value in this string
 					
 					var value = dict[k]
-					text = text.replace("[" + val_name + "." + k + "]", str(value))
+					text = text.replace(sk, str(value))
 			
 			elif type == "list":
-				text = text.replace("[" + val_name + "]", str(value))
+				text = text.replace(s, str(value))
 				
-			#	for v in list:
-			#		var i = list.find(v)
-				
-			#		if text.find(val_name +"["+i+"]") == -1:
-			#			continue # no value in this string
+				for i in range(value.size()):
+					var sa = "[" + val_name+"["+str(i)+"]]"
+					if text.find(sa) == -1:
+						continue # no value in this string
 					
-			#			text = text.replace("[" + val_name+"["+i+"]]", str(v))
+					text = text.replace(sa, str(value[i]))
 
 			else:
 				print(val_name," is unsuported value type: ", type)
-		
 			
 		text = text.replace("{image", "[img")
 		text = text.replace("{tab}", "/t".c_escape())

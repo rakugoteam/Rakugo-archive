@@ -5,7 +5,7 @@
 
 ## Main Ren class ## 
 
-extends Control
+extends Node
 
 var statements = []
 var current_statement_id = -1

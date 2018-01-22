@@ -6,9 +6,8 @@
 
 extends "say_statement.gd"
 
-# todo change in to kwargs
 var title
-var choices = [] # list of choice("first_choice", list_of_stuff_to_happen_after_this_choice)
+var choices = [] # list of choices
 var choices_labels = []
 
 func _init(_title = null):
