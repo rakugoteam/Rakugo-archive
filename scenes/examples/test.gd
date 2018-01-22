@@ -1,6 +1,5 @@
 ## This is example of script using Ren Framework ##
-
-## version: 0.2.0 ##
+## version: 0.3.0 ##
 ## License MIT ##
 
 extends Node2D
@@ -14,6 +13,11 @@ func _ready():
 							})
 	
 	ren.define("player_name")
+	
+	ren.define("is_working", true)
+	var first_case = ren.if_statement("is_working")
+	ren.say({"what":"if_statemnt work!"}, first_case)
+
 	ren.input({
 				"how": 
 					"rench",
@@ -29,7 +33,7 @@ func _ready():
 				"how": 
 					"rench",
 				"what":
-					"Welcome [player_name] in Ren Framework Version 0.2.0"
+					"Welcome [player_name] in Ren Framework Version [version]"
 				})
 	
 
@@ -74,5 +78,6 @@ func _ready():
 				"what":
 					"Docs are not ready yet"
 			}, choice_aq)
+	
 	
 	ren.start()

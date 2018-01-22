@@ -1,6 +1,5 @@
 ## This is Ren API ##
-
-## version: 0.2.0 ##
+## version: 0.3.0 ##
 ## License MIT ##
 
 extends Object
@@ -31,9 +30,9 @@ func text_passer(text, values):
 			if type == "text":
 				text = text.replace(s, value)
 			
-			elif type == "func":
-				var func_result = call(value)
-				text = text.replace("[" + val_name + "()]", str(func_result))
+#			elif type == "func":
+#				var func_result = call(value)
+#				text = text.replace("[" + val_name + "()]", str(func_result))
 			
 			elif type == "var":
 				text = text.replace(s, str(value))

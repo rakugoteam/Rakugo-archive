@@ -1,7 +1,7 @@
 ## This is Ren API ##
-
-## version: 0.2.0 ##
+## version: 0.3.0 ##
 ## License MIT ##
+## Ren Base statement class
 
 extends Node
 
@@ -22,7 +22,7 @@ func text_passer(text = ""):
 		_txt = _TXT.new()
 	return _txt.text_passer(text, ren.values)
 
-## version: 0.2.0 ##
+## version: 0.3.0 ##
 ## License MIT ##
 ## Base class for statement ##
 
@@ -84,8 +84,6 @@ func enter_next(next_sid):
 	else:
 		ren.statements[next_sid].enter()
 
-
-
 func find_next(start = id, _condition_statement = condition_statement):
 	var next_sid = -1
 
@@ -103,14 +101,14 @@ func find_next(start = id, _condition_statement = condition_statement):
 	return next_sid
 
 func debug(kws = [], some_custom_text = ""):
-	var dbg = str(id) + ":" + type + "(" + some_custom_text
+	var dbg = ""
 	
 	for k in kws:
 		if k in kwargs:
 			dbg += k + " : " + str(kwargs[k]) + ", "
 	
 	if kws.size() > 0:
-		dbg.erase( dbg.length() - 2,  2)
+		dbg.erase(dbg.length() - 2, 2)
 
-	dbg += ")"
+	dbg = str(id) + ":" + type + "(" + some_custom_text + dbg + ")"
 	return dbg

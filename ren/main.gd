@@ -1,9 +1,7 @@
 ## This is Ren API ##
-
-## version: 0.2.0 ##
+## version: 0.3.0 ##
 ## License MIT ##
-
-## Main Ren class ## 
+## Main Ren class ##
 
 extends Node
 
@@ -13,19 +11,20 @@ var current_local_statement_id = -1
 var current_block = []
 var current_menu
 var choice_id = -1
-var values = {}
+var values = {"version":{"type":"text", "value":"0.3.0"}}
 var using_passer = false
 export(bool) var debug_inti = true
 
-const _DEF = preload("def.gd")
-const _CHR = preload("character.gd")
-const _SAY = preload("say_statement.gd")
-const _INP = preload("input_statement.gd")
-const _JMP = preload("jump_statement.gd")
-const _MENU = preload("menu_statement.gd")
-const _CHO = preload("choice_statement.gd")
+const _DEF	= preload("def.gd")
+const _CHR	= preload("character.gd")
+const _SAY	= preload("say_statement.gd")
+const _INP	= preload("input_statement.gd")
+const _JMP	= preload("jump_statement.gd")
+const _MENU	= preload("menu_statement.gd")
+const _CHO	= preload("choice_statement.gd")
+const _IF	= preload("if_statement.gd")
 
-onready var _def = _DEF.new()
+var _def = _DEF.new()
 
 signal enter_statement(type, kwargs)
 signal enter_block(kwargs)
@@ -74,7 +73,6 @@ func _init_statement(statement, kwargs, condition_statement = null):
 
 	return statement
 
-
 ## create statement of type say
 ## with keywords : how, what
 func say(kwargs, condition_statement = null):
@@ -95,7 +93,6 @@ func menu(kwargs, condition_statement = null):
 
 	return _init_statement(_MENU.new(title), kwargs, condition_statement)
 
-
 ## crate statement of type choice
 ## with keywords : how, what
 func choice(kwargs, menu):
@@ -105,6 +102,10 @@ func choice(kwargs, menu):
 ## with keywords : dialog, block, statement_id
 func jump(kwargs, condition_statement = null):
 	return _init_statement(_JMP.new(), kwargs, condition_statement)
+
+## create statement of type if
+func if_statement(condition, condition_statement = null):
+	return _init_statement(_IF.new(condition), {}, condition_statement)
 
 ## it starts current ren dialog
 func start():

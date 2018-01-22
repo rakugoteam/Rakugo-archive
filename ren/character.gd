@@ -1,10 +1,9 @@
 ## This is Ren API ##
-
-extends Node
-
-## version: 0.2.0 ##
+## version: 0.3.0 ##
 ## License MIT ##
 ## Character Class ##
+
+extends Node
 
 var kwargs = {"kind":"adv", "what_prefix":"", "what_suffix":"", "color":"white"}
 var kw = ["name", "color", "what_prefix", "what_suffix", "kind", "avatar"]
