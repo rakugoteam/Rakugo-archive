@@ -6,8 +6,11 @@
 extends Node
 
 func gds_rex(code, before_value, after_value, values):
-	var  replacement = "ren\\.values\\." + before_value + "\\.value" + after_value
-	return code.replace('(^|\\s)' + before_value + after_value + '($|\\s)', replacement)
+	var replacement = "ren.values." + before_value + ".value" + after_value
+	var rex = RegEx.new()
+	rex.compile('(^|\\s)' + before_value + after_value + '($|\\s)')
+#	return code.replace('(^|\\s)' + before_value + after_value + '($|\\s)', replacement)
+	return rex.sub(code, replacement, true)
 
 func gds_func_rex(code, before_value, values):
 	var  replacement = "call\\(ren\\.values\\." + before_value + "\\.value\\)"

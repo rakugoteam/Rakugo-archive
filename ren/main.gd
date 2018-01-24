@@ -24,6 +24,8 @@ const _MENU	= preload("menu_statement.gd")
 const _CHO	= preload("choice_statement.gd")
 const _IF	= preload("if_statement.gd")
 
+onready var godot = $GodotConnect
+
 var _def = _DEF.new()
 
 signal enter_statement(type, kwargs)
@@ -31,8 +33,8 @@ signal enter_block(kwargs)
 signal exit_statement(kwargs)
 
 # add global value that ren will see
-func define(name, value = null):
-	_def.define(values, name, value)
+func define(val_name, value = null):
+	_def.define(values, val_name, value)
 
 # crate  new  charater as  global value that ren will see
 # possible kwargs: name, color, what_prefix, what_suffix, kind, avatar

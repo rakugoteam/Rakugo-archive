@@ -2,8 +2,8 @@ extends VBoxContainer
 
 onready var ren	= get_node("/root/Window")
 
-onready var InputLine = get_node("Input")
-onready var BBCode = get_node("BBCode") # use to parse bbcode for InputLine
+onready var InputLine = $Input
+onready var BBCode = $BBCode # use to parse bbcode for InputLine
 var input_placeholder = ""
 
 func _ready():

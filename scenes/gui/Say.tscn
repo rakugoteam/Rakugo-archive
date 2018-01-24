@@ -1,171 +1,183 @@
-[gd_scene load_steps=13 format=1]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://themes/new_gui/tres/main.tres" type="Theme" id=1]
+[ext_resource path="res://themes/new_gui/theme.tres" type="Theme" id=1]
 [ext_resource path="res://scenes/gui/say.gd" type="Script" id=2]
-[ext_resource path="res://themes/new_gui/tres/choice.tres" type="Theme" id=3]
-[ext_resource path="res://themes/new_gui/imgs/textbox.png" type="Texture" id=4]
-[ext_resource path="res://scenes/gui/input.gd" type="Script" id=5]
-[ext_resource path="res://fonts/name_text_sizeM.fnt" type="BitmapFont" id=6]
-[ext_resource path="res://fonts/name_text_sizeIB.fnt" type="BitmapFont" id=7]
-[ext_resource path="res://fonts/name_text_sizeI.fnt" type="BitmapFont" id=8]
-[ext_resource path="res://fonts/name_text_sizeB.fnt" type="BitmapFont" id=9]
-[ext_resource path="res://fonts/name_text_sizeR.fnt" type="BitmapFont" id=10]
+[ext_resource path="res://scenes/gui/input.gd" type="Script" id=3]
+[ext_resource path="res://scenes/gui/Labels/name_text.tscn" type="PackedScene" id=4]
 
-[sub_resource type="StyleBoxEmpty" id=1]
+[node name="Say" type="Panel"]
 
-content_margin/left = -1.0
-content_margin/right = -1.0
-content_margin/top = -1.0
-content_margin/bottom = -1.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 452.0
+margin_right = 1024.0
+margin_bottom = 603.0
+rect_min_size = Vector2( 100, 100 )
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+_sections_unfolded = [ "Anchor", "Rect", "Size Flags", "Theme", "custom_styles" ]
 
-[sub_resource type="StyleBoxEmpty" id=2]
+[node name="VBox" type="VBoxContainer" parent="." index="0"]
 
-content_margin/left = -1.0
-content_margin/right = -1.0
-content_margin/top = -1.0
-content_margin/bottom = -1.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 90.0
+margin_right = 1006.0
+margin_bottom = 100.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 1
+alignment = 0
+script = ExtResource( 3 )
 
-[node name="Say" type="Container"]
+[node name="Label" parent="VBox" index="0" instance=ExtResource( 4 )]
 
-anchor/left = 3
-anchor/right = 3
-rect/min_size = Vector2( 1230, 190 )
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 3
-size_flags/vertical = 3
-theme/theme = ExtResource( 1 )
-margin/left = 640.0
-margin/top = 0.0
-margin/right = -641.0
-margin/bottom = 140.0
-script/script = ExtResource( 2 )
+margin_right = 916.0
+scroll_active = false
+_sections_unfolded = [ "BBCode", "Rect", "Size Flags", "custom_fonts" ]
 
-[node name="TextureFrame" type="TextureFrame" parent="."]
+[node name="Dialog" type="RichTextLabel" parent="VBox" index="1"]
 
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-theme/theme = ExtResource( 3 )
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 1280.0
-margin/bottom = 200.0
-texture = ExtResource( 4 )
-expand = true
-stretch_mode = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 41.0
+margin_right = 916.0
+margin_bottom = 73.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 15
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis."
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis."
+scroll_active = false
+scroll_following = false
+selection_enabled = true
+override_selected_font_color = false
+_sections_unfolded = [ "BBCode", "Rect", "Size Flags" ]
 
-[node name="CharaterAvatar" type="Viewport" parent="."]
+[node name="BBCode" type="RichTextLabel" parent="VBox" index="2"]
 
-rect = Rect2( 0, 0, 1281, 190 )
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 100.0
+margin_right = 100.0
+margin_bottom = 100.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+bbcode_enabled = false
+bbcode_text = ""
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = ""
+scroll_active = false
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+
+[node name="Input" type="LineEdit" parent="VBox" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 4.0
+margin_top = 74.0
+margin_right = 916.0
+margin_bottom = 100.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 1
+size_flags_horizontal = 1
+size_flags_vertical = 1
+focus_mode = 2
+context_menu_enabled = true
+placeholder_text = "Placeholder"
+placeholder_alpha = 0.6
+caret_blink = false
+caret_blink_speed = 0.65
+caret_position = 0
+_sections_unfolded = [ "Placeholder" ]
+
+[node name="ViewportContainer" type="ViewportContainer" parent="." index="1"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 108.0
+margin_bottom = 131.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+stretch = false
+stretch_shrink = 1
+
+[node name="CharaterAvatar" type="Viewport" parent="ViewportContainer" index="0"]
+
+arvr = false
+size = Vector2( 100, 100 )
 own_world = true
 world = null
 transparent_bg = true
-render_target/enabled = false
-render_target/v_flip = false
-render_target/clear_on_new_frame = true
-render_target/filter = false
-render_target/gen_mipmaps = false
-render_target/update_mode = 2
-audio_listener/enable_2d = false
-audio_listener/enable_3d = false
-physics/object_picking = false
-gui/disable_input = false
+msaa = 0
+hdr = false
+disable_3d = false
+usage = 0
+debug_draw = 0
+render_target_v_flip = false
+render_target_clear_mode = 0
+render_target_update_mode = 3
+audio_listener_enable_2d = false
+audio_listener_enable_3d = false
+physics_object_picking = false
+gui_disable_input = false
+gui_snap_controls_to_pixels = true
+shadow_atlas_size = 0
+shadow_atlas_quad_0 = 2
+shadow_atlas_quad_1 = 2
+shadow_atlas_quad_2 = 3
+shadow_atlas_quad_3 = 4
 
-[node name="VBox" type="VBoxContainer" parent="."]
+[node name="Timer" type="Timer" parent="." index="2"]
 
-focus/ignore_mouse = false
-focus/stop_mouse = false
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 173.0
-margin/top = 5.0
-margin/right = 1217.0
-margin/bottom = 141.0
-custom_constants/separation = 1
-alignment = 0
-script/script = ExtResource( 5 )
-
-[node name="Label" type="RichTextLabel" parent="VBox"]
-
-rect/min_size = Vector2( 0, 35 )
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 3
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 1044.0
-margin/bottom = 35.0
-custom_fonts/mono_font = ExtResource( 6 )
-custom_fonts/bold_italics_font = ExtResource( 7 )
-custom_fonts/italics_font = ExtResource( 8 )
-custom_fonts/bold_font = ExtResource( 9 )
-custom_fonts/normal_font = ExtResource( 10 )
-bbcode/enabled = true
-bbcode/bbcode = "Speaker"
-visible_characters = -1
-percent_visible = 1.0
-
-[node name="Dialog" type="RichTextLabel" parent="VBox"]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 3
-size_flags/vertical = 3
-margin/left = 0.0
-margin/top = 36.0
-margin/right = 1044.0
-margin/bottom = 85.0
-bbcode/enabled = true
-bbcode/bbcode = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis.
-Nunc porttitor venenatis fermentum. Donec ac sem id velit commodo lobortis eu non lacus.
-
-
-"
-visible_characters = -1
-percent_visible = 1.0
-
-[node name="Input" type="LineEdit" parent="VBox"]
-
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 3
-size_flags/vertical = 3
-margin/left = 0.0
-margin/top = 86.0
-margin/right = 1044.0
-margin/bottom = 136.0
-custom_styles/focus = SubResource( 1 )
-custom_styles/normal = SubResource( 2 )
-custom_colors/selection_color = Color( 0, 0.4, 0.8, 0.786902 )
-custom_colors/cursor_color = Color( 0, 0.4, 0.8, 1 )
-custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-placeholder/alpha = 0.6
-focus_mode = 2
-caret/caret_blink = false
-caret/caret_blink_speed = 0.65
-
-[node name="BBCode" type="RichTextLabel" parent="VBox"]
-
-visibility/visible = false
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 3
-size_flags/vertical = 3
-margin/left = 0.0
-margin/top = 102.0
-margin/right = 1044.0
-margin/bottom = 136.0
-bbcode/enabled = true
-bbcode/bbcode = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis.
-Nunc porttitor venenatis fermentum. Donec ac sem id velit commodo lobortis eu non lacus.
-
-
-"
-visible_characters = -1
-percent_visible = 1.0
+process_mode = 1
+wait_time = 0.5
+one_shot = true
+autostart = false
 
 

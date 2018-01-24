@@ -50,8 +50,8 @@ func text_passer(text, values):
 					if text.find(s) == -1:
 						continue # no value in this string
 					
-					var value = dict[k]
-					text = text.replace(sk, str(value))
+					var kvalue = dict[k]
+					text = text.replace(sk, str(kvalue))
 			
 			elif type == "list":
 				text = text.replace(s, str(value))

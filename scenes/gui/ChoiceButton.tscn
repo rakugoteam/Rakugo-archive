@@ -1,41 +1,63 @@
-[gd_scene load_steps=2 format=1]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://themes/new_gui/tres/choice.tres" type="Theme" id=1]
+[ext_resource path="res://themes/new_gui/theme.tres" type="Theme" id=1]
+[ext_resource path="res://scenes/gui/ChoiceButton.gd" type="Script" id=2]
 
 [node name="ChoiceButton" type="Button"]
 
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 3
-size_flags/vertical = 3
-theme/theme = ExtResource( 1 )
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 971.0
-margin/bottom = 67.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 296.0
+margin_bottom = 34.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+theme = ExtResource( 1 )
 toggle_mode = false
-click_on_press = true
+action_mode = 0
 enabled_focus_mode = 2
 shortcut = null
+group = null
 flat = false
+align = 1
+script = ExtResource( 2 )
+idle_text_color = Color( 0.533333, 0.533333, 0.533333, 1 )
+focus_text_color = Color( 0, 0.506836, 0.675781, 1 )
+hover_text_color = Color( 0.877647, 0.882353, 0.887059, 1 )
+pressed_text_color = Color( 0, 0.6, 0.8, 1 )
+disable_text_color = Color( 0.533333, 0.533333, 0.498039, 0.533333 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="Label" type="RichTextLabel" parent="." index="0"]
 
-anchor/left = 3
-anchor/top = 3
-anchor/right = 3
-anchor/bottom = 3
-focus/ignore_mouse = true
-focus/stop_mouse = false
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 471.5
-margin/top = 14.0
-margin/right = -478.5
-margin/bottom = -14.0
-bbcode/enabled = true
-bbcode/bbcode = "[center]Lorem ipsum dolor sit amet, consectetur adipiscing elit.[/center]"
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 296.0
+margin_bottom = 34.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+focus_mode = 2
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+bbcode_enabled = true
+bbcode_text = "[center]Choice[/center]"
 visible_characters = -1
 percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = "Choice"
+scroll_active = false
+scroll_following = false
+selection_enabled = true
+override_selected_font_color = false
+_sections_unfolded = [ "Mouse", "Theme", "custom_colors" ]
 
 

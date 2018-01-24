@@ -2,33 +2,42 @@
 ## version: 0.3.0 ##
 ## License MIT ##
 
-extends Container
+extends Panel
 
 onready var ren	= get_node("/root/Window")
 
-onready var NameLabel = get_node("VBox/Label")
-onready var DialogText = get_node("VBox/Dialog")
-onready var CharacterAvatar = get_node("CharaterAvatar")
+onready var timer = $Timer
+onready var NameLabel = $VBox/Label
+onready var DialogText = $VBox/Dialog
+onready var CharacterAvatar = $ViewportContainer/CharaterAvatar
 
 var avatar_path = ""
 var avatar
+var _type
 
 func _ready():
 	ren.connect("enter_statement", self, "_on_statement")
+	timer.connect("timeout", self, "_on_timeout")
+
+func _on_timeout():
+	set_process_input(_type == "say")
 	
-func _on_input(event):
-	if event.is_action_released("ren_rollforward"):
+func _input(event):
+	if event.is_action_released("ren_forward"):
 		ren.emit_signal("exit_statement", {})
 
 func _on_statement(type, kwargs):
-	if not type in ["say", "input", "menu"]:
+	set_process_input(false)
+	_type = type
+	timer.start()
+	if not _type in ["say", "input", "menu"]:
 		return
 
 	if "how" in kwargs:
-		NameLabel.set_bbcode(kwargs.how)
+		NameLabel.bbcode_text = kwargs.how
 	
 	if "what" in kwargs:
-		DialogText.set_bbcode(kwargs.what)
+		DialogText.bbcode_text = kwargs.what
 	
 	if "avatar" in kwargs:
 		if avatar_path != kwargs.avatar:
@@ -39,10 +48,6 @@ func _on_statement(type, kwargs):
 			avatar_path = kwargs.avatar
 			avatar = load(kwargs.avatar).instance()
 			CharacterAvatar.add_child(avatar) 
-	
-	if type != "input":
-		if not is_connected("input_event", self, "_on_input"):
-			connect("input_event", self, "_on_input")
 
-		return
+	return
 	

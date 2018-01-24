@@ -1,532 +1,212 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://themes/new_gui/tres/quick.tres" type="Theme" id=1]
-[ext_resource path="res://themes/new_gui/imgs/main_menu.png" type="Texture" id=2]
-[ext_resource path="res://themes/new_gui/imgs/overlay/main_menu.png" type="Texture" id=3]
-[ext_resource path="res://fonts/ubuntu-r64.fnt" type="BitmapFont" id=4]
-[ext_resource path="res://themes/new_gui/imgs/game_menu.png" type="Texture" id=5]
-[ext_resource path="res://themes/new_gui/imgs/overlay/game_menu.png" type="Texture" id=6]
+[ext_resource path="res://themes/new_gui/theme.tres" type="Theme" id=1]
+[ext_resource path="res://scenes/gui/Labels/TitleText.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ubuntu-font-family/UbuntuMono-R.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://scenes/gui/QuickMenuButton.tscn" type="PackedScene" id=4]
 
-[sub_resource type="StyleBoxEmpty" id=1]
+[sub_resource type="DynamicFont" id=1]
 
-content_margin/left = -1.0
-content_margin/right = -1.0
-content_margin/top = -1.0
-content_margin/bottom = -1.0
+size = 16
+use_mipmaps = false
+use_filter = true
+font_data = ExtResource( 3 )
+_sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Screens" type="Control"]
+[node name="Screens" type="Control" index="0"]
 
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-theme/theme = ExtResource( 1 )
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 1285.0
-margin/bottom = 720.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+_sections_unfolded = [ "Theme" ]
 
-[node name="MainMenuDecorations" type="Control" parent="."]
+[node name="MainMenuDecorations" type="Control" parent="." index="0"]
 
 editor/display_folded = true
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 40.0
-margin/bottom = 40.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
 
-[node name="Background" type="TextureFrame" parent="MainMenuDecorations"]
+[node name="TitleNVersion" type="Control" parent="MainMenuDecorations" index="0"]
 
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 1280.0
-margin/bottom = 720.0
-texture = ExtResource( 2 )
-stretch_mode = 0
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
 
-[node name="Overlay" type="TextureFrame" parent="MainMenuDecorations"]
+[node name="VBox" type="VBoxContainer" parent="MainMenuDecorations/TitleNVersion" index="0"]
 
-process/pause_mode = 2
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 1280.0
-margin/bottom = 720.0
-texture = ExtResource( 3 )
-stretch_mode = 0
-
-[node name="TitleNVersion" type="Control" parent="MainMenuDecorations"]
-
-anchor/right = 1
-anchor/bottom = 1
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 1028.0
-margin/top = 603.0
-margin/right = -1221.0
-margin/bottom = -668.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="VBox" type="VBoxContainer" parent="MainMenuDecorations/TitleNVersion"]
-
-focus/ignore_mouse = false
-focus/stop_mouse = false
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 40.0
-margin/bottom = 40.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 859.0
+margin_top = 463.0
+margin_right = 950.0
+margin_bottom = 525.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
 alignment = 0
 
-[node name="Title" type="Label" parent="MainMenuDecorations/TitleNVersion/VBox"]
+[node name="Title" parent="MainMenuDecorations/TitleNVersion/VBox" index="0" instance=ExtResource( 2 )]
 
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 213.0
-margin/bottom = 62.0
-custom_fonts/font = ExtResource( 4 )
-text = "Ren'GD"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
+margin_right = 99.0
+margin_bottom = 65.0
 
-[node name="Version" type="Label" parent="MainMenuDecorations/TitleNVersion/VBox"]
+[node name="Version" type="Label" parent="MainMenuDecorations/TitleNVersion/VBox" index="1"]
 
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 0.0
-margin/top = 62.0
-margin/right = 213.0
-margin/bottom = 93.0
-text = "0.06"
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 69.0
+margin_right = 99.0
+margin_bottom = 94.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+text = "0.3.0"
 align = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
 
-[node name="GameMenuDecorations" type="Control" parent="."]
+[node name="Navigation" type="Panel" parent="." index="1"]
 
-editor/display_folded = true
-visibility/visible = false
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 213.0
-margin/bottom = 0.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 204.0
+margin_bottom = 599.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
 
-[node name="Background" type="TextureFrame" parent="GameMenuDecorations"]
+[node name="Label" parent="Navigation" index="0" instance=ExtResource( 2 )]
 
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 1280.0
-margin/bottom = 720.0
-texture = ExtResource( 5 )
-stretch_mode = 0
+margin_right = 99.0
+margin_bottom = 65.0
+align = 0
 
-[node name="Overlay" type="TextureFrame" parent="GameMenuDecorations"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Navigation" index="1"]
 
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 1280.0
-margin/bottom = 720.0
-texture = ExtResource( 6 )
-stretch_mode = 0
-
-[node name="Navigation" type="Control" parent="."]
-
-process/pause_mode = 2
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 1280.0
-margin/bottom = 720.0
-
-[node name="Label" type="Label" parent="Navigation"]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 35.0
-margin/top = 23.0
-margin/right = 268.0
-margin/bottom = 82.0
-custom_fonts/font = ExtResource( 4 )
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Navigation"]
-
-editor/display_folded = true
-anchor/top = 3
-anchor/bottom = 3
-focus/ignore_mouse = false
-focus/stop_mouse = false
-size_flags/horizontal = 3
-size_flags/vertical = 3
-margin/left = 30.0
-margin/top = 250.0
-margin/right = 266.0
-margin/bottom = -220.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 101.0
+margin_right = 140.0
+margin_bottom = 513.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
 custom_constants/separation = 20
 alignment = 0
 
-[node name="Start" type="Button" parent="Navigation/VBoxContainer"]
+[node name="Start" parent="Navigation/VBoxContainer" index="0" instance=ExtResource( 4 )]
 
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 236.0
-margin/bottom = 31.0
-toggle_mode = true
-click_on_press = true
-enabled_focus_mode = 2
-shortcut = null
+margin_right = 140.0
+margin_bottom = 34.0
 text = "Start"
-flat = false
 align = 0
 
-[node name="History" type="Button" parent="Navigation/VBoxContainer"]
+[node name="History" parent="Navigation/VBoxContainer" index="1" instance=ExtResource( 4 )]
 
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 0.0
-margin/top = 51.0
-margin/right = 236.0
-margin/bottom = 82.0
-toggle_mode = true
-click_on_press = true
-enabled_focus_mode = 2
-shortcut = null
+visible = false
+margin_top = 54.0
+margin_right = 140.0
+margin_bottom = 88.0
 text = "History"
-flat = false
 align = 0
 
-[node name="Load" type="Button" parent="Navigation/VBoxContainer"]
+[node name="Load" parent="Navigation/VBoxContainer" index="2" instance=ExtResource( 4 )]
 
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 0.0
-margin/top = 102.0
-margin/right = 236.0
-margin/bottom = 133.0
-toggle_mode = true
-click_on_press = true
-enabled_focus_mode = 2
-shortcut = null
+margin_top = 54.0
+margin_right = 140.0
+margin_bottom = 88.0
 text = "Load"
-flat = false
 align = 0
 
-[node name="Save" type="Button" parent="Navigation/VBoxContainer"]
+[node name="Save" parent="Navigation/VBoxContainer" index="3" instance=ExtResource( 4 )]
 
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 0.0
-margin/top = 153.0
-margin/right = 236.0
-margin/bottom = 184.0
-toggle_mode = true
-click_on_press = true
-enabled_focus_mode = 2
-shortcut = null
+visible = false
+margin_top = 108.0
+margin_right = 140.0
+margin_bottom = 142.0
 text = "Save"
-flat = false
 align = 0
 
-[node name="Preferences" type="Button" parent="Navigation/VBoxContainer"]
+[node name="Preferences" parent="Navigation/VBoxContainer" index="4" instance=ExtResource( 4 )]
 
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 0.0
-margin/top = 204.0
-margin/right = 236.0
-margin/bottom = 235.0
-toggle_mode = true
-click_on_press = true
-enabled_focus_mode = 2
-shortcut = null
+margin_top = 108.0
+margin_right = 140.0
+margin_bottom = 142.0
 text = "Preferences"
-flat = false
 align = 0
 
-[node name="About" type="Button" parent="Navigation/VBoxContainer"]
+[node name="About" parent="Navigation/VBoxContainer" index="5" instance=ExtResource( 4 )]
 
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 0.0
-margin/top = 255.0
-margin/right = 236.0
-margin/bottom = 286.0
-toggle_mode = true
-click_on_press = true
-enabled_focus_mode = 2
-shortcut = null
+margin_top = 162.0
+margin_right = 140.0
+margin_bottom = 196.0
 text = "About"
-flat = false
 align = 0
 
-[node name="Help" type="Button" parent="Navigation/VBoxContainer"]
+[node name="Help" parent="Navigation/VBoxContainer" index="6" instance=ExtResource( 4 )]
 
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 0.0
-margin/top = 306.0
-margin/right = 236.0
-margin/bottom = 337.0
-toggle_mode = true
-click_on_press = true
-enabled_focus_mode = 2
-shortcut = null
+margin_top = 216.0
+margin_right = 140.0
+margin_bottom = 250.0
 text = "Help"
-flat = false
 align = 0
 
-[node name="Quit" type="Button" parent="Navigation/VBoxContainer"]
+[node name="Quit" parent="Navigation/VBoxContainer" index="7" instance=ExtResource( 4 )]
 
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 0.0
-margin/top = 357.0
-margin/right = 236.0
-margin/bottom = 388.0
-toggle_mode = true
-click_on_press = true
-enabled_focus_mode = 2
-shortcut = null
+margin_top = 270.0
+margin_right = 140.0
+margin_bottom = 304.0
 text = "Quit"
-flat = false
 align = 0
 
-[node name="Menu" type="TabContainer" parent="Navigation/VBoxContainer"]
+[node name="Return" parent="Navigation" index="2" instance=ExtResource( 4 )]
 
-editor/display_folded = true
-focus/ignore_mouse = false
-focus/stop_mouse = false
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 408.0
-margin/right = 236.0
-margin/bottom = 470.0
-custom_styles/panel = SubResource( 1 )
-tab_align = 1
-tabs_visible = false
-
-[node name="History" type="Button" parent="Navigation/VBoxContainer/Menu"]
-
-anchor/right = 1
-anchor/bottom = 1
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 0.0
-margin/bottom = 0.0
-toggle_mode = true
-click_on_press = true
-enabled_focus_mode = 2
-shortcut = null
-text = "History"
-flat = false
-align = 0
-
-[node name="Load" type="Button" parent="Navigation/VBoxContainer/Menu"]
-
-visibility/visible = false
-anchor/right = 1
-anchor/bottom = 1
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 0.0
-margin/bottom = 0.0
-toggle_mode = true
-click_on_press = true
-enabled_focus_mode = 2
-shortcut = null
-text = "Load"
-flat = false
-align = 0
-
-[node name="Save" type="Button" parent="Navigation/VBoxContainer/Menu"]
-
-visibility/visible = false
-anchor/right = 1
-anchor/bottom = 1
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 0.0
-margin/bottom = 0.0
-toggle_mode = true
-click_on_press = true
-enabled_focus_mode = 2
-shortcut = null
-text = "Save"
-flat = false
-align = 0
-
-[node name="Preferences" type="Button" parent="Navigation/VBoxContainer/Menu"]
-
-visibility/visible = false
-anchor/right = 1
-anchor/bottom = 1
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 0.0
-margin/bottom = 0.0
-toggle_mode = true
-click_on_press = true
-enabled_focus_mode = 2
-shortcut = null
-text = "Preferences"
-flat = false
-align = 0
-
-[node name="About" type="Button" parent="Navigation/VBoxContainer/Menu"]
-
-visibility/visible = false
-anchor/right = 1
-anchor/bottom = 1
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 0.0
-margin/bottom = 0.0
-toggle_mode = true
-click_on_press = true
-enabled_focus_mode = 2
-shortcut = null
-text = "About"
-flat = false
-align = 0
-
-[node name="Help" type="Button" parent="Navigation/VBoxContainer/Menu"]
-
-visibility/visible = false
-anchor/right = 1
-anchor/bottom = 1
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 0.0
-margin/bottom = 0.0
-toggle_mode = true
-click_on_press = true
-enabled_focus_mode = 2
-shortcut = null
-text = "Help"
-flat = false
-align = 0
-
-[node name="Confirm" type="Button" parent="Navigation/VBoxContainer/Menu"]
-
-visibility/visible = false
-anchor/right = 1
-anchor/bottom = 1
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 0.0
-margin/bottom = 0.0
-toggle_mode = true
-click_on_press = true
-enabled_focus_mode = 2
-shortcut = null
-text = "Quit"
-flat = false
-align = 0
-
-[node name="Return" type="Button" parent="Navigation"]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 30.0
-margin/top = 650.0
-margin/right = 266.0
-margin/bottom = 681.0
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
+visible = false
+margin_top = 532.0
+margin_right = 85.0
+margin_bottom = 566.0
 text = "Return"
-flat = false
 align = 0
 
 

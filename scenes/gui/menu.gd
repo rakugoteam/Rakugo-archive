@@ -20,14 +20,10 @@ func _on_statement(type, kwargs):
 	for ch in choices:
 		var ch_button = ChoiceButton.instance()
 		add_child(ch_button)
-		var text = str((ch_button.get_path())) + "/RichTextLabel"
-		get_node(text).set_bbcode("[center]" + ch + "[/center]")
-		ch_button.connect("pressed", self, "_on_button_pressed", [i])
+		ch_button.label.bbcode_text = "[center]" + ch + "[/center]"
+		ch_button.id = i
 		print("create button (", ch, ") with id : ", i)
 		i += 1
 	
 	show()
 
-func _on_button_pressed(id):
-	print("final_choice ", id)
-	ren.emit_signal("enter_block", {"final_choice":id})

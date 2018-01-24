@@ -1,281 +1,151 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://ren/main.gd" type="Script" id=1]
-[ext_resource path="res://themes/new_gui/tres/choice.tres" type="Theme" id=2]
-[ext_resource path="res://scenes/gui/menu.gd" type="Script" id=3]
-[ext_resource path="res://scenes/gui/Say.tscn" type="PackedScene" id=4]
-[ext_resource path="res://themes/new_gui/tres/quick.tres" type="Theme" id=5]
-[ext_resource path="res://themes/new_gui/imgs/notify.png" type="Texture" id=6]
-[ext_resource path="res://themes/new_gui/imgs/skip.png" type="Texture" id=7]
-[ext_resource path="res://fonts/notify_text_sizeR.fnt" type="BitmapFont" id=8]
+[ext_resource path="res://scenes/gui/menu.gd" type="Script" id=2]
+[ext_resource path="res://scenes/gui/Say.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/gui/QuickMenuButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ren/gd_connect.gd" type="Script" id=5]
 
-[node name="Window" type="Control"]
+[node name="Window" type="Control" index="0"]
 
-process/pause_mode = 2
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 0.0
-margin/bottom = 0.0
-script/script = ExtResource( 1 )
-debug_inti = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 1 )
+_sections_unfolded = [ "Theme" ]
+debug_inti = true
 
-[node name="Choice" type="VBoxContainer" parent="."]
+[node name="Choice" type="VBoxContainer" parent="." index="0"]
 
-anchor/top = 3
-anchor/right = 1
-anchor/bottom = 3
-focus/ignore_mouse = false
-focus/stop_mouse = false
-size_flags/horizontal = 3
-size_flags/vertical = 3
-theme/theme = ExtResource( 2 )
-margin/left = 139.0
-margin/top = -138.0
-margin/right = -1147.0
-margin/bottom = -354.0
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 359.0
+margin_right = 655.0
+margin_bottom = 470.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_constants/separation = 5
 alignment = 1
-script/script = ExtResource( 3 )
+script = ExtResource( 2 )
 
-[node name="Adv" parent="." instance=ExtResource( 4 )]
-
-editor/display_folded = true
-anchor/left = 0
-anchor/top = 1
-anchor/right = 1
-anchor/bottom = 1
-margin/left = 0.0
-margin/top = -530.0
-margin/right = -1280.0
-margin/bottom = -720.0
-
-[node name="Quick" type="HBoxContainer" parent="."]
+[node name="Adv" parent="." index="1" instance=ExtResource( 3 )]
 
 editor/display_folded = true
-focus/ignore_mouse = false
-focus/stop_mouse = false
-size_flags/horizontal = 2
-size_flags/vertical = 2
-theme/theme = ExtResource( 5 )
-margin/left = 173.0
-margin/top = 690.0
-margin/right = 1217.0
-margin/bottom = 721.0
-custom_constants/separation = 20
+margin_bottom = 601.0
+
+[node name="Quick" type="HBoxContainer" parent="." index="2"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 570.0
+margin_right = 1024.0
+margin_bottom = 601.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 alignment = 1
+_sections_unfolded = [ "Size Flags" ]
 
-[node name="Back" type="Button" parent="Quick"]
+[node name="Back" parent="Quick" index="0" instance=ExtResource( 4 )]
 
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 115.0
-margin/top = 0.0
-margin/right = 185.0
-margin/bottom = 31.0
-toggle_mode = false
-click_on_press = true
-enabled_focus_mode = 2
-shortcut = null
-text = "Back"
-flat = true
+margin_right = 124.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="History" type="Button" parent="Quick"]
+[node name="History" parent="Quick" index="1" instance=ExtResource( 4 )]
 
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 205.0
-margin/top = 0.0
-margin/right = 312.0
-margin/bottom = 31.0
-toggle_mode = false
-click_on_press = true
-enabled_focus_mode = 2
-shortcut = null
+margin_left = 128.0
+margin_right = 252.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 text = "History"
-flat = true
 
-[node name="Skip" type="Button" parent="Quick"]
+[node name="Skip" parent="Quick" index="2" instance=ExtResource( 4 )]
 
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 332.0
-margin/top = 0.0
-margin/right = 394.0
-margin/bottom = 31.0
-toggle_mode = true
-click_on_press = true
-enabled_focus_mode = 2
-shortcut = null
+margin_left = 256.0
+margin_right = 380.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 text = "Skip"
-flat = true
 
-[node name="Auto" type="Button" parent="Quick"]
+[node name="Auto" parent="Quick" index="3" instance=ExtResource( 4 )]
 
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 414.0
-margin/top = 0.0
-margin/right = 485.0
-margin/bottom = 31.0
-toggle_mode = true
-click_on_press = true
-enabled_focus_mode = 2
-shortcut = null
+margin_left = 384.0
+margin_right = 508.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 text = "Auto"
-flat = true
 
-[node name="Save" type="Button" parent="Quick"]
+[node name="Save" parent="Quick" index="4" instance=ExtResource( 4 )]
 
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 505.0
-margin/top = 0.0
-margin/right = 574.0
-margin/bottom = 31.0
-toggle_mode = false
-click_on_press = true
-enabled_focus_mode = 2
-shortcut = null
+margin_left = 512.0
+margin_right = 636.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 text = "Save"
-flat = true
 
-[node name="QSave" type="Button" parent="Quick"]
+[node name="QSave" parent="Quick" index="5" instance=ExtResource( 4 )]
 
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 594.0
-margin/top = 0.0
-margin/right = 702.0
-margin/bottom = 31.0
-toggle_mode = false
-click_on_press = true
-enabled_focus_mode = 2
-shortcut = null
+margin_left = 640.0
+margin_right = 764.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 text = "Q. Save"
-flat = true
 
-[node name="QLoad" type="Button" parent="Quick"]
+[node name="QLoad" parent="Quick" index="6" instance=ExtResource( 4 )]
 
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 722.0
-margin/top = 0.0
-margin/right = 833.0
-margin/bottom = 31.0
-toggle_mode = false
-click_on_press = true
-enabled_focus_mode = 2
-shortcut = null
+margin_left = 768.0
+margin_right = 892.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 text = "Q. Load"
-flat = true
-align = 0
 
-[node name="Prefs" type="Button" parent="Quick"]
+[node name="Prefs" parent="Quick" index="7" instance=ExtResource( 4 )]
 
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 853.0
-margin/top = 0.0
-margin/right = 928.0
-margin/bottom = 31.0
-toggle_mode = false
-click_on_press = true
-enabled_focus_mode = 2
-shortcut = null
+margin_left = 896.0
+margin_right = 1024.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 text = "Prefs"
-flat = true
-align = 0
 
-[node name="NotifyArea" type="Control" parent="."]
+[node name="DialogManager" type="Control" parent="." index="3"]
 
-editor/display_folded = true
-visibility/visible = false
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 50.0
-margin/right = 240.0
-margin/bottom = 93.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
 
-[node name="Notify" type="TextureFrame" parent="NotifyArea"]
+[node name="GodotConnect" type="Node" parent="." index="4"]
 
-visibility/visible = false
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 922.0
-margin/bottom = 43.0
-texture = ExtResource( 6 )
-stretch_mode = 0
-
-[node name="Skip" type="TextureFrame" parent="NotifyArea"]
-
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 240.0
-margin/bottom = 43.0
-texture = ExtResource( 7 )
-stretch_mode = 0
-
-[node name="Label" type="Label" parent="NotifyArea"]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 10.0
-margin/top = 5.0
-margin/right = 72.0
-margin/bottom = 36.0
-custom_fonts/font = ExtResource( 8 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-text = "Skip"
-align = 3
-valign = 3
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="DialogManager" type="Control" parent="."]
-
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 40.0
-margin/bottom = 40.0
-
-[node name="GodotConnect" type="Node" parent="."]
+script = ExtResource( 5 )
 
 
