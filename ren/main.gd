@@ -59,12 +59,21 @@ func _init_statement(statement, kwargs, condition_statement = null):
 			choice_id += 1
 			statement.id = choice_id
 			condition_statement.choices.append(statement)
-			
+		
 		else:
+			elif condition_statement.type == "_if":
+				if statement.type == "_elif":
+					condition_statement.conditions.append(statement)
+				
+				elif statement.type == "_else":
+					condition_statement.el = statement
+
 			choice_id = -1
 			current_local_statement_id += 1
 			statement.id = current_local_statement_id
-			condition_statement.statements.append(statement)
+
+			if not condition_statement.type in ["_if", "_elif", "_else"]:
+				condition_statement.statements.append(statement)
 			
 	else:
 		choice_id = -1

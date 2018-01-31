@@ -1,18 +1,13 @@
 ## This is Ren API ##
 ## version: 0.3.0 ##
 ## License MIT ##
-## if class statement ##
+## elif class statement ##
 
-extends "statement.gd"
-
-var statements = []
-var condition = ""
-var conditions = []
-var el = null
+extends "if_statement.gd"
 
 func _init(_condition = ""):
-	type = "_if"
-	condition = _condition
+	._init(_condition)
+	type = "_elif"
 
 func enter(dbg = true): 
 	if dbg:

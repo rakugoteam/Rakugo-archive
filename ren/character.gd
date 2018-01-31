@@ -14,12 +14,12 @@ func set_kwargs(new_kwargs):
 		kwargs[kw] = new_kwargs[kw]
 
 func parse_character():
-	var ncharacter= ""
+	var ncharacter = ""
 	
 	if "name" in kwargs:
-		ncharacter= "{color=" + kwargs.color + "}"
-		ncharacter+= kwargs.name
-		ncharacter+= "{/color}"
+		ncharacter = "{color=" + kwargs.color + "}"
+		ncharacter += kwargs.name
+		ncharacter += "{/color}"
 	
 	return ncharacter
 

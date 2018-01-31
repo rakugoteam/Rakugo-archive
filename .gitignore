@@ -1,9 +1,8 @@
 fontconfig
 addons
 refences
+*.import
 .import
 
-
 .vscode
-*.inc
 
