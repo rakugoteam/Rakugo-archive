@@ -23,6 +23,8 @@ const _JMP	= preload("jump_statement.gd")
 const _MENU	= preload("menu_statement.gd")
 const _CHO	= preload("choice_statement.gd")
 const _IF	= preload("if_statement.gd")
+const _ELIF	= preload("elif_statement.gd")
+const _ELSE	= preload("else_statement.gd")
 
 onready var godot = $GodotConnect
 
@@ -60,21 +62,24 @@ func _init_statement(statement, kwargs, condition_statement = null):
 			statement.id = choice_id
 			condition_statement.choices.append(statement)
 		
-		else:
-			elif condition_statement.type == "_if":
-				if statement.type == "_elif":
-					condition_statement.conditions.append(statement)
+		elif condition_statement.type == "_if":
+			if statement.type == "_elif":
+				condition_statement.conditions.append(statement)
 				
-				elif statement.type == "_else":
-					condition_statement.el = statement
-
-			choice_id = -1
-			current_local_statement_id += 1
-			statement.id = current_local_statement_id
-
-			if not condition_statement.type in ["_if", "_elif", "_else"]:
+			elif statement.type == "_else":
+				condition_statement.el = statement
+			
+			else:
 				condition_statement.statements.append(statement)
 			
+
+		else:
+			condition_statement.statements.append(statement)
+		
+		choice_id = -1
+		current_local_statement_id += 1
+		statement.id = current_local_statement_id
+	
 	else:
 		choice_id = -1
 		current_local_statement_id = -1
@@ -117,6 +122,16 @@ func jump(kwargs, condition_statement = null):
 ## create statement of type if
 func if_statement(condition, condition_statement = null):
 	return _init_statement(_IF.new(condition), {}, condition_statement)
+
+## create statement of type elif
+func elif_statement(condition, condition_statement = null):
+	return _init_statement(_ELIF.new(condition), {}, condition_statement)
+
+## create statement of type else
+func else_statement(condition_statement = null):
+	return _init_statement(_ELSE.new(), {}, condition_statement)
+
+
 
 ## it starts current ren dialog
 func start():

@@ -20,8 +20,9 @@ func exec(code):
 	script += "func exec():\n"
 	script += "\treturn " + code
 	
-	print(script)
-	
+	# print(script)
+	n = Node.new()
+	gdscript = GDScript.new()
 	gdscript.set_source_code(script)
 	gdscript.reload()
 	n.set_script(gdscript)

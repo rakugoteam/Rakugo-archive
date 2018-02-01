@@ -21,7 +21,7 @@ func enter(dbg = true):
 	ren.current_statement_id = id
 	ren.current_block = self
 
-	on_enter_block({})
+	return on_enter_block({})
 
 func on_enter_block(new_kwargs = {}):
 	if new_kwargs != {}:
@@ -33,13 +33,17 @@ func on_enter_block(new_kwargs = {}):
 	
 	elif conditions.size() > 0:
 		for c in conditions:
-			if ren.godot.exec(c):
+			if ren.godot.exec(c.condition):
+				c.debug()
 				c.statements[0].enter()
-				break
+				return
 	
 	elif el != null:
+		el.debug()
 		el.statements[0].enter()
 
+func debug(kws = [], some_custom_text = ""):
+	return .debug(kws, some_custom_text + condition)
 
 
 

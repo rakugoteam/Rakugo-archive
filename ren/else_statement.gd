@@ -19,6 +19,9 @@ func enter(dbg = true):
 
 	on_enter_block({})
 
+func debug(kws = [], some_custom_text = ""):
+	if condition_statement != null:
+		return .debug(kws, some_custom_text + "not ( " + condition_statement.condition + ")")
 
 
 

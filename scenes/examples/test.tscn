@@ -2,8 +2,9 @@
 
 [ext_resource path="res://scenes/examples/test.gd" type="Script" id=1]
 
-[node name="Test" type="Node2D"]
+[node name="Test" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
+_sections_unfolded = [ "Material" ]
 
 

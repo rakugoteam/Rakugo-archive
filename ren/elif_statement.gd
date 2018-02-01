@@ -3,10 +3,13 @@
 ## License MIT ##
 ## elif class statement ##
 
-extends "if_statement.gd"
+extends "statement.gd"
+
+var statements = []
+var condition = ""
 
 func _init(_condition = ""):
-	._init(_condition)
+	condition = _condition 
 	type = "_elif"
 
 func enter(dbg = true): 
@@ -18,22 +21,8 @@ func enter(dbg = true):
 
 	on_enter_block({})
 
-func on_enter_block(new_kwargs = {}):
-	if new_kwargs != {}:
-		set_kwargs(new_kwargs)
-	
-	if ren.godot.exec(condition):
-		statements[0].enter()
-		return
-	
-	elif conditions.size() > 0:
-		for c in conditions:
-			if ren.godot.exec(c):
-				c.statements[0].enter()
-				break
-	
-	elif el != null:
-		el.statements[0].enter()
+func debug(kws = [], some_custom_text = ""):
+	return .debug(kws, some_custom_text + condition)
 
 
 
