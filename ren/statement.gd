@@ -1,5 +1,5 @@
 ## This is Ren API ##
-## version: 0.3.0 ##
+## version: 0.5.0 ##
 ## License MIT ##
 ## Ren Base statement class
 
@@ -22,7 +22,7 @@ func text_passer(text = ""):
 		_txt = _TXT.new()
 	return _txt.text_passer(text, ren.values)
 
-## version: 0.3.0 ##
+## version: 0.5.0 ##
 ## License MIT ##
 ## Base class for statement ##
 

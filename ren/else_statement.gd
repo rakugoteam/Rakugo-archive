@@ -1,7 +1,7 @@
 ## This is Ren API ##
-## version: 0.3.0 ##
+## version: 0.5.0 ##
 ## License MIT ##
-## else class statement ##
+## else statement class ##
 
 extends "statement.gd"
 

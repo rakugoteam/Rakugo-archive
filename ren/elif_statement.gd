@@ -1,7 +1,7 @@
 ## This is Ren API ##
-## version: 0.3.0 ##
+## version: 0.5.0 ##
 ## License MIT ##
-## elif class statement ##
+## elif statement class ##
 
 extends "statement.gd"
 

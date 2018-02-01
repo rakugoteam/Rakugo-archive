@@ -1,7 +1,7 @@
 ## This is RenAPI ##
-## version: 0.3.0 ##
+## version: 0.5.0 ##
 ## License MIT ##
-## Choice class statement ##
+## Choice statement class ##
 
 extends "say_statement.gd"
 

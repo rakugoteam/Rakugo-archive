@@ -1,5 +1,5 @@
 ## This is Ren API ##
-## version: 0.3.0 ##
+## version: 0.5.0 ##
 ## License MIT ##
 ## Main Ren class ##
 
@@ -11,7 +11,7 @@ var current_local_statement_id = -1
 var current_block = []
 var current_menu
 var choice_id = -1
-var values = {"version":{"type":"text", "value":"0.3.0"}}
+var values = {"version":{"type":"text", "value":"0.5.0"}}
 var using_passer = false
 export(bool) var debug_inti = true
 
@@ -25,6 +25,8 @@ const _CHO	= preload("choice_statement.gd")
 const _IF	= preload("if_statement.gd")
 const _ELIF	= preload("elif_statement.gd")
 const _ELSE	= preload("else_statement.gd")
+const _GL	= preload("gd_statement.gd")
+const _GB	= preload("godot_statement.gd")
 
 onready var godot = $GodotConnect
 
@@ -90,16 +92,19 @@ func _init_statement(statement, kwargs, condition_statement = null):
 	return statement
 
 ## create statement of type say
+## its make given character(how) talk (what)
 ## with keywords : how, what
 func say(kwargs, condition_statement = null):
 	return _init_statement(_SAY.new(), kwargs, condition_statement)
 
 ## crate statement of type input
+## its allow player to provide keybord input that will be assain to given value
 ## with keywords : how, what, input_value, value
 func input(kwargs, condition_statement = null):
 	return _init_statement(_INP.new(), kwargs, condition_statement)
 
 ## crate statement of type menu
+## its allow player to make choice
 ## with keywords : how, what, title
 func menu(kwargs, condition_statement = null):
 	var title = null
@@ -110,12 +115,13 @@ func menu(kwargs, condition_statement = null):
 	return _init_statement(_MENU.new(title), kwargs, condition_statement)
 
 ## crate statement of type choice
+## its add this choice to menu
 ## with keywords : how, what
 func choice(kwargs, menu):
 	return _init_statement(_CHO.new(), kwargs, menu)
 
 ## create statement of type jump
-## with keywords : dialog, block, statement_id
+## with keywords : dialog, statement_id
 func jump(kwargs, condition_statement = null):
 	return _init_statement(_JMP.new(), kwargs, condition_statement)
 
@@ -131,6 +137,15 @@ func elif_statement(condition, condition_statement = null):
 func else_statement(condition_statement = null):
 	return _init_statement(_ELSE.new(), {}, condition_statement)
 
+## create statement of type gd
+## its execute godot one line code
+func gd(code, condition_statement = null):
+	return _init_statement(_GL.new(code), {}, condition_statement)
+
+## create statement of type godot
+## its execute block of godot code
+func gd_block(code_block, condition_statement = null):
+	return _init_statement(_GB.new(code_block), {}, condition_statement)
 
 
 ## it starts current ren dialog

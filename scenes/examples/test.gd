@@ -1,5 +1,5 @@
 ## This is example of script using Ren Framework ##
-## version: 0.3.0 ##
+## version: 0.5.0 ##
 ## License MIT ##
 
 extends Node2D
@@ -22,6 +22,15 @@ func _ready():
 	# ren.say({"what":"elif_statement work!"}, first_case_elif)
 	# var first_case_else = ren.else_statement(first_case)
 	# ren.say({"what":"else_statement work!"}, first_case_else)
+
+	# ren.gd("print('gd_statemnet works!')")
+
+	# ren.gd_block(
+	# """
+	# print('godot_statemnet works!')
+	# print('godot_statemnet works!')
+	# """
+	# )
 
 	ren.input({
 				"how": 
