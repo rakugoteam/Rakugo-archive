@@ -12,6 +12,8 @@ func _ready():
 							"avatar": "res://scenes/examples/RenAvatar.tscn"
 							})
 	
+	ren.node_link($logo)
+	
 	ren.define("player_name")
 	
 	# ren.define("is_working", false)
@@ -32,6 +34,10 @@ func _ready():
 	# """
 	# )
 
+	# ren.define("test_list", [1,3,7])
+	# ren.say({"what":"test list 2 list elment is [test_list[2]]"})
+	
+	ren.show("logo",{"at":["center"]})
 	ren.input({
 				"how": 
 					"rench",
@@ -49,6 +55,7 @@ func _ready():
 				"what":
 					"Welcome [player_name] in Ren Framework Version [version]"
 				})
+	ren.hide("logo")
 	
 
 	var menu01 = ren.menu({

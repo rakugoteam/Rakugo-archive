@@ -17,6 +17,9 @@ func define(values, val_name, val_value = null, val_type = null):
 		
 		elif type == TYPE_ARRAY:
 			val_type = "list"
-			print('list are not fully supported by text_passer')
-	
+		
+		elif type == TYPE_NODE_PATH:
+			val_type = "node"
+			val_value = get_node(val_value)
+		
 	values[val_name] = {"type":val_type, "value":val_value}
