@@ -53,7 +53,9 @@ func _ready():
 				"how": 
 					"rench",
 				"what":
-					"Welcome [player_name] in Ren Framework Version [version]"
+					"Welcome [player_name] in Ren Framework Version [version]",
+				"speed":
+					0.1
 				})
 	ren.hide("logo")
 	
