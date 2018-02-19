@@ -44,7 +44,7 @@ func _on_statement(type, kwargs):
 	
 	if "what" in kwargs:
 		if kwargs.has("speed"):
-			writeDialog(kwargs.what,kwargs.speed)
+			writeDialog(kwargs.what, kwargs.speed)
 		else:
 			writeDialog(kwargs.what)
 		
@@ -62,7 +62,7 @@ func _on_statement(type, kwargs):
 	return
 	
 	
-func writeDialog(text,speed=0.005):
+func writeDialog(text, speed=0.005):
 
     #create a timer to print text like a typewriter
 	typing=true
@@ -79,3 +79,5 @@ func writeDialog(text,speed=0.005):
 		if !typing:
 			DialogText.bbcode_text=text
 			break
+	
+	t.free()
