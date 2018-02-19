@@ -11,11 +11,10 @@ onready var NameLabel = $VBox/Label
 onready var DialogText = $VBox/Dialog
 onready var CharacterAvatar = $ViewportContainer/CharaterAvatar
 
-
 var avatar_path = ""
 var avatar
 var _type
-
+var t
 var typing=false
 
 func _ready():
@@ -63,11 +62,13 @@ func _on_statement(type, kwargs):
 	
 	
 func writeDialog(text, speed=0.005):
-
     #create a timer to print text like a typewriter
+	if t != null:
+		t.free()
+	
 	typing=true
 	DialogText.bbcode_text = ""
-	var t = Timer.new()
+	t = Timer.new()
 	t.set_wait_time(speed)
 	t.set_one_shot(true)
 	self.add_child(t)
@@ -79,5 +80,3 @@ func writeDialog(text, speed=0.005):
 		if !typing:
 			DialogText.bbcode_text=text
 			break
-	
-	t.free()
