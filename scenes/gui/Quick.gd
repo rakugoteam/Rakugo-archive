@@ -5,8 +5,6 @@
 extends HBoxContainer
 
 onready var ren = get_node("/root/Window")
-var auto_timer
-var skip_timer
 
 func _ready():
 	# $Back.connect("pressed", self, "on_rollback")
