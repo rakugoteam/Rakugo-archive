@@ -6,7 +6,6 @@ extends Panel
 
 onready var ren	= get_node("/root/Window")
 
-onready var timer = $Timer
 onready var NameLabel = $VBox/Label
 onready var DialogText = $VBox/Dialog
 onready var CharacterAvatar = $ViewportContainer/CharaterAvatar
@@ -19,7 +18,7 @@ var typing=false
 
 func _ready():
 	ren.connect("enter_statement", self, "_on_statement")
-	timer.connect("timeout", self, "_on_timeout")
+	$Timer.connect("timeout", self, "_on_timeout")
 
 func _on_timeout():
 	set_process_input(_type == "say")
@@ -34,7 +33,7 @@ func _input(event):
 func _on_statement(type, kwargs):
 	set_process_input(false)
 	_type = type
-	timer.start()
+	$Timer.start()
 	if not _type in ["say", "input", "menu"]:
 		return
 
@@ -65,6 +64,10 @@ func writeDialog(text, speed=0.005):
     #create a timer to print text like a typewriter
 	if t != null:
 		t.free()
+	
+	if speed == 0:
+		DialogText.bbcode_text=text
+		return
 	
 	typing=true
 	DialogText.bbcode_text = ""

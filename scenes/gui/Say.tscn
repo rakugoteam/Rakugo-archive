@@ -5,7 +5,7 @@
 [ext_resource path="res://scenes/gui/input.gd" type="Script" id=3]
 [ext_resource path="res://scenes/gui/Labels/name_text.tscn" type="PackedScene" id=4]
 
-[node name="Say" type="Panel" index="0"]
+[node name="Say" type="Panel"]
 
 anchor_left = 0.0
 anchor_top = 0.0

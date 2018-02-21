@@ -31,6 +31,7 @@ const _GL	= preload("gd_statement.gd")
 const _GB	= preload("godot_statement.gd")
 const _SH	= preload("show_statement.gd")
 const _HI	= preload("hide_statement.gd")
+const _NO	= preload("notify_statement.gd")
 
 onready var godot = $GodotConnect
 
@@ -175,6 +176,10 @@ func show(node, kwargs, condition_statement = null):
 ## create statement of type hide
 func hide(node, condition_statement = null):
 	return _init_statement(_HI.new(node), {}, condition_statement)
+
+## create statement of type notify
+func notifiy(info, conition_statement = null):
+	return _init_statement(_NO.new(), {"info": info}, conition_statement)
 
 
 ## it starts current ren dialog

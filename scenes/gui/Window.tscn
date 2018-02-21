@@ -1,13 +1,15 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://ren/main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/menu.gd" type="Script" id=2]
 [ext_resource path="res://scenes/gui/Say.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/gui/Quick.gd" type="Script" id=4]
-[ext_resource path="res://scenes/gui/QuickMenuButton.tscn" type="PackedScene" id=5]
-[ext_resource path="res://ren/gd_connect.gd" type="Script" id=6]
+[ext_resource path="res://themes/new_gui/theme.tres" type="Theme" id=4]
+[ext_resource path="res://scenes/gui/Notify.gd" type="Script" id=5]
+[ext_resource path="res://scenes/gui/Quick.gd" type="Script" id=6]
+[ext_resource path="res://scenes/gui/QuickMenuButton.tscn" type="PackedScene" id=7]
+[ext_resource path="res://ren/gd_connect.gd" type="Script" id=8]
 
-[node name="Window" type="Control"]
+[node name="Window" type="Control" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -45,7 +47,64 @@ script = ExtResource( 2 )
 editor/display_folded = true
 margin_bottom = 601.0
 
-[node name="Quick" type="HBoxContainer" parent="." index="2"]
+[node name="Notify" type="Panel" parent="." index="2"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = -2.0
+margin_top = 36.0
+margin_right = 769.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 100, 20 )
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+theme = ExtResource( 4 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Anchor", "Size Flags", "Theme", "custom_styles" ]
+
+[node name="Timer" type="Timer" parent="Notify" index="0"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
+
+[node name="Dialog" type="RichTextLabel" parent="Notify" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -1.0
+margin_right = 780.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 15
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis."
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis."
+scroll_active = false
+scroll_following = false
+selection_enabled = true
+override_selected_font_color = false
+_sections_unfolded = [ "BBCode", "Rect", "Size Flags" ]
+
+[node name="Quick" type="HBoxContainer" parent="." index="3"]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -61,17 +120,17 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
-script = ExtResource( 4 )
+script = ExtResource( 6 )
 _sections_unfolded = [ "Size Flags" ]
 
-[node name="Back" parent="Quick" index="0" instance=ExtResource( 5 )]
+[node name="Back" parent="Quick" index="0" instance=ExtResource( 7 )]
 
 margin_right = 124.0
 margin_bottom = 32.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="History" parent="Quick" index="1" instance=ExtResource( 5 )]
+[node name="History" parent="Quick" index="1" instance=ExtResource( 7 )]
 
 margin_left = 128.0
 margin_right = 252.0
@@ -80,7 +139,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "History"
 
-[node name="Skip" parent="Quick" index="2" instance=ExtResource( 5 )]
+[node name="Skip" parent="Quick" index="2" instance=ExtResource( 7 )]
 
 margin_left = 256.0
 margin_right = 380.0
@@ -89,7 +148,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Skip"
 
-[node name="Auto" parent="Quick" index="3" instance=ExtResource( 5 )]
+[node name="Auto" parent="Quick" index="3" instance=ExtResource( 7 )]
 
 margin_left = 384.0
 margin_right = 508.0
@@ -98,7 +157,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Auto"
 
-[node name="Save" parent="Quick" index="4" instance=ExtResource( 5 )]
+[node name="Save" parent="Quick" index="4" instance=ExtResource( 7 )]
 
 margin_left = 512.0
 margin_right = 636.0
@@ -107,7 +166,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Save"
 
-[node name="QSave" parent="Quick" index="5" instance=ExtResource( 5 )]
+[node name="QSave" parent="Quick" index="5" instance=ExtResource( 7 )]
 
 margin_left = 640.0
 margin_right = 764.0
@@ -116,7 +175,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Q. Save"
 
-[node name="QLoad" parent="Quick" index="6" instance=ExtResource( 5 )]
+[node name="QLoad" parent="Quick" index="6" instance=ExtResource( 7 )]
 
 margin_left = 768.0
 margin_right = 892.0
@@ -125,7 +184,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Q. Load"
 
-[node name="Prefs" parent="Quick" index="7" instance=ExtResource( 5 )]
+[node name="Prefs" parent="Quick" index="7" instance=ExtResource( 7 )]
 
 margin_left = 896.0
 margin_right = 1024.0
@@ -148,7 +207,7 @@ wait_time = 1.0
 one_shot = false
 autostart = false
 
-[node name="DialogManager" type="Control" parent="." index="3"]
+[node name="DialogManager" type="Control" parent="." index="4"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -160,8 +219,8 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 
-[node name="GodotConnect" type="Node" parent="." index="4"]
+[node name="GodotConnect" type="Node" parent="." index="5"]
 
-script = ExtResource( 6 )
+script = ExtResource( 8 )
 
 
