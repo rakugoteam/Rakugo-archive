@@ -12,7 +12,8 @@ func _on_statement(type, kwargs):
 		return
 	
 	for ch in get_children():
-		ch.disconnect("pressed", self, "_on_button_pressed")
+		if ch.is_connected("pressed", self, "_on_button_pressed"):
+			ch.disconnect("pressed", self, "_on_button_pressed")
 		ch.queue_free() #free causes problem in VS
 	
 	var i = 0

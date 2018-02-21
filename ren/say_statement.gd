@@ -32,4 +32,7 @@ func enter(dbg = true):
 		kwargs.what = text_passer(kwargs.what)
 	
 	.enter(false)
-	
+
+func on_exit(new_kwargs = {}):
+	.on_exit(new_kwargs)
+	ren.history.append(self)

@@ -38,6 +38,7 @@ func enter(dbg = true):
 	if dbg:
 		print(debug(kws))
 	
+	ren.current_statement = self
 	ren.current_statement_id = id
 	ren.connect("exit_statement", self, "on_exit")
 	ren.connect("enter_block", self, "on_enter_block")

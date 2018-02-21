@@ -6,9 +6,11 @@
 extends Node
 
 var statements = []
+var history = []
+var current_statement
 var current_statement_id = -1
 var current_local_statement_id = -1
-var current_block = []
+var current_block
 var current_menu
 var choice_id = -1
 var values = {"version":{"type":"text", "value":"0.5.0"}}
