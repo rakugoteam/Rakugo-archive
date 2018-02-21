@@ -1,17 +1,16 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://scenes/examples/test.gd" type="Script" id=1]
+[ext_resource path="res://scenes/examples/testvs.vs" type="Script" id=1]
 [ext_resource path="res://logo.svg" type="Texture" id=2]
 
-[node name="Test" type="Node2D"]
+[node name="testvs" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
-_sections_unfolded = [ "Material", "Transform", "Z Index" ]
 
 [node name="logo" type="Sprite" parent="." index="0"]
 
 visible = false
-position = Vector2( 524.705, 226.134 )
+position = Vector2( 485.654, 276.156 )
 texture = ExtResource( 2 )
 
 

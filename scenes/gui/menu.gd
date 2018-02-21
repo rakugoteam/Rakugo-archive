@@ -13,7 +13,7 @@ func _on_statement(type, kwargs):
 	
 	for ch in get_children():
 		ch.disconnect("pressed", self, "_on_button_pressed")
-		ch.free()
+		ch.queue_free() #free causes problem in VS
 	
 	var i = 0
 	var choices = ren.current_menu.choices_labels

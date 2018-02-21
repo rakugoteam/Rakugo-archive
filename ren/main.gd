@@ -184,5 +184,6 @@ func start():
 	choice_id = -1
 	using_passer = false
 	statements[0].enter()
+	set_meta("playing",true) # for checking if ren is playing
 
 
