@@ -68,6 +68,7 @@ func writeDialog(text, speed=0.005):
 	
 	typing=true
 	DialogText.bbcode_text = ""
+	var te=""
 	t = Timer.new()
 	t.set_wait_time(speed)
 	t.set_one_shot(true)
@@ -75,7 +76,8 @@ func writeDialog(text, speed=0.005):
 	
 	for letter in text:
 		t.start()
-		DialogText.bbcode_text=$VBox/Dialog.bbcode_text+letter
+		te+=letter
+		DialogText.bbcode_text=te
 		yield(t, "timeout")
 		if !typing:
 			DialogText.bbcode_text=text
