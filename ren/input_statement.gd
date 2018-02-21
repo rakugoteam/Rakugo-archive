@@ -34,3 +34,4 @@ func on_exit(new_kwargs = {}):
 	ren.define(input_value, value)
 	
 	.on_exit({})
+	ren.history.append(self)

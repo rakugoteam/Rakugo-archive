@@ -36,7 +36,11 @@ func on_enter_block(new_kwargs = {}):
 	if "final_choice" in kwargs:
 		if ren.is_connected("exit_statement", self, "on_exit"):
 			ren.disconnect("exit_statement", self, "on_exit")
+		
+		ren.history.append(self)
 		choices[kwargs.final_choice].enter()
 	
 	else:
 		print("no final_choice recived")
+	
+
