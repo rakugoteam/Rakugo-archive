@@ -37,7 +37,9 @@ func on_enter_block(new_kwargs = {}):
 		if ren.is_connected("exit_statement", self, "on_exit"):
 			ren.disconnect("exit_statement", self, "on_exit")
 		
-		ren.history.append(self)
+		if not (self in ren.history):
+			ren.history.append(self)
+			
 		choices[kwargs.final_choice].enter()
 	
 	else:

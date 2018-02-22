@@ -7,7 +7,9 @@ extends Node
 
 var statements = []
 var history = []
-var current_statement
+var history_id = 0
+var rolling_back = false
+var current_statement = 1
 var current_statement_id = -1
 var current_local_statement_id = -1
 var current_block
@@ -186,11 +188,39 @@ func notifiy(info, conition_statement = null):
 func start():
 	current_block = []
 	current_menu = []
-	current_statement_id = 0
-	current_local_statement_id = -1
 	choice_id = -1
 	using_passer = false
 	statements[0].enter()
 	set_meta("playing",true) # for checking if ren is playing
 
+## go back to pervious statement that type is say, input or menu 
+func rollback():
+	if not history.empty():
+		
+		if rolling_back:
+			history_id += 1
+		
+		else:
+			history_id = 1
+			rolling_back = true
 
+		var previous = history[history.size() - history_id]
+
+		if is_connected("enter_block", previous, "on_enter_block"):
+			disconnect("enter_block", previous, "on_enter_block")
+		
+		if is_connected("exit_statement", previous, "on_exit"):
+			disconnect("exit_statement", previous, "on_exit")
+
+		if is_connected("enter_block", current_statement, "on_enter_block"):
+			disconnect("enter_block", current_statement, "on_enter_block")
+		
+		if is_connected("exit_statement", current_statement, "on_exit"):
+			disconnect("exit_statement", current_statement, "on_exit")
+
+		previous.enter()
+		
+		
+
+	
+	

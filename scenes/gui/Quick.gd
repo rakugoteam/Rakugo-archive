@@ -7,14 +7,31 @@ extends HBoxContainer
 onready var ren = get_node("/root/Window")
 
 func _ready():
-	# $Back.connect("pressed", self, "on_rollback")
+	ren.connect("enter_statement", self, "_on_statement")
+	$Back.connect("pressed", ren, "rollback")
+	$Back.disabled = true
 	
 	$Auto.connect("pressed", self, "on_auto")
 	$AutoTimer.connect("timeout", self, "on_auto_loop")
 	
 	$Skip.connect("pressed", self, "on_skip")
 	$SkipTimer.connect("timeout", self, "on_skip_loop")
-	
+	$Skip.disabled = true
+
+	$History.disabled = true
+
+func can_skip():
+	if not ren.history.empty():
+		if ren.current_statement in ren.history:
+			if ren.current_statement != ren.history.back():
+				return true
+			
+	return false
+
+func _on_statement(type, kwargs):
+	$Back.disabled = ren.current_statement.id == 0
+	$Skip.disabled = !can_skip()
+	$History.disabled = ren.history.empty()
 
 func on_auto():
 	if not $AutoTimer.is_stopped():
@@ -44,18 +61,6 @@ func on_skip_loop():
 	
 	else:
 		$SkipTimer.stop()
-
-func on_rollback():
-	pass
-# 	if back_timer != null:
-# 		back_timer.free()
-		
-# 	back_timer = _new_timer(0.5, true)
-# 	back_timer.start()
-# 	ren.rollback()
-# 	$Back.disconnect("pressed", self, "on_rollback")
-# 	yield(back_timer, "timeout")
-# 	$Back.connect("pressed", self, "on_rollback")
 
 func _input(event):
 	if event.is_action("ren_backward"):

@@ -35,4 +35,6 @@ func enter(dbg = true):
 
 func on_exit(new_kwargs = {}):
 	.on_exit(new_kwargs)
-	ren.history.append(self)
+	
+	if not (self in ren.history):
+		ren.history.append(self)
