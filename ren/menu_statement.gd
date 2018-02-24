@@ -40,7 +40,8 @@ func on_enter_block(new_kwargs = {}):
 		if not (self in ren.history):
 			ren.history.append(self)
 			
-		choices[kwargs.final_choice].enter()
+		if choices.size()>kwargs.final_choice:
+			choices[kwargs.final_choice].enter()
 	
 	else:
 		print("no final_choice recived")

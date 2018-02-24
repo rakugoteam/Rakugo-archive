@@ -107,7 +107,6 @@ _sections_unfolded = [ "BBCode", "Rect", "Size Flags" ]
 
 [node name="Quick" type="HBoxContainer" parent="." index="3"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0

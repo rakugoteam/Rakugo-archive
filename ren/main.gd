@@ -195,7 +195,14 @@ func start():
 
 ## go back to pervious statement that type is say, input or menu 
 func rollback():
-	if not history.empty():
+	if has_meta("usingvis"):
+		set_meta("go_back",true)
+		if statements[statements.size()-1].type=="menu":
+			emit_signal("enter_block")
+		else:
+			emit_signal("exit_statement")
+		set_meta("go_back",false)
+	if not history.empty() and !has_meta("usingvis"):
 		
 		if rolling_back:
 			history_id += 1
