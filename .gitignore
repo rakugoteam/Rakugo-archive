@@ -1,5 +1,6 @@
 fontconfig
-addons
+addons/*
+!addons/Ren*
 refences
 *.import
 .import
