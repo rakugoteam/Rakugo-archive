@@ -19,6 +19,9 @@ func _ready():
 	$Skip.disabled = true
 
 	$History.disabled = true
+	
+	$QSave.connect("pressed",ren,"savefile")
+	$QLoad.connect("pressed",ren,"loadfile")
 
 func can_skip():
 	if not ren.history.empty():
