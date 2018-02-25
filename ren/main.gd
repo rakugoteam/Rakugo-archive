@@ -42,6 +42,7 @@ var _def = _DEF.new()
 signal enter_statement(type, kwargs)
 signal enter_block(kwargs)
 signal exit_statement(kwargs)
+signal notified()
 
 # add global value that ren will see
 func define(val_name, value = null):
@@ -180,8 +181,8 @@ func hide(node, condition_statement = null):
 	return _init_statement(_HI.new(node), {}, condition_statement)
 
 ## create statement of type notify
-func notifiy(info, conition_statement = null):
-	return _init_statement(_NO.new(), {"info": info}, conition_statement)
+func notifiy(info,length=5, conition_statement = null):
+	return _init_statement(_NO.new(), {"info": info,"length":length}, conition_statement)
 
 
 ## it starts current ren dialog

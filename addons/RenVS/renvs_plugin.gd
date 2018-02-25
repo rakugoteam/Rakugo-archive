@@ -11,7 +11,7 @@ func _enter_tree():
 	vs.add_custom_node("New Character","Ren",load("res://addons/RenVS/new_char_vis.gd"))
 	vs.add_custom_node("Ask","Ren",load("res://addons/RenVS/ask.gd"))
 	vs.add_custom_node("Start","Ren",load("res://addons/RenVS/start.gd"))
-	
+	vs.add_custom_node("Notify","Ren",load("res://addons/RenVS/notify.gd"))
 	print("Say added")
 func _exit_tree():
 	pass

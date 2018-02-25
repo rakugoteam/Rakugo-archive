@@ -114,7 +114,7 @@ func _ready():
 					"Docs are not ready yet"
 			}, choice_aq)
 	
-	ren.notifiy("You make your first choice!")
+	ren.notifiy("You make your first choice!",3)
 	
 	ren.say({
 			"how": 
