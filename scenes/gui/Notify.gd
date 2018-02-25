@@ -13,8 +13,10 @@ func _ready():
 func _on_statement(type, kwargs):
 	if type == "notify":
 		$Dialog.bbcode_text = kwargs.info
+		if kwargs.has("length"):
+			$Timer.wait_time=kwargs.length
 		$Timer.start()
 		show()
-
+		ren.emit_signal("notified")
 
 

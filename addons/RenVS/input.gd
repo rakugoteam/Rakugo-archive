@@ -44,8 +44,26 @@ func _step(inputs, outputs, start_mode, working_mem):
 		var arr=Array()
 		arr.append(self)
 		ren.define("RenVS",[self])
-		
-		
+	if self.get_instance_id() in ren.vnl:
+		print(inputs[1],"already there")
+		allow_back=false
+	else:
+		print(inputs[1],"added")
+		ren.vnl.append(self.get_instance_id())
+	#LOADING
+	if ren.vis_loading:
+		ren.input({"how":inputs[0],"what":inputs[1],"input_value":inputs[2],"value":inputs[3]})
+		if ren.history_vis.size()>ren.load_counter:
+			if ren.history_vis[ren.load_counter]==-1:
+				ren.load_counter+=1
+				return 0 | STEP_GO_BACK_BIT
+			else:
+				ren.load_counter+=1
+				if not(get_instance_id() in ren.vnl):
+					return ren.history_vis[ren.load_counter-1] | STEP_PUSH_STACK_BIT
+				else:
+					return ren.history_vis[ren.load_counter-1]
+	
 	
 	var kwargs=[]
 	#var ren = Engine.get_main_loop().root.get_node("Window")
@@ -66,14 +84,19 @@ func _step(inputs, outputs, start_mode, working_mem):
 	elif start_mode==START_MODE_RESUME_YIELD:
 		#print("got choice ",ren.get_meta("last_choice"))
 		print("push or next")
+		if ren.get_meta("quitcurrent")==true:
+			return 0 | STEP_NO_ADVANCE_BIT
 		if ren.get_meta("go_back"):
 			print("push")
 			#ren.statements.pop_back()
 			#ren.statements.pop_back()
+			ren.history_vis.append(-1)
 			return 0 | STEP_GO_BACK_BIT
 
 		else:
 			if allow_back:
+				ren.history_vis.append(0)
 				return 0 | STEP_PUSH_STACK_BIT
 			else:
+				ren.history_vis.append(0)
 				return 0

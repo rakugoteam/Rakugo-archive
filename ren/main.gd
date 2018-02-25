@@ -7,6 +7,13 @@ extends Node
 
 var statements = []
 var history = []
+# Visual save/load
+var history_vis=[]
+var mainscriptnode
+var vis_loading=false
+var load_counter=0
+var vnl=[]
+# 
 var history_id = 0
 var rolling_back = false
 var current_statement = 1
@@ -42,6 +49,7 @@ var _def = _DEF.new()
 signal enter_statement(type, kwargs)
 signal enter_block(kwargs)
 signal exit_statement(kwargs)
+signal notified()
 
 # add global value that ren will see
 func define(val_name, value = null):
@@ -180,8 +188,8 @@ func hide(node, condition_statement = null):
 	return _init_statement(_HI.new(node), {}, condition_statement)
 
 ## create statement of type notify
-func notifiy(info, conition_statement = null):
-	return _init_statement(_NO.new(), {"info": info}, conition_statement)
+func notifiy(info,length=5, conition_statement = null):
+	return _init_statement(_NO.new(), {"info": info,"length":length}, conition_statement)
 
 
 ## it starts current ren dialog
@@ -228,6 +236,44 @@ func rollback():
 		previous.enter()
 		
 		
+func savefile():
+	if has_meta("usingvis"):
+		var config=ConfigFile.new()
+		config.set_value("visual","history",history_vis)
+		config.set_value("main","values",values)
+		config.set_value("main","mainnode",mainscriptnode)
+		#config.set_value("main","statements",statements)
+		#config.set_value("main","current_statement",current_statement_id)
+		config.save("user://save.cfg")
+	
+func loadfile():
+	if has_meta("usingvis"):
+		var config=ConfigFile.new()
+		var err= config.load("user://save.cfg")
+		if err==OK:
+			print("load success")
+			quitcurvis()
+			vis_loading=true
+			current_block = []
+			current_menu = []
+			current_statement_id=-1
+			choice_id = -1
+			using_passer = false
+			statements=[]
+			history_vis=config.get_value("visual","history")
+			values=config.get_value("main","values")
+			mainscriptnode=config.get_value("main","mainnode")
 
-	
-	
+			mainscriptnode.mainstory()
+			vis_loading=false
+			values=config.get_value("main","values")
+			
+
+func quitcurvis():
+	set_meta("quitcurrent",true)
+	print(history_vis)
+	if statements[statements.size()-1].type=="menu":
+		emit_signal("enter_block")
+	else:
+		emit_signal("exit_statement")
+	set_meta("quitcurrent",false)
