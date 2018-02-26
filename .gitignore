@@ -4,6 +4,6 @@ addons/*
 refences
 *.import
 .import
-
+.directory
 .vscode
 
