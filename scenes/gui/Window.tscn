@@ -17,7 +17,7 @@ length = 1.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Quick/InfoAnim/Panel:modulate")
+tracks/0/path = NodePath("InfoAnim/Panel:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -29,7 +29,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.756863 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Quick/InfoAnim/Panel/Label:bbcode_text")
+tracks/1/path = NodePath("InfoAnim/Panel/Label:bbcode_text")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -41,7 +41,7 @@ tracks/1/keys = {
 "values": [ "Game was loaded" ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Quick/InfoAnim/Panel/Label:rect_size")
+tracks/2/path = NodePath("InfoAnim/Panel/Label:rect_size")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -53,7 +53,7 @@ tracks/2/keys = {
 "values": [ Vector2( 249, 40 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Quick/InfoAnim/Panel:rect_size")
+tracks/3/path = NodePath("InfoAnim/Panel:rect_size")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -65,7 +65,7 @@ tracks/3/keys = {
 "values": [ Vector2( 247, 42 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Quick/InfoAnim/Panel:visible")
+tracks/4/path = NodePath("InfoAnim/Panel:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -84,7 +84,7 @@ length = 1.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Quick/InfoAnim/Panel:modulate")
+tracks/0/path = NodePath("InfoAnim/Panel:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -96,7 +96,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.756863 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Quick/InfoAnim/Panel/Label:bbcode_text")
+tracks/1/path = NodePath("InfoAnim/Panel/Label:bbcode_text")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -108,7 +108,7 @@ tracks/1/keys = {
 "values": [ "Game was saved" ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Quick/InfoAnim/Panel/Label:rect_size")
+tracks/2/path = NodePath("InfoAnim/Panel/Label:rect_size")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -120,7 +120,7 @@ tracks/2/keys = {
 "values": [ Vector2( 239, 40 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Quick/InfoAnim/Panel:rect_size")
+tracks/3/path = NodePath("InfoAnim/Panel:rect_size")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -132,7 +132,7 @@ tracks/3/keys = {
 "values": [ Vector2( 234, 42 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Quick/InfoAnim/Panel:visible")
+tracks/4/path = NodePath("InfoAnim/Panel:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -471,7 +471,7 @@ custom_colors/default_color = Color( 1, 1, 1, 1 )
 custom_colors/selection_color = Color( 0, 0, 0, 1 )
 bbcode_text = "Game was saved"
 text = "Game was saved"
-_sections_unfolded = [ "BBCode", "Rect", "Visibility", "custom_colors" ]
+_sections_unfolded = [ "BBCode", "Rect", "Visibility", "custom_colors", "custom_fonts" ]
 
 [node name="DialogManager" type="Control" parent="." index="4"]
 

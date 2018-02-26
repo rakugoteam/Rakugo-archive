@@ -58,11 +58,15 @@ func on_auto_loop():
 	else:
 		$AutoTimer.stop()
 
+
+func stop_skip():
+	$SkipTimer.stop()
+	$InfoAnim.stop()
+	$InfoAnim/Panel.hide()
+
 func on_skip():
 	if not $SkipTimer.is_stopped():
-		$SkipTimer.stop()
-		$InfoAnim.stop()
-		$InfoAnim/Panel.hide()
+		stop_skip()
 		return
 	
 	$SkipTimer.start()
@@ -74,7 +78,7 @@ func on_skip_loop():
 		ren.emit_signal("exit_statement", {})
 	
 	else:
-		$SkipTimer.stop()
+		stop_skip()
 
 func _input(event):
 	if event.is_action("ren_backward"):
