@@ -21,7 +21,7 @@ func _ready():
 	$History.disabled = true
 	
 	$QSave.connect("pressed", self, "_on_qsave")
-	$QLoad.connect("pressed",ren,"_on_qload")
+	$QLoad.connect("pressed",self, "_on_qload")
 
 func _on_qsave():
 	ren.savefile()
