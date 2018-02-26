@@ -20,8 +20,16 @@ func _ready():
 
 	$History.disabled = true
 	
-	$QSave.connect("pressed",ren,"savefile")
-	$QLoad.connect("pressed",ren,"loadfile")
+	$QSave.connect("pressed", self, "_on_qsave")
+	$QLoad.connect("pressed",ren,"_on_qload")
+
+func _on_qsave():
+	ren.savefile()
+	$InfoAnim.play("Saved")
+
+func _on_qload():
+	ren.loadfile()
+	$InfoAnim.play("Loaded")
 
 func can_skip():
 	if not ren.history.empty():
@@ -53,9 +61,12 @@ func on_auto_loop():
 func on_skip():
 	if not $SkipTimer.is_stopped():
 		$SkipTimer.stop()
+		$InfoAnim.stop()
+		$InfoAnim/Panel.hide()
 		return
 	
 	$SkipTimer.start()
+	$InfoAnim.play("Skip")
 
 func on_skip_loop():
 	if (ren.current_statement.type == "say"
