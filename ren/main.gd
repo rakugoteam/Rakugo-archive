@@ -15,6 +15,7 @@ var load_counter=0
 var vnl=[]
 # 
 var history_id = 0
+var rolling_back = false
 var current_statement = 1
 var current_statement_id = -1
 var current_local_statement_id = -1
@@ -216,10 +217,15 @@ func rollback():
 		
 	if not history.empty() and !has_meta("usingvis"):
 		
+		if rolling_back:
+			history_id += 1
+
+		else:
+			rolling_back = true
+
 		var previous = history[history.size() - history_id]
 		
 		while previous == current_statement:
-			print("previous == current_statement")
 			history_id += 1
 			previous = history[history.size() - history_id]
 
