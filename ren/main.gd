@@ -15,7 +15,6 @@ var load_counter=0
 var vnl=[]
 # 
 var history_id = 0
-var rolling_back = false
 var current_statement = 1
 var current_statement_id = -1
 var current_local_statement_id = -1
@@ -197,29 +196,32 @@ func start():
 	current_block = []
 	current_menu = []
 	choice_id = -1
+	history_id = 1
 	using_passer = false
 	statements[0].enter()
 	set_meta("playing",true) # for checking if ren is playing
+
 
 ## go back to pervious statement that type is say, input or menu 
 func rollback():
 	if has_meta("usingvis"):
 		set_meta("go_back",true)
+
 		if statements[statements.size()-1].type=="menu":
 			emit_signal("enter_block")
 		else:
 			emit_signal("exit_statement")
+
 		set_meta("go_back",false)
+		
 	if not history.empty() and !has_meta("usingvis"):
 		
-		if rolling_back:
-			history_id += 1
-		
-		else:
-			history_id = 1
-			rolling_back = true
-
 		var previous = history[history.size() - history_id]
+		
+		while previous == current_statement:
+			print("previous == current_statement")
+			history_id += 1
+			previous = history[history.size() - history_id]
 
 		if is_connected("enter_block", previous, "on_enter_block"):
 			disconnect("enter_block", previous, "on_enter_block")

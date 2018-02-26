@@ -25,7 +25,6 @@ func _on_timeout():
 	
 func _input(event):
 	if event.is_action_released("ren_forward"):
-		ren.rolling_back = false
 		if typing: #if typing complete it
 			typing=false
 		else:      #else exit statement
