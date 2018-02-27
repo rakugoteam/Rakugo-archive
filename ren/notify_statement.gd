@@ -19,7 +19,3 @@ func enter(dbg = true):
 	.enter(false)
 	.on_exit({})
 
-func on_exit(new_kwargs = {}):
-	.on_exit(new_kwargs)
-	ren.history.append(self)
-

@@ -5,6 +5,8 @@
 
 extends "statement.gd"
 
+var auto_enter = ["show", "hide", "notify"]
+
 func _init():
 	type = "say"
 	kws = ["how", "what"]

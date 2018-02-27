@@ -16,17 +16,17 @@ margin_right = 1024.0
 margin_bottom = 603.0
 rect_min_size = Vector2( 100, 100 )
 rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 0
+rect_clip_content = false
+mouse_filter = 2
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
-_sections_unfolded = [ "Anchor", "Rect", "Size Flags", "Theme", "custom_styles" ]
+_sections_unfolded = [ "Anchor", "Mouse", "Rect", "Size Flags", "Theme", "custom_styles" ]
 
 [node name="VBox" type="VBoxContainer" parent="." index="0"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -35,6 +35,7 @@ margin_left = 90.0
 margin_right = 1006.0
 margin_bottom = 100.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
@@ -46,6 +47,9 @@ script = ExtResource( 3 )
 [node name="Label" parent="VBox" index="0" instance=ExtResource( 4 )]
 
 margin_right = 916.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 scroll_active = false
 _sections_unfolded = [ "BBCode", "Rect", "Size Flags", "custom_fonts" ]
 
@@ -57,13 +61,13 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 41.0
 margin_right = 916.0
-margin_bottom = 73.0
+margin_bottom = 70.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
 focus_mode = 2
-mouse_filter = 0
+mouse_filter = 2
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 15
+size_flags_horizontal = 3
 size_flags_vertical = 3
 bbcode_enabled = true
 bbcode_text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis."
@@ -90,10 +94,10 @@ margin_right = 100.0
 margin_bottom = 100.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
-mouse_filter = 0
+mouse_filter = 2
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
 bbcode_enabled = false
 bbcode_text = ""
 visible_characters = -1
@@ -106,21 +110,22 @@ scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
 
-[node name="Input" type="LineEdit" parent="VBox" index="3"]
+[node name="InputLine" type="LineEdit" parent="VBox" index="3"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 74.0
+margin_top = 71.0
 margin_right = 916.0
 margin_bottom = 100.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 1
-size_flags_horizontal = 1
-size_flags_vertical = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
 focus_mode = 2
 context_menu_enabled = true
 placeholder_text = "Placeholder"
@@ -128,7 +133,7 @@ placeholder_alpha = 0.6
 caret_blink = false
 caret_blink_speed = 0.65
 caret_position = 0
-_sections_unfolded = [ "Placeholder" ]
+_sections_unfolded = [ "Mouse", "Placeholder" ]
 
 [node name="ViewportContainer" type="ViewportContainer" parent="." index="1"]
 
@@ -140,6 +145,7 @@ anchor_bottom = 0.0
 margin_right = 108.0
 margin_bottom = 131.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1

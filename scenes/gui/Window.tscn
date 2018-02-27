@@ -227,15 +227,39 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "Theme" ]
 debug_inti = true
 
-[node name="Choice" type="VBoxContainer" parent="." index="0"]
+[node name="ScrollContainer" type="ScrollContainer" parent="." index="0"]
 
+editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 0.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = 359.0
-margin_right = 655.0
-margin_bottom = 470.0
+margin_left = 315.0
+margin_top = 93.0
+margin_right = 714.0
+margin_bottom = 384.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+scroll_horizontal_enabled = true
+scroll_horizontal = 0
+scroll_vertical_enabled = true
+scroll_vertical = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Choice" type="VBoxContainer" parent="ScrollContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 399.0
+margin_bottom = 291.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -250,7 +274,6 @@ script = ExtResource( 2 )
 
 editor/display_folded = true
 margin_bottom = 601.0
-rect_clip_content = false
 
 [node name="Notify" type="Panel" parent="." index="2"]
 
@@ -316,6 +339,7 @@ _sections_unfolded = [ "BBCode", "Rect", "Size Flags" ]
 
 [node name="Quick" type="HBoxContainer" parent="." index="3"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0

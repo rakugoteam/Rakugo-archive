@@ -21,10 +21,10 @@ func _ready():
 	$Timer.connect("timeout", self, "_on_timeout")
 
 func _on_timeout():
-	set_process_input(_type == "say")
+	set_process(_type == "say")
 	
-func _input(event):
-	if event.is_action_released("ren_forward"):
+func _process(delta):
+	if Input.is_action_pressed("ren_forward"):
 		ren.rolling_back = false
 		if ren.history_id > 1:
 			ren.history_id -= 1
@@ -35,7 +35,7 @@ func _input(event):
 			ren.emit_signal("exit_statement", {})
 
 func _on_statement(type, kwargs):
-	set_process_input(false)
+	set_process(false)
 	_type = type
 	$Timer.start()
 	if not _type in ["say", "input", "menu"]:
