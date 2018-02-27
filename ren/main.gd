@@ -244,22 +244,28 @@ func rollback():
 		previous.enter()
 		
 		
-func savefile():
+func savefile(filepath="user://save.dat",password="Ren"):
 	if has_meta("usingvis"):
-		var config=ConfigFile.new()
-		config.set_value("visual","history",history_vis)
-		config.set_value("main","values",values)
-		config.set_value("main","mainnode",mainscriptnode)
+		var tmpvalues={}
+		for x in values:
+			tmpvalues[x]=var2str(values[x])
+		var savedict={
+		"visual_history":history_vis,
+		"values":tmpvalues,
+		"mainscriptnode":mainscriptnode.get_path()
+		}
 		#config.set_value("main","statements",statements)
 		#config.set_value("main","current_statement",current_statement_id)
-		config.save("user://save.cfg")
+		var file=File.new()
+		file.open_encrypted_with_pass(filepath,File.WRITE,password)
+		file.store_line(to_json(savedict))
+		file.close()
 	
-func loadfile():
+func loadfile(filepath="user://save.dat",password="Ren"):
 	if has_meta("usingvis"):
-		var config=ConfigFile.new()
-		var err= config.load("user://save.cfg")
-		if err==OK:
-			print("load success")
+		var file=File.new()
+		if file.open_encrypted_with_pass(filepath,File.READ,password)==OK:
+			var load_dict=parse_json(file.get_line())
 			quitcurvis()
 			vis_loading=true
 			current_block = []
@@ -268,14 +274,15 @@ func loadfile():
 			choice_id = -1
 			using_passer = false
 			statements=[]
-			history_vis=config.get_value("visual","history")
-			values=config.get_value("main","values")
-			mainscriptnode=config.get_value("main","mainnode")
-
+			history_vis=load_dict["visual_history"]
+			values=load_dict["values"]
+			for x in values:
+				values[x]=str2var(values[x])
+			mainscriptnode=get_node(load_dict["mainscriptnode"])
 			mainscriptnode.mainstory()
 			vis_loading=false
-			values=config.get_value("main","values")
-			
+			values=load_dict["values"]
+			file.close()
 
 func quitcurvis():
 	set_meta("quitcurrent",true)
