@@ -7,6 +7,7 @@ extends "statement.gd"
 
 var statements = []
 var condition = ""
+var is_true
 
 func _init(_condition = ""):
 	condition = _condition 

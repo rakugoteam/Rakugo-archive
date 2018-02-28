@@ -9,6 +9,7 @@ var statements = []
 var condition = ""
 var conditions = []
 var el = null
+var is_true
 
 func _init(_condition = ""):
 	type = "_if"
@@ -26,14 +27,20 @@ func enter(dbg = true):
 func on_enter_block(new_kwargs = {}):
 	if new_kwargs != {}:
 		set_kwargs(new_kwargs)
+
+	if is_true == null:
+		is_true = ren.godot.exec(condition)
 	
-	if ren.godot.exec(condition):
+	if is_true:
 		statements[0].enter()
 		return
 	
 	elif conditions.size() > 0:
 		for c in conditions:
-			if ren.godot.exec(c.condition):
+			if c.is_true == null:
+				c.is_true = ren.godot.exec(c.condition)
+
+			if c.is_true:
 				c.debug()
 				c.statements[0].enter()
 				return

@@ -12,6 +12,7 @@ var gds = _GDS.new()
 var n = null
 var gdscript = null
 
+
 ## execute gdscript code with ren tricks
 ## possible types: "code", "retrun", "code_block"
 func exec(code, type = "retrun"):
