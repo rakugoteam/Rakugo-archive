@@ -53,7 +53,7 @@ func loadbox(saveslotsdir="user://saveslot/"):
 	var filehandler=File.new()
 	for x in $GridContainer.get_children():
 		if filehandler.file_exists(saveslotsdir+x.name+'.png'):
-			print("slot exist, loading image")
+			#print("slot exist, loading image")
 			var img=Image.new()
 			img.load(saveslotsdir+x.name+'.png')
 			var tex=ImageTexture.new()
@@ -81,7 +81,6 @@ func savepress(input,caller):
 			print(caller.name)
 			if screenshot==null:
 				return false
-			screenshot.flip_y()
 			screenshot.save_png("user://saveslot/"+caller.name+'.png')
 			filehandler.open("user://saveslot/"+caller.name+'.info',File.WRITE)
 			var d=OS.get_datetime()
