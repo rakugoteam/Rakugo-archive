@@ -37,13 +37,6 @@ func _ready():
 	# ren.define("test_list", [1,3,7])
 	# ren.say({"what":"test list 2 list elment is [test_list[2]]"})
 	
-				
-	ren.say({
-				"how": 
-					"rench",
-				"what":
-					"extra stamement to check skipping/auto",
-				})
 	ren.show("logo",{"at":["center"]})
 	ren.input({
 				"how": 
