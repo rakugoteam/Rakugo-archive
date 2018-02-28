@@ -93,8 +93,8 @@ func _input(event):
 
 func full_save():
 	var screenshot=get_viewport().get_texture().get_data()
-	get_node("../Screens").save_menu(screenshot)
+	get_node("../../Screens").save_menu(screenshot)
 
 func full_load():
-	get_node("../Screens").load_menu()
+	get_node("../../Screens").load_menu()
 	

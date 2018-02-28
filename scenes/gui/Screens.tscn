@@ -28,11 +28,13 @@ _sections_unfolded = [ "Font", "Settings" ]
 
 [node name="Screens" type="Control"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -50,6 +52,7 @@ anchor_bottom = 0.0
 margin_right = 1027.0
 margin_bottom = 609.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -63,6 +66,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -75,6 +79,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -91,6 +96,7 @@ margin_top = 526.0
 margin_right = 977.0
 margin_bottom = 620.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -102,6 +108,7 @@ alignment = 0
 margin_top = 14.0
 margin_right = 99.0
 margin_bottom = 79.0
+rect_clip_content = false
 
 [node name="Version" type="Label" parent="MainMenuDecorations/TitleNVersion/HBox" index="1"]
 
@@ -114,6 +121,7 @@ margin_top = 34.0
 margin_right = 151.0
 margin_bottom = 59.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -136,6 +144,7 @@ anchor_bottom = 0.0
 margin_right = 204.0
 margin_bottom = 599.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -146,6 +155,7 @@ _sections_unfolded = [ "Rect" ]
 
 margin_right = 99.0
 margin_bottom = 65.0
+rect_clip_content = false
 align = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Navigation" index="1"]
@@ -158,6 +168,7 @@ margin_top = 101.0
 margin_right = 140.0
 margin_bottom = 513.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -169,6 +180,7 @@ alignment = 0
 
 margin_right = 140.0
 margin_bottom = 34.0
+rect_clip_content = false
 text = "Start"
 align = 0
 
@@ -178,6 +190,7 @@ visible = false
 margin_top = 54.0
 margin_right = 140.0
 margin_bottom = 88.0
+rect_clip_content = false
 text = "History"
 align = 0
 
@@ -186,6 +199,7 @@ align = 0
 margin_top = 54.0
 margin_right = 140.0
 margin_bottom = 88.0
+rect_clip_content = false
 text = "Load"
 align = 0
 
@@ -195,6 +209,7 @@ visible = false
 margin_top = 108.0
 margin_right = 140.0
 margin_bottom = 142.0
+rect_clip_content = false
 text = "Save"
 align = 0
 
@@ -203,6 +218,7 @@ align = 0
 margin_top = 108.0
 margin_right = 140.0
 margin_bottom = 142.0
+rect_clip_content = false
 text = "Preferences"
 align = 0
 
@@ -211,6 +227,7 @@ align = 0
 margin_top = 162.0
 margin_right = 140.0
 margin_bottom = 196.0
+rect_clip_content = false
 text = "About"
 align = 0
 
@@ -219,6 +236,7 @@ align = 0
 margin_top = 216.0
 margin_right = 140.0
 margin_bottom = 250.0
+rect_clip_content = false
 text = "Help"
 align = 0
 
@@ -227,6 +245,7 @@ align = 0
 margin_top = 270.0
 margin_right = 140.0
 margin_bottom = 304.0
+rect_clip_content = false
 text = "Quit"
 align = 0
 
@@ -236,6 +255,7 @@ visible = false
 margin_top = 532.0
 margin_right = 85.0
 margin_bottom = 566.0
+rect_clip_content = false
 text = "Return"
 align = 0
 
@@ -252,6 +272,7 @@ margin_top = 36.0
 margin_right = 959.0
 margin_bottom = 545.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -269,6 +290,7 @@ anchor_bottom = 0.0
 margin_right = 702.0
 margin_bottom = 54.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -292,6 +314,7 @@ margin_top = 58.0
 margin_right = 702.0
 margin_bottom = 509.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
@@ -303,24 +326,28 @@ _sections_unfolded = [ "Grow Direction", "Rect", "Size Flags" ]
 
 margin_right = 231.0
 margin_bottom = 223.0
+rect_clip_content = false
 
 [node name="2" parent="SlotBox/GridContainer" index="1" instance=ExtResource( 9 )]
 
 margin_left = 235.0
 margin_right = 466.0
 margin_bottom = 223.0
+rect_clip_content = false
 
 [node name="3" parent="SlotBox/GridContainer" index="2" instance=ExtResource( 9 )]
 
 margin_left = 470.0
 margin_right = 701.0
 margin_bottom = 223.0
+rect_clip_content = false
 
 [node name="4" parent="SlotBox/GridContainer" index="3" instance=ExtResource( 9 )]
 
 margin_top = 227.0
 margin_right = 231.0
 margin_bottom = 450.0
+rect_clip_content = false
 
 [node name="5" parent="SlotBox/GridContainer" index="4" instance=ExtResource( 9 )]
 
@@ -328,6 +355,7 @@ margin_left = 235.0
 margin_top = 227.0
 margin_right = 466.0
 margin_bottom = 450.0
+rect_clip_content = false
 
 [node name="6" parent="SlotBox/GridContainer" index="5" instance=ExtResource( 9 )]
 
@@ -335,6 +363,7 @@ margin_left = 470.0
 margin_top = 227.0
 margin_right = 701.0
 margin_bottom = 450.0
+rect_clip_content = false
 
 [connection signal="visibility_changed" from="." to="." method="_on_Screens_visibility_changed"]
 

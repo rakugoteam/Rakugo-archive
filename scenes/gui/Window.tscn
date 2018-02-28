@@ -572,9 +572,6 @@ _sections_unfolded = [ "BBCode", "Rect", "Visibility", "custom_colors", "custom_
 
 [node name="Screens" parent="." index="1" instance=ExtResource( 10 )]
 
-rect_clip_content = false
-_sections_unfolded = [ "Material", "Visibility" ]
-
 [connection signal="gui_input" from="InGameGUI/Adv" to="InGameGUI/Adv" method="_on_Adv_gui_input"]
 
 

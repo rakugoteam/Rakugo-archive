@@ -10,7 +10,7 @@ config_version=3
 
 [application]
 
-config/name="Ren-addon"
+config/name="Ren"
 run/main_scene="res://scenes/examples/testvs.tscn"
 config/icon="res://icon.png"
 
