@@ -42,8 +42,9 @@ const _GB	= preload("godot_statement.gd")
 const _SH	= preload("show_statement.gd")
 const _HI	= preload("hide_statement.gd")
 const _NO	= preload("notify_statement.gd")
+const _GD	= preload("gd_connect.gd")
 
-onready var godot = $GodotConnect
+var godot
 
 var _def = _DEF.new()
 
@@ -51,6 +52,10 @@ signal enter_statement(type, kwargs)
 signal enter_block(kwargs)
 signal exit_statement(kwargs)
 signal notified()
+
+func _ready():
+	godot = _GD.new()
+	godot.ren = self
 
 # add global value that ren will see
 func define(val_name, value = null):

@@ -115,6 +115,4 @@ func _ready():
 			"what":
 				"extra stamement to check skipping/auto",
 			})
-	
-	
-	ren.start()
+

@@ -1,18 +1,12 @@
 extends Control
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+onready var in_game_gui = get_node("../InGameGUI")
+onready var ren = get_node("/root/Window")
 
 func _ready():
-	# Called every time the node is added to the scene.
-	# Initialization here
 	pass
-
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
+	
+	
 func save_menu(screenshot):
 	show()
 	$SlotBox/Title.text="Save"
@@ -29,7 +23,10 @@ func load_menu():
 	$Navigation/Return.show()
 
 func _on_Screens_visibility_changed():
-	pass
+	if visible:
+		in_game_gui.hide()
+	else:
+		in_game_gui.show()
 
 
 func _on_Return_pressed():
@@ -43,3 +40,5 @@ func _on_Load_pressed():
 
 func _on_Start_pressed():
 	hide()
+	ren.start()
+	

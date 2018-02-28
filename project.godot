@@ -10,7 +10,7 @@ config_version=3
 
 [application]
 
-config/name="Ren3"
+config/name="Ren-addon"
 run/main_scene="res://scenes/examples/testvs.tscn"
 config/icon="res://icon.png"
 
@@ -20,7 +20,7 @@ Window="*res://scenes/gui/Window.tscn"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "RenVS" )
+enabled=PoolStringArray( "Ren", "RenVS" )
 
 [input]
 
