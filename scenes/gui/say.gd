@@ -23,8 +23,8 @@ func _ready():
 func _on_timeout():
 	set_process_unhandled_input(_type == "say")
 	
-func _unhandled_input(event):
-	if Input.is_action_pressed("ren_forward"):
+func _input(event):
+	if event.is_action_pressed("ren_forward"):
 		ren.rolling_back = false
 		if ren.history_id > 1:
 			ren.history_id -= 1
@@ -89,3 +89,11 @@ func writeDialog(text, speed=0.005):
 		if !typing:
 			DialogText.bbcode_text=text
 			break
+
+
+func _on_Adv_gui_input(ev):
+	if ev is InputEventMouseButton:
+		var event=InputEventAction.new()
+		event.action="ren_forward"
+		event.pressed=true
+		Input.parse_input_event(event)
