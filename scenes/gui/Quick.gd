@@ -92,5 +92,6 @@ func _input(event):
 
 func full_save():
 	var screenshot=get_viewport().get_texture().get_data()
+	screenshot.flip_y()
 	get_node("../Screens").save_menu(screenshot)
 	
