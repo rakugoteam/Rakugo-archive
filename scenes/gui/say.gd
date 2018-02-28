@@ -21,9 +21,9 @@ func _ready():
 	$Timer.connect("timeout", self, "_on_timeout")
 
 func _on_timeout():
-	set_process(_type == "say")
+	set_process_unhandled_input(_type == "say")
 	
-func _process(delta):
+func _unhandled_input(event):
 	if Input.is_action_pressed("ren_forward"):
 		ren.rolling_back = false
 		if ren.history_id > 1:

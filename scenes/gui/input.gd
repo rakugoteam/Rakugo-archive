@@ -19,9 +19,9 @@ func _ready():
 	timer.connect("timeout", self, "_on_timeout")
 
 func _on_timeout():
-	set_process(_type == "input")
+	set_process_unhandled_key_input(_type == "input")
 
-func _process(delta):
+func _unhandled_key_input(delta):
 	if Input.is_key_pressed(KEY_ENTER):
 		_on_enter($InputLine.get_text())
 
