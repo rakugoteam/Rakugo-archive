@@ -24,12 +24,17 @@ func _ready():
 	$QLoad.connect("pressed",self, "_on_qload")
 
 func _on_qsave():
-	ren.savefile()
-	$InfoAnim.play("Saved")
-
+	if ren.savefile():
+		$InfoAnim.play("Saved")
+	else:
+		$InfoAnim/Panel/Label.bbcode_text="[color=red]Error saving Game[/color]"
+		$InfoAnim.play("GeneralNotif")
 func _on_qload():
-	ren.loadfile()
-	$InfoAnim.play("Loaded")
+	if ren.loadfile():
+		$InfoAnim.play("Loaded")
+	else:
+		$InfoAnim/Panel/Label.bbcode_text="[color=red]Error loading Game[/color]"
+		$InfoAnim.play("GeneralNotif")
 
 func can_skip():
 	if not ren.history.empty():
@@ -76,7 +81,6 @@ func on_skip_loop():
 	if (ren.current_statement.type == "say"
 		and ren.current_statement in ren.history):
 		ren.emit_signal("exit_statement", {})
-	
 	else:
 		stop_skip()
 
