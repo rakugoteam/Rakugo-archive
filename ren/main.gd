@@ -5,9 +5,6 @@
 
 extends Node
 
-#Screen
-onready var screen=load("res://scenes/gui/Screens.tscn")
-var screennode
 
 var statements = []
 var history = []
