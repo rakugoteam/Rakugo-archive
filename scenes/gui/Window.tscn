@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://ren/main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/menu.gd" type="Script" id=2]
@@ -12,7 +12,61 @@
 
 [sub_resource type="Animation" id=1]
 
-resource_name = "Loaded"
+resource_name = "GeneralNotif"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("InfoAnim/Panel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.756863 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("InfoAnim/Panel/Label:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 249, 40 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("InfoAnim/Panel:rect_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 247, 42 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("InfoAnim/Panel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=2]
+
 length = 1.0
 loop = false
 step = 0.1
@@ -77,9 +131,8 @@ tracks/4/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 
-resource_name = "Saved"
 length = 1.0
 loop = false
 step = 0.1
@@ -144,9 +197,8 @@ tracks/4/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 
-resource_name = "Skip"
 length = 1.0
 loop = true
 step = 0.1
@@ -211,14 +263,13 @@ tracks/4/keys = {
 "values": [ Color( 1, 1, 1, 0.756863 ) ]
 }
 
-[node name="Window" type="Control"]
+[node name="Window" type="Control" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -261,7 +312,6 @@ anchor_bottom = 0.0
 margin_right = 399.0
 margin_bottom = 291.0
 rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
@@ -289,7 +339,6 @@ margin_right = 769.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 100, 20 )
 rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -339,7 +388,6 @@ _sections_unfolded = [ "BBCode", "Rect", "Size Flags" ]
 
 [node name="Quick" type="HBoxContainer" parent="." index="3"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -348,7 +396,6 @@ margin_top = 570.0
 margin_right = 1024.0
 margin_bottom = 601.0
 rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
@@ -364,7 +411,6 @@ __meta__ = {
 
 margin_right = 124.0
 margin_bottom = 32.0
-rect_clip_content = false
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -373,7 +419,6 @@ size_flags_vertical = 3
 margin_left = 128.0
 margin_right = 252.0
 margin_bottom = 32.0
-rect_clip_content = false
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "History"
@@ -383,7 +428,6 @@ text = "History"
 margin_left = 256.0
 margin_right = 380.0
 margin_bottom = 32.0
-rect_clip_content = false
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Skip"
@@ -393,7 +437,6 @@ text = "Skip"
 margin_left = 384.0
 margin_right = 508.0
 margin_bottom = 32.0
-rect_clip_content = false
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Auto"
@@ -403,7 +446,6 @@ text = "Auto"
 margin_left = 512.0
 margin_right = 636.0
 margin_bottom = 32.0
-rect_clip_content = false
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Save"
@@ -413,7 +455,6 @@ text = "Save"
 margin_left = 640.0
 margin_right = 764.0
 margin_bottom = 32.0
-rect_clip_content = false
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Q. Save"
@@ -423,7 +464,6 @@ text = "Q. Save"
 margin_left = 768.0
 margin_right = 892.0
 margin_bottom = 32.0
-rect_clip_content = false
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Q. Load"
@@ -433,7 +473,6 @@ text = "Q. Load"
 margin_left = 896.0
 margin_right = 1024.0
 margin_bottom = 32.0
-rect_clip_content = false
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Prefs"
@@ -459,25 +498,24 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/Loaded = SubResource( 1 )
-anims/Saved = SubResource( 2 )
-anims/Skip = SubResource( 3 )
+anims/GeneralNotif = SubResource( 1 )
+anims/Loaded = SubResource( 2 )
+anims/Saved = SubResource( 3 )
+anims/Skip = SubResource( 4 )
 blend_times = [  ]
 
 [node name="Panel" type="Panel" parent="Quick/InfoAnim" index="0"]
 
-visible = false
-modulate = Color( 1, 1, 1, 0.756863 )
+modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 0.0
 margin_top = 81.0
-margin_right = -901.0
+margin_right = -777.0
 margin_bottom = 123.0
 rect_min_size = Vector2( 100, 20 )
 rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -490,11 +528,11 @@ __meta__ = {
 
 [node name="Label" parent="Quick/InfoAnim/Panel" index="0" instance=ExtResource( 8 )]
 
-margin_right = 126.0
+margin_right = 249.0
 custom_colors/default_color = Color( 1, 1, 1, 1 )
 custom_colors/selection_color = Color( 0, 0, 0, 1 )
-bbcode_text = "Game was saved"
-text = "Game was saved"
+bbcode_text = "Game was loaded"
+text = "Game was loaded"
 _sections_unfolded = [ "BBCode", "Rect", "Visibility", "custom_colors", "custom_fonts" ]
 
 [node name="DialogManager" type="Control" parent="." index="4"]
@@ -504,7 +542,6 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1

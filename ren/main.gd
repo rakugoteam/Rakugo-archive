@@ -257,9 +257,12 @@ func savefile(filepath="user://save.dat",password="Ren"):
 		#config.set_value("main","statements",statements)
 		#config.set_value("main","current_statement",current_statement_id)
 		var file=File.new()
-		file.open_encrypted_with_pass(filepath,File.WRITE,password)
-		file.store_line(to_json(savedict))
-		file.close()
+		if file.open_encrypted_with_pass(filepath,File.WRITE,password)==OK:
+			file.store_line(to_json(savedict))
+			file.close()
+			return true
+		else:
+			return false
 	
 func loadfile(filepath="user://save.dat",password="Ren"):
 	if has_meta("usingvis"):
@@ -283,6 +286,9 @@ func loadfile(filepath="user://save.dat",password="Ren"):
 			vis_loading=false
 			values=load_dict["values"]
 			file.close()
+			return true
+		else:
+			return false
 
 func quitcurvis():
 	set_meta("quitcurrent",true)
