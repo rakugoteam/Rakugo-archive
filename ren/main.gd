@@ -5,6 +5,7 @@
 
 extends Node
 
+
 var statements = []
 var history = []
 # Visual save/load
@@ -298,3 +299,5 @@ func quitcurvis():
 	else:
 		emit_signal("exit_statement")
 	set_meta("quitcurrent",false)
+	
+	

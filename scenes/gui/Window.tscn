@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://ren/main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/menu.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/gui/QuickMenuButton.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/gui/Labels/name_text.tscn" type="PackedScene" id=8]
 [ext_resource path="res://ren/gd_connect.gd" type="Script" id=9]
+[ext_resource path="res://scenes/gui/Screens.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Animation" id=1]
 
@@ -550,5 +551,7 @@ size_flags_vertical = 1
 [node name="GodotConnect" type="Node" parent="." index="5"]
 
 script = ExtResource( 9 )
+
+[node name="Screens" parent="." index="6" instance=ExtResource( 10 )]
 
 

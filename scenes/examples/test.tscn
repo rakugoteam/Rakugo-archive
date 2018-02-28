@@ -3,7 +3,7 @@
 [ext_resource path="res://scenes/examples/test.gd" type="Script" id=1]
 [ext_resource path="res://logo.svg" type="Texture" id=2]
 
-[node name="Test" type="Node2D" index="0"]
+[node name="Test" type="Node2D"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Material", "Transform", "Z Index" ]

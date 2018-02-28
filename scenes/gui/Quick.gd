@@ -22,6 +22,8 @@ func _ready():
 	
 	$QSave.connect("pressed", self, "_on_qsave")
 	$QLoad.connect("pressed",self, "_on_qload")
+	
+	$Save.connect("pressed",self,"full_save")
 
 func _on_qsave():
 	if ren.savefile():
@@ -88,3 +90,7 @@ func _input(event):
 	if event.is_action("ren_backward"):
 		on_rollback()
 
+func full_save():
+	var screenshot=get_viewport().get_texture().get_data()
+	get_node("../Screens").save_menu(screenshot)
+	
