@@ -40,5 +40,7 @@ func _on_Load_pressed():
 
 func _on_Start_pressed():
 	hide()
+	$Navigation/Start.hide()
+	$Navigation/Return.show()
 	ren.start()
 	
