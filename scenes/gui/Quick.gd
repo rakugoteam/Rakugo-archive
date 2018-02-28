@@ -23,7 +23,8 @@ func _ready():
 	$QSave.connect("pressed", self, "_on_qsave")
 	$QLoad.connect("pressed",self, "_on_qload")
 	
-	$Save.connect("pressed",self,"full_save")
+	$Save.connect("pressed", self, "full_save")
+	$Load.connect("pressed", self, "full_load")
 
 func _on_qsave():
 	if ren.savefile():
@@ -92,6 +93,8 @@ func _input(event):
 
 func full_save():
 	var screenshot=get_viewport().get_texture().get_data()
-	screenshot.flip_y()
 	get_node("../Screens").save_menu(screenshot)
+
+func full_load():
+	get_node("../Screens").load_menu()
 	
