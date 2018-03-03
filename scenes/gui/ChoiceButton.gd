@@ -8,7 +8,6 @@ export(Color) var disable_text_color
 
 onready var label = $Label
 var id = -1
-onready var Ren = get_node("/root/Window")
 
 func _ready():
 	connect("focus_entered", self, "_on_focus")
