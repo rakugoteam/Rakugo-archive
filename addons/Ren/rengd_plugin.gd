@@ -6,7 +6,6 @@ func _enter_tree():
 	## icons should be change
 	
 	## add RenMain as singleton in ProjectSettings
-#	add_custom_type("RenMain", "Node", preload("main.gd"), preload("icon.svg"))
 	#print(ProjectSettings.)
 	
 	## RenNodes:
@@ -21,8 +20,6 @@ func _enter_tree():
 	print("RenGD is Active")
 	
 func _exit_tree():
-	#remove_custom_type("RenMain")
-	
 	## RenNodes:
 	remove_custom_type("Screen")
 	remove_custom_type("RenNode2D")
