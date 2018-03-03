@@ -87,7 +87,7 @@ func savepress(input,caller):
 			var s=weekdays[d['weekday']]+' '+months[d['month']]+' '+str(d['day'])+', '+str(d['hour'])+':'+str(d['minute'])
 			print(s)
 			filehandler.store_line(s)
-			get_node("/root/Window").savefile("user://saveslot/"+caller.name+'.dat')
+			Ren.savefile("user://saveslot/"+caller.name+'.dat')
 	filehandler.close()
 	
 	savebox()

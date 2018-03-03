@@ -32,7 +32,7 @@ func _get_working_memory_size():
 	return 1
 func _step(inputs, outputs, start_mode, working_mem):
 		#ADD IN LIST
-	var Ren = Engine.get_main_loop().root.get_node("Window")
+	var Ren = Engine.get_main_loop().root.get_node("Ren")
 	var obj=Ren.values
 	if obj.has("RenVS"):
 		if not(self in obj["RenVS"]["value"]):
@@ -66,7 +66,7 @@ func _step(inputs, outputs, start_mode, working_mem):
 	
 	
 	var kwargs=[]
-	#var Ren = Engine.get_main_loop().root.get_node("Window")
+	#var Ren = Engine.get_main_loop().root.get_node("Ren")
 	#Ren.define(inputs[2])
 	var s={"how":inputs[0],"what":inputs[1],"input_value":inputs[2],"value":inputs[3]}
 	if start_mode==START_MODE_BEGIN_SEQUENCE or start_mode==START_MODE_CONTINUE_SEQUENCE:

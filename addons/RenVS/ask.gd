@@ -38,7 +38,7 @@ func _get_output_sequence_port_text(idx):
 func _step(inputs, outputs, start_mode, working_mem):
 	#ADD IN LIST
 	
-	var Ren = Engine.get_main_loop().root.get_node("Window")
+	var Ren = Engine.get_main_loop().root.get_node("Ren")
 	var obj=Ren.values
 	if obj.has("RenVS"):
 		if not(self in obj["RenVS"]["value"]):

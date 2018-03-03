@@ -36,7 +36,7 @@ func _has_input_sequence_port():
 	return true
 
 func _step(  inputs,  outputs,  start_mode, working_mem ):
-	var Ren = Engine.get_main_loop().root.get_node("Window")
+	var Ren = Engine.get_main_loop().root.get_node("Ren")
 	if self.get_instance_id() in Ren.vnl:
 		print(inputs[1],"already there")
 		allow_back=false
@@ -69,7 +69,7 @@ func _step(  inputs,  outputs,  start_mode, working_mem ):
 
 	var s=[inputs[0],inputs[1]]
 	var kwargs=[]
-	#var Ren = Engine.get_main_loop().root.get_node("Window")
+	#var Ren = Engine.get_main_loop().root.get_node("Ren")
 	if !Ren.has_meta("usingvis"):
 		Ren.set_meta("usingvis",true)
 		

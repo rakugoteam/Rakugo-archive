@@ -30,6 +30,8 @@ func _on_pressed():
 	print("final_choice ", id)
 	Ren.set_meta("last_choice",id) #for checking choice in VS
 	Ren.emit_signal("enter_block", {"final_choice":id})
+	
+	print(Ren.name)
 
 func set_disabled(value):
 	.set_disabled(value)

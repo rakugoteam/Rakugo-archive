@@ -47,19 +47,24 @@ func set_prefix(value):
 	set_kwargs({"what_prefix":value})
 
 func get_prefix():
-	return kwargs.prefix
+	if kwargs.has("prefix"):
+		return kwargs.prefix
 
 func set_suffix(value):
 	set_kwargs({"what_suffix":value})
 
 func get_suffix():
-	return kwargs.suffix
+	if kwargs.has("suffix"):
+		return kwargs.suffix
 
 func set_avatar(value):
 	set_kwargs({"avatar":value.resource_path})
 
 func get_avatar():
-	return load(kwargs.prefix)
+	if kwargs.has("prefix"):
+		return load(kwargs.prefix)
+	else:
+		return false
 
 func set_kwargs(new_kwargs):
 	# update character

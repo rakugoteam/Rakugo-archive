@@ -37,7 +37,7 @@ func _has_input_sequence_port():
 func _step(  inputs,  outputs,  start_mode, working_mem ):
 		#ADD IN LIST
 	
-	var Ren = Engine.get_main_loop().root.get_node("Window")
+	var Ren = Engine.get_main_loop().root.get_node("Ren")
 	var obj=Ren.values
 	if obj.has("RenVS"):
 		if not(self in obj["RenVS"]["value"]):
@@ -73,7 +73,7 @@ func _step(  inputs,  outputs,  start_mode, working_mem ):
 		
 	var s={"how":inputs[0],"what":inputs[1]}
 	var kwargs=[]
-	#var Ren = Engine.get_main_loop().root.get_node("Window")
+	#var Ren = Engine.get_main_loop().root.get_node("Ren")
 	if !Ren.has_meta("usingvis"):
 		Ren.set_meta("usingvis",true)
 	if start_mode==START_MODE_CONTINUE_SEQUENCE:
