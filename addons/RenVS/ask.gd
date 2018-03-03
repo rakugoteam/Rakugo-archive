@@ -38,8 +38,8 @@ func _get_output_sequence_port_text(idx):
 func _step(inputs, outputs, start_mode, working_mem):
 	#ADD IN LIST
 	
-	var ren = Engine.get_main_loop().root.get_node("Window")
-	var obj=ren.values
+	var Ren = Engine.get_main_loop().root.get_node("Window")
+	var obj=Ren.values
 	if obj.has("RenVS"):
 		if not(self in obj["RenVS"]["value"]):
 			obj["RenVS"]["value"].append(self)
@@ -49,63 +49,63 @@ func _step(inputs, outputs, start_mode, working_mem):
 	else:
 		var arr=Array()
 		arr.append(self)
-		ren.define("RenVS",[self])
-	if self.get_instance_id() in ren.vnl:
+		Ren.define("RenVS",[self])
+	if self.get_instance_id() in Ren.vnl:
 		print(inputs[1],"already there")
 		allow_back=false
 	else:
 		print(inputs[1],"added")
-		ren.vnl.append(self.get_instance_id())
+		Ren.vnl.append(self.get_instance_id())
 	#LODING
-	if ren.vis_loading:
-		if ren.history_vis.size()>ren.load_counter:
-			var m=ren.menu({"how":inputs[0],"what":inputs[1]})
-			if ren.history_vis[ren.load_counter]==-1:
-				ren.load_counter+=1
+	if Ren.vis_loading:
+		if Ren.history_vis.size()>Ren.load_counter:
+			var m=Ren.menu({"how":inputs[0],"what":inputs[1]})
+			if Ren.history_vis[Ren.load_counter]==-1:
+				Ren.load_counter+=1
 				return 0 | STEP_GO_BACK_BIT
 			else:
-				ren.load_counter+=1
-				if not(get_instance_id() in ren.vnl):
-					print(self.get_instance_id(),"vnl is : { ",ren.vnl,"}")
-					return ren.history_vis[ren.load_counter-1] | STEP_PUSH_STACK_BIT
+				Ren.load_counter+=1
+				if not(get_instance_id() in Ren.vnl):
+					print(self.get_instance_id(),"vnl is : { ",Ren.vnl,"}")
+					return Ren.history_vis[Ren.load_counter-1] | STEP_PUSH_STACK_BIT
 				else:
-					return ren.history_vis[ren.load_counter-1]
+					return Ren.history_vis[Ren.load_counter-1]
 	
 
 	var kwargs=[]
 	
-	if start_mode==START_MODE_CONTINUE_SEQUENCE and ren.get_meta("go_back")==false:
+	if start_mode==START_MODE_CONTINUE_SEQUENCE and Ren.get_meta("go_back")==false:
 		return 0 
 	if start_mode==START_MODE_BEGIN_SEQUENCE or start_mode==START_MODE_CONTINUE_SEQUENCE:
-		var m=ren.menu({"how":inputs[0],"what":inputs[1]})
+		var m=Ren.menu({"how":inputs[0],"what":inputs[1]})
 		for x in range(choices):
-			var c=ren.choice({"what":inputs[x+2]},m)
-			#ren.say({"how":inputs[0],"what":""},c)
-		if !ren.get_meta("playing"):
-			ren.start()
+			var c=Ren.choice({"what":inputs[x+2]},m)
+			#Ren.say({"how":inputs[0],"what":""},c)
+		if !Ren.get_meta("playing"):
+			Ren.start()
 		else:
-			ren.statements[ren.current_statement_id].enter()
+			Ren.statements[Ren.current_statement_id].enter()
 		var n= VisualScriptFunctionState.new()
 		#n.connect_to_signal(Engine.get_main_loop(),"idle_frame",[])
-		n.connect_to_signal(ren,"enter_block",kwargs)
+		n.connect_to_signal(Ren,"enter_block",kwargs)
 		working_mem[0]=n
 		print(n)
 		return 0 | STEP_YIELD_BIT
 	elif start_mode==START_MODE_RESUME_YIELD:
-		#print("got choice ",ren.get_meta("last_choice"))
+		#print("got choice ",Ren.get_meta("last_choice"))
 		print("push or next")
-		if ren.get_meta("quitcurrent")==true:
+		if Ren.get_meta("quitcurrent")==true:
 			return 0 | STEP_NO_ADVANCE_BIT
-		if ren.get_meta("go_back"):
+		if Ren.get_meta("go_back"):
 			print("push bback")
-			#ren.statements.pop_back()
-			#ren.statements.pop_back()
-			ren.history_vis.append(-1)
+			#Ren.statements.pop_back()
+			#Ren.statements.pop_back()
+			Ren.history_vis.append(-1)
 			return 0 | STEP_GO_BACK_BIT
 		else:
 			if allow_back:
-				ren.history_vis.append(ren.get_meta("last_choice"))
-				return ren.get_meta("last_choice") | STEP_PUSH_STACK_BIT
+				Ren.history_vis.append(Ren.get_meta("last_choice"))
+				return Ren.get_meta("last_choice") | STEP_PUSH_STACK_BIT
 			else:
-				ren.history_vis.append(ren.get_meta("last_choice"))
-				return ren.get_meta("last_choice")
+				Ren.history_vis.append(Ren.get_meta("last_choice"))
+				return Ren.get_meta("last_choice")

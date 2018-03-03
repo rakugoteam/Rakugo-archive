@@ -5,7 +5,6 @@
 
 extends Node
 
-
 var statements = []
 var history = []
 # Visual save/load
@@ -52,32 +51,44 @@ signal enter_statement(type, kwargs)
 signal enter_block(kwargs)
 signal exit_statement(kwargs)
 signal notified()
+signal on_show(node_id, state, show_args)
+signal on_hide(node_id)
 
 func _ready():
 	godot = _GD.new()
-	godot.ren = self
+	godot.Ren = self
 
-# add global value that ren will see
+# add global value that Ren will see
 func define(val_name, value = null):
 	_def.define(values, val_name, value)
 
-# crate new charater as global value that ren will see
-# possible kwargs: name, color, what_prefix, what_suffix, kind, avatar
-func character(val_name, kwargs):
-	var new_ch = _CHR.new()
-	new_ch.set_kwargs(kwargs)
-	_def.define(values, val_name, new_ch, "character")
+# returns value defined using define
+func get_value(val_name):
+	return values[val_name].value
 
-# crate new link to node as global value that ren will see
-func node_link(node):
+# returns type of value defined using define
+func get_value_type(val_name):
+	return values[val_name].type
+	
+# crate new charater as global value that Ren will see
+# possible kwargs: name, color, what_prefix, what_suffix, kind, avatar
+func character(val_name, kwargs, node = null):
+	if node == null:
+		node = _CHR.new()
+	
+	node.set_kwargs(kwargs)
+	_def.define(values, val_name, node, "character")
+
+# crate new link to node as global value that Ren will see
+func node_link(node, node_id = node.name):
 	if typeof(node) == TYPE_NODE_PATH:
-		_def.define(values, node.name, node)
+		_def.define(values, node_id, node)
 		
-	else:
-		_def.define(values, node.name, node, "node")
+	elif node is Node:
+		_def.define(values, node_id, node, "node")
 
 func _init_statement(statement, kwargs, condition_statement = null):
-	statement.ren = self
+	statement.Ren = self
 	statement.set_kwargs(kwargs)
 	
 	if debug_inti:
@@ -184,21 +195,21 @@ func gd_block(code_block, condition_statement = null):
 ## with keywords : x, y, z, at, pos, camera
 ## x, y and pos will use it as procent of screen if between 0 and 1
 ## "at" is lists that can have: "top", "center", "bottom", "right", "left"
-func show(node, kwargs, condition_statement = null):
+func show(node_id, state, kwargs, condition_statement = null):
 	if not ("at" in kwargs):
 		kwargs["at"] = ["center", "bottom"]
-	return _init_statement(_SH.new(node), kwargs, condition_statement)
+	return _init_statement(_SH.new(node_id, state), kwargs, condition_statement)
 
 ## create statement of type hide
-func hide(node, condition_statement = null):
-	return _init_statement(_HI.new(node), {}, condition_statement)
+func hide(node_id, condition_statement = null):
+	return _init_statement(_HI.new(node_id), {}, condition_statement)
 
 ## create statement of type notify
 func notifiy(info,length=5, conition_statement = null):
 	return _init_statement(_NO.new(), {"info": info,"length":length}, conition_statement)
 
 
-## it starts current ren dialog
+## it starts current Ren dialog
 func start():
 	current_block = []
 	current_menu = []
@@ -206,7 +217,7 @@ func start():
 	history_id = 1
 	using_passer = false
 	statements[0].enter()
-	set_meta("playing",true) # for checking if ren is playing
+	set_meta("playing",true) # for checking if Ren is playing
 
 
 ## go back to pervious statement that type is say, input or menu 
@@ -250,7 +261,7 @@ func rollback():
 		previous.enter()
 		
 		
-func savefile(filepath="user://save.dat",password="Ren"):
+func savefile(filepath="user://save.dat", password="Ren"):
 	if has_meta("usingvis"):
 		var tmpvalues={}
 		for x in values:
@@ -270,7 +281,7 @@ func savefile(filepath="user://save.dat",password="Ren"):
 		else:
 			return false
 	
-func loadfile(filepath="user://save.dat",password="Ren"):
+func loadfile(filepath="user://save.dat", password="Ren"):
 	if has_meta("usingvis"):
 		var file=File.new()
 		if file.open_encrypted_with_pass(filepath,File.READ,password)==OK:
@@ -304,5 +315,7 @@ func quitcurvis():
 	else:
 		emit_signal("exit_statement")
 	set_meta("quitcurrent",false)
+
+	
 	
 	

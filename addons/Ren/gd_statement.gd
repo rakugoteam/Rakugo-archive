@@ -17,7 +17,7 @@ func enter(dbg = true):
 	if dbg:
 		print(debug(kws))
 	
-	ren.current_statement_id = id
+	Ren.current_statement_id = id
 	on_enter_block()
 
 func on_enter_block(new_kwargs = {}):
@@ -25,19 +25,19 @@ func on_enter_block(new_kwargs = {}):
 		set_kwargs(new_kwargs)
 	
 	if changed_values.is_empty():
-		var prev_values = ren.values
-		ren.godot.exec(code, code_type)
+		var prev_values = Ren.values
+		Ren.godot.exec(code, code_type)
 
-		for i in range(ren.values.size()):
+		for i in range(Ren.values.size()):
 			if i > prev_values.size():
-				changed_values.append(ren.values[i])
+				changed_values.append(Ren.values[i])
 
-			elif ren.values[i] != prev_values[i]:
-				changed_values.append(ren.values[i])
+			elif Ren.values[i] != prev_values[i]:
+				changed_values.append(Ren.values[i])
 	
 	else:
 		for v in changed_values:
-			ren._def.define(ren.values, v.key, v.value, v.type)
+			Ren._def.define(Ren.values, v.key, v.value, v.type)
 
 
 	on_exit()

@@ -1,13 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://themes/new_gui/theme.tres" type="Theme" id=1]
-[ext_resource path="res://scenes/gui/say.gd" type="Script" id=2]
-[ext_resource path="res://scenes/gui/input.gd" type="Script" id=3]
-[ext_resource path="res://scenes/gui/Labels/name_text.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/gui/say.gd" type="Script" id=1]
+[ext_resource path="res://scenes/gui/input.gd" type="Script" id=2]
+[ext_resource path="res://scenes/gui/Labels/name_text.tscn" type="PackedScene" id=3]
 
 [node name="Say" type="Panel"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -22,8 +20,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource( 1 )
-script = ExtResource( 2 )
+script = ExtResource( 1 )
 _sections_unfolded = [ "Anchor", "Mouse", "Rect", "Size Flags", "Theme", "custom_styles" ]
 
 [node name="VBox" type="VBoxContainer" parent="." index="0"]
@@ -43,16 +40,17 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 1
 alignment = 0
-script = ExtResource( 3 )
+script = ExtResource( 2 )
 
-[node name="Label" parent="VBox" index="0" instance=ExtResource( 4 )]
+[node name="Label" parent="VBox" index="0" instance=ExtResource( 3 )]
 
 margin_right = 916.0
+focus_mode = 0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 scroll_active = false
-_sections_unfolded = [ "BBCode", "Rect", "Size Flags", "custom_fonts" ]
+selection_enabled = false
 
 [node name="Dialog" type="RichTextLabel" parent="VBox" index="1"]
 
@@ -110,6 +108,7 @@ scroll_active = false
 scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
+_sections_unfolded = [ "BBCode" ]
 
 [node name="InputLine" type="LineEdit" parent="VBox" index="3"]
 

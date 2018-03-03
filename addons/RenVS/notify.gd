@@ -36,15 +36,15 @@ func _has_input_sequence_port():
 	return true
 
 func _step(  inputs,  outputs,  start_mode, working_mem ):
-	var ren = Engine.get_main_loop().root.get_node("Window")
-	if self.get_instance_id() in ren.vnl:
+	var Ren = Engine.get_main_loop().root.get_node("Window")
+	if self.get_instance_id() in Ren.vnl:
 		print(inputs[1],"already there")
 		allow_back=false
 	else:
 		print(inputs[1],"added")
-		ren.vnl.append(self.get_instance_id())
+		Ren.vnl.append(self.get_instance_id())
 
-	var obj=ren.values
+	var obj=Ren.values
 	if obj.has("RenVS"):
 		if not(self in obj["RenVS"]["value"]):
 			obj["RenVS"]["value"].append(self)
@@ -54,9 +54,9 @@ func _step(  inputs,  outputs,  start_mode, working_mem ):
 	else:
 		var arr=Array()
 		arr.append(self)
-		ren.define("RenVS",[self])
+		Ren.define("RenVS",[self])
 		
-	if ren.vis_loading:
+	if Ren.vis_loading:
 		if start_mode==START_MODE_CONTINUE_SEQUENCE:
 			return 0 | STEP_GO_BACK_BIT
 		else:
@@ -69,18 +69,18 @@ func _step(  inputs,  outputs,  start_mode, working_mem ):
 
 	var s=[inputs[0],inputs[1]]
 	var kwargs=[]
-	#var ren = Engine.get_main_loop().root.get_node("Window")
-	if !ren.has_meta("usingvis"):
-		ren.set_meta("usingvis",true)
+	#var Ren = Engine.get_main_loop().root.get_node("Window")
+	if !Ren.has_meta("usingvis"):
+		Ren.set_meta("usingvis",true)
 		
 	
 	if start_mode==START_MODE_CONTINUE_SEQUENCE:
 		print("pushed back")
-		ren.notifiy(s[0],s[1])
-		if !ren.get_meta("playing"):
-			ren.start()
+		Ren.notifiy(s[0],s[1])
+		if !Ren.get_meta("playing"):
+			Ren.start()
 		else:
-			ren.statements[ren.current_statement_id].enter()
+			Ren.statements[Ren.current_statement_id].enter()
 		var n= VisualScriptFunctionState.new()
 		#n.connect_to_signal(Engine.get_main_loop(),"idle_frame",[])
 		working_mem[0]=n
@@ -88,11 +88,11 @@ func _step(  inputs,  outputs,  start_mode, working_mem ):
 		return 0 | STEP_GO_BACK_BIT
 
 	if start_mode==START_MODE_BEGIN_SEQUENCE :
-		ren.notifiy(s[0],s[1])
-		if !ren.get_meta("playing"):
-			ren.start()
+		Ren.notifiy(s[0],s[1])
+		if !Ren.get_meta("playing"):
+			Ren.start()
 		else:
-			ren.statements[ren.current_statement_id].enter()
+			Ren.statements[Ren.current_statement_id].enter()
 		var n= VisualScriptFunctionState.new()
 		#n.connect_to_signal(Engine.get_main_loop(),"idle_frame",[])
 		working_mem[0]=n

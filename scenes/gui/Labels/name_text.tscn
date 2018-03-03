@@ -45,7 +45,7 @@ use_filter = true
 font_data = ExtResource( 4 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="name_text" type="RichTextLabel" index="0"]
+[node name="name_text" type="RichTextLabel"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -80,6 +80,6 @@ scroll_active = true
 scroll_following = false
 selection_enabled = true
 override_selected_font_color = false
-_sections_unfolded = [ "BBCode", "Rect", "custom_fonts" ]
+_sections_unfolded = [ "BBCode", "Rect", "custom_colors" ]
 
 

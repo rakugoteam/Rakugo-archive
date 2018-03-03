@@ -21,7 +21,7 @@ func enter(dbg = true):
 			# todo elif for types: "if", "elif", "else"
 	
 		else:
-			ren.statements[kwargs.statement_id].enter()
+			Ren.statements[kwargs.statement_id].enter()
 
 func debug(kws = [], some_custom_text = ""):
 	var dbg = str(id) + ":" + type + "(" + some_custom_text

@@ -4,17 +4,13 @@
 
 extends VBoxContainer
 
-onready var ren	= get_node("/root/Window")
-
-# onready var $InputLine = $Input
-# onready var $BBCode = $$BBCode # use to parse $BBCode for $InputLine
 onready var timer = get_node("../Timer")
 var input_placeholder = ""
 var _type = ""
 
 
 func _ready():
-	ren.connect("enter_statement", self, "_on_statement")
+	Ren.connect("enter_statement", self, "_on_statement")
 	$InputLine.hide()
 	timer.connect("timeout", self, "_on_timeout")
 
@@ -33,7 +29,7 @@ func _on_enter(text):
 		final_value = $InputLine.get_text()
 	
 	set_process(false)
-	ren.emit_signal("exit_statement", {"value":final_value})
+	Ren.emit_signal("exit_statement", {"value":final_value})
 
 
 func _on_statement(type, kwargs):

@@ -7,7 +7,7 @@ extends Object
 func text_passer(text, values):
 	## passer for renpy markup format
 	## its retrun bbcode
-
+	var _text = text
 	if text != "":
 
 		## clean from tabs
@@ -70,5 +70,6 @@ func text_passer(text, values):
 		text = text.replace("{tab}", "/t".c_escape())
 		text = text.replace("{", "[")
 		text = text.replace("}", "]")
+		print(_text, text)
 
 	return text

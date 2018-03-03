@@ -4,10 +4,8 @@
 
 extends Panel
 
-onready var ren	= get_node("/root/Window")
-
 func _ready():
-	ren.connect("enter_statement", self, "_on_statement")
+	Ren.connect("enter_statement", self, "_on_statement")
 	$Timer.connect("timeout", self, "hide")
 
 func _on_statement(type, kwargs):
@@ -17,6 +15,6 @@ func _on_statement(type, kwargs):
 			$Timer.wait_time=kwargs.length
 		$Timer.start()
 		show()
-		ren.emit_signal("notified")
+		Ren.emit_signal("notified")
 
 

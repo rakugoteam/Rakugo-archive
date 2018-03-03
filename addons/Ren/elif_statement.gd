@@ -17,8 +17,8 @@ func enter(dbg = true):
 	if dbg:
 		print(debug(kws))
 	
-	ren.current_statement_id = id
-	ren.current_block = self
+	Ren.current_statement_id = id
+	Ren.current_block = self
 
 	on_enter_block({})
 

@@ -20,7 +20,7 @@ func text_passer(text = ""):
 	
 	if _txt == null:
 		_txt = _TXT.new()
-	return _txt.text_passer(text, ren.values)
+	return _txt.text_passer(text, Ren.values)
 
 ## version: 0.5.0 ##
 ## License MIT ##
@@ -28,22 +28,22 @@ func text_passer(text = ""):
 
 var type = "base"
 var condition_statement = null # parent of this statement
-var id = 0 # postion of statment in parent.statements or ren.statements
+var id = 0 # postion of statment in parent.statements or Ren.statements
 var kwargs = {} # dict of pairs keyword : argument
 var org_kwargs = {} # org version of kwargs 
 var kws = [] # possible keywords for this type of statement
-var ren # to attach node with main ren script (ren.gd) needed to send singals
+var Ren # to attach node with main Ren script (Ren.gd) needed to send singals
 
 func enter(dbg = true):
 	if dbg:
 		print(debug(kws))
 	
-	ren.current_statement_id = id
-	ren.current_statement = self
+	Ren.current_statement_id = id
+	Ren.current_statement = self
 	
-	ren.connect("exit_statement", self, "on_exit")
-	ren.connect("enter_block", self, "on_enter_block")
-	ren.emit_signal("enter_statement", type, kwargs)
+	Ren.connect("exit_statement", self, "on_exit")
+	Ren.connect("enter_block", self, "on_enter_block")
+	Ren.emit_signal("enter_statement", type, kwargs)
 
 func set_kwargs(new_kwargs):
 	# update statement
@@ -58,15 +58,15 @@ func on_enter_block(new_kwargs = {}):
 	if new_kwargs != {}:
 		set_kwargs(new_kwargs)
 	
-	if ren.is_connected("enter_block", self, "on_enter_block"):
-		ren.disconnect("enter_block", self, "on_enter_block")
+	if Ren.is_connected("enter_block", self, "on_enter_block"):
+		Ren.disconnect("enter_block", self, "on_enter_block")
 
 func on_exit(new_kwargs = {}):
 	if new_kwargs != {}:
 		set_kwargs(new_kwargs)
 	
-	if ren.is_connected("exit_statement", self, "on_exit"):
-		ren.disconnect("exit_statement", self, "on_exit")
+	if Ren.is_connected("exit_statement", self, "on_exit"):
+		Ren.disconnect("exit_statement", self, "on_exit")
 
 	var next_sid = find_next()
 	if next_sid > -1:
@@ -84,12 +84,12 @@ func enter_next(next_sid):
 			condition_statement.statements[next_sid].enter()
 		
 	else:
-		ren.statements[next_sid].enter()
+		Ren.statements[next_sid].enter()
 
 func find_next(start = id, _condition_statement = condition_statement):
 	var next_sid = -1
 
-	var list_size = ren.statements.size()
+	var list_size = Ren.statements.size()
 
 	if _condition_statement != null:
 		if _condition_statement.type != "menu":

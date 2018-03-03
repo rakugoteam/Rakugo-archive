@@ -1,17 +1,35 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/examples/test.gd" type="Script" id=1]
-[ext_resource path="res://logo.svg" type="Texture" id=2]
+[ext_resource path="res://addons/Ren/character.gd" type="Script" id=2]
+[ext_resource path="res://addons/Ren/icon.svg" type="Texture" id=3]
+[ext_resource path="res://scenes/examples/RenAvatar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://logo.svg" type="Texture" id=5]
 
-[node name="Test" type="Node2D"]
+[node name="Test" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Material", "Transform", "Z Index" ]
 
-[node name="logo" type="Sprite" parent="." index="0"]
+[node name="RenKun" type="Node2D" parent="." index="0"]
 
 visible = false
+script = ExtResource( 2 )
+__meta__ = {
+"_editor_icon": ExtResource( 3 )
+}
+node_id = ""
+camera = NodePath("Null")
+character_id = "rench"
+character_name = "Ren"
+color = Color( 0.967169, 0.988281, 0.312698, 1 )
+prefix = ""
+suffix = ""
+avatar = ExtResource( 4 )
+
+[node name="logo" type="Sprite" parent="RenKun" index="0"]
+
 position = Vector2( 524.705, 226.134 )
-texture = ExtResource( 2 )
+texture = ExtResource( 5 )
 
 

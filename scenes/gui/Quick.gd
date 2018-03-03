@@ -4,11 +4,11 @@
 
 extends HBoxContainer
 
-onready var ren = get_node("/root/Window")
+
 
 func _ready():
-	ren.connect("enter_statement", self, "_on_statement")
-	$Back.connect("pressed", ren, "rollback")
+	Ren.connect("enter_statement", self, "_on_statement")
+	$Back.connect("pressed", Ren, "rollback")
 	$Back.disabled = true
 	
 	$Auto.connect("pressed", self, "on_auto")
@@ -27,30 +27,30 @@ func _ready():
 	$Load.connect("pressed", self, "full_load")
 
 func _on_qsave():
-	if ren.savefile():
+	if Ren.savefile():
 		$InfoAnim.play("Saved")
 	else:
 		$InfoAnim/Panel/Label.bbcode_text="[color=red]Error saving Game[/color]"
 		$InfoAnim.play("GeneralNotif")
 func _on_qload():
-	if ren.loadfile():
+	if Ren.loadfile():
 		$InfoAnim.play("Loaded")
 	else:
 		$InfoAnim/Panel/Label.bbcode_text="[color=red]Error loading Game[/color]"
 		$InfoAnim.play("GeneralNotif")
 
 func can_skip():
-	if not ren.history.empty():
-		if ren.current_statement in ren.history:
-			if ren.current_statement != ren.history.back():
+	if not Ren.history.empty():
+		if Ren.current_statement in Ren.history:
+			if Ren.current_statement != Ren.history.back():
 				return true
 			
 	return false
 
 func _on_statement(type, kwargs):
-	$Back.disabled = ren.current_statement.id == 0
+	$Back.disabled = Ren.current_statement.id == 0
 	$Skip.disabled = !can_skip()
-	$History.disabled = ren.history.empty()
+	$History.disabled = Ren.history.empty()
 
 func on_auto():
 	if not $AutoTimer.is_stopped():
@@ -60,8 +60,8 @@ func on_auto():
 	$AutoTimer.start()
 
 func on_auto_loop():
-	if ren.current_statement.type == "say":
-		ren.emit_signal("exit_statement", {})
+	if Ren.current_statement.type == "say":
+		Ren.emit_signal("exit_statement", {})
 
 	else:
 		$AutoTimer.stop()
@@ -81,9 +81,9 @@ func on_skip():
 	$InfoAnim.play("Skip")
 
 func on_skip_loop():
-	if (ren.current_statement.type == "say"
-		and ren.current_statement in ren.history):
-		ren.emit_signal("exit_statement", {})
+	if (Ren.current_statement.type == "say"
+		and Ren.current_statement in Ren.history):
+		Ren.emit_signal("exit_statement", {})
 	else:
 		stop_skip()
 

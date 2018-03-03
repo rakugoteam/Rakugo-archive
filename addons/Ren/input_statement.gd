@@ -31,6 +31,6 @@ func on_exit(new_kwargs = {}):
 	elif value.is_valid_float():
 		value = float(value)
 
-	ren.define(input_value, value)
+	Ren.define(input_value, value)
 	
 	.on_exit(new_kwargs)

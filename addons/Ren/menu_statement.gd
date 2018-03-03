@@ -18,14 +18,14 @@ func enter(dbg = true):
 	if dbg:
 		print(debug(kws))
 	
-	ren.current_block = choices
+	Ren.current_block = choices
 
 	choices_labels = []
 	for ch in choices:
 		var l = text_passer(ch.kwargs.what)
 		choices_labels.append(l)
 	
-	ren.current_menu = self
+	Ren.current_menu = self
 	
 	.enter(false)
 
@@ -34,11 +34,11 @@ func on_enter_block(new_kwargs = {}):
 		set_kwargs(new_kwargs)
 	
 	if "final_choice" in kwargs:
-		if ren.is_connected("exit_statement", self, "on_exit"):
-			ren.disconnect("exit_statement", self, "on_exit")
+		if Ren.is_connected("exit_statement", self, "on_exit"):
+			Ren.disconnect("exit_statement", self, "on_exit")
 		
-		if not (self in ren.history):
-			ren.history.append(self)
+		if not (self in Ren.history):
+			Ren.history.append(self)
 			
 		if choices.size()>kwargs.final_choice:
 			choices[kwargs.final_choice].enter()

@@ -25,6 +25,6 @@ func _get_input_value_port_name(idx):
 
 func _step(inputs, outputs, start_mode, working_mem):
 	print(inputs)
-	var ren = Engine.get_main_loop().root.get_node("Window")
-	ren.character(inputs[0],{"name":inputs[1],"avatar":inputs[2]})
+	var Ren = Engine.get_main_loop().root.get_node("Window")
+	Ren.character(inputs[0],{"name":inputs[1],"avatar":inputs[2]})
 	return 0 

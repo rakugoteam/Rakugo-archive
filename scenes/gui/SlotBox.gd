@@ -24,7 +24,7 @@ const months={
 	12:'December'
 }
 
-onready var ren=get_node("/root/Window")
+
 var screenshot=null
 func _ready():
 	#savebox()
@@ -100,6 +100,6 @@ func loadpress(input,caller):
 
 	if input is InputEventMouseButton:
 		if input.pressed:
-			if ren.loadfile("user://saveslot/"+caller.name+".dat"):
+			if Ren.loadfile("user://saveslot/"+caller.name+".dat"):
 				get_parent()._on_Return_pressed()
 	

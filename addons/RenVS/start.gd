@@ -29,6 +29,6 @@ func _get_working_memory_size():
 func _has_input_sequence_port():
 	return true
 func _step(  inputs,  outputs,  start_mode, working_mem ):
-	var ren= Engine.get_main_loop().root.get_node("Window")
-	ren.start()
+	var Ren= Engine.get_main_loop().root.get_node("Window")
+	Ren.start()
 	return 0

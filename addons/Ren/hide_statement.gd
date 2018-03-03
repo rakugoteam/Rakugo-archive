@@ -4,19 +4,20 @@
 ## Hide Node statement class ##
 
 extends "statement.gd"
-var _node
+var _node_id
 
-func _init(node):
+func _init(node_id):
 	type = "hide"
-	_node = node
+	_node_id = node_id
 
 func enter(dbg = true):
 	if dbg:
 		print(debug(kws))
 
-	var xnode = ren.values[_node].value
-	if xnode.visible:
-		xnode.hide()
-		
+	Ren.emit_signal("on_hide", _node_id)
+
 	.enter(false)
 	on_exit()
+
+func debug(kws = [], some_custom_text = ""):
+	return .debug(kws, some_custom_text + _node_id)

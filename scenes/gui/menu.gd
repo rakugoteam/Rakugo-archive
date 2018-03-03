@@ -3,11 +3,11 @@
 ## License MIT ##
 extends VBoxContainer
 
-onready var ren = get_node("/root/Window")
+
 onready var ChoiceButton = preload("res://scenes/gui/ChoiceButton.tscn")
 
 func _ready():
-	ren.connect("enter_statement", self, "_on_statement")
+	Ren.connect("enter_statement", self, "_on_statement")
 
 func _on_statement(type, kwargs):
 	if type != "menu":
@@ -20,7 +20,7 @@ func _on_statement(type, kwargs):
 		ch.queue_free() #free causes problem in VS
 	
 	var i = 0
-	var choices = ren.current_menu.choices_labels
+	var choices = Ren.current_menu.choices_labels
 	for ch in choices:
 		var ch_button = ChoiceButton.instance()
 		add_child(ch_button)

@@ -4,7 +4,7 @@
 
 extends Panel
 
-onready var ren	= get_node("/root/Window")
+# onready var Ren	= get_node("/root/Window")
 
 onready var NameLabel = $VBox/Label
 onready var DialogText = $VBox/Dialog
@@ -17,7 +17,7 @@ var t
 var typing=false
 
 func _ready():
-	ren.connect("enter_statement", self, "_on_statement")
+	Ren.connect("enter_statement", self, "_on_statement")
 	$Timer.connect("timeout", self, "_on_timeout")
 
 func _on_timeout():
@@ -25,14 +25,14 @@ func _on_timeout():
 	
 func _input(event):
 	if event.is_action_pressed("ren_forward"):
-		ren.rolling_back = false
-		if ren.history_id > 1:
-			ren.history_id -= 1
+		Ren.rolling_back = false
+		if Ren.history_id > 1:
+			Ren.history_id -= 1
 
 		if typing: #if typing complete it
 			typing=false
 		else:      #else exit statement
-			ren.emit_signal("exit_statement", {})
+			Ren.emit_signal("exit_statement", {})
 
 func _on_statement(type, kwargs):
 	set_process(false)

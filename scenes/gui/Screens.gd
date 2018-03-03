@@ -1,7 +1,7 @@
 extends Control
 
 onready var in_game_gui = get_node("/root/Window/InGameGUI")
-onready var ren = get_node("/root/Window")
+
 
 func _ready():
 	pass
@@ -39,5 +39,5 @@ func _on_Start_pressed():
 	hide()
 	$Navigation/VBoxContainer/Start.hide()
 	$Navigation/Return.show()
-	ren.start()
+	Ren.start()
 	

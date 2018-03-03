@@ -19,8 +19,8 @@ func enter(dbg = true):
 	if dbg:
 		print(debug(kws))
 	
-	ren.current_statement_id = id
-	ren.current_block = self
+	Ren.current_statement_id = id
+	Ren.current_block = self
 
 	return on_enter_block({})
 
@@ -29,7 +29,7 @@ func on_enter_block(new_kwargs = {}):
 		set_kwargs(new_kwargs)
 
 	if is_true == null:
-		is_true = ren.godot.exec(condition)
+		is_true = Ren.godot.exec(condition)
 	
 	if is_true:
 		statements[0].enter()
@@ -38,7 +38,7 @@ func on_enter_block(new_kwargs = {}):
 	elif conditions.size() > 0:
 		for c in conditions:
 			if c.is_true == null:
-				c.is_true = ren.godot.exec(c.condition)
+				c.is_true = Ren.godot.exec(c.condition)
 
 			if c.is_true:
 				c.debug()

@@ -11,12 +11,13 @@ config_version=3
 [application]
 
 config/name="Ren"
-run/main_scene="res://scenes/examples/testvs.tscn"
+run/main_scene="res://scenes/examples/test.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 Window="*res://scenes/gui/Window.tscn"
+Ren="*res://addons/Ren/main.gd"
 
 [editor_plugins]
 

@@ -5,21 +5,19 @@
 
 extends Node
 
-onready var ren	= get_node("/root/Window")
-
+var Ren
 const _GDS = preload("gds_passer.gd")
 var gds = _GDS.new()
 var n = null
 var gdscript = null
 
-
-## execute gdscript code with ren tricks
+## execute gdscript code with Ren tricks
 ## possible types: "code", "retrun", "code_block"
 func exec(code, type = "retrun"):
-	code = gds.gds_passer(code, ren.values)
+	code = gds.gds_passer(code, Ren.values)
 
 	var script = "extends Node\n"
-	script += "onready var ren = get_node('/root/Window')\n"
+	script += "onready var Ren = get_node('/root/Window')\n"
 	script += "func exec():\n"
 
 	if type == "return":
