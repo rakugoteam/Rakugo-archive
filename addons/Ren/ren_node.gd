@@ -71,7 +71,7 @@ func _on_show(_node_id, state, show_args):
 		)
 	
 	elif self is Node2D:
-		if get_node(camera) != null:
+		if camera == "":
 			cam_pos = get_node(camera).positon
 			
 		self.position = show_at(
@@ -83,7 +83,7 @@ func _on_show(_node_id, state, show_args):
 			self.z_index = show_args.z
 	
 	elif self is VisualInstance:
-		if get_node(camera) != null:
+		if camera == "":
 			if 'x' in show_args:
 				cam_pos.x = get_node(camera).project_position(Vector2(show_args.x,0))
 			
