@@ -6,7 +6,7 @@
 extends Node
 
 export(String) var node_id = ""
-export(NodePath) var camera = ""
+export(NodePath) var camera = NodePath("")
 
 func _ready():
 	if is_visual_node():
@@ -71,7 +71,7 @@ func _on_show(_node_id, state, show_args):
 		)
 	
 	elif self is Node2D:
-		if camera == "":
+		if camera.is_empty():
 			cam_pos = get_node(camera).positon
 			
 		self.position = show_at(
@@ -83,7 +83,7 @@ func _on_show(_node_id, state, show_args):
 			self.z_index = show_args.z
 	
 	elif self is VisualInstance:
-		if camera == "":
+		if camera.is_empty():
 			if 'x' in show_args:
 				cam_pos.x = get_node(camera).project_position(Vector2(show_args.x,0))
 			
