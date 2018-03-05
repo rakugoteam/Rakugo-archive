@@ -40,18 +40,15 @@ func _on_qload():
 		$InfoAnim/Panel/Label.bbcode_text="[color=red]Error loading Game[/color]"
 		$InfoAnim.play("GeneralNotif")
 
-func can_skip():
-	if not Ren.history.empty():
-		if Ren.current_statement in Ren.history:
-			if Ren.current_statement != Ren.history.back():
-				return true
-			
-	return false
-
 func _on_statement(id, type, kwargs):
-	$Back.disabled = id == 0
-	$Skip.disabled = !can_skip()
+	$Skip.disabled = !Ren.can_skip()
 	$History.disabled = Ren.history.empty()
+	
+	if Ren.history_id > Ren.history.size():
+		$Back.disabled = true
+		
+	else:
+		$Back.disabled = Ren.history.empty()
 
 func on_auto():
 	if not $AutoTimer.is_stopped():
