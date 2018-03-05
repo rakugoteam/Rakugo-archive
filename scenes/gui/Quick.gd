@@ -32,6 +32,7 @@ func _on_qsave():
 	else:
 		$InfoAnim/Panel/Label.bbcode_text="[color=red]Error saving Game[/color]"
 		$InfoAnim.play("GeneralNotif")
+
 func _on_qload():
 	if Ren.loadfile():
 		$InfoAnim.play("Loaded")
@@ -47,8 +48,8 @@ func can_skip():
 			
 	return false
 
-func _on_statement(type, kwargs):
-	$Back.disabled = Ren.current_statement.id == 0
+func _on_statement(id, type, kwargs):
+	$Back.disabled = id == 0
 	$Skip.disabled = !can_skip()
 	$History.disabled = Ren.history.empty()
 

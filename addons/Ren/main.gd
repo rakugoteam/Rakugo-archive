@@ -16,7 +16,7 @@ var vnl=[]
 # 
 var history_id = 0
 var rolling_back = false
-var current_statement = 1
+var current_statement = null
 var current_statement_id = -1
 var current_local_statement_id = -1
 var current_block
@@ -47,7 +47,7 @@ var godot
 
 var _def = _DEF.new()
 
-signal enter_statement(type, kwargs)
+signal enter_statement(id, type, kwargs)
 signal enter_block(kwargs)
 signal exit_statement(kwargs)
 signal notified()
@@ -213,7 +213,6 @@ func notifiy(info,length=5, conition_statement = null):
 func start():
 	current_block = []
 	current_menu = []
-	choice_id = -1
 	history_id = 1
 	using_passer = false
 	statements[0].enter()

@@ -4,7 +4,6 @@
 
 extends Panel
 
-# onready var Ren	= get_node("/root/Window")
 
 onready var NameLabel = $VBox/Label
 onready var DialogText = $VBox/Dialog
@@ -34,7 +33,7 @@ func _input(event):
 		else:      #else exit statement
 			Ren.emit_signal("exit_statement", {})
 
-func _on_statement(type, kwargs):
+func _on_statement(id, type, kwargs):
 	set_process(false)
 	_type = type
 	$Timer.start()

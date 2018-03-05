@@ -38,12 +38,11 @@ func enter(dbg = true):
 	if dbg:
 		print(debug(kws))
 	
-	Ren.current_statement_id = id
 	Ren.current_statement = self
 	
 	Ren.connect("exit_statement", self, "on_exit")
 	Ren.connect("enter_block", self, "on_enter_block")
-	Ren.emit_signal("enter_statement", type, kwargs)
+	Ren.emit_signal("enter_statement", id, type, kwargs)
 
 func set_kwargs(new_kwargs):
 	# update statement

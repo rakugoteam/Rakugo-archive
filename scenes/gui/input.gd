@@ -32,7 +32,7 @@ func _on_enter(text):
 	Ren.emit_signal("exit_statement", {"value":final_value})
 
 
-func _on_statement(type, kwargs):
+func _on_statement(id, type, kwargs):
 	_type = type
 	if type != "input":
 		if $InputLine.is_connected("text_entered", self , "_on_enter"):

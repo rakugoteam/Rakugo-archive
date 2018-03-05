@@ -9,7 +9,7 @@ onready var ChoiceButton = preload("res://scenes/gui/ChoiceButton.tscn")
 func _ready():
 	Ren.connect("enter_statement", self, "_on_statement")
 
-func _on_statement(type, kwargs):
+func _on_statement(id, type, kwargs):
 	if type != "menu":
 		hide()
 		return
