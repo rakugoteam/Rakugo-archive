@@ -70,6 +70,6 @@ func text_passer(text, values):
 		text = text.replace("{tab}", "/t".c_escape())
 		text = text.replace("{", "[")
 		text = text.replace("}", "]")
-		print(_text, text)
+		# print("org: ''", _text, "', bbcode: ''", text , "'")
 
 	return text
