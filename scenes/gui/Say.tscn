@@ -23,6 +23,10 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 1 )
 _sections_unfolded = [ "Anchor", "Mouse", "Rect", "Size Flags", "Theme", "custom_styles" ]
+step_time = 0.05
+name_label_path = NodePath("VBox/Label")
+dialog_label_path = NodePath("VBox/Dialog")
+avatar_viewport_path = NodePath("ViewportContainer/CharaterAvatar")
 
 [node name="VBox" type="VBoxContainer" parent="." index="0"]
 
@@ -151,12 +155,5 @@ shadow_atlas_quad_0 = 2
 shadow_atlas_quad_1 = 2
 shadow_atlas_quad_2 = 3
 shadow_atlas_quad_3 = 4
-
-[node name="Timer" type="Timer" parent="." index="2"]
-
-process_mode = 1
-wait_time = 0.05
-one_shot = true
-autostart = false
 
 

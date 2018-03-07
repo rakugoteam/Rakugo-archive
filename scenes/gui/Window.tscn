@@ -279,7 +279,6 @@ _sections_unfolded = [ "Theme" ]
 
 [node name="InGameGUI" type="Control" parent="." index="0"]
 
-editor/display_folded = true
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -340,6 +339,9 @@ script = ExtResource( 2 )
 [node name="Adv" parent="InGameGUI" index="1" instance=ExtResource( 3 )]
 
 margin_bottom = 601.0
+name_label_path = NodePath("")
+dialog_label_path = NodePath("")
+avatar_viewport_path = NodePath("")
 
 [node name="Notify" type="Panel" parent="InGameGUI" index="2"]
 

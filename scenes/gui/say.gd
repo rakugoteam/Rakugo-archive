@@ -4,20 +4,41 @@
 
 extends Panel
 
+export(float) var step_time = 0.05
+export(NodePath) var name_label_path = NodePath("") setget set_name_label_path, get_name_label_path
+export(NodePath) var dialog_label_path = NodePath("") setget set_dialog_text_path, get_dialog_text_path
+export(NodePath) var avatar_viewport_path = NodePath("")
 
-onready var NameLabel = $VBox/Label
-onready var DialogText = $VBox/Dialog
-onready var CharacterAvatar = $ViewportContainer/CharaterAvatar
+#onready var NameLabel = get_node(name_label_path)
+#onready var DialogText = get_node(dialog_label_path)
+#onready var CharacterAvatar = get_node(avatar_viewport_path)
+var NameLabel
+var DialogText
+var CharacterAvatar
+
+onready var timer = new_timer(step_time)
 
 var avatar_path = ""
 var avatar
 var _type
-var t
+var dialog_timer
 var typing=false
+
+func set_name_label_path(value):
+	NameLabel = get_node(value)
+
+func get_name_label_path():
+	return get_path_to(NameLabel)
+	
+func set_dialog_text_path(value):
+	DialogText = get_node(value)
+
+func get_dialog_text_path():
+	return get_path_to(DialogText)
 
 func _ready():
 	Ren.connect("enter_statement", self, "_on_statement")
-	$Timer.connect("timeout", self, "_on_timeout")
+	timer.connect("timeout", self, "_on_timeout")
 
 func _on_timeout():
 	set_process_unhandled_input(_type == "say")
@@ -36,19 +57,19 @@ func _input(event):
 func _on_statement(id, type, kwargs):
 	set_process(false)
 	_type = type
-	$Timer.start()
+	timer.start()
 	if not _type in ["say", "input", "menu"]:
 		return
 
 	if "how" in kwargs:
-		NameLabel.bbcode_text = kwargs.how
+		if NameLabel.has_method("set_bbcode"):
+			NameLabel.bbcode = kwargs.how
 	
 	if "what" in kwargs:
 		if kwargs.has("speed"):
 			writeDialog(kwargs.what, kwargs.speed)
 		else:
 			writeDialog(kwargs.what)
-		
 
 	if "avatar" in kwargs:
 		if avatar_path != kwargs.avatar:
@@ -61,32 +82,43 @@ func _on_statement(id, type, kwargs):
 			CharacterAvatar.add_child(avatar) 
 
 	return
-	
-	
+
+func new_timer(time):
+	var nt = Timer.new()
+	nt.set_wait_time(time)
+	nt.set_one_shot(true)
+	return nt
+
 func writeDialog(text, speed=0.005):
     #create a timer to print text like a typewriter
-	if t != null:
-		t.free()
+	if dialog_timer != null:
+		dialog_timer.free()
 	
 	if speed == 0:
-		DialogText.bbcode_text=text
+		if DialogText.has_method("set_bbcode"):
+			DialogText.bbcode_text=text
 		return
 	
 	typing=true
-	DialogText.bbcode_text = ""
+	if DialogText.has_method("set_bbcode"):
+		DialogText.bbcode_text = ""
 	var te=""
-	t = Timer.new()
-	t.set_wait_time(speed)
-	t.set_one_shot(true)
-	self.add_child(t)
+	dialog_timer = new_timer(speed)
+	self.add_child(dialog_timer)
 	
 	for letter in text:
-		t.start()
+		dialog_timer.start()
 		te+=letter
-		DialogText.bbcode_text=te
-		yield(t, "timeout")
+		
+		if DialogText.has_method("set_bbcode"):
+			DialogText.bbcode_text=te
+			
+		yield(dialog_timer, "timeout")
 		if !typing:
-			DialogText.bbcode_text=text
+			
+			if DialogText.has_method("set_bbcode"):
+				DialogText.bbcode_text=text
+				
 			break
 
 
