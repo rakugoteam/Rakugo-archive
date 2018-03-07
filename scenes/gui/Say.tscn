@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/gui/say.gd" type="Script" id=1]
-[ext_resource path="res://scenes/gui/input.gd" type="Script" id=2]
-[ext_resource path="res://scenes/gui/Labels/name_text.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/gui/Labels/name_text.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/Ren/ren_line_edit.gd" type="Script" id=3]
+[ext_resource path="res://addons/Ren/ren_line_edit.svg" type="Texture" id=4]
 
-[node name="Say" type="Panel"]
+[node name="Say" type="Panel" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -40,9 +41,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 1
 alignment = 0
-script = ExtResource( 2 )
 
-[node name="Label" parent="VBox" index="0" instance=ExtResource( 3 )]
+[node name="Label" parent="VBox" index="0" instance=ExtResource( 2 )]
 
 margin_right = 916.0
 focus_mode = 0
@@ -60,7 +60,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 41.0
 margin_right = 916.0
-margin_bottom = 70.0
+margin_bottom = 75.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
 focus_mode = 2
@@ -81,42 +81,13 @@ selection_enabled = true
 override_selected_font_color = false
 _sections_unfolded = [ "BBCode", "Rect", "Size Flags" ]
 
-[node name="BBCode" type="RichTextLabel" parent="VBox" index="2"]
-
-visible = false
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 100.0
-margin_right = 100.0
-margin_bottom = 100.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = true
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-bbcode_enabled = false
-bbcode_text = ""
-visible_characters = -1
-percent_visible = 1.0
-meta_underlined = true
-tab_size = 4
-text = ""
-scroll_active = false
-scroll_following = false
-selection_enabled = false
-override_selected_font_color = false
-_sections_unfolded = [ "BBCode" ]
-
-[node name="InputLine" type="LineEdit" parent="VBox" index="3"]
+[node name="RenLineEdit" type="LineEdit" parent="VBox" index="2"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 71.0
+margin_top = 76.0
 margin_right = 916.0
 margin_bottom = 100.0
 rect_pivot_offset = Vector2( 0, 0 )
@@ -124,16 +95,18 @@ rect_clip_content = false
 focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 1
-size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_horizontal = 1
+size_flags_vertical = 1
 focus_mode = 2
 context_menu_enabled = true
-placeholder_text = "Placeholder"
 placeholder_alpha = 0.6
 caret_blink = false
 caret_blink_speed = 0.65
 caret_position = 0
-_sections_unfolded = [ "Mouse", "Placeholder" ]
+script = ExtResource( 3 )
+__meta__ = {
+"_editor_icon": ExtResource( 4 )
+}
 
 [node name="ViewportContainer" type="ViewportContainer" parent="." index="1"]
 

@@ -17,6 +17,10 @@ func _enter_tree():
 	add_custom_type("Character", "Node", preload("character.gd"), preload("icon.svg"))
 	add_custom_type("Character2D", "Node2D", preload("character.gd"), preload("icon.svg"))
 	add_custom_type("Character3D", "VisualInstance", preload("character.gd"), preload("icon.svg"))
+	
+	## RenControl nodes:
+	add_custom_type("RenLineEdit", "LineEdit", preload("ren_line_edit.gd"), preload("ren_line_edit.svg"))
+	
 	print("RenGD is Active")
 	
 func _exit_tree():
@@ -29,4 +33,7 @@ func _exit_tree():
 	remove_custom_type("Character")
 	remove_custom_type("Character2D")
 	remove_custom_type("Character3D")
+	
+	## RenControl nodes:
+	remove_custom_type("RenLineEdit")
 	
