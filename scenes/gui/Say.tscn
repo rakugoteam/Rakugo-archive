@@ -1,11 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://scenes/gui/say.gd" type="Script" id=1]
-[ext_resource path="res://scenes/gui/Labels/name_text.tscn" type="PackedScene" id=2]
-[ext_resource path="res://addons/Ren/ren_line_edit.gd" type="Script" id=3]
-[ext_resource path="res://addons/Ren/ren_line_edit.svg" type="Texture" id=4]
+[ext_resource path="res://addons/Ren/ren_say_control.gd" type="Script" id=1]
+[ext_resource path="res://addons/Ren/ren_panel.svg" type="Texture" id=2]
+[ext_resource path="res://scenes/gui/Labels/name_text.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/Ren/ren_line_edit.gd" type="Script" id=4]
+[ext_resource path="res://addons/Ren/ren_line_edit.svg" type="Texture" id=5]
 
-[node name="Say" type="Panel" index="0"]
+[node name="Say" type="Control" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -21,20 +22,38 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource( 1 )
 _sections_unfolded = [ "Anchor", "Mouse", "Rect", "Size Flags", "Theme", "custom_styles" ]
-step_time = 0.05
-name_label_path = NodePath("VBox/Label")
-dialog_label_path = NodePath("VBox/Dialog")
-avatar_viewport_path = NodePath("ViewportContainer/CharaterAvatar")
 
-[node name="VBox" type="VBoxContainer" parent="." index="0"]
+[node name="RenSayPanel" type="Panel" parent="." index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 90.0
+margin_right = 1026.0
+margin_bottom = 147.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_icon": ExtResource( 2 )
+}
+step_time = 0.05
+name_label_path = NodePath("VBox/Label")
+dialog_label_path = NodePath("VBox/Dialog")
+avatar_viewport_path = NodePath("ViewportContainer/CharaterAvatar")
+
+[node name="VBox" type="VBoxContainer" parent="RenSayPanel" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 101.0
 margin_right = 1006.0
 margin_bottom = 100.0
 rect_pivot_offset = Vector2( 0, 0 )
@@ -46,9 +65,10 @@ size_flags_vertical = 3
 custom_constants/separation = 1
 alignment = 0
 
-[node name="Label" parent="VBox" index="0" instance=ExtResource( 2 )]
+[node name="Label" parent="RenSayPanel/VBox" index="0" instance=ExtResource( 3 )]
 
-margin_right = 916.0
+margin_right = 905.0
+margin_bottom = 49.0
 focus_mode = 0
 mouse_filter = 2
 size_flags_horizontal = 3
@@ -56,15 +76,15 @@ size_flags_vertical = 3
 scroll_active = false
 selection_enabled = false
 
-[node name="Dialog" type="RichTextLabel" parent="VBox" index="1"]
+[node name="Dialog" type="RichTextLabel" parent="RenSayPanel/VBox" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 41.0
-margin_right = 916.0
-margin_bottom = 75.0
+margin_top = 50.0
+margin_right = 905.0
+margin_bottom = 100.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
 focus_mode = 2
@@ -85,14 +105,15 @@ selection_enabled = true
 override_selected_font_color = false
 _sections_unfolded = [ "BBCode", "Rect", "Size Flags" ]
 
-[node name="RenLineEdit" type="LineEdit" parent="VBox" index="2"]
+[node name="RenLineEdit" type="LineEdit" parent="RenSayPanel/VBox" index="2"]
 
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 76.0
-margin_right = 916.0
+margin_right = 905.0
 margin_bottom = 100.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -107,20 +128,20 @@ placeholder_alpha = 0.6
 caret_blink = false
 caret_blink_speed = 0.65
 caret_position = 0
-script = ExtResource( 3 )
+script = ExtResource( 4 )
 __meta__ = {
-"_editor_icon": ExtResource( 4 )
+"_editor_icon": ExtResource( 5 )
 }
 
-[node name="ViewportContainer" type="ViewportContainer" parent="." index="1"]
+[node name="ViewportContainer" type="ViewportContainer" parent="RenSayPanel" index="1"]
 
 editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 108.0
-margin_bottom = 131.0
+margin_right = 100.0
+margin_bottom = 111.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -130,7 +151,7 @@ size_flags_vertical = 1
 stretch = false
 stretch_shrink = 1
 
-[node name="CharaterAvatar" type="Viewport" parent="ViewportContainer" index="0"]
+[node name="CharaterAvatar" type="Viewport" parent="RenSayPanel/ViewportContainer" index="0"]
 
 arvr = false
 size = Vector2( 100, 100 )

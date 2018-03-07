@@ -339,9 +339,6 @@ script = ExtResource( 2 )
 [node name="Adv" parent="InGameGUI" index="1" instance=ExtResource( 3 )]
 
 margin_bottom = 601.0
-name_label_path = NodePath("")
-dialog_label_path = NodePath("")
-avatar_viewport_path = NodePath("")
 
 [node name="Notify" type="Panel" parent="InGameGUI" index="2"]
 
@@ -577,7 +574,5 @@ text = "Game was loaded"
 _sections_unfolded = [ "BBCode", "Rect", "Visibility", "custom_colors", "custom_fonts" ]
 
 [node name="Screens" parent="." index="1" instance=ExtResource( 8 )]
-
-[connection signal="gui_input" from="InGameGUI/Adv" to="InGameGUI/Adv" method="_on_Adv_gui_input"]
 
 
