@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="16"
+   height="16"
+   viewBox="0 0 16 16"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.92.2 (unknown)"
+   inkscape:export-filename="/home/djrm/Projects/godot/tools/editor/icons/icon_button.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90"
+   sodipodi:docname="ren_choice_button.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="32"
+     inkscape:cx="12.748211"
+     inkscape:cy="8.3468912"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     units="px"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-paths="true"
+     inkscape:bbox-nodes="true"
+     inkscape:snap-bbox-edge-midpoints="true"
+     inkscape:snap-bbox-midpoints="true"
+     inkscape:snap-object-midpoints="true"
+     inkscape:snap-center="true"
+     inkscape:window-width="1366"
+     inkscape:window-height="711"
+     inkscape:window-x="0"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:document-rotation="0"
+     inkscape:snap-global="false">
+    <inkscape:grid
+       type="xygrid"
+       id="grid3336"
+       empspacing="4" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-1036.3622)">
+    <path
+       style="fill:#4e9a06;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 5.5,9 C 4.669,9 4,9.669 4,10.5 V 12 H 2 v 2 H 14 V 12 H 12 V 10.5 C 12,9.669 11.331,9 10.5,9 Z"
+       transform="translate(0,1036.3622)"
+       id="rect829"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ssccccccsss" />
+    <g
+       aria-label="Ch"
+       transform="scale(0.99909433,1.0009065)"
+       style="font-style:normal;font-weight:normal;font-size:10.16722107px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#4e9a06;fill-opacity:1;stroke:none;stroke-width:0.25418049px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="text1990" />
+    <path
+       inkscape:connector-curvature="0"
+       d="m 9.1664799,1044.3884 v -6.9098 l 0.8431151,-0.1425 v 2.4017 q 0.20316,-0.081 0.45711,-0.1221 0.253951,-0.051 0.497743,-0.051 0.538375,0 0.893906,0.1628 0.365688,0.1526 0.579005,0.4376 0.213318,0.2849 0.304741,0.6818 0.09142,0.3968 0.09142,0.8751 v 2.6662 h -0.832958 v -2.4831 q 0,-0.8752 -0.243793,-1.2312 -0.243791,-0.3663 -0.873589,-0.3663 -0.264107,0 -0.518058,0.061 -0.243792,0.051 -0.355531,0.1016 v 3.918 z"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.16722107px;line-height:125%;font-family:'Ubuntu Mono';-inkscape-font-specification:'Ubuntu Mono';letter-spacing:0px;word-spacing:0px;fill:#4e9a06;fill-opacity:1;stroke:none;stroke-width:0.25418049px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path1994" />
+    <path
+       inkscape:connector-curvature="0"
+       d="m 8.2234762,1043.9601 q -0.3555304,0.2035 -0.761851,0.2951 -0.3961624,0.1018 -0.853273,0.1018 -0.5586907,0 -1.0361173,-0.1934 -0.4672686,-0.2035 -0.8126411,-0.6004 -0.3453724,-0.407 -0.5485327,-1.0278 -0.1930022,-0.6208 -0.1930022,-1.4654 0,-0.804 0.2031602,-1.4146 0.2133184,-0.6106 0.5688488,-1.0277 0.3555304,-0.4173 0.832957,-0.631 0.4774266,-0.2137 1.0158013,-0.2137 0.3758465,0 0.761851,0.1017 0.3961625,0.1018 0.772009,0.3359 l -0.2437923,0.6919 q -0.6704289,-0.3866 -1.2595936,-0.3866 -0.4164786,0 -0.751693,0.1831 -0.3250564,0.173 -0.5586907,0.5089 -0.2336343,0.3358 -0.3656885,0.8039 -0.1218961,0.4682 -0.1218961,1.0482 0,0.6513 0.1320541,1.1296 0.1422122,0.4782 0.3860045,0.7937 0.2437924,0.3155 0.5790067,0.4681 0.3453726,0.1527 0.741535,0.1527 0.2945824,0 0.6196388,-0.071 Q 7.6546275,1043.4621 8,1043.2684 Z"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.16722107px;line-height:125%;font-family:'Ubuntu Mono';-inkscape-font-specification:'Ubuntu Mono';letter-spacing:0px;word-spacing:0px;fill:#4e9a06;fill-opacity:1;stroke:none;stroke-width:0.25418049px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path1992" />
+  </g>
+</svg>

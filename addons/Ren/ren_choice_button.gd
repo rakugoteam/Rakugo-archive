@@ -6,7 +6,7 @@ export(Color) var hover_text_color
 export(Color) var pressed_text_color
 export(Color) var disable_text_color
 
-onready var label = $Label
+onready var label = RichTextLabel.new()
 var id = -1
 
 func _ready():
@@ -15,6 +15,12 @@ func _ready():
 	connect("mouse_entered", self, "_on_hover")
 	connect("mouse_exited", self, "_on_idle")
 	connect("pressed", self, "_on_pressed")
+	connect("resized", self, "_on_resized")
+	label.bbcode_enabled = true
+	add_child(label)
+
+func _on_resized():
+	label.rect_size = rect_size
 
 func _on_idle():
 	label.add_color_override("default_color", idle_text_color)
@@ -30,7 +36,7 @@ func _on_pressed():
 	print("final_choice ", id)
 	Ren.set_meta("last_choice",id) #for checking choice in VS
 	Ren.emit_signal("enter_block", {"final_choice":id})
-	
+
 	print(Ren.name)
 
 func set_disabled(value):
