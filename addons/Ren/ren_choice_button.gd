@@ -1,10 +1,10 @@
 extends Button
 
-export(Color) var idle_text_color
-export(Color) var focus_text_color
-export(Color) var hover_text_color
-export(Color) var pressed_text_color
-export(Color) var disable_text_color
+export(Color) var idle_text_color = Color( 0.533333, 0.533333, 0.533333, 1 )
+export(Color) var focus_text_color = Color( 0, 0.506836, 0.675781, 1 )
+export(Color) var hover_text_color = Color( 0.877647, 0.882353, 0.887059, 1 )
+export(Color) var pressed_text_color = Color( 0, 0.6, 0.8, 1 )
+export(Color) var disable_text_color = Color( 0.533333, 0.533333, 0.498039, 0.533333 )
 
 onready var label = RichTextLabel.new()
 var id = -1
@@ -16,6 +16,7 @@ func _ready():
 	connect("mouse_exited", self, "_on_idle")
 	connect("pressed", self, "_on_pressed")
 	connect("resized", self, "_on_resized")
+	label.mouse_filter =  MOUSE_FILTER_IGNORE
 	label.bbcode_enabled = true
 	add_child(label)
 
