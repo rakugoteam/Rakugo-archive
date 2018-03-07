@@ -315,6 +315,12 @@ func quitcurvis():
 		emit_signal("exit_statement")
 	set_meta("quitcurrent",false)
 
-	
+func can_skip():
+	if not Ren.history.empty():
+		if Ren.current_statement in Ren.history:
+			if Ren.current_statement != Ren.history.back():
+				return true
+			
+	return false
 	
 	
