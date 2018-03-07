@@ -1,13 +1,15 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://themes/new_gui/theme.tres" type="Theme" id=1]
-[ext_resource path="res://scenes/gui/menu.gd" type="Script" id=2]
-[ext_resource path="res://scenes/gui/Say.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/gui/Notify.gd" type="Script" id=4]
-[ext_resource path="res://scenes/gui/Quick.gd" type="Script" id=5]
-[ext_resource path="res://scenes/gui/QuickMenuButton.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/gui/Labels/name_text.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/gui/Screens.tscn" type="PackedScene" id=8]
+[ext_resource path="res://addons/Ren/ren_menu.gd" type="Script" id=2]
+[ext_resource path="res://addons/Ren/ren_menu.svg" type="Texture" id=3]
+[ext_resource path="res://scenes/gui/ChoiceButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/gui/Say.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/gui/Notify.gd" type="Script" id=6]
+[ext_resource path="res://scenes/gui/Quick.gd" type="Script" id=7]
+[ext_resource path="res://scenes/gui/QuickMenuButton.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/gui/Labels/name_text.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/gui/Screens.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Animation" id=1]
 
@@ -262,7 +264,7 @@ tracks/4/keys = {
 "values": [ Color( 1, 1, 1, 0.756863 ) ]
 }
 
-[node name="Window" type="Control"]
+[node name="Window" type="Control" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -295,15 +297,14 @@ size_flags_vertical = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="InGameGUI" index="0"]
 
-editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = 293.0
-margin_top = 10.0
-margin_right = 692.0
-margin_bottom = 341.0
+margin_left = 267.0
+margin_top = 33.0
+margin_right = 767.0
+margin_bottom = 333.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
 mouse_filter = 0
@@ -314,29 +315,35 @@ scroll_horizontal_enabled = true
 scroll_horizontal = 0
 scroll_vertical_enabled = true
 scroll_vertical = 0
+_sections_unfolded = [ "Rect", "Size Flags" ]
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Choice" type="VBoxContainer" parent="InGameGUI/ScrollContainer" index="0"]
+[node name="RenMenu" type="VBoxContainer" parent="InGameGUI/ScrollContainer" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 399.0
-margin_bottom = 331.0
+margin_right = 500.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 500, 300 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/separation = 5
-alignment = 1
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
 script = ExtResource( 2 )
+_sections_unfolded = [ "Rect" ]
+__meta__ = {
+"_editor_icon": ExtResource( 3 )
+}
+ChoiceButton = ExtResource( 4 )
 
-[node name="Adv" parent="InGameGUI" index="1" instance=ExtResource( 3 )]
+[node name="Adv" parent="InGameGUI" index="1" instance=ExtResource( 5 )]
 
 margin_bottom = 601.0
 
@@ -360,7 +367,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 theme = ExtResource( 1 )
-script = ExtResource( 4 )
+script = ExtResource( 6 )
 _sections_unfolded = [ "Anchor", "Size Flags", "Theme", "custom_styles" ]
 __meta__ = {
 "_edit_group_": true
@@ -419,95 +426,95 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 _sections_unfolded = [ "Size Flags" ]
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Back" parent="InGameGUI/Quick" index="0" instance=ExtResource( 6 )]
+[node name="Back" parent="InGameGUI/Quick" index="0" instance=ExtResource( 8 )]
 
 margin_right = 110.0
-margin_bottom = 32.0
+margin_bottom = 34.0
 rect_clip_content = false
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="History" parent="InGameGUI/Quick" index="1" instance=ExtResource( 6 )]
+[node name="History" parent="InGameGUI/Quick" index="1" instance=ExtResource( 8 )]
 
 margin_left = 114.0
 margin_right = 224.0
-margin_bottom = 32.0
+margin_bottom = 34.0
 rect_clip_content = false
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "History"
 
-[node name="Skip" parent="InGameGUI/Quick" index="2" instance=ExtResource( 6 )]
+[node name="Skip" parent="InGameGUI/Quick" index="2" instance=ExtResource( 8 )]
 
 margin_left = 228.0
 margin_right = 338.0
-margin_bottom = 32.0
+margin_bottom = 34.0
 rect_clip_content = false
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Skip"
 
-[node name="Auto" parent="InGameGUI/Quick" index="3" instance=ExtResource( 6 )]
+[node name="Auto" parent="InGameGUI/Quick" index="3" instance=ExtResource( 8 )]
 
 margin_left = 342.0
 margin_right = 452.0
-margin_bottom = 32.0
+margin_bottom = 34.0
 rect_clip_content = false
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Auto"
 
-[node name="Save" parent="InGameGUI/Quick" index="4" instance=ExtResource( 6 )]
+[node name="Save" parent="InGameGUI/Quick" index="4" instance=ExtResource( 8 )]
 
 margin_left = 456.0
 margin_right = 566.0
-margin_bottom = 32.0
+margin_bottom = 34.0
 rect_clip_content = false
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Save"
 
-[node name="Load" parent="InGameGUI/Quick" index="5" instance=ExtResource( 6 )]
+[node name="Load" parent="InGameGUI/Quick" index="5" instance=ExtResource( 8 )]
 
 margin_left = 570.0
 margin_right = 680.0
-margin_bottom = 32.0
+margin_bottom = 34.0
 rect_clip_content = false
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Load"
 
-[node name="QSave" parent="InGameGUI/Quick" index="6" instance=ExtResource( 6 )]
+[node name="QSave" parent="InGameGUI/Quick" index="6" instance=ExtResource( 8 )]
 
 margin_left = 684.0
 margin_right = 794.0
-margin_bottom = 32.0
+margin_bottom = 34.0
 rect_clip_content = false
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Q. Save"
 
-[node name="QLoad" parent="InGameGUI/Quick" index="7" instance=ExtResource( 6 )]
+[node name="QLoad" parent="InGameGUI/Quick" index="7" instance=ExtResource( 8 )]
 
 margin_left = 798.0
 margin_right = 908.0
-margin_bottom = 32.0
+margin_bottom = 34.0
 rect_clip_content = false
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Q. Load"
 
-[node name="Prefs" parent="InGameGUI/Quick" index="8" instance=ExtResource( 6 )]
+[node name="Prefs" parent="InGameGUI/Quick" index="8" instance=ExtResource( 8 )]
 
 margin_left = 912.0
 margin_right = 1024.0
-margin_bottom = 32.0
+margin_bottom = 34.0
 rect_clip_content = false
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -564,7 +571,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Label" parent="InGameGUI/Quick/InfoAnim/Panel" index="0" instance=ExtResource( 7 )]
+[node name="Label" parent="InGameGUI/Quick/InfoAnim/Panel" index="0" instance=ExtResource( 9 )]
 
 margin_right = 249.0
 custom_colors/default_color = Color( 1, 1, 1, 1 )
@@ -573,6 +580,6 @@ bbcode_text = "Game was loaded"
 text = "Game was loaded"
 _sections_unfolded = [ "BBCode", "Rect", "Visibility", "custom_colors", "custom_fonts" ]
 
-[node name="Screens" parent="." index="1" instance=ExtResource( 8 )]
+[node name="Screens" parent="." index="1" instance=ExtResource( 10 )]
 
 
