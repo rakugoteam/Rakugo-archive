@@ -297,6 +297,7 @@ size_flags_vertical = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="InGameGUI" index="0"]
 
+editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5

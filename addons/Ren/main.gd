@@ -42,8 +42,10 @@ const _SH	= preload("show_statement.gd")
 const _HI	= preload("hide_statement.gd")
 const _NO	= preload("notify_statement.gd")
 const _GD	= preload("gd_connect.gd")
+const _TXT	= preload("text.gd")
 
 var godot
+var ren_text
 
 var _def = _DEF.new()
 
@@ -53,14 +55,22 @@ signal exit_statement(kwargs)
 signal notified()
 signal on_show(node_id, state, show_args)
 signal on_hide(node_id)
+signal on_val_changed(val_name)
 
 func _ready():
 	godot = _GD.new()
 	godot.Ren = self
+	ren_text = _TXT.new()
+
+func text_passer(text):
+	if ren_text == null:
+		ren_text = _TXT.new()
+	return ren_text.text_passer(text, values)
 
 # add global value that Ren will see
 func define(val_name, value = null):
 	_def.define(values, val_name, value)
+	emit_signal("on_val_changed", val_name)
 
 # returns value defined using define
 func get_value(val_name):

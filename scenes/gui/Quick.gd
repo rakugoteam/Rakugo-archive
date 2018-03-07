@@ -5,7 +5,6 @@
 extends HBoxContainer
 
 
-
 func _ready():
 	Ren.connect("enter_statement", self, "_on_statement")
 	$Back.connect("pressed", Ren, "rollback")

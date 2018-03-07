@@ -23,6 +23,9 @@ func _enter_tree():
 	add_custom_type("RenSayPanel", "Panel", preload("ren_say_panel.gd"), preload("ren_panel.svg"))
 	add_custom_type("RenMenu", "VBoxContainer", preload("ren_menu.gd"), preload("ren_menu.svg"))
 	add_custom_type("RenChoiceButton", "Button", preload("ren_choice_button.gd"), preload("ren_choice_button.svg"))
+	add_custom_type("RenButton", "Button", preload("ren_button.gd"), preload("ren_button.svg"))
+	add_custom_type("RenTextLabel", "RichTextLabel", preload("ren_label.gd"))
+	add_custom_type("RenValLabel", "RenValLabel", preload("ren_val_label.gd"))
 	
 	print("RenGD is Active")
 	
@@ -42,5 +45,8 @@ func _exit_tree():
 	remove_custom_type("RenSayPanel")
 	remove_custom_type("RenMenu")
 	remove_custom_type("RenChoiceButton")
+	remove_custom_type("RenButton")
+	remove_custom_type("RenTextLabel")
+	remove_custom_type("RenValLabel")
 	
 	
