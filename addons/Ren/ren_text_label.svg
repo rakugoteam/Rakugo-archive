@@ -18,7 +18,7 @@
    inkscape:export-filename="/home/djrm/Projects/godot/tools/editor/icons/icon_center_container.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90"
-   sodipodi:docname="ren_line_edit.svg">
+   sodipodi:docname="ren_text_label.svg">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -28,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="32"
-     inkscape:cx="10.315416"
-     inkscape:cy="7.7247828"
+     inkscape:zoom="22.627417"
+     inkscape:cx="13.817023"
+     inkscape:cy="7.7042692"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -47,10 +47,6 @@
      inkscape:window-x="0"
      inkscape:window-y="32"
      inkscape:window-maximized="1"
-     inkscape:object-paths="false"
-     inkscape:snap-intersection-paths="false"
-     inkscape:object-nodes="false"
-     inkscape:snap-smooth-nodes="true"
      inkscape:document-rotation="0">
     <inkscape:grid
        type="xygrid"
@@ -74,18 +70,20 @@
      id="layer1"
      transform="translate(0,-1036.3622)">
     <path
-       style="opacity:1;fill:#4e9a06;fill-opacity:1;stroke:none;stroke-width:2.17732406;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       d="m 14,1036.8488 0.01562,11.0268 h 1.142856 l -0.01562,-11.0268 z"
-       id="path856"
-       inkscape:connector-curvature="0" />
-    <path
-       style="opacity:1;fill:#4e9a06;fill-opacity:1;stroke:none;stroke-width:2.68250895;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       d="m 0,1048.2139 c 0,1.7388 1.0233492,3.1483 2.2857142,3.1483 H 13.714286 c 1.262365,0 2.285714,-1.4095 2.285714,-3.1483 H 13.714286 2.2857142 Z"
-       id="rect4140"
-       inkscape:connector-curvature="0" />
+       style="opacity:1;fill:#4e9a06;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 13,1 -3,3 h 2 v 8 h -2 l 3,3 3,-3 H 14 V 4 h 2 z M 1,9 v 2 H 9 V 9 Z m 0,4 v 2 h 4 v -2 z m 6,0 v 2 h 2 v -2 z"
+       id="rect4157"
+       transform="translate(0,1036.3622)"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccccccccccccccccccccc" />
+    <g
+       aria-label="Ch"
+       transform="matrix(0.99909433,0,0,1.0009065,0.39689303,6.2169337)"
+       style="font-style:normal;font-weight:normal;font-size:10.16722107px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#4e9a06;fill-opacity:1;stroke:none;stroke-width:0.25418049px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="text1990" />
     <g
        aria-label="Ren"
-       transform="matrix(1.0741635,0,0,2.1318628,-2.1409695,-564.41442)"
+       transform="matrix(0.75799721,0,0,1.3017133,-0.89976257,59.548258)"
        style="font-style:normal;font-weight:normal;font-size:8.11291504px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#4e9a06;fill-opacity:1;stroke:none;stroke-width:0.20282289px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        id="text834">
       <path
