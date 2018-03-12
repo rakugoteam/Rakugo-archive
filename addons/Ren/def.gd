@@ -4,6 +4,19 @@
 
 extends Node
 
+func define_from_str(values, val_name, val_str, val_type):
+	if val_type == "str":
+		define(values, val_name, val_str, "text")
+	
+	elif val_type == "bool":
+		define(values, val_name, bool(val_str), "var")
+	
+	elif val_type == "int":
+		define(values, val_name, int(val_str), "var")
+	
+	elif val_type == "float":
+		define(values, val_name, float(val_str), "var")
+
 func define(values, val_name, val_value = null, val_type = null):
 	if val_value != null && val_type == null:
 		val_type = "var"

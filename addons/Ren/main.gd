@@ -22,7 +22,11 @@ var current_local_statement_id = -1
 var current_block
 var current_menu
 var choice_id = -1
-var values = {"version":{"type":"text", "value":"0.5.0"}}
+var values = {
+	"version":{"type":"text", "value":"0.5.0"},
+	"test_bool":{"type":"var", "value":false},
+	"test_float":{"type":"var", "value":10}
+	}
 var using_passer = false
 export(bool) var debug_inti = true
 
@@ -67,10 +71,30 @@ func text_passer(text):
 		ren_text = _TXT.new()
 	return ren_text.text_passer(text, values)
 
-# add global value that Ren will see
+# add/overwrite global value that Ren will see
 func define(val_name, value = null):
 	_def.define(values, val_name, value)
 	emit_signal("on_val_changed", val_name)
+
+# add/overwrite global value, from string, that Ren will see
+func define_from_str(val_name, val_str, val_type):
+	_def.define_from_str(values, val_name, val_str, val_type)
+	emit_signal("on_val_changed", val_name)
+
+# to use with `define_from_str` func as val_type arg
+func get_type(val):
+	var type = "str"
+		
+	if typeof(val) == TYPE_BOOL:
+		type = "bool"
+	
+	elif typeof(val) == TYPE_INT:
+		type = "int"
+	
+	elif typeof(val) == TYPE_REAL:
+		type = "float"
+	
+	return type
 
 # returns value defined using define
 func get_value(val_name):
