@@ -109,6 +109,20 @@ func _enter_tree():
 		preload("ren_val_edit.svg")
 		)
 	
+	add_custom_type(
+		"RenValHSlider",
+		"HSlider",
+		preload("ren_val_slider.gd"),
+		preload("ren_val_h_slider.svg")
+		)
+	
+	add_custom_type(
+		"RenValVSlider",
+		"VSlider",
+		preload("ren_val_slider.gd"),
+		preload("ren_val_v_slider.svg")
+		)
+	
 	print("RenGD is Active")
 	
 func _exit_tree():
@@ -131,5 +145,7 @@ func _exit_tree():
 	remove_custom_type("RenTextLabel")
 	remove_custom_type("RenValLabel")
 	remove_custom_type("RenValEdit")
+	remove_custom_type("RenValHSlider")
+	remove_custom_type("RenValVSlider")
 	
 	
