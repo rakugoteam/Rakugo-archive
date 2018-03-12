@@ -19,6 +19,7 @@ You can use it with:
  - VisualScript
  - RenScript (in future)
 
-Logo is now base on Godot icon from Linux Pop icon theme.</p> Logo is Godot head with hair like anime character.
+Logo is base on Godot icon from Linux Pop icon theme.
+</p> Logo is Godot head with hair like anime character.
 
 If you want to help please check label ["help wanted"](https://github.com/jeremi360/Ren/issues?q=is%3Aissue+is%3Aopen+label%3A"help+wanted").

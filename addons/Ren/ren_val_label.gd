@@ -1,12 +1,22 @@
 extends Label
 
-export(String) var val_name = "version"
+export(String) var val_name = ""
+export(String) var default = ""
+export(String, "str", "bool", "float", "int") var type = "str" 
 
 func _ready():
 	mouse_filter = MOUSE_FILTER_IGNORE
-	text = str(Ren.get_value(val_name))
-	Ren.connect("on_val_changed", self, "update")
+	
+	if not (val_name in Ren.values):
+		Ren.define_from_str(val_name, default, type)
+	
+	var new_val = Ren.get_value(val_name)
+	text = str(new_val)
+	Ren.connect("val_changed", self, "on_val_changed")
 
-func update(valn):
-	if val_name == valn:
-		text = str(Ren.get_value(val_name))
+func on_val_changed(valn):
+	if val_name != valn:
+		return
+	
+	var new_val = Ren.get_value(val_name)
+	text = str(new_val)

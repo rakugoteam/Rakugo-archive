@@ -59,7 +59,7 @@ signal exit_statement(kwargs)
 signal notified()
 signal on_show(node_id, state, show_args)
 signal on_hide(node_id)
-signal on_val_changed(val_name)
+signal val_changed(val_name)
 
 func _ready():
 	godot = _GD.new()
@@ -74,12 +74,12 @@ func text_passer(text):
 # add/overwrite global value that Ren will see
 func define(val_name, value = null):
 	_def.define(values, val_name, value)
-	emit_signal("on_val_changed", val_name)
+	emit_signal("val_changed", val_name)
 
 # add/overwrite global value, from string, that Ren will see
 func define_from_str(val_name, val_str, val_type):
 	_def.define_from_str(values, val_name, val_str, val_type)
-	emit_signal("on_val_changed", val_name)
+	emit_signal("val_changed", val_name)
 
 # to use with `define_from_str` func as val_type arg
 func get_type(val):

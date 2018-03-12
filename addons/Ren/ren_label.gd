@@ -1,12 +1,12 @@
 extends RichTextLabel
 
-export(String, MULTILINE) var ren_text = "{center}[version]{/center}"
+export(String, MULTILINE) var ren_text = ""
 
 func _ready():
 	mouse_filter = MOUSE_FILTER_IGNORE
 	bbcode_enabled = true
 	update()
-	Ren.connect("on_val_changed", self, "update")
+	Ren.connect("val_changed", self, "on_val_changed")
 
-func update(val_name):
+func on_val_changed(val_name):
 	bbcode_text = Ren.text_passer(ren_text)

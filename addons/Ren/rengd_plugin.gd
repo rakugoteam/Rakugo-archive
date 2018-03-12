@@ -123,6 +123,20 @@ func _enter_tree():
 		preload("ren_val_v_slider.svg")
 		)
 	
+	add_custom_type(
+		"RenProgressBar",
+		"ProgressBar",
+		preload("ren_val_range.gd"),
+		preload("ren_progress_bar.svg")
+		)
+	
+	add_custom_type(
+		"RenTextureProgress",
+		"TextureProgress",
+		preload("ren_val_range.gd"),
+		preload("ren_texture_progress.svg")
+		)
+	
 	print("RenGD is Active")
 	
 func _exit_tree():
