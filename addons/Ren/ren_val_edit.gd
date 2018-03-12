@@ -20,6 +20,9 @@ func get_default():
 	return _default
 
 func _ready():
+	if val_name in Ren.values:
+		default = Ren.get_value(val_name)
+		
 	connect("text_entered", self, "_on_entered")
 
 func _on_entered(text):
