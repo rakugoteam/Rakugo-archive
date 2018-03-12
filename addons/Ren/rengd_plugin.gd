@@ -137,6 +137,20 @@ func _enter_tree():
 		preload("ren_texture_progress.svg")
 		)
 	
+	add_custom_type(
+		"RenValCheckBox",
+		"CheckBox",
+		preload("ren_val_check.gd"),
+		preload("ren_check_box.svg")
+		)
+	
+	add_custom_type(
+		"RenValCheckButton",
+		"CheckButton",
+		preload("ren_val_check.gd"),
+		preload("ren_check_button.svg")
+		)
+	
 	print("RenGD is Active")
 	
 func _exit_tree():
@@ -161,5 +175,7 @@ func _exit_tree():
 	remove_custom_type("RenValEdit")
 	remove_custom_type("RenValHSlider")
 	remove_custom_type("RenValVSlider")
+	remove_custom_type("RenValCheckBox")
+	remove_custom_type("RenValCheckButton")
 	
 	
