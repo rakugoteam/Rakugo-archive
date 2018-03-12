@@ -1,5 +1,11 @@
 # Ren
 
+[![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](http://opensource.org/licenses/MIT)
+
+[![Gitter](https://img.shields.io/badge/chat-Gitter-ff69b4.svg?style=flat-square)](https://gitter.im/jeremi360/Ren-GD)
+
+[![GitHub](https://img.shields.io/github/issues/user/repository.svg?style=flat-square)](https://github.com/jeremi360/Ren/issues)
+
 ![Logo](window_icon.png)
 
 Ren is framemork(inspired by Ren'Py) for story driven games in Godot.
@@ -12,11 +18,11 @@ It means games that are for example:
 - Click & Point Adventures (ToDo)
 - RPG(ToDo)
 
+You can use it with:
+ - GDScript
+ - VisualScript
+ - RenScript (in future)
+
 Logo is now base on Godot icon from Linux Pop icon theme.</p> Logo is Godot head with hair like anime character.
-
-[![Join the chat at https://gitter.im/jeremi360/Ren-GD](https://badges.gitter.im/jeremi360/Ren-GD.svg)](https://gitter.im/jeremi360/Ren-GD?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-
-[See project Progress/Roadmap](https://github.com/jeremi360/Ren/issues)
 
 If you want to help please check label ["help wanted"](https://github.com/jeremi360/Ren/issues?q=is%3Aissue+is%3Aopen+label%3A"help+wanted").
