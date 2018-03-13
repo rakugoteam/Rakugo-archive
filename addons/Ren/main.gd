@@ -83,18 +83,7 @@ func define_from_str(val_name, val_str, val_type):
 
 # to use with `define_from_str` func as val_type arg
 func get_type(val):
-	var type = "str"
-		
-	if typeof(val) == TYPE_BOOL:
-		type = "bool"
-	
-	elif typeof(val) == TYPE_INT:
-		type = "int"
-	
-	elif typeof(val) == TYPE_REAL:
-		type = "float"
-	
-	return type
+	return _def.get_type(val)
 
 # returns value defined using define
 func get_value(val_name):
@@ -109,6 +98,7 @@ func get_value_type(val_name):
 func character(val_name, kwargs, node = null):
 	if node == null:
 		node = _CHR.new()
+		add_child(node)
 	
 	node.set_kwargs(kwargs)
 	_def.define(values, val_name, node, "character")
@@ -162,6 +152,8 @@ func _init_statement(statement, kwargs, condition_statement = null):
 		current_statement_id += 1
 		statement.id = current_statement_id
 		statements.append(statement)
+	
+	add_child(statement)
 
 	return statement
 
