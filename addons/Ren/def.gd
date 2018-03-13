@@ -4,6 +4,20 @@
 
 extends Node
 
+func get_type(val):
+	var type = "str"
+		
+	if typeof(val) == TYPE_BOOL:
+		type = "bool"
+	
+	elif typeof(val) == TYPE_INT:
+		type = "int"
+	
+	elif typeof(val) == TYPE_REAL:
+		type = "float"
+	
+	return type
+
 func define_from_str(values, val_name, val_str, val_type):
 	if val_type == "str":
 		define(values, val_name, val_str, "text")
