@@ -1,8 +1,3 @@
-## This is Ren API ##
-## version: 0.5.0 ##
-## License MIT ##
-## Main Ren class ##
-
 extends Node
 
 var statements = []
@@ -96,9 +91,10 @@ func get_value_type(val_name):
 # crate new charater as global value that Ren will see
 # possible kwargs: name, color, what_prefix, what_suffix, kind, avatar
 func character(val_name, kwargs, node = null):
-	if node == null:
-		node = _CHR.new()
-		add_child(node)
+	# it always adds node to Ren
+#	if node == null:
+#		node = _CHR.new()
+#		add_child(node)
 	
 	node.set_kwargs(kwargs)
 	_def.define(values, val_name, node, "character")
@@ -112,48 +108,18 @@ func node_link(node, node_id = node.name):
 		_def.define(values, node_id, node, "node")
 
 func _init_statement(statement, kwargs, condition_statement = null):
-	statement.Ren = self
+	# statement.Ren = self
 	statement.set_kwargs(kwargs)
 	
 	if debug_inti:
 		statement.debug(statement.kws, "condition_statement: " + str(condition_statement) + ", ")
 		
 	if condition_statement != null:
-		current_block = condition_statement
-		statement.condition_statement = condition_statement
-		
-		if condition_statement.type == "menu":
-			current_local_statement_id = -1
-			choice_id += 1
-			statement.id = choice_id
-			condition_statement.choices.append(statement)
-		
-		elif condition_statement.type == "_if":
-			if statement.type == "_elif":
-				condition_statement.conditions.append(statement)
-				
-			elif statement.type == "_else":
-				condition_statement.el = statement
-			
-			else:
-				condition_statement.statements.append(statement)
-			
-
-		else:
-			condition_statement.statements.append(statement)
-		
-		choice_id = -1
-		current_local_statement_id += 1
-		statement.id = current_local_statement_id
+		condition_statement.add_child(statement)
 	
 	else:
-		choice_id = -1
-		current_local_statement_id = -1
-		current_statement_id += 1
-		statement.id = current_statement_id
-		statements.append(statement)
+		add_child(statement)
 	
-	add_child(statement)
 
 	return statement
 
@@ -241,7 +207,8 @@ func start():
 	current_menu = []
 	history_id = 1
 	using_passer = false
-	statements[0].enter()
+	get_child(0).enter()
+#	statements[0].enter()
 	set_meta("playing",true) # for checking if Ren is playing
 
 

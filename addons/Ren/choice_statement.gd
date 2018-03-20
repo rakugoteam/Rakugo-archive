@@ -1,11 +1,5 @@
-## This is RenAPI ##
-## version: 0.5.0 ##
-## License MIT ##
-## Choice statement class ##
-
 extends "say_statement.gd"
 
-var statements = [] # statements after this choice 
 
 func _init():
 	._init()
@@ -19,8 +13,10 @@ func enter(dbg = true):
 
 func on_enter_block(new_kwargs = {}):
 	.on_enter_block(new_kwargs)
-	if statements.size()>0:
-		statements[0].enter()
+	if get_child_count() > 0: 
+		get_child(0).enter()
+	else:
+		on_exit()
 
 func on_exit(new_kwargs = {}):
-	condition_statement.on_exit(new_kwargs)
+	get_parent().on_exit(new_kwargs)

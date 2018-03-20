@@ -1,11 +1,5 @@
-## This is Ren API ##
-## version: 0.5.0 ##
-## License MIT ##
-## else statement class ##
-
 extends "statement.gd"
 
-var statements = []
 
 func _init():
 	type = "_else"
@@ -13,15 +7,14 @@ func _init():
 func enter(dbg = true): 
 	if dbg:
 		print(debug(kws))
-	
-	Ren.current_statement_id = id
+
 	Ren.current_block = self
 
 	on_enter_block({})
 
 func debug(kws = [], some_custom_text = ""):
-	if condition_statement != null:
-		return .debug(kws, some_custom_text + "not ( " + condition_statement.condition + ")")
+	if get_parent() != null:
+		return .debug(kws, some_custom_text + "not ( " + get_parent().condition + ")")
 
 
 

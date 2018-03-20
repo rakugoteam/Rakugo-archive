@@ -1,8 +1,3 @@
-# This is Ren API ##
-## version: 0.5.0 ##
-## License MIT ##
-## Jump statement class ##
-
 extends "statement.gd"
 
 func _init():
@@ -14,17 +9,14 @@ func enter(dbg = true):
 	if dbg:
 		print(debug(kws))
 	
-	# todo jump to dialog if in kwagrs
 	if "statement_id" in kwargs:
 		if "block" in kwargs:
-			kwargs.block[kwargs.statement_id].enter()
-			# todo elif for types: "if", "elif", "else"
+			kwargs.block.get_child(kwargs.statement_id).enter()
 	
 		else:
-			Ren.statements[kwargs.statement_id].enter()
+			Ren.get_child(kwargs.statement_id).enter()
 
 func debug(kws = [], some_custom_text = ""):
-	var dbg = str(id) + ":" + type + "(" + some_custom_text
-	# dbg += ", block: " + var2str(kwargs.block)
+	var dbg = str(get_index()) + ":" + type + "(" + some_custom_text
 	dbg += ", statement_id: " + str(kwargs.statement_id) + ")"
 	print(dbg)
