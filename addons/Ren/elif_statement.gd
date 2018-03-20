@@ -1,11 +1,5 @@
-## This is Ren API ##
-## version: 0.5.0 ##
-## License MIT ##
-## elif statement class ##
-
 extends "statement.gd"
 
-var statements = []
 var condition = ""
 var is_true
 
@@ -17,7 +11,6 @@ func enter(dbg = true):
 	if dbg:
 		print(debug(kws))
 	
-	Ren.current_statement_id = id
 	Ren.current_block = self
 
 	on_enter_block({})

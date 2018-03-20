@@ -1,14 +1,6 @@
-## This is Ren API ##
-## version: 0.5.0 ##
-## License MIT ##
-## if statement class ##
-
 extends "statement.gd"
 
-var statements = []
 var condition = ""
-var conditions = []
-var el = null
 var is_true
 
 func _init(_condition = ""):
@@ -19,7 +11,6 @@ func enter(dbg = true):
 	if dbg:
 		print(debug(kws))
 	
-	Ren.current_statement_id = id
 	Ren.current_block = self
 
 	return on_enter_block({})
@@ -32,22 +23,25 @@ func on_enter_block(new_kwargs = {}):
 		is_true = Ren.godot.exec(condition)
 	
 	if is_true:
-		statements[0].enter()
+		get_child(0).enter()
 		return
 	
-	elif conditions.size() > 0:
-		for c in conditions:
-			if c.is_true == null:
-				c.is_true = Ren.godot.exec(c.condition)
+	for c in get_children():
+		if not(c.type in ["_if", "_elif"]):
+			continue
+			
+		if c.is_true == null:
+			c.is_true = Ren.godot.exec(c.condition)
 
-			if c.is_true:
-				c.debug()
-				c.statements[0].enter()
-				return
+		if c.is_true:
+			c.debug()
+			c.get_child(0).enter()
+			return
 	
-	elif el != null:
+	if get_children().back().type == "_else":
+		var el = get_children().back()
 		el.debug()
-		el.statements[0].enter()
+		el.get_child(0).enter()
 
 func debug(kws = [], some_custom_text = ""):
 	return .debug(kws, some_custom_text + condition)
