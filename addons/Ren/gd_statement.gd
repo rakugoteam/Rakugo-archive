@@ -1,8 +1,3 @@
-## This is Ren API ##
-## version: 0.5.0 ##
-## License MIT ##
-## g statement class ##
-
 extends "statement.gd"
 
 var code = ""
@@ -17,23 +12,22 @@ func enter(dbg = true):
 	if dbg:
 		print(debug(kws))
 	
-	Ren.current_statement_id = id
 	on_enter_block()
 
 func on_enter_block(new_kwargs = {}):
 	if new_kwargs != {}:
 		set_kwargs(new_kwargs)
 	
-	if changed_values.is_empty():
+	if changed_values.empty():
 		var prev_values = Ren.values
 		Ren.godot.exec(code, code_type)
 
 		for i in range(Ren.values.size()):
 			if i > prev_values.size():
-				changed_values.append(Ren.values[i])
+				changed_values.append(Ren.values.values()[i])
 
-			elif Ren.values[i] != prev_values[i]:
-				changed_values.append(Ren.values[i])
+			elif Ren.values.values()[i] != prev_values.values()[i]:
+				changed_values.append(Ren.valuesvalues()[i])
 	
 	else:
 		for v in changed_values:

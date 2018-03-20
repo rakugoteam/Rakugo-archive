@@ -1,8 +1,3 @@
-## This is Ren API ##
-## version: 0.5.0 ##
-## License MIT ##
-## Ren GDScript passer class ##
-
 extends Node
 
 func gds_rex(code, before_value, after_value, values):

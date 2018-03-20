@@ -1,8 +1,3 @@
-## This is Ren API ##
-## version: 0.5.0 ##
-## License MIT ##
-## Ren <-> Godot code connection class ##
-
 extends Node
 
 var Ren
@@ -12,12 +7,11 @@ var n = null
 var gdscript = null
 
 ## execute gdscript code with Ren tricks
-## possible types: "code", "retrun", "code_block"
-func exec(code, type = "retrun"):
+## possible types: "code", "return", "code_block"
+func exec(code, type = "return"):
 	code = gds.gds_passer(code, Ren.values)
 
 	var script = "extends Node\n"
-	script += "onready var Ren = get_node('/root/Window')\n"
 	script += "func exec():\n"
 
 	if type == "return":
