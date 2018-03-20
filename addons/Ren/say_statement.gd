@@ -28,10 +28,10 @@ func enter(dbg = true):
 					kwargs.what = how.parse_what(kwargs.what)
 	
 	if "how" in kwargs:
-		kwargs.how = text_passer(kwargs.how)
+		kwargs.how = Ren.text_passer(kwargs.how)
 	
 	if "what" in kwargs:
-		kwargs.what = text_passer(kwargs.what)
+		kwargs.what = Ren.text_passer(kwargs.what)
 	
 	.enter(false)
 

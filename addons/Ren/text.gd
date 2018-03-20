@@ -1,7 +1,3 @@
-## This is Ren API ##
-## version: 0.5.0 ##
-## License MIT ##
-
 extends Object
 
 func text_passer(text, values):

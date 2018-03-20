@@ -1,8 +1,3 @@
-## This is Ren API ##
-## version: 0.5.0 ##
-## License MIT ##
-## ren_input statement class ##
-
 extends "say_statement.gd"
 
 func _init():
@@ -14,7 +9,7 @@ func enter(dbg = true):
 		print(debug(kws))
 	
 	if "value" in kwargs:
-		kwargs.value = text_passer(kwargs.value)
+		kwargs.value = Ren.text_passer(kwargs.value)
 	
 	.enter(false)
 

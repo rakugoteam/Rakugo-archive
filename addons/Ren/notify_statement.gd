@@ -14,7 +14,7 @@ func enter(dbg = true):
 		print(debug(kws))
 	
 	if "info" in kwargs:
-		kwargs.info = text_passer(kwargs.info)
+		kwargs.info = Ren.text_passer(kwargs.info)
 	
 	.enter(false)
 	.on_exit({})

@@ -1,8 +1,3 @@
-## This is Ren API ##
-## version: 0.5.0 ##
-## License MIT ##
-## Ren Node ##
-
 extends Node
 
 export(String) var node_id = ""

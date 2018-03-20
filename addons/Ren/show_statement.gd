@@ -1,9 +1,5 @@
-## This is Ren API ##
-## version: 0.5.0 ##
-## License MIT ##
-## Show Node statement class ##
-
 extends "statement.gd"
+
 var _node_id
 var _state = []
 

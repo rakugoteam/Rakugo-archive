@@ -1,8 +1,3 @@
-## This is Ren API ##
-## version: 0.5.0 ##
-## License MIT ##
-## Character Class ##
-
 extends "ren_node.gd"
 
 var kwargs = {"name":"", "what_prefix":"", "what_suffix":"", "color":"white"}
@@ -25,7 +20,7 @@ func set_character_id(value):
 		Ren.values.erase(node_id)
 	
 	node_id = value
-	Ren.character(value, kwargs)
+	Ren.character(value, kwargs, self)
 
 func get_character_id():
 	return node_id

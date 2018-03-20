@@ -1,7 +1,3 @@
-## This is Ren API ##
-## version: 0.5.0 ##
-## License MIT ##
-
 extends Node
 
 func get_type(val):
