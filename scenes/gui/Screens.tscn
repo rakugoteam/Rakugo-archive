@@ -371,6 +371,8 @@ rect_clip_content = false
 
 [node name="TestNodes" type="HBoxContainer" parent="." index="4"]
 
+editor/display_folded = true
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -696,8 +698,6 @@ __meta__ = {
 }
 val_name = "test_bool"
 default = false
-
-[connection signal="visibility_changed" from="." to="." method="_on_Screens_visibility_changed"]
 
 [connection signal="pressed" from="Navigation/VBoxContainer/Start" to="." method="_on_Start_pressed"]
 

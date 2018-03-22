@@ -4,7 +4,7 @@ onready var in_game_gui = get_node("/root/Window/InGameGUI")
 
 
 func _ready():
-	pass
+	connect("visibility_changed", self, "_on_Screens_visibility_changed")
 	
 	
 func save_menu(screenshot):
