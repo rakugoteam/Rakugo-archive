@@ -15,9 +15,9 @@ It means games that are for example:
 - RPG(ToDo)
 
 You can use it with:
- - GDScript
- - VisualScript
- - RenScript (in future)
+ - GDScript (WIP)
+ - VisualScript (WIP)
+ - RenScript (ToDo)
 
 Logo is base on Godot icon from Linux Pop icon theme.
 </p> Logo is Godot head with hair like anime character.
