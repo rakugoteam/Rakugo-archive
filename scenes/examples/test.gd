@@ -14,8 +14,8 @@ func _ready():
 	
 	Ren.define("player_name")
 	
-#	Ren.define("is_working", true)
-#	Ren.define("is_elif", false)
+#	Ren.define("is_working", false)
+#	Ren.define("is_elif", true)
 #	var first_case = Ren.if_statement("is_working")
 #	Ren.say({"what":"if_statement work!"}, first_case)
 #	var first_case_elif = Ren.elif_statement("is_elif", first_case)

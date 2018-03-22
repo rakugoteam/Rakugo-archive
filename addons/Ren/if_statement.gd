@@ -36,7 +36,7 @@ func on_enter_block(new_kwargs = {}):
 		if c.is_true:
 			c.debug()
 			c.get_child(0).enter()
-			return
+			break # return for some reason don't work
 	
 	if get_children().back().type == "_else":
 		var el = get_children().back()

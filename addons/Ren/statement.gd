@@ -41,13 +41,12 @@ func on_exit(new_kwargs = {}):
 	var next_sid = find_next()
 	if next_sid > -1:
 		enter_next(next_sid)
-		return
 		
-	else:
-		if get_parent() != Ren:
-			get_parent().on_exit(new_kwargs)
+	elif get_parent().has_method("on_exit"):
+		get_parent().on_exit(new_kwargs)
 	
-	print("End of Label")
+	else:
+		print("End of Label")
 
 func enter_next(next_sid):
 	get_parent().get_child(next_sid).enter()
