@@ -3,7 +3,7 @@ extends EditorPlugin
 
 
 func _enter_tree():
-	## icons should be change
+	## icons/icons should be change
 	
 	## add RenMain as singleton in ProjectSettings
 	#print(ProjectSettings.)
@@ -13,21 +13,21 @@ func _enter_tree():
 		"Screen",
 		"Control",
 		preload("ren_node.gd"),
-		preload("icon.svg")
+		preload("icons/icon.svg")
 		)
 	
 	add_custom_type(
 		"RenNode2D",
 		"Node2D",
 		preload("ren_node.gd"),
-		preload("icon.svg")
+		preload("icons/icon.svg")
 		)
 	
 	add_custom_type(
 		"RenVisualInstance",
 		"VisualInstance",
 		preload("ren_node.gd"),
-		preload("icon.svg")
+		preload("icons/icon.svg")
 		)
 	
 	## RenCharacter nodes:
@@ -35,21 +35,21 @@ func _enter_tree():
 		"Character",
 		"Node",
 		preload("character.gd"),
-		preload("icon.svg")
+		preload("icons/icon.svg")
 		)
 	
 	add_custom_type(
 		"Character2D",
 		"Node2D",
 		preload("character.gd"),
-		preload("icon.svg")
+		preload("icons/icon.svg")
 		)
 	
 	add_custom_type(
 		"Character3D",
 		"VisualInstance",
 		preload("character.gd"),
-		preload("icon.svg")
+		preload("icons/icon.svg")
 		)
 	
 	## RenControl nodes:
@@ -64,91 +64,91 @@ func _enter_tree():
 		"RenSayPanel",
 		"Panel",
 		preload("ren_say_panel.gd"),
-		preload("ren_panel.svg")
+		preload("icons/ren_panel.svg")
 		)
 	
 	add_custom_type(
 		"RenMenu",
 		"VBoxContainer",
 		preload("ren_menu.gd"),
-		preload("ren_menu.svg")
+		preload("icons/ren_menu.svg")
 		)
 	
 	add_custom_type(
 		"RenChoiceButton",
 		"Button",
 		preload("ren_choice_button.gd"),
-		preload("ren_choice_button.svg")
+		preload("icons/ren_choice_button.svg")
 		)
 	
 	add_custom_type(
 		"RenButton",
 		"Button",
 		preload("ren_button.gd"),
-		preload("ren_button.svg")
+		preload("icons/ren_button.svg")
 		)
 	
 	add_custom_type(
 		"RenTextLabel",
 		"RichTextLabel",
 		preload("ren_label.gd"),
-		preload("ren_text_label.svg")
+		preload("icons/ren_text_label.svg")
 		)
 	
 	add_custom_type(
 		"RenValLabel",
 		"Label",
 		preload("ren_val_label.gd"),
-		preload("ren_val_label.svg")
+		preload("icons/ren_val_label.svg")
 		)
 	
 	add_custom_type(
 		"RenValEdit",
 		"LineEdit",
 		preload("ren_val_edit.gd"),
-		preload("ren_val_edit.svg")
+		preload("icons/ren_val_edit.svg")
 		)
 	
 	add_custom_type(
 		"RenValHSlider",
 		"HSlider",
 		preload("ren_val_slider.gd"),
-		preload("ren_val_h_slider.svg")
+		preload("icons/ren_val_h_slider.svg")
 		)
 	
 	add_custom_type(
 		"RenValVSlider",
 		"VSlider",
 		preload("ren_val_slider.gd"),
-		preload("ren_val_v_slider.svg")
+		preload("icons/ren_val_v_slider.svg")
 		)
 	
 	add_custom_type(
 		"RenProgressBar",
 		"ProgressBar",
 		preload("ren_val_range.gd"),
-		preload("ren_progress_bar.svg")
+		preload("icons/ren_progress_bar.svg")
 		)
 	
 	add_custom_type(
 		"RenTextureProgress",
 		"TextureProgress",
 		preload("ren_val_range.gd"),
-		preload("ren_texture_progress.svg")
+		preload("icons/ren_texture_progress.svg")
 		)
 	
 	add_custom_type(
 		"RenValCheckBox",
 		"CheckBox",
 		preload("ren_val_check.gd"),
-		preload("ren_check_box.svg")
+		preload("icons/ren_check_box.svg")
 		)
 	
 	add_custom_type(
 		"RenValCheckButton",
 		"CheckButton",
 		preload("ren_val_check.gd"),
-		preload("ren_check_button.svg")
+		preload("icons/ren_check_button.svg")
 		)
 	
 	print("RenGD is Active")
