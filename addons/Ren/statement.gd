@@ -11,7 +11,7 @@ func enter(dbg = true):
 	
 	Ren.current_statement = self
 	
-	Ren.connect("exit_statement", self, "on_exit")
+	# Ren.connect("exit_statement", self, "on_exit")
 	# Ren.connect("enter_block", self, "on_enter_block")
 	Ren.emit_signal("enter_statement", get_index(), type, kwargs)
 	
