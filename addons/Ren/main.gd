@@ -1,13 +1,13 @@
 extends Node
 
-var statements = []
 var history = []
+var statements = []
 # Visual save/load
 var history_vis=[]
 var mainscriptnode
 var vis_loading=false
 var load_counter=0
-var vnl=[]
+var vnl = []
 # 
 var history_id = 0
 var rolling_back = false
@@ -22,6 +22,7 @@ var values = {
 	"test_bool":{"type":"var", "value":false},
 	"test_float":{"type":"var", "value":10}
 	}
+
 var using_passer = false
 export(bool) var debug_inti = true
 
@@ -58,7 +59,6 @@ signal val_changed(val_name)
 
 func _ready():
 	godot = _GD.new()
-	godot.Ren = self
 	ren_text = _TXT.new()
 
 func text_passer(text):
@@ -66,30 +66,30 @@ func text_passer(text):
 		ren_text = _TXT.new()
 	return ren_text.text_passer(text, values)
 
-# add/overwrite global value that Ren will see
+## add/overwrite global value that Ren will see
 func define(val_name, value = null):
 	_def.define(values, val_name, value)
 	emit_signal("val_changed", val_name)
 
-# add/overwrite global value, from string, that Ren will see
+## add/overwrite global value, from string, that Ren will see
 func define_from_str(val_name, val_str, val_type):
 	_def.define_from_str(values, val_name, val_str, val_type)
 	emit_signal("val_changed", val_name)
 
-# to use with `define_from_str` func as val_type arg
+## to use with `define_from_str` func as val_type arg
 func get_type(val):
 	return _def.get_type(val)
 
-# returns value defined using define
+## returns value defined using define
 func get_value(val_name):
 	return values[val_name].value
 
-# returns type of value defined using define
+## returns type of value defined using define
 func get_value_type(val_name):
 	return values[val_name].type
 	
-# crate new charater as global value that Ren will see
-# possible kwargs: name, color, what_prefix, what_suffix, kind, avatar
+## create new charater as global value that Ren will see
+## possible kwargs: name, color, what_prefix, what_suffix, kind, avatar
 func character(val_name, kwargs, node = null):
 	# it always adds node to Ren
 #	if node == null:
@@ -108,7 +108,6 @@ func node_link(node, node_id = node.name):
 		_def.define(values, node_id, node, "node")
 
 func _init_statement(statement, kwargs, condition_statement = null):
-	# statement.Ren = self
 	statement.set_kwargs(kwargs)
 	
 	if debug_inti:
@@ -123,38 +122,56 @@ func _init_statement(statement, kwargs, condition_statement = null):
 
 	return statement
 
+func make_statement(statement, kwargs, enter):
+	statement.set_kwargs(kwargs)
+	add_child(statement)
+	
+	if enter:
+		statement.enter()
+	
+	return statement
+
 ## create statement of type say
-## its make given character(how) talk (what)
-## with keywords : how, what
-func say(kwargs, condition_statement = null):
-	if not ("how" in kwargs):
-		kwargs["how"] = ""
-	return _init_statement(_SAY.new(), kwargs, condition_statement)
+## its make given character(who) talk (what)
+## with keywords : who, what
+func say(kwargs, enter = true):
+# func say(kwargs, condition_statement = null):
+	if not ("who" in kwargs):
+		kwargs["who"] = ""
+	
+	return make_statement(_SAY.new(), kwargs, enter)
+	# return _init_statement(_SAY.new(), kwargs, condition_statement)
 
 ## crate statement of type input
 ## its allow player to provide keybord input that will be assain to given value
-## with keywords : how, what, input_value, value
-func input(kwargs, condition_statement = null):
-	if not ("how" in kwargs):
-		kwargs["how"] = ""
-	return _init_statement(_INP.new(), kwargs, condition_statement)
+## with keywords : who, what, input_value, value
+func input(kwargs, enter = true):
+# func input(kwargs, condition_statement = null):
+	if not ("who" in kwargs):
+		kwargs["who"] = ""
+
+	return make_statement(_INP.new(), kwargs, enter)
+	# return _init_statement(_INP.new(), kwargs, condition_statement)
 
 ## crate statement of type menu
 ## its allow player to make choice
-## with keywords : how, what, title
-func menu(kwargs, condition_statement = null):
+## with keywords : who, what, title
+func menu(kwargs, enter = false):
+# func menu(kwargs, condition_statement = null):
 	var title = null
 	if "title" in kwargs:
 		title = kwargs.title
 		kwargs.erase("title")
 
-	return _init_statement(_MENU.new(title), kwargs, condition_statement)
+	return make_statement(_MENU.new(title), kwargs, enter)
+	# return _init_statement(_MENU.new(title), kwargs, condition_statement)
 
 ## crate statement of type choice
 ## its add this choice to menu
-## with keywords : how, what
+## with keywords : who, what
 func choice(kwargs, menu):
-	return _init_statement(_CHO.new(), kwargs, menu)
+	return _init_statement(
+		_CHO.new(), kwargs, menu)
 
 ## create statement of type jump
 ## with keywords : dialog, statement_id
@@ -187,28 +204,36 @@ func gd_block(code_block, condition_statement = null):
 ## with keywords : x, y, z, at, pos, camera
 ## x, y and pos will use it as procent of screen if between 0 and 1
 ## "at" is lists that can have: "top", "center", "bottom", "right", "left"
-func show(node_id, state, kwargs, condition_statement = null):
+func show(node_id, state, kwargs, enter = true):
+# func show(node_id, state, kwargs, condition_statement = null):
 	if not ("at" in kwargs):
 		kwargs["at"] = ["center", "bottom"]
-	return _init_statement(_SH.new(node_id, state), kwargs, condition_statement)
+	
+	return make_statement(_SH.new(node_id, state), kwargs, enter)
+	# return _init_statement(_SH.new(node_id, state), kwargs, condition_statement)
 
 ## create statement of type hide
-func hide(node_id, condition_statement = null):
-	return _init_statement(_HI.new(node_id), {}, condition_statement)
+func hide(node_id, enter = true):
+# func hide(node_id, condition_statement = null):
+	return make_statement(_HI.new(node_id), {}, enter)
+	# return _init_statement(_HI.new(node_id), {}, condition_statement)
 
 ## create statement of type notify
-func notifiy(info,length=5, conition_statement = null):
-	return _init_statement(_NO.new(), {"info": info,"length":length}, conition_statement)
+func notifiy(info, length = 5, enter = true):
+# func notifiy(info, length = 5, conition_statement = null):
+	return make_statement(_NO.new(), {"info": info,"length":length}, enter)
+	# return _init_statement(_NO.new(), {"info": info,"length":length}, conition_statement)
 
 
 ## it starts current Ren dialog
-func start():
-	current_block = []
+# func start():
+## init Ren process
+func init():
+	# current_block = []
 	current_menu = []
 	history_id = 1
 	using_passer = false
-	get_child(0).enter()
-#	statements[0].enter()
+	# get_child(0).enter()
 	set_meta("playing",true) # for checking if Ren is playing
 
 
@@ -217,7 +242,7 @@ func rollback():
 	if has_meta("usingvis"):
 		set_meta("go_back",true)
 
-		if statements[statements.size()-1].type=="menu":
+		if get_children().back().type=="menu":
 			emit_signal("enter_block")
 		else:
 			emit_signal("exit_statement")

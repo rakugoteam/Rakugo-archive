@@ -39,5 +39,6 @@ func _on_Start_pressed():
 	hide()
 	$Navigation/VBoxContainer/Start.hide()
 	$Navigation/Return.show()
-	Ren.start()
+	# Ren.start()
+	Ren.init()
 	

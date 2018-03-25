@@ -59,7 +59,7 @@ func _step(  inputs,  outputs,  start_mode, working_mem ):
 		
 	#LOADING
 	if Ren.vis_loading:
-		Ren.say({"how":inputs[0],"what":inputs[1]})
+		Ren.say({"who":inputs[0],"what":inputs[1]})
 		if Ren.history_vis.size()>Ren.load_counter:
 			if Ren.history_vis[Ren.load_counter]==-1:
 				Ren.load_counter+=1
@@ -71,7 +71,7 @@ func _step(  inputs,  outputs,  start_mode, working_mem ):
 				else:
 					return Ren.history_vis[Ren.load_counter-1]
 		
-	var s={"how":inputs[0],"what":inputs[1]}
+	var s={"who":inputs[0],"what":inputs[1]}
 	var kwargs=[]
 	#var Ren = Engine.get_main_loop().root.get_node("Ren")
 	if !Ren.has_meta("usingvis"):

@@ -38,7 +38,7 @@ func _input(event):
 			Ren.history_id -= 1
 
 		if typing: #if typing complete it
-			typing=false
+			typing = false
 		else:      #else exit statement
 			Ren.emit_signal("exit_statement", {})
 
@@ -49,9 +49,9 @@ func _on_statement(id, type, kwargs):
 	if not _type in ["say", "input", "menu"]:
 		return
 
-	if "how" in kwargs:
+	if "who" in kwargs:
 		if NameLabel.has_method("set_bbcode"):
-			NameLabel.bbcode_text = kwargs.how
+			NameLabel.bbcode_text = kwargs.who
 
 	if "what" in kwargs:
 		if kwargs.has("speed"):

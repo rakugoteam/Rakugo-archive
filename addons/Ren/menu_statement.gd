@@ -1,9 +1,20 @@
 extends "say_statement.gd"
 
-var title
+var title = ""
 var choices_labels = []
+var choices = []
+var final_choice = -1
 
-func _init(_title = null):
+func _get_final_choice():
+	if "final_choice" in kwargs:
+		return kwargs.final_choice
+	
+	return -1
+
+func add_choice(choice = {"who":"", "what":"some choice"}):
+	choices.append(choice)
+
+func _init(_title = ""):
 	._init()
 	title = _title
 	type = "menu"
@@ -13,13 +24,17 @@ func enter(dbg = true):
 		print(debug(kws))
 	
 	choices_labels = []
-	for ch in get_children():
-		var l = Ren.text_passer(ch.kwargs.what)
-		choices_labels.append(l)
+	# for ch in get_children():
+	# 	var l = Ren.text_passer(ch.kwargs.what)
+	# 	choices_labels.append(l)
+	for ch in choices:
+		if "what" in ch:
+			var l = Ren.text_passer(ch.what)
+			choices_labels.append(l)
 	
 	Ren.current_menu = self
 	
-	.enter(false)
+	return .enter(false)
 
 func on_enter_block(new_kwargs = {}):
 	if new_kwargs != {}:

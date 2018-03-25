@@ -12,8 +12,12 @@ func enter(dbg = true):
 	Ren.current_statement = self
 	
 	Ren.connect("exit_statement", self, "on_exit")
-	Ren.connect("enter_block", self, "on_enter_block")
+	# Ren.connect("enter_block", self, "on_enter_block")
 	Ren.emit_signal("enter_statement", get_index(), type, kwargs)
+	
+	var new_kwargs = yield(Ren, "exit_statement")
+	on_exit(new_kwargs)
+
 
 func set_kwargs(new_kwargs):
 	# update statement
@@ -38,15 +42,15 @@ func on_exit(new_kwargs = {}):
 	if Ren.is_connected("exit_statement", self, "on_exit"):
 		Ren.disconnect("exit_statement", self, "on_exit")
 
-	var next_sid = find_next()
-	if next_sid > -1:
-		enter_next(next_sid)
+	# var next_sid = find_next()
+	# if next_sid > -1:
+	# 	enter_next(next_sid)
 		
-	elif get_parent().has_method("on_exit"):
-		get_parent().on_exit(new_kwargs)
+	# elif get_parent().has_method("on_exit"):
+	# 	get_parent().on_exit(new_kwargs)
 	
-	else:
-		print("End of Label")
+	# else:
+	# 	print("End of Label")
 
 func enter_next(next_sid):
 	get_parent().get_child(next_sid).enter()
