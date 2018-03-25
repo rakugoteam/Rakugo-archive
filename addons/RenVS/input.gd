@@ -52,7 +52,7 @@ func _step(inputs, outputs, start_mode, working_mem):
 		Ren.vnl.append(self.get_instance_id())
 	#LOADING
 	if Ren.vis_loading:
-		Ren.input({"who":inputs[0],"what":inputs[1],"input_value":inputs[2],"value":inputs[3]})
+		Ren.input({"how":inputs[0],"what":inputs[1],"input_value":inputs[2],"value":inputs[3]})
 		if Ren.history_vis.size()>Ren.load_counter:
 			if Ren.history_vis[Ren.load_counter]==-1:
 				Ren.load_counter+=1
@@ -68,7 +68,7 @@ func _step(inputs, outputs, start_mode, working_mem):
 	var kwargs=[]
 	#var Ren = Engine.get_main_loop().root.get_node("Ren")
 	#Ren.define(inputs[2])
-	var s={"who":inputs[0],"what":inputs[1],"input_value":inputs[2],"value":inputs[3]}
+	var s={"how":inputs[0],"what":inputs[1],"input_value":inputs[2],"value":inputs[3]}
 	if start_mode==START_MODE_BEGIN_SEQUENCE or start_mode==START_MODE_CONTINUE_SEQUENCE:
 		Ren.input(s)
 		if !Ren.get_meta("playing"):

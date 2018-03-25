@@ -1,5 +1,6 @@
 extends Node
 
+var Ren
 const _GDS = preload("gds_passer.gd")
 var gds = _GDS.new()
 var n = null
