@@ -1,9 +1,4 @@
-## This is in-game gui example for Ren API ##
-## version: 0.5.0 ##
-## License MIT ##
-
 extends HBoxContainer
-
 
 func _ready():
 	Ren.connect("enter_statement", self, "_on_statement")

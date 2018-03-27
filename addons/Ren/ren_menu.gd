@@ -1,6 +1,3 @@
-## This is in-game gui example for Ren API ##
-## version: 0.5.0 ##
-## License MIT ##
 extends VBoxContainer
 
 export(PackedScene) var ChoiceButton

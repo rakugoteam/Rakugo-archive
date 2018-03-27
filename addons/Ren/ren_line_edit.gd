@@ -1,7 +1,3 @@
-## This is in-game gui example for Ren API ##
-## version: 0.5.0 ##
-## License MIT ##
-
 extends LineEdit
 
 onready var rtl = RichTextLabel.new()
