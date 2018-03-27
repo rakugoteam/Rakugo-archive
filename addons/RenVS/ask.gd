@@ -59,7 +59,7 @@ func _step(inputs, outputs, start_mode, working_mem):
 	#LODING
 	if Ren.vis_loading:
 		if Ren.history_vis.size()>Ren.load_counter:
-			var m=Ren.menu({"how":inputs[0],"what":inputs[1]})
+			var m=Ren.menu({"who":inputs[0],"what":inputs[1]})
 			if Ren.history_vis[Ren.load_counter]==-1:
 				Ren.load_counter+=1
 				return 0 | STEP_GO_BACK_BIT
@@ -77,10 +77,10 @@ func _step(inputs, outputs, start_mode, working_mem):
 	if start_mode==START_MODE_CONTINUE_SEQUENCE and Ren.get_meta("go_back")==false:
 		return 0 
 	if start_mode==START_MODE_BEGIN_SEQUENCE or start_mode==START_MODE_CONTINUE_SEQUENCE:
-		var m=Ren.menu({"how":inputs[0],"what":inputs[1]})
+		var m=Ren.menu({"who":inputs[0],"what":inputs[1]})
 		for x in range(choices):
 			var c=Ren.choice({"what":inputs[x+2]},m)
-			#Ren.say({"how":inputs[0],"what":""},c)
+			#Ren.say({"who":inputs[0],"what":""},c)
 		if !Ren.get_meta("playing"):
 			Ren.start()
 		else:

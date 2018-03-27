@@ -38,7 +38,7 @@ func _ready():
 	Ren.show("rench", [], {"at":["center"]})
 	
 	Ren.input({
-				"how": 
+				"who": 
 					"rench",
 				"what":
 					"Hi! I'm Ren. What is your name?",
@@ -49,7 +49,7 @@ func _ready():
 				})
 				
 	Ren.say({
-				"how": 
+				"who": 
 					"rench",
 				"what":
 					"Welcome [player_name] in Ren Framework Version [version]",
@@ -58,14 +58,14 @@ func _ready():
 				})
 	Ren.hide("rench")
 	Ren.say({
-			"how": 
+			"who": 
 				"rench",
 			"what":
 				"extra stamement to check skipping/auto",
 			})
 
 	var menu01 = Ren.menu({
-				"how":
+				"who":
 					"rench",
 				"what":
 					"What want to do?"
@@ -73,7 +73,7 @@ func _ready():
 
 	var choice_vn = Ren.choice({"what": "Play Visual Novel example"}, menu01)
 	Ren.say({
-				"how":
+				"who":
 					"rench",
 				"what":
 					"Visual Novel example is not ready yet"
@@ -82,7 +82,7 @@ func _ready():
 				
 	var choice_adv = Ren.choice({"what": "Play Click'n'Point Adventure example"}, menu01)
 	Ren.say({
-			"how":
+			"who":
 				"rench",
 			"what":
 				"Click'n'Point Adventure example is not ready yet"
@@ -91,7 +91,7 @@ func _ready():
 
 	var choice_rpg = Ren.choice({"what": "Play RPG example"}, menu01)
 	Ren.say({
-				"how":
+				"who":
 					"rench",
 				"what":
 					"RPG example is not ready yet"
@@ -100,7 +100,7 @@ func _ready():
 
 	var choice_aq = Ren.choice({"what": "Ask some questions about Ren"}, menu01)
 	Ren.say({
-				"how":
+				"who":
 					"rench",
 				"what":
 					"Docs are not ready yet"
@@ -109,7 +109,7 @@ func _ready():
 	Ren.notifiy("You make your first choice!",3)
 	
 	Ren.say({
-			"how": 
+			"who": 
 				"rench",
 			"what":
 				"extra stamement to check skipping/auto",

@@ -124,24 +124,24 @@ func _init_statement(statement, kwargs, condition_statement = null):
 	return statement
 
 ## create statement of type say
-## its make given character(how) talk (what)
-## with keywords : how, what
+## its make given character(who) talk (what)
+## with keywords : who, what
 func say(kwargs, condition_statement = null):
-	if not ("how" in kwargs):
-		kwargs["how"] = ""
+	if not ("who" in kwargs):
+		kwargs["who"] = ""
 	return _init_statement(_SAY.new(), kwargs, condition_statement)
 
 ## crate statement of type input
 ## its allow player to provide keybord input that will be assain to given value
-## with keywords : how, what, input_value, value
+## with keywords : who, what, input_value, value
 func input(kwargs, condition_statement = null):
-	if not ("how" in kwargs):
-		kwargs["how"] = ""
+	if not ("who" in kwargs):
+		kwargs["who"] = ""
 	return _init_statement(_INP.new(), kwargs, condition_statement)
 
 ## crate statement of type menu
 ## its allow player to make choice
-## with keywords : how, what, title
+## with keywords : who, what, title
 func menu(kwargs, condition_statement = null):
 	var title = null
 	if "title" in kwargs:
@@ -152,7 +152,7 @@ func menu(kwargs, condition_statement = null):
 
 ## crate statement of type choice
 ## its add this choice to menu
-## with keywords : how, what
+## with keywords : who, what
 func choice(kwargs, menu):
 	return _init_statement(_CHO.new(), kwargs, menu)
 

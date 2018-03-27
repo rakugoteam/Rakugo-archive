@@ -9,26 +9,26 @@ var auto_enter = ["show", "hide", "notify"]
 
 func _init():
 	type = "say"
-	kws = ["how", "what"]
+	kws = ["who", "what"]
 
 func enter(dbg = true):
 	if dbg:
 		print(debug(kws))
 	
-	if "how" in kwargs:
-		if kwargs.how in Ren.values:
-			if Ren.values[kwargs.how].type == "character":
-				var how = Ren.values[kwargs.how].value
-				kwargs.how = how.parse_character()
+	if "who" in kwargs:
+		if kwargs.who in Ren.values:
+			if Ren.values[kwargs.who].type == "character":
+				var who = Ren.values[kwargs.who].value
+				kwargs.who = who.parse_character()
 				
-				if "avatar" in Ren.values[org_kwargs.how].value.kwargs:
-					kwargs["avatar"] = Ren.values[org_kwargs.how].value.kwargs.avatar
+				if "avatar" in Ren.values[org_kwargs.who].value.kwargs:
+					kwargs["avatar"] = Ren.values[org_kwargs.who].value.kwargs.avatar
 				
 				if "what" in kwargs:
-					kwargs.what = how.parse_what(kwargs.what)
+					kwargs.what = who.parse_what(kwargs.what)
 	
-	if "how" in kwargs:
-		kwargs.how = Ren.text_passer(kwargs.how)
+	if "who" in kwargs:
+		kwargs.who = Ren.text_passer(kwargs.who)
 	
 	if "what" in kwargs:
 		kwargs.what = Ren.text_passer(kwargs.what)

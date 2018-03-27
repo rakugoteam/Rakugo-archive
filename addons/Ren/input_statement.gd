@@ -2,7 +2,7 @@ extends "say_statement.gd"
 
 func _init():
 	type = "input"
-	kws = ["how", "what", "temp", "input_value"]
+	kws = ["who", "what", "temp", "input_value"]
 
 func enter(dbg = true):
 	if dbg:
