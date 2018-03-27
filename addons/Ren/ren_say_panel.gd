@@ -60,10 +60,13 @@ func _on_statement(id, type, kwargs):
 			if avatar != null:
 				avatar.free()
 
-		if kwargs.avatar != null:
+		if kwargs.avatar != "":
 			avatar_path = kwargs.avatar
 			avatar = load(kwargs.avatar).instance()
 			CharacterAvatar.add_child(avatar)
+	
+	elif avatar != null:
+		avatar.free()
 
 	return
 

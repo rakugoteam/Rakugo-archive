@@ -1,7 +1,7 @@
 extends "ren_node.gd"
 
 var kwargs = {"name":"", "what_prefix":"", "what_suffix":"", "color":"white"}
-var kw = ["name", "color", "what_prefix", "what_suffix", "avatar"]
+var kws = ["name", "color", "what_prefix", "what_suffix", "avatar"]
 var _color
 
 export(String) var character_id = "" setget set_character_id, get_character_id
@@ -13,7 +13,7 @@ export(PackedScene) var avatar = "" setget set_avatar, get_avatar
 
 func _ready():
 	Ren.character(node_id, kwargs, self)
-	print("Add Character ", node_id, " with ", kwargs)
+	Ren.debug(kwargs, kws, "Add Character " + node_id + " with ")
 
 func set_character_id(value):
 	if node_id != value:
@@ -56,15 +56,15 @@ func set_avatar(value):
 	set_kwargs({"avatar":value.resource_path})
 
 func get_avatar():
-	if kwargs.has("prefix"):
-		return load(kwargs.prefix)
+	if kwargs.has("avatar"):
+		return kwargs.avatar
 	else:
-		return false
+		return ""
 
 func set_kwargs(new_kwargs):
 	# update character
-	for kw in new_kwargs:
-		kwargs[kw] = new_kwargs[kw]
+	for kws in new_kwargs:
+		kwargs[kws] = new_kwargs[kws]
 
 func parse_character():
 	var ncharacter = ""
