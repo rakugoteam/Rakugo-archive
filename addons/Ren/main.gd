@@ -315,5 +315,17 @@ func can_skip():
 				return true
 			
 	return false
+
+func debug(kwargs, kws = [], some_custom_text = ""):
+	var dbg = ""
 	
+	for k in kws:
+		if k in kwargs:
+			if (k != null) or (k != ""):
+				dbg += k + " : " + str(kwargs[k]) + ", "
 	
+	if kws.size() > 0:
+		dbg.erase(dbg.length() - 2, 2)
+
+	dbg = some_custom_text + dbg
+	return dbg

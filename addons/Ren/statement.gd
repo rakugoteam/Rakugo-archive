@@ -60,14 +60,6 @@ func find_next(start = get_index()):
 	return next_sid
 
 func debug(kws = [], some_custom_text = ""):
-	var dbg = ""
-	
-	for k in kws:
-		if k in kwargs:
-			dbg += k + " : " + str(kwargs[k]) + ", "
-	
-	if kws.size() > 0:
-		dbg.erase(dbg.length() - 2, 2)
-
-	dbg = str(get_index()) + ":" + type + "(" + some_custom_text + dbg + ")"
+	var dbg = str(get_index()) + ":" + type + "("
+	dbg += Ren.debug(kwargs, kws, some_custom_text) + ")"
 	return dbg
