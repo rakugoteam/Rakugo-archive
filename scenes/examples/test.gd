@@ -112,6 +112,6 @@ func _ready():
 			"who": 
 				"rench",
 			"what":
-				"extra stamement to check skipping/auto",
+				"End of Example",
 			})
 
