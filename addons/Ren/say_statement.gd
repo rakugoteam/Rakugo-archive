@@ -17,12 +17,12 @@ func enter(dbg = true):
 	
 	if "who" in kwargs:
 		if kwargs.who in Ren.values:
-			if Ren.values[kwargs.who].type == "character":
-				var who = Ren.values[kwargs.who].value
+			if Ren.get_value_type(kwargs.who) == "character":
+				var who = Ren.get_value(kwargs.who)
 				kwargs.who = who.parse_character()
 				
-				if "avatar" in Ren.values[org_kwargs.who].value.kwargs:
-					kwargs["avatar"] = Ren.values[org_kwargs.who].value.kwargs.avatar
+				if "avatar" in Ren.get_value(org_kwargs.who).kwargs:
+					kwargs["avatar"] = Ren.get_value(org_kwargs.who).avatar
 				
 				if "what" in kwargs:
 					kwargs.what = who.parse_what(kwargs.what)
