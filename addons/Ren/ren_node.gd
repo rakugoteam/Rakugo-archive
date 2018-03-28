@@ -5,8 +5,8 @@ export(NodePath) var camera = NodePath("")
 
 func _ready():
 	if is_visual_node():
-		Ren.connect("on_show", self, "_on_show")
-		Ren.connect("on_hide", self, "_on_hide")
+		Ren.connect("show", self, "_on_show")
+		Ren.connect("hide", self, "_on_hide")
 		
 	if node_id.empty():
 		node_id = name
