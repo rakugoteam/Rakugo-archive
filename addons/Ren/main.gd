@@ -43,9 +43,8 @@ const _NO	= preload("notify_statement.gd")
 const _GD	= preload("gd_connect.gd")
 const _TXT	= preload("text.gd")
 
-var godot
-var ren_text
-
+var godot = _GD.new()
+var ren_text = _TXT.new()
 var _def = _DEF.new()
 
 signal enter_statement(id, type, kwargs)
@@ -55,11 +54,6 @@ signal notified()
 signal on_show(node_id, state, show_args)
 signal on_hide(node_id)
 signal val_changed(val_name)
-
-func _ready():
-	godot = _GD.new()
-	godot.Ren = self
-	ren_text = _TXT.new()
 
 func text_passer(text):
 	if ren_text == null:
