@@ -36,7 +36,7 @@ func _input(event):
 		if typing: #if typing complete it
 			typing=false
 		else:      #else exit statement
-			Ren.emit_signal("exit_statement", {})
+			Ren.exit_statement()
 
 func _on_statement(id, type, kwargs):
 	set_process(false)

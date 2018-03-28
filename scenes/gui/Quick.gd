@@ -53,7 +53,7 @@ func on_auto():
 
 func on_auto_loop():
 	if Ren.current_statement.type == "say":
-		Ren.emit_signal("exit_statement", {})
+		Ren.exit_statement()
 
 	else:
 		$AutoTimer.stop()
@@ -75,7 +75,7 @@ func on_skip():
 func on_skip_loop():
 	if (Ren.current_statement.type == "say"
 		and Ren.current_statement in Ren.history):
-		Ren.emit_signal("exit_statement", {})
+		Ren.exit_statement()
 	else:
 		stop_skip()
 

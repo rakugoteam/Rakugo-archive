@@ -21,7 +21,7 @@ func _on_enter(text):
 		final_value = get_text()
 
 	set_process(false)
-	Ren.emit_signal("exit_statement", {"value":final_value})
+	Ren.exit_statement({"value":final_value})
 
 func _on_statement(id, type, kwargs):
 	_type = type

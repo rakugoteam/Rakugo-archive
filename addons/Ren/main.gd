@@ -51,9 +51,30 @@ signal enter_statement(id, type, kwargs)
 signal enter_block(kwargs)
 signal exit_statement(kwargs)
 signal notified()
-signal on_show(node_id, state, show_args)
-signal on_hide(node_id)
+signal show(node_id, state, show_args)
+signal hide(node_id)
 signal val_changed(val_name)
+
+func enter_statement(id, type, kwargs = {}):
+	emit_signal("enter_statement", id, type, kwargs)
+
+func enter_block(kwargs = {}):
+	emit_signal("enter_block", kwargs)
+
+func exit_statement(kwargs = {}):
+	emit_signal("exit_statement", kwargs)
+
+func notified():
+	emit_signal("notified")
+
+func on_show(node_id, state, show_args):
+	emit_signal("show", node_id, state, show_args)
+
+func on_hide(node):
+	emit_signal("hide", node)
+
+func val_changed(val_name):
+	emit_signal("val_changed", val_name)
 
 func text_passer(text):
 	if ren_text == null:
@@ -63,12 +84,12 @@ func text_passer(text):
 # add/overwrite global value that Ren will see
 func define(val_name, value = null):
 	_def.define(values, val_name, value)
-	emit_signal("val_changed", val_name)
+	val_changed(val_name)
 
 # add/overwrite global value, from string, that Ren will see
 func define_from_str(val_name, val_str, val_type):
 	_def.define_from_str(values, val_name, val_str, val_type)
-	emit_signal("val_changed", val_name)
+	val_changed(val_name)
 
 # to use with `define_from_str` func as val_type arg
 func get_type(val):
@@ -212,9 +233,9 @@ func rollback():
 		set_meta("go_back",true)
 
 		if statements[statements.size()-1].type=="menu":
-			emit_signal("enter_block")
+			enter_block()
 		else:
-			emit_signal("exit_statement")
+			exit_statement()
 
 		set_meta("go_back",false)
 		
@@ -297,9 +318,9 @@ func quitcurvis():
 	set_meta("quitcurrent",true)
 	print(history_vis)
 	if statements[statements.size()-1].type=="menu":
-		emit_signal("enter_block")
+		enter_statement()
 	else:
-		emit_signal("exit_statement")
+		exit_statement()
 	set_meta("quitcurrent",false)
 
 func can_skip():

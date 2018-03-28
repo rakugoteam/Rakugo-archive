@@ -11,6 +11,6 @@ func _on_statement(id, type, kwargs):
 			$Timer.wait_time=kwargs.length
 		$Timer.start()
 		show()
-		Ren.emit_signal("notified")
+		Ren.notified()
 
 

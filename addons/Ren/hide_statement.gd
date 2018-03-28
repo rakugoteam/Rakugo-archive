@@ -10,7 +10,7 @@ func enter(dbg = true):
 	if dbg:
 		print(debug(kws))
 
-	Ren.emit_signal("on_hide", _node_id)
+	Ren.on_hide(_node_id)
 
 	.enter(false)
 	on_exit()

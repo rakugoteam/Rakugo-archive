@@ -13,7 +13,7 @@ func enter(dbg = true):
 	
 	Ren.connect("exit_statement", self, "on_exit")
 	Ren.connect("enter_block", self, "on_enter_block")
-	Ren.emit_signal("enter_statement", get_index(), type, kwargs)
+	Ren.enter_statement(get_index(), type, kwargs)
 
 func set_kwargs(new_kwargs):
 	# update statement

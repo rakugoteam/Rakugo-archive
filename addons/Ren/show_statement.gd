@@ -38,7 +38,7 @@ func enter(dbg = true):
 		if "bottom" in kwargs.at:
 			kwargs.y = 1.0
 
-	Ren.emit_signal("on_show", _node_id, _state, kwargs)
+	Ren.on_show(_node_id, _state, kwargs)
 		
 	.enter(false)
 	on_exit()
