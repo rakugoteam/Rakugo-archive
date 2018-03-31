@@ -12,21 +12,21 @@ func _enter_tree():
 	add_custom_type(
 		"Screen",
 		"Control",
-		preload("ren_node.gd"),
+		preload("nodes/ren_node.gd"),
 		preload("icons/icon.svg")
 		)
 	
 	add_custom_type(
 		"RenNode2D",
 		"Node2D",
-		preload("ren_node.gd"),
+		preload("nodes/ren_node.gd"),
 		preload("icons/icon.svg")
 		)
 	
 	add_custom_type(
 		"RenVisualInstance",
 		"VisualInstance",
-		preload("ren_node.gd"),
+		preload("nodes/ren_node.gd"),
 		preload("icons/icon.svg")
 		)
 	
@@ -34,21 +34,21 @@ func _enter_tree():
 	add_custom_type(
 		"Character",
 		"Node",
-		preload("character.gd"),
+		preload("nodes/character.gd"),
 		preload("icons/icon.svg")
 		)
 	
 	add_custom_type(
 		"Character2D",
 		"Node2D",
-		preload("character.gd"),
+		preload("nodes/character.gd"),
 		preload("icons/icon.svg")
 		)
 	
 	add_custom_type(
 		"Character3D",
 		"VisualInstance",
-		preload("character.gd"),
+		preload("nodes/character.gd"),
 		preload("icons/icon.svg")
 		)
 	
@@ -56,98 +56,98 @@ func _enter_tree():
 	add_custom_type(
 		"RenLineEdit",
 		"LineEdit",
-		preload("ren_line_edit.gd"),
-		preload("ren_line_edit.svg")
+		preload("nodes/ren_line_edit.gd"),
+		preload("icons/ren_line_edit.svg")
 		)
 	
 	add_custom_type(
 		"RenSayPanel",
 		"Panel",
-		preload("ren_say_panel.gd"),
+		preload("nodes/ren_say_panel.gd"),
 		preload("icons/ren_panel.svg")
 		)
 	
 	add_custom_type(
 		"RenMenu",
 		"VBoxContainer",
-		preload("ren_menu.gd"),
+		preload("nodes/ren_menu.gd"),
 		preload("icons/ren_menu.svg")
 		)
 	
 	add_custom_type(
 		"RenChoiceButton",
 		"Button",
-		preload("ren_choice_button.gd"),
+		preload("nodes/ren_choice_button.gd"),
 		preload("icons/ren_choice_button.svg")
 		)
 	
 	add_custom_type(
 		"RenButton",
 		"Button",
-		preload("ren_button.gd"),
+		preload("nodes/ren_button.gd"),
 		preload("icons/ren_button.svg")
 		)
 	
 	add_custom_type(
 		"RenTextLabel",
 		"RichTextLabel",
-		preload("ren_label.gd"),
+		preload("nodes/ren_label.gd"),
 		preload("icons/ren_text_label.svg")
 		)
 	
 	add_custom_type(
 		"RenValLabel",
 		"Label",
-		preload("ren_val_label.gd"),
+		preload("nodes/ren_val_label.gd"),
 		preload("icons/ren_val_label.svg")
 		)
 	
 	add_custom_type(
 		"RenValEdit",
 		"LineEdit",
-		preload("ren_val_edit.gd"),
+		preload("nodes/ren_val_edit.gd"),
 		preload("icons/ren_val_edit.svg")
 		)
 	
 	add_custom_type(
 		"RenValHSlider",
 		"HSlider",
-		preload("ren_val_slider.gd"),
+		preload("nodes/ren_val_slider.gd"),
 		preload("icons/ren_val_h_slider.svg")
 		)
 	
 	add_custom_type(
 		"RenValVSlider",
 		"VSlider",
-		preload("ren_val_slider.gd"),
+		preload("nodes/ren_val_slider.gd"),
 		preload("icons/ren_val_v_slider.svg")
 		)
 	
 	add_custom_type(
 		"RenProgressBar",
 		"ProgressBar",
-		preload("ren_val_range.gd"),
+		preload("nodes/ren_val_range.gd"),
 		preload("icons/ren_progress_bar.svg")
 		)
 	
 	add_custom_type(
 		"RenTextureProgress",
 		"TextureProgress",
-		preload("ren_val_range.gd"),
+		preload("nodes/ren_val_range.gd"),
 		preload("icons/ren_texture_progress.svg")
 		)
 	
 	add_custom_type(
 		"RenValCheckBox",
 		"CheckBox",
-		preload("ren_val_check.gd"),
+		preload("nodes/ren_val_check.gd"),
 		preload("icons/ren_check_box.svg")
 		)
 	
 	add_custom_type(
 		"RenValCheckButton",
 		"CheckButton",
-		preload("ren_val_check.gd"),
+		preload("nodes/ren_val_check.gd"),
 		preload("icons/ren_check_button.svg")
 		)
 	

@@ -1,14 +1,12 @@
 extends Node
-# 
-const _GDS = preload("gds_passer.gd")
-var gds = _GDS.new()
+
 var n = null
 var gdscript = null
 
 ## execute gdscript code with Ren tricks
 ## possible types: "code", "return", "code_block"
 func exec(code, type = "return"):
-	code = gds.gds_passer(code, Ren.values)
+	code = gds_passer(code, Ren.values)
 
 	var script = "extends Node\n"
 	script += "func exec():\n"
@@ -30,7 +28,7 @@ func exec(code, type = "return"):
 		print("unsupported code")
 		return
 
-	print(script)
+	# print(script)
 	
 	n = Node.new()
 	gdscript = GDScript.new()
@@ -42,4 +40,30 @@ func exec(code, type = "return"):
 	remove_child(n)
 	return ret_val
 
+func gds_rex(code, before_value, after_value, values):
+	var replacement = "Ren.values." + before_value + ".value" + after_value
+	var rex = RegEx.new()
+	rex.compile('(^|\\s)' + before_value + after_value + '($|\\s)')
+	return rex.sub(code, replacement, true)
 
+
+func gds_passer(code, values):
+
+	if code != "":
+
+		for val_name in values.keys():
+			
+			var val_type = values[val_name].type
+
+			if val_type in ["text", "var"]:
+				code = gds_rex(code, val_name, "", values)
+				
+			elif val_type in ["dict", "character"]:
+				code = gds_rex(code, val_name, "", values)
+				code = gds_rex(code, val_name, "\\.", values)
+			
+			elif val_type == "list":
+				code = gds_rex(code, val_name, "", values)
+				code = gds_rex(code, val_name, "\\[\\d\\]", values)
+	
+	return code

@@ -1,6 +1,4 @@
 ## This is example of script using Ren Framework ##
-## version: 0.5.0 ##
-## License MIT ##
 
 extends Node
 

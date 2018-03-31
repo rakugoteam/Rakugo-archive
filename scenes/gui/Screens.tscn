@@ -1,23 +1,22 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scenes/gui/Screens.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/Labels/TitleText.tscn" type="PackedScene" id=2]
-[ext_resource path="res://addons/Ren/ren_val_label.gd" type="Script" id=3]
-[ext_resource path="res://addons/Ren/ren_val_label.svg" type="Texture" id=4]
+[ext_resource path="res://addons/Ren/nodes/ren_val_label.gd" type="Script" id=3]
+[ext_resource path="res://addons/Ren/icons/ren_val_label.svg" type="Texture" id=4]
 [ext_resource path="res://scenes/gui/QuickMenuButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/gui/SlotBox.gd" type="Script" id=6]
 [ext_resource path="res://ubuntu-font-family/Ubuntu-B.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://scenes/gui/Labels/slot.tscn" type="PackedScene" id=8]
-[ext_resource path="res://addons/Ren/ren_val_edit.gd" type="Script" id=9]
-[ext_resource path="res://addons/Ren/ren_val_edit.svg" type="Texture" id=10]
-[ext_resource path="res://addons/Ren/ren_val_slider.gd" type="Script" id=11]
-[ext_resource path="res://addons/Ren/ren_val_h_slider.svg" type="Texture" id=12]
-[ext_resource path="res://addons/Ren/ren_val_range.gd" type="Script" id=13]
-[ext_resource path="res://addons/Ren/ren_progress_bar.svg" type="Texture" id=14]
-[ext_resource path="res://addons/Ren/ren_val_v_slider.svg" type="Texture" id=15]
-[ext_resource path="res://addons/Ren/ren_val_check.gd" type="Script" id=16]
-[ext_resource path="res://addons/Ren/ren_check_button.svg" type="Texture" id=17]
-[ext_resource path="res://addons/Ren/ren_check_box.svg" type="Texture" id=18]
+[ext_resource path="res://addons/Ren/nodes/ren_val_edit.gd" type="Script" id=9]
+[ext_resource path="res://addons/Ren/icons/ren_val_edit.svg" type="Texture" id=10]
+[ext_resource path="res://addons/Ren/nodes/ren_val_slider.gd" type="Script" id=11]
+[ext_resource path="res://addons/Ren/icons/ren_val_v_slider.svg" type="Texture" id=12]
+[ext_resource path="res://addons/Ren/nodes/ren_val_range.gd" type="Script" id=13]
+[ext_resource path="res://addons/Ren/icons/ren_progress_bar.svg" type="Texture" id=14]
+[ext_resource path="res://addons/Ren/nodes/ren_val_check.gd" type="Script" id=15]
+[ext_resource path="res://addons/Ren/icons/ren_check_button.svg" type="Texture" id=16]
+[ext_resource path="res://addons/Ren/icons/ren_check_box.svg" type="Texture" id=17]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -27,7 +26,7 @@ use_filter = false
 font_data = ExtResource( 7 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Screens" type="Control"]
+[node name="Screens" type="Control" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -572,7 +571,7 @@ ticks_on_borders = false
 focus_mode = 2
 script = ExtResource( 11 )
 __meta__ = {
-"_editor_icon": ExtResource( 15 )
+"_editor_icon": ExtResource( 12 )
 }
 val_name = "test_float"
 default = 0.5
@@ -663,9 +662,9 @@ shortcut = null
 group = null
 flat = false
 align = 0
-script = ExtResource( 16 )
+script = ExtResource( 15 )
 __meta__ = {
-"_editor_icon": ExtResource( 17 )
+"_editor_icon": ExtResource( 16 )
 }
 val_name = "test_bool"
 default = false
@@ -692,9 +691,9 @@ shortcut = null
 group = null
 flat = false
 align = 0
-script = ExtResource( 16 )
+script = ExtResource( 15 )
 __meta__ = {
-"_editor_icon": ExtResource( 18 )
+"_editor_icon": ExtResource( 17 )
 }
 val_name = "test_bool"
 default = false

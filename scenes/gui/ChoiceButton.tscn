@@ -1,8 +1,10 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://themes/new_gui/theme.tres" type="Theme" id=1]
-[ext_resource path="res://addons/Ren/ren_choice_button.gd" type="Script" id=2]
-[ext_resource path="res://addons/Ren/ren_choice_button.svg" type="Texture" id=3]
+[ext_resource path="res://addons/Ren/nodes/ren_choice_button.gd" type="Script" id=2]
+[ext_resource path="res://addons/Ren/icons/ren_choice_button.svg" type="Texture" id=3]
+
+
 
 [node name="ChoiceButton" type="Button"]
 

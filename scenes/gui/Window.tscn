@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://themes/new_gui/theme.tres" type="Theme" id=1]
-[ext_resource path="res://addons/Ren/ren_menu.gd" type="Script" id=2]
-[ext_resource path="res://addons/Ren/ren_menu.svg" type="Texture" id=3]
+[ext_resource path="res://addons/Ren/nodes/ren_menu.gd" type="Script" id=2]
+[ext_resource path="res://addons/Ren/icons/ren_menu.svg" type="Texture" id=3]
 [ext_resource path="res://scenes/gui/ChoiceButton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/gui/Say.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/gui/Notify.gd" type="Script" id=6]
@@ -10,6 +10,8 @@
 [ext_resource path="res://scenes/gui/QuickMenuButton.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/gui/Labels/name_text.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/gui/Screens.tscn" type="PackedScene" id=10]
+
+
 
 [sub_resource type="Animation" id=1]
 
