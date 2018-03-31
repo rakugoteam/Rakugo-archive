@@ -1,6 +1,5 @@
 extends Node
-
-var Ren
+# 
 const _GDS = preload("gds_passer.gd")
 var gds = _GDS.new()
 var n = null
@@ -31,7 +30,7 @@ func exec(code, type = "return"):
 		print("unsupported code")
 		return
 
-	# print(script)
+	print(script)
 	
 	n = Node.new()
 	gdscript = GDScript.new()
@@ -42,4 +41,5 @@ func exec(code, type = "return"):
 	var ret_val = n.exec()
 	remove_child(n)
 	return ret_val
+
 

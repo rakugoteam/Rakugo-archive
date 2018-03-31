@@ -1,6 +1,5 @@
 extends Node
 
-var statements = []
 var history = []
 # Visual save/load
 var history_vis=[]
@@ -37,6 +36,7 @@ const _ELIF	= preload("elif_statement.gd")
 const _ELSE	= preload("else_statement.gd")
 const _GL	= preload("gd_statement.gd")
 const _GB	= preload("godot_statement.gd")
+const _FUNC	= preload("func_statement.gd")
 const _SH	= preload("show_statement.gd")
 const _HI	= preload("hide_statement.gd")
 const _NO	= preload("notify_statement.gd")
@@ -46,6 +46,7 @@ const _TXT	= preload("text.gd")
 var godot = _GD.new()
 var ren_text = _TXT.new()
 var _def = _DEF.new()
+var dialog_node
 
 signal enter_statement(id, type, kwargs)
 signal enter_block(kwargs)
@@ -54,6 +55,11 @@ signal notified()
 signal show(node_id, state, show_args)
 signal hide(node_id)
 signal val_changed(val_name)
+
+func _ready():
+	add_child(godot)
+	add_child(ren_text)
+	add_child(_def)
 
 func enter_statement(id, type, kwargs = {}):
 	emit_signal("enter_statement", id, type, kwargs)
@@ -77,8 +83,6 @@ func val_changed(val_name):
 	emit_signal("val_changed", val_name)
 
 func text_passer(text):
-	if ren_text == null:
-		ren_text = _TXT.new()
 	return ren_text.text_passer(text, values)
 
 # add/overwrite global value that Ren will see
@@ -133,8 +137,8 @@ func _init_statement(statement, kwargs, condition_statement = null):
 		condition_statement.add_child(statement)
 	
 	else:
-		add_child(statement)
-	
+		dialog_node.add_child(statement)
+		
 
 	return statement
 
@@ -198,6 +202,11 @@ func gd(code, condition_statement = null):
 func gd_block(code_block, condition_statement = null):
 	return _init_statement(_GB.new(code_block), {}, condition_statement)
 
+## create statement of type call func
+## use it to call godot funcs
+func call_func(node, func_name, args = [], condition_statement = null):
+	return _init_statement(_FUNC.new(node, func_name, args), {}, condition_statement)
+
 ## create statement of type show
 ## with keywords : x, y, z, at, pos, camera
 ## x, y and pos will use it as procent of screen if between 0 and 1
@@ -222,8 +231,7 @@ func start():
 	current_menu = []
 	history_id = 1
 	using_passer = false
-	get_child(0).enter()
-#	statements[0].enter()
+	dialog_node.get_child(0).enter()
 	set_meta("playing",true) # for checking if Ren is playing
 
 
@@ -232,7 +240,7 @@ func rollback():
 	if has_meta("usingvis"):
 		set_meta("go_back",true)
 
-		if statements[statements.size()-1].type=="menu":
+		if dialog_node.get_children().back().type=="menu":
 			enter_block()
 		else:
 			exit_statement()
@@ -300,7 +308,6 @@ func loadfile(filepath="user://save.dat", password="Ren"):
 			current_statement_id=-1
 			choice_id = -1
 			using_passer = false
-			statements=[]
 			history_vis=load_dict["visual_history"]
 			values=load_dict["values"]
 			for x in values:
@@ -317,7 +324,7 @@ func loadfile(filepath="user://save.dat", password="Ren"):
 func quitcurvis():
 	set_meta("quitcurrent",true)
 	print(history_vis)
-	if statements[statements.size()-1].type=="menu":
+	if get_children().back().type=="menu":
 		enter_statement()
 	else:
 		exit_statement()

@@ -2,39 +2,17 @@
 ## version: 0.5.0 ##
 ## License MIT ##
 
-extends Node2D
+extends Node
+
+func _test_func_call():
+	print("call_func statement works!")
 
 func _ready():
-#	Ren.character("rench", {
-#							"name": "Ren",
-#							"avatar": "res://scenes/examples/RenAvatar.tscn"
-#							})
-#
-#	Ren.node_link($logo)
-	
+	Ren.dialog_node = self
 	Ren.define("player_name")
-	
-#	Ren.define("is_working", false)
-#	Ren.define("is_elif", true)
-#	var first_case = Ren.if_statement("is_working")
-#	Ren.say({"what":"if_statement work!"}, first_case)
-#	var first_case_elif = Ren.elif_statement("is_elif", first_case)
-#	Ren.say({"what":"elif_statement work!"}, first_case_elif)
-#	var first_case_else = Ren.else_statement(first_case)
-#	Ren.say({"what":"else_statement work!"}, first_case_else)
-#
-#	Ren.gd("print('gd_statemnet works!')")
-#
-#	Ren.gd_block(
-#	"""
-#	print('godot_statemnet works!')
-#	print('godot_statemnet works!')
-#	"""
-#	)
-
 	Ren.define("test_list", [1,3,7])
 	Ren.say({"what":"test list 2 list elment is [test_list[2]]"})
-	
+	Ren.call_func(self, "_test_func_call")
 	Ren.show("rench", [], {"at":["center"]})
 	
 	Ren.input({
@@ -47,7 +25,7 @@ func _ready():
 				"value":
 					"Developer"
 				})
-				
+	
 	Ren.say({
 				"who": 
 					"rench",
