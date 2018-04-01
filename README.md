@@ -17,8 +17,9 @@ It means games that are for example:
 - Click & Point Adventures (ToDo)
 - RPG(ToDo)
 
+If you want to help please write to us on our [Gitter room](https://gitter.im/jeremi360/Ren-GD).
 
 Logo is base on Godot icon from Linux Pop icon theme.
 </p> Logo is Godot head with hair like anime character.
+Custom Ren Nodes icons are based on [Godot icons](https://github.com/godotengine/godot-design)
 
-If you want to help please write to us on our [Gitter room](https://gitter.im/jeremi360/Ren-GD).
