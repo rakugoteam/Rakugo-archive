@@ -3,31 +3,29 @@ extends EditorPlugin
 
 
 func _enter_tree():
-	## icons/icons should be change
-	
 	## add RenMain as singleton in ProjectSettings
 	#print(ProjectSettings.)
 	
 	## RenNodes:
 	add_custom_type(
-		"Screen",
+		"RenControl",
 		"Control",
 		preload("nodes/ren_node.gd"),
-		preload("icons/icon.svg")
+		preload("icons/ren_control.svg")
 		)
 	
 	add_custom_type(
 		"RenNode2D",
 		"Node2D",
 		preload("nodes/ren_node.gd"),
-		preload("icons/icon.svg")
+		preload("icons/ren_node2d.svg")
 		)
 	
 	add_custom_type(
-		"RenVisualInstance",
+		"RenSpatial",
 		"VisualInstance",
 		preload("nodes/ren_node.gd"),
-		preload("icons/icon.svg")
+		preload("icons/ren_spatial.svg")
 		)
 	
 	## RenCharacter nodes:
@@ -35,21 +33,21 @@ func _enter_tree():
 		"Character",
 		"Node",
 		preload("nodes/character.gd"),
-		preload("icons/icon.svg")
+		preload("icons/ren_character.svg")
 		)
 	
 	add_custom_type(
 		"Character2D",
 		"Node2D",
 		preload("nodes/character.gd"),
-		preload("icons/icon.svg")
+		preload("icons/ren_character2d.svg")
 		)
 	
 	add_custom_type(
 		"Character3D",
 		"VisualInstance",
 		preload("nodes/character.gd"),
-		preload("icons/icon.svg")
+		preload("icons/ren_character3d.svg")
 		)
 	
 	## RenControl nodes:
@@ -155,9 +153,9 @@ func _enter_tree():
 	
 func _exit_tree():
 	## RenNodes:
-	remove_custom_type("Screen")
+	remove_custom_type("RenControl")
 	remove_custom_type("RenNode2D")
-	remove_custom_type("RenVisualInstance")
+	remove_custom_type("RenSpatial")
 	
 	## RenCharacter nodes:
 	remove_custom_type("Character")
