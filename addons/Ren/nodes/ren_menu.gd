@@ -10,6 +10,7 @@ func _on_statement(id, type, kwargs):
 		hide()
 		return
 
+	for ch in get_children():
 		ch.queue_free() #free causes problem in VS
 
 	var i = 0
