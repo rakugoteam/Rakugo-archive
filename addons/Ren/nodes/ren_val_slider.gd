@@ -1,6 +1,6 @@
 extends Slider
 
-export(String) var val_name = "" 
+export(String) var val_name = ""
 
 export(float) var default = 0.5 setget set_default, get_default
 
@@ -19,8 +19,8 @@ func _ready():
 	else:
 		Ren.define(val_name, default)
 	
-	connect("value_changed", self, "on_slider_val_changed")
-	Ren.connect("val_changed", self, "on_val_changed")
+	connect("value_changed", self, "on_slider_val_changed", [], CONNECT_PERSIST)
+	Ren.connect("val_changed", self, "on_val_changed", [], CONNECT_PERSIST)
 
 func on_val_changed(valn):
 	if val_name != valn:

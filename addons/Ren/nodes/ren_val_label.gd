@@ -12,7 +12,7 @@ func _ready():
 	
 	var new_val = Ren.get_value(val_name)
 	text = str(new_val)
-	Ren.connect("val_changed", self, "on_val_changed")
+	Ren.connect("val_changed", self, "on_val_changed", [], CONNECT_PERSIST)
 
 func on_val_changed(valn):
 	if val_name != valn:

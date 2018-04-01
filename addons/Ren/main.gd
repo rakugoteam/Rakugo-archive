@@ -7,7 +7,7 @@ var mainscriptnode
 var vis_loading=false
 var load_counter=0
 var vnl=[]
-# 
+
 var history_id = 0
 var rolling_back = false
 var current_statement = null
@@ -48,7 +48,9 @@ const _NO	= preload("statements/notify_statement.gd")
 var godot = _GD.new()
 var ren_text = _TXT.new()
 var _def = _DEF.new()
-var dialog_node
+
+# must be set on beging of dialog
+var dialog_node setget set_dialog_node, get_dialog_node
 
 signal enter_statement(id, type, kwargs)
 signal enter_block(kwargs)
@@ -62,6 +64,7 @@ func _ready():
 	add_child(godot)
 	add_child(ren_text)
 	add_child(_def)
+	pause_mode = PAUSE_MODE_PROCESS
 
 func enter_statement(id, type, kwargs = {}):
 	emit_signal("enter_statement", id, type, kwargs)
@@ -129,7 +132,6 @@ func node_link(node, node_id = node.name):
 		_def.define(values, node_id, node, "node")
 
 func _init_statement(statement, kwargs, condition_statement = null):
-	# statement.Ren = self
 	statement.set_kwargs(kwargs)
 	
 	if debug_inti:
@@ -226,6 +228,12 @@ func hide(node_id, condition_statement = null):
 func notifiy(info,length=5, conition_statement = null):
 	return _init_statement(_NO.new(), {"info": info,"length":length}, conition_statement)
 
+func set_dialog_node(node):
+	history_id = 1
+	dialog_node = node
+
+func get_dialog_node():
+	return dialog_node
 
 ## it starts current Ren dialog
 func start():
@@ -262,12 +270,6 @@ func rollback():
 		while previous == current_statement:
 			history_id += 1
 			previous = history[history.size() - history_id]
-
-		if is_connected("enter_block", previous, "on_enter_block"):
-			disconnect("enter_block", previous, "on_enter_block")
-		
-		if is_connected("exit_statement", previous, "on_exit"):
-			disconnect("exit_statement", previous, "on_exit")
 
 		if is_connected("enter_block", current_statement, "on_enter_block"):
 			disconnect("enter_block", current_statement, "on_enter_block")

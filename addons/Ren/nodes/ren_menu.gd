@@ -3,16 +3,13 @@ extends VBoxContainer
 export(PackedScene) var ChoiceButton
 
 func _ready():
-	Ren.connect("enter_statement", self, "_on_statement")
+	Ren.connect("enter_statement", self, "_on_statement", [], CONNECT_PERSIST)
 
 func _on_statement(id, type, kwargs):
 	if type != "menu":
 		hide()
 		return
 
-	for ch in get_children():
-		if ch.is_connected("pressed", self, "_on_button_pressed"):
-			ch.disconnect("pressed", self, "_on_button_pressed")
 		ch.queue_free() #free causes problem in VS
 
 	var i = 0

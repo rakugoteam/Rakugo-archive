@@ -6,7 +6,7 @@ func _ready():
 	if val_name in Ren.values:
 		value = Ren.get_value(val_name)
 
-	Ren.connect("val_changed", self, "on_val_changed")
+	Ren.connect("val_changed", self, "on_val_changed", [], CONNECT_PERSIST)
 
 func on_val_changed(valn):
 	if val_name != valn:

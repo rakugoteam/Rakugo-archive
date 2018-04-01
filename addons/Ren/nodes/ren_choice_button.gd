@@ -10,13 +10,13 @@ onready var label = RichTextLabel.new()
 var id = -1
 
 func _ready():
-	connect("focus_entered", self, "_on_focus")
-	connect("focus_exited", self, "_on_idle")
-	connect("mouse_entered", self, "_on_hover")
-	connect("mouse_exited", self, "_on_idle")
-	connect("pressed", self, "_on_pressed")
-	connect("resized", self, "_on_resized")
-	label.mouse_filter =  MOUSE_FILTER_IGNORE
+	connect("focus_entered", self, "_on_focus", [], CONNECT_PERSIST)
+	connect("focus_exited", self, "_on_idle", [], CONNECT_PERSIST)
+	connect("mouse_entered", self, "_on_hover", [], CONNECT_PERSIST)
+	connect("mouse_exited", self, "_on_idle", [], CONNECT_PERSIST)
+	connect("pressed", self, "_on_pressed", [], CONNECT_ONESHOT)
+	connect("resized", self, "_on_resized", [], CONNECT_PERSIST)
+	label.mouse_filter = MOUSE_FILTER_IGNORE
 	label.bbcode_enabled = true
 	add_child(label)
 
