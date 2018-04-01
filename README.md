@@ -10,16 +10,15 @@ Ren is framemork(inspired by Ren'Py) for story driven games in Godot.
 
 It means games that are for example:
 
-- Visual Novels (WIP)
+- Visual Novels (WIP):
+	- GDScript (almost done)
+	- VisualScript (WIP)
+	- RenScript (ToDo)
 - Click & Point Adventures (ToDo)
 - RPG(ToDo)
 
-You can use it with:
- - GDScript (WIP)
- - VisualScript (WIP)
- - RenScript (ToDo)
 
 Logo is base on Godot icon from Linux Pop icon theme.
 </p> Logo is Godot head with hair like anime character.
 
-If you want to help please check label ["help wanted"](https://github.com/jeremi360/Ren/issues?q=is%3Aissue+is%3Aopen+label%3A"help+wanted").
+If you want to help please write to us on our [Gitter room](https://gitter.im/jeremi360/Ren-GD).
