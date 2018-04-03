@@ -10,6 +10,7 @@ func _ready():
 		
 	if node_id.empty():
 		node_id = name
+
 	Ren.node_link(self, node_id)
 	print("Add RenNode ", node_id)
 
@@ -53,8 +54,8 @@ func show_at(camera_postion, position, size, show_args):
 	
 	return pos
 
-func _on_show(_node_id, state, show_args):
-	if _node_id != node_id:
+func _on_show(node_id, state, show_args):
+	if node_id != node_id:
 		return
 	
 	var cam_pos = Vector2(0, 0)
@@ -96,8 +97,13 @@ func _on_show(_node_id, state, show_args):
 		
 		self.translation = Vector3(pos.x, pos.y, z)
 	
+	on_state(state)
+
 	if not self.visible:
 		show()
+
+func on_state(state):
+	pass
 
 func _on_hide(_node_id):
 	if _node_id != node_id:

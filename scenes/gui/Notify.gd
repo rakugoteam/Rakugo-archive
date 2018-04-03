@@ -1,7 +1,7 @@
 extends Panel
 
 func _ready():
-	Ren.connect("enter_statement", self, "_on_statement")
+	Ren.connect("exec_statement", self, "_on_statement")
 	$Timer.connect("timeout", self, "hide")
 
 func _on_statement(id, type, kwargs):

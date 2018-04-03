@@ -1,7 +1,7 @@
 extends HBoxContainer
 
 func _ready():
-	Ren.connect("enter_statement", self, "_on_statement")
+	Ren.connect("exec_statement", self, "_on_statement")
 	$Back.connect("pressed", Ren, "rollback")
 	$Back.disabled = true
 	
@@ -52,7 +52,7 @@ func on_auto():
 	$AutoTimer.start()
 
 func on_auto_loop():
-	if Ren.current_statement.type == "say":
+	if Ren.current_statement.type in ["say", "show", "hide"]:
 		Ren.exit_statement()
 
 	else:
@@ -73,7 +73,7 @@ func on_skip():
 	$InfoAnim.play("Skip")
 
 func on_skip_loop():
-	if (Ren.current_statement.type == "say"
+	if (Ren.current_statement.type in ["say", "show", "hide"]
 		and Ren.current_statement in Ren.history):
 		Ren.exit_statement()
 	else:

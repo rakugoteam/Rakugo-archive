@@ -3,7 +3,7 @@ extends VBoxContainer
 export(PackedScene) var ChoiceButton
 
 func _ready():
-	Ren.connect("enter_statement", self, "_on_statement", [], CONNECT_PERSIST)
+	Ren.connect("exec_statement", self, "_on_statement", [], CONNECT_PERSIST)
 
 func _on_statement(id, type, kwargs):
 	if type != "menu":

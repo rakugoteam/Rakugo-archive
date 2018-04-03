@@ -77,5 +77,5 @@ func parse_character():
 	return ncharacter
 
 func parse_what(what):
-	 return kwargs.what_prefix + what + kwargs.what_suffix
+	return kwargs.what_prefix + what + kwargs.what_suffix
 

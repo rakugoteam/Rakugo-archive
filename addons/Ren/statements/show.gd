@@ -1,20 +1,15 @@
 extends "statement.gd"
 
-var _node_id
-var _state = []
-
-func _init(node_id, state = []):
+func _init():
 	type = "show"
-	kws = ["x", "y", "z", "at", "pos"]
-	_node_id = node_id
-	_state = state
+	kws = ["node_id", "state", "x", "y", "z", "at", "pos"]
 
 func is_procent(x):
 	return (typeof(x) == TYPE_REAL
 			and x >= 0.0
 			and x <= 1.0)
 
-func enter(dbg = true):
+func exec(dbg = true):
 	if dbg:
 		print(debug(kws))
 	
@@ -37,12 +32,10 @@ func enter(dbg = true):
 
 		if "bottom" in kwargs.at:
 			kwargs.y = 1.0
-
-	Ren.on_show(_node_id, _state, kwargs)
+	
+	Ren.on_show(kwargs.node_id, kwargs.state, kwargs)
 		
-	.enter(false)
-	on_exit()
+	.exec(false)
+	Ren.timer.start()
 
-func debug(kws = [], some_custom_text = ""):
-	return .debug(kws, some_custom_text + _node_id)
 

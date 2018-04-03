@@ -2,113 +2,152 @@
 
 extends Node
 
-func _test_func_call():
-	print("call_func statement works!")
-
 func _ready():
-	## this must be at start of dialog func
 	Ren.dialog_node = self
-	
-	## example of using Ren.value in text
-	Ren.define("test_list", [1,3,7])
-	Ren.say({"what":"test list 2 list element is [test_list[2]]"})
-	
-	## example of calling godot func as statement
-	Ren.call_func(self, "_test_func_call")
-	
-	## example of updateing some Ren.value
-	Ren.define("test_var", 1)
-	Ren.say({"what":"now test_var = [test_var]"})
-	Ren.say({"what":"add 1 to test_var"})
-	Ren.gd("test_var += 1")
-	Ren.say({"what":"and now test_var = [test_var]"})
+	Ren.current_dialog_name = "example"
+	Ren.story_state = "start"
+	Ren.connect("story_step", self, "story", [], CONNECT_PERSIST)
+	Ren.story_step()
 
-	## showing Ren's node or character with id 'rench' at center
-	Ren.show("rench", [], {"at":["center"]})
+func story(dialog_name):
+	if dialog_name != "example":
+		return
+		
+	match Ren.story_state:
+		"start":
+			## some tests:
+			## example of using Ren.value in text
+			Ren.define("test_list", [1,3,7])
+			Ren.say({"what":"test list 2 list element is [test_list[2]]"})
+			Ren.story_state = "test values 0"
+		
+		"test values 0":
+			## example of updating some Ren.value
+			Ren.define("test_val", 1)
+			Ren.say({"what":"now test_val = [test_val]"})
+			Ren.story_state = "test values 1"
 
-	## example getting user input to Ren.value
-	Ren.define("player_name")
-	Ren.input({
-		"who": 
-			"rench",
-		"what":
-			"Hi! I'm Ren. What is your name?",
-		"input_value":
-				"player_name",
-		"value":
-			"Developer"
-		})
-	
-	## example of showing text slow
-	Ren.say({
-		"who": 
-			"rench",
-		"what":
-			"Welcome [player_name] in Ren Framework Version [version]",
-		"speed":
-			0.1
-		})
+		"test values 1":
+			Ren.say({"what":"add 1 to test_val"})
+			var tval = Ren.get_value("test_val")
+			tval += 1
+			Ren.define("test_val", tval)
+			Ren.story_state = "test values 2"
+		
+		"test values 2":
+			Ren.say({"what":"and now test_val = [test_val]"})
+			Ren.story_state = "show rench"
 
-	## hidding Ren's node or character with id 'rench' 
-	Ren.hide("rench")
-	Ren.say({
-		"who": 
-			"rench",
-		"what":
-			"extra stamement to check skipping/auto",
-		})
-	
-	# example of creating menu
-	var menu01 = Ren.menu({
-		"who":
-			"rench",
-		"what":
-			"What want to do?"
-		})
-	
-	## exmaple of adding choice to menu
-	var choice_vn = Ren.choice({"what": "Play Visual Novel example"}, menu01)
-	Ren.say({
-		"who":
-			"rench",
-		"what":
-			"Visual Novel example is not ready yet"
-	}, choice_vn)
-	
-				
-	var choice_adv = Ren.choice({"what": "Play Click'n'Point Adventure example"}, menu01)
-	Ren.say({
-		"who":
-			"rench",
-		"what":
-			"Click'n'Point Adventure example is not ready yet"
-		}, choice_adv)
+		#true example:
+		"show rench":
+			## showing Ren's node or character with id 'rench' at center
+			Ren.show("rench", [], {"at":["center"]})
+			Ren.story_state = "get player name"
 
+		"get player name":
+			## example getting user input to Ren.value
+			Ren.define("player_name")
+			Ren.input({
+				"who": 
+					"rench",
+				"what":
+					"Hi! I'm Ren. What is your name?",
+				"input_value":
+						"player_name",
+				"value":
+					"Developer"
+				})
+			Ren.story_state = "welcome player"
+		
+		"welcome player":
+			## example of showing text slow
+			Ren.say({
+				"who": 
+					"rench",
+				"what":
+					"Welcome [player_name] in Ren Framework Version [version]",
+				"speed":
+					0.1
+				})
+			Ren.story_state = "hide rench"
+			
+		"hide rench":
+			## hidding Ren's node or character with id 'rench' 
+			Ren.hide("rench")
+			Ren.story_state = "test skipping/auto"
+		
+		"test skipping/auto":
+			Ren.say({
+				"who": 
+					"rench",
+				"what":
+					"extra stamement to check skipping/auto",
+				})
+			
+			Ren.story_state = "example of menu"
 
-	var choice_rpg = Ren.choice({"what": "Play RPG example"}, menu01)
-	Ren.say({
-		"who":
-			"rench",
-		"what":
-			"RPG example is not ready yet"
-	}, choice_rpg)
-	
+		"example of menu":
+			# example of creating menu
+			# menu set story_state it self
+			Ren.menu({
+				"who":
+					"rench",
+				"what":
+					"What want to do?",
+				"choices":
+					[
+						"Play Visual Novel example",
+						"Play Click'n'Point Adventure example",
+						"Play RPG example",
+						"Read Docs"
+					]
+				})
+			
+		"Play Visual Novel example":
+			Ren.say({
+				"who":
+					"rench",
+				"what":
+					"Visual Novel example is not ready yet"
+			})
+			Ren.story_state = "notification example"
 
-	var choice_aq = Ren.choice({"what": "Ask some questions about Ren"}, menu01)
-	Ren.say({
-		"who":
-			"rench",
-		"what":
-			"Docs are not ready yet"
-	}, choice_aq)
-	
-	
-	Ren.notifiy("You make your first choice!",3)
-	
-	Ren.say({
-		"who": 
-			"rench",
-		"what":
-			"End of Example",
-		})
+		"Play Click'n'Point Adventure example":
+			Ren.say({
+				"who":
+					"rench",
+				"what":
+					"Click'n'Point Adventure example is not ready yet"
+			})
+			Ren.story_state = "notification example"
+
+		"Play RPG example":
+			Ren.say({
+				"who":
+					"rench",
+				"what":
+					"RPG example is not ready yet"
+			})
+			Ren.story_state = "notification example"
+		
+		"Read Docs":
+			Ren.say({
+				"who":
+					"rench",
+				"what":
+					"Docs are not ready yet"
+			})
+			Ren.story_state = "notification example"
+		
+		"notification example":
+			Ren.notifiy("You make your first choice!",3)
+			Ren.story_state = "end"
+		
+		"end":
+			Ren.say({
+				"who": 
+					"rench",
+				"what":
+					"End of Example",
+				})
 

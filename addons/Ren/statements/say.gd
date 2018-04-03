@@ -1,17 +1,11 @@
-## This is RenAPI ##
-## version: 0.5.0 ##
-## License MIT ##
-## Say statement class ##
-
 extends "statement.gd"
 
-var auto_enter = ["show", "hide", "notify"]
 
 func _init():
 	type = "say"
 	kws = ["who", "what"]
 
-func enter(dbg = true):
+func exec(dbg = true):
 	if dbg:
 		print(debug(kws))
 	
@@ -33,10 +27,4 @@ func enter(dbg = true):
 	if "what" in kwargs:
 		kwargs.what = Ren.text_passer(kwargs.what)
 	
-	.enter(false)
-
-func on_exit(new_kwargs = {}):
-	.on_exit(new_kwargs)
-	
-	if not (self in Ren.history):
-		Ren.history.append(self)
+	.exec(false)

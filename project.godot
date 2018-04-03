@@ -17,7 +17,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Window="*res://scenes/gui/Window.tscn"
-Ren="*res://addons/Ren/main.gd"
+Ren="*res://addons/Ren/Ren.tscn"
 
 [display]
 
@@ -26,7 +26,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "Ren", "RenVS" )
+enabled=PoolStringArray( "Ren" )
 
 [input]
 

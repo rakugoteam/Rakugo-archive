@@ -11,69 +11,53 @@ var vnl=[]
 var history_id = 0
 var rolling_back = false
 var current_statement = null
-var current_statement_id = -1
-var current_local_statement_id = -1
-var current_block
+
 var current_menu
+var current_id = -1
 var choice_id = -1
 var values = {
-	"version":{"type":"text", "value":"0.5.0"},
+	"version":{"type":"text", "value":"0.7.0 GDScript"},
 	"test_bool":{"type":"var", "value":false},
-	"test_float":{"type":"var", "value":10}
+	"test_float":{"type":"var", "value":10},
+	"story_state":{"type":"text", "value":""}
 	}
+
 var using_passer = false
+var dialogs = {} # "dialog_name":node
+var current_dialog_name = ""
+
 export(bool) var debug_inti = true
 
-const _DEF	= preload("def.gd")
-const _GD	= preload("gd_connect.gd")
-const _TXT	= preload("text.gd")
-
 const _CHR	= preload("nodes/character.gd")
-
-const _SAY	= preload("statements/say_statement.gd")
-const _INP	= preload("statements/input_statement.gd")
-const _JMP	= preload("statements/jump_statement.gd")
-const _MENU	= preload("statements/menu_statement.gd")
-const _CHO	= preload("statements/choice_statement.gd")
-const _IF	= preload("statements/if_statement.gd")
-const _ELIF	= preload("statements/elif_statement.gd")
-const _ELSE	= preload("statements/else_statement.gd")
-const _GL	= preload("statements/gd_statement.gd")
-const _GB	= preload("statements/godot_statement.gd")
-const _FUNC	= preload("statements/func_statement.gd")
-const _SH	= preload("statements/show_statement.gd")
-const _HI	= preload("statements/hide_statement.gd")
-const _NO	= preload("statements/notify_statement.gd")
-
-var godot = _GD.new()
-var ren_text = _TXT.new()
-var _def = _DEF.new()
+onready var timer = $Timer
 
 # must be set on beging of dialog
-var dialog_node setget set_dialog_node, get_dialog_node
+var dialog_node setget _set_dialog_node, _get_dialog_node
+var story_state setget _set_story_state, _get_story_state
 
-signal enter_statement(id, type, kwargs)
+signal exec_statement(type, kwargs)
 signal enter_block(kwargs)
-signal exit_statement(kwargs)
+signal exit_statement(previous_type, kwargs)
 signal notified()
 signal show(node_id, state, show_args)
 signal hide(node_id)
 signal val_changed(val_name)
+signal story_step(dialog_name)
 
 func _ready():
-	add_child(godot)
-	add_child(ren_text)
-	add_child(_def)
-	pause_mode = PAUSE_MODE_PROCESS
+	timer.connect("timeout", self, "exit_statement", [], CONNECT_PERSIST)
 
-func enter_statement(id, type, kwargs = {}):
-	emit_signal("enter_statement", id, type, kwargs)
+func exec_statement(id, type, kwargs = {}):
+	emit_signal("exec_statement", id, type, kwargs)
 
 func enter_block(kwargs = {}):
 	emit_signal("enter_block", kwargs)
 
 func exit_statement(kwargs = {}):
-	emit_signal("exit_statement", kwargs)
+	emit_signal("exit_statement", current_statement.type, kwargs)
+
+func story_step():
+	emit_signal("story_step", current_dialog_name)
 
 func notified():
 	emit_signal("notified")
@@ -87,33 +71,34 @@ func on_hide(node):
 func val_changed(val_name):
 	emit_signal("val_changed", val_name)
 
+## parse text like in renpy to bbcode
 func text_passer(text):
-	return ren_text.text_passer(text, values)
+	return $Text.text_passer(text, values)
 
-# add/overwrite global value that Ren will see
+## add/overwrite global value that Ren will see
 func define(val_name, value = null):
-	_def.define(values, val_name, value)
+	$Def.define(values, val_name, value)
 	val_changed(val_name)
 
-# add/overwrite global value, from string, that Ren will see
+## add/overwrite global value, from string, that Ren will see
 func define_from_str(val_name, val_str, val_type):
-	_def.define_from_str(values, val_name, val_str, val_type)
+	$Def.define_from_str(values, val_name, val_str, val_type)
 	val_changed(val_name)
 
-# to use with `define_from_str` func as val_type arg
+## to use with `define_from_str` func as val_type arg
 func get_type(val):
-	return _def.get_type(val)
+	return $Def.get_type(val)
 
-# returns value defined using define
+## returns value defined using define
 func get_value(val_name):
 	return values[val_name].value
 
-# returns type of value defined using define
+## returns type of value defined using define
 func get_value_type(val_name):
 	return values[val_name].type
 	
-# crate new charater as global value that Ren will see
-# possible kwargs: name, color, what_prefix, what_suffix, kind, avatar
+## crate new charater as global value that Ren will see
+## possible kwargs: name, color, what_prefix, what_suffix, kind, avatar
 func character(val_name, kwargs, node = null):
 	# it always adds node to Ren
 #	if node == null:
@@ -121,128 +106,123 @@ func character(val_name, kwargs, node = null):
 #		add_child(node)
 	
 	node.set_kwargs(kwargs)
-	_def.define(values, val_name, node, "character")
+	$Def.define(values, val_name, node, "character")
 
-# crate new link to node as global value that Ren will see
+## crate new link to node as global value that Ren will see
 func node_link(node, node_id = node.name):
 	if typeof(node) == TYPE_NODE_PATH:
-		_def.define(values, node_id, node)
+		$Def.define(values, node_id, node)
 		
 	elif node is Node:
-		_def.define(values, node_id, node, "node")
+		$Def.define(values, node_id, node, "node")
 
-func _init_statement(statement, kwargs, condition_statement = null):
-	statement.set_kwargs(kwargs)
-	
-	if debug_inti:
-		statement.debug(statement.kws, "condition_statement: " + str(condition_statement) + ", ")
-		
-	if condition_statement != null:
-		condition_statement.add_child(statement)
-	
+## add new dialog to which you can jump to
+func add_dialog(node, dialog_name):
+	if dialog_name in dialogs:
+		print("there is already dialog named '", dialog_name, "'")
+		return
 	else:
-		dialog_node.add_child(statement)
-		
+		dialogs[dialog_name] = node
 
-	return statement
-
-## create statement of type say
+## statement of type say
 ## its make given character(who) talk (what)
 ## with keywords : who, what
-func say(kwargs, condition_statement = null):
+func say(kwargs):
 	if not ("who" in kwargs):
 		kwargs["who"] = ""
-	return _init_statement(_SAY.new(), kwargs, condition_statement)
+	
+	$Say.set_kwargs(kwargs)
+
+	$Say.id = current_id
+	current_id += 1
+	$Say.exec()
 
 ## crate statement of type input
 ## its allow player to provide keybord input that will be assain to given value
 ## with keywords : who, what, input_value, value
-func input(kwargs, condition_statement = null):
+func input(kwargs):
 	if not ("who" in kwargs):
 		kwargs["who"] = ""
-	return _init_statement(_INP.new(), kwargs, condition_statement)
+	
+	$Input.set_kwargs(kwargs)
 
-## crate statement of type menu
+	$Input.id = current_id
+	current_id += 1
+	$Input.exec()
+
 ## its allow player to make choice
-## with keywords : who, what, title
-func menu(kwargs, condition_statement = null):
+## with keywords : who, what, choices, title
+func menu(kwargs):
 	var title = null
 	if "title" in kwargs:
 		title = kwargs.title
 		kwargs.erase("title")
+	
+	if not ("who" in kwargs):
+		kwargs["who"] = ""
 
-	return _init_statement(_MENU.new(title), kwargs, condition_statement)
+	$Menu.set_kwargs(kwargs)
+	
+	$Menu.id = current_id
+	current_id += 1
+	$Menu.exec()
 
-## crate statement of type choice
-## its add this choice to menu
-## with keywords : who, what
-func choice(kwargs, menu):
-	return _init_statement(_CHO.new(), kwargs, menu)
 
-## create statement of type jump
-## with keywords : dialog, statement_id
-func jump(kwargs, condition_statement = null):
-	return _init_statement(_JMP.new(), kwargs, condition_statement)
-
-## create statement of type if
-func if_statement(condition, condition_statement = null):
-	return _init_statement(_IF.new(condition), {}, condition_statement)
-
-## create statement of type elif
-func elif_statement(condition, condition_statement = null):
-	return _init_statement(_ELIF.new(condition), {}, condition_statement)
-
-## create statement of type else
-func else_statement(condition_statement = null):
-	return _init_statement(_ELSE.new(), {}, condition_statement)
-
-## create statement of type gd
-## its execute godot one line code
-func gd(code, condition_statement = null):
-	return _init_statement(_GL.new(code), {}, condition_statement)
-
-## create statement of type godot
-## its execute block of godot code
-func gd_block(code_block, condition_statement = null):
-	return _init_statement(_GB.new(code_block), {}, condition_statement)
-
-## create statement of type call func
-## use it to call godot funcs
-func call_func(node, func_name, args = [], condition_statement = null):
-	return _init_statement(_FUNC.new(node, func_name, args), {}, condition_statement)
-
-## create statement of type show
-## with keywords : x, y, z, at, pos, camera
+## it show custom ren node or charater
+## 'state' arg is using to set for example current emtion or/and cloths
+## 'state' example '['happy', 'green uniform']'
+## with keywords : x, y, z, at, pos
 ## x, y and pos will use it as procent of screen if between 0 and 1
 ## "at" is lists that can have: "top", "center", "bottom", "right", "left"
-func show(node_id, state, kwargs, condition_statement = null):
+func show(node_id, state = [], kwargs = {}):
 	if not ("at" in kwargs):
 		kwargs["at"] = ["center", "bottom"]
-	return _init_statement(_SH.new(node_id, state), kwargs, condition_statement)
 
-## create statement of type hide
-func hide(node_id, condition_statement = null):
-	return _init_statement(_HI.new(node_id), {}, condition_statement)
+	kwargs["node_id"] = node_id
+	kwargs["state"] = state
+	
+	print(kwargs)
 
-## create statement of type notify
-func notifiy(info,length=5, conition_statement = null):
-	return _init_statement(_NO.new(), {"info": info,"length":length}, conition_statement)
+	$Show.set_kwargs(kwargs)
+	$Show.id = current_id
+	current_id += 1
+	$Show.exec()
 
-func set_dialog_node(node):
+## statement of type hide
+func hide(node_id):
+	var kwargs = {"node_id":node_id}
+	$Hide.set_kwargs(kwargs)
+	$Hide.id = current_id
+	current_id += 1
+	$Hide.exec()
+
+## statement of type notify
+func notifiy(info, length=5):
+	var kwargs = {"info": info,"length":length}
+	$Notify.set_kwargs(kwargs)
+	$Notify.id = current_id
+	current_id += 1
+	$Notify.exec()
+
+func _set_dialog_node(node):
 	history_id = 1
+	current_id = -1
 	dialog_node = node
 
-func get_dialog_node():
+func _get_dialog_node():
 	return dialog_node
+
+func _set_story_state(state):
+	define("story_state", state)
+
+func _get_story_state():
+	return get_value("story_state")
 
 ## it starts current Ren dialog
 func start():
-	current_block = []
-	current_menu = []
-	history_id = 1
+	current_menu = null
 	using_passer = false
-	dialog_node.get_child(0).enter()
-	set_meta("playing",true) # for checking if Ren is playing
+	set_meta("playing", true) # for checking if Ren is playing
 
 
 ## go back to pervious statement that type is say, input or menu 
@@ -271,13 +251,7 @@ func rollback():
 			history_id += 1
 			previous = history[history.size() - history_id]
 
-		if is_connected("enter_block", current_statement, "on_enter_block"):
-			disconnect("enter_block", current_statement, "on_enter_block")
-		
-		if is_connected("exit_statement", current_statement, "on_exit"):
-			disconnect("exit_statement", current_statement, "on_exit")
-
-		previous.enter()
+		previous.exec()
 		
 		
 func savefile(filepath="user://save.dat", password="Ren"):
@@ -307,9 +281,8 @@ func loadfile(filepath="user://save.dat", password="Ren"):
 			var load_dict=parse_json(file.get_line())
 			quitcurvis()
 			vis_loading=true
-			current_block = []
-			current_menu = []
-			current_statement_id=-1
+			current_menu = null
+			current_id=-1
 			choice_id = -1
 			using_passer = false
 			history_vis=load_dict["visual_history"]
@@ -329,7 +302,7 @@ func quitcurvis():
 	set_meta("quitcurrent",true)
 	print(history_vis)
 	if get_children().back().type=="menu":
-		enter_statement()
+		exec_statement()
 	else:
 		exit_statement()
 	set_meta("quitcurrent",false)

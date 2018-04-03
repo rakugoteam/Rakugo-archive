@@ -5,16 +5,16 @@ var input_placeholder = ""
 var _type = ""
 
 func _ready():
-	Ren.connect("enter_statement", self, "_on_statement", [], CONNECT_PERSIST)
+	Ren.connect("exec_statement", self, "_on_statement", [], CONNECT_PERSIST)
 	add_child(rtl)
 	hide()
 
 func _unhandled_key_input(delta):
 	if Input.is_key_pressed(KEY_ENTER):
-		_on_enter(get_text())
+		_on_exec(get_text())
 		set_process_unhandled_key_input(false)
 
-func _on_enter(text):
+func _on_exec(text):
 	var final_value = input_placeholder
 
 	if text != "":

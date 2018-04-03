@@ -2,9 +2,11 @@ extends Control
 
 onready var in_game_gui = get_node("/root/Window/InGameGUI")
 
+export(String) var first_dialog = ""
+export(String) var first_state = ""
 
 func _ready():
-	connect("visibility_changed", self, "_on_Screens_visibility_changed")
+	connect("visibility_changed", self, "_on_Screens_visibility_changed", [], CONNECT_PERSIST)
 	
 	
 func save_menu(screenshot):

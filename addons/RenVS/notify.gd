@@ -80,7 +80,7 @@ func _step(  inputs,  outputs,  start_mode, working_mem ):
 		if !Ren.get_meta("playing"):
 			Ren.start()
 		else:
-			Ren.statements[Ren.current_statement_id].enter()
+			Ren.statements[Ren.current_statement_id].exec()
 		var n= VisualScriptFunctionState.new()
 		#n.connect_to_signal(Engine.get_main_loop(),"idle_frame",[])
 		working_mem[0]=n
@@ -92,7 +92,7 @@ func _step(  inputs,  outputs,  start_mode, working_mem ):
 		if !Ren.get_meta("playing"):
 			Ren.start()
 		else:
-			Ren.statements[Ren.current_statement_id].enter()
+			Ren.statements[Ren.current_statement_id].exec()
 		var n= VisualScriptFunctionState.new()
 		#n.connect_to_signal(Engine.get_main_loop(),"idle_frame",[])
 		working_mem[0]=n

@@ -21,7 +21,7 @@ var typing=false
 
 func _ready():
 	connect("gui_input", self, "_on_Adv_gui_input", [], CONNECT_PERSIST)
-	Ren.connect("enter_statement", self, "_on_statement", [], CONNECT_PERSIST)
+	Ren.connect("exec_statement", self, "_on_statement", [], CONNECT_PERSIST)
 	timer.connect("timeout", self, "_on_timeout", [], CONNECT_PERSIST)
 
 func _on_timeout():

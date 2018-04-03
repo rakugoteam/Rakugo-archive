@@ -1,24 +1,27 @@
-extends "say_statement.gd"
+extends "say.gd"
 
 func _init():
 	type = "input"
 	kws = ["who", "what", "temp", "input_value"]
 
-func enter(dbg = true):
+func exec(dbg = true):
 	if dbg:
 		print(debug(kws))
 	
 	if "value" in kwargs:
-		kwargs.value = Ren.text_passer(kwargs.value)
+		kwargs["value"] = Ren.text_passer(kwargs.value)
 	
-	.enter(false)
+	.exec(false)
 
-func on_exit(new_kwargs = {}):
+func on_exit(_type, new_kwargs = {}):
+	if _type != type:
+		return
+	
 	if new_kwargs != {}:
 		set_kwargs(new_kwargs)
 
-	var value = kwargs.value
-	var input_value = kwargs.input_value
+	var value = "value"
+	var input_value = "input_value"
 	
 	if value.is_valid_integer():
 		value = int(value)
@@ -27,5 +30,7 @@ func on_exit(new_kwargs = {}):
 		value = float(value)
 
 	Ren.define(input_value, value)
+
+	.on_exit(type, new_kwargs)
 	
-	.on_exit(new_kwargs)
+	
