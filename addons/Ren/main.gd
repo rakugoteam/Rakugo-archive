@@ -25,6 +25,7 @@ var values = {
 var using_passer = false
 var dialogs = {} # "dialog_name":node
 var current_dialog_name = ""
+var skip_auto = false
 
 export(bool) var debug_inti = true
 

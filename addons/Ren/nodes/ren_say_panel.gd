@@ -28,6 +28,9 @@ func _on_timeout():
 	set_process_unhandled_input(_type == "say")
 
 func _input(event):
+	if Ren.skip_auto:
+		return
+
 	if event.is_action_pressed("ren_forward"):
 		Ren.rolling_back = false
 		if Ren.history_id > 1:

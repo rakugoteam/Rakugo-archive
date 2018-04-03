@@ -37,15 +37,18 @@ func _on_qload():
 		$InfoAnim.play("GeneralNotif")
 
 func _on_statement(id, type, kwargs):
-	$Skip.disabled = !Ren.can_skip()
+	$Skip.disabled = not(type in skip_types)
+	$Auto.disabled = not(type in skip_types)
 	$History.disabled = Ren.history.empty()
 	$Back.disabled = id == 0
 
 func on_auto():
 	if not $AutoTimer.is_stopped():
 		$AutoTimer.stop()
+		Ren.skip_auto = false
 		return
 	
+	Ren.skip_auto = true
 	$AutoTimer.start()
 
 func on_auto_loop():
@@ -64,8 +67,10 @@ func stop_skip():
 func on_skip():
 	if not $SkipTimer.is_stopped():
 		stop_skip()
+		Ren.skip_auto = false
 		return
-	
+
+	Ren.skip_auto = true
 	$SkipTimer.start()
 	$InfoAnim.play("Skip")
 
@@ -78,6 +83,13 @@ func on_skip_loop():
 func _input(event):
 	if event.is_action("ren_backward"):
 		Ren.on_rollback()
+
+	if event.is_action_pressed("ren_forward"):
+		if Ren.skip_auto:
+			$AutoTimer.stop()
+			stop_skip()
+			Ren.skip_auto = false
+	
 
 func full_save():
 	var screenshot=get_viewport().get_texture().get_data()
