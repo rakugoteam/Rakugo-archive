@@ -11,6 +11,3 @@ func exec(dbg = true):
 	if "info" in kwargs:
 		kwargs.info = Ren.text_passer(kwargs.info)
 	
-	.exec(false)
-	Ren.timer.start()
-

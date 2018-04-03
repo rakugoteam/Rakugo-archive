@@ -36,7 +36,7 @@ func story(dialog_name):
 		
 		"test values 2":
 			Ren.say({"what":"and now test_val = [test_val]"})
-			Ren.story_state = "show rench"
+			Ren.story_state = "get player name"
 
 		#true example:
 		"show rench":
@@ -45,6 +45,9 @@ func story(dialog_name):
 			Ren.story_state = "get player name"
 
 		"get player name":
+			## showing Ren's node or character with id 'rench' at center
+			Ren.show("rench", [], {"at":["center"]})
+
 			## example getting user input to Ren.value
 			Ren.define("player_name")
 			Ren.input({
@@ -69,11 +72,6 @@ func story(dialog_name):
 				"speed":
 					0.1
 				})
-			Ren.story_state = "hide rench"
-			
-		"hide rench":
-			## hidding Ren's node or character with id 'rench' 
-			Ren.hide("rench")
 			Ren.story_state = "test skipping/auto"
 		
 		"test skipping/auto":
@@ -110,7 +108,7 @@ func story(dialog_name):
 				"what":
 					"Visual Novel example is not ready yet"
 			})
-			Ren.story_state = "notification example"
+			Ren.story_state = "end"
 
 		"Play Click'n'Point Adventure example":
 			Ren.say({
@@ -119,7 +117,7 @@ func story(dialog_name):
 				"what":
 					"Click'n'Point Adventure example is not ready yet"
 			})
-			Ren.story_state = "notification example"
+			Ren.story_state = "end"
 
 		"Play RPG example":
 			Ren.say({
@@ -128,7 +126,7 @@ func story(dialog_name):
 				"what":
 					"RPG example is not ready yet"
 			})
-			Ren.story_state = "notification example"
+			Ren.story_state = "end"
 		
 		"Read Docs":
 			Ren.say({
@@ -137,13 +135,11 @@ func story(dialog_name):
 				"what":
 					"Docs are not ready yet"
 			})
-			Ren.story_state = "notification example"
-		
-		"notification example":
-			Ren.notifiy("You make your first choice!",3)
 			Ren.story_state = "end"
 		
 		"end":
+			Ren.notifiy("You make your first choice!",3)
+			Ren.hide("rench")
 			Ren.say({
 				"who": 
 					"rench",

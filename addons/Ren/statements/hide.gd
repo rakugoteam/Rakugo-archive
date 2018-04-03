@@ -11,6 +11,3 @@ func exec(dbg = true):
 
 	Ren.on_hide(kwargs.node_id)
 
-	.exec(false)
-	Ren.timer.start()
-

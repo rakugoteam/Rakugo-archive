@@ -34,8 +34,6 @@ func exec(dbg = true):
 			kwargs.y = 1.0
 	
 	Ren.on_show(kwargs.node_id, kwargs.state, kwargs)
-		
-	.exec(false)
-	Ren.timer.start()
+
 
 
