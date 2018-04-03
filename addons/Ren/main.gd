@@ -34,6 +34,7 @@ onready var timer = $Timer
 # must be set on beging of dialog
 var dialog_node setget _set_dialog_node, _get_dialog_node
 var story_state setget _set_story_state, _get_story_state
+var previous_state = ""
 
 signal exec_statement(type, kwargs)
 signal enter_block(kwargs)
@@ -124,6 +125,14 @@ func add_dialog(node, dialog_name):
 	else:
 		dialogs[dialog_name] = node
 
+func _set_statement(node, kwargs):
+	node.set_kwargs(kwargs)
+	if story_state in history:
+		current_id = history.find(story_state)
+	node.id = current_id
+	current_id += 1
+	node.exec()
+
 ## statement of type say
 ## its make given character(who) talk (what)
 ## with keywords : who, what
@@ -131,11 +140,7 @@ func say(kwargs):
 	if not ("who" in kwargs):
 		kwargs["who"] = ""
 	
-	$Say.set_kwargs(kwargs)
-
-	$Say.id = current_id
-	current_id += 1
-	$Say.exec()
+	_set_statement($Say, kwargs)
 
 ## crate statement of type input
 ## its allow player to provide keybord input that will be assain to given value
@@ -144,11 +149,7 @@ func input(kwargs):
 	if not ("who" in kwargs):
 		kwargs["who"] = ""
 	
-	$Input.set_kwargs(kwargs)
-
-	$Input.id = current_id
-	current_id += 1
-	$Input.exec()
+	_set_statement($Input, kwargs)
 
 ## its allow player to make choice
 ## with keywords : who, what, choices, title
@@ -161,11 +162,7 @@ func menu(kwargs):
 	if not ("who" in kwargs):
 		kwargs["who"] = ""
 
-	$Menu.set_kwargs(kwargs)
-	
-	$Menu.id = current_id
-	current_id += 1
-	$Menu.exec()
+	_set_statement($Menu, kwargs)
 
 
 ## it show custom ren node or charater
@@ -181,28 +178,18 @@ func show(node_id, state = [], kwargs = {}):
 	kwargs["node_id"] = node_id
 	kwargs["state"] = state
 	
-	print(kwargs)
-
-	$Show.set_kwargs(kwargs)
-	$Show.id = current_id
-	current_id += 1
-	$Show.exec()
+	_set_statement($Show, kwargs)
 
 ## statement of type hide
 func hide(node_id):
 	var kwargs = {"node_id":node_id}
-	$Hide.set_kwargs(kwargs)
-	$Hide.id = current_id
-	current_id += 1
-	$Hide.exec()
+	_set_statement($Hide, kwargs)
 
 ## statement of type notify
 func notifiy(info, length=5):
 	var kwargs = {"info": info,"length":length}
-	$Notify.set_kwargs(kwargs)
-	$Notify.id = current_id
-	current_id += 1
-	$Notify.exec()
+	_set_satement($Notify, kwargs)
+
 
 func _set_dialog_node(node):
 	history_id = 1
@@ -213,6 +200,7 @@ func _get_dialog_node():
 	return dialog_node
 
 func _set_story_state(state):
+	previous_state = story_state
 	define("story_state", state)
 
 func _get_story_state():
@@ -223,7 +211,6 @@ func start():
 	current_menu = null
 	using_passer = false
 	set_meta("playing", true) # for checking if Ren is playing
-
 
 ## go back to pervious statement that type is say, input or menu 
 func rollback():
@@ -245,14 +232,7 @@ func rollback():
 		else:
 			rolling_back = true
 
-		var previous_state = history[history.size() - history_id]
-		
-		while previous_state == story_state:
-			history_id += 1
-			previous_state = history[history.size() - history_id]
-		
-		story_state = previous_state
-		exit_statement()
+		story_state = history[history.size() - history_id]
 		
 		
 func savefile(filepath="user://save.dat", password="Ren"):

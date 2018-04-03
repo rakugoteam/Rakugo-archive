@@ -37,12 +37,7 @@ func _on_qload():
 func _on_statement(id, type, kwargs):
 	$Skip.disabled = !Ren.can_skip()
 	$History.disabled = Ren.history.empty()
-	
-	if Ren.history_id > Ren.history.size():
-		$Back.disabled = true
-		
-	else:
-		$Back.disabled = Ren.history.empty()
+	$Back.disabled = id == 0
 
 func on_auto():
 	if not $AutoTimer.is_stopped():

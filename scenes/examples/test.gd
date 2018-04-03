@@ -87,6 +87,7 @@ func story(dialog_name):
 		"example of menu":
 			# example of creating menu
 			# menu set story_state it self
+			Ren.hide("rench")
 			Ren.menu({
 				"who":
 					"rench",
@@ -139,7 +140,6 @@ func story(dialog_name):
 		
 		"end":
 			Ren.notifiy("You make your first choice!",3)
-			Ren.hide("rench")
 			Ren.say({
 				"who": 
 					"rench",
