@@ -1,5 +1,7 @@
 extends HBoxContainer
 
+var skip_types = ["say", "show", "hide"]
+
 func _ready():
 	Ren.connect("exec_statement", self, "_on_statement")
 	$Back.connect("pressed", Ren, "rollback")
@@ -47,7 +49,7 @@ func on_auto():
 	$AutoTimer.start()
 
 func on_auto_loop():
-	if Ren.current_statement.type in ["say", "show", "hide"]:
+	if Ren.current_statement.type in skip_types:
 		Ren.exit_statement()
 
 	else:
@@ -68,8 +70,7 @@ func on_skip():
 	$InfoAnim.play("Skip")
 
 func on_skip_loop():
-	if (Ren.current_statement.type in ["say", "show", "hide"]
-		and Ren.story_state in Ren.history):
+	if Ren.current_statement.type in skip_types:
 		Ren.exit_statement()
 	else:
 		stop_skip()

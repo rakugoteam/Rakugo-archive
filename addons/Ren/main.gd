@@ -289,7 +289,7 @@ func quitcurvis():
 
 func can_skip():
 	if not Ren.history.empty():
-		if Ren.history[0] != story_state:
+		if story_state in Ren.history:
 			return true
 			
 	return false

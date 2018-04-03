@@ -44,6 +44,6 @@ func on_exit(_type, new_kwargs = {}):
 	Ren.story_step()
 
 func debug(kws = [], some_custom_text = ""):
-	var dbg = str(get_index()) + ":" + type + "("
+	var dbg = str(id) + ":" + type + "("
 	dbg += Ren.debug(kwargs, kws, some_custom_text) + ")"
 	return dbg
