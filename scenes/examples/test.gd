@@ -49,16 +49,16 @@ func story(dialog_name):
 			Ren.show("rench", [], {"at":["center"]})
 
 			## example getting user input to Ren.value
-			Ren.define("player_name")
 			Ren.input({
 				"who": 
 					"rench",
 				"what":
 					"Hi! I'm Ren. What is your name?",
 				"input_value":
-						"player_name",
+						"player_name", ## Ren value to be changed
+						## it don't have to be define before input
 				"value":
-					"Developer"
+					"Developer" ## default value
 				})
 			Ren.story_state = "welcome player"
 		
