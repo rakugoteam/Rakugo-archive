@@ -4,7 +4,7 @@
 
 ![Logo](window_icon.png)
 
-Ren is framemork ( inspired by [Ren'Py](https://www.renpy.org) ) <br /> for story driven games in Godot.
+Ren is framemork ( inspired by [Ren'Py](https://www.renpy.org) ) <br /> for story driven games in [Godot](https://godotengine.org).
 
 ## Story driven games
 
