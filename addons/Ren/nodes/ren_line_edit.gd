@@ -14,7 +14,7 @@ func _unhandled_key_input(delta):
 		_on_exec(get_text())
 		set_process_unhandled_key_input(false)
 
-func _on_exec(text):
+func _on_enter(text):
 	var final_value = input_placeholder
 
 	if text != "":

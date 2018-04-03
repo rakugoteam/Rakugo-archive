@@ -13,8 +13,8 @@ var rolling_back = false
 var current_statement = null
 
 var current_menu
-var current_id = -1
-var choice_id = -1
+var current_id = 0
+
 var values = {
 	"version":{"type":"text", "value":"0.7.0 GDScript"},
 	"test_bool":{"type":"var", "value":false},
@@ -206,7 +206,7 @@ func notifiy(info, length=5):
 
 func _set_dialog_node(node):
 	history_id = 1
-	current_id = -1
+	current_id = 0
 	dialog_node = node
 
 func _get_dialog_node():
@@ -230,7 +230,7 @@ func rollback():
 	if has_meta("usingvis"):
 		set_meta("go_back",true)
 
-		if dialog_node.get_children().back().type=="menu":
+		if current_statement.type=="menu":
 			enter_block()
 		else:
 			exit_statement()
@@ -245,13 +245,14 @@ func rollback():
 		else:
 			rolling_back = true
 
-		var previous = history[history.size() - history_id]
+		var previous_state = history[history.size() - history_id]
 		
-		while previous == current_statement:
+		while previous_state == story_state:
 			history_id += 1
-			previous = history[history.size() - history_id]
-
-		previous.exec()
+			previous_state = history[history.size() - history_id]
+		
+		story_state = previous_state
+		exit_statement()
 		
 		
 func savefile(filepath="user://save.dat", password="Ren"):
@@ -282,8 +283,7 @@ func loadfile(filepath="user://save.dat", password="Ren"):
 			quitcurvis()
 			vis_loading=true
 			current_menu = null
-			current_id=-1
-			choice_id = -1
+			current_id=0
 			using_passer = false
 			history_vis=load_dict["visual_history"]
 			values=load_dict["values"]
@@ -309,9 +309,8 @@ func quitcurvis():
 
 func can_skip():
 	if not Ren.history.empty():
-		if Ren.current_statement in Ren.history:
-			if Ren.current_statement != Ren.history.back():
-				return true
+		if Ren.history[0] != story_state:
+			return true
 			
 	return false
 

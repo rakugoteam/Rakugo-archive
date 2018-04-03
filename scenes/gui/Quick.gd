@@ -74,14 +74,14 @@ func on_skip():
 
 func on_skip_loop():
 	if (Ren.current_statement.type in ["say", "show", "hide"]
-		and Ren.current_statement in Ren.history):
+		and Ren.story_state in Ren.history):
 		Ren.exit_statement()
 	else:
 		stop_skip()
 
 func _input(event):
 	if event.is_action("ren_backward"):
-		on_rollback()
+		Ren.on_rollback()
 
 func full_save():
 	var screenshot=get_viewport().get_texture().get_data()

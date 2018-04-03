@@ -6,6 +6,7 @@ var org_kwargs = {} # org version of kwargs
 var kws = [] # possible keywords for this type of statement
 var id = 0
 var add_to_history = true
+var previous_sate = ""
 
 func _ready():
 	Ren.connect("exit_statement", self, "on_exit", [], CONNECT_PERSIST)
@@ -15,7 +16,7 @@ func exec(dbg = true):
 		print(debug(kws))
 	
 	Ren.current_statement = self
-	
+	previous_sate = Ren.story_state
 	Ren.exec_statement(id, type, kwargs)
 
 func set_kwargs(new_kwargs):
@@ -36,8 +37,11 @@ func on_exit(_type, new_kwargs = {}):
 		set_kwargs(new_kwargs)
 	
 	if add_to_history:
-		if not ([type, kwargs] in Ren.history):
-			Ren.history.append([type, kwargs])
+		if not(previous_sate in Ren.history):
+			if id < Ren.history.size():
+				Ren.history[id] = previous_sate
+			else:
+				Ren.history.append(previous_sate)
 
 	Ren.story_step()
 
