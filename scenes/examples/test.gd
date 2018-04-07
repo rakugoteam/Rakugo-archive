@@ -76,7 +76,7 @@ func story(dialog_name):
 		"example of menu":
 			# example of creating menu
 			# menu set story_state it self
-			Ren.hide("rench")
+			# Ren.hide("rench")
 			Ren.menu({
 				"who":
 					"rench",
@@ -92,7 +92,7 @@ func story(dialog_name):
 				})
 			
 		"Play Visual Novel example":
-			Ren.jump("vn", story_state)
+			Ren.jump("vn", Ren.story_state)
 
 		"Play Click'n'Point Adventure example":
 			Ren.say({
