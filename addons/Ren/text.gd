@@ -63,7 +63,8 @@ func text_passer(text, values):
 				print(val_name," is unsuported value type: ", type)
 			
 		text = text.replace("{image", "[img")
-		text = text.replace("{tab}", "/t".c_escape())
+		text = text.replace("{nl}", "\n".c_escape())
+		text = text.replace("{tab}", "\t".c_escape())
 		text = text.replace("{", "[")
 		text = text.replace("}", "]")
 		# print("org: ''", _text, "', bbcode: ''", text , "'")
