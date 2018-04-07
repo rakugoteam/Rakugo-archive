@@ -98,14 +98,8 @@ func story(dialog_name):
 					]
 				})
 			
-		# "Play Visual Novel example":
-		# 	Ren.say({
-		# 		"who":
-		# 			"rench",
-		# 		"what":
-		# 			"Visual Novel example is not ready yet"
-		# 	})
-		# 	Ren.story_state = "end"
+		"Play Visual Novel example":
+			Ren.jump("vn", story_state)
 
 		"Play Click'n'Point Adventure example":
 			Ren.say({

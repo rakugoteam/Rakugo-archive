@@ -189,20 +189,18 @@ func _get_story_state():
 
 ## it starts current Ren dialog
 func start(dialog_name, state):
-	current_id = 0
-	history_id = 0
 	history = {}
 	current_menu = null
 	using_passer = false
-	Ren.current_dialog_name = dialog_name
-	Ren.story_state = state
-	Ren.story_step()
+	jump(dialog_name, state)
 	set_meta("playing", true) # for checking if Ren is playing
 
-func set_up_new_dialog(dialog_name):
+func jump(dialog_name, state):
 	current_id = 0
 	history_id = 0
-	Ren.current_dialog_name = dialog_name
+	current_dialog_name = dialog_name
+	story_state = state
+	Ren.story_step()
 
 ## go back to pervious story_state
 func rollback():
