@@ -192,7 +192,6 @@ func start(dialog_name, state):
 	history = {}
 	current_menu = null
 	using_passer = false
-	jump(dialog_name, state)
 	set_meta("playing", true) # for checking if Ren is playing
 
 func jump(dialog_name, state):

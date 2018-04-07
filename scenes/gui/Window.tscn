@@ -584,6 +584,6 @@ _sections_unfolded = [ "BBCode", "Rect", "Visibility", "custom_colors", "custom_
 
 [node name="Screens" parent="." index="1" instance=ExtResource( 10 )]
 
-first_dialog = "example"
+first_dialog = "test"
 
 
