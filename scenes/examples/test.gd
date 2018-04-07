@@ -34,16 +34,9 @@ func story(dialog_name):
 			Ren.say({"what":"and now test_val = [test_val]"})
 			Ren.story_state = "get player name"
 
-		#true example:
-		"show rench":
-			## showing Ren's node or character with id 'rench' at center
-			Ren.show("rench", [], {"at":["center"]})
-			Ren.story_state = "get player name"
-
 		"get player name":
 			## showing Ren's node or character with id 'rench' at center
 			Ren.show("rench", [], {"at":["center"]})
-
 			## example getting user input to Ren.value
 			Ren.input({
 				"who": 
