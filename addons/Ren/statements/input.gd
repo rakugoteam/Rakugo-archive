@@ -20,11 +20,8 @@ func exec(dbg = true):
 	.exec(false)
 
 func on_exit(_type, new_kwargs = {}):
-	if _type != type:
+	if !setup_exit(_type, new_kwargs):
 		return
-	
-	if new_kwargs != {}:
-		set_kwargs(new_kwargs)
 	
 	if "value" in kwargs:
 		value = kwargs.value
@@ -40,6 +37,8 @@ func on_exit(_type, new_kwargs = {}):
 
 	Ren.define(input_value, value)
 
-	.on_exit(type, new_kwargs)
+	add_to_history(_type)
+
+	Ren.story_step()
 	
 	

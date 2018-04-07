@@ -1,6 +1,5 @@
 extends "statement.gd"
 
-
 func _init():
 	type = "hide"
 	kws = ["node_id"]

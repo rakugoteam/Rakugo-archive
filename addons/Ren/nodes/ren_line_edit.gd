@@ -23,7 +23,7 @@ func _on_enter(text):
 	set_process(false)
 	Ren.exit_statement({"value":final_value})
 
-func _on_statement(id, type, kwargs):
+func _on_statement(type, kwargs):
 	_type = type
 	if type != "input":
 		if is_connected("text_entered", self , "_on_enter"):

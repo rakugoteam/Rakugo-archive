@@ -3,7 +3,6 @@ extends "statement.gd"
 func _init():
 	type = "jump"
 	kws = ["dialog"]
-	add_to_history = false
 
 func exec(dbg = true):
 	.exec(true)

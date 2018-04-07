@@ -1,21 +1,17 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://addons/Ren/nodes/ren_say_panel.gd" type="Script" id=1]
-[ext_resource path="res://addons/Ren/icons/ren_panel.svg" type="Texture" id=2]
-[ext_resource path="res://scenes/gui/Labels/name_text.tscn" type="PackedScene" id=3]
-[ext_resource path="res://ubuntu-font-family/UbuntuMono-R.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://ubuntu-font-family/Ubuntu-B.ttf" type="DynamicFontData" id=5]
-[ext_resource path="res://ubuntu-font-family/Ubuntu-RI.ttf" type="DynamicFontData" id=6]
-[ext_resource path="res://ubuntu-font-family/Ubuntu-R.ttf" type="DynamicFontData" id=7]
-[ext_resource path="res://addons/Ren/nodes/ren_line_edit.gd" type="Script" id=8]
-[ext_resource path="res://addons/Ren/icons/ren_line_edit.svg" type="Texture" id=9]
+[ext_resource path="res://scenes/gui/Labels/name_text.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ubuntu-font-family/UbuntuMono-R.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://ubuntu-font-family/Ubuntu-B.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://ubuntu-font-family/Ubuntu-RI.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://ubuntu-font-family/Ubuntu-R.ttf" type="DynamicFontData" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 
 size = 30
 use_mipmaps = false
 use_filter = true
-font_data = ExtResource( 4 )
+font_data = ExtResource( 2 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=2]
@@ -23,7 +19,7 @@ _sections_unfolded = [ "Font", "Settings" ]
 size = 30
 use_mipmaps = false
 use_filter = true
-font_data = ExtResource( 5 )
+font_data = ExtResource( 3 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=3]
@@ -31,7 +27,7 @@ _sections_unfolded = [ "Font", "Settings" ]
 size = 30
 use_mipmaps = false
 use_filter = true
-font_data = ExtResource( 6 )
+font_data = ExtResource( 4 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=4]
@@ -39,7 +35,7 @@ _sections_unfolded = [ "Font", "Settings" ]
 size = 30
 use_mipmaps = false
 use_filter = true
-font_data = ExtResource( 5 )
+font_data = ExtResource( 3 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=5]
@@ -47,28 +43,10 @@ _sections_unfolded = [ "Font", "Settings" ]
 size = 30
 use_mipmaps = false
 use_filter = true
-font_data = ExtResource( 7 )
+font_data = ExtResource( 5 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Say" type="Control"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 452.0
-margin_right = 1024.0
-margin_bottom = 603.0
-rect_min_size = Vector2( 100, 100 )
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-_sections_unfolded = [ "Anchor", "Mouse", "Rect", "Size Flags", "Theme", "custom_styles" ]
-
-[node name="RenSayPanel" type="Panel" parent="." index="0"]
+[node name="HistoryItem" type="Panel" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -76,22 +54,16 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 1024.0
 margin_bottom = 147.0
+rect_min_size = Vector2( 700, 100 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-script = ExtResource( 1 )
-__meta__ = {
-"_editor_icon": ExtResource( 2 )
-}
-step_time = 0.05
-name_label_path = NodePath("VBox/Label")
-dialog_label_path = NodePath("VBox/Dialog")
-avatar_viewport_path = NodePath("ViewportContainer/CharaterAvatar")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+_sections_unfolded = [ "Rect", "Size Flags" ]
 
-[node name="VBox" type="VBoxContainer" parent="RenSayPanel" index="0"]
+[node name="VBox" type="VBoxContainer" parent="." index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -109,7 +81,7 @@ size_flags_vertical = 3
 custom_constants/separation = 1
 alignment = 0
 
-[node name="Label" parent="RenSayPanel/VBox" index="0" instance=ExtResource( 3 )]
+[node name="Label" parent="VBox" index="0" instance=ExtResource( 1 )]
 
 margin_right = 905.0
 margin_bottom = 49.0
@@ -125,7 +97,7 @@ custom_fonts/normal_font = SubResource( 5 )
 scroll_active = false
 selection_enabled = false
 
-[node name="Dialog" type="RichTextLabel" parent="RenSayPanel/VBox" index="1"]
+[node name="Dialog" type="RichTextLabel" parent="VBox" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -153,35 +125,7 @@ selection_enabled = false
 override_selected_font_color = false
 _sections_unfolded = [ "BBCode", "Rect", "Size Flags" ]
 
-[node name="RenLineEdit" type="LineEdit" parent="RenSayPanel/VBox" index="2"]
-
-visible = false
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 76.0
-margin_right = 905.0
-margin_bottom = 100.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 1
-size_flags_horizontal = 1
-size_flags_vertical = 1
-focus_mode = 2
-context_menu_enabled = true
-placeholder_alpha = 0.6
-caret_blink = false
-caret_blink_speed = 0.65
-caret_position = 0
-script = ExtResource( 8 )
-__meta__ = {
-"_editor_icon": ExtResource( 9 )
-}
-
-[node name="ViewportContainer" type="ViewportContainer" parent="RenSayPanel" index="1"]
+[node name="ViewportContainer" type="ViewportContainer" parent="." index="1"]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -199,7 +143,7 @@ size_flags_vertical = 1
 stretch = false
 stretch_shrink = 1
 
-[node name="CharaterAvatar" type="Viewport" parent="RenSayPanel/ViewportContainer" index="0"]
+[node name="CharaterAvatar" type="Viewport" parent="ViewportContainer" index="0"]
 
 arvr = false
 size = Vector2( 100, 100 )

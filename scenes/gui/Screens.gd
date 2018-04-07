@@ -4,12 +4,15 @@ onready var in_game_gui = get_node("/root/Window/InGameGUI")
 
 export(String) var first_dialog = ""
 export(String) var first_state = ""
+var current_node = self
 
 func _ready():
 	connect("visibility_changed", self, "_on_Screens_visibility_changed", [], CONNECT_PERSIST)
 	
-	
 func save_menu(screenshot):
+	if current_node != self:
+		current_node.hide()
+	current_node = $SlotBox
 	show()
 	$SlotBox/Title.text="Save"
 	$SlotBox.show()
@@ -17,10 +20,20 @@ func save_menu(screenshot):
 	$SlotBox.screenshot=screenshot
 
 func load_menu():
+	if current_node != self:
+		current_node.hide()
+	current_node = $SlotBox
 	show()
 	$SlotBox/Title.text="Load"
 	$SlotBox.show()
 	$SlotBox.loadbox()
+
+func history_menu():
+	if current_node != self:
+		current_node.hide()
+	current_node = $HistoryBox
+	show()
+	$HistoryBox.show()
 
 func _on_Screens_visibility_changed():
 	if visible:
@@ -41,5 +54,10 @@ func _on_Start_pressed():
 	hide()
 	$Navigation/VBoxContainer/Start.hide()
 	$Navigation/Return.show()
-	Ren.start()
-	
+	$Navigation/VBoxContainer/Save.show()
+	$Navigation/VBoxContainer/History.show()
+	Ren.start(first_dialog, first_state)
+
+
+func _on_History_pressed():
+	history_menu()

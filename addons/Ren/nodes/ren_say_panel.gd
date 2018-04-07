@@ -41,7 +41,7 @@ func _input(event):
 		else:      #else exit statement
 			Ren.exit_statement()
 
-func _on_statement(id, type, kwargs):
+func _on_statement(type, kwargs):
 	set_process(false)
 	_type = type
 	timer.start()

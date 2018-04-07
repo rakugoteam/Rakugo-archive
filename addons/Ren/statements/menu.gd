@@ -1,12 +1,10 @@
 extends "say.gd"
 
-var title
 var choices_labels = []
 
-func _init(_title = null):
+func _init():
 	._init()
 	kws.append("choices")
-	title = _title
 	type = "menu"
 	
 func exec(dbg = true): 
@@ -24,11 +22,8 @@ func exec(dbg = true):
 
 
 func on_exit(_type, new_kwargs):
-	if type != _type:
+	if !setup_exit(_type, new_kwargs):
 		return
-
-	if new_kwargs != {}:
-		set_kwargs(new_kwargs)
 	
 	if "final_choice" in kwargs:
 		Ren.story_state = kwargs.choices[kwargs.final_choice]

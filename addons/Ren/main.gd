@@ -1,6 +1,6 @@
 extends Node
 
-var history = []
+var history = {} # {"number":{"state":story_state, "statement":{"type":type, "kwargs":kwargs}}}
 # Visual save/load
 var history_vis=[]
 var mainscriptnode
@@ -23,7 +23,6 @@ var values = {
 	}
 
 var using_passer = false
-var dialogs = {} # "dialog_name":node
 var current_dialog_name = ""
 var skip_auto = false
 
@@ -32,13 +31,10 @@ export(bool) var debug_inti = true
 const _CHR	= preload("nodes/character.gd")
 onready var timer = $Timer
 
-# must be set on beging of dialog
-var dialog_node setget _set_dialog_node, _get_dialog_node
 var story_state setget _set_story_state, _get_story_state
 var previous_state = ""
 
 signal exec_statement(type, kwargs)
-signal enter_block(kwargs)
 signal exit_statement(previous_type, kwargs)
 signal notified()
 signal show(node_id, state, show_args)
@@ -49,11 +45,8 @@ signal story_step(dialog_name)
 func _ready():
 	timer.connect("timeout", self, "exit_statement", [], CONNECT_PERSIST)
 
-func exec_statement(id, type, kwargs = {}):
-	emit_signal("exec_statement", id, type, kwargs)
-
-func enter_block(kwargs = {}):
-	emit_signal("enter_block", kwargs)
+func exec_statement(type, kwargs = {}):
+	emit_signal("exec_statement", type, kwargs)
 
 func exit_statement(kwargs = {}):
 	emit_signal("exit_statement", current_statement.type, kwargs)
@@ -118,23 +111,12 @@ func node_link(node, node_id = node.name):
 	elif node is Node:
 		$Def.define(values, node_id, node, "node")
 
-## add new dialog to which you can jump to
-func add_dialog(node, dialog_name):
-	if dialog_name in dialogs:
-		print("there is already dialog named '", dialog_name, "'")
-		return
-	else:
-		dialogs[dialog_name] = node
-
 func _set_statement(node, kwargs):
 	node.set_kwargs(kwargs)
-	if story_state in history:
-		current_id = history.find(story_state)
-	node.id = current_id
-	current_id += 1
 	node.exec()
 
 ## statement of type say
+## there can be only one say, input or menu in story_state
 ## its make given character(who) talk (what)
 ## with keywords : who, what
 func say(kwargs):
@@ -143,7 +125,8 @@ func say(kwargs):
 	
 	_set_statement($Say, kwargs)
 
-## crate statement of type input
+## statement of type input
+## there can be only one say, input or menu in story_state
 ## its allow player to provide keybord input that will be assain to given value
 ## with keywords : who, what, input_value, value
 func input(kwargs):
@@ -152,14 +135,11 @@ func input(kwargs):
 	
 	_set_statement($Input, kwargs)
 
+## statement of type menu
+## there can be only one say, input or menu in story_state
 ## its allow player to make choice
-## with keywords : who, what, choices, title
+## with keywords : who, what, choices
 func menu(kwargs):
-	var title = null
-	if "title" in kwargs:
-		title = kwargs.title
-		kwargs.erase("title")
-	
 	if not ("who" in kwargs):
 		kwargs["who"] = ""
 
@@ -191,40 +171,41 @@ func notifiy(info, length=5):
 	var kwargs = {"info": info,"length":length}
 	_set_satement($Notify, kwargs)
 
-
-func _set_dialog_node(node):
-	history_id = 1
-	current_id = 0
-	dialog_node = node
-
-func _get_dialog_node():
-	return dialog_node
-
 func _set_story_state(state):
-	previous_state = story_state
+	var id = str(current_id)
+	if not(id in history):
+		history[id] = {}
+	
+	if story_state != null:
+		history[id]["state"] = story_state
+
+	else:
+		history[id]["state"] = state
+	
 	define("story_state", state)
 
 func _get_story_state():
 	return get_value("story_state")
 
 ## it starts current Ren dialog
-func start():
+func start(dialog_name, state):
+	current_id = 0
+	history_id = 0
+	history = {}
 	current_menu = null
 	using_passer = false
+	Ren.current_dialog_name = dialog_name
+	Ren.story_state = state
+	Ren.story_step()
 	set_meta("playing", true) # for checking if Ren is playing
 
-## go back to pervious statement that type is say, input or menu 
+func set_up_new_dialog(dialog_name):
+	current_id = 0
+	history_id = 0
+	Ren.current_dialog_name = dialog_name
+
+## go back to pervious story_state
 func rollback():
-	if has_meta("usingvis"):
-		set_meta("go_back",true)
-
-		if current_statement.type=="menu":
-			enter_block()
-		else:
-			exit_statement()
-
-		set_meta("go_back",false)
-		
 	if not history.empty() and !has_meta("usingvis"):
 		
 		if rolling_back:
@@ -232,9 +213,13 @@ func rollback():
 
 		else:
 			rolling_back = true
-
-		story_state = history[history.size() - history_id]
 		
+		var index = history.size() - history_id
+		story_state = history[str(index)]["state"]
+		if current_statement.type in ["say", "input", "menu"]:
+			current_statement.exit_statement()
+		else:
+			story_step()
 		
 func savefile(filepath="user://save.dat", password="Ren"):
 	if has_meta("usingvis"):

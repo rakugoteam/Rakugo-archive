@@ -2,10 +2,7 @@ extends Node
 
 var type = "base"
 var kwargs = {} # dict of pairs keyword : argument
-var org_kwargs = {} # org version of kwargs 
 var kws = [] # possible keywords for this type of statement
-var id = 0
-var add_to_history = true
 
 func _ready():
 	Ren.connect("exit_statement", self, "on_exit", [], CONNECT_PERSIST)
@@ -15,35 +12,32 @@ func exec(dbg = true):
 		print(debug(kws))
 	
 	Ren.current_statement = self
-	Ren.exec_statement(id, type, kwargs)
+	Ren.exec_statement(type, kwargs)
 
 func set_kwargs(new_kwargs):
 	# update statement
-	set_dict(new_kwargs, [kwargs, org_kwargs])
+	set_dict(new_kwargs, kwargs)
 
-func set_dict(new_dict, dicts_array):
-	for dict in dicts_array:
-		for kw in new_dict:
-			dict[kw] = new_dict[kw]
-	
+func set_dict(new_dict, current_dict):
+	for kw in new_dict:
+		if kw != "":
+			current_dict[kw] = new_dict[kw]
 
-func on_exit(_type, new_kwargs = {}):
+func setup_exit(_type, new_kwargs = {}):
 	if _type != type:
-		return
+		return false
 		
 	if new_kwargs != {}:
 		set_kwargs(new_kwargs)
 	
-	if add_to_history:
-		if not(Ren.previous_state in Ren.history):
-			if id < Ren.history.size():
-				Ren.history[id] = Ren.previous_state
-			else:
-				Ren.history.append(Ren.previous_state)
+	return true
 
+func on_exit(_type, new_kwargs = {}):
+	if !setup_exit(_type, new_kwargs):
+		return
 	Ren.story_step()
 
 func debug(kws = [], some_custom_text = ""):
-	var dbg = str(id) + ":" + type + "("
+	var dbg = type + "("
 	dbg += Ren.debug(kwargs, kws, some_custom_text) + ")"
 	return dbg

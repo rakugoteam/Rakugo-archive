@@ -3,11 +3,7 @@
 extends Node
 
 func _ready():
-	Ren.dialog_node = self
-	Ren.current_dialog_name = "example"
-	Ren.story_state = "start"
 	Ren.connect("story_step", self, "story", [], CONNECT_PERSIST)
-	Ren.story_step()
 
 func story(dialog_name):
 	if dialog_name != "example":
@@ -102,14 +98,14 @@ func story(dialog_name):
 					]
 				})
 			
-		"Play Visual Novel example":
-			Ren.say({
-				"who":
-					"rench",
-				"what":
-					"Visual Novel example is not ready yet"
-			})
-			Ren.story_state = "end"
+		# "Play Visual Novel example":
+		# 	Ren.say({
+		# 		"who":
+		# 			"rench",
+		# 		"what":
+		# 			"Visual Novel example is not ready yet"
+		# 	})
+		# 	Ren.story_state = "end"
 
 		"Play Click'n'Point Adventure example":
 			Ren.say({

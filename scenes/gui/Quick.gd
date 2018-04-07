@@ -1,11 +1,10 @@
 extends HBoxContainer
 
 var skip_types = ["say", "show", "hide"]
+onready var Screens = get_node("../../Screens")
 
 func _ready():
 	Ren.connect("exec_statement", self, "_on_statement")
-	$Back.connect("pressed", Ren, "rollback")
-	$Back.disabled = true
 	
 	$Auto.connect("pressed", self, "on_auto")
 	$AutoTimer.connect("timeout", self, "on_auto_loop")
@@ -15,12 +14,16 @@ func _ready():
 	$Skip.disabled = true
 
 	$History.disabled = true
+	$History.connect("pressed", Screens, "history_menu")
 	
 	$QSave.connect("pressed", self, "_on_qsave")
 	$QLoad.connect("pressed",self, "_on_qload")
 	
 	$Save.connect("pressed", self, "full_save")
-	$Load.connect("pressed", self, "full_load")
+	$Load.connect("pressed", Screens, "load_menu")
+	
+	$Back.disabled = true
+	$Back.connect("pressed", Ren, "rollback")
 
 func _on_qsave():
 	if Ren.savefile():
@@ -36,11 +39,10 @@ func _on_qload():
 		$InfoAnim/Panel/Label.bbcode_text="[color=red]Error loading Game[/color]"
 		$InfoAnim.play("GeneralNotif")
 
-func _on_statement(id, type, kwargs):
+func _on_statement(type, kwargs):
 	$Skip.disabled = not(type in skip_types)
 	$Auto.disabled = not(type in skip_types)
 	$History.disabled = Ren.history.empty()
-	$Back.disabled = id == 0
 
 func on_auto():
 	if not $AutoTimer.is_stopped():
@@ -81,9 +83,6 @@ func on_skip_loop():
 		stop_skip()
 
 func _input(event):
-	if event.is_action("ren_backward"):
-		Ren.on_rollback()
-
 	if event.is_action_pressed("ren_forward"):
 		if Ren.skip_auto:
 			$AutoTimer.stop()
@@ -93,8 +92,7 @@ func _input(event):
 
 func full_save():
 	var screenshot=get_viewport().get_texture().get_data()
-	get_node("../../Screens").save_menu(screenshot)
+	Screens.save_menu(screenshot)
 
-func full_load():
-	get_node("../../Screens").load_menu()
+
 	

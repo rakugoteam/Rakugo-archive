@@ -87,7 +87,7 @@ func _step(inputs, outputs, start_mode, working_mem):
 			Ren.statements[Ren.current_statement_id].exec()
 		var n= VisualScriptFunctionState.new()
 		#n.connect_to_signal(Engine.get_main_loop(),"idle_frame",[])
-		n.connect_to_signal(Ren,"enter_block",kwargs)
+		n.connect_to_signal(Ren,"exit_statement",kwargs)
 		working_mem[0]=n
 		print(n)
 		return 0 | STEP_YIELD_BIT
