@@ -22,8 +22,8 @@ func _enter_tree():
 		)
 	
 	add_custom_type(
-		"RenSpatial",
-		"VisualInstance",
+		"RenVisualInstance",
+		"Spatial",
 		preload("nodes/ren_node.gd"),
 		preload("icons/ren_spatial.svg")
 		)
@@ -45,7 +45,7 @@ func _enter_tree():
 	
 	add_custom_type(
 		"Character3D",
-		"VisualInstance",
+		"Spatial",
 		preload("nodes/character.gd"),
 		preload("icons/ren_character3d.svg")
 		)
