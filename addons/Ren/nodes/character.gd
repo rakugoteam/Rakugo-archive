@@ -9,7 +9,7 @@ export(String) var character_name = "" setget set_character_name, get_character_
 export(Color) var color = Color("#ffffff") setget set_color, get_color
 export(String) var prefix = "" setget set_prefix, get_prefix
 export(String) var suffix = "" setget set_suffix, get_suffix
-export(PackedScene) var avatar = "" setget set_avatar, get_avatar
+export(PackedScene) var avatar setget set_avatar, get_avatar
 
 func _ready():
 	Ren.character(node_id, kwargs, self)
@@ -53,8 +53,9 @@ func get_suffix():
 		return kwargs.suffix
 
 func set_avatar(value):
-	set_kwargs({"avatar":value.resource_path})
-	pass
+	if value != null:
+		set_kwargs({"avatar":value.resource_path})
+	
 
 func get_avatar():
 	if kwargs.has("avatar"):

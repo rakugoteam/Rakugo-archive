@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/examples/VisualNovelExample/Garden.gd" type="Script" id=1]
+[ext_resource path="res://scenes/examples/VisualNovelExample/cdc/garden.png" type="Texture" id=2]
+
+[node name="Garden" type="Node2D" index="0"]
+
+z_index = -2
+script = ExtResource( 1 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="garden" type="Sprite" parent="." index="0"]
+
+position = Vector2( 515, 300 )
+scale = Vector2( 0.804688, 0.75 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+

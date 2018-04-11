@@ -1,12 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/examples/test.gd" type="Script" id=1]
 [ext_resource path="res://addons/Ren/nodes/character.gd" type="Script" id=2]
 [ext_resource path="res://addons/Ren/icons/icon.svg" type="Texture" id=3]
-[ext_resource path="res://scenes/examples/RenAvatar.tscn" type="PackedScene" id=4]
-[ext_resource path="res://logo.svg" type="Texture" id=5]
+[ext_resource path="res://logo.svg" type="Texture" id=4]
 
-[node name="Test" type="Node2D"]
+[node name="Test" type="Node2D" index="0"]
 
 _sections_unfolded = [ "Material", "Transform", "Z Index" ]
 
@@ -30,12 +29,12 @@ character_name = "Ren"
 color = Color( 0.967169, 0.988281, 0.312698, 1 )
 prefix = ""
 suffix = ""
-avatar = ExtResource( 4 )
+avatar = null
 
 [node name="logo" type="Sprite" parent="RenKun" index="0"]
 
 position = Vector2( 524.705, 226.134 )
-texture = ExtResource( 5 )
+texture = ExtResource( 4 )
 _sections_unfolded = [ "Z Index" ]
 
 
