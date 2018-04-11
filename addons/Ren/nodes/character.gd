@@ -54,6 +54,7 @@ func get_suffix():
 
 func set_avatar(value):
 	set_kwargs({"avatar":value.resource_path})
+	pass
 
 func get_avatar():
 	if kwargs.has("avatar"):

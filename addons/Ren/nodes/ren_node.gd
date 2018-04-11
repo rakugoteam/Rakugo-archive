@@ -67,8 +67,8 @@ func _on_show(node_id, state, show_args):
 		)
 	
 	elif self is Node2D:
-		if camera.is_empty():
-			cam_pos = get_node(camera).positon
+#		if camera.is_empty():
+#			cam_pos = get_node(camera).positon
 			
 		self.position = show_at(
 			cam_pos, self.position,

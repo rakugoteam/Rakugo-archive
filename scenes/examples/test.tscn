@@ -36,5 +36,6 @@ avatar = ExtResource( 4 )
 
 position = Vector2( 524.705, 226.134 )
 texture = ExtResource( 5 )
+_sections_unfolded = [ "Z Index" ]
 
 

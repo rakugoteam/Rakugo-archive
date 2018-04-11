@@ -169,7 +169,7 @@ func hide(node_id):
 ## statement of type notify
 func notifiy(info, length=5):
 	var kwargs = {"info": info,"length":length}
-	_set_satement($Notify, kwargs)
+	_set_statement($Notify, kwargs)
 
 func _set_story_state(state):
 	var id = str(current_id)

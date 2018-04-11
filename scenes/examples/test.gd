@@ -17,7 +17,7 @@ func story(dialog_name):
 			## some tests:
 			## example of using Ren.value in text
 			Ren.define("test_list", [1,3,7])
-			Ren.say({"what":"test list 2 list element is [test_list[2]]"})
+			Ren.say({"who":"test", "what":"test list 2 list element is [test_list[2]]"})
 			Ren.story_state = "test values 0"
 		
 		"test values 0":
@@ -95,7 +95,8 @@ func story(dialog_name):
 				})
 			
 		"Play Visual Novel example":
-			Ren.jump("vn", Ren.story_state)
+			get_tree().change_scene("res://scenes/examples/VisualNovelExample/Garden.tscn")
+			Ren.jump("garden", "start")
 
 		"Play Click'n'Point Adventure example":
 			Ren.say({
