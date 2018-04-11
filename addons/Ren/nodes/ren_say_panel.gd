@@ -59,9 +59,8 @@ func _on_statement(type, kwargs):
 			writeDialog(kwargs.what)
 
 	if "avatar" in kwargs:
-		if avatar_path != kwargs.avatar:
-			if avatar != null:
-				avatar.free()
+		if avatar != null:
+			avatar.free()
 
 		if kwargs.avatar != "":
 			avatar_path = kwargs.avatar

@@ -10,44 +10,30 @@ func _enter_tree():
 	add_custom_type(
 		"RenControl",
 		"Control",
-		preload("nodes/ren_node.gd"),
+		preload("nodes/ren_control.gd"),
 		preload("icons/ren_control.svg")
 		)
 	
 	add_custom_type(
 		"RenNode2D",
 		"Node2D",
-		preload("nodes/ren_node.gd"),
+		preload("nodes/ren_node2d.gd"),
 		preload("icons/ren_node2d.svg")
 		)
 	
 	add_custom_type(
 		"RenVisualInstance",
 		"Spatial",
-		preload("nodes/ren_node.gd"),
+		preload("nodes/ren_visual_instance.gd"),
 		preload("icons/ren_spatial.svg")
 		)
 	
-	## RenCharacter nodes:
+	## RenCharacter node:
 	add_custom_type(
 		"Character",
 		"Node",
 		preload("nodes/character.gd"),
 		preload("icons/ren_character.svg")
-		)
-	
-	add_custom_type(
-		"Character2D",
-		"Node2D",
-		preload("nodes/character.gd"),
-		preload("icons/ren_character2d.svg")
-		)
-	
-	add_custom_type(
-		"Character3D",
-		"Spatial",
-		preload("nodes/character.gd"),
-		preload("icons/ren_character3d.svg")
 		)
 	
 	## RenControl nodes:
@@ -157,11 +143,9 @@ func _exit_tree():
 	remove_custom_type("RenNode2D")
 	remove_custom_type("RenSpatial")
 	
-	## RenCharacter nodes:
+	## RenCharacter node:
 	remove_custom_type("Character")
-	remove_custom_type("Character2D")
-	remove_custom_type("Character3D")
-	
+
 	## RenControl nodes:
 	remove_custom_type("RenLineEdit")
 	remove_custom_type("RenSayPanel")

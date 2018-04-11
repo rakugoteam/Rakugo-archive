@@ -15,23 +15,23 @@ func exec(dbg = true):
 	
 	if "at" in kwargs:
 		if "center" in kwargs.at:
-			kwargs.x = 0.5
+			kwargs["x"] = 0.5
 			
 		if "left" in kwargs.at:
-			kwargs.x = 0.0
+			kwargs["x"] = 0.0
 
 		if "right" in kwargs.at:
-			kwargs.x = 1.0
+			kwargs["x"] = 1.0
 
 	if "at" in kwargs:
 		if "center" in kwargs.at:
-			kwargs.y = 0.5
+			kwargs["y"] = 0.5
 			
 		if "top" in kwargs.at:
-			kwargs.y = 0.0
+			kwargs["y"] = 0.0
 
 		if "bottom" in kwargs.at:
-			kwargs.y = 1.0
+			kwargs["y"] = 1.0
 	
 	Ren.on_show(kwargs.node_id, kwargs.state, kwargs)
 

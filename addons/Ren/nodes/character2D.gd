@@ -1,4 +1,4 @@
-extends Node
+extends "ren_node2d.gd"
 
 var kwargs = {"name":"", "what_prefix":"", "what_suffix":"", "color":"white"}
 var kws = ["name", "color", "what_prefix", "what_suffix", "avatar"]
@@ -12,18 +12,18 @@ export(String) var suffix = "" setget set_suffix, get_suffix
 export(PackedScene) var avatar setget set_avatar, get_avatar
 
 func _ready():
-	Ren.character(character_id, kwargs, self)
-	Ren.debug(kwargs, kws, "Add Character " + character_id + " with ")
+	Ren.character(node_id, kwargs, self)
+	Ren.debug(kwargs, kws, "Add Character " + node_id + " with ")
 
 func set_character_id(value):
-	if character_id != value:
-		Ren.values.erase(character_id)
+	if node_id != value:
+		Ren.values.erase(node_id)
 	
-	character_id = value
+	node_id = value
 	Ren.character(value, kwargs, self)
 
 func get_character_id():
-	return character_id
+	return node_id
 
 func set_character_name(value):
 	set_kwargs({"name": value})
