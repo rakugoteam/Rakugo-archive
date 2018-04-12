@@ -23,9 +23,7 @@ func _on_show(node_id, state, show_args):
 	if !camera.is_empty():
 		cam_pos = get_node(camera).positon
 		
-	position = rnode.show_at(
-		cam_pos, position, show_args
-	)
+	position = rnode.show_at(cam_pos, show_args)
 	
 	if "z" in show_args:
 		z_index = show_args.z

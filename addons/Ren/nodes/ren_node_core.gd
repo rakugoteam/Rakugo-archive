@@ -1,34 +1,34 @@
 extends Object
 
 func is_procent(x):
-	return (typeof(x) == TYPE_REAL
-			and x >= 0.0
-			and x <= 1.0)
+	return (x >= 0.0 and x <= 1.0)
 
-func show_at(camera_postion, position, show_args):
-	var x = position.x
-	var y = position.y
+func show_at(camera_postion, show_args):
+	var x = camera_postion.x
+	var y = camera_postion.y
+	print("cam_pos ", camera_postion)
 
 	if "pos" in show_args:
-		x = show_args.pos.x
-		y = show_args.pos.y
+		x = x + show_args.pos.x
+		y = y + show_args.pos.y
+		print("pos ", show_args.pos)
 
 	if "x" in show_args:
-		x = show_args.x
+		x = x + show_args.x
+		print("x ", x)
 
 	if "y" in show_args:
-		y = show_args.y
+		y = y + show_args.y
+		print("y ", y)
 	
 	if is_procent(x) and x != 0:
-		x = camera_postion.x + OS.window_size.x * x
-		
+		x = OS.window_size.x * x
+		print("x% ", x)
 		
 	if is_procent(y) and y != 0:
-		y = camera_postion.y + OS.window_size.y * y
-		
+		y = OS.window_size.y * y
+		print("y% ", y)
 	
-	var pos = Vector2(x, y)
-	
-	return pos
+	return Vector2(x, y)
 
 

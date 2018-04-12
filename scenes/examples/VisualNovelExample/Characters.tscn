@@ -22,7 +22,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Characters" type="Node2D" index="0"]
+[node name="Characters" type="Node2D"]
 
 z_index = -1
 _sections_unfolded = [ "Z Index" ]
@@ -43,9 +43,6 @@ avatar = ExtResource( 3 )
 
 [node name="AliceRN2D" type="Node2D" parent="." index="1"]
 
-editor/display_folded = true
-visible = false
-position = Vector2( 495.954, 357.49 )
 scale = Vector2( 0.1, 0.1 )
 script = ExtResource( 4 )
 _sections_unfolded = [ "Transform", "Z Index" ]
@@ -60,5 +57,6 @@ camera = NodePath("")
 
 frames = SubResource( 1 )
 animation = "default"
+_sections_unfolded = [ "Transform" ]
 
 

@@ -3,11 +3,11 @@
 [ext_resource path="res://scenes/examples/VisualNovelExample/Garden.gd" type="Script" id=1]
 [ext_resource path="res://scenes/examples/VisualNovelExample/cdc/garden.png" type="Texture" id=2]
 
-[node name="Garden" type="Node2D"]
+[node name="Garden" type="Node2D" index="0"]
 
 z_index = -2
 script = ExtResource( 1 )
-_sections_unfolded = [ "Z Index" ]
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="garden" type="Sprite" parent="." index="0"]
 

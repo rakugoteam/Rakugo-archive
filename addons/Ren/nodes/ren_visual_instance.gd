@@ -29,9 +29,7 @@ func _on_show(node_id, state, show_args):
 		if 'y' in show_args:
 			cam_pos.y = get_node(camera).project_position(Vector2(show_args.y,0))
 		
-		var pos = rnode.show_at(
-			cam_pos, translation, show_args
-		)
+		var pos = rnode.show_at(cam_pos, show_args)
 		
 		var z = translation.z
 		if z in show_args:

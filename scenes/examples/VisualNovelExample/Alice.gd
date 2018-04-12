@@ -3,7 +3,7 @@ extends "res://addons/Ren/nodes/ren_node2d.gd"
 var scale_x = 1
 
 func _ready():
-	scale_x = self.scale.x
+	scale_x = scale.x
 
 func on_state(state):
 	if "doubt" in state:
@@ -19,7 +19,7 @@ func on_state(state):
 		$AnimatedSprite.frame = 0
 	
 	if "right" in state:
-		self.scale.x = scale_x
+		scale.x = scale_x
 	elif "left" in state:
-		self.scale.x = -scale_x
+		scale.x = -scale_x
 	

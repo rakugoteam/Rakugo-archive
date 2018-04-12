@@ -20,9 +20,7 @@ func _on_show(node_id, state, show_args):
 	if self.node_id != node_id:
 		return
 	
-	rect_position = rnode.show_at(
-		Vector2(0, 0), rect_position, show_args
-		)
+	rect_position = rnode.show_at(Vector2(0, 0), show_args)
 	
 	on_state(state)
 
