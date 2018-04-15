@@ -37,21 +37,18 @@ func _on_visibility_changed():
 	if not visible:
 		return
 	
-	var i = 0
-	# print(Ren.history.values())
-	for hi_item in Ren.history.values():
-		print(hi_item)
+	for ch in get_children():
+		ch.free()
+
+	for hi_item in Ren.history:
+		# print(hi_item)
 		if not("statement" in hi_item):
 			continue
-		var s = hi_item["statement"]
-		
-		if i >= get_child_count():
-			add_history_item(s.type, s.kwargs)
 
-		else:
-			var hi = get_child(i)
-			set_history_item(hi, s.type, s.kwargs)
+		var s = hi_item["statement"]
+		print(s)
 		
-		i += 1
+		add_history_item(s.type, s.kwargs)
+		
 	
 	

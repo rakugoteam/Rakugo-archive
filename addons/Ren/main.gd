@@ -1,6 +1,6 @@
 extends Node
 
-var history = {} # {"number":{"state":story_state, "statement":{"type":type, "kwargs":kwargs}}}
+var history = [] # [{"state":story_state, "statement":{"type":type, "kwargs":kwargs}}]
 # Visual save/load
 var history_vis=[]
 var mainscriptnode
@@ -168,9 +168,9 @@ func notifiy(info, length=5):
 	_set_statement($Notify, kwargs)
 
 func _set_story_state(state):
-	var id = str(current_id)
+	var id = current_id
 	if not(id in history):
-		history[id] = {}
+		history.append({})
 	
 	if story_state != null:
 		history[id]["state"] = story_state
@@ -185,9 +185,10 @@ func _get_story_state():
 
 ## it starts current Ren dialog
 func start(dialog_name, state):
-	history = {}
+	history = []
 	current_menu = null
 	using_passer = false
+	# jump(dialog_name, state) - don't works :(
 	set_meta("playing", true) # for checking if Ren is playing
 
 func jump(dialog_name, state):
