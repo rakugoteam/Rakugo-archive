@@ -1,6 +1,5 @@
 extends Panel
 
-export(String) var kind = "adv"
 export(float) var step_time = 0.05
 export(NodePath) var name_label_path = NodePath("")
 export(NodePath) var dialog_label_path = NodePath("")
@@ -41,11 +40,9 @@ func _input(event):
 			Ren.exit_statement()
 
 func _on_statement(type, kwargs):
-	if kwargs["kind"] != kind:
-		hide()
-		return
-		
-	show()
+	if "kind" in kwargs:
+		$AnimationPlayer.play(kwargs.kind)
+	
 	set_process(false)
 	_type = type
 	timer.start()
@@ -117,7 +114,8 @@ func writeDialog(text, speed=0.005):
 
 func _on_Adv_gui_input(ev):
 	if ev is InputEventMouseButton:
-		var event=InputEventAction.new()
-		event.action="ren_forward"
-		event.pressed=true
-		Input.parse_input_event(event)
+		if ev.button_index == BUTTON_LEFT:
+			var event=InputEventAction.new()
+			event.action="ren_forward"
+			event.pressed=true
+			Input.parse_input_event(event)
