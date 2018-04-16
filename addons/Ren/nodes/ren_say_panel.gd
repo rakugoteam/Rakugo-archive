@@ -1,5 +1,6 @@
 extends Panel
 
+export(String) var kind = "adv"
 export(float) var step_time = 0.05
 export(NodePath) var name_label_path = NodePath("")
 export(NodePath) var dialog_label_path = NodePath("")
@@ -8,8 +9,6 @@ export(NodePath) var avatar_viewport_path = NodePath("")
 onready var NameLabel = get_node(name_label_path)
 onready var DialogText = get_node(dialog_label_path)
 onready var CharacterAvatar = get_node(avatar_viewport_path)
-
-
 onready var timer = new_timer(step_time)
 
 var avatar_path = ""
@@ -42,6 +41,13 @@ func _input(event):
 			Ren.exit_statement()
 
 func _on_statement(type, kwargs):
+	if kwargs["kind"] != kind:
+		hide()
+		return
+		
+	else:
+		show()
+		
 	set_process(false)
 	_type = type
 	timer.start()

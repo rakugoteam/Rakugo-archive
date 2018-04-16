@@ -114,14 +114,19 @@ func _set_statement(node, kwargs):
 	node.set_kwargs(kwargs)
 	node.exec()
 
+func _set_default_kwargs():
+	if not ("who" in kwargs):
+		kwargs["who"] = ""
+	
+	if not ("kind" in kwargs):
+		kwargs["kind"] = "adv"
+
 ## statement of type say
 ## there can be only one say, input or menu in story_state
 ## its make given character(who) talk (what)
 ## with keywords : who, what
 func say(kwargs):
-	if not ("who" in kwargs):
-		kwargs["who"] = ""
-	
+	_set_default_kwargs()
 	_set_statement($Say, kwargs)
 
 ## statement of type input
@@ -129,9 +134,7 @@ func say(kwargs):
 ## its allow player to provide keybord input that will be assain to given value
 ## with keywords : who, what, input_value, value
 func input(kwargs):
-	if not ("who" in kwargs):
-		kwargs["who"] = ""
-	
+	_set_default_kwargs()
 	_set_statement($Input, kwargs)
 
 ## statement of type menu
@@ -139,9 +142,7 @@ func input(kwargs):
 ## its allow player to make choice
 ## with keywords : who, what, choices
 func menu(kwargs):
-	if not ("who" in kwargs):
-		kwargs["who"] = ""
-
+	_set_default_kwargs()
 	_set_statement($Menu, kwargs)
 
 
