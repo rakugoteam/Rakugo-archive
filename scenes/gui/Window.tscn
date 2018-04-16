@@ -282,7 +282,6 @@ _sections_unfolded = [ "Pause" ]
 
 [node name="InGameGUI" type="Control" parent="." index="0"]
 
-visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -345,11 +344,34 @@ __meta__ = {
 }
 ChoiceButton = ExtResource( 4 )
 
-[node name="Adv" parent="InGameGUI" index="1" instance=ExtResource( 5 )]
+[node name="AdvSayPanel" parent="InGameGUI" index="1" instance=ExtResource( 5 )]
 
-margin_bottom = 601.0
+margin_bottom = 602.0
 
-[node name="Notify" type="Panel" parent="InGameGUI" index="2"]
+[node name="CenterSayPanel" parent="InGameGUI" index="2" instance=ExtResource( 5 )]
+
+visible = false
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = 140.0
+margin_right = 984.0
+margin_bottom = 290.0
+kind = "center"
+
+[node name="FullscreenSayPanel" parent="InGameGUI" index="3" instance=ExtResource( 5 )]
+
+editor/display_folded = true
+visible = false
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -17.0
+margin_right = 984.0
+margin_bottom = 580.0
+kind = "fullscreen"
+
+[node name="Notify" type="Panel" parent="InGameGUI" index="4"]
 
 editor/display_folded = true
 visible = false
@@ -411,8 +433,9 @@ selection_enabled = true
 override_selected_font_color = false
 _sections_unfolded = [ "BBCode", "Rect", "Size Flags" ]
 
-[node name="Quick" type="HBoxContainer" parent="InGameGUI" index="3"]
+[node name="Quick" type="HBoxContainer" parent="InGameGUI" index="5"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -435,7 +458,7 @@ __meta__ = {
 
 [node name="History" parent="InGameGUI/Quick" index="0" instance=ExtResource( 8 )]
 
-margin_right = 110.0
+margin_right = 124.0
 margin_bottom = 34.0
 rect_clip_content = false
 size_flags_horizontal = 3
@@ -444,8 +467,8 @@ text = "History"
 
 [node name="Skip" parent="InGameGUI/Quick" index="1" instance=ExtResource( 8 )]
 
-margin_left = 228.0
-margin_right = 338.0
+margin_left = 128.0
+margin_right = 252.0
 margin_bottom = 34.0
 rect_clip_content = false
 size_flags_horizontal = 3
@@ -454,8 +477,8 @@ text = "Skip"
 
 [node name="Auto" parent="InGameGUI/Quick" index="2" instance=ExtResource( 8 )]
 
-margin_left = 342.0
-margin_right = 452.0
+margin_left = 256.0
+margin_right = 380.0
 margin_bottom = 34.0
 rect_clip_content = false
 size_flags_horizontal = 3
@@ -464,8 +487,8 @@ text = "Auto"
 
 [node name="Save" parent="InGameGUI/Quick" index="3" instance=ExtResource( 8 )]
 
-margin_left = 456.0
-margin_right = 566.0
+margin_left = 384.0
+margin_right = 508.0
 margin_bottom = 34.0
 rect_clip_content = false
 size_flags_horizontal = 3
@@ -474,8 +497,8 @@ text = "Save"
 
 [node name="Load" parent="InGameGUI/Quick" index="4" instance=ExtResource( 8 )]
 
-margin_left = 570.0
-margin_right = 680.0
+margin_left = 512.0
+margin_right = 636.0
 margin_bottom = 34.0
 rect_clip_content = false
 size_flags_horizontal = 3
@@ -484,8 +507,8 @@ text = "Load"
 
 [node name="QSave" parent="InGameGUI/Quick" index="5" instance=ExtResource( 8 )]
 
-margin_left = 684.0
-margin_right = 794.0
+margin_left = 640.0
+margin_right = 764.0
 margin_bottom = 34.0
 rect_clip_content = false
 size_flags_horizontal = 3
@@ -494,8 +517,8 @@ text = "Q. Save"
 
 [node name="QLoad" parent="InGameGUI/Quick" index="6" instance=ExtResource( 8 )]
 
-margin_left = 798.0
-margin_right = 908.0
+margin_left = 768.0
+margin_right = 892.0
 margin_bottom = 34.0
 rect_clip_content = false
 size_flags_horizontal = 3
@@ -504,7 +527,7 @@ text = "Q. Load"
 
 [node name="Prefs" parent="InGameGUI/Quick" index="7" instance=ExtResource( 8 )]
 
-margin_left = 912.0
+margin_left = 896.0
 margin_right = 1024.0
 margin_bottom = 34.0
 rect_clip_content = false
@@ -574,6 +597,7 @@ _sections_unfolded = [ "BBCode", "Rect", "Visibility", "custom_colors", "custom_
 
 [node name="Screens" parent="." index="1" instance=ExtResource( 10 )]
 
+visible = false
 first_dialog = "test"
 
 

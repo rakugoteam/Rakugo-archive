@@ -50,7 +50,7 @@ use_filter = true
 font_data = ExtResource( 7 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Say" type="Control"]
+[node name="RenSayPanel" type="Panel" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -66,32 +66,18 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-_sections_unfolded = [ "Anchor", "Mouse", "Rect", "Size Flags", "Theme", "custom_styles" ]
-
-[node name="RenSayPanel" type="Panel" parent="." index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 1024.0
-margin_bottom = 147.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 script = ExtResource( 1 )
+_sections_unfolded = [ "Anchor", "Mouse", "Rect", "Size Flags", "Theme", "custom_styles" ]
 __meta__ = {
 "_editor_icon": ExtResource( 2 )
 }
+kind = "adv"
 step_time = 0.05
 name_label_path = NodePath("VBox/Label")
 dialog_label_path = NodePath("VBox/Dialog")
 avatar_viewport_path = NodePath("ViewportContainer/CharaterAvatar")
 
-[node name="VBox" type="VBoxContainer" parent="RenSayPanel" index="0"]
+[node name="VBox" type="VBoxContainer" parent="." index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -109,7 +95,7 @@ size_flags_vertical = 3
 custom_constants/separation = 1
 alignment = 0
 
-[node name="Label" parent="RenSayPanel/VBox" index="0" instance=ExtResource( 3 )]
+[node name="Label" parent="VBox" index="0" instance=ExtResource( 3 )]
 
 margin_right = 905.0
 margin_bottom = 49.0
@@ -125,7 +111,7 @@ custom_fonts/normal_font = SubResource( 5 )
 scroll_active = false
 selection_enabled = false
 
-[node name="Dialog" type="RichTextLabel" parent="RenSayPanel/VBox" index="1"]
+[node name="Dialog" type="RichTextLabel" parent="VBox" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -153,7 +139,7 @@ selection_enabled = false
 override_selected_font_color = false
 _sections_unfolded = [ "BBCode", "Rect", "Size Flags" ]
 
-[node name="RenLineEdit" type="LineEdit" parent="RenSayPanel/VBox" index="2"]
+[node name="RenLineEdit" type="LineEdit" parent="VBox" index="2"]
 
 visible = false
 anchor_left = 0.0
@@ -181,7 +167,7 @@ __meta__ = {
 "_editor_icon": ExtResource( 9 )
 }
 
-[node name="ViewportContainer" type="ViewportContainer" parent="RenSayPanel" index="1"]
+[node name="ViewportContainer" type="ViewportContainer" parent="." index="1"]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -199,7 +185,7 @@ size_flags_vertical = 1
 stretch = false
 stretch_shrink = 1
 
-[node name="CharaterAvatar" type="Viewport" parent="RenSayPanel/ViewportContainer" index="0"]
+[node name="CharaterAvatar" type="Viewport" parent="ViewportContainer" index="0"]
 
 arvr = false
 size = Vector2( 100, 100 )
