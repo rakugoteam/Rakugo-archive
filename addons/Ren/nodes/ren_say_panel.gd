@@ -37,7 +37,7 @@ func _input(event):
 
 		if typing: #if typing complete it
 			typing=false
-		else:      #else exit statement
+		elif _type == "say":      #else exit statement
 			Ren.exit_statement()
 
 func _on_statement(type, kwargs):

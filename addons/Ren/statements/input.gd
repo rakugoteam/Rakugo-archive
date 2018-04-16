@@ -37,8 +37,6 @@ func on_exit(_type, new_kwargs = {}):
 
 	Ren.define(input_value, value)
 
-	add_to_history(_type)
-
 	Ren.story_step()
 	
 	

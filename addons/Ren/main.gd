@@ -114,7 +114,7 @@ func _set_statement(node, kwargs):
 	node.set_kwargs(kwargs)
 	node.exec()
 
-func _set_default_kwargs():
+func _set_default_kwargs(kwargs):
 	if not ("who" in kwargs):
 		kwargs["who"] = ""
 	
@@ -126,7 +126,7 @@ func _set_default_kwargs():
 ## its make given character(who) talk (what)
 ## with keywords : who, what
 func say(kwargs):
-	_set_default_kwargs()
+	_set_default_kwargs(kwargs)
 	_set_statement($Say, kwargs)
 
 ## statement of type input
@@ -134,7 +134,7 @@ func say(kwargs):
 ## its allow player to provide keybord input that will be assain to given value
 ## with keywords : who, what, input_value, value
 func input(kwargs):
-	_set_default_kwargs()
+	_set_default_kwargs(kwargs)
 	_set_statement($Input, kwargs)
 
 ## statement of type menu
@@ -142,7 +142,7 @@ func input(kwargs):
 ## its allow player to make choice
 ## with keywords : who, what, choices
 func menu(kwargs):
-	_set_default_kwargs()
+	_set_default_kwargs(kwargs)
 	_set_statement($Menu, kwargs)
 
 
@@ -176,7 +176,6 @@ func _get_story_state():
 
 ## it starts current Ren dialog
 func start(dialog_name, state):
-	history = []
 	current_menu = null
 	using_passer = false
 	# jump(dialog_name, state) - don't works :(
