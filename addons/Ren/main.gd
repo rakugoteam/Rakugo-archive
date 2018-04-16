@@ -114,12 +114,12 @@ func _set_statement(node, kwargs):
 	node.set_kwargs(kwargs)
 	node.exec()
 
-func _set_default_kwargs(kwargs):
+func _set_default_kwargs(kwargs, kind = "adv"):
 	if not ("who" in kwargs):
 		kwargs["who"] = ""
 	
 	if not ("kind" in kwargs):
-		kwargs["kind"] = "adv"
+		kwargs["kind"] = kind
 
 ## statement of type say
 ## there can be only one say, input or menu in story_state
@@ -143,6 +143,10 @@ func input(kwargs):
 ## with keywords : who, what, choices
 func menu(kwargs):
 	_set_default_kwargs(kwargs)
+
+	if not ("mkind" in kwargs):
+		kwargs["mkind"] = "vertical"
+		
 	_set_statement($Menu, kwargs)
 
 

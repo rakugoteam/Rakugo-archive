@@ -1,5 +1,6 @@
-extends VBoxContainer
+extends BoxContainer
 
+export(String) var kind = "vertical"
 export(PackedScene) var ChoiceButton
 
 func _ready():
@@ -9,6 +10,12 @@ func _on_statement(type, kwargs):
 	if type != "menu":
 		hide()
 		return
+
+	if kwargs["mkind"] != kind:
+		hide()
+		return
+		
+	show()
 
 	for ch in get_children():
 		ch.queue_free() #free causes problem in VS

@@ -33,5 +33,5 @@ func exec(dbg = true):
 func on_exit(_type, new_kwargs = {}):
 	if !setup_exit(_type, new_kwargs):
 		return
-
+	
 	Ren.story_step()

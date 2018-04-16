@@ -297,7 +297,6 @@ size_flags_vertical = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="InGameGUI" index="0"]
 
-editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -321,8 +320,9 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="RenMenu" type="VBoxContainer" parent="InGameGUI/ScrollContainer" index="0"]
+[node name="RenVMenu" type="VBoxContainer" parent="InGameGUI/ScrollContainer" index="0"]
 
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -338,17 +338,65 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 alignment = 0
 script = ExtResource( 2 )
-_sections_unfolded = [ "Rect" ]
+_sections_unfolded = [ "Rect", "Size Flags" ]
 __meta__ = {
 "_editor_icon": ExtResource( 3 )
 }
+kind = "vertical"
 ChoiceButton = ExtResource( 4 )
 
-[node name="AdvSayPanel" parent="InGameGUI" index="1" instance=ExtResource( 5 )]
+[node name="ScrollContainer2" type="ScrollContainer" parent="InGameGUI" index="1"]
+
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -21.0
+margin_top = 121.0
+margin_right = 1004.0
+margin_bottom = 224.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+scroll_horizontal_enabled = true
+scroll_horizontal = 0
+scroll_vertical_enabled = true
+scroll_vertical = 0
+_sections_unfolded = [ "Rect", "Size Flags" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="RenHMenu" type="HBoxContainer" parent="InGameGUI/ScrollContainer2" index="0"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1021.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 1021, 300 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+script = ExtResource( 2 )
+_sections_unfolded = [ "Rect", "Size Flags" ]
+kind = "horizontal"
+ChoiceButton = ExtResource( 4 )
+
+[node name="AdvSayPanel" parent="InGameGUI" index="2" instance=ExtResource( 5 )]
 
 margin_bottom = 602.0
 
-[node name="CenterSayPanel" parent="InGameGUI" index="2" instance=ExtResource( 5 )]
+[node name="CenterSayPanel" parent="InGameGUI" index="3" instance=ExtResource( 5 )]
 
 visible = false
 anchor_top = 0.5
@@ -359,7 +407,7 @@ margin_right = 984.0
 margin_bottom = 290.0
 kind = "center"
 
-[node name="FullscreenSayPanel" parent="InGameGUI" index="3" instance=ExtResource( 5 )]
+[node name="FullscreenSayPanel" parent="InGameGUI" index="4" instance=ExtResource( 5 )]
 
 editor/display_folded = true
 visible = false
@@ -371,7 +419,7 @@ margin_right = 984.0
 margin_bottom = 580.0
 kind = "fullscreen"
 
-[node name="Notify" type="Panel" parent="InGameGUI" index="4"]
+[node name="Notify" type="Panel" parent="InGameGUI" index="5"]
 
 editor/display_folded = true
 visible = false
@@ -433,7 +481,7 @@ selection_enabled = true
 override_selected_font_color = false
 _sections_unfolded = [ "BBCode", "Rect", "Size Flags" ]
 
-[node name="Quick" type="HBoxContainer" parent="InGameGUI" index="5"]
+[node name="Quick" type="HBoxContainer" parent="InGameGUI" index="6"]
 
 editor/display_folded = true
 anchor_left = 0.0

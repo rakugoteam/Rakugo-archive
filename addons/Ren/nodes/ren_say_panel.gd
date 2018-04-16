@@ -45,9 +45,7 @@ func _on_statement(type, kwargs):
 		hide()
 		return
 		
-	else:
-		show()
-		
+	show()
 	set_process(false)
 	_type = type
 	timer.start()
