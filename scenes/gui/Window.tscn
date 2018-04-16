@@ -264,7 +264,7 @@ tracks/4/keys = {
 "values": [ Color( 1, 1, 1, 0.756863 ) ]
 }
 
-[node name="Window" type="Control" index="0"]
+[node name="Window" type="Control"]
 
 pause_mode = 2
 anchor_left = 0.0

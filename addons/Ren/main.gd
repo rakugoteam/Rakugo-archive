@@ -152,7 +152,7 @@ func menu(kwargs):
 ## with keywords : x, y, z, at, pos
 ## x, y and pos will use it as procent of screen if between 0 and 1
 ## "at" is lists that can have: "top", "center", "bottom", "right", "left"
-func show(node_id, state = [], kwargs = {"at":["center"]}):
+func show(node_id, state = [], kwargs = {"at":["center", "bottom"]}):
 	kwargs["node_id"] = node_id
 	kwargs["state"] = state
 	_set_statement($Show, kwargs)

@@ -17,7 +17,7 @@
 
 animations = [ {
 "frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
-"loop": true,
+"loop": false,
 "name": "default",
 "speed": 5.0
 } ]
@@ -55,8 +55,10 @@ camera = NodePath("")
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="AliceRN2D" index="0"]
 
+position = Vector2( 0, -2400 )
 frames = SubResource( 1 )
 animation = "default"
+frame = 4
 _sections_unfolded = [ "Transform" ]
 
 
