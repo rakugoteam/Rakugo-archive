@@ -1,6 +1,5 @@
 extends Node
 
-var history = [] # [{"state":story_state, "statement":{"type":type, "kwargs":kwargs}}]
 # Visual save/load
 var history_vis=[]
 var mainscriptnode
@@ -168,16 +167,7 @@ func notifiy(info, length=5):
 	_set_statement($Notify, kwargs)
 
 func _set_story_state(state):
-	var id = current_id
-	if not(id in history):
-		history.append({})
-	
-	if story_state != null:
-		history[id]["state"] = story_state
-
-	else:
-		history[id]["state"] = state
-	
+	current_id += 1
 	define("story_state", state)
 
 func _get_story_state():
@@ -192,28 +182,10 @@ func start(dialog_name, state):
 	set_meta("playing", true) # for checking if Ren is playing
 
 func jump(dialog_name, state):
-	current_id = 0
-	history_id = 0
 	current_dialog_name = dialog_name
 	story_state = state
 	Ren.story_step()
 
-## go back to pervious story_state
-func rollback():
-	if not history.empty() and !has_meta("usingvis"):
-		
-		if rolling_back:
-			history_id += 1
-
-		else:
-			rolling_back = true
-		
-		var index = history.size() - history_id
-		story_state = history[str(index)]["state"]
-		if current_statement.type in ["say", "input", "menu"]:
-			current_statement.exit_statement()
-		else:
-			story_step()
 		
 func savefile(filepath="user://save.dat", password="Ren"):
 	if has_meta("usingvis"):

@@ -30,28 +30,8 @@ func exec(dbg = true):
 	
 	.exec(false)
 
-func add_to_history(_type):
-	var s = {"type":_type, "kwargs":kwargs}
-	var id = Ren.current_id
-	if id in Ren.history:
-		Ren.history[id] = {}
-	else:
-		Ren.history.append({})
-
-	var hi_item = Ren.history[id]
-	hi_item["statement"] = s
-	Ren.history[id] = hi_item
-	# print(id, ": ", Ren.story_state, ": ", s)
-	# print(Ren.history[id])
-	Ren.current_id +=1
-
-
 func on_exit(_type, new_kwargs = {}):
 	if !setup_exit(_type, new_kwargs):
 		return
-	
-	add_to_history(_type)
 
 	Ren.story_step()
-	
-	

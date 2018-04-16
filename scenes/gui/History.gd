@@ -4,7 +4,8 @@ export(PackedScene) var HistoryItemTemplate
 onready var HistoryItem = load(HistoryItemTemplate.resource_path)
 
 func _ready():
-	connect("visibility_changed", self, "_on_visibility_changed", [], CONNECT_PERSIST)
+	Ren.connect("exit_statement", self, "add_history_item", [], CONNECT_PERSIST)
+	
 
 func add_history_item(type, kwargs):
 	var new_hi = HistoryItem.instance()
@@ -33,22 +34,6 @@ func set_history_item(hi, type, kwargs):
 		dialog_text.bbcode_text += Ren.text_passer("{i}" + fch + "{/i}{/b}")
 
 
-func _on_visibility_changed():
-	if not visible:
-		return
-	
-	for ch in get_children():
-		ch.free()
-
-	for hi_item in Ren.history:
-		# print(hi_item)
-		if not("statement" in hi_item):
-			continue
-
-		var s = hi_item["statement"]
-		print(s)
-		
-		add_history_item(s.type, s.kwargs)
 		
 	
 	
