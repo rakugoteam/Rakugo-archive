@@ -281,6 +281,8 @@ _sections_unfolded = [ "Pause", "Theme" ]
 
 [node name="InGameGUI" type="Control" parent="." index="0"]
 
+editor/display_folded = true
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -462,7 +464,6 @@ _sections_unfolded = [ "BBCode", "Rect", "Size Flags" ]
 
 [node name="Quick" type="HBoxContainer" parent="InGameGUI" index="4"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -485,76 +486,85 @@ __meta__ = {
 
 [node name="History" parent="InGameGUI/Quick" index="0" instance=ExtResource( 8 )]
 
-margin_right = 124.0
+margin_right = 110.0
 margin_bottom = 34.0
 rect_clip_content = false
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "History"
 
-[node name="Skip" parent="InGameGUI/Quick" index="1" instance=ExtResource( 8 )]
+[node name="Back" parent="InGameGUI/Quick" index="1" instance=ExtResource( 8 )]
 
-margin_left = 128.0
-margin_right = 252.0
+margin_left = 114.0
+margin_right = 224.0
+margin_bottom = 34.0
+rect_clip_content = false
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Skip" parent="InGameGUI/Quick" index="2" instance=ExtResource( 8 )]
+
+margin_left = 228.0
+margin_right = 338.0
 margin_bottom = 34.0
 rect_clip_content = false
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Skip"
 
-[node name="Auto" parent="InGameGUI/Quick" index="2" instance=ExtResource( 8 )]
+[node name="Auto" parent="InGameGUI/Quick" index="3" instance=ExtResource( 8 )]
 
-margin_left = 256.0
-margin_right = 380.0
+margin_left = 342.0
+margin_right = 452.0
 margin_bottom = 34.0
 rect_clip_content = false
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Auto"
 
-[node name="Save" parent="InGameGUI/Quick" index="3" instance=ExtResource( 8 )]
+[node name="Save" parent="InGameGUI/Quick" index="4" instance=ExtResource( 8 )]
 
-margin_left = 384.0
-margin_right = 508.0
+margin_left = 456.0
+margin_right = 566.0
 margin_bottom = 34.0
 rect_clip_content = false
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Save"
 
-[node name="Load" parent="InGameGUI/Quick" index="4" instance=ExtResource( 8 )]
+[node name="Load" parent="InGameGUI/Quick" index="5" instance=ExtResource( 8 )]
 
-margin_left = 512.0
-margin_right = 636.0
+margin_left = 570.0
+margin_right = 680.0
 margin_bottom = 34.0
 rect_clip_content = false
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Load"
 
-[node name="QSave" parent="InGameGUI/Quick" index="5" instance=ExtResource( 8 )]
+[node name="QSave" parent="InGameGUI/Quick" index="6" instance=ExtResource( 8 )]
 
-margin_left = 640.0
-margin_right = 764.0
+margin_left = 684.0
+margin_right = 794.0
 margin_bottom = 34.0
 rect_clip_content = false
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Q. Save"
 
-[node name="QLoad" parent="InGameGUI/Quick" index="6" instance=ExtResource( 8 )]
+[node name="QLoad" parent="InGameGUI/Quick" index="7" instance=ExtResource( 8 )]
 
-margin_left = 768.0
-margin_right = 892.0
+margin_left = 798.0
+margin_right = 908.0
 margin_bottom = 34.0
 rect_clip_content = false
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Q. Load"
 
-[node name="Prefs" parent="InGameGUI/Quick" index="7" instance=ExtResource( 8 )]
+[node name="Prefs" parent="InGameGUI/Quick" index="8" instance=ExtResource( 8 )]
 
-margin_left = 896.0
+margin_left = 912.0
 margin_right = 1024.0
 margin_bottom = 34.0
 rect_clip_content = false
@@ -562,21 +572,21 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Prefs"
 
-[node name="SkipTimer" type="Timer" parent="InGameGUI/Quick" index="8"]
+[node name="SkipTimer" type="Timer" parent="InGameGUI/Quick" index="9"]
 
 process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = false
 
-[node name="AutoTimer" type="Timer" parent="InGameGUI/Quick" index="9"]
+[node name="AutoTimer" type="Timer" parent="InGameGUI/Quick" index="10"]
 
 process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = false
 
-[node name="InfoAnim" type="AnimationPlayer" parent="InGameGUI/Quick" index="10"]
+[node name="InfoAnim" type="AnimationPlayer" parent="InGameGUI/Quick" index="11"]
 
 editor/display_folded = true
 root_node = NodePath("..")
@@ -624,7 +634,6 @@ _sections_unfolded = [ "BBCode", "Rect", "Visibility", "custom_colors", "custom_
 
 [node name="Screens" parent="." index="1" instance=ExtResource( 10 )]
 
-visible = false
 first_dialog = "test"
 
 

@@ -16,8 +16,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Window="*res://scenes/gui/Window.tscn"
 Ren="*res://addons/Ren/Ren.tscn"
+Window="*res://scenes/gui/Window.tscn"
 VNCharacters="*res://scenes/examples/VisualNovelExample/Characters.tscn"
 
 [display]

@@ -21,6 +21,9 @@ func _ready():
 	
 	$Save.connect("pressed", self, "full_save")
 	$Load.connect("pressed", Screens, "load_menu")
+	
+	$Back.disabled = true
+	$Back.connect("pressed", Ren, "rollback")
 
 func _on_qsave():
 	if Ren.savefile():
@@ -39,7 +42,8 @@ func _on_qload():
 func _on_statement(type, kwargs):
 	$Skip.disabled = not(type in skip_types)
 	$Auto.disabled = not(type in skip_types)
-	$History.disabled = Ren.current_id > 0
+	$History.disabled = Ren.history.empty()
+	$Back.disabled = Ren.current_id == 0
 
 func on_auto():
 	if not $AutoTimer.is_stopped():
