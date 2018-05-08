@@ -13,8 +13,8 @@ func story(dialog_name):
 	
 	match Ren.story_state:
 		"start":
-			Ren.show("alice", ["happy"])
-			Ren.say({"who":"alice", "what":"Welcome in my Garden [player_name].", "kind":"left"})
+			Ren.show("alice", ["happy"], {"x":0.5, "y":360})
+			Ren.say({"who":"alice", "what":"Welcome in my Garden [player_name]."})
 	
 	
 

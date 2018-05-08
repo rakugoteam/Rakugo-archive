@@ -1,5 +1,6 @@
 extends Panel
 
+export(float) var step_time = 0.05
 export(NodePath) var name_label_path = NodePath("")
 export(NodePath) var dialog_label_path = NodePath("")
 export(NodePath) var avatar_viewport_path = NodePath("")
@@ -7,6 +8,9 @@ export(NodePath) var avatar_viewport_path = NodePath("")
 onready var NameLabel = get_node(name_label_path)
 onready var DialogText = get_node(dialog_label_path)
 onready var CharacterAvatar = get_node(avatar_viewport_path)
+
+
+onready var timer = new_timer(step_time)
 
 var avatar_path = ""
 var avatar
@@ -18,11 +22,10 @@ var typing=false
 func _ready():
 	connect("gui_input", self, "_on_Adv_gui_input", [], CONNECT_PERSIST)
 	Ren.connect("exec_statement", self, "_on_statement", [], CONNECT_PERSIST)
-	$Timer.connect("timeout", self, "_on_timeout", [], CONNECT_PERSIST)
+	timer.connect("timeout", self, "_on_timeout", [], CONNECT_PERSIST)
 
 func _on_timeout():
-	set_process_input(_type == "say")
-	set_process_unhandled_key_input(_type == "say")
+	set_process_unhandled_input(_type == "say")
 
 func _input(event):
 	if Ren.skip_auto:
@@ -35,15 +38,13 @@ func _input(event):
 
 		if typing: #if typing complete it
 			typing=false
-		elif _type == "say":      #else exit statement
+		else:      #else exit statement
 			Ren.exit_statement()
 
 func _on_statement(type, kwargs):
-	if "kind" in kwargs:
-		$AnimationPlayer.play(kwargs.kind)
-	
+	set_process(false)
 	_type = type
-	$Timer.start()
+	timer.start()
 	if not _type in ["say", "input", "menu"]:
 		return
 
@@ -71,7 +72,17 @@ func _on_statement(type, kwargs):
 
 	return
 
+func new_timer(time):
+	var nt = Timer.new()
+	nt.set_wait_time(time)
+	nt.set_one_shot(true)
+	return nt
+
 func writeDialog(text, speed=0.005):
+    #create a timer to print text like a typewriter
+	if dialog_timer != null:
+		dialog_timer.free()
+
 	if speed == 0:
 		if DialogText.has_method("set_bbcode"):
 			DialogText.bbcode_text=text
@@ -81,16 +92,17 @@ func writeDialog(text, speed=0.005):
 	if DialogText.has_method("set_bbcode"):
 		DialogText.bbcode_text = ""
 	var te=""
-	$DialogTimer.wait_time = speed
+	dialog_timer = new_timer(speed)
+	self.add_child(dialog_timer)
 
 	for letter in text:
-		$DialogTimer.start()
+		dialog_timer.start()
 		te+=letter
 
 		if DialogText.has_method("set_bbcode"):
 			DialogText.bbcode_text=te
 
-		yield($DialogTimer, "timeout")
+		yield(dialog_timer, "timeout")
 		if !typing:
 
 			if DialogText.has_method("set_bbcode"):
@@ -101,8 +113,7 @@ func writeDialog(text, speed=0.005):
 
 func _on_Adv_gui_input(ev):
 	if ev is InputEventMouseButton:
-		if ev.button_index == BUTTON_LEFT:
-			var event=InputEventAction.new()
-			event.action="ren_forward"
-			event.pressed=true
-			Input.parse_input_event(event)
+		var event=InputEventAction.new()
+		event.action="ren_forward"
+		event.pressed=true
+		Input.parse_input_event(event)

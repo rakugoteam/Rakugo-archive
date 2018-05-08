@@ -55,7 +55,7 @@ func _on_Start_pressed():
 	$Navigation/VBoxContainer/Start.hide()
 	$Navigation/Return.show()
 	$Navigation/VBoxContainer/Save.show()
-	$Navigation/VBoxContainer/History.show()
+	# $Navigation/VBoxContainer/History.show()
 	Ren.start(first_dialog, first_state)
 
 
