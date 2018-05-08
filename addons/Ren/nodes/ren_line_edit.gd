@@ -43,3 +43,4 @@ func _on_statement(type, kwargs):
 	grab_focus()
 	set_process_unhandled_key_input(true)
 	connect("text_entered", self , "_on_enter")
+	

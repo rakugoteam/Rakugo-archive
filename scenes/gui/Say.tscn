@@ -897,20 +897,34 @@ _sections_unfolded = [ "Anchor", "Mouse", "Rect", "Size Flags", "Theme", "custom
 __meta__ = {
 "_editor_icon": ExtResource( 2 )
 }
-step_time = 0.05
 name_label_path = NodePath("VBox/Label")
 dialog_label_path = NodePath("VBox/Dialog")
 avatar_viewport_path = NodePath("ViewportContainer/CharaterAvatar")
 
-[node name="VBox" type="VBoxContainer" parent="." index="0"]
+[node name="Timer" type="Timer" parent="." index="0"]
+
+process_mode = 1
+wait_time = 0.5
+one_shot = true
+autostart = false
+
+[node name="DialogTimer" type="Timer" parent="." index="1"]
+
+process_mode = 1
+wait_time = 0.01
+one_shot = true
+autostart = false
+
+[node name="VBox" type="VBoxContainer" parent="." index="2"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 101.0
+margin_top = 1.0
 margin_right = 1006.0
-margin_bottom = 100.0
+margin_bottom = 101.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -1017,7 +1031,7 @@ __meta__ = {
 "_editor_icon": ExtResource( 9 )
 }
 
-[node name="ViewportContainer" type="ViewportContainer" parent="." index="1"]
+[node name="ViewportContainer" type="ViewportContainer" parent="." index="3"]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -1062,7 +1076,7 @@ shadow_atlas_quad_1 = 2
 shadow_atlas_quad_2 = 3
 shadow_atlas_quad_3 = 4
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
 
 root_node = NodePath("..")
 autoplay = ""

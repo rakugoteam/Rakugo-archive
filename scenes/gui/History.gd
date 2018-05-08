@@ -5,6 +5,7 @@ onready var HistoryItem = load(HistoryItemTemplate.resource_path)
 
 func _ready():
 	connect("visibility_changed", self, "_on_visibility_changed", [], CONNECT_PERSIST)
+	
 
 func add_history_item(type, kwargs):
 	var new_hi = HistoryItem.instance()
@@ -26,12 +27,11 @@ func set_history_item(hi, type, kwargs):
 		dialog_text.bbcode_text += Ren.text_passer("{nl}{b}Your answer: ")
 	
 	if type == "input":
-		dialog_text.bbcode_text += Ren.text_passer("{i}[" + kwargs.input_value + "]{/i}{/b}")
+		dialog_text.bbcode_text += Ren.text_passer("{i}" + kwargs.value + "{/i}{/b}")
 
 	if type == "menu":
 		var fch = Ren.current_menu.choices_labels[kwargs.final_choice]
 		dialog_text.bbcode_text += Ren.text_passer("{i}" + fch + "{/i}{/b}")
-
 
 func _on_visibility_changed():
 	if not visible:
@@ -49,6 +49,3 @@ func _on_visibility_changed():
 		print(s)
 		
 		add_history_item(s.type, s.kwargs)
-		
-	
-	

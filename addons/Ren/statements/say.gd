@@ -39,19 +39,16 @@ func add_to_history(_type):
 		Ren.history.append({})
 
 	var hi_item = Ren.history[id]
+	hi_item["state"] = Ren.story_state
 	hi_item["statement"] = s.duplicate()
 	Ren.history[id] = hi_item
 	# print(id, ": ", Ren.story_state, ": ", s)
 	# print(Ren.history[id])
 	Ren.current_id +=1
 
-
 func on_exit(_type, new_kwargs = {}):
 	if !setup_exit(_type, new_kwargs):
 		return
 	
 	add_to_history(_type)
-
 	Ren.story_step()
-	
-	
