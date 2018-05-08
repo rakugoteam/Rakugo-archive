@@ -8,8 +8,6 @@ export(NodePath) var avatar_viewport_path = NodePath("")
 onready var NameLabel = get_node(name_label_path)
 onready var DialogText = get_node(dialog_label_path)
 onready var CharacterAvatar = get_node(avatar_viewport_path)
-
-
 onready var timer = new_timer(step_time)
 
 var avatar_path = ""
@@ -38,10 +36,13 @@ func _input(event):
 
 		if typing: #if typing complete it
 			typing=false
-		else:      #else exit statement
+		elif _type == "say":      #else exit statement
 			Ren.exit_statement()
 
 func _on_statement(type, kwargs):
+	if "kind" in kwargs:
+		$AnimationPlayer.play(kwargs.kind)
+	
 	set_process(false)
 	_type = type
 	timer.start()
@@ -113,7 +114,8 @@ func writeDialog(text, speed=0.005):
 
 func _on_Adv_gui_input(ev):
 	if ev is InputEventMouseButton:
-		var event=InputEventAction.new()
-		event.action="ren_forward"
-		event.pressed=true
-		Input.parse_input_event(event)
+		if ev.button_index == BUTTON_LEFT:
+			var event=InputEventAction.new()
+			event.action="ren_forward"
+			event.pressed=true
+			Input.parse_input_event(event)

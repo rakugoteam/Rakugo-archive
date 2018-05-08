@@ -1,6 +1,5 @@
 extends Node
 
-var history = {} # {"number":{"state":story_state, "statement":{"type":type, "kwargs":kwargs}}}
 # Visual save/load
 var history_vis=[]
 var mainscriptnode
@@ -115,14 +114,19 @@ func _set_statement(node, kwargs):
 	node.set_kwargs(kwargs)
 	node.exec()
 
+func _set_default_kwargs(kwargs, kind = "adv"):
+	if not ("who" in kwargs):
+		kwargs["who"] = ""
+	
+	if not ("kind" in kwargs):
+		kwargs["kind"] = kind
+
 ## statement of type say
 ## there can be only one say, input or menu in story_state
 ## its make given character(who) talk (what)
 ## with keywords : who, what
 func say(kwargs):
-	if not ("who" in kwargs):
-		kwargs["who"] = ""
-	
+	_set_default_kwargs(kwargs)
 	_set_statement($Say, kwargs)
 
 ## statement of type input
@@ -130,9 +134,7 @@ func say(kwargs):
 ## its allow player to provide keybord input that will be assain to given value
 ## with keywords : who, what, input_value, value
 func input(kwargs):
-	if not ("who" in kwargs):
-		kwargs["who"] = ""
-	
+	_set_default_kwargs(kwargs)
 	_set_statement($Input, kwargs)
 
 ## statement of type menu
@@ -140,9 +142,11 @@ func input(kwargs):
 ## its allow player to make choice
 ## with keywords : who, what, choices
 func menu(kwargs):
-	if not ("who" in kwargs):
-		kwargs["who"] = ""
+	_set_default_kwargs(kwargs)
 
+	if not ("mkind" in kwargs):
+		kwargs["mkind"] = "vertical"
+		
 	_set_statement($Menu, kwargs)
 
 
@@ -152,7 +156,7 @@ func menu(kwargs):
 ## with keywords : x, y, z, at, pos
 ## x, y and pos will use it as procent of screen if between 0 and 1
 ## "at" is lists that can have: "top", "center", "bottom", "right", "left"
-func show(node_id, state = [], kwargs = {"at":["center"]}):
+func show(node_id, state = [], kwargs = {"at":["center", "bottom"]}):
 	kwargs["node_id"] = node_id
 	kwargs["state"] = state
 	_set_statement($Show, kwargs)
@@ -168,16 +172,7 @@ func notifiy(info, length=5):
 	_set_statement($Notify, kwargs)
 
 func _set_story_state(state):
-	var id = str(current_id)
-	if not(id in history):
-		history[id] = {}
-	
-	if story_state != null:
-		history[id]["state"] = story_state
-
-	else:
-		history[id]["state"] = state
-	
+	current_id += 1
 	define("story_state", state)
 
 func _get_story_state():
@@ -185,34 +180,16 @@ func _get_story_state():
 
 ## it starts current Ren dialog
 func start(dialog_name, state):
-	history = {}
 	current_menu = null
 	using_passer = false
+	# jump(dialog_name, state) - don't works :(
 	set_meta("playing", true) # for checking if Ren is playing
 
 func jump(dialog_name, state):
-	current_id = 0
-	history_id = 0
 	current_dialog_name = dialog_name
 	story_state = state
 	Ren.story_step()
 
-## go back to pervious story_state
-func rollback():
-	if not history.empty() and !has_meta("usingvis"):
-		
-		if rolling_back:
-			history_id += 1
-
-		else:
-			rolling_back = true
-		
-		var index = history.size() - history_id
-		story_state = history[str(index)]["state"]
-		if current_statement.type in ["say", "input", "menu"]:
-			current_statement.exit_statement()
-		else:
-			story_step()
 		
 func savefile(filepath="user://save.dat", password="Ren"):
 	if has_meta("usingvis"):

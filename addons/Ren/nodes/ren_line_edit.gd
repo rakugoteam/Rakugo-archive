@@ -11,7 +11,7 @@ func _ready():
 
 func _unhandled_key_input(delta):
 	if Input.is_key_pressed(KEY_ENTER):
-		_on_exec(get_text())
+		_on_enter(get_text())
 		set_process_unhandled_key_input(false)
 
 func _on_enter(text):

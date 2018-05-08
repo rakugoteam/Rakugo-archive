@@ -85,6 +85,8 @@ func story(dialog_name):
 					"rench",
 				"what":
 					"What want to do?",
+				"mkind":
+					"horizontal",
 				"choices":
 					[
 						"Play Visual Novel example",
