@@ -1,8 +1,8 @@
 extends Node
 
 var type = "base"
-var kwargs = {} # dict of pairs keyword : argument
-var kws = [] # possible keywords for this type of statement
+var kwargs = {"add_to_history": false} # dict of pairs keyword : argument
+var kws = ["add_to_history"] # possible keywords for this type of statement
 
 func _ready():
 	Ren.connect("exit_statement", self, "on_exit")
@@ -35,7 +35,33 @@ func setup_exit(_type, new_kwargs = {}):
 func on_exit(_type, new_kwargs = {}):
 	if !setup_exit(_type, new_kwargs):
 		return
+	
+	if kwargs.add_to_history:
+		add_to_history()
+	
 	Ren.story_step()
+
+func add_to_history():
+	if Ren.current_id < 0 or Ren.current_id > Ren.history.size() + 1:
+		prints("some thing gone wrong Ren.current_id =", Ren.current_id)
+		prints("history size:", Ren.history.size())
+		return
+		
+	var history_item = {
+		"state": Ren.story_state,
+		"statement":{
+			"type": type,
+			"kwargs": kwargs.duplicate()
+		}
+	}
+
+	if Ren.current_id == Ren.history.size():
+		Ren.history.append(history_item)
+
+	else:
+		Ren.history[Ren.current_id] = history_item
+
+	Ren.current_id += 1
 
 func debug(kws = [], some_custom_text = ""):
 	var dbg = type + "("

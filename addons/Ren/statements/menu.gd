@@ -31,4 +31,7 @@ func on_exit(_type, new_kwargs):
 	else:
 		print("no final_choice recived")
 	
-	.on_exit(type, new_kwargs)
+	if kwargs.add_to_history:
+		add_to_history()
+
+	Ren.story_step()

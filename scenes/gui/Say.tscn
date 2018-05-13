@@ -983,7 +983,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis.
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis.
 "
 scroll_active = true
-scroll_following = false
+scroll_following = true
 selection_enabled = false
 override_selected_font_color = false
 _sections_unfolded = [ "BBCode", "Rect", "Size Flags" ]

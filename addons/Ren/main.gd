@@ -115,12 +115,15 @@ func _set_statement(node, kwargs):
 	node.set_kwargs(kwargs)
 	node.exec()
 
-func _set_default_kwargs(kwargs, kind = "adv"):
+func _set_default_kwargs(kwargs, kind = "adv", add_to_history = false):
 	if not ("who" in kwargs):
 		kwargs["who"] = ""
 	
-	if not ("kind" in kwargs):
-		kwargs["kind"] = kind
+	# if not ("kind" in kwargs):
+	# 	kwargs["kind"] = kind
+	
+	# if not ("add_to_history" in kwargs):
+	# 	kwargs["add_to_history"] = add_to_history
 
 ## statement of type say
 ## there can be only one say, input or menu in story_state

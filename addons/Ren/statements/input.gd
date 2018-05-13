@@ -4,8 +4,10 @@ var value = "value"
 var input_value = "input value"
 
 func _init():
+	._init()
 	type = "input"
-	kws = ["who", "what", "temp", "input_value"]
+	# kws = ["who", "what", "temp", "input_value"]
+	kws += ["temp", "input_value"]
 
 func exec(dbg = true):
 	if dbg:
@@ -36,6 +38,9 @@ func on_exit(_type, new_kwargs = {}):
 		value = float(value)
 
 	Ren.define(input_value, value)
+
+	if kwargs.add_to_history:
+		add_to_history()
 
 	Ren.story_step()
 	

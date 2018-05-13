@@ -46,7 +46,7 @@ use_filter = true
 font_data = ExtResource( 5 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="HistoryItem" type="Panel" index="0"]
+[node name="HistoryItem" type="Panel"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -69,8 +69,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 101.0
-margin_right = 1006.0
+margin_left = 2.0
+margin_right = 907.0
 margin_bottom = 100.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -103,11 +103,12 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 50.0
-margin_right = 905.0
-margin_bottom = 100.0
+margin_left = 1.0
+margin_top = 34.0
+margin_right = 906.0
+margin_bottom = 84.0
 rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = true
+rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
@@ -119,54 +120,10 @@ percent_visible = 1.0
 meta_underlined = true
 tab_size = 4
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis."
-scroll_active = false
-scroll_following = false
+scroll_active = true
+scroll_following = true
 selection_enabled = false
 override_selected_font_color = false
-_sections_unfolded = [ "BBCode", "Rect", "Size Flags" ]
-
-[node name="ViewportContainer" type="ViewportContainer" parent="." index="1"]
-
-editor/display_folded = true
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 100.0
-margin_bottom = 111.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-stretch = false
-stretch_shrink = 1
-
-[node name="CharaterAvatar" type="Viewport" parent="ViewportContainer" index="0"]
-
-arvr = false
-size = Vector2( 100, 100 )
-own_world = true
-world = null
-transparent_bg = true
-msaa = 0
-hdr = false
-disable_3d = false
-usage = 0
-debug_draw = 0
-render_target_v_flip = false
-render_target_clear_mode = 0
-render_target_update_mode = 3
-audio_listener_enable_2d = false
-audio_listener_enable_3d = false
-physics_object_picking = false
-gui_disable_input = false
-gui_snap_controls_to_pixels = true
-shadow_atlas_size = 0
-shadow_atlas_quad_0 = 2
-shadow_atlas_quad_1 = 2
-shadow_atlas_quad_2 = 3
-shadow_atlas_quad_3 = 4
+_sections_unfolded = [ "BBCode", "Rect", "Size Flags", "Theme", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
 
 
