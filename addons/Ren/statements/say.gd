@@ -34,4 +34,25 @@ func on_exit(_type, new_kwargs = {}):
 	if !setup_exit(_type, new_kwargs):
 		return
 	
+	if Ren.current_id < 0 or Ren.current_id > Ren.history.size() + 1:
+		prints("some thing gone wrong Ren.current_id =", Ren.current_id)
+		prints("history size:", Ren.history.size())
+		return
+		
+	var history_item = {
+		"state": Ren.story_state,
+		"statement":{
+			"type": type,
+			"kwargs": kwargs.duplicate()
+		}
+	}
+
+	if Ren.current_id == Ren.history.size():
+		Ren.history.append(history_item)
+
+	else:
+		Ren.history[Ren.current_id] = history_item
+
+	Ren.current_id += 1
+	
 	Ren.story_step()

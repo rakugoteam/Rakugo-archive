@@ -7,12 +7,13 @@ var vis_loading=false
 var load_counter=0
 var vnl=[]
 
+var history = [] # [{"state":story_state, "statement":{"type":type, "kwargs": kwargs}}]
 var history_id = 0
 var rolling_back = false
 var current_statement = null
-
 var current_menu
-var current_id = 0
+var current_id = 0 setget _set_current_id, _get_current_id
+var local_id = 0
 
 var values = {
 	"version":{"type":"text", "value":"0.7.0 GDScript"},
@@ -172,7 +173,6 @@ func notifiy(info, length=5):
 	_set_statement($Notify, kwargs)
 
 func _set_story_state(state):
-	current_id += 1
 	define("story_state", state)
 
 func _get_story_state():
@@ -182,15 +182,16 @@ func _get_story_state():
 func start(dialog_name, state):
 	current_menu = null
 	using_passer = false
+	current_id = 0
 	# jump(dialog_name, state) - don't works :(
 	set_meta("playing", true) # for checking if Ren is playing
 
 func jump(dialog_name, state):
 	current_dialog_name = dialog_name
 	story_state = state
+	local_id = 0
 	Ren.story_step()
 
-		
 func savefile(filepath="user://save.dat", password="Ren"):
 	if has_meta("usingvis"):
 		var tmpvalues={}
@@ -263,3 +264,10 @@ func debug(kwargs, kws = [], some_custom_text = ""):
 
 	dbg = some_custom_text + dbg
 	return dbg
+
+func _set_current_id(value):
+	current_id = value
+	local_id = value
+
+func _get_current_id():
+	return current_id
