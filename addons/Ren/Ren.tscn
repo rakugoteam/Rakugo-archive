@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://addons/Ren/main.gd" type="Script" id=1]
 [ext_resource path="res://addons/Ren/statements/say.gd" type="Script" id=2]
@@ -7,11 +7,10 @@
 [ext_resource path="res://addons/Ren/statements/show.gd" type="Script" id=5]
 [ext_resource path="res://addons/Ren/statements/hide.gd" type="Script" id=6]
 [ext_resource path="res://addons/Ren/statements/notify.gd" type="Script" id=7]
-[ext_resource path="res://addons/Ren/statements/jump.gd" type="Script" id=8]
-[ext_resource path="res://addons/Ren/def.gd" type="Script" id=9]
-[ext_resource path="res://addons/Ren/text.gd" type="Script" id=10]
+[ext_resource path="res://addons/Ren/def.gd" type="Script" id=8]
+[ext_resource path="res://addons/Ren/text.gd" type="Script" id=9]
 
-[node name="Ren" type="Node"]
+[node name="Ren" type="Node" index="0"]
 
 pause_mode = 2
 script = ExtResource( 1 )
@@ -42,19 +41,15 @@ script = ExtResource( 6 )
 
 script = ExtResource( 7 )
 
-[node name="Jump" type="Node" parent="." index="6"]
+[node name="Def" type="Node" parent="." index="6"]
 
 script = ExtResource( 8 )
 
-[node name="Def" type="Node" parent="." index="7"]
+[node name="Text" type="Node" parent="." index="7"]
 
 script = ExtResource( 9 )
 
-[node name="Text" type="Node" parent="." index="8"]
-
-script = ExtResource( 10 )
-
-[node name="Timer" type="Timer" parent="." index="9"]
+[node name="Timer" type="Timer" parent="." index="8"]
 
 process_mode = 1
 wait_time = 0.1
