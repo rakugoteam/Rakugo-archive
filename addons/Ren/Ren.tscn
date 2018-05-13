@@ -10,7 +10,7 @@
 [ext_resource path="res://addons/Ren/def.gd" type="Script" id=8]
 [ext_resource path="res://addons/Ren/text.gd" type="Script" id=9]
 
-[node name="Ren" type="Node" index="0"]
+[node name="Ren" type="Node"]
 
 pause_mode = 2
 script = ExtResource( 1 )

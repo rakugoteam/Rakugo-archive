@@ -39,7 +39,7 @@ func _on_qload():
 func _on_statement(type, kwargs):
 	$Skip.disabled = not(type in skip_types)
 	$Auto.disabled = not(type in skip_types)
-	$History.disabled = Ren.current_id > 0
+	$History.disabled = Ren.current_id == 0
 
 func on_auto():
 	if not $AutoTimer.is_stopped():

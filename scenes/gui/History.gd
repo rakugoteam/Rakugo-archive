@@ -2,9 +2,10 @@ extends VBoxContainer
 
 export(PackedScene) var HistoryItemTemplate
 onready var HistoryItem = load(HistoryItemTemplate.resource_path)
+var temp_history = []
 
 func _ready():
-	Ren.connect("exit_statement", self, "add_history_item", [], CONNECT_PERSIST)
+	connect("visibility_changed", self, "_on_visibility_changed")
 	
 
 func add_history_item(type, kwargs):
@@ -20,6 +21,7 @@ func set_history_item(hi, type, kwargs):
 	
 	if "who" in kwargs:
 		label.bbcode_text = kwargs.who
+
 	if "what" in kwargs:
 		dialog_text.bbcode_text = kwargs.what
 
@@ -33,7 +35,23 @@ func set_history_item(hi, type, kwargs):
 		var fch = Ren.current_menu.choices_labels[kwargs.final_choice]
 		dialog_text.bbcode_text += Ren.text_passer("{i}" + fch + "{/i}{/b}")
 
+func _on_visibility_changed():
+	if not visible:
+		return
+	
+	var i = 0
+	if temp_history != Ren.history:
 
+		for hi_item in Ren.history:
+			var type = hi_item.statement.type
+			var kwargs = hi_item.statement.kwargs
+			if i == get_child_count():
+				add_history_item(type, kwargs)
+			
+			elif temp_history[i] != Ren.history[i]:
+				set_history_item(get_child(i), type, kwargs)
+			
+			i += 1
+			
+		temp_history = Ren.history.duplicate()
 		
-	
-	
