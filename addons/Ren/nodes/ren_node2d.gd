@@ -8,8 +8,8 @@ export(NodePath) var camera = NodePath("")
 
 func _ready():
 	hide()
-	Ren.connect("show", self, "_on_show", [], CONNECT_PERSIST)
-	Ren.connect("hide", self, "_on_hide", [], CONNECT_PERSIST)
+	Ren.connect("show", self, "_on_show")
+	Ren.connect("hide", self, "_on_hide")
 
 	if auto_define:
 		Ren.node_link(self, node_id)

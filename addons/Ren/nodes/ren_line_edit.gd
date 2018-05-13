@@ -5,7 +5,7 @@ var input_placeholder = ""
 var _type = ""
 
 func _ready():
-	Ren.connect("exec_statement", self, "_on_statement", [], CONNECT_PERSIST)
+	Ren.connect("exec_statement", self, "_on_statement")
 	add_child(rtl)
 	hide()
 

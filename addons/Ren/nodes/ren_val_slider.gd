@@ -19,8 +19,8 @@ func _ready():
 	else:
 		Ren.define(val_name, default)
 	
-	connect("value_changed", self, "on_slider_val_changed", [], CONNECT_PERSIST)
-	Ren.connect("val_changed", self, "on_val_changed", [], CONNECT_PERSIST)
+	connect("value_changed", self, "on_slider_val_changed")
+	Ren.connect("val_changed", self, "on_val_changed")
 
 func on_val_changed(valn):
 	if val_name != valn:

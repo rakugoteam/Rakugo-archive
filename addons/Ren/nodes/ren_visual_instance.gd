@@ -7,8 +7,8 @@ export(String) var node_id = ""
 export(NodePath) var camera = NodePath("")
 
 func _ready():
-	Ren.connect("show", self, "_on_show", [], CONNECT_PERSIST)
-	Ren.connect("hide", self, "_on_hide", [], CONNECT_PERSIST)
+	Ren.connect("show", self, "_on_show")
+	Ren.connect("hide", self, "_on_hide")
 		
 	if node_id.empty():
 		node_id = name

@@ -18,9 +18,9 @@ var typing=false
 
 
 func _ready():
-	connect("gui_input", self, "_on_Adv_gui_input", [], CONNECT_PERSIST)
-	Ren.connect("exec_statement", self, "_on_statement", [], CONNECT_PERSIST)
-	timer.connect("timeout", self, "_on_timeout", [], CONNECT_PERSIST)
+	connect("gui_input", self, "_on_Adv_gui_input")
+	Ren.connect("exec_statement", self, "_on_statement")
+	timer.connect("timeout", self, "_on_timeout")
 
 func _on_timeout():
 	set_process_unhandled_input(_type == "say")

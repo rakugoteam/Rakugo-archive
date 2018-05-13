@@ -4,7 +4,7 @@ export(String) var kind = "vertical"
 export(PackedScene) var ChoiceButton
 
 func _ready():
-	Ren.connect("exec_statement", self, "_on_statement", [], CONNECT_PERSIST)
+	Ren.connect("exec_statement", self, "_on_statement")
 
 func _on_statement(type, kwargs):
 	if type != "menu":

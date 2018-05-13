@@ -7,7 +7,7 @@ export(String) var first_state = ""
 var current_node = self
 
 func _ready():
-	connect("visibility_changed", self, "_on_Screens_visibility_changed", [], CONNECT_PERSIST)
+	connect("visibility_changed", self, "_on_Screens_visibility_changed")
 	
 func save_menu(screenshot):
 	if current_node != self:

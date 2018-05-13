@@ -6,7 +6,6 @@ var temp_history = []
 
 func _ready():
 	connect("visibility_changed", self, "_on_visibility_changed")
-	
 
 func add_history_item(type, kwargs):
 	var new_hi = HistoryItem.instance()

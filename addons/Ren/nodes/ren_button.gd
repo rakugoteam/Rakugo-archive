@@ -13,12 +13,12 @@ onready var node = get_node(node_path)
 
 
 func _ready():
-	connect("focus_entered", self, "_on_focus", [], CONNECT_PERSIST)
-	connect("focus_exited", self, "_on_idle", [], CONNECT_PERSIST)
-	connect("mouse_entered", self, "_on_hover", [], CONNECT_PERSIST)
-	connect("mouse_exited", self, "_on_idle", [], CONNECT_PERSIST)
-	connect("pressed", self, "_on_pressed", [], CONNECT_PERSIST)
-	connect("resized", self, "_on_resized", [], CONNECT_PERSIST)
+	connect("focus_entered", self, "_on_focus")
+	connect("focus_exited", self, "_on_idle")
+	connect("mouse_entered", self, "_on_hover")
+	connect("mouse_exited", self, "_on_idle")
+	connect("pressed", self, "_on_pressed")
+	connect("resized", self, "_on_resized")
 
 func _on_resized():
 	if auto_resize_x:

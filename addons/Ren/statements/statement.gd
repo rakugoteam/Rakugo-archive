@@ -5,7 +5,7 @@ var kwargs = {} # dict of pairs keyword : argument
 var kws = [] # possible keywords for this type of statement
 
 func _ready():
-	Ren.connect("exit_statement", self, "on_exit", [], CONNECT_PERSIST)
+	Ren.connect("exit_statement", self, "on_exit")
 
 func exec(dbg = true):
 	if dbg:

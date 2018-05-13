@@ -21,8 +21,8 @@ func _ready():
 	
 	type = Ren.get_type(s)
 	
-	connect("text_entered", self, "_on_entered", [], CONNECT_PERSIST)
-	Ren.connect("val_changed", self, "on_val_changed", [], CONNECT_PERSIST)
+	connect("text_entered", self, "_on_entered")
+	Ren.connect("val_changed", self, "on_val_changed")
 
 func on_val_changed(valn):
 	if val_name != valn:

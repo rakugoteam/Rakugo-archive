@@ -43,7 +43,7 @@ signal val_changed(val_name)
 signal story_step(dialog_name)
 
 func _ready():
-	timer.connect("timeout", self, "exit_statement", [], CONNECT_PERSIST)
+	timer.connect("timeout", self, "exit_statement")
 
 func exec_statement(type, kwargs = {}):
 	emit_signal("exec_statement", type, kwargs)
