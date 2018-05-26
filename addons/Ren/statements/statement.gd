@@ -60,7 +60,7 @@ func add_to_history():
 
 	else:
 		Ren.history[Ren.current_id] = history_item
-
+	
 	Ren.current_id += 1
 
 func debug(kws = [], some_custom_text = ""):

@@ -30,10 +30,6 @@ func _input(event):
 		return
 
 	if event.is_action_pressed("ren_forward"):
-		Ren.rolling_back = false
-		if Ren.history_id > 1:
-			Ren.history_id -= 1
-
 		if typing: #if typing complete it
 			typing=false
 		elif _type == "say": #else exit statement

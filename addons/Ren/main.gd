@@ -8,12 +8,11 @@ var load_counter=0
 var vnl=[]
 
 var history = [] # [{"state":story_state, "statement":{"type":type, "kwargs": kwargs}}]
-var history_id = 0
-var rolling_back = false
 var current_statement = null
 var current_menu
 var current_id = 0 setget _set_current_id, _get_current_id
 var local_id = 0
+
 
 var values = {
 	"version":{"type":"text", "value":"0.7.0 GDScript"},
@@ -32,7 +31,6 @@ const _CHR	= preload("nodes/character.gd")
 onready var timer = $Timer
 
 var story_state setget _set_story_state, _get_story_state
-var previous_state = ""
 
 signal exec_statement(type, kwargs)
 signal exit_statement(previous_type, kwargs)
@@ -95,11 +93,6 @@ func get_value_type(val_name):
 ## crate new charater as global value that Ren will see
 ## possible kwargs: name, color, what_prefix, what_suffix, kind, avatar
 func character(val_name, kwargs, node = null):
-	# it always adds node to Ren
-#	if node == null:
-#		node = _CHR.new()
-#		add_child(node)
-	
 	node.set_kwargs(kwargs)
 	$Def.define(values, val_name, node, "character")
 
@@ -245,7 +238,7 @@ func debug(kwargs, kws = [], some_custom_text = ""):
 	
 	for k in kws:
 		if k in kwargs:
-			if (k != null) or (k != ""):
+			if not(k in [null, ""]):
 				dbg += k + " : " + str(kwargs[k]) + ", "
 	
 	if kws.size() > 0:
