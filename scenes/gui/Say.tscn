@@ -876,7 +876,7 @@ tracks/11/keys = {
 "values": [ Vector2( 905, 59 ) ]
 }
 
-[node name="RenSayPanel" type="Panel" index="0"]
+[node name="RenSayPanel" type="Panel"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -897,7 +897,7 @@ _sections_unfolded = [ "Anchor", "Mouse", "Rect", "Size Flags", "Theme", "custom
 __meta__ = {
 "_editor_icon": ExtResource( 2 )
 }
-step_time = 0.05
+step_time = 0.1
 name_label_path = NodePath("VBox/Label")
 dialog_label_path = NodePath("VBox/Dialog")
 avatar_viewport_path = NodePath("ViewportContainer/CharaterAvatar")
@@ -917,9 +917,9 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/separation = 1
+custom_constants/separation = 10
 alignment = 0
-_sections_unfolded = [ "Rect" ]
+_sections_unfolded = [ "Rect", "custom_constants" ]
 
 [node name="Label" parent="VBox" index="0" instance=ExtResource( 3 )]
 
@@ -942,7 +942,7 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 41.0
+margin_top = 50.0
 margin_right = 905.0
 margin_bottom = 100.0
 rect_pivot_offset = Vector2( 0, 0 )

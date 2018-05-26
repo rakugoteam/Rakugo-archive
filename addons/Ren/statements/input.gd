@@ -6,7 +6,6 @@ var input_value = "input value"
 func _init():
 	._init()
 	type = "input"
-	# kws = ["who", "what", "temp", "input_value"]
 	kws += ["temp", "input_value"]
 
 func exec(dbg = true):

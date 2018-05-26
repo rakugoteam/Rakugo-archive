@@ -4,22 +4,25 @@
 
 ![Logo](window_icon.png)
 
-Ren is framemork ( inspired by [Ren'Py](https://www.renpy.org) ) <br /> for story driven games in [Godot](https://godotengine.org).
+Ren is framemork ( inspired by [Ren'Py](https://www.renpy.org) )
+<br/> for story driven games in [Godot](https://godotengine.org).
 
 ## Story driven games
 
 It means games that are for example:
 
-- Visual Novels (WIP):
-	- GDScript (almost done)
-	- VisualScript (WIP)
-	- RenScript (ToDo)
-- Click & Point Adventures (ToDo)
-- RPG(ToDo)
+- Visual Novels
+- Click & Point Adventures
+- RPG
+
+You can use it with:
+- GDScript (almost done)
+- VisualScript (WIP - I need help)
+- RenScript (ToDo)
 
 If you want to help please write to us on our [Gitter room](https://gitter.im/jeremi360/Ren-GD).
 
-Logo is base on Godot icon from Linux Pop icon theme.<br />
-Logo is Godot head with hair like anime character.<br />
+Logo is base on Godot icon from Linux Pop icon theme.<br/>
+Logo is Godot head with hair like anime character.<br/>
 Custom Ren Nodes icons are based on [Godot icons](https://github.com/godotengine/godot-design/tree/master/engine/icons/optimized).
 

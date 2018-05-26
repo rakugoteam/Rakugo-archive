@@ -4,8 +4,9 @@ var choices_labels = []
 
 func _init():
 	._init()
-	kws.append("choices")
+	kws += ["choices"]
 	type = "menu"
+	kwargs["mkind"] = "vertical"
 	
 func exec(dbg = true): 
 	if dbg:
