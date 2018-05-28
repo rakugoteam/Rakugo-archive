@@ -11,7 +11,7 @@ config_version=3
 [application]
 
 config/name="Ren"
-run/main_scene="res://scenes/examples/test.tscn"
+run/main_scene="res://scenes/examples/Test.tscn"
 config/icon="res://icon.png"
 
 [autoload]

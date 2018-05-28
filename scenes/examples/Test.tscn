@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scenes/examples/test.gd" type="Script" id=1]
+[ext_resource path="res://addons/Ren/nodes/character.gd" type="Script" id=2]
+[ext_resource path="res://addons/Ren/icons/ren_character.svg" type="Texture" id=3]
+[ext_resource path="res://scenes/examples/RenAvatar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://addons/Ren/nodes/ren_node2d.gd" type="Script" id=5]
+[ext_resource path="res://addons/Ren/icons/ren_node2d.svg" type="Texture" id=6]
+[ext_resource path="res://logo.svg" type="Texture" id=7]
+
+[node name="Test" type="Node2D" index="0"]
+
+_sections_unfolded = [ "Material", "Transform", "Z Index" ]
+
+[node name="Story" type="Node" parent="." index="0"]
+
+script = ExtResource( 1 )
+
+[node name="RenKun" type="Node" parent="." index="1"]
+
+script = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+__meta__ = {
+"_editor_icon": ExtResource( 3 )
+}
+character_id = "rench"
+character_name = "Ren"
+color = Color( 0.967169, 0.988281, 0.312698, 1 )
+prefix = ""
+suffix = ""
+avatar = ExtResource( 4 )
+
+[node name="RenNode2D" type="Node2D" parent="RenKun" index="0"]
+
+visible = false
+position = Vector2( 524.705, 226.134 )
+z_index = -1
+script = ExtResource( 5 )
+_sections_unfolded = [ "Z Index" ]
+__meta__ = {
+"_editor_icon": ExtResource( 6 )
+}
+auto_define = null
+node_id = "rench"
+camera = NodePath("")
+
+[node name="logo" type="Sprite" parent="RenKun/RenNode2D" index="0"]
+
+texture = ExtResource( 7 )
+_sections_unfolded = [ "Transform" ]
+
+
