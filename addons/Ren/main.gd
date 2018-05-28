@@ -1,12 +1,5 @@
 extends Node
 
-# Visual save/load
-var history_vis=[]
-var mainscriptnode
-var vis_loading=false
-var load_counter=0
-var vnl=[]
-
 var history = [] # [{"state":story_state, "statement":{"type":type, "kwargs": kwargs}}]
 var current_statement = null
 var current_menu
@@ -175,63 +168,10 @@ func jump(dialog_name, state):
 	Ren.story_step()
 
 func savefile(filepath="user://save.dat", password="Ren"):
-	if has_meta("usingvis"):
-		var tmpvalues={}
-		for x in values:
-			tmpvalues[x]=var2str(values[x])
-		var savedict={
-		"visual_history":history_vis,
-		"values":tmpvalues,
-		"mainscriptnode":mainscriptnode.get_path()
-		}
-		#config.set_value("main","statements",statements)
-		#config.set_value("main","current_statement",current_statement_id)
-		var file=File.new()
-		if file.open_encrypted_with_pass(filepath,File.WRITE,password)==OK:
-			file.store_line(to_json(savedict))
-			file.close()
-			return true
-		else:
-			return false
+	pass
 	
 func loadfile(filepath="user://save.dat", password="Ren"):
-	if has_meta("usingvis"):
-		var file=File.new()
-		if file.open_encrypted_with_pass(filepath,File.READ,password)==OK:
-			var load_dict=parse_json(file.get_line())
-			quitcurvis()
-			vis_loading=true
-			current_menu = null
-			current_id=0
-			using_passer = false
-			history_vis=load_dict["visual_history"]
-			values=load_dict["values"]
-			for x in values:
-				values[x]=str2var(values[x])
-			mainscriptnode=get_node(load_dict["mainscriptnode"])
-			mainscriptnode.mainstory()
-			vis_loading=false
-			values=load_dict["values"]
-			file.close()
-			return true
-		else:
-			return false
-
-func quitcurvis():
-	set_meta("quitcurrent",true)
-	print(history_vis)
-	if get_children().back().type=="menu":
-		exec_statement()
-	else:
-		exit_statement()
-	set_meta("quitcurrent",false)
-
-func can_skip():
-	if not Ren.history.empty():
-		if story_state in Ren.history:
-			return true
-			
-	return false
+	pass
 
 func debug(kwargs, kws = [], some_custom_text = ""):
 	var dbg = ""
