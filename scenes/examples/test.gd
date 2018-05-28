@@ -41,7 +41,7 @@ func story(dialog_name):
 			## showing Ren's node or character with id 'rench' at center
 			Ren.show("rench", [], {"at":["center"]})
 			## example getting user input to Ren.value
-			Ren.input({
+			Ren.ask({
 				"who": 
 					"rench",
 				"what":

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://addons/Ren/main.gd" type="Script" id=1]
 [ext_resource path="res://addons/Ren/statements/say.gd" type="Script" id=2]
-[ext_resource path="res://addons/Ren/statements/input.gd" type="Script" id=3]
+[ext_resource path="res://addons/Ren/statements/ask.gd" type="Script" id=3]
 [ext_resource path="res://addons/Ren/statements/menu.gd" type="Script" id=4]
 [ext_resource path="res://addons/Ren/statements/show.gd" type="Script" id=5]
 [ext_resource path="res://addons/Ren/statements/hide.gd" type="Script" id=6]
@@ -10,7 +10,7 @@
 [ext_resource path="res://addons/Ren/def.gd" type="Script" id=8]
 [ext_resource path="res://addons/Ren/text.gd" type="Script" id=9]
 
-[node name="Ren" type="Node"]
+[node name="Ren" type="Node" index="0"]
 
 pause_mode = 2
 script = ExtResource( 1 )
@@ -21,7 +21,7 @@ debug_inti = true
 
 script = ExtResource( 2 )
 
-[node name="Input" type="Node" parent="." index="1"]
+[node name="Ask" type="Node" parent="." index="1"]
 
 script = ExtResource( 3 )
 

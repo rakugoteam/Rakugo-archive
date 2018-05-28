@@ -8,7 +8,7 @@ var local_id = 0
 
 
 var values = {
-	"version":{"type":"text", "value":"0.7.0 GDScript"},
+	"version":{"type":"text", "value":"0.8.0"},
 	"test_bool":{"type":"var", "value":false},
 	"test_float":{"type":"var", "value":10},
 	"story_state":{"type":"text", "value":""}
@@ -102,21 +102,21 @@ func _set_statement(node, kwargs):
 	node.exec()
 
 ## statement of type say
-## there can be only one say, input or menu in story_state
+## there can be only one say, ask or menu in story_state
 ## its make given character(who) talk (what)
 ## with keywords : who, what, kind
 func say(kwargs):
 	_set_statement($Say, kwargs)
 
-## statement of type input
-## there can be only one say, input or menu in story_state
-## its allow player to provide keybord input that will be assain to given value
-## with keywords : who, what, kind, input_value, value
-func input(kwargs):
-	_set_statement($Input, kwargs)
+## statement of type ask
+## there can be only one say, ask or menu in story_state
+## its allow player to provide keybord ask that will be assain to given value
+## with keywords : who, what, kind, ask_value, value
+func ask(kwargs):
+	_set_statement($Ask, kwargs)
 
 ## statement of type menu
-## there can be only one say, input or menu in story_state
+## there can be only one say, ask or menu in story_state
 ## its allow player to make choice
 ## with keywords : who, what, kind, choices, mkind
 func menu(kwargs):
