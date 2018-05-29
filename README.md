@@ -17,7 +17,7 @@ It means games that are for example:
 
 You can use it with:
 - GDScript (almost done)
-- VisualScript (outdated - I need help)
+- VisualScript (ToDo - I need help)
 - RenScript (ToDo)
 
 If you want to help please write to us on our [Gitter room](https://gitter.im/jeremi360/Ren-GD).
