@@ -38,9 +38,9 @@ func _on_pressed():
 	Ren.set_meta("last_choice",id) #for checking choice in VS
 	Ren.exit_statement({"final_choice":id})
 
-func set_disabled(value):
-	.set_disabled(value)
-	if value:
+func set_disabled(variable):
+	.set_disabled(variable)
+	if variable:
 		label.add_color_override("default_color", disable_text_color)
 	else:
 		_on_idle()

@@ -80,58 +80,58 @@ func _enter_tree():
 		)
 	
 	add_custom_type(
-		"RenValLabel",
+		"RenVarLabel",
 		"Label",
-		preload("nodes/ren_val_label.gd"),
-		preload("icons/ren_val_label.svg")
+		preload("nodes/ren_var_label.gd"),
+		preload("icons/ren_var_label.svg")
 		)
 	
 	add_custom_type(
-		"RenValEdit",
+		"RenVarEdit",
 		"LineEdit",
-		preload("nodes/ren_val_edit.gd"),
-		preload("icons/ren_val_edit.svg")
+		preload("nodes/ren_var_edit.gd"),
+		preload("icons/ren_var_edit.svg")
 		)
 	
 	add_custom_type(
-		"RenValHSlider",
+		"RenVarHSlider",
 		"HSlider",
-		preload("nodes/ren_val_slider.gd"),
-		preload("icons/ren_val_h_slider.svg")
+		preload("nodes/ren_var_slider.gd"),
+		preload("icons/ren_var_h_slider.svg")
 		)
 	
 	add_custom_type(
-		"RenValVSlider",
+		"RenVarVSlider",
 		"VSlider",
-		preload("nodes/ren_val_slider.gd"),
-		preload("icons/ren_val_v_slider.svg")
+		preload("nodes/ren_var_slider.gd"),
+		preload("icons/ren_var_v_slider.svg")
 		)
 	
 	add_custom_type(
 		"RenProgressBar",
 		"ProgressBar",
-		preload("nodes/ren_val_range.gd"),
+		preload("nodes/ren_var_range.gd"),
 		preload("icons/ren_progress_bar.svg")
 		)
 	
 	add_custom_type(
 		"RenTextureProgress",
 		"TextureProgress",
-		preload("nodes/ren_val_range.gd"),
+		preload("nodes/ren_var_range.gd"),
 		preload("icons/ren_texture_progress.svg")
 		)
 	
 	add_custom_type(
-		"RenValCheckBox",
+		"RenVarCheckBox",
 		"CheckBox",
-		preload("nodes/ren_val_check.gd"),
+		preload("nodes/ren_var_check.gd"),
 		preload("icons/ren_check_box.svg")
 		)
 	
 	add_custom_type(
-		"RenValCheckButton",
+		"RenVarCheckButton",
 		"CheckButton",
-		preload("nodes/ren_val_check.gd"),
+		preload("nodes/ren_var_check.gd"),
 		preload("icons/ren_check_button.svg")
 		)
 	
@@ -153,11 +153,11 @@ func _exit_tree():
 	remove_custom_type("RenChoiceButton")
 	remove_custom_type("RenButton")
 	remove_custom_type("RenTextLabel")
-	remove_custom_type("RenValLabel")
-	remove_custom_type("RenValEdit")
-	remove_custom_type("RenValHSlider")
-	remove_custom_type("RenValVSlider")
-	remove_custom_type("RenValCheckBox")
-	remove_custom_type("RenValCheckButton")
+	remove_custom_type("RenVarLabel")
+	remove_custom_type("RenVarEdit")
+	remove_custom_type("RenVarHSlider")
+	remove_custom_type("RenVarVSlider")
+	remove_custom_type("RenVarCheckBox")
+	remove_custom_type("RenVarCheckButton")
 	
 	

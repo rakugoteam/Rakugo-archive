@@ -44,4 +44,4 @@ func _on_hide(_node_id):
 	hide()
 
 func _exit_tree():
-	Ren.values.erase(node_id)
+	Ren.variables.erase(node_id)

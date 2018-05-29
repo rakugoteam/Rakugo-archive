@@ -21,7 +21,7 @@ func _on_statement(type, kwargs):
 		ch.queue_free() #free causes problem in VS
 
 	var i = 0
-	var choices = Ren.current_menu.choices_labels
+	var choices = Ren.menu_node.choices_labels
 	for ch in choices:
 		var ch_button = ChoiceButton.instance()
 		add_child(ch_button)

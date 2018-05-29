@@ -15,13 +15,13 @@ func _unhandled_key_input(delta):
 		set_process_unhandled_key_input(false)
 
 func _on_enter(text):
-	var final_value = input_placeholder
+	var final_variable = input_placeholder
 
 	if text != "":
-		final_value = get_text()
+		final_variable = get_text()
 
 	set_process(false)
-	Ren.exit_statement({"value":final_value})
+	Ren.exit_statement({"variable":final_variable})
 
 func _on_statement(type, kwargs):
 	_type = type
@@ -34,8 +34,8 @@ func _on_statement(type, kwargs):
 		hide()
 		return
 
-	if "value" in kwargs:
-		rtl.set_bbcode(kwargs.value)
+	if "variable" in kwargs:
+		rtl.set_bbcode(kwargs.variable)
 		input_placeholder = rtl.get_text()
 		set_placeholder(input_placeholder)
 

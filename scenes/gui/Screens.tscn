@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scenes/gui/Screens.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/Labels/TitleText.tscn" type="PackedScene" id=2]
-[ext_resource path="res://addons/Ren/nodes/ren_val_label.gd" type="Script" id=3]
+[ext_resource path="res://addons/Ren/nodes/ren_var_label.gd" type="Script" id=3]
 [ext_resource path="res://addons/Ren/icons/ren_val_label.svg" type="Texture" id=4]
 [ext_resource path="res://scenes/gui/QuickMenuButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/gui/SlotBox.gd" type="Script" id=6]
@@ -10,15 +10,20 @@
 [ext_resource path="res://scenes/gui/Labels/slot.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/gui/History.gd" type="Script" id=9]
 [ext_resource path="res://scenes/gui/HistoryItem.tscn" type="PackedScene" id=10]
-[ext_resource path="res://addons/Ren/nodes/ren_val_edit.gd" type="Script" id=11]
+[ext_resource path="res://addons/Ren/nodes/ren_var_edit.gd" type="Script" id=11]
 [ext_resource path="res://addons/Ren/icons/ren_val_edit.svg" type="Texture" id=12]
-[ext_resource path="res://addons/Ren/nodes/ren_val_slider.gd" type="Script" id=13]
+[ext_resource path="res://addons/Ren/nodes/ren_var_slider.gd" type="Script" id=13]
 [ext_resource path="res://addons/Ren/icons/ren_val_v_slider.svg" type="Texture" id=14]
-[ext_resource path="res://addons/Ren/nodes/ren_val_range.gd" type="Script" id=15]
+[ext_resource path="res://addons/Ren/nodes/ren_var_range.gd" type="Script" id=15]
 [ext_resource path="res://addons/Ren/icons/ren_progress_bar.svg" type="Texture" id=16]
-[ext_resource path="res://addons/Ren/nodes/ren_val_check.gd" type="Script" id=17]
+[ext_resource path="res://addons/Ren/nodes/ren_var_check.gd" type="Script" id=17]
 [ext_resource path="res://addons/Ren/icons/ren_check_button.svg" type="Texture" id=18]
 [ext_resource path="res://addons/Ren/icons/ren_check_box.svg" type="Texture" id=19]
+
+
+
+
+
 
 [sub_resource type="DynamicFont" id=1]
 

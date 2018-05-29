@@ -17,8 +17,6 @@ func exec(dbg = true):
 		var l = Ren.text_passer(ch)
 		choices_labels.append(l)
 	
-	Ren.current_menu = self
-	
 	.exec(false)
 
 

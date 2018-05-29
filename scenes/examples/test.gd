@@ -15,42 +15,42 @@ func story(dialog_name):
 	match Ren.story_state:
 		"start":
 			## some tests:
-			## example of using Ren.value in text
+			## example of using Ren.variable in text
 			Ren.define("test_list", [1,3,7])
 			Ren.say({"who":"test", "what":"test list 2 list element is [test_list[2]]"})
-			Ren.story_state = "test values 0"
+			Ren.story_state = "test variables 0"
 		
-		"test values 0":
-			## example of updating some Ren.value
+		"test variables 0":
+			## example of updating some Ren.variable
 			Ren.define("test_val", 1)
 			Ren.say({"what":"now test_val = [test_val]"})
-			Ren.story_state = "test values 1"
+			Ren.story_state = "test variables 1"
 
-		"test values 1":
+		"test variables 1":
 			Ren.say({"what":"add 1 to test_val"})
-			var tval = Ren.get_value("test_val")
+			var tval = Ren.get_variable("test_val")
 			tval += 1
 			Ren.define("test_val", tval)
-			Ren.story_state = "test values 2"
+			Ren.story_state = "test variables 2"
 		
-		"test values 2":
+		"test variables 2":
 			Ren.say({"what":"and now test_val = [test_val]"})
 			Ren.story_state = "get player name"
 
 		"get player name":
 			## showing Ren's node or character with id 'rench' at center
 			Ren.show("rench", [], {"at":["center"]})
-			## example getting user input to Ren.value
+			## example getting user input to Ren.variable
 			Ren.ask({
 				"who": 
 					"rench",
 				"what":
 					"Hi! I'm Ren. What is your name?",
-				"input_value":
-						"player_name", ## Ren value to be changed
+				"input_variable":
+						"player_name", ## Ren variable to be changed
 						## it don't have to be define before input
-				"value":
-					"Developer" ## default value
+				"variable":
+					"Developer" ## default variable
 				})
 			Ren.story_state = "welcome player"
 		
