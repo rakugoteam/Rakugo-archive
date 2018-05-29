@@ -7,7 +7,7 @@ var local_id = 0
 var current_dialog_name = ""
 
 var variables = {
-	"version":{"type":"text", "variable":"0.8.0"},
+	"version":{"type":"text", "variable":"0.9.0"},
 	"test_bool":{"type":"var", "variable":false},
 	"test_float":{"type":"var", "variable":10},
 	"story_state":{"type":"text", "variable":""}
