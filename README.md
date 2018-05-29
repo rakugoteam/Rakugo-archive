@@ -20,6 +20,8 @@ You can use it with:
 - VisualScript (ToDo - I need help)
 - RenScript (ToDo)
 
+Ren use [PersistenceNode](https://github.com/MatiasVME/Persistence) by @MatiasVME for saving/load game.
+
 If you want to help please write to us on our [Gitter room](https://gitter.im/jeremi360/Ren-GD).
 
 Logo is base on Godot icon from Linux Pop icon theme.<br/>
