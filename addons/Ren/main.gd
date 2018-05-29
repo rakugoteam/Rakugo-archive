@@ -246,11 +246,13 @@ func _get_current_id():
 func _set_current_scene(value):
 	_scene = scenes_dir + value
 	print(_scene)
+	
 	if current_node != null:
+		current_node.queue_free()
 		var lscene = load(_scene)
 		current_node = lscene.instance()
 		get_tree().get_root().add_child(current_node)
-		current_node.queue_free()
+		
 
 func _get_current_scene():
 	return _scene

@@ -99,8 +99,9 @@ func story(dialog_name):
 				})
 			
 		"Play Visual Novel example":
-			Ren.current_scene = "VisualNovelExample/Garden.tscn"
 			Ren.jump("garden", "start")
+			Ren.current_scene = "VisualNovelExample/Garden.tscn"
+			
 
 		"Play Click'n'Point Adventure example":
 			Ren.say({
