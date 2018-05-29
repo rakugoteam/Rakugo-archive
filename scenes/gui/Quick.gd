@@ -4,6 +4,7 @@ var skip_types = ["say", "show", "hide"]
 onready var Screens = get_node("../../Screens")
 var save_error_msg = "[color=red]Error saving Game[/color]"
 var load_error_msg = "[color=red]Error loading Game[/color]"
+var file = File.new()
 
 func _ready():
 	Ren.connect("exec_statement", self, "_on_statement")
@@ -27,13 +28,18 @@ func _ready():
 func _on_qsave():
 	if Ren.savefile():
 		$InfoAnim.play("Saved")
+	
 	else:
 		$InfoAnim/Panel/Label.bbcode_text = save_error_msg
 		$InfoAnim.play("GeneralNotif")
 
+
 func _on_qload():
 	if Ren.loadfile():
 		$InfoAnim.play("Loaded")
+		Ren.jump()
+		Ren.story_step()
+	
 	else:
 		$InfoAnim/Panel/Label.bbcode_text = load_error_msg
 		$InfoAnim.play("GeneralNotif")
@@ -42,6 +48,8 @@ func _on_statement(type, kwargs):
 	$Skip.disabled = not(type in skip_types)
 	$Auto.disabled = not(type in skip_types)
 	$History.disabled = Ren.current_id == 0
+	var path = str("user://", Ren.save_folder, "/quick")
+	$QLoad.disabled = !file.file_exists(path + ".save") or !file.file_exists(path + ".txt")
 
 func on_auto():
 	if not $AutoTimer.is_stopped():

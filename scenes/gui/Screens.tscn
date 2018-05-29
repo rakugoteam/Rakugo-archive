@@ -20,11 +20,6 @@
 [ext_resource path="res://addons/Ren/icons/ren_check_button.svg" type="Texture" id=18]
 [ext_resource path="res://addons/Ren/icons/ren_check_box.svg" type="Texture" id=19]
 
-
-
-
-
-
 [sub_resource type="DynamicFont" id=1]
 
 size = 40
@@ -33,7 +28,7 @@ use_filter = false
 font_data = ExtResource( 7 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Screens" type="Control"]
+[node name="Screens" type="Control" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -140,13 +135,12 @@ script = ExtResource( 3 )
 __meta__ = {
 "_editor_icon": ExtResource( 4 )
 }
-val_name = "version"
+var_name = "some_var"
 default = "0.5.0"
 type = "str"
 
 [node name="Navigation" type="Panel" parent="." index="2"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -206,16 +200,25 @@ rect_clip_content = false
 text = "History"
 align = 0
 
-[node name="Load" parent="Navigation/VBoxContainer" index="2" instance=ExtResource( 5 )]
+[node name="Continue" parent="Navigation/VBoxContainer" index="2" instance=ExtResource( 5 )]
 
 margin_top = 52.0
 margin_right = 140.0
 margin_bottom = 84.0
 rect_clip_content = false
+text = "Continue"
+align = 0
+
+[node name="Load" parent="Navigation/VBoxContainer" index="3" instance=ExtResource( 5 )]
+
+margin_top = 104.0
+margin_right = 140.0
+margin_bottom = 136.0
+rect_clip_content = false
 text = "Load"
 align = 0
 
-[node name="Save" parent="Navigation/VBoxContainer" index="3" instance=ExtResource( 5 )]
+[node name="Save" parent="Navigation/VBoxContainer" index="4" instance=ExtResource( 5 )]
 
 visible = false
 margin_top = 108.0
@@ -225,38 +228,38 @@ rect_clip_content = false
 text = "Save"
 align = 0
 
-[node name="Preferences" parent="Navigation/VBoxContainer" index="4" instance=ExtResource( 5 )]
-
-margin_top = 104.0
-margin_right = 140.0
-margin_bottom = 136.0
-rect_clip_content = false
-text = "Preferences"
-align = 0
-
-[node name="About" parent="Navigation/VBoxContainer" index="5" instance=ExtResource( 5 )]
+[node name="Preferences" parent="Navigation/VBoxContainer" index="5" instance=ExtResource( 5 )]
 
 margin_top = 156.0
 margin_right = 140.0
 margin_bottom = 188.0
 rect_clip_content = false
-text = "About"
+text = "Preferences"
 align = 0
 
-[node name="Help" parent="Navigation/VBoxContainer" index="6" instance=ExtResource( 5 )]
+[node name="About" parent="Navigation/VBoxContainer" index="6" instance=ExtResource( 5 )]
 
 margin_top = 208.0
 margin_right = 140.0
 margin_bottom = 240.0
 rect_clip_content = false
-text = "Help"
+text = "About"
 align = 0
 
-[node name="Quit" parent="Navigation/VBoxContainer" index="7" instance=ExtResource( 5 )]
+[node name="Help" parent="Navigation/VBoxContainer" index="7" instance=ExtResource( 5 )]
 
 margin_top = 260.0
 margin_right = 140.0
 margin_bottom = 292.0
+rect_clip_content = false
+text = "Help"
+align = 0
+
+[node name="Quit" parent="Navigation/VBoxContainer" index="8" instance=ExtResource( 5 )]
+
+margin_top = 312.0
+margin_right = 140.0
+margin_bottom = 344.0
 rect_clip_content = false
 text = "Quit"
 align = 0
@@ -273,7 +276,6 @@ align = 0
 
 [node name="SlotBox" type="VBoxContainer" parent="." index="3"]
 
-editor/display_folded = true
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -537,7 +539,7 @@ script = ExtResource( 3 )
 __meta__ = {
 "_editor_icon": ExtResource( 4 )
 }
-val_name = "test_float"
+var_name = "some_var"
 default = ""
 type = "str"
 
@@ -567,7 +569,7 @@ script = ExtResource( 11 )
 __meta__ = {
 "_editor_icon": ExtResource( 12 )
 }
-val_name = "test_float"
+var_name = "some_var"
 default = "10"
 
 [node name="RenValHSlider" type="HSlider" parent="TestNodes/VBoxContainer" index="3"]
@@ -601,7 +603,7 @@ script = ExtResource( 13 )
 __meta__ = {
 "_editor_icon": ExtResource( 14 )
 }
-val_name = "test_float"
+var_name = "some_var"
 default = 0.5
 
 [node name="RenProgressBar" type="ProgressBar" parent="TestNodes/VBoxContainer" index="4"]
@@ -631,7 +633,8 @@ script = ExtResource( 15 )
 __meta__ = {
 "_editor_icon": ExtResource( 16 )
 }
-val_name = "test_float"
+var_name = "some_var"
+default = 0.5
 
 [node name="RenValVSlider" type="VSlider" parent="TestNodes" index="1"]
 
@@ -664,7 +667,7 @@ script = ExtResource( 13 )
 __meta__ = {
 "_editor_icon": ExtResource( 14 )
 }
-val_name = "test_float"
+var_name = "some_var"
 default = 0.5
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="TestNodes" index="2"]
@@ -727,7 +730,7 @@ script = ExtResource( 3 )
 __meta__ = {
 "_editor_icon": ExtResource( 4 )
 }
-val_name = "test_bool"
+var_name = "some_var"
 default = "False"
 type = "bool"
 
@@ -757,7 +760,7 @@ script = ExtResource( 17 )
 __meta__ = {
 "_editor_icon": ExtResource( 18 )
 }
-val_name = "test_bool"
+var_name = "some_var"
 default = false
 
 [node name="RenValCheckBox" type="CheckBox" parent="TestNodes/VBoxContainer2" index="3"]
@@ -786,12 +789,14 @@ script = ExtResource( 17 )
 __meta__ = {
 "_editor_icon": ExtResource( 19 )
 }
-val_name = "test_bool"
+var_name = "some_var"
 default = false
 
 [connection signal="pressed" from="Navigation/VBoxContainer/Start" to="." method="_on_Start_pressed"]
 
 [connection signal="pressed" from="Navigation/VBoxContainer/History" to="." method="_on_History_pressed"]
+
+[connection signal="pressed" from="Navigation/VBoxContainer/Continue" to="." method="_on_Continue_pressed"]
 
 [connection signal="pressed" from="Navigation/VBoxContainer/Load" to="." method="_on_Load_pressed"]
 

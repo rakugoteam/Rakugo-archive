@@ -1,21 +1,29 @@
 extends Node
 
-var history = [] # [{"state":story_state, "statement":{"type":type, "kwargs": kwargs}}]
-var current_statement = null
+export (String) var save_folder = "Ren"
+export (String) var save_password = "Ren"
+export (String, DIR) var scenes_dir = "res://scenes/examples/"
+
+# this must be saved
 var current_id = 0 setget _set_current_id, _get_current_id
 var local_id = 0
 var current_dialog_name = ""
-
+var _scene = null
+var history = [] # [{"state":story_state, "statement":{"type":type, "kwargs": kwargs}}]
 var variables = {
 	"version":{"type":"text", "variable":"0.9.0"},
 	"test_bool":{"type":"var", "variable":false},
 	"test_float":{"type":"var", "variable":10},
 	"story_state":{"type":"text", "variable":""}
-	}
+}
 
+# don't save this
 onready var menu_node = $Menu
+var current_statement = null
 var using_passer = false
 var skip_auto = false
+var current_scene = null setget _set_current_scene, _get_current_scene
+var current_node = null
 
 export(bool) var debug_inti = true
 
@@ -90,11 +98,14 @@ func character(var_name, kwargs, node = null):
 
 ## crate new link to node as global variable that Ren will see
 func node_link(node, node_id = node.name):
+	var path
 	if typeof(node) == TYPE_NODE_PATH:
-		$Def.define(variables, node_id, node)
+		path = node
 		
 	elif node is Node:
-		$Def.define(variables, node_id, node, "node")
+		path = node.get_path()
+	
+	$Def.define(variables, node_id, path, "node")
 
 func _set_statement(node, kwargs):
 	node.set_kwargs(kwargs)
@@ -159,24 +170,57 @@ func start(dialog_name, state):
 	# jump(dialog_name, state) - don't works :(
 	set_meta("playing", true) # for checking if Ren is playing
 
-func jump(dialog_name, state):
+func jump(dialog_name = current_dialog_name , state = story_state):
 	current_dialog_name = dialog_name
 	story_state = state
 	local_id = 0
 	Ren.story_step()
 
-func savefile(filepath="user://save.dat", password="Ren"):
-#	var save_game = File.new()
-#	save.open(filepath, File.WRITE)
-#	save_game. history = []
-#	var current_statement = null
-#	var current_id = 0 setget _set_current_id, _get_current_id
-#	var local_id = 0
-#	var current_dialog_name = ""
-	pass
+func savefile(save_name="quick"):
+	$Persistence.folder_name = save_folder
+	$Persistence.password = save_password
+	var data = $Persistence.get_data()
+	data["id"] = current_id
+	data["local_id"] = local_id
+	data["dialog_name"] = current_dialog_name
+	data["scene"] = _scene
+	data["history"] = history.duplicate()
 	
-func loadfile(filepath="user://save.dat", password="Ren"):
-	pass
+	var vars_to_save = {}
+	for i in range(variables.size()):
+		var k = variables.keys()[i]
+		var v = variables.values()[i]
+		if v.type in ["node", "character"]:
+			continue
+		else:
+			vars_to_save[v] = v
+	
+	data["variables"] = vars_to_save
+	
+	return $Persistence.save_data(save_name)
+	
+func loadfile(save_name="quick"):
+	$Persistence.folder_name = save_folder
+	$Persistence.password = save_password
+	
+	if !$Persistence.load_data(save_name):
+		return false
+		
+	var data = $Persistence.get_data()
+	current_id = data["id"]
+	local_id = data["local_id"]
+	current_dialog_name = data["dialog_name"]
+	current_scene = data["scene"]
+	history = data["history"].duplicate()
+
+	var vars_to_load = data["variables"].duplicate()
+
+	for i in range(vars_to_load.size()):
+		var k = variables.keys()[i]
+		var v = variables.values()[i]
+		variables[k] = v
+
+	return true
 
 func debug(kwargs, kws = [], some_custom_text = ""):
 	var dbg = ""
@@ -198,3 +242,15 @@ func _set_current_id(variable):
 
 func _get_current_id():
 	return current_id
+
+func _set_current_scene(value):
+	_scene = scenes_dir + value
+	print(_scene)
+	if current_node != null:
+		var lscene = load(_scene)
+		current_node = lscene.instance()
+		get_tree().get_root().add_child(current_node)
+		current_node.queue_free()
+
+func _get_current_scene():
+	return _scene

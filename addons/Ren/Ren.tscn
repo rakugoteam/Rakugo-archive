@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://addons/Ren/main.gd" type="Script" id=1]
 [ext_resource path="res://addons/Ren/statements/say.gd" type="Script" id=2]
@@ -9,12 +9,17 @@
 [ext_resource path="res://addons/Ren/statements/notify.gd" type="Script" id=7]
 [ext_resource path="res://addons/Ren/def.gd" type="Script" id=8]
 [ext_resource path="res://addons/Ren/text.gd" type="Script" id=9]
+[ext_resource path="res://addons/PersistenceNode/persistence_node.gd" type="Script" id=10]
+[ext_resource path="res://addons/PersistenceNode/icon.png" type="Texture" id=11]
 
 [node name="Ren" type="Node" index="0"]
 
 pause_mode = 2
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
+save_folder = "Ren"
+save_password = "ren"
+scenes_dir = "res://scenes/examples/"
 debug_inti = true
 
 [node name="Say" type="Node" parent="." index="0"]
@@ -49,7 +54,22 @@ script = ExtResource( 8 )
 
 script = ExtResource( 9 )
 
-[node name="Timer" type="Timer" parent="." index="8"]
+[node name="Persistence" type="Node" parent="." index="8"]
+
+script = ExtResource( 10 )
+__meta__ = {
+"_editor_icon": ExtResource( 11 )
+}
+mode = 1
+password = "Ren"
+folder_name = "Ren"
+no_valid_names = [ "quick", "example" ]
+debug = true
+beautifier_active = true
+profile_name_min_size = 3
+profile_name_max_size = 15
+
+[node name="Timer" type="Timer" parent="." index="9"]
 
 process_mode = 1
 wait_time = 0.1

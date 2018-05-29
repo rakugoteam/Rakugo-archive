@@ -1,6 +1,8 @@
 fontconfig
 addons/*
 !addons/Ren*
+!addons/json_beautifier
+!addons/PersistenceNode
 refences
 *.import
 .import

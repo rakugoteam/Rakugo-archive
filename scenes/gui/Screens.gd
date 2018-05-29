@@ -61,3 +61,11 @@ func _on_Start_pressed():
 
 func _on_History_pressed():
 	history_menu()
+
+
+func _on_Continue_pressed():
+	$Navigation/VBoxContainer/Continue.hide()
+	hide()
+	Ren.loadfile()
+	Ren.jump()
+	Ren.story_step()
