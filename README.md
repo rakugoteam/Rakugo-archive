@@ -20,7 +20,7 @@ You can use it with:
 - VisualScript (ToDo - I need help)
 - RenScript (ToDo)
 
-Ren use [PersistenceNode](https://github.com/MatiasVME/Persistence) by @MatiasVME for saving/load game.
+Ren use [PersistenceNode](https://github.com/MatiasVME/Persistence) for saving/load game.
 
 If you want to help please write to us on our [Gitter room](https://gitter.im/jeremi360/Ren-GD).
 
