@@ -27,7 +27,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "Ren" )
+enabled=PoolStringArray( "PersistenceNode", "Ren" )
 
 [input]
 
