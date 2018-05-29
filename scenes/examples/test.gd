@@ -7,8 +7,10 @@ func _ready():
 	Ren.current_dialog_name = "example"
 	Ren.story_state = "start"
 	Ren.current_scene = "test.tscn"
+	Ren.local_id = 0
 	Ren.current_node = self
 	Ren.story_step()
+	print('POMF SKURWYSYNU')
 	
 func story(dialog_name):
 	if dialog_name != "example":

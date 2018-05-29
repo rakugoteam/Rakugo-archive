@@ -51,6 +51,7 @@ func exit_statement(kwargs = {}):
 
 func story_step():
 	emit_signal("story_step", current_dialog_name)
+	prints("story_step", story_state, "on", current_dialog_name)
 
 func notified():
 	emit_signal("notified")
@@ -164,17 +165,10 @@ func _get_story_state():
 	return get_variable("story_state")
 
 ## it starts current Ren dialog
-func start(dialog_name, state):
+func start():
 	using_passer = false
 	current_id = 0
-	# jump(dialog_name, state) - don't works :(
-	set_meta("playing", true) # for checking if Ren is playing
-
-func jump(dialog_name = current_dialog_name , state = story_state):
-	current_dialog_name = dialog_name
-	story_state = state
 	local_id = 0
-	Ren.story_step()
 
 func savefile(save_name="quick"):
 	$Persistence.folder_name = save_folder
