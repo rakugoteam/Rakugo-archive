@@ -3,7 +3,6 @@ extends Node2D
 func _ready():
 	Ren.connect("story_step", self, "story")
 	Ren.current_dialog_name = "garden"
-	Ren.local_id = 0
 	Ren.current_node = self
 	Ren.story_state = "start"
 	Ren.story_step()

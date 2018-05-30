@@ -6,11 +6,9 @@ func _ready():
 	Ren.connect("story_step", self, "story")
 	Ren.current_dialog_name = "example"
 	Ren.story_state = "start"
-	Ren.set_current_scene("test.tscn", false)
-	Ren.local_id = 0
+	Ren.jump("test.tscn", false)
 	Ren.current_node = self
 	Ren.story_step()
-	print('POMF SKURWYSYNU')
 	
 func story(dialog_name):
 	if dialog_name != "example":
@@ -101,7 +99,7 @@ func story(dialog_name):
 				})
 			
 		"Play Visual Novel example":
-			Ren.set_current_scene("VisualNovelExample/Garden.tscn")
+			Ren.jump("VisualNovelExample/Garden.tscn")
 			
 
 		"Play Click'n'Point Adventure example":

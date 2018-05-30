@@ -53,7 +53,7 @@ func _on_Load_pressed():
 func _on_Start_pressed():
 	hide()
 	$Navigation/VBoxContainer/Start.hide()
-	$Navigation/Return.show()
+	$Navigation/VBoxContainer/Return.show()
 	$Navigation/VBoxContainer/Save.show()
 	$Navigation/VBoxContainer/History.show()
 	Ren.start()

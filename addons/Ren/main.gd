@@ -203,7 +203,7 @@ func loadfile(save_name="quick"):
 	current_id = data["id"]
 	local_id = data["local_id"]
 	current_dialog_name = data["dialog_name"]
-	set_current_scene(data["scene"])
+	jump(data["scene"])
 	history = data["history"].duplicate()
 
 	var vars_to_load = data["variables"].duplicate()
@@ -239,9 +239,9 @@ func _get_current_id():
 
 # use this to change/assain current scene
 # root of path_to_scene is scenes_dir
-func set_current_scene(path_to_scene, change = true):
+func jump(path_to_scene, change = true):
 	_scene = scenes_dir + path_to_scene
-	print(_scene)
+	local_id = 0
 	
 	if change:
 		current_node.queue_free()
@@ -249,6 +249,3 @@ func set_current_scene(path_to_scene, change = true):
 		current_node = lscene.instance()
 		get_tree().get_root().add_child(current_node)
 		
-
-func get_current_scene():
-	return _scene
