@@ -9,7 +9,7 @@ func on_var_changed(varn):
 	if var_name != varn:
 		return
 	
-	value = Ren.get_value(var_name)
+	value = Ren.get_variable(var_name)
 
 func on_slider_val_changed(variable):
 	Ren.define(var_name, variable)

@@ -22,7 +22,6 @@ onready var menu_node = $Menu
 var current_statement = null
 var using_passer = false
 var skip_auto = false
-var current_scene = null setget _set_current_scene, _get_current_scene
 var current_node = null
 
 export(bool) var debug_inti = true
@@ -177,7 +176,7 @@ func savefile(save_name="quick"):
 	data["id"] = current_id
 	data["local_id"] = local_id
 	data["dialog_name"] = current_dialog_name
-	data["scene"] = _scene
+	data["scene"] = get_current_scene()
 	data["history"] = history.duplicate()
 	
 	var vars_to_save = {}
@@ -204,7 +203,7 @@ func loadfile(save_name="quick"):
 	current_id = data["id"]
 	local_id = data["local_id"]
 	current_dialog_name = data["dialog_name"]
-	current_scene = data["scene"]
+	set_current_scene(data["scene"])
 	history = data["history"].duplicate()
 
 	var vars_to_load = data["variables"].duplicate()
@@ -213,6 +212,7 @@ func loadfile(save_name="quick"):
 		var k = variables.keys()[i]
 		var v = variables.values()[i]
 		variables[k] = v
+		var_changed(k)
 
 	return true
 
@@ -237,16 +237,18 @@ func _set_current_id(variable):
 func _get_current_id():
 	return current_id
 
-func _set_current_scene(value):
-	_scene = scenes_dir + value
+# use this to change/assain current scene
+# root of path_to_scene is scenes_dir
+func set_current_scene(path_to_scene, change = true):
+	_scene = scenes_dir + path_to_scene
 	print(_scene)
 	
-	if current_node != null:
+	if change:
 		current_node.queue_free()
 		var lscene = load(_scene)
 		current_node = lscene.instance()
 		get_tree().get_root().add_child(current_node)
 		
 
-func _get_current_scene():
+func get_current_scene():
 	return _scene

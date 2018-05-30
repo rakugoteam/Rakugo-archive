@@ -37,7 +37,6 @@ func _on_qsave():
 func _on_qload():
 	if Ren.loadfile():
 		$InfoAnim.play("Loaded")
-		Ren.jump()
 		Ren.story_step()
 	
 	else:

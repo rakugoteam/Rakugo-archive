@@ -64,8 +64,8 @@ func _on_History_pressed():
 
 
 func _on_Continue_pressed():
+	if !Ren.loadfile():
+		return
 	$Navigation/VBoxContainer/Continue.hide()
 	hide()
-	Ren.loadfile()
-	Ren.jump()
 	Ren.story_step()
