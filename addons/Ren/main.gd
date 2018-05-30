@@ -50,7 +50,6 @@ func exit_statement(kwargs = {}):
 
 func story_step():
 	emit_signal("story_step", current_dialog_name)
-	prints("story_step", story_state, "on", current_dialog_name)
 
 func notified():
 	emit_signal("notified")
@@ -130,9 +129,6 @@ func ask(kwargs):
 ## its allow player to make choice
 ## with keywords : who, what, kind, choices, mkind
 func menu(kwargs):
-	# if not ("mkind" in kwargs):
-	# 	kwargs["mkind"] = "vertical"
-		
 	_set_statement($Menu, kwargs)
 
 
@@ -163,7 +159,7 @@ func _set_story_state(state):
 func _get_story_state():
 	return get_variable("story_state")
 
-## it starts current Ren dialog
+## it starts Ren
 func start():
 	using_passer = false
 	current_id = 0
@@ -237,15 +233,23 @@ func _set_current_id(variable):
 func _get_current_id():
 	return current_id
 
-# use this to change/assain current scene
+
+# use this to change/assain current scene and dialog
 # root of path_to_scene is scenes_dir
-func jump(path_to_scene, change = true):
-	_scene = scenes_dir + path_to_scene
+func jump(
+	path_to_scene,
+	dialog_name,
+	change = true):
+
 	local_id = 0
-	
-	if change:
-		current_node.queue_free()
-		var lscene = load(_scene)
-		current_node = lscene.instance()
-		get_tree().get_root().add_child(current_node)
-		
+	current_dialog_name = dialog_name
+	_scene = scenes_dir + path_to_scene
+
+	if not change:
+		return
+
+	current_node.queue_free()
+	var lscene = load(_scene)
+	current_node = lscene.instance()
+	get_tree().get_root().add_child(current_node)
+	story_step()

@@ -2,15 +2,19 @@ extends Node2D
 
 func _ready():
 	Ren.connect("story_step", self, "story")
-	Ren.current_dialog_name = "garden"
+	# Ren.current_dialog_name = "garden"
 	Ren.current_node = self
 	Ren.story_state = "start"
 	Ren.story_step()
 
 
 func story(dialog_name):
-	if dialog_name == "graden":
+	if dialog_name != "garden":
 		return
+	
+	if Ren.current_node != self:
+		Ren.current_node = self
+		Ren.story_state = "start"
 	
 	match Ren.story_state:
 		"start":
