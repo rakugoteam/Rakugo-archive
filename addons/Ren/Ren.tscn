@@ -18,7 +18,7 @@ pause_mode = 2
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
 debug_on = true
-save_folder = "Ren"
+save_folder = "saves"
 save_password = "ren"
 scenes_dir = "res://scenes/examples/"
 debug_inti = true
@@ -61,7 +61,7 @@ script = ExtResource( 10 )
 __meta__ = {
 "_editor_icon": ExtResource( 11 )
 }
-mode = null
+mode = 1
 password = ""
 folder_name = "PersistenceNode"
 no_valid_names = [ "default", "example" ]

@@ -46,12 +46,14 @@ func add_to_history():
 		prints("some thing gone wrong Ren.current_id =", Ren.current_id)
 		prints("history size:", Ren.history.size())
 		return
-		
+	
+	var hkwargs = kwargs.duplicate()
+	hkwargs.erase("avatar")
 	var history_item = {
 		"state": Ren.story_state,
 		"statement":{
 			"type": type,
-			"kwargs": kwargs.duplicate()
+			"kwargs": hkwargs
 		}
 	}
 

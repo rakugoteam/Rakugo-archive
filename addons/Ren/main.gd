@@ -1,7 +1,7 @@
 extends Node
 
 export (bool) var debug_on = true
-export (String) var save_folder = "Ren"
+export (String) var save_folder = "saves"
 export (String) var save_password = "Ren"
 export (String, DIR) var scenes_dir = "res://scenes/examples/"
 
@@ -170,16 +170,13 @@ func savefile(save_name="quick"):
 	$Persistence.folder_name = save_folder
 	$Persistence.password = save_password
 
-	if !$Persistence.load_data(save_name):
-		$Persistence.save_data(save_name)
-
 	var data = $Persistence.get_data(save_name)
-	data["id"] = current_id
-	data["local_id"] = local_id
-	data["dialog_name"] = current_dialog_name
-	data["scene"] = _scene
+	prints("get data from:", save_name)
+	if data == null:
+		return false
+
 	data["history"] = history.duplicate()
-	
+
 	var vars_to_save = {}
 	for i in range(variables.size()):
 		var k = variables.keys()[i]
@@ -188,23 +185,27 @@ func savefile(save_name="quick"):
 			continue
 		else:
 			vars_to_save[v] = v
-	
+		
 	data["variables"] = vars_to_save
+
+	data["id"] = current_id
+	data["local_id"] = local_id
+	data["scene"] = _scene
+	data["dialog_name"] = current_dialog_name
+	data["state"] = _get_story_state()
 	
-	return $Persistence.save_data(save_name)
+	var result = $Persistence.save_data(save_name)
+	prints("save data to:", save_name)
+	return result
 	
 func loadfile(save_name="quick"):
 	$Persistence.folder_name = save_folder
 	$Persistence.password = save_password
-	
-	# if !$Persistence.load_data(save_name):
-	# 	return false
-		
-	var data = $Persistence.get_data()#(save_name)
-	current_id = data["id"]
-	local_id = data["local_id"]
-	current_dialog_name = data["dialog_name"]
-	jump(data["scene"])
+	var data = $Persistence.get_data(save_name)
+	prints("load data from:", save_name)
+	if data == null:
+		return false
+
 	history = data["history"].duplicate()
 
 	var vars_to_load = data["variables"].duplicate()
@@ -214,6 +215,11 @@ func loadfile(save_name="quick"):
 		var v = variables.values()[i]
 		variables[k] = v
 		var_changed(k)
+	
+	jump(data["scene"], data["dialog_name"], data["state"], true, true)
+
+	current_id = data["id"]
+	local_id = data["local_id"]
 
 	return true
 
@@ -249,12 +255,17 @@ func jump(
 	path_to_scene,
 	dialog_name,
 	state = "start",
-	change = true):
+	change = true,
+	from_save = false):
 
 	local_id = 0
 	current_dialog_name = dialog_name
 	_set_story_state(state) # it must be this way
-	_scene = scenes_dir + path_to_scene + ".tscn"
+	
+	if from_save:
+		_scene = path_to_scene
+	else:
+		_scene = scenes_dir + path_to_scene + ".tscn"
 
 	if debug_on:
 		prints("jump to scene:", _scene, "with dialog:", dialog_name, "from:", state)
