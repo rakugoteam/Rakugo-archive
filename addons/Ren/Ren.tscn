@@ -12,11 +12,12 @@
 [ext_resource path="res://addons/PersistenceNode/persistence_node.gd" type="Script" id=10]
 [ext_resource path="res://addons/PersistenceNode/icon.png" type="Texture" id=11]
 
-[node name="Ren" type="Node"]
+[node name="Ren" type="Node" index="0"]
 
 pause_mode = 2
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
+debug_on = true
 save_folder = "Ren"
 save_password = "ren"
 scenes_dir = "res://scenes/examples/"
@@ -61,8 +62,8 @@ __meta__ = {
 "_editor_icon": ExtResource( 11 )
 }
 mode = null
-password = "Ren"
-folder_name = "Ren"
+password = ""
+folder_name = "PersistenceNode"
 no_valid_names = [ "default", "example" ]
 debug = true
 beautifier_active = true

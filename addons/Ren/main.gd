@@ -1,5 +1,6 @@
 extends Node
 
+export (bool) var debug_on = true
 export (String) var save_folder = "Ren"
 export (String) var save_password = "Ren"
 export (String, DIR) var scenes_dir = "res://scenes/examples/"
@@ -168,6 +169,10 @@ func start():
 func savefile(save_name="quick"):
 	$Persistence.folder_name = save_folder
 	$Persistence.password = save_password
+
+	if !$Persistence.load_data(save_name):
+		$Persistence.save_data(save_name)
+
 	var data = $Persistence.get_data(save_name)
 	data["id"] = current_id
 	data["local_id"] = local_id
@@ -192,10 +197,10 @@ func loadfile(save_name="quick"):
 	$Persistence.folder_name = save_folder
 	$Persistence.password = save_password
 	
-	if !$Persistence.load_data(save_name):
-		return false
+	# if !$Persistence.load_data(save_name):
+	# 	return false
 		
-	var data = $Persistence.get_data(save_name)
+	var data = $Persistence.get_data()#(save_name)
 	current_id = data["id"]
 	local_id = data["local_id"]
 	current_dialog_name = data["dialog_name"]
@@ -213,6 +218,9 @@ func loadfile(save_name="quick"):
 	return true
 
 func debug(kwargs, kws = [], some_custom_text = ""):
+	if !debug_on:
+		return
+
 	var dbg = ""
 	
 	for k in kws:
@@ -248,7 +256,8 @@ func jump(
 	_set_story_state(state) # it must be this way
 	_scene = scenes_dir + path_to_scene + ".tscn"
 
-	prints("jump to scene:", _scene, "with dialog:", dialog_name, "from:", state)
+	if debug_on:
+		prints("jump to scene:", _scene, "with dialog:", dialog_name, "from:", state)
 
 	if not change:
 		return
