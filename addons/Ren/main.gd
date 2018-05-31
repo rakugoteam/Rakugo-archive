@@ -168,11 +168,11 @@ func start():
 func savefile(save_name="quick"):
 	$Persistence.folder_name = save_folder
 	$Persistence.password = save_password
-	var data = $Persistence.get_data()
+	var data = $Persistence.get_data(save_name)
 	data["id"] = current_id
 	data["local_id"] = local_id
 	data["dialog_name"] = current_dialog_name
-	data["scene"] = get_current_scene()
+	data["scene"] = _scene
 	data["history"] = history.duplicate()
 	
 	var vars_to_save = {}
@@ -195,7 +195,7 @@ func loadfile(save_name="quick"):
 	if !$Persistence.load_data(save_name):
 		return false
 		
-	var data = $Persistence.get_data()
+	var data = $Persistence.get_data(save_name)
 	current_id = data["id"]
 	local_id = data["local_id"]
 	current_dialog_name = data["dialog_name"]
@@ -234,16 +234,21 @@ func _get_current_id():
 	return current_id
 
 
-# use this to change/assain current scene and dialog
-# root of path_to_scene is scenes_dir
+## use this to change/assain current scene and dialog
+## root of path_to_scene is scenes_dir
+## provide path_to_scene with out ".tscn"
 func jump(
 	path_to_scene,
 	dialog_name,
+	state = "start",
 	change = true):
 
 	local_id = 0
 	current_dialog_name = dialog_name
-	_scene = scenes_dir + path_to_scene
+	_set_story_state(state) # it must be this way
+	_scene = scenes_dir + path_to_scene + ".tscn"
+
+	prints("jump to scene:", _scene, "with dialog:", dialog_name, "from:", state)
 
 	if not change:
 		return
@@ -252,4 +257,3 @@ func jump(
 	var lscene = load(_scene)
 	current_node = lscene.instance()
 	get_tree().get_root().add_child(current_node)
-	story_step()

@@ -4,8 +4,12 @@ extends Node
 
 func _ready():
 	Ren.connect("story_step", self, "story")
-	Ren.current_dialog_name = "example"
-	Ren.local_id = 0
+	Ren.jump(
+		"test.tscn",
+		"example",
+		"start",
+		false
+	)
 	Ren.story_step()
 
 func story(dialog_name):
@@ -14,8 +18,7 @@ func story(dialog_name):
 	
 	if Ren.current_node != self:
 		Ren.current_node = self
-		Ren.story_state = "start"
-	
+
 	match Ren.story_state:
 		"start":
 			## some tests:
@@ -101,7 +104,7 @@ func story(dialog_name):
 				})
 			
 		"Play Visual Novel example":
-			Ren.jump("VisualNovelExample/Garden.tscn", "garden")
+			Ren.jump("VisualNovelExample/Garden", "garden")
 			
 
 		"Play Click'n'Point Adventure example":

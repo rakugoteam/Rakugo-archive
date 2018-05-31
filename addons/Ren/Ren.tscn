@@ -60,10 +60,10 @@ script = ExtResource( 10 )
 __meta__ = {
 "_editor_icon": ExtResource( 11 )
 }
-mode = 1
+mode = null
 password = "Ren"
 folder_name = "Ren"
-no_valid_names = [ "quick", "example" ]
+no_valid_names = [ "default", "example" ]
 debug = true
 beautifier_active = true
 profile_name_min_size = 3
