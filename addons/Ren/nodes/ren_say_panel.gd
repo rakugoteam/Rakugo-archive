@@ -65,8 +65,15 @@ func _on_statement(type, kwargs):
 			CharacterAvatar.add_child(avatar)
 	
 	elif avatar != null:
-		avatar.free()
-
+		var wr = weakref(avatar)
+		
+		if (!wr.get_ref()):
+		     # object is erased
+			avatar = null
+		else:
+		    # object is fine so you can do something with it:
+		    avatar.free()
+		
 	return
 
 func new_timer(time):

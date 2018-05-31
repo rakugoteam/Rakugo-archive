@@ -87,7 +87,8 @@ func savepress(input,caller):
 			var s=weekdays[d['weekday']]+' '+months[d['month']]+' '+str(d['day'])+', '+str(d['hour'])+':'+str(d['minute'])
 			print(s)
 			filehandler.store_line(s)
-			Ren.savefile("user://saveslot/"+caller.name+'.dat')
+			print("caller.name: ", caller.name)
+			Ren.savefile(caller.name)
 	filehandler.close()
 	
 	savebox()
@@ -100,6 +101,6 @@ func loadpress(input,caller):
 
 	if input is InputEventMouseButton:
 		if input.pressed:
-			if Ren.loadfile("user://saveslot/"+caller.name+".dat"):
+			if Ren.loadfile(caller.name):
 				get_parent()._on_Return_pressed()
 	

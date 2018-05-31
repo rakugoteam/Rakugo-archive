@@ -61,13 +61,13 @@ script = ExtResource( 10 )
 __meta__ = {
 "_editor_icon": ExtResource( 11 )
 }
-mode = 1
+mode = 0
 password = ""
 folder_name = "PersistenceNode"
 no_valid_names = [ "default", "example" ]
 debug = true
 beautifier_active = true
-profile_name_min_size = 3
+profile_name_min_size = 1
 profile_name_max_size = 15
 
 [node name="Timer" type="Timer" parent="." index="9"]

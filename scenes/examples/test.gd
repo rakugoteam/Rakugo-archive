@@ -5,7 +5,7 @@ extends Node
 func _ready():
 	Ren.connect("story_step", self, "story")
 	Ren.jump(
-		"test.tscn",
+		"Test",
 		"example",
 		"start",
 		false
