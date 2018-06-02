@@ -184,7 +184,8 @@ func savefile(save_name="quick"):
 		if v.type in ["node", "character"]:
 			continue
 		else:
-			vars_to_save[v] = v
+			vars_to_save[k] = v
+			prints(k, v)
 		
 	data["variables"] = vars_to_save
 
@@ -211,9 +212,10 @@ func loadfile(save_name="quick"):
 	var vars_to_load = data["variables"].duplicate()
 
 	for i in range(vars_to_load.size()):
-		var k = variables.keys()[i]
-		var v = variables.values()[i]
+		var k = vars_to_load.keys()[i]
+		var v = vars_to_load.values()[i]
 		variables[k] = v
+		prints(k, v)
 		var_changed(k)
 	
 	jump(data["scene"], data["dialog_name"], data["state"], true, true)
