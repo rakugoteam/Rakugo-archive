@@ -171,6 +171,7 @@ func get_mode():
 # Se obtiene la data, esta data puede ser modificada para luego ser guardada
 # con save_data(). Si esta usando profiles, no olvide indicarle el profile.
 func get_data(profile_name = null):
+	data = {}
 	load_data(profile_name)
 	return data
 
