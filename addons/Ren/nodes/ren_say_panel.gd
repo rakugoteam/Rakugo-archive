@@ -68,11 +68,11 @@ func _on_statement(type, kwargs):
 		var wr = weakref(avatar)
 		
 		if (!wr.get_ref()):
-		     # object is erased
+			 # object is erased
 			avatar = null
 		else:
-		    # object is fine so you can do something with it:
-		    avatar.free()
+			# object is fine so you can do something with it:
+			avatar.free()
 		
 	return
 
