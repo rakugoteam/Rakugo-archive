@@ -18,10 +18,10 @@ pause_mode = 2
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
 debug_on = true
+debug_inti = true
 save_folder = "saves"
 save_password = "ren"
 scenes_dir = "res://scenes/examples/"
-debug_inti = true
 
 [node name="Say" type="Node" parent="." index="0"]
 

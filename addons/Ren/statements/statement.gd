@@ -63,6 +63,10 @@ func add_to_history():
 	else:
 		Ren.history[Ren.current_id] = history_item
 	
+	if !(history_item in Ren.global_history):
+		Ren.global_history.append(history_item)
+		Ren.save_global_history()
+	
 	Ren.current_id += 1
 
 func debug(kws = [], some_custom_text = ""):

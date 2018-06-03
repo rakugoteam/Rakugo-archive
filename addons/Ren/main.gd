@@ -1,6 +1,7 @@
 extends Node
 
 export (bool) var debug_on = true
+export(bool) var debug_inti = true
 export (String) var save_folder = "saves"
 export (String) var save_password = "Ren"
 export (String, DIR) var scenes_dir = "res://scenes/examples/"
@@ -14,6 +15,7 @@ var local_id = 0
 var current_dialog_name = ""
 var _scene = null
 var history = [] # [{"state":story_state, "statement":{"type":type, "kwargs": kwargs}}]
+var global_history = [] # [{"state":story_state, "statement":{"type":type, "kwargs": kwargs}}]
 var variables = {
 	"version":{"type":"text", "value":"0.9.0"},
 	"test_bool":{"type":"var", "value":false},
@@ -27,8 +29,8 @@ var current_statement = null
 var using_passer = false
 var skip_auto = false
 var current_node = null
-
-export(bool) var debug_inti = true
+var skip_types = ["say", "show", "hide"]
+var file = File.new()
 
 const _CHR	= preload("nodes/character.gd")
 onready var timer = $Timer
@@ -167,6 +169,7 @@ func _get_story_state():
 
 ## it starts Ren
 func start():
+	load_global_history()
 	using_passer = false
 	current_id = 0
 	local_id = 0
@@ -317,6 +320,56 @@ func config_data():
 		# Maybe we can put here the preferences :D
 	
 		$Persistence.save_data(FILE_CONFIG_NAME)
-		
-		
-		
+
+func current_statement_in_global_history():
+	var hi_item = {
+		"state": story_state,
+		"statement":{
+			"type": current_statement.type,
+			"kwargs": current_statement.kwargs
+		}
+	}
+
+	return hi_item in global_history
+
+func cant_auto():
+	return not(current_statement.type in skip_types)
+
+func cant_skip():
+	var not_seen = not(Ren.current_statement_in_global_history())
+	return cant_auto() and not_seen
+
+func cant_qload():
+	var path = str("user://", Ren.save_folder, "/quick")
+	return !file.file_exists(path + ".save") or !file.file_exists(path + ".txt")
+
+func save_global_history():
+	var save_name = "global_history"
+	$Persistence.folder_name = save_folder
+	$Persistence.password = save_password
+
+	var data = $Persistence.get_data(save_name)
+	prints("get global_history from:", save_name)
+	if data == null:
+		return false
+
+	data["global_history"] = global_history.duplicate()
+	
+	var result = $Persistence.save_data(save_name)
+	prints("save global_history to:", save_name)
+	return result
+
+func load_global_history():
+	var save_name = "global_history"
+	$Persistence.folder_name = save_folder
+	$Persistence.password = save_password
+	global_history = []
+	var data = $Persistence.get_data(save_name)
+	prints("load global_history from:", save_name)
+	if data == null:
+		return false
+	
+	if "global_history" in data:
+		global_history = data["global_history"].duplicate()
+	return true
+

@@ -1,10 +1,8 @@
 extends HBoxContainer
 
-var skip_types = ["say", "show", "hide"]
 onready var Screens = get_node("../../Screens")
 var save_error_msg = "[color=red]Error saving Game[/color]"
 var load_error_msg = "[color=red]Error loading Game[/color]"
-var file = File.new()
 
 func _ready():
 	Ren.connect("exec_statement", self, "_on_statement")
@@ -44,11 +42,10 @@ func _on_qload():
 		$InfoAnim.play("GeneralNotif")
 
 func _on_statement(type, kwargs):
-	$Skip.disabled = not(type in skip_types)
-	$Auto.disabled = not(type in skip_types)
+	$Skip.disabled = Ren.cant_skip()
+	$Auto.disabled = Ren.cant_auto()
 	$History.disabled = Ren.current_id == 0
-	var path = str("user://", Ren.save_folder, "/quick")
-	$QLoad.disabled = !file.file_exists(path + ".save") or !file.file_exists(path + ".txt")
+	$QLoad.disabled = Ren.cant_qload()
 
 func on_auto():
 	if not $AutoTimer.is_stopped():
@@ -60,7 +57,7 @@ func on_auto():
 	$AutoTimer.start()
 
 func on_auto_loop():
-	if Ren.current_statement.type in skip_types:
+	if Ren.current_statement.type in Ren.skip_types:
 		Ren.exit_statement()
 
 	else:
@@ -83,10 +80,15 @@ func on_skip():
 	$InfoAnim.play("Skip")
 
 func on_skip_loop():
-	if Ren.current_statement.type in skip_types:
+	if not Ren.current_statement_in_global_history():
+		stop_skip()
+
+	if Ren.current_statement.type in Ren.skip_types:
 		Ren.exit_statement()
 	else:
 		stop_skip()
+	
+	
 
 func _input(event):
 	if event.is_action_pressed("ren_forward"):
