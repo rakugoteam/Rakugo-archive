@@ -89,7 +89,7 @@ func get_type(variable):
 
 ## returns variable defined using define
 func get_variable(var_name):
-	return variables[var_name].
+	return variables[var_name].value
 
 ## returns type of variable defined using define
 func get_variable_type(var_name):
@@ -187,7 +187,7 @@ func savefile(save_name="quick"):
 		var k = variables.keys()[i]
 		var v = variables.values()[i]
 		if v.type in ["node", "character"]:
-			vars_to_save[k] = {"type":v.type, "value":inst2dict(v)}
+			vars_to_save[k] = {"type":v.type, "value":inst2dict(v.value)}
 		else:
 			vars_to_save[k] = v
 
@@ -224,9 +224,13 @@ func loadfile(save_name="quick"):
 		if v.type in ["node", "character"]:
 			var properties = v.value
 			var obj = variables[k].value
-			for p in properties:
-				if p.name in obj._get_property_list():
-					obj._set(p.name, p.value)
+
+			for i in range(properties.size()):
+				var pk = properties.keys()[i]
+				var pv = properties.values()[i]
+				
+				if pk in obj.get_property_list():
+					obj.set(pk, pv)
 		else:
 			variables[k] = v
 
