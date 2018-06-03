@@ -5,6 +5,9 @@ export (String) var save_folder = "saves"
 export (String) var save_password = "Ren"
 export (String, DIR) var scenes_dir = "res://scenes/examples/"
 
+const FOLDER_CONFIG_NAME = "Config"
+const FILE_CONFIG_NAME = "Config"
+
 # this must be saved
 var current_id = 0 setget _set_current_id, _get_current_id
 var local_id = 0
@@ -41,6 +44,8 @@ signal var_changed(var_name)
 signal story_step(dialog_name)
 
 func _ready():
+	config_data()
+	
 	timer.connect("timeout", self, "exit_statement")
 
 func exec_statement(type, kwargs = {}):
@@ -203,6 +208,7 @@ func savefile(save_name="quick"):
 func loadfile(save_name="quick"):
 	$Persistence.folder_name = save_folder
 	$Persistence.password = save_password
+	
 	var data = $Persistence.get_data(save_name)
 	prints("load data from:", save_name)
 	if data == null:
@@ -288,3 +294,25 @@ func jump(
 	var lscene = load(_scene)
 	current_node = lscene.instance()
 	get_tree().get_root().add_child(current_node)
+
+# Data related to the framework configuration.
+func config_data():
+	$Persistence.folder_name = FOLDER_CONFIG_NAME
+	var config = $Persistence.get_data(FILE_CONFIG_NAME)
+	
+	# If not have version data, data not exist.
+	if not config.has("Version"):
+		# Create config data
+		#
+		
+		# This is useful in the case of updates.
+		config["Version"] = 1 # Integer number
+		# Continue in the last scene the player played
+		config["ResumeScene"] = null # First start don't have resume scene
+		
+		# Maybe we can put here the preferences :D
+	
+		$Persistence.save_data(FILE_CONFIG_NAME)
+		
+		
+		
