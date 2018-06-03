@@ -56,8 +56,8 @@ func story(dialog_name):
 				"input_variable":
 						"player_name", ## Ren variable to be changed
 						## it don't have to be define before input
-				"variable":
-					"Developer" ## default variable
+				"value":
+					"Developer" ## default value
 				})
 			Ren.story_state = "welcome player"
 		

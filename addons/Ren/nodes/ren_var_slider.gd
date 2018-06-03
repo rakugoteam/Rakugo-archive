@@ -11,7 +11,7 @@ func on_var_changed(varn):
 	
 	value = Ren.get_variable(var_name)
 
-func on_slider_val_changed(variable):
-	Ren.define(var_name, variable)
+func on_slider_val_changed(value):
+	Ren.define(var_name, value)
 
 	

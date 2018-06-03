@@ -5,8 +5,8 @@ export(String) var var_name = "some_var"
 export(bool) var default = false setget set_default, get_default
 
 
-func set_default(variable):
-	default = variable
+func set_default(value):
+	default = value
 	pressed = default
 
 func get_default():
@@ -28,5 +28,5 @@ func on_var_changed(varn):
 
 	pressed = Ren.get_variable(var_name)
 
-func on_toggled(variable):
-	Ren.define(var_name, variable)
+func on_toggled(value):
+	Ren.define(var_name, value)

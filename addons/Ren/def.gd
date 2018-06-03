@@ -27,10 +27,10 @@ func define_from_str(variables, var_name, var_str, var_type):
 	elif var_type == "float":
 		define(variables, var_name, float(var_str), "var")
 
-func define(variables, var_name, var_variable = null, var_type = null):
-	if var_variable != null && var_type == null:
+func define(variables, var_name, var_value = null, var_type = null):
+	if var_value != null && var_type == null:
 		var_type = "var"
-		var type = typeof(var_variable)
+		var type = typeof(var_value)
 
 		if type == TYPE_STRING:
 			var_type = "text"
@@ -43,6 +43,6 @@ func define(variables, var_name, var_variable = null, var_type = null):
 		
 		elif type == TYPE_NODE_PATH:
 			var_type = "node"
-			var_variable = get_node(var_variable)
+			var_value = get_node(var_value)
 		
-	variables[var_name] = {"type":var_type, "variable":var_variable}
+	variables[var_name] = {"type":var_type, "value":var_value}

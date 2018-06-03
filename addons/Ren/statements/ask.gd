@@ -1,6 +1,6 @@
 extends "say.gd"
 
-var variable = "variable"
+var value = "value"
 var input_variable = "input variable"
 
 func _init():
@@ -12,11 +12,11 @@ func exec(dbg = true):
 	if dbg:
 		print(debug(kws))
 	
-	variable = kwargs.variable
+	value = kwargs.value
 	input_variable = kwargs.input_variable
 
-	if "variable" in kwargs:
-		kwargs["variable"] = Ren.text_passer(kwargs.variable)
+	if "value" in kwargs:
+		kwargs["value"] = Ren.text_passer(kwargs.value)
 	
 	.exec(false)
 
@@ -24,19 +24,19 @@ func on_exit(_type, new_kwargs = {}):
 	if !setup_exit(_type, new_kwargs):
 		return
 	
-	if "variable" in kwargs:
-		variable = kwargs.variable
+	if "value" in kwargs:
+		value = kwargs.value
 	
 	if "input_variable" in kwargs:
 		input_variable = kwargs.input_variable
 	
-	if variable.is_valid_integer():
-		variable = int(variable)
+	if value.is_valid_integer():
+		value = int(value)
 	
-	elif variable.is_valid_float():
-		variable = float(variable)
+	elif value.is_valid_float():
+		value = float(value)
 
-	Ren.define(input_variable, variable)
+	Ren.define(input_variable, value)
 
 	if kwargs.add_to_history:
 		add_to_history()

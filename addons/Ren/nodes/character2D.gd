@@ -15,46 +15,46 @@ func _ready():
 	Ren.character(node_id, kwargs, self)
 	Ren.debug(kwargs, kws, "Add Character " + node_id + " with ")
 
-func set_character_id(variable):
-	if node_id != variable:
+func set_character_id(value):
+	if node_id != value:
 		Ren.variables.erase(node_id)
 	
-	node_id = variable
-	Ren.character(variable, kwargs, self)
+	node_id = value
+	Ren.character(value, kwargs, self)
 
 func get_character_id():
 	return node_id
 
-func set_character_name(variable):
-	set_kwargs({"name": variable})
+func set_character_name(value):
+	set_kwargs({"name": value})
 
 func get_character_name():
 	return kwargs.name
 
-func set_color(variable):
-	_color = variable
-	set_kwargs({"color":variable.to_html()})
+func set_color(value):
+	_color = value
+	set_kwargs({"color":value.to_html()})
 
 func get_color():
 	return _color
 
-func set_prefix(variable):
-	set_kwargs({"what_prefix":variable})
+func set_prefix(value):
+	set_kwargs({"what_prefix":value})
 
 func get_prefix():
 	if kwargs.has("prefix"):
 		return kwargs.prefix
 
-func set_suffix(variable):
-	set_kwargs({"what_suffix":variable})
+func set_suffix(value):
+	set_kwargs({"what_suffix":value})
 
 func get_suffix():
 	if kwargs.has("suffix"):
 		return kwargs.suffix
 
-func set_avatar(variable):
-	if variable != null:
-		set_kwargs({"avatar":variable.resource_path})
+func set_avatar(value):
+	if value != null:
+		set_kwargs({"avatar":value.resource_path})
 	
 
 func get_avatar():

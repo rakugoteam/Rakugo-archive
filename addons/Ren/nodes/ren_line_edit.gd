@@ -21,7 +21,7 @@ func _on_enter(text):
 		final_variable = get_text()
 
 	set_process(false)
-	Ren.exit_statement({"variable":final_variable})
+	Ren.exit_statement({"value":final_variable})
 
 func _on_statement(type, kwargs):
 	_type = type
@@ -34,8 +34,8 @@ func _on_statement(type, kwargs):
 		hide()
 		return
 
-	if "variable" in kwargs:
-		rtl.set_bbcode(kwargs.variable)
+	if "value" in kwargs:
+		rtl.set_bbcode(kwargs.value)
 		input_placeholder = rtl.get_text()
 		set_placeholder(input_placeholder)
 

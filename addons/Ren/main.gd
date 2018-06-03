@@ -12,10 +12,10 @@ var current_dialog_name = ""
 var _scene = null
 var history = [] # [{"state":story_state, "statement":{"type":type, "kwargs": kwargs}}]
 var variables = {
-	"version":{"type":"text", "variable":"0.9.0"},
-	"test_bool":{"type":"var", "variable":false},
-	"test_float":{"type":"var", "variable":10},
-	"story_state":{"type":"text", "variable":""}
+	"version":{"type":"text", "value":"0.9.0"},
+	"test_bool":{"type":"var", "value":false},
+	"test_float":{"type":"var", "value":10},
+	"story_state":{"type":"text", "value":""}
 }
 
 # don't save this
@@ -68,12 +68,12 @@ func var_changed(var_name):
 func text_passer(text):
 	return $Text.text_passer(text, variables)
 
-## add/overwrite global variable that Ren will see
-func define(var_name, variable = null):
-	$Def.define(variables, var_name, variable)
+## add/overwrite global value that Ren will see
+func define(var_name, value = null):
+	$Def.define(variables, var_name, value)
 	var_changed(var_name)
 
-## add/overwrite global variable, from string, that Ren will see
+## add/overwrite global value, from string, that Ren will see
 func define_from_str(var_name, var_str, var_type):
 	$Def.define_from_str(variables, var_name, var_str, var_type)
 	var_changed(var_name)
@@ -84,7 +84,7 @@ func get_type(variable):
 
 ## returns variable defined using define
 func get_variable(var_name):
-	return variables[var_name].variable
+	return variables[var_name].
 
 ## returns type of variable defined using define
 func get_variable_type(var_name):
@@ -182,10 +182,11 @@ func savefile(save_name="quick"):
 		var k = variables.keys()[i]
 		var v = variables.values()[i]
 		if v.type in ["node", "character"]:
-			continue
+			vars_to_save[k] = {"type":v.type, "value":inst2dict(v)}
 		else:
 			vars_to_save[k] = v
-			prints(k, v)
+
+		prints(k, v)
 		
 	data["variables"] = vars_to_save
 
@@ -214,7 +215,15 @@ func loadfile(save_name="quick"):
 	for i in range(vars_to_load.size()):
 		var k = vars_to_load.keys()[i]
 		var v = vars_to_load.values()[i]
-		variables[k] = v
+		if v.type in ["node", "character"]:
+			var properties = v.value
+			var obj = variables[k].value
+			for p in properties:
+				if p.name in obj._get_property_list():
+					obj._set(p.name, p.value)
+		else:
+			variables[k] = v
+
 		prints(k, v)
 		var_changed(k)
 	
@@ -242,9 +251,9 @@ func debug(kwargs, kws = [], some_custom_text = ""):
 	dbg = some_custom_text + dbg
 	return dbg
 
-func _set_current_id(variable):
-	current_id = variable
-	local_id = variable
+func _set_current_id(value):
+	current_id = value
+	local_id = value
 
 func _get_current_id():
 	return current_id

@@ -6,8 +6,8 @@ export(String) var default = "" setget set_default, get_default
 
 var type = "str"
 
-func set_default(variable):
-	default = variable
+func set_default(value):
+	default = value
 	placeholder_text = str(default)
 
 func get_default():

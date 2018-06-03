@@ -39,9 +39,9 @@ func _on_hover():
 func _on_pressed():
 	node.add_color_override("default_color", pressed_node_color)
 
-func set_disabled(variable):
-	.set_disabled(variable)
-	if variable:
+func set_disabled(value):
+	.set_disabled(value)
+	if value:
 		node.add_color_override("default_color", disable_node_color)
 	else:
 		_on_idle()

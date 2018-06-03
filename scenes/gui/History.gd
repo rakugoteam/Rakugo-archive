@@ -28,7 +28,7 @@ func set_history_item(hi, type, kwargs):
 		dialog_text.bbcode_text += Ren.text_passer("{nl}{b}Your answer: ")
 	
 	if type == "input":
-		dialog_text.bbcode_text += Ren.text_passer("{i}" + kwargs.variable + "{/i}{/b}")
+		dialog_text.bbcode_text += Ren.text_passer("{i}" + kwargs.value + "{/i}{/b}")
 
 	if type == "menu":
 		var fch = Ren.menu_node.choices_labels[kwargs.final_choice]
