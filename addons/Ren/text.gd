@@ -18,26 +18,26 @@ func text_passer(text, variables):
 			if text.find(var_name) == -1:
 				continue # no variable in this string
 			
-			var variable = variables[var_name].variable
+			var value = variables[var_name].value
 			var type = variables[var_name].type
 
-			# print (var_name, " ",  type, " ",  variable)
+			# print (var_name, " ",  type, " ",  value)
 			var s = "[" + var_name + "]"
 			if type == "text":
-				text = text.replace(s, variable)
+				text = text.replace(s, value)
 			
 #			elif type == "func":
 #				var func_result = call(variable)
 #				text = text.replace("[" + var_name + "()]", str(func_result))
 			
 			elif type == "var":
-				text = text.replace(s, str(variable))
+				text = text.replace(s, str(value))
 			
 			elif type in ["dict", "character"]:
-				var dict = variable
+				var dict = value
 				
 				if type == "character":
-					dict = variable.kwargs
+					dict = value.kwargs
 
 				text = text.replace(s, str(dict))
 				
@@ -46,18 +46,18 @@ func text_passer(text, variables):
 					if text.find(s) == -1:
 						continue # no variable in this string
 					
-					var kvariable = dict[k]
-					text = text.replace(sk, str(kvariable))
+					var kvalue = dict[k]
+					text = text.replace(sk, str(kvalue))
 			
 			elif type == "list":
-				text = text.replace(s, str(variable))
+				text = text.replace(s, str(value))
 				
-				for i in range(variable.size()):
+				for i in range(value.size()):
 					var sa = "[" + var_name+"["+str(i)+"]]"
 					if text.find(sa) == -1:
 						continue # no variable in this string
 					
-					text = text.replace(sa, str(variable[i]))
+					text = text.replace(sa, str(value[i]))
 
 			else:
 				print(var_name," is unsuported variable type: ", type)
