@@ -43,7 +43,7 @@ func text_passer(text, variables):
 				
 				for k in dict.keys():
 					var sk = "[" + var_name + "." + k + "]"
-					if text.find(s) == -1:
+					if text.find(sk) == -1:
 						continue # no variable in this string
 					
 					var kvalue = dict[k]
