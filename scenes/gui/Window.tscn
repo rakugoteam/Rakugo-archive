@@ -316,6 +316,7 @@ scroll_horizontal_enabled = true
 scroll_horizontal = 0
 scroll_vertical_enabled = true
 scroll_vertical = 0
+scroll_deadzone = 0
 _sections_unfolded = [ "Rect", "Size Flags" ]
 __meta__ = {
 "_edit_group_": true
@@ -367,6 +368,7 @@ scroll_horizontal_enabled = true
 scroll_horizontal = 0
 scroll_vertical_enabled = true
 scroll_vertical = 0
+scroll_deadzone = 0
 _sections_unfolded = [ "Rect", "Size Flags" ]
 __meta__ = {
 "_edit_group_": true
@@ -464,6 +466,7 @@ _sections_unfolded = [ "BBCode", "Rect", "Size Flags" ]
 
 [node name="Quick" type="HBoxContainer" parent="InGameGUI" index="4"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0

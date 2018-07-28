@@ -14,7 +14,7 @@ func get_default():
 
 func _ready():
 	if var_name in Ren.variables:
-		default = Ren.get_variable(var_name)
+		default = Ren.get_value(var_name)
 	
 	else:
 		Ren.define(var_name, default)
@@ -26,7 +26,7 @@ func on_var_changed(varn):
 	if var_name != varn:
 		return
 
-	pressed = Ren.get_variable(var_name)
+	pressed = Ren.get_value(var_name)
 
 func on_toggled(value):
 	Ren.define(var_name, value)

@@ -1,18 +1,20 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://addons/Ren/nodes/ren_var_label.gd" type="Script" id=1]
-[ext_resource path="res://addons/Ren/icons/ren_var_label.svg" type="Texture" id=2]
-[ext_resource path="res://addons/Ren/nodes/ren_var_edit.gd" type="Script" id=3]
-[ext_resource path="res://addons/Ren/icons/ren_var_edit.svg" type="Texture" id=4]
-[ext_resource path="res://addons/Ren/nodes/ren_var_slider.gd" type="Script" id=5]
-[ext_resource path="res://addons/Ren/icons/ren_var_v_slider.svg" type="Texture" id=6]
-[ext_resource path="res://addons/Ren/nodes/ren_var_range.gd" type="Script" id=7]
-[ext_resource path="res://addons/Ren/icons/ren_progress_bar.svg" type="Texture" id=8]
-[ext_resource path="res://addons/Ren/nodes/ren_var_check.gd" type="Script" id=9]
-[ext_resource path="res://addons/Ren/icons/ren_check_button.svg" type="Texture" id=10]
-[ext_resource path="res://addons/Ren/icons/ren_check_box.svg" type="Texture" id=11]
+[ext_resource path="res://addons/Ren/nodes/ren_label.gd" type="Script" id=1]
+[ext_resource path="res://addons/Ren/icons/ren_text_label.svg" type="Texture" id=2]
+[ext_resource path="res://addons/Ren/nodes/ren_var_label.gd" type="Script" id=3]
+[ext_resource path="res://addons/Ren/icons/ren_var_label.svg" type="Texture" id=4]
+[ext_resource path="res://addons/Ren/nodes/ren_var_edit.gd" type="Script" id=5]
+[ext_resource path="res://addons/Ren/icons/ren_var_edit.svg" type="Texture" id=6]
+[ext_resource path="res://addons/Ren/nodes/ren_var_slider.gd" type="Script" id=7]
+[ext_resource path="res://addons/Ren/icons/ren_var_v_slider.svg" type="Texture" id=8]
+[ext_resource path="res://addons/Ren/nodes/ren_var_range.gd" type="Script" id=9]
+[ext_resource path="res://addons/Ren/icons/ren_progress_bar.svg" type="Texture" id=10]
+[ext_resource path="res://addons/Ren/nodes/ren_var_check.gd" type="Script" id=11]
+[ext_resource path="res://addons/Ren/icons/ren_check_button.svg" type="Texture" id=12]
+[ext_resource path="res://addons/Ren/icons/ren_check_box.svg" type="Texture" id=13]
 
-[node name="TestNodes" type="HBoxContainer"]
+[node name="TestNodes" type="HBoxContainer" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -30,14 +32,14 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 alignment = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." index="0"]
+[node name="FloatTestsContiner" type="VBoxContainer" parent="." index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 129.0
-margin_bottom = 118.0
+margin_right = 136.0
+margin_bottom = 109.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -46,13 +48,13 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 alignment = 0
 
-[node name="Label" type="Label" parent="VBoxContainer" index="0"]
+[node name="Label" type="Label" parent="FloatTestsContiner" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 129.0
+margin_right = 136.0
 margin_bottom = 14.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -60,21 +62,54 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-text = "test ren nodes: float"
+text = "test ren nodes: range"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Grow Direction" ]
 
-[node name="RenValLabel" type="Label" parent="VBoxContainer" index="1"]
+[node name="RenTextLabel" type="RichTextLabel" parent="FloatTestsContiner" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 18.0
-margin_right = 129.0
-margin_bottom = 32.0
+margin_right = 136.0
+margin_bottom = 23.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = ""
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = ""
+scroll_active = false
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+script = ExtResource( 1 )
+_sections_unfolded = [ "BBCode", "Size Flags" ]
+__meta__ = {
+"_editor_icon": ExtResource( 2 )
+}
+ren_text = "[test_range]"
+
+[node name="RenValLabel" type="Label" parent="FloatTestsContiner" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 27.0
+margin_right = 136.0
+margin_bottom = 41.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -84,49 +119,23 @@ size_flags_vertical = 4
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = ExtResource( 1 )
+script = ExtResource( 3 )
 __meta__ = {
-"_editor_icon": ExtResource( 2 )
+"_editor_icon": ExtResource( 4 )
 }
-var_name = "test_float"
+var_name = "test_range"
 default = ""
 type = "float"
 
-[node name="RenValLabel2" type="Label" parent="VBoxContainer" index="2"]
+[node name="RenValEdit" type="LineEdit" parent="FloatTestsContiner" index="3"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 36.0
-margin_right = 129.0
-margin_bottom = 50.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-script = ExtResource( 1 )
-__meta__ = {
-"_editor_icon": ExtResource( 2 )
-}
-var_name = "test_float"
-default = ""
-type = "float"
-
-[node name="RenValEdit" type="LineEdit" parent="VBoxContainer" index="3"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 54.0
-margin_right = 129.0
-margin_bottom = 78.0
+margin_top = 45.0
+margin_right = 136.0
+margin_bottom = 69.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -140,22 +149,22 @@ placeholder_alpha = 0.6
 caret_blink = false
 caret_blink_speed = 0.65
 caret_position = 0
-script = ExtResource( 3 )
+script = ExtResource( 5 )
 __meta__ = {
-"_editor_icon": ExtResource( 4 )
+"_editor_icon": ExtResource( 6 )
 }
-var_name = "test_float"
+var_name = "test_range"
 default = "10"
 
-[node name="RenValHSlider" type="HSlider" parent="VBoxContainer" index="4"]
+[node name="RenValHSlider" type="HSlider" parent="FloatTestsContiner" index="4"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 82.0
-margin_right = 129.0
-margin_bottom = 98.0
+margin_top = 73.0
+margin_right = 136.0
+margin_bottom = 89.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -174,22 +183,22 @@ editable = true
 tick_count = 0
 ticks_on_borders = false
 focus_mode = 2
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 __meta__ = {
-"_editor_icon": ExtResource( 6 )
+"_editor_icon": ExtResource( 8 )
 }
-var_name = "test_float"
+var_name = "test_range"
 default = 0.5
 
-[node name="RenProgressBar" type="ProgressBar" parent="VBoxContainer" index="5"]
+[node name="RenProgressBar" type="ProgressBar" parent="FloatTestsContiner" index="5"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 102.0
-margin_right = 129.0
-margin_bottom = 118.0
+margin_top = 93.0
+margin_right = 136.0
+margin_bottom = 109.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -204,11 +213,11 @@ value = 0.0
 exp_edit = false
 rounded = false
 percent_visible = true
-script = ExtResource( 7 )
+script = ExtResource( 9 )
 __meta__ = {
-"_editor_icon": ExtResource( 8 )
+"_editor_icon": ExtResource( 10 )
 }
-var_name = "test_float"
+var_name = "test_range"
 default = 0.5
 
 [node name="RenValVSlider" type="VSlider" parent="." index="1"]
@@ -217,9 +226,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 133.0
-margin_right = 149.0
-margin_bottom = 118.0
+margin_left = 140.0
+margin_right = 156.0
+margin_bottom = 109.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -238,22 +247,23 @@ editable = true
 tick_count = 0
 ticks_on_borders = false
 focus_mode = 2
-script = ExtResource( 5 )
+script = ExtResource( 7 )
 __meta__ = {
-"_editor_icon": ExtResource( 6 )
+"_editor_icon": ExtResource( 8 )
 }
-var_name = "test_float"
+var_name = "test_range"
 default = 0.5
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="." index="2"]
+[node name="BoolTestsContiner" type="VBoxContainer" parent="." index="2"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 153.0
-margin_right = 282.0
-margin_bottom = 118.0
+margin_left = 160.0
+margin_right = 289.0
+margin_bottom = 109.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -263,7 +273,7 @@ size_flags_vertical = 1
 custom_constants/separation = 0
 alignment = 0
 
-[node name="Label2" type="Label" parent="VBoxContainer2" index="0"]
+[node name="Label2" type="Label" parent="BoolTestsContiner" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -283,7 +293,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="RenValLabel2" type="Label" parent="VBoxContainer2" index="1"]
+[node name="RenValLabel2" type="Label" parent="BoolTestsContiner" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -301,15 +311,15 @@ size_flags_vertical = 4
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = ExtResource( 1 )
+script = ExtResource( 3 )
 __meta__ = {
-"_editor_icon": ExtResource( 2 )
+"_editor_icon": ExtResource( 4 )
 }
 var_name = "test_bool"
 default = "False"
 type = "bool"
 
-[node name="RenValCheckButton" type="CheckButton" parent="VBoxContainer2" index="2"]
+[node name="RenValCheckButton" type="CheckButton" parent="BoolTestsContiner" index="2"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -331,14 +341,14 @@ shortcut = null
 group = null
 flat = false
 align = 0
-script = ExtResource( 9 )
+script = ExtResource( 11 )
 __meta__ = {
-"_editor_icon": ExtResource( 10 )
+"_editor_icon": ExtResource( 12 )
 }
 var_name = "test_bool"
 default = false
 
-[node name="RenValCheckBox" type="CheckBox" parent="VBoxContainer2" index="3"]
+[node name="RenValCheckBox" type="CheckBox" parent="BoolTestsContiner" index="3"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -360,9 +370,9 @@ shortcut = null
 group = null
 flat = false
 align = 0
-script = ExtResource( 9 )
+script = ExtResource( 11 )
 __meta__ = {
-"_editor_icon": ExtResource( 11 )
+"_editor_icon": ExtResource( 13 )
 }
 var_name = "test_bool"
 default = false

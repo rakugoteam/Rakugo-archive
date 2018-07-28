@@ -5,8 +5,8 @@ func _init():
 	kws = ["node_id", "state", "x", "y", "z", "at", "pos"]
 
 func exec(dbg = true):
-	if dbg:
-		print(debug(kws))
+	kwargs["add_to_history"] = false
+	.exec(dbg)
 	
 	if "at" in kwargs:
 		if "center" in kwargs.at:
