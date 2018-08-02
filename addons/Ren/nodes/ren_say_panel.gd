@@ -14,16 +14,12 @@ var avatar_path = ""
 var avatar
 var _type
 var dialog_timer
-var typing=false
+var typing = false
 
 
 func _ready():
 	connect("gui_input", self, "_on_Adv_gui_input")
 	Ren.connect("exec_statement", self, "_on_statement")
-	timer.connect("timeout", self, "_on_timeout")
-
-func _on_timeout():
-	set_process_unhandled_input(_type == "say")
 
 func _input(event):
 	if Ren.skip_auto:
@@ -83,42 +79,44 @@ func new_timer(time):
 	return nt
 
 func writeDialog(text, speed=0.005):
-    #create a timer to print text like a typewriter
+	# create a timer to print text like a typewriter
 	if dialog_timer != null:
 		dialog_timer.free()
 
 	if speed == 0:
 		if DialogText.has_method("set_bbcode"):
-			DialogText.bbcode_text=text
+			DialogText.bbcode_text=  text
 		return
 
 	typing=true
 	if DialogText.has_method("set_bbcode"):
 		DialogText.bbcode_text = ""
-	var te=""
+	var te = ""
 	dialog_timer = new_timer(speed)
 	self.add_child(dialog_timer)
 
 	for letter in text:
 		dialog_timer.start()
-		te+=letter
+		te += letter
 
 		if DialogText.has_method("set_bbcode"):
-			DialogText.bbcode_text=te
+			DialogText.bbcode_text = te
 
 		yield(dialog_timer, "timeout")
 		if !typing:
 
 			if DialogText.has_method("set_bbcode"):
-				DialogText.bbcode_text=text
+				DialogText.bbcode_text = text
 
 			break
 
 
 func _on_Adv_gui_input(ev):
-	if ev is InputEventMouseButton:
-		if ev.button_index == BUTTON_LEFT:
-			var event=InputEventAction.new()
-			event.action="ren_forward"
-			event.pressed=true
-			Input.parse_input_event(event)
+	if not (ev is InputEventMouseButton):
+		return
+
+	if ev.button_index == BUTTON_LEFT:
+		var event = InputEventAction.new()
+		event.action = "ren_forward"
+		event.pressed = true
+		Input.parse_input_event(event)
