@@ -25,7 +25,7 @@ func _on_enter(text):
 
 func _on_statement(type, kwargs):
 	_type = type
-	if type != "input":
+	if type != "ask":
 		if is_connected("text_entered", self , "_on_enter"):
 			disconnect("text_entered", self , "_on_enter")
 

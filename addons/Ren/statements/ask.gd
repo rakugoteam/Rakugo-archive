@@ -5,7 +5,7 @@ var input_variable = "input variable"
 
 func _init():
 	._init()
-	type = "input"
+	type = "ask"
 	kws += ["temp", "input_variable"]
 
 func exec(dbg = true):

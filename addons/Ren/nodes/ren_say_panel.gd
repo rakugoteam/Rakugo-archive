@@ -38,7 +38,7 @@ func _on_statement(type, kwargs):
 	set_process(false)
 	_type = type
 	timer.start()
-	if not _type in ["say", "input", "menu"]:
+	if not _type in ["say", "ask", "menu"]:
 		return
 
 	if "who" in kwargs:
