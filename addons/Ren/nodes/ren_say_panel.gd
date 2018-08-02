@@ -26,9 +26,9 @@ func _input(event):
 		return
 
 	if event.is_action_pressed("ren_forward"):
-		if typing: #if typing complete it
-			typing=false
-		elif _type == "say": #else exit statement
+		if typing: # if typing complete it
+			typing = false
+		elif _type == "say": # else exit statement
 			Ren.exit_statement()
 
 func _on_statement(type, kwargs):
@@ -88,7 +88,7 @@ func writeDialog(text, speed=0.005):
 			DialogText.bbcode_text=  text
 		return
 
-	typing=true
+	typing = true
 	if DialogText.has_method("set_bbcode"):
 		DialogText.bbcode_text = ""
 	var te = ""
