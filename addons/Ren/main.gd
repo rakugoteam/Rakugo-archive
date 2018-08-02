@@ -90,11 +90,11 @@ func get_type(variable):
 	return $Def.get_type(variable)
 
 ## returns variable defined using define
-func get_variable(var_name):
+func get_value(var_name):
 	return variables[var_name].value
 
 ## returns type of variable defined using define
-func get_variable_type(var_name):
+func get_value_type(var_name):
 	return variables[var_name].type
 	
 ## crate new charater as global variable that Ren will see
@@ -165,7 +165,7 @@ func _set_story_state(state):
 	define("story_state", state)
 
 func _get_story_state():
-	return get_variable("story_state")
+	return get_value("story_state")
 
 ## it starts Ren
 func start():

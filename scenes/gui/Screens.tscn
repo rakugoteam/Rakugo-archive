@@ -473,8 +473,6 @@ HistoryItemTemplate = ExtResource( 10 )
 
 [node name="TestNodes" parent="." index="5" instance=ExtResource( 11 )]
 
-visible = false
-
 [connection signal="pressed" from="Navigation/VBoxContainer/Start" to="." method="_on_Start_pressed"]
 
 [connection signal="pressed" from="Navigation/VBoxContainer/Return" to="." method="_on_Return_pressed"]

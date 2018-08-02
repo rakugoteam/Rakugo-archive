@@ -15,13 +15,13 @@ func exec(dbg = true):
 	
 	if "who" in kwargs:
 		if kwargs.who in Ren.variables:
-			if Ren.get_variable_type(kwargs.who) == "character":
+			if Ren.get_value_type(kwargs.who) == "character":
 				var org_who = kwargs.who
-				var who = Ren.get_variable(org_who)
+				var who = Ren.get_value(org_who)
 				kwargs.who = who.parse_character()
 				
-				if "avatar" in Ren.get_variable(org_who).kwargs:
-					kwargs["avatar"] = Ren.get_variable(org_who).avatar
+				if "avatar" in Ren.get_value(org_who).kwargs:
+					kwargs["avatar"] = Ren.get_value(org_who).avatar
 				
 				if "what" in kwargs:
 					kwargs.what = who.parse_what(kwargs.what)

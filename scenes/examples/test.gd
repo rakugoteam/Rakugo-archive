@@ -35,7 +35,7 @@ func story(dialog_name):
 
 		"test variables 1":
 			Ren.say({"what":"add 1 to test_val"})
-			var tval = Ren.get_variable("test_val")
+			var tval = Ren.get_value("test_val")
 			tval += 1
 			Ren.define("test_val", tval)
 			Ren.story_state = "test variables 2"

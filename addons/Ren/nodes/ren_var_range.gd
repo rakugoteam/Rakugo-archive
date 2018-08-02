@@ -14,7 +14,7 @@ func get_default():
 
 func _ready():
 	if var_name in Ren.variables:
-		value = float(Ren.get_variable(var_name))
+		value = float(Ren.get_value(var_name))
 	
 	else:
 		Ren.define(var_name, default)
@@ -26,6 +26,6 @@ func on_var_changed(varn):
 	if var_name != varn:
 		return
 		
-	value = Ren.get_variable(var_name)
+	value = Ren.get_value(var_name)
 
 
