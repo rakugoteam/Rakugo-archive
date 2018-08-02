@@ -18,5 +18,4 @@ func on_var_changed(varn):
 	if var_name != varn:
 		return
 	
-	var new_val = Ren.get_value(var_name)
-	text = str(new_val)
+	text = str(Ren.get_value(var_name))
