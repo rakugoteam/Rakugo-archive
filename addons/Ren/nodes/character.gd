@@ -4,7 +4,7 @@ var kwargs = {"name":"", "what_prefix":"", "what_suffix":"", "color":"white"}
 var kws = ["name", "color", "what_prefix", "what_suffix", "avatar"]
 var _color
 
-export(String) var character_id = "NewCharacter" setget set_character_id, get_character_id
+export(String) var character_id = "" setget set_character_id, get_character_id
 export(String) var character_name = "" setget set_character_name, get_character_name
 export(Color) var color = Color("#ffffff") setget set_color, get_color
 export(String) var prefix = "" setget set_prefix, get_prefix

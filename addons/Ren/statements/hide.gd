@@ -5,8 +5,8 @@ func _init():
 	kws = ["node_id"]
 
 func exec(dbg = true):
-	kwargs["add_to_history"] = false
-	.exec(dbg)
+	if dbg:
+		print(debug(kws))
 
 	Ren.on_hide(kwargs.node_id)
 

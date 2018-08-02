@@ -5,7 +5,8 @@ func _init():
 	kws = ['info']
 
 func exec(dbg = true):
-	.exec(dbg)
+	if dbg:
+		print(debug(kws))
 	
 	if "info" in kwargs:
 		kwargs.info = Ren.text_passer(kwargs.info)

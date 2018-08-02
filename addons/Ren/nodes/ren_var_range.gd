@@ -12,18 +12,12 @@ func set_default(value):
 func get_default():
 	return default
 
-func update_properties():
-	if Ren.get_variable_type(var_name) == "range":
-		min_value = Ren.get_range(var_name, "min_value")
-		max_value = Ren.get_range(var_name, "max_value")
-
 func _ready():
 	if var_name in Ren.variables:
-		value = Ren.get_value(var_name)
-		update_properties()
+		value = float(Ren.get_variable(var_name))
 	
 	else:
-		Ren.range_variable(var_name, min_value, max_value, default)
+		Ren.define(var_name, default)
 	
 	if !Ren.is_connected("var_changed", self, "on_var_changed"):
 		Ren.connect("var_changed", self, "on_var_changed")
@@ -32,7 +26,6 @@ func on_var_changed(varn):
 	if var_name != varn:
 		return
 		
-	Ren.set_value(var_name, value)
-	update_properties()
+	value = Ren.get_variable(var_name)
 
 

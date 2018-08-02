@@ -19,8 +19,7 @@ var global_history = [] # [{"state":story_state, "statement":{"type":type, "kwar
 var variables = {
 	"version":{"type":"text", "value":"0.9.0"},
 	"test_bool":{"type":"var", "value":false},
-	"test_range":{"type":"range", "value":{
-		"min_value": 0, "max_value": 100, "current_value": 10}},
+	"test_float":{"type":"var", "value":10},
 	"story_state":{"type":"text", "value":""}
 }
 
@@ -45,7 +44,6 @@ signal show(node_id, state, show_args)
 signal hide(node_id)
 signal var_changed(var_name)
 signal story_step(dialog_name)
-signal play_anim(node_id, anim_name)
 
 func _ready():
 	config_data()
@@ -73,49 +71,16 @@ func on_hide(node):
 func var_changed(var_name):
 	emit_signal("var_changed", var_name)
 
-func play_anim(node_id, anim_name):
-	emit_signal("play_anim", node_id, anim_name)
-
 ## parse text like in renpy to bbcode
 func text_passer(text):
 	return $Text.text_passer(text, variables)
 
-## add/overwrite global variable that Ren will see
+## add/overwrite global value that Ren will see
 func define(var_name, value = null):
 	$Def.define(variables, var_name, value)
 	var_changed(var_name)
 
-## add/overwrite global range varible that Ren will see
-## it allways will have vaule bettwen min_value and max_value
-func range_variable(var_name, min_value, max_value, value = min_value):
-	$Def.define(variables,
-		{"min_value": min_value,
-		"max_value": max_value,
-		"current_value": value},
-		"range")
-	var_changed(var_name)
-
-## change value of global variable
-## it will change current value of range variable
-func set_value(var_name, value):
-	if get_variable_type(var_name) == "range":
-		var r_min = get_range(var_name, "min_value")
-		var r_max = get_range(var_name, "max_value")
-
-		if value > r_max:
-			value = r_max
-
-		if value < r_min:
-			value = r_min
-		
-		variables[var_name].value.current_value = value
-
-	else:
-		variables[var_name].value = value
-
-	var_changed(var_name)
-
-## add/overwrite global variable, from string, that Ren will see
+## add/overwrite global value, from string, that Ren will see
 func define_from_str(var_name, var_str, var_type):
 	$Def.define_from_str(variables, var_name, var_str, var_type)
 	var_changed(var_name)
@@ -124,17 +89,9 @@ func define_from_str(var_name, var_str, var_type):
 func get_type(variable):
 	return $Def.get_type(variable)
 
-## returns defined global variable value
-## retuns current value of range variable
-func get_value(var_name):
-	# print(variables[var_name])
-	if get_variable_type(var_name) == "range":
-		return variables[var_name].value.current_value
+## returns variable defined using define
+func get_variable(var_name):
 	return variables[var_name].value
-
-## return range property as min_value, max_value or current_value
-func get_range(var_name, property):
-	return variables[var_name].value[property]
 
 ## returns type of variable defined using define
 func get_variable_type(var_name):
@@ -182,8 +139,8 @@ func ask(kwargs):
 func menu(kwargs):
 	_set_statement($Menu, kwargs)
 
-## statement of type show
-## it will show RenNode or Charater with given id
+
+## it show custom ren node or charater
 ## 'state' arg is using to set for example current emtion or/and cloths
 ## 'state' example '['happy', 'green uniform']'
 ## with keywords : x, y, z, at, pos
@@ -195,36 +152,20 @@ func show(node_id, state = [], kwargs = {"at":["center", "bottom"]}):
 	_set_statement($Show, kwargs)
 
 ## statement of type hide
-## it will hide RenNode with given id
 func hide(node_id):
 	var kwargs = {"node_id":node_id}
 	_set_statement($Hide, kwargs)
 
 ## statement of type notify
-## use it to show notification with info for time (lenght) in seconds
 func notifiy(info, length=5):
-	var kwargs = {
-		"info": info,
-		"length":length
-	}
+	var kwargs = {"info": info,"length":length}
 	_set_statement($Notify, kwargs)
-
-## statement of type play_anim
-## it will play animation with anim_name form RenAnimPlayer with given node_id
-## and by default exit from statement - set it to false for loop animations
-func anim(node_id, anim_name, exit_statement = true):
-	var kwargs = {
-		"node_id":node_id,
-		"anim_name":anim_name,
-		"exit_statement":exit_statement
-	}
-	_set_statement($PlayAnim, kwargs)
 
 func _set_story_state(state):
 	define("story_state", state)
 
 func _get_story_state():
-	return get_value("story_state")
+	return get_variable("story_state")
 
 ## it starts Ren
 func start():
@@ -232,7 +173,6 @@ func start():
 	using_passer = false
 	current_id = 0
 	local_id = 0
-	story_step()
 
 func savefile(save_name="quick"):
 	$Persistence.folder_name = save_folder

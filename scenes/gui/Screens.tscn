@@ -20,7 +20,7 @@ use_filter = false
 font_data = ExtResource( 7 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Screens" type="Control" index="0"]
+[node name="Screens" type="Control"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -448,7 +448,6 @@ scroll_horizontal_enabled = false
 scroll_horizontal = 0
 scroll_vertical_enabled = true
 scroll_vertical = 0
-scroll_deadzone = 0
 _sections_unfolded = [ "Scroll" ]
 
 [node name="History" type="VBoxContainer" parent="HistoryBox/ScrollContainer" index="0"]

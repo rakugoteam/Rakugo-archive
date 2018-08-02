@@ -16,7 +16,7 @@ func get_default():
 func _ready():
 	var s = ""
 	if var_name in Ren.variables:
-		s = Ren.get_value(var_name)
+		s = Ren.get_variable(var_name)
 		default = str(s)
 	
 	type = Ren.get_type(s)
@@ -29,7 +29,7 @@ func on_var_changed(varn):
 		return
 	
 	text = ""
-	placeholder_text = str(Ren.get_value(var_name))
+	placeholder_text = str(Ren.get_variable(var_name))
 
 func _on_entered(text):
 	if text.empty():

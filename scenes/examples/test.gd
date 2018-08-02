@@ -10,6 +10,7 @@ func _ready():
 		"start",
 		false
 	)
+	Ren.story_step()
 
 func story(dialog_name):
 	if dialog_name != "example":
@@ -19,25 +20,8 @@ func story(dialog_name):
 		Ren.current_node = self
 
 	match Ren.story_state:
-		## some tests:
 		"start":
-			## test play_anim
-			Ren.story_state = "test range"
-			Ren.anim("TestAnimPlayer", "test")
-
-		"test range":
-			## example of range varible in text
-			Ren.say({"who":"test",
-				"what":"test range variable min = [test_range.min_value], max = [test_range.max_value], current = [test_range]"})
-			Ren.story_state = "test dict"
-
-		"test dict":
-			## example of dict in text
-			Ren.define("test_dict", {"a": 1, "b": 2})
-			Ren.say({"who":"test", "what":"test dict b element is [test_dict.b]"})
-			Ren.story_state = "test list"
-		
-		"test list":
+			## some tests:
 			## example of using Ren.variable in text
 			Ren.define("test_list", [1,3,7])
 			Ren.say({"who":"test", "what":"test list 2 list element is [test_list[2]]"})
@@ -51,7 +35,7 @@ func story(dialog_name):
 
 		"test variables 1":
 			Ren.say({"what":"add 1 to test_val"})
-			var tval = Ren.get_value("test_val")
+			var tval = Ren.get_variable("test_val")
 			tval += 1
 			Ren.define("test_val", tval)
 			Ren.story_state = "test variables 2"

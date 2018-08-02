@@ -33,19 +33,14 @@ func text_passer(text, variables):
 			elif type == "var":
 				text = text.replace(s, str(value))
 			
-			elif type in ["dict", "range", "character"]:
+			elif type in ["dict", "character"]:
 				var dict = value
 				
 				if type == "character":
 					dict = value.kwargs
-				
-				if type == "range":
-					text = text.replace(s, str(dict.current_value))
-					
-				else:
-					text = text.replace(s, str(dict))
-				
 
+				text = text.replace(s, str(dict))
+				
 				for k in dict.keys():
 					var sk = "[" + var_name + "." + k + "]"
 					if text.find(sk) == -1:
