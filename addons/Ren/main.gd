@@ -44,7 +44,7 @@ signal show(node_id, state, show_args)
 signal hide(node_id)
 signal var_changed(var_name)
 signal story_step(dialog_name)
-signal play_anim(node_id, anim_name)
+signal play_anim(node_id, anim_name, reset)
 
 func _ready():
 	config_data()
@@ -69,8 +69,8 @@ func on_show(node_id, state, show_args):
 func on_hide(node):
 	emit_signal("hide", node)
 
-func on_play_anim(node_id, anim_name):
-	emit_signal("play_anim", node_id, anim_name)
+func on_play_anim(node_id, anim_name, reset):
+	emit_signal("play_anim", node_id, anim_name, reset)
 
 func var_changed(var_name):
 	emit_signal("var_changed", var_name)
@@ -167,14 +167,18 @@ func notifiy(info, length=5):
 
 ## statement of type play_anim
 ## it will play animation with anim_name form RenAnimPlayer with given node_id
-## and by default exit from statement - set it to false for loop animations
-func play_anim(node_id, anim_name, exit_statement = true):
+## and by default is reset to 0 pos on exit from statment
+func play_anim(node_id, anim_name, reset = true):
 	var kwargs = {
 		"node_id":node_id,
 		"anim_name":anim_name,
-		"exit_statement":exit_statement
+		"reset":reset
 	}
 	_set_statement($PlayAnim, kwargs)
+
+## returns node_id of last used RenAnimPlayer
+func get_anim_player():
+	return $PlayAnim.kwargs["node_id"]
 
 func _set_story_state(state):
 	define("story_state", state)

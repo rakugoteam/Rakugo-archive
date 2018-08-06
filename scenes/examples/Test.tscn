@@ -62,6 +62,7 @@ avatar = ExtResource( 4 )
 
 [node name="RenNode2D" type="Node2D" parent="RenKun" index="0"]
 
+visible = false
 modulate = Color( 1, 1, 1, 0.648734 )
 position = Vector2( 524.705, 226.134 )
 z_index = -1
@@ -89,6 +90,7 @@ playback_speed = 1.0
 anims/test = SubResource( 1 )
 blend_times = [  ]
 script = ExtResource( 8 )
+_sections_unfolded = [ "Playback Options" ]
 __meta__ = {
 "_editor_icon": ExtResource( 9 )
 }
