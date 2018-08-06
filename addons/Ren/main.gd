@@ -44,6 +44,7 @@ signal show(node_id, state, show_args)
 signal hide(node_id)
 signal var_changed(var_name)
 signal story_step(dialog_name)
+signal play_anim(node_id, anim_name)
 
 func _ready():
 	config_data()
@@ -67,6 +68,9 @@ func on_show(node_id, state, show_args):
 
 func on_hide(node):
 	emit_signal("hide", node)
+
+func on_play_anim(node_id, anim_name):
+	emit_signal("play_anim", node_id, anim_name)
 
 func var_changed(var_name):
 	emit_signal("var_changed", var_name)
@@ -161,6 +165,17 @@ func notifiy(info, length=5):
 	var kwargs = {"info": info,"length":length}
 	_set_statement($Notify, kwargs)
 
+## statement of type play_anim
+## it will play animation with anim_name form RenAnimPlayer with given node_id
+## and by default exit from statement - set it to false for loop animations
+func play_anim(node_id, anim_name, exit_statement = true):
+	var kwargs = {
+		"node_id":node_id,
+		"anim_name":anim_name,
+		"exit_statement":exit_statement
+	}
+	_set_statement($PlayAnim, kwargs)
+
 func _set_story_state(state):
 	define("story_state", state)
 
@@ -173,6 +188,8 @@ func start():
 	using_passer = false
 	current_id = 0
 	local_id = 0
+	story_step()
+
 
 func savefile(save_name="quick"):
 	$Persistence.folder_name = save_folder

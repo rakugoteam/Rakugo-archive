@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/examples/test.gd" type="Script" id=1]
 [ext_resource path="res://addons/Ren/nodes/character.gd" type="Script" id=2]
@@ -7,6 +7,39 @@
 [ext_resource path="res://addons/Ren/nodes/ren_node2d.gd" type="Script" id=5]
 [ext_resource path="res://addons/Ren/icons/ren_node2d.svg" type="Texture" id=6]
 [ext_resource path="res://logo.svg" type="Texture" id=7]
+[ext_resource path="res://addons/Ren/nodes/ren_anim_player.gd" type="Script" id=8]
+[ext_resource path="res://addons/Ren/icons/ren_anim_player.svg" type="Texture" id=9]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "test"
+length = 1.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("RenNode2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("RenNode2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [node name="Test" type="Node2D" index="0"]
 
@@ -29,11 +62,11 @@ avatar = ExtResource( 4 )
 
 [node name="RenNode2D" type="Node2D" parent="RenKun" index="0"]
 
-visible = false
+modulate = Color( 1, 1, 1, 0.648734 )
 position = Vector2( 524.705, 226.134 )
 z_index = -1
 script = ExtResource( 5 )
-_sections_unfolded = [ "Z Index" ]
+_sections_unfolded = [ "Visibility", "Z Index" ]
 __meta__ = {
 "_editor_icon": ExtResource( 6 )
 }
@@ -45,5 +78,20 @@ camera = NodePath("")
 
 texture = ExtResource( 7 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="RenAnimPlayer" type="AnimationPlayer" parent="RenKun" index="1"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/test = SubResource( 1 )
+blend_times = [  ]
+script = ExtResource( 8 )
+__meta__ = {
+"_editor_icon": ExtResource( 9 )
+}
+node_id = "TestAnimPlayer"
 
 

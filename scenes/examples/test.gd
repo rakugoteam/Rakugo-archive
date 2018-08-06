@@ -10,7 +10,6 @@ func _ready():
 		"start",
 		false
 	)
-	Ren.story_step()
 
 func story(dialog_name):
 	if dialog_name != "example":
@@ -20,13 +19,25 @@ func story(dialog_name):
 		Ren.current_node = self
 
 	match Ren.story_state:
+		## some tests:
 		"start":
-			## some tests:
+			## test play_anim
+			Ren.play_anim("TestAnimPlayer", "test")
+			Ren.say({"who":"test", "what":"test of simple anim"})
+			Ren.story_state = "test dict"
+
+		"test dict":
+			# example of dict in text
+			Ren.define("test_dict", {"a": 1, "b": 2})
+			Ren.say({"who":"test", "what":"test dict b element is [test_dict.b]"})
+			Ren.story_state = "test list"
+		
+		"test list":
 			## example of using Ren.variable in text
 			Ren.define("test_list", [1,3,7])
 			Ren.say({"who":"test", "what":"test list 2 list element is [test_list[2]]"})
 			Ren.story_state = "test variables 0"
-		
+			
 		"test variables 0":
 			## example of updating some Ren.variable
 			Ren.define("test_val", 1)
