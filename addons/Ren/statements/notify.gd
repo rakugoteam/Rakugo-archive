@@ -1,6 +1,7 @@
 extends "statement.gd"
 
 func _init():
+	._init()
 	type = "notify"
 	kws = ['info']
 

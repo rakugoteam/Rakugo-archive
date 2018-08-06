@@ -1,6 +1,7 @@
 extends "statement.gd"
 
 func _init():
+	._init()
 	type = "show"
 	kws = ["node_id", "state", "x", "y", "z", "at", "pos"]
 

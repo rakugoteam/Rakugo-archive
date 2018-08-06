@@ -1,6 +1,5 @@
 extends Panel
 
-export(float) var step_time = 0.05
 export(NodePath) var name_label_path = NodePath("")
 export(NodePath) var dialog_label_path = NodePath("")
 export(NodePath) var avatar_viewport_path = NodePath("")
@@ -8,7 +7,7 @@ export(NodePath) var avatar_viewport_path = NodePath("")
 onready var NameLabel = get_node(name_label_path)
 onready var DialogText = get_node(dialog_label_path)
 onready var CharacterAvatar = get_node(avatar_viewport_path)
-onready var timer = new_timer(step_time)
+
 
 var avatar_path = ""
 var avatar
@@ -28,16 +27,17 @@ func _input(event):
 	if event.is_action_pressed("ren_forward"):
 		if typing: # if typing complete it
 			typing = false
+
 		elif _type == "say": # else exit statement
 			Ren.exit_statement()
+
 
 func _on_statement(type, kwargs):
 	if "kind" in kwargs:
 		$AnimationPlayer.play(kwargs.kind)
 	
-	set_process(false)
 	_type = type
-	timer.start()
+
 	if not _type in ["say", "ask", "menu"]:
 		return
 

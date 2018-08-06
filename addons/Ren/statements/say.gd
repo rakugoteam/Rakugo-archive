@@ -4,10 +4,8 @@ func _init():
 	._init()
 	type = "say"
 	kws += ["who", "what"]
-	kwargs = {
-		"who": "",
-		"add_to_history": true
-	}
+	kwargs["who"] = ""
+	kwargs["add_to_history"] = true
 
 func exec(dbg = true):
 	if dbg:
