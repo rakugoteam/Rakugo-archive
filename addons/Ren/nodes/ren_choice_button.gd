@@ -35,7 +35,6 @@ func _on_hover():
 func _on_pressed():
 	label.add_color_override("default_color", pressed_text_color)
 	print("final_choice ", id)
-	Ren.set_meta("last_choice",id) #for checking choice in VS
 	Ren.exit_statement({"final_choice":id})
 
 func set_disabled(value):
