@@ -901,6 +901,8 @@ __meta__ = {
 name_label_path = NodePath("VBox/Label")
 dialog_label_path = NodePath("VBox/Dialog")
 avatar_viewport_path = NodePath("ViewportContainer/CharaterAvatar")
+step_time = 0.01
+letter_speed = 0.005
 
 [node name="VBox" type="VBoxContainer" parent="." index="0"]
 
