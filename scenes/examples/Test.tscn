@@ -41,7 +41,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[node name="Test" type="Node2D" index="0"]
+[node name="Test" type="Node2D"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Material", "Transform", "Z Index" ]
@@ -72,7 +72,7 @@ __meta__ = {
 "_editor_icon": ExtResource( 6 )
 }
 auto_define = null
-node_id = "rench"
+node_id = ""
 camera = NodePath("")
 
 [node name="logo" type="Sprite" parent="RenKun/RenNode2D" index="0"]

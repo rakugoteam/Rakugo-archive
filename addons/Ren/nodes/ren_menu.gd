@@ -8,17 +8,17 @@ func _ready():
 
 func _on_statement(type, kwargs):
 	if type != "menu":
-		hide()
+		get_parent().hide()
 		return
 
 	if kwargs["mkind"] != kind:
-		hide()
+		get_parent().hide()
 		return
 		
-	show()
+	get_parent().show()
 
 	for ch in get_children():
-		ch.queue_free() #free causes problem in VS
+		ch.queue_free()
 
 	var i = 0
 	var choices = Ren.menu_node.choices_labels
@@ -30,5 +30,5 @@ func _on_statement(type, kwargs):
 		print("create button (", ch, ") with id : ", i)
 		i += 1
 
-	show()
+	get_parent().show()
 
