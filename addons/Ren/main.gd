@@ -17,7 +17,7 @@ var _scene = null
 var history = [] # [{"state":story_state, "statement":{"type":type, "kwargs": kwargs}}]
 var global_history = [] # [{"state":story_state, "statement":{"type":type, "kwargs": kwargs}}]
 var variables = {
-	"version":{"type":"text", "value":"0.9.0"},
+	"version":{"type":"text", "value":"0.9.6"},
 	"test_bool":{"type":"var", "value":false},
 	"test_float":{"type":"var", "value":10},
 	"story_state":{"type":"text", "value":""}
@@ -32,7 +32,7 @@ var current_node = null
 var skip_types = ["say", "show", "hide"]
 var file = File.new()
 
-const _CHR	= preload("nodes/character.gd")
+const _VAR	= preload("ren_var.gd")
 onready var timer = $Timer
 
 var story_state setget _set_story_state, _get_story_state
@@ -48,7 +48,6 @@ signal play_anim(node_id, anim_name, reset)
 
 func _ready():
 	config_data()
-	
 	timer.connect("timeout", self, "exit_statement")
 
 func exec_statement(type, kwargs = {}):
@@ -80,14 +79,21 @@ func text_passer(text):
 	return $Text.text_passer(text, variables)
 
 ## add/overwrite global value that Ren will see
+## and returns it as RenVar for easy use
 func define(var_name, value = null):
 	$Def.define(variables, var_name, value)
 	var_changed(var_name)
+	return get_var(var_name)
 
 ## add/overwrite global value, from string, that Ren will see
 func define_from_str(var_name, var_str, var_type):
 	$Def.define_from_str(variables, var_name, var_str, var_type)
 	var_changed(var_name)
+	return get_var(var_name)
+
+## returns exiting Ren variable as RenVar for easy use
+func get_var(var_name):
+	return _VAR.new(var_name)
 
 ## to use with `define_from_str` func as var_type arg
 func get_type(variable):

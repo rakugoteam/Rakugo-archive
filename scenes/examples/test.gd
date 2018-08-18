@@ -2,6 +2,8 @@
 
 extends Node
 
+var test_var
+
 func _ready():
 	Ren.connect("story_step", self, "story")
 	Ren.jump(
@@ -40,19 +42,17 @@ func story(dialog_name):
 			
 		"test variables 0":
 			## example of updating some Ren.variable
-			Ren.define("test_val", 1)
-			Ren.say({"what":"now test_val = [test_val]"})
+			test_var = Ren.define("test_var", 1)
+			Ren.say({"what":"now test_var = [test_var]"})
 			Ren.story_state = "test variables 1"
 
 		"test variables 1":
-			Ren.say({"what":"add 1 to test_val"})
-			var tval = Ren.get_value("test_val")
-			tval += 1
-			Ren.define("test_val", tval)
+			Ren.say({"what":"add 1 to test_var"})
+			test_var.value += 1
 			Ren.story_state = "test variables 2"
 		
 		"test variables 2":
-			Ren.say({"what":"and now test_val = [test_val]"})
+			Ren.say({"what":"and now test_var = [test_var]"})
 			Ren.story_state = "get player name"
 
 		"get player name":
