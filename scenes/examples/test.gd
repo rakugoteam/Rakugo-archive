@@ -64,7 +64,7 @@ func story(dialog_name):
 					"rench",
 				"what":
 					"Hi! I'm Ren. What is your name?",
-				"input_variable":
+				"variable":
 						"player_name", ## Ren variable to be changed
 						## it don't have to be define before input
 				"value":

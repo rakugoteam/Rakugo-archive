@@ -123,6 +123,7 @@ func node_link(node, node_id = node.name):
 		path = node.get_path()
 	
 	$Def.define(variables, node_id, path, "node")
+	return get_var(node_id)
 
 func _set_statement(node, kwargs):
 	node.set_kwargs(kwargs)
@@ -138,9 +139,10 @@ func say(kwargs):
 ## statement of type ask
 ## there can be only one say, ask or menu in story_state
 ## its allow player to provide keybord ask that will be assain to given variable
-## with keywords : who, what, kind, ask_variable, variable
+## with keywords : who, what, kind, variable, value
 func ask(kwargs):
 	_set_statement($Ask, kwargs)
+	return get_var(kwargs.variable)
 
 ## statement of type menu
 ## there can be only one say, ask or menu in story_state
