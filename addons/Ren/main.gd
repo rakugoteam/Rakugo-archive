@@ -32,7 +32,9 @@ var current_node = null
 var skip_types = ["say", "show", "hide"]
 var file = File.new()
 
-const _VAR	= preload("ren_var.gd")
+const _CHR		= preload("nodes/character.gd")
+const _VAR		= preload("ren_var.gd")
+const _QUEST	= preload("quest.gd")
 onready var timer = $Timer
 
 var story_state setget _set_story_state, _get_story_state
@@ -78,14 +80,14 @@ func var_changed(var_name):
 func text_passer(text):
 	return $Text.text_passer(text, variables)
 
-## add/overwrite global value that Ren will see
+## add/overwrite global variable that Ren will see
 ## and returns it as RenVar for easy use
 func define(var_name, value = null):
 	$Def.define(variables, var_name, value)
 	var_changed(var_name)
 	return get_var(var_name)
 
-## add/overwrite global value, from string, that Ren will see
+## add/overwrite global variable, from string, that Ren will see
 func define_from_str(var_name, var_str, var_type):
 	$Def.define_from_str(variables, var_name, var_str, var_type)
 	var_changed(var_name)
@@ -109,9 +111,15 @@ func get_value_type(var_name):
 	
 ## crate new charater as global variable that Ren will see
 ## possible kwargs: name, color, what_prefix, what_suffix, kind, avatar
-func character(var_name, kwargs, node = null):
+func character(character_id, kwargs, node = null):
+	if node == null:
+		node = get_character(character_id)
 	node.set_kwargs(kwargs)
-	$Def.define(variables, var_name, node, "character")
+	$Def.define(variables, character_id, node, "character")
+	return node
+
+func get_character(character_id):
+	return _CHR.new(character_id)
 
 ## crate new link to node as global variable that Ren will see
 func node_link(node, node_id = node.name):
@@ -123,7 +131,25 @@ func node_link(node, node_id = node.name):
 		path = node.get_path()
 	
 	$Def.define(variables, node_id, path, "node")
-	return get_var(node_id)
+# 	return get_node(node)
+
+# func get_node(node_id):
+# 	var n = get_var(node_id).v
+# 	return get_node(n)
+
+## add/overwrite global quest that Ren will see
+## and returns it as RenQuest for easy use
+## possible kwargs: "who", "title", "description", "optional", "state", "subquests"
+func quest(var_name, value = {}):
+	var q = get_quest(var_name)
+	q.set_kwargs(value)
+	$Def.define(variables, var_name, q.kwargs, "quest")
+	var_changed(var_name)
+	return q
+
+## returns exiting Ren quest as RenQuest for easy use
+func get_quest(var_name):
+	return _QUEST.new(var_name)
 
 func _set_statement(node, kwargs):
 	node.set_kwargs(kwargs)
@@ -139,6 +165,7 @@ func say(kwargs):
 ## statement of type ask
 ## there can be only one say, ask or menu in story_state
 ## its allow player to provide keybord ask that will be assain to given variable
+## it also will return RenVar variable
 ## with keywords : who, what, kind, variable, value
 func ask(kwargs):
 	_set_statement($Ask, kwargs)
@@ -150,7 +177,6 @@ func ask(kwargs):
 ## with keywords : who, what, kind, choices, mkind
 func menu(kwargs):
 	_set_statement($Menu, kwargs)
-
 
 ## it show custom ren node or charater
 ## 'state' arg is using to set for example current emtion or/and cloths
