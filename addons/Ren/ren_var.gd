@@ -5,9 +5,6 @@ var type = "var" setget , _get_type
 var value = null setget _set_value, _get_value
 var v = null setget _set_value, _get_value
 
-func _init(var_name):
-	_name = var_name
-	return self
 
 func _get_name():
 	return _name

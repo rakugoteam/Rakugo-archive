@@ -19,11 +19,25 @@ func story(dialog_name):
 	
 	if Ren.current_node != self:
 		Ren.current_node = self
+		
+	var q = Ren.quest("testQuest")
+	q.title = "Test Quest"
 
 	match Ren.story_state:
 		## some tests:
 		"start":
-			## test play_anim
+			# test of quest system part1
+			q.start()
+			Ren.say({"what": "For test quest system now will you start test quest."})
+			Ren.story_state = "qtest2"
+
+		"qtest2":
+			q.done()
+			Ren.say({"what": "And now test quest is done."})
+			Ren.story_state = "test play_anim"
+
+
+		"test play_anim":
 			Ren.play_anim("TestAnimPlayer", "test", false)
 			Ren.say({"who":"test", "what":"test of simple anim"})
 			Ren.story_state = "test dict"

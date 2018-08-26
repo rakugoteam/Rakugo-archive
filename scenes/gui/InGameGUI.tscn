@@ -434,8 +434,6 @@ ChoiceButton = ExtResource( 3 )
 
 margin_bottom = 602.0
 _sections_unfolded = [ "Anchor", "Mouse", "Rect", "Size Flags", "Theme", "Visibility", "custom_styles" ]
-step_time = 1
-letter_speed = 0.005
 
 [node name="Notify" type="Panel" parent="." index="3"]
 

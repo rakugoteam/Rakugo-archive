@@ -24,46 +24,57 @@ func set_kwargs(new_kwargs):
 # begin quest
 func start():
 	state = "in_progress"
+	Ren.notifiy("You begin \"" + title + "\"")
 
 func _set_who(who_id):
-	v.who = who_id
+	kwargs.who = who_id
+	value = kwargs
 
 func _get_who():
-	return v.who
+	return kwargs.who
+	value = kwargs
 
 func _set_title(val):
-	v.title = val
+	kwargs.title = val
+	value = kwargs
 
 func _get_title():
-	return v.title
+	return kwargs.title
 
 func _set_des(val):
-	v.description = val
+	kwargs.description = val
+	value = kwargs
 
 func _get_des():
-	return v.description
+	return kwargs.description
 
 func _set_state(val):
-	v.state = val
+	kwargs.state = val
+	value = kwargs
+
+func _get_state():
+	return kwargs.state
+
+func _set_subquests(val):
+	kwargs.subquests = val
+	value = kwargs
+
+func _get_subquests():
+	return kwargs.subquests
+
+# it adds subquest to subquests
+func add(subquest_name):
+	subquests.append(subquest_name)
+
+func done():
+	state = "done"
 	for s in subquests:
 		var q = Ren.get_quest(s)
 		if q.optional:
 			continue
 		
-		q.state = val
-
-func _get_state():
-	return v.state
-
-func _set_subquests(val):
-	v.subquests = val
-
-func _get_subquests():
-	return v.subquests
-
-# it adds subquest to subquests
-func add(subquest_name):
-	subquests.append(subquest_name)
+		q.state = "done"
+	Ren.notifiy("You finish \"" + title + "\"")
 
 
 

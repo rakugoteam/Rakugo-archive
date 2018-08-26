@@ -95,7 +95,9 @@ func define_from_str(var_name, var_str, var_type):
 
 ## returns exiting Ren variable as RenVar for easy use
 func get_var(var_name):
-	return _VAR.new(var_name)
+	var v = _VAR.new()
+	v._name = var_name
+	return v
 
 ## to use with `define_from_str` func as var_type arg
 func get_type(variable):
@@ -142,14 +144,16 @@ func node_link(node, node_id = node.name):
 ## possible kwargs: "who", "title", "description", "optional", "state", "subquests"
 func quest(var_name, value = {}):
 	var q = get_quest(var_name)
-	q.set_kwargs(value)
 	$Def.define(variables, var_name, q.kwargs, "quest")
+	q.set_kwargs(value)
 	var_changed(var_name)
 	return q
 
 ## returns exiting Ren quest as RenQuest for easy use
 func get_quest(var_name):
-	return _QUEST.new(var_name)
+	var q = _QUEST.new()
+	q._name = var_name
+	return q
 
 func _set_statement(node, kwargs):
 	node.set_kwargs(kwargs)
@@ -212,7 +216,10 @@ func play_anim(node_id, anim_name, reset = true):
 
 ## returns node_id of last used RenAnimPlayer
 func get_anim_player():
-	return $PlayAnim.kwargs["node_id"]
+	if "node" in $PlayAnim.kwargs.keys():
+		return $PlayAnim.kwargs["node_id"]
+	else:
+		return ""
 
 func _set_story_state(state):
 	define("story_state", state)
