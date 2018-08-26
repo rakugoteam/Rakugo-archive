@@ -214,13 +214,6 @@ func play_anim(node_id, anim_name, reset = true):
 	}
 	_set_statement($PlayAnim, kwargs)
 
-## returns node_id of last used RenAnimPlayer
-func get_anim_player():
-	if "node" in $PlayAnim.kwargs.keys():
-		return $PlayAnim.kwargs["node_id"]
-	else:
-		return ""
-
 func _set_story_state(state):
 	define("story_state", state)
 

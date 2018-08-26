@@ -3,6 +3,7 @@ extends AnimationPlayer
 export(String) var node_id = "NewAnimPlayer"
 
 var reset_anim = true
+var exit_count = 0
 
 func _ready():
 	Ren.node_link(self, node_id)
@@ -18,7 +19,10 @@ func _on_play(id, anim_name, reset):
 	play(anim_name)
 
 func _on_exit(prev_type, kwargs):
-	if Ren.get_anim_player() != node_id:
+	if not is_playing():
 		return
-	
-	stop(reset_anim)
+		
+	exit_count += 1
+	if exit_count > 1:
+		stop(reset_anim)
+		exit_count = 0
