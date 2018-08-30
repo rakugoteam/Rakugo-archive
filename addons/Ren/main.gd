@@ -1,7 +1,7 @@
 extends Node
 
 export (bool) var debug_on = true
-export(bool) var debug_inti = true
+export (bool) var debug_inti = true
 export (String) var save_folder = "saves"
 export (String) var save_password = "Ren"
 export (String, DIR) var scenes_dir = "res://scenes/examples/"
@@ -31,6 +31,7 @@ var skip_auto = false
 var current_node = null
 var skip_types = ["say", "show", "hide"]
 var file = File.new()
+var loading_in_progress = false
 
 const _CHR		= preload("nodes/character.gd")
 const _VAR		= preload("ren_var.gd")
@@ -136,8 +137,8 @@ func node_link(node, node_id = node.name):
 # 	return get_node(node)
 
 # func get_node(node_id):
-# 	var n = get_var(node_id).v
-# 	return get_node(n)
+# 	var p = get_var(node_id).v
+# 	return get_node(p)
 
 ## add/overwrite global quest that Ren will see
 ## and returns it as RenQuest for easy use
@@ -229,7 +230,7 @@ func start():
 	story_step()
 
 
-func savefile(save_name="quick"):
+func savefile(save_name = "quick"):
 	$Persistence.folder_name = save_folder
 	$Persistence.password = save_password
 
@@ -244,7 +245,7 @@ func savefile(save_name="quick"):
 	for i in range(variables.size()):
 		var k = variables.keys()[i]
 		var v = variables.values()[i]
-		if v.type in ["node", "character"]:
+		if v.type in ["character"]:
 			vars_to_save[k] = {"type":v.type, "value":inst2dict(v.value)}
 		else:
 			vars_to_save[k] = v
@@ -257,13 +258,14 @@ func savefile(save_name="quick"):
 	data["local_id"] = local_id
 	data["scene"] = _scene
 	data["dialog_name"] = current_dialog_name
-	data["state"] = _get_story_state()
+	data["state"] = _get_story_state() # it must be this way
 	
 	var result = $Persistence.save_data(save_name)
 	prints("save data to:", save_name)
 	return result
 	
-func loadfile(save_name="quick"):
+func loadfile(save_name = "quick"):
+	loading_in_progress = true
 	$Persistence.folder_name = save_folder
 	$Persistence.password = save_password
 	
@@ -279,7 +281,7 @@ func loadfile(save_name="quick"):
 	for i in range(vars_to_load.size()):
 		var k = vars_to_load.keys()[i]
 		var v = vars_to_load.values()[i]
-		if v.type in ["node", "character"]:
+		if v.type in ["character"]:
 			var properties = v.value
 			var obj = variables[k].value
 
@@ -339,23 +341,27 @@ func jump(
 
 	local_id = 0
 	current_dialog_name = dialog_name
-	_set_story_state(state) # it must be this way
+	if not (loading_in_progress or from_save):
+		_set_story_state(state) # it must be this way
 	
 	if from_save:
 		_scene = path_to_scene
 	else:
 		_scene = scenes_dir + path_to_scene + ".tscn"
-
+	
 	if debug_on:
 		prints("jump to scene:", _scene, "with dialog:", dialog_name, "from:", state)
 
 	if not change:
 		return
 
-	current_node.queue_free()
+	if current_node != null:
+		current_node.queue_free()
+	
 	var lscene = load(_scene)
 	current_node = lscene.instance()
 	get_tree().get_root().add_child(current_node)
+	Ren.story_step()
 
 # Data related to the framework configuration.
 func config_data():
