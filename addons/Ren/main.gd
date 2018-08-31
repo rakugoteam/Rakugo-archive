@@ -339,10 +339,13 @@ func jump(
 	change = true,
 	from_save = false):
 
+	if not from_save and loading_in_progress:
+		return
+
 	local_id = 0
 	current_dialog_name = dialog_name
-	if not (loading_in_progress or from_save):
-		_set_story_state(state) # it must be this way
+	
+	_set_story_state(state) # it must be this way
 	
 	if from_save:
 		_scene = path_to_scene
@@ -371,7 +374,6 @@ func config_data():
 	# If not have version data, data not exist.
 	if not config.has("Version"):
 		# Create config data
-		#
 		
 		# This is useful in the case of updates.
 		config["Version"] = 1 # Integer number
