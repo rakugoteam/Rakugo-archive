@@ -32,10 +32,12 @@ var current_node = null
 var skip_types = ["say", "show", "hide"]
 var file = File.new()
 var loading_in_progress = false
+var quests = [] # list of all quest
 
 const _CHR		= preload("nodes/character.gd")
 const _VAR		= preload("ren_var.gd")
 const _QUEST	= preload("quest.gd")
+const _SUBQ		= preload("subquest.gd")
 onready var timer = $Timer
 
 var story_state setget _set_story_state, _get_story_state
@@ -140,6 +142,22 @@ func node_link(node, node_id = node.name):
 # 	var p = get_var(node_id).v
 # 	return get_node(p)
 
+## add/overwrite global subquest that Ren will see
+## and returns it as RenSubQuest for easy use
+## possible kwargs: "who", "title", "description", "optional", "state", "subquests"
+func subquest(var_name, value = {}):
+	var sq = get_subquest(var_name)
+	$Def.define(variables, var_name, sq.kwargs, "subquest")
+	sq.set_kwargs(value)
+	var_changed(var_name)
+	return sq
+
+## returns exiting Ren subquest as RenSubQuest for easy use
+func get_subquest(var_name):
+	var sq = _SUBQ.new()
+	sq._name = var_name
+	return sq
+
 ## add/overwrite global quest that Ren will see
 ## and returns it as RenQuest for easy use
 ## possible kwargs: "who", "title", "description", "optional", "state", "subquests"
@@ -148,6 +166,7 @@ func quest(var_name, value = {}):
 	$Def.define(variables, var_name, q.kwargs, "quest")
 	q.set_kwargs(value)
 	var_changed(var_name)
+	quests.append(var_name)
 	return q
 
 ## returns exiting Ren quest as RenQuest for easy use
