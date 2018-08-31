@@ -364,6 +364,8 @@ func jump(
 	var lscene = load(_scene)
 	current_node = lscene.instance()
 	get_tree().get_root().add_child(current_node)
+	if loading_in_progress:
+		loading_in_progress = false
 	Ren.story_step()
 
 # Data related to the framework configuration.
