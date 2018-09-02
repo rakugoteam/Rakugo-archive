@@ -38,8 +38,8 @@ var quests = [] # list of all quest
 
 const _CHR		= preload("nodes/character.gd")
 const _VAR		= preload("ren_var.gd")
-const _QUEST	= preload("quest.gd")
-const _SUBQ		= preload("subquest.gd")
+const _QUEST	= preload("RPGSystem/quest.gd")
+const _SUBQ		= preload("RPGSystem/subquest.gd")
 onready var timer = $Timer
 
 var story_state setget _set_story_state, _get_story_state
