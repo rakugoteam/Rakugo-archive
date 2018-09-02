@@ -7,7 +7,7 @@ var test_var
 
 func _ready():
 	Ren.connect("story_step", self, "story")
-	Ren.jump("Test", "example", "start")
+	Ren.jump("Test", "example", "start", false)
 
 	if Ren.current_node != self:
 		Ren.current_node = self

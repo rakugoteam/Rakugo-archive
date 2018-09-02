@@ -16,6 +16,7 @@ var current_dialog_name = ""
 var _scene = null
 var history = [] # [{"state":story_state, "statement":{"type":type, "kwargs": kwargs}}]
 var global_history = [] # [{"state":story_state, "statement":{"type":type, "kwargs": kwargs}}]
+var prev_story_state = ""
 var variables = {
 	"version":{"type":"text", "value":"0.9.6"},
 	"test_bool":{"type":"var", "value":false},
@@ -32,6 +33,7 @@ var current_node = null
 var skip_types = ["say", "show", "hide"]
 var file = File.new()
 var loading_in_progress = false
+var started = false
 var quests = [] # list of all quest
 
 const _CHR		= preload("nodes/character.gd")
@@ -235,6 +237,7 @@ func play_anim(node_id, anim_name, reset = true):
 	_set_statement($PlayAnim, kwargs)
 
 func _set_story_state(state):
+	prev_story_state = _get_story_state()
 	define("story_state", state)
 
 func _get_story_state():
@@ -247,6 +250,7 @@ func start():
 	current_id = 0
 	local_id = 0
 	story_step()
+	started = true
 
 
 func savefile(save_name = "quick"):
@@ -277,7 +281,7 @@ func savefile(save_name = "quick"):
 	data["local_id"] = local_id
 	data["scene"] = _scene
 	data["dialog_name"] = current_dialog_name
-	data["state"] = _get_story_state() # it must be this way
+	data["state"] = prev_story_state #_get_story_state() # it must be this way
 	
 	var result = $Persistence.save_data(save_name)
 	prints("save data to:", save_name)
@@ -374,18 +378,19 @@ func jump(
 	if debug_on:
 		prints("jump to scene:", _scene, "with dialog:", dialog_name, "from:", state)
 
-	if not change:
-		return
+	if change:
+		if current_node != null:
+			current_node.queue_free()
+		
+		var lscene = load(_scene)
+		current_node = lscene.instance()
+		get_tree().get_root().add_child(current_node)
 
-	if current_node != null:
-		current_node.queue_free()
-	
-	var lscene = load(_scene)
-	current_node = lscene.instance()
-	get_tree().get_root().add_child(current_node)
 	if loading_in_progress:
 		loading_in_progress = false
-	Ren.story_step()
+	
+	if started:
+		Ren.story_step()
 
 # Data related to the framework configuration.
 func config_data():
