@@ -3,41 +3,38 @@
 extends Node
 
 var test_var
+# var test_quest
 
 func _ready():
 	Ren.connect("story_step", self, "story")
-	Ren.jump(
-		"Test",
-		"example",
-		"start",
-		false
-	)
+	Ren.jump("Test", "example", "start", false)
+
+	if Ren.current_node != self:
+		Ren.current_node = self
+	
+	# test_quest = Ren.quest("testQuest")
+	# test_quest.title = "Test Quest"
+	test_var = Ren.define("test_var", 1)
 
 func story(dialog_name):
 	if dialog_name != "example":
 		return
-	
-	if Ren.current_node != self:
-		Ren.current_node = self
-		
-	var q = Ren.quest("testQuest")
-	q.title = "Test Quest"
 
 	match Ren.story_state:
 		## some tests:
 		"start":
-			# test of quest system part1
-			q.start()
-			Ren.say({"what": "For test quest system now will you start test quest."})
-			Ren.story_state = "qtest2"
+		# 	# test of quest system part1
+		# 	test_quest.start()
+		# 	Ren.say({"what": "For test quest system now will you start test quest."})
+		# 	Ren.story_state = "qtest2"
 
-		"qtest2":
-			q.done()
-			Ren.say({"what": "And now test quest is done."})
-			Ren.story_state = "test play_anim"
+		# "qtest2":
+		# 	test_quest.done()
+		# 	Ren.say({"what": "And now test quest is done."})
+		# 	Ren.story_state = "test play_anim"
 
 
-		"test play_anim":
+		# "test play_anim":
 			Ren.play_anim("TestAnimPlayer", "test", false)
 			Ren.say({"who":"test", "what":"test of simple anim"})
 			Ren.story_state = "test dict"
@@ -56,7 +53,6 @@ func story(dialog_name):
 			
 		"test variables 0":
 			## example of updating some Ren.variable
-			test_var = Ren.define("test_var", 1)
 			Ren.say({"what":"now test_var = [test_var]"})
 			Ren.story_state = "test variables 1"
 

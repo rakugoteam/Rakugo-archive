@@ -1,7 +1,7 @@
 extends Node
 
 export (bool) var debug_on = true
-export(bool) var debug_inti = true
+export (bool) var debug_inti = true
 export (String) var save_folder = "saves"
 export (String) var save_password = "Ren"
 export (String, DIR) var scenes_dir = "res://scenes/examples/"
@@ -16,6 +16,7 @@ var current_dialog_name = ""
 var _scene = null
 var history = [] # [{"state":story_state, "statement":{"type":type, "kwargs": kwargs}}]
 var global_history = [] # [{"state":story_state, "statement":{"type":type, "kwargs": kwargs}}]
+var prev_story_state = ""
 var variables = {
 	"version":{"type":"text", "value":"0.9.6"},
 	"test_bool":{"type":"var", "value":false},
@@ -31,10 +32,14 @@ var skip_auto = false
 var current_node = null
 var skip_types = ["say", "show", "hide"]
 var file = File.new()
+var loading_in_progress = false
+var started = false
+var quests = [] # list of all quest
 
 const _CHR		= preload("nodes/character.gd")
 const _VAR		= preload("ren_var.gd")
-const _QUEST	= preload("quest.gd")
+const _QUEST	= preload("RPGSystem/quest.gd")
+const _SUBQ		= preload("RPGSystem/subquest.gd")
 onready var timer = $Timer
 
 var story_state setget _set_story_state, _get_story_state
@@ -136,8 +141,24 @@ func node_link(node, node_id = node.name):
 # 	return get_node(node)
 
 # func get_node(node_id):
-# 	var n = get_var(node_id).v
-# 	return get_node(n)
+# 	var p = get_var(node_id).v
+# 	return get_node(p)
+
+## add/overwrite global subquest that Ren will see
+## and returns it as RenSubQuest for easy use
+## possible kwargs: "who", "title", "description", "optional", "state", "subquests"
+func subquest(var_name, value = {}):
+	var sq = get_subquest(var_name)
+	$Def.define(variables, var_name, sq.kwargs, "subquest")
+	sq.set_kwargs(value)
+	var_changed(var_name)
+	return sq
+
+## returns exiting Ren subquest as RenSubQuest for easy use
+func get_subquest(var_name):
+	var sq = _SUBQ.new()
+	sq._name = var_name
+	return sq
 
 ## add/overwrite global quest that Ren will see
 ## and returns it as RenQuest for easy use
@@ -147,6 +168,7 @@ func quest(var_name, value = {}):
 	$Def.define(variables, var_name, q.kwargs, "quest")
 	q.set_kwargs(value)
 	var_changed(var_name)
+	quests.append(var_name)
 	return q
 
 ## returns exiting Ren quest as RenQuest for easy use
@@ -215,6 +237,7 @@ func play_anim(node_id, anim_name, reset = true):
 	_set_statement($PlayAnim, kwargs)
 
 func _set_story_state(state):
+	prev_story_state = _get_story_state()
 	define("story_state", state)
 
 func _get_story_state():
@@ -227,9 +250,10 @@ func start():
 	current_id = 0
 	local_id = 0
 	story_step()
+	started = true
 
 
-func savefile(save_name="quick"):
+func savefile(save_name = "quick"):
 	$Persistence.folder_name = save_folder
 	$Persistence.password = save_password
 
@@ -244,7 +268,7 @@ func savefile(save_name="quick"):
 	for i in range(variables.size()):
 		var k = variables.keys()[i]
 		var v = variables.values()[i]
-		if v.type in ["node", "character"]:
+		if v.type in ["character"]:
 			vars_to_save[k] = {"type":v.type, "value":inst2dict(v.value)}
 		else:
 			vars_to_save[k] = v
@@ -257,13 +281,14 @@ func savefile(save_name="quick"):
 	data["local_id"] = local_id
 	data["scene"] = _scene
 	data["dialog_name"] = current_dialog_name
-	data["state"] = _get_story_state()
+	data["state"] = prev_story_state #_get_story_state() # it must be this way
 	
 	var result = $Persistence.save_data(save_name)
 	prints("save data to:", save_name)
 	return result
 	
-func loadfile(save_name="quick"):
+func loadfile(save_name = "quick"):
+	loading_in_progress = true
 	$Persistence.folder_name = save_folder
 	$Persistence.password = save_password
 	
@@ -279,7 +304,7 @@ func loadfile(save_name="quick"):
 	for i in range(vars_to_load.size()):
 		var k = vars_to_load.keys()[i]
 		var v = vars_to_load.values()[i]
-		if v.type in ["node", "character"]:
+		if v.type in ["character"]:
 			var properties = v.value
 			var obj = variables[k].value
 
@@ -337,25 +362,35 @@ func jump(
 	change = true,
 	from_save = false):
 
+	if not from_save and loading_in_progress:
+		return
+
 	local_id = 0
 	current_dialog_name = dialog_name
+	
 	_set_story_state(state) # it must be this way
 	
 	if from_save:
 		_scene = path_to_scene
 	else:
 		_scene = scenes_dir + path_to_scene + ".tscn"
-
+	
 	if debug_on:
 		prints("jump to scene:", _scene, "with dialog:", dialog_name, "from:", state)
 
-	if not change:
-		return
+	if change:
+		if current_node != null:
+			current_node.queue_free()
+		
+		var lscene = load(_scene)
+		current_node = lscene.instance()
+		get_tree().get_root().add_child(current_node)
 
-	current_node.queue_free()
-	var lscene = load(_scene)
-	current_node = lscene.instance()
-	get_tree().get_root().add_child(current_node)
+	if loading_in_progress:
+		loading_in_progress = false
+	
+	if started:
+		Ren.story_step()
 
 # Data related to the framework configuration.
 func config_data():
@@ -365,7 +400,6 @@ func config_data():
 	# If not have version data, data not exist.
 	if not config.has("Version"):
 		# Create config data
-		#
 		
 		# This is useful in the case of updates.
 		config["Version"] = 1 # Integer number
