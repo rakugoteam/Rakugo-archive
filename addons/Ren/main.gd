@@ -264,12 +264,18 @@ func savefile(save_name = "quick"):
 	for i in range(variables.size()):
 		var k = variables.keys()[i]
 		var v = variables.values()[i]
-		if v.type in ["character"]:
+		
+		if debug_on:
+			prints(k, v)
+		
+		if v.type == "character":
 			vars_to_save[k] = {"type":v.type, "value":inst2dict(v.value)}
+		elif v.type == "subquest":
+			vars_to_save[k] = {"type":v.type, "value":v.value.subquest2dict()}
+		elif v.type == "quest":
+			vars_to_save[k] = {"type":v.type, "value":v.value.quest2dict()}
 		else:
 			vars_to_save[k] = v
-
-		prints(k, v)
 		
 	data["variables"] = vars_to_save
 
@@ -300,7 +306,7 @@ func loadfile(save_name = "quick"):
 	for i in range(vars_to_load.size()):
 		var k = vars_to_load.keys()[i]
 		var v = vars_to_load.values()[i]
-		if v.type in ["character"]:
+		if v.type == "character":
 			var properties = v.value
 			var obj = variables[k].value
 
@@ -310,12 +316,24 @@ func loadfile(save_name = "quick"):
 				
 				if pk in obj.get_property_list():
 					obj.set(pk, pv)
+		
+		elif v.type == "subquest":
+			var subq = _SUBQ.new()
+			subq.dict2subquest(v.value)
+			variables[k] = {"type":v.type, "value":subq}
+		
+		elif v.type == "quest":
+			var q = _QUEST.new()
+			q.dict2quest(v.value)
+			variables[k] = {"type":v.type, "value":q}
+		
 		else:
 			variables[k] = v
 
 		prints(k, v)
 		var_changed(k)
-	
+		
+	started = true
 	jump(data["scene"], data["dialog_name"], data["state"], true, true)
 
 	current_id = data["id"]

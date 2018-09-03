@@ -47,8 +47,7 @@ func quest2dict():
 	
 	var saved_subquests = []
 	for subq in subquests:
-		var saved_subq = inst2dict(subq)
-		saved_subquests.append(saved_subq)
+		saved_subquests.append(subq.quest_id)
 	
 	dict["subquests"] = saved_subquests
 	return dict
@@ -59,12 +58,12 @@ func quest2dict():
 func dict2quest(dict):
 	dict2subquest(dict)
 	if not dict.has("subquests"):
-		return 
+		return
 	
 	subquests = []
-	for subq in dict["subquest"]:
-		var new_subq = _SUBQ.new()
-		new_subq.dict2subquest(subq)
+	for id in dict["subquests"]:
+		var subquest = Ren.get_subquest(id)
+		subquests.append(subquest)
 
 
 func add_rewards(reward):
