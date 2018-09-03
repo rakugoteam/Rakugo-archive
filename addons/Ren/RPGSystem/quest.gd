@@ -1,19 +1,12 @@
-extends Object # "ren_var.gd" # idk why ren_var.gd :S
+extends "subquest.gd"
 
-var who = "ID of quest giver" setget _set_who, _get_who
-var title = "Quest Title" setget _set_title, _get_title
-var description = "Overall description of quest." setget _set_title, _get_title
-var subquests = [] setget , _get_subquests
-var rewards = [] setget , _get_rewards # Maybe we need a Object Reward
-
-enum {STATE_AVAILABLE, STATE_NOT_AVAILABLE, STATE_IN_PROGRESS, STATE_DONE, STATE_FAIL}
-var state = STATE_AVAILABLE setget _set_state, _get_state
+const _SUBQ		= preload("subquest.gd")
+var subquests	= [] setget , _get_subquests
+var rewards		= [] setget , _get_rewards # Maybe we need a Object Reward
 
 signal start_quest
 signal done_quest # when all quests is done
-signal done_subquest # when one quest is done
 signal fail_quest # when fail the quest (all no optional quest)
-signal fail_subquest # when fail a subquest
 
 # begin quest
 func start():
@@ -21,35 +14,11 @@ func start():
 	emit_signal("start_quest")
 	Ren.notifiy("You begin \"" + title + "\"")
 
-func _set_who(who_id):
-	who = who_id
-
-func _get_who():
-	return who
-
-func _set_title(val):
-	title = val
-
-func _get_title():
-	return title
-
-func _set_des(val):
-	description = val
-
-func _get_des():
-	return description
-
-func _set_state(val):
-	state = val
-
-func _get_state():
-	return state
-
-# he get a subquest 
+# it get a subquest
 func _add_subquest(subquest):
 	subquest.append(subquest)
 	subquest.connect("done_subquest", self, "_on_done_subquest")
-	subquest.connect("fail_subquest", self, "_on_fail_subquest")
+	subquest.connect("fail_subquest", self, "_on_fail_subquest", [subquest])
 
 func _get_subquests(index):
 	return subquests[index]
@@ -64,21 +33,39 @@ func finish():
 		emit_signal("fail_quest")
 
 func is_all_subquest_completed():
-	for subquest in subquests:
-		if not subquest.is_done() and not subquest.is_optional():
+	for subq in subquests:
+		var is_done_and_opt = subq.is_done() and subq.is_optional()
+		if not is_done_and_opt:
 			return false
 			
 	return true
 
-# Return the quest with his subquest in a dictionary.
+# Return the quest with his subquest as dictionary.
 # This is util for a save with PersistenceNode
 func quest2dict():
-	pass # NEEDIMPLEMENT
+	var dict = subquest2dict()
+	
+	var saved_subquests = []
+	for subq in subquests:
+		var saved_subq = inst2dict(subq)
+		saved_subquests.append(saved_subq)
+	
+	dict["subquests"] = saved_subquests
+	return dict
 
-# He get a dictionary with the full quest.
+
+# It get a dictionary with the full quest.
 # This is util for to use in run time.
 func dict2quest(dict):
-	pass # NEEDIMPLEMENT
+	dict2subquest(dict)
+	if not dict.has("subquests"):
+		return 
+	
+	subquests = []
+	for subq in dict["subquest"]:
+		var new_subq = _SUBQ.new()
+		new_subq.dict2subquest(subq)
+
 
 func add_rewards(reward):
 	rewards.append(reward)
@@ -92,8 +79,8 @@ func _on_done_subquest():
 	if is_all_subquest_completed():
 		emit_signal("done_quest")
 	
-func _on_fail_subquest():
+func _on_fail_subquest(subquest):
 	emit_signal("fail_subquest")
 	
-	if is_all_subquest_completed():
+	if not subquest.is_optional:
 		emit_signal("fail_quest")

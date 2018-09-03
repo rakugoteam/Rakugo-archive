@@ -148,34 +148,30 @@ func node_link(node, node_id = node.name):
 ## and returns it as RenSubQuest for easy use
 ## possible kwargs: "who", "title", "description", "optional", "state", "subquests"
 func subquest(var_name, value = {}):
-	var sq = get_subquest(var_name)
-	$Def.define(variables, var_name, sq.kwargs, "subquest")
-	sq.set_kwargs(value)
-	var_changed(var_name)
+	var sq = _SUBQ.new()
+	$Def.define(variables, var_name, sq, "subquest")
+	sq.dict2subquest(value)
+	sq.quest_id = var_name
 	return sq
 
 ## returns exiting Ren subquest as RenSubQuest for easy use
 func get_subquest(var_name):
-	var sq = _SUBQ.new()
-	sq._name = var_name
-	return sq
+	return variables[var_name]
 
 ## add/overwrite global quest that Ren will see
 ## and returns it as RenQuest for easy use
 ## possible kwargs: "who", "title", "description", "optional", "state", "subquests"
 func quest(var_name, value = {}):
-	var q = get_quest(var_name)
-	$Def.define(variables, var_name, q.kwargs, "quest")
-	q.set_kwargs(value)
-	var_changed(var_name)
+	var q = _QUEST.new()
+	$Def.define(variables, var_name, q, "quest")
+	q.dict2quest(value)
+	q.quest_id = var_name
 	quests.append(var_name)
 	return q
 
 ## returns exiting Ren quest as RenQuest for easy use
 func get_quest(var_name):
-	var q = _QUEST.new()
-	q._name = var_name
-	return q
+	return variables[var_name]
 
 func _set_statement(node, kwargs):
 	node.set_kwargs(kwargs)

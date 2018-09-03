@@ -35,7 +35,6 @@ func start():
 	state = STATE_IN_PROGRESS
 	Ren.notifiy("You begin \"" + title + "\"")
 
-
 func _set_title(new_title):
 	title = new_title
 	emit_signal("title_changed", new_title)
@@ -66,5 +65,25 @@ func fail():
 	state = STATE_FAIL
 	emit_signal("fail")
 
+# Return the subquest as dictionary.
+# This is util for a save with PersistenceNode
+func subquest2dict():
+	var dict = {}
+	dict["quest_id"]	= quest_id
+	dict["title"]		= title
+	dict["description"]	= description
+	dict["optional"]	= optional
+	dict["state"]		= state
+	return dict
 
-
+# It get a dictionary with the subquest.
+# This is util for to use in run time.
+func dict2subquest(dict):
+	if dict.has("quest_id"):
+		quest_id	= dict["quest_id"]
+	if dict.has("title"):
+		title		= dict["title"]
+	if dict.has("optional"):
+		optional	= dict["optional"]
+	if dict.has("state"):
+		state		= dict["state"]
