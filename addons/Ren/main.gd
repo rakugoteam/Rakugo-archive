@@ -324,15 +324,19 @@ func loadfile(save_name = "quick"):
 		
 		elif v.type == "quest":
 			var q = _QUEST.new()
-			q.dict2quest(v.value)
+			q.dict2subquest(v.value)
 			variables[k] = {"type":v.type, "value":q}
+			quests.append(q)
 		
 		else:
 			variables[k] = v
 
 		prints(k, v)
 		var_changed(k)
-		
+	
+	for q in quests:
+		q.fill_subquests(q.subquests)
+	
 	started = true
 	jump(data["scene"], data["dialog_name"], data["state"], true, true)
 

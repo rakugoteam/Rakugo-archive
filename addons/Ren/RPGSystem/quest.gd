@@ -44,14 +44,8 @@ func is_all_subquest_completed():
 # This is util for a save with PersistenceNode
 func quest2dict():
 	var dict = subquest2dict()
-	
-	var saved_subquests = []
-	for subq in subquests:
-		saved_subquests.append(subq.quest_id)
-	
-	dict["subquests"] = saved_subquests
+	dict["subquests"] = subquests2list_of_ids()
 	return dict
-
 
 # It get a dictionary with the full quest.
 # This is util for to use in run time.
@@ -61,10 +55,20 @@ func dict2quest(dict):
 		return
 	
 	subquests = []
-	for id in dict["subquests"]:
+	fill_subquests(dict["subquests"])
+
+# usefull for saveing
+func subquests2list_of_ids():
+	var list_of_ids = []
+	for subq in subquests:
+		saved_subquests.append(subq.quest_id)
+	return list_of_ids
+
+# usefull after loading quest
+func fill_subquests(list_of_subquests_ids):
+	for subq in list_of_subquests_ids:
 		var subquest = Ren.get_subquest(id)
 		subquests.append(subquest)
-
 
 func add_rewards(reward):
 	rewards.append(reward)
