@@ -1,0 +1,109 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://themes/new_gui/theme.tres" type="Theme" id=1]
+[ext_resource path="res://addons/Ren/nodes/ren_button.gd" type="Script" id=2]
+[ext_resource path="res://addons/Ren/icons/ren_button.svg" type="Texture" id=3]
+[ext_resource path="res://scenes/gui/quests-icons/available.png" type="Texture" id=4]
+[ext_resource path="res://scenes/gui/quests-icons/done.png" type="Texture" id=5]
+[ext_resource path="res://scenes/gui/quests-icons/fail.png" type="Texture" id=6]
+[ext_resource path="res://scenes/gui/quests-icons/in-progress.png" type="Texture" id=7]
+[ext_resource path="res://scenes/gui/quests-icons/opt.png" type="Texture" id=8]
+[ext_resource path="res://scenes/gui/quests-icons/opt-done.png" type="Texture" id=9]
+[ext_resource path="res://scenes/gui/quests-icons/opt-fail.png" type="Texture" id=10]
+[ext_resource path="res://scenes/gui/quests-icons/opt-in-progress.png" type="Texture" id=11]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": false,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "opt",
+"speed": 5.0
+} ]
+
+[node name="QuestButton" type="Button" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 347.0
+margin_bottom = 36.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = false
+align = 0
+script = ExtResource( 2 )
+_sections_unfolded = [ "Theme" ]
+__meta__ = {
+"_editor_icon": ExtResource( 3 )
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -16.5
+margin_bottom = 16.5
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 347.0
+margin_bottom = 33.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = "Quest Title"
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = "Quest Title"
+scroll_active = false
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+_sections_unfolded = [ "BBCode", "Size Flags", "Theme" ]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="HBoxContainer" index="1"]
+
+position = Vector2( 308.852, -1.07139 )
+scale = Vector2( 0.592357, 0.564193 )
+frames = SubResource( 1 )
+animation = "default"
+centered = false
+_sections_unfolded = [ "Transform" ]
+
+

@@ -1,6 +1,5 @@
 extends "subquest.gd"
 
-const _SUBQ		= preload("subquest.gd")
 var subquests	= [] setget , _get_subquests
 var rewards		= [] setget , _get_rewards # Maybe we need a Object Reward
 

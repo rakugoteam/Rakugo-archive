@@ -4,6 +4,7 @@ extends Node
 
 var test_var
 var test_quest
+var test_subquest
 
 func _ready():
 	Ren.connect("story_step", self, "story")
@@ -12,9 +13,12 @@ func _ready():
 	if Ren.current_node != self:
 		Ren.current_node = self
 	
-	test_quest = Ren.quest("testQuest")
+	test_quest = Ren.quest("test_quest")
 	test_quest.title = "Test Quest"
 	test_var = Ren.define("test_var", 1)
+	
+	test_quest = Ren.quest("test_subquest")
+	test_quest.title = "Test Subquest"
 
 func story(dialog_name):
 	if dialog_name != "example":

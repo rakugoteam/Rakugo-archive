@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/gui/Screens.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/Labels/TitleText.tscn" type="PackedScene" id=2]
@@ -10,7 +10,10 @@
 [ext_resource path="res://scenes/gui/Labels/slot.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/gui/History.gd" type="Script" id=9]
 [ext_resource path="res://scenes/gui/HistoryItem.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/examples/TestNodes.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/gui/QuestButton.tscn" type="PackedScene" id=11]
+[ext_resource path="res://addons/Ren/nodes/ren_label.gd" type="Script" id=12]
+[ext_resource path="res://addons/Ren/icons/ren_text_label.svg" type="Texture" id=13]
+[ext_resource path="res://scenes/examples/TestNodes.tscn" type="PackedScene" id=14]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -20,7 +23,7 @@ use_filter = false
 font_data = ExtResource( 7 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Screens" type="Control"]
+[node name="Screens" type="Control" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -43,8 +46,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 1027.0
-margin_bottom = 609.0
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 1028.0
+margin_bottom = 610.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -471,7 +476,204 @@ script = ExtResource( 9 )
 _sections_unfolded = [ "Size Flags", "custom_constants" ]
 HistoryItemTemplate = ExtResource( 10 )
 
-[node name="TestNodes" parent="." index="5" instance=ExtResource( 11 )]
+[node name="QuestsBox" type="VBoxContainer" parent="." index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 257.0
+margin_top = 36.0
+margin_right = 959.0
+margin_bottom = 545.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="QuestsBox" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 702.0
+margin_bottom = 46.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+alignment = 0
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="Title" type="Label" parent="QuestsBox/HBoxContainer2" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 349.0
+margin_bottom = 46.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+text = "Quests"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Size Flags", "custom_fonts" ]
+
+[node name="Title2" type="Label" parent="QuestsBox/HBoxContainer2" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 353.0
+margin_right = 702.0
+margin_bottom = 46.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 1 )
+text = "Description"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Size Flags", "custom_fonts" ]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="QuestsBox" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 50.0
+margin_right = 702.0
+margin_bottom = 509.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 0
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="ScrollContainer" type="ScrollContainer" parent="QuestsBox/HBoxContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 349.0
+margin_bottom = 459.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = true
+scroll_horizontal = 0
+scroll_vertical_enabled = true
+scroll_vertical = 0
+scroll_deadzone = 0
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="Quests" type="VBoxContainer" parent="QuestsBox/HBoxContainer/ScrollContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 349.0
+margin_bottom = 459.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 0
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="QuestButton" parent="QuestsBox/HBoxContainer/ScrollContainer/Quests" index="0" instance=ExtResource( 11 )]
+
+margin_right = 349.0
+margin_bottom = 34.0
+
+[node name="Quests2" type="VBoxContainer" parent="QuestsBox/HBoxContainer/ScrollContainer/Quests" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 38.0
+margin_right = 349.0
+margin_bottom = 459.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 0
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="QuestButton" parent="QuestsBox/HBoxContainer/ScrollContainer/Quests/Quests2" index="0" instance=ExtResource( 11 )]
+
+margin_right = 349.0
+margin_bottom = 34.0
+
+[node name="Description" type="RichTextLabel" parent="QuestsBox/HBoxContainer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 353.0
+margin_right = 702.0
+margin_bottom = 459.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = false
+bbcode_text = ""
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = ""
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+script = ExtResource( 12 )
+_sections_unfolded = [ "Size Flags" ]
+__meta__ = {
+"_editor_icon": ExtResource( 13 )
+}
+ren_text = ""
+
+[node name="TestNodes" parent="." index="6" instance=ExtResource( 14 )]
 
 visible = false
 

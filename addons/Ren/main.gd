@@ -306,6 +306,10 @@ func loadfile(save_name = "quick"):
 	for i in range(vars_to_load.size()):
 		var k = vars_to_load.keys()[i]
 		var v = vars_to_load.values()[i]
+
+		if debug_on:
+			prints(k, v)
+		
 		if v.type == "character":
 			var properties = v.value
 			var obj = variables[k].value
@@ -331,7 +335,6 @@ func loadfile(save_name = "quick"):
 		else:
 			variables[k] = v
 
-		prints(k, v)
 		var_changed(k)
 	
 	for q in quests:

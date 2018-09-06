@@ -1,47 +1,25 @@
-extends Button
+extends "ren_button.gd"
 
-export(NodePath) var node_path = NodePath()
-export(bool) var auto_resize_x = true
-export(bool) var auto_resize_y = true
-export(Color) var idle_node_color = Color(0.533333, 0.533333, 0.533333, 1)
-export(Color) var focus_node_color = Color(0, 0.506836, 0.675781, 1)
-export(Color) var hover_node_color = Color(0.877647, 0.882353, 0.887059, 1)
-export(Color) var pressed_node_color = Color(0, 0.6, 0.8, 1)
-export(Color) var disable_node_color = Color(0.533333, 0.533333, 0.498039, 0.533333)
+var quest
 
-onready var node = get_node(node_path)
+func setup(quest_id):
+	quest = Ren.get_quest(quest_id)
+	no_title_changed(quest.title)
+	on_optional_changed(quest.optional)
+	on_state_changed(quest.state)
 
+	quest.connect("title_changed", self, "on_title_changed")
+	quest.connect("optional_changed", self, "on_optional_changed")
+	quest.connect("state_changed", self, "on_state_changed")
 
-func _ready():
-	connect("focus_entered", self, "_on_focus")
-	connect("focus_exited", self, "_on_idle")
-	connect("mouse_entered", self, "_on_hover")
-	connect("mouse_exited", self, "_on_idle")
-	connect("pressed", self, "_on_pressed")
-	connect("resized", self, "_on_resized")
+func on_title_changed(new_title):
+	node_to_change.text = quest.title
 
-func _on_resized():
-	if auto_resize_x:
-		node.rect_size.x = rect_size.x
-	
-	if auto_resize_y:
-		node.rect_size.y = rect_size.y
-
-func _on_idle():
-	node.add_color_override("default_color", idle_node_color)
-
-func _on_focus():
-	node.add_color_override("default_color", focus_node_color)
-
-func _on_hover():
-	node.add_color_override("default_color", hover_node_color)
-
-func _on_pressed():
-	node.add_color_override("default_color", pressed_node_color)
-
-func set_disabled(value):
-	.set_disabled(value)
-	if value:
-		node.add_color_override("default_color", disable_node_color)
+func on_optional_changed(opt):
+	if opt:
+		$AnimatedSprite.animation = "opt"
 	else:
-		_on_idle()
+		$AnimatedSprite.animation = "default"
+
+func on_state_changed(new_state):
+	$AnimatedSprite.frame = new_state - 1

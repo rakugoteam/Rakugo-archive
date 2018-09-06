@@ -6,8 +6,7 @@ var description = "Overall description of quest." setget _set_title, _get_title
 # is this subquest needed for finish whole quest
 var optional = false setget _set_optional, _get_optional
 
-# it can be "available", "not available", "in progress", "done", "fail"
-enum {STATE_AVAILABLE, STATE_NOT_AVAILABLE, STATE_IN_PROGRESS, STATE_DONE, STATE_FAIL}
+enum {STATE_NOT_AVAILABLE, STATE_AVAILABLE, STATE_IN_PROGRESS, STATE_DONE, STATE_FAIL}
 var state = STATE_AVAILABLE setget _set_state, _get_state
 
 signal done_subquest
