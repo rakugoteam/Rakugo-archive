@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/gui/Screens.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/Labels/TitleText.tscn" type="PackedScene" id=2]
@@ -10,9 +10,8 @@
 [ext_resource path="res://scenes/gui/Labels/slot.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/gui/History.gd" type="Script" id=9]
 [ext_resource path="res://scenes/gui/HistoryItem.tscn" type="PackedScene" id=10]
-[ext_resource path="res://addons/Ren/nodes/ren_label.gd" type="Script" id=11]
-[ext_resource path="res://addons/Ren/icons/ren_text_label.svg" type="Texture" id=12]
-[ext_resource path="res://scenes/examples/TestNodes.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/gui/QuestsBox.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/examples/TestNodes.tscn" type="PackedScene" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -22,7 +21,7 @@ use_filter = false
 font_data = ExtResource( 7 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Screens" type="Control" index="0"]
+[node name="Screens" type="Control"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -222,7 +221,17 @@ rect_clip_content = false
 text = "History"
 align = 0
 
-[node name="Continue" parent="Navigation/VBoxContainer" index="4" instance=ExtResource( 5 )]
+[node name="Quests" parent="Navigation/VBoxContainer" index="4" instance=ExtResource( 5 )]
+
+visible = false
+margin_top = 52.0
+margin_right = 140.0
+margin_bottom = 84.0
+rect_clip_content = false
+text = "Quests"
+align = 0
+
+[node name="Continue" parent="Navigation/VBoxContainer" index="5" instance=ExtResource( 5 )]
 
 margin_top = 72.0
 margin_right = 140.0
@@ -231,7 +240,7 @@ rect_clip_content = false
 text = "Continue"
 align = 0
 
-[node name="Load" parent="Navigation/VBoxContainer" index="5" instance=ExtResource( 5 )]
+[node name="Load" parent="Navigation/VBoxContainer" index="6" instance=ExtResource( 5 )]
 
 margin_top = 124.0
 margin_right = 140.0
@@ -240,7 +249,7 @@ rect_clip_content = false
 text = "Load"
 align = 0
 
-[node name="Save" parent="Navigation/VBoxContainer" index="6" instance=ExtResource( 5 )]
+[node name="Save" parent="Navigation/VBoxContainer" index="7" instance=ExtResource( 5 )]
 
 visible = false
 margin_top = 108.0
@@ -250,7 +259,7 @@ rect_clip_content = false
 text = "Save"
 align = 0
 
-[node name="Preferences" parent="Navigation/VBoxContainer" index="7" instance=ExtResource( 5 )]
+[node name="Preferences" parent="Navigation/VBoxContainer" index="8" instance=ExtResource( 5 )]
 
 margin_top = 176.0
 margin_right = 140.0
@@ -259,7 +268,7 @@ rect_clip_content = false
 text = "Preferences"
 align = 0
 
-[node name="About" parent="Navigation/VBoxContainer" index="8" instance=ExtResource( 5 )]
+[node name="About" parent="Navigation/VBoxContainer" index="9" instance=ExtResource( 5 )]
 
 margin_top = 228.0
 margin_right = 140.0
@@ -268,7 +277,7 @@ rect_clip_content = false
 text = "About"
 align = 0
 
-[node name="Help" parent="Navigation/VBoxContainer" index="9" instance=ExtResource( 5 )]
+[node name="Help" parent="Navigation/VBoxContainer" index="10" instance=ExtResource( 5 )]
 
 margin_top = 280.0
 margin_right = 140.0
@@ -277,7 +286,7 @@ rect_clip_content = false
 text = "Help"
 align = 0
 
-[node name="Quit" parent="Navigation/VBoxContainer" index="10" instance=ExtResource( 5 )]
+[node name="Quit" parent="Navigation/VBoxContainer" index="11" instance=ExtResource( 5 )]
 
 margin_top = 332.0
 margin_right = 140.0
@@ -295,7 +304,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 257.0
-margin_top = 36.0
+margin_top = 13.0
 margin_right = 959.0
 margin_bottom = 545.0
 rect_pivot_offset = Vector2( 0, 0 )
@@ -331,14 +340,13 @@ _sections_unfolded = [ "custom_fonts" ]
 
 [node name="GridContainer" type="GridContainer" parent="SlotBox" index="1"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 50.0
 margin_right = 702.0
-margin_bottom = 509.0
+margin_bottom = 532.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -351,44 +359,44 @@ _sections_unfolded = [ "Grow Direction", "Rect", "Size Flags" ]
 [node name="1" parent="SlotBox/GridContainer" index="0" instance=ExtResource( 8 )]
 
 margin_right = 231.0
-margin_bottom = 227.0
+margin_bottom = 239.0
 rect_clip_content = false
 
 [node name="2" parent="SlotBox/GridContainer" index="1" instance=ExtResource( 8 )]
 
 margin_left = 235.0
 margin_right = 466.0
-margin_bottom = 227.0
+margin_bottom = 239.0
 rect_clip_content = false
 
 [node name="3" parent="SlotBox/GridContainer" index="2" instance=ExtResource( 8 )]
 
 margin_left = 470.0
 margin_right = 701.0
-margin_bottom = 227.0
+margin_bottom = 239.0
 rect_clip_content = false
 
 [node name="4" parent="SlotBox/GridContainer" index="3" instance=ExtResource( 8 )]
 
-margin_top = 231.0
+margin_top = 243.0
 margin_right = 231.0
-margin_bottom = 458.0
+margin_bottom = 482.0
 rect_clip_content = false
 
 [node name="5" parent="SlotBox/GridContainer" index="4" instance=ExtResource( 8 )]
 
 margin_left = 235.0
-margin_top = 231.0
+margin_top = 243.0
 margin_right = 466.0
-margin_bottom = 458.0
+margin_bottom = 482.0
 rect_clip_content = false
 
 [node name="6" parent="SlotBox/GridContainer" index="5" instance=ExtResource( 8 )]
 
 margin_left = 470.0
-margin_top = 231.0
+margin_top = 243.0
 margin_right = 701.0
-margin_bottom = 458.0
+margin_bottom = 482.0
 rect_clip_content = false
 
 [node name="HistoryBox" type="VBoxContainer" parent="." index="4"]
@@ -400,7 +408,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 257.0
-margin_top = 36.0
+margin_top = 11.0
 margin_right = 959.0
 margin_bottom = 545.0
 rect_pivot_offset = Vector2( 0, 0 )
@@ -441,7 +449,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 50.0
 margin_right = 702.0
-margin_bottom = 509.0
+margin_bottom = 534.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
 mouse_filter = 0
@@ -462,7 +470,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 702.0
-margin_bottom = 459.0
+margin_bottom = 484.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -475,251 +483,15 @@ script = ExtResource( 9 )
 _sections_unfolded = [ "Size Flags", "custom_constants" ]
 HistoryItemTemplate = ExtResource( 10 )
 
-[node name="QuestsBox" type="VBoxContainer" parent="." index="5"]
+[node name="QuestsBox" parent="." index="5" instance=ExtResource( 11 )]
 
-editor/display_folded = true
 visible = false
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 257.0
-margin_top = 36.0
-margin_right = 959.0
-margin_bottom = 545.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-alignment = 0
+margin_left = 267.0
+margin_top = 17.0
+margin_right = 969.0
+margin_bottom = 572.0
 
-[node name="Title" type="Label" parent="QuestsBox" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 702.0
-margin_bottom = 46.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 1
-custom_fonts/font = SubResource( 1 )
-text = "Quests"
-align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Size Flags", "custom_fonts" ]
-
-[node name="HBoxContainer" type="HBoxContainer" parent="QuestsBox" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 50.0
-margin_right = 702.0
-margin_bottom = 509.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 0
-_sections_unfolded = [ "Size Flags" ]
-
-[node name="ScrollContainer" type="ScrollContainer" parent="QuestsBox/HBoxContainer" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 349.0
-margin_bottom = 459.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = true
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-scroll_horizontal_enabled = true
-scroll_horizontal = 0
-scroll_vertical_enabled = true
-scroll_vertical = 0
-scroll_deadzone = 0
-_sections_unfolded = [ "Size Flags" ]
-
-[node name="Quests" type="VBoxContainer" parent="QuestsBox/HBoxContainer/ScrollContainer" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 349.0
-margin_bottom = 459.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 0
-_sections_unfolded = [ "Size Flags" ]
-
-[node name="HBoxContainer" type="HBoxContainer" parent="QuestsBox/HBoxContainer" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 353.0
-margin_right = 702.0
-margin_bottom = 459.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 0
-_sections_unfolded = [ "Size Flags" ]
-
-[node name="VBoxContainer" type="VBoxContainer" parent="QuestsBox/HBoxContainer/HBoxContainer" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 349.0
-margin_bottom = 459.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 0
-_sections_unfolded = [ "Size Flags" ]
-
-[node name="Title2" type="Label" parent="QuestsBox/HBoxContainer/HBoxContainer/VBoxContainer" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 349.0
-margin_bottom = 46.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 1
-custom_fonts/font = SubResource( 1 )
-text = "Current Quests"
-align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Size Flags", "custom_fonts" ]
-
-[node name="Description" type="RichTextLabel" parent="QuestsBox/HBoxContainer/HBoxContainer/VBoxContainer" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 50.0
-margin_right = 349.0
-margin_bottom = 252.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = true
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-bbcode_enabled = false
-bbcode_text = ""
-visible_characters = -1
-percent_visible = 1.0
-meta_underlined = true
-tab_size = 4
-text = ""
-scroll_active = true
-scroll_following = false
-selection_enabled = false
-override_selected_font_color = false
-script = ExtResource( 11 )
-_sections_unfolded = [ "Size Flags" ]
-__meta__ = {
-"_editor_icon": ExtResource( 12 )
-}
-ren_text = ""
-
-[node name="HBoxContainer" type="HBoxContainer" parent="QuestsBox/HBoxContainer/HBoxContainer/VBoxContainer" index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 256.0
-margin_right = 349.0
-margin_bottom = 459.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 0
-_sections_unfolded = [ "Size Flags" ]
-
-[node name="ScrollContainer2" type="ScrollContainer" parent="QuestsBox/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 349.0
-margin_bottom = 203.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = true
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-scroll_horizontal_enabled = true
-scroll_horizontal = 0
-scroll_vertical_enabled = true
-scroll_vertical = 0
-scroll_deadzone = 0
-_sections_unfolded = [ "Size Flags" ]
-
-[node name="Subquests" type="VBoxContainer" parent="QuestsBox/HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer2" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 349.0
-margin_bottom = 203.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 0
-_sections_unfolded = [ "Size Flags" ]
-
-[node name="TestNodes" parent="." index="6" instance=ExtResource( 13 )]
+[node name="TestNodes" parent="." index="6" instance=ExtResource( 12 )]
 
 visible = false
 
@@ -728,6 +500,8 @@ visible = false
 [connection signal="pressed" from="Navigation/VBoxContainer/Return" to="." method="_on_Return_pressed"]
 
 [connection signal="pressed" from="Navigation/VBoxContainer/History" to="." method="_on_History_pressed"]
+
+[connection signal="pressed" from="Navigation/VBoxContainer/Quests" to="." method="_on_Quests_pressed"]
 
 [connection signal="pressed" from="Navigation/VBoxContainer/Continue" to="." method="_on_Continue_pressed"]
 

@@ -60,13 +60,13 @@ func dict2quest(dict):
 func subquests2list_of_ids():
 	var list_of_ids = []
 	for subq in subquests:
-		saved_subquests.append(subq.quest_id)
+		list_of_ids.append(subq.quest_id)
 	return list_of_ids
 
 # usefull after loading quest
 func fill_subquests(list_of_subquests_ids):
 	for subq in list_of_subquests_ids:
-		var subquest = Ren.get_subquest(id)
+		var subquest = Ren.get_subquest(subq)
 		subquests.append(subquest)
 
 func add_rewards(reward):

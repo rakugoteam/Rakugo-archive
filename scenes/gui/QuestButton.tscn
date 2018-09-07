@@ -1,36 +1,31 @@
 [gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://themes/new_gui/theme.tres" type="Theme" id=1]
-[ext_resource path="res://scenes/gui/quests-icons/available.png" type="Texture" id=2]
-[ext_resource path="res://scenes/gui/quests-icons/done.png" type="Texture" id=3]
-[ext_resource path="res://scenes/gui/quests-icons/fail.png" type="Texture" id=4]
-[ext_resource path="res://scenes/gui/quests-icons/in-progress.png" type="Texture" id=5]
-[ext_resource path="res://scenes/gui/quests-icons/opt.png" type="Texture" id=6]
-[ext_resource path="res://scenes/gui/quests-icons/opt-done.png" type="Texture" id=7]
-[ext_resource path="res://scenes/gui/quests-icons/opt-fail.png" type="Texture" id=8]
-[ext_resource path="res://scenes/gui/quests-icons/opt-in-progress.png" type="Texture" id=9]
+[ext_resource path="res://addons/Ren/nodes/ren_quest_button.gd" type="Script" id=2]
+[ext_resource path="res://scenes/gui/quests-icons/available.png" type="Texture" id=3]
+[ext_resource path="res://scenes/gui/quests-icons/done.png" type="Texture" id=4]
+[ext_resource path="res://scenes/gui/quests-icons/fail.png" type="Texture" id=5]
+[ext_resource path="res://scenes/gui/quests-icons/in-progress.png" type="Texture" id=6]
+[ext_resource path="res://scenes/gui/quests-icons/opt.png" type="Texture" id=7]
+[ext_resource path="res://scenes/gui/quests-icons/opt-done.png" type="Texture" id=8]
+[ext_resource path="res://scenes/gui/quests-icons/opt-fail.png" type="Texture" id=9]
+[ext_resource path="res://scenes/gui/quests-icons/opt-in-progress.png" type="Texture" id=10]
 
-[sub_resource type="ViewportTexture" id=1]
-
-resource_local_to_scene = true
-flags = 0
-viewport_path = NodePath("Viewport")
-
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": false,
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
 "loop": true,
 "name": "opt",
 "speed": 5.0
 } ]
 
-[node name="QuestButton" type="TextureButton" index="0"]
+[node name="QuestButton" type="Button" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -43,16 +38,25 @@ rect_clip_content = false
 focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
+size_flags_horizontal = 3
 size_flags_vertical = 1
 theme = ExtResource( 1 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = SubResource( 1 )
-expand = true
-_sections_unfolded = [ "Textures", "Theme" ]
+flat = false
+align = 1
+script = ExtResource( 2 )
+_sections_unfolded = [ "Size Flags", "Textures", "Theme" ]
+idle_node_color = Color( 0.533333, 0.533333, 0.533333, 1 )
+focus_node_color = Color( 0, 0.506836, 0.675781, 1 )
+hover_node_color = Color( 0.877647, 0.882353, 0.887059, 1 )
+pressed_node_color = Color( 0, 0.6, 0.8, 1 )
+disable_node_color = Color( 0.533333, 0.533333, 0.498039, 0.533333 )
+node_path = NodePath("RichTextLabel")
+auto_resize_x = true
+auto_resize_y = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." index="0"]
 
@@ -81,11 +85,11 @@ selection_enabled = false
 override_selected_font_color = false
 _sections_unfolded = [ "BBCode", "Size Flags" ]
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="RichTextLabel" index="1"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="1"]
 
 position = Vector2( 327.601, 18.4805 )
 scale = Vector2( 0.586735, 0.563875 )
-frames = SubResource( 2 )
+frames = SubResource( 1 )
 animation = "default"
 
 

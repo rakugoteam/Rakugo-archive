@@ -39,18 +39,19 @@ func _on_visibility_changed():
 		return
 	
 	var i = 0
-	if temp_history != Ren.history:
-
-		for hi_item in Ren.history:
-			var type = hi_item.statement.type
-			var kwargs = hi_item.statement.kwargs
-			if i == get_child_count():
-				add_history_item(type, kwargs)
-			
-			elif temp_history[i] != Ren.history[i]:
-				set_history_item(get_child(i), type, kwargs)
-			
-			i += 1
-			
-		temp_history = Ren.history.duplicate()
+	if temp_history == Ren.history:
+		return
+	
+	for hi_item in Ren.history:
+		var type = hi_item.statement.type
+		var kwargs = hi_item.statement.kwargs
+		if i == get_child_count():
+			add_history_item(type, kwargs)
+		
+		elif temp_history[i] != Ren.history[i]:
+			set_history_item(get_child(i), type, kwargs)
+		
+		i += 1
+		
+	temp_history = Ren.history.duplicate()
 		

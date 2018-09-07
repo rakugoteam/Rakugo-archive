@@ -1,10 +1,15 @@
 extends "ren_button.gd"
 
 var quest
+var quest_label
+var quest_des_gui
 
-func setup(quest_id):
-	quest = Ren.get_quest(quest_id)
-	no_title_changed(quest.title)
+func _ready():
+	node_to_change = $RichTextLabel
+
+func setup(quest_to_use):
+	quest = quest_to_use
+	on_title_changed(quest.title)
 	on_optional_changed(quest.optional)
 	on_state_changed(quest.state)
 
@@ -22,4 +27,4 @@ func on_optional_changed(opt):
 		$AnimatedSprite.animation = "default"
 
 func on_state_changed(new_state):
-	$AnimatedSprite.frame = new_state - 1
+	$AnimatedSprite.frame = abs(new_state - 1)

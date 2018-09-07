@@ -4,7 +4,6 @@ onready var label = RichTextLabel.new()
 var id = -1
 
 func _ready():
-	._ready()
 	disconnect("pressed", self, "_on_pressed")
 	connect("pressed", self, "_on_pressed", [], CONNECT_ONESHOT)
 	label.mouse_filter = MOUSE_FILTER_IGNORE

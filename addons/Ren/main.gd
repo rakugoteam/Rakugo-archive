@@ -34,7 +34,7 @@ var skip_types = ["say", "show", "hide"]
 var file = File.new()
 var loading_in_progress = false
 var started = false
-var quests = [] # list of all quest
+var quests = [] # list of all quests ids
 
 const _CHR		= preload("nodes/character.gd")
 const _VAR		= preload("ren_var.gd")
@@ -156,7 +156,7 @@ func subquest(var_name, value = {}):
 
 ## returns exiting Ren subquest as RenSubQuest for easy use
 func get_subquest(var_name):
-	return variables[var_name]
+	return variables[var_name].value
 
 ## add/overwrite global quest that Ren will see
 ## and returns it as RenQuest for easy use
@@ -171,7 +171,7 @@ func quest(var_name, value = {}):
 
 ## returns exiting Ren quest as RenQuest for easy use
 func get_quest(var_name):
-	return variables[var_name]
+	return variables[var_name].value
 
 func _set_statement(node, kwargs):
 	node.set_kwargs(kwargs)

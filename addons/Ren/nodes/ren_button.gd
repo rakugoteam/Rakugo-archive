@@ -6,7 +6,6 @@ export(bool) var auto_resize_y = true
 
 
 func _ready():
-	._ready()
 	node_to_change = get_node(node_path)
 
 func _on_resized():
