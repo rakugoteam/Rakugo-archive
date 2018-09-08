@@ -3,7 +3,7 @@ extends "ren_base_button.gd"
 export(Vector2) var sprite_rect = Vector2(64, 64)
 var quest
 var quest_label
-var quest_des_gui
+var quest_des_label
 
 func _ready():
 	node_to_change = $RichTextLabel
@@ -23,11 +23,14 @@ func setup(quest_to_use):
 	on_state_changed(quest.state)
 
 	quest.connect("title_changed", self, "on_title_changed")
+	quest.connect("description_changed", self, "on_description_changed")
 	quest.connect("optional_changed", self, "on_optional_changed")
 	quest.connect("state_changed", self, "on_state_changed")
 
 func on_title_changed(new_title):
-	$RichTextLabel.text = quest.title
+	$RichTextLabel.bbcode_text = quest.title
+	if pressed:
+		quest_label.text = quest.title
 
 func on_optional_changed(opt):
 	if opt:
@@ -37,3 +40,12 @@ func on_optional_changed(opt):
 
 func on_state_changed(new_state):
 	$AnimatedSprite.frame = abs(new_state - 1)
+
+func _on_pressed():
+	._on_pressed()
+	quest_label.text = quest.title
+	quest_des_label.bbcode_text = Ren.text_passer(quest.description)
+
+func on_description_changed(new_des):
+	if pressed:
+		quest_des_label.bbcode_text = Ren.text_passer(new_des)

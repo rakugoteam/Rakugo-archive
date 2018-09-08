@@ -25,7 +25,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="QuestButton" type="Button" index="0"]
+[node name="QuestButton" type="Button"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -41,7 +41,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 1
 theme = ExtResource( 1 )
-toggle_mode = false
+toggle_mode = true
 enabled_focus_mode = 2
 shortcut = null
 group = null
@@ -66,7 +66,7 @@ margin_right = 347.0
 margin_bottom = 36.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
-mouse_filter = 0
+mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -77,11 +77,11 @@ percent_visible = 1.0
 meta_underlined = true
 tab_size = 4
 text = "Quest Button"
-scroll_active = true
+scroll_active = false
 scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
-_sections_unfolded = [ "BBCode", "Size Flags" ]
+_sections_unfolded = [ "BBCode" ]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="1"]
 

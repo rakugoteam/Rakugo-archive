@@ -21,6 +21,7 @@ func _ready():
 	test_subquest = Ren.subquest("test_subquest")
 	test_subquest.title = "Test Subquest"
 	test_subquest.description = "Your first epic subquest."
+	test_subquest.optional = true
 	test_quest.add_subquest(test_subquest)
 
 
@@ -37,7 +38,7 @@ func story(dialog_name):
 			Ren.story_state = "qtest2"
 
 		"qtest2":
-			test_quest.done()
+			test_quest.finish()
 			Ren.say({"what": "And now test quest is done."})
 			Ren.story_state = "test play_anim"
 

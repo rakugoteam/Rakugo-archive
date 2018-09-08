@@ -21,7 +21,7 @@ use_filter = false
 font_data = ExtResource( 7 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Screens" type="Control"]
+[node name="Screens" type="Control" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -486,10 +486,10 @@ HistoryItemTemplate = ExtResource( 10 )
 [node name="QuestsBox" parent="." index="5" instance=ExtResource( 11 )]
 
 visible = false
-margin_left = 267.0
-margin_top = 17.0
-margin_right = 969.0
-margin_bottom = 572.0
+margin_left = 201.0
+margin_top = 2.0
+margin_right = 1025.0
+margin_bottom = 607.0
 
 [node name="TestNodes" parent="." index="6" instance=ExtResource( 12 )]
 
