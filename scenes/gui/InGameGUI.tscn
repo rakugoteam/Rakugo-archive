@@ -314,7 +314,7 @@ use_filter = true
 font_data = ExtResource( 13 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="InGameGUI" type="Control"]
+[node name="InGameGUI" type="Control" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -498,7 +498,6 @@ _sections_unfolded = [ "BBCode", "Rect", "Size Flags" ]
 
 [node name="Quick" type="HBoxContainer" parent="." index="4"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -521,7 +520,7 @@ __meta__ = {
 
 [node name="History" parent="Quick" index="0" instance=ExtResource( 8 )]
 
-margin_right = 110.0
+margin_right = 98.0
 margin_bottom = 32.0
 rect_clip_content = false
 size_flags_horizontal = 3
@@ -529,10 +528,21 @@ size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "History"
 
-[node name="Skip" parent="Quick" index="1" instance=ExtResource( 8 )]
+[node name="Quests" parent="Quick" index="1" instance=ExtResource( 8 )]
 
-margin_left = 114.0
-margin_right = 224.0
+margin_left = 102.0
+margin_right = 200.0
+margin_bottom = 32.0
+rect_clip_content = false
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+text = "Quests"
+
+[node name="Skip" parent="Quick" index="2" instance=ExtResource( 8 )]
+
+margin_left = 204.0
+margin_right = 302.0
 margin_bottom = 32.0
 rect_clip_content = false
 size_flags_horizontal = 3
@@ -540,10 +550,10 @@ size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Skip"
 
-[node name="Auto" parent="Quick" index="2" instance=ExtResource( 8 )]
+[node name="Auto" parent="Quick" index="3" instance=ExtResource( 8 )]
 
-margin_left = 228.0
-margin_right = 338.0
+margin_left = 306.0
+margin_right = 404.0
 margin_bottom = 32.0
 rect_clip_content = false
 size_flags_horizontal = 3
@@ -551,10 +561,10 @@ size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Auto"
 
-[node name="Save" parent="Quick" index="3" instance=ExtResource( 8 )]
+[node name="Save" parent="Quick" index="4" instance=ExtResource( 8 )]
 
-margin_left = 342.0
-margin_right = 452.0
+margin_left = 408.0
+margin_right = 506.0
 margin_bottom = 32.0
 rect_clip_content = false
 size_flags_horizontal = 3
@@ -562,10 +572,10 @@ size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Save"
 
-[node name="Load" parent="Quick" index="4" instance=ExtResource( 8 )]
+[node name="Load" parent="Quick" index="5" instance=ExtResource( 8 )]
 
-margin_left = 456.0
-margin_right = 566.0
+margin_left = 510.0
+margin_right = 608.0
 margin_bottom = 32.0
 rect_clip_content = false
 size_flags_horizontal = 3
@@ -573,10 +583,10 @@ size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Load"
 
-[node name="QSave" parent="Quick" index="5" instance=ExtResource( 8 )]
+[node name="QSave" parent="Quick" index="6" instance=ExtResource( 8 )]
 
-margin_left = 570.0
-margin_right = 680.0
+margin_left = 612.0
+margin_right = 710.0
 margin_bottom = 32.0
 rect_clip_content = false
 size_flags_horizontal = 3
@@ -584,10 +594,10 @@ size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Q. Save"
 
-[node name="QLoad" parent="Quick" index="6" instance=ExtResource( 8 )]
+[node name="QLoad" parent="Quick" index="7" instance=ExtResource( 8 )]
 
-margin_left = 684.0
-margin_right = 794.0
+margin_left = 714.0
+margin_right = 812.0
 margin_bottom = 32.0
 rect_clip_content = false
 size_flags_horizontal = 3
@@ -595,10 +605,10 @@ size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Q. Load"
 
-[node name="Prefs" parent="Quick" index="7" instance=ExtResource( 8 )]
+[node name="Prefs" parent="Quick" index="8" instance=ExtResource( 8 )]
 
-margin_left = 798.0
-margin_right = 908.0
+margin_left = 816.0
+margin_right = 914.0
 margin_bottom = 32.0
 rect_clip_content = false
 size_flags_horizontal = 3
@@ -606,9 +616,9 @@ size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Prefs"
 
-[node name="Quit" parent="Quick" index="8" instance=ExtResource( 8 )]
+[node name="Quit" parent="Quick" index="9" instance=ExtResource( 8 )]
 
-margin_left = 912.0
+margin_left = 918.0
 margin_right = 1024.0
 margin_bottom = 32.0
 rect_clip_content = false
@@ -617,21 +627,21 @@ size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Quit"
 
-[node name="SkipTimer" type="Timer" parent="Quick" index="9"]
+[node name="SkipTimer" type="Timer" parent="Quick" index="10"]
 
 process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = false
 
-[node name="AutoTimer" type="Timer" parent="Quick" index="10"]
+[node name="AutoTimer" type="Timer" parent="Quick" index="11"]
 
 process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = false
 
-[node name="InfoAnim" type="AnimationPlayer" parent="Quick" index="11"]
+[node name="InfoAnim" type="AnimationPlayer" parent="Quick" index="12"]
 
 editor/display_folded = true
 root_node = NodePath("..")
