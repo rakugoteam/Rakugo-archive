@@ -12,7 +12,7 @@ var current_quest_button
 func _ready():
 	connect("visibility_changed", self, "_on_visibility_changed")
 
-func add_quest_button(quest, place_to_add):
+func add_quest_button(quest, place_to_add, is_subquest = false):
 	if quest.state == quest.STATE_NOT_AVAILABLE:
 		return null
 
@@ -21,6 +21,7 @@ func add_quest_button(quest, place_to_add):
 	q_button.quest_label = quest_label
 	q_button.quest_des_label = quest_des_label
 	q_button.quests_box = self
+	q_button.is_subquest = is_subquest
 	place_to_add.add_child(q_button)
 	return q_button
 
@@ -33,23 +34,27 @@ func _on_visibility_changed():
 	
 	var i = 0
 	for quest_id in Ren.quests:
-		var quest = Ren.get_quest(quest_id)
+		if quest_id in temp_quests:
+			continue
 		
+		var quest = Ren.get_quest(quest_id)
 		var q_button = add_quest_button(quest, quests_box)
 		if i == quests_box.get_child_count():
 			if q_button == null:
 				continue
 		
+		temp_quests.append(quest_id)
 		if quest.subquests.empty():
 			continue
 		
 		var j = 0
 		var sub_box = VBoxContainer.new()
 		for subquest in quest.subquests:
-			var subq_button = add_quest_button(subquest, sub_box)
+			var subq_button = add_quest_button(subquest, sub_box, true)
 			if j == sub_box.get_child_count():
 				if subq_button == null:
 					continue
+				
 			j += 1
 		if sub_box.get_child_count() > 0:
 			subquests_box.add_child(sub_box)
@@ -57,9 +62,9 @@ func _on_visibility_changed():
 			sub_box.hide()
 		else:
 			sub_box.queue_free()
+		
 		i += 1
-
-	temp_quests = Ren.quests.duplicate()
+		
 
 
 

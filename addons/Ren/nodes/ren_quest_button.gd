@@ -6,6 +6,7 @@ var quest_label
 var quest_des_label
 var quest_sub_box
 var quests_box
+var is_subquest = false
 
 func _ready():
 	node_to_change = $RichTextLabel
@@ -47,8 +48,13 @@ func _on_pressed():
 	._on_pressed()
 	quest_label.text = quest.title
 	quest_des_label.bbcode_text = Ren.text_passer(quest.description)
+	if is_subquest:
+		return
+
 	if quests_box.current_quest_button != null:
-		quests_box.current_quest_button.quest_sub_box.hide()
+		if quests_box.current_quest_button.quest_sub_box != quest_sub_box:
+			quests_box.current_quest_button.quest_sub_box.hide()
+		
 	if quest_sub_box != null:
 		quest_sub_box.show()
 		quests_box.current_quest_button = self

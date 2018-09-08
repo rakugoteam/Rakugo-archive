@@ -25,7 +25,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="QuestButton" type="Button"]
+[node name="QuestButton" type="Button" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -89,5 +89,6 @@ position = Vector2( 327.601, 18.4805 )
 scale = Vector2( 0.586735, 0.563875 )
 frames = SubResource( 1 )
 animation = "default"
+_sections_unfolded = [ "Visibility" ]
 
 
