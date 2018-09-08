@@ -298,7 +298,8 @@ func loadfile(save_name = "quick"):
 	prints("load data from:", save_name)
 	if data == null:
 		return false
-
+	
+	quests.clear()
 	history = data["history"].duplicate()
 
 	var vars_to_load = data["variables"].duplicate()
@@ -330,15 +331,16 @@ func loadfile(save_name = "quick"):
 			var q = _QUEST.new()
 			q.dict2subquest(v.value)
 			variables[k] = {"type":v.type, "value":q}
-			quests.append(q)
+			quests.append(k)
 		
 		else:
 			variables[k] = v
 
 		var_changed(k)
 	
-	for q in quests:
-		q.fill_subquests(q.subquests)
+	for q_id in quests:
+		var q = get_quest(q_id)
+		q.subquests = q.get_subquests(q.subquests)
 	
 	started = true
 	jump(data["scene"], data["dialog_name"], data["state"], true, true)

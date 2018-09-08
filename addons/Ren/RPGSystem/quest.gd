@@ -64,10 +64,13 @@ func subquests2list_of_ids():
 	return list_of_ids
 
 # usefull after loading quest
-func fill_subquests(list_of_subquests_ids):
-	for subq in list_of_subquests_ids:
-		var subquest = Ren.get_subquest(subq)
-		subquests.append(subquest)
+func get_subquests(list_of_subquests_ids):
+	var new_subquests = []
+	for subq_id in list_of_subquests_ids:
+		var subquest = Ren.get_subquest(subq_id)
+		new_subquests.append(subquest)
+	
+	return new_subquests
 
 func add_rewards(reward):
 	rewards.append(reward)

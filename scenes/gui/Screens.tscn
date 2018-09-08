@@ -21,7 +21,7 @@ use_filter = false
 font_data = ExtResource( 7 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Screens" type="Control"]
+[node name="Screens" type="Control" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -195,7 +195,6 @@ size_flags_vertical = 1
 margin_top = 20.0
 margin_right = 140.0
 margin_bottom = 52.0
-rect_clip_content = false
 text = "Start"
 align = 0
 
@@ -205,7 +204,6 @@ visible = false
 margin_top = 431.0
 margin_right = 85.0
 margin_bottom = 465.0
-rect_clip_content = false
 text = "Return"
 align = 0
 
@@ -215,8 +213,6 @@ visible = false
 margin_top = 52.0
 margin_right = 140.0
 margin_bottom = 84.0
-rect_clip_content = false
-toggle_mode = true
 text = "History"
 align = 0
 
@@ -226,8 +222,6 @@ visible = false
 margin_top = 52.0
 margin_right = 140.0
 margin_bottom = 84.0
-rect_clip_content = false
-toggle_mode = true
 text = "Quests"
 align = 0
 
@@ -236,7 +230,6 @@ align = 0
 margin_top = 72.0
 margin_right = 140.0
 margin_bottom = 104.0
-rect_clip_content = false
 text = "Continue"
 align = 0
 
@@ -245,8 +238,6 @@ align = 0
 margin_top = 124.0
 margin_right = 140.0
 margin_bottom = 156.0
-rect_clip_content = false
-toggle_mode = true
 text = "Load"
 align = 0
 
@@ -256,8 +247,6 @@ visible = false
 margin_top = 108.0
 margin_right = 140.0
 margin_bottom = 142.0
-rect_clip_content = false
-toggle_mode = true
 text = "Save"
 align = 0
 
@@ -266,8 +255,6 @@ align = 0
 margin_top = 176.0
 margin_right = 140.0
 margin_bottom = 208.0
-rect_clip_content = false
-toggle_mode = true
 text = "Preferences"
 align = 0
 
@@ -276,8 +263,6 @@ align = 0
 margin_top = 228.0
 margin_right = 140.0
 margin_bottom = 260.0
-rect_clip_content = false
-toggle_mode = true
 text = "About"
 align = 0
 
@@ -286,8 +271,6 @@ align = 0
 margin_top = 280.0
 margin_right = 140.0
 margin_bottom = 312.0
-rect_clip_content = false
-toggle_mode = true
 text = "Help"
 align = 0
 
@@ -296,7 +279,6 @@ align = 0
 margin_top = 332.0
 margin_right = 140.0
 margin_bottom = 364.0
-rect_clip_content = false
 text = "Quit"
 align = 0
 

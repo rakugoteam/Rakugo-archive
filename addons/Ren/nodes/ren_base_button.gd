@@ -13,8 +13,9 @@ func _ready():
 	connect("focus_exited", self, "_on_idle")
 	connect("mouse_entered", self, "_on_hover")
 	connect("mouse_exited", self, "_on_idle")
-	connect("pressed", self, "_on_pressed")
 	connect("resized", self, "_on_resized")
+	connect("toggled", self, "_on_toggled")
+	connect("pressed", self, "_on_pressed")
 
 func _on_resized():
 	node_to_change.rect_size = rect_size
@@ -29,7 +30,15 @@ func _on_hover():
 	node_to_change.add_color_override("default_color", hover_node_color)
 
 func _on_pressed():
+	if toggle_mode:
+		return
 	node_to_change.add_color_override("default_color", pressed_node_color)
+
+func _on_toggled(toggled):
+	if toggled:
+		_on_pressed()
+	else:
+		_on_idle()
 
 func set_disabled(value):
 	.set_disabled(value)
