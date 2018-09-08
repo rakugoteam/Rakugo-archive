@@ -331,6 +331,8 @@ func loadfile(save_name = "quick"):
 			var q = _QUEST.new()
 			q.dict2subquest(v.value)
 			variables[k] = {"type":v.type, "value":q}
+			if k in quests:
+				continue
 			quests.append(k)
 		
 		else:

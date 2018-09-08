@@ -4,6 +4,8 @@ export(Vector2) var sprite_rect = Vector2(64, 64)
 var quest
 var quest_label
 var quest_des_label
+var quest_sub_box
+var quests_box
 
 func _ready():
 	node_to_change = $RichTextLabel
@@ -45,6 +47,11 @@ func _on_pressed():
 	._on_pressed()
 	quest_label.text = quest.title
 	quest_des_label.bbcode_text = Ren.text_passer(quest.description)
+	if quests_box.current_quest_button != null:
+		quests_box.current_quest_button.quest_sub_box.hide()
+	if quest_sub_box != null:
+		quest_sub_box.show()
+		quests_box.current_quest_button = self
 
 func on_description_changed(new_des):
 	if pressed:
