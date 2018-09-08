@@ -54,9 +54,7 @@ focus_node_color = Color( 0, 0.506836, 0.675781, 1 )
 hover_node_color = Color( 0.877647, 0.882353, 0.887059, 1 )
 pressed_node_color = Color( 0, 0.6, 0.8, 1 )
 disable_node_color = Color( 0.533333, 0.533333, 0.498039, 0.533333 )
-node_path = NodePath("RichTextLabel")
-auto_resize_x = true
-auto_resize_y = true
+sprite_rect = Vector2( 64, 32 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." index="0"]
 

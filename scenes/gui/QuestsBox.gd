@@ -30,22 +30,31 @@ func _on_visibility_changed():
 	if temp_quests == Ren.quests:
 		return
 	
+	var i = 0
 	for quest_id in Ren.quests:
 		var quest = Ren.get_quest(quest_id)
 		
-		if not add_quest_button(quest, quests_box):
-			continue
+		if i == quests_box.get_child_count():
+			if not add_quest_button(quest, quests_box):
+				continue
 		
 		if quest.subquests.empty():
 			continue
 		
+		var j = 0
 		var sub_box = VBoxContainer.new()
 		for subquest in quest.subquests:
-			
-			if not add_quest_button(subquest, sub_box):
-				continue
-		
-		subquests_box.add(sub_box)
+			if j == sub_box.get_child_count():
+				if not add_quest_button(subquest, sub_box):
+					continue
+			j += 1
+		if sub_box.get_child_count() > 0:
+			subquests_box.add_child(sub_box)
+		else:
+			sub_box.queue_free()
+		i += 1
+
+	temp_quests = Ren.quests.duplicate()
 
 
 

@@ -13,12 +13,16 @@ func _ready():
 	if Ren.current_node != self:
 		Ren.current_node = self
 	
+	test_var = Ren.define("test_var", 1)
 	test_quest = Ren.quest("test_quest")
 	test_quest.title = "Test Quest"
-	test_var = Ren.define("test_var", 1)
+	test_quest.description = "Your first epic quest."
 	
-	test_quest = Ren.quest("test_subquest")
-	test_quest.title = "Test Subquest"
+	test_subquest = Ren.subquest("test_subquest")
+	test_subquest.title = "Test Subquest"
+	test_subquest.description = "Your first epic subquest."
+	test_quest.add_subquest(test_subquest)
+
 
 func story(dialog_name):
 	if dialog_name != "example":

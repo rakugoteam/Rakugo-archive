@@ -13,9 +13,9 @@ func start():
 	emit_signal("start_quest")
 	Ren.notifiy("You begin \"" + title + "\"")
 
-# it get a subquest
-func _add_subquest(subquest):
-	subquest.append(subquest)
+# it adds a subquest to list
+func add_subquest(subquest):
+	subquests.append(subquest)
 	subquest.connect("done_subquest", self, "_on_done_subquest")
 	subquest.connect("fail_subquest", self, "_on_fail_subquest", [subquest])
 

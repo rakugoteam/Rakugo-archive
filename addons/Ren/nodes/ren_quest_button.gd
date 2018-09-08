@@ -1,11 +1,20 @@
-extends "ren_button.gd"
+extends "ren_base_button.gd"
 
+export(Vector2) var sprite_rect = Vector2(64, 64)
 var quest
 var quest_label
 var quest_des_gui
 
 func _ready():
 	node_to_change = $RichTextLabel
+
+func _on_resized():
+	._on_resized()
+	var sprite_pos = rect_size
+	sprite_pos.x -= sprite_rect.x/2
+	sprite_pos.y -= sprite_rect.y/2
+	$AnimatedSprite.position = sprite_pos
+
 
 func setup(quest_to_use):
 	quest = quest_to_use
@@ -18,7 +27,7 @@ func setup(quest_to_use):
 	quest.connect("state_changed", self, "on_state_changed")
 
 func on_title_changed(new_title):
-	node_to_change.text = quest.title
+	$RichTextLabel.text = quest.title
 
 func on_optional_changed(opt):
 	if opt:

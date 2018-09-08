@@ -38,10 +38,10 @@ func _on_visibility_changed():
 	if not visible:
 		return
 	
-	var i = 0
 	if temp_history == Ren.history:
 		return
-	
+		
+	var i = 0
 	for hi_item in Ren.history:
 		var type = hi_item.statement.type
 		var kwargs = hi_item.statement.kwargs
