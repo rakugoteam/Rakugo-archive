@@ -22,7 +22,7 @@ You can use it with:
 
 Ren use [PersistenceNode](https://github.com/MatiasVME/Persistence) for saving/load game.
 
-If you want to help please write to us on our [Discord Server](https://discord.gg/vYm39zu).
+If you want to help please write to us on our [Discord Server](https://discord.gg/K9gvjdg).
 
 Logo is base on Godot icon from Linux Pop icon theme.<br/>
 Logo is Godot head with hair like anime character.<br/>
