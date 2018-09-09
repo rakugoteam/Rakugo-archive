@@ -1,6 +1,6 @@
 # Ren
 
-[![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](http://opensource.org/licenses/MIT) [![Discord Server](https://img.shields.io/badge/Discord-Active-lightgrey.svg)](https://discord.gg/vYm39zu) [![GitHub](https://img.shields.io/badge/issues-4-brightgreen.svg?style=flat-square)](https://github.com/jeremi360/Ren/issues)
+[![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](http://opensource.org/licenses/MIT) [![Discord Server](https://img.shields.io/badge/Discord-Active-lightgrey.svg)](https://discord.gg/K9gvjdg) [![GitHub](https://img.shields.io/badge/issues-4-brightgreen.svg?style=flat-square)](https://github.com/jeremi360/Ren/issues)
 
 ![Logo](window_icon.png)
 
@@ -22,7 +22,7 @@ You can use it with:
 
 Ren use [PersistenceNode](https://github.com/MatiasVME/Persistence) for saving/load game.
 
-If you want to help please write to us on our [Discord Server](https://discord.gg/vYm39zu).
+If you want to help please write to us on our [Discord Server](https://discord.gg/K9gvjdg).
 
 Logo is base on Godot icon from Linux Pop icon theme.<br/>
 Logo is Godot head with hair like anime character.<br/>
