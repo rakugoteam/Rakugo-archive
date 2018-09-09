@@ -1,6 +1,6 @@
 # Ren
 
-[![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](http://opensource.org/licenses/MIT) [![Discord Server](https://img.shields.io/badge/Discord-Active-lightgrey.svg)](https://discord.gg/vYm39zu) [![GitHub](https://img.shields.io/badge/issues-4-brightgreen.svg?style=flat-square)](https://github.com/jeremi360/Ren/issues)
+[![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](http://opensource.org/licenses/MIT) [![Discord Server](https://img.shields.io/badge/Discord-Active-lightgrey.svg)](https://discord.gg/K9gvjdg) [![GitHub](https://img.shields.io/badge/issues-4-brightgreen.svg?style=flat-square)](https://github.com/jeremi360/Ren/issues)
 
 ![Logo](window_icon.png)
 
