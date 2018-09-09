@@ -1,45 +1,17 @@
-extends Button
-
-export(Color) var idle_text_color = Color( 0.533333, 0.533333, 0.533333, 1 )
-export(Color) var focus_text_color = Color( 0, 0.506836, 0.675781, 1 )
-export(Color) var hover_text_color = Color( 0.877647, 0.882353, 0.887059, 1 )
-export(Color) var pressed_text_color = Color( 0, 0.6, 0.8, 1 )
-export(Color) var disable_text_color = Color( 0.533333, 0.533333, 0.498039, 0.533333 )
+extends "ren_base_button.gd"
 
 onready var label = RichTextLabel.new()
 var id = -1
 
 func _ready():
-	connect("focus_entered", self, "_on_focus")
-	connect("focus_exited", self, "_on_idle")
-	connect("mouse_entered", self, "_on_hover")
-	connect("mouse_exited", self, "_on_idle")
+	disconnect("pressed", self, "_on_pressed")
 	connect("pressed", self, "_on_pressed", [], CONNECT_ONESHOT)
-	connect("resized", self, "_on_resized")
 	label.mouse_filter = MOUSE_FILTER_IGNORE
 	label.bbcode_enabled = true
 	add_child(label)
-
-func _on_resized():
-	label.rect_size = rect_size
-
-func _on_idle():
-	label.add_color_override("default_color", idle_text_color)
-
-func _on_focus():
-	label.add_color_override("default_color", focus_text_color)
-
-func _on_hover():
-	label.add_color_override("default_color", hover_text_color)
+	node_to_change = label
 
 func _on_pressed():
-	label.add_color_override("default_color", pressed_text_color)
+	._on_pressed()
 	print("final_choice ", id)
 	Ren.exit_statement({"final_choice":id})
-
-func set_disabled(value):
-	.set_disabled(value)
-	if value:
-		label.add_color_override("default_color", disable_text_color)
-	else:
-		_on_idle()

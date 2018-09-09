@@ -1,0 +1,94 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://themes/new_gui/theme.tres" type="Theme" id=1]
+[ext_resource path="res://addons/Ren/nodes/ren_quest_button.gd" type="Script" id=2]
+[ext_resource path="res://scenes/gui/quests-icons/available.png" type="Texture" id=3]
+[ext_resource path="res://scenes/gui/quests-icons/done.png" type="Texture" id=4]
+[ext_resource path="res://scenes/gui/quests-icons/fail.png" type="Texture" id=5]
+[ext_resource path="res://scenes/gui/quests-icons/in-progress.png" type="Texture" id=6]
+[ext_resource path="res://scenes/gui/quests-icons/opt.png" type="Texture" id=7]
+[ext_resource path="res://scenes/gui/quests-icons/opt-done.png" type="Texture" id=8]
+[ext_resource path="res://scenes/gui/quests-icons/opt-fail.png" type="Texture" id=9]
+[ext_resource path="res://scenes/gui/quests-icons/opt-in-progress.png" type="Texture" id=10]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": false,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "opt",
+"speed": 5.0
+} ]
+
+[node name="QuestButton" type="Button" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 350.0
+margin_bottom = 36.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = false
+align = 1
+script = ExtResource( 2 )
+_sections_unfolded = [ "Size Flags", "Textures", "Theme" ]
+idle_node_color = Color( 0.533333, 0.533333, 0.533333, 1 )
+focus_node_color = Color( 0, 0.506836, 0.675781, 1 )
+hover_node_color = Color( 0.877647, 0.882353, 0.887059, 1 )
+pressed_node_color = Color( 0, 0.6, 0.8, 1 )
+disable_node_color = Color( 0.533333, 0.533333, 0.498039, 0.533333 )
+sprite_rect = Vector2( 64, 32 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 347.0
+margin_bottom = 36.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = "Quest Button"
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = "Quest Button"
+scroll_active = false
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+_sections_unfolded = [ "BBCode" ]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="1"]
+
+position = Vector2( 327.601, 18.4805 )
+scale = Vector2( 0.586735, 0.563875 )
+frames = SubResource( 1 )
+animation = "default"
+_sections_unfolded = [ "Visibility" ]
+
+

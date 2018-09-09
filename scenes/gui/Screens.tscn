@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/gui/Screens.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/Labels/TitleText.tscn" type="PackedScene" id=2]
@@ -10,7 +10,8 @@
 [ext_resource path="res://scenes/gui/Labels/slot.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/gui/History.gd" type="Script" id=9]
 [ext_resource path="res://scenes/gui/HistoryItem.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/examples/TestNodes.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/gui/QuestsBox.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/examples/TestNodes.tscn" type="PackedScene" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -43,8 +44,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 1027.0
-margin_bottom = 609.0
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 1028.0
+margin_bottom = 610.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -133,7 +136,6 @@ type = "str"
 
 [node name="Navigation" type="Panel" parent="." index="2"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -157,7 +159,6 @@ align = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Navigation" index="1"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -194,7 +195,6 @@ size_flags_vertical = 1
 margin_top = 20.0
 margin_right = 140.0
 margin_bottom = 52.0
-rect_clip_content = false
 text = "Start"
 align = 0
 
@@ -204,7 +204,6 @@ visible = false
 margin_top = 431.0
 margin_right = 85.0
 margin_bottom = 465.0
-rect_clip_content = false
 text = "Return"
 align = 0
 
@@ -214,71 +213,72 @@ visible = false
 margin_top = 52.0
 margin_right = 140.0
 margin_bottom = 84.0
-rect_clip_content = false
 text = "History"
 align = 0
 
-[node name="Continue" parent="Navigation/VBoxContainer" index="4" instance=ExtResource( 5 )]
+[node name="Quests" parent="Navigation/VBoxContainer" index="4" instance=ExtResource( 5 )]
+
+visible = false
+margin_top = 52.0
+margin_right = 140.0
+margin_bottom = 84.0
+text = "Quests"
+align = 0
+
+[node name="Continue" parent="Navigation/VBoxContainer" index="5" instance=ExtResource( 5 )]
 
 margin_top = 72.0
 margin_right = 140.0
 margin_bottom = 104.0
-rect_clip_content = false
 text = "Continue"
 align = 0
 
-[node name="Load" parent="Navigation/VBoxContainer" index="5" instance=ExtResource( 5 )]
+[node name="Load" parent="Navigation/VBoxContainer" index="6" instance=ExtResource( 5 )]
 
 margin_top = 124.0
 margin_right = 140.0
 margin_bottom = 156.0
-rect_clip_content = false
 text = "Load"
 align = 0
 
-[node name="Save" parent="Navigation/VBoxContainer" index="6" instance=ExtResource( 5 )]
+[node name="Save" parent="Navigation/VBoxContainer" index="7" instance=ExtResource( 5 )]
 
 visible = false
 margin_top = 108.0
 margin_right = 140.0
 margin_bottom = 142.0
-rect_clip_content = false
 text = "Save"
 align = 0
 
-[node name="Preferences" parent="Navigation/VBoxContainer" index="7" instance=ExtResource( 5 )]
+[node name="Preferences" parent="Navigation/VBoxContainer" index="8" instance=ExtResource( 5 )]
 
 margin_top = 176.0
 margin_right = 140.0
 margin_bottom = 208.0
-rect_clip_content = false
 text = "Preferences"
 align = 0
 
-[node name="About" parent="Navigation/VBoxContainer" index="8" instance=ExtResource( 5 )]
+[node name="About" parent="Navigation/VBoxContainer" index="9" instance=ExtResource( 5 )]
 
 margin_top = 228.0
 margin_right = 140.0
 margin_bottom = 260.0
-rect_clip_content = false
 text = "About"
 align = 0
 
-[node name="Help" parent="Navigation/VBoxContainer" index="9" instance=ExtResource( 5 )]
+[node name="Help" parent="Navigation/VBoxContainer" index="10" instance=ExtResource( 5 )]
 
 margin_top = 280.0
 margin_right = 140.0
 margin_bottom = 312.0
-rect_clip_content = false
 text = "Help"
 align = 0
 
-[node name="Quit" parent="Navigation/VBoxContainer" index="10" instance=ExtResource( 5 )]
+[node name="Quit" parent="Navigation/VBoxContainer" index="11" instance=ExtResource( 5 )]
 
 margin_top = 332.0
 margin_right = 140.0
 margin_bottom = 364.0
-rect_clip_content = false
 text = "Quit"
 align = 0
 
@@ -291,7 +291,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 257.0
-margin_top = 36.0
+margin_top = 13.0
 margin_right = 959.0
 margin_bottom = 545.0
 rect_pivot_offset = Vector2( 0, 0 )
@@ -327,14 +327,13 @@ _sections_unfolded = [ "custom_fonts" ]
 
 [node name="GridContainer" type="GridContainer" parent="SlotBox" index="1"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 50.0
 margin_right = 702.0
-margin_bottom = 509.0
+margin_bottom = 532.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -347,44 +346,44 @@ _sections_unfolded = [ "Grow Direction", "Rect", "Size Flags" ]
 [node name="1" parent="SlotBox/GridContainer" index="0" instance=ExtResource( 8 )]
 
 margin_right = 231.0
-margin_bottom = 227.0
+margin_bottom = 239.0
 rect_clip_content = false
 
 [node name="2" parent="SlotBox/GridContainer" index="1" instance=ExtResource( 8 )]
 
 margin_left = 235.0
 margin_right = 466.0
-margin_bottom = 227.0
+margin_bottom = 239.0
 rect_clip_content = false
 
 [node name="3" parent="SlotBox/GridContainer" index="2" instance=ExtResource( 8 )]
 
 margin_left = 470.0
 margin_right = 701.0
-margin_bottom = 227.0
+margin_bottom = 239.0
 rect_clip_content = false
 
 [node name="4" parent="SlotBox/GridContainer" index="3" instance=ExtResource( 8 )]
 
-margin_top = 231.0
+margin_top = 243.0
 margin_right = 231.0
-margin_bottom = 458.0
+margin_bottom = 482.0
 rect_clip_content = false
 
 [node name="5" parent="SlotBox/GridContainer" index="4" instance=ExtResource( 8 )]
 
 margin_left = 235.0
-margin_top = 231.0
+margin_top = 243.0
 margin_right = 466.0
-margin_bottom = 458.0
+margin_bottom = 482.0
 rect_clip_content = false
 
 [node name="6" parent="SlotBox/GridContainer" index="5" instance=ExtResource( 8 )]
 
 margin_left = 470.0
-margin_top = 231.0
+margin_top = 243.0
 margin_right = 701.0
-margin_bottom = 458.0
+margin_bottom = 482.0
 rect_clip_content = false
 
 [node name="HistoryBox" type="VBoxContainer" parent="." index="4"]
@@ -396,7 +395,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 257.0
-margin_top = 36.0
+margin_top = 11.0
 margin_right = 959.0
 margin_bottom = 545.0
 rect_pivot_offset = Vector2( 0, 0 )
@@ -437,7 +436,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 50.0
 margin_right = 702.0
-margin_bottom = 509.0
+margin_bottom = 534.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
 mouse_filter = 0
@@ -458,7 +457,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 702.0
-margin_bottom = 459.0
+margin_bottom = 484.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -471,7 +470,15 @@ script = ExtResource( 9 )
 _sections_unfolded = [ "Size Flags", "custom_constants" ]
 HistoryItemTemplate = ExtResource( 10 )
 
-[node name="TestNodes" parent="." index="5" instance=ExtResource( 11 )]
+[node name="QuestsBox" parent="." index="5" instance=ExtResource( 11 )]
+
+visible = false
+margin_left = 201.0
+margin_top = 2.0
+margin_right = 1025.0
+margin_bottom = 607.0
+
+[node name="TestNodes" parent="." index="6" instance=ExtResource( 12 )]
 
 visible = false
 
@@ -480,6 +487,8 @@ visible = false
 [connection signal="pressed" from="Navigation/VBoxContainer/Return" to="." method="_on_Return_pressed"]
 
 [connection signal="pressed" from="Navigation/VBoxContainer/History" to="." method="_on_History_pressed"]
+
+[connection signal="pressed" from="Navigation/VBoxContainer/Quests" to="." method="_on_Quests_pressed"]
 
 [connection signal="pressed" from="Navigation/VBoxContainer/Continue" to="." method="_on_Continue_pressed"]
 
