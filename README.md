@@ -28,3 +28,5 @@ Logo is base on Godot icon from Linux Pop icon theme.<br/>
 Logo is Godot head with hair like anime character.<br/>
 Custom Ren Nodes icons are based on [Godot icons](https://github.com/godotengine/godot-design/tree/master/engine/icons/optimized).
 
+Quest icon is from [game-icons.net](https://game-icons.net/lorc/originals/tied-scroll.html)
+
