@@ -1,6 +1,17 @@
 # Ren
+![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)
+[![Discord Server](https://img.shields.io/discord/484604562183815169.svg?style=flat-square)](https://discord.gg/K9gvjdg)
+[![GitHub](https://img.shields.io/github/contributors/jeremi360/Ren.svg?style=flat-square)](https://github.com/jeremi360/Ren)
+[![GitHub](https://img.shields.io/github/stars/jeremi360/Ren.svg?style=flat-square)](https://github.com/jeremi360/Ren)
+[![GitHub](https://img.shields.io/github/forks/jeremi360/Ren.svg?style=flat-square)](https://github.com/jeremi360/Ren/network)
+[![GitHub](https://img.shields.io/github/watchers/badges/shields.svg?label=Watch&style=flat-square)](https://github.com/jeremi360/Ren)
 
-[![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](http://opensource.org/licenses/MIT) [![Discord Server](https://img.shields.io/badge/Discord-Active-lightgrey.svg)](https://discord.gg/K9gvjdg) [![GitHub](https://img.shields.io/badge/issues-4-brightgreen.svg?style=flat-square)](https://github.com/jeremi360/Ren/issues)
+
+[![GitHub](https://img.shields.io/github/issues/jeremi360/Ren.svg?style=flat-square)](https://github.com/jeremi360/Ren/issues)
+[![GitHub](https://img.shields.io/github/issues-closed/jeremi360/Ren.svg?style=flat-square)](https://github.com/jeremi360/Ren/issues)
+
+
+
 
 ![Logo](window_icon.png)
 
@@ -27,4 +38,6 @@ If you want to help please write to us on our [Discord Server](https://discord.g
 Logo is base on Godot icon from Linux Pop icon theme.<br/>
 Logo is Godot head with hair like anime character.<br/>
 Custom Ren Nodes icons are based on [Godot icons](https://github.com/godotengine/godot-design/tree/master/engine/icons/optimized).
+
+Quest icon is CC BY-SA 3.0 201 by p Zon Petilla from [game-icons.net](https://game-icons.net/lorc/originals/tied-scroll.html)
 
