@@ -34,8 +34,10 @@ func history_menu():
 
 func _on_Screens_visibility_changed():
 	if visible:
+		get_tree().paused = true
 		in_game_gui.hide()
 	else:
+		get_tree().paused = false
 		in_game_gui.show()
 
 
