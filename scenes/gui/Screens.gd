@@ -15,14 +15,14 @@ func show_page(node):
 
 func save_menu(screenshot):
 	show_page($SlotBox)
-	$SlotBox/Title.text="Save"
+	$SlotBox/Title.text = "Save"
 	$SlotBox.savebox()
-	$SlotBox.screenshot=screenshot
+	$SlotBox.screenshot = screenshot
 	show()
 
 func load_menu():
 	show_page($SlotBox)
-	$SlotBox/Title.text="Load"
+	$SlotBox/Title.text = "Load"
 	$SlotBox.loadbox()
 	show()
 
@@ -76,3 +76,9 @@ func _on_Yes_pressed():
 
 func _on_Quit_pressed():
 	show_page($QuitBox)
+
+
+func _on_Save_pressed():
+	hide()
+	var screenshot = get_viewport().get_texture().get_data()
+	save_menu(screenshot)

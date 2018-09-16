@@ -530,6 +530,8 @@ visible = false
 
 [connection signal="pressed" from="Navigation/VBoxContainer/Load" to="." method="_on_Load_pressed"]
 
+[connection signal="pressed" from="Navigation/VBoxContainer/Save" to="." method="_on_Save_pressed"]
+
 [connection signal="pressed" from="Navigation/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
 
 [connection signal="pressed" from="QuitBox/HBoxContainer/Yes" to="." method="_on_Yes_pressed"]
