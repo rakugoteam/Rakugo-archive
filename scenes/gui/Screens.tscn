@@ -264,12 +264,12 @@ margin_bottom = 142.0
 text = "Save"
 align = 0
 
-[node name="Preferences" parent="Navigation/VBoxContainer" index="8" instance=ExtResource( 5 )]
+[node name="Options" parent="Navigation/VBoxContainer" index="8" instance=ExtResource( 5 )]
 
 margin_top = 176.0
 margin_right = 140.0
 margin_bottom = 208.0
-text = "Preferences"
+text = "Options"
 align = 0
 
 [node name="About" parent="Navigation/VBoxContainer" index="9" instance=ExtResource( 5 )]
