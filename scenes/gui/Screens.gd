@@ -2,8 +2,6 @@ extends Control
 
 onready var in_game_gui = get_node("/root/Window/InGameGUI")
 
-export(String) var first_dialog = ""
-export(String) var first_state = ""
 var current_node = self
 
 func _ready():
@@ -40,10 +38,8 @@ func _on_Screens_visibility_changed():
 		get_tree().paused = false
 		in_game_gui.show()
 
-
 func _on_Return_pressed():
 	hide()
-
 
 func _on_Load_pressed():
 	load_menu()
@@ -61,10 +57,8 @@ func _on_Start_pressed():
 	in_game()
 	Ren.start()
 
-
 func _on_History_pressed():
 	history_menu()
-
 
 func _on_Continue_pressed():
 	if !Ren.loadfile():
@@ -72,7 +66,13 @@ func _on_Continue_pressed():
 	in_game()
 	hide()
 
-
 func _on_Quests_pressed():
 	show_page($QuestsBox)
 	show()
+
+# if press "yes" on quit page
+func _on_Yes_pressed():
+	get_tree().quit()
+
+func _on_Quit_pressed():
+	show_page($QuitBox)

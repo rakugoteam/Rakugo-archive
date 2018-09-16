@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/gui/Screens.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/Labels/TitleText.tscn" type="PackedScene" id=2]
@@ -10,13 +10,30 @@
 [ext_resource path="res://scenes/gui/History.gd" type="Script" id=8]
 [ext_resource path="res://scenes/gui/HistoryItem.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/gui/QuestsBox.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/examples/TestNodes.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/gui/Labels/dialogue_text.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/examples/TestNodes.tscn" type="PackedScene" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 
 size = 40
 use_mipmaps = false
 use_filter = false
+font_data = ExtResource( 7 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=2]
+
+size = 22
+use_mipmaps = false
+use_filter = true
+font_data = ExtResource( 7 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=3]
+
+size = 22
+use_mipmaps = false
+use_filter = true
 font_data = ExtResource( 7 )
 _sections_unfolded = [ "Font", "Settings" ]
 
@@ -34,8 +51,6 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 script = ExtResource( 1 )
 _sections_unfolded = [ "Material", "Visibility" ]
-first_dialog = "example"
-first_state = "start"
 
 [node name="Panel" type="Panel" parent="." index="0"]
 
@@ -135,7 +150,6 @@ type = "str"
 
 [node name="Navigation" type="Panel" parent="." index="2"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -159,7 +173,6 @@ align = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Navigation" index="1"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -377,7 +390,131 @@ margin_top = 2.0
 margin_right = 1025.0
 margin_bottom = 607.0
 
-[node name="TestNodes" parent="." index="6" instance=ExtResource( 11 )]
+[node name="QuitBox" type="Panel" parent="." index="6"]
+
+editor/display_folded = true
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 257.0
+margin_top = 11.0
+margin_right = 959.0
+margin_bottom = 545.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="Title" type="Label" parent="QuitBox" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 702.0
+margin_bottom = 46.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+text = "Quit"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="Question" parent="QuitBox" index="1" instance=ExtResource( 11 )]
+
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 12.0
+margin_top = -128.0
+margin_right = 12.0
+margin_bottom = -82.0
+focus_mode = 0
+bbcode_text = "[center]Do you realy want to quit?[/center]"
+text = "Do you realy want to quit?"
+selection_enabled = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="QuitBox" index="2"]
+
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 246.0
+margin_top = -328.0
+margin_right = -200.0
+margin_bottom = -296.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+
+[node name="Yes" type="Button" parent="QuitBox/HBoxContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 126.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 2 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Yes"
+flat = true
+align = 1
+_sections_unfolded = [ "Size Flags", "custom_fonts" ]
+
+[node name="No" type="Button" parent="QuitBox/HBoxContainer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 130.0
+margin_right = 256.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 3 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "No"
+flat = true
+align = 1
+_sections_unfolded = [ "Size Flags", "custom_fonts" ]
+
+[node name="TestNodes" parent="." index="7" instance=ExtResource( 12 )]
 
 visible = false
 
@@ -392,5 +529,11 @@ visible = false
 [connection signal="pressed" from="Navigation/VBoxContainer/Continue" to="." method="_on_Continue_pressed"]
 
 [connection signal="pressed" from="Navigation/VBoxContainer/Load" to="." method="_on_Load_pressed"]
+
+[connection signal="pressed" from="Navigation/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
+
+[connection signal="pressed" from="QuitBox/HBoxContainer/Yes" to="." method="_on_Yes_pressed"]
+
+[connection signal="pressed" from="QuitBox/HBoxContainer/No" to="." method="_on_Return_pressed"]
 
 
