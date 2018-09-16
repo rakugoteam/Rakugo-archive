@@ -1,17 +1,16 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/gui/Screens.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/Labels/TitleText.tscn" type="PackedScene" id=2]
 [ext_resource path="res://addons/Ren/nodes/ren_var_label.gd" type="Script" id=3]
 [ext_resource path="res://addons/Ren/icons/ren_var_label.svg" type="Texture" id=4]
 [ext_resource path="res://scenes/gui/QuickMenuButton.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/gui/SlotBox.gd" type="Script" id=6]
+[ext_resource path="res://scenes/gui/SlotBox.tscn" type="PackedScene" id=6]
 [ext_resource path="res://ubuntu-font-family/Ubuntu-B.ttf" type="DynamicFontData" id=7]
-[ext_resource path="res://scenes/gui/Labels/slot.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/gui/History.gd" type="Script" id=9]
-[ext_resource path="res://scenes/gui/HistoryItem.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/gui/QuestsBox.tscn" type="PackedScene" id=11]
-[ext_resource path="res://scenes/examples/TestNodes.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/gui/History.gd" type="Script" id=8]
+[ext_resource path="res://scenes/gui/HistoryItem.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/gui/QuestsBox.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/examples/TestNodes.tscn" type="PackedScene" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -21,7 +20,7 @@ use_filter = false
 font_data = ExtResource( 7 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Screens" type="Control"]
+[node name="Screens" type="Control" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -136,6 +135,7 @@ type = "str"
 
 [node name="Navigation" type="Panel" parent="." index="2"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -159,6 +159,7 @@ align = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Navigation" index="1"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -282,109 +283,7 @@ margin_bottom = 364.0
 text = "Quit"
 align = 0
 
-[node name="SlotBox" type="VBoxContainer" parent="." index="3"]
-
-editor/display_folded = true
-visible = false
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 257.0
-margin_top = 13.0
-margin_right = 959.0
-margin_bottom = 545.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-alignment = 0
-script = ExtResource( 6 )
-
-[node name="Title" type="Label" parent="SlotBox" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 702.0
-margin_bottom = 46.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 1 )
-text = "Save/Load"
-align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
-
-[node name="GridContainer" type="GridContainer" parent="SlotBox" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 50.0
-margin_right = 702.0
-margin_bottom = 532.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-columns = 3
-_sections_unfolded = [ "Grow Direction", "Rect", "Size Flags" ]
-
-[node name="1" parent="SlotBox/GridContainer" index="0" instance=ExtResource( 8 )]
-
-margin_right = 231.0
-margin_bottom = 239.0
-rect_clip_content = false
-
-[node name="2" parent="SlotBox/GridContainer" index="1" instance=ExtResource( 8 )]
-
-margin_left = 235.0
-margin_right = 466.0
-margin_bottom = 239.0
-rect_clip_content = false
-
-[node name="3" parent="SlotBox/GridContainer" index="2" instance=ExtResource( 8 )]
-
-margin_left = 470.0
-margin_right = 701.0
-margin_bottom = 239.0
-rect_clip_content = false
-
-[node name="4" parent="SlotBox/GridContainer" index="3" instance=ExtResource( 8 )]
-
-margin_top = 243.0
-margin_right = 231.0
-margin_bottom = 482.0
-rect_clip_content = false
-
-[node name="5" parent="SlotBox/GridContainer" index="4" instance=ExtResource( 8 )]
-
-margin_left = 235.0
-margin_top = 243.0
-margin_right = 466.0
-margin_bottom = 482.0
-rect_clip_content = false
-
-[node name="6" parent="SlotBox/GridContainer" index="5" instance=ExtResource( 8 )]
-
-margin_left = 470.0
-margin_top = 243.0
-margin_right = 701.0
-margin_bottom = 482.0
-rect_clip_content = false
+[node name="SlotBox" parent="." index="3" instance=ExtResource( 6 )]
 
 [node name="HistoryBox" type="VBoxContainer" parent="." index="4"]
 
@@ -466,11 +365,11 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 5
 alignment = 0
-script = ExtResource( 9 )
+script = ExtResource( 8 )
 _sections_unfolded = [ "Size Flags", "custom_constants" ]
-HistoryItemTemplate = ExtResource( 10 )
+HistoryItemTemplate = ExtResource( 9 )
 
-[node name="QuestsBox" parent="." index="5" instance=ExtResource( 11 )]
+[node name="QuestsBox" parent="." index="5" instance=ExtResource( 10 )]
 
 visible = false
 margin_left = 201.0
@@ -478,7 +377,7 @@ margin_top = 2.0
 margin_right = 1025.0
 margin_bottom = 607.0
 
-[node name="TestNodes" parent="." index="6" instance=ExtResource( 12 )]
+[node name="TestNodes" parent="." index="6" instance=ExtResource( 11 )]
 
 visible = false
 
