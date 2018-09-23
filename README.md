@@ -1,19 +1,12 @@
-# Ren
+# Ren ![Logo](window_icon.png)
 ![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)
 [![Discord Server](https://img.shields.io/discord/484604562183815169.svg?style=flat-square)](https://discord.gg/K9gvjdg)
 [![GitHub](https://img.shields.io/github/contributors/jeremi360/Ren.svg?style=flat-square)](https://github.com/jeremi360/Ren)
 [![GitHub](https://img.shields.io/github/stars/jeremi360/Ren.svg?style=flat-square)](https://github.com/jeremi360/Ren)
 [![GitHub](https://img.shields.io/github/forks/jeremi360/Ren.svg?style=flat-square)](https://github.com/jeremi360/Ren/network)
 [![GitHub](https://img.shields.io/github/watchers/badges/shields.svg?label=Watch&style=flat-square)](https://github.com/jeremi360/Ren)
-
-
 [![GitHub](https://img.shields.io/github/issues/jeremi360/Ren.svg?style=flat-square)](https://github.com/jeremi360/Ren/issues)
 [![GitHub](https://img.shields.io/github/issues-closed/jeremi360/Ren.svg?style=flat-square)](https://github.com/jeremi360/Ren/issues)
-
-
-
-
-![Logo](window_icon.png)
 
 Ren is framemork ( inspired by [Ren'Py](https://www.renpy.org) )
 <br/> for story driven games in [Godot](https://godotengine.org).
@@ -22,7 +15,7 @@ Ren is framemork ( inspired by [Ren'Py](https://www.renpy.org) )
 
 It means games that are for example:
 
-- Visual Novels
+- Visual Novels (almost done)
 - Click & Point Adventures
 - RPG
 
