@@ -213,7 +213,7 @@ size_flags_vertical = 1
 margin_top = 20.0
 margin_right = 140.0
 margin_bottom = 52.0
-text = "NewGame"
+text = "New Game"
 align = 0
 
 [node name="Return" parent="Navigation/VBoxContainer" index="2" instance=ExtResource( 5 )]
