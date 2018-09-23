@@ -1,5 +1,10 @@
 extends Node
 
+const _VAR		= preload("ren_var.gd")
+const _CHR		= preload("nodes/character.gd")
+const _QUEST	= preload("RPGSystem/quest.gd")
+const _SUBQ		= preload("RPGSystem/subquest.gd")
+
 func get_type(variable):
 	var type = "str"
 		
@@ -44,5 +49,31 @@ func define(variables, var_name, var_value = null, var_type = null):
 		elif type == TYPE_NODE_PATH:
 			var_type = "node"
 			var_value = get_node(var_value)
+	
+	# "node" type is to consider
+	if var_type in ["var", "text", "dict", "list", "node"]:
+		var new_var = _VAR.new()
+		new_var._type = var_type
+		new_var._value = var_value
+		variables[var_name] = new_var
+		return new_var
+	
+	if var_type == "quest":
+		var new_quest = _QUEST.new()
+		if typeof(var_value) == TYPE_DICTIONARY:
+			new_quest.dict2quest(var_value)
+		variables[var_name] = new_quest
+		return new_quest
+	
+	if var_type == "subquest":
+		var new_subquest = _SUBQ.new()
+		if typeof(var_value) == TYPE_DICTIONARY:
+			new_subquest.dict2subquest(var_value)
+		variables[var_name] = new_subquest
+		return new_subquest
+	
+	if var_type == "character":
+		var new_chr = _CHR.new(var_name)
 		
-	variables[var_name] = {"type":var_type, "value":var_value}
+	
+	

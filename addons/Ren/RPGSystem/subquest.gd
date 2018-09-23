@@ -86,3 +86,6 @@ func dict2subquest(dict):
 		optional	= dict["optional"]
 	if dict.has("state"):
 		state		= dict["state"]
+
+func _get_type():
+	return "subquest"

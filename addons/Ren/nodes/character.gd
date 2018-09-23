@@ -3,6 +3,8 @@ extends Node
 var kwargs = {"name":"", "what_prefix":"", "what_suffix":"", "color":"white"}
 var kws = ["name", "color", "what_prefix", "what_suffix", "avatar"]
 var _color
+var type setget _get_type
+
 
 export(String) var character_id = "" setget set_character_id, get_character_id
 export(String) var character_name = "" setget set_character_name, get_character_name
@@ -81,3 +83,5 @@ func parse_character():
 func parse_what(what):
 	return kwargs.what_prefix + what + kwargs.what_suffix
 
+func _get_type():
+	return "character"

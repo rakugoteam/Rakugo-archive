@@ -2,6 +2,7 @@ extends "subquest.gd"
 
 var subquests	= [] setget , _get_subquests
 var rewards		= [] setget , _get_rewards # Maybe we need a Object Reward
+var type setget _get_type
 
 signal start_quest
 signal done_quest # when all quests is done
@@ -89,3 +90,6 @@ func _on_fail_subquest(subquest):
 	
 	if not subquest.is_optional:
 		emit_signal("fail_quest")
+
+func _get_type():
+	return "quest"
