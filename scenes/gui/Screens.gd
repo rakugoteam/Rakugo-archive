@@ -52,6 +52,7 @@ func in_game():
 	$Navigation/VBoxContainer/History.show()
 	$Navigation/VBoxContainer/Quests.show()
 
+# now is connected to $NewGame
 func _on_Start_pressed():
 	hide()
 	in_game()
