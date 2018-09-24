@@ -2,7 +2,7 @@ extends Object
 
 ## This base object used to handling Ren's variables
 
-var type = setget , _get_type
+var type setget , _get_type
 var _type = "var"
 var value setget _set_value, _get_value
 var _value = null 

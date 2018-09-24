@@ -16,12 +16,7 @@ var _scene = null
 var history = [] # [{"state":story_state, "statement":{"type":type, "kwargs": kwargs}}]
 var global_history = [] # [{"state":story_state, "statement":{"type":type, "kwargs": kwargs}}]
 var prev_story_state = ""
-var variables = {
-	"version":{"type":"text", "value":"0.9.6"},
-	"test_bool":{"type":"var", "value":false},
-	"test_float":{"type":"var", "value":10},
-	"story_state":{"type":"text", "value":""}
-}
+var variables = {}
 
 # don't save this
 onready var menu_node = $Menu
@@ -51,6 +46,11 @@ signal play_anim(node_id, anim_name, reset)
 func _ready():
 	config_data()
 	timer.connect("timeout", self, "exit_statement")
+	define("version", "0.9.11")
+	define("test_bool", false)
+	define("test_float", 10.0)
+	define("story_state", "")
+	
 
 func exec_statement(type, kwargs = {}):
 	emit_signal("exec_statement", type, kwargs)
@@ -125,7 +125,7 @@ func node_link(node, node_id = node.name):
 	$Def.define(variables, node_id, path, "node")
 	return get_node(path)
 
-func get_node(node_id):
+func get_node_by_id(node_id):
 	if get_value_type(node_id) != "node_id":
 		return null 
 	var p = get_var(node_id).v
@@ -147,7 +147,7 @@ func get_subquest(subquest_id):
 ## and returns it as RenQuest for easy use
 ## possible kwargs: "who", "title", "description", "optional", "state", "subquests"
 func quest(var_name, value = {}):
-	var q = Def.define(variables, var_name, "quest")
+	var q = $Def.define(variables, var_name, "quest")
 	quests.append(var_name)
 	return q
 
@@ -253,11 +253,11 @@ func savefile(save_name = "quick"):
 			prints(k, v)
 		
 		if v.type == "character":
-			vars_to_save[k] = {"type":v.type, "value":inst2dict(v.value)}
+			vars_to_save[k] = {"type":v.type, "value":v.character2dict()}
 		elif v.type == "subquest":
-			vars_to_save[k] = {"type":v.type, "value":v.value.subquest2dict()}
+			vars_to_save[k] = {"type":v.type, "value":v.subquest2dict()}
 		elif v.type == "quest":
-			vars_to_save[k] = {"type":v.type, "value":v.value.quest2dict()}
+			vars_to_save[k] = {"type":v.type, "value":v.quest2dict()}
 		else:
 			vars_to_save[k] = v
 		
@@ -307,14 +307,10 @@ func loadfile(save_name = "quick"):
 					obj.set(pk, pv)
 		
 		elif v.type == "subquest":
-			var subq = _SUBQ.new()
-			subq.dict2subquest(v.value)
-			variables[k] = {"type":v.type, "value":subq}
+			subquest(k, v.value)
 		
 		elif v.type == "quest":
-			var q = _QUEST.new()
-			q.dict2subquest(v.value)
-			variables[k] = {"type":v.type, "value":q}
+			quest(k, v.value)
 			if k in quests:
 				continue
 			quests.append(k)

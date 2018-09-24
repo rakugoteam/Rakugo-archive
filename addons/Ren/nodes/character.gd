@@ -14,7 +14,7 @@ export(PackedScene) var avatar setget set_avatar, get_avatar
 
 func _ready():
 	Ren.variables[character_id] = self
-	Ren.debug(kwargs, kws, "Add Character " + character_id + " with ")
+	# Ren.debug(kwargs, kws, "Add Character " + character_id + " with ")
 
 func get_character_id():
 	return character_id
@@ -34,7 +34,7 @@ func get_avatar():
 func parse_character():
 	var ncharacter = ""
 	
-	if "name" in kwargs:
+	if character_name != "":
 		ncharacter = "{color=#" + color + "}"
 		ncharacter += character_name
 		ncharacter += "{/color}"
