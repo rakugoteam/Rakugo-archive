@@ -68,15 +68,10 @@ func define(variables, var_name, var_value = null, var_type = null):
 		return new_subquest
 	
 	if var_type == "character":
-		var new_character
-		if var_value is Node:
-			new_character = var_value
-
-		else:
-			new_character = _CHR.new()
-			new_character.character_id = var_name
-			if typeof(var_value) == TYPE_DICTIONARY:
-				new_character.dict2character(var_value)
+		var new_character = _CHR.new()
+		new_character.character_id = var_name
+		if typeof(var_value) == TYPE_DICTIONARY:
+			new_character.dict2character(var_value)
 		variables[var_name] = new_character
 		return new_character
 	
