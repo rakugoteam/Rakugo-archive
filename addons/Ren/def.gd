@@ -8,13 +8,13 @@ const _SUBQ		= preload("RPGSystem/subquest.gd")
 func get_type(variable):
 	var type = "str"
 		
-	if typeof(variable) == TYPE_BOOL:
+	if variable is bool:
 		type = "bool"
 	
-	elif typeof(variable) == TYPE_INT:
+	elif variable is int:
 		type = "int"
 	
-	elif typeof(variable) == TYPE_REAL:
+	elif variable is float:
 		type = "float"
 	
 	return type
@@ -37,16 +37,16 @@ func define(variables, var_name, var_value = null, var_type = null):
 		var_type = "var"
 		var type = typeof(var_value)
 
-		if type == TYPE_STRING:
+		if type is String:
 			var_type = "text"
 		
-		elif type == TYPE_DICTIONARY:
+		elif type is Dictionary:
 			var_type = "dict"
 		
-		elif type == TYPE_ARRAY:
+		elif type is Array:
 			var_type = "list"
 		
-		elif type == TYPE_NODE_PATH:
+		elif type is NodePath:
 			var_type = "node"
 			var_value = get_node(var_value)
 
@@ -54,7 +54,7 @@ func define(variables, var_name, var_value = null, var_type = null):
 	if var_type == "quest":
 		var new_quest = _QUEST.new()
 		new_quest.quest_id = var_name
-		if typeof(var_value) == TYPE_DICTIONARY:
+		if type is Dictionary:
 			new_quest.dict2quest(var_value)
 		variables[var_name] = new_quest
 		return new_quest
@@ -62,16 +62,21 @@ func define(variables, var_name, var_value = null, var_type = null):
 	if var_type == "subquest":
 		var new_subquest = _SUBQ.new()
 		new_subquest.quest_id = var_name
-		if typeof(var_value) == TYPE_DICTIONARY:
+		if var_value is Dictionary:
 			new_subquest.dict2subquest(var_value)
 		variables[var_name] = new_subquest
 		return new_subquest
 	
 	if var_type == "character":
-		var new_character = _CHR.new()
-		new_character.character_id = var_name
-		if typeof(var_value) == TYPE_DICTIONARY:
-			new_character.dict2character(var_value)
+		var new_character
+		if var_value is Node:
+			new_character = var_value
+
+		else:
+			new_character = _CHR.new()
+			new_character.character_id = var_name
+			if var_value is Dictionary:
+				new_character.dict2character(var_value)
 		variables[var_name] = new_character
 		return new_character
 	

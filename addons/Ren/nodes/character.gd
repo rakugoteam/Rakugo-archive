@@ -15,14 +15,14 @@ export(String) var suffix = ""
 export(PackedScene) var avatar setget _set_avatar, _get_avatar
 
 func _ready():
-	Ren.variables[character_id] = self
+	Ren.character(character_id, self)
 	Ren.debug(character2dict(), kws, "Add Character " + character_id + " with ")
 
 func _set_character_id(id):
 	if Ren.variables.has(_id):
 		Ren.variables.erase(_id)
 	_id = character_id
-	Ren.variables[_id] = self
+	Ren.character(character_id, self)
 
 func _get_character_id():
 	return _id
