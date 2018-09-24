@@ -15,10 +15,7 @@ export(PackedScene) var avatar setget set_avatar, get_avatar
 
 func _ready():
 	Ren.variables[character_id] = self
-	# Ren.debug(kwargs, kws, "Add Character " + character_id + " with ")
-
-func get_character_id():
-	return character_id
+	Ren.debug(character2dict(), kws, "Add Character " + character_id + " with ")
 
 func set_color(value):
 	_color = value.to_html()
