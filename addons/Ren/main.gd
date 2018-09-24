@@ -42,6 +42,7 @@ signal show(node_id, state, show_args)
 signal hide(node_id)
 signal story_step(dialog_name)
 signal play_anim(node_id, anim_name, reset)
+signal started
 
 func _ready():
 	config_data()
@@ -230,6 +231,7 @@ func start():
 	local_id = 0
 	story_step()
 	started = true
+	emit_signal("started")
 
 
 func savefile(save_name = "quick"):
