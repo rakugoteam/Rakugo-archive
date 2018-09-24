@@ -1,83 +1,85 @@
 extends Node
 
-var kws = ["name", "color", "prefix", "suffix", "avatar"]
+var _character
+var _name = ""
 var _color
 var _avatar
+var _prefix = ""
+var _suffix = ""
 var _id
-var type setget _get_type
-var value setget dict2character, character2dict
 
-export(String) var character_id = ""
-export(String) var character_name = ""
+export(String) var character_id = "" setget _set_character_id, _get_character_id
+export(String) var character_name = "" setget _set_character_name, _get_character_name
 export(Color) var color = Color("#ffffff") setget _set_color, _get_color
-export(String) var prefix = ""
-export(String) var suffix = ""
-export(PackedScene) var avatar setget _set_avatar, _get_avatar
+export(String) var prefix = "" setget _set_prefix, _get_prefix
+export(String) var suffix = "" setget _set_suffix, _get_suffix
+export(PackedScene) var avatar = PackedScene.new() setget _set_avatar, _get_avatar
 
 func _ready():
-	_update_character()
-	Ren.debug(character2dict(), kws, "Add Character " + character_id + " with ")
-
-func _update_character():
-	Ren.character(character_id, character2dict())
+	var dict = {}
+	dict["name"]	= character_name
+	dict["color"]	= color.to_html()
+	dict["prefix"]	= prefix
+	dict["suffix"]	= suffix
+	dict["avatar"]	= avatar.resource_path
+	_character = Ren.character(character_id, dict)
+	Ren.debug(dict, _character.kws, "Add Character " + character_id + " with ")
+	pass
 
 func _set_character_id(id):
 	if Ren.variables.has(_id):
 		Ren.variables.erase(_id)
 	_id = character_id
-	_update_character()
 
 func _get_character_id():
 	return _id
 
-func _set_color(vcolor):
-	_color = vcolor.to_html()
-	_update_character()
+func _set_character_name(value):
+	_name = value
+	if _character != null:
+		_character.name = value
+
+func _get_character_name():
+	if _character != null:
+		return _character.name
+	return _name
+
+func _set_color(value):
+	_color = value
+	if _character != null:
+		_character.color = value 
 
 func _get_color():
+	if _character != null:
+		return _character.color
 	return _color
 
-func _set_avatar(vavatar):
-	_avatar = vavatar.resource_path
-	_update_character()
+func _set_prefix(value):
+	_prefix = value
+	if _character != null:
+		_character.prefix = value
+
+func _get_prefix():
+	if _character != null:
+		return _character.prefix
+	return _prefix
+
+func _set_suffix(value):
+	_suffix = value
+	if _character != null:
+		_character.suffix = value
+
+func _get_suffix():
+	if _character != null:
+		return _character.suffix
+	return _suffix
+
+func _set_avatar(value):
+	_avatar = value
+	if _character != null:
+		_character.avatar = value
 	
 func _get_avatar():
+	if _character != null:
+		return _character.avatar
 	return _avatar
-
-func parse_character():
-	var ncharacter = ""
-	
-	if character_name != "":
-		ncharacter = "{color=#" + color + "}"
-		ncharacter += character_name
-		ncharacter += "{/color}"
-	
-	return ncharacter
-
-func parse_what(what):
-	return prefix + what + suffix
-
-func _get_type():
-	return "character"
-
-func character2dict():
-	var dict = {}
-	dict["name"]	= character_name
-	dict["color"]	= _color
-	dict["prefix"]	= prefix
-	dict["suffix"]	= suffix
-	dict["avatar"]	= _avatar
-
-	return dict
-
-func dict2character(dict):
-	if dict.has("name"):
-		character_name = dict.name
-	if dict.has("color"):
-		_color = dict.color
-	if dict.has("prefix"):
-		prefix = dict.prefix
-	if dict.has("suffix"):
-		suffix = dict.suffix
-	if dict.has("avatar"):
-		_avatar = dict.avatar

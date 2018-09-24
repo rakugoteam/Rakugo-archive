@@ -1,9 +1,9 @@
 extends Node
 
 const _VAR		= preload("ren_var.gd")
-const _CHR		= preload("nodes/character.gd")
-const _QUEST	= preload("RPGSystem/quest.gd")
-const _SUBQ		= preload("RPGSystem/subquest.gd")
+const _CHR		= preload("character_obj.gd")
+const _QUEST	= preload("quest.gd")
+const _SUBQ		= preload("subquest.gd")
 
 func get_type(variable):
 	var type = "str"
@@ -53,7 +53,6 @@ func define(variables, var_name, var_value = null, var_type = null):
 	
 	if var_type == "quest":
 		var new_quest = _QUEST.new()
-		new_quest.quest_id = var_name
 		if typeof(var_value) == TYPE_DICTIONARY:
 			new_quest.dict2quest(var_value)
 		variables[var_name] = new_quest
@@ -61,7 +60,6 @@ func define(variables, var_name, var_value = null, var_type = null):
 	
 	if var_type == "subquest":
 		var new_subquest = _SUBQ.new()
-		new_subquest.quest_id = var_name
 		if typeof(var_value) == TYPE_DICTIONARY:
 			new_subquest.dict2subquest(var_value)
 		variables[var_name] = new_subquest
@@ -69,7 +67,6 @@ func define(variables, var_name, var_value = null, var_type = null):
 	
 	if var_type == "character":
 		var new_character = _CHR.new()
-		new_character.character_id = var_name
 		if typeof(var_value) == TYPE_DICTIONARY:
 			new_character.dict2character(var_value)
 		variables[var_name] = new_character

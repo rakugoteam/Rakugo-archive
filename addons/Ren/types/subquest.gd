@@ -1,6 +1,5 @@
 extends Object
 
-var quest_id = "yet_another_quest" # id of quest in Ren.variables used for save/load
 var title = "Quest Title" setget _set_title, _get_title
 var description = "Overall description of quest." setget _set_title, _get_title
 # is this subquest needed for finish whole quest
@@ -68,7 +67,6 @@ func fail():
 # This is util for a save with PersistenceNode
 func subquest2dict():
 	var dict = {}
-	dict["quest_id"]	= quest_id
 	dict["title"]		= title
 	dict["description"]	= description
 	dict["optional"]	= optional
@@ -78,8 +76,6 @@ func subquest2dict():
 # It get a dictionary with the subquest.
 # This is util for to use in run time.
 func dict2subquest(dict):
-	if dict.has("quest_id"):
-		quest_id	= dict["quest_id"]
 	if dict.has("title"):
 		title		= dict["title"]
 	if dict.has("optional"):
