@@ -49,8 +49,7 @@ func define(variables, var_name, var_value = null, var_type = null):
 		elif type == TYPE_NODE_PATH:
 			var_type = "node"
 			var_value = get_node(var_value)
-	
-	# "node" type is to consider
+
 	if var_type in ["var", "text", "dict", "list", "node"]:
 		var new_var = _VAR.new()
 		new_var._type = var_type
@@ -60,6 +59,7 @@ func define(variables, var_name, var_value = null, var_type = null):
 	
 	if var_type == "quest":
 		var new_quest = _QUEST.new()
+		new_quest.quest_id = var_name
 		if typeof(var_value) == TYPE_DICTIONARY:
 			new_quest.dict2quest(var_value)
 		variables[var_name] = new_quest
@@ -67,13 +67,20 @@ func define(variables, var_name, var_value = null, var_type = null):
 	
 	if var_type == "subquest":
 		var new_subquest = _SUBQ.new()
+		new_subquest.quest_id = var_name
 		if typeof(var_value) == TYPE_DICTIONARY:
 			new_subquest.dict2subquest(var_value)
 		variables[var_name] = new_subquest
 		return new_subquest
 	
 	if var_type == "character":
-		var new_chr = _CHR.new(var_name)
+		var new_character = _CHR.new()
+		new_character.character_id = var_name
+		if typeof(var_value) == TYPE_DICTIONARY:
+			new_character.dict2character(var_value)
+		variables[var_name] = new_character
+		return new_character
+
 		
 	
 	

@@ -1,7 +1,6 @@
 extends Node
 
 export (bool) var debug_on = true
-export (bool) var debug_inti = true
 export (String) var save_folder = "saves"
 export (String) var save_password = "Ren"
 export (String, DIR) var scenes_dir = "res://scenes/examples/"
@@ -46,7 +45,6 @@ signal exit_statement(previous_type, kwargs)
 signal notified()
 signal show(node_id, state, show_args)
 signal hide(node_id)
-signal var_changed(var_name)
 signal story_step(dialog_name)
 signal play_anim(node_id, anim_name, reset)
 
@@ -75,9 +73,6 @@ func on_hide(node):
 func on_play_anim(node_id, anim_name, reset):
 	emit_signal("play_anim", node_id, anim_name, reset)
 
-func var_changed(var_name):
-	emit_signal("var_changed", var_name)
-
 ## parse text like in renpy to bbcode
 func text_passer(text):
 	return $Text.text_passer(text, variables)
@@ -85,21 +80,16 @@ func text_passer(text):
 ## add/overwrite global variable that Ren will see
 ## and returns it as RenVar for easy use
 func define(var_name, value = null):
-	$Def.define(variables, var_name, value)
-	var_changed(var_name)
-	return get_var(var_name)
+	return $Def.define(variables, var_name, value)
 
 ## add/overwrite global variable, from string, that Ren will see
 func define_from_str(var_name, var_str, var_type):
-	$Def.define_from_str(variables, var_name, var_str, var_type)
-	var_changed(var_name)
-	return get_var(var_name)
+	return $Def.define_from_str(variables, var_name, var_str, var_type)
+	
 
 ## returns exiting Ren variable as RenVar for easy use
 func get_var(var_name):
-	var v = _VAR.new()
-	v._name = var_name
-	return v
+	return variables[var_name]
 
 ## to use with `define_from_str` func as var_type arg
 func get_type(variable):
@@ -115,15 +105,13 @@ func get_value_type(var_name):
 	
 ## crate new charater as global variable that Ren will see
 ## possible kwargs: name, color, what_prefix, what_suffix, kind, avatar
-func character(character_id, kwargs, node = null):
-	if node == null:
-		node = get_character(character_id)
-	node.set_kwargs(kwargs)
-	$Def.define(variables, character_id, node, "character")
-	return node
+func character(character_id, kwargs):
+	return $Def.define(variables, character_id, kwargs, "character")
 
 func get_character(character_id):
-	return _CHR.new(character_id)
+	if get_value_type(character_id) != "character":
+		return null 
+	return variables[character_id]
 
 ## crate new link to node as global variable that Ren will see
 func node_link(node, node_id = node.name):
@@ -135,40 +123,39 @@ func node_link(node, node_id = node.name):
 		path = node.get_path()
 	
 	$Def.define(variables, node_id, path, "node")
-# 	return get_node(node)
+	return get_node(path)
 
-# func get_node(node_id):
-# 	var p = get_var(node_id).v
-# 	return get_node(p)
+func get_node(node_id):
+	if get_value_type(node_id) != "node_id":
+		return null 
+	var p = get_var(node_id).v
+	return get_node(p)
 
 ## add/overwrite global subquest that Ren will see
 ## and returns it as RenSubQuest for easy use
 ## possible kwargs: "who", "title", "description", "optional", "state", "subquests"
 func subquest(var_name, value = {}):
-	var sq = _SUBQ.new()
-	$Def.define(variables, var_name, sq, "subquest")
-	sq.dict2subquest(value)
-	sq.quest_id = var_name
-	return sq
+	return $Def.define(variables, var_name, "subquest")
 
 ## returns exiting Ren subquest as RenSubQuest for easy use
-func get_subquest(var_name):
-	return variables[var_name].value
+func get_subquest(subquest_id):
+	if get_value_type(subquest_id) != "subquest":
+		return null 
+	return variables[subquest_id]
 
 ## add/overwrite global quest that Ren will see
 ## and returns it as RenQuest for easy use
 ## possible kwargs: "who", "title", "description", "optional", "state", "subquests"
 func quest(var_name, value = {}):
-	var q = _QUEST.new()
-	$Def.define(variables, var_name, q, "quest")
-	q.dict2quest(value)
-	q.quest_id = var_name
+	var q = Def.define(variables, var_name, "quest")
 	quests.append(var_name)
 	return q
 
 ## returns exiting Ren quest as RenQuest for easy use
-func get_quest(var_name):
-	return variables[var_name].value
+func get_quest(quest_id):
+	if get_value_type(quest_id) != "quest":
+		return null 
+	return variables[quest_id]
 
 func _set_statement(node, kwargs):
 	node.set_kwargs(kwargs)
@@ -351,7 +338,7 @@ func loadfile(save_name = "quick"):
 
 func debug(kwargs, kws = [], some_custom_text = ""):
 	if !debug_on:
-		return
+		return ""
 
 	var dbg = ""
 	
