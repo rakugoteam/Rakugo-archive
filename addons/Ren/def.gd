@@ -8,13 +8,13 @@ const _SUBQ		= preload("RPGSystem/subquest.gd")
 func get_type(variable):
 	var type = "str"
 		
-	if variable is bool:
+	if typeof(variable) == TYPE_BOOL:
 		type = "bool"
 	
-	elif variable is int:
+	elif typeof(variable) == TYPE_INT:
 		type = "int"
 	
-	elif variable is float:
+	elif typeof(variable) == TYPE_REAL:
 		type = "float"
 	
 	return type
@@ -37,16 +37,16 @@ func define(variables, var_name, var_value = null, var_type = null):
 		var_type = "var"
 		var type = typeof(var_value)
 
-		if type is String:
+		if type == TYPE_STRING:
 			var_type = "text"
 		
-		elif type is Dictionary:
+		elif type == TYPE_DICTIONARY:
 			var_type = "dict"
 		
-		elif type is Array:
+		elif type == TYPE_ARRAY:
 			var_type = "list"
 		
-		elif type is NodePath:
+		elif type == TYPE_NODE_PATH:
 			var_type = "node"
 			var_value = get_node(var_value)
 
@@ -54,7 +54,7 @@ func define(variables, var_name, var_value = null, var_type = null):
 	if var_type == "quest":
 		var new_quest = _QUEST.new()
 		new_quest.quest_id = var_name
-		if type is Dictionary:
+		if typeof(var_value) == TYPE_DICTIONARY:
 			new_quest.dict2quest(var_value)
 		variables[var_name] = new_quest
 		return new_quest
@@ -62,7 +62,7 @@ func define(variables, var_name, var_value = null, var_type = null):
 	if var_type == "subquest":
 		var new_subquest = _SUBQ.new()
 		new_subquest.quest_id = var_name
-		if var_value is Dictionary:
+		if typeof(var_value) == TYPE_DICTIONARY:
 			new_subquest.dict2subquest(var_value)
 		variables[var_name] = new_subquest
 		return new_subquest
@@ -75,7 +75,7 @@ func define(variables, var_name, var_value = null, var_type = null):
 		else:
 			new_character = _CHR.new()
 			new_character.character_id = var_name
-			if var_value is Dictionary:
+			if typeof(var_value) == TYPE_DICTIONARY:
 				new_character.dict2character(var_value)
 		variables[var_name] = new_character
 		return new_character

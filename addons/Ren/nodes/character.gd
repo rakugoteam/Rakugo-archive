@@ -15,26 +15,31 @@ export(String) var suffix = ""
 export(PackedScene) var avatar setget _set_avatar, _get_avatar
 
 func _ready():
-	Ren.character(character_id, self)
+	_update_character()
 	Ren.debug(character2dict(), kws, "Add Character " + character_id + " with ")
+
+func _update_character():
+	Ren.character(character_id, character2dict())
 
 func _set_character_id(id):
 	if Ren.variables.has(_id):
 		Ren.variables.erase(_id)
 	_id = character_id
-	Ren.character(character_id, self)
+	_update_character()
 
 func _get_character_id():
 	return _id
 
 func _set_color(vcolor):
 	_color = vcolor.to_html()
+	_update_character()
 
 func _get_color():
 	return _color
 
 func _set_avatar(vavatar):
 	_avatar = vavatar.resource_path
+	_update_character()
 	
 func _get_avatar():
 	return _avatar
