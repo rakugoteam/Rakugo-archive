@@ -110,7 +110,7 @@ func character(character_id, kwargs):
 
 func get_character(character_id):
 	if get_value_type(character_id) != "character":
-		return null 
+		return null
 	return variables[character_id]
 
 ## crate new link to node as global variable that Ren will see
@@ -127,34 +127,34 @@ func node_link(node, node_id = node.name):
 
 func get_node_by_id(node_id):
 	if get_value_type(node_id) != "node_id":
-		return null 
+		return null
 	var p = get_var(node_id).v
 	return get_node(p)
 
 ## add/overwrite global subquest that Ren will see
 ## and returns it as RenSubQuest for easy use
 ## possible kwargs: "who", "title", "description", "optional", "state", "subquests"
-func subquest(var_name, value = {}):
-	return $Def.define(variables, var_name, "subquest")
+func subquest(var_name, kwargs = {}):
+	return $Def.define(variables, var_name,  kwargs, "subquest")
 
 ## returns exiting Ren subquest as RenSubQuest for easy use
 func get_subquest(subquest_id):
 	if get_value_type(subquest_id) != "subquest":
-		return null 
+		return null
 	return variables[subquest_id]
 
 ## add/overwrite global quest that Ren will see
 ## and returns it as RenQuest for easy use
 ## possible kwargs: "who", "title", "description", "optional", "state", "subquests"
-func quest(var_name, value = {}):
-	var q = $Def.define(variables, var_name, "quest")
+func quest(var_name, kwargs = {}):
+	var q = $Def.define(variables, var_name, kwargs, "quest")
 	quests.append(var_name)
 	return q
 
 ## returns exiting Ren quest as RenQuest for easy use
 func get_quest(quest_id):
 	if get_value_type(quest_id) != "quest":
-		return null 
+		return null
 	return variables[quest_id]
 
 func _set_statement(node, kwargs):
@@ -317,8 +317,6 @@ func loadfile(save_name = "quick"):
 		
 		else:
 			variables[k] = v
-
-		var_changed(k)
 	
 	for q_id in quests:
 		var q = get_quest(q_id)

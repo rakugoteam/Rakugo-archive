@@ -4,6 +4,7 @@ var kws = ["name", "color", "prefix", "suffix", "avatar"]
 var _color
 var _avatar
 var type setget _get_type
+var value setget dict2character, character2dict
 
 export(String) var character_id = ""
 export(String) var character_name = ""

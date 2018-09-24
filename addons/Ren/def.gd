@@ -50,12 +50,6 @@ func define(variables, var_name, var_value = null, var_type = null):
 			var_type = "node"
 			var_value = get_node(var_value)
 
-	if var_type in ["var", "text", "dict", "list", "node"]:
-		var new_var = _VAR.new()
-		new_var._type = var_type
-		new_var._value = var_value
-		variables[var_name] = new_var
-		return new_var
 	
 	if var_type == "quest":
 		var new_quest = _QUEST.new()
@@ -80,6 +74,13 @@ func define(variables, var_name, var_value = null, var_type = null):
 			new_character.dict2character(var_value)
 		variables[var_name] = new_character
 		return new_character
+	
+	else:
+		var new_var = _VAR.new()
+		new_var._type = var_type
+		new_var._value = var_value
+		variables[var_name] = new_var
+		return new_var
 
 		
 	

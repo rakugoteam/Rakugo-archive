@@ -11,12 +11,9 @@ func _ready():
 		Ren.define_from_str(var_name, default, type)
 	
 	var new_val = Ren.get_value(var_name)
+	var var_to_change = Ren.get_var(var_name)
 	text = str(new_val)
-	Ren.connect("var_changed", self, "on_var_changed")
+	var_to_change.connect("value_changed", self, "on_value_changed")
 
-func on_var_changed(varn):
-	if var_name != varn:
-		return
-	
-	var new_val = Ren.get_value(var_name)
-	text = str(new_val)
+func on_value_changed(new_value):
+	text = str(new_value)

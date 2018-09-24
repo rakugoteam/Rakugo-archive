@@ -45,7 +45,7 @@ func _on_Load_pressed():
 	load_menu()
 
 func in_game():
-	$Navigation/VBoxContainer/Start.hide()
+	$Navigation/VBoxContainer/NewGame.hide()
 	$Navigation/VBoxContainer/Continue.hide()
 	$Navigation/VBoxContainer/Return.show()
 	$Navigation/VBoxContainer/Save.show()
