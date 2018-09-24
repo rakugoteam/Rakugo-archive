@@ -175,7 +175,6 @@ func say(kwargs):
 ## with keywords : who, what, kind, variable, value
 func ask(kwargs):
 	_set_statement($Ask, kwargs)
-	return get_var(kwargs.variable)
 
 ## statement of type menu
 ## there can be only one say, ask or menu in story_state

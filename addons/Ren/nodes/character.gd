@@ -49,7 +49,14 @@ func _get_type():
 	return "character"
 
 func character2dict():
-	return inst2dict(self)
+	var dict = {}
+	dict["name"]	= character_name
+	dict["color"]	= _color
+	dict["prefix"]	= prefix
+	dict["suffix"]	= suffix
+	dict["avatar"]	= _avatar
+
+	return dict
 
 func dict2character(dict):
 	if dict.has("name"):
@@ -61,4 +68,4 @@ func dict2character(dict):
 	if dict.has("suffix"):
 		suffix = dict.suffix
 	if dict.has("avatar"):
-		_avatar = dict._avatar
+		_avatar = dict.avatar
