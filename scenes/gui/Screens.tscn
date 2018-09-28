@@ -536,8 +536,6 @@ _sections_unfolded = [ "Size Flags", "custom_fonts" ]
 
 [node name="TestNodes" parent="." index="7" instance=ExtResource( 12 )]
 
-visible = false
-
 [connection signal="pressed" from="Navigation/VBoxContainer/NewGame" to="." method="_on_Start_pressed"]
 
 [connection signal="pressed" from="Navigation/VBoxContainer/Return" to="." method="_on_Return_pressed"]

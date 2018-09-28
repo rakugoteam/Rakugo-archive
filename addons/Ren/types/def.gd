@@ -24,13 +24,13 @@ func define_from_str(variables, var_name, var_str, var_type):
 		define(variables, var_name, var_str, Ren.Type.TEXT)
 	
 	elif var_type == "bool":
-		define(variables, var_name, bool(var_str), Ren.Type.Var)
+		define(variables, var_name, bool(var_str), Ren.Type.VAR)
 	
 	elif var_type == "int":
-		define(variables, var_name, int(var_str), Ren.Type.Var)
+		define(variables, var_name, int(var_str), Ren.Type.VAR)
 	
 	elif var_type == "float":
-		define(variables, var_name, float(var_str), Ren.Type.Var)
+		define(variables, var_name, float(var_str), Ren.Type.VAR)
 
 func define(variables, var_name, var_value = null, var_type = null):
 	if var_value != null && var_type == null:

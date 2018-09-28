@@ -73,7 +73,6 @@ func _ready():
 	define("test_bool", false)
 	define("test_float", 10.0)
 	define("story_state", "")
-	
 
 func exec_statement(type, kwargs = {}):
 	emit_signal("exec_statement", type, kwargs)
@@ -108,10 +107,12 @@ func define(var_name, value = null):
 ## add/overwrite global variable, from string, that Ren will see
 func define_from_str(var_name, var_str, var_type):
 	return $Def.define_from_str(variables, var_name, var_str, var_type)
-	
 
 ## returns exiting Ren variable as RenVar for easy use
-func get_var(var_name):
+func get_var(var_name, type = Type.VAR):
+	if type != Type.VAR:
+		if get_type(var_name) != type:
+			return null
 	return variables[var_name]
 
 ## to use with `define_from_str` func as var_type arg
@@ -125,6 +126,10 @@ func get_value(var_name):
 ## returns type of variable defined using define
 func get_type(var_name):
 	return variables[var_name].type
+
+## just faster way to connect singal to ren's variable
+func connect_var(var_name, signal_name, node, func_name, binds = [], flags = 0):
+	get_var(var_name).connect(signal_name, node, func_name, binds, flags)
 	
 ## crate new charater as global variable that Ren will see
 ## possible kwargs: name, color, what_prefix, what_suffix, kind, avatar
@@ -132,9 +137,8 @@ func character(character_id, kwargs):
 	return $Def.define(variables, character_id, kwargs, Type.CHARACTER)
 
 func get_character(character_id):
-	if get_type(character_id) != Type.CHARACTER:
-		return null
-	return variables[character_id]
+	print(get_value(character_id))
+	return get_var(character_id, Type.CHARACTER)
 
 ## crate new link to node as global variable that Ren will see
 func node_link(node, node_id = node.name):
@@ -162,9 +166,7 @@ func subquest(var_name, kwargs = {}):
 
 ## returns exiting Ren subquest as RenSubQuest for easy use
 func get_subquest(subquest_id):
-	if get_type(subquest_id) != Type.SUBQUEST:
-		return null
-	return variables[subquest_id]
+	return get_var(subquest_id, Type.SUBQUEST)
 
 ## add/overwrite global quest that Ren will see
 ## and returns it as RenQuest for easy use
@@ -176,9 +178,7 @@ func quest(var_name, kwargs = {}):
 
 ## returns exiting Ren quest as RenQuest for easy use
 func get_quest(quest_id):
-	if get_type(quest_id) != Type.QUEST:
-		return null
-	return variables[quest_id]
+	return get_var(quest_id, Type.QUEST)
 
 func _set_statement(node, kwargs):
 	node.set_kwargs(kwargs)
