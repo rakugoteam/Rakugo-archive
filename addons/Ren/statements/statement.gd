@@ -9,7 +9,7 @@ func _ready():
 
 func exec(dbg = true):
 	if dbg:
-		Ren.debug(kws)
+		debug(kws)
 	
 	Ren.current_statement = self
 	Ren.exec_statement(type, kwargs)

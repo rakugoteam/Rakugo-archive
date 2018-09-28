@@ -10,6 +10,7 @@ func _init():
 func exec(dbg = true):
 	if "info" in kwargs:
 		kwargs.info = Ren.text_passer(kwargs.info)
-	
-	.exec(dbg)
+		
+	if dbg: # for some strage reason .exec(dbg) give error
+		.exec()
 

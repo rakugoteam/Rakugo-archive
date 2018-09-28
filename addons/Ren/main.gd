@@ -301,7 +301,7 @@ func loadfile(save_name = "quick"):
 	$Persistence.password = save_password
 	
 	var data = $Persistence.get_data(save_name)
-	debug(["load data from:" save_name])
+	debug(["load data from:", save_name])
 	if data == null:
 		return false
 	
@@ -365,10 +365,17 @@ func debug_dict(kwargs, kws = [], some_custom_text = ""):
 	dbg = some_custom_text + dbg
 	return dbg
 
+## for printtnig debugs is only print if debug_on == true
+## you put some string array or string as argument
 func debug(some_text = []):
 	if !debug_on:
-		return ""
-	print(some_text.join(" "))
+		return
+	if typeof(some_text) == TYPE_ARRAY:
+		var new_text = ""
+		for i in some_text:
+			new_text = str(i) + " "
+		some_text = new_text
+	print(some_text)
 
 
 func _set_current_id(value):

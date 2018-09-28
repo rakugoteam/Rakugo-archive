@@ -7,7 +7,7 @@ func _init():
 
 func exec(dbg = true):
 	if dbg:
-		Ren.debug(kws)
+		debug(kws)
 
 	Ren.on_hide(kwargs.node_id)
 
