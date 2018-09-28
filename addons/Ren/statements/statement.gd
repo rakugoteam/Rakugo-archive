@@ -70,6 +70,6 @@ func add_to_history():
 	Ren.current_id += 1
 
 func debug(kws = [], some_custom_text = ""):
-	var dbg = Ren.StatementType.keys()[type] + "("
+	var dbg = Ren.StatementType.keys()[type].to_lower() + "("
 	dbg += Ren.debug_dict(kwargs, kws, some_custom_text) + ")"
 	Ren.debug(dbg)

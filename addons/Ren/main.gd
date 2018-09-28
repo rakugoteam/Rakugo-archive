@@ -115,7 +115,7 @@ func get_var(var_name):
 	return variables[var_name]
 
 ## to use with `define_from_str` func as var_type arg
-func get_type(variable):
+func get_def_type(variable):
 	return $Def.get_type(variable)
 
 ## returns variable defined using define
@@ -123,7 +123,7 @@ func get_value(var_name):
 	return variables[var_name].value
 
 ## returns type of variable defined using define
-func get_value_type(var_name):
+func get_type(var_name):
 	return variables[var_name].type
 	
 ## crate new charater as global variable that Ren will see
@@ -132,7 +132,7 @@ func character(character_id, kwargs):
 	return $Def.define(variables, character_id, kwargs, Type.CHARACTER)
 
 func get_character(character_id):
-	if get_value_type(character_id) != Type.CHARACTER:
+	if get_type(character_id) != Type.CHARACTER:
 		return null
 	return variables[character_id]
 
@@ -149,7 +149,7 @@ func node_link(node, node_id = node.name):
 	return get_node(path)
 
 func get_node_by_id(node_id):
-	if get_value_type(node_id) != "node_id":
+	if get_type(node_id) != "node_id":
 		return null
 	var p = get_var(node_id).v
 	return get_node(p)
@@ -162,7 +162,7 @@ func subquest(var_name, kwargs = {}):
 
 ## returns exiting Ren subquest as RenSubQuest for easy use
 func get_subquest(subquest_id):
-	if get_value_type(subquest_id) != Type.SUBQUEST:
+	if get_type(subquest_id) != Type.SUBQUEST:
 		return null
 	return variables[subquest_id]
 
@@ -176,7 +176,7 @@ func quest(var_name, kwargs = {}):
 
 ## returns exiting Ren quest as RenQuest for easy use
 func get_quest(quest_id):
-	if get_value_type(quest_id) != Type.QUEST:
+	if get_type(quest_id) != Type.QUEST:
 		return null
 	return variables[quest_id]
 

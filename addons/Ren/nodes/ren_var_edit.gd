@@ -21,7 +21,7 @@ func _ready():
 	
 	var var_to_change = Ren.get_var(var_name)
 	
-	type = Ren.get_type(s)
+	type = Ren.get_def_type(s)
 	
 	connect("text_entered", self, "_on_entered")
 	var_to_change.connect("value_changed", self, "on_value_changed")
