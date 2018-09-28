@@ -9,8 +9,7 @@ func _init():
 	kws += ["temp", "variable"]
 
 func exec(dbg = true):
-	if dbg:
-		print(debug(kws))
+	Ren.debug(kws)
 	
 	value = kwargs.value
 	variable = kwargs.variable

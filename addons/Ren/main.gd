@@ -158,7 +158,7 @@ func get_node_by_id(node_id):
 ## and returns it as RenSubQuest for easy use
 ## possible kwargs: "who", "title", "description", "optional", "state", "subquests"
 func subquest(var_name, kwargs = {}):
-	return $Def.define(variables, var_name,  kwargs, Type.SUBQUEST)
+	return $Def.define(variables, var_name, kwargs, Type.SUBQUEST)
 
 ## returns exiting Ren subquest as RenSubQuest for easy use
 func get_subquest(subquest_id):
@@ -261,7 +261,7 @@ func savefile(save_name = "quick"):
 	$Persistence.password = save_password
 
 	var data = $Persistence.get_data(save_name)
-	prints("get data from:", save_name)
+	debug(["get data from:", save_name])
 	if data == null:
 		return false
 
@@ -272,8 +272,7 @@ func savefile(save_name = "quick"):
 		var k = variables.keys()[i]
 		var v = variables.values()[i]
 		
-		if debug_on:
-			prints(k, v)
+		debug([k, v])
 		
 		if v.type == Type.CHARACTER:
 			vars_to_save[k] = {"type":v.type, "value":v.character2dict()}
@@ -293,7 +292,7 @@ func savefile(save_name = "quick"):
 	data["state"] = prev_story_state #_get_story_state() # it must be this way
 	
 	var result = $Persistence.save_data(save_name)
-	prints("save data to:", save_name)
+	debug(["save data to:", save_name])
 	return result
 	
 func loadfile(save_name = "quick"):
@@ -302,7 +301,7 @@ func loadfile(save_name = "quick"):
 	$Persistence.password = save_password
 	
 	var data = $Persistence.get_data(save_name)
-	prints("load data from:", save_name)
+	debug(["load data from:" save_name])
 	if data == null:
 		return false
 	
@@ -315,8 +314,7 @@ func loadfile(save_name = "quick"):
 		var k = vars_to_load.keys()[i]
 		var v = vars_to_load.values()[i]
 
-		if debug_on:
-			prints(k, v)
+		debug([k, v])
 		
 		if v.type == Type.CHARACTER:
 			var properties = v.value
@@ -353,10 +351,7 @@ func loadfile(save_name = "quick"):
 
 	return true
 
-func debug(kwargs, kws = [], some_custom_text = ""):
-	if !debug_on:
-		return ""
-
+func debug_dict(kwargs, kws = [], some_custom_text = ""):
 	var dbg = ""
 	
 	for k in kws:
@@ -369,6 +364,12 @@ func debug(kwargs, kws = [], some_custom_text = ""):
 
 	dbg = some_custom_text + dbg
 	return dbg
+
+func debug(some_text = []):
+	if !debug_on:
+		return ""
+	print(some_text.join(" "))
+
 
 func _set_current_id(value):
 	current_id = value
@@ -401,8 +402,7 @@ func jump(
 	else:
 		_scene = scenes_dir + path_to_scene + ".tscn"
 	
-	if debug_on:
-		prints("jump to scene:", _scene, "with dialog:", dialog_name, "from:", state)
+	debug(["jump to scene:", _scene, "with dialog:", dialog_name, "from:", state])
 
 	if change:
 		if current_node != null:
@@ -464,14 +464,14 @@ func save_global_history():
 	$Persistence.password = save_password
 
 	var data = $Persistence.get_data(save_name)
-	prints("get global_history from:", save_name)
+	debug(["get global_history from:", save_name])
 	if data == null:
 		return false
 
 	data["global_history"] = global_history.duplicate()
 	
 	var result = $Persistence.save_data(save_name)
-	prints("save global_history to:", save_name)
+	debug(["save global_history to:", save_name])
 	return result
 
 func load_global_history():
@@ -480,7 +480,7 @@ func load_global_history():
 	$Persistence.password = save_password
 	global_history = []
 	var data = $Persistence.get_data(save_name)
-	prints("load global_history from:", save_name)
+	debug(["load global_history from:", save_name])
 	if data == null:
 		return false
 	

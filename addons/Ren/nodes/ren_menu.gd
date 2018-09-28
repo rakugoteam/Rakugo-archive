@@ -27,7 +27,7 @@ func _on_statement(type, kwargs):
 		add_child(ch_button)
 		ch_button.label.bbcode_text = "[center]" + ch + "[/center]"
 		ch_button.id = i
-		print("create button (", ch, ") with id : ", i)
+		debug("create button (", ch, ") with id : ", i)
 		i += 1
 
 	get_parent().show()

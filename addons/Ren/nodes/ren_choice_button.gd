@@ -13,5 +13,5 @@ func _ready():
 
 func _on_pressed():
 	._on_pressed()
-	print("final_choice ", id)
+	Ren.debug(["final_choice", id])
 	Ren.exit_statement({"final_choice":id})

@@ -23,7 +23,8 @@ func _ready():
 	dict["suffix"]	= suffix
 	dict["avatar"]	= avatar.resource_path
 	_character = Ren.character(character_id, dict)
-	Ren.debug(dict, _character.kws, "Add Character " + character_id + " with ")
+	var dbg = Ren.debug_dict(dict, _character.kws, "Add Character " + character_id + " with ")
+	Ren.debug(dbg)
 	pass
 
 func _set_character_id(id):

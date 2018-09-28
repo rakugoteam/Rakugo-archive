@@ -9,7 +9,7 @@ func _ready():
 
 func exec(dbg = true):
 	if dbg:
-		print(debug(kws))
+		Ren.debug(kws)
 	
 	Ren.current_statement = self
 	Ren.exec_statement(type, kwargs)
@@ -43,8 +43,8 @@ func on_exit(_type, new_kwargs = {}):
 
 func add_to_history():
 	if Ren.current_id < 0 or Ren.current_id > Ren.history.size() + 1:
-		prints("some thing gone wrong Ren.current_id =", Ren.current_id)
-		prints("history size:", Ren.history.size())
+		Ren.debug(["some thing gone wrong Ren.current_id =", Ren.current_id])
+		Ren.debug(["history size:", Ren.history.size()])
 		return
 	
 	var hkwargs = kwargs.duplicate()
@@ -70,8 +70,6 @@ func add_to_history():
 	Ren.current_id += 1
 
 func debug(kws = [], some_custom_text = ""):
-	if !Ren.debug_on:
-		return
 	var dbg = Ren.StatementType.keys()[type] + "("
-	dbg += Ren.debug(kwargs, kws, some_custom_text) + ")"
-	return dbg
+	dbg += Ren.debug_dict(kwargs, kws, some_custom_text) + ")"
+	Ren.debug(dbg)

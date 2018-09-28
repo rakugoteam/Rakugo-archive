@@ -34,7 +34,7 @@ func savebox(saveslotsdir="user://saveslot/"):
 	var filehandler=File.new()
 	for x in $GridContainer.get_children():
 		if filehandler.file_exists(saveslotsdir+x.name+'.png'):
-			print("slot exist, loading image")
+			Ren.debug("slot exist, loading image")
 			var img=Image.new()
 			img.load(saveslotsdir+x.name+'.png')
 			var tex=ImageTexture.new()
@@ -53,7 +53,7 @@ func loadbox(saveslotsdir="user://saveslot/"):
 	var filehandler=File.new()
 	for x in $GridContainer.get_children():
 		if filehandler.file_exists(saveslotsdir+x.name+'.png'):
-			#print("slot exist, loading image")
+			#Ren.debug("slot exist, loading image")
 			var img=Image.new()
 			img.load(saveslotsdir+x.name+'.png')
 			var tex=ImageTexture.new()
@@ -78,16 +78,16 @@ func savepress(input,caller):
 
 	if input is InputEventMouseButton:
 		if input.pressed:
-			print(caller.name)
+			Ren.debug(caller.name)
 			if screenshot==null:
 				return false
 			screenshot.save_png("user://saveslot/"+caller.name+'.png')
 			filehandler.open("user://saveslot/"+caller.name+'.info',File.WRITE)
 			var d=OS.get_datetime()
 			var s=weekdays[d['weekday']]+' '+months[d['month']]+' '+str(d['day'])+', '+str(d['hour'])+':'+str(d['minute'])
-			print(s)
+			Ren.debug(s)
 			filehandler.store_line(s)
-			print("caller.name: ", caller.name)
+			Ren.debug(["caller.name:", caller.name])
 			Ren.savefile(caller.name)
 	filehandler.close()
 	

@@ -7,7 +7,7 @@ func _init():
 
 func exec(dbg = true):
 	if dbg:
-		print(debug(kws))
+		Ren.debug(kws)
 	
 	if "at" in kwargs:
 		if "center" in kwargs.at:

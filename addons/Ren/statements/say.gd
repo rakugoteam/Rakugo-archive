@@ -9,7 +9,7 @@ func _init():
 
 func exec(dbg = true):
 	if dbg:
-		print(debug(kws))
+		Ren.debug(kws)
 	
 	if "who" in kwargs:
 		if kwargs.who in Ren.variables:

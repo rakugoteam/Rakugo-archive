@@ -21,7 +21,7 @@ func text_passer(text, variables):
 			var value = variables[var_name].value
 			var type = variables[var_name].type
 
-			# print (var_name, " ",  type, " ",  value)
+			# Ren.debug([var_name, " ",  type, " ",  value])
 			var s = "[" + var_name + "]"
 			if type == Ren.Type.TEXT:
 				text = text.replace(s, value)
@@ -67,6 +67,6 @@ func text_passer(text, variables):
 		text = text.replace("{tab}", "\t")
 		text = text.replace("{", "[")
 		text = text.replace("}", "]")
-		# print("org: ''", _text, "', bbcode: ''", text , "'")
+		# Ren.debug("org: ''", _text, "', bbcode: ''", text , "'")
 
 	return text

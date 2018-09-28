@@ -10,7 +10,7 @@ func _init():
 	
 func exec(dbg = true): 
 	if dbg:
-		print(debug(kws))
+		Ren.debug(kws)
 	
 	choices_labels = []
 	for ch in kwargs.choices:
