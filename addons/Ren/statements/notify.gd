@@ -2,7 +2,7 @@ extends "statement.gd"
 
 func _init():
 	._init()
-	type = "notify"
+	type = 6 # Ren.StatementType.NOTIFY
 	kws = ['info', 'lenght']
 	kwargs['info'] = ""
 	kwargs['length'] = 1

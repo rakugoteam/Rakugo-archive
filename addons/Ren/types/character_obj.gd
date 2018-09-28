@@ -38,7 +38,7 @@ func parse_what(what):
 	return prefix + what + suffix
 
 func _get_type():
-	return "character"
+	return Ren.Type.CHARACTER
 
 func character2dict():
 	var dict = {}

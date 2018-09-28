@@ -2,7 +2,7 @@ extends "statement.gd"
 
 func _init():
 	._init()
-	type = "hide"
+	type = 5 # Ren.StatementType.HIDE
 	kws = ["node_id"]
 
 func exec(dbg = true):

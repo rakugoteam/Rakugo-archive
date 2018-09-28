@@ -23,20 +23,20 @@ func text_passer(text, variables):
 
 			# print (var_name, " ",  type, " ",  value)
 			var s = "[" + var_name + "]"
-			if type == "text":
+			if type == Ren.Type.TEXT:
 				text = text.replace(s, value)
 			
 #			elif type == "func":
 #				var func_result = call(variable)
 #				text = text.replace("[" + var_name + "()]", str(func_result))
 			
-			elif type == "var":
+			elif type == Ren.Type.VAR:
 				text = text.replace(s, str(value))
 			
-			elif type in ["dict", "character"]:
+			elif type in [Ren.Type.DICT, Ren.Type.CHARACTER]:
 				var dict = value
 				
-				if type == "character":
+				if type == Ren.Type.CHARACTER:
 					dict = value.kwargs
 
 				text = text.replace(s, str(dict))
@@ -49,7 +49,7 @@ func text_passer(text, variables):
 					var kvalue = dict[k]
 					text = text.replace(sk, str(kvalue))
 			
-			elif type == "list":
+			elif type == Ren.Type.LIST:
 				text = text.replace(s, str(value))
 				
 				for i in range(value.size()):

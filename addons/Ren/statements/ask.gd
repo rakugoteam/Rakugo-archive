@@ -5,7 +5,7 @@ var variable = "variable"
 
 func _init():
 	._init()
-	type = "ask"
+	type = 2 # Ren.StatementType.ASK
 	kws += ["temp", "variable"]
 
 func exec(dbg = true):

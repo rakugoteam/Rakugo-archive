@@ -84,4 +84,4 @@ func dict2subquest(dict):
 		state		= dict["state"]
 
 func _get_type():
-	return "subquest"
+	return Ren.Type.SUBQUEST

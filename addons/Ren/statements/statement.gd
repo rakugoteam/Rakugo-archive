@@ -1,6 +1,6 @@
 extends Node
 
-var type = "base"
+var type = 0 # Ren.StatementType.BASE
 var kwargs = {"add_to_history": false} # dict of pairs keyword : argument
 var kws = ["add_to_history"] # possible keywords for this type of statement
 
@@ -72,6 +72,6 @@ func add_to_history():
 func debug(kws = [], some_custom_text = ""):
 	if !Ren.debug_on:
 		return
-	var dbg = type + "("
+	var dbg = Ren.StatementType.keys()[type] + "("
 	dbg += Ren.debug(kwargs, kws, some_custom_text) + ")"
 	return dbg

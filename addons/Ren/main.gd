@@ -8,6 +8,28 @@ export (String, DIR) var scenes_dir = "res://scenes/examples/"
 const FOLDER_CONFIG_NAME = "Config"
 const FILE_CONFIG_NAME = "Config"
 
+enum Type {
+	VAR,		# 0
+	TEXT,		# 1
+	DICT,		# 2
+	LIST,		# 3
+	NODE,		# 4
+	QUEST,		# 5
+	SUBQUEST,	# 6
+	CHARACTER	# 7
+}
+
+enum StatementType {
+	BASE,		# 0
+	SAY,		# 1
+	ASK,		# 2
+	MENU,		# 3
+	SHOW,		# 4
+	HIDE,		# 5
+	NOTIFY,		# 6
+	PLAY_ANIM	# 7
+}
+
 # this must be saved
 var current_id = 0 setget _set_current_id, _get_current_id
 var local_id = 0
@@ -24,7 +46,7 @@ var current_statement = null
 var using_passer = false
 var skip_auto = false
 var current_node = null
-var skip_types = ["say", "show", "hide"]
+var skip_types = [StatementType.SAY, StatementType.SHOW, StatementType.HIDE]
 var file = File.new()
 var loading_in_progress = false
 var started = false
@@ -107,10 +129,10 @@ func get_value_type(var_name):
 ## crate new charater as global variable that Ren will see
 ## possible kwargs: name, color, what_prefix, what_suffix, kind, avatar
 func character(character_id, kwargs):
-	return $Def.define(variables, character_id, kwargs, "character")
+	return $Def.define(variables, character_id, kwargs, Type.CHARACTER)
 
 func get_character(character_id):
-	if get_value_type(character_id) != "character":
+	if get_value_type(character_id) != Type.CHARACTER:
 		return null
 	return variables[character_id]
 
@@ -123,7 +145,7 @@ func node_link(node, node_id = node.name):
 	elif node is Node:
 		path = node.get_path()
 	
-	$Def.define(variables, node_id, path, "node")
+	$Def.define(variables, node_id, path, Type.NODE)
 	return get_node(path)
 
 func get_node_by_id(node_id):
@@ -136,11 +158,11 @@ func get_node_by_id(node_id):
 ## and returns it as RenSubQuest for easy use
 ## possible kwargs: "who", "title", "description", "optional", "state", "subquests"
 func subquest(var_name, kwargs = {}):
-	return $Def.define(variables, var_name,  kwargs, "subquest")
+	return $Def.define(variables, var_name,  kwargs, Type.SUBQUEST)
 
 ## returns exiting Ren subquest as RenSubQuest for easy use
 func get_subquest(subquest_id):
-	if get_value_type(subquest_id) != "subquest":
+	if get_value_type(subquest_id) != Type.SUBQUEST:
 		return null
 	return variables[subquest_id]
 
@@ -148,13 +170,13 @@ func get_subquest(subquest_id):
 ## and returns it as RenQuest for easy use
 ## possible kwargs: "who", "title", "description", "optional", "state", "subquests"
 func quest(var_name, kwargs = {}):
-	var q = $Def.define(variables, var_name, kwargs, "quest")
+	var q = $Def.define(variables, var_name, kwargs, Type.QUEST)
 	quests.append(var_name)
 	return q
 
 ## returns exiting Ren quest as RenQuest for easy use
 func get_quest(quest_id):
-	if get_value_type(quest_id) != "quest":
+	if get_value_type(quest_id) != Type.QUEST:
 		return null
 	return variables[quest_id]
 
@@ -253,11 +275,11 @@ func savefile(save_name = "quick"):
 		if debug_on:
 			prints(k, v)
 		
-		if v.type == "character":
+		if v.type == Type.CHARACTER:
 			vars_to_save[k] = {"type":v.type, "value":v.character2dict()}
-		elif v.type == "subquest":
+		elif v.type == Type.SUBQUEST:
 			vars_to_save[k] = {"type":v.type, "value":v.subquest2dict()}
-		elif v.type == "quest":
+		elif v.type == Type.QUEST:
 			vars_to_save[k] = {"type":v.type, "value":v.quest2dict()}
 		else:
 			vars_to_save[k] = v
@@ -296,7 +318,7 @@ func loadfile(save_name = "quick"):
 		if debug_on:
 			prints(k, v)
 		
-		if v.type == "character":
+		if v.type == Type.CHARACTER:
 			var properties = v.value
 			var obj = variables[k].value
 
@@ -307,10 +329,10 @@ func loadfile(save_name = "quick"):
 				if pk in obj.get_property_list():
 					obj.set(pk, pv)
 		
-		elif v.type == "subquest":
+		elif v.type == Type.SUBQUEST:
 			subquest(k, v.value)
 		
-		elif v.type == "quest":
+		elif v.type == Type.QUEST:
 			quest(k, v.value)
 			if k in quests:
 				continue
@@ -394,7 +416,7 @@ func jump(
 		loading_in_progress = false
 	
 	if started:
-		Ren.story_step()
+		story_step()
 
 # Data related to the framework configuration.
 func config_data():
@@ -429,11 +451,11 @@ func cant_auto():
 	return not(current_statement.type in skip_types)
 
 func cant_skip():
-	var not_seen = not(Ren.current_statement_in_global_history())
+	var not_seen = not(current_statement_in_global_history())
 	return cant_auto() and not_seen
 
 func cant_qload():
-	var path = str("user://", Ren.save_folder, "/quick")
+	var path = str("user://", save_folder, "/quick")
 	return !file.file_exists(path + ".save") or !file.file_exists(path + ".txt")
 
 func save_global_history():

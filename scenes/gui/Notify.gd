@@ -5,7 +5,7 @@ func _ready():
 	$Timer.connect("timeout", self, "hide")
 
 func _on_statement(type, kwargs):
-	if type == "notify":
+	if type == Ren.StatementType.NOTIFY:
 		$Dialog.bbcode_text = kwargs.info
 		if kwargs.has("length"):
 			$Timer.wait_time = kwargs.length

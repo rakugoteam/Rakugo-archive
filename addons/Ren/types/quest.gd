@@ -92,4 +92,4 @@ func _on_fail_subquest(subquest):
 		emit_signal("fail_quest")
 
 func _get_type():
-	return "quest"
+	return Ren.Type.QUEST

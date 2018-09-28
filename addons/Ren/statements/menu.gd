@@ -5,7 +5,7 @@ var choices_labels = []
 func _init():
 	._init()
 	kws += ["choices"]
-	type = "menu"
+	type = 3 # Ren.StatementType.MENU
 	kwargs["mkind"] = "vertical"
 	
 func exec(dbg = true): 

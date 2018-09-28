@@ -2,7 +2,7 @@ extends "statement.gd"
 
 func _init():
 	._init()
-	type = "play_anim"
+	type = 7 # Ren.StatementType.PLAY_ANIM
 	kws = ["node_id", "anim_name", "reset"]
 	kwargs["node_id"] = ""
 	kwargs["anim_name"] = ""
