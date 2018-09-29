@@ -2,11 +2,11 @@ extends Node
 
 var _character
 var _name = ""
-var _color
-var _avatar
+var _color = Color("#ffffff")
+var _avatar = PackedScene.new()
 var _prefix = ""
 var _suffix = ""
-var _id
+var _id = ""
 
 export(String) var character_id = "" setget _set_character_id, _get_character_id
 export(String) var character_name = "" setget _set_character_name, _get_character_name
@@ -20,14 +20,14 @@ func _ready():
 
 func _on_start():
 	var dict = get_dict()
-	_character = Ren.character(character_id, dict)
-	var dbg = Ren.debug_dict(dict, _character.kws, "Add Character " + character_id + " with ")
+	_character = Ren.character(_id, dict)
+	var dbg = Ren.debug_dict(dict, _character.kws, "Add Character " + _id + " with ")
 	Ren.debug(dbg)
 
-func _set_character_id(id):
+func _set_character_id(value):
 	if Ren.variables.has(_id):
 		Ren.variables.erase(_id)
-	_id = character_id
+	_id = value
 	_on_start()
 
 func _get_character_id():
@@ -40,7 +40,8 @@ func _set_character_name(value):
 
 func _get_character_name():
 	if _character != null:
-		return _character.name
+		if _character.name != null:
+			return _character.name
 	return _name
 
 func _set_color(value):
@@ -50,7 +51,8 @@ func _set_color(value):
 
 func _get_color():
 	if _character != null:
-		return _character.color
+		if _character.color != null:
+			return _character.color
 	return _color
 
 func _set_prefix(value):
@@ -60,7 +62,8 @@ func _set_prefix(value):
 
 func _get_prefix():
 	if _character != null:
-		return _character.prefix
+		if _character.prefix != null: 
+			return _character.prefix
 	return _prefix
 
 func _set_suffix(value):
@@ -70,7 +73,8 @@ func _set_suffix(value):
 
 func _get_suffix():
 	if _character != null:
-		return _character.suffix
+		if _character.suffix != null:
+			return _character.suffix
 	return _suffix
 
 func _set_avatar(value):
@@ -80,14 +84,15 @@ func _set_avatar(value):
 	
 func _get_avatar():
 	if _character != null:
-		return _character.avatar
+		if _character.avatar != null:
+			return _character.avatar
 	return _avatar
 
 func get_dict():
 	var dict = {}
-	dict["name"]	= character_name
-	dict["color"]	= color.to_html()
-	dict["prefix"]	= prefix
-	dict["suffix"]	= suffix
-	dict["avatar"]	= avatar.resource_path
+	dict["name"]	= _name
+	dict["color"]	= _color.to_html()
+	dict["prefix"]	= _prefix
+	dict["suffix"]	= _suffix
+	dict["avatar"]	= _avatar.resource_path
 	return dict

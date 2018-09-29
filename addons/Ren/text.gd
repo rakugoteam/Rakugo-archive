@@ -21,7 +21,7 @@ func text_passer(text, variables):
 			var value = variables[var_name].value
 			var type = variables[var_name].type
 
-			# Ren.debug([var_name, " ",  type, " ",  value])
+			# Ren.debug([var_name, type, value])
 			var s = "[" + var_name + "]"
 			if type == Ren.Type.TEXT:
 				text = text.replace(s, value)
@@ -35,9 +35,6 @@ func text_passer(text, variables):
 			
 			elif type in [Ren.Type.DICT, Ren.Type.CHARACTER]:
 				var dict = value
-				
-				if type == Ren.Type.CHARACTER:
-					dict = value.kwargs
 
 				text = text.replace(s, str(dict))
 				
