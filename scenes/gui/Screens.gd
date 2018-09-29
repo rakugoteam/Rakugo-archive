@@ -83,3 +83,7 @@ func _on_Save_pressed():
 	hide()
 	var screenshot = get_viewport().get_texture().get_data()
 	save_menu(screenshot)
+
+
+func _on_TestNodes_pressed():
+	show_page($TestNodes)

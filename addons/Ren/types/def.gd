@@ -19,18 +19,41 @@ func get_type(variable):
 	
 	return type
 
-func define_from_str(variables, var_name, var_str, var_type):
+func str2ren_type(str_type):
+	if str_type == "str":
+		return Ren.Type.TEXT
+	
+	elif str_type == "character":
+		return Ren.Type.CHARACTER
+	
+	elif str_type == "quest":
+		return Ren.Type.QUEST
+	
+	elif str_type == "subquest":
+		return Ren.Type.SUBQUEST
+	
+	else:
+		return Ren.Type.VAR
+
+func str2value(str_value, var_type):
 	if var_type == "str":
-		define(variables, var_name, var_str, Ren.Type.TEXT)
+		return str_value
 	
 	elif var_type == "bool":
-		define(variables, var_name, bool(var_str), Ren.Type.VAR)
+		return bool(str_value)
 	
 	elif var_type == "int":
-		define(variables, var_name, int(var_str), Ren.Type.VAR)
+		return int(str_value)
 	
 	elif var_type == "float":
-		define(variables, var_name, float(var_str), Ren.Type.VAR)
+		return float(str_value)
+
+
+func define_from_str(variables, var_name, var_str, var_type):
+	var value = str2value(var_str, var_type)
+	var type = str2ren_type(var_type)
+	return define(variables, var_name, value, type)
+	
 
 func define(variables, var_name, var_value = null, var_type = null):
 	if var_value != null && var_type == null:

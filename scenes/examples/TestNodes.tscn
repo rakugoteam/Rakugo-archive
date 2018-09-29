@@ -37,7 +37,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 129.0
-margin_bottom = 118.0
+margin_bottom = 109.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -66,7 +66,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Grow Direction" ]
 
-[node name="RenValLabel" type="Label" parent="VBoxContainer" index="1"]
+[node name="RenVarLabel" type="Label" parent="VBoxContainer" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -92,7 +92,7 @@ var_name = "test_float"
 default = ""
 type = "float"
 
-[node name="RenValLabel2" type="Label" parent="VBoxContainer" index="2"]
+[node name="RenVarEdit" type="LineEdit" parent="VBoxContainer" index="2"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -100,33 +100,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 36.0
 margin_right = 129.0
-margin_bottom = 50.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-script = ExtResource( 1 )
-__meta__ = {
-"_editor_icon": ExtResource( 2 )
-}
-var_name = "test_float"
-default = ""
-type = "float"
-
-[node name="RenValEdit" type="LineEdit" parent="VBoxContainer" index="3"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 54.0
-margin_right = 129.0
-margin_bottom = 78.0
+margin_bottom = 60.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -147,15 +121,15 @@ __meta__ = {
 var_name = "test_float"
 default = "10"
 
-[node name="RenValHSlider" type="HSlider" parent="VBoxContainer" index="4"]
+[node name="RenVarHSlider" type="HSlider" parent="VBoxContainer" index="3"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 82.0
+margin_top = 64.0
 margin_right = 129.0
-margin_bottom = 98.0
+margin_bottom = 80.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -181,15 +155,15 @@ __meta__ = {
 var_name = "test_float"
 default = 0.5
 
-[node name="RenProgressBar" type="ProgressBar" parent="VBoxContainer" index="5"]
+[node name="RenProgressBar" type="ProgressBar" parent="VBoxContainer" index="4"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 102.0
+margin_top = 84.0
 margin_right = 129.0
-margin_bottom = 118.0
+margin_bottom = 100.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -219,7 +193,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 133.0
 margin_right = 149.0
-margin_bottom = 118.0
+margin_bottom = 109.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -253,7 +227,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 153.0
 margin_right = 282.0
-margin_bottom = 118.0
+margin_bottom = 109.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -263,7 +237,7 @@ size_flags_vertical = 1
 custom_constants/separation = 0
 alignment = 0
 
-[node name="Label2" type="Label" parent="VBoxContainer2" index="0"]
+[node name="Label" type="Label" parent="VBoxContainer2" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -283,7 +257,7 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="RenValLabel2" type="Label" parent="VBoxContainer2" index="1"]
+[node name="RenVarLabel" type="Label" parent="VBoxContainer2" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -309,7 +283,7 @@ var_name = "test_bool"
 default = "False"
 type = "bool"
 
-[node name="RenValCheckButton" type="CheckButton" parent="VBoxContainer2" index="2"]
+[node name="RenVarCheckButton" type="CheckButton" parent="VBoxContainer2" index="2"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -338,7 +312,7 @@ __meta__ = {
 var_name = "test_bool"
 default = false
 
-[node name="RenValCheckBox" type="CheckBox" parent="VBoxContainer2" index="3"]
+[node name="RenVarCheckBox" type="CheckBox" parent="VBoxContainer2" index="3"]
 
 anchor_left = 0.0
 anchor_top = 0.0

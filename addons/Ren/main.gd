@@ -102,11 +102,32 @@ func text_passer(text):
 ## add/overwrite global variable that Ren will see
 ## and returns it as RenVar for easy use
 func define(var_name, value = null):
-	return $Def.define(variables, var_name, value)
+	if not variables.has(var_name):
+		return $Def.define(variables, var_name, value)
+	else:
+		return set_var(var_name, value)
 
 ## add/overwrite global variable, from string, that Ren will see
 func define_from_str(var_name, var_str, var_type):
-	return $Def.define_from_str(variables, var_name, var_str, var_type)
+	if not variables.has(var_name):
+		return $Def.define_from_str(variables, var_name, var_str, var_type)
+	else:
+		var value = $Def.str2value(var_str, var_type)
+		var_type = $Def.str2ren_type(var_type)
+		return set_var(var_name, value, var_type)
+
+## overwrite exitsing global variable and returns it as RenVar
+func set_var(var_name, value, var_type = null):
+	if not variables.has(var_name):
+		prints(var_name, "variable don't exist in Ren")
+		return null
+
+	if var_type == null:
+		var_type = get_type(var_name)
+	
+	variables[var_name]._type = var_type
+	variables[var_name].value = value
+	return variables[var_name]
 
 ## returns exiting Ren variable as RenVar for easy use
 func get_var(var_name, type = Type.VAR):

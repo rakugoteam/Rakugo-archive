@@ -18,6 +18,8 @@ func _ready():
 	
 	else:
 		Ren.define(var_name, default)
+	
+	Ren.connect_var(var_name, "value_changed", self, "on_value_changed")
 
 func on_value_changed(new_value):
 	value = new_value

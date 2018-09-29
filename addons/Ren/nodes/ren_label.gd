@@ -8,7 +8,7 @@ func _ready():
 	bbcode_enabled = true
 	update()
 	for vn in vars_names:
-		Ren.connect_var(vn, "var_changed", self, "on_var_changed")
+		Ren.connect_var(vn, "value_changed", self, "on_value_changed")
 
-func on_var_changed(var_name):
+func on_value_changed(new_value):
 	bbcode_text = Ren.text_passer(ren_text)
