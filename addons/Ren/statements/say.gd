@@ -18,7 +18,7 @@ func exec(dbg = true):
 				var who = Ren.get_character(org_who)
 				kwargs.who = who.parse_character()
 				
-				if "avatar" in Ren.get_character(org_who).kwargs:
+				if "avatar" in Ren.get_character(org_who).value:
 					kwargs["avatar"] = Ren.get_character(org_who).avatar
 				
 				if "what" in kwargs:
