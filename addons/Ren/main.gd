@@ -385,7 +385,7 @@ func debug(some_text = []):
 	if typeof(some_text) == TYPE_ARRAY:
 		var new_text = ""
 		for i in some_text:
-			new_text = str(i) + " "
+			new_text += str(i) + " "
 		some_text = new_text
 	print(some_text)
 
