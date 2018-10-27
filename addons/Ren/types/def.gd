@@ -76,6 +76,7 @@ func define(variables, var_name, var_value = null, var_type = null):
 	
 	if var_type == Ren.Type.QUEST:
 		var new_quest = _QUEST.new()
+		new_quest.quest_id = var_name
 		if typeof(var_value) == TYPE_DICTIONARY:
 			new_quest.dict2quest(var_value)
 		variables[var_name] = new_quest
@@ -83,6 +84,7 @@ func define(variables, var_name, var_value = null, var_type = null):
 	
 	if var_type == Ren.Type.SUBQUEST:
 		var new_subquest = _SUBQ.new()
+		new_subquest.quest_id = var_name
 		if typeof(var_value) == TYPE_DICTIONARY:
 			new_subquest.dict2subquest(var_value)
 		variables[var_name] = new_subquest

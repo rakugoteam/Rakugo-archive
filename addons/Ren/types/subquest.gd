@@ -1,10 +1,11 @@
 extends Object
 
+var quest_id = "some_quest_id" # used for save/load/connection with other quests
 var title = "Quest Title" setget _set_title, _get_title
 var description = "Overall description of quest." setget _set_title, _get_title
 # is this subquest needed for finish whole quest
 var optional = false setget _set_optional, _get_optional
-
+var type setget , _get_type
 enum {STATE_NOT_AVAILABLE, STATE_AVAILABLE, STATE_IN_PROGRESS, STATE_DONE, STATE_FAIL}
 var state = STATE_AVAILABLE setget _set_state, _get_state
 

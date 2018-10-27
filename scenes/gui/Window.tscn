@@ -3,7 +3,7 @@
 [ext_resource path="res://scenes/gui/InGameGUI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/gui/Screens.tscn" type="PackedScene" id=2]
 
-[node name="Window" type="Node" index="0"]
+[node name="Window" type="Node"]
 
 pause_mode = 2
 _sections_unfolded = [ "Pause", "Theme" ]
@@ -15,7 +15,5 @@ margin_right = 0.0
 margin_bottom = 0.0
 
 [node name="Screens" parent="." index="1" instance=ExtResource( 2 )]
-
-first_dialog = "test"
 
 

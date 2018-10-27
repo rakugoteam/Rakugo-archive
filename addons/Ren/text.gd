@@ -43,8 +43,12 @@ func text_passer(text, variables):
 					if text.find(sk) == -1:
 						continue # no variable in this string
 					
-					var kvalue = dict[k]
-					text = text.replace(sk, str(kvalue))
+					var kvalue = str(dict[k])
+					# need testing
+					# if k == "name" and type == Ren.Type.CHARACTER:
+					# 	kvalue = dict.parse_character()
+					
+					text = text.replace(sk, kvalue)
 			
 			elif type == Ren.Type.LIST:
 				text = text.replace(s, str(value))

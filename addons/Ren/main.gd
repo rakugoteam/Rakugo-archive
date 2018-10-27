@@ -302,7 +302,7 @@ func savefile(save_name = "quick"):
 		elif v.type == Type.QUEST:
 			vars_to_save[k] = {"type":v.type, "value":v.quest2dict()}
 		else:
-			vars_to_save[k] = v
+			vars_to_save[k] = {"type":v.type, "value":v.value}
 		
 	data["variables"] = vars_to_save
 
@@ -310,7 +310,7 @@ func savefile(save_name = "quick"):
 	data["local_id"] = local_id
 	data["scene"] = _scene
 	data["dialog_name"] = current_dialog_name
-	data["state"] = prev_story_state #_get_story_state() # it must be this way
+	data["state"] = prev_story_state # it must be this way
 	
 	var result = $Persistence.save_data(save_name)
 	debug(["save data to:", save_name])
@@ -338,15 +338,7 @@ func loadfile(save_name = "quick"):
 		debug([k, v])
 		
 		if v.type == Type.CHARACTER:
-			var properties = v.value
-			var obj = variables[k].value
-
-			for i in range(properties.size()):
-				var pk = properties.keys()[i]
-				var pv = properties.values()[i]
-				
-				if pk in obj.get_property_list():
-					obj.set(pk, pv)
+			character(k, v.value)
 		
 		elif v.type == Type.SUBQUEST:
 			subquest(k, v.value)
@@ -358,18 +350,17 @@ func loadfile(save_name = "quick"):
 			quests.append(k)
 		
 		else:
-			variables[k] = v
+			define(k, v.value)
+			
 	
 	for q_id in quests:
 		var q = get_quest(q_id)
 		q.subquests = q.get_subquests(q.subquests)
 	
 	started = true
-	jump(data["scene"], data["dialog_name"], data["state"], true, true)
-
 	current_id = data["id"]
 	local_id = data["local_id"]
-
+	jump(data["scene"], data["dialog_name"], data["state"], true, true)
 	return true
 
 func debug_dict(kwargs, kws = [], some_custom_text = ""):

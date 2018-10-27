@@ -2,7 +2,6 @@ extends "subquest.gd"
 
 var subquests	= [] setget , _get_subquests
 var rewards		= [] setget , _get_rewards # Maybe we need a Object Reward
-var type setget _get_type
 
 signal start_quest
 signal done_quest # when all quests is done
@@ -54,8 +53,7 @@ func dict2quest(dict):
 	if not dict.has("subquests"):
 		return
 	
-	subquests = []
-	fill_subquests(dict["subquests"])
+	subquests = get_subquests(dict["subquests"])
 
 # usefull for saveing
 func subquests2list_of_ids():

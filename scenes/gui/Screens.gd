@@ -45,12 +45,13 @@ func _on_Load_pressed():
 	load_menu()
 
 func in_game():
-	$Navigation/VBoxContainer/NewGame.hide()
-	$Navigation/VBoxContainer/Continue.hide()
-	$Navigation/VBoxContainer/Return.show()
-	$Navigation/VBoxContainer/Save.show()
-	$Navigation/VBoxContainer/History.show()
-	$Navigation/VBoxContainer/Quests.show()
+	var path = "Navigation/ScrollContainer/VBoxContainer/"
+	get_node(path + "NewGame").hide()
+	get_node(path + "Continue").hide()
+	get_node(path + "Return").show()
+	get_node(path + "Save").show()
+	get_node(path + "History").show()
+	get_node(path + "Quests").show()
 
 # now is connected to $NewGame
 func _on_Start_pressed():
