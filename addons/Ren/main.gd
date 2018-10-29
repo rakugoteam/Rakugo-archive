@@ -81,6 +81,8 @@ func exit_statement(kwargs = {}):
 	emit_signal("exit_statement", current_statement.type, kwargs)
 
 func story_step():
+	if loading_in_progress:
+		return
 	emit_signal("story_step", current_dialog_name)
 
 func notified():
@@ -354,12 +356,10 @@ func loadfile(save_name = "quick"):
 			
 	for q_id in quests:
 		var q = get_quest(q_id)
-		var dup = q.subquests.duplicate()
-		q.subquests = q.get_subquests(dup) 
-	
+		q.subquests = q.get_subquests(q.subquests) 
 	
 	started = true
-	
+
 	jump(
 		data["scene"],
 		data["dialog_name"],
