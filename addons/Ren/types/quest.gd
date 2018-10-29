@@ -66,6 +66,8 @@ func subquests2list_of_ids():
 func get_subquests(list_of_subquests_ids):
 	var new_subquests = []
 	for subq_id in list_of_subquests_ids:
+		if typeof(subq_id) != TYPE_STRING:
+			continue 
 		var subquest = Ren.get_subquest(subq_id)
 		new_subquests.append(subquest)
 	

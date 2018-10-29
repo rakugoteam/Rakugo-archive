@@ -352,15 +352,23 @@ func loadfile(save_name = "quick"):
 		else:
 			define(k, v.value)
 			
-	
 	for q_id in quests:
 		var q = get_quest(q_id)
-		q.subquests = q.get_subquests(q.subquests)
+		var dup = q.subquests.duplicate()
+		q.subquests = q.get_subquests(dup) 
+	
 	
 	started = true
+	
+	jump(
+		data["scene"],
+		data["dialog_name"],
+		data["state"],
+		true, true,
+		data["local_id"]
+		)
+
 	current_id = data["id"]
-	local_id = data["local_id"]
-	jump(data["scene"], data["dialog_name"], data["state"], true, true)
 	return true
 
 func debug_dict(kwargs, kws = [], some_custom_text = ""):
@@ -401,17 +409,19 @@ func _get_current_id():
 ## use this to change/assain current scene and dialog
 ## root of path_to_scene is scenes_dir
 ## provide path_to_scene with out ".tscn"
+## "lid" is use to setup "local_id"
 func jump(
 	path_to_scene,
 	dialog_name,
 	state = "start",
 	change = true,
-	from_save = false):
+	from_save = false,
+	lid = 0):
 
 	if not from_save and loading_in_progress:
 		return
 
-	local_id = 0
+	local_id = lid
 	current_dialog_name = dialog_name
 	
 	_set_story_state(state) # it must be this way

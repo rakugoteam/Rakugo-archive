@@ -54,7 +54,7 @@ func text_passer(text, variables):
 				text = text.replace(s, str(value))
 				
 				for i in range(value.size()):
-					var sa = "[" + var_name+"["+str(i)+"]]"
+					var sa = "[" + var_name + "[" + str(i) + "]]"
 					if text.find(sa) == -1:
 						continue # no variable in this string
 					
