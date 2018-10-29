@@ -63,7 +63,7 @@ func _on_History_pressed():
 	history_menu()
 
 func _on_Continue_pressed():
-	if !Ren.loadfile():
+	if !Ren.load_file():
 		return
 	in_game()
 	hide()
