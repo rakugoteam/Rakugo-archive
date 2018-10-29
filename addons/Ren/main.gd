@@ -298,7 +298,6 @@ func start():
 	started = true
 	emit_signal("started")
 
-
 func save_file(save_name = "quick"):
 	$Persistence.folder_name = save_folder
 	$Persistence.password = save_password
