@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://addons/Ren/nodes/ren_say_panel.gd" type="Script" id=1]
 [ext_resource path="res://addons/Ren/icons/ren_panel.svg" type="Texture" id=2]
@@ -7,8 +7,9 @@
 [ext_resource path="res://ubuntu-font-family/Ubuntu-B.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://ubuntu-font-family/Ubuntu-RI.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://ubuntu-font-family/Ubuntu-R.ttf" type="DynamicFontData" id=7]
-[ext_resource path="res://addons/Ren/nodes/ren_line_edit.gd" type="Script" id=8]
-[ext_resource path="res://addons/Ren/icons/ren_line_edit.svg" type="Texture" id=9]
+[ext_resource path="res://scenes/gui/Labels/dialogue_text.tscn" type="PackedScene" id=8]
+[ext_resource path="res://addons/Ren/nodes/ren_line_edit.gd" type="Script" id=9]
+[ext_resource path="res://addons/Ren/icons/ren_line_edit.svg" type="Texture" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -164,42 +165,6 @@ tracks/8/keys = {
 "update": 0,
 "values": [ Vector2( 100, 111 ) ]
 }
-tracks/9/type = "value"
-tracks/9/path = NodePath("VBox/Dialog:rect_position")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 41 ) ]
-}
-tracks/10/type = "value"
-tracks/10/path = NodePath("VBox/Dialog:rect_rotation")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-tracks/11/type = "value"
-tracks/11/path = NodePath("VBox/Dialog:rect_size")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 905, 59 ) ]
-}
 
 [sub_resource type="Animation" id=7]
 
@@ -315,42 +280,6 @@ tracks/8/keys = {
 "update": 0,
 "values": [ Vector2( 100, 111 ) ]
 }
-tracks/9/type = "value"
-tracks/9/path = NodePath("VBox/Dialog:rect_position")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 41 ) ]
-}
-tracks/10/type = "value"
-tracks/10/path = NodePath("VBox/Dialog:rect_rotation")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-tracks/11/type = "value"
-tracks/11/path = NodePath("VBox/Dialog:rect_size")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 905, 59 ) ]
-}
 
 [sub_resource type="Animation" id=8]
 
@@ -359,7 +288,7 @@ length = 1.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("VBox/Dialog:rect_position")
+tracks/0/path = NodePath("VBox:rect_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -368,10 +297,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -1, 40 ) ]
+"values": [ Vector2( 101, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("VBox/Dialog:rect_rotation")
+tracks/1/path = NodePath("VBox:rect_rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -383,7 +312,7 @@ tracks/1/keys = {
 "values": [ 0.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("VBox/Dialog:rect_size")
+tracks/2/path = NodePath("VBox:rect_size")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -392,10 +321,10 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 190, 490 ) ]
+"values": [ Vector2( 190, 523 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("VBox:rect_position")
+tracks/3/path = NodePath(".:rect_position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -404,10 +333,10 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 101, 0 ) ]
+"values": [ Vector2( 0, 0 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("VBox:rect_rotation")
+tracks/4/path = NodePath(".:rect_rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -419,7 +348,7 @@ tracks/4/keys = {
 "values": [ 0.0 ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("VBox:rect_size")
+tracks/5/path = NodePath(".:rect_size")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -428,10 +357,10 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 190, 523 ) ]
+"values": [ Vector2( 296, 600 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath(".:rect_position")
+tracks/6/path = NodePath("ViewportContainer:rect_position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -443,7 +372,7 @@ tracks/6/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath(".:rect_rotation")
+tracks/7/path = NodePath("ViewportContainer:rect_rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -455,7 +384,7 @@ tracks/7/keys = {
 "values": [ 0.0 ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath(".:rect_size")
+tracks/8/path = NodePath("ViewportContainer:rect_size")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -464,10 +393,10 @@ tracks/8/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 296, 600 ) ]
+"values": [ Vector2( 100, 111 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("ViewportContainer:rect_position")
+tracks/9/path = NodePath("VBox/Label:rect_position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -479,7 +408,7 @@ tracks/9/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("ViewportContainer:rect_rotation")
+tracks/10/path = NodePath("VBox/Label:rect_rotation")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -491,48 +420,12 @@ tracks/10/keys = {
 "values": [ 0.0 ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("ViewportContainer:rect_size")
+tracks/11/path = NodePath("VBox/Label:rect_size")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 100, 111 ) ]
-}
-tracks/12/type = "value"
-tracks/12/path = NodePath("VBox/Label:rect_position")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ) ]
-}
-tracks/13/type = "value"
-tracks/13/path = NodePath("VBox/Label:rect_rotation")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-tracks/14/type = "value"
-tracks/14/path = NodePath("VBox/Label:rect_size")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -546,7 +439,7 @@ length = 1.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("VBox/Dialog:rect_position")
+tracks/0/path = NodePath("VBox:rect_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -555,10 +448,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 50 ) ]
+"values": [ Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("VBox/Dialog:rect_rotation")
+tracks/1/path = NodePath("VBox:rect_rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -570,7 +463,7 @@ tracks/1/keys = {
 "values": [ 0.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("VBox/Dialog:rect_size")
+tracks/2/path = NodePath("VBox:rect_size")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -579,10 +472,10 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 190, 489 ) ]
+"values": [ Vector2( 190, 523 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("VBox:rect_position")
+tracks/3/path = NodePath(".:rect_position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -591,10 +484,10 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ Vector2( 730, 0 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("VBox:rect_rotation")
+tracks/4/path = NodePath(".:rect_rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -606,7 +499,7 @@ tracks/4/keys = {
 "values": [ 0.0 ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("VBox:rect_size")
+tracks/5/path = NodePath(".:rect_size")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -615,10 +508,10 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 190, 523 ) ]
+"values": [ Vector2( 296, 600 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath(".:rect_position")
+tracks/6/path = NodePath("ViewportContainer:rect_position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -627,10 +520,10 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 730, 0 ) ]
+"values": [ Vector2( 190, 0 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath(".:rect_rotation")
+tracks/7/path = NodePath("ViewportContainer:rect_rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -642,7 +535,7 @@ tracks/7/keys = {
 "values": [ 0.0 ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath(".:rect_size")
+tracks/8/path = NodePath("ViewportContainer:rect_size")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -651,10 +544,10 @@ tracks/8/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 296, 600 ) ]
+"values": [ Vector2( 100, 111 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("ViewportContainer:rect_position")
+tracks/9/path = NodePath("VBox/Label:rect_position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -663,10 +556,10 @@ tracks/9/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 190, 0 ) ]
+"values": [ Vector2( 0, 0 ) ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("ViewportContainer:rect_rotation")
+tracks/10/path = NodePath("VBox/Label:rect_rotation")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -678,48 +571,12 @@ tracks/10/keys = {
 "values": [ 0.0 ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("ViewportContainer:rect_size")
+tracks/11/path = NodePath("VBox/Label:rect_size")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 100, 111 ) ]
-}
-tracks/12/type = "value"
-tracks/12/path = NodePath("VBox/Label:rect_position")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ) ]
-}
-tracks/13/type = "value"
-tracks/13/path = NodePath("VBox/Label:rect_rotation")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-tracks/14/type = "value"
-tracks/14/path = NodePath("VBox/Label:rect_size")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -839,42 +696,6 @@ tracks/8/keys = {
 "update": 0,
 "values": [ Vector2( 100, 111 ) ]
 }
-tracks/9/type = "value"
-tracks/9/path = NodePath("VBox/Dialog:rect_position")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 41 ) ]
-}
-tracks/10/type = "value"
-tracks/10/path = NodePath("VBox/Dialog:rect_rotation")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-tracks/11/type = "value"
-tracks/11/path = NodePath("VBox/Dialog:rect_size")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 905, 59 ) ]
-}
 
 [node name="RenSayPanel" type="Panel" index="0"]
 
@@ -883,7 +704,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 1.0
-margin_top = 449.0
+margin_top = 426.0
 margin_right = 1025.0
 margin_bottom = 600.0
 rect_min_size = Vector2( 100, 100 )
@@ -899,7 +720,7 @@ __meta__ = {
 "_editor_icon": ExtResource( 2 )
 }
 name_label_path = NodePath("VBox/Label")
-dialog_label_path = NodePath("VBox/Dialog")
+dialog_label_path = NodePath("VBox/Dialogue")
 avatar_viewport_path = NodePath("ViewportContainer/CharaterAvatar")
 step_time = 0.01
 letter_speed = 0.005
@@ -938,57 +759,13 @@ scroll_active = false
 selection_enabled = false
 _sections_unfolded = [ "BBCode", "Rect", "Size Flags", "custom_colors" ]
 
-[node name="Dialog" type="RichTextLabel" parent="VBox" index="1"]
+[node name="Dialogue" parent="VBox" index="1" instance=ExtResource( 8 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_top = 50.0
 margin_right = 905.0
-margin_bottom = 100.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-bbcode_enabled = true
-bbcode_text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis.
-"
-visible_characters = -1
-percent_visible = 1.0
-meta_underlined = true
-tab_size = 4
-text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis.
-"
-scroll_active = true
-scroll_following = true
+margin_bottom = 90.0
+focus_mode = 0
 selection_enabled = false
-override_selected_font_color = false
-_sections_unfolded = [ "BBCode", "Rect", "Size Flags" ]
 
 [node name="RenLineEdit" type="LineEdit" parent="VBox" index="2"]
 
@@ -1013,10 +790,10 @@ placeholder_alpha = 0.6
 caret_blink = false
 caret_blink_speed = 0.65
 caret_position = 0
-script = ExtResource( 8 )
+script = ExtResource( 9 )
 _sections_unfolded = [ "Rect" ]
 __meta__ = {
-"_editor_icon": ExtResource( 9 )
+"_editor_icon": ExtResource( 10 )
 }
 
 [node name="ViewportContainer" type="ViewportContainer" parent="." index="1"]

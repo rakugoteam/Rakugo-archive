@@ -7,7 +7,7 @@ func _ready():
 	Ren.connect("exec_statement", self, "_on_statement")
 
 func _on_statement(type, kwargs):
-	if type != "menu":
+	if type != Ren.StatementType.MENU:
 		get_parent().hide()
 		return
 
@@ -27,7 +27,7 @@ func _on_statement(type, kwargs):
 		add_child(ch_button)
 		ch_button.label.bbcode_text = "[center]" + ch + "[/center]"
 		ch_button.id = i
-		print("create button (", ch, ") with id : ", i)
+		Ren.debug(["create button (", ch, ") with id : ", i])
 		i += 1
 
 	get_parent().show()

@@ -2,12 +2,12 @@ extends "statement.gd"
 
 func _init():
 	._init()
-	type = "show"
+	type = 4 # Ren.StatementType.SHOW
 	kws = ["node_id", "state", "x", "y", "z", "at", "pos"]
 
 func exec(dbg = true):
 	if dbg:
-		print(debug(kws))
+		debug(kws)
 	
 	if "at" in kwargs:
 		if "center" in kwargs.at:

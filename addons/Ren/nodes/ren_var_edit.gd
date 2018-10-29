@@ -19,17 +19,16 @@ func _ready():
 		s = Ren.get_value(var_name)
 		default = str(s)
 	
-	type = Ren.get_type(s)
+	var var_to_change = Ren.get_var(var_name)
+	
+	type = Ren.get_def_type(s)
 	
 	connect("text_entered", self, "_on_entered")
-	Ren.connect("var_changed", self, "on_var_changed")
+	var_to_change.connect("value_changed", self, "on_value_changed")
 
-func on_var_changed(varn):
-	if var_name != varn:
-		return
-	
+func on_value_changed(new_value):
 	text = ""
-	placeholder_text = str(Ren.get_value(var_name))
+	placeholder_text = str(new_value)
 
 func _on_entered(text):
 	if text.empty():

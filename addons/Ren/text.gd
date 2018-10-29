@@ -21,23 +21,20 @@ func text_passer(text, variables):
 			var value = variables[var_name].value
 			var type = variables[var_name].type
 
-			# print (var_name, " ",  type, " ",  value)
+			# Ren.debug([var_name, type, value])
 			var s = "[" + var_name + "]"
-			if type == "text":
+			if type == Ren.Type.TEXT:
 				text = text.replace(s, value)
 			
 #			elif type == "func":
 #				var func_result = call(variable)
 #				text = text.replace("[" + var_name + "()]", str(func_result))
 			
-			elif type == "var":
+			elif type == Ren.Type.VAR:
 				text = text.replace(s, str(value))
 			
-			elif type in ["dict", "character"]:
+			elif type in [Ren.Type.DICT, Ren.Type.CHARACTER]:
 				var dict = value
-				
-				if type == "character":
-					dict = value.kwargs
 
 				text = text.replace(s, str(dict))
 				
@@ -46,14 +43,18 @@ func text_passer(text, variables):
 					if text.find(sk) == -1:
 						continue # no variable in this string
 					
-					var kvalue = dict[k]
-					text = text.replace(sk, str(kvalue))
+					var kvalue = str(dict[k])
+					# need testing
+					# if k == "name" and type == Ren.Type.CHARACTER:
+					# 	kvalue = dict.parse_character()
+					
+					text = text.replace(sk, kvalue)
 			
-			elif type == "list":
+			elif type == Ren.Type.LIST:
 				text = text.replace(s, str(value))
 				
 				for i in range(value.size()):
-					var sa = "[" + var_name+"["+str(i)+"]]"
+					var sa = "[" + var_name + "[" + str(i) + "]]"
 					if text.find(sa) == -1:
 						continue # no variable in this string
 					
@@ -67,6 +68,6 @@ func text_passer(text, variables):
 		text = text.replace("{tab}", "\t")
 		text = text.replace("{", "[")
 		text = text.replace("}", "]")
-		# print("org: ''", _text, "', bbcode: ''", text , "'")
+		# Ren.debug("org: ''", _text, "', bbcode: ''", text , "'")
 
 	return text

@@ -1,6 +1,6 @@
 extends Node
 
-var type = "base"
+var type = 0 # Ren.StatementType.BASE
 var kwargs = {"add_to_history": false} # dict of pairs keyword : argument
 var kws = ["add_to_history"] # possible keywords for this type of statement
 
@@ -9,7 +9,7 @@ func _ready():
 
 func exec(dbg = true):
 	if dbg:
-		print(debug(kws))
+		debug(kws)
 	
 	Ren.current_statement = self
 	Ren.exec_statement(type, kwargs)
@@ -43,8 +43,8 @@ func on_exit(_type, new_kwargs = {}):
 
 func add_to_history():
 	if Ren.current_id < 0 or Ren.current_id > Ren.history.size() + 1:
-		prints("some thing gone wrong Ren.current_id =", Ren.current_id)
-		prints("history size:", Ren.history.size())
+		Ren.debug(["some thing gone wrong Ren.current_id =", Ren.current_id])
+		Ren.debug(["history size:", Ren.history.size()])
 		return
 	
 	var hkwargs = kwargs.duplicate()
@@ -70,6 +70,6 @@ func add_to_history():
 	Ren.current_id += 1
 
 func debug(kws = [], some_custom_text = ""):
-	var dbg = type + "("
-	dbg += Ren.debug(kwargs, kws, some_custom_text) + ")"
-	return dbg
+	var dbg = Ren.StatementType.keys()[type].to_lower() + "("
+	dbg += Ren.debug_dict(kwargs, kws, some_custom_text) + ")"
+	Ren.debug(dbg)

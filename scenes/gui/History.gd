@@ -24,13 +24,13 @@ func set_history_item(hi, type, kwargs):
 	if "what" in kwargs:
 		dialog_text.bbcode_text = kwargs.what
 
-	if type in ["ask", "menu"]:
+	if type in [Ren.StatementType.ASK, Ren.StatementType.MENU]:
 		dialog_text.bbcode_text += Ren.text_passer("{nl}{b}Your answer: ")
 	
-	if type == "ask":
+	if type == Ren.StatementType.ASK:
 		dialog_text.bbcode_text += Ren.text_passer("{i}" + kwargs.value + "{/i}{/b}")
 
-	if type == "menu":
+	if type == Ren.StatementType.MENU:
 		var fch = Ren.menu_node.choices_labels[kwargs.final_choice]
 		dialog_text.bbcode_text += Ren.text_passer("{i}" + fch + "{/i}{/b}")
 

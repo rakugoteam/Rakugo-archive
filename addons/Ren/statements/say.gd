@@ -2,24 +2,24 @@ extends "statement.gd"
 
 func _init():
 	._init()
-	type = "say"
+	type = 1 # Ren.StatementType.SAY
 	kws += ["who", "what"]
 	kwargs["who"] = ""
 	kwargs["add_to_history"] = true
 
 func exec(dbg = true):
 	if dbg:
-		print(debug(kws))
+		debug(kws)
 	
 	if "who" in kwargs:
 		if kwargs.who in Ren.variables:
-			if Ren.get_value_type(kwargs.who) == "character":
+			if Ren.get_type(kwargs.who) == Ren.Type.CHARACTER:
 				var org_who = kwargs.who
-				var who = Ren.get_value(org_who)
+				var who = Ren.get_character(org_who)
 				kwargs.who = who.parse_character()
 				
-				if "avatar" in Ren.get_value(org_who).kwargs:
-					kwargs["avatar"] = Ren.get_value(org_who).avatar
+				if "avatar" in Ren.get_character(org_who).value:
+					kwargs["avatar"] = Ren.get_character(org_who).avatar
 				
 				if "what" in kwargs:
 					kwargs.what = who.parse_what(kwargs.what)

@@ -48,7 +48,7 @@ func _input(event):
 		typing = false
 		return
 
-	elif _type == "say": # else exit statement
+	elif _type == Ren.StatementType.SAY: # else exit statement
 		active = true
 		ActionTimer.stop()
 		Ren.exit_statement()
@@ -60,7 +60,7 @@ func _on_statement(type, kwargs):
 	
 	_type = type
 
-	if not _type in ["say", "ask", "menu"]:
+	if not _type in [Ren.StatementType.SAY, Ren.StatementType.ASK, Ren.StatementType.MENU]:
 		return
 
 	if "who" in kwargs:

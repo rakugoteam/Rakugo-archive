@@ -19,13 +19,9 @@ func _ready():
 	else:
 		Ren.define(var_name, default)
 	
-	if !Ren.is_connected("var_changed", self, "on_var_changed"):
-		Ren.connect("var_changed", self, "on_var_changed")
+	Ren.connect_var(var_name, "value_changed", self, "on_value_changed")
 
-func on_var_changed(varn):
-	if var_name != varn:
-		return
-		
-	value = Ren.get_value(var_name)
+func on_value_changed(new_value):
+	value = new_value
 
 

@@ -5,12 +5,12 @@ var variable = "variable"
 
 func _init():
 	._init()
-	type = "ask"
+	type = 2 # Ren.StatementType.ASK
 	kws += ["temp", "variable"]
 
 func exec(dbg = true):
 	if dbg:
-		print(debug(kws))
+		debug(kws)
 	
 	value = kwargs.value
 	variable = kwargs.variable
