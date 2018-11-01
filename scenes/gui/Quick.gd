@@ -25,7 +25,7 @@ func _ready():
 	$Quests.connect("pressed", Screens, "_on_Quests_pressed")
 
 func _on_qsave():
-	if Ren.save_file():
+	if Ren.savefile():
 		$InfoAnim.play("Saved")
 	
 	else:
@@ -34,7 +34,7 @@ func _on_qsave():
 
 
 func _on_qload():
-	if Ren.load_file():
+	if Ren.loadfile():
 		$InfoAnim.play("Loaded")
 		Ren.story_step()
 	

@@ -16,8 +16,7 @@ enum Type {
 	NODE,		# 4
 	QUEST,		# 5
 	SUBQUEST,	# 6
-	CHARACTER,	# 7
-	RANGE		# 8
+	CHARACTER	# 7
 }
 
 enum StatementType {
@@ -47,16 +46,12 @@ var current_statement = null
 var using_passer = false
 var skip_auto = false
 var current_node = null
-var skip_types = [
-	StatementType.SAY,
-	StatementType.SHOW,
-	StatementType.HIDE
-	]
-
+var skip_types = [StatementType.SAY, StatementType.SHOW, StatementType.HIDE]
 var file = File.new()
 var loading_in_progress = false
 var started = false
 var quests = [] # list of all quests ids
+
 
 onready var timer = $Timer
 
@@ -162,10 +157,7 @@ func connect_var(var_name, signal_name, node, func_name, binds = [], flags = 0):
 ## crate new charater as global variable that Ren will see
 ## possible kwargs: name, color, what_prefix, what_suffix, kind, avatar
 func character(character_id, kwargs):
-	return $Def.define(
-			variables, character_id,
-			kwargs, Type.CHARACTER
-			)
+	return $Def.define(variables, character_id, kwargs, Type.CHARACTER)
 
 func get_character(character_id):
 	print(get_value(character_id))
@@ -180,10 +172,7 @@ func node_link(node, node_id = node.name):
 	elif node is Node:
 		path = node.get_path()
 	
-	$Def.define(
-		variables, node_id,
-		path, Type.NODE
-		)
+	$Def.define(variables, node_id, path, Type.NODE)
 	return get_node(path)
 
 func get_node_by_id(node_id):
@@ -196,10 +185,7 @@ func get_node_by_id(node_id):
 ## and returns it as RenSubQuest for easy use
 ## possible kwargs: "who", "title", "description", "optional", "state", "subquests"
 func subquest(var_name, kwargs = {}):
-	return $Def.define(
-			variables, var_name,
-			kwargs, Type.SUBQUEST
-			)
+	return $Def.define(variables, var_name, kwargs, Type.SUBQUEST)
 
 ## returns exiting Ren subquest as RenSubQuest for easy use
 func get_subquest(subquest_id):
@@ -209,10 +195,7 @@ func get_subquest(subquest_id):
 ## and returns it as RenQuest for easy use
 ## possible kwargs: "who", "title", "description", "optional", "state", "subquests"
 func quest(var_name, kwargs = {}):
-	var q = $Def.define(
-			variables, var_name,
-			kwargs, Type.QUEST
-			)
+	var q = $Def.define(variables, var_name, kwargs, Type.QUEST)
 	quests.append(var_name)
 	return q
 
@@ -264,10 +247,7 @@ func hide(node_id):
 
 ## statement of type notify
 func notifiy(info, length=5):
-	var kwargs = {
-			"info": info,
-			"length":length
-			}
+	var kwargs = {"info": info,"length":length}
 	_set_statement($Notify, kwargs)
 
 ## statement of type play_anim
@@ -298,7 +278,8 @@ func start():
 	started = true
 	emit_signal("started")
 
-func save_file(save_name = "quick"):
+
+func savefile(save_name = "quick"):
 	$Persistence.folder_name = save_folder
 	$Persistence.password = save_password
 
@@ -317,25 +298,13 @@ func save_file(save_name = "quick"):
 		debug([k, v])
 		
 		if v.type == Type.CHARACTER:
-			vars_to_save[k] = {
-				"type":v.type,
-				"value":v.character2dict()
-				}
+			vars_to_save[k] = {"type":v.type, "value":v.character2dict()}
 		elif v.type == Type.SUBQUEST:
-			vars_to_save[k] = {
-				"type":v.type,
-				"value":v.subquest2dict()
-				}
+			vars_to_save[k] = {"type":v.type, "value":v.subquest2dict()}
 		elif v.type == Type.QUEST:
-			vars_to_save[k] = {
-				"type":v.type,
-				"value":v.quest2dict()
-				}
+			vars_to_save[k] = {"type":v.type, "value":v.quest2dict()}
 		else:
-			vars_to_save[k] = {
-				"type":v.type, 
-				"value":v.value
-				}
+			vars_to_save[k] = {"type":v.type, "value":v.value}
 		
 	data["variables"] = vars_to_save
 
@@ -349,7 +318,7 @@ func save_file(save_name = "quick"):
 	debug(["save data to:", save_name])
 	return result
 	
-func load_file(save_name = "quick"):
+func loadfile(save_name = "quick"):
 	loading_in_progress = true
 	$Persistence.folder_name = save_folder
 	$Persistence.password = save_password

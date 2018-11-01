@@ -88,7 +88,7 @@ func savepress(input,caller):
 			Ren.debug(s)
 			filehandler.store_line(s)
 			Ren.debug(["caller.name:", caller.name])
-			Ren.save_file(caller.name)
+			Ren.savefile(caller.name)
 	filehandler.close()
 	
 	savebox()
@@ -101,6 +101,6 @@ func loadpress(input,caller):
 
 	if input is InputEventMouseButton:
 		if input.pressed:
-			if Ren.load_file(caller.name):
+			if Ren.loadfile(caller.name):
 				get_parent()._on_Return_pressed()
 	

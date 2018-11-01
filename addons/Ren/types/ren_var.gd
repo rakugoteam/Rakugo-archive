@@ -3,7 +3,7 @@ extends Object
 ## This base object used to handling Ren's variables
 
 var type setget , _get_type
-var _type = 0 # Ren.Type.VAR
+var _type = 0 # Ren.Type.Var
 var value setget _set_value, _get_value
 var _value = null 
 var v = null setget _set_value, _get_value
