@@ -31,7 +31,7 @@ If you want to help please write to us on our [Discord Server](https://discord.g
 Logo is Godot head with hair like anime character.<br/>
 Logo is base on Godot icon from [Linux Pop icon theme](https://github.com/pop-os/icon-theme).<br/>
 Logo for [PersistenceNode](https://github.com/MatiasVME/Persistence) was changed also to icon from [Linux Pop icon theme](https://github.com/pop-os/icon-theme) to fix some strange preload problems.<br/>
-Custom Ren Nodes icons are based on [Godot icons](https://github.com/godotengine/godot-design/tree/master/engine/icons/optimized).
+Custom Ren Nodes icons are based on [Godot icons](https://github.com/godotengine/godot-design/tree/master/engine/icons/optimized) and [Linux Pop icon theme](https://github.com/pop-os/icon-theme).
 
 Quest icon is CC BY-SA 3.0 201 by p Zon Petilla from [game-icons.net](https://game-icons.net/lorc/originals/tied-scroll.html)
 
