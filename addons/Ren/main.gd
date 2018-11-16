@@ -78,6 +78,8 @@ func exec_statement(type, kwargs = {}):
 	emit_signal("exec_statement", type, kwargs)
 
 func exit_statement(kwargs = {}):
+	if loading_in_progress:
+			return
 	emit_signal("exit_statement", current_statement.type, kwargs)
 
 func story_step():
