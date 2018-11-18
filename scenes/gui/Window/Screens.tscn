@@ -9,10 +9,11 @@
 [ext_resource path="res://ubuntu-font-family/Ubuntu-B.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://scenes/gui/History/History.gd" type="Script" id=8]
 [ext_resource path="res://scenes/gui/History/HistoryItem.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/gui/SlotBox/OptionsBox.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/gui/OptionsBox/OptionsBox.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/gui/Quests/QuestsBox.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/gui/Labels/dialogue_text.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/examples/TestNodes.tscn" type="PackedScene" id=13]
+
 
 [sub_resource type="ButtonGroup" id=5]
 

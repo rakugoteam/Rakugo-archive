@@ -454,24 +454,6 @@ func jump(
 	if started:
 		story_step()
 
-# Data related to the framework configuration.
-func config_data():
-	$Persistence.folder_name = FOLDER_CONFIG_NAME
-	var config = $Persistence.get_data(FILE_CONFIG_NAME)
-	
-	# If not have version data, data not exist.
-	if not config.has("Version"):
-		# Create config data
-		
-		# This is useful in the case of updates.
-		config["Version"] = 1 # Integer number
-		# Continue in the last scene the player played
-		config["ResumeScene"] = null # First start don't have resume scene
-		
-		# Maybe we can put here the preferences :D
-	
-		$Persistence.save_data(FILE_CONFIG_NAME)
-
 func current_statement_in_global_history():
 	var hi_item = {
 		"state": story_state,
