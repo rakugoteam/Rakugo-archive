@@ -46,7 +46,12 @@ var current_statement = null
 var using_passer = false
 var skip_auto = false
 var current_node = null
-var skip_types = [StatementType.SAY, StatementType.SHOW, StatementType.HIDE]
+var skip_types = [
+		StatementType.SAY,
+		StatementType.SHOW,
+		StatementType.HIDE
+	]
+
 var file = File.new()
 var loading_in_progress = false
 var started = false
@@ -67,9 +72,9 @@ signal play_anim(node_id, anim_name, reset)
 signal started
 
 func _ready():
-	config_data()
+	# config_data()
 	timer.connect("timeout", self, "exit_statement")
-	define("version", "0.9.11")
+	define("version", "0.9.12")
 	define("test_bool", false)
 	define("test_float", 10.0)
 	define("story_state", "")
@@ -78,6 +83,8 @@ func exec_statement(type, kwargs = {}):
 	emit_signal("exec_statement", type, kwargs)
 
 func exit_statement(kwargs = {}):
+	if loading_in_progress:
+			return
 	emit_signal("exit_statement", current_statement.type, kwargs)
 
 func story_step():
@@ -385,7 +392,7 @@ func debug_dict(kwargs, kws = [], some_custom_text = ""):
 	dbg = some_custom_text + dbg
 	return dbg
 
-## for printtnig debugs is only print if debug_on == true
+## for printting debugs is only print if debug_on == true
 ## you put some string array or string as argument
 func debug(some_text = []):
 	if !debug_on:
@@ -447,24 +454,6 @@ func jump(
 	if started:
 		story_step()
 
-# Data related to the framework configuration.
-func config_data():
-	$Persistence.folder_name = FOLDER_CONFIG_NAME
-	var config = $Persistence.get_data(FILE_CONFIG_NAME)
-	
-	# If not have version data, data not exist.
-	if not config.has("Version"):
-		# Create config data
-		
-		# This is useful in the case of updates.
-		config["Version"] = 1 # Integer number
-		# Continue in the last scene the player played
-		config["ResumeScene"] = null # First start don't have resume scene
-		
-		# Maybe we can put here the preferences :D
-	
-		$Persistence.save_data(FILE_CONFIG_NAME)
-
 func current_statement_in_global_history():
 	var hi_item = {
 		"state": story_state,
@@ -485,7 +474,9 @@ func cant_skip():
 
 func cant_qload():
 	var path = str("user://", save_folder, "/quick")
-	return !file.file_exists(path + ".save") or !file.file_exists(path + ".txt")
+	var save_exist = file.file_exists(path + ".save")
+	var text_exist = file.file_exists(path + ".txt")
+	return !save_exist or !text_exist
 
 func save_global_history():
 	var save_name = "global_history"

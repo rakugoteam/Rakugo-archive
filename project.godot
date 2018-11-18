@@ -17,13 +17,9 @@ config/icon="res://window_icon.png"
 [autoload]
 
 Ren="*res://addons/Ren/Ren.tscn"
-Window="*res://scenes/gui/Window.tscn"
+settings="*res://scenes/gui/settings.gd"
 VNCharacters="*res://scenes/examples/VisualNovelExample/Characters.tscn"
-
-[display]
-
-window/stretch/mode="2d"
-window/stretch/aspect="keep"
+Window="*res://scenes/gui/Window/Window.tscn"
 
 [editor_plugins]
 

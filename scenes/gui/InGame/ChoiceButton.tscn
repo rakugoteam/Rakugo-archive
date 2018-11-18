@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://themes/new_gui/theme.tres" type="Theme" id=1]
+[ext_resource path="res://addons/Ren/nodes/ren_choice_button.gd" type="Script" id=2]
+[ext_resource path="res://addons/Ren/icons/ren_choice_button.svg" type="Texture" id=3]
+
+[node name="ChoiceButton" type="Button"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 296.0
+margin_bottom = 34.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = false
+align = 1
+script = ExtResource( 2 )
+__meta__ = {
+"_editor_icon": ExtResource( 3 )
+}
+idle_node_color = Color( 0.533333, 0.533333, 0.533333, 1 )
+focus_node_color = Color( 0, 0.506836, 0.675781, 1 )
+hover_node_color = Color( 0.877647, 0.882353, 0.887059, 1 )
+pressed_node_color = Color( 0, 0.6, 0.8, 1 )
+disable_node_color = Color( 0.533333, 0.533333, 0.498039, 0.533333 )
+
+

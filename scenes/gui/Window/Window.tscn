@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/gui/Window/Window.gd" type="Script" id=1]
+[ext_resource path="res://scenes/gui/InGame/InGameGUI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/gui/Window/Screens.tscn" type="PackedScene" id=3]
+
+[node name="Window" type="Node2D"]
+
+pause_mode = 2
+script = ExtResource( 1 )
+_sections_unfolded = [ "Pause", "Theme" ]
+
+[node name="InGameGUI" parent="." index="0" instance=ExtResource( 2 )]
+
+visible = false
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="Screens" parent="." index="1" instance=ExtResource( 3 )]
+
+
