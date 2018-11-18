@@ -2,14 +2,15 @@
 
 [ext_resource path="res://themes/new_gui/theme.tres" type="Theme" id=1]
 [ext_resource path="res://addons/Ren/nodes/ren_quest_button.gd" type="Script" id=2]
-[ext_resource path="res://scenes/gui/quests-icons/available.png" type="Texture" id=3]
-[ext_resource path="res://scenes/gui/quests-icons/done.png" type="Texture" id=4]
-[ext_resource path="res://scenes/gui/quests-icons/fail.png" type="Texture" id=5]
-[ext_resource path="res://scenes/gui/quests-icons/in-progress.png" type="Texture" id=6]
-[ext_resource path="res://scenes/gui/quests-icons/opt.png" type="Texture" id=7]
-[ext_resource path="res://scenes/gui/quests-icons/opt-done.png" type="Texture" id=8]
-[ext_resource path="res://scenes/gui/quests-icons/opt-fail.png" type="Texture" id=9]
-[ext_resource path="res://scenes/gui/quests-icons/opt-in-progress.png" type="Texture" id=10]
+[ext_resource path="res://scenes/gui/Quests/quests-icons/available.png" type="Texture" id=3]
+[ext_resource path="res://scenes/gui/Quests/quests-icons/done.png" type="Texture" id=4]
+[ext_resource path="res://scenes/gui/Quests/quests-icons/fail.png" type="Texture" id=5]
+[ext_resource path="res://scenes/gui/Quests/quests-icons/in-progress.png" type="Texture" id=6]
+[ext_resource path="res://scenes/gui/Quests/quests-icons/opt.png" type="Texture" id=7]
+[ext_resource path="res://scenes/gui/Quests/quests-icons/opt-done.png" type="Texture" id=8]
+[ext_resource path="res://scenes/gui/Quests/quests-icons/opt-fail.png" type="Texture" id=9]
+[ext_resource path="res://scenes/gui/Quests/quests-icons/opt-in-progress.png" type="Texture" id=10]
+
 
 [sub_resource type="SpriteFrames" id=1]
 

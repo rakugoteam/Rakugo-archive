@@ -46,7 +46,12 @@ var current_statement = null
 var using_passer = false
 var skip_auto = false
 var current_node = null
-var skip_types = [StatementType.SAY, StatementType.SHOW, StatementType.HIDE]
+var skip_types = [
+		StatementType.SAY,
+		StatementType.SHOW,
+		StatementType.HIDE
+	]
+
 var file = File.new()
 var loading_in_progress = false
 var started = false
@@ -387,7 +392,7 @@ func debug_dict(kwargs, kws = [], some_custom_text = ""):
 	dbg = some_custom_text + dbg
 	return dbg
 
-## for printtnig debugs is only print if debug_on == true
+## for printting debugs is only print if debug_on == true
 ## you put some string array or string as argument
 func debug(some_text = []):
 	if !debug_on:
@@ -487,7 +492,9 @@ func cant_skip():
 
 func cant_qload():
 	var path = str("user://", save_folder, "/quick")
-	return !file.file_exists(path + ".save") or !file.file_exists(path + ".txt")
+	var save_exist = file.file_exists(path + ".save")
+	var text_exist = file.file_exists(path + ".txt")
+	return !save_exist or !text_exist
 
 func save_global_history():
 	var save_name = "global_history"

@@ -1,10 +1,12 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://ubuntu-font-family/Ubuntu-B.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://scenes/gui/WindowBox.gd" type="Script" id=2]
-[ext_resource path="res://scenes/gui/QuickMenuButton.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/gui/ResolutionBox.gd" type="Script" id=4]
-[ext_resource path="res://scenes/gui/VSyncBox.gd" type="Script" id=5]
+[ext_resource path="res://scenes/gui/SlotBox/WindowBox.gd" type="Script" id=2]
+[ext_resource path="res://scenes/gui/InGame/QuickMenuButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/gui/SlotBox/ResolutionBox.gd" type="Script" id=4]
+[ext_resource path="res://scenes/gui/SlotBox/VSyncBox.gd" type="Script" id=5]
+
+
 
 [sub_resource type="DynamicFont" id=1]
 

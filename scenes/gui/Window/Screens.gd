@@ -53,8 +53,7 @@ func in_game():
 	get_node(path + "History").show()
 	get_node(path + "Quests").show()
 
-# now is connected to $NewGame
-func _on_Start_pressed():
+func _on_NewGame_pressed():
 	hide()
 	in_game()
 	Ren.start()

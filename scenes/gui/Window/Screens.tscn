@@ -1,20 +1,20 @@
 [gd_scene load_steps=18 format=2]
 
-[ext_resource path="res://scenes/gui/Screens.gd" type="Script" id=1]
+[ext_resource path="res://scenes/gui/Window/Screens.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gui/Labels/TitleText.tscn" type="PackedScene" id=2]
 [ext_resource path="res://addons/Ren/nodes/ren_var_label.gd" type="Script" id=3]
 [ext_resource path="res://addons/Ren/icons/ren_var_label.svg" type="Texture" id=4]
-[ext_resource path="res://scenes/gui/QuickMenuButton.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/gui/SlotBox.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/gui/InGame/QuickMenuButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/gui/SlotBox/SlotBox.tscn" type="PackedScene" id=6]
 [ext_resource path="res://ubuntu-font-family/Ubuntu-B.ttf" type="DynamicFontData" id=7]
-[ext_resource path="res://scenes/gui/History.gd" type="Script" id=8]
-[ext_resource path="res://scenes/gui/HistoryItem.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/gui/OptionsBox.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/gui/QuestsBox.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/gui/History/History.gd" type="Script" id=8]
+[ext_resource path="res://scenes/gui/History/HistoryItem.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/gui/SlotBox/OptionsBox.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/gui/Quests/QuestsBox.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/gui/Labels/dialogue_text.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/examples/TestNodes.tscn" type="PackedScene" id=13]
 
-[sub_resource type="ButtonGroup" id=1]
+[sub_resource type="ButtonGroup" id=5]
 
 resource_local_to_scene = true
 
@@ -42,8 +42,18 @@ use_filter = true
 font_data = ExtResource( 7 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Screens" type="Node2D" index="0"]
+[node name="Screens" type="Control" index="0"]
 
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
 script = ExtResource( 1 )
 _sections_unfolded = [ "Material", "Theme", "Visibility" ]
 
@@ -145,7 +155,6 @@ type = "str"
 
 [node name="Navigation" type="Panel" parent="." index="2"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -245,7 +254,7 @@ margin_top = 72.0
 margin_right = 140.0
 margin_bottom = 104.0
 toggle_mode = true
-group = SubResource( 1 )
+group = SubResource( 5 )
 text = "History"
 align = 0
 
@@ -256,7 +265,7 @@ margin_top = 72.0
 margin_right = 140.0
 margin_bottom = 104.0
 toggle_mode = true
-group = SubResource( 1 )
+group = SubResource( 5 )
 text = "Quests"
 align = 0
 
@@ -274,7 +283,7 @@ margin_top = 124.0
 margin_right = 132.0
 margin_bottom = 156.0
 toggle_mode = true
-group = SubResource( 1 )
+group = SubResource( 5 )
 text = "Load"
 align = 0
 
@@ -285,7 +294,7 @@ margin_top = 280.0
 margin_right = 140.0
 margin_bottom = 312.0
 toggle_mode = true
-group = SubResource( 1 )
+group = SubResource( 5 )
 text = "Save"
 align = 0
 
@@ -295,7 +304,7 @@ margin_top = 176.0
 margin_right = 132.0
 margin_bottom = 208.0
 toggle_mode = true
-group = SubResource( 1 )
+group = SubResource( 5 )
 text = "Options"
 align = 0
 
@@ -305,7 +314,7 @@ margin_top = 228.0
 margin_right = 132.0
 margin_bottom = 260.0
 toggle_mode = true
-group = SubResource( 1 )
+group = SubResource( 5 )
 text = "Test Nodes"
 align = 0
 
@@ -315,7 +324,7 @@ margin_top = 280.0
 margin_right = 132.0
 margin_bottom = 312.0
 toggle_mode = true
-group = SubResource( 1 )
+group = SubResource( 5 )
 text = "About"
 align = 0
 
@@ -326,7 +335,7 @@ margin_top = 488.0
 margin_right = 140.0
 margin_bottom = 520.0
 toggle_mode = true
-group = SubResource( 1 )
+group = SubResource( 5 )
 text = "Help"
 align = 0
 
@@ -336,7 +345,7 @@ margin_top = 332.0
 margin_right = 132.0
 margin_bottom = 364.0
 toggle_mode = true
-group = SubResource( 1 )
+group = SubResource( 5 )
 text = "Quit"
 align = 0
 
@@ -572,9 +581,27 @@ visible = false
 margin_right = 672.0
 margin_bottom = 315.0
 
+[connection signal="pressed" from="Navigation/ScrollContainer/VBoxContainer/NewGame" to="." method="_on_NewGame_pressed"]
+
 [connection signal="pressed" from="Navigation/ScrollContainer/VBoxContainer/Return" to="." method="_on_Return_pressed"]
 
+[connection signal="pressed" from="Navigation/ScrollContainer/VBoxContainer/History" to="." method="_on_History_pressed"]
+
+[connection signal="pressed" from="Navigation/ScrollContainer/VBoxContainer/Quests" to="." method="_on_Quests_pressed"]
+
+[connection signal="pressed" from="Navigation/ScrollContainer/VBoxContainer/Continue" to="." method="_on_Continue_pressed"]
+
 [connection signal="pressed" from="Navigation/ScrollContainer/VBoxContainer/Load" to="." method="_on_Load_pressed"]
+
+[connection signal="pressed" from="Navigation/ScrollContainer/VBoxContainer/Save" to="." method="_on_Save_pressed"]
+
+[connection signal="pressed" from="Navigation/ScrollContainer/VBoxContainer/Options" to="." method="_on_Options_pressed"]
+
+[connection signal="pressed" from="Navigation/ScrollContainer/VBoxContainer/TestNodes" to="." method="_on_TestNodes_pressed"]
+
+[connection signal="pressed" from="Navigation/ScrollContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
+
+[connection signal="pressed" from="QuitBox/HBoxContainer/Yes" to="." method="_on_Yes_pressed"]
 
 [connection signal="pressed" from="QuitBox/HBoxContainer/No" to="." method="_on_Return_pressed"]
 

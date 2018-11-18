@@ -1,10 +1,11 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://scenes/gui/QuestsBox.gd" type="Script" id=1]
-[ext_resource path="res://scenes/gui/QuestButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/gui/Quests/QuestsBox.gd" type="Script" id=1]
+[ext_resource path="res://scenes/gui/Quests/QuestButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ubuntu-font-family/Ubuntu-B.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://addons/Ren/nodes/ren_label.gd" type="Script" id=4]
 [ext_resource path="res://addons/Ren/icons/ren_text_label.svg" type="Texture" id=5]
+
 
 [sub_resource type="DynamicFont" id=1]
 
