@@ -72,9 +72,9 @@ signal play_anim(node_id, anim_name, reset)
 signal started
 
 func _ready():
-	config_data()
+	# config_data()
 	timer.connect("timeout", self, "exit_statement")
-	define("version", "0.9.11")
+	define("version", "0.9.12")
 	define("test_bool", false)
 	define("test_float", 10.0)
 	define("story_state", "")

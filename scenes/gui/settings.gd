@@ -7,6 +7,10 @@ var _prev_window_minimized
 var _prev_window_maximized
 var _prev_window_fullscreen
 
+var temp_window_size
+var temp_vsync_enabled
+var temp_window_type_id
+
 var window_size setget _set_window_size, _get_window_size
 var window_minimized setget _set_window_minimized, _get_window_minimized
 var window_maximized setget _set_window_maximized, _get_window_maximized
@@ -22,6 +26,21 @@ func _ready():
 	_prev_window_minimized = OS.window_minimized
 	_prev_window_maximized = OS.window_maximized
 	_prev_window_fullscreen = OS.window_fullscreen
+
+	temp_window_size = OS.window_size
+	temp_vsync_enabled = OS.vsync_enabled
+	temp_window_type_id = get_window_type_id()
+
+func get_window_type_id():
+	var window_type_id = 0
+	
+	if OS.window_fullscreen:
+		window_type_id = 1
+
+	if OS.window_maximized:
+		window_type_id = 2
+
+	return window_type_id
 
 func _set_window_size(value):
 	_prev_window_size = OS.window_size
@@ -72,25 +91,6 @@ func _process(delta):
 	_prev_window_minimized = OS.window_minimized
 	_prev_window_maximized = OS.window_maximized
 	_prev_window_fullscreen = OS.window_fullscreen
-
-## maybe I will use this
-# Data related to the framework configuration.
-func config_data():
-	$Persistence.folder_name = FOLDER_CONFIG_NAME
-	var config = $Persistence.get_data(FILE_CONFIG_NAME)
-	
-	# If not have version data, data not exist.
-	if not config.has("Version"):
-		# Create config data
-		
-		# This is useful in the case of updates.
-		config["Version"] = 1 # Integer number
-		# Continue in the last scene the player played
-		config["ResumeScene"] = null # First start don't have resume scene
-		
-		# Maybe we can put here the preferences :D
-	
-		$Persistence.save_data(FILE_CONFIG_NAME)
 
 
 

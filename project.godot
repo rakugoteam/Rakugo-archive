@@ -21,11 +21,6 @@ settings="*res://scenes/gui/settings.gd"
 VNCharacters="*res://scenes/examples/VisualNovelExample/Characters.tscn"
 Window="*res://scenes/gui/Window/Window.tscn"
 
-[display]
-
-window/stretch/mode="2d"
-window/stretch/aspect="keep"
-
 [editor_plugins]
 
 enabled=PoolStringArray( "PersistenceNode", "Ren" )

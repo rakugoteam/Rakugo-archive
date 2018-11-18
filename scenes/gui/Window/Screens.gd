@@ -78,12 +78,13 @@ func _on_Yes_pressed():
 func _on_Quit_pressed():
 	show_page($QuitBox)
 
-
 func _on_Save_pressed():
 	hide()
 	var screenshot = get_viewport().get_texture().get_data()
 	save_menu(screenshot)
 
-
 func _on_TestNodes_pressed():
 	show_page($TestNodes)
+
+func _on_Options_pressed():
+	show_page($OptionsBox)

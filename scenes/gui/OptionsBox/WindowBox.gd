@@ -13,11 +13,11 @@ func _on_visibility_changed():
 	if not visible:
 		return
 		
-	if OS.window_fullscreen:
-		current_choice_id = 1
-	elif OS.window_maximized:
-		current_choice_id = 2
-	else:
-		current_choice_id = 0
+	current_choice_id = settings.get_window_type_id()
 		
 	update_label()
+
+
+func update_label(choice = options_list[current_choice_id]):
+	.update_label(choice)
+	settings.temp_window_type_id = current_choice_id
