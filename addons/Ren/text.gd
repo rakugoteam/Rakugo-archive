@@ -64,6 +64,8 @@ func text_passer(text, variables):
 				print(var_name," is unsuported variable type: ", type)
 			
 		text = text.replace("{image", "[img")
+		text = text.replace("{a=", "[url=")
+		text = text.replace("{/a}", "[/url]")
 		text = text.replace("{nl}", "\n")
 		text = text.replace("{tab}", "\t")
 		text = text.replace("{", "[")

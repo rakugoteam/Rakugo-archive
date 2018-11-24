@@ -1,5 +1,6 @@
 extends Node
 
+export (String) var your_game_version = "0.0.1"
 export (bool) var debug_on = true
 export (String) var save_folder = "saves"
 export (String) var save_password = "Ren"
@@ -74,7 +75,11 @@ signal started
 func _ready():
 	# config_data()
 	timer.connect("timeout", self, "exit_statement")
-	define("version", "0.9.12")
+	define("version", your_game_version)
+	define("ren_version", "0.9.13")
+	var gdv = Engine.get_version_info()
+	var gdv_string = str(gdv.major) + "." + str(gdv.minor) + "." + str(gdv.patch)
+	define("godot_version", gdv_string)
 	define("test_bool", false)
 	define("test_float", 10.0)
 	define("story_state", "")

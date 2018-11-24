@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://themes/new_gui/theme.tres" type="Theme" id=1]
 [ext_resource path="res://scenes/gui/Screens/Screens.gd" type="Script" id=2]
@@ -12,8 +12,10 @@
 [ext_resource path="res://scenes/gui/History/HistoryItem.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/gui/OptionsBox/OptionsBox.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/gui/Quests/QuestsBox.tscn" type="PackedScene" id=12]
-[ext_resource path="res://scenes/gui/Labels/dialogue_text.tscn" type="PackedScene" id=13]
-[ext_resource path="res://scenes/examples/TestNodes.tscn" type="PackedScene" id=14]
+[ext_resource path="res://addons/Ren/nodes/ren_label.gd" type="Script" id=13]
+[ext_resource path="res://addons/Ren/icons/ren_text_label.svg" type="Texture" id=14]
+[ext_resource path="res://scenes/gui/Labels/dialogue_text.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenes/examples/TestNodes.tscn" type="PackedScene" id=16]
 
 [sub_resource type="ButtonGroup" id=1]
 
@@ -457,7 +459,84 @@ margin_top = 2.0
 margin_right = 1025.0
 margin_bottom = 607.0
 
-[node name="QuitBox" type="Control" parent="." index="7"]
+[node name="AboutBox" type="VBoxContainer" parent="." index="7"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 257.0
+margin_top = 11.0
+margin_right = 959.0
+margin_bottom = 545.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+_sections_unfolded = [ "Mouse" ]
+
+[node name="Title" type="Label" parent="AboutBox" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 702.0
+margin_bottom = 54.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 2 )
+text = "About"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Mouse", "custom_fonts" ]
+
+[node name="RenTextLabel" type="RichTextLabel" parent="AboutBox" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 58.0
+margin_right = 702.0
+margin_bottom = 534.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = ""
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = ""
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+script = ExtResource( 13 )
+_sections_unfolded = [ "BBCode" ]
+__meta__ = {
+"_editor_icon": ExtResource( 14 )
+}
+ren_text = "Made with {a=https://github.com/jeremi360/Ren}Ren{/a} [ren_version] on {a=https://godotengine.org/}Godot Engine{/a} [godot_version] on {a=https://github.com/jeremi360/Ren/blob/master/LICENSE} MIT License{/a}.
+"
+vars_names = [ "ren_version", "godot_version" ]
+
+[node name="QuitBox" type="Control" parent="." index="8"]
 
 editor/display_folded = true
 visible = false
@@ -498,7 +577,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="Question" parent="QuitBox" index="1" instance=ExtResource( 13 )]
+[node name="Question" parent="QuitBox" index="1" instance=ExtResource( 15 )]
 
 anchor_top = 0.5
 anchor_right = 1.0
@@ -582,7 +661,7 @@ flat = true
 align = 1
 _sections_unfolded = [ "Size Flags", "custom_fonts" ]
 
-[node name="TestNodes" parent="." index="8" instance=ExtResource( 14 )]
+[node name="TestNodes" parent="." index="9" instance=ExtResource( 16 )]
 
 visible = false
 margin_right = 672.0
