@@ -95,3 +95,10 @@ func _on_TestNodes_pressed():
 func _on_Options_pressed():
 	show_page($OptionsBox)
 	show()
+
+func _on_About_pressed():
+	show_page($AboutBox)
+	show()
+
+func _on_Help_pressed():
+	OS.shell_open("https://github.com/jeremi360/Ren/wiki")

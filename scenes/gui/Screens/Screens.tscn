@@ -1,32 +1,47 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://themes/new_gui/theme.tres" type="Theme" id=1]
 [ext_resource path="res://scenes/gui/Screens/Screens.gd" type="Script" id=2]
-[ext_resource path="res://scenes/gui/Labels/TitleText.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ubuntu-font-family/Ubuntu-B.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://addons/Ren/nodes/ren_var_label.gd" type="Script" id=4]
 [ext_resource path="res://addons/Ren/icons/ren_var_label.svg" type="Texture" id=5]
 [ext_resource path="res://scenes/gui/InGame/QuickMenuButton.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/gui/SlotBox/SlotBox.tscn" type="PackedScene" id=7]
-[ext_resource path="res://ubuntu-font-family/Ubuntu-B.ttf" type="DynamicFontData" id=8]
-[ext_resource path="res://scenes/gui/History/History.gd" type="Script" id=9]
-[ext_resource path="res://scenes/gui/History/HistoryItem.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/gui/OptionsBox/OptionsBox.tscn" type="PackedScene" id=11]
-[ext_resource path="res://scenes/gui/Quests/QuestsBox.tscn" type="PackedScene" id=12]
-[ext_resource path="res://addons/Ren/nodes/ren_label.gd" type="Script" id=13]
-[ext_resource path="res://addons/Ren/icons/ren_text_label.svg" type="Texture" id=14]
-[ext_resource path="res://scenes/gui/Labels/dialogue_text.tscn" type="PackedScene" id=15]
-[ext_resource path="res://scenes/examples/TestNodes.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scenes/gui/History/History.gd" type="Script" id=8]
+[ext_resource path="res://scenes/gui/History/HistoryItem.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/gui/OptionsBox/OptionsBox.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/gui/Quests/QuestsBox.tscn" type="PackedScene" id=11]
+[ext_resource path="res://addons/Ren/nodes/ren_label.gd" type="Script" id=12]
+[ext_resource path="res://addons/Ren/icons/ren_text_label.svg" type="Texture" id=13]
+[ext_resource path="res://scenes/gui/Labels/dialogue_text.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/examples/TestNodes.tscn" type="PackedScene" id=15]
+
+[sub_resource type="DynamicFont" id=6]
+
+size = 50
+use_mipmaps = false
+use_filter = true
+font_data = ExtResource( 3 )
+_sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="ButtonGroup" id=1]
 
 resource_local_to_scene = true
+
+[sub_resource type="DynamicFont" id=5]
+
+size = 22
+use_mipmaps = false
+use_filter = true
+font_data = ExtResource( 3 )
+_sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=2]
 
 size = 40
 use_mipmaps = false
 use_filter = true
-font_data = ExtResource( 8 )
+font_data = ExtResource( 3 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=3]
@@ -34,7 +49,7 @@ _sections_unfolded = [ "Font", "Settings" ]
 size = 22
 use_mipmaps = false
 use_filter = true
-font_data = ExtResource( 8 )
+font_data = ExtResource( 3 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=4]
@@ -42,7 +57,7 @@ _sections_unfolded = [ "Font", "Settings" ]
 size = 22
 use_mipmaps = false
 use_filter = true
-font_data = ExtResource( 8 )
+font_data = ExtResource( 3 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [node name="Screens" type="Control" index="0"]
@@ -53,13 +68,13 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-mouse_filter = 0
+mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
-_sections_unfolded = [ "Material", "Theme", "Visibility" ]
+_sections_unfolded = [ "Material", "Mouse", "Size Flags", "Theme", "Visibility" ]
 
 [node name="Panel" type="Panel" parent="." index="0"]
 
@@ -78,76 +93,73 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 
-[node name="MainMenuDecorations" type="Control" parent="." index="1"]
+[node name="TitleNVersion" type="HBoxContainer" parent="." index="1"]
 
-editor/display_folded = true
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = -20.0
-margin_right = -20.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-
-[node name="TitleNVersion" type="Control" parent="MainMenuDecorations" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-
-[node name="HBox" type="HBoxContainer" parent="MainMenuDecorations/TitleNVersion" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 867.0
-margin_top = 532.0
-margin_right = 1008.0
-margin_bottom = 589.0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 209.0
+margin_top = 529.0
+margin_right = 1017.0
+margin_bottom = 594.0
+grow_horizontal = 0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-alignment = 0
+alignment = 2
+_sections_unfolded = [ "Grow Direction", "Size Flags" ]
 
-[node name="Title" parent="MainMenuDecorations/TitleNVersion/HBox" index="0" instance=ExtResource( 3 )]
-
-margin_right = 99.0
-margin_bottom = 65.0
-rect_clip_content = false
-
-[node name="RenValLabel" type="Label" parent="MainMenuDecorations/TitleNVersion/HBox" index="1"]
+[node name="Title" type="Label" parent="TitleNVersion" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 103.0
-margin_top = 15.0
-margin_right = 157.0
-margin_bottom = 49.0
+margin_left = 651.0
+margin_right = 750.0
+margin_bottom = 65.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
-size_flags_vertical = 4
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 6 )
+text = "Ren"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script = ExtResource( 4 )
+_sections_unfolded = [ "custom_fonts" ]
+__meta__ = {
+"_editor_icon": ExtResource( 5 )
+}
+var_name = "title"
+default = "Your new game"
+type = "str"
+
+[node name="Version" type="Label" parent="TitleNVersion" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 754.0
+margin_right = 808.0
+margin_bottom = 65.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
 text = "0.5.0"
+valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
@@ -170,18 +182,40 @@ margin_right = 204.0
 margin_bottom = 599.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-mouse_filter = 0
+mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-_sections_unfolded = [ "Rect" ]
+_sections_unfolded = [ "Mouse", "Rect" ]
 
-[node name="Label" parent="Navigation" index="0" instance=ExtResource( 3 )]
+[node name="Title" type="Label" parent="Navigation" index="0"]
 
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_right = 99.0
 margin_bottom = 65.0
+rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-align = 0
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 6 )
+text = "Ren"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+script = ExtResource( 4 )
+_sections_unfolded = [ "Rect", "custom_fonts" ]
+__meta__ = {
+"_editor_icon": ExtResource( 5 )
+}
+var_name = "title"
+default = "Your new game"
+type = "str"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Navigation" index="1"]
 
@@ -214,7 +248,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 132.0
-margin_bottom = 378.0
+margin_bottom = 424.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -337,22 +371,38 @@ group = SubResource( 1 )
 text = "About"
 align = 0
 
-[node name="Help" parent="Navigation/ScrollContainer/VBoxContainer" index="11" instance=ExtResource( 6 )]
+[node name="Help" type="LinkButton" parent="Navigation/ScrollContainer/VBoxContainer" index="11"]
 
-visible = false
-margin_top = 488.0
-margin_right = 140.0
-margin_bottom = 520.0
-toggle_mode = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 344.0
+margin_right = 132.0
+margin_bottom = 370.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.666667, 0.666667, 0.666667, 1 )
+custom_colors/font_color_hover = Color( 0.4, 0.756863, 0.878431, 1 )
+custom_colors/font_color_pressed = Color( 0, 0.6, 0.8, 1 )
+toggle_mode = false
+action_mode = 0
+enabled_focus_mode = 0
+shortcut = null
 group = SubResource( 1 )
 text = "Help"
-align = 0
+_sections_unfolded = [ "Theme", "custom_colors", "custom_fonts" ]
 
 [node name="Quit" parent="Navigation/ScrollContainer/VBoxContainer" index="12" instance=ExtResource( 6 )]
 
-margin_top = 344.0
+margin_top = 390.0
 margin_right = 132.0
-margin_bottom = 378.0
+margin_bottom = 424.0
 toggle_mode = true
 group = SubResource( 1 )
 text = "Quit"
@@ -440,18 +490,18 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 5
 alignment = 0
-script = ExtResource( 9 )
+script = ExtResource( 8 )
 _sections_unfolded = [ "Size Flags", "custom_constants" ]
-HistoryItemTemplate = ExtResource( 10 )
+HistoryItemTemplate = ExtResource( 9 )
 
-[node name="OptionsBox" parent="." index="5" instance=ExtResource( 11 )]
+[node name="OptionsBox" parent="." index="5" instance=ExtResource( 10 )]
 
 visible = false
 margin_left = 199.0
 margin_top = 27.0
 margin_right = 1013.0
 
-[node name="QuestsBox" parent="." index="6" instance=ExtResource( 12 )]
+[node name="QuestsBox" parent="." index="6" instance=ExtResource( 11 )]
 
 visible = false
 margin_left = 201.0
@@ -461,6 +511,7 @@ margin_bottom = 607.0
 
 [node name="AboutBox" type="VBoxContainer" parent="." index="7"]
 
+editor/display_folded = true
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -472,7 +523,7 @@ margin_right = 959.0
 margin_bottom = 545.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-mouse_filter = 0
+mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
@@ -527,10 +578,10 @@ scroll_active = true
 scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
-script = ExtResource( 13 )
-_sections_unfolded = [ "BBCode" ]
+script = ExtResource( 12 )
+_sections_unfolded = [ "BBCode", "Mouse" ]
 __meta__ = {
-"_editor_icon": ExtResource( 14 )
+"_editor_icon": ExtResource( 13 )
 }
 ren_text = "Made with {a=https://github.com/jeremi360/Ren}Ren{/a} [ren_version] on {a=https://godotengine.org/}Godot Engine{/a} [godot_version] on {a=https://github.com/jeremi360/Ren/blob/master/LICENSE} MIT License{/a}.
 "
@@ -577,7 +628,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="Question" parent="QuitBox" index="1" instance=ExtResource( 15 )]
+[node name="Question" parent="QuitBox" index="1" instance=ExtResource( 14 )]
 
 anchor_top = 0.5
 anchor_right = 1.0
@@ -661,7 +712,7 @@ flat = true
 align = 1
 _sections_unfolded = [ "Size Flags", "custom_fonts" ]
 
-[node name="TestNodes" parent="." index="9" instance=ExtResource( 16 )]
+[node name="TestNodes" parent="." index="9" instance=ExtResource( 15 )]
 
 visible = false
 margin_right = 672.0
@@ -684,6 +735,10 @@ margin_bottom = 315.0
 [connection signal="pressed" from="Navigation/ScrollContainer/VBoxContainer/Options" to="." method="_on_Options_pressed"]
 
 [connection signal="pressed" from="Navigation/ScrollContainer/VBoxContainer/TestNodes" to="." method="_on_TestNodes_pressed"]
+
+[connection signal="pressed" from="Navigation/ScrollContainer/VBoxContainer/About" to="." method="_on_About_pressed"]
+
+[connection signal="pressed" from="Navigation/ScrollContainer/VBoxContainer/Help" to="." method="_on_Help_pressed"]
 
 [connection signal="pressed" from="Navigation/ScrollContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
 
