@@ -62,8 +62,9 @@ func _on_History_pressed():
 	history_menu()
 
 func _on_Continue_pressed():
-	if !Ren.loadfile():
+	if !Ren.loadfile("auto"):
 		return
+
 	in_game()
 	hide()
 
@@ -73,6 +74,9 @@ func _on_Quests_pressed():
 
 # if press "yes" on quit page
 func _on_Yes_pressed():
+	if !Ren.savefile("auto"):
+		return
+		
 	get_tree().quit()
 
 func _on_Quit_pressed():
