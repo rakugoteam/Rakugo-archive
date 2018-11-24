@@ -5,7 +5,7 @@ onready var in_game_gui = get_node("/root/Window/InGameGUI")
 var current_node = self
 
 func _ready():
-	connect("visibility_changed", self, "_on_Screens_visibility_changed")
+	connect("visibility_changed", self, "_on_visibility_changed")
 
 func show_page(node):
 	if current_node != self:
@@ -30,7 +30,7 @@ func history_menu():
 	show_page($HistoryBox)
 	show()
 
-func _on_Screens_visibility_changed():
+func _on_visibility_changed():
 	if visible:
 		get_tree().paused = true
 		in_game_gui.hide()
@@ -81,6 +81,7 @@ func _on_Yes_pressed():
 
 func _on_Quit_pressed():
 	show_page($QuitBox)
+	show()
 
 func _on_Save_pressed():
 	hide()
@@ -89,6 +90,8 @@ func _on_Save_pressed():
 
 func _on_TestNodes_pressed():
 	show_page($TestNodes)
+	show()
 
 func _on_Options_pressed():
 	show_page($OptionsBox)
+	show()

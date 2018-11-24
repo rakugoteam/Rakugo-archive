@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://themes/new_gui/theme.tres" type="Theme" id=1]
-[ext_resource path="res://scenes/gui/Window/Screens.gd" type="Script" id=2]
+[ext_resource path="res://scenes/gui/Screens/Screens.gd" type="Script" id=2]
 [ext_resource path="res://scenes/gui/Labels/TitleText.tscn" type="PackedScene" id=3]
 [ext_resource path="res://addons/Ren/nodes/ren_var_label.gd" type="Script" id=4]
 [ext_resource path="res://addons/Ren/icons/ren_var_label.svg" type="Texture" id=5]
@@ -78,6 +78,7 @@ size_flags_vertical = 1
 
 [node name="MainMenuDecorations" type="Control" parent="." index="1"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -456,7 +457,7 @@ margin_top = 2.0
 margin_right = 1025.0
 margin_bottom = 607.0
 
-[node name="QuitBox" type="Panel" parent="." index="7"]
+[node name="QuitBox" type="Control" parent="." index="7"]
 
 editor/display_folded = true
 visible = false
@@ -537,7 +538,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 126.0
-margin_bottom = 32.0
+margin_bottom = 34.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -563,7 +564,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 130.0
 margin_right = 256.0
-margin_bottom = 32.0
+margin_bottom = 34.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2

@@ -23,6 +23,8 @@ func _ready():
 	$Save.connect("pressed", self, "full_save")
 	$Load.connect("pressed", Screens, "load_menu")
 	$Quests.connect("pressed", Screens, "_on_Quests_pressed")
+	$Quit.connect("pressed", Screens, "_on_Quit_pressed")
+	$Options.connect("pressed", Screens, "_on_Options_pressed")
 
 func _on_qsave():
 	if Ren.savefile():
