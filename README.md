@@ -15,12 +15,12 @@ Ren is framemork ( inspired by [Ren'Py](https://www.renpy.org) )
 
 It means games that are for example:
 
-- Visual Novels (almost done)
-- Click & Point Adventures
-- RPG
+- Visual Novels ![](https://img.shields.io/badge/VN-90%25-brightgreen.svg?style=flat-square)
+- Click & Point Adventures ![](https://img.shields.io/badge/Adv-25%25-yellowgreen.svg?style=flat-square)
+- RPG ![](https://img.shields.io/badge/RPG-25%25-yellowgreen.svg?style=flat-square)
 
 You can use it with:
-- GDScript (almost done)
+- GDScript
 - VisualScript (ToDo - I need help)
 - RenScript (ToDo)
 
@@ -33,5 +33,5 @@ Logo is base on Godot icon from [Linux Pop icon theme](https://github.com/pop-os
 Logo for [PersistenceNode](https://github.com/MatiasVME/Persistence) was changed also to icon from [Linux Pop icon theme](https://github.com/pop-os/icon-theme) to fix some strange preload problems.<br/>
 Custom Ren Nodes icons are based on [Godot icons](https://github.com/godotengine/godot-design/tree/master/engine/icons/optimized) and [Linux Pop icon theme](https://github.com/pop-os/icon-theme).
 
-Quest icon is CC BY-SA 3.0 201 by p Zon Petilla from [game-icons.net](https://game-icons.net/lorc/originals/tied-scroll.html)
+Quest icon is CC BY-SA 3.0 2018 by Lorc from [game-icons.net](https://game-icons.net/lorc/originals/tied-scroll.html)
 
