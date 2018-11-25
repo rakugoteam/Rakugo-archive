@@ -1,0 +1,6 @@
+{a=https://github.com/jeremi360}Jeremi Biernacki ({i}Jeremi360{/i}){/a},
+{a=https://github.com/MatiasVME}Matías Muñoz Espinoza ({i}MatiasVME{/i}){/a},
+{a=https://github.com/deep-gaurav}Deep Gaurav{/a}
+Special Thanks for:
+{a=https://github.com/BurningWood}Zon Petilla{/a},
+{a=https://github.com/Plopsiskopsis}Plopsiskopsis{/a}

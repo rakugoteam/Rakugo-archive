@@ -511,6 +511,7 @@ margin_bottom = 607.0
 
 [node name="AboutBox" type="VBoxContainer" parent="." index="7"]
 
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -566,14 +567,14 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 bbcode_enabled = true
-bbcode_text = "[game_title][game_version] by [credits]
+bbcode_text = "[title][version] by [credits]
 Made with [url=https://github.com/jeremi360/Ren]Ren[/url] [ren_version] on [url=https://godotengine.org/]Godot Engine[/url] [godot_version] on [url=https://github.com/jeremi360/Ren/blob/master/LICENSE]MIT License[/url].
 Ren is made by [ren_credits]"
 visible_characters = -1
 percent_visible = 1.0
 meta_underlined = true
 tab_size = 4
-text = "[game_title][game_version] by [credits]
+text = "[title][version] by [credits]
 Made with Ren [ren_version] on Godot Engine [godot_version] on MIT License.
 Ren is made by [ren_credits]"
 scroll_active = true
@@ -585,8 +586,8 @@ _sections_unfolded = [ "BBCode", "Mouse" ]
 __meta__ = {
 "_editor_icon": ExtResource( 13 )
 }
-ren_text = "Made with {a=https://github.com/jeremi360/Ren}Ren{/a} [ren_version] on {a=https://godotengine.org/}Godot Engine{/a} [godot_version] on {a=https://github.com/jeremi360/Ren/blob/master/LICENSE} MIT License{/a}.
-"
+ren_text_file = "res://about.txt"
+ren_text = ""
 vars_names = [ "ren_version", "godot_version" ]
 
 [node name="QuitBox" type="Control" parent="." index="8"]

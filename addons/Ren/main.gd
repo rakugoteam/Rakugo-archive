@@ -2,6 +2,7 @@ extends Node
 
 export (String) var game_title = "Your New Game"
 export (String) var game_version = "0.0.1"
+export (String) var game_credits = "Your Company"
 export (bool) var debug_on = true
 export (String) var save_folder = "saves"
 export (String) var save_password = "Ren"
@@ -59,7 +60,6 @@ var loading_in_progress = false
 var started = false
 var quests = [] # list of all quests ids
 
-
 onready var timer = $Timer
 
 var story_state setget _set_story_state, _get_story_state
@@ -79,7 +79,12 @@ func _ready():
 	define("title", game_title)
 	define("version", game_version)
 	OS.set_window_title(game_title + " " + game_version)
-	define("ren_version", "0.9.13")
+	define("credits", game_credits)
+	define("ren_version", "0.9.15")
+	file.open("res://addons/Ren/credits.txt", file.READ)
+	define("ren_credits", file.get_as_text())
+	print(file.get_as_text())
+	file.close()
 	var gdv = Engine.get_version_info()
 	var gdv_string = str(gdv.major) + "." + str(gdv.minor) + "." + str(gdv.patch)
 	define("godot_version", gdv_string)
