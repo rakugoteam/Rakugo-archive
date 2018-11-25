@@ -4,7 +4,6 @@ export(String, MULTILINE) var ren_text = ""
 export(Array, String) var vars_names = [] 
 
 func _ready():
-	mouse_filter = MOUSE_FILTER_IGNORE
 	bbcode_enabled = true
 	bbcode_text = Ren.text_passer(ren_text)
 	for vn in vars_names:

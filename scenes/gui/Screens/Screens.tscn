@@ -16,7 +16,7 @@
 [ext_resource path="res://scenes/gui/Labels/dialogue_text.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/examples/TestNodes.tscn" type="PackedScene" id=15]
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=1]
 
 size = 50
 use_mipmaps = false
@@ -24,25 +24,9 @@ use_filter = true
 font_data = ExtResource( 3 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="ButtonGroup" id=1]
+[sub_resource type="ButtonGroup" id=2]
 
 resource_local_to_scene = true
-
-[sub_resource type="DynamicFont" id=5]
-
-size = 22
-use_mipmaps = false
-use_filter = true
-font_data = ExtResource( 3 )
-_sections_unfolded = [ "Font", "Settings" ]
-
-[sub_resource type="DynamicFont" id=2]
-
-size = 40
-use_mipmaps = false
-use_filter = true
-font_data = ExtResource( 3 )
-_sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=3]
 
@@ -53,6 +37,22 @@ font_data = ExtResource( 3 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=4]
+
+size = 40
+use_mipmaps = false
+use_filter = true
+font_data = ExtResource( 3 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=5]
+
+size = 22
+use_mipmaps = false
+use_filter = true
+font_data = ExtResource( 3 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=6]
 
 size = 22
 use_mipmaps = false
@@ -128,7 +128,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 1 )
 text = "Ren"
 align = 1
 percent_visible = 1.0
@@ -202,7 +202,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 1 )
 text = "Ren"
 align = 1
 percent_visible = 1.0
@@ -297,7 +297,7 @@ margin_top = 72.0
 margin_right = 140.0
 margin_bottom = 104.0
 toggle_mode = true
-group = SubResource( 1 )
+group = SubResource( 2 )
 text = "History"
 align = 0
 
@@ -308,7 +308,7 @@ margin_top = 72.0
 margin_right = 140.0
 margin_bottom = 104.0
 toggle_mode = true
-group = SubResource( 1 )
+group = SubResource( 2 )
 text = "Quests"
 align = 0
 
@@ -326,7 +326,7 @@ margin_top = 128.0
 margin_right = 132.0
 margin_bottom = 162.0
 toggle_mode = true
-group = SubResource( 1 )
+group = SubResource( 2 )
 text = "Load"
 align = 0
 
@@ -337,7 +337,7 @@ margin_top = 280.0
 margin_right = 140.0
 margin_bottom = 312.0
 toggle_mode = true
-group = SubResource( 1 )
+group = SubResource( 2 )
 text = "Save"
 align = 0
 
@@ -347,7 +347,7 @@ margin_top = 182.0
 margin_right = 132.0
 margin_bottom = 216.0
 toggle_mode = true
-group = SubResource( 1 )
+group = SubResource( 2 )
 text = "Options"
 align = 0
 
@@ -357,7 +357,7 @@ margin_top = 236.0
 margin_right = 132.0
 margin_bottom = 270.0
 toggle_mode = true
-group = SubResource( 1 )
+group = SubResource( 2 )
 text = "Test Nodes"
 align = 0
 
@@ -367,7 +367,7 @@ margin_top = 290.0
 margin_right = 132.0
 margin_bottom = 324.0
 toggle_mode = true
-group = SubResource( 1 )
+group = SubResource( 2 )
 text = "About"
 align = 0
 
@@ -386,7 +386,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.666667, 0.666667, 0.666667, 1 )
 custom_colors/font_color_hover = Color( 0.4, 0.756863, 0.878431, 1 )
 custom_colors/font_color_pressed = Color( 0, 0.6, 0.8, 1 )
@@ -394,7 +394,7 @@ toggle_mode = false
 action_mode = 0
 enabled_focus_mode = 0
 shortcut = null
-group = SubResource( 1 )
+group = SubResource( 2 )
 text = "Help"
 _sections_unfolded = [ "Theme", "custom_colors", "custom_fonts" ]
 
@@ -404,7 +404,7 @@ margin_top = 390.0
 margin_right = 132.0
 margin_bottom = 424.0
 toggle_mode = true
-group = SubResource( 1 )
+group = SubResource( 2 )
 text = "Quit"
 align = 0
 
@@ -444,7 +444,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 4 )
 text = "History"
 align = 1
 percent_visible = 1.0
@@ -511,8 +511,6 @@ margin_bottom = 607.0
 
 [node name="AboutBox" type="VBoxContainer" parent="." index="7"]
 
-editor/display_folded = true
-visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -544,7 +542,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 4 )
 text = "About"
 align = 1
 percent_visible = 1.0
@@ -568,12 +566,16 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 bbcode_enabled = true
-bbcode_text = ""
+bbcode_text = "[game_title][game_version] by [credits]
+Made with [url=https://github.com/jeremi360/Ren]Ren[/url] [ren_version] on [url=https://godotengine.org/]Godot Engine[/url] [godot_version] on [url=https://github.com/jeremi360/Ren/blob/master/LICENSE]MIT License[/url].
+Ren is made by [ren_credits]"
 visible_characters = -1
 percent_visible = 1.0
 meta_underlined = true
 tab_size = 4
-text = ""
+text = "[game_title][game_version] by [credits]
+Made with Ren [ren_version] on Godot Engine [godot_version] on MIT License.
+Ren is made by [ren_credits]"
 scroll_active = true
 scroll_following = false
 selection_enabled = false
@@ -620,7 +622,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 4 )
 text = "Quit"
 align = 1
 percent_visible = 1.0
@@ -676,7 +678,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 5 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
@@ -702,7 +704,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 6 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
