@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://scenes/examples/test.gd" type="Script" id=1]
+[ext_resource path="res://scenes/examples/Tutorial/Tutorial.gd" type="Script" id=1]
 [ext_resource path="res://addons/Ren/nodes/character.gd" type="Script" id=2]
 [ext_resource path="res://addons/Ren/icons/ren_character.svg" type="Texture" id=3]
-[ext_resource path="res://scenes/examples/RenAvatar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/examples/Tutorial/RenAvatar.tscn" type="PackedScene" id=4]
 [ext_resource path="res://addons/Ren/nodes/ren_node2d.gd" type="Script" id=5]
 [ext_resource path="res://addons/Ren/icons/ren_node2d.svg" type="Texture" id=6]
 [ext_resource path="res://logo.svg" type="Texture" id=7]
@@ -41,7 +41,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[node name="Test" type="Node2D"]
+[node name="Tutorial" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Material", "Transform", "Z Index" ]

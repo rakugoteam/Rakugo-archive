@@ -83,7 +83,6 @@ func _ready():
 	define("ren_version", "0.9.15")
 	file.open("res://addons/Ren/credits.txt", file.READ)
 	define("ren_credits", file.get_as_text())
-	print(file.get_as_text())
 	file.close()
 	var gdv = Engine.get_version_info()
 	var gdv_string = str(gdv.major) + "." + str(gdv.minor) + "." + str(gdv.patch)
