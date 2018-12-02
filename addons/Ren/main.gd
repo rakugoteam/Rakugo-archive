@@ -72,8 +72,8 @@ signal notified()
 signal show(node_id, state, show_args)
 signal hide(node_id)
 signal story_step(dialog_name)
-signal play_anim(node_id, anim_name, reset)
-signal stop_anim(node_id)
+signal play_anim(node_id, anim_name)
+signal stop_anim(node_id, reset)
 
 func _ready():
 	# config_data()
@@ -111,11 +111,11 @@ func on_show(node_id, state, show_args):
 func on_hide(node):
 	emit_signal("hide", node)
 
-func on_play_anim(node_id, anim_name, reset):
-	emit_signal("play_anim", node_id, anim_name, reset)
+func on_play_anim(node_id, anim_name):
+	emit_signal("play_anim", node_id, anim_name)
 
-func on_stop_anim(node_id):
-	emit_signal("stop_anim", node_id)
+func on_stop_anim(node_id, reset):
+	emit_signal("stop_anim", node_id, reset)
 
 ## parse text like in renpy to bbcode
 func text_passer(text):
@@ -272,17 +272,21 @@ func notifiy(info, length=5):
 
 ## statement of type play_anim
 ## it will play animation with anim_name form RenAnimPlayer with given node_id
-## and by default is reset to 0 pos on exit from statment
-func play_anim(node_id, anim_name, reset = true):
+func play_anim(node_id, anim_name):
 	var kwargs = {
 		"node_id":node_id,
-		"anim_name":anim_name,
-		"reset":reset
+		"anim_name":anim_name
 	}
 	_set_statement($PlayAnim, kwargs)
 
-func stop_anim(node_id):
-	var kwargs = {"node_id":node_id}
+## statement of type stop_anim
+## it will stop animation form RenAnimPlayer with given node_id
+## and by default is reset to 0 pos on exit from statment
+func stop_anim(node_id, reset = true):
+	var kwargs = {
+		"node_id":node_id,
+		"reset":reset
+	}
 	_set_statement($StopAnim, kwargs)
 
 func _set_story_state(state):
