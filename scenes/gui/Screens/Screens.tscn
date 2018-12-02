@@ -14,7 +14,8 @@
 [ext_resource path="res://addons/Ren/nodes/ren_label.gd" type="Script" id=12]
 [ext_resource path="res://addons/Ren/icons/ren_text_label.svg" type="Texture" id=13]
 [ext_resource path="res://scenes/gui/Labels/dialogue_text.tscn" type="PackedScene" id=14]
-[ext_resource path="res://scenes/examples/TestNodes.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenes/examples/Test/TestNodes.tscn" type="PackedScene" id=15]
+
 
 [sub_resource type="DynamicFont" id=6]
 
