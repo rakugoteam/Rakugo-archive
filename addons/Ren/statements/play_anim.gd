@@ -11,6 +11,3 @@ func _init():
 func exec(dbg = true):
 	.exec(dbg)
 	Ren.on_play_anim(kwargs.node_id, kwargs.anim_name, kwargs.reset)
-
-
-
