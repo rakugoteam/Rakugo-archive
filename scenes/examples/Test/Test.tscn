@@ -92,7 +92,7 @@ _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 __meta__ = {
 "_editor_icon": ExtResource( 6 )
 }
-auto_define = true
+auto_define = false
 node_id = "rench"
 camera = NodePath("")
 
@@ -116,7 +116,7 @@ _sections_unfolded = [ "Playback Options" ]
 __meta__ = {
 "_editor_icon": ExtResource( 9 )
 }
-auto_define = true
+auto_define = false
 node_id = "TestAnimPlayer"
 
 [node name="SFXPlayer" type="AudioStreamPlayer" parent="." index="1"]
@@ -131,7 +131,7 @@ script = ExtResource( 11 )
 __meta__ = {
 "_editor_icon": ExtResource( 12 )
 }
-auto_define = true
+auto_define = false
 node_id = ""
 
 [node name="BGMPlayer" type="AudioStreamPlayer" parent="." index="2"]
@@ -146,7 +146,7 @@ script = ExtResource( 11 )
 __meta__ = {
 "_editor_icon": ExtResource( 12 )
 }
-auto_define = true
+auto_define = false
 node_id = ""
 
 

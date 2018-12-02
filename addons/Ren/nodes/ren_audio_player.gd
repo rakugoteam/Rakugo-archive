@@ -1,6 +1,6 @@
 extends AudioStreamPlayer
 
-export(bool) var auto_define = true
+export(bool) var auto_define = false
 export(String) var node_id = ""
 
 func _ready():

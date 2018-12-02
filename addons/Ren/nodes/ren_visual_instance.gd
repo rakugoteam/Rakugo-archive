@@ -2,7 +2,7 @@ extends VisualInstance
 
 var rnode = load("ren_node_core.gd").new()
 
-export(bool) var auto_define
+export(bool) var auto_define = false
 export(String) var node_id = ""
 export(NodePath) var camera = NodePath("")
 
