@@ -1,8 +1,7 @@
 extends AnimationPlayer
 
 export(bool) var auto_define = true
-export(String) var node_id = "NewAnimPlayer"
-
+export(String) var node_id = ""
 
 func _ready():
 	Ren.connect("play_anim", self, "_on_play")
@@ -21,7 +20,6 @@ func _on_play(id, anim_name):
 	play(anim_name)
 
 func _on_stop(id, reset):
-
 	if id != node_id:
 		return
 

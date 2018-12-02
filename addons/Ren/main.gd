@@ -30,7 +30,9 @@ enum StatementType {
 	HIDE,		# 5
 	NOTIFY,		# 6
 	PLAY_ANIM,	# 7
-	STOP_ANIM	# 8
+	STOP_ANIM,	# 8
+	PLAY_AUDIO,	# 9
+	STOP_AUDIO	# 10
 }
 
 # this must be saved
@@ -74,6 +76,8 @@ signal hide(node_id)
 signal story_step(dialog_name)
 signal play_anim(node_id, anim_name)
 signal stop_anim(node_id, reset)
+signal play_audio(node_id, from_pos)
+signal stop_audio(node_id)
 
 func _ready():
 	# config_data()
@@ -81,7 +85,7 @@ func _ready():
 	define("title", game_title)
 	define("version", game_version)
 	OS.set_window_title(game_title + " " + game_version)
-	define("ren_version", "0.9.17")
+	define("ren_version", "0.9.19")
 	var gdv = Engine.get_version_info()
 	var gdv_string = str(gdv.major) + "." + str(gdv.minor) + "." + str(gdv.patch)
 	define("godot_version", gdv_string)
@@ -116,6 +120,12 @@ func on_play_anim(node_id, anim_name):
 
 func on_stop_anim(node_id, reset):
 	emit_signal("stop_anim", node_id, reset)
+
+func on_play_audio(node_id, from_pos):
+	emit_signal("play_audio", node_id, from_pos)
+
+func on_stop_audio(node_id):
+	emit_signal("stop_audio", node_id)
 
 ## parse text like in renpy to bbcode
 func text_passer(text):
@@ -288,6 +298,24 @@ func stop_anim(node_id, reset = true):
 		"reset":reset
 	}
 	_set_statement($StopAnim, kwargs)
+
+## statement of type play_audio
+## it will play audio form RenAudioPlayer with given node_id
+## it will start playing from given from_pos
+func play_audio(node_id, from_pos = 0.0):
+	var kwargs = {
+		"node_id":node_id,
+		"from_pos":from_pos
+	}
+	_set_statement($PlayAudio, kwargs)
+
+## statement of type stop_audio
+## it will stop audio form RenAudioPlayer with given node_id
+func stop_audio(node_id):
+	var kwargs = {
+		"node_id":node_id
+	}
+	_set_statement($StopAudio, kwargs)
 
 func _set_story_state(state):
 	prev_story_state = _get_story_state()
