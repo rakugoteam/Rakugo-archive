@@ -29,7 +29,8 @@ enum StatementType {
 	SHOW,		# 4
 	HIDE,		# 5
 	NOTIFY,		# 6
-	PLAY_ANIM	# 7
+	PLAY_ANIM,	# 7
+	STOP_ANIM	# 8
 }
 
 # this must be saved
@@ -64,6 +65,7 @@ onready var timer = $Timer
 
 var story_state setget _set_story_state, _get_story_state
 
+signal started
 signal exec_statement(type, kwargs)
 signal exit_statement(previous_type, kwargs)
 signal notified()
@@ -71,7 +73,7 @@ signal show(node_id, state, show_args)
 signal hide(node_id)
 signal story_step(dialog_name)
 signal play_anim(node_id, anim_name, reset)
-signal started
+signal stop_anim(node_id)
 
 func _ready():
 	# config_data()
@@ -79,7 +81,7 @@ func _ready():
 	define("title", game_title)
 	define("version", game_version)
 	OS.set_window_title(game_title + " " + game_version)
-	define("ren_version", "0.9.13")
+	define("ren_version", "0.9.15")
 	var gdv = Engine.get_version_info()
 	var gdv_string = str(gdv.major) + "." + str(gdv.minor) + "." + str(gdv.patch)
 	define("godot_version", gdv_string)
@@ -111,6 +113,9 @@ func on_hide(node):
 
 func on_play_anim(node_id, anim_name, reset):
 	emit_signal("play_anim", node_id, anim_name, reset)
+
+func on_stop_anim(node_id):
+	emit_signal("stop_anim", node_id)
 
 ## parse text like in renpy to bbcode
 func text_passer(text):
@@ -275,6 +280,10 @@ func play_anim(node_id, anim_name, reset = true):
 		"reset":reset
 	}
 	_set_statement($PlayAnim, kwargs)
+
+func stop_anim(node_id):
+	var kwargs = {"node_id":node_id}
+	_set_statement($StopAnim, kwargs)
 
 func _set_story_state(state):
 	prev_story_state = _get_story_state()

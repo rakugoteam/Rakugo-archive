@@ -2,7 +2,7 @@ extends Node2D
 
 onready var rnode = preload("res://addons/Ren/nodes/ren_node_core.gd").new()
 
-export(bool) var auto_define
+export(bool) var auto_define = true
 export(String) var node_id = ""
 export(NodePath) var camera = NodePath("")
 
@@ -10,6 +10,9 @@ func _ready():
 	hide()
 	Ren.connect("show", self, "_on_show")
 	Ren.connect("hide", self, "_on_hide")
+
+	if node_id.empty():
+		node_id = name
 
 	if auto_define:
 		Ren.node_link(self, node_id)

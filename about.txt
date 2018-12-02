@@ -1,0 +1,6 @@
+[title] [version] by [credits]
+
+Made with {a=https://github.com/jeremi360/Ren}Ren{/a} [ren_version] on {a=https://godotengine.org/}Godot Engine{/a} [godot_version] on {a=https://github.com/jeremi360/Ren/blob/master/LICENSE} MIT License{/a}.
+
+Ren is made by:
+[ren_credits]

@@ -44,9 +44,26 @@ func story(dialog_name):
 
 		"test play_anim":
 			Ren.play_anim("TestAnimPlayer", "test", false)
-			Ren.say({"who":"test", "what":"test of simple anim"})
-			Ren.story_state = "test dict"
+			Ren.say({"who":"test", "what":"test of playing simple anim"})
+			Ren.story_state = "test stop_anim 1"
 
+		"test stop_anim 1":
+			Ren.stop_anim("TestAnimPlayer")
+			Ren.play_anim("TestAnimPlayer", "test_loop", false)
+			Ren.say({
+				"who":"test",
+				"what":"test of stoping loop anim.{/nl}Click to go next step and stop anim"
+			})
+			Ren.story_state = "test stop_anim 2"
+		
+		"test stop_anim 2":
+			Ren.stop_anim("TestAnimPlayer")
+			Ren.say({
+				"who":"test",
+				"what":"test anim stopped"
+			})
+			Ren.story_state = "test dict"
+		
 		"test dict":
 			# example of dict in text
 			Ren.define("test_dict", {"a": 1, "b": 2})
