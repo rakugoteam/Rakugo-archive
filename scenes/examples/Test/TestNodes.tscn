@@ -14,7 +14,7 @@
 [ext_resource path="res://addons/Ren/nodes/ren_label.gd" type="Script" id=12]
 [ext_resource path="res://addons/Ren/icons/ren_text_label.svg" type="Texture" id=13]
 
-[node name="TestNodes" type="VBoxContainer" index="0"]
+[node name="TestNodes" type="VBoxContainer"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -450,6 +450,7 @@ __meta__ = {
 "_editor_icon": ExtResource( 13 )
 }
 mode = "ren"
+ren_file = ""
 ren_text = "Example text with ren markup.
 {i}test_float = {color=#4286f4}[test_float]{/color}{/i}
 {b}test_bool = {color=#318c6c}[test_bool]{/color}{/b}"
@@ -519,11 +520,12 @@ scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
 script = ExtResource( 12 )
-_sections_unfolded = [ "BBCode" ]
+_sections_unfolded = [ "BBCode", "custom_colors" ]
 __meta__ = {
 "_editor_icon": ExtResource( 13 )
 }
 mode = "bbcode"
+ren_file = ""
 ren_text = "Example text with bbcode markup.
 [i]test_float = [color=#4286f4]{test_float}[/color][/i]
 [b]test_bool = [color=#318c6c]{test_bool}[/color][/b]"
