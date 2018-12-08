@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://addons/Ren/nodes/ren_var_label.gd" type="Script" id=1]
 [ext_resource path="res://addons/Ren/icons/ren_var_label.svg" type="Texture" id=2]
@@ -11,76 +11,97 @@
 [ext_resource path="res://addons/Ren/nodes/ren_var_check.gd" type="Script" id=9]
 [ext_resource path="res://addons/Ren/icons/ren_check_button.svg" type="Texture" id=10]
 [ext_resource path="res://addons/Ren/icons/ren_check_box.svg" type="Texture" id=11]
+[ext_resource path="res://addons/Ren/nodes/ren_label.gd" type="Script" id=12]
+[ext_resource path="res://addons/Ren/icons/ren_text_label.svg" type="Texture" id=13]
 
-[node name="TestNodes" type="HBoxContainer"]
+[node name="TestNodes" type="VBoxContainer" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 388.0
-margin_top = 197.0
-margin_right = 481.0
-margin_bottom = 277.0
+margin_left = 282.0
+margin_top = 204.0
+margin_right = 826.0
+margin_bottom = 490.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
 alignment = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." index="0"]
+[node name="HBoxContainer" type="HBoxContainer" parent="." index="0"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 129.0
-margin_bottom = 109.0
+margin_right = 544.0
+margin_bottom = 141.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 0
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" index="0"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 178.0
+margin_bottom = 141.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 alignment = 0
 
-[node name="Label" type="Label" parent="VBoxContainer" index="0"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 129.0
-margin_bottom = 14.0
+margin_right = 178.0
+margin_bottom = 25.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
+size_flags_horizontal = 3
+size_flags_vertical = 3
 text = "test ren nodes: float"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Grow Direction" ]
 
-[node name="RenVarLabel" type="Label" parent="VBoxContainer" index="1"]
+[node name="RenVarLabel" type="Label" parent="HBoxContainer/VBoxContainer" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 18.0
-margin_right = 129.0
-margin_bottom = 32.0
+margin_top = 29.0
+margin_right = 178.0
+margin_bottom = 54.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
+size_flags_horizontal = 3
+size_flags_vertical = 3
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
@@ -92,26 +113,26 @@ var_name = "test_float"
 default = ""
 type = "float"
 
-[node name="RenVarEdit" type="LineEdit" parent="VBoxContainer" index="2"]
+[node name="RenVarEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer" index="2"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 36.0
-margin_right = 129.0
-margin_bottom = 60.0
+margin_top = 58.0
+margin_right = 178.0
+margin_bottom = 83.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 1
-size_flags_horizontal = 1
-size_flags_vertical = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
 focus_mode = 2
 context_menu_enabled = true
 placeholder_alpha = 0.6
-caret_blink = false
+caret_blink = true
 caret_blink_speed = 0.65
 caret_position = 0
 script = ExtResource( 3 )
@@ -121,22 +142,22 @@ __meta__ = {
 var_name = "test_float"
 default = "10"
 
-[node name="RenVarHSlider" type="HSlider" parent="VBoxContainer" index="3"]
+[node name="RenVarHSlider" type="HSlider" parent="HBoxContainer/VBoxContainer" index="3"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 64.0
-margin_right = 129.0
-margin_bottom = 80.0
+margin_top = 87.0
+margin_right = 178.0
+margin_bottom = 112.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 min_value = 0.0
 max_value = 100.0
 step = 1.0
@@ -155,21 +176,21 @@ __meta__ = {
 var_name = "test_float"
 default = 0.5
 
-[node name="RenProgressBar" type="ProgressBar" parent="VBoxContainer" index="4"]
+[node name="RenProgressBar" type="ProgressBar" parent="HBoxContainer/VBoxContainer" index="4"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 84.0
-margin_right = 129.0
-margin_bottom = 100.0
+margin_top = 116.0
+margin_right = 178.0
+margin_bottom = 141.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 min_value = 0.0
 max_value = 100.0
 step = 1.0
@@ -185,22 +206,22 @@ __meta__ = {
 var_name = "test_float"
 default = 0.5
 
-[node name="RenValVSlider" type="VSlider" parent="." index="1"]
+[node name="RenValVSlider" type="VSlider" parent="HBoxContainer" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 133.0
-margin_right = 149.0
-margin_bottom = 109.0
+margin_left = 182.0
+margin_right = 360.0
+margin_bottom = 141.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 0
-size_flags_vertical = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
 min_value = 0.0
 max_value = 100.0
 step = 1.0
@@ -213,69 +234,74 @@ tick_count = 0
 ticks_on_borders = false
 focus_mode = 2
 script = ExtResource( 5 )
+_sections_unfolded = [ "Size Flags" ]
 __meta__ = {
 "_editor_icon": ExtResource( 6 )
 }
 var_name = "test_float"
 default = 0.5
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="." index="2"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer" index="2"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 153.0
-margin_right = 282.0
-margin_bottom = 109.0
+margin_left = 364.0
+margin_right = 544.0
+margin_bottom = 141.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_constants/separation = 0
 alignment = 0
+_sections_unfolded = [ "Size Flags" ]
 
-[node name="Label" type="Label" parent="VBoxContainer2" index="0"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 129.0
-margin_bottom = 31.0
+margin_right = 180.0
+margin_bottom = 33.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
+size_flags_horizontal = 3
+size_flags_vertical = 3
 text = "test ren nodes: bool
 "
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "Size Flags" ]
 
-[node name="RenVarLabel" type="Label" parent="VBoxContainer2" index="1"]
+[node name="RenVarLabel" type="Label" parent="HBoxContainer/VBoxContainer2" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 31.0
-margin_right = 129.0
-margin_bottom = 45.0
+margin_top = 33.0
+margin_right = 180.0
+margin_bottom = 66.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
+size_flags_horizontal = 3
+size_flags_vertical = 3
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 script = ExtResource( 1 )
+_sections_unfolded = [ "Size Flags" ]
 __meta__ = {
 "_editor_icon": ExtResource( 2 )
 }
@@ -283,22 +309,22 @@ var_name = "test_bool"
 default = "False"
 type = "bool"
 
-[node name="RenVarCheckButton" type="CheckButton" parent="VBoxContainer2" index="2"]
+[node name="RenVarCheckButton" type="CheckButton" parent="HBoxContainer/VBoxContainer2" index="2"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 45.0
-margin_right = 129.0
-margin_bottom = 85.0
+margin_top = 66.0
+margin_right = 180.0
+margin_bottom = 106.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
 toggle_mode = true
 enabled_focus_mode = 2
 shortcut = null
@@ -312,22 +338,22 @@ __meta__ = {
 var_name = "test_bool"
 default = false
 
-[node name="RenVarCheckBox" type="CheckBox" parent="VBoxContainer2" index="3"]
+[node name="RenVarCheckBox" type="CheckBox" parent="HBoxContainer/VBoxContainer2" index="3"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 85.0
-margin_right = 129.0
-margin_bottom = 109.0
+margin_top = 106.0
+margin_right = 180.0
+margin_bottom = 141.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
 toggle_mode = true
 enabled_focus_mode = 2
 shortcut = null
@@ -340,5 +366,161 @@ __meta__ = {
 }
 var_name = "test_bool"
 default = false
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="." index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 145.0
+margin_right = 544.0
+margin_bottom = 286.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer2" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 267.0
+margin_bottom = 141.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 0
+
+[node name="Label2" type="Label" parent="HBoxContainer2/VBoxContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 267.0
+margin_bottom = 14.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Test of RenTextLabel using ren markup"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Grow Direction" ]
+
+[node name="RenTextLabel" type="RichTextLabel" parent="HBoxContainer2/VBoxContainer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 18.0
+margin_right = 267.0
+margin_bottom = 141.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = false
+bbcode_text = ""
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = ""
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+script = ExtResource( 12 )
+__meta__ = {
+"_editor_icon": ExtResource( 13 )
+}
+ren_text = ""
+vars_names = null
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer2" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 271.0
+margin_right = 544.0
+margin_bottom = 141.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 0
+
+[node name="Label3" type="Label" parent="HBoxContainer2/VBoxContainer2" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 273.0
+margin_bottom = 14.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Test of RenTextLabel using bbcode markup"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Grow Direction" ]
+
+[node name="RenTextLabel2" type="RichTextLabel" parent="HBoxContainer2/VBoxContainer2" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 18.0
+margin_right = 273.0
+margin_bottom = 141.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = false
+bbcode_text = ""
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = ""
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+script = ExtResource( 12 )
+__meta__ = {
+"_editor_icon": ExtResource( 13 )
+}
+ren_text = ""
+vars_names = null
 
 

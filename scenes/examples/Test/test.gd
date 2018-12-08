@@ -179,8 +179,7 @@ func story(dialog_name):
 			
 		"Play Visual Novel example":
 			Ren.jump("VisualNovelExample/Garden", "garden")
-			
-
+				
 		"Play Click'n'Point Adventure example":
 			Ren.say({
 				"who":

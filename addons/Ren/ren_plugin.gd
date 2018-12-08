@@ -4,7 +4,7 @@ extends EditorPlugin
 
 func _enter_tree():
 	## add RenMain as singleton in ProjectSettings
-	#print(ProjectSettings.)
+	# print(ProjectSettings.)
 	
 	## RenNodes:
 	add_custom_type(
@@ -149,7 +149,7 @@ func _enter_tree():
 		preload("icons/ren_audio_player.svg")
 		)
 	
-	print("RenGD is Active")
+	print("Ren is Active")
 	
 func _exit_tree():
 	## RenNodes:
