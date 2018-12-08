@@ -1,26 +1,26 @@
 extends Object
 
-func text_passer(text, variables):
+func text_passer(text, variables, mode = "ren"):
 	## passer for renpy markup format
 	## its retrun bbcode
 	# var _text = text
 	if text == "":
 		return text
+	
+	match mode:
+		"ren":
+			text = parse_ren_text(text, variables)
 
-	text = parse_text_adv(text, variables, "[", "]")
-		
-	text = text.replace("{image", "[img")
-	text = text.replace("{a=", "[url=")
-	text = text.replace("{/a}", "[/url]")
-	text = text.replace("{/nl}", "\n")
-	text = text.replace("{/tab}", "\t")
-	text = text.replace("{", "[")
-	text = text.replace("}", "]")
+		"bbcode":
+			text = parse_bbcode_text(text, variables)
+	
+	
 	# Ren.debug("org: ''", _text, "', bbcode: ''", text , "'")
 
 	return text
 
 func parse_text_adv(text, variables, open, close):
+
 	## clean from tabs
 	text = text.c_escape()
 	text = text.replace("\t".c_escape(), "")
@@ -77,4 +77,21 @@ func parse_text_adv(text, variables, open, close):
 		else:
 			print(var_name," is unsuported variable type: ", type)
 		
+	return text
+
+func parse_ren_text(text, variables):
+	text = parse_text_adv(text, variables, "[", "]")
+	text = text.replace("{image", "[img")
+	text = text.replace("{a=", "[url=")
+	text = text.replace("{/a}", "[/url]")
+	text = text.replace("{/nl}", "\n")
+	text = text.replace("{/tab}", "\t")
+	text = text.replace("{", "[")
+	text = text.replace("}", "]")
+	return text
+
+func parse_bbcode_text(text, variables):
+	text = parse_text_adv(text, variables, "{", "}")
+	text = text.replace("[/nl]", "\n")
+	text = text.replace("[/tab]", "\t")
 	return text
