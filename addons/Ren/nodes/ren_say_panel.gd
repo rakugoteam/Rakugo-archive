@@ -107,9 +107,18 @@ func writeDialog(text, speed = letter_speed):
 	var te = ""
 	DialogTimer.wait_time = speed
 
+	var markup = false
 	for letter in text:
 		DialogTimer.start()
 		te += letter
+		if letter == "[":
+			markup = true
+		
+		if letter == "]":
+			markup = false
+
+		if markup:
+			continue
 
 		if DialogText.has_method("set_bbcode"):
 			DialogText.bbcode_text = te
