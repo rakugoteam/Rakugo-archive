@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/examples/Test/test.gd" type="Script" id=1]
 [ext_resource path="res://addons/Ren/nodes/character.gd" type="Script" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://addons/Ren/nodes/ren_audio_player.gd" type="Script" id=11]
 [ext_resource path="res://addons/Ren/icons/ren_audio_player.svg" type="Texture" id=12]
 [ext_resource path="res://scenes/examples/Test/Welcome_in_the_intox.ogg" type="AudioStream" id=13]
+[ext_resource path="res://window_icon.png" type="Texture" id=14]
+[ext_resource path="res://scenes/examples/Test/TestNode.gd" type="Script" id=15]
 
 [sub_resource type="Animation" id=1]
 
@@ -71,6 +73,7 @@ _sections_unfolded = [ "Material", "Transform", "Z Index" ]
 
 [node name="RenKun" type="Node" parent="." index="0"]
 
+editor/display_folded = true
 script = ExtResource( 2 )
 _sections_unfolded = [ "Z Index" ]
 __meta__ = {
@@ -92,7 +95,7 @@ _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 __meta__ = {
 "_editor_icon": ExtResource( 6 )
 }
-auto_define = true
+auto_define = false
 node_id = "rench"
 camera = NodePath("")
 
@@ -116,7 +119,7 @@ _sections_unfolded = [ "Playback Options" ]
 __meta__ = {
 "_editor_icon": ExtResource( 9 )
 }
-auto_define = true
+auto_define = false
 node_id = "TestAnimPlayer"
 
 [node name="SFXPlayer" type="AudioStreamPlayer" parent="." index="1"]
@@ -131,7 +134,7 @@ script = ExtResource( 11 )
 __meta__ = {
 "_editor_icon": ExtResource( 12 )
 }
-auto_define = true
+auto_define = false
 node_id = ""
 
 [node name="BGMPlayer" type="AudioStreamPlayer" parent="." index="2"]
@@ -146,7 +149,17 @@ script = ExtResource( 11 )
 __meta__ = {
 "_editor_icon": ExtResource( 12 )
 }
-auto_define = true
+auto_define = false
 node_id = ""
+
+[node name="TestNode" type="Sprite" parent="." index="3"]
+
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 206.506, 241.174 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 14 )
+script = ExtResource( 15 )
+_sections_unfolded = [ "Transform", "Visibility", "playback" ]
 
 
