@@ -1,5 +1,8 @@
 extends Object
 
+var url_open = "[color=#225ebf][url="
+var url_close = "[/url][/color]"
+
 func text_passer(text, variables, mode = "ren"):
 	## passer for renpy markup format
 	## its retrun bbcode
@@ -82,8 +85,8 @@ func parse_text_adv(text, variables, open, close):
 func parse_ren_text(text, variables):
 	text = parse_text_adv(text, variables, "[", "]")
 	text = text.replace("{image", "[img")
-	text = text.replace("{a=", "[url=")
-	text = text.replace("{/a}", "[/url]")
+	text = text.replace("{a=", url_open)
+	text = text.replace("{/a}", url_close)
 	text = text.replace("{/nl}", "\n")
 	text = text.replace("{/tab}", "\t")
 	text = text.replace("{", "[")
@@ -94,4 +97,6 @@ func parse_bbcode_text(text, variables):
 	text = parse_text_adv(text, variables, "{", "}")
 	text = text.replace("[/nl]", "\n")
 	text = text.replace("[/tab]", "\t")
+	text = text.replace("[url=", url_open)
+	text = text.replace("[/url]", url_close)
 	return text

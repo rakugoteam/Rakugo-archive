@@ -1,5 +1,6 @@
 extends RichTextLabel
 
+export(String, "ren", "bbcode") var mode = "ren"
 export(String, FILE, "*.txt") var ren_text_file = ""
 export(String, MULTILINE) var ren_text = ""
 export(Array, String) var vars_names = []
@@ -17,7 +18,7 @@ func _ready():
 	connect("meta_clicked", self, "on_meta_clicked")
 
 func update_label():
-	bbcode_text = Ren.text_passer(ren_text)
+	bbcode_text = Ren.text_passer(ren_text, mode)
 
 func on_meta_clicked(meta):
 	OS.shell_open(meta);
