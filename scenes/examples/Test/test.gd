@@ -49,8 +49,8 @@ func story(dialog_name):
 			Ren.story_state = "test play_anim"
 
 		"test play_anim":
-		Ren.play_anim("TestAnimPlayer", "test")
-		Ren.say({"who":"test", "what":"test of playing simple anim"})
+			Ren.play_anim("TestAnimPlayer", "test")
+			Ren.say({"who":"test", "what":"test of playing simple anim"})
 			Ren.story_state = "test stop_anim 1"
 
 		"test stop_anim 1":
