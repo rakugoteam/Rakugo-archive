@@ -26,5 +26,7 @@ func _on_stop(id, reset):
 	if not is_playing():
 		return
 	
-	stop(reset)
+	if reset:
+		stop()
+		seek(0, true)
 
