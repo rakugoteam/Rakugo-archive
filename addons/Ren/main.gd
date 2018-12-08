@@ -86,7 +86,7 @@ func _ready():
 	define("title", game_title)
 	define("version", game_version)
 	OS.set_window_title(game_title + " " + game_version)
-	define("ren_version", "0.9.19")
+	define("ren_version", "0.9.21")
 	var gdv = Engine.get_version_info()
 	var gdv_string = str(gdv.major) + "." + str(gdv.minor) + "." + str(gdv.patch)
 	define("godot_version", gdv_string)
