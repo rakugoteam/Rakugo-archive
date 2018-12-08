@@ -129,8 +129,8 @@ func on_stop_audio(node_id):
 	emit_signal("stop_audio", node_id)
 
 ## parse text like in renpy to bbcode
-func text_passer(text):
-	return $Text.text_passer(text, variables)
+func text_passer(text, mode = "ren"):
+	return $Text.text_passer(text, variables, mode)
 
 ## add/overwrite global variable that Ren will see
 ## and returns it as RenVar for easy use

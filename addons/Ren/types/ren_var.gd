@@ -5,7 +5,7 @@ extends Object
 var type setget , _get_type
 var _type = 0 # Ren.Type.Var
 var value setget _set_value, _get_value
-var _value = null 
+var _value = null
 var v = null setget _set_value, _get_value
 
 signal value_changed(new_value)

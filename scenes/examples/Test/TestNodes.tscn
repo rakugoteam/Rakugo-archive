@@ -34,7 +34,6 @@ alignment = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." index="0"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -243,7 +242,6 @@ default = 0.5
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer" index="2"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -447,11 +445,15 @@ scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
 script = ExtResource( 12 )
+_sections_unfolded = [ "BBCode" ]
 __meta__ = {
 "_editor_icon": ExtResource( 13 )
 }
-ren_text = ""
-vars_names = null
+mode = "ren"
+ren_text = "Example text with ren markup.
+{i}test_float = {color=#4286f4}[test_float]{/color}{/i}
+{b}test_bool = {color=#318c6c}[test_bool]{/color}{/b}"
+vars_names = [ "test_bool", "test_float" ]
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer2" index="1"]
 
@@ -517,10 +519,14 @@ scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
 script = ExtResource( 12 )
+_sections_unfolded = [ "BBCode" ]
 __meta__ = {
 "_editor_icon": ExtResource( 13 )
 }
-ren_text = ""
-vars_names = null
+mode = "bbcode"
+ren_text = "Example text with bbcode markup.
+[i]test_float = [color=#4286f4]{test_float}[/color][/i]
+[b]test_bool = [color=#318c6c]{test_bool}[/color][/b]"
+vars_names = [ "test_bool", "test_float" ]
 
 
