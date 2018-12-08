@@ -126,7 +126,7 @@ func story(dialog_name):
 				"who": 
 					"rench",
 				"what":
-					"Hi! I'm Ren. What is your name?",
+					"Hi! I'm [rench.name]. What is your name?",
 				"variable":
 						"player_name", ## Ren variable to be changed
 						## it don't have to be define before input
@@ -179,8 +179,7 @@ func story(dialog_name):
 			
 		"Play Visual Novel example":
 			Ren.jump("VisualNovelExample/Garden", "garden")
-			
-
+				
 		"Play Click'n'Point Adventure example":
 			Ren.say({
 				"who":

@@ -2,6 +2,7 @@ extends Node
 
 export (String) var game_title = "Your New Game"
 export (String) var game_version = "0.0.1"
+export (String) var game_credits = "Your Company"
 export (bool) var debug_on = true
 export (String) var save_folder = "saves"
 export (String) var save_password = "Ren"
@@ -86,7 +87,11 @@ func _ready():
 	define("title", game_title)
 	define("version", game_version)
 	OS.set_window_title(game_title + " " + game_version)
-	define("ren_version", "0.9.23")
+	define("credits", game_credits)
+	define("ren_version", "0.9.31")
+	file.open("res://addons/Ren/credits.txt", file.READ)
+	define("ren_credits", file.get_as_text())
+	file.close()
 	var gdv = Engine.get_version_info()
 	var gdv_string = str(gdv.major) + "." + str(gdv.minor) + "." + str(gdv.patch)
 	define("godot_version", gdv_string)
@@ -129,8 +134,8 @@ func on_stop_audio(node_id):
 	emit_signal("stop_audio", node_id)
 
 ## parse text like in renpy to bbcode
-func text_passer(text):
-	return $Text.text_passer(text, variables)
+func text_passer(text, mode = "ren"):
+	return $Text.text_passer(text, variables, mode)
 
 ## add/overwrite global variable that Ren will see
 ## and returns it as RenVar for easy use

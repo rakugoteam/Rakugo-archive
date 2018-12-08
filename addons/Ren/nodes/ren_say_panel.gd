@@ -20,7 +20,7 @@ var active = true
 
 
 func _ready():
-	connect("gui_input", self, "_on_Adv_gui_input")
+	connect("gui_input", self, "_on_adv_gui_input")
 	Ren.connect("exec_statement", self, "_on_statement")
 	ActionTimer.one_shot = true
 	ActionTimer.wait_time = step_time
@@ -60,7 +60,7 @@ func _on_statement(type, kwargs):
 	
 	_type = type
 
-	if not _type in [Ren.StatementType.SAY, Ren.StatementType.ASK, Ren.StatementType.MENU]:
+	if not _type in Ren.skip_types:
 		return
 
 	if "who" in kwargs:
@@ -69,9 +69,9 @@ func _on_statement(type, kwargs):
 
 	if "what" in kwargs:
 		if kwargs.has("speed"):
-			writeDialog(kwargs.what, kwargs.speed)
+			write_dialog(kwargs.what, kwargs.speed)
 		else:
-			writeDialog(kwargs.what)
+			write_dialog(kwargs.what)
 
 	if "avatar" in kwargs:
 		if avatar != null:
@@ -86,7 +86,7 @@ func _on_statement(type, kwargs):
 		var wr = weakref(avatar)
 		
 		if (!wr.get_ref()):
-			 # object is erased
+			# object is erased
 			avatar = null
 		else:
 			# object is fine so you can do something with it:
@@ -94,7 +94,7 @@ func _on_statement(type, kwargs):
 		
 	return
 
-func writeDialog(text, speed = letter_speed):
+func write_dialog(text, speed = letter_speed):
 	if speed == 0:
 		if DialogText.has_method("set_bbcode"):
 			DialogText.bbcode_text = text
@@ -107,9 +107,18 @@ func writeDialog(text, speed = letter_speed):
 	var te = ""
 	DialogTimer.wait_time = speed
 
+	var markup = false
 	for letter in text:
 		DialogTimer.start()
 		te += letter
+		if letter == "[":
+			markup = true
+		
+		if letter == "]":
+			markup = false
+
+		if markup:
+			continue
 
 		if DialogText.has_method("set_bbcode"):
 			DialogText.bbcode_text = te
@@ -123,7 +132,7 @@ func writeDialog(text, speed = letter_speed):
 			break
 
 
-func _on_Adv_gui_input(ev):
+func _on_adv_gui_input(ev):
 	if not active:
 		return
 
