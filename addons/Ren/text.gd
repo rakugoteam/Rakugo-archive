@@ -45,8 +45,8 @@ func text_passer(text, variables):
 					
 					var kvalue = str(dict[k])
 					# need testing
-					# if k == "name" and type == Ren.Type.CHARACTER:
-					# 	kvalue = dict.parse_character()
+					if k == "name" and type == Ren.Type.CHARACTER:
+						kvalue = variables[var_name].parse_character()
 					
 					text = text.replace(sk, kvalue)
 			
