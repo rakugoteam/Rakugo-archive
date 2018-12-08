@@ -33,6 +33,7 @@ enum StatementType {
 	STOP_ANIM,	# 8
 	PLAY_AUDIO,	# 9
 	STOP_AUDIO	# 10
+	CALL_NODE	# 11
 }
 
 # this must be saved
@@ -206,8 +207,6 @@ func node_link(node, node_id = node.name):
 	return get_node(path)
 
 func get_node_by_id(node_id):
-	if get_type(node_id) != "node_id":
-		return null
 	var p = get_var(node_id).v
 	return get_node(p)
 
@@ -238,14 +237,14 @@ func _set_statement(node, kwargs):
 	node.exec()
 
 ## statement of type say
-## there can be only one say, ask or menu in story_state
+## there can be only one say, ask or menu in story_state at it end
 ## its make given character(who) talk (what)
 ## with keywords : who, what, kind
 func say(kwargs):
 	_set_statement($Say, kwargs)
 
 ## statement of type ask
-## there can be only one say, ask or menu in story_state
+## there can be only one say, ask or menu in story_state at it end
 ## its allow player to provide keybord ask that will be assain to given variable
 ## it also will return RenVar variable
 ## with keywords : who, what, kind, variable, value
@@ -253,7 +252,7 @@ func ask(kwargs):
 	_set_statement($Ask, kwargs)
 
 ## statement of type menu
-## there can be only one say, ask or menu in story_state
+## there can be only one say, ask or menu in story_state at it end
 ## its allow player to make choice
 ## with keywords : who, what, kind, choices, mkind
 func menu(kwargs):
@@ -316,6 +315,16 @@ func stop_audio(node_id):
 		"node_id":node_id
 	}
 	_set_statement($StopAudio, kwargs)
+
+## statement of type stop_audio
+## it will stop audio form RenAudioPlayer with given node_id
+func call_node(node_id, func_name, args = []):
+	var kwargs = {
+		"node_id":node_id,
+		"func_name":func_name,
+		"args":args
+	}
+	_set_statement($CallNode, kwargs)
 
 func _set_story_state(state):
 	prev_story_state = _get_story_state()

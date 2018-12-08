@@ -32,6 +32,12 @@ func story(dialog_name):
 	match Ren.story_state:
 		## some tests:
 		"start":
+			# test of call node
+			Ren.call_node("TestNode", "test_func", ["test of call node"])
+			Ren.say({"what": "Test of call in func form node using call_node."})
+			Ren.story_state = "quest1"
+
+		"quest1":
 			# test of quest system part1
 			test_quest.start()
 			Ren.say({"what": "For test quest system now will you start test quest."})
@@ -43,8 +49,8 @@ func story(dialog_name):
 			Ren.story_state = "test play_anim"
 
 		"test play_anim":
-			Ren.play_anim("TestAnimPlayer", "test")
-			Ren.say({"who":"test", "what":"test of playing simple anim"})
+		Ren.play_anim("TestAnimPlayer", "test")
+		Ren.say({"who":"test", "what":"test of playing simple anim"})
 			Ren.story_state = "test stop_anim 1"
 
 		"test stop_anim 1":

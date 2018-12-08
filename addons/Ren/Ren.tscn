@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://addons/Ren/main.gd" type="Script" id=1]
 [ext_resource path="res://addons/Ren/types/def.gd" type="Script" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://addons/Ren/statements/stop_anim.gd" type="Script" id=13]
 [ext_resource path="res://addons/Ren/statements/play_audio.gd" type="Script" id=14]
 [ext_resource path="res://addons/Ren/statements/stop_audio.gd" type="Script" id=15]
+[ext_resource path="res://addons/Ren/statements/call_node.gd" type="Script" id=16]
 
 [node name="Ren" type="Node"]
 
@@ -97,5 +98,9 @@ script = ExtResource( 14 )
 [node name="StopAudio" type="Node" parent="." index="13"]
 
 script = ExtResource( 15 )
+
+[node name="CallNode" type="Node" parent="." index="14"]
+
+script = ExtResource( 16 )
 
 
