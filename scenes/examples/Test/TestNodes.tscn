@@ -449,8 +449,7 @@ _sections_unfolded = [ "BBCode" ]
 __meta__ = {
 "_editor_icon": ExtResource( 13 )
 }
-mode = "ren"
-ren_file = ""
+ren_text_file = ""
 ren_text = "Example text with ren markup.
 {i}test_float = {color=#4286f4}[test_float]{/color}{/i}
 {b}test_bool = {color=#318c6c}[test_bool]{/color}{/b}"
@@ -524,8 +523,7 @@ _sections_unfolded = [ "BBCode", "custom_colors" ]
 __meta__ = {
 "_editor_icon": ExtResource( 13 )
 }
-mode = "bbcode"
-ren_file = ""
+ren_text_file = ""
 ren_text = "Example text with bbcode markup.
 [i]test_float = [color=#4286f4]{test_float}[/color][/i]
 [b]test_bool = [color=#318c6c]{test_bool}[/color][/b]"

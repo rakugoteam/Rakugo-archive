@@ -584,8 +584,7 @@ _sections_unfolded = [ "BBCode", "Mouse" ]
 __meta__ = {
 "_editor_icon": ExtResource( 13 )
 }
-mode = "ren"
-ren_file = "res://about.txt"
+ren_text_file = "res://about.txt"
 ren_text = "Made with {a=https://github.com/jeremi360/Ren}Ren{/a} [ren_version] on {a=https://godotengine.org/}Godot Engine{/a} [godot_version] on {a=https://github.com/jeremi360/Ren/blob/master/LICENSE} MIT License{/a}.
 "
 vars_names = [ "ren_version", "godot_version" ]

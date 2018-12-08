@@ -60,11 +60,7 @@ func _on_statement(type, kwargs):
 	
 	_type = type
 
-	if not _type in [
-		Ren.StatementType.SAY,
-		Ren.StatementType.ASK,
-		Ren.StatementType.MENU
-		]:
+	if not _type in Ren.skip_types:
 		return
 
 	if "who" in kwargs:
