@@ -2,6 +2,8 @@ extends Object
 
 var url_open = "[color=#225ebf][url="
 var url_close = "[/url][/color]"
+var new_line = "\n"
+var tab = "\t"
 
 func text_passer(text, variables, mode = "ren"):
 	## passer for renpy markup format
@@ -23,12 +25,6 @@ func text_passer(text, variables, mode = "ren"):
 	return text
 
 func parse_text_adv(text, variables, open, close):
-
-	## clean from tabs
-	text = text.c_escape()
-	text = text.replace("\t".c_escape(), "")
-	text = text.c_unescape()
-
 	## code from Sebastian Holc solution:
 	## http://pastebin.com/K8zsWQtL
 
@@ -87,16 +83,16 @@ func parse_ren_text(text, variables):
 	text = text.replace("{image", "[img")
 	text = text.replace("{a=", url_open)
 	text = text.replace("{/a}", url_close)
-	text = text.replace("{/nl}", "\n")
-	text = text.replace("{/tab}", "\t")
+	text = text.replace("{/nl}", new_line)
+	text = text.replace("{/tab}", tab)
 	text = text.replace("{", "[")
 	text = text.replace("}", "]")
 	return text
 
 func parse_bbcode_text(text, variables):
 	text = parse_text_adv(text, variables, "{", "}")
-	text = text.replace("[/nl]", "\n")
-	text = text.replace("[/tab]", "\t")
 	text = text.replace("[url=", url_open)
 	text = text.replace("[/url]", url_close)
+	text = text.replace("[/nl]", new_line)
+	text = text.replace("[/tab]", tab)
 	return text
