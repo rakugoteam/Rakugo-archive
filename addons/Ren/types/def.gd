@@ -48,12 +48,10 @@ func str2value(str_value, var_type):
 	elif var_type == "float":
 		return float(str_value)
 
-
 func define_from_str(variables, var_name, var_str, var_type):
 	var value = str2value(var_str, var_type)
 	var type = str2ren_type(var_type)
 	return define(variables, var_name, value, type)
-	
 
 func define(variables, var_name, var_value = null, var_type = null):
 	if var_value != null && var_type == null:
@@ -71,9 +69,8 @@ func define(variables, var_name, var_value = null, var_type = null):
 		
 		elif type == TYPE_NODE_PATH:
 			var_type = Ren.Type.NODE
-			var_value = get_node(var_value)
+			var_value = var_value
 
-	
 	if var_type == Ren.Type.QUEST:
 		var new_quest = _QUEST.new()
 		new_quest.quest_id = var_name

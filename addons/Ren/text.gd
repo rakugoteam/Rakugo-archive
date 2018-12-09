@@ -5,10 +5,12 @@ var url_close = "[/url][/color]"
 var new_line = "\n"
 var tab = "\t"
 
-func text_passer(text, variables, mode = "ren"):
-	## passer for renpy markup format
+func text_passer(text, variables, mode = "ren", links_color = "225ebf"):
+	## passer for renpy or bbcode markup format
 	## its retrun bbcode
-	# var _text = text
+
+	url_open = url_open.replace("225ebf", links_color)
+
 	if text == "":
 		return text
 	
