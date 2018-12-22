@@ -41,7 +41,7 @@ func _input(event):
 		ActionTimer.start()
 
 	if Ren.skip_auto:
-		Ren.skip_auto = true
+		Ren.skip_auto = false
 		return
 
 	elif typing: # if typing complete it
@@ -59,9 +59,6 @@ func _on_statement(type, kwargs):
 		$AnimationPlayer.play(kwargs.kind)
 	
 	_type = type
-
-	if not _type in Ren.skip_types:
-		return
 
 	if "who" in kwargs:
 		if NameLabel.has_method("set_bbcode"):
