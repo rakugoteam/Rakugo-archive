@@ -91,8 +91,6 @@ func on_skip_loop():
 	else:
 		stop_skip()
 	
-	
-
 func _input(event):
 	if event.is_action_pressed("ren_forward"):
 		if Ren.skip_auto:

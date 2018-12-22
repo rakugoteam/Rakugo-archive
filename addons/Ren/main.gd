@@ -3,6 +3,11 @@ extends Node
 export (String) var game_title = "Your New Game"
 export (String) var game_version = "0.0.1"
 export (String) var game_credits = "Your Company"
+export (String, "ren", "bbcode") var markups = "ren"
+export (Color) var links_color = Color("#225ebf")
+export (int, "Seen Text", "All Text") var skipping_mode = 0
+export (bool) var skip_after_choices = false
+# export (float, 
 export (bool) var debug_on = true
 export (String) var save_folder = "saves"
 export (String) var save_password = "Ren"
@@ -88,7 +93,7 @@ func _ready():
 	define("version", game_version)
 	OS.set_window_title(game_title + " " + game_version)
 	define("credits", game_credits)
-	define("ren_version", "0.9.31")
+	define("ren_version", "0.9.35")
 	file.open("res://addons/Ren/credits.txt", file.READ)
 	define("ren_credits", file.get_as_text())
 	file.close()
@@ -133,9 +138,11 @@ func on_play_audio(node_id, from_pos):
 func on_stop_audio(node_id):
 	emit_signal("stop_audio", node_id)
 
-## parse text like in renpy to bbcode
-func text_passer(text, mode = "ren"):
-	return $Text.text_passer(text, variables, mode)
+## parse text like in renpy to bbcode if mode == "ren"
+## or parse bbcode with {vars} if mode == "bbcode"
+## default mode = Ren.markups 
+func text_passer(text, mode = markups):
+	return $Text.text_passer(text, variables, mode, links_color.to_html())
 
 ## add/overwrite global variable that Ren will see
 ## and returns it as RenVar for easy use
@@ -518,15 +525,27 @@ func jump(
 		story_step()
 
 func current_statement_in_global_history():
-	var hi_item = {
-		"state": story_state,
-		"statement":{
-			"type": current_statement.type,
-			"kwargs": current_statement.kwargs
-		}
-	}
+	var kwargs = current_statement.kwargs
+	if not kwargs.add_to_history:
+		return true
+	
+	var hi_item = current_statement.get_as_history_item()
+	if not hi_item.has("state"):
+		return true
 
-	return hi_item in global_history
+	for hx_item in history:
+		if hx_item.state != hi_item.state:
+			return false
+		
+		var x_statement = hx_item.statement
+		var c_statement = hi_item.statement
+		if x_statement.type != c_statement.type:
+			return false
+		
+		if x_statement.kwargs != c_statement.kwargs:
+			return false
+
+	return true
 
 func cant_auto():
 	return not(current_statement.type in skip_types)

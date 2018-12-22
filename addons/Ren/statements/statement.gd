@@ -41,12 +41,7 @@ func on_exit(_type, new_kwargs = {}):
 	
 	Ren.story_step()
 
-func add_to_history():
-	if Ren.current_id < 0 or Ren.current_id > Ren.history.size() + 1:
-		Ren.debug(["some thing gone wrong Ren.current_id =", Ren.current_id])
-		Ren.debug(["history size:", Ren.history.size()])
-		return
-	
+func get_as_history_item():
 	var hkwargs = kwargs.duplicate()
 	hkwargs.erase("avatar")
 	var history_item = {
@@ -56,6 +51,16 @@ func add_to_history():
 			"kwargs": hkwargs
 		}
 	}
+	return hkwargs
+
+
+func add_to_history():
+	if Ren.current_id < 0 or Ren.current_id > Ren.history.size() + 1:
+		Ren.debug(["some thing gone wrong Ren.current_id =", Ren.current_id])
+		Ren.debug(["history size:", Ren.history.size()])
+		return
+	
+	var history_item = get_as_history_item()
 
 	if Ren.current_id == Ren.history.size():
 		Ren.history.append(history_item)
