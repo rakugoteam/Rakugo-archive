@@ -5,16 +5,20 @@ export (String) var game_version = "0.0.1"
 export (String) var game_credits = "Your Company"
 export (String, "ren", "bbcode") var markups = "ren"
 export (Color) var links_color = Color("#225ebf")
-export (int, "Seen Text", "All Text") var skipping_mode = 0
-export (bool) var skip_after_choices = false
-# export (float, 
 export (bool) var debug_on = true
 export (String) var save_folder = "saves"
 export (String) var save_password = "Ren"
 export (String, DIR) var scenes_dir = "res://scenes/examples/"
 
-const FOLDER_CONFIG_NAME = "Config"
-const FILE_CONFIG_NAME = "Config"
+const ren_version = "0.9.51"
+const credits_path = "res://addons/Ren/credits.txt"
+
+## init vars for settings
+var _skip_all_text = false
+var _skip_after_choices = false
+var _auto_speed = 1
+var _text_speed = 0.01
+var _notify_time = 5
 
 enum Type {
 	VAR,		# 0
@@ -58,6 +62,7 @@ var current_statement = null
 var using_passer = false
 var skip_auto = false
 var current_node = null
+var active = false
 var skip_types = [
 		StatementType.SAY,
 		StatementType.SHOW,
@@ -69,8 +74,12 @@ var loading_in_progress = false
 var started = false
 var quests = [] # list of all quests ids
 
-
-onready var timer = $Timer
+# timers use by ren
+onready var auto_timer = $AutoTimer
+onready var skip_timer = $SkipTimer
+onready var step_timer = $StepTimer
+onready var dialog_timer = $DialogTimer
+onready var notify_timer = $NotifyTimer
 
 var story_state setget _set_story_state, _get_story_state
 
@@ -87,22 +96,37 @@ signal play_audio(node_id, from_pos)
 signal stop_audio(node_id)
 
 func _ready():
-	# config_data()
-	timer.connect("timeout", self, "exit_statement")
+	## set by game devloper
 	define("title", game_title)
 	define("version", game_version)
 	OS.set_window_title(game_title + " " + game_version)
 	define("credits", game_credits)
-	define("ren_version", "0.9.35")
-	file.open("res://addons/Ren/credits.txt", file.READ)
+
+	## set by ren
+	define("ren_version", ren_version)
+	file.open(credits_path, file.READ)
 	define("ren_credits", file.get_as_text())
 	file.close()
 	var gdv = Engine.get_version_info()
 	var gdv_string = str(gdv.major) + "." + str(gdv.minor) + "." + str(gdv.patch)
 	define("godot_version", gdv_string)
+	define("story_state", "")
+
+	## vars for ren settings
+	define("skip_all_text", _skip_all_text)
+	define("skip_after_choices", _skip_after_choices)
+	define("auto_speed", _auto_speed)
+	define("text_speed", _text_speed)
+	define("notify_time", _notify_time)
+
+	## test vars
 	define("test_bool", false)
 	define("test_float", 10.0)
-	define("story_state", "")
+
+	step_timer.connect("timeout", self, "_on_time_active_timeout")
+
+func _on_time_active_timeout():
+	active = true
 
 func exec_statement(type, kwargs = {}):
 	emit_signal("exec_statement", type, kwargs)
@@ -185,7 +209,7 @@ func get_var(var_name, type = Type.VAR):
 func get_def_type(variable):
 	return $Def.get_type(variable)
 
-## returns variable defined using define
+## returns value of variable defined using define
 func get_value(var_name):
 	return variables[var_name].value
 
@@ -203,7 +227,6 @@ func character(character_id, kwargs):
 	return $Def.define(variables, character_id, kwargs, Type.CHARACTER)
 
 func get_character(character_id):
-	print(get_value(character_id))
 	return get_var(character_id, Type.CHARACTER)
 
 ## crate new link to node as global variable that Ren will see
@@ -245,13 +268,18 @@ func get_quest(quest_id):
 	return get_var(quest_id, Type.QUEST)
 
 func _set_statement(node, kwargs):
+	if not kwargs.has("speed"):
+		kwargs["speed"] = get_value("text_speed")
 	node.set_kwargs(kwargs)
 	node.exec()
+	active = false
+	step_timer.start()
 
 ## statement of type say
 ## there can be only one say, ask or menu in story_state at it end
 ## its make given character(who) talk (what)
-## with keywords : who, what, kind
+## with keywords : who, what, kind, speed
+## speed is time to show next letter
 func say(kwargs):
 	_set_statement($Say, kwargs)
 
@@ -259,14 +287,16 @@ func say(kwargs):
 ## there can be only one say, ask or menu in story_state at it end
 ## its allow player to provide keybord ask that will be assain to given variable
 ## it also will return RenVar variable
-## with keywords : who, what, kind, variable, value
+## with keywords : who, what, kind, speed variable, value
+## speed is time to show next letter
 func ask(kwargs):
 	_set_statement($Ask, kwargs)
 
 ## statement of type menu
 ## there can be only one say, ask or menu in story_state at it end
 ## its allow player to make choice
-## with keywords : who, what, kind, choices, mkind
+## with keywords : who, what, kind, speed choices, mkind
+## speed is time to show next letter
 func menu(kwargs):
 	_set_statement($Menu, kwargs)
 
@@ -287,9 +317,11 @@ func hide(node_id):
 	_set_statement($Hide, kwargs)
 
 ## statement of type notify
-func notifiy(info, length=5):
+func notifiy(info, length = Ren.get_value("notify_time")):
 	var kwargs = {"info": info,"length":length}
 	_set_statement($Notify, kwargs)
+	notify_timer.wait_time = kwargs.length
+	notify_timer.start()
 
 ## statement of type play_anim
 ## it will play animation with anim_name form RenAnimPlayer with given node_id
@@ -525,27 +557,28 @@ func jump(
 		story_step()
 
 func current_statement_in_global_history():
-	var kwargs = current_statement.kwargs
-	if not kwargs.add_to_history:
-		return true
-	
+	var r = true
+	var i = 0
 	var hi_item = current_statement.get_as_history_item()
-	if not hi_item.has("state"):
-		return true
+	if current_statement.kwargs.add_to_history:
+		i = 1
+		if hi_item.has("state"):
+			i = 2
+			for hx_item in history:
+				if hx_item.state != hi_item.state:
+					r = false
+				i = 3
+				var x_statement = hx_item.statement
+				var c_statement = hi_item.statement
+				if x_statement.type != c_statement.type:
+					r = false
+				i = 4
+				if x_statement.kwargs != c_statement.kwargs:
+					r = false
+	
+	# prints(hi_item, "r =", str(r), "i =", str(i))
+	return r
 
-	for hx_item in history:
-		if hx_item.state != hi_item.state:
-			return false
-		
-		var x_statement = hx_item.statement
-		var c_statement = hi_item.statement
-		if x_statement.type != c_statement.type:
-			return false
-		
-		if x_statement.kwargs != c_statement.kwargs:
-			return false
-
-	return true
 
 func cant_auto():
 	return not(current_statement.type in skip_types)

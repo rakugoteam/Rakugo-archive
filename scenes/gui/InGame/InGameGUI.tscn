@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://themes/new_gui/theme.tres" type="Theme" id=1]
 [ext_resource path="res://addons/Ren/nodes/ren_menu.gd" type="Script" id=2]
@@ -21,6 +21,73 @@ use_mipmaps = false
 use_filter = true
 font_data = ExtResource( 9 )
 _sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="Animation" id=12]
+
+resource_name = "Auto"
+length = 2.1
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("InfoAnim/Panel/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 0.9, 1.2, 1.5, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "Auto", "Auto .", "Auto ..", "Skip >>>", "Auto ...", "Auto ....", "Auto .....", "Auto ....." ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("InfoAnim/Panel:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 123, 42 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("InfoAnim/Panel/Label:rect_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 126, 40 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("InfoAnim/Panel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("InfoAnim/Panel:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.756863 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 
@@ -463,14 +530,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Timer" type="Timer" parent="Notify" index="0"]
-
-process_mode = 1
-wait_time = 1.0
-one_shot = true
-autostart = false
-
-[node name="Dialog" type="RichTextLabel" parent="Notify" index="1"]
+[node name="Dialog" type="RichTextLabel" parent="Notify" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -523,8 +583,8 @@ __meta__ = {
 
 [node name="History" parent="Quick" index="0" instance=ExtResource( 8 )]
 
-margin_right = 98.0
-margin_bottom = 34.0
+margin_right = 91.0
+margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
@@ -532,39 +592,65 @@ text = "History"
 
 [node name="Quests" parent="Quick" index="1" instance=ExtResource( 8 )]
 
-margin_left = 102.0
-margin_right = 200.0
-margin_bottom = 34.0
+margin_left = 95.0
+margin_right = 186.0
+margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Quests"
 
-[node name="Skip" parent="Quick" index="2" instance=ExtResource( 8 )]
+[node name="Skip" type="CheckButton" parent="Quick" index="2"]
 
-margin_left = 204.0
-margin_right = 302.0
-margin_bottom = 34.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = SubResource( 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 190.0
+margin_right = 312.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = true
+enabled_focus_mode = 0
+shortcut = null
+group = null
 text = "Skip"
+flat = false
+align = 0
 
-[node name="Auto" parent="Quick" index="3" instance=ExtResource( 8 )]
+[node name="Auto" type="CheckButton" parent="Quick" index="3"]
 
-margin_left = 306.0
-margin_right = 404.0
-margin_bottom = 34.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = SubResource( 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 316.0
+margin_right = 446.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = true
+enabled_focus_mode = 0
+shortcut = null
+group = null
 text = "Auto"
+flat = false
+align = 0
 
 [node name="Save" parent="Quick" index="4" instance=ExtResource( 8 )]
 
-margin_left = 408.0
-margin_right = 506.0
-margin_bottom = 34.0
+margin_left = 450.0
+margin_right = 541.0
+margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
@@ -572,9 +658,9 @@ text = "Save"
 
 [node name="Load" parent="Quick" index="5" instance=ExtResource( 8 )]
 
-margin_left = 510.0
-margin_right = 608.0
-margin_bottom = 34.0
+margin_left = 545.0
+margin_right = 636.0
+margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
@@ -582,9 +668,9 @@ text = "Load"
 
 [node name="QSave" parent="Quick" index="6" instance=ExtResource( 8 )]
 
-margin_left = 612.0
-margin_right = 710.0
-margin_bottom = 34.0
+margin_left = 640.0
+margin_right = 731.0
+margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
@@ -592,9 +678,9 @@ text = "Q. Save"
 
 [node name="QLoad" parent="Quick" index="7" instance=ExtResource( 8 )]
 
-margin_left = 714.0
-margin_right = 812.0
-margin_bottom = 34.0
+margin_left = 735.0
+margin_right = 826.0
+margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
@@ -602,9 +688,9 @@ text = "Q. Load"
 
 [node name="Options" parent="Quick" index="8" instance=ExtResource( 8 )]
 
-margin_left = 816.0
-margin_right = 914.0
-margin_bottom = 34.0
+margin_left = 830.0
+margin_right = 925.0
+margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
@@ -612,29 +698,15 @@ text = "Options"
 
 [node name="Quit" parent="Quick" index="9" instance=ExtResource( 8 )]
 
-margin_left = 918.0
+margin_left = 929.0
 margin_right = 1024.0
-margin_bottom = 34.0
+margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Quit"
 
-[node name="SkipTimer" type="Timer" parent="Quick" index="10"]
-
-process_mode = 1
-wait_time = 1.0
-one_shot = false
-autostart = false
-
-[node name="AutoTimer" type="Timer" parent="Quick" index="11"]
-
-process_mode = 1
-wait_time = 1.0
-one_shot = false
-autostart = false
-
-[node name="InfoAnim" type="AnimationPlayer" parent="Quick" index="12"]
+[node name="InfoAnim" type="AnimationPlayer" parent="Quick" index="10"]
 
 editor/display_folded = true
 root_node = NodePath("..")
@@ -642,6 +714,7 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
+anims/Auto = SubResource( 12 )
 anims/GeneralNotif = SubResource( 2 )
 anims/Loaded = SubResource( 3 )
 anims/Saved = SubResource( 4 )
@@ -650,13 +723,14 @@ blend_times = [  ]
 
 [node name="Panel" type="Panel" parent="Quick/InfoAnim" index="0"]
 
-modulate = Color( 1, 1, 1, 0 )
+visible = false
+modulate = Color( 1, 1, 1, 0.756863 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 0.0
 margin_top = 81.0
-margin_right = -777.0
+margin_right = -901.0
 margin_bottom = 123.0
 rect_min_size = Vector2( 100, 20 )
 rect_pivot_offset = Vector2( 0, 0 )
@@ -673,7 +747,7 @@ __meta__ = {
 
 [node name="Label" parent="Quick/InfoAnim/Panel" index="0" instance=ExtResource( 10 )]
 
-margin_right = 249.0
+margin_right = 126.0
 custom_fonts/mono_font = SubResource( 6 )
 custom_fonts/bold_italics_font = SubResource( 7 )
 custom_fonts/italics_font = SubResource( 8 )
@@ -681,8 +755,9 @@ custom_fonts/bold_font = SubResource( 9 )
 custom_fonts/normal_font = SubResource( 10 )
 custom_colors/default_color = Color( 1, 1, 1, 1 )
 custom_colors/selection_color = Color( 0, 0, 0, 1 )
-bbcode_text = "Game was loaded"
-text = "Game was loaded"
+bbcode_enabled = false
+bbcode_text = "Game was saved"
+text = "Game was saved"
 _sections_unfolded = [ "BBCode", "Rect", "Visibility", "custom_colors", "custom_fonts" ]
 
 

@@ -1,12 +1,20 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://ubuntu-font-family/Ubuntu-B.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://scenes/gui/OptionsBox/WindowBox.gd" type="Script" id=2]
-[ext_resource path="res://scenes/gui/InGame/QuickMenuButton.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/gui/OptionsBox/ResolutionBox.gd" type="Script" id=4]
-[ext_resource path="res://scenes/gui/OptionsBox/VSyncBox.gd" type="Script" id=5]
-[ext_resource path="res://scenes/gui/OptionsBox/ApplyButton.gd" type="Script" id=6]
-[ext_resource path="res://scenes/gui/OptionsBox/MusicBox.gd" type="Script" id=7]
+[ext_resource path="res://scenes/gui/OptionsBox/GameplayBox.gd" type="Script" id=2]
+[ext_resource path="res://addons/Ren/nodes/ren_var_check.gd" type="Script" id=3]
+[ext_resource path="res://addons/Ren/icons/ren_check_button.svg" type="Texture" id=4]
+[ext_resource path="res://scenes/gui/OptionsBox/TextSpeedBox.gd" type="Script" id=5]
+[ext_resource path="res://scenes/gui/OptionsBox/AutoBox.gd" type="Script" id=6]
+[ext_resource path="res://addons/Ren/nodes/ren_var_slider.gd" type="Script" id=7]
+[ext_resource path="res://addons/Ren/icons/ren_var_h_slider.svg" type="Texture" id=8]
+[ext_resource path="res://scenes/gui/OptionsBox/WindowBox.gd" type="Script" id=9]
+[ext_resource path="res://scenes/gui/InGame/QuickMenuButton.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/gui/OptionsBox/ResolutionBox.gd" type="Script" id=11]
+[ext_resource path="res://scenes/gui/OptionsBox/VSyncBox.gd" type="Script" id=12]
+[ext_resource path="res://ubuntu-font-family/UB32.tres" type="DynamicFont" id=13]
+[ext_resource path="res://scenes/gui/OptionsBox/ApplyButton.gd" type="Script" id=14]
+[ext_resource path="res://scenes/gui/OptionsBox/SoundBusControl.tscn" type="PackedScene" id=15]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -15,26 +23,6 @@ use_mipmaps = false
 use_filter = true
 font_data = ExtResource( 1 )
 _sections_unfolded = [ "Font", "Settings" ]
-
-[sub_resource type="ButtonGroup" id=2]
-
-resource_local_to_scene = true
-
-[sub_resource type="ButtonGroup" id=3]
-
-resource_local_to_scene = true
-
-[sub_resource type="ButtonGroup" id=4]
-
-resource_local_to_scene = true
-
-[sub_resource type="ButtonGroup" id=5]
-
-resource_local_to_scene = true
-
-[sub_resource type="ButtonGroup" id=6]
-
-resource_local_to_scene = true
 
 [node name="OptionsBox" type="VBoxContainer" index="0"]
 
@@ -46,13 +34,14 @@ margin_left = 202.0
 margin_top = 11.0
 margin_right = 1011.0
 margin_bottom = 545.0
+grow_horizontal = 0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/separation = 5
+custom_constants/separation = 20
 alignment = 0
 _sections_unfolded = [ "custom_constants" ]
 
@@ -64,11 +53,12 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 809.0
 margin_bottom = 30.0
+grow_horizontal = 0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
+size_flags_horizontal = 1
 size_flags_vertical = 1
 custom_fonts/font = SubResource( 1 )
 text = "Options"
@@ -85,36 +75,493 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 35.0
+margin_top = 50.0
 margin_right = 809.0
-margin_bottom = 534.0
+margin_bottom = 485.0
+grow_horizontal = 0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_horizontal = 1
+size_flags_vertical = 1
 custom_constants/separation = 10
-alignment = 0
+alignment = 1
 _sections_unfolded = [ "Size Flags", "custom_constants" ]
 
-[node name="GraphicsBox" type="VBoxContainer" parent="HBoxContainer" index="0"]
+[node name="GameplayBox" type="VBoxContainer" parent="HBoxContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 44.0
+margin_right = 295.0
+margin_bottom = 435.0
+grow_horizontal = 0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/separation = 33
+alignment = 1
+script = ExtResource( 2 )
+_sections_unfolded = [ "Size Flags", "custom_constants" ]
+
+[node name="Title" type="Label" parent="HBoxContainer/GameplayBox" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 251.0
+margin_bottom = 30.0
+grow_horizontal = 0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 1 )
+text = "Skipping"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Size Flags", "custom_fonts" ]
+
+[node name="UnSeenTextBox" type="HBoxContainer" parent="HBoxContainer/GameplayBox" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 63.0
+margin_right = 251.0
+margin_bottom = 103.0
+grow_horizontal = 0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 1
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="Label" type="Label" parent="HBoxContainer/GameplayBox/UnSeenTextBox" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 8.0
+margin_right = 163.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 1 )
+text = "Unseen Text"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Size Flags", "custom_fonts" ]
+
+[node name="CheckButton" type="CheckButton" parent="HBoxContainer/GameplayBox/UnSeenTextBox" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 167.0
+margin_right = 243.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = false
+align = 0
+script = ExtResource( 3 )
+_sections_unfolded = [ "Focus", "Size Flags" ]
+__meta__ = {
+"_editor_icon": ExtResource( 4 )
+}
+var_name = "skip_all_text"
+default = false
+
+[node name="AfterChoicesBox" type="HBoxContainer" parent="HBoxContainer/GameplayBox" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 136.0
+margin_right = 251.0
+margin_bottom = 176.0
+grow_horizontal = 0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 1
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="Label" type="Label" parent="HBoxContainer/GameplayBox/AfterChoicesBox" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 171.0
+margin_bottom = 40.0
+grow_horizontal = 0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 1 )
+text = "After Choices"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Size Flags", "custom_fonts" ]
+
+[node name="CheckButton" type="CheckButton" parent="HBoxContainer/GameplayBox/AfterChoicesBox" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 175.0
+margin_right = 251.0
+margin_bottom = 40.0
+grow_horizontal = 0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = false
+align = 0
+script = ExtResource( 3 )
+_sections_unfolded = [ "Focus", "Size Flags" ]
+__meta__ = {
+"_editor_icon": ExtResource( 4 )
+}
+var_name = "skip_after_choices"
+default = false
+
+[node name="TextSpeedBox" type="VBoxContainer" parent="HBoxContainer/GameplayBox" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 209.0
+margin_right = 251.0
+margin_bottom = 269.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+script = ExtResource( 5 )
+
+[node name="HBox" type="HBoxContainer" parent="HBoxContainer/GameplayBox/TextSpeedBox" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 251.0
+margin_bottom = 40.0
+grow_horizontal = 0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 1
+_sections_unfolded = [ "Mouse", "Size Flags" ]
+
+[node name="Label" type="Label" parent="HBoxContainer/GameplayBox/TextSpeedBox/HBox" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 15.0
+margin_right = 155.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 1 )
+text = "Text Speed"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Mouse", "Size Flags", "custom_fonts" ]
+
+[node name="CheckButton" type="CheckButton" parent="HBoxContainer/GameplayBox/TextSpeedBox/HBox" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 159.0
+margin_right = 235.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = true
+enabled_focus_mode = 0
+shortcut = null
+group = null
+flat = false
+align = 0
+_sections_unfolded = [ "Focus", "Size Flags" ]
+
+[node name="Slider" type="HSlider" parent="HBoxContainer/GameplayBox/TextSpeedBox" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 44.0
+margin_right = 251.0
+margin_bottom = 60.0
+grow_horizontal = 0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+min_value = -0.1
+max_value = 0.0
+step = 0.01
+page = 0.0
+value = -0.01
+exp_edit = false
+rounded = false
+editable = true
+tick_count = 0
+ticks_on_borders = false
+focus_mode = 2
+_sections_unfolded = [ "Mouse", "Size Flags" ]
+
+[node name="AutoBox" type="VBoxContainer" parent="HBoxContainer/GameplayBox" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 302.0
+margin_right = 251.0
+margin_bottom = 352.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+script = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="HBoxContainer/GameplayBox/AutoBox" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 251.0
+margin_bottom = 30.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 1 )
+text = "Auto Forward Time"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Size Flags", "custom_fonts" ]
+
+[node name="Slider" type="HSlider" parent="HBoxContainer/GameplayBox/AutoBox" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 34.0
+margin_right = 251.0
+margin_bottom = 50.0
+grow_horizontal = 0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+min_value = -3.0
+max_value = -0.5
+step = 1.0
+page = 0.0
+value = -1.0
+exp_edit = false
+rounded = false
+editable = true
+tick_count = 0
+ticks_on_borders = false
+focus_mode = 2
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="NotifyBox" type="VBoxContainer" parent="HBoxContainer/GameplayBox" index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 385.0
+margin_right = 251.0
+margin_bottom = 435.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+script = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="HBoxContainer/GameplayBox/NotifyBox" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 251.0
+margin_bottom = 30.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 1 )
+text = "Notify Time"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Size Flags", "custom_fonts" ]
+
+[node name="Slider" type="HSlider" parent="HBoxContainer/GameplayBox/NotifyBox" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 34.0
+margin_right = 251.0
+margin_bottom = 50.0
+grow_horizontal = 0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 5.0
+step = 0.01
+page = 0.0
+value = 5.0
+exp_edit = false
+rounded = false
+editable = true
+tick_count = 0
+ticks_on_borders = false
+focus_mode = 2
+script = ExtResource( 7 )
+_sections_unfolded = [ "Anchor", "Size Flags" ]
+__meta__ = {
+"_editor_icon": ExtResource( 8 )
+}
+var_name = "notify_time"
+default = 5.0
+
+[node name="GraphicsBox" type="VBoxContainer" parent="HBoxContainer" index="1"]
 
 editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 399.0
-margin_bottom = 499.0
+margin_left = 305.0
+margin_right = 509.0
+margin_bottom = 435.0
+grow_horizontal = 0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 0
-_sections_unfolded = [ "Size Flags" ]
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/separation = 30
+alignment = 1
+_sections_unfolded = [ "Size Flags", "custom_constants" ]
 
 [node name="Title" type="Label" parent="HBoxContainer/GraphicsBox" index="0"]
 
@@ -122,14 +569,16 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 399.0
-margin_bottom = 67.0
+margin_top = 9.0
+margin_right = 204.0
+margin_bottom = 39.0
+grow_horizontal = 0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
-size_flags_vertical = 3
+size_flags_vertical = 1
 custom_fonts/font = SubResource( 1 )
 text = "Graphics"
 align = 1
@@ -137,7 +586,7 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
+_sections_unfolded = [ "Size Flags", "Theme", "custom_fonts" ]
 
 [node name="WTLabel" type="Label" parent="HBoxContainer/GraphicsBox" index="1"]
 
@@ -145,15 +594,16 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 71.0
-margin_right = 399.0
-margin_bottom = 138.0
+margin_top = 69.0
+margin_right = 204.0
+margin_bottom = 99.0
+grow_horizontal = 0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_horizontal = 1
+size_flags_vertical = 1
 custom_fonts/font = SubResource( 1 )
 text = "Window Type"
 align = 1
@@ -161,7 +611,7 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
+_sections_unfolded = [ "Size Flags", "custom_fonts", "custom_styles" ]
 
 [node name="WTBox" type="HBoxContainer" parent="HBoxContainer/GraphicsBox" index="2"]
 
@@ -169,25 +619,24 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 142.0
-margin_right = 399.0
-margin_bottom = 209.0
+margin_top = 129.0
+margin_right = 204.0
+margin_bottom = 161.0
+grow_horizontal = 0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 0
-script = ExtResource( 2 )
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 1
+script = ExtResource( 9 )
 _sections_unfolded = [ "Size Flags" ]
 
-[node name="PrevButton" parent="HBoxContainer/GraphicsBox/WTBox" index="0" instance=ExtResource( 3 )]
+[node name="PrevButton" parent="HBoxContainer/GraphicsBox/WTBox" index="0" instance=ExtResource( 10 )]
 
-margin_right = 122.0
-margin_bottom = 67.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+margin_right = 25.0
+margin_bottom = 32.0
 text = "<"
 
 [node name="Label" type="Label" parent="HBoxContainer/GraphicsBox/WTBox" index="1"]
@@ -196,15 +645,15 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 126.0
-margin_right = 272.0
-margin_bottom = 67.0
+margin_left = 29.0
+margin_right = 175.0
+margin_bottom = 32.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_horizontal = 1
+size_flags_vertical = 1
 custom_fonts/font = SubResource( 1 )
 text = "WidowType"
 align = 1
@@ -214,13 +663,11 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Size Flags", "custom_fonts" ]
 
-[node name="NextButton" parent="HBoxContainer/GraphicsBox/WTBox" index="2" instance=ExtResource( 3 )]
+[node name="NextButton" parent="HBoxContainer/GraphicsBox/WTBox" index="2" instance=ExtResource( 10 )]
 
-margin_left = 276.0
-margin_right = 399.0
-margin_bottom = 67.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+margin_left = 179.0
+margin_right = 204.0
+margin_bottom = 32.0
 text = ">"
 
 [node name="ResLabel" type="Label" parent="HBoxContainer/GraphicsBox" index="3"]
@@ -229,15 +676,16 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 213.0
-margin_right = 399.0
-margin_bottom = 280.0
+margin_top = 191.0
+margin_right = 204.0
+margin_bottom = 221.0
+grow_horizontal = 0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_horizontal = 1
+size_flags_vertical = 1
 custom_fonts/font = SubResource( 1 )
 text = "Resolution"
 align = 1
@@ -253,25 +701,25 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 284.0
-margin_right = 399.0
-margin_bottom = 351.0
+margin_top = 251.0
+margin_right = 204.0
+margin_bottom = 283.0
+grow_horizontal = 0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 0
-script = ExtResource( 4 )
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 1
+script = ExtResource( 11 )
 _sections_unfolded = [ "Size Flags" ]
 
-[node name="PrevButton" parent="HBoxContainer/GraphicsBox/ResBox" index="0" instance=ExtResource( 3 )]
+[node name="PrevButton" parent="HBoxContainer/GraphicsBox/ResBox" index="0" instance=ExtResource( 10 )]
 
-margin_right = 130.0
-margin_bottom = 67.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+margin_left = 50.0
+margin_right = 75.0
+margin_bottom = 32.0
 text = "<"
 
 [node name="Label" type="Label" parent="HBoxContainer/GraphicsBox/ResBox" index="1"]
@@ -280,15 +728,15 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 134.0
-margin_right = 264.0
-margin_bottom = 67.0
+margin_left = 79.0
+margin_right = 124.0
+margin_bottom = 32.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_horizontal = 1
+size_flags_vertical = 1
 custom_fonts/font = SubResource( 1 )
 text = "Res"
 align = 1
@@ -298,13 +746,11 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Size Flags", "custom_fonts" ]
 
-[node name="NextButton" parent="HBoxContainer/GraphicsBox/ResBox" index="2" instance=ExtResource( 3 )]
+[node name="NextButton" parent="HBoxContainer/GraphicsBox/ResBox" index="2" instance=ExtResource( 10 )]
 
-margin_left = 268.0
-margin_right = 399.0
-margin_bottom = 67.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+margin_left = 128.0
+margin_right = 153.0
+margin_bottom = 32.0
 text = ">"
 
 [node name="VSyncBox" type="HBoxContainer" parent="HBoxContainer/GraphicsBox" index="5"]
@@ -313,17 +759,19 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 355.0
-margin_right = 399.0
-margin_bottom = 422.0
+margin_top = 313.0
+margin_right = 204.0
+margin_bottom = 353.0
+grow_horizontal = 0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 0
-script = ExtResource( 5 )
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 1
+script = ExtResource( 12 )
+_sections_unfolded = [ "Size Flags", "Theme" ]
 
 [node name="Label" type="Label" parent="HBoxContainer/GraphicsBox/VSyncBox" index="0"]
 
@@ -331,14 +779,15 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 130.0
-margin_bottom = 67.0
+margin_left = 24.0
+margin_right = 100.0
+margin_bottom = 40.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_horizontal = 1
+size_flags_vertical = 1
 custom_fonts/font = SubResource( 1 )
 text = "VSync"
 align = 1
@@ -348,56 +797,59 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Size Flags", "custom_fonts" ]
 
-[node name="OnButton" parent="HBoxContainer/GraphicsBox/VSyncBox" index="1" instance=ExtResource( 3 )]
-
-margin_left = 134.0
-margin_right = 264.0
-margin_bottom = 67.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-toggle_mode = true
-group = SubResource( 2 )
-text = "On"
-
-[node name="OffButton" parent="HBoxContainer/GraphicsBox/VSyncBox" index="2" instance=ExtResource( 3 )]
-
-margin_left = 268.0
-margin_right = 399.0
-margin_bottom = 67.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-toggle_mode = true
-group = SubResource( 2 )
-text = "Off"
-
-[node name="ApplyButton" parent="HBoxContainer/GraphicsBox" index="6" instance=ExtResource( 3 )]
-
-margin_top = 426.0
-margin_right = 399.0
-margin_bottom = 499.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "Apply"
-script = ExtResource( 6 )
-_sections_unfolded = [ "Size Flags", "custom_colors", "custom_fonts" ]
-
-[node name="MusicBox" type="VBoxContainer" parent="HBoxContainer" index="1"]
+[node name="CheckButton" type="CheckButton" parent="HBoxContainer/GraphicsBox/VSyncBox" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 409.0
-margin_right = 809.0
-margin_bottom = 499.0
+margin_left = 104.0
+margin_right = 180.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = false
+align = 0
+_sections_unfolded = [ "Focus", "Size Flags" ]
+
+[node name="ApplyButton" parent="HBoxContainer/GraphicsBox" index="6" instance=ExtResource( 10 )]
+
+margin_top = 383.0
+margin_right = 204.0
+margin_bottom = 426.0
+grow_horizontal = 0
+custom_fonts/font = ExtResource( 13 )
+text = "Apply"
+script = ExtResource( 14 )
+_sections_unfolded = [ "Size Flags", "Theme", "custom_colors", "custom_fonts" ]
+
+[node name="MusicBox" type="VBoxContainer" parent="HBoxContainer" index="2"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 519.0
+margin_right = 765.0
+margin_bottom = 435.0
+grow_horizontal = 0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 0
-script = ExtResource( 7 )
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 1
 _sections_unfolded = [ "Size Flags" ]
 
 [node name="Title" type="Label" parent="HBoxContainer/MusicBox" index="0"]
@@ -406,8 +858,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 400.0
-margin_bottom = 30.0
+margin_top = 14.0
+margin_right = 246.0
+margin_bottom = 44.0
+grow_horizontal = 0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -422,364 +876,38 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="VolumeBox" type="HBoxContainer" parent="HBoxContainer/MusicBox" index="1"]
+[node name="MasterBusControl" parent="HBoxContainer/MusicBox" index="1" instance=ExtResource( 15 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 34.0
-margin_right = 400.0
-margin_bottom = 88.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 0
+margin_top = 48.0
+margin_right = 246.0
+margin_bottom = 138.0
+grow_horizontal = 0
 
-[node name="Label" type="Label" parent="HBoxContainer/MusicBox/VolumeBox" index="0"]
+[node name="MasterBusControl3" parent="HBoxContainer/MusicBox" index="2" instance=ExtResource( 15 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 130.0
-margin_bottom = 54.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = SubResource( 1 )
-text = "Volume"
-align = 1
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Size Flags", "custom_fonts" ]
+margin_top = 142.0
+margin_right = 246.0
+margin_bottom = 232.0
+grow_horizontal = 0
+label = "Music"
+bus_name = "BGM"
 
-[node name="OnButton" parent="HBoxContainer/MusicBox/VolumeBox" index="1" instance=ExtResource( 3 )]
+[node name="SFXBusControl2" parent="HBoxContainer/MusicBox" index="3" instance=ExtResource( 15 )]
 
-margin_left = 134.0
-margin_right = 264.0
-margin_bottom = 54.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-toggle_mode = true
-group = SubResource( 3 )
-text = "Unmute"
+margin_top = 236.0
+margin_right = 246.0
+margin_bottom = 326.0
+grow_horizontal = 0
+label = "Sounds"
+bus_name = "SFX"
 
-[node name="OffButton" parent="HBoxContainer/MusicBox/VolumeBox" index="2" instance=ExtResource( 3 )]
+[node name="MasterBusControl4" parent="HBoxContainer/MusicBox" index="4" instance=ExtResource( 15 )]
 
-margin_left = 268.0
-margin_right = 400.0
-margin_bottom = 54.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-toggle_mode = true
-group = SubResource( 3 )
-text = "Mute"
-
-[node name="VolumeBar" type="HSlider" parent="HBoxContainer/MusicBox" index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 92.0
-margin_right = 400.0
-margin_bottom = 146.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-min_value = -60.0
-max_value = 12.0
-step = 1.0
-page = 0.0
-value = 0.0
-exp_edit = false
-rounded = true
-editable = true
-tick_count = 0
-ticks_on_borders = false
-focus_mode = 2
-
-[node name="BGMBox" type="HBoxContainer" parent="HBoxContainer/MusicBox" index="3"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 150.0
-margin_right = 400.0
-margin_bottom = 204.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 0
-
-[node name="Label" type="Label" parent="HBoxContainer/MusicBox/BGMBox" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 130.0
-margin_bottom = 54.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = SubResource( 1 )
-text = "BGM"
-align = 1
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Size Flags", "custom_fonts" ]
-
-[node name="OnButton" parent="HBoxContainer/MusicBox/BGMBox" index="1" instance=ExtResource( 3 )]
-
-margin_left = 134.0
-margin_right = 264.0
-margin_bottom = 54.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-toggle_mode = true
-group = SubResource( 4 )
-text = "Unmute"
-
-[node name="OffButton" parent="HBoxContainer/MusicBox/BGMBox" index="2" instance=ExtResource( 3 )]
-
-margin_left = 268.0
-margin_right = 400.0
-margin_bottom = 54.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-toggle_mode = true
-group = SubResource( 4 )
-text = "Mute"
-
-[node name="BGMBar" type="HSlider" parent="HBoxContainer/MusicBox" index="4"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 208.0
-margin_right = 400.0
-margin_bottom = 262.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-min_value = -60.0
-max_value = 12.0
-step = 1.0
-page = 0.0
-value = 0.0
-exp_edit = false
-rounded = true
-editable = true
-tick_count = 0
-ticks_on_borders = false
-focus_mode = 2
-
-[node name="SFXBox" type="HBoxContainer" parent="HBoxContainer/MusicBox" index="5"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 266.0
-margin_right = 400.0
-margin_bottom = 320.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 0
-
-[node name="Label" type="Label" parent="HBoxContainer/MusicBox/SFXBox" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 130.0
-margin_bottom = 54.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = SubResource( 1 )
-text = "SFX"
-align = 1
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Size Flags", "custom_fonts" ]
-
-[node name="OnButton" parent="HBoxContainer/MusicBox/SFXBox" index="1" instance=ExtResource( 3 )]
-
-margin_left = 134.0
-margin_right = 264.0
-margin_bottom = 54.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-toggle_mode = true
-group = SubResource( 5 )
-text = "Mute"
-
-[node name="OffButton" parent="HBoxContainer/MusicBox/SFXBox" index="2" instance=ExtResource( 3 )]
-
-margin_left = 268.0
-margin_right = 400.0
-margin_bottom = 54.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-toggle_mode = true
-group = SubResource( 5 )
-text = "Mute"
-
-[node name="SFXBar" type="HSlider" parent="HBoxContainer/MusicBox" index="6"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 324.0
-margin_right = 400.0
-margin_bottom = 378.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-min_value = -60.0
-max_value = 12.0
-step = 1.0
-page = 0.0
-value = 0.0
-exp_edit = false
-rounded = true
-editable = true
-tick_count = 0
-ticks_on_borders = false
-focus_mode = 2
-
-[node name="DialogsBox" type="HBoxContainer" parent="HBoxContainer/MusicBox" index="7"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 382.0
-margin_right = 400.0
-margin_bottom = 436.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 0
-
-[node name="Label" type="Label" parent="HBoxContainer/MusicBox/DialogsBox" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 130.0
-margin_bottom = 54.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = SubResource( 1 )
-text = "Dialogs"
-align = 1
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Size Flags", "custom_fonts" ]
-
-[node name="OnButton" parent="HBoxContainer/MusicBox/DialogsBox" index="1" instance=ExtResource( 3 )]
-
-margin_left = 134.0
-margin_right = 264.0
-margin_bottom = 54.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-toggle_mode = true
-group = SubResource( 6 )
-text = "Unmute"
-
-[node name="OffButton" parent="HBoxContainer/MusicBox/DialogsBox" index="2" instance=ExtResource( 3 )]
-
-margin_left = 268.0
-margin_right = 400.0
-margin_bottom = 54.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-toggle_mode = true
-group = SubResource( 6 )
-text = "Mute"
-
-[node name="DialogsBar" type="HSlider" parent="HBoxContainer/MusicBox" index="8"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 440.0
-margin_right = 400.0
-margin_bottom = 499.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-min_value = -60.0
-max_value = 12.0
-step = 1.0
-page = 0.0
-value = 0.0
-exp_edit = false
-rounded = true
-editable = true
-tick_count = 0
-ticks_on_borders = false
-focus_mode = 2
+margin_top = 330.0
+margin_right = 246.0
+margin_bottom = 420.0
+grow_horizontal = 0
+label = "Dialogs"
+bus_name = "Dialogs"
 
 

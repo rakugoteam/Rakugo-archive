@@ -1,0 +1,40 @@
+extends VBoxContainer
+
+export(String) var label = "Volume"
+export(String) var bus_name = "Master"
+var bus_id = 0
+
+func _ready():
+	bus_id = AudioServer.get_bus_index(bus_name)
+	$VBox/Label.text = label
+
+	if AudioServer.is_bus_mute(bus_id):
+		$VBox/OffButton.pressed = true
+	else:
+		$VBox/OnButton.pressed = true
+	
+	$VBox/OnButton.connect(
+		"pressed", AudioServer,
+		"set_bus_mute", [bus_id, false]
+	)
+
+	$VBox/OffButton.connect(
+		"pressed", AudioServer,
+		"set_bus_mute", [bus_id, true]
+	)
+	
+	$Bar.connect(
+		"value_changed", self,
+		"set_bus_volume", [bus_id]
+	)
+
+	connect("visibility_changed", self, "_on_visibility_changed")
+
+func _on_visibility_changed():
+	if not visible:
+		return
+	
+	$Bar.value = AudioServer.get_bus_volume_db(bus_id)
+
+func set_bus_volume(value, bus_id):
+	AudioServer.set_bus_volume_db(bus_id, value)

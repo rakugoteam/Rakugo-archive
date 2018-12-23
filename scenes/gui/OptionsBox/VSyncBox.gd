@@ -2,16 +2,11 @@ extends HBoxContainer
 
 func _ready():
 	connect("visibility_changed", self, "_on_visibility_changed")
-	$OffButton.connect("pressed", self, "_on_toggle", [false])
-	$OnButton.connect("pressed", self, "_on_toggle", [true])
+	$CheckButton.connect("toggled", self, "_on_toggle")
 
 func _on_toggle(value):
 	settings.temp_vsync_enabled = value
 
 func _on_visibility_changed():
-	if OS.vsync_enabled:
-		$OnButton.pressed = true
-		settings.temp_vsync_enabled = true
-	else:
-		$OffButton.pressed = true
-		settings.temp_vsync_enabled = false
+	$CheckButton.pressed = OS.vsync_enabled
+	settings.temp_vsync_enabled = OS.vsync_enabled

@@ -3,56 +3,39 @@ extends Panel
 export(NodePath) var name_label_path = NodePath("")
 export(NodePath) var dialog_label_path = NodePath("")
 export(NodePath) var avatar_viewport_path = NodePath("")
-export(float) var step_time = 0.01
-export(float) var letter_speed = 0.005
 
 onready var NameLabel = get_node(name_label_path)
 onready var DialogText = get_node(dialog_label_path)
 onready var CharacterAvatar = get_node(avatar_viewport_path)
-onready var ActionTimer = Timer.new()
-onready var DialogTimer = Timer.new()
 
 var avatar_path = ""
 var avatar
 var _type
 var typing = false
-var active = true
-
 
 func _ready():
 	connect("gui_input", self, "_on_adv_gui_input")
 	Ren.connect("exec_statement", self, "_on_statement")
-	ActionTimer.one_shot = true
-	ActionTimer.wait_time = step_time
-	ActionTimer.connect("timeout", self, "_on_time_active_timeout")
-	add_child(ActionTimer)
-	DialogTimer.one_shot = true
-	add_child(DialogTimer)
-
-func _on_time_active_timeout():
-	active = true
 
 func _input(event):
 	if not event.is_action_pressed("ren_forward"):
 		return
-	
-	if ActionTimer.is_stopped():
-		active = false
-		ActionTimer.start()
 
+	if not Ren.active:
+		return
+	
 	if Ren.skip_auto:
+		Ren.auto_timer.stop_loop()
+		Ren.skip_timer.stop_loop()
 		Ren.skip_auto = false
 		return
-
-	elif typing: # if typing complete it
+	
+	if typing: # if typing complete it
 		typing = false
 		return
 
 	elif _type == Ren.StatementType.SAY: # else exit statement
-		active = true
-		ActionTimer.stop()
 		Ren.exit_statement()
-
 
 func _on_statement(type, kwargs):
 	if "kind" in kwargs:
@@ -65,10 +48,7 @@ func _on_statement(type, kwargs):
 			NameLabel.bbcode_text = kwargs.who
 
 	if "what" in kwargs:
-		if kwargs.has("speed"):
-			write_dialog(kwargs.what, kwargs.speed)
-		else:
-			write_dialog(kwargs.what)
+		write_dialog(kwargs.what, kwargs.speed)
 
 	if "avatar" in kwargs:
 		if avatar != null:
@@ -88,10 +68,10 @@ func _on_statement(type, kwargs):
 		else:
 			# object is fine so you can do something with it:
 			avatar.free()
-		
+	
 	return
 
-func write_dialog(text, speed = letter_speed):
+func write_dialog(text, speed):
 	if speed == 0:
 		if DialogText.has_method("set_bbcode"):
 			DialogText.bbcode_text = text
@@ -102,11 +82,11 @@ func write_dialog(text, speed = letter_speed):
 		DialogText.bbcode_text = ""
 
 	var te = ""
-	DialogTimer.wait_time = speed
+	Ren.dialog_timer.wait_time = speed
 
 	var markup = false
 	for letter in text:
-		DialogTimer.start()
+		Ren.dialog_timer.start()
 		te += letter
 		if letter == "[":
 			markup = true
@@ -120,7 +100,7 @@ func write_dialog(text, speed = letter_speed):
 		if DialogText.has_method("set_bbcode"):
 			DialogText.bbcode_text = te
 
-		yield(DialogTimer, "timeout")
+		yield(Ren.dialog_timer, "timeout")
 		if !typing:
 
 			if DialogText.has_method("set_bbcode"):
@@ -130,9 +110,6 @@ func write_dialog(text, speed = letter_speed):
 
 
 func _on_adv_gui_input(ev):
-	if not active:
-		return
-
 	if not (ev is InputEventMouseButton):
 		return
 

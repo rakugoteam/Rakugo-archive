@@ -29,9 +29,6 @@ Ren use [PersistenceNode](https://github.com/MatiasVME/Persistence) for saving/l
 If you want to help please write to us on our [Discord Server](https://discord.gg/K9gvjdg).
 
 Logo is Godot head with hair like anime character.<br/>
-Logo is base on Godot icon from [Linux Pop icon theme](https://github.com/pop-os/icon-theme).<br/>
-Logo for [PersistenceNode](https://github.com/MatiasVME/Persistence) was changed also to icon from [Linux Pop icon theme](https://github.com/pop-os/icon-theme) to fix some strange preload problems.<br/>
-Custom Ren Nodes icons are based on [Godot icons](https://github.com/godotengine/godot-design/tree/master/engine/icons/optimized) and [Linux Pop icon theme](https://github.com/pop-os/icon-theme).
+Icons used by project are based on [Godot icons](https://github.com/godotengine/godot-design/tree/master/engine/icons/optimized), [Linux Pop icon theme](https://github.com/pop-os/icon-theme) and icons from [game-icons.net](https://game-icons.net).
 
-Quest icon is CC BY-SA 3.0 2018 by Lorc from [game-icons.net](https://game-icons.net/lorc/originals/tied-scroll.html)
 
