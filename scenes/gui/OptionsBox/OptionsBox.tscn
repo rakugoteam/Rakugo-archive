@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://ubuntu-font-family/Ubuntu-B.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/gui/OptionsBox/WindowBox.gd" type="Script" id=2]
@@ -6,9 +6,7 @@
 [ext_resource path="res://scenes/gui/OptionsBox/ResolutionBox.gd" type="Script" id=4]
 [ext_resource path="res://scenes/gui/OptionsBox/VSyncBox.gd" type="Script" id=5]
 [ext_resource path="res://scenes/gui/OptionsBox/ApplyButton.gd" type="Script" id=6]
-[ext_resource path="res://scenes/gui/OptionsBox/MusicBox.gd" type="Script" id=7]
-[ext_resource path="res://scenes/gui/OptionsBox/icons/sound-on.png" type="Texture" id=8]
-[ext_resource path="res://scenes/gui/OptionsBox/icons/sound-off.png" type="Texture" id=9]
+[ext_resource path="res://scenes/gui/OptionsBox/SoundBusControl.tscn" type="PackedScene" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -17,22 +15,6 @@ use_mipmaps = false
 use_filter = true
 font_data = ExtResource( 1 )
 _sections_unfolded = [ "Font", "Settings" ]
-
-[sub_resource type="ButtonGroup" id=3]
-
-resource_local_to_scene = true
-
-[sub_resource type="ButtonGroup" id=4]
-
-resource_local_to_scene = true
-
-[sub_resource type="ButtonGroup" id=5]
-
-resource_local_to_scene = true
-
-[sub_resource type="ButtonGroup" id=6]
-
-resource_local_to_scene = true
 
 [node name="OptionsBox" type="VBoxContainer" index="0"]
 
@@ -387,7 +369,6 @@ _sections_unfolded = [ "Size Flags", "Theme", "custom_colors", "custom_fonts" ]
 
 [node name="MusicBox" type="VBoxContainer" parent="HBoxContainer" index="1"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -402,7 +383,6 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 0
-script = ExtResource( 7 )
 _sections_unfolded = [ "Size Flags" ]
 
 [node name="Title" type="Label" parent="HBoxContainer/MusicBox" index="0"]
@@ -427,377 +407,27 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="VolumeBox" type="HBoxContainer" parent="HBoxContainer/MusicBox" index="1"]
+[node name="MasterBusControl" parent="HBoxContainer/MusicBox" index="1" instance=ExtResource( 7 )]
 
-editor/display_folded = true
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 34.0
-margin_right = 400.0
-margin_bottom = 104.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 0
+[node name="MasterBusControl3" parent="HBoxContainer/MusicBox" index="2" instance=ExtResource( 7 )]
 
-[node name="Label" type="Label" parent="HBoxContainer/MusicBox/VolumeBox" index="0"]
+margin_top = 128.0
+margin_bottom = 218.0
+label = "Music"
+bus_name = "BGM"
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 249.0
-margin_bottom = 70.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = SubResource( 1 )
-text = "Volume"
-align = 1
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Size Flags", "custom_fonts" ]
+[node name="SFXBusControl2" parent="HBoxContainer/MusicBox" index="3" instance=ExtResource( 7 )]
 
-[node name="OnButton" parent="HBoxContainer/MusicBox/VolumeBox" index="1" instance=ExtResource( 3 )]
+margin_top = 222.0
+margin_bottom = 312.0
+label = "Sounds"
+bus_name = "SFX"
 
-margin_left = 253.0
-margin_right = 320.0
-margin_bottom = 70.0
-focus_mode = 0
-size_flags_vertical = 3
-toggle_mode = true
-group = SubResource( 3 )
-text = ""
-icon = ExtResource( 8 )
-_sections_unfolded = [ "Theme", "custom_colors", "custom_fonts", "custom_styles" ]
+[node name="MasterBusControl4" parent="HBoxContainer/MusicBox" index="4" instance=ExtResource( 7 )]
 
-[node name="OffButton" parent="HBoxContainer/MusicBox/VolumeBox" index="2" instance=ExtResource( 3 )]
-
-margin_left = 324.0
-margin_right = 400.0
-margin_bottom = 70.0
-focus_mode = 0
-size_flags_vertical = 3
-toggle_mode = true
-group = SubResource( 3 )
-text = ""
-icon = ExtResource( 9 )
-
-[node name="VolumeBar" type="HSlider" parent="HBoxContainer/MusicBox" index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 108.0
-margin_right = 400.0
-margin_bottom = 147.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-min_value = -60.0
-max_value = 12.0
-step = 1.0
-page = 0.0
-value = 0.0
-exp_edit = false
-rounded = true
-editable = true
-tick_count = 0
-ticks_on_borders = false
-focus_mode = 2
-
-[node name="BGMBox" type="HBoxContainer" parent="HBoxContainer/MusicBox" index="3"]
-
-editor/display_folded = true
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 151.0
-margin_right = 400.0
-margin_bottom = 221.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 0
-
-[node name="Label" type="Label" parent="HBoxContainer/MusicBox/BGMBox" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 249.0
-margin_bottom = 70.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = SubResource( 1 )
-text = "BGM"
-align = 1
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Size Flags", "custom_fonts" ]
-
-[node name="OnButton" parent="HBoxContainer/MusicBox/BGMBox" index="1" instance=ExtResource( 3 )]
-
-margin_left = 253.0
-margin_right = 320.0
-margin_bottom = 70.0
-focus_mode = 0
-size_flags_vertical = 3
-toggle_mode = true
-group = SubResource( 4 )
-text = ""
-icon = ExtResource( 8 )
-
-[node name="OffButton" parent="HBoxContainer/MusicBox/BGMBox" index="2" instance=ExtResource( 3 )]
-
-margin_left = 324.0
-margin_right = 400.0
-margin_bottom = 70.0
-focus_mode = 0
-size_flags_vertical = 3
-toggle_mode = true
-group = SubResource( 4 )
-text = ""
-icon = ExtResource( 9 )
-
-[node name="BGMBar" type="HSlider" parent="HBoxContainer/MusicBox" index="4"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 225.0
-margin_right = 400.0
-margin_bottom = 264.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-min_value = -60.0
-max_value = 12.0
-step = 1.0
-page = 0.0
-value = 0.0
-exp_edit = false
-rounded = true
-editable = true
-tick_count = 0
-ticks_on_borders = false
-focus_mode = 2
-
-[node name="SFXBox" type="HBoxContainer" parent="HBoxContainer/MusicBox" index="5"]
-
-editor/display_folded = true
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 268.0
-margin_right = 400.0
-margin_bottom = 338.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 0
-
-[node name="Label" type="Label" parent="HBoxContainer/MusicBox/SFXBox" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 249.0
-margin_bottom = 70.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = SubResource( 1 )
-text = "SFX"
-align = 1
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Size Flags", "custom_fonts" ]
-
-[node name="OnButton" parent="HBoxContainer/MusicBox/SFXBox" index="1" instance=ExtResource( 3 )]
-
-margin_left = 253.0
-margin_right = 320.0
-margin_bottom = 70.0
-focus_mode = 0
-size_flags_vertical = 3
-toggle_mode = true
-group = SubResource( 5 )
-text = ""
-icon = ExtResource( 8 )
-
-[node name="OffButton" parent="HBoxContainer/MusicBox/SFXBox" index="2" instance=ExtResource( 3 )]
-
-margin_left = 324.0
-margin_right = 400.0
-margin_bottom = 70.0
-focus_mode = 0
-size_flags_vertical = 3
-toggle_mode = true
-group = SubResource( 5 )
-text = ""
-icon = ExtResource( 9 )
-
-[node name="SFXBar" type="HSlider" parent="HBoxContainer/MusicBox" index="6"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 342.0
-margin_right = 400.0
-margin_bottom = 381.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-min_value = -60.0
-max_value = 12.0
-step = 1.0
-page = 0.0
-value = 0.0
-exp_edit = false
-rounded = true
-editable = true
-tick_count = 0
-ticks_on_borders = false
-focus_mode = 2
-
-[node name="DialogsBox" type="HBoxContainer" parent="HBoxContainer/MusicBox" index="7"]
-
-editor/display_folded = true
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 385.0
-margin_right = 400.0
-margin_bottom = 455.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 0
-
-[node name="Label" type="Label" parent="HBoxContainer/MusicBox/DialogsBox" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 249.0
-margin_bottom = 70.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = SubResource( 1 )
-text = "Dialogs"
-align = 1
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Size Flags", "custom_fonts" ]
-
-[node name="OnButton" parent="HBoxContainer/MusicBox/DialogsBox" index="1" instance=ExtResource( 3 )]
-
-margin_left = 253.0
-margin_right = 320.0
-margin_bottom = 70.0
-focus_mode = 0
-size_flags_vertical = 3
-toggle_mode = true
-group = SubResource( 6 )
-text = ""
-icon = ExtResource( 8 )
-
-[node name="OffButton" parent="HBoxContainer/MusicBox/DialogsBox" index="2" instance=ExtResource( 3 )]
-
-margin_left = 324.0
-margin_right = 400.0
-margin_bottom = 70.0
-focus_mode = 0
-size_flags_vertical = 3
-toggle_mode = true
-group = SubResource( 6 )
-text = ""
-icon = ExtResource( 9 )
-
-[node name="DialogsBar" type="HSlider" parent="HBoxContainer/MusicBox" index="8"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 459.0
-margin_right = 400.0
-margin_bottom = 499.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-min_value = -60.0
-max_value = 12.0
-step = 1.0
-page = 0.0
-value = 0.0
-exp_edit = false
-rounded = true
-editable = true
-tick_count = 0
-ticks_on_borders = false
-focus_mode = 2
+margin_top = 316.0
+margin_bottom = 406.0
+label = "Dialogs"
+bus_name = "Dialogs"
 
 
