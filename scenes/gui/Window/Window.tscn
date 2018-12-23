@@ -4,7 +4,6 @@
 [ext_resource path="res://scenes/gui/InGame/InGameGUI.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/gui/Screens/Screens.tscn" type="PackedScene" id=3]
 
-
 [node name="Window" type="Node2D"]
 
 pause_mode = 2

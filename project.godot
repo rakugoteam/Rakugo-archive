@@ -12,6 +12,7 @@ config_version=3
 
 config/name="Ren"
 run/main_scene="res://scenes/examples/Test/Test.tscn"
+boot_splash/image="res://splash.png"
 config/icon="res://window_icon.png"
 
 [autoload]

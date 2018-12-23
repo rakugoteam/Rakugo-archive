@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://ubuntu-font-family/Ubuntu-B.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/gui/OptionsBox/WindowBox.gd" type="Script" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://scenes/gui/OptionsBox/VSyncBox.gd" type="Script" id=5]
 [ext_resource path="res://scenes/gui/OptionsBox/ApplyButton.gd" type="Script" id=6]
 [ext_resource path="res://scenes/gui/OptionsBox/MusicBox.gd" type="Script" id=7]
+[ext_resource path="res://scenes/gui/OptionsBox/icons/sound-on.png" type="Texture" id=8]
+[ext_resource path="res://scenes/gui/OptionsBox/icons/sound-off.png" type="Texture" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -15,10 +17,6 @@ use_mipmaps = false
 use_filter = true
 font_data = ExtResource( 1 )
 _sections_unfolded = [ "Font", "Settings" ]
-
-[sub_resource type="ButtonGroup" id=2]
-
-resource_local_to_scene = true
 
 [sub_resource type="ButtonGroup" id=3]
 
@@ -165,6 +163,7 @@ _sections_unfolded = [ "custom_fonts" ]
 
 [node name="WTBox" type="HBoxContainer" parent="HBoxContainer/GraphicsBox" index="2"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -249,6 +248,7 @@ _sections_unfolded = [ "custom_fonts" ]
 
 [node name="ResBox" type="HBoxContainer" parent="HBoxContainer/GraphicsBox" index="4"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -309,6 +309,7 @@ text = ">"
 
 [node name="VSyncBox" type="HBoxContainer" parent="HBoxContainer/GraphicsBox" index="5"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -322,7 +323,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-alignment = 0
+alignment = 1
 script = ExtResource( 5 )
 
 [node name="Label" type="Label" parent="HBoxContainer/GraphicsBox/VSyncBox" index="0"]
@@ -331,14 +332,15 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 130.0
+margin_left = 121.0
+margin_right = 197.0
 margin_bottom = 67.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_horizontal = 1
+size_flags_vertical = 1
 custom_fonts/font = SubResource( 1 )
 text = "VSync"
 align = 1
@@ -348,27 +350,29 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Size Flags", "custom_fonts" ]
 
-[node name="OnButton" parent="HBoxContainer/GraphicsBox/VSyncBox" index="1" instance=ExtResource( 3 )]
+[node name="CheckButton" type="CheckButton" parent="HBoxContainer/GraphicsBox/VSyncBox" index="1"]
 
-margin_left = 134.0
-margin_right = 264.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 201.0
+margin_right = 277.0
 margin_bottom = 67.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
 toggle_mode = true
-group = SubResource( 2 )
-text = "On"
-
-[node name="OffButton" parent="HBoxContainer/GraphicsBox/VSyncBox" index="2" instance=ExtResource( 3 )]
-
-margin_left = 268.0
-margin_right = 399.0
-margin_bottom = 67.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-toggle_mode = true
-group = SubResource( 2 )
-text = "Off"
+enabled_focus_mode = 2
+shortcut = null
+group = null
+flat = false
+align = 0
+_sections_unfolded = [ "Focus", "Size Flags" ]
 
 [node name="ApplyButton" parent="HBoxContainer/GraphicsBox" index="6" instance=ExtResource( 3 )]
 
@@ -379,10 +383,11 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Apply"
 script = ExtResource( 6 )
-_sections_unfolded = [ "Size Flags", "custom_colors", "custom_fonts" ]
+_sections_unfolded = [ "Size Flags", "Theme", "custom_colors", "custom_fonts" ]
 
 [node name="MusicBox" type="VBoxContainer" parent="HBoxContainer" index="1"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -424,13 +429,14 @@ _sections_unfolded = [ "custom_fonts" ]
 
 [node name="VolumeBox" type="HBoxContainer" parent="HBoxContainer/MusicBox" index="1"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 34.0
 margin_right = 400.0
-margin_bottom = 88.0
+margin_bottom = 104.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -445,8 +451,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 130.0
-margin_bottom = 54.0
+margin_right = 249.0
+margin_bottom = 70.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -464,25 +470,28 @@ _sections_unfolded = [ "Size Flags", "custom_fonts" ]
 
 [node name="OnButton" parent="HBoxContainer/MusicBox/VolumeBox" index="1" instance=ExtResource( 3 )]
 
-margin_left = 134.0
-margin_right = 264.0
-margin_bottom = 54.0
-size_flags_horizontal = 3
+margin_left = 253.0
+margin_right = 320.0
+margin_bottom = 70.0
+focus_mode = 0
 size_flags_vertical = 3
 toggle_mode = true
 group = SubResource( 3 )
-text = "Unmute"
+text = ""
+icon = ExtResource( 8 )
+_sections_unfolded = [ "Theme", "custom_colors", "custom_fonts", "custom_styles" ]
 
 [node name="OffButton" parent="HBoxContainer/MusicBox/VolumeBox" index="2" instance=ExtResource( 3 )]
 
-margin_left = 268.0
+margin_left = 324.0
 margin_right = 400.0
-margin_bottom = 54.0
-size_flags_horizontal = 3
+margin_bottom = 70.0
+focus_mode = 0
 size_flags_vertical = 3
 toggle_mode = true
 group = SubResource( 3 )
-text = "Mute"
+text = ""
+icon = ExtResource( 9 )
 
 [node name="VolumeBar" type="HSlider" parent="HBoxContainer/MusicBox" index="2"]
 
@@ -490,9 +499,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 92.0
+margin_top = 108.0
 margin_right = 400.0
-margin_bottom = 146.0
+margin_bottom = 147.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -514,13 +523,14 @@ focus_mode = 2
 
 [node name="BGMBox" type="HBoxContainer" parent="HBoxContainer/MusicBox" index="3"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 150.0
+margin_top = 151.0
 margin_right = 400.0
-margin_bottom = 204.0
+margin_bottom = 221.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -535,8 +545,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 130.0
-margin_bottom = 54.0
+margin_right = 249.0
+margin_bottom = 70.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -554,25 +564,27 @@ _sections_unfolded = [ "Size Flags", "custom_fonts" ]
 
 [node name="OnButton" parent="HBoxContainer/MusicBox/BGMBox" index="1" instance=ExtResource( 3 )]
 
-margin_left = 134.0
-margin_right = 264.0
-margin_bottom = 54.0
-size_flags_horizontal = 3
+margin_left = 253.0
+margin_right = 320.0
+margin_bottom = 70.0
+focus_mode = 0
 size_flags_vertical = 3
 toggle_mode = true
 group = SubResource( 4 )
-text = "Unmute"
+text = ""
+icon = ExtResource( 8 )
 
 [node name="OffButton" parent="HBoxContainer/MusicBox/BGMBox" index="2" instance=ExtResource( 3 )]
 
-margin_left = 268.0
+margin_left = 324.0
 margin_right = 400.0
-margin_bottom = 54.0
-size_flags_horizontal = 3
+margin_bottom = 70.0
+focus_mode = 0
 size_flags_vertical = 3
 toggle_mode = true
 group = SubResource( 4 )
-text = "Mute"
+text = ""
+icon = ExtResource( 9 )
 
 [node name="BGMBar" type="HSlider" parent="HBoxContainer/MusicBox" index="4"]
 
@@ -580,9 +592,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 208.0
+margin_top = 225.0
 margin_right = 400.0
-margin_bottom = 262.0
+margin_bottom = 264.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -604,13 +616,14 @@ focus_mode = 2
 
 [node name="SFXBox" type="HBoxContainer" parent="HBoxContainer/MusicBox" index="5"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 266.0
+margin_top = 268.0
 margin_right = 400.0
-margin_bottom = 320.0
+margin_bottom = 338.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -625,8 +638,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 130.0
-margin_bottom = 54.0
+margin_right = 249.0
+margin_bottom = 70.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -644,25 +657,27 @@ _sections_unfolded = [ "Size Flags", "custom_fonts" ]
 
 [node name="OnButton" parent="HBoxContainer/MusicBox/SFXBox" index="1" instance=ExtResource( 3 )]
 
-margin_left = 134.0
-margin_right = 264.0
-margin_bottom = 54.0
-size_flags_horizontal = 3
+margin_left = 253.0
+margin_right = 320.0
+margin_bottom = 70.0
+focus_mode = 0
 size_flags_vertical = 3
 toggle_mode = true
 group = SubResource( 5 )
-text = "Mute"
+text = ""
+icon = ExtResource( 8 )
 
 [node name="OffButton" parent="HBoxContainer/MusicBox/SFXBox" index="2" instance=ExtResource( 3 )]
 
-margin_left = 268.0
+margin_left = 324.0
 margin_right = 400.0
-margin_bottom = 54.0
-size_flags_horizontal = 3
+margin_bottom = 70.0
+focus_mode = 0
 size_flags_vertical = 3
 toggle_mode = true
 group = SubResource( 5 )
-text = "Mute"
+text = ""
+icon = ExtResource( 9 )
 
 [node name="SFXBar" type="HSlider" parent="HBoxContainer/MusicBox" index="6"]
 
@@ -670,9 +685,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 324.0
+margin_top = 342.0
 margin_right = 400.0
-margin_bottom = 378.0
+margin_bottom = 381.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -694,13 +709,14 @@ focus_mode = 2
 
 [node name="DialogsBox" type="HBoxContainer" parent="HBoxContainer/MusicBox" index="7"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 382.0
+margin_top = 385.0
 margin_right = 400.0
-margin_bottom = 436.0
+margin_bottom = 455.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -715,8 +731,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 130.0
-margin_bottom = 54.0
+margin_right = 249.0
+margin_bottom = 70.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -734,25 +750,27 @@ _sections_unfolded = [ "Size Flags", "custom_fonts" ]
 
 [node name="OnButton" parent="HBoxContainer/MusicBox/DialogsBox" index="1" instance=ExtResource( 3 )]
 
-margin_left = 134.0
-margin_right = 264.0
-margin_bottom = 54.0
-size_flags_horizontal = 3
+margin_left = 253.0
+margin_right = 320.0
+margin_bottom = 70.0
+focus_mode = 0
 size_flags_vertical = 3
 toggle_mode = true
 group = SubResource( 6 )
-text = "Unmute"
+text = ""
+icon = ExtResource( 8 )
 
 [node name="OffButton" parent="HBoxContainer/MusicBox/DialogsBox" index="2" instance=ExtResource( 3 )]
 
-margin_left = 268.0
+margin_left = 324.0
 margin_right = 400.0
-margin_bottom = 54.0
-size_flags_horizontal = 3
+margin_bottom = 70.0
+focus_mode = 0
 size_flags_vertical = 3
 toggle_mode = true
 group = SubResource( 6 )
-text = "Mute"
+text = ""
+icon = ExtResource( 9 )
 
 [node name="DialogsBar" type="HSlider" parent="HBoxContainer/MusicBox" index="8"]
 
@@ -760,7 +778,7 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 440.0
+margin_top = 459.0
 margin_right = 400.0
 margin_bottom = 499.0
 rect_pivot_offset = Vector2( 0, 0 )
