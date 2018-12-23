@@ -8,10 +8,10 @@ func _ready():
 	Ren.connect("exec_statement", self, "_on_statement")
 	
 	$Auto.connect("pressed", self, "on_auto")
-	# $AutoTimer.connect("timeout", self, "on_auto_loop")
 	
 	$Skip.connect("pressed", self, "on_skip")
-	$SkipTimer.connect("timeout", self, "on_skip_loop")
+	# $SkipTimer.connect("timeout", self, "on_skip_loop")
+	Ren.skip_timer.connect("stop_loop", self, "stop_skip")
 	$Skip.disabled = true
 
 	$History.disabled = true
@@ -51,52 +51,23 @@ func _on_statement(type, kwargs):
 	$QLoad.disabled = Ren.cant_qload()
 
 func on_auto():
-	Ren.auto_timer.on_auto()
-	# if not $AutoTimer.is_stopped():
-	# 	$AutoTimer.stop()
-	# 	Ren.skip_auto = false
-	# 	return
-	
-# 	Ren.skip_auto = true
-# 	$AutoTimer.start()
-
-# func on_auto_loop():
-# 	if Ren.current_statement.type in Ren.skip_types:
-# 		Ren.exit_statement()
-
-# 	else:
-# 		$AutoTimer.stop()
-
+	Ren.auto_timer.run()
 
 func stop_skip():
-	$SkipTimer.stop()
 	$InfoAnim.stop()
 	$InfoAnim/Panel.hide()
 
 func on_skip():
-	if not $SkipTimer.is_stopped():
+	if not Ren.skip_timer.run():
 		stop_skip()
-		Ren.skip_auto = false
 		return
 
-	Ren.skip_auto = true
-	$SkipTimer.start()
 	$InfoAnim.play("Skip")
-
-func on_skip_loop():
-	if not Ren.current_statement_in_global_history():
-		if not Ren.get_value("skip_all_text"):
-			stop_skip()
-
-	if Ren.current_statement.type in Ren.skip_types:
-		Ren.exit_statement()
-	else:
-		stop_skip()
 	
 func _input(event):
 	if event.is_action_pressed("ren_forward"):
 		if Ren.skip_auto:
-			$AutoTimer.stop()
+			Ren.auto_timer.stop()
 			stop_skip()
 			Ren.skip_auto = false
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://addons/Ren/main.gd" type="Script" id=1]
 [ext_resource path="res://addons/Ren/types/def.gd" type="Script" id=2]
@@ -17,10 +17,11 @@
 [ext_resource path="res://addons/Ren/statements/stop_audio.gd" type="Script" id=15]
 [ext_resource path="res://addons/Ren/statements/call_node.gd" type="Script" id=16]
 [ext_resource path="res://addons/Ren/statics/AutoTimer.gd" type="Script" id=17]
-[ext_resource path="res://addons/Ren/nodes/ren_timer.gd" type="Script" id=18]
-[ext_resource path="res://addons/Ren/icons/ren_timer.svg" type="Texture" id=19]
+[ext_resource path="res://addons/Ren/statics/SkipTimer.gd" type="Script" id=18]
+[ext_resource path="res://addons/Ren/nodes/ren_timer.gd" type="Script" id=19]
+[ext_resource path="res://addons/Ren/icons/ren_timer.svg" type="Texture" id=20]
 
-[node name="Ren" type="Node"]
+[node name="Ren" type="Node" index="0"]
 
 pause_mode = 2
 script = ExtResource( 1 )
@@ -118,6 +119,7 @@ process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = false
+script = ExtResource( 18 )
 
 [node name="DialogTimer" type="Timer" parent="." index="16"]
 
@@ -125,9 +127,9 @@ process_mode = 1
 wait_time = 0.05
 one_shot = true
 autostart = false
-script = ExtResource( 18 )
+script = ExtResource( 19 )
 __meta__ = {
-"_editor_icon": ExtResource( 19 )
+"_editor_icon": ExtResource( 20 )
 }
 var_name = "speed_text"
 default = 0.05
