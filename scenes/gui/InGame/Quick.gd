@@ -10,12 +10,13 @@ func _ready():
 	$Auto.connect("pressed", self, "on_auto")
 	
 	$Skip.connect("pressed", self, "on_skip")
-	# $SkipTimer.connect("timeout", self, "on_skip_loop")
-	Ren.skip_timer.connect("stop_loop", self, "stop_skip")
 	$Skip.disabled = true
 
-	$History.disabled = true
+	Ren.skip_timer.connect("stop_loop", self, "on_stop_loop")
+	Ren.auto_timer.connect("stop_loop", self, "on_stop_loop")
+
 	$History.connect("pressed", Screens, "history_menu")
+	$History.disabled = true
 	
 	$QSave.connect("pressed", self, "_on_qsave")
 	$QLoad.connect("pressed",self, "_on_qload")
@@ -51,15 +52,20 @@ func _on_statement(type, kwargs):
 	$QLoad.disabled = Ren.cant_qload()
 
 func on_auto():
-	Ren.auto_timer.run()
+	if not Ren.auto_timer.run():
+		on_stop_loop()
+		return
+	
+	$InfoAnim.play("Auto")
 
-func stop_skip():
+
+func on_stop_loop():
 	$InfoAnim.stop()
 	$InfoAnim/Panel.hide()
 
 func on_skip():
 	if not Ren.skip_timer.run():
-		stop_skip()
+		on_stop_loop()
 		return
 
 	$InfoAnim.play("Skip")
@@ -68,9 +74,9 @@ func _input(event):
 	if event.is_action_pressed("ren_forward"):
 		if Ren.skip_auto:
 			Ren.auto_timer.stop()
-			stop_skip()
+			Ren.skip_timer.stop()
+			on_stop_loop()
 			Ren.skip_auto = false
-	
 
 func full_save():
 	var screenshot = get_viewport().get_texture().get_data()
