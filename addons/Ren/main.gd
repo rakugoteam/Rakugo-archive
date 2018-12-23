@@ -13,10 +13,12 @@ export (String, DIR) var scenes_dir = "res://scenes/examples/"
 const ren_version = "0.9.51"
 const credits_path = "res://addons/Ren/credits.txt"
 
-var skip_all_text = false
-var skip_after_choices = false
-var auto_speed = 1
-var text_speed = 0.01
+## init vars for settings
+var _skip_all_text = false
+var _skip_after_choices = false
+var _auto_speed = 1
+var _text_speed = 0.01
+var _notify_time = 5
 
 enum Type {
 	VAR,		# 0
@@ -79,7 +81,6 @@ onready var step_timer = $StepTimer
 onready var dialog_timer = $DialogTimer
 onready var notify_timer = $NotifyTimer
 
-
 var story_state setget _set_story_state, _get_story_state
 
 signal started
@@ -112,10 +113,11 @@ func _ready():
 	define("story_state", "")
 
 	## vars for ren settings
-	define("skip_all_text", skip_all_text)
-	define("skip_after_choices", skip_after_choices)
-	define("auto_speed", auto_speed)
-	define("text_speed", text_speed)
+	define("skip_all_text", _skip_all_text)
+	define("skip_after_choices", _skip_after_choices)
+	define("auto_speed", _auto_speed)
+	define("text_speed", _text_speed)
+	define("notify_time", _notify_time)
 
 	## test vars
 	define("test_bool", false)
@@ -315,9 +317,11 @@ func hide(node_id):
 	_set_statement($Hide, kwargs)
 
 ## statement of type notify
-func notifiy(info, length=5):
+func notifiy(info, length = Ren.get_value("notify_time")):
 	var kwargs = {"info": info,"length":length}
 	_set_statement($Notify, kwargs)
+	notify_timer.wait_time = kwargs.length
+	notify_timer.start()
 
 ## statement of type play_anim
 ## it will play animation with anim_name form RenAnimPlayer with given node_id

@@ -697,7 +697,7 @@ tracks/8/keys = {
 "values": [ Vector2( 100, 111 ) ]
 }
 
-[node name="RenSayPanel" type="Panel" index="0"]
+[node name="RenSayPanel" type="Panel"]
 
 anchor_left = 0.0
 anchor_top = 0.0
