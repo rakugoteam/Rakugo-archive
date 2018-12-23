@@ -60,6 +60,7 @@ var current_statement = null
 var using_passer = false
 var skip_auto = false
 var current_node = null
+var active = false
 var skip_types = [
 		StatementType.SAY,
 		StatementType.SHOW,
@@ -120,7 +121,10 @@ func _ready():
 	define("test_bool", false)
 	define("test_float", 10.0)
 
+	step_timer.connect("timeout", self, "_on_time_active_timeout")
 
+func _on_time_active_timeout():
+	active = true
 
 func exec_statement(type, kwargs = {}):
 	emit_signal("exec_statement", type, kwargs)
@@ -266,6 +270,8 @@ func _set_statement(node, kwargs):
 		kwargs["speed"] = get_value("text_speed")
 	node.set_kwargs(kwargs)
 	node.exec()
+	active = false
+	step_timer.start()
 
 ## statement of type say
 ## there can be only one say, ask or menu in story_state at it end

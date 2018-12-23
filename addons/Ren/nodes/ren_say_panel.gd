@@ -12,22 +12,16 @@ var avatar_path = ""
 var avatar
 var _type
 var typing = false
-var active = true
-
 
 func _ready():
 	connect("gui_input", self, "_on_adv_gui_input")
 	Ren.connect("exec_statement", self, "_on_statement")
-	Ren.step_timer.connect("timeout", self, "_on_time_active_timeout")
-
-func _on_time_active_timeout():
-	active = true
 
 func _input(event):
 	if not event.is_action_pressed("ren_forward"):
 		return
 
-	if not active:
+	if not Ren.active:
 		return
 	
 	if Ren.skip_auto:
@@ -44,8 +38,6 @@ func _input(event):
 		Ren.exit_statement()
 
 func _on_statement(type, kwargs):
-	active = false
-	Ren.step_timer.start()
 	if "kind" in kwargs:
 		$AnimationPlayer.play(kwargs.kind)
 	
