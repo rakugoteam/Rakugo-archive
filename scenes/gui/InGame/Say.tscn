@@ -873,6 +873,6 @@ __meta__ = {
 "_editor_icon": ExtResource( 12 )
 }
 var_name = "speed_text"
-default = 1
+default = 0.05
 
 

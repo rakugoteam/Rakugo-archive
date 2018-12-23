@@ -1,8 +1,8 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://addons/Ren/main.gd" type="Script" id=1]
 [ext_resource path="res://addons/Ren/types/def.gd" type="Script" id=2]
-[ext_resource path="res://addons/Ren/text.gd" type="Script" id=3]
+[ext_resource path="res://addons/Ren/statics/text.gd" type="Script" id=3]
 [ext_resource path="res://addons/PersistenceNode/persistence_node.gd" type="Script" id=4]
 [ext_resource path="res://addons/PersistenceNode/icon.svg" type="Texture" id=5]
 [ext_resource path="res://addons/Ren/statements/say.gd" type="Script" id=6]
@@ -16,6 +16,9 @@
 [ext_resource path="res://addons/Ren/statements/play_audio.gd" type="Script" id=14]
 [ext_resource path="res://addons/Ren/statements/stop_audio.gd" type="Script" id=15]
 [ext_resource path="res://addons/Ren/statements/call_node.gd" type="Script" id=16]
+[ext_resource path="res://addons/Ren/statics/AutoTimer.gd" type="Script" id=17]
+[ext_resource path="res://addons/Ren/nodes/ren_timer.gd" type="Script" id=18]
+[ext_resource path="res://addons/Ren/icons/ren_timer.svg" type="Texture" id=19]
 
 [node name="Ren" type="Node"]
 
@@ -55,55 +58,92 @@ beautifier_active = true
 profile_name_min_size = 1
 profile_name_max_size = 15
 
-[node name="Timer" type="Timer" parent="." index="3"]
-
-process_mode = 1
-wait_time = 0.1
-one_shot = true
-autostart = false
-
-[node name="Say" type="Node" parent="." index="4"]
+[node name="Say" type="Node" parent="." index="3"]
 
 script = ExtResource( 6 )
 
-[node name="Ask" type="Node" parent="." index="5"]
+[node name="Ask" type="Node" parent="." index="4"]
 
 script = ExtResource( 7 )
 
-[node name="Menu" type="Node" parent="." index="6"]
+[node name="Menu" type="Node" parent="." index="5"]
 
 script = ExtResource( 8 )
 
-[node name="Show" type="Node" parent="." index="7"]
+[node name="Show" type="Node" parent="." index="6"]
 
 script = ExtResource( 9 )
 
-[node name="Hide" type="Node" parent="." index="8"]
+[node name="Hide" type="Node" parent="." index="7"]
 
 script = ExtResource( 10 )
 
-[node name="Notify" type="Node" parent="." index="9"]
+[node name="Notify" type="Node" parent="." index="8"]
 
 script = ExtResource( 11 )
 
-[node name="PlayAnim" type="Node" parent="." index="10"]
+[node name="PlayAnim" type="Node" parent="." index="9"]
 
 script = ExtResource( 12 )
 
-[node name="StopAnim" type="Node" parent="." index="11"]
+[node name="StopAnim" type="Node" parent="." index="10"]
 
 script = ExtResource( 13 )
 
-[node name="PlayAudio" type="Node" parent="." index="12"]
+[node name="PlayAudio" type="Node" parent="." index="11"]
 
 script = ExtResource( 14 )
 
-[node name="StopAudio" type="Node" parent="." index="13"]
+[node name="StopAudio" type="Node" parent="." index="12"]
 
 script = ExtResource( 15 )
 
-[node name="CallNode" type="Node" parent="." index="14"]
+[node name="CallNode" type="Node" parent="." index="13"]
 
 script = ExtResource( 16 )
+
+[node name="AutoTimer" type="Timer" parent="." index="14"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+script = ExtResource( 17 )
+var_name = "auto_speed"
+default = 1
+
+[node name="SkipTimer" type="Timer" parent="." index="15"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[node name="DialogTimer" type="Timer" parent="." index="16"]
+
+process_mode = 1
+wait_time = 0.05
+one_shot = true
+autostart = false
+script = ExtResource( 18 )
+__meta__ = {
+"_editor_icon": ExtResource( 19 )
+}
+var_name = "speed_text"
+default = 0.05
+
+[node name="StepTimer" type="Timer" parent="." index="17"]
+
+process_mode = 1
+wait_time = 0.01
+one_shot = true
+autostart = false
+
+[node name="NotifyTimer" type="Timer" parent="." index="18"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
 
 

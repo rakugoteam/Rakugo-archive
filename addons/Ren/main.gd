@@ -71,8 +71,13 @@ var loading_in_progress = false
 var started = false
 var quests = [] # list of all quests ids
 
+# timers use by ren
+onready var auto_timer = $AutoTimer
+onready var skip_timer = $SkipTimer
+onready var step_timer = $StepTimer
+onready var dialog_timer = $DialogTimer
+onready var notify_timer = $NotifyTimer
 
-onready var timer = $Timer
 
 var story_state setget _set_story_state, _get_story_state
 
@@ -89,8 +94,6 @@ signal play_audio(node_id, from_pos)
 signal stop_audio(node_id)
 
 func _ready():
-	timer.connect("timeout", self, "exit_statement")
-
 	## set by game devloper
 	define("title", game_title)
 	define("version", game_version)

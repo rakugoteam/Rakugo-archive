@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://themes/new_gui/theme.tres" type="Theme" id=1]
 [ext_resource path="res://addons/Ren/nodes/ren_menu.gd" type="Script" id=2]
@@ -23,6 +23,10 @@ use_mipmaps = false
 use_filter = true
 font_data = ExtResource( 9 )
 _sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="ButtonGroup" id=11]
+
+resource_local_to_scene = true
 
 [sub_resource type="Animation" id=2]
 
@@ -316,7 +320,7 @@ use_filter = true
 font_data = ExtResource( 15 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="InGameGUI" type="Control"]
+[node name="InGameGUI" type="Control" index="0"]
 
 pause_mode = 1
 anchor_left = 0.0
@@ -547,9 +551,13 @@ text = "Quests"
 margin_left = 204.0
 margin_right = 302.0
 margin_bottom = 34.0
+focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
+toggle_mode = true
+enabled_focus_mode = 0
+group = SubResource( 11 )
 text = "Skip"
 
 [node name="Auto" parent="Quick" index="3" instance=ExtResource( 8 )]
@@ -557,12 +565,31 @@ text = "Skip"
 margin_left = 306.0
 margin_right = 404.0
 margin_bottom = 34.0
+focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
+toggle_mode = true
+enabled_focus_mode = 0
+group = SubResource( 11 )
 text = "Auto"
 
-[node name="Save" parent="Quick" index="4" instance=ExtResource( 8 )]
+[node name="SkipAutoOff" parent="Quick" index="4" instance=ExtResource( 8 )]
+
+visible = false
+margin_left = 369.0
+margin_right = 457.0
+margin_bottom = 34.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+toggle_mode = true
+enabled_focus_mode = 0
+group = SubResource( 11 )
+text = ""
+
+[node name="Save" parent="Quick" index="5" instance=ExtResource( 8 )]
 
 margin_left = 408.0
 margin_right = 506.0
@@ -572,7 +599,7 @@ size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Save"
 
-[node name="Load" parent="Quick" index="5" instance=ExtResource( 8 )]
+[node name="Load" parent="Quick" index="6" instance=ExtResource( 8 )]
 
 margin_left = 510.0
 margin_right = 608.0
@@ -582,7 +609,7 @@ size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Load"
 
-[node name="QSave" parent="Quick" index="6" instance=ExtResource( 8 )]
+[node name="QSave" parent="Quick" index="7" instance=ExtResource( 8 )]
 
 margin_left = 612.0
 margin_right = 710.0
@@ -592,7 +619,7 @@ size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Q. Save"
 
-[node name="QLoad" parent="Quick" index="7" instance=ExtResource( 8 )]
+[node name="QLoad" parent="Quick" index="8" instance=ExtResource( 8 )]
 
 margin_left = 714.0
 margin_right = 812.0
@@ -602,7 +629,7 @@ size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Q. Load"
 
-[node name="Options" parent="Quick" index="8" instance=ExtResource( 8 )]
+[node name="Options" parent="Quick" index="9" instance=ExtResource( 8 )]
 
 margin_left = 816.0
 margin_right = 914.0
@@ -612,7 +639,7 @@ size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Options"
 
-[node name="Quit" parent="Quick" index="9" instance=ExtResource( 8 )]
+[node name="Quit" parent="Quick" index="10" instance=ExtResource( 8 )]
 
 margin_left = 918.0
 margin_right = 1024.0
@@ -622,14 +649,14 @@ size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Quit"
 
-[node name="SkipTimer" type="Timer" parent="Quick" index="10"]
+[node name="SkipTimer" type="Timer" parent="Quick" index="11"]
 
 process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = false
 
-[node name="AutoTimer" type="Timer" parent="Quick" index="11"]
+[node name="AutoTimer" type="Timer" parent="Quick" index="12"]
 
 process_mode = 1
 wait_time = 1.0
@@ -642,7 +669,7 @@ __meta__ = {
 var_name = "auto_speed"
 default = 1
 
-[node name="InfoAnim" type="AnimationPlayer" parent="Quick" index="12"]
+[node name="InfoAnim" type="AnimationPlayer" parent="Quick" index="13"]
 
 editor/display_folded = true
 root_node = NodePath("..")

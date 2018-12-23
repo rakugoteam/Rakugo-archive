@@ -8,7 +8,7 @@ func _ready():
 	Ren.connect("exec_statement", self, "_on_statement")
 	
 	$Auto.connect("pressed", self, "on_auto")
-	$AutoTimer.connect("timeout", self, "on_auto_loop")
+	# $AutoTimer.connect("timeout", self, "on_auto_loop")
 	
 	$Skip.connect("pressed", self, "on_skip")
 	$SkipTimer.connect("timeout", self, "on_skip_loop")
@@ -51,20 +51,21 @@ func _on_statement(type, kwargs):
 	$QLoad.disabled = Ren.cant_qload()
 
 func on_auto():
-	if not $AutoTimer.is_stopped():
-		$AutoTimer.stop()
-		Ren.skip_auto = false
-		return
+	Ren.auto_timer.on_auto()
+	# if not $AutoTimer.is_stopped():
+	# 	$AutoTimer.stop()
+	# 	Ren.skip_auto = false
+	# 	return
 	
-	Ren.skip_auto = true
-	$AutoTimer.start()
+# 	Ren.skip_auto = true
+# 	$AutoTimer.start()
 
-func on_auto_loop():
-	if Ren.current_statement.type in Ren.skip_types:
-		Ren.exit_statement()
+# func on_auto_loop():
+# 	if Ren.current_statement.type in Ren.skip_types:
+# 		Ren.exit_statement()
 
-	else:
-		$AutoTimer.stop()
+# 	else:
+# 		$AutoTimer.stop()
 
 
 func stop_skip():
