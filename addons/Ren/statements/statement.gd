@@ -51,7 +51,7 @@ func get_as_history_item():
 			"kwargs": hkwargs
 		}
 	}
-	return hkwargs
+	return history_item
 
 
 func add_to_history():

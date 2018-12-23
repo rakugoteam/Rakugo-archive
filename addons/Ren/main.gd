@@ -544,27 +544,28 @@ func jump(
 		story_step()
 
 func current_statement_in_global_history():
-	var kwargs = current_statement.kwargs
-	if not kwargs.add_to_history:
-		return true
-	
+	var r = true
+	var i = 0
 	var hi_item = current_statement.get_as_history_item()
-	if not hi_item.has("state"):
-		return true
+	if current_statement.kwargs.add_to_history:
+		i = 1
+		if hi_item.has("state"):
+			i = 2
+			for hx_item in history:
+				if hx_item.state != hi_item.state:
+					r = false
+				i = 3
+				var x_statement = hx_item.statement
+				var c_statement = hi_item.statement
+				if x_statement.type != c_statement.type:
+					r = false
+				i = 4
+				if x_statement.kwargs != c_statement.kwargs:
+					r = false
+	
+	# prints(hi_item, "r =", str(r), "i =", str(i))
+	return r
 
-	for hx_item in history:
-		if hx_item.state != hi_item.state:
-			return false
-		
-		var x_statement = hx_item.statement
-		var c_statement = hi_item.statement
-		if x_statement.type != c_statement.type:
-			return false
-		
-		if x_statement.kwargs != c_statement.kwargs:
-			return false
-
-	return true
 
 func cant_auto():
 	return not(current_statement.type in skip_types)
