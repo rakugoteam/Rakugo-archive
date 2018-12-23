@@ -381,7 +381,7 @@ use_filter = true
 font_data = ExtResource( 13 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="InGameGUI" type="Control" index="0"]
+[node name="InGameGUI" type="Control"]
 
 pause_mode = 1
 anchor_left = 0.0
@@ -618,13 +618,12 @@ margin_right = 312.0
 margin_bottom = 40.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 toggle_mode = true
-enabled_focus_mode = 2
+enabled_focus_mode = 0
 shortcut = null
 group = null
 text = "Skip"
@@ -642,13 +641,12 @@ margin_right = 446.0
 margin_bottom = 40.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 toggle_mode = true
-enabled_focus_mode = 2
+enabled_focus_mode = 0
 shortcut = null
 group = null
 text = "Auto"
@@ -715,14 +713,7 @@ size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Quit"
 
-[node name="SkipTimer" type="Timer" parent="Quick" index="10"]
-
-process_mode = 1
-wait_time = 1.0
-one_shot = false
-autostart = false
-
-[node name="InfoAnim" type="AnimationPlayer" parent="Quick" index="11"]
+[node name="InfoAnim" type="AnimationPlayer" parent="Quick" index="10"]
 
 editor/display_folded = true
 root_node = NodePath("..")
@@ -773,7 +764,7 @@ custom_colors/default_color = Color( 1, 1, 1, 1 )
 custom_colors/selection_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = false
 bbcode_text = "Game was saved"
-text = "Auto"
+text = "Game was saved"
 _sections_unfolded = [ "BBCode", "Rect", "Visibility", "custom_colors", "custom_fonts" ]
 
 

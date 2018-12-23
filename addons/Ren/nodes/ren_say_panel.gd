@@ -18,8 +18,7 @@ var active = true
 func _ready():
 	connect("gui_input", self, "_on_adv_gui_input")
 	Ren.connect("exec_statement", self, "_on_statement")
-	$StepTimer.connect("timeout", self, "_on_time_active_timeout")
-
+	Ren.step_timer.connect("timeout", self, "_on_time_active_timeout")
 
 func _on_time_active_timeout():
 	active = true
@@ -27,28 +26,26 @@ func _on_time_active_timeout():
 func _input(event):
 	if not event.is_action_pressed("ren_forward"):
 		return
-	
-	if $StepTimer.is_stopped():
-		active = false
-		$StepTimer.start()
 
+	if not active:
+		return
+	
 	if Ren.skip_auto:
 		Ren.auto_timer.stop_loop()
 		Ren.skip_timer.stop_loop()
-		
 		Ren.skip_auto = false
-
-	elif typing: # if typing complete it
+		return
+	
+	if typing: # if typing complete it
 		typing = false
 		return
 
 	elif _type == Ren.StatementType.SAY: # else exit statement
-		active = true
-		$StepTimer.stop()
 		Ren.exit_statement()
 
-
 func _on_statement(type, kwargs):
+	active = false
+	Ren.step_timer.start()
 	if "kind" in kwargs:
 		$AnimationPlayer.play(kwargs.kind)
 	
@@ -79,7 +76,7 @@ func _on_statement(type, kwargs):
 		else:
 			# object is fine so you can do something with it:
 			avatar.free()
-		
+	
 	return
 
 func write_dialog(text, speed):
@@ -121,9 +118,6 @@ func write_dialog(text, speed):
 
 
 func _on_adv_gui_input(ev):
-	if not active:
-		return
-
 	if not (ev is InputEventMouseButton):
 		return
 
