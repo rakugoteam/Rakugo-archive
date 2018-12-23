@@ -17,7 +17,7 @@
 [ext_resource path="res://addons/Ren/statements/stop_audio.gd" type="Script" id=15]
 [ext_resource path="res://addons/Ren/statements/call_node.gd" type="Script" id=16]
 
-[node name="Ren" type="Node"]
+[node name="Ren" type="Node" index="0"]
 
 pause_mode = 2
 script = ExtResource( 1 )
@@ -27,7 +27,7 @@ game_version = "0.0.1"
 game_credits = "Your Company"
 markups = "ren"
 links_color = Color( 0.133333, 0.368627, 0.74902, 1 )
-debug_on = true
+debug_on = false
 save_folder = "saves"
 save_password = "ren"
 scenes_dir = "res://scenes/examples/"

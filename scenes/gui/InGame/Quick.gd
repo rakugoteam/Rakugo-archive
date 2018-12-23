@@ -84,7 +84,8 @@ func on_skip():
 
 func on_skip_loop():
 	if not Ren.current_statement_in_global_history():
-		stop_skip()
+		if not Ren.skip_all_text:
+			stop_skip()
 
 	if Ren.current_statement.type in Ren.skip_types:
 		Ren.exit_statement()

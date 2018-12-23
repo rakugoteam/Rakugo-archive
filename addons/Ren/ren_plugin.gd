@@ -149,6 +149,13 @@ func _enter_tree():
 		preload("icons/ren_audio_player.svg")
 		)
 	
+	add_custom_type(
+		"RenTimer",
+		"Timer",
+		preload("nodes/ren_timer.gd"),
+		preload("icons/ren_timer.svg")
+	)
+	
 	print("Ren is Active")
 	
 func _exit_tree():
@@ -175,4 +182,4 @@ func _exit_tree():
 	remove_custom_type("RenVarCheckButton")
 	remove_custom_type("RenAnimPlayer")
 	remove_custom_type("RenAudioPlayer")
-	
+	remove_custom_type("RenTimer")

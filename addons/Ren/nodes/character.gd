@@ -23,7 +23,6 @@ func _on_start():
 	_character = Ren.character(_id, dict)
 	var dbg = Ren.debug_dict(dict, _character.kws, "Set Character " + _id + " with ")
 	Ren.debug(dbg)
-	prints(Ren.get_value(_id), Ren.get_type(_id))
 
 func _set_character_id(value):
 	if Ren.variables.has(_id):

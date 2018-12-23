@@ -218,7 +218,6 @@ func character(character_id, kwargs):
 	return $Def.define(variables, character_id, kwargs, Type.CHARACTER)
 
 func get_character(character_id):
-	print(get_value(character_id))
 	return get_var(character_id, Type.CHARACTER)
 
 ## crate new link to node as global variable that Ren will see
