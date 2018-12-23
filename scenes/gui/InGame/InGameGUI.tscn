@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://themes/new_gui/theme.tres" type="Theme" id=1]
 [ext_resource path="res://addons/Ren/nodes/ren_menu.gd" type="Script" id=2]
@@ -9,10 +9,11 @@
 [ext_resource path="res://scenes/gui/InGame/Quick.gd" type="Script" id=7]
 [ext_resource path="res://scenes/gui/InGame/QuickMenuButton.tscn" type="PackedScene" id=8]
 [ext_resource path="res://ubuntu-font-family/Ubuntu-B.ttf" type="DynamicFontData" id=9]
-[ext_resource path="res://scenes/gui/Labels/name_text.tscn" type="PackedScene" id=10]
-[ext_resource path="res://ubuntu-font-family/UbuntuMono-R.ttf" type="DynamicFontData" id=11]
-[ext_resource path="res://ubuntu-font-family/Ubuntu-RI.ttf" type="DynamicFontData" id=12]
-[ext_resource path="res://ubuntu-font-family/Ubuntu-R.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://addons/Ren/nodes/ren_timer.gd" type="Script" id=10]
+[ext_resource path="res://scenes/gui/Labels/name_text.tscn" type="PackedScene" id=11]
+[ext_resource path="res://ubuntu-font-family/UbuntuMono-R.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://ubuntu-font-family/Ubuntu-RI.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://ubuntu-font-family/Ubuntu-R.ttf" type="DynamicFontData" id=14]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -279,7 +280,7 @@ tracks/4/keys = {
 size = 30
 use_mipmaps = false
 use_filter = true
-font_data = ExtResource( 11 )
+font_data = ExtResource( 12 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=7]
@@ -295,7 +296,7 @@ _sections_unfolded = [ "Font", "Settings" ]
 size = 30
 use_mipmaps = false
 use_filter = true
-font_data = ExtResource( 12 )
+font_data = ExtResource( 13 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=9]
@@ -311,10 +312,10 @@ _sections_unfolded = [ "Font", "Settings" ]
 size = 30
 use_mipmaps = false
 use_filter = true
-font_data = ExtResource( 13 )
+font_data = ExtResource( 14 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="InGameGUI" type="Control" index="0"]
+[node name="InGameGUI" type="Control"]
 
 pause_mode = 1
 anchor_left = 0.0
@@ -633,6 +634,9 @@ process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = false
+script = ExtResource( 10 )
+var_name = "auto_speed"
+default = 1
 
 [node name="InfoAnim" type="AnimationPlayer" parent="Quick" index="12"]
 
@@ -671,7 +675,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Label" parent="Quick/InfoAnim/Panel" index="0" instance=ExtResource( 10 )]
+[node name="Label" parent="Quick/InfoAnim/Panel" index="0" instance=ExtResource( 11 )]
 
 margin_right = 249.0
 custom_fonts/mono_font = SubResource( 6 )

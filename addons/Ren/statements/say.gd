@@ -3,7 +3,7 @@ extends "statement.gd"
 func _init():
 	._init()
 	type = 1 # Ren.StatementType.SAY
-	kws += ["who", "what"]
+	kws += ["who", "what", "text_speed", "kind"]
 	kwargs["who"] = ""
 	kwargs["add_to_history"] = true
 

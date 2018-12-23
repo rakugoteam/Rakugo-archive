@@ -5,8 +5,6 @@ export(String) var default = ""
 export(String, "str", "bool", "float", "int") var type = "str" 
 
 func _ready():
-	mouse_filter = MOUSE_FILTER_IGNORE
-	
 	if not (var_name in Ren.variables):
 		Ren.define_from_str(var_name, default, type)
 	

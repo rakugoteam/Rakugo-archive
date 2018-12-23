@@ -5,16 +5,18 @@ export (String) var game_version = "0.0.1"
 export (String) var game_credits = "Your Company"
 export (String, "ren", "bbcode") var markups = "ren"
 export (Color) var links_color = Color("#225ebf")
-export (int, "Seen Text", "All Text") var skipping_mode = 0
-export (bool) var skip_after_choices = false
-# export (float, 
 export (bool) var debug_on = true
 export (String) var save_folder = "saves"
 export (String) var save_password = "Ren"
 export (String, DIR) var scenes_dir = "res://scenes/examples/"
 
-const FOLDER_CONFIG_NAME = "Config"
-const FILE_CONFIG_NAME = "Config"
+const ren_version = "0.9.51"
+const credits_path = "res://addons/Ren/credits.txt"
+
+var skip_all_text = false
+var skip_after_choices = false
+var auto_speed = 1
+var text_speed = 0.01
 
 enum Type {
 	VAR,		# 0
@@ -87,22 +89,35 @@ signal play_audio(node_id, from_pos)
 signal stop_audio(node_id)
 
 func _ready():
-	# config_data()
 	timer.connect("timeout", self, "exit_statement")
+
+	## set by game devloper
 	define("title", game_title)
 	define("version", game_version)
 	OS.set_window_title(game_title + " " + game_version)
 	define("credits", game_credits)
-	define("ren_version", "0.9.35")
-	file.open("res://addons/Ren/credits.txt", file.READ)
+
+	## set by ren
+	define("ren_version", ren_version)
+	file.open(credits_path, file.READ)
 	define("ren_credits", file.get_as_text())
 	file.close()
 	var gdv = Engine.get_version_info()
 	var gdv_string = str(gdv.major) + "." + str(gdv.minor) + "." + str(gdv.patch)
 	define("godot_version", gdv_string)
+	define("story_state", "")
+
+	## vars for ren settings
+	define("skip_all_text", skip_all_text)
+	define("skip_after_choices", skip_after_choices)
+	define("auto_speed", auto_speed)
+	define("text_speed", text_speed)
+
+	## test vars
 	define("test_bool", false)
 	define("test_float", 10.0)
-	define("story_state", "")
+
+
 
 func exec_statement(type, kwargs = {}):
 	emit_signal("exec_statement", type, kwargs)
@@ -185,7 +200,7 @@ func get_var(var_name, type = Type.VAR):
 func get_def_type(variable):
 	return $Def.get_type(variable)
 
-## returns variable defined using define
+## returns value of variable defined using define
 func get_value(var_name):
 	return variables[var_name].value
 
@@ -245,13 +260,16 @@ func get_quest(quest_id):
 	return get_var(quest_id, Type.QUEST)
 
 func _set_statement(node, kwargs):
+	if not kwargs.has("speed"):
+		kwargs["speed"] = get_value("text_speed")
 	node.set_kwargs(kwargs)
 	node.exec()
 
 ## statement of type say
 ## there can be only one say, ask or menu in story_state at it end
 ## its make given character(who) talk (what)
-## with keywords : who, what, kind
+## with keywords : who, what, kind, speed
+## speed is time to show next letter
 func say(kwargs):
 	_set_statement($Say, kwargs)
 
@@ -259,14 +277,16 @@ func say(kwargs):
 ## there can be only one say, ask or menu in story_state at it end
 ## its allow player to provide keybord ask that will be assain to given variable
 ## it also will return RenVar variable
-## with keywords : who, what, kind, variable, value
+## with keywords : who, what, kind, speed variable, value
+## speed is time to show next letter
 func ask(kwargs):
 	_set_statement($Ask, kwargs)
 
 ## statement of type menu
 ## there can be only one say, ask or menu in story_state at it end
 ## its allow player to make choice
-## with keywords : who, what, kind, choices, mkind
+## with keywords : who, what, kind, speed choices, mkind
+## speed is time to show next letter
 func menu(kwargs):
 	_set_statement($Menu, kwargs)
 
