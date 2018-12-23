@@ -6,7 +6,6 @@ var load_error_msg = "[color=red]Error loading Game[/color]"
 
 func _ready():
 	Ren.connect("exec_statement", self, "_on_statement")
-	
 	$Auto.connect("pressed", self, "on_auto")
 	
 	$Skip.connect("pressed", self, "on_skip")
@@ -58,8 +57,9 @@ func on_auto():
 	
 	$InfoAnim.play("Auto")
 
-
 func on_stop_loop():
+	$Auto.pressed = false
+	$Skip.pressed = false
 	$InfoAnim.stop()
 	$InfoAnim/Panel.hide()
 
@@ -69,14 +69,6 @@ func on_skip():
 		return
 
 	$InfoAnim.play("Skip")
-	
-func _input(event):
-	if event.is_action_pressed("ren_forward"):
-		if Ren.skip_auto:
-			Ren.auto_timer.stop()
-			Ren.skip_timer.stop()
-			on_stop_loop()
-			Ren.skip_auto = false
 
 func full_save():
 	var screenshot = get_viewport().get_texture().get_data()

@@ -5,6 +5,10 @@ signal stop_loop
 func _ready():
 	connect("timeout", self, "on_loop")
 
+func stop_loop():
+	stop()
+	emit_signal("stop_loop")
+
 func run():
 	if not is_stopped():
 		stop()
@@ -20,5 +24,4 @@ func on_loop():
 		Ren.exit_statement()
 	
 	else:
-		stop()
-		emit_signal("stop_loop")
+		stop_loop()

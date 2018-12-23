@@ -33,8 +33,10 @@ func _input(event):
 		$StepTimer.start()
 
 	if Ren.skip_auto:
+		Ren.auto_timer.stop_loop()
+		Ren.skip_timer.stop_loop()
+		
 		Ren.skip_auto = false
-		return
 
 	elif typing: # if typing complete it
 		typing = false
