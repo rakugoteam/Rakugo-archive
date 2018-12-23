@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://addons/Ren/nodes/ren_say_panel.gd" type="Script" id=1]
 [ext_resource path="res://addons/Ren/icons/ren_panel.svg" type="Texture" id=2]
@@ -10,8 +10,6 @@
 [ext_resource path="res://scenes/gui/Labels/dialogue_text.tscn" type="PackedScene" id=8]
 [ext_resource path="res://addons/Ren/nodes/ren_line_edit.gd" type="Script" id=9]
 [ext_resource path="res://addons/Ren/icons/ren_line_edit.svg" type="Texture" id=10]
-[ext_resource path="res://addons/Ren/nodes/ren_timer.gd" type="Script" id=11]
-[ext_resource path="res://addons/Ren/icons/ren_timer.svg" type="Texture" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -699,7 +697,7 @@ tracks/8/keys = {
 "values": [ Vector2( 100, 111 ) ]
 }
 
-[node name="RenSayPanel" type="Panel"]
+[node name="RenSayPanel" type="Panel" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -854,25 +852,5 @@ anims/left = SubResource( 8 )
 anims/right = SubResource( 9 )
 anims/top = SubResource( 10 )
 blend_times = [  ]
-
-[node name="StepTimer" type="Timer" parent="." index="3"]
-
-process_mode = 1
-wait_time = 0.01
-one_shot = true
-autostart = false
-
-[node name="DialogTimer" type="Timer" parent="." index="4"]
-
-process_mode = 1
-wait_time = 0.05
-one_shot = true
-autostart = false
-script = ExtResource( 11 )
-__meta__ = {
-"_editor_icon": ExtResource( 12 )
-}
-var_name = "speed_text"
-default = 0.05
 
 

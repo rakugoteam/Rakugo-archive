@@ -82,11 +82,11 @@ func write_dialog(text, speed):
 		DialogText.bbcode_text = ""
 
 	var te = ""
-	$DialogTimer.wait_time = speed
+	Ren.dialog_timer.wait_time = speed
 
 	var markup = false
 	for letter in text:
-		$DialogTimer.start()
+		Ren.dialog_timer.start()
 		te += letter
 		if letter == "[":
 			markup = true
@@ -100,7 +100,7 @@ func write_dialog(text, speed):
 		if DialogText.has_method("set_bbcode"):
 			DialogText.bbcode_text = te
 
-		yield($DialogTimer, "timeout")
+		yield(Ren.dialog_timer, "timeout")
 		if !typing:
 
 			if DialogText.has_method("set_bbcode"):
