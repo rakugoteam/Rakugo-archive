@@ -25,9 +25,10 @@ func on_loop():
 	if not Ren.current_statement_in_global_history():
 		if not Ren.get_value("skip_all_text"):
 			stop_loop()
+			return
 
 	if Ren.current_statement.type in Ren.skip_types:
 		Ren.exit_statement()
+		return
 
-	else:
-		stop_loop()
+	stop_loop()
