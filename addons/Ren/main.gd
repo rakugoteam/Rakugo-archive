@@ -599,11 +599,11 @@ func current_statement_in_global_history():
 
 
 func cant_auto():
-	return not(current_statement.type in skip_types)
+	return not (current_statement.type in skip_types)
 
 func cant_skip():
 	var not_seen = not(current_statement_in_global_history())
-	return cant_auto() or not_seen
+	return cant_auto() and not_seen
 
 func cant_qload():
 	var path = str("user://", save_folder, "/quick")
