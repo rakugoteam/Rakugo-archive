@@ -42,7 +42,7 @@ enum StatementType {
 	PLAY_ANIM,	# 7
 	STOP_ANIM,	# 8
 	PLAY_AUDIO,	# 9
-	STOP_AUDIO	# 10
+	STOP_AUDIO,	# 10
 	CALL_NODE	# 11
 }
 
@@ -66,7 +66,13 @@ var active = false
 var skip_types = [
 		StatementType.SAY,
 		StatementType.SHOW,
-		StatementType.HIDE
+		StatementType.HIDE,
+		StatementType.NOTIFY,
+		StatementType.PLAY_ANIM,
+		StatementType.STOP_ANIM,
+		StatementType.PLAY_AUDIO,
+		StatementType.STOP_AUDIO,
+		StatementType.CALL_NODE
 	]
 
 var file = File.new()
