@@ -560,23 +560,41 @@ func current_statement_in_global_history():
 	var r = true
 	var i = 0
 	var hi_item = current_statement.get_as_history_item()
-	if current_statement.kwargs.add_to_history:
+
+	if not current_statement.kwargs.add_to_history:
 		i = 1
-		if hi_item.has("state"):
-			i = 2
-			for hx_item in history:
-				if hx_item.state != hi_item.state:
-					r = false
+		r = true
+		prints(hi_item, "r =", str(r), "i =", str(i))
+		return r
+
+	if not hi_item.has("state"):
+		i = 2
+		r = true
+		prints(hi_item, "r =", str(r), "i =", str(i))
+		return r
+
+	for hx_item in history:
+		if hx_item.state != hi_item.state:
+			continue
+
+		var x_statement = hx_item.statement
+		var c_statement = hi_item.statement
+		if x_statement.type != c_statement.type:
+			i = 3
+			r = false
+			prints(hi_item, "r =", str(r), "i =", str(i))
+			return r
+
+		for k in x_statement.kwargs.keys():
+			if c_statement.kwargs[k] != x_statement.kwargs[k]:
 				i = 3
-				var x_statement = hx_item.statement
-				var c_statement = hi_item.statement
-				if x_statement.type != c_statement.type:
-					r = false
-				i = 4
-				if x_statement.kwargs != c_statement.kwargs:
-					r = false
+				r = false
+				prints(hi_item, "r =", str(r), "i =", str(i))
+				return r
 	
-	# prints(hi_item, "r =", str(r), "i =", str(i))
+	i = 4
+	r = false
+	prints(hi_item, "r =", str(r), "i =", str(i))
 	return r
 
 
@@ -585,7 +603,7 @@ func cant_auto():
 
 func cant_skip():
 	var not_seen = not(current_statement_in_global_history())
-	return cant_auto() and not_seen
+	return cant_auto() or not_seen
 
 func cant_qload():
 	var path = str("user://", save_folder, "/quick")
