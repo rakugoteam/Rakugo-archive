@@ -64,15 +64,15 @@ var skip_auto = false
 var current_node = null
 var active = false
 var skip_types = [
-		StatementType.SAY,
-		StatementType.SHOW,
-		StatementType.HIDE,
-		StatementType.NOTIFY,
-		StatementType.PLAY_ANIM,
-		StatementType.STOP_ANIM,
-		StatementType.PLAY_AUDIO,
-		StatementType.STOP_AUDIO,
-		StatementType.CALL_NODE
+	StatementType.SAY,
+	StatementType.SHOW,
+	StatementType.HIDE,
+	StatementType.NOTIFY,
+	StatementType.PLAY_ANIM,
+	StatementType.STOP_ANIM,
+	StatementType.PLAY_AUDIO,
+	StatementType.STOP_AUDIO,
+	StatementType.CALL_NODE
 	]
 
 var file = File.new()
@@ -568,18 +568,23 @@ func current_statement_in_global_history():
 	var hi_item = current_statement.get_as_history_item()
 
 	if not current_statement.kwargs.add_to_history:
+		# ok
 		i = 1
 		r = true
 		prints(hi_item, "r =", str(r), "i =", str(i))
 		return r
-
+		# return true
+	
+	# return hi_item in global_history
 	if not hi_item.has("state"):
 		i = 2
 		r = true
-		prints(hi_item, "r =", str(r), "i =", str(i))
+		print(hi_item)
+		prints("r =", str(r), "i =", str(i))
 		return r
+		# return true
 
-	for hx_item in history:
+	for hx_item in global_history:
 		if hx_item.state != hi_item.state:
 			continue
 
@@ -588,27 +593,33 @@ func current_statement_in_global_history():
 		if x_statement.type != c_statement.type:
 			i = 3
 			r = false
-			prints(hi_item, "r =", str(r), "i =", str(i))
+			print(hi_item)
+			prints("r =", str(r), "i =", str(i))
 			return r
+			# return false
 
 		for k in x_statement.kwargs.keys():
 			if c_statement.kwargs[k] != x_statement.kwargs[k]:
-				i = 3
+				# ok
+				i = 4
 				r = false
-				prints(hi_item, "r =", str(r), "i =", str(i))
+				print(hi_item)
+				prints("r =", str(r), "i =", str(i))
 				return r
+				# return false
 	
-	i = 4
-	r = false
-	prints(hi_item, "r =", str(r), "i =", str(i))
+	
+	print(hi_item)
+	prints("r =", str(r), "i =", str(i))
 	return r
+	# return false
 
 
 func cant_auto():
 	return not (current_statement.type in skip_types)
 
 func cant_skip():
-	var not_seen = not(current_statement_in_global_history())
+	var not_seen = not current_statement_in_global_history()
 	return cant_auto() and not_seen
 
 func cant_qload():
