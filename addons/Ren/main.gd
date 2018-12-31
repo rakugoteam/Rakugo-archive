@@ -575,7 +575,6 @@ func current_statement_in_global_history():
 		return r
 		# return true
 	
-	# return hi_item in global_history
 	if not hi_item.has("state"):
 		i = 2
 		r = true

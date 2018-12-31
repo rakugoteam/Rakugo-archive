@@ -22,7 +22,7 @@ func run():
 	return true
 
 func on_loop():
-	if not Ren.current_statement_in_global_history():
+	if Ren.cant_skip():
 		if not Ren.get_value("skip_all_text"):
 			stop_loop()
 			return
