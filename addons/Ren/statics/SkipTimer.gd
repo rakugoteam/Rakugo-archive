@@ -20,7 +20,7 @@ func run():
 	return true
 
 func on_loop():
-	if !Ren.can_skip\():
+	if !Ren.can_skip():
 		if not Ren.get_value("skip_all_text"):
 			stop_loop()
 			return

@@ -585,13 +585,12 @@ func current_statement_in_global_history():
 	prints("r =", str(r), "i =", str(i))
 	return r
 
-
 func can_auto():
 	return current_statement.type in skip_types
 
 func can_skip():
 	var seen = current_statement_in_global_history()
-	return can_auto and seen
+	return can_auto() and seen
 
 func can_qload():
 	var path = str("user://", save_folder, "/quick")
