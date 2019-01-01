@@ -5,16 +5,14 @@ signal stop_loop
 func _ready():
 	connect("timeout", self, "on_loop")
 
-
 func stop_loop():
 	stop()
 	emit_signal("stop_loop")
-
+	Ren.skip_auto = false
 
 func run():
 	if not is_stopped():
-		stop()
-		Ren.skip_auto = false
+		stop_loop()
 		return false
 
 	Ren.skip_auto = true
@@ -22,7 +20,7 @@ func run():
 	return true
 
 func on_loop():
-	if Ren.cant_skip():
+	if !Ren.can_skip\():
 		if not Ren.get_value("skip_all_text"):
 			stop_loop()
 			return

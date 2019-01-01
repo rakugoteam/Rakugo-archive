@@ -45,12 +45,13 @@ func _on_qload():
 		$InfoAnim.play("GeneralNotif")
 
 func _on_statement(type, kwargs):
-	$Skip.disabled = Ren.cant_skip()
-	$Auto.disabled = Ren.cant_auto()
+	$Skip.disabled = !Ren.can_skip()
+	$Auto.disabled = !Ren.can_auto()
 	$History.disabled = Ren.current_id == 0
-	$QLoad.disabled = Ren.cant_qload()
+	$QLoad.disabled = !Ren.can_qload()
 
 func on_auto():
+	$Skip.pressed = false
 	if not Ren.auto_timer.run():
 		on_stop_loop()
 		return
@@ -62,8 +63,10 @@ func on_stop_loop():
 	$Skip.pressed = false
 	$InfoAnim.stop()
 	$InfoAnim/Panel.hide()
+	on_stop_loop()
 
 func on_skip():
+	$Auto.pressed = false
 	if not Ren.skip_timer.run():
 		on_stop_loop()
 		return

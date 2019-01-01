@@ -566,66 +566,38 @@ func current_statement_in_global_history():
 	var r = true
 	var i = 0
 	var hi_item = current_statement.get_as_history_item()
-
+	prints(hi_item)
+	
 	if not current_statement.kwargs.add_to_history:
-		# ok
 		i = 1
 		r = true
-		prints(hi_item, "r =", str(r), "i =", str(i))
+		prints("r =", str(r), "i =", str(i))
 		return r
-		# return true
 	
 	if not hi_item.has("state"):
 		i = 2
 		r = true
-		print(hi_item)
 		prints("r =", str(r), "i =", str(i))
 		return r
-		# return true
-
-	for hx_item in global_history:
-		if hx_item.state != hi_item.state:
-			continue
-
-		var x_statement = hx_item.statement
-		var c_statement = hi_item.statement
-		if x_statement.type != c_statement.type:
-			i = 3
-			r = false
-			print(hi_item)
-			prints("r =", str(r), "i =", str(i))
-			return r
-			# return false
-
-		for k in x_statement.kwargs.keys():
-			if c_statement.kwargs[k] != x_statement.kwargs[k]:
-				# ok
-				i = 4
-				r = false
-				print(hi_item)
-				prints("r =", str(r), "i =", str(i))
-				return r
-				# return false
 	
-	
-	print(hi_item)
+	i = 3
+	r = hi_item in global_history
 	prints("r =", str(r), "i =", str(i))
 	return r
-	# return false
 
 
-func cant_auto():
-	return not (current_statement.type in skip_types)
+func can_auto():
+	return current_statement.type in skip_types
 
-func cant_skip():
-	var not_seen = not current_statement_in_global_history()
-	return cant_auto() and not_seen
+func can_skip():
+	var seen = current_statement_in_global_history()
+	return can_auto and seen
 
-func cant_qload():
+func can_qload():
 	var path = str("user://", save_folder, "/quick")
 	var save_exist = file.file_exists(path + ".save")
 	var text_exist = file.file_exists(path + ".txt")
-	return !save_exist or !text_exist
+	return save_exist or text_exist
 
 func save_global_history():
 	var save_name = "global_history"
