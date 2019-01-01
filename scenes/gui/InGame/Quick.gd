@@ -34,7 +34,6 @@ func _on_qsave():
 		$InfoAnim/Panel/Label.bbcode_text = save_error_msg
 		$InfoAnim.play("GeneralNotif")
 
-
 func _on_qload():
 	if Ren.loadfile():
 		$InfoAnim.play("Loaded")
@@ -63,7 +62,6 @@ func on_stop_loop():
 	$Skip.pressed = false
 	$InfoAnim.stop()
 	$InfoAnim/Panel.hide()
-	on_stop_loop()
 
 func on_skip():
 	$Auto.pressed = false
