@@ -22,7 +22,7 @@ use_filter = true
 font_data = ExtResource( 9 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=2]
 
 resource_name = "Auto"
 length = 2.1
@@ -89,7 +89,7 @@ tracks/4/keys = {
 "values": [ Color( 1, 1, 1, 0.756863 ) ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 
 length = 1.0
 loop = false
@@ -143,7 +143,7 @@ tracks/3/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 
 length = 1.0
 loop = false
@@ -209,7 +209,7 @@ tracks/4/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 
 length = 1.0
 loop = false
@@ -275,7 +275,7 @@ tracks/4/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 
 length = 1.0
 loop = true
@@ -341,7 +341,7 @@ tracks/4/keys = {
 "values": [ Color( 1, 1, 1, 0.756863 ) ]
 }
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=7]
 
 size = 30
 use_mipmaps = false
@@ -349,20 +349,12 @@ use_filter = true
 font_data = ExtResource( 11 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="DynamicFont" id=7]
-
-size = 30
-use_mipmaps = false
-use_filter = true
-font_data = ExtResource( 9 )
-_sections_unfolded = [ "Font", "Settings" ]
-
 [sub_resource type="DynamicFont" id=8]
 
 size = 30
 use_mipmaps = false
 use_filter = true
-font_data = ExtResource( 12 )
+font_data = ExtResource( 9 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=9]
@@ -370,10 +362,18 @@ _sections_unfolded = [ "Font", "Settings" ]
 size = 30
 use_mipmaps = false
 use_filter = true
-font_data = ExtResource( 9 )
+font_data = ExtResource( 12 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=10]
+
+size = 30
+use_mipmaps = false
+use_filter = true
+font_data = ExtResource( 9 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=11]
 
 size = 30
 use_mipmaps = false
@@ -583,7 +583,7 @@ __meta__ = {
 
 [node name="History" parent="Quick" index="0" instance=ExtResource( 8 )]
 
-margin_right = 91.0
+margin_right = 107.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -592,8 +592,8 @@ text = "History"
 
 [node name="Quests" parent="Quick" index="1" instance=ExtResource( 8 )]
 
-margin_left = 95.0
-margin_right = 186.0
+margin_left = 111.0
+margin_right = 218.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -602,6 +602,7 @@ text = "Quests"
 
 [node name="Skip" type="CheckButton" parent="Quick" index="2"]
 
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -629,8 +630,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 316.0
-margin_right = 446.0
+margin_left = 222.0
+margin_right = 352.0
 margin_bottom = 40.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -648,8 +649,8 @@ align = 0
 
 [node name="Save" parent="Quick" index="4" instance=ExtResource( 8 )]
 
-margin_left = 450.0
-margin_right = 541.0
+margin_left = 356.0
+margin_right = 463.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -658,8 +659,8 @@ text = "Save"
 
 [node name="Load" parent="Quick" index="5" instance=ExtResource( 8 )]
 
-margin_left = 545.0
-margin_right = 636.0
+margin_left = 467.0
+margin_right = 574.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -668,8 +669,8 @@ text = "Load"
 
 [node name="QSave" parent="Quick" index="6" instance=ExtResource( 8 )]
 
-margin_left = 640.0
-margin_right = 731.0
+margin_left = 578.0
+margin_right = 685.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -678,8 +679,8 @@ text = "Q. Save"
 
 [node name="QLoad" parent="Quick" index="7" instance=ExtResource( 8 )]
 
-margin_left = 735.0
-margin_right = 826.0
+margin_left = 689.0
+margin_right = 796.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -688,8 +689,8 @@ text = "Q. Load"
 
 [node name="Options" parent="Quick" index="8" instance=ExtResource( 8 )]
 
-margin_left = 830.0
-margin_right = 925.0
+margin_left = 800.0
+margin_right = 907.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -698,7 +699,7 @@ text = "Options"
 
 [node name="Quit" parent="Quick" index="9" instance=ExtResource( 8 )]
 
-margin_left = 929.0
+margin_left = 911.0
 margin_right = 1024.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
@@ -714,11 +715,11 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/Auto = SubResource( 12 )
-anims/GeneralNotif = SubResource( 2 )
-anims/Loaded = SubResource( 3 )
-anims/Saved = SubResource( 4 )
-anims/Skip = SubResource( 5 )
+anims/Auto = SubResource( 2 )
+anims/GeneralNotif = SubResource( 3 )
+anims/Loaded = SubResource( 4 )
+anims/Saved = SubResource( 5 )
+anims/Skip = SubResource( 6 )
 blend_times = [  ]
 
 [node name="Panel" type="Panel" parent="Quick/InfoAnim" index="0"]
@@ -748,11 +749,11 @@ __meta__ = {
 [node name="Label" parent="Quick/InfoAnim/Panel" index="0" instance=ExtResource( 10 )]
 
 margin_right = 126.0
-custom_fonts/mono_font = SubResource( 6 )
-custom_fonts/bold_italics_font = SubResource( 7 )
-custom_fonts/italics_font = SubResource( 8 )
-custom_fonts/bold_font = SubResource( 9 )
-custom_fonts/normal_font = SubResource( 10 )
+custom_fonts/mono_font = SubResource( 7 )
+custom_fonts/bold_italics_font = SubResource( 8 )
+custom_fonts/italics_font = SubResource( 9 )
+custom_fonts/bold_font = SubResource( 10 )
+custom_fonts/normal_font = SubResource( 11 )
 custom_colors/default_color = Color( 1, 1, 1, 1 )
 custom_colors/selection_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = false
