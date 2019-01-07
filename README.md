@@ -27,6 +27,7 @@ You can use it with:
 Ren use [PersistenceNode](https://github.com/MatiasVME/Persistence) for saving/load game.
 
 If you want to help please write to us on our [Discord Server](https://discord.gg/K9gvjdg).
+I need help with this [bug](https://github.com/jeremi360/Ren/issues/68) and [visual script support](https://github.com/jeremi360/Ren/issues/26).
 
 Logo is Godot head with hair like anime character.<br/>
 Icons used by project are based on [Godot icons](https://github.com/godotengine/godot-design/tree/master/engine/icons/optimized), [Linux Pop icon theme](https://github.com/pop-os/icon-theme) and icons from [game-icons.net](https://game-icons.net).
