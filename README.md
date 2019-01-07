@@ -21,12 +21,13 @@ It means games that are for example:
 
 You can use it with:
 - GDScript
-- VisualScript (ToDo - I need help)
+- VisualScript (ToDo)
 - RenScript (ToDo)
 
 Ren use [PersistenceNode](https://github.com/MatiasVME/Persistence) for saving/load game.
 
 If you want to help please write to us on our [Discord Server](https://discord.gg/K9gvjdg).
+
 I need help with this [bug](https://github.com/jeremi360/Ren/issues/68) and [visual script support](https://github.com/jeremi360/Ren/issues/26).
 
 Logo is Godot head with hair like anime character.<br/>
