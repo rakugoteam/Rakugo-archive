@@ -381,7 +381,7 @@ use_filter = true
 font_data = ExtResource( 13 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="InGameGUI" type="Control"]
+[node name="InGameGUI" type="Control" index="0"]
 
 pause_mode = 1
 anchor_left = 0.0
@@ -507,6 +507,7 @@ _sections_unfolded = [ "Anchor", "Mouse", "Rect", "Size Flags", "Theme", "Visibi
 
 [node name="Notify" type="Panel" parent="." index="3"]
 
+editor/display_folded = true
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -732,7 +733,6 @@ text = "Quit"
 
 [node name="InfoAnim" type="AnimationPlayer" parent="Quick" index="11"]
 
-editor/display_folded = true
 root_node = NodePath("..")
 autoplay = ""
 playback_process_mode = 1
@@ -784,10 +784,10 @@ bbcode_text = "Game was saved"
 text = "Game was saved"
 _sections_unfolded = [ "BBCode", "Rect", "Visibility", "custom_colors", "custom_fonts" ]
 
+[connection signal="toggled" from="Quick/Hide" to="ScrollContainerVMenu/RenVMenu" method="_on_Hide_toggled"]
+
 [connection signal="toggled" from="Quick/Hide" to="ScrollContainerHMenu/RenHMenu" method="_on_Hide_toggled"]
 
 [connection signal="toggled" from="Quick/Hide" to="SayPanel" method="_on_Hide_toggled"]
-
-[connection signal="toggled" from="Quick/Hide" to="ScrollContainerVMenu/RenVMenu" method="_on_Hide_toggled"]
 
 

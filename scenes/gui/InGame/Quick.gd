@@ -79,3 +79,12 @@ func _input(event):
 	if event.is_action_pressed("ui_select"):
 		$Hide.pressed = !$Hide.pressed
 		$Hide.emit_signal("toggled", $Hide.pressed)
+		return
+	
+	if event.is_action_pressed("ren_qsave"):
+		_on_qsave()
+		return
+	
+	if event.is_action_pressed("ren_qload"):
+		_on_qload()
+		return
