@@ -22,6 +22,7 @@ func show_page(node):
 	node.show()
 
 func save_menu(screenshot):
+	get_node(nav_path + "Save").pressed = true
 	show_page($SlotBox)
 	$SlotBox/Title.text = "Save"
 	$SlotBox.savebox()
@@ -29,12 +30,14 @@ func save_menu(screenshot):
 	show()
 
 func load_menu():
+	get_node(nav_path + "Load").pressed = true
 	show_page($SlotBox)
 	$SlotBox/Title.text = "Load"
 	$SlotBox.loadbox()
 	show()
 
 func history_menu():
+	get_node(nav_path + "History").pressed = true
 	show_page($HistoryBox)
 	show()
 
@@ -63,11 +66,11 @@ func in_game():
 	get_node(nav_path + "Save").show()
 	get_node(nav_path + "History").show()
 	get_node(nav_path + "Quests").show()
+	Ren.start()
 
 func _on_NewGame_pressed():
 	hide()
 	in_game()
-	Ren.start()
 
 func _on_History_pressed():
 	history_menu()
@@ -80,6 +83,7 @@ func _on_Continue_pressed():
 	hide()
 
 func _on_Quests_pressed():
+	get_node(nav_path + "Quests").pressed = true
 	show_page($QuestsBox)
 	show()
 
@@ -91,19 +95,23 @@ func _on_Yes_pressed():
 	get_tree().quit()
 
 func _on_Quit_pressed():
+	get_node(nav_path + "Quit").pressed = true
 	show_page($QuitBox)
 	show()
 
+func get_screenshot():
+	return get_viewport().get_texture().get_data().flip_x()
+
 func _on_Save_pressed():
-	hide()
-	var screenshot = get_viewport().get_texture().get_data()
-	save_menu(screenshot)
+	hide() 
+	save_menu(get_screenshot())
 
 func _on_TestNodes_pressed():
 	show_page($TestNodes)
 	show()
 
 func _on_Options_pressed():
+	get_node(nav_path + "Options").pressed = true
 	show_page($OptionsBox)
 	show()
 
@@ -114,8 +122,8 @@ func _on_About_pressed():
 func _on_Help_pressed():
 	OS.shell_open("https://github.com/jeremi360/Ren/wiki")
 
-func _process(delta):
-	if Input.is_action_just_pressed("ui_cancel"):
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
 		if visible:
 			_on_Return_pressed()
 		else:

@@ -381,7 +381,7 @@ use_filter = true
 font_data = ExtResource( 13 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="InGameGUI" type="Control" index="0"]
+[node name="InGameGUI" type="Control"]
 
 pause_mode = 1
 anchor_left = 0.0

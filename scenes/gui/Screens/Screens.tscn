@@ -410,6 +410,8 @@ align = 0
 
 [node name="SlotBox" parent="." index="3" instance=ExtResource( 7 )]
 
+visible = false
+
 [node name="HistoryBox" type="VBoxContainer" parent="." index="4"]
 
 editor/display_folded = true

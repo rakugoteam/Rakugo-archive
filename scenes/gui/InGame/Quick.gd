@@ -72,7 +72,7 @@ func on_skip():
 	$InfoAnim.play("Skip")
 
 func full_save():
-	var screenshot = get_viewport().get_texture().get_data()
+	var screenshot = Screens.get_screenshot()
 	Screens.save_menu(screenshot)
 
 func _input(event):
