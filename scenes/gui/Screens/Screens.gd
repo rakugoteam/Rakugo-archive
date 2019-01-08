@@ -142,5 +142,10 @@ func _input(event):
 		return
 	
 	if event.is_action_pressed("ren_fullscreen"):
-		settings.window_fullscreen = !settings.window_fullscreen
+		if settings.window_fullscreen:
+			settings.window_fullscreen = false
+			settings.window_size = settings.default_window_size
 		
+		else:
+			settings.window_fullscreen = true
+			settings.window_size = OS.get_screen_size()

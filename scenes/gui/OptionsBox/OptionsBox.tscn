@@ -24,7 +24,7 @@ use_filter = true
 font_data = ExtResource( 1 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="OptionsBox" type="VBoxContainer"]
+[node name="OptionsBox" type="VBoxContainer" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -549,7 +549,6 @@ default = 5.0
 
 [node name="GraphicsBox" type="VBoxContainer" parent="HBoxContainer" index="1"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0

@@ -21,7 +21,7 @@
 [ext_resource path="res://addons/Ren/nodes/ren_timer.gd" type="Script" id=19]
 [ext_resource path="res://addons/Ren/icons/ren_timer.svg" type="Texture" id=20]
 
-[node name="Ren" type="Node" index="0"]
+[node name="Ren" type="Node"]
 
 pause_mode = 2
 script = ExtResource( 1 )
