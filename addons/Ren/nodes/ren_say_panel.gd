@@ -17,11 +17,12 @@ func _ready():
 	connect("gui_input", self, "_on_adv_gui_input")
 	Ren.connect("exec_statement", self, "_on_statement")
 
-func _input(event):
-	if not visible:
-		return
-	
+func _input(event):	
 	if not event.is_action_pressed("ui_accept"):
+		return
+
+	if not visible:
+		visible = true
 		return
 
 	if not Ren.active:
@@ -85,7 +86,7 @@ func write_dialog(text, speed):
 		DialogText.bbcode_text = ""
 
 	var te = ""
-	Ren.dialog_timer.wait_time = speed
+	Ren.dialog_timer.wait_time = speed/100 * Ren.auto_timer.wait_time
 
 	var markup = false
 	for letter in text:

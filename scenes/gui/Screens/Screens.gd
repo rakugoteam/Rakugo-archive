@@ -66,11 +66,11 @@ func in_game():
 	get_node(nav_path + "Save").show()
 	get_node(nav_path + "History").show()
 	get_node(nav_path + "Quests").show()
-	Ren.start()
 
 func _on_NewGame_pressed():
 	hide()
 	in_game()
+	Ren.start()
 
 func _on_History_pressed():
 	history_menu()
@@ -100,7 +100,7 @@ func _on_Quit_pressed():
 	show()
 
 func get_screenshot():
-	return get_viewport().get_texture().get_data().flip_x()
+	return get_viewport().get_texture().get_data()
 
 func _on_Save_pressed():
 	hide() 
