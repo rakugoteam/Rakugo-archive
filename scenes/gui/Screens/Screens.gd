@@ -5,11 +5,15 @@ onready var in_game_gui = get_node("/root/Window/InGameGUI")
 var current_node = self
 var nav_path = "Navigation/ScrollContainer/VBoxContainer/"
 func _ready():
-	# get_tree().set_auto_accept_quit(false)
+	get_tree().set_auto_accept_quit(false)
 	connect("visibility_changed", self, "_on_visibility_changed")
 	var auto_save_path = str("user://" + Ren.save_folder + "/auto.save")
 	if not Ren.file.file_exists(auto_save_path):
 		get_node(nav_path + "Continue").hide()
+
+func _notification(what):
+	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
+		_on_Quit_pressed()
 
 func show_page(node):
 	if current_node != self:
@@ -42,8 +46,12 @@ func _on_visibility_changed():
 		get_tree().paused = false
 		in_game_gui.show()
 
+## # if press "Return" or "no" on quit page
 func _on_Return_pressed():
-	hide()
+	if Ren.started:
+		hide()
+	else:
+		current_node.hide()
 
 func _on_Load_pressed():
 	load_menu()
