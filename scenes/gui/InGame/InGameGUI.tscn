@@ -401,6 +401,7 @@ _sections_unfolded = [ "Pause", "Theme" ]
 
 [node name="ScrollContainerVMenu" type="ScrollContainer" parent="." index="0"]
 
+editor/display_folded = true
 visible = false
 anchor_left = 0.5
 anchor_top = 1.0
@@ -452,6 +453,7 @@ ChoiceButton = ExtResource( 4 )
 
 [node name="ScrollContainerHMenu" type="ScrollContainer" parent="." index="1"]
 
+editor/display_folded = true
 visible = false
 anchor_left = 0.5
 anchor_top = 1.0
@@ -782,10 +784,10 @@ bbcode_text = "Game was saved"
 text = "Game was saved"
 _sections_unfolded = [ "BBCode", "Rect", "Visibility", "custom_colors", "custom_fonts" ]
 
-[connection signal="toggled" from="Quick/Hide" to="ScrollContainerVMenu/RenVMenu" method="_on_Hide_toggled"]
-
 [connection signal="toggled" from="Quick/Hide" to="ScrollContainerHMenu/RenHMenu" method="_on_Hide_toggled"]
 
 [connection signal="toggled" from="Quick/Hide" to="SayPanel" method="_on_Hide_toggled"]
+
+[connection signal="toggled" from="Quick/Hide" to="ScrollContainerVMenu/RenVMenu" method="_on_Hide_toggled"]
 
 

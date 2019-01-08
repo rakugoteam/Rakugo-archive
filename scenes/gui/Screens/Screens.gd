@@ -130,3 +130,17 @@ func _input(event):
 			_on_Options_pressed()
 		
 		return
+	
+	if event.is_action_pressed("ren_screenshot"):
+		var dir = Directory.new()
+		var screenshots_dir = "user://screenshots"
+		if !dir.dir_exists(screenshots_dir):
+			dir.make_dir(screenshots_dir)
+		
+		var s = Ren.get_datetime_str().replace(":", " ")
+		get_screenshot().save_png(screenshots_dir + "/" + s + '.png')
+		return
+	
+	if event.is_action_pressed("ren_fullscreen"):
+		settings.window_fullscreen = !settings.window_fullscreen
+		
