@@ -74,6 +74,3 @@ func on_skip():
 func full_save():
 	var screenshot = get_viewport().get_texture().get_data()
 	Screens.save_menu(screenshot)
-
-
-	

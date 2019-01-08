@@ -60,7 +60,7 @@ use_filter = true
 font_data = ExtResource( 3 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Screens" type="Control"]
+[node name="Screens" type="Control" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -74,7 +74,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
-_sections_unfolded = [ "Material", "Mouse", "Size Flags", "Theme", "Visibility" ]
+_sections_unfolded = [ "Material", "Mouse", "Pause", "Size Flags", "Theme", "Visibility" ]
 
 [node name="Panel" type="Panel" parent="." index="0"]
 

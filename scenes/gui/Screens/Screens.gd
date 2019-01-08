@@ -113,3 +113,10 @@ func _on_About_pressed():
 
 func _on_Help_pressed():
 	OS.shell_open("https://github.com/jeremi360/Ren/wiki")
+
+func _process(delta):
+	if Input.is_action_just_pressed("ui_cancel"):
+		if visible:
+			_on_Return_pressed()
+		else:
+			_on_Options_pressed()

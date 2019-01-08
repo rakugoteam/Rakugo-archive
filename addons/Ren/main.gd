@@ -566,23 +566,23 @@ func current_statement_in_global_history():
 	var r = true
 	var i = 0
 	var hi_item = current_statement.get_as_history_item()
-	prints(hi_item)
+	# prints(hi_item)
 	
 	if not current_statement.kwargs.add_to_history:
 		i = 1
 		r = true
-		prints("r =", str(r), "i =", str(i))
+		# prints("r =", str(r), "i =", str(i))
 		return r
 	
 	if not hi_item.has("state"):
 		i = 2
 		r = true
-		prints("r =", str(r), "i =", str(i))
+		# prints("r =", str(r), "i =", str(i))
 		return r
 	
 	i = 3
 	r = hi_item in global_history
-	prints("r =", str(r), "i =", str(i))
+	# prints("r =", str(r), "i =", str(i))
 	return r
 
 func can_auto():
