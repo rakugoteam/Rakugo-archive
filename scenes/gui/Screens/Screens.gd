@@ -120,3 +120,5 @@ func _process(delta):
 			_on_Return_pressed()
 		else:
 			_on_Options_pressed()
+		
+		return

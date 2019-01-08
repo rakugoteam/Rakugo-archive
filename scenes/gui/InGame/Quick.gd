@@ -74,3 +74,8 @@ func on_skip():
 func full_save():
 	var screenshot = get_viewport().get_texture().get_data()
 	Screens.save_menu(screenshot)
+
+func _input(event):
+	if event.is_action_pressed("ui_select"):
+		$Hide.pressed = !$Hide.pressed
+		$Hide.emit_signal("toggled", $Hide.pressed)

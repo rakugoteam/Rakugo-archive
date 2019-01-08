@@ -18,6 +18,9 @@ func _ready():
 	Ren.connect("exec_statement", self, "_on_statement")
 
 func _input(event):
+	if not visible:
+		return
+	
 	if not event.is_action_pressed("ui_accept"):
 		return
 
@@ -118,3 +121,6 @@ func _on_adv_gui_input(ev):
 		event.action = "ui_accept"
 		event.pressed = true
 		Input.parse_input_event(event)
+
+func _on_Hide_toggled(button_pressed):
+	visible = !button_pressed
