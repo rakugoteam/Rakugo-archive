@@ -18,7 +18,7 @@ func _ready():
 	Ren.connect("exec_statement", self, "_on_statement")
 
 func _input(event):
-	if not event.is_action_pressed("ren_forward"):
+	if not event.is_action_pressed("ui_accept"):
 		return
 
 	if not Ren.active:
@@ -115,6 +115,6 @@ func _on_adv_gui_input(ev):
 
 	if ev.button_index == BUTTON_LEFT:
 		var event = InputEventAction.new()
-		event.action = "ren_forward"
+		event.action = "ui_accept"
 		event.pressed = true
 		Input.parse_input_event(event)
