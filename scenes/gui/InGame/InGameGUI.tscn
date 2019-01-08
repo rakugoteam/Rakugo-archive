@@ -507,6 +507,7 @@ _sections_unfolded = [ "Anchor", "Mouse", "Rect", "Size Flags", "Theme", "Visibi
 
 [node name="Notify" type="Panel" parent="." index="3"]
 
+editor/display_folded = true
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -581,26 +582,49 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="History" parent="Quick" index="0" instance=ExtResource( 8 )]
+[node name="Hide" type="CheckButton" parent="Quick" index="0"]
 
-margin_right = 107.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 127.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = true
+enabled_focus_mode = 0
+shortcut = null
+group = null
+text = "Hide"
+flat = false
+align = 0
+
+[node name="History" parent="Quick" index="1" instance=ExtResource( 8 )]
+
+margin_left = 131.0
+margin_right = 221.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "History"
 
-[node name="Quests" parent="Quick" index="1" instance=ExtResource( 8 )]
+[node name="Quests" parent="Quick" index="2" instance=ExtResource( 8 )]
 
-margin_left = 111.0
-margin_right = 218.0
+margin_left = 225.0
+margin_right = 315.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Quests"
 
-[node name="Skip" type="CheckButton" parent="Quick" index="2"]
+[node name="Skip" type="CheckButton" parent="Quick" index="3"]
 
 visible = false
 anchor_left = 0.0
@@ -624,14 +648,14 @@ text = "Skip"
 flat = false
 align = 0
 
-[node name="Auto" type="CheckButton" parent="Quick" index="3"]
+[node name="Auto" type="CheckButton" parent="Quick" index="4"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 222.0
-margin_right = 352.0
+margin_left = 319.0
+margin_right = 449.0
 margin_bottom = 40.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -647,59 +671,59 @@ text = "Auto"
 flat = false
 align = 0
 
-[node name="Save" parent="Quick" index="4" instance=ExtResource( 8 )]
+[node name="Save" parent="Quick" index="5" instance=ExtResource( 8 )]
 
-margin_left = 356.0
-margin_right = 463.0
+margin_left = 453.0
+margin_right = 543.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Save"
 
-[node name="Load" parent="Quick" index="5" instance=ExtResource( 8 )]
+[node name="Load" parent="Quick" index="6" instance=ExtResource( 8 )]
 
-margin_left = 467.0
-margin_right = 574.0
+margin_left = 547.0
+margin_right = 637.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Load"
 
-[node name="QSave" parent="Quick" index="6" instance=ExtResource( 8 )]
+[node name="QSave" parent="Quick" index="7" instance=ExtResource( 8 )]
 
-margin_left = 578.0
-margin_right = 685.0
+margin_left = 641.0
+margin_right = 731.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Q. Save"
 
-[node name="QLoad" parent="Quick" index="7" instance=ExtResource( 8 )]
+[node name="QLoad" parent="Quick" index="8" instance=ExtResource( 8 )]
 
-margin_left = 689.0
-margin_right = 796.0
+margin_left = 735.0
+margin_right = 825.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Q. Load"
 
-[node name="Options" parent="Quick" index="8" instance=ExtResource( 8 )]
+[node name="Options" parent="Quick" index="9" instance=ExtResource( 8 )]
 
-margin_left = 800.0
-margin_right = 907.0
+margin_left = 829.0
+margin_right = 924.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Options"
 
-[node name="Quit" parent="Quick" index="9" instance=ExtResource( 8 )]
+[node name="Quit" parent="Quick" index="10" instance=ExtResource( 8 )]
 
-margin_left = 911.0
+margin_left = 928.0
 margin_right = 1024.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
@@ -707,9 +731,8 @@ size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Quit"
 
-[node name="InfoAnim" type="AnimationPlayer" parent="Quick" index="10"]
+[node name="InfoAnim" type="AnimationPlayer" parent="Quick" index="11"]
 
-editor/display_folded = true
 root_node = NodePath("..")
 autoplay = ""
 playback_process_mode = 1
@@ -760,5 +783,11 @@ bbcode_enabled = false
 bbcode_text = "Game was saved"
 text = "Game was saved"
 _sections_unfolded = [ "BBCode", "Rect", "Visibility", "custom_colors", "custom_fonts" ]
+
+[connection signal="toggled" from="Quick/Hide" to="ScrollContainerVMenu/RenVMenu" method="_on_Hide_toggled"]
+
+[connection signal="toggled" from="Quick/Hide" to="ScrollContainerHMenu/RenHMenu" method="_on_Hide_toggled"]
+
+[connection signal="toggled" from="Quick/Hide" to="SayPanel" method="_on_Hide_toggled"]
 
 

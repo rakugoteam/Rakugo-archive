@@ -75,6 +75,31 @@ var skip_types = [
 	StatementType.CALL_NODE
 	]
 
+const weekdays={
+	0:'Sunday',
+	1:'Monday',
+	2:'Tuesday',
+	3:'Wednesday',
+	4:'Thrusday',
+	5:'Friday',
+	6:'Saturday'
+}
+
+const months={
+	1:'January',
+	2:'February',
+	3:'March',
+	4:'April',
+	5:'May',
+	6:'June',
+	7:'July',
+	8:'August',
+	9:'September',
+	10:'October',
+	11:'November',
+	12:'December'
+}
+
 var file = File.new()
 var loading_in_progress = false
 var started = false
@@ -130,6 +155,10 @@ func _ready():
 	define("test_float", 10.0)
 
 	step_timer.connect("timeout", self, "_on_time_active_timeout")
+
+func get_datetime_str():
+	var d = OS.get_datetime()
+	return weekdays[d['weekday']] + ' ' + months[d['month']] + ' ' + str(d['day']) + ', ' + str(d['hour']) + ':' + str(d['minute'])
 
 func _on_time_active_timeout():
 	active = true
@@ -566,23 +595,23 @@ func current_statement_in_global_history():
 	var r = true
 	var i = 0
 	var hi_item = current_statement.get_as_history_item()
-	prints(hi_item)
+	# prints(hi_item)
 	
 	if not current_statement.kwargs.add_to_history:
 		i = 1
 		r = true
-		prints("r =", str(r), "i =", str(i))
+		# prints("r =", str(r), "i =", str(i))
 		return r
 	
 	if not hi_item.has("state"):
 		i = 2
 		r = true
-		prints("r =", str(r), "i =", str(i))
+		# prints("r =", str(r), "i =", str(i))
 		return r
 	
 	i = 3
 	r = hi_item in global_history
-	prints("r =", str(r), "i =", str(i))
+	# prints("r =", str(r), "i =", str(i))
 	return r
 
 func can_auto():

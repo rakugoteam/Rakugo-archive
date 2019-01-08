@@ -1,4 +1,4 @@
-# Ren ![Logo](window_icon.png)
+# Ren ![Logo](graphics/window_icon.png)
 ![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)
 [![Discord Server](https://img.shields.io/discord/484604562183815169.svg?style=flat-square)](https://discord.gg/K9gvjdg)
 [![GitHub](https://img.shields.io/github/contributors/jeremi360/Ren.svg?style=flat-square)](https://github.com/jeremi360/Ren)
@@ -8,7 +8,7 @@
 [![GitHub](https://img.shields.io/github/issues/jeremi360/Ren.svg?style=flat-square)](https://github.com/jeremi360/Ren/issues)
 [![GitHub](https://img.shields.io/github/issues-closed/jeremi360/Ren.svg?style=flat-square)](https://github.com/jeremi360/Ren/issues)
 
-Ren is framemork ( inspired by [Ren'Py](https://www.renpy.org) )
+Ren is framemork (inspired by [Ren'Py](https://www.renpy.org))
 <br/> for story driven games in [Godot](https://godotengine.org).
 
 ## Story driven games

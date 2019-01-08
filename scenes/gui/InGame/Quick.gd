@@ -72,8 +72,19 @@ func on_skip():
 	$InfoAnim.play("Skip")
 
 func full_save():
-	var screenshot = get_viewport().get_texture().get_data()
+	var screenshot = Screens.get_screenshot()
 	Screens.save_menu(screenshot)
 
-
+func _input(event):
+	if event.is_action_pressed("ui_select"):
+		$Hide.pressed = !$Hide.pressed
+		$Hide.emit_signal("toggled", $Hide.pressed)
+		return
 	
+	if event.is_action_pressed("ren_qsave"):
+		_on_qsave()
+		return
+	
+	if event.is_action_pressed("ren_qload"):
+		_on_qload()
+		return

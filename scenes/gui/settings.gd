@@ -92,6 +92,20 @@ func _process(delta):
 	_prev_window_maximized = OS.window_maximized
 	_prev_window_fullscreen = OS.window_fullscreen
 
+func set_window_options(fullscreen, maximized):
+	settings.window_fullscreen = fullscreen
+	settings.window_maximized = maximized
 
+func apply():
+	match settings.temp_window_type_id:
+		0: # Windowed
+			set_window_options(false, false)
+		1: # Fullscreen
+			set_window_options(true, false)
+		2: # Maximized
+			set_window_options(false, true)
+		
+	settings.window_size = settings.temp_window_size
+	OS.vsync_enabled = settings.temp_vsync_enabled
 
 

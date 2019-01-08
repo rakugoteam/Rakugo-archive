@@ -2,8 +2,7 @@
 
 [ext_resource path="res://scenes/gui/SlotBox/SlotBox.gd" type="Script" id=1]
 [ext_resource path="res://ubuntu-font-family/Ubuntu-B.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://scenes/gui/Labels/slot.tscn" type="PackedScene" id=3]
-
+[ext_resource path="res://scenes/gui/SlotBox/Slot.tscn" type="PackedScene" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -15,8 +14,6 @@ _sections_unfolded = [ "Font", "Settings" ]
 
 [node name="SlotBox" type="VBoxContainer"]
 
-editor/display_folded = true
-visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -74,113 +71,41 @@ size_flags_vertical = 3
 columns = 3
 _sections_unfolded = [ "Grow Direction", "Rect", "Size Flags" ]
 
-[node name="1" type="VBoxContainer" parent="GridContainer" index="0" instance=ExtResource( 3 )]
+[node name="1" parent="GridContainer" index="0" instance=ExtResource( 3 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_right = 231.0
 margin_bottom = 239.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 0
-_sections_unfolded = [ "Rect", "Size Flags", "custom_constants" ]
 
-[node name="2" type="VBoxContainer" parent="GridContainer" index="1" instance=ExtResource( 3 )]
+[node name="2" parent="GridContainer" index="1" instance=ExtResource( 3 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 235.0
 margin_right = 466.0
 margin_bottom = 239.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 0
-_sections_unfolded = [ "Rect", "Size Flags", "custom_constants" ]
 
-[node name="3" type="VBoxContainer" parent="GridContainer" index="2" instance=ExtResource( 3 )]
+[node name="3" parent="GridContainer" index="2" instance=ExtResource( 3 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 470.0
 margin_right = 701.0
 margin_bottom = 239.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 0
-_sections_unfolded = [ "Rect", "Size Flags", "custom_constants" ]
 
-[node name="4" type="VBoxContainer" parent="GridContainer" index="3" instance=ExtResource( 3 )]
+[node name="4" parent="GridContainer" index="3" instance=ExtResource( 3 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_top = 243.0
 margin_right = 231.0
 margin_bottom = 482.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 0
-_sections_unfolded = [ "Rect", "Size Flags", "custom_constants" ]
 
-[node name="5" type="VBoxContainer" parent="GridContainer" index="4" instance=ExtResource( 3 )]
+[node name="5" parent="GridContainer" index="4" instance=ExtResource( 3 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 235.0
 margin_top = 243.0
 margin_right = 466.0
 margin_bottom = 482.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 0
-_sections_unfolded = [ "Rect", "Size Flags", "custom_constants" ]
 
-[node name="6" type="VBoxContainer" parent="GridContainer" index="5" instance=ExtResource( 3 )]
+[node name="6" parent="GridContainer" index="5" instance=ExtResource( 3 )]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 470.0
 margin_top = 243.0
 margin_right = 701.0
 margin_bottom = 482.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 0
-_sections_unfolded = [ "Rect", "Size Flags", "custom_constants" ]
 
 

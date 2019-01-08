@@ -32,3 +32,5 @@ func _on_statement(type, kwargs):
 
 	get_parent().show()
 
+func _on_Hide_toggled(button_pressed):
+	visible = !button_pressed

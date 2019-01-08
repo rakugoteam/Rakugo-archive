@@ -74,7 +74,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
-_sections_unfolded = [ "Material", "Mouse", "Size Flags", "Theme", "Visibility" ]
+_sections_unfolded = [ "Material", "Mouse", "Pause", "Size Flags", "Theme", "Visibility" ]
 
 [node name="Panel" type="Panel" parent="." index="0"]
 
@@ -409,6 +409,8 @@ text = "Quit"
 align = 0
 
 [node name="SlotBox" parent="." index="3" instance=ExtResource( 7 )]
+
+visible = false
 
 [node name="HistoryBox" type="VBoxContainer" parent="." index="4"]
 
