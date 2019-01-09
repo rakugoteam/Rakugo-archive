@@ -89,9 +89,8 @@ func _on_Quests_pressed():
 
 # if press "yes" on quit page
 func _on_Yes_pressed():
-	if !Ren.savefile("auto"):
-		return
-		
+	Ren.savefile("auto")
+	settings.save_conf()
 	get_tree().quit()
 
 func _on_Quit_pressed():

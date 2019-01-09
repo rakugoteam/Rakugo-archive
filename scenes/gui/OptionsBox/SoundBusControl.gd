@@ -3,23 +3,26 @@ extends VBoxContainer
 export(String) var label = "Volume"
 export(String) var bus_name = "Master"
 var bus_id = 0
+var mute = false
+var volume = 0
 
 func _ready():
 	bus_id = AudioServer.get_bus_index(bus_name)
-	$VBox/Label.text = label
 
+	$VBox/Label.text = label
+	
 	if AudioServer.is_bus_mute(bus_id):
 		$VBox/OffButton.pressed = true
 	else:
 		$VBox/OnButton.pressed = true
 	
 	$VBox/OnButton.connect(
-		"pressed", AudioServer,
+		"pressed", self,
 		"set_bus_mute", [bus_id, false]
 	)
 
 	$VBox/OffButton.connect(
-		"pressed", AudioServer,
+		"pressed", self,
 		"set_bus_mute", [bus_id, true]
 	)
 	
@@ -38,3 +41,8 @@ func _on_visibility_changed():
 
 func set_bus_volume(value, bus_id):
 	AudioServer.set_bus_volume_db(bus_id, value)
+	volume = value
+
+func set_bus_mute(bus_id, value):
+	AudioServer.set_bus_mute(bus_id, value)
+	mute = value
