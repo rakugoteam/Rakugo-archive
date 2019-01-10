@@ -23,16 +23,16 @@
 tool
 extends Node
 
-enum Mode {MODE_ENCRYPTED, MODE_TEXT}
-export (Mode) var mode = MODE_ENCRYPTED setget set_mode, get_mode
+enum Mode {ENCRYPTED, TEXT}
+export (Mode) var mode = Mode.ENCRYPTED setget set_mode, get_mode
 export (String) var password = "" setget set_password, get_password
 export (String) var folder_name = "PersistenceNode" setget set_folder_name, get_folder_name
-export (Array) var no_valid_names = ["default", "example"] setget _private, get_no_valid_names
+export (Array) var no_valid_names = ["default", "example"] setget _private_set, get_no_valid_names
 export (bool) var debug = false setget set_debug, get_debug
 
 # 1.0.5
 # Source: https://github.com/YeldhamDev/json-beautifier-for-godot
-var beautifier setget _private, _private
+var beautifier setget _private_set, _private_get
 export (bool) var beautifier_active = true setget set_beautifier_active, get_beautifier_active
 
 export (int) var profile_name_min_size = 3 setget set_profile_name_min_size, get_profile_name_min_size
@@ -40,7 +40,7 @@ export (int) var profile_name_max_size = 15 setget set_profile_name_max_size, ge
 
 # Data del profile actual, esta data se puede modificar y luego usar
 # save_data()
-var data = {} setget _private, get_data
+var data = {} setget _private_set
 
 signal saved
 signal loaded
@@ -55,18 +55,21 @@ func _ready():
 
 func _on_saved():
 	# Muestra los datos en la salida una vez que se graba el archivo.
-	if beautifier_active and mode == MODE_TEXT:
+	if beautifier_active and mode == Mode.TEXT:
 		debug("_on_saved()")
 		print_json(to_json(data))
 
 func _on_loaded():
 	# Muestra los datos en la salida una vez que se graba el archivo.
-	if beautifier_active and mode == MODE_TEXT:
+	if beautifier_active and mode == Mode.TEXT:
 		debug("_on_loaded()")
 		print_json(to_json(data))
 
-func _private(val = null):
-	debug("Acceso de escritura/lectura es privado")
+func _private_set(val = null):
+	debug("Set access is private")
+
+func _private_get():
+	debug("Get access is private")
 
 # Métodos públicos
 #
@@ -96,9 +99,9 @@ func save_data(profile_name = null):
 	
 	if validate_profile(profile_name):
 		match mode:
-			MODE_ENCRYPTED:
+			Mode.ENCRYPTED:
 				result = save_profile_encripted(profile_name)
-			MODE_TEXT:
+			Mode.TEXT:
 				result = save_profile_text(profile_name)
 	else:
 		debug("No ha pasado la validación")
@@ -117,9 +120,9 @@ func remove_profile(profile_name):
 	var path
 	
 	match mode:
-		MODE_ENCRYPTED:
+		Mode.ENCRYPTED:
 			path = str("user://", folder_name, "/", profile_name, ".save")
-		MODE_TEXT:
+		Mode.TEXT:
 			path = str("user://", folder_name, "/", profile_name, ".txt")
 	
 	var err = dir.remove(path)
@@ -160,8 +163,8 @@ func remove_all_data():
 # Setters/Getters
 #
 
-# MODE_TEXT : Guarda la data en texto en formato json
-# MODE_ENCRYPTED : Guarda la data de forma encriptada
+# Mode.TEXT : Guarda la data en texto en formato json
+# Mode.ENCRYPTED : Guarda la data de forma encriptada
 func set_mode(_mode):
 	mode = _mode
 
@@ -268,16 +271,16 @@ func validate_profile(profile_name):
 	
 func save_profile_default():
 	match mode:
-		MODE_ENCRYPTED:
+		Mode.ENCRYPTED:
 			return save_profile_encripted("default")
-		MODE_TEXT:
+		Mode.TEXT:
 			return save_profile_text("default")
 
 func load_profile_default():
 	match mode:
-		MODE_ENCRYPTED:
+		Mode.ENCRYPTED:
 			return load_profile_encripted("default")
-		MODE_TEXT:
+		Mode.TEXT:
 			return load_profile_text("default")
 			
 func save_profile_encripted(profile_name):
@@ -397,9 +400,9 @@ func load_data(profile_name = null):
 	
 	if validate_profile(profile_name): 
 		match mode:
-			MODE_ENCRYPTED:
+			Mode.ENCRYPTED:
 				result = load_profile_encripted(profile_name)
-			MODE_TEXT:
+			Mode.TEXT:
 				result = load_profile_text(profile_name)
 	else:
 		debug("No ha pasado la validación")

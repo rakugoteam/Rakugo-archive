@@ -1,6 +1,6 @@
 extends "subquest.gd"
 
-var subquests	= [] setget , _get_subquests
+var subquests	= []
 var rewards		= [] setget , _get_rewards # Maybe we need a Object Reward
 
 signal start_quest
@@ -19,7 +19,7 @@ func add_subquest(subquest):
 	subquest.connect("done_subquest", self, "_on_done_subquest")
 	subquest.connect("fail_subquest", self, "_on_fail_subquest", [subquest])
 
-func _get_subquests(index):
+func get_subquests(index):
 	return subquests[index]
 
 # force finish quest
@@ -53,7 +53,7 @@ func dict2quest(dict):
 	if not dict.has("subquests"):
 		return
 	
-	subquests = get_subquests(dict["subquests"])
+	subquests = get_subquests_list(dict["subquests"])
 
 # usefull for saveing
 func subquests2list_of_ids():
@@ -63,7 +63,7 @@ func subquests2list_of_ids():
 	return list_of_ids
 
 # usefull after loading quest
-func get_subquests(list_of_subquests_ids):
+func get_subquests_list(list_of_subquests_ids):
 	var new_subquests = []
 	for subq_id in list_of_subquests_ids:
 		if typeof(subq_id) != TYPE_STRING:
