@@ -128,8 +128,8 @@ func save_conf():
 		var bus_id = AudioServer.get_bus_index(bus_name)
 		var mute = AudioServer.is_bus_mute(bus_id)
 		var volume = AudioServer.get_bus_volume_db(bus_id)
-		config.set_value("audio", bus_name + "_mute", false)
-		config.set_value("audio", bus_name + "_volume", 0)
+		config.set_value("audio", bus_name + "_mute", mute)
+		config.set_value("audio", bus_name + "_volume", volume)
 	
 	config.set_value("ren", "Text_Speed", Ren.get_value("text_speed"))
 	config.set_value("ren", "Auto_Forward_Speed", Ren.get_value("auto_speed"))
