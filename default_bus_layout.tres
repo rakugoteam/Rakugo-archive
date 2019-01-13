@@ -3,22 +3,9 @@
 [sub_resource type="AudioEffectCompressor" id=1]
 
 resource_name = "Compressor"
-threshold = 0.0
-ratio = 4.0
-gain = 0.0
-attack_us = 20.0
-release_ms = 250.0
-mix = 1.0
-sidechain = ""
 
 [resource]
 
-bus/0/name = "Master"
-bus/0/solo = false
-bus/0/mute = false
-bus/0/bypass_fx = false
-bus/0/volume_db = 0.0
-bus/0/send = ""
 bus/0/effect/0/effect = SubResource( 1 )
 bus/0/effect/0/enabled = true
 bus/1/name = "BGM"

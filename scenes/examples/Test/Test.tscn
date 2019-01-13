@@ -19,9 +19,7 @@
 [sub_resource type="Animation" id=1]
 
 resource_name = "test"
-length = 1.0
 loop = true
-step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("RenNode2D:visible")
 tracks/0/interp = 1
@@ -52,7 +50,6 @@ tracks/1/keys = {
 resource_name = "test_loop"
 length = 2.0
 loop = true
-step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("RenNode2D:rotation_degrees")
 tracks/0/interp = 1
@@ -67,99 +64,62 @@ tracks/0/keys = {
 }
 
 [node name="Test" type="Node2D"]
-
 script = ExtResource( 1 )
-_sections_unfolded = [ "Material", "Transform", "Z Index" ]
 
-[node name="RenKun" type="Node" parent="." index="0"]
-
+[node name="RenKun" type="Node" parent="."]
 editor/display_folded = true
 script = ExtResource( 2 )
-_sections_unfolded = [ "Z Index" ]
 __meta__ = {
 "_editor_icon": ExtResource( 3 )
 }
 character_id = "rench"
 character_name = "Ren"
 color = Color( 0.967169, 0.988281, 0.312698, 1 )
-prefix = ""
-suffix = ""
 avatar = ExtResource( 4 )
 
-[node name="RenNode2D" type="Node2D" parent="RenKun" index="0"]
-
+[node name="RenNode2D" type="Node2D" parent="RenKun"]
 position = Vector2( 524.705, 226.134 )
 z_index = -1
 script = ExtResource( 5 )
-_sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 __meta__ = {
 "_editor_icon": ExtResource( 6 )
 }
-auto_define = false
-node_id = "rench"
-camera = NodePath("")
 
-[node name="logo" type="Sprite" parent="RenKun/RenNode2D" index="0"]
-
+[node name="logo" type="Sprite" parent="RenKun/RenNode2D"]
 texture = ExtResource( 7 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="RenAnimPlayer" type="AnimationPlayer" parent="RenKun" index="1"]
-
-root_node = NodePath("..")
-autoplay = ""
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 1.0
+[node name="RenAnimPlayer" type="AnimationPlayer" parent="RenKun"]
 anims/test = SubResource( 1 )
 anims/test_loop = SubResource( 2 )
-blend_times = [  ]
 script = ExtResource( 8 )
-_sections_unfolded = [ "Playback Options" ]
 __meta__ = {
 "_editor_icon": ExtResource( 9 )
 }
-auto_define = false
 node_id = "TestAnimPlayer"
 
-[node name="SFXPlayer" type="AudioStreamPlayer" parent="." index="1"]
-
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
 volume_db = 6.0
-pitch_scale = 1.0
-autoplay = false
-mix_target = 0
 bus = "SFX"
 script = ExtResource( 11 )
 __meta__ = {
 "_editor_icon": ExtResource( 12 )
 }
-auto_define = false
-node_id = ""
 
-[node name="BGMPlayer" type="AudioStreamPlayer" parent="." index="2"]
-
+[node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
 volume_db = 3.0
-pitch_scale = 1.0
-autoplay = false
-mix_target = 0
 bus = "BGM"
 script = ExtResource( 11 )
 __meta__ = {
 "_editor_icon": ExtResource( 12 )
 }
-auto_define = false
-node_id = ""
 
-[node name="TestNode" type="Sprite" parent="." index="3"]
-
+[node name="TestNode" type="Sprite" parent="."]
 visible = false
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 206.506, 241.174 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 14 )
 script = ExtResource( 15 )
-_sections_unfolded = [ "Transform", "Visibility", "playback" ]
-
 
