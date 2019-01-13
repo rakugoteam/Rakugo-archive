@@ -265,7 +265,10 @@ func get_character(character_id):
 	return get_var(character_id, Type.CHARACTER)
 
 ## crate new link to node as global variable that Ren will see
-func node_link(node, node_id = node.name):
+func node_link(node, node_id = null):
+	if node_id == null:
+		node.name
+	
 	var path
 	if typeof(node) == TYPE_NODE_PATH:
 		path = node
@@ -438,9 +441,9 @@ func savefile(save_name = "quick"):
 	for i in range(variables.size()):
 		var k = variables.keys()[i]
 		var v = variables.values()[i]
-		
+
 		debug([k, v])
-		
+
 		if v.type == Type.CHARACTER:
 			vars_to_save[k] = {"type":v.type, "value":v.character2dict()}
 		elif v.type == Type.SUBQUEST:
@@ -449,7 +452,7 @@ func savefile(save_name = "quick"):
 			vars_to_save[k] = {"type":v.type, "value":v.quest2dict()}
 		else:
 			vars_to_save[k] = {"type":v.type, "value":v.value}
-		
+
 	data["variables"] = vars_to_save
 
 	data["id"] = current_id
@@ -457,7 +460,7 @@ func savefile(save_name = "quick"):
 	data["scene"] = _scene
 	data["dialog_name"] = current_dialog_name
 	data["state"] = prev_story_state # it must be this way
-	
+
 	var result = $Persistence.save_data(save_name)
 	debug(["save data to:", save_name])
 	return result
@@ -471,7 +474,7 @@ func loadfile(save_name = "quick"):
 	debug(["load data from:", save_name])
 	if data == null:
 		return false
-	
+
 	quests.clear()
 	history = data["history"].duplicate()
 
@@ -482,25 +485,22 @@ func loadfile(save_name = "quick"):
 		var v = vars_to_load.values()[i]
 
 		debug([k, v])
-		
+
 		if v.type == Type.CHARACTER:
 			character(k, v.value)
-		
 		elif v.type == Type.SUBQUEST:
 			subquest(k, v.value)
-		
 		elif v.type == Type.QUEST:
 			quest(k, v.value)
 			if k in quests:
 				continue
 			quests.append(k)
-		
 		else:
 			define(k, v.value)
 			
 	for q_id in quests:
 		var q = get_quest(q_id)
-		q.subquests = q.get_subquests(q.subquests) 
+		q.update_subquests()
 	
 	started = true
 

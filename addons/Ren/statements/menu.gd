@@ -20,7 +20,7 @@ func exec(dbg = true):
 	.exec(false)
 
 
-func on_exit(_type, new_kwargs):
+func on_exit(_type, new_kwargs = {}):
 	if !setup_exit(_type, new_kwargs):
 		return
 	
