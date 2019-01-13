@@ -4,6 +4,7 @@ onready var in_game_gui = get_node("/root/Window/InGameGUI")
 
 var current_node = self
 var nav_path = "Navigation/ScrollContainer/VBoxContainer/"
+
 func _ready():
 	get_tree().set_auto_accept_quit(false)
 	connect("visibility_changed", self, "_on_visibility_changed")
@@ -89,9 +90,8 @@ func _on_Quests_pressed():
 
 # if press "yes" on quit page
 func _on_Yes_pressed():
-	if !Ren.savefile("auto"):
-		return
-		
+	Ren.savefile("auto")
+	settings.save_conf()
 	get_tree().quit()
 
 func _on_Quit_pressed():

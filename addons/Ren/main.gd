@@ -3,21 +3,21 @@ extends Node
 export (String) var game_title = "Your New Game"
 export (String) var game_version = "0.0.1"
 export (String) var game_credits = "Your Company"
-export (String, "ren", "bbcode") var markups = "ren"
+export (String, "ren", "bbcode") var markup = "ren"
 export (Color) var links_color = Color("#225ebf")
 export (bool) var debug_on = true
 export (String) var save_folder = "saves"
 export (String) var save_password = "Ren"
 export (String, DIR) var scenes_dir = "res://scenes/examples/"
 
-const ren_version = "0.9.51"
+const ren_version = "1.0.0"
 const credits_path = "res://addons/Ren/credits.txt"
 
 ## init vars for settings
 var _skip_all_text = false
 var _skip_after_choices = false
 var _auto_speed = 1
-var _text_speed = 0.01
+var _text_speed = 30
 var _notify_time = 5
 
 enum Type {
@@ -199,8 +199,8 @@ func on_stop_audio(node_id):
 
 ## parse text like in renpy to bbcode if mode == "ren"
 ## or parse bbcode with {vars} if mode == "bbcode"
-## default mode = Ren.markups 
-func text_passer(text, mode = markups):
+## default mode = Ren.markup 
+func text_passer(text, mode = markup):
 	return $Text.text_passer(text, variables, mode, links_color.to_html())
 
 ## add/overwrite global variable that Ren will see

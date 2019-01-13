@@ -1,5 +1,5 @@
 # Ren ![Logo](graphics/window_icon.png)
-![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)
+[![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](LICENSE)
 [![Discord Server](https://img.shields.io/discord/484604562183815169.svg?style=flat-square)](https://discord.gg/K9gvjdg)
 [![GitHub](https://img.shields.io/github/contributors/jeremi360/Ren.svg?style=flat-square)](https://github.com/jeremi360/Ren)
 [![GitHub](https://img.shields.io/github/stars/jeremi360/Ren.svg?style=flat-square)](https://github.com/jeremi360/Ren)
@@ -17,12 +17,13 @@ It means games that are for example:
 
 - Visual Novels ![](https://img.shields.io/badge/VN-90%25-brightgreen.svg?style=flat-square)
 - Click & Point Adventures ![](https://img.shields.io/badge/Adv-25%25-yellowgreen.svg?style=flat-square)
-- RPG ![](https://img.shields.io/badge/RPG-25%25-yellowgreen.svg?style=flat-square)
+- RPG ![](https://img.shields.io/badge/RPG-40%25-green.svg?style=flat-square)
 
 You can use it with:
 - GDScript
-- VisualScript (ToDo)
+- JSON (ToDo)
 - RenScript (ToDo)
+- VisualScript (ToDo)
 
 Ren use [PersistenceNode](https://github.com/MatiasVME/Persistence) for saving/load game.
 
