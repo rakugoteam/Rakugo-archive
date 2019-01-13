@@ -21,7 +21,7 @@
 [ext_resource path="res://addons/Ren/nodes/ren_timer.gd" type="Script" id=19]
 [ext_resource path="res://addons/Ren/icons/ren_timer.svg" type="Texture" id=20]
 
-[node name="Ren" type="Node"]
+[node name="Ren" type="Node" index="0"]
 
 pause_mode = 2
 script = ExtResource( 1 )
@@ -29,7 +29,7 @@ _sections_unfolded = [ "Pause" ]
 game_title = "Your New Game"
 game_version = "0.0.1"
 game_credits = "Your Company"
-markups = "ren"
+markup = "ren"
 links_color = Color( 0.133333, 0.368627, 0.74902, 1 )
 debug_on = false
 save_folder = "saves"

@@ -4,6 +4,7 @@ onready var in_game_gui = get_node("/root/Window/InGameGUI")
 
 var current_node = self
 var nav_path = "Navigation/ScrollContainer/VBoxContainer/"
+
 func _ready():
 	get_tree().set_auto_accept_quit(false)
 	connect("visibility_changed", self, "_on_visibility_changed")

@@ -94,26 +94,10 @@ func _process(delta):
 	_prev_window_maximized = OS.window_maximized
 	_prev_window_fullscreen = OS.window_fullscreen
 
-func set_window_options(fullscreen, maximized):
-	window_fullscreen = fullscreen
-	window_maximized = maximized
-
-func apply():
-	match temp_window_type_id:
-		0: # Windowed
-			set_window_options(false, false)
-		1: # Fullscreen
-			set_window_options(true, false)
-		2: # Maximized
-			set_window_options(false, true)
-		
-	window_size = temp_window_size
-	OS.vsync_enabled = temp_vsync_enabled
-
 func save_conf():
 	var config = ConfigFile.new()
-	config.set_value("display", "width", window_size.x)
-	config.set_value("display", "height", window_size.y)
+	config.set_value("display", "width", _get_window_size().x)
+	config.set_value("display", "height", _get_window_size().y)
 	config.set_value("display", "fullscreen", get_window_type_id())
 	config.set_value("display", "vsync", OS.vsync_enabled)
 
@@ -145,13 +129,16 @@ func save_conf():
 func load_conf():
 	var config = ConfigFile.new()
 	var err = config.load("user://settings.cfg")
-	if err == OK: # if not, something went wrong with the file loading
-		# Look for the display/width pair, and default to 1024 if missing
-		temp_window_size.x = config.get_value("display", "width", default_window_size.x)
-		temp_window_size.y = config.get_value("display", "height", default_window_size.y)
-		temp_window_type_id = config.get_value("display", "fullscreen", 0)
-		temp_vsync_enabled = config.get_value("display", "vsync", true)
-		apply()
+	if err != OK: # if not, something went wrong with the file loading
+		return
+		
+	# Look for the display/width pair, and default to 1024 if missing
+	temp_window_size.x = config.get_value("display", "width", default_window_size.x)
+	temp_window_size.y = config.get_value("display", "height", default_window_size.y)
+	temp_window_type_id = config.get_value("display", "fullscreen", 0)
+	temp_vsync_enabled = config.get_value("display", "vsync", true)
+	
+	apply()
 
 	var audio_bus = [
 		"Master",
@@ -184,5 +171,19 @@ func load_conf():
 	Ren.set_var("skip_all_text", skip_all_text)
 	Ren.set_var("skip_after_choices", skip_after_choices)
 
-	# Save the changes by overwriting the previous file
-	config.save("user://settings.cfg")
+func set_window_options(fullscreen, maximized):
+	_set_window_fullscreen(fullscreen)
+	_set_window_maximized(maximized)
+
+func apply():
+	match temp_window_type_id:
+		0: # Windowed
+			set_window_options(false, false)
+		1: # Fullscreen
+			set_window_options(true, false)
+		2: # Maximized
+			set_window_options(false, true)
+		
+	_set_window_size(temp_window_size)
+	OS.vsync_enabled = temp_vsync_enabled
+
