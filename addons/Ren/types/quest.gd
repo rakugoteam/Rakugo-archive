@@ -62,7 +62,7 @@ func subquests2list_of_ids():
 		list_of_ids.append(subq.quest_id)
 	return list_of_ids
 
-# usefull after loading quest
+# useful after loading quest
 func get_subquests_list(list_of_subquests_ids):
 	var new_subquests = []
 	for subq_id in list_of_subquests_ids:
@@ -72,6 +72,9 @@ func get_subquests_list(list_of_subquests_ids):
 		new_subquests.append(subquest)
 	
 	return new_subquests
+	
+func update_subquests():
+	_subquests = get_subquests_list(_subquests) 
 
 func add_rewards(reward):
 	rewards.append(reward)
