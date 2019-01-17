@@ -1,4 +1,9 @@
+Made with {a=https://github.com/jeremi360/Ren}Ren{/a} [ren_version] on {a=https://godotengine.org/}Godot Engine{/a} [godot_version] on {a=https://github.com/jeremi360/Ren/blob/master/LICENSE} MIT License{/a}.
+Ren can be support by {a=https://www.patreon.com/jeremi360}Patreon{/a}.
+
+Ren is made by:
 	{a=https://github.com/jeremi360}Jeremi Biernacki ({i}Jeremi360{/i}){/a},
+	{a=https://github.com/ivandardi}ivandardi/Melo{/a},
 	{a=https://github.com/MatiasVME}Matías Muñoz Espinoza ({i}MatiasVME{/i}){/a},
 	{a=https://github.com/deep-gaurav}Deep Gaurav{/a}
 
