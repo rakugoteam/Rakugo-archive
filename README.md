@@ -10,6 +10,7 @@
 [![GitHub](https://img.shields.io/github/issues-closed/jeremi360/Ren.svg?style=flat-square)](https://github.com/jeremi360/Ren/issues)
 
 Now you can support this project by [Patreon](https://www.patreon.com/jeremi360).
+You can download 1.0 for Godot 3.1 [here](https://github.com/jeremi360/Ren/releases)). 
 
 Ren is framemork (inspired by [Ren'Py](https://www.renpy.org))
 <br/> for story driven games in [Godot](https://godotengine.org).
