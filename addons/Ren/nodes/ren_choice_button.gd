@@ -1,4 +1,6 @@
-extends "ren_base_button.gd"
+# extends "ren_base_button.gd"
+extends RenBaseButton
+class_name RenChoiceButton
 
 onready var label = RichTextLabel.new()
 var id = -1

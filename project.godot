@@ -8,9 +8,26 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Button",
+"class": "RenBaseButton",
+"language": "GDScript",
+"path": "res://addons/Ren/nodes/ren_base_button.gd"
+}, {
+"base": "Button",
+"class": "RenButton",
+"language": "GDScript",
+"path": "res://addons/Ren/nodes/ren_button.gd"
+}, {
+"base": "Button",
+"class": "RenChoiceButton",
+"language": "GDScript",
+"path": "res://addons/Ren/nodes/ren_choice_button.gd"
+} ]
 _global_script_class_icons={
-
+"RenBaseButton": "",
+"RenButton": "",
+"RenChoiceButton": ""
 }
 
 [application]
