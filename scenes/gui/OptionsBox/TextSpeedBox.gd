@@ -5,7 +5,6 @@ func _ready():
 	$HBox/CheckButton.connect("toggled", self, "on_toggle")
 	connect("visibility_changed", self, "on_visibility_changed")
 
-
 func on_change_value(value):
 	var new_value = abs(value)
 	Ren.set_var("text_speed", new_value)
