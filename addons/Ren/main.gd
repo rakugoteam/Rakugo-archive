@@ -266,7 +266,7 @@ func get_character(character_id):
 ## crate new link to node as global variable that Ren will see
 func node_link(node, node_id = null):
 	if node_id == null:
-		node.name
+		node_id = node.name
 	
 	var path
 	if typeof(node) == TYPE_NODE_PATH:

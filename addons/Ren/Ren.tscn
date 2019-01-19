@@ -38,14 +38,7 @@ script = ExtResource( 4 )
 __meta__ = {
 "_editor_icon": ExtResource( 5 )
 }
-mode = 0
-password = ""
-folder_name = "PersistenceNode"
-no_valid_names = [ "default", "example" ]
-debug = false
-beautifier_active = true
 profile_name_min_size = 1
-profile_name_max_size = 15
 
 [node name="Say" type="Node" parent="."]
 script = ExtResource( 6 )

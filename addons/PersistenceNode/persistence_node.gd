@@ -28,7 +28,7 @@ export (Mode) var mode = Mode.ENCRYPTED setget set_mode, get_mode
 export (String) var password = "" setget set_password, get_password
 export (String) var folder_name = "PersistenceNode" setget set_folder_name, get_folder_name
 export (Array) var no_valid_names = ["default", "example"] setget _private_set, get_no_valid_names
-export (bool) var debug = false setget set_debug, get_debug
+export (bool) var debug_on = false setget set_debug, get_debug
 
 # 1.0.5
 # Source: https://github.com/YeldhamDev/json-beautifier-for-godot
@@ -75,7 +75,7 @@ func _private_get():
 #
 
 func debug(message, something1 = "", something2 = ""):
-	if debug:
+	if debug_on:
 		print("[PersistenceNode] ", message, " ", something1, " ", something2)
 
 # Salva el juego con el profile indicado en el parámetro profile_name. 
