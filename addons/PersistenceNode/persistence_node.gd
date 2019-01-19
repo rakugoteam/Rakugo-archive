@@ -1,6 +1,7 @@
 # MIT License
 #
 # Copyright (c) 2018 Matías Muñoz Espinoza
+# Copyright (c) 2019 Ren Project
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -218,10 +219,10 @@ func get_folder_name():
 	return folder_name
 
 func set_debug(_debug):
-	debug = _debug
+	debug_on = _debug
 	
 func get_debug():
-	return debug
+	return debug_on
 
 func set_beautifier_active(_beautifier_active):
 	beautifier_active = _beautifier_active
