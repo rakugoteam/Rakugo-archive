@@ -1,4 +1,5 @@
 extends Object
+class_name RenNodeCore
 
 func is_procent(x):
 	return (x >= 0.0 and x <= 1.0)

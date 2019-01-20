@@ -38,6 +38,16 @@ _global_script_classes=[ {
 "class": "RenChoiceButton",
 "language": "GDScript",
 "path": "res://addons/Ren/nodes/ren_choice_button.gd"
+}, {
+"base": "Control",
+"class": "RenControl",
+"language": "GDScript",
+"path": "res://addons/Ren/nodes/ren_control.gd"
+}, {
+"base": "Object",
+"class": "RenNodeCore",
+"language": "GDScript",
+"path": "res://addons/Ren/nodes/ren_node_core.gd"
 } ]
 _global_script_class_icons={
 "Character": "res://addons/Ren/icons/ren_character.svg",
@@ -45,7 +55,9 @@ _global_script_class_icons={
 "RenAudioPlayer": "",
 "RenBaseButton": "",
 "RenButton": "",
-"RenChoiceButton": ""
+"RenChoiceButton": "",
+"RenControl": "",
+"RenNodeCore": ""
 }
 
 [application]

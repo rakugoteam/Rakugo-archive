@@ -7,12 +7,12 @@ func _enter_tree():
 	# print(ProjectSettings.)
 	
 	## RenNodes:
-	add_custom_type(
-		"RenControl",
-		"Control",
-		preload("nodes/ren_control.gd"),
-		preload("icons/ren_control.svg")
-		)
+#	add_custom_type(
+#		"RenControl",
+#		"Control",
+#		preload("nodes/ren_control.gd"),
+#		preload("icons/ren_control.svg")
+#		)
 	
 	add_custom_type(
 		"RenNode2D",
@@ -165,14 +165,14 @@ func _exit_tree():
 	remove_custom_type("RenSpatial")
 	
 	## RenCharacter node:
-#	remove_custom_type("Character")
+	remove_custom_type("Character")
 
 	## RenControl nodes:
 	remove_custom_type("RenLineEdit")
 	remove_custom_type("RenSayPanel")
 	remove_custom_type("RenMenu")
-#	remove_custom_type("RenChoiceButton")
-#	remove_custom_type("RenButton")
+	remove_custom_type("RenChoiceButton")
+	remove_custom_type("RenButton")
 	remove_custom_type("RenTextLabel")
 	remove_custom_type("RenVarLabel")
 	remove_custom_type("RenVarEdit")
@@ -180,6 +180,7 @@ func _exit_tree():
 	remove_custom_type("RenVarVSlider")
 	remove_custom_type("RenVarCheckBox")
 	remove_custom_type("RenVarCheckButton")
-#	remove_custom_type("RenAnimPlayer")
-#	remove_custom_type("RenAudioPlayer")
+	remove_custom_type("RenAnimPlayer")
+	remove_custom_type("RenAudioPlayer")
 	remove_custom_type("RenTimer")
+	remove_custom_type("RenVisualInstance")
