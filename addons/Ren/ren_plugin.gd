@@ -14,19 +14,19 @@ func _enter_tree():
 #		preload("icons/ren_control.svg")
 #		)
 	
-	add_custom_type(
-		"RenNode2D",
-		"Node2D",
-		preload("nodes/ren_node2d.gd"),
-		preload("icons/ren_node2d.svg")
-		)
+	# add_custom_type(
+	# 	"RenNode2D",
+	# 	"Node2D",
+	# 	preload("nodes/ren_node2d.gd"),
+	# 	preload("icons/ren_node2d.svg")
+	# 	)
 	
-	add_custom_type(
-		"RenVisualInstance",
-		"Spatial",
-		preload("nodes/ren_visual_instance.gd"),
-		preload("icons/ren_spatial.svg")
-		)
+	# add_custom_type(
+	# 	"RenVisualInstance",
+	# 	"Spatial",
+	# 	preload("nodes/ren_visual_instance.gd"),
+	# 	preload("icons/ren_spatial.svg")
+	# 	)
 	
 	## RenCharacter node:
 #	add_custom_type(

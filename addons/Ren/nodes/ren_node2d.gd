@@ -1,6 +1,7 @@
 extends Node2D
+class_name RenNode2D
 
-onready var rnode = preload("res://addons/Ren/nodes/ren_node_core.gd").new()
+onready var rnode = RenNodeCore.new()
 
 export(bool) var auto_define = false
 export(String) var node_id = ""
