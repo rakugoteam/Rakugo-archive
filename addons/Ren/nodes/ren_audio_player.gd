@@ -1,4 +1,5 @@
 extends AudioStreamPlayer
+class_name RenAudioPlayer
 
 export(bool) var auto_define = false
 export(String) var node_id = ""

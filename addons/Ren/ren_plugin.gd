@@ -142,12 +142,12 @@ func _enter_tree():
 #		preload("icons/ren_anim_player.svg")
 #		)
 	
-	add_custom_type(
-		"RenAudioPlayer",
-		"AudioStreamPlayer",
-		preload("nodes/ren_audio_player.gd"),
-		preload("icons/ren_audio_player.svg")
-		)
+#	add_custom_type(
+#		"RenAudioPlayer",
+#		"AudioStreamPlayer",
+#		preload("nodes/ren_audio_player.gd"),
+#		preload("icons/ren_audio_player.svg")
+#		)
 	
 	add_custom_type(
 		"RenTimer",
@@ -180,6 +180,6 @@ func _exit_tree():
 	remove_custom_type("RenVarVSlider")
 	remove_custom_type("RenVarCheckBox")
 	remove_custom_type("RenVarCheckButton")
-	remove_custom_type("RenAnimPlayer")
-	remove_custom_type("RenAudioPlayer")
+#	remove_custom_type("RenAnimPlayer")
+#	remove_custom_type("RenAudioPlayer")
 	remove_custom_type("RenTimer")
