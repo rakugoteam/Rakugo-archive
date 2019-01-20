@@ -58,13 +58,13 @@ func _enter_tree():
 		preload("icons/ren_menu.svg")
 		)
 	
-	add_custom_type(
-		"RenChoiceButton",
-		"Button",
-		preload("nodes/ren_choice_button.gd"),
-		preload("icons/ren_choice_button.svg")
-		)
-	
+#	add_custom_type(
+#		"RenChoiceButton",
+#		"Button",
+#		preload("nodes/ren_choice_button.gd"),
+#		preload("icons/ren_choice_button.svg")
+#		)
+#
 #	add_custom_type(
 #		"RenButton",
 #		"Button",
@@ -184,3 +184,5 @@ func _exit_tree():
 	remove_custom_type("RenAudioPlayer")
 	remove_custom_type("RenTimer")
 	remove_custom_type("RenVisualInstance")
+	remove_custom_type("RenProgressBar")
+	remove_custom_type("RenTextureProgress")
