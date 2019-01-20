@@ -51,12 +51,12 @@ func _enter_tree():
 #		preload("icons/ren_panel.svg")
 #		)
 	
-	add_custom_type(
-		"RenMenu",
-		"VBoxContainer",
-		preload("nodes/ren_menu.gd"),
-		preload("icons/ren_menu.svg")
-		)
+#	add_custom_type(
+#		"RenMenu",
+#		"VBoxContainer",
+#		preload("nodes/ren_menu.gd"),
+#		preload("icons/ren_menu.svg")
+#		)
 	
 #	add_custom_type(
 #		"RenChoiceButton",

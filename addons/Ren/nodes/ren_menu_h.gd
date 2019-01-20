@@ -1,8 +1,7 @@
-extends BoxContainer
+extends HBoxContainer
+class_name HRenMenu, "res://addons/Ren/icons/ren_menu_h.svg"
 
-## temprary needed
-
-export(String) var kind = "vertical"
+export(String) var kind = "horizontal"
 export(PackedScene) var ChoiceButton
 
 func _ready():
@@ -16,7 +15,7 @@ func _on_statement(type, kwargs):
 	if kwargs["mkind"] != kind:
 		get_parent().hide()
 		return
-		
+
 	get_parent().show()
 
 	for ch in get_children():

@@ -1,6 +1,5 @@
-extends BoxContainer
-
-## temprary needed
+extends VBoxContainer
+class_name VRenMenu, "res://addons/Ren/icons/ren_menu_v.svg"
 
 export(String) var kind = "vertical"
 export(PackedScene) var ChoiceButton
@@ -16,7 +15,7 @@ func _on_statement(type, kwargs):
 	if kwargs["mkind"] != kind:
 		get_parent().hide()
 		return
-		
+
 	get_parent().show()
 
 	for ch in get_children():

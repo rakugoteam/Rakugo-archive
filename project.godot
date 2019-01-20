@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Ren/nodes/character.gd"
 }, {
+"base": "HBoxContainer",
+"class": "HRenMenu",
+"language": "GDScript",
+"path": "res://addons/Ren/nodes/ren_menu_h.gd"
+}, {
 "base": "AnimationPlayer",
 "class": "RenAnimPlayer",
 "language": "GDScript",
@@ -49,6 +54,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Ren/nodes/ren_line_edit.gd"
 }, {
+"base": "BoxContainer",
+"class": "RenMenu",
+"language": "GDScript",
+"path": "res://addons/Ren/nodes/ren_menu.gd"
+}, {
 "base": "Node2D",
 "class": "RenNode2D",
 "language": "GDScript",
@@ -73,9 +83,15 @@ _global_script_classes=[ {
 "class": "RenVisualInstance",
 "language": "GDScript",
 "path": "res://addons/Ren/nodes/ren_visual_instance.gd"
+}, {
+"base": "VBoxContainer",
+"class": "VRenMenu",
+"language": "GDScript",
+"path": "res://addons/Ren/nodes/ren_menu_v.gd"
 } ]
 _global_script_class_icons={
 "Character": "res://addons/Ren/icons/ren_character.svg",
+"HRenMenu": "",
 "RenAnimPlayer": "",
 "RenAudioPlayer": "",
 "RenBaseButton": "",
@@ -83,11 +99,13 @@ _global_script_class_icons={
 "RenChoiceButton": "",
 "RenControl": "",
 "RenLineEdit": "",
+"RenMenu": "res://addons/Ren/icons/ren_menu.svg",
 "RenNode2D": "",
 "RenNodeCore": "",
 "RenQuestButton": "",
 "RenSayPanel": "res://addons/Ren/icons/ren_panel.svg",
-"RenVisualInstance": ""
+"RenVisualInstance": "",
+"VRenMenu": "res://addons/Ren/icons/ren_menu_v.svg"
 }
 
 [application]
