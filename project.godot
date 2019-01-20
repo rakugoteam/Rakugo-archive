@@ -64,6 +64,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Ren/nodes/ren_quest_button.gd"
 }, {
+"base": "Panel",
+"class": "RenSayPanel",
+"language": "GDScript",
+"path": "res://addons/Ren/nodes/ren_say_panel.gd"
+}, {
 "base": "VisualInstance",
 "class": "RenVisualInstance",
 "language": "GDScript",
@@ -81,6 +86,7 @@ _global_script_class_icons={
 "RenNode2D": "",
 "RenNodeCore": "",
 "RenQuestButton": "",
+"RenSayPanel": "res://addons/Ren/icons/ren_panel.svg",
 "RenVisualInstance": ""
 }
 

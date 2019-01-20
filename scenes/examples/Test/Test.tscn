@@ -123,5 +123,3 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 14 )
 script = ExtResource( 15 )
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-

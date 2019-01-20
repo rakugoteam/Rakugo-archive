@@ -44,12 +44,12 @@ func _enter_tree():
 #		preload("icons/ren_line_edit.svg")
 #		)
 	
-	add_custom_type(
-		"RenSayPanel",
-		"Panel",
-		preload("nodes/ren_say_panel.gd"),
-		preload("icons/ren_panel.svg")
-		)
+#	add_custom_type(
+#		"RenSayPanel",
+#		"Panel",
+#		preload("nodes/ren_say_panel.gd"),
+#		preload("icons/ren_panel.svg")
+#		)
 	
 	add_custom_type(
 		"RenMenu",
