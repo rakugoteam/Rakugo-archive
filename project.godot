@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "Character",
+"language": "GDScript",
+"path": "res://addons/Ren/nodes/character.gd"
+}, {
 "base": "Button",
 "class": "RenBaseButton",
 "language": "GDScript",
@@ -25,6 +30,7 @@ _global_script_classes=[ {
 "path": "res://addons/Ren/nodes/ren_choice_button.gd"
 } ]
 _global_script_class_icons={
+"Character": "res://addons/Ren/icons/ren_character.svg",
 "RenBaseButton": "",
 "RenButton": "",
 "RenChoiceButton": ""

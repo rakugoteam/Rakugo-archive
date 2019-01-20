@@ -29,12 +29,12 @@ func _enter_tree():
 		)
 	
 	## RenCharacter node:
-	add_custom_type(
-		"Character",
-		"Node",
-		preload("nodes/character.gd"),
-		preload("icons/ren_character.svg")
-		)
+#	add_custom_type(
+#		"Character",
+#		"Node",
+#		preload("nodes/character.gd"),
+#		preload("icons/ren_character.svg")
+#		)
 	
 	## RenControl nodes:
 	add_custom_type(
@@ -165,14 +165,14 @@ func _exit_tree():
 	remove_custom_type("RenSpatial")
 	
 	## RenCharacter node:
-	remove_custom_type("Character")
+#	remove_custom_type("Character")
 
 	## RenControl nodes:
 	remove_custom_type("RenLineEdit")
 	remove_custom_type("RenSayPanel")
 	remove_custom_type("RenMenu")
-	remove_custom_type("RenChoiceButton")
-	remove_custom_type("RenButton")
+#	remove_custom_type("RenChoiceButton")
+#	remove_custom_type("RenButton")
 	remove_custom_type("RenTextLabel")
 	remove_custom_type("RenVarLabel")
 	remove_custom_type("RenVarEdit")
