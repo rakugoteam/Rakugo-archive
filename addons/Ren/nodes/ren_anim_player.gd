@@ -1,4 +1,5 @@
 extends AnimationPlayer
+class_name RenAnimPlayer
 
 export(bool) var auto_define = false
 export(String) var node_id = ""
