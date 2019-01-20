@@ -37,12 +37,12 @@ func _enter_tree():
 #		)
 	
 	## RenControl nodes:
-	add_custom_type(
-		"RenLineEdit",
-		"LineEdit",
-		preload("nodes/ren_line_edit.gd"),
-		preload("icons/ren_line_edit.svg")
-		)
+#	add_custom_type(
+#		"RenLineEdit",
+#		"LineEdit",
+#		preload("nodes/ren_line_edit.gd"),
+#		preload("icons/ren_line_edit.svg")
+#		)
 	
 	add_custom_type(
 		"RenSayPanel",
