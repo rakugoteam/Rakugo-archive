@@ -86,7 +86,10 @@ func write_dialog(text, speed):
 		DialogText.bbcode_text = ""
 
 	var te = ""
-	Ren.dialog_timer.wait_time = speed/100 * Ren.auto_timer.wait_time
+	var new_time = speed/100 * Ren.auto_timer.wait_time
+	if new_time <= 0:
+		new_time = 0.1
+	Ren.dialog_timer.wait_time = new_time 
 
 	var markup = false
 	for letter in text:

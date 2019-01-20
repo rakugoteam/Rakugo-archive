@@ -1,11 +1,14 @@
 extends Object
 
-var url_open = "[color=#225ebf][url="
-var url_close = "[/url][/color]"
-var new_line = "\n"
-var tab = "\t"
+var url_open:String = "[color=225ebf][url="
+var url_close:String = "[/url][/color]"
+var new_line:String = "\n"
+var tab:String = "\t"
 
-func text_passer(text, variables, mode = "ren", links_color = "225ebf"):
+func text_passer(
+	text:String, variables:Dictionary, 
+	mode:String = "ren",
+	links_color:String = "225ebf") -> String:
 	## passer for renpy or bbcode markup format
 	## its retrun bbcode
 
@@ -26,7 +29,9 @@ func text_passer(text, variables, mode = "ren", links_color = "225ebf"):
 
 	return text
 
-func parse_text_adv(text, variables, open, close):
+func parse_text_adv(
+	text:String, variables:Dictionary,
+	open:String, close:String) -> String:
 	## code from Sebastian Holc solution:
 	## http://pastebin.com/K8zsWQtL
 
@@ -80,7 +85,7 @@ func parse_text_adv(text, variables, open, close):
 		
 	return text
 
-func parse_ren_text(text, variables):
+func parse_ren_text(text:String, variables:Dictionary) -> String:
 	text = parse_text_adv(text, variables, "[", "]")
 	text = text.replace("{image", "[img")
 	text = text.replace("{a=", url_open)
@@ -91,7 +96,7 @@ func parse_ren_text(text, variables):
 	text = text.replace("}", "]")
 	return text
 
-func parse_bbcode_text(text, variables):
+func parse_bbcode_text(text:String, variables:Dictionary) -> String:
 	text = parse_text_adv(text, variables, "{", "}")
 	text = text.replace("[url=", url_open)
 	text = text.replace("[/url]", url_close)

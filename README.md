@@ -1,4 +1,5 @@
 # Ren ![Logo](graphics/window_icon.png)
+[![Patreon](https://img.shields.io/badge/support-pateron-orange.svg?style=flat-square)](https://www.patreon.com/jeremi360)
 [![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](LICENSE)
 [![Discord Server](https://img.shields.io/discord/484604562183815169.svg?style=flat-square)](https://discord.gg/K9gvjdg)
 [![GitHub](https://img.shields.io/github/contributors/jeremi360/Ren.svg?style=flat-square)](https://github.com/jeremi360/Ren)
@@ -7,6 +8,9 @@
 [![GitHub](https://img.shields.io/github/watchers/badges/shields.svg?label=Watch&style=flat-square)](https://github.com/jeremi360/Ren)
 [![GitHub](https://img.shields.io/github/issues/jeremi360/Ren.svg?style=flat-square)](https://github.com/jeremi360/Ren/issues)
 [![GitHub](https://img.shields.io/github/issues-closed/jeremi360/Ren.svg?style=flat-square)](https://github.com/jeremi360/Ren/issues)
+
+Now you can support this project by [Patreon](https://www.patreon.com/jeremi360).
+You can download 1.0 for Godot 3.0 [here](https://github.com/jeremi360/Ren/releases)). 
 
 Ren is framemork (inspired by [Ren'Py](https://www.renpy.org))
 <br/> for story driven games in [Godot](https://godotengine.org).

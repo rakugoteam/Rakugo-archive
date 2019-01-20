@@ -57,7 +57,6 @@ var prev_story_state = ""
 var variables = {}
 
 # don't save this
-onready var menu_node = $Menu
 var current_statement = null
 var using_passer = false
 var skip_auto = false
@@ -267,7 +266,7 @@ func get_character(character_id):
 ## crate new link to node as global variable that Ren will see
 func node_link(node, node_id = null):
 	if node_id == null:
-		node.name
+		node_id = node.name
 	
 	var path
 	if typeof(node) == TYPE_NODE_PATH:

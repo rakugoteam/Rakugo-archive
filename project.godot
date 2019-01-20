@@ -8,9 +8,26 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Button",
+"class": "RenBaseButton",
+"language": "GDScript",
+"path": "res://addons/Ren/nodes/ren_base_button.gd"
+}, {
+"base": "Button",
+"class": "RenButton",
+"language": "GDScript",
+"path": "res://addons/Ren/nodes/ren_button.gd"
+}, {
+"base": "Button",
+"class": "RenChoiceButton",
+"language": "GDScript",
+"path": "res://addons/Ren/nodes/ren_choice_button.gd"
+} ]
 _global_script_class_icons={
-
+"RenBaseButton": "",
+"RenButton": "",
+"RenChoiceButton": ""
 }
 
 [application]
@@ -26,6 +43,14 @@ Ren="*res://addons/Ren/Ren.tscn"
 settings="*res://scenes/gui/settings.gd"
 VNCharacters="*res://scenes/examples/VisualNovelExample/Characters.tscn"
 Window="*res://scenes/gui/Window/Window.tscn"
+
+[debug]
+
+gdscript/completion/autocomplete_setters_and_getters=true
+gdscript/warnings/unused_variable=false
+gdscript/warnings/unused_class_variable=false
+gdscript/warnings/unused_argument=false
+gdscript/warnings/return_value_discarded=false
 
 [editor_plugins]
 

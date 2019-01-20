@@ -1,4 +1,5 @@
-extends "ren_base_button.gd"
+extends RenBaseButton
+class_name RenButton 
 
 export(NodePath) var node_path = NodePath()
 export(bool) var auto_resize_x = true

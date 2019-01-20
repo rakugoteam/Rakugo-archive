@@ -65,12 +65,12 @@ func _enter_tree():
 		preload("icons/ren_choice_button.svg")
 		)
 	
-	add_custom_type(
-		"RenButton",
-		"Button",
-		preload("nodes/ren_button.gd"),
-		preload("icons/ren_button.svg")
-		)
+#	add_custom_type(
+#		"RenButton",
+#		"Button",
+#		preload("nodes/ren_button.gd"),
+#		preload("icons/ren_button.svg")
+#		)
 	
 	add_custom_type(
 		"RenTextLabel",
