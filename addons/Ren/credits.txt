@@ -10,4 +10,5 @@ Ren is made by:
 Special Thanks for:
 	{a=https://github.com/Kermer}Sebastian Holc ({i}Kermer{/i}){/a},
 	{a=https://github.com/BurningWood}Zon Petilla ({i}Title Pending{/i}){/a},
-	{a=https://github.com/Plopsiskopsis}Plopsiskopsis{/a}
+	{a=https://github.com/Plopsiskopsis}Plopsiskopsis{/a},
+	Michael Alexsander Silva Dias

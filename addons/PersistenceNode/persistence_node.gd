@@ -23,6 +23,7 @@
 
 tool
 extends Node
+class_name Persistence, "icon.svg"
 
 enum Mode {ENCRYPTED, TEXT}
 export (Mode) var mode = Mode.ENCRYPTED setget set_mode, get_mode
@@ -48,7 +49,7 @@ signal loaded
 
 func _init():
 	if beautifier_active:
-		beautifier = load("res://addons/json_beautifier/json_beautifier.gd").new()
+		beautifier = JSONBeautifier.new()
 
 func _ready():
 	connect("saved", self, "_on_saved")
