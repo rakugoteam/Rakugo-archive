@@ -1,4 +1,5 @@
 extends Label
+class_name RenVarLabel
 
 export(String) var var_name = "some_var"
 export(String) var default = ""

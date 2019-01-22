@@ -1,4 +1,5 @@
 extends RichTextLabel
+class_name RenTextLabel
 
 export(String, "ren", "bbcode") var mode = "ren"
 export(String, FILE, "*.txt") var ren_text_file = ""

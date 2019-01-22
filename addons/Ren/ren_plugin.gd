@@ -72,19 +72,19 @@ func _enter_tree():
 #		preload("icons/ren_button.svg")
 #		)
 	
-	add_custom_type(
-		"RenTextLabel",
-		"RichTextLabel",
-		preload("nodes/ren_label.gd"),
-		preload("icons/ren_text_label.svg")
-		)
+#	add_custom_type(
+#		"RenTextLabel",
+#		"RichTextLabel",
+#		preload("nodes/ren_label.gd"),
+#		preload("icons/ren_text_label.svg")
+#		)
 	
-	add_custom_type(
-		"RenVarLabel",
-		"Label",
-		preload("nodes/ren_var_label.gd"),
-		preload("icons/ren_var_label.svg")
-		)
+#	add_custom_type(
+#		"RenVarLabel",
+#		"Label",
+#		preload("nodes/ren_var_label.gd"),
+#		preload("icons/ren_var_label.svg")
+#		)
 	
 	add_custom_type(
 		"RenVarEdit",

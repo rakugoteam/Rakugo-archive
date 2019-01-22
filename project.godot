@@ -54,11 +54,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Ren/nodes/ren_line_edit.gd"
 }, {
-"base": "BoxContainer",
-"class": "RenMenu",
-"language": "GDScript",
-"path": "res://addons/Ren/nodes/ren_menu.gd"
-}, {
 "base": "Node2D",
 "class": "RenNode2D",
 "language": "GDScript",
@@ -79,6 +74,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Ren/nodes/ren_say_panel.gd"
 }, {
+"base": "RichTextLabel",
+"class": "RenTextLabel",
+"language": "GDScript",
+"path": "res://addons/Ren/nodes/ren_label.gd"
+}, {
+"base": "Label",
+"class": "RenVarLabel",
+"language": "GDScript",
+"path": "res://addons/Ren/nodes/ren_var_label.gd"
+}, {
 "base": "VisualInstance",
 "class": "RenVisualInstance",
 "language": "GDScript",
@@ -91,7 +96,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Character": "res://addons/Ren/icons/ren_character.svg",
-"HRenMenu": "",
+"HRenMenu": "res://addons/Ren/icons/ren_menu_h.svg",
 "RenAnimPlayer": "",
 "RenAudioPlayer": "",
 "RenBaseButton": "",
@@ -99,11 +104,12 @@ _global_script_class_icons={
 "RenChoiceButton": "",
 "RenControl": "",
 "RenLineEdit": "",
-"RenMenu": "res://addons/Ren/icons/ren_menu.svg",
 "RenNode2D": "",
 "RenNodeCore": "",
 "RenQuestButton": "",
 "RenSayPanel": "res://addons/Ren/icons/ren_panel.svg",
+"RenTextLabel": "",
+"RenVarLabel": "",
 "RenVisualInstance": "",
 "VRenMenu": "res://addons/Ren/icons/ren_menu_v.svg"
 }
