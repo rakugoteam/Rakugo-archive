@@ -1,4 +1,4 @@
-extends "res://addons/Ren/nodes/ren_timer.gd"
+extends RenTimer
 
 signal stop_loop
 

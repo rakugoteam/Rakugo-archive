@@ -1,4 +1,5 @@
-extends "say.gd"
+extends Say
+class_name Menu
 
 var choices_labels = []
 

@@ -1,4 +1,5 @@
-extends "statement.gd"
+extends Statement
+class_name Say
 
 func _init():
 	._init()

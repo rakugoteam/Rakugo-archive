@@ -1,4 +1,5 @@
 extends Object
+class_name RenTextPasser
 
 var url_open:String = "[color=225ebf][url="
 var url_close:String = "[/url][/color]"
