@@ -1,4 +1,5 @@
-extends "statement.gd"
+extends Statement
+class_name PlayAnim
 
 func _init():
 	._init()

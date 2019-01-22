@@ -1,4 +1,5 @@
 extends Node
+class_name Statement
 
 var type = 0 # Ren.StatementType.BASE
 var kwargs = {"add_to_history": false} # dict of pairs keyword : argument

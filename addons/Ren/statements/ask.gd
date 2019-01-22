@@ -1,4 +1,5 @@
-extends "say.gd"
+extends Say
+class_name Ask
 
 var value = "value"
 var variable = "variable"
