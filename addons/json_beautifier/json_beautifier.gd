@@ -8,6 +8,7 @@
 ###############################################################################
 
 extends Node
+class_name JSONBeautifier
 
 # Takes valid JSON (if invalid, it will return a error according with Godot's
 # 'validade_json' method) and a number of spaces for indentation (default is

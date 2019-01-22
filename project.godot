@@ -14,6 +14,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Ren/nodes/character.gd"
 }, {
+"base": "Node",
+"class": "JSONBeautifier",
+"language": "GDScript",
+"path": "res://addons/json_beautifier/json_beautifier.gd"
+}, {
+"base": "Node",
+"class": "Persistence",
+"language": "GDScript",
+"path": "res://addons/PersistenceNode/persistence_node.gd"
+}, {
 "base": "AnimationPlayer",
 "class": "RenAnimPlayer",
 "language": "GDScript",
@@ -116,6 +126,8 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Character": "res://addons/Ren/icons/ren_character.svg",
+"JSONBeautifier": "",
+"Persistence": "res://addons/PersistenceNode/icon.svg",
 "RenAnimPlayer": "",
 "RenAudioPlayer": "",
 "RenBaseButton": "",
