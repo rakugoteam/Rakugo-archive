@@ -14,11 +14,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Ren/nodes/character.gd"
 }, {
-"base": "HBoxContainer",
-"class": "HRenMenu",
-"language": "GDScript",
-"path": "res://addons/Ren/nodes/ren_menu_h.gd"
-}, {
 "base": "AnimationPlayer",
 "class": "RenAnimPlayer",
 "language": "GDScript",
@@ -53,6 +48,11 @@ _global_script_classes=[ {
 "class": "RenLineEdit",
 "language": "GDScript",
 "path": "res://addons/Ren/nodes/ren_line_edit.gd"
+}, {
+"base": "BoxContainer",
+"class": "RenMenu",
+"language": "GDScript",
+"path": "res://addons/Ren/nodes/ren_menu.gd"
 }, {
 "base": "Node2D",
 "class": "RenNode2D",
@@ -99,19 +99,23 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Ren/nodes/ren_var_label.gd"
 }, {
+"base": "Range",
+"class": "RenVarRange",
+"language": "GDScript",
+"path": "res://addons/Ren/nodes/ren_var_range.gd"
+}, {
+"base": "Range",
+"class": "RenVarSlider",
+"language": "GDScript",
+"path": "res://addons/Ren/nodes/ren_var_slider.gd"
+}, {
 "base": "VisualInstance",
 "class": "RenVisualInstance",
 "language": "GDScript",
 "path": "res://addons/Ren/nodes/ren_visual_instance.gd"
-}, {
-"base": "VBoxContainer",
-"class": "VRenMenu",
-"language": "GDScript",
-"path": "res://addons/Ren/nodes/ren_menu_v.gd"
 } ]
 _global_script_class_icons={
 "Character": "res://addons/Ren/icons/ren_character.svg",
-"HRenMenu": "res://addons/Ren/icons/ren_menu_h.svg",
 "RenAnimPlayer": "",
 "RenAudioPlayer": "",
 "RenBaseButton": "",
@@ -119,6 +123,7 @@ _global_script_class_icons={
 "RenChoiceButton": "",
 "RenControl": "",
 "RenLineEdit": "",
+"RenMenu": "",
 "RenNode2D": "",
 "RenNodeCore": "",
 "RenQuestButton": "",
@@ -128,8 +133,9 @@ _global_script_class_icons={
 "RenVarCheckButton": "",
 "RenVarEdit": "",
 "RenVarLabel": "",
-"RenVisualInstance": "",
-"VRenMenu": "res://addons/Ren/icons/ren_menu_v.svg"
+"RenVarRange": "",
+"RenVarSlider": "",
+"RenVisualInstance": ""
 }
 
 [application]

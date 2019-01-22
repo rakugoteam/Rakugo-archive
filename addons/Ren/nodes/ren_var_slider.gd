@@ -1,4 +1,5 @@
-extends "ren_var_range.gd"
+extends RenVarRange
+class_name RenVarSlider
 
 
 func _ready():

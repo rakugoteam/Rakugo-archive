@@ -50,13 +50,22 @@ func _enter_tree():
 #		preload("nodes/ren_say_panel.gd"),
 #		preload("icons/ren_panel.svg")
 #		)
+
+	## they must stay to don't make few times script that
+	## is almost the same, but in to first lines diffrent 
+	add_custom_type(
+		"VRenMenu",
+		"VBoxContainer",
+		preload("nodes/ren_menu.gd"),
+		preload("icons/ren_menu_v.svg")
+		)
 	
-#	add_custom_type(
-#		"RenMenu",
-#		"VBoxContainer",
-#		preload("nodes/ren_menu.gd"),
-#		preload("icons/ren_menu.svg")
-#		)
+	add_custom_type(
+		"HRenMenu",
+		"HBoxContainer",
+		preload("nodes/ren_menu.gd"),
+		preload("icons/ren_menu_h.svg")
+		)
 	
 #	add_custom_type(
 #		"RenChoiceButton",

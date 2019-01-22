@@ -1,4 +1,5 @@
 extends Range
+class_name RenVarRange
 
 export(String) var var_name = "some_var"
 
