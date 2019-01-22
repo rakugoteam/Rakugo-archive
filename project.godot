@@ -85,7 +85,7 @@ _global_script_classes=[ {
 "path": "res://addons/Ren/nodes/ren_timer.gd"
 }, {
 "base": "Button",
-"class": "RenVarCheckButton",
+"class": "RenVarCheck",
 "language": "GDScript",
 "path": "res://addons/Ren/nodes/ren_var_check.gd"
 }, {
@@ -130,7 +130,7 @@ _global_script_class_icons={
 "RenSayPanel": "res://addons/Ren/icons/ren_panel.svg",
 "RenTextLabel": "",
 "RenTimer": "",
-"RenVarCheckButton": "",
+"RenVarCheck": "",
 "RenVarEdit": "",
 "RenVarLabel": "",
 "RenVarRange": "",
