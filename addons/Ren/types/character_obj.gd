@@ -1,4 +1,5 @@
 extends Object
+class_name CharacterObject
 
 var kws = ["name", "color", "prefix", "suffix", "avatar"]
 var _color

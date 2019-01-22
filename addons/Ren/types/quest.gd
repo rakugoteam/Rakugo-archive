@@ -1,4 +1,5 @@
-extends "subquest.gd"
+extends Subquest
+class_name Quest
 
 var _subquests	= []
 var rewards		= [] setget , _get_rewards # Maybe we need a Object Reward
