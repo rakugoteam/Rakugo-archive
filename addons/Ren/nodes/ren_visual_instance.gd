@@ -1,6 +1,7 @@
 extends VisualInstance
+class_name RenVisualInstance
 
-var rnode = load("ren_node_core.gd").new()
+var rnode = RenNodeCore.new()
 
 export(bool) var auto_define = false
 export(String) var node_id = ""

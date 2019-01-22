@@ -1,4 +1,5 @@
 extends LineEdit
+class_name RenLineEdit
 
 onready var rtl = RichTextLabel.new()
 var input_placeholder = ""

@@ -1,4 +1,5 @@
-extends "ren_base_button.gd"
+extends RenBaseButton
+class_name RenQuestButton
 
 export(Vector2) var sprite_rect = Vector2(64, 64)
 var quest

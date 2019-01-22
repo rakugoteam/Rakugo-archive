@@ -1,4 +1,5 @@
 extends BoxContainer
+class_name RenMenu
 
 export(String) var kind = "vertical"
 export(PackedScene) var ChoiceButton

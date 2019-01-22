@@ -1,4 +1,5 @@
 extends LineEdit
+class_name RenVarEdit
 
 export(String) var var_name = "some_var"
 
