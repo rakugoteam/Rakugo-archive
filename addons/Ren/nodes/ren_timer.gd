@@ -1,4 +1,5 @@
 extends Timer
+class_name RenTimer
 
 export(String) var var_name = "some_var"
 

@@ -86,12 +86,12 @@ func _enter_tree():
 #		preload("icons/ren_var_label.svg")
 #		)
 	
-	add_custom_type(
-		"RenVarEdit",
-		"LineEdit",
-		preload("nodes/ren_var_edit.gd"),
-		preload("icons/ren_var_edit.svg")
-		)
+#	add_custom_type(
+#		"RenVarEdit",
+#		"LineEdit",
+#		preload("nodes/ren_var_edit.gd"),
+#		preload("icons/ren_var_edit.svg")
+#		)
 	
 	add_custom_type(
 		"RenVarHSlider",
@@ -121,19 +121,19 @@ func _enter_tree():
 		preload("icons/ren_texture_progress.svg")
 		)
 	
-	add_custom_type(
-		"RenVarCheckBox",
-		"CheckBox",
-		preload("nodes/ren_var_check.gd"),
-		preload("icons/ren_check_box.svg")
-		)
+#	add_custom_type(
+#		"RenVarCheckBox",
+#		"CheckBox",
+#		preload("nodes/ren_var_check.gd"),
+#		preload("icons/ren_check_box.svg")
+#		)
 	
-	add_custom_type(
-		"RenVarCheckButton",
-		"CheckButton",
-		preload("nodes/ren_var_check.gd"),
-		preload("icons/ren_check_button.svg")
-		)
+#	add_custom_type(
+#		"RenVarCheckButton",
+#		"CheckButton",
+#		preload("nodes/ren_var_check.gd"),
+#		preload("icons/ren_check_button.svg")
+#		)
 
 #	add_custom_type(
 #		"RenAnimPlayer",
@@ -149,12 +149,12 @@ func _enter_tree():
 #		preload("icons/ren_audio_player.svg")
 #		)
 	
-	add_custom_type(
-		"RenTimer",
-		"Timer",
-		preload("nodes/ren_timer.gd"),
-		preload("icons/ren_timer.svg")
-	)
+#	add_custom_type(
+#		"RenTimer",
+#		"Timer",
+#		preload("nodes/ren_timer.gd"),
+#		preload("icons/ren_timer.svg")
+#	)
 	
 	print("Ren is Active")
 	

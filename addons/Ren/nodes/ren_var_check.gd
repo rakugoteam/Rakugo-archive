@@ -1,4 +1,5 @@
 extends Button
+class_name RenVarCheckButton
 
 export(String) var var_name = "some_var" 
 
