@@ -1,9 +1,5 @@
 extends Node
-
-const _VAR		= preload("ren_var.gd")
-const _CHR		= preload("character_obj.gd")
-const _QUEST	= preload("quest.gd")
-const _SUBQ		= preload("subquest.gd")
+class_name RenDef
 
 func get_type(variable):
 	var type = "str"
@@ -72,7 +68,7 @@ func define(variables, var_name, var_value = null, var_type = null):
 			var_value = var_value
 
 	if var_type == Ren.Type.QUEST:
-		var new_quest = _QUEST.new()
+		var new_quest = Quest.new()
 		new_quest.quest_id = var_name
 		if typeof(var_value) == TYPE_DICTIONARY:
 			new_quest.dict2quest(var_value)
@@ -80,7 +76,7 @@ func define(variables, var_name, var_value = null, var_type = null):
 		return new_quest
 	
 	if var_type == Ren.Type.SUBQUEST:
-		var new_subquest = _SUBQ.new()
+		var new_subquest = Subquest.new()
 		new_subquest.quest_id = var_name
 		if typeof(var_value) == TYPE_DICTIONARY:
 			new_subquest.dict2subquest(var_value)
@@ -88,14 +84,14 @@ func define(variables, var_name, var_value = null, var_type = null):
 		return new_subquest
 	
 	if var_type == Ren.Type.CHARACTER:
-		var new_character = _CHR.new()
+		var new_character = CharacterObject.new()
 		if typeof(var_value) == TYPE_DICTIONARY:
 			new_character.dict2character(var_value)
 		variables[var_name] = new_character
 		return new_character
 	
 	else:
-		var new_var = _VAR.new()
+		var new_var = RenVar.new()
 		new_var._type = var_type
 		new_var._value = var_value
 		variables[var_name] = new_var

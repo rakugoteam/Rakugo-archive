@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Ren/nodes/character.gd"
 }, {
+"base": "Object",
+"class": "CharacterObject",
+"language": "GDScript",
+"path": "res://addons/Ren/types/character_obj.gd"
+}, {
 "base": "Node",
 "class": "JSONBeautifier",
 "language": "GDScript",
@@ -23,6 +28,11 @@ _global_script_classes=[ {
 "class": "Persistence",
 "language": "GDScript",
 "path": "res://addons/PersistenceNode/persistence_node.gd"
+}, {
+"base": "Object",
+"class": "Quest",
+"language": "GDScript",
+"path": "res://addons/Ren/types/quest.gd"
 }, {
 "base": "AnimationPlayer",
 "class": "RenAnimPlayer",
@@ -54,6 +64,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Ren/nodes/ren_control.gd"
 }, {
+"base": "Node",
+"class": "RenDef",
+"language": "GDScript",
+"path": "res://addons/Ren/types/def.gd"
+}, {
 "base": "LineEdit",
 "class": "RenLineEdit",
 "language": "GDScript",
@@ -79,6 +94,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Ren/nodes/ren_quest_button.gd"
 }, {
+"base": "Object",
+"class": "RenRange",
+"language": "GDScript",
+"path": "res://addons/Ren/types/range.gd"
+}, {
 "base": "Panel",
 "class": "RenSayPanel",
 "language": "GDScript",
@@ -93,6 +113,11 @@ _global_script_classes=[ {
 "class": "RenTimer",
 "language": "GDScript",
 "path": "res://addons/Ren/nodes/ren_timer.gd"
+}, {
+"base": "Object",
+"class": "RenVar",
+"language": "GDScript",
+"path": "res://addons/Ren/types/ren_var.gd"
 }, {
 "base": "Button",
 "class": "RenVarCheck",
@@ -123,31 +148,42 @@ _global_script_classes=[ {
 "class": "RenVisualInstance",
 "language": "GDScript",
 "path": "res://addons/Ren/nodes/ren_visual_instance.gd"
+}, {
+"base": "Object",
+"class": "Subquest",
+"language": "GDScript",
+"path": "res://addons/Ren/types/subquest.gd"
 } ]
 _global_script_class_icons={
 "Character": "res://addons/Ren/icons/ren_character.svg",
+"CharacterObject": "",
 "JSONBeautifier": "",
 "Persistence": "res://addons/PersistenceNode/icon.svg",
+"Quest": "",
 "RenAnimPlayer": "",
 "RenAudioPlayer": "",
 "RenBaseButton": "",
 "RenButton": "",
 "RenChoiceButton": "",
 "RenControl": "",
+"RenDef": "",
 "RenLineEdit": "",
 "RenMenu": "",
 "RenNode2D": "",
 "RenNodeCore": "",
 "RenQuestButton": "",
+"RenRange": "",
 "RenSayPanel": "res://addons/Ren/icons/ren_panel.svg",
 "RenTextLabel": "",
 "RenTimer": "",
+"RenVar": "",
 "RenVarCheck": "",
 "RenVarEdit": "",
 "RenVarLabel": "",
 "RenVarRange": "",
 "RenVarSlider": "",
-"RenVisualInstance": ""
+"RenVisualInstance": "",
+"Subquest": ""
 }
 
 [application]

@@ -1,4 +1,5 @@
 extends Object
+class_name Subquest
 
 var quest_id = "some_quest_id" # used for save/load/connection with other quests
 var title = "Quest Title" setget _set_title, _get_title
