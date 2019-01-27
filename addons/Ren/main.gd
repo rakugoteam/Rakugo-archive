@@ -57,6 +57,7 @@ var prev_story_state = ""
 var variables = {}
 
 # don't save this
+onready var menu_node = $Menu
 var current_statement = null
 var using_passer = false
 var skip_auto = false
@@ -72,31 +73,31 @@ var skip_types = [
 	StatementType.PLAY_AUDIO,
 	StatementType.STOP_AUDIO,
 	StatementType.CALL_NODE
-	]
+]
 
-const weekdays={
-	0:'Sunday',
-	1:'Monday',
-	2:'Tuesday',
-	3:'Wednesday',
-	4:'Thrusday',
-	5:'Friday',
-	6:'Saturday'
+const weekdays = {
+	0: 'Sunday',
+	1: 'Monday',
+	2: 'Tuesday',
+	3: 'Wednesday',
+	4: 'Thrusday',
+	5: 'Friday',
+	6: 'Saturday',
 }
 
-const months={
-	1:'January',
-	2:'February',
-	3:'March',
-	4:'April',
-	5:'May',
-	6:'June',
-	7:'July',
-	8:'August',
-	9:'September',
-	10:'October',
-	11:'November',
-	12:'December'
+const months = {
+	1: 'January',
+	2: 'February',
+	3: 'March',
+	4: 'April',
+	5: 'May',
+	6: 'June',
+	7: 'July',
+	8: 'August',
+	9: 'September',
+	10: 'October',
+	11: 'November',
+	12: 'December',
 }
 
 var file = File.new()
@@ -267,14 +268,14 @@ func get_character(character_id):
 func node_link(node, node_id = null):
 	if node_id == null:
 		node_id = node.name
-	
+
 	var path
 	if typeof(node) == TYPE_NODE_PATH:
 		path = node
-		
+
 	elif node is Node:
 		path = node.get_path()
-	
+
 	$Def.define(variables, node_id, path, Type.NODE)
 	return get_node(path)
 
@@ -547,7 +548,6 @@ func _set_current_id(value):
 func _get_current_id():
 	return current_id
 
-
 ## use this to change/assain current scene and dialog
 ## root of path_to_scene is scenes_dir
 ## provide path_to_scene with out ".tscn"
@@ -654,4 +654,3 @@ func load_global_history():
 	if "global_history" in data:
 		global_history = data["global_history"].duplicate()
 	return true
-
