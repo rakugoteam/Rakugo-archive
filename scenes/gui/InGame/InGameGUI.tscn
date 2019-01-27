@@ -1,33 +1,31 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://themes/new_gui/theme.tres" type="Theme" id=1]
 [ext_resource path="res://addons/Ren/nodes/ren_menu.gd" type="Script" id=2]
-[ext_resource path="res://addons/Ren/icons/ren_menu.svg" type="Texture" id=3]
+[ext_resource path="res://addons/Ren/icons/ren_menu_v.svg" type="Texture" id=3]
 [ext_resource path="res://scenes/gui/InGame/ChoiceButton.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/gui/InGame/Say.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/gui/InGame/Notify.gd" type="Script" id=6]
-[ext_resource path="res://scenes/gui/InGame/Quick.gd" type="Script" id=7]
-[ext_resource path="res://scenes/gui/InGame/QuickMenuButton.tscn" type="PackedScene" id=8]
-[ext_resource path="res://ubuntu-font-family/Ubuntu-B.ttf" type="DynamicFontData" id=9]
-[ext_resource path="res://scenes/gui/Labels/name_text.tscn" type="PackedScene" id=10]
-[ext_resource path="res://ubuntu-font-family/UbuntuMono-R.ttf" type="DynamicFontData" id=11]
-[ext_resource path="res://ubuntu-font-family/Ubuntu-RI.ttf" type="DynamicFontData" id=12]
-[ext_resource path="res://ubuntu-font-family/Ubuntu-R.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://addons/Ren/icons/ren_menu_h.svg" type="Texture" id=5]
+[ext_resource path="res://scenes/gui/InGame/Say.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/gui/InGame/Notify.gd" type="Script" id=7]
+[ext_resource path="res://scenes/gui/InGame/Quick.gd" type="Script" id=8]
+[ext_resource path="res://scenes/gui/InGame/QuickMenuButton.tscn" type="PackedScene" id=9]
+[ext_resource path="res://ubuntu-font-family/Ubuntu-B.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://scenes/gui/Labels/name_text.tscn" type="PackedScene" id=11]
+[ext_resource path="res://ubuntu-font-family/UbuntuMono-R.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://ubuntu-font-family/Ubuntu-RI.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://ubuntu-font-family/Ubuntu-R.ttf" type="DynamicFontData" id=14]
 
 [sub_resource type="DynamicFont" id=1]
 
 size = 22
-use_mipmaps = false
 use_filter = true
-font_data = ExtResource( 9 )
-_sections_unfolded = [ "Font", "Settings" ]
+font_data = ExtResource( 10 )
 
 [sub_resource type="Animation" id=2]
 
 resource_name = "Auto"
 length = 2.1
 loop = true
-step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("InfoAnim/Panel/Label:text")
 tracks/0/interp = 1
@@ -91,9 +89,6 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id=3]
 
-length = 1.0
-loop = false
-step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("InfoAnim/Panel:modulate")
 tracks/0/interp = 1
@@ -145,9 +140,6 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id=4]
 
-length = 1.0
-loop = false
-step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("InfoAnim/Panel:modulate")
 tracks/0/interp = 1
@@ -211,9 +203,6 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id=5]
 
-length = 1.0
-loop = false
-step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("InfoAnim/Panel:modulate")
 tracks/0/interp = 1
@@ -277,9 +266,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id=6]
 
-length = 1.0
 loop = true
-step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("InfoAnim/Panel/Label:text")
 tracks/0/interp = 1
@@ -344,63 +331,40 @@ tracks/4/keys = {
 [sub_resource type="DynamicFont" id=7]
 
 size = 30
-use_mipmaps = false
 use_filter = true
-font_data = ExtResource( 11 )
-_sections_unfolded = [ "Font", "Settings" ]
+font_data = ExtResource( 12 )
 
 [sub_resource type="DynamicFont" id=8]
 
 size = 30
-use_mipmaps = false
 use_filter = true
-font_data = ExtResource( 9 )
-_sections_unfolded = [ "Font", "Settings" ]
+font_data = ExtResource( 10 )
 
 [sub_resource type="DynamicFont" id=9]
 
 size = 30
-use_mipmaps = false
 use_filter = true
-font_data = ExtResource( 12 )
-_sections_unfolded = [ "Font", "Settings" ]
+font_data = ExtResource( 13 )
 
 [sub_resource type="DynamicFont" id=10]
 
 size = 30
-use_mipmaps = false
 use_filter = true
-font_data = ExtResource( 9 )
-_sections_unfolded = [ "Font", "Settings" ]
+font_data = ExtResource( 10 )
 
 [sub_resource type="DynamicFont" id=11]
 
 size = 30
-use_mipmaps = false
 use_filter = true
-font_data = ExtResource( 13 )
-_sections_unfolded = [ "Font", "Settings" ]
+font_data = ExtResource( 14 )
 
-[node name="InGameGUI" type="Control" index="0"]
-
+[node name="InGameGUI" type="Control"]
 pause_mode = 1
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_right = 40.0
 margin_bottom = 40.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 theme = ExtResource( 1 )
-_sections_unfolded = [ "Pause", "Theme" ]
 
-[node name="ScrollContainerVMenu" type="ScrollContainer" parent="." index="0"]
-
+[node name="ScrollContainerVMenu" type="ScrollContainer" parent="."]
 editor/display_folded = true
 visible = false
 anchor_left = 0.5
@@ -411,49 +375,21 @@ margin_left = 267.0
 margin_top = 33.0
 margin_right = 767.0
 margin_bottom = 333.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = true
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-scroll_horizontal_enabled = true
-scroll_horizontal = 0
-scroll_vertical_enabled = true
-scroll_vertical = 0
-scroll_deadzone = 0
-_sections_unfolded = [ "Rect", "Size Flags" ]
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="RenVMenu" type="VBoxContainer" parent="ScrollContainerVMenu" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="RenVMenu" type="VBoxContainer" parent="ScrollContainerVMenu"]
 margin_right = 500.0
 margin_bottom = 300.0
 rect_min_size = Vector2( 500, 300 )
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-alignment = 0
 script = ExtResource( 2 )
-_sections_unfolded = [ "Rect", "Size Flags" ]
 __meta__ = {
 "_editor_icon": ExtResource( 3 )
 }
-kind = "vertical"
 ChoiceButton = ExtResource( 4 )
 
-[node name="ScrollContainerHMenu" type="ScrollContainer" parent="." index="1"]
-
-editor/display_folded = true
+[node name="ScrollContainerHMenu" type="ScrollContainer" parent="."]
 visible = false
 anchor_left = 0.5
 anchor_top = 1.0
@@ -463,149 +399,72 @@ margin_left = -21.0
 margin_top = 121.0
 margin_right = 1004.0
 margin_bottom = 224.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = true
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-scroll_horizontal_enabled = true
-scroll_horizontal = 0
-scroll_vertical_enabled = true
-scroll_vertical = 0
-scroll_deadzone = 0
-_sections_unfolded = [ "Rect", "Size Flags" ]
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="RenHMenu" type="HBoxContainer" parent="ScrollContainerHMenu" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="RenHMenu" type="HBoxContainer" parent="ScrollContainerHMenu"]
 margin_right = 1021.0
 margin_bottom = 300.0
 rect_min_size = Vector2( 1021, 300 )
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-alignment = 0
 script = ExtResource( 2 )
-_sections_unfolded = [ "Rect", "Size Flags" ]
+__meta__ = {
+"_editor_icon": ExtResource( 5 )
+}
 kind = "horizontal"
 ChoiceButton = ExtResource( 4 )
 
-[node name="SayPanel" parent="." index="2" instance=ExtResource( 5 )]
-
+[node name="SayPanel" parent="." instance=ExtResource( 6 )]
 margin_bottom = 602.0
-_sections_unfolded = [ "Anchor", "Mouse", "Rect", "Size Flags", "Theme", "Visibility", "custom_styles" ]
 
-[node name="Notify" type="Panel" parent="." index="3"]
-
+[node name="Notify" type="Panel" parent="."]
 editor/display_folded = true
 visible = false
-anchor_left = 0.0
-anchor_top = 0.0
 anchor_right = 1.0
-anchor_bottom = 0.0
 margin_left = -2.0
 margin_top = 36.0
 margin_right = 769.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 100, 20 )
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 theme = ExtResource( 1 )
-script = ExtResource( 6 )
-_sections_unfolded = [ "Anchor", "Size Flags", "Theme", "custom_styles" ]
+script = ExtResource( 7 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Dialog" type="RichTextLabel" parent="Notify" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="Dialog" type="RichTextLabel" parent="Notify"]
 margin_left = -1.0
 margin_right = 780.0
 margin_bottom = 32.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = true
 focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
 size_flags_horizontal = 15
 size_flags_vertical = 3
 bbcode_enabled = true
 bbcode_text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis."
-visible_characters = -1
-percent_visible = 1.0
-meta_underlined = true
-tab_size = 4
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis."
 scroll_active = false
-scroll_following = false
 selection_enabled = true
-override_selected_font_color = false
-_sections_unfolded = [ "BBCode", "Rect", "Size Flags" ]
 
-[node name="Quick" type="HBoxContainer" parent="." index="4"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="Quick" type="HBoxContainer" parent="."]
 margin_top = 570.0
 margin_right = 1024.0
 margin_bottom = 602.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
-script = ExtResource( 7 )
-_sections_unfolded = [ "Size Flags" ]
+script = ExtResource( 8 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Hide" type="CheckButton" parent="Quick" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="Hide" type="CheckButton" parent="Quick"]
 margin_right = 127.0
 margin_bottom = 40.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = true
+focus_mode = 0
 enabled_focus_mode = 0
-shortcut = null
-group = null
 text = "Hide"
-flat = false
-align = 0
 
-[node name="History" parent="Quick" index="1" instance=ExtResource( 8 )]
-
+[node name="History" parent="Quick" instance=ExtResource( 9 )]
 margin_left = 131.0
 margin_right = 221.0
 margin_bottom = 40.0
@@ -614,8 +473,7 @@ size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "History"
 
-[node name="Quests" parent="Quick" index="2" instance=ExtResource( 8 )]
-
+[node name="Quests" parent="Quick" instance=ExtResource( 9 )]
 margin_left = 225.0
 margin_right = 315.0
 margin_bottom = 40.0
@@ -624,55 +482,24 @@ size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Quests"
 
-[node name="Skip" type="CheckButton" parent="Quick" index="3"]
-
+[node name="Skip" type="CheckButton" parent="Quick"]
 visible = false
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 190.0
 margin_right = 312.0
 margin_bottom = 40.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = true
+focus_mode = 0
 enabled_focus_mode = 0
-shortcut = null
-group = null
 text = "Skip"
-flat = false
-align = 0
 
-[node name="Auto" type="CheckButton" parent="Quick" index="4"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="Auto" type="CheckButton" parent="Quick"]
 margin_left = 319.0
 margin_right = 449.0
 margin_bottom = 40.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = true
+focus_mode = 0
 enabled_focus_mode = 0
-shortcut = null
-group = null
 text = "Auto"
-flat = false
-align = 0
 
-[node name="Save" parent="Quick" index="5" instance=ExtResource( 8 )]
-
+[node name="Save" parent="Quick" instance=ExtResource( 9 )]
 margin_left = 453.0
 margin_right = 543.0
 margin_bottom = 40.0
@@ -681,8 +508,7 @@ size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Save"
 
-[node name="Load" parent="Quick" index="6" instance=ExtResource( 8 )]
-
+[node name="Load" parent="Quick" instance=ExtResource( 9 )]
 margin_left = 547.0
 margin_right = 637.0
 margin_bottom = 40.0
@@ -691,8 +517,7 @@ size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Load"
 
-[node name="QSave" parent="Quick" index="7" instance=ExtResource( 8 )]
-
+[node name="QSave" parent="Quick" instance=ExtResource( 9 )]
 margin_left = 641.0
 margin_right = 731.0
 margin_bottom = 40.0
@@ -701,8 +526,7 @@ size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Q. Save"
 
-[node name="QLoad" parent="Quick" index="8" instance=ExtResource( 8 )]
-
+[node name="QLoad" parent="Quick" instance=ExtResource( 9 )]
 margin_left = 735.0
 margin_right = 825.0
 margin_bottom = 40.0
@@ -711,8 +535,7 @@ size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Q. Load"
 
-[node name="Options" parent="Quick" index="9" instance=ExtResource( 8 )]
-
+[node name="Options" parent="Quick" instance=ExtResource( 9 )]
 margin_left = 829.0
 margin_right = 924.0
 margin_bottom = 40.0
@@ -721,8 +544,7 @@ size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Options"
 
-[node name="Quit" parent="Quick" index="10" instance=ExtResource( 8 )]
-
+[node name="Quit" parent="Quick" instance=ExtResource( 9 )]
 margin_left = 928.0
 margin_right = 1024.0
 margin_bottom = 40.0
@@ -731,46 +553,27 @@ size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Quit"
 
-[node name="InfoAnim" type="AnimationPlayer" parent="Quick" index="11"]
-
-root_node = NodePath("..")
-autoplay = ""
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 1.0
+[node name="InfoAnim" type="AnimationPlayer" parent="Quick"]
 anims/Auto = SubResource( 2 )
 anims/GeneralNotif = SubResource( 3 )
 anims/Loaded = SubResource( 4 )
 anims/Saved = SubResource( 5 )
 anims/Skip = SubResource( 6 )
-blend_times = [  ]
 
-[node name="Panel" type="Panel" parent="Quick/InfoAnim" index="0"]
-
+[node name="Panel" type="Panel" parent="Quick/InfoAnim"]
 visible = false
 modulate = Color( 1, 1, 1, 0.756863 )
-anchor_left = 0.0
-anchor_top = 0.0
 anchor_right = 1.0
-anchor_bottom = 0.0
 margin_top = 81.0
 margin_right = -901.0
 margin_bottom = 123.0
 rect_min_size = Vector2( 100, 20 )
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 theme = ExtResource( 1 )
-_sections_unfolded = [ "Anchor", "Rect", "Theme", "Visibility", "custom_styles" ]
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Label" parent="Quick/InfoAnim/Panel" index="0" instance=ExtResource( 10 )]
-
+[node name="Label" parent="Quick/InfoAnim/Panel" instance=ExtResource( 11 )]
 margin_right = 126.0
 custom_fonts/mono_font = SubResource( 7 )
 custom_fonts/bold_italics_font = SubResource( 8 )
@@ -782,12 +585,7 @@ custom_colors/selection_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = false
 bbcode_text = "Game was saved"
 text = "Game was saved"
-_sections_unfolded = [ "BBCode", "Rect", "Visibility", "custom_colors", "custom_fonts" ]
 
 [connection signal="toggled" from="Quick/Hide" to="ScrollContainerVMenu/RenVMenu" method="_on_Hide_toggled"]
-
 [connection signal="toggled" from="Quick/Hide" to="ScrollContainerHMenu/RenHMenu" method="_on_Hide_toggled"]
-
 [connection signal="toggled" from="Quick/Hide" to="SayPanel" method="_on_Hide_toggled"]
-
-
