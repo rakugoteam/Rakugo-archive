@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Ren/statements/ask.gd"
 }, {
+"base": "Timer",
+"class": "AutoTimer",
+"language": "GDScript",
+"path": "res://addons/Ren/statics/AutoTimer.gd"
+}, {
 "base": "Node",
 "class": "CallNode",
 "language": "GDScript",
@@ -184,6 +189,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Ren/statements/show.gd"
 }, {
+"base": "Timer",
+"class": "SkipTimer",
+"language": "GDScript",
+"path": "res://addons/Ren/statics/SkipTimer.gd"
+}, {
 "base": "Node",
 "class": "Statement",
 "language": "GDScript",
@@ -206,6 +216,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Ask": "",
+"AutoTimer": "",
 "CallNode": "",
 "Character": "res://addons/Ren/icons/ren_character.svg",
 "CharacterObject": "",
@@ -240,6 +251,7 @@ _global_script_class_icons={
 "RenVisualInstance": "res://addons/Ren/icons/ren_spatial.svg",
 "Say": "",
 "Show": "",
+"SkipTimer": "",
 "Statement": "",
 "StopAnim": "",
 "StopAudio": "",

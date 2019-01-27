@@ -1,30 +1,30 @@
 extends Node
 class_name Statement
 
-var type = 0 # Ren.StatementType.BASE
-var kwargs = {"add_to_history": false} # dict of pairs keyword : argument
-var kws = ["add_to_history"] # possible keywords for this type of statement
+var type : int = 0 # Ren.StatementType.BASE
+var kwargs : Dictionary = {"add_to_history": false} # dict of pairs keyword : argument
+var kws : Array = ["add_to_history"] # possible keywords for this type of statement - to use in RenScript in near future
 
-func _ready():
+func _ready() -> void:
 	Ren.connect("exit_statement", self, "on_exit")
 
-func exec(dbg = true):
+func exec(dbg: bool = true) -> void:
 	if dbg:
 		debug(kws)
 	
 	Ren.current_statement = self
 	Ren.exec_statement(type, kwargs)
 
-func set_kwargs(new_kwargs):
+func set_kwargs(new_kwargs : Dictionary) -> void:
 	# update statement
 	set_dict(new_kwargs, kwargs)
 
-func set_dict(new_dict, current_dict):
+func set_dict(new_dict : Dictionary, current_dict : Dictionary) -> void:
 	for kw in new_dict:
 		if kw != "":
 			current_dict[kw] = new_dict[kw]
 
-func setup_exit(_type, new_kwargs = {}):
+func setup_exit(_type : int, new_kwargs : Dictionary = {}) -> bool:
 	if _type != type:
 		return false
 		
@@ -33,7 +33,7 @@ func setup_exit(_type, new_kwargs = {}):
 	
 	return true
 
-func on_exit(_type, new_kwargs = {}):
+func on_exit(_type : int, new_kwargs : Dictionary = {}) -> void:
 	if !setup_exit(_type, new_kwargs):
 		return
 	
@@ -42,7 +42,7 @@ func on_exit(_type, new_kwargs = {}):
 	
 	Ren.story_step()
 
-func get_as_history_item():
+func get_as_history_item() -> Dictionary:
 	var hkwargs = kwargs.duplicate()
 	hkwargs.erase("avatar")
 	var history_item = {
@@ -55,7 +55,7 @@ func get_as_history_item():
 	return history_item
 
 
-func add_to_history():
+func add_to_history() -> void:
 	if Ren.current_id < 0 or Ren.current_id > Ren.history.size() + 1:
 		Ren.debug(["some thing gone wrong Ren.current_id =", Ren.current_id])
 		Ren.debug(["history size:", Ren.history.size()])
@@ -75,7 +75,7 @@ func add_to_history():
 	
 	Ren.current_id += 1
 
-func debug(kws = [], some_custom_text = ""):
+func debug(kws : Array = [], some_custom_text : String = "") -> void:
 	var dbg = Ren.StatementType.keys()[type].to_lower() + "("
 	dbg += Ren.debug_dict(kwargs, kws, some_custom_text) + ")"
 	Ren.debug(dbg)

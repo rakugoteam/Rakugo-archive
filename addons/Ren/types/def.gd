@@ -1,7 +1,7 @@
 extends Node
 class_name RenDef
 
-func get_type(variable):
+func get_type(variable) -> String:
 	var type = "str"
 		
 	if typeof(variable) == TYPE_BOOL:
@@ -15,7 +15,7 @@ func get_type(variable):
 	
 	return type
 
-func str2ren_type(str_type):
+func str2ren_type(str_type) -> int:
 	if str_type == "str":
 		return Ren.Type.TEXT
 	
@@ -31,7 +31,7 @@ func str2ren_type(str_type):
 	else:
 		return Ren.Type.VAR
 
-func str2value(str_value, var_type):
+func str2value(str_value : String, var_type : String):
 	if var_type == "str":
 		return str_value
 	
@@ -44,12 +44,12 @@ func str2value(str_value, var_type):
 	elif var_type == "float":
 		return float(str_value)
 
-func define_from_str(variables, var_name, var_str, var_type):
+func define_from_str(variables : Dictionary, var_name : String, var_str : String, var_type : String):
 	var value = str2value(var_str, var_type)
 	var type = str2ren_type(var_type)
 	return define(variables, var_name, value, type)
 
-func define(variables, var_name, var_value = null, var_type = null):
+func define(variables : Dictionary, var_name : String, var_value = null, var_type = null):
 	if var_value != null && var_type == null:
 		var_type = Ren.Type.VAR
 		var type = typeof(var_value)

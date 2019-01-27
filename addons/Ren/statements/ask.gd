@@ -1,15 +1,15 @@
 extends Say
 class_name Ask
 
-var value = "value"
-var variable = "variable"
+var value : String = "value"
+var variable : String = "variable"
 
-func _init():
+func _init() -> void:
 	._init()
 	type = 2 # Ren.StatementType.ASK
 	kws += ["temp", "variable"]
 
-func exec(dbg = true):
+func exec(dbg : bool = true) -> void:
 	if dbg:
 		debug(kws)
 

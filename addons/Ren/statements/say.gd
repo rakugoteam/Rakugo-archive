@@ -1,14 +1,14 @@
 extends Statement
 class_name Say
 
-func _init():
+func _init() -> void:
 	._init()
 	type = 1 # Ren.StatementType.SAY
 	kws += ["who", "what", "text_speed", "kind"]
 	kwargs["who"] = ""
 	kwargs["add_to_history"] = true
 
-func exec(dbg = true):
+func exec(dbg : bool = true) -> void
 	if dbg:
 		debug(kws)
 	

@@ -1,15 +1,15 @@
 extends Say
 class_name Menu
 
-var choices_labels = []
+var choices_labels : Array = []
 
-func _init():
+func _init() -> void:
 	._init()
 	kws += ["choices"]
 	type = 3 # Ren.StatementType.MENU
 	kwargs["mkind"] = "vertical"
 	
-func exec(dbg = true): 
+func exec(dbg : bool = true) -> void:
 	if dbg:
 		debug(kws)
 	
@@ -21,7 +21,7 @@ func exec(dbg = true):
 	.exec(false)
 
 
-func on_exit(_type, new_kwargs = {}):
+func on_exit(_type : int, new_kwargs : Dictionary = {}) -> void:
 	if !setup_exit(_type, new_kwargs):
 		return
 	

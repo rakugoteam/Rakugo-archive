@@ -7,9 +7,11 @@ var new_line:String = "\n"
 var tab:String = "\t"
 
 func text_passer(
-	text:String, variables:Dictionary, 
+	text:String,
+	variables:Dictionary, 
 	mode:String = "ren",
-	links_color:String = "225ebf") -> String:
+	links_color:String = "225ebf"
+	) -> String:
 	## passer for renpy or bbcode markup format
 	## its retrun bbcode
 
