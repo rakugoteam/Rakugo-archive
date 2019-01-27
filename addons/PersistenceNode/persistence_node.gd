@@ -26,63 +26,61 @@ extends Node
 class_name Persistence, "icon.svg"
 
 enum Mode {ENCRYPTED, TEXT}
-export (Mode) var mode = Mode.ENCRYPTED setget set_mode, get_mode
-export (String) var password = "" setget set_password, get_password
-export (String) var folder_name = "PersistenceNode" setget set_folder_name, get_folder_name
-export (Array) var no_valid_names = ["default", "example"] setget _private_set, get_no_valid_names
-export (bool) var debug_on = false setget set_debug, get_debug
+export (Mode) var mode : int = Mode.ENCRYPTED setget set_mode, get_mode
+export (String) var password : String = "" setget set_password, get_password
+export (String) var folder_name : String = "PersistenceNode" setget set_folder_name, get_folder_name
+export (Array) var no_valid_names : Array = ["default", "example"] setget _private_set, get_no_valid_names
+export (bool) var debug_on : bool = false setget set_debug, get_debug
 
-# 1.0.5
-# Source: https://github.com/YeldhamDev/json-beautifier-for-godot
 var beautifier setget _private_set, _private_get
-export (bool) var beautifier_active = true setget set_beautifier_active, get_beautifier_active
+export (bool) var beautifier_active : bool = true setget set_beautifier_active, get_beautifier_active
 
-export (int) var profile_name_min_size = 3 setget set_profile_name_min_size, get_profile_name_min_size
-export (int) var profile_name_max_size = 15 setget set_profile_name_max_size, get_profile_name_max_size
+export (int) var profile_name_min_size : int = 3 setget set_profile_name_min_size, get_profile_name_min_size
+export (int) var profile_name_max_size : int = 15 setget set_profile_name_max_size, get_profile_name_max_size
 
 # Data del profile actual, esta data se puede modificar y luego usar
 # save_data()
-var data = {} setget _private_set
+var data : Dictionary = {} setget _private_set
 
 signal saved
 signal loaded
 
-func _init():
+func _init() -> void:
 	if beautifier_active:
 		beautifier = JSONBeautifier.new()
 
-func _ready():
+func _ready() -> void:
 	connect("saved", self, "_on_saved")
 	connect("loaded", self, "_on_loaded")
 
-func _on_saved():
+func _on_saved() -> void:
 	# Muestra los datos en la salida una vez que se graba el archivo.
 	if beautifier_active and mode == Mode.TEXT:
 		debug("_on_saved()")
 		print_json(to_json(data))
 
-func _on_loaded():
+func _on_loaded() -> void:
 	# Muestra los datos en la salida una vez que se graba el archivo.
 	if beautifier_active and mode == Mode.TEXT:
 		debug("_on_loaded()")
 		print_json(to_json(data))
 
-func _private_set(val = null):
+func _private_set(val = null) -> void:
 	debug("Set access is private")
 
-func _private_get():
+func _private_get() -> void:
 	debug("Get access is private")
 
 # Métodos públicos
 #
 
-func debug(message, something1 = "", something2 = ""):
+func debug(message, something1 = "", something2 = "") -> void:
 	if debug_on:
 		print("[PersistenceNode] ", message, " ", something1, " ", something2)
 
 # Salva el juego con el profile indicado en el parámetro profile_name. 
 # Si no hay profile crea un profile por defecto llamado default. 
-func save_data(profile_name = null):
+func save_data(profile_name : String = "") -> bool:
 	var result
 	
 	# Crea la carpeta principal si esta no existe
@@ -90,7 +88,7 @@ func save_data(profile_name = null):
 	
 	# Crea el profile por defecto, en el caso de que no se quiera
 	# utilizar profiles.
-	if profile_name == null:
+	if profile_name == "":
 		if save_profile_default():
 			emit_signal("saved")
 			debug("save_profile_default() retorna true")
@@ -117,7 +115,7 @@ func save_data(profile_name = null):
 # Remueve el profile indicado como argumento. Tome en cuenta que para
 # eliminar el encriptado o el texto, debe establecer primero el modo
 # con set_mode().
-func remove_profile(profile_name):
+func remove_profile(profile_name : String) -> bool:
 	var dir = Directory.new()
 	var path
 	
@@ -140,7 +138,7 @@ func remove_profile(profile_name):
 # Remueve toda la data dentro de la carpeta "folder_name" sin importar
 # si esta encriptada o no. Devuelve true si la remueve y false si no
 # existe data o hay un error.
-func remove_all_data():
+func remove_all_data() -> bool:
 	var dir = Directory.new()
 	var profiles = get_profiles(true)
 	
@@ -167,22 +165,22 @@ func remove_all_data():
 
 # Mode.TEXT : Guarda la data en texto en formato json
 # Mode.ENCRYPTED : Guarda la data de forma encriptada
-func set_mode(_mode):
+func set_mode(_mode) -> void:
 	mode = _mode
 
-func get_mode():
+func get_mode() -> int:
 	return mode
 
 # Se obtiene la data, esta data puede ser modificada para luego ser guardada
 # con save_data(). Si esta usando profiles, no olvide indicarle el profile.
-func get_data(profile_name = null):
+func get_data(profile_name : String = "") -> Dictionary:
 	data = {}
 	load_data(profile_name)
 	return data
 
 # Retorna los perfiles existentes, por defecto los devuelve sin
 # extension.
-func get_profiles(with_extension = false):
+func get_profiles(with_extension : bool = false) -> Array:
 	var dir = Directory.new()
 	var profiles = []
 	
@@ -204,43 +202,43 @@ func get_profiles(with_extension = false):
 	return profiles
 
 # Retorna los nombres no validos
-func get_no_valid_names():
+func get_no_valid_names() -> Array:
 	return no_valid_names
 
-func set_password(_password):
+func set_password(_password : String) -> void:
 	password = _password
 	
-func get_password():
+func get_password() -> String:
 	return password
 
-func set_folder_name(_folder_name):
+func set_folder_name(_folder_name : String) -> void:
 	folder_name = _folder_name
 	
-func get_folder_name():
+func get_folder_name() -> String:
 	return folder_name
 
-func set_debug(_debug):
+func set_debug(_debug : bool) -> void:
 	debug_on = _debug
 	
-func get_debug():
+func get_debug() -> bool:
 	return debug_on
 
-func set_beautifier_active(_beautifier_active):
+func set_beautifier_active(_beautifier_active : bool) -> void:
 	beautifier_active = _beautifier_active
 	
-func get_beautifier_active():
+func get_beautifier_active() -> bool:
 	return beautifier_active
 	
-func set_profile_name_min_size(_profile_name_min_size):
+func set_profile_name_min_size(_profile_name_min_size : int) -> void:
 	profile_name_min_size = _profile_name_min_size
 	
-func get_profile_name_min_size():
+func get_profile_name_min_size() -> int:
 	return profile_name_min_size
 	
-func set_profile_name_max_size(_profile_name_max_size):
+func set_profile_name_max_size(_profile_name_max_size : int) -> void:
 	profile_name_max_size = _profile_name_max_size
 	
-func get_profile_name_max_size():
+func get_profile_name_max_size() -> int:
 	return profile_name_max_size
 
 # Métodos "privados" (No usar)
@@ -251,7 +249,7 @@ func get_profile_name_max_size():
 # 2) El nombre no puede ser "default"
 # 3) El nombre debe estar dentro del rango del tamaño de nombre mínimo o
 # máximo.
-func validate_profile(profile_name):
+func validate_profile(profile_name : String) -> bool:
 	var profiles = get_profiles()
 	
 	# 1)
@@ -271,21 +269,25 @@ func validate_profile(profile_name):
 	
 	return true
 	
-func save_profile_default():
+func save_profile_default() -> bool:
 	match mode:
 		Mode.ENCRYPTED:
 			return save_profile_encripted("default")
 		Mode.TEXT:
 			return save_profile_text("default")
+	
+	return false
 
-func load_profile_default():
+func load_profile_default() -> bool:
 	match mode:
 		Mode.ENCRYPTED:
 			return load_profile_encripted("default")
 		Mode.TEXT:
 			return load_profile_text("default")
+	
+	return false
 			
-func save_profile_encripted(profile_name):
+func save_profile_encripted(profile_name : String) -> bool:
 	var file_path
 	file_path = str("user://" + folder_name + "/" + profile_name + ".save")
 	
@@ -304,7 +306,7 @@ func save_profile_encripted(profile_name):
 		debug("Path: ", file_path)
 		return false
 	
-func save_profile_text(profile_name):
+func save_profile_text(profile_name : String) -> bool:
 	var file_path
 	file_path = str("user://" + folder_name + "/" + profile_name + ".txt")
 	
@@ -321,7 +323,7 @@ func save_profile_text(profile_name):
 		debug("Error al crear/leer el archivo: ", err)
 		return false
 
-func load_profile_encripted(profile_name):
+func load_profile_encripted(profile_name : String) -> bool:
 	var file_path
 	file_path = str("user://" + folder_name + "/" + profile_name + ".save")
 	
@@ -346,7 +348,7 @@ func load_profile_encripted(profile_name):
 		debug("Error al leer el archivo: ", err)
 		return false
 	
-func load_profile_text(profile_name):
+func load_profile_text(profile_name : String) -> bool:
 	var file_path = str("user://" + folder_name + "/" + profile_name + ".txt")
 	var file = File.new()
 	
@@ -368,7 +370,7 @@ func load_profile_text(profile_name):
 		debug("Error al leer el archivo: ", err)
 		return false
 
-func erase_profile_encripted(profile_name, file_path):
+func erase_profile_encripted(profile_name : String, file_path : String) -> void:
 	var file = File.new()
 	var err = file.open_encrypted_with_pass(file_path, File.READ, password)
 	
@@ -379,7 +381,7 @@ func erase_profile_encripted(profile_name, file_path):
 		debug("No se a podido limpiar el profile: ", err)
 
 # Crea la carpeta principal, sólo la crea si esta no existe
-func create_main_folder():
+func create_main_folder() -> void:
 	var dir = Directory.new()
 	
 	if not dir.dir_exists(str("user://" + folder_name)):
@@ -389,7 +391,7 @@ func create_main_folder():
 # Carga la data, si no se le pasa ningún argumento entonces carga la data
 # por defecto, si se le pasa argumento entonces carga la data indicada en el.
 # Devuelve true si se carga exitosamente y false si no lo hace.
-func load_data(profile_name = null):
+func load_data(profile_name : String = "") -> bool:
 	var result
 	
 	if profile_name == null:
@@ -415,7 +417,7 @@ func load_data(profile_name = null):
 	
 	return result
 
-func print_json(json):
+func print_json(json : String) -> void:
 	if beautifier != null:
 		print("______________- JSON -______________")
 		print(beautifier.beautify_json(json))
