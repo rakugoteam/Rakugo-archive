@@ -31,13 +31,6 @@ func _enter_tree():
 		)
 	
 	add_custom_type(
-		"RenVarCheckButton",
-		"CheckButton",
-		preload("nodes/ren_var_check.gd"),
-		preload("icons/ren_check_button.svg")
-		)
-	
-	add_custom_type(
 		"RenVarHSlider",
 		"HSlider",
 		preload("nodes/ren_var_slider.gd"),
@@ -71,6 +64,5 @@ func _exit_tree():
 	remove_custom_type("RenVarHSlider")
 	remove_custom_type("RenVarVSlider")
 	remove_custom_type("RenVarCheckBox")
-	remove_custom_type("RenVarCheckButton")
 	remove_custom_type("RenProgressBar")
 	remove_custom_type("RenTextureProgress")
