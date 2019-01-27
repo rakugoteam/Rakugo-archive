@@ -1,7 +1,7 @@
 extends Statement
 class_name CallNode
 
-func _init():
+func _init() -> void:
 	._init()
 	type = 11 # Ren.StatementType.CALL_NODE
 	kws = ["node_id", "func_name", "args"]
@@ -9,7 +9,7 @@ func _init():
 	kwargs["func_name"] = ""
 	kwargs["args"] = []
 
-func exec(dbg = true):
+func exec(dbg : bool = true) -> void:
 	var node = Ren.get_node_by_id(kwargs.node_id)
 	if node == null:
 		prints(kwargs.node_id, "can't be find")
