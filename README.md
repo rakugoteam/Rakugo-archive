@@ -15,8 +15,7 @@ You can download 1.0 for Godot 3.0 [here](https://github.com/jeremi360/Ren/relea
 
 Now we are working on [Ren 2.0 for Godot 3.1](https://github.com/jeremi360/Ren/issues/81) :D
 
-Ren is framemork (inspired by [Ren'Py](https://www.renpy.org))
-<br/> for story driven games in [Godot](https://godotengine.org).
+Ren is framemork (inspired by [Ren'Py](https://www.renpy.org)) for story driven games in [Godot](https://godotengine.org).
 
 ## Story driven games
 

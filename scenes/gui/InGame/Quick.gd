@@ -43,7 +43,7 @@ func _on_qload():
 		$InfoAnim/Panel/Label.bbcode_text = load_error_msg
 		$InfoAnim.play("GeneralNotif")
 
-func _on_statement(type, kwargs):
+func _on_statement(type, parameters):
 	$Skip.disabled = !Ren.can_skip()
 	$Auto.disabled = !Ren.can_auto()
 	$History.disabled = Ren.current_id == 0

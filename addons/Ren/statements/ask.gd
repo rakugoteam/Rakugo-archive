@@ -7,29 +7,29 @@ var variable : String = "variable"
 func _init() -> void:
 	._init()
 	type = 2 # Ren.StatementType.ASK
-	kws += ["temp", "variable"]
+	parameters_names += ["temp", "variable"]
 
 func exec(dbg : bool = true) -> void:
 	if dbg:
-		debug(kws)
+		debug(parameters_names)
 
-	value = kwargs.value
-	variable = kwargs.variable
+	value = parameters.value
+	variable = parameters.variable
 
-	if "value" in kwargs:
-		kwargs["value"] = Ren.text_passer(kwargs.value)
+	if "value" in parameters:
+		parameters["value"] = Ren.text_passer(parameters.value)
 
 	.exec(false)
 
-func on_exit(_type, new_kwargs = {}):
-	if !setup_exit(_type, new_kwargs):
+func on_exit(_type, new_parameters = {}):
+	if !setup_exit(_type, new_parameters):
 		return
 
-	if "value" in kwargs:
-		value = kwargs.value
+	if "value" in parameters:
+		value = parameters.value
 
-	if "variable" in kwargs:
-		variable = kwargs.variable
+	if "variable" in parameters:
+		variable = parameters.variable
 
 	if value.is_valid_integer():
 		value = int(value)
@@ -39,7 +39,7 @@ func on_exit(_type, new_kwargs = {}):
 
 	Ren.define(variable, value)
 
-	if kwargs.add_to_history:
+	if parameters.add_to_history:
 		add_to_history()
 
 	Ren.story_step()

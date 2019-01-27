@@ -2,54 +2,54 @@ extends Node
 class_name Statement
 
 var type : int = 0 # Ren.StatementType.BASE
-var kwargs : Dictionary = {"add_to_history": false} # dict of pairs keyword : argument
-var kws : Array = ["add_to_history"] # possible keywords for this type of statement - to use in RenScript in near future
+var parameters : Dictionary = {"add_to_history": false} # dict of pairs keyword : argument
+var parameters_names : Array = ["add_to_history"] # possible keywords for this type of statement - to use in RenScript in near future
 
 func _ready() -> void:
 	Ren.connect("exit_statement", self, "on_exit")
 
 func exec(dbg: bool = true) -> void:
 	if dbg:
-		debug(kws)
+		debug(parameters_names)
 	
 	Ren.current_statement = self
-	Ren.exec_statement(type, kwargs)
+	Ren.exec_statement(type, parameters)
 
-func set_kwargs(new_kwargs : Dictionary) -> void:
+func set_parameters(new_parameters : Dictionary) -> void:
 	# update statement
-	set_dict(new_kwargs, kwargs)
+	set_dict(new_parameters, parameters)
 
 func set_dict(new_dict : Dictionary, current_dict : Dictionary) -> void:
 	for kw in new_dict:
 		if kw != "":
 			current_dict[kw] = new_dict[kw]
 
-func setup_exit(_type : int, new_kwargs : Dictionary = {}) -> bool:
+func setup_exit(_type : int, new_parameters : Dictionary = {}) -> bool:
 	if _type != type:
 		return false
 		
-	if new_kwargs != {}:
-		set_kwargs(new_kwargs)
+	if new_parameters != {}:
+		set_parameters(new_parameters)
 	
 	return true
 
-func on_exit(_type : int, new_kwargs : Dictionary = {}) -> void:
-	if !setup_exit(_type, new_kwargs):
+func on_exit(_type : int, new_parameters : Dictionary = {}) -> void:
+	if !setup_exit(_type, new_parameters):
 		return
 	
-	if kwargs.add_to_history:
+	if parameters.add_to_history:
 		add_to_history()
 	
 	Ren.story_step()
 
 func get_as_history_item() -> Dictionary:
-	var hkwargs = kwargs.duplicate()
-	hkwargs.erase("avatar")
+	var hparameters = parameters.duplicate()
+	hparameters.erase("avatar")
 	var history_item = {
 		"state": Ren.story_state,
 		"statement":{
 			"type": type,
-			"kwargs": hkwargs
+			"parameters": hparameters
 		}
 	}
 	return history_item
@@ -75,7 +75,7 @@ func add_to_history() -> void:
 	
 	Ren.current_id += 1
 
-func debug(kws : Array = [], some_custom_text : String = "") -> void:
+func debug(parameters_names : Array = [], some_custom_text : String = "") -> void:
 	var dbg = Ren.StatementType.keys()[type].to_lower() + "("
-	dbg += Ren.debug_dict(kwargs, kws, some_custom_text) + ")"
+	dbg += Ren.debug_dict(parameters, parameters_names, some_custom_text) + ")"
 	Ren.debug(dbg)

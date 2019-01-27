@@ -5,33 +5,33 @@ var choices_labels : Array = []
 
 func _init() -> void:
 	._init()
-	kws += ["choices"]
+	parameters_names += ["choices"]
 	type = 3 # Ren.StatementType.MENU
-	kwargs["mkind"] = "vertical"
+	parameters["mkind"] = "vertical"
 	
 func exec(dbg : bool = true) -> void:
 	if dbg:
-		debug(kws)
+		debug(parameters_names)
 	
 	choices_labels = []
-	for ch in kwargs.choices:
+	for ch in parameters.choices:
 		var l = Ren.text_passer(ch)
 		choices_labels.append(l)
 	
 	.exec(false)
 
 
-func on_exit(_type : int, new_kwargs : Dictionary = {}) -> void:
-	if !setup_exit(_type, new_kwargs):
+func on_exit(_type : int, new_parameters : Dictionary = {}) -> void:
+	if !setup_exit(_type, new_parameters):
 		return
 	
-	if "final_choice" in kwargs:
-		Ren.story_state = kwargs.choices[kwargs.final_choice]
+	if "final_choice" in parameters:
+		Ren.story_state = parameters.choices[parameters.final_choice]
 	
 	else:
 		print("no final_choice recived")
 	
-	if kwargs.add_to_history:
+	if parameters.add_to_history:
 		add_to_history()
 
 	Ren.story_step()

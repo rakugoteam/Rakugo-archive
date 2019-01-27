@@ -42,26 +42,26 @@ func _input(event):
 	elif _type == Ren.StatementType.SAY: # else exit statement
 		Ren.exit_statement()
 
-func _on_statement(type, kwargs):
-	if "kind" in kwargs:
-		$AnimationPlayer.play(kwargs.kind)
+func _on_statement(type, parameters):
+	if "kind" in parameters:
+		$AnimationPlayer.play(parameters.kind)
 	
 	_type = type
 
-	if "who" in kwargs:
+	if "who" in parameters:
 		if NameLabel.has_method("set_bbcode"):
-			NameLabel.bbcode_text = kwargs.who
+			NameLabel.bbcode_text = parameters.who
 
-	if "what" in kwargs:
-		write_dialog(kwargs.what, kwargs.speed)
+	if "what" in parameters:
+		write_dialog(parameters.what, parameters.speed)
 
-	if "avatar" in kwargs:
+	if "avatar" in parameters:
 		if avatar != null:
 			avatar.free()
 
-		if kwargs.avatar != "":
-			avatar_path = kwargs.avatar
-			avatar = load(kwargs.avatar).instance()
+		if parameters.avatar != "":
+			avatar_path = parameters.avatar
+			avatar = load(parameters.avatar).instance()
 			CharacterAvatar.add_child(avatar)
 	
 	elif avatar != null:

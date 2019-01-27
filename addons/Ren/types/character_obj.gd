@@ -1,7 +1,7 @@
 extends Object
 class_name CharacterObject
 
-var kws : Array = ["name", "color", "prefix", "suffix", "avatar"]
+var parameters_names : Array = ["name", "color", "prefix", "suffix", "avatar"]
 var _color : Color
 var _avatar : String 
 var type : int setget , _get_type
