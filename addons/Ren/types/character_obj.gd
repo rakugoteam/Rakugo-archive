@@ -1,31 +1,31 @@
 extends Object
 class_name CharacterObject
 
-var kws = ["name", "color", "prefix", "suffix", "avatar"]
-var _color
-var _avatar
-var type setget , _get_type
+var kws : Array = ["name", "color", "prefix", "suffix", "avatar"]
+var _color : Color
+var _avatar : String 
+var type : int setget , _get_type
 var value setget dict2character, character2dict
 
-var name = ""
-var color = Color("#ffffff") setget _set_color, _get_color
-var prefix = ""
-var suffix = ""
+var name  : String = ""
+var color : String = "#ffffff" setget _set_color, _get_color
+var prefix: String = ""
+var suffix: String = ""
 var avatar setget _set_avatar, _get_avatar
 
-func _set_color(vcolor):
-	_color = vcolor
+func _set_color(vcolor : String) -> void:
+	_color = Color(vcolor)
 
-func _get_color():
+func _get_color() -> String:
 	return _color.to_html()
 
-func _set_avatar(vavatar):
+func _set_avatar(vavatar : Resource) -> void:
 	_avatar = vavatar.resource_path
 	
-func _get_avatar():
+func _get_avatar() -> String:
 	return _avatar
 
-func parse_character():
+func parse_character() -> String: 
 	var ncharacter = ""
 	
 	if name != "":
@@ -35,13 +35,13 @@ func parse_character():
 	
 	return ncharacter
 
-func parse_what(what):
+func parse_what(what : String) -> String:
 	return prefix + what + suffix
 
-func _get_type():
+func _get_type() -> int:
 	return Ren.Type.CHARACTER
 
-func character2dict():
+func character2dict() -> Dictionary:
 	var dict = {}
 	dict["name"]	= name
 	dict["color"]	= color
@@ -51,7 +51,7 @@ func character2dict():
 
 	return dict
 
-func dict2character(dict):
+func dict2character(dict : Dictionary):
 	if dict.has("name"):
 		name = dict.name
 	if dict.has("color"):

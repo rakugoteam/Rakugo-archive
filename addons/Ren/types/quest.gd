@@ -36,7 +36,10 @@ func finish() -> void:
 
 func is_all_subquest_completed() -> bool:
 	for subq in _subquests:
-		var is_done_and_opt = subq.is_done() and subq.is_optional()
+		var is_done_and_opt = (
+			subq.is_done()
+			and subq.is_optional()
+			)
 		if not is_done_and_opt:
 			return false
 			
