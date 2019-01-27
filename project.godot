@@ -9,7 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "",
+"base": "Object",
 "class": "Ask",
 "language": "GDScript",
 "path": "res://addons/Ren/statements/ask.gd"
@@ -39,7 +39,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Ren/statements/hide.gd"
 }, {
-"base": "Node",
+"base": "Object",
 "class": "JSONBeautifier",
 "language": "GDScript",
 "path": "res://addons/json_beautifier/json_beautifier.gd"
