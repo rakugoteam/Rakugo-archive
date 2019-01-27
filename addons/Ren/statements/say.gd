@@ -8,9 +8,8 @@ func _init() -> void:
 	parameters["who"] = ""
 	parameters["add_to_history"] = true
 
-func exec(dbg : bool = true) -> void:
-	if dbg:
-		debug(parameters_names)
+func exec() -> void:
+	debug(parameters_names)
 	
 	if "who" in parameters:
 		if parameters.who in Ren.variables:
@@ -31,4 +30,4 @@ func exec(dbg : bool = true) -> void:
 	if "what" in parameters:
 		parameters.what = Ren.text_passer(parameters.what)
 	
-	.exec(false)
+	.exec()

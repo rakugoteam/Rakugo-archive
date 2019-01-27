@@ -9,16 +9,15 @@ func _init() -> void:
 	type = 3 # Ren.StatementType.MENU
 	parameters["mkind"] = "vertical"
 	
-func exec(dbg : bool = true) -> void:
-	if dbg:
-		debug(parameters_names)
+func exec() -> void:
+	debug(parameters_names)
 	
 	choices_labels = []
 	for ch in parameters.choices:
 		var l = Ren.text_passer(ch)
 		choices_labels.append(l)
 	
-	.exec(false)
+	.exec()
 
 
 func on_exit(_type : int, new_parameters : Dictionary = {}) -> void:

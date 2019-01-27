@@ -9,9 +9,8 @@ func _init() -> void:
 	type = 2 # Ren.StatementType.ASK
 	parameters_names += ["temp", "variable"]
 
-func exec(dbg : bool = true) -> void:
-	if dbg:
-		debug(parameters_names)
+func exec() -> void:
+	debug(parameters_names)
 
 	value = parameters.value
 	variable = parameters.variable
@@ -19,7 +18,7 @@ func exec(dbg : bool = true) -> void:
 	if "value" in parameters:
 		parameters["value"] = Ren.text_passer(parameters.value)
 
-	.exec(false)
+	.exec()
 
 func on_exit(_type : int, new_parameters : Dictionary = {}) -> void:
 	if !setup_exit(_type, new_parameters):

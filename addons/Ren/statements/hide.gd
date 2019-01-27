@@ -6,9 +6,7 @@ func _init() -> void:
 	type = 5 # Ren.StatementType.HIDE
 	parameters_names = ["node_id"]
 
-func exec(dbg : bool = true) -> void:
-	if dbg:
-		debug(parameters_names)
+func exec() -> void:
+	debug(parameters_names)
 
 	Ren.on_hide(parameters.node_id)
-

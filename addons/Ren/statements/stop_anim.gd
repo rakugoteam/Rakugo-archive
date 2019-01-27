@@ -8,6 +8,6 @@ func _init() -> void:
 	parameters["node_id"] = ""
 	parameters["reset"] = false
 
-func exec(dbg : bool = true) -> void:
-	.exec(dbg)
+func exec() -> void:
+	.exec()
 	Ren.on_stop_anim(parameters.node_id, parameters.reset)
