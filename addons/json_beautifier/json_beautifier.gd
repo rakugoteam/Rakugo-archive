@@ -13,7 +13,7 @@ class_name JSONBeautifier
 # Takes valid JSON (if invalid, it will return a error according with Godot's
 # 'validade_json' method) and a number of spaces for indentation (default is
 # '0', in which it will use tabs instead).
-static func beautify_json(json, spaces = 0):
+static func beautify_json(json : String, spaces : int = 0) -> String:
 	var error_message = validate_json(json)
 	if not error_message.empty():
 		return error_message

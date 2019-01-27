@@ -1,5 +1,8 @@
-extends RenVarRange
-class_name RenVarSlider
+extends "ren_var_range.gd"
+# extends RenVarRange
+# class_name RenVarSlider - there is no need for that
+# we don't want it be be seen in "add new Node" dialog,
+# but to seen other Nodes that use it
 
 
 func _ready():
