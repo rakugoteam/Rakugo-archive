@@ -63,6 +63,8 @@ func _enter_tree():
 func _exit_tree():
 	remove_custom_type("RenVarHSlider")
 	remove_custom_type("RenVarVSlider")
+	remove_custom_type("RenHMenu")
+	remove_custom_type("RenVMenu")
 	remove_custom_type("RenVarCheckBox")
 	remove_custom_type("RenProgressBar")
 	remove_custom_type("RenTextureProgress")
