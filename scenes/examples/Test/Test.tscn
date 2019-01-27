@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/examples/Test/test.gd" type="Script" id=1]
 [ext_resource path="res://addons/Ren/nodes/character.gd" type="Script" id=2]
@@ -8,10 +8,9 @@
 [ext_resource path="res://addons/Ren/nodes/ren_anim_player.gd" type="Script" id=6]
 [ext_resource path="res://scenes/examples/Test/bell-counter-a.wav" type="AudioStream" id=7]
 [ext_resource path="res://addons/Ren/nodes/ren_audio_player.gd" type="Script" id=8]
-[ext_resource path="res://addons/Ren/icons/ren_audio_player.svg" type="Texture" id=9]
-[ext_resource path="res://scenes/examples/Test/Welcome_in_the_intox.ogg" type="AudioStream" id=10]
-[ext_resource path="res://graphics/window_icon.png" type="Texture" id=11]
-[ext_resource path="res://scenes/examples/Test/TestNode.gd" type="Script" id=12]
+[ext_resource path="res://scenes/examples/Test/Welcome_in_the_intox.ogg" type="AudioStream" id=9]
+[ext_resource path="res://graphics/window_icon.png" type="Texture" id=10]
+[ext_resource path="res://scenes/examples/Test/TestNode.gd" type="Script" id=11]
 
 [sub_resource type="Animation" id=1]
 
@@ -89,24 +88,18 @@ stream = ExtResource( 7 )
 volume_db = 6.0
 bus = "SFX"
 script = ExtResource( 8 )
-__meta__ = {
-"_editor_icon": ExtResource( 9 )
-}
 
 [node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 10 )
+stream = ExtResource( 9 )
 volume_db = 3.0
 bus = "BGM"
 script = ExtResource( 8 )
-__meta__ = {
-"_editor_icon": ExtResource( 9 )
-}
 
 [node name="TestNode" type="Sprite" parent="."]
 visible = false
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 206.506, 241.174 )
 scale = Vector2( 2, 2 )
-texture = ExtResource( 11 )
-script = ExtResource( 12 )
+texture = ExtResource( 10 )
+script = ExtResource( 11 )
 
