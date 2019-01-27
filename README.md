@@ -10,7 +10,8 @@
 [![GitHub](https://img.shields.io/github/issues-closed/jeremi360/Ren.svg?style=flat-square)](https://github.com/jeremi360/Ren/issues)
 
 Now you can support this project by [Patreon](https://www.patreon.com/jeremi360).
-You can download 1.0 for Godot 3.0 [here](https://github.com/jeremi360/Ren/releases)).
+
+You can download 1.0 for Godot 3.0 [here](https://github.com/jeremi360/Ren/releases).
 
 Now we are working on [Ren 2.0 for Godot 3.1](https://github.com/jeremi360/Ren/issues/81) :D
 
