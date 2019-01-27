@@ -8,7 +8,7 @@ func _init() -> void:
 	parameters["who"] = ""
 	parameters["add_to_history"] = true
 
-func exec(dbg : bool = true) -> void
+func exec(dbg : bool = true) -> void:
 	if dbg:
 		debug(parameters_names)
 	

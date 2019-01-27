@@ -9,7 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node",
+"base": "",
 "class": "Ask",
 "language": "GDScript",
 "path": "res://addons/Ren/statements/ask.gd"
@@ -44,7 +44,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/json_beautifier/json_beautifier.gd"
 }, {
-"base": "Node",
+"base": "",
 "class": "Menu",
 "language": "GDScript",
 "path": "res://addons/Ren/statements/menu.gd"
@@ -179,7 +179,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Ren/nodes/ren_visual_instance.gd"
 }, {
-"base": "Node",
+"base": "Statement",
 "class": "Say",
 "language": "GDScript",
 "path": "res://addons/Ren/statements/say.gd"
