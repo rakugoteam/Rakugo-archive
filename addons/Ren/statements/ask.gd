@@ -1,7 +1,7 @@
 extends Say
 class_name Ask
 
-var value : String = "value"
+var value = "value"
 var variable : String = "variable"
 
 func _init() -> void:
@@ -21,7 +21,7 @@ func exec(dbg : bool = true) -> void:
 
 	.exec(false)
 
-func on_exit(_type, new_parameters = {}):
+func on_exit(_type : int, new_parameters : Dictionary = {}) -> void:
 	if !setup_exit(_type, new_parameters):
 		return
 

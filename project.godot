@@ -9,7 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node",
+"base": "Object",
 "class": "Ask",
 "language": "GDScript",
 "path": "res://addons/Ren/statements/ask.gd"
@@ -39,12 +39,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Ren/statements/hide.gd"
 }, {
-"base": "Node",
+"base": "Object",
 "class": "JSONBeautifier",
 "language": "GDScript",
 "path": "res://addons/json_beautifier/json_beautifier.gd"
 }, {
-"base": "Node",
+"base": "",
 "class": "Menu",
 "language": "GDScript",
 "path": "res://addons/Ren/statements/menu.gd"
@@ -194,7 +194,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Ren/statics/SkipTimer.gd"
 }, {
-"base": "Node",
+"base": "Object",
 "class": "Statement",
 "language": "GDScript",
 "path": "res://addons/Ren/statements/statement.gd"
@@ -261,16 +261,16 @@ _global_script_class_icons={
 [application]
 
 config/name="Ren"
-run/main_scene="res://scenes/examples/Test/Test.tscn"
+run/main_scene="res://examples/Test/Test.tscn"
 boot_splash/image="res://graphics/splash.png"
 config/icon="res://graphics/window_icon.png"
 
 [autoload]
 
 Ren="*res://addons/Ren/Ren.tscn"
-settings="*res://scenes/gui/settings.gd"
-VNCharacters="*res://scenes/examples/VisualNovelExample/Characters.tscn"
-Window="*res://scenes/gui/Window/Window.tscn"
+settings="*res://gui/settings.gd"
+VNCharacters="*res://examples/VisualNovelExample/Characters.tscn"
+Window="*res://gui/Window/Window.tscn"
 
 [debug]
 

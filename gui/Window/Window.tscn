@@ -1,8 +1,9 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://scenes/gui/Window/Window.gd" type="Script" id=1]
-[ext_resource path="res://scenes/gui/InGame/InGameGUI.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/gui/Screens/Screens.tscn" type="PackedScene" id=3]
+[ext_resource path="res://gui/Window/Window.gd" type="Script" id=1]
+[ext_resource path="res://gui/InGame/InGameGUI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://gui/Screens/Screens.tscn" type="PackedScene" id=3]
+
 
 [node name="Window" type="Node2D"]
 
