@@ -51,8 +51,8 @@ var current_id = 0 setget _set_current_id, _get_current_id
 var local_id = 0
 var current_dialog_name = ""
 var _scene = null
-var history = [] # [{"state":story_state, "statement":{"type":type, "kwargs": kwargs}}]
-var global_history = [] # [{"state":story_state, "statement":{"type":type, "kwargs": kwargs}}]
+var history = [] # [{"state":story_state, "statement":{"type":type, "parameters": parameters}}]
+var global_history = [] # [{"state":story_state, "statement":{"type":type, "parameters": parameters}}]
 var prev_story_state = ""
 var variables = {}
 
@@ -114,8 +114,8 @@ onready var notify_timer = $NotifyTimer
 var story_state setget _set_story_state, _get_story_state
 
 signal started
-signal exec_statement(type, kwargs)
-signal exit_statement(previous_type, kwargs)
+signal exec_statement(type, parameters)
+signal exit_statement(previous_type, parameters)
 signal notified()
 signal show(node_id, state, show_args)
 signal hide(node_id)
@@ -162,13 +162,13 @@ func get_datetime_str():
 func _on_time_active_timeout():
 	active = true
 
-func exec_statement(type, kwargs = {}):
-	emit_signal("exec_statement", type, kwargs)
+func exec_statement(type, parameters = {}):
+	emit_signal("exec_statement", type, parameters)
 
-func exit_statement(kwargs = {}):
+func exit_statement(parameters = {}):
 	if loading_in_progress:
 			return
-	emit_signal("exit_statement", current_statement.type, kwargs)
+	emit_signal("exit_statement", current_statement.type, parameters)
 
 func story_step():
 	if loading_in_progress:
@@ -256,9 +256,9 @@ func connect_var(var_name, signal_name, node, func_name, binds = [], flags = 0):
 	get_var(var_name).connect(signal_name, node, func_name, binds, flags)
 	
 ## crate new charater as global variable that Ren will see
-## possible kwargs: name, color, what_prefix, what_suffix, kind, avatar
-func character(character_id, kwargs):
-	return $Def.define(variables, character_id, kwargs, Type.CHARACTER)
+## possible parameters: name, color, what_prefix, what_suffix, kind, avatar
+func character(character_id, parameters):
+	return $Def.define(variables, character_id, parameters, Type.CHARACTER)
 
 func get_character(character_id):
 	return get_var(character_id, Type.CHARACTER)
@@ -284,9 +284,9 @@ func get_node_by_id(node_id):
 
 ## add/overwrite global subquest that Ren will see
 ## and returns it as RenSubQuest for easy use
-## possible kwargs: "who", "title", "description", "optional", "state", "subquests"
-func subquest(var_name, kwargs = {}):
-	return $Def.define(variables, var_name, kwargs, Type.SUBQUEST)
+## possible parameters: "who", "title", "description", "optional", "state", "subquests"
+func subquest(var_name, parameters = {}):
+	return $Def.define(variables, var_name, parameters, Type.SUBQUEST)
 
 ## returns exiting Ren subquest as RenSubQuest for easy use
 func get_subquest(subquest_id):
@@ -294,9 +294,9 @@ func get_subquest(subquest_id):
 
 ## add/overwrite global quest that Ren will see
 ## and returns it as RenQuest for easy use
-## possible kwargs: "who", "title", "description", "optional", "state", "subquests"
-func quest(var_name, kwargs = {}):
-	var q = $Def.define(variables, var_name, kwargs, Type.QUEST)
+## possible parameters: "who", "title", "description", "optional", "state", "subquests"
+func quest(var_name, parameters = {}):
+	var q = $Def.define(variables, var_name, parameters, Type.QUEST)
 	quests.append(var_name)
 	return q
 
@@ -304,10 +304,10 @@ func quest(var_name, kwargs = {}):
 func get_quest(quest_id):
 	return get_var(quest_id, Type.QUEST)
 
-func _set_statement(node, kwargs):
-	if not kwargs.has("speed"):
-		kwargs["speed"] = get_value("text_speed")
-	node.set_kwargs(kwargs)
+func _set_statement(node, parameters):
+	if not parameters.has("speed"):
+		parameters["speed"] = get_value("text_speed")
+	node.set_parameters(parameters)
 	node.exec()
 	active = false
 	step_timer.start()
@@ -317,8 +317,8 @@ func _set_statement(node, kwargs):
 ## its make given character(who) talk (what)
 ## with keywords : who, what, kind, speed
 ## speed is time to show next letter
-func say(kwargs):
-	_set_statement($Say, kwargs)
+func say(parameters):
+	_set_statement($Say, parameters)
 
 ## statement of type ask
 ## there can be only one say, ask or menu in story_state at it end
@@ -326,16 +326,16 @@ func say(kwargs):
 ## it also will return RenVar variable
 ## with keywords : who, what, kind, speed variable, value
 ## speed is time to show next letter
-func ask(kwargs):
-	_set_statement($Ask, kwargs)
+func ask(parameters):
+	_set_statement($Ask, parameters)
 
 ## statement of type menu
 ## there can be only one say, ask or menu in story_state at it end
 ## its allow player to make choice
 ## with keywords : who, what, kind, speed choices, mkind
 ## speed is time to show next letter
-func menu(kwargs):
-	_set_statement($Menu, kwargs)
+func menu(parameters):
+	_set_statement($Menu, parameters)
 
 ## it show custom ren node or charater
 ## 'state' arg is using to set for example current emtion or/and cloths
@@ -343,69 +343,69 @@ func menu(kwargs):
 ## with keywords : x, y, z, at, pos
 ## x, y and pos will use it as procent of screen if between 0 and 1
 ## "at" is lists that can have: "top", "center", "bottom", "right", "left"
-func show(node_id, state = [], kwargs = {"at":["center", "bottom"]}):
-	kwargs["node_id"] = node_id
-	kwargs["state"] = state
-	_set_statement($Show, kwargs)
+func show(node_id, state = [], parameters = {"at":["center", "bottom"]}):
+	parameters["node_id"] = node_id
+	parameters["state"] = state
+	_set_statement($Show, parameters)
 
 ## statement of type hide
 func hide(node_id):
-	var kwargs = {"node_id":node_id}
-	_set_statement($Hide, kwargs)
+	var parameters = {"node_id":node_id}
+	_set_statement($Hide, parameters)
 
 ## statement of type notify
 func notifiy(info, length = Ren.get_value("notify_time")):
-	var kwargs = {"info": info,"length":length}
-	_set_statement($Notify, kwargs)
-	notify_timer.wait_time = kwargs.length
+	var parameters = {"info": info,"length":length}
+	_set_statement($Notify, parameters)
+	notify_timer.wait_time = parameters.length
 	notify_timer.start()
 
 ## statement of type play_anim
 ## it will play animation with anim_name form RenAnimPlayer with given node_id
 func play_anim(node_id, anim_name):
-	var kwargs = {
+	var parameters = {
 		"node_id":node_id,
 		"anim_name":anim_name
 	}
-	_set_statement($PlayAnim, kwargs)
+	_set_statement($PlayAnim, parameters)
 
 ## statement of type stop_anim
 ## it will stop animation form RenAnimPlayer with given node_id
 ## and by default is reset to 0 pos on exit from statment
 func stop_anim(node_id, reset = true):
-	var kwargs = {
+	var parameters = {
 		"node_id":node_id,
 		"reset":reset
 	}
-	_set_statement($StopAnim, kwargs)
+	_set_statement($StopAnim, parameters)
 
 ## statement of type play_audio
 ## it will play audio form RenAudioPlayer with given node_id
 ## it will start playing from given from_pos
 func play_audio(node_id, from_pos = 0.0):
-	var kwargs = {
+	var parameters = {
 		"node_id":node_id,
 		"from_pos":from_pos
 	}
-	_set_statement($PlayAudio, kwargs)
+	_set_statement($PlayAudio, parameters)
 
 ## statement of type stop_audio
 ## it will stop audio form RenAudioPlayer with given node_id
 func stop_audio(node_id):
-	var kwargs = {
+	var parameters = {
 		"node_id":node_id
 	}
-	_set_statement($StopAudio, kwargs)
+	_set_statement($StopAudio, parameters)
 
 ## statement of type stop_audio
 ## it will stop audio form RenAudioPlayer with given node_id
 func call_node(node_id, func_name, args = []):
-	var kwargs = {
+	var parameters = {
 		"node_id":node_id,
 		"func_name":func_name,
 		"args":args
 	}
-	_set_statement($CallNode, kwargs)
+	_set_statement($CallNode, parameters)
 
 func _set_story_state(state):
 	prev_story_state = _get_story_state()
@@ -514,15 +514,15 @@ func loadfile(save_name = "quick"):
 	current_id = data["id"]
 	return true
 
-func debug_dict(kwargs, kws = [], some_custom_text = ""):
+func debug_dict(parameters, parameters_names = [], some_custom_text = ""):
 	var dbg = ""
 	
-	for k in kws:
-		if k in kwargs:
+	for k in parameters_names:
+		if k in parameters:
 			if not(k in [null, ""]):
-				dbg += k + " : " + str(kwargs[k]) + ", "
+				dbg += k + " : " + str(parameters[k]) + ", "
 	
-	if kws.size() > 0:
+	if parameters_names.size() > 0:
 		dbg.erase(dbg.length() - 2, 2)
 
 	dbg = some_custom_text + dbg
@@ -596,7 +596,7 @@ func current_statement_in_global_history():
 	var hi_item = current_statement.get_as_history_item()
 	# prints(hi_item)
 	
-	if not current_statement.kwargs.add_to_history:
+	if not current_statement.parameters.add_to_history:
 		i = 1
 		r = true
 		# prints("r =", str(r), "i =", str(i))

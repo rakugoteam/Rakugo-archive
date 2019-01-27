@@ -4,31 +4,31 @@ class_name Say
 func _init() -> void:
 	._init()
 	type = 1 # Ren.StatementType.SAY
-	kws += ["who", "what", "text_speed", "kind"]
-	kwargs["who"] = ""
-	kwargs["add_to_history"] = true
+	parameters_names += ["who", "what", "text_speed", "kind"]
+	parameters["who"] = ""
+	parameters["add_to_history"] = true
 
 func exec(dbg : bool = true) -> void
 	if dbg:
-		debug(kws)
+		debug(parameters_names)
 	
-	if "who" in kwargs:
-		if kwargs.who in Ren.variables:
-			if Ren.get_type(kwargs.who) == Ren.Type.CHARACTER:
-				var org_who = kwargs.who
+	if "who" in parameters:
+		if parameters.who in Ren.variables:
+			if Ren.get_type(parameters.who) == Ren.Type.CHARACTER:
+				var org_who = parameters.who
 				var who = Ren.get_character(org_who)
-				kwargs.who = who.parse_character()
+				parameters.who = who.parse_character()
 				
 				if "avatar" in Ren.get_character(org_who).value:
-					kwargs["avatar"] = Ren.get_character(org_who).avatar
+					parameters["avatar"] = Ren.get_character(org_who).avatar
 				
-				if "what" in kwargs:
-					kwargs.what = who.parse_what(kwargs.what)
+				if "what" in parameters:
+					parameters.what = who.parse_what(parameters.what)
 	
-	if "who" in kwargs:
-		kwargs.who = Ren.text_passer(kwargs.who)
+	if "who" in parameters:
+		parameters.who = Ren.text_passer(parameters.who)
 	
-	if "what" in kwargs:
-		kwargs.what = Ren.text_passer(kwargs.what)
+	if "what" in parameters:
+		parameters.what = Ren.text_passer(parameters.what)
 	
 	.exec(false)

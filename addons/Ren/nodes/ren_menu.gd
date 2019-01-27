@@ -9,12 +9,12 @@ export(PackedScene) var ChoiceButton
 func _ready():
 	Ren.connect("exec_statement", self, "_on_statement")
 
-func _on_statement(type, kwargs):
+func _on_statement(type, parameters):
 	if type != Ren.StatementType.MENU:
 		get_parent().hide()
 		return
 
-	if kwargs["mkind"] != kind:
+	if parameters["mkind"] != kind:
 		get_parent().hide()
 		return
 		

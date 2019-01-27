@@ -24,7 +24,7 @@ func _on_enter(text):
 	set_process(false)
 	Ren.exit_statement({"value":final_variable})
 
-func _on_statement(type, kwargs):
+func _on_statement(type, parameters):
 	_type = type
 	if type != Ren.StatementType.ASK:
 		if is_connected("text_entered", self , "_on_enter"):
@@ -35,8 +35,8 @@ func _on_statement(type, kwargs):
 		hide()
 		return
 
-	if "value" in kwargs:
-		rtl.set_bbcode(kwargs.value)
+	if "value" in parameters:
+		rtl.set_bbcode(parameters.value)
 		input_placeholder = rtl.get_text()
 		set_placeholder(input_placeholder)
 
