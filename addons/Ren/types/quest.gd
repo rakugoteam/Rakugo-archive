@@ -1,30 +1,32 @@
 extends Subquest
 class_name Quest
 
-var _subquests	= []
-var rewards		= [] setget , _get_rewards # Maybe we need a Object Reward
+var _subquests : Array	= []
+
+## wip
+var rewards : Array		= [] setget , _get_rewards # Maybe we need a Object Reward
 
 signal start_quest
 signal done_quest # when all quests is done
 signal fail_quest # when fail the quest (all no optional quest)
 
 # begin quest
-func start():
+func start() -> void:
 	state = STATE_IN_PROGRESS
 	emit_signal("start_quest")
 	Ren.notifiy("You begin \"" + title + "\"")
 
 # it adds a subquest to list
-func add_subquest(subquest):
+func add_subquest(subquest : Subquest) -> void:
 	_subquests.append(subquest)
 	subquest.connect("done_subquest", self, "_on_done_subquest")
 	subquest.connect("fail_subquest", self, "_on_fail_subquest", [subquest])
 
-func get_subquests(index):
+func get_subquests(index : int) -> Subquest:
 	return _subquests[index]
 
 # force finish quest
-func finish():
+func finish() -> void:
 	if is_all_subquest_completed():
 		state = STATE_DONE
 		emit_signal("done_quest")
@@ -32,7 +34,7 @@ func finish():
 		state = STATE_FAIL
 		emit_signal("fail_quest")
 
-func is_all_subquest_completed():
+func is_all_subquest_completed() -> bool:
 	for subq in _subquests:
 		var is_done_and_opt = subq.is_done() and subq.is_optional()
 		if not is_done_and_opt:
@@ -42,14 +44,14 @@ func is_all_subquest_completed():
 
 # Return the quest with his subquest as dictionary.
 # This is util for a save with PersistenceNode
-func quest2dict():
+func quest2dict() -> Dictionary:
 	var dict = subquest2dict()
 	dict["subquests"] = subquests2list_of_ids()
 	return dict
 
 # It get a dictionary with the full quest.
 # This is util for to use in run time.
-func dict2quest(dict):
+func dict2quest(dict : Dictionary) -> void:
 	dict2subquest(dict)
 	if not dict.has("subquests"):
 		return
@@ -57,15 +59,15 @@ func dict2quest(dict):
 	_subquests = get_subquests_list(dict["subquests"])
 
 # usefull for saveing
-func subquests2list_of_ids():
-	var list_of_ids = []
+func subquests2list_of_ids() -> Array:
+	var list_of_ids : = []
 	for subq in _subquests:
 		list_of_ids.append(subq.quest_id)
 	return list_of_ids
 
 # useful after loading quest
-func get_subquests_list(list_of_subquests_ids):
-	var new_subquests = []
+func get_subquests_list(list_of_subquests_ids : Array) -> Array:
+	var new_subquests : = []
 	for subq_id in list_of_subquests_ids:
 		if typeof(subq_id) != TYPE_STRING:
 			continue 
@@ -74,26 +76,28 @@ func get_subquests_list(list_of_subquests_ids):
 	
 	return new_subquests
 	
-func update_subquests():
+func update_subquests() -> void:
 	_subquests = get_subquests_list(_subquests) 
 
-func add_rewards(reward):
+## wip
+func add_rewards(reward) -> void:
 	rewards.append(reward)
-	
+
+## wip
 func _get_rewards():
 	return rewards
 
-func _on_done_subquest():
+func _on_done_subquest() -> void:
 	emit_signal("done_subquest")
 	
 	if is_all_subquest_completed():
 		emit_signal("done_quest")
 	
-func _on_fail_subquest(subquest):
+func _on_fail_subquest(subquest : Subquest) -> void:
 	emit_signal("fail_subquest")
 	
 	if not subquest.is_optional:
 		emit_signal("fail_quest")
 
-func _get_type():
+func _get_type() -> int:
 	return Ren.Type.QUEST
