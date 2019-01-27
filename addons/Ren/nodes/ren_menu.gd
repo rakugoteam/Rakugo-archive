@@ -1,5 +1,7 @@
 extends BoxContainer
-class_name RenMenu
+# class_name RenMenu - there is no need for that
+# we don't want it be be seen in "add new Node" dialog,
+# but to seen other Nodes that use it
 
 export(String) var kind = "vertical"
 export(PackedScene) var ChoiceButton

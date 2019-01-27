@@ -109,11 +109,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Ren/nodes/ren_line_edit.gd"
 }, {
-"base": "BoxContainer",
-"class": "RenMenu",
-"language": "GDScript",
-"path": "res://addons/Ren/nodes/ren_menu.gd"
-}, {
 "base": "Node2D",
 "class": "RenNode2D",
 "language": "GDScript",
@@ -174,16 +169,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Ren/nodes/ren_var_label.gd"
 }, {
-"base": "Range",
-"class": "RenVarRange",
-"language": "GDScript",
-"path": "res://addons/Ren/nodes/ren_var_range.gd"
-}, {
-"base": "Range",
-"class": "RenVarSlider",
-"language": "GDScript",
-"path": "res://addons/Ren/nodes/ren_var_slider.gd"
-}, {
 "base": "VisualInstance",
 "class": "RenVisualInstance",
 "language": "GDScript",
@@ -240,7 +225,6 @@ _global_script_class_icons={
 "RenControl": "",
 "RenDef": "",
 "RenLineEdit": "",
-"RenMenu": "",
 "RenNode2D": "",
 "RenNodeCore": "",
 "RenQuestButton": "",
@@ -253,9 +237,7 @@ _global_script_class_icons={
 "RenVarCheck": "",
 "RenVarEdit": "",
 "RenVarLabel": "",
-"RenVarRange": "",
-"RenVarSlider": "",
-"RenVisualInstance": "",
+"RenVisualInstance": "res://addons/Ren/icons/ren_spatial.svg",
 "Say": "",
 "Show": "",
 "Statement": "",
