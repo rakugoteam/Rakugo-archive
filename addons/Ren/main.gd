@@ -8,7 +8,7 @@ export (Color) var links_color = Color("#225ebf")
 export (bool) var debug_on = true
 export (String) var save_folder = "saves"
 export (String) var save_password = "Ren"
-export (String, DIR) var scenes_dir = "res://scenes/examples/"
+export (String, DIR) var scenes_dir = "res://examples/"
 
 const ren_version = "1.0.0"
 const credits_path = "res://addons/Ren/credits.txt"
