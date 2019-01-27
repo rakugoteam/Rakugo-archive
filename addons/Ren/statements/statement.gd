@@ -1,4 +1,4 @@
-extends Node
+extends Object
 class_name Statement
 
 var type : int = 0 # Ren.StatementType.BASE
