@@ -9,11 +9,11 @@ func _init() -> void:
 	parameters["func_name"] = ""
 	parameters["args"] = []
 
-func exec(dbg : bool = true) -> void:
+func exec() -> void:
 	var node = Ren.get_node_by_id(parameters.node_id)
 	if node == null:
 		prints(parameters.node_id, "can't be find")
 		return
-		
+
 	node.callv(parameters.func_name, parameters.args)
-	.exec(dbg)
+	.exec()

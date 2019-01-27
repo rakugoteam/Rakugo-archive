@@ -7,6 +7,6 @@ func _init() -> void:
 	parameters["node_id"] = ""
 	parameters["from_pos"] = 0.0
 
-func exec(dbg : bool = true) -> void:
-	.exec(dbg)
+func exec() -> void:
+	.exec()
 	Ren.on_play_audio(parameters.node_id, parameters.from_pos)

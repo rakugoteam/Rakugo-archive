@@ -7,6 +7,6 @@ func _init() -> void:
 	parameters_names = ["node_id"]
 	parameters["node_id"] = ""
 
-func exec(dbg : bool = true) -> void:
-	.exec(dbg)
+func exec() -> void:
+	.exec()
 	Ren.on_stop_audio(parameters.node_id)

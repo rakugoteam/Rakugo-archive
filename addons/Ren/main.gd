@@ -519,19 +519,18 @@ func debug_dict(parameters, parameters_names = [], some_custom_text = ""):
 	
 	for k in parameters_names:
 		if k in parameters:
-			if not(k in [null, ""]):
+			if not k in [null, ""]:
 				dbg += k + " : " + str(parameters[k]) + ", "
 	
 	if parameters_names.size() > 0:
 		dbg.erase(dbg.length() - 2, 2)
 
-	dbg = some_custom_text + dbg
-	return dbg
+	return some_custom_text + dbg
 
 ## for printting debugs is only print if debug_on == true
 ## you put some string array or string as argument
 func debug(some_text = []):
-	if !debug_on:
+	if not debug_on:
 		return
 	if typeof(some_text) == TYPE_ARRAY:
 		var new_text = ""
