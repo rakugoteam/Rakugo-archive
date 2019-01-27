@@ -8,6 +8,6 @@ func _init() -> void:
 	parameters["node_id"] = ""
 	parameters["anim_name"] = ""
 
-func exec(dbg : bool = true) -> void:
-	.exec(dbg)
+func exec() -> void:
+	.exec()
 	Ren.on_play_anim(parameters.node_id, parameters.anim_name)

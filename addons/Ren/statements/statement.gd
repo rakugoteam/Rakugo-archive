@@ -8,9 +8,8 @@ var parameters_names : Array = ["add_to_history"] # possible keywords for this t
 func _ready() -> void:
 	Ren.connect("exit_statement", self, "on_exit")
 
-func exec(dbg: bool = true) -> void:
-	if dbg:
-		debug(parameters_names)
+func exec() -> void:
+	debug(parameters_names)
 	
 	Ren.current_statement = self
 	Ren.exec_statement(type, parameters)
@@ -76,6 +75,6 @@ func add_to_history() -> void:
 	Ren.current_id += 1
 
 func debug(parameters_names : Array = [], some_custom_text : String = "") -> void:
-	var dbg = Ren.StatementType.keys()[type].to_lower() + "("
-	dbg += Ren.debug_dict(parameters, parameters_names, some_custom_text) + ")"
+	var dbg = (Ren.StatementType.keys()[type].to_lower() + "("
+	        + Ren.debug_dict(parameters, parameters_names, some_custom_text) + ")")
 	Ren.debug(dbg)

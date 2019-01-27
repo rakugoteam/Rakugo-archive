@@ -8,7 +8,7 @@ export (Color) var links_color = Color("#225ebf")
 export (bool) var debug_on = true
 export (String) var save_folder = "saves"
 export (String) var save_password = "Ren"
-export (String, DIR) var scenes_dir = "res://scenes/examples/"
+export (String, DIR) var scenes_dir = "res://examples/"
 
 const ren_version = "1.0.0"
 const credits_path = "res://addons/Ren/credits.txt"
@@ -519,19 +519,18 @@ func debug_dict(parameters, parameters_names = [], some_custom_text = ""):
 	
 	for k in parameters_names:
 		if k in parameters:
-			if not(k in [null, ""]):
+			if not k in [null, ""]:
 				dbg += k + " : " + str(parameters[k]) + ", "
 	
 	if parameters_names.size() > 0:
 		dbg.erase(dbg.length() - 2, 2)
 
-	dbg = some_custom_text + dbg
-	return dbg
+	return some_custom_text + dbg
 
 ## for printting debugs is only print if debug_on == true
 ## you put some string array or string as argument
 func debug(some_text = []):
-	if !debug_on:
+	if not debug_on:
 		return
 	if typeof(some_text) == TYPE_ARRAY:
 		var new_text = ""

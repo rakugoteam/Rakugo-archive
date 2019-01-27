@@ -6,9 +6,8 @@ func _init() -> void:
 	type = 4 # Ren.StatementType.SHOW
 	parameters_names = ["node_id", "state", "x", "y", "z", "at", "pos"]
 
-func exec(dbg = true) -> void:
-	if dbg:
-		debug(parameters_names)
+func exec() -> void:
+	debug(parameters_names)
 	
 	if "at" in parameters:
 		if "center" in parameters.at:
@@ -31,6 +30,3 @@ func exec(dbg = true) -> void:
 			parameters["y"] = 1.0
 	
 	Ren.on_show(parameters.node_id, parameters.state, parameters)
-
-
-
