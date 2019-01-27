@@ -24,6 +24,7 @@ pause_mode = 2
 script = ExtResource( 1 )
 debug_on = false
 save_password = "ren"
+scenes_dir = "res://examples"
 
 [node name="Def" type="Node" parent="."]
 script = ExtResource( 2 )

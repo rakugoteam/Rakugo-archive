@@ -2,15 +2,14 @@
 
 [ext_resource path="res://themes/new_gui/theme.tres" type="Theme" id=1]
 [ext_resource path="res://addons/Ren/nodes/ren_quest_button.gd" type="Script" id=2]
-[ext_resource path="res://scenes/gui/Quests/quests-icons/available.png" type="Texture" id=3]
-[ext_resource path="res://scenes/gui/Quests/quests-icons/done.png" type="Texture" id=4]
-[ext_resource path="res://scenes/gui/Quests/quests-icons/fail.png" type="Texture" id=5]
-[ext_resource path="res://scenes/gui/Quests/quests-icons/in-progress.png" type="Texture" id=6]
-[ext_resource path="res://scenes/gui/Quests/quests-icons/opt.png" type="Texture" id=7]
-[ext_resource path="res://scenes/gui/Quests/quests-icons/opt-done.png" type="Texture" id=8]
-[ext_resource path="res://scenes/gui/Quests/quests-icons/opt-fail.png" type="Texture" id=9]
-[ext_resource path="res://scenes/gui/Quests/quests-icons/opt-in-progress.png" type="Texture" id=10]
-
+[ext_resource path="res://gui/Quests/quests-icons/available.png" type="Texture" id=3]
+[ext_resource path="res://gui/Quests/quests-icons/done.png" type="Texture" id=4]
+[ext_resource path="res://gui/Quests/quests-icons/fail.png" type="Texture" id=5]
+[ext_resource path="res://gui/Quests/quests-icons/in-progress.png" type="Texture" id=6]
+[ext_resource path="res://gui/Quests/quests-icons/opt.png" type="Texture" id=7]
+[ext_resource path="res://gui/Quests/quests-icons/opt-done.png" type="Texture" id=8]
+[ext_resource path="res://gui/Quests/quests-icons/opt-fail.png" type="Texture" id=9]
+[ext_resource path="res://gui/Quests/quests-icons/opt-in-progress.png" type="Texture" id=10]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -27,7 +26,6 @@ animations = [ {
 } ]
 
 [node name="QuestButton" type="Button" index="0"]
-
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -58,7 +56,6 @@ disable_node_color = Color( 0.533333, 0.533333, 0.498039, 0.533333 )
 sprite_rect = Vector2( 64, 32 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." index="0"]
-
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -85,11 +82,9 @@ override_selected_font_color = false
 _sections_unfolded = [ "BBCode" ]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="1"]
-
 position = Vector2( 327.601, 18.4805 )
 scale = Vector2( 0.586735, 0.563875 )
 frames = SubResource( 1 )
 animation = "default"
 _sections_unfolded = [ "Visibility" ]
-
 
