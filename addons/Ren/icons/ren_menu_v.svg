@@ -11,7 +11,7 @@
    height="16"
    version="1"
    id="svg16"
-   sodipodi:docname="ren_menu.svg"
+   sodipodi:docname="ren_menu_v.svg"
    inkscape:version="0.92.3 (2405546, 2018-03-11)">
   <metadata
      id="metadata22">
@@ -21,7 +21,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -36,7 +36,7 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="705"
+     inkscape:window-width="781"
      inkscape:window-height="517"
      id="namedview18"
      showgrid="false"
@@ -44,7 +44,7 @@
      inkscape:cx="8"
      inkscape:cy="8"
      inkscape:window-x="0"
-     inkscape:window-y="28"
+     inkscape:window-y="48"
      inkscape:window-maximized="0"
      inkscape:current-layer="svg16" />
   <path
@@ -90,13 +90,12 @@
      cy="11.5"
      id="circle12" />
   <rect
-     fill="#ffdd73"
-     fill-opacity=".941"
      width="7"
      height="1"
-     x="6"
-     y="4"
-     rx=".538"
-     ry=".5"
-     id="rect14" />
+     x="6.1355929"
+     y="4.2033896"
+     rx="0.53799999"
+     ry="0.5"
+     id="rect14"
+     style="fill:#ffdd73;fill-opacity:0.94100001" />
 </svg>
