@@ -1,13 +1,14 @@
 [gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://addons/Ren/nodes/ren_say_panel.gd" type="Script" id=1]
-[ext_resource path="res://scenes/gui/Labels/name_text.tscn" type="PackedScene" id=2]
+[ext_resource path="res://gui/Labels/name_text.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ubuntu-font-family/UbuntuMono-R.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://ubuntu-font-family/Ubuntu-B.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://ubuntu-font-family/Ubuntu-RI.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://ubuntu-font-family/Ubuntu-R.ttf" type="DynamicFontData" id=6]
-[ext_resource path="res://scenes/gui/Labels/dialogue_text.tscn" type="PackedScene" id=7]
+[ext_resource path="res://gui/Labels/dialogue_text.tscn" type="PackedScene" id=7]
 [ext_resource path="res://addons/Ren/nodes/ren_line_edit.gd" type="Script" id=8]
+
 
 [sub_resource type="DynamicFont" id=1]
 
