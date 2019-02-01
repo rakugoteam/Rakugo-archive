@@ -100,7 +100,6 @@ const months = {
 	12: 'December',
 }
 
-onready var menu_node = $Menu
 var file = File.new()
 var loading_in_progress = false
 var started = false

@@ -22,8 +22,14 @@ func add_subquest(subquest : Subquest) -> void:
 	subquest.connect("done_subquest", self, "_on_done_subquest")
 	subquest.connect("fail_subquest", self, "_on_fail_subquest", [subquest])
 
-func get_subquests(index : int) -> Subquest:
+func get_subquest(index : int) -> Subquest:
 	return _subquests[index]
+
+func get_subquests() -> Array:
+	return _subquests
+
+func is_subquests_empty() -> bool:
+	return _subquests.empty()
 
 # force finish quest
 func finish() -> void:
