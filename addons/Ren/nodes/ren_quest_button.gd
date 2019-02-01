@@ -1,18 +1,18 @@
 extends RenBaseButton
 class_name RenQuestButton
 
-export(Vector2) var sprite_rect = Vector2(64, 64)
-var quest
-var quest_label
-var quest_des_label
-var quest_sub_box
-var quests_box
-var is_subquest = false
+export(Vector2) var sprite_rect : = Vector2(64, 64)
+var quest : Subquest
+var quest_label : Label
+var quest_des_label : RichTextLabel
+var quest_sub_box : BoxContainer
+var quests_box : BoxContainer
+var is_subquest : = false
 
-func _ready():
+func _ready() -> void:
 	node_to_change = $RichTextLabel
 
-func _on_resized():
+func _on_resized() -> void:
 	._on_resized()
 	var sprite_pos = rect_size
 	sprite_pos.x -= sprite_rect.x/2
@@ -20,7 +20,7 @@ func _on_resized():
 	$AnimatedSprite.position = sprite_pos
 
 
-func setup(quest_to_use):
+func setup(quest_to_use : Subquest) -> void:
 	quest = quest_to_use
 	on_title_changed(quest.title)
 	on_optional_changed(quest.optional)
@@ -31,21 +31,21 @@ func setup(quest_to_use):
 	quest.connect("optional_changed", self, "on_optional_changed")
 	quest.connect("state_changed", self, "on_state_changed")
 
-func on_title_changed(new_title):
+func on_title_changed(new_title : String) -> void:
 	$RichTextLabel.bbcode_text = quest.title
 	if pressed:
 		quest_label.text = quest.title
 
-func on_optional_changed(opt):
+func on_optional_changed(opt : bool) -> void:
 	if opt:
 		$AnimatedSprite.animation = "opt"
 	else:
 		$AnimatedSprite.animation = "default"
 
-func on_state_changed(new_state):
+func on_state_changed(new_state : int) -> void:
 	$AnimatedSprite.frame = abs(new_state - 1)
 
-func _on_pressed():
+func _on_pressed() -> void:
 	._on_pressed()
 	quest_label.text = quest.title
 	quest_des_label.bbcode_text = Ren.text_passer(quest.description)
@@ -60,6 +60,6 @@ func _on_pressed():
 		quest_sub_box.show()
 		quests_box.current_quest_button = self
 
-func on_description_changed(new_des):
+func on_description_changed(new_des : String) -> void:
 	if pressed:
 		quest_des_label.bbcode_text = Ren.text_passer(new_des)

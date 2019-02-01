@@ -1,20 +1,20 @@
 extends LineEdit
 class_name RenVarEdit
 
-export(String) var var_name = "some_var"
+export(String) var var_name : = "some_var"
 
-export(String) var default = "" setget set_default, get_default
+export(String) var default : = "" setget set_default, get_default
 
-var type = "str"
+var type : = "str"
 
-func set_default(value):
+func set_default(value : String):
 	default = value
 	placeholder_text = str(default)
 
-func get_default():
+func get_default() -> String:
 	return default
 
-func _ready():
+func _ready() -> void:
 	var s = ""
 	if var_name in Ren.variables:
 		s = Ren.get_value(var_name)
@@ -27,11 +27,11 @@ func _ready():
 	connect("text_entered", self, "_on_entered")
 	var_to_change.connect("value_changed", self, "on_value_changed")
 
-func on_value_changed(new_value):
+func on_value_changed(new_value : String) -> void:
 	text = ""
 	placeholder_text = str(new_value)
 
-func _on_entered(text):
+func _on_entered(text : String) -> void:
 	if text.empty():
 		Ren.define_from_str(var_name, default, type)
 	

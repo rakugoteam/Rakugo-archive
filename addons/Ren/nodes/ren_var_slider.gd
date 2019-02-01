@@ -4,11 +4,10 @@ extends "ren_var_range.gd"
 # we don't want it be be seen in "add new Node" dialog,
 # but to seen other Nodes that use it
 
-
-func _ready():
+func _ready() -> void:
 	connect("value_changed", self, "on_slider_val_changed")
 
-func on_slider_val_changed(value):
+func on_slider_val_changed(value : float) -> void:
 	Ren.define(var_name, value)
 
 	

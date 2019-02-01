@@ -1,11 +1,11 @@
 extends Label
 class_name RenVarLabel
 
-export(String) var var_name = "some_var"
-export(String) var default = ""
-export(String, "str", "bool", "float", "int") var type = "str" 
+export(String) var var_name : = "some_var"
+export(String) var default : = ""
+export(String, "str", "bool", "float", "int") var type : = "str" 
 
-func _ready():
+func _ready() -> void:
 	if not (var_name in Ren.variables):
 		Ren.define_from_str(var_name, default, type)
 	
@@ -14,5 +14,5 @@ func _ready():
 	text = str(new_val)
 	var_to_change.connect("value_changed", self, "on_value_changed")
 
-func on_value_changed(new_value):
+func on_value_changed(new_value : String) -> void:
 	text = str(new_value)

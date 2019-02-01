@@ -1,13 +1,13 @@
 extends VisualInstance
 class_name RenVisualInstance, "res://addons/Ren/icons/ren_spatial.svg"
 
-var rnode = RenNodeCore.new()
+var rnode : = RenNodeCore.new()
 
-export(bool) var auto_define = false
-export(String) var node_id = ""
-export(NodePath) var camera = NodePath("")
+export(bool) var auto_define : = false
+export(String) var node_id : = ""
+export(NodePath) var camera : = NodePath("")
 
-func _ready():
+func _ready() -> void:
 	Ren.connect("show", self, "_on_show")
 	Ren.connect("hide", self, "_on_hide")
 		
@@ -17,7 +17,7 @@ func _ready():
 	if auto_define:
 		Ren.node_link(self, node_id)
 	
-func _on_show(node_id, state, show_args):
+func _on_show(node_id : String, state : String, show_args : Dictionary) -> void:
 	if self.node_id != node_id:
 		return
 	
@@ -43,15 +43,14 @@ func _on_show(node_id, state, show_args):
 	if not self.visible:
 		show()
 
-
-func on_state(state):
+func on_state(state : String) -> void:
 	pass
 
-func _on_hide(_node_id):
+func _on_hide(_node_id : String) -> void:
 	if _node_id != node_id:
 		return
 		
 	hide()
 
-func _exit_tree():
+func _exit_tree() -> void:
 	Ren.variables.erase(node_id)
