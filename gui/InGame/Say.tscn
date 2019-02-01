@@ -9,7 +9,6 @@
 [ext_resource path="res://gui/Labels/dialogue_text.tscn" type="PackedScene" id=7]
 [ext_resource path="res://addons/Ren/nodes/ren_line_edit.gd" type="Script" id=8]
 
-
 [sub_resource type="DynamicFont" id=1]
 
 size = 30

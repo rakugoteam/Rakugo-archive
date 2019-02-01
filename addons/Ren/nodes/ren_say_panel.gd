@@ -1,24 +1,26 @@
 extends Panel
 class_name RenSayPanel, "res://addons/Ren/icons/ren_panel.svg"
 
-export(NodePath) var name_label_path = NodePath("")
-export(NodePath) var dialog_label_path = NodePath("")
-export(NodePath) var avatar_viewport_path = NodePath("")
+export(NodePath) var name_label_path :  = NodePath("")
+export(NodePath) var dialog_label_path : = NodePath("")
+export(NodePath) var avatar_viewport_path : = NodePath("")
 
-onready var NameLabel = get_node(name_label_path)
-onready var DialogText = get_node(dialog_label_path)
-onready var CharacterAvatar = get_node(avatar_viewport_path)
+onready var NameLabel : RichTextLabel = get_node(name_label_path)
+onready var DialogText : RichTextLabel = get_node(dialog_label_path)
+onready var CharacterAvatar : Viewport = get_node(avatar_viewport_path)
 
-var avatar_path = ""
-var avatar
-var _type
-var typing = false
+var avatar_path : = ""
+var avatar : Node
+var _type : int
+var typing : = false
 
-func _ready():
+func _ready() -> void:
+	# don't work for 3.1 :(
 	connect("gui_input", self, "_on_adv_gui_input")
+	
 	Ren.connect("exec_statement", self, "_on_statement")
 
-func _input(event):	
+func _input(event : InputEvent) -> void:
 	if not event.is_action_pressed("ui_accept"):
 		return
 
@@ -42,7 +44,7 @@ func _input(event):
 	elif _type == Ren.StatementType.SAY: # else exit statement
 		Ren.exit_statement()
 
-func _on_statement(type, parameters):
+func _on_statement(type : int, parameters : Dictionary) -> void:
 	if "kind" in parameters:
 		$AnimationPlayer.play(parameters.kind)
 	
@@ -76,7 +78,7 @@ func _on_statement(type, parameters):
 	
 	return
 
-func write_dialog(text, speed):
+func write_dialog(text : String, speed : float) -> void:
 	if speed == 0:
 		if DialogText.has_method("set_bbcode"):
 			DialogText.bbcode_text = text
@@ -116,8 +118,8 @@ func write_dialog(text, speed):
 
 			break
 
-
-func _on_adv_gui_input(ev):
+# don't work for 3.1 :(
+func _on_adv_gui_input(ev : InputEvent) -> void:
 	if not (ev is InputEventMouseButton):
 		return
 
@@ -127,5 +129,5 @@ func _on_adv_gui_input(ev):
 		event.pressed = true
 		Input.parse_input_event(event)
 
-func _on_Hide_toggled(button_pressed):
+func _on_Hide_toggled(button_pressed : bool) -> void:
 	visible = !button_pressed
