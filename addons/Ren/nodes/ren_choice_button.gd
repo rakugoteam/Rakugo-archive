@@ -1,8 +1,8 @@
 extends RenBaseButton
 class_name RenChoiceButton
 
-onready var label = RichTextLabel.new()
-var id = -1
+onready var label : = RichTextLabel.new()
+var id : = -1
 
 func _ready() -> void:
 	disconnect("pressed", self, "_on_pressed")

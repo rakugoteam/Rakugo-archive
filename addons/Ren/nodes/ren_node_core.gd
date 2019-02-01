@@ -1,10 +1,10 @@
 extends Object
 class_name RenNodeCore
 
-func is_procent(x):
+func is_procent(x : float):
 	return (x >= 0.0 and x <= 1.0)
 
-func show_at(camera_postion, show_args):
+func show_at(camera_postion : Vector2, show_args : Dictionary) -> Vector2:
 	var x = camera_postion.x
 	var y = camera_postion.y
 	# Ren.debug(["cam_pos", camera_postion])

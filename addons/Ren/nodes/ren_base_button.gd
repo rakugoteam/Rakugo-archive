@@ -1,12 +1,12 @@
 extends Button
 class_name RenBaseButton
 
-export(Color) var idle_node_color = Color(0.533333, 0.533333, 0.533333, 1)
-export(Color) var focus_node_color = Color(0, 0.506836, 0.675781, 1)
-export(Color) var hover_node_color = Color(0.877647, 0.882353, 0.887059, 1)
-export(Color) var pressed_node_color = Color(0, 0.6, 0.8, 1)
-export(Color) var disable_node_color = Color(0.533333, 0.533333, 0.498039, 0.533333)
-var node_to_change
+export(Color) var idle_node_color : = Color(0.533333, 0.533333, 0.533333, 1)
+export(Color) var focus_node_color : = Color(0, 0.506836, 0.675781, 1)
+export(Color) var hover_node_color : = Color(0.877647, 0.882353, 0.887059, 1)
+export(Color) var pressed_node_color : = Color(0, 0.6, 0.8, 1)
+export(Color) var disable_node_color : = Color(0.533333, 0.533333, 0.498039, 0.533333)
+var node_to_change : Node
 
 func _ready() -> void:
 	connect("focus_entered", self, "_on_focus")
