@@ -1,10 +1,10 @@
 extends HBoxContainer
 
-onready var Screens = get_node("../../Screens")
-var save_error_msg = "[color=red]Error saving Game[/color]"
-var load_error_msg = "[color=red]Error loading Game[/color]"
+onready var Screens : = get_node("../../Screens")
+var save_error_msg : String = "[color=red]Error saving Game[/color]"
+var load_error_msg : String = "[color=red]Error loading Game[/color]"
 
-func _ready():
+func _ready() -> void:
 	Ren.connect("exec_statement", self, "_on_statement")
 	$Auto.connect("pressed", self, "on_auto")
 	
@@ -26,7 +26,7 @@ func _ready():
 	$Quit.connect("pressed", Screens, "_on_Quit_pressed")
 	$Options.connect("pressed", Screens, "_on_Options_pressed")
 
-func _on_qsave():
+func _on_qsave() -> void:
 	if Ren.savefile():
 		$InfoAnim.play("Saved")
 	
@@ -34,7 +34,7 @@ func _on_qsave():
 		$InfoAnim/Panel/Label.bbcode_text = save_error_msg
 		$InfoAnim.play("GeneralNotif")
 
-func _on_qload():
+func _on_qload() -> void:
 	if Ren.loadfile():
 		$InfoAnim.play("Loaded")
 		Ren.story_step()
@@ -43,13 +43,13 @@ func _on_qload():
 		$InfoAnim/Panel/Label.bbcode_text = load_error_msg
 		$InfoAnim.play("GeneralNotif")
 
-func _on_statement(type, parameters):
+func _on_statement(type : int, parameters : Dictionary) -> void:
 	$Skip.disabled = !Ren.can_skip()
 	$Auto.disabled = !Ren.can_auto()
 	$History.disabled = Ren.current_id == 0
 	$QLoad.disabled = !Ren.can_qload()
 
-func on_auto():
+func on_auto() -> void:
 	$Skip.pressed = false
 	if not Ren.auto_timer.run():
 		on_stop_loop()
@@ -57,13 +57,13 @@ func on_auto():
 	
 	$InfoAnim.play("Auto")
 
-func on_stop_loop():
+func on_stop_loop() -> void:
 	$Auto.pressed = false
 	$Skip.pressed = false
 	$InfoAnim.stop()
 	$InfoAnim/Panel.hide()
 
-func on_skip():
+func on_skip() -> void:
 	$Auto.pressed = false
 	if not Ren.skip_timer.run():
 		on_stop_loop()
@@ -71,11 +71,11 @@ func on_skip():
 
 	$InfoAnim.play("Skip")
 
-func full_save():
+func full_save() -> void:
 	var screenshot = Screens.get_screenshot()
 	Screens.save_menu(screenshot)
 
-func _input(event):
+func _input(event : InputEvent) -> void:
 	if event.is_action_pressed("ui_select"):
 		$Hide.pressed = !$Hide.pressed
 		$Hide.emit_signal("toggled", $Hide.pressed)

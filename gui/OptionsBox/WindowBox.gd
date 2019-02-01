@@ -1,6 +1,6 @@
 extends "CollapsedList.gd"
 
-func _ready():
+func _ready() -> void:
 	options_list = [
 		"Windowed",
 		"Fullscreen",
@@ -9,7 +9,7 @@ func _ready():
 
 	connect("visibility_changed", self, "_on_visibility_changed")
 
-func _on_visibility_changed():
+func _on_visibility_changed() -> void:
 	if not visible:
 		return
 		
@@ -18,6 +18,6 @@ func _on_visibility_changed():
 	update_label()
 
 
-func update_label(choice = options_list[current_choice_id]):
+func update_label(choice : String = options_list[current_choice_id]) -> void:
 	.update_label(choice)
 	settings.temp_window_type_id = current_choice_id

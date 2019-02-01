@@ -1,6 +1,6 @@
 extends "CollapsedList.gd"
 
-func _ready():
+func _ready() -> void:
 	connect("visibility_changed", self, "_on_visibility_changed")
 	## taken from https://freegamedev.net/wiki/Screen_Resolutions
 	options_list = [
@@ -20,10 +20,10 @@ func _ready():
 		Vector2(2560, 1600)
 	]
 
-func _on_visibility_changed():
+func _on_visibility_changed() -> void:
 	update_label(OS.window_size)
 
-func update_label(size = options_list[current_choice_id]):
+func update_label(size : Vector2 = options_list[current_choice_id]) -> void:
 	$Label.text = str(size.x) + "x" + str(size.y)
 	if not (size in options_list):
 		options_list.append(size)
