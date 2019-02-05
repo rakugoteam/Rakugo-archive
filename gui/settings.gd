@@ -1,27 +1,27 @@
 extends Node
 
-const default_window_size = Vector2(1024, 600)
+const default_window_size : = Vector2(1024, 600)
 
-var _prev_window_size
-var _prev_window_minimized
-var _prev_window_maximized
-var _prev_window_fullscreen
+var _prev_window_size : Vector2
+var _prev_window_minimized : bool
+var _prev_window_maximized : bool
+var _prev_window_fullscreen : bool
 
-var temp_window_size
-var temp_vsync_enabled
-var temp_window_type_id
+var temp_window_size : Vector2
+var temp_vsync_enabled : bool
+var temp_window_type_id : int
 
-var window_size setget _set_window_size, _get_window_size
-var window_minimized setget _set_window_minimized, _get_window_minimized
-var window_maximized setget _set_window_maximized, _get_window_maximized
-var window_fullscreen setget _set_window_fullscreen, _get_window_fullscreen
+var window_size : Vector2 setget _set_window_size, _get_window_size
+var window_minimized : bool setget _set_window_minimized, _get_window_minimized
+var window_maximized : bool setget _set_window_maximized, _get_window_maximized
+var window_fullscreen : bool setget _set_window_fullscreen, _get_window_fullscreen
 
 signal window_size_changed(prev, now)
 signal window_minimized_changed(value)
 signal window_maximized_changed(value)
 signal window_fullscreen_changed(value)
 
-func _ready():
+func _ready() -> void:
 	temp_window_type_id = get_window_type_id()
 	temp_window_size = OS.window_size
 	temp_vsync_enabled = OS.vsync_enabled
@@ -33,7 +33,7 @@ func _ready():
 	_prev_window_maximized = OS.window_maximized
 	_prev_window_fullscreen = OS.window_fullscreen
 
-func get_window_type_id():
+func get_window_type_id() -> int:
 	var window_type_id = 0
 	
 	if OS.window_fullscreen:
@@ -44,39 +44,39 @@ func get_window_type_id():
 
 	return window_type_id
 
-func _set_window_size(value):
+func _set_window_size(value : Vector2) -> void:
 	_prev_window_size = OS.window_size
 	OS.window_size = value
 	emit_signal("window_size_changed", _prev_window_size, value)
 
-func _get_window_size():
+func _get_window_size() -> Vector2:
 	return OS.window_size
 
-func _set_window_minimized(value):
+func _set_window_minimized(value : bool) -> void:
 	_prev_window_minimized = OS.window_minimized
 	OS.window_minimized = value
 	emit_signal("window_minimized_changed", value)
 
-func _get_window_minimized():
+func _get_window_minimized() -> bool:
 	return OS.window_minimized
 
-func _set_window_maximized(value):
+func _set_window_maximized(value : bool) -> void:
 	_prev_window_maximized = OS.window_maximized
 	OS.window_maximized = value
 	emit_signal("window_maximized_changed", value)
 
-func _get_window_maximized():
+func _get_window_maximized() -> bool:
 	return OS.window_maximized
 
-func _set_window_fullscreen(value):
+func _set_window_fullscreen(value : bool) -> void:
 	_prev_window_fullscreen = OS.window_fullscreen
 	OS.window_fullscreen = value
 	emit_signal("window_fullscreen_changed", value)
 
-func _get_window_fullscreen():
+func _get_window_fullscreen() -> bool:
 	return OS.window_fullscreen
 
-func _process(delta):
+func _process(delta : float) -> void:
 	if OS.window_size != _prev_window_size:
 		emit_signal("window_size_changed", _prev_window_size, OS.window_size)
 	
@@ -94,7 +94,7 @@ func _process(delta):
 	_prev_window_maximized = OS.window_maximized
 	_prev_window_fullscreen = OS.window_fullscreen
 
-func save_conf():
+func save_conf() -> void:
 	var config = ConfigFile.new()
 	config.set_value("display", "width", _get_window_size().x)
 	config.set_value("display", "height", _get_window_size().y)
@@ -126,7 +126,7 @@ func save_conf():
 	# Save the changes by overwriting the previous file
 	config.save("user://settings.cfg")
 
-func load_conf():
+func load_conf() -> void:
 	var config = ConfigFile.new()
 	var err = config.load("user://settings.cfg")
 	if err != OK: # if not, something went wrong with the file loading
@@ -175,7 +175,7 @@ func set_window_options(fullscreen, maximized):
 	_set_window_fullscreen(fullscreen)
 	_set_window_maximized(maximized)
 
-func apply():
+func apply() -> void:
 	match temp_window_type_id:
 		0: # Windowed
 			set_window_options(false, false)

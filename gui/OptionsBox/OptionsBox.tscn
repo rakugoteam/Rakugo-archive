@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://ubuntu-font-family/Ubuntu-B.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://gui/OptionsBox/GameplayBox.gd" type="Script" id=2]
@@ -11,9 +11,7 @@
 [ext_resource path="res://gui/InGame/QuickMenuButton.tscn" type="PackedScene" id=9]
 [ext_resource path="res://gui/OptionsBox/ResolutionBox.gd" type="Script" id=10]
 [ext_resource path="res://gui/OptionsBox/VSyncBox.gd" type="Script" id=11]
-[ext_resource path="res://ubuntu-font-family/UB32.tres" type="DynamicFont" id=12]
-[ext_resource path="res://gui/OptionsBox/ApplyButton.gd" type="Script" id=13]
-[ext_resource path="res://gui/OptionsBox/SoundBusControl.tscn" type="PackedScene" id=14]
+[ext_resource path="res://gui/OptionsBox/SoundBusControl.tscn" type="PackedScene" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -45,25 +43,25 @@ valign = 1
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_top = 50.0
 margin_right = 809.0
-margin_bottom = 467.0
+margin_bottom = 394.0
 grow_horizontal = 0
 custom_constants/separation = 10
 alignment = 1
 
 [node name="GameplayBox" type="VBoxContainer" parent="HBoxContainer"]
 editor/display_folded = true
-margin_left = 42.0
-margin_right = 296.0
-margin_bottom = 417.0
+margin_left = 50.0
+margin_right = 304.0
+margin_bottom = 344.0
 grow_horizontal = 0
 custom_constants/separation = 33
 alignment = 1
 script = ExtResource( 2 )
 
 [node name="Title" type="Label" parent="HBoxContainer/GameplayBox"]
-margin_top = 64.0
+margin_top = 27.0
 margin_right = 254.0
-margin_bottom = 94.0
+margin_bottom = 57.0
 grow_horizontal = 0
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -127,9 +125,9 @@ var_name = "skip_after_choices"
 
 [node name="TextSpeedBox" type="VBoxContainer" parent="HBoxContainer/GameplayBox"]
 editor/display_folded = true
-margin_top = 127.0
+margin_top = 90.0
 margin_right = 254.0
-margin_bottom = 187.0
+margin_bottom = 150.0
 script = ExtResource( 4 )
 
 [node name="HBox" type="HBoxContainer" parent="HBoxContainer/GameplayBox/TextSpeedBox"]
@@ -162,12 +160,13 @@ margin_bottom = 60.0
 grow_horizontal = 0
 size_flags_vertical = 1
 value = 30.0
+ticks_on_borders = false
 
 [node name="AutoBox" type="VBoxContainer" parent="HBoxContainer/GameplayBox"]
 editor/display_folded = true
-margin_top = 220.0
+margin_top = 183.0
 margin_right = 254.0
-margin_bottom = 270.0
+margin_bottom = 233.0
 script = ExtResource( 5 )
 
 [node name="Label" type="Label" parent="HBoxContainer/GameplayBox/AutoBox"]
@@ -191,9 +190,9 @@ value = -1.0
 ticks_on_borders = false
 
 [node name="NotifyBox" type="VBoxContainer" parent="HBoxContainer/GameplayBox"]
-margin_top = 303.0
+margin_top = 266.0
 margin_right = 254.0
-margin_bottom = 353.0
+margin_bottom = 316.0
 script = ExtResource( 5 )
 
 [node name="Label" type="Label" parent="HBoxContainer/GameplayBox/NotifyBox"]
@@ -224,9 +223,9 @@ var_name = "notify_time"
 default = 5.0
 
 [node name="GraphicsBox" type="VBoxContainer" parent="HBoxContainer"]
-margin_left = 306.0
-margin_right = 510.0
-margin_bottom = 417.0
+margin_left = 314.0
+margin_right = 518.0
+margin_bottom = 344.0
 grow_horizontal = 0
 custom_constants/separation = 30
 alignment = 1
@@ -346,57 +345,48 @@ margin_left = 104.0
 margin_right = 180.0
 margin_bottom = 40.0
 
-[node name="ApplyButton" parent="HBoxContainer/GraphicsBox" instance=ExtResource( 9 )]
-margin_top = 374.0
-margin_right = 204.0
-margin_bottom = 417.0
-grow_horizontal = 0
-custom_fonts/font = ExtResource( 12 )
-text = "Apply"
-script = ExtResource( 13 )
-
 [node name="MusicBox" type="VBoxContainer" parent="HBoxContainer"]
-margin_left = 520.0
-margin_right = 766.0
-margin_bottom = 417.0
+margin_left = 528.0
+margin_right = 758.0
+margin_bottom = 344.0
 grow_horizontal = 0
 alignment = 1
 
 [node name="Title" type="Label" parent="HBoxContainer/MusicBox"]
 margin_top = 5.0
-margin_right = 246.0
+margin_right = 230.0
 margin_bottom = 35.0
 grow_horizontal = 0
 custom_fonts/font = SubResource( 1 )
 text = "Music"
 align = 1
 
-[node name="MasterBusControl" parent="HBoxContainer/MusicBox" instance=ExtResource( 14 )]
+[node name="MasterBusControl" parent="HBoxContainer/MusicBox" instance=ExtResource( 12 )]
 margin_top = 39.0
-margin_right = 246.0
-margin_bottom = 129.0
+margin_right = 230.0
+margin_bottom = 111.0
 grow_horizontal = 0
 
-[node name="BGMBusControl3" parent="HBoxContainer/MusicBox" instance=ExtResource( 14 )]
-margin_top = 133.0
-margin_right = 246.0
-margin_bottom = 223.0
+[node name="BGMBusControl3" parent="HBoxContainer/MusicBox" instance=ExtResource( 12 )]
+margin_top = 115.0
+margin_right = 230.0
+margin_bottom = 187.0
 grow_horizontal = 0
 label = "Music"
 bus_name = "BGM"
 
-[node name="SFXBusControl2" parent="HBoxContainer/MusicBox" instance=ExtResource( 14 )]
-margin_top = 227.0
-margin_right = 246.0
-margin_bottom = 317.0
+[node name="SFXBusControl2" parent="HBoxContainer/MusicBox" instance=ExtResource( 12 )]
+margin_top = 191.0
+margin_right = 230.0
+margin_bottom = 263.0
 grow_horizontal = 0
 label = "Sounds"
 bus_name = "SFX"
 
-[node name="MasterBusControl4" parent="HBoxContainer/MusicBox" instance=ExtResource( 14 )]
-margin_top = 321.0
-margin_right = 246.0
-margin_bottom = 411.0
+[node name="MasterBusControl4" parent="HBoxContainer/MusicBox" instance=ExtResource( 12 )]
+margin_top = 267.0
+margin_right = 230.0
+margin_bottom = 339.0
 grow_horizontal = 0
 label = "Dialogs"
 bus_name = "Dialogs"

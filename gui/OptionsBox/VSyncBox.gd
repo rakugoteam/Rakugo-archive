@@ -10,3 +10,4 @@ func _on_toggle(value : bool) -> void:
 func _on_visibility_changed() -> void:
 	$CheckButton.pressed = OS.vsync_enabled
 	settings.temp_vsync_enabled = OS.vsync_enabled
+	settings.apply()

@@ -28,3 +28,9 @@ func update_label(size : Vector2 = options_list[current_choice_id]) -> void:
 	if not (size in options_list):
 		options_list.append(size)
 	settings.temp_window_size = size
+	
+	if settings.temp_window_size != OS.get_screen_size():
+		if settings.temp_window_type_id == 1: # if fullscreen
+			settings.temp_window_type_id = 2 # Maximized
+			
+	settings.apply()
