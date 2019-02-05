@@ -34,6 +34,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Ren/types/character_obj.gd"
 }, {
+"base": "BoxContainer",
+"class": "CollapsedList",
+"language": "GDScript",
+"path": "res://gui/OptionsBox/CollapsedList.gd"
+}, {
 "base": "Object",
 "class": "Hide",
 "language": "GDScript",
@@ -220,6 +225,7 @@ _global_script_class_icons={
 "CallNode": "",
 "Character": "res://addons/Ren/icons/ren_character.svg",
 "CharacterObject": "",
+"CollapsedList": "",
 "Hide": "",
 "JSONBeautifier": "",
 "Menu": "",

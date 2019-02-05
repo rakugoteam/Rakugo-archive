@@ -1,18 +1,24 @@
 extends VBoxContainer
 
 export(PackedScene) var QuestButtonTemplate : PackedScene
+export(NodePath) var quests_box_path :  = "HBoxContainer/ScrollContainer/Quests"
+export(NodePath) var subquests_box_path : = "HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer2/Subquests"
+export(NodePath) var quest_label_path : = "HBoxContainer/HBoxContainer/VBoxContainer/Title2"
+export(NodePath) var quest_des_label_path : = "HBoxContainer/HBoxContainer/VBoxContainer/Description"
+
 onready var QuestButton : = load(QuestButtonTemplate.resource_path)
+onready var quests_box : BoxContainer = get_node(quests_box_path)
+onready var subquests_box : BoxContainer = get_node(subquests_box_path)
+onready var quest_label : Label = get_node(quest_label_path)
+onready var quest_des_label : RenTextLabel = get_node(quest_des_label_path)
+
+var current_quest_button : Button
 var temp_quests : = []
-onready var quests_box : = $HBoxContainer/ScrollContainer/Quests
-onready var subquests_box : = $HBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer2/Subquests
-onready var quest_label : = $HBoxContainer/HBoxContainer/VBoxContainer/Title2
-onready var quest_des_label : = $HBoxContainer/HBoxContainer/VBoxContainer/Description
-var current_quest_button
 
 func _ready() -> void:
 	connect("visibility_changed", self, "_on_visibility_changed")
 
-func add_quest_button(quest : Subquest, place_to_add : Node, is_subquest : bool = false):
+func add_quest_button(quest : Subquest, place_to_add : Node, is_subquest : bool = false) -> Object:
 	if quest.state == quest.STATE_NOT_AVAILABLE:
 		return null
 
