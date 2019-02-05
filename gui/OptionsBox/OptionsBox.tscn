@@ -356,7 +356,6 @@ text = "Apply"
 script = ExtResource( 13 )
 
 [node name="MusicBox" type="VBoxContainer" parent="HBoxContainer"]
-editor/display_folded = true
 margin_left = 520.0
 margin_right = 766.0
 margin_bottom = 417.0

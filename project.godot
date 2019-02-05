@@ -109,7 +109,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Ren/nodes/ren_control.gd"
 }, {
-"base": "Node",
+"base": "Object",
 "class": "RenDef",
 "language": "GDScript",
 "path": "res://addons/Ren/types/def.gd"

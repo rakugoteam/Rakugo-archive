@@ -11,19 +11,12 @@ func _ready() -> void:
 
 	$VBox/Label.text = label
 	
-	if AudioServer.is_bus_mute(bus_id):
-		$VBox/OffButton.pressed = true
-	else:
-		$VBox/OnButton.pressed = true
+	var _mute : = AudioServer.is_bus_mute(bus_id)
+	$VBox/CheckButton.pressed = !_mute
 	
-	$VBox/OnButton.connect(
-		"pressed", self,
-		"set_bus_mute", [bus_id, false]
-	)
-
-	$VBox/OffButton.connect(
-		"pressed", self,
-		"set_bus_mute", [bus_id, true]
+	$VBox/CheckButton.connect(
+		"toggled", self,
+		"set_bus_on", [bus_id]
 	)
 	
 	$Bar.connect(
@@ -43,6 +36,6 @@ func set_bus_volume(value : int, bus_id : int) -> void:
 	AudioServer.set_bus_volume_db(bus_id, value)
 	volume = value
 
-func set_bus_mute(bus_id : int, value : bool) -> void:
-	AudioServer.set_bus_mute(bus_id, value)
+func set_bus_on(bus_id : int, value : bool) -> void:
+	AudioServer.set_bus_mute(bus_id, !value)
 	mute = value
