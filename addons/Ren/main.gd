@@ -342,7 +342,7 @@ func ask(parameters : Dictionary) -> void:
 ## its allow player to make choice
 ## with keywords : who, what, kind, speed choices, mkind
 ## speed is time to show next letter
-func menu(parameters):
+func menu(parameters : Dictionary) -> void:
 	_set_statement($Menu, parameters)
 
 ## it show custom ren node or charater
@@ -351,18 +351,18 @@ func menu(parameters):
 ## with keywords : x, y, z, at, pos
 ## x, y and pos will use it as procent of screen if between 0 and 1
 ## "at" is lists that can have: "top", "center", "bottom", "right", "left"
-func show(node_id, state = [], parameters = {"at":["center", "bottom"]}):
+func show(node_id : String, state : = [], parameters : = {"at":["center", "bottom"]}):
 	parameters["node_id"] = node_id
 	parameters["state"] = state
 	_set_statement($Show, parameters)
 
 ## statement of type hide
-func hide(node_id):
+func hide(node_id : String) -> void:
 	var parameters = {"node_id":node_id}
 	_set_statement($Hide, parameters)
 
 ## statement of type notify
-func notifiy(info, length = Ren.get_value("notify_time")):
+func notifiy(info : String, length : int = Ren.get_value("notify_time")) -> void:
 	var parameters = {"info": info,"length":length}
 	_set_statement($Notify, parameters)
 	notify_timer.wait_time = parameters.length
@@ -370,7 +370,7 @@ func notifiy(info, length = Ren.get_value("notify_time")):
 
 ## statement of type play_anim
 ## it will play animation with anim_name form RenAnimPlayer with given node_id
-func play_anim(node_id, anim_name):
+func play_anim(node_id : String, anim_name : String) -> void:
 	var parameters = {
 		"node_id":node_id,
 		"anim_name":anim_name
@@ -380,7 +380,7 @@ func play_anim(node_id, anim_name):
 ## statement of type stop_anim
 ## it will stop animation form RenAnimPlayer with given node_id
 ## and by default is reset to 0 pos on exit from statment
-func stop_anim(node_id, reset = true):
+func stop_anim(node_id : String, reset : = true) -> void:
 	var parameters = {
 		"node_id":node_id,
 		"reset":reset
@@ -390,7 +390,7 @@ func stop_anim(node_id, reset = true):
 ## statement of type play_audio
 ## it will play audio form RenAudioPlayer with given node_id
 ## it will start playing from given from_pos
-func play_audio(node_id, from_pos = 0.0):
+func play_audio(node_id : String, from_pos : = 0.0) -> void:
 	var parameters = {
 		"node_id":node_id,
 		"from_pos":from_pos
@@ -399,7 +399,7 @@ func play_audio(node_id, from_pos = 0.0):
 
 ## statement of type stop_audio
 ## it will stop audio form RenAudioPlayer with given node_id
-func stop_audio(node_id):
+func stop_audio(node_id : String) -> void:
 	var parameters = {
 		"node_id":node_id
 	}
@@ -407,7 +407,7 @@ func stop_audio(node_id):
 
 ## statement of type stop_audio
 ## it will stop audio form RenAudioPlayer with given node_id
-func call_node(node_id, func_name, args = []):
+func call_node(node_id : String, func_name : String, args : = []) -> void:
 	var parameters = {
 		"node_id":node_id,
 		"func_name":func_name,
@@ -415,15 +415,15 @@ func call_node(node_id, func_name, args = []):
 	}
 	_set_statement($CallNode, parameters)
 
-func _set_story_state(state):
+func _set_story_state(state : String) -> void:
 	prev_story_state = _get_story_state()
 	define("story_state", state)
 
-func _get_story_state():
+func _get_story_state() -> String:
 	return get_value("story_state")
 
 ## it starts Ren
-func start():
+func start() -> void:
 	load_global_history()
 	using_passer = false
 	current_id = 0
@@ -433,7 +433,7 @@ func start():
 	emit_signal("started")
 
 
-func savefile(save_name = "quick"):
+func savefile(save_name : = "quick") -> bool:
 	$Persistence.folder_name = save_folder
 	$Persistence.password = save_password
 
@@ -472,7 +472,7 @@ func savefile(save_name = "quick"):
 	debug(["save data to:", save_name])
 	return result
 	
-func loadfile(save_name = "quick"):
+func loadfile(save_name : = "quick") -> bool:
 	loading_in_progress = true
 	$Persistence.folder_name = save_folder
 	$Persistence.password = save_password
@@ -522,7 +522,7 @@ func loadfile(save_name = "quick"):
 	current_id = data["id"]
 	return true
 
-func debug_dict(parameters, parameters_names = [], some_custom_text = ""):
+func debug_dict(parameters : Dictionary, parameters_names : = [], some_custom_text : = ""):
 	var dbg = ""
 	
 	for k in parameters_names:
@@ -537,22 +537,26 @@ func debug_dict(parameters, parameters_names = [], some_custom_text = ""):
 
 ## for printting debugs is only print if debug_on == true
 ## you put some string array or string as argument
-func debug(some_text = []):
+func debug(some_text : = []):
 	if not debug_on:
 		return
+		
 	if typeof(some_text) == TYPE_ARRAY:
 		var new_text = ""
+		
 		for i in some_text:
 			new_text += str(i) + " "
+			
 		some_text = new_text
+		
 	print(some_text)
 
 
-func _set_current_id(value):
+func _set_current_id(value : int):
 	current_id = value
 	local_id = value
 
-func _get_current_id():
+func _get_current_id() -> int:
 	return current_id
 
 ## use this to change/assain current scene and dialog
@@ -560,12 +564,12 @@ func _get_current_id():
 ## provide path_to_scene with out ".tscn"
 ## "lid" is use to setup "local_id"
 func jump(
-	path_to_scene,
-	dialog_name,
-	state = "start",
-	change = true,
-	from_save = false,
-	lid = 0):
+	path_to_scene : String,
+	dialog_name : String,
+	state : = "start",
+	change : = true,
+	from_save : = false,
+	lid : = 0) -> void:
 
 	if not from_save and loading_in_progress:
 		return
@@ -596,7 +600,8 @@ func jump(
 	if started:
 		story_step()
 
-func current_statement_in_global_history():
+## it don't work :(
+func current_statement_in_global_history() -> bool:
 	var r = true
 	var i = 0
 	var hi_item = current_statement.get_as_history_item()
@@ -619,20 +624,21 @@ func current_statement_in_global_history():
 	# prints("r =", str(r), "i =", str(i))
 	return r
 
-func can_auto():
+func can_auto() -> bool:
 	return current_statement.type in skip_types
 
-func can_skip():
+## it don't work :(
+func can_skip() -> bool:
 	var seen = current_statement_in_global_history()
 	return can_auto() and seen
 
-func can_qload():
+func can_qload() -> bool:
 	var path = str("user://", save_folder, "/quick")
 	var save_exist = file.file_exists(path + ".save")
 	var text_exist = file.file_exists(path + ".txt")
 	return save_exist or text_exist
 
-func save_global_history():
+func save_global_history() -> bool:
 	var save_name = "global_history"
 	$Persistence.folder_name = save_folder
 	$Persistence.password = save_password
@@ -648,7 +654,7 @@ func save_global_history():
 	debug(["save global_history to:", save_name])
 	return result
 
-func load_global_history():
+func load_global_history() -> bool:
 	var save_name = "global_history"
 	$Persistence.folder_name = save_folder
 	$Persistence.password = save_password
