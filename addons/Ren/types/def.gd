@@ -1,4 +1,4 @@
-extends Node
+extends Object
 class_name RenDef
 
 func get_type(variable) -> String:
