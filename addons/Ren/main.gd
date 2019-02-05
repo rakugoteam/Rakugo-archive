@@ -1,24 +1,26 @@
 extends Node
 
-export (String) var game_title = "Your New Game"
-export (String) var game_version = "0.0.1"
-export (String) var game_credits = "Your Company"
-export (String, "ren", "bbcode") var markup = "ren"
-export (Color) var links_color = Color("#225ebf")
-export (bool) var debug_on = true
-export (String) var save_folder = "saves"
-export (String) var save_password = "Ren"
-export (String, DIR) var scenes_dir = "res://examples/"
+export (String) var game_title : = "Your New Game"
+export (String) var game_version : = "0.0.1"
+export (String) var game_credits : = "Your Company"
+export (String, "ren", "bbcode") var markup : = "ren"
+export (Color) var links_color : = Color("#225ebf")
+export (bool) var debug_on : = true
+export (String) var save_folder : = "saves"
+export (String) var save_password : = "Ren"
+export (String, DIR) var scenes_dir : = "res://examples/"
 
-const ren_version = "1.0.0"
-const credits_path = "res://addons/Ren/credits.txt"
+const ren_version : = "1.0.0"
+const credits_path : = "res://addons/Ren/credits.txt"
+# we need it because we hide base RenMenu form custom nodes
+const RenMenu : = preload("res://addons/Ren/nodes/ren_menu.gd")
 
 ## init vars for settings
-var _skip_all_text = false
-var _skip_after_choices = false
-var _auto_speed = 1
-var _text_speed = 30
-var _notify_time = 5
+var _skip_all_text : = false
+var _skip_after_choices : = false
+var _auto_speed : = 1
+var _text_speed : = 30
+var _notify_time : = 5
 
 enum Type {
 	VAR,		# 0
@@ -47,23 +49,23 @@ enum StatementType {
 }
 
 # this must be saved
-var current_id = 0 setget _set_current_id, _get_current_id
-var local_id = 0
-var current_dialog_name = ""
-var _scene = null
-var history = [] # [{"state":story_state, "statement":{"type":type, "parameters": parameters}}]
-var global_history = [] # [{"state":story_state, "statement":{"type":type, "parameters": parameters}}]
-var prev_story_state = ""
-var variables = {}
+var current_id : = 0 setget _set_current_id, _get_current_id
+var local_id : = 0
+var current_dialog_name : = ""
+var _scene : = ""
+var history : = [] # [{"state":story_state, "statement":{"type":type, "parameters": parameters}}]
+var global_history : = [] # [{"state":story_state, "statement":{"type":type, "parameters": parameters}}]
+var prev_story_state : = ""
+var variables : = {}
 
 # don't save this
-onready var menu_node = $Menu
-var current_statement = null
-var using_passer = false
-var skip_auto = false
-var current_node = null
-var active = false
-var skip_types = [
+onready var menu_node : RenMenu = $Menu
+var current_statement : = null
+var using_passer : = false
+var skip_auto : = false
+var current_node : = null
+var active : = false
+var skip_types : = [
 	StatementType.SAY,
 	StatementType.SHOW,
 	StatementType.HIDE,
@@ -100,17 +102,17 @@ const months = {
 	12: 'December',
 }
 
-var file = File.new()
-var loading_in_progress = false
-var started = false
-var quests = [] # list of all quests ids
+var file : = File.new()
+var loading_in_progress : = false
+var started : = false
+var quests : = [] # list of all quests ids
 
 # timers use by ren
-onready var auto_timer = $AutoTimer
-onready var skip_timer = $SkipTimer
-onready var step_timer = $StepTimer
-onready var dialog_timer = $DialogTimer
-onready var notify_timer = $NotifyTimer
+onready var auto_timer : = $AutoTimer
+onready var skip_timer : = $SkipTimer
+onready var step_timer : = $StepTimer
+onready var dialog_timer : = $DialogTimer
+onready var notify_timer : = $NotifyTimer
 
 var story_state setget _set_story_state, _get_story_state
 
@@ -126,7 +128,7 @@ signal stop_anim(node_id, reset)
 signal play_audio(node_id, from_pos)
 signal stop_audio(node_id)
 
-func _ready():
+func _ready() -> void:
 	## set by game devloper
 	define("title", game_title)
 	define("version", game_version)
@@ -156,117 +158,120 @@ func _ready():
 
 	step_timer.connect("timeout", self, "_on_time_active_timeout")
 
-func get_datetime_str():
+func get_datetime_str() -> String:
 	var d = OS.get_datetime()
 	return weekdays[d['weekday']] + ' ' + months[d['month']] + ' ' + str(d['day']) + ', ' + str(d['hour']) + ':' + str(d['minute'])
 
-func _on_time_active_timeout():
+func _on_time_active_timeout() -> void:
 	active = true
 
-func exec_statement(type, parameters = {}):
+func exec_statement(type : int, parameters : = {}) -> void:
 	emit_signal("exec_statement", type, parameters)
 
-func exit_statement(parameters = {}):
+func exit_statement(parameters : = {}) -> void:
 	if loading_in_progress:
 			return
 	emit_signal("exit_statement", current_statement.type, parameters)
 
-func story_step():
+func story_step() -> void:
 	if loading_in_progress:
 		return
 	emit_signal("story_step", current_dialog_name)
 
-func notified():
+func notified() -> void:
 	emit_signal("notified")
 
-func on_show(node_id, state, show_args):
+func on_show(node_id : String, state : Array, show_args : Dictionary) -> void:
 	emit_signal("show", node_id, state, show_args)
 
-func on_hide(node):
-	emit_signal("hide", node)
+func on_hide(node_id : String) -> void:
+	emit_signal("hide", node_id)
 
-func on_play_anim(node_id, anim_name):
+func on_play_anim(node_id : String, anim_name : String) -> void:
 	emit_signal("play_anim", node_id, anim_name)
 
-func on_stop_anim(node_id, reset):
+func on_stop_anim(node_id : String, reset : bool) -> void:
 	emit_signal("stop_anim", node_id, reset)
 
-func on_play_audio(node_id, from_pos):
+func on_play_audio(node_id : String, from_pos : float) -> void:
 	emit_signal("play_audio", node_id, from_pos)
 
-func on_stop_audio(node_id):
+func on_stop_audio(node_id : String) -> void:
 	emit_signal("stop_audio", node_id)
 
 ## parse text like in renpy to bbcode if mode == "ren"
 ## or parse bbcode with {vars} if mode == "bbcode"
 ## default mode = Ren.markup 
-func text_passer(text, mode = markup):
+func text_passer(text : String, mode : = markup):
 	return $Text.text_passer(text, variables, mode, links_color.to_html())
 
 ## add/overwrite global variable that Ren will see
 ## and returns it as RenVar for easy use
-func define(var_name, value = null):
+func define(var_name : String, value = null) -> Object:
 	if not variables.has(var_name):
 		return $Def.define(variables, var_name, value)
 	else:
 		return set_var(var_name, value)
 
 ## add/overwrite global variable, from string, that Ren will see
-func define_from_str(var_name, var_str, var_type):
+func define_from_str(var_name : String, var_str : String, var_type : String) -> Object:
 	if not variables.has(var_name):
 		return $Def.define_from_str(variables, var_name, var_str, var_type)
 	else:
 		var value = $Def.str2value(var_str, var_type)
-		var_type = $Def.str2ren_type(var_type)
-		return set_var(var_name, value, var_type)
+		var var_type_int = $Def.str2ren_type(var_type)
+		return set_var(var_name, value, var_type_int)
 
 ## overwrite exitsing global variable and returns it as RenVar
-func set_var(var_name, value, var_type = null):
+func set_var(var_name : String, value, var_type : = -1) -> Object:
 	if not variables.has(var_name):
 		prints(var_name, "variable don't exist in Ren")
 		return null
 
-	if var_type == null:
+	if var_type == -1:
 		var_type = get_type(var_name)
 	
 	variables[var_name]._type = var_type
 	variables[var_name].value = value
 	return variables[var_name]
 
-## returns exiting Ren variable as RenVar for easy use
-func get_var(var_name, type = Type.VAR):
+## returns exiting Ren variable as one of RenTypes for easy use
+## It must be with out returned type, because we can't set it as list of types
+func get_var(var_name : String, type : = Type.VAR):
 	if type != Type.VAR:
 		if get_type(var_name) != type:
 			return null
 	return variables[var_name]
 
 ## to use with `define_from_str` func as var_type arg
-func get_def_type(variable):
+func get_def_type(variable : String) -> String:
 	return $Def.get_type(variable)
 
 ## returns value of variable defined using define
-func get_value(var_name):
+## It must be with out returned type, because we can't set it as list of types
+func get_value(var_name : String):
 	return variables[var_name].value
 
 ## returns type of variable defined using define
-func get_type(var_name):
+func get_type(var_name : String) -> int:
 	return variables[var_name].type
 
 ## just faster way to connect singal to ren's variable
-func connect_var(var_name, signal_name, node, func_name, binds = [], flags = 0):
+func connect_var(var_name : String, signal_name : String, node : Object, func_name : String, binds : = [], flags : = 0) -> void:
 	get_var(var_name).connect(signal_name, node, func_name, binds, flags)
 	
 ## crate new charater as global variable that Ren will see
 ## possible parameters: name, color, what_prefix, what_suffix, kind, avatar
-func character(character_id, parameters):
+func character(character_id : String, parameters : Dictionary) -> CharacterObject:
 	return $Def.define(variables, character_id, parameters, Type.CHARACTER)
 
-func get_character(character_id):
+func get_character(character_id : String) -> CharacterObject:
 	return get_var(character_id, Type.CHARACTER)
 
 ## crate new link to node as global variable that Ren will see
-func node_link(node, node_id = null):
-	if node_id == null:
+## first arg can be node it self or path to it
+func node_link(node, node_id : String = "") -> Node:
+	if node_id == "":
 		node_id = node.name
 
 	var path
@@ -279,35 +284,37 @@ func node_link(node, node_id = null):
 	$Def.define(variables, node_id, path, Type.NODE)
 	return get_node(path)
 
-func get_node_by_id(node_id):
+func get_node_by_id(node_id : String) -> Node:
 	var p = get_var(node_id).v
 	return get_node(p)
 
 ## add/overwrite global subquest that Ren will see
 ## and returns it as RenSubQuest for easy use
 ## possible parameters: "who", "title", "description", "optional", "state", "subquests"
-func subquest(var_name, parameters = {}):
+func subquest(var_name : String, parameters : = {}) -> Subquest:
 	return $Def.define(variables, var_name, parameters, Type.SUBQUEST)
 
 ## returns exiting Ren subquest as RenSubQuest for easy use
-func get_subquest(subquest_id):
+func get_subquest(subquest_id : String) -> Subquest:
 	return get_var(subquest_id, Type.SUBQUEST)
 
 ## add/overwrite global quest that Ren will see
 ## and returns it as RenQuest for easy use
 ## possible parameters: "who", "title", "description", "optional", "state", "subquests"
-func quest(var_name, parameters = {}):
+func quest(var_name : String, parameters : = {}) -> Quest:
 	var q = $Def.define(variables, var_name, parameters, Type.QUEST)
 	quests.append(var_name)
 	return q
 
 ## returns exiting Ren quest as RenQuest for easy use
-func get_quest(quest_id):
+func get_quest(quest_id : String) -> Quest:
 	return get_var(quest_id, Type.QUEST)
 
-func _set_statement(node, parameters):
+## it should be "node : Statement", but it don't work for now
+func _set_statement(node : Node, parameters : Dictionary) -> void:
 	if not parameters.has("speed"):
 		parameters["speed"] = get_value("text_speed")
+		
 	node.set_parameters(parameters)
 	node.exec()
 	active = false
@@ -318,7 +325,7 @@ func _set_statement(node, parameters):
 ## its make given character(who) talk (what)
 ## with keywords : who, what, kind, speed
 ## speed is time to show next letter
-func say(parameters):
+func say(parameters : Dictionary) -> void:
 	_set_statement($Say, parameters)
 
 ## statement of type ask
@@ -327,7 +334,7 @@ func say(parameters):
 ## it also will return RenVar variable
 ## with keywords : who, what, kind, speed variable, value
 ## speed is time to show next letter
-func ask(parameters):
+func ask(parameters : Dictionary) -> void:
 	_set_statement($Ask, parameters)
 
 ## statement of type menu
