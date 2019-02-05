@@ -60,10 +60,10 @@ var variables : = {}
 
 # don't save this
 onready var menu_node : RenMenu = $Menu
-var current_statement : = null
+var current_statement : Statement = null
 var using_passer : = false
 var skip_auto : = false
-var current_node : = null
+var current_node : Node = null
 var active : = false
 var skip_types : = [
 	StatementType.SAY,
@@ -244,7 +244,8 @@ func get_var(var_name : String, type : = Type.VAR):
 	return variables[var_name]
 
 ## to use with `define_from_str` func as var_type arg
-func get_def_type(variable : String) -> String:
+## it can't use optinal typing
+func get_def_type(variable):
 	return $Def.get_type(variable)
 
 ## returns value of variable defined using define
@@ -522,7 +523,7 @@ func loadfile(save_name : = "quick") -> bool:
 	current_id = data["id"]
 	return true
 
-func debug_dict(parameters : Dictionary, parameters_names : = [], some_custom_text : = ""):
+func debug_dict(parameters : Dictionary, parameters_names : = [], some_custom_text : = "") -> String:
 	var dbg = ""
 	
 	for k in parameters_names:
@@ -536,8 +537,8 @@ func debug_dict(parameters : Dictionary, parameters_names : = [], some_custom_te
 	return some_custom_text + dbg
 
 ## for printting debugs is only print if debug_on == true
-## you put some string array or string as argument
-func debug(some_text : = []):
+## put some string array or string as argument
+func debug(some_text = []) -> void:
 	if not debug_on:
 		return
 		
@@ -552,7 +553,7 @@ func debug(some_text : = []):
 	print(some_text)
 
 
-func _set_current_id(value : int):
+func _set_current_id(value : int) -> void:
 	current_id = value
 	local_id = value
 

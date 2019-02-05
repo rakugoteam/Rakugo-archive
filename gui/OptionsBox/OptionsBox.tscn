@@ -259,6 +259,7 @@ margin_bottom = 152.0
 grow_horizontal = 0
 alignment = 1
 script = ExtResource( 8 )
+options_list = [ "Windowed", "Fullscreen", "Maximized" ]
 
 [node name="PrevButton" parent="HBoxContainer/GraphicsBox/WTBox" instance=ExtResource( 9 )]
 margin_right = 25.0

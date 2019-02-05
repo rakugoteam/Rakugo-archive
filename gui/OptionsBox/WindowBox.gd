@@ -1,12 +1,6 @@
-extends "CollapsedList.gd"
+extends CollapsedList
 
 func _ready() -> void:
-	options_list = [
-		"Windowed",
-		"Fullscreen",
-		"Maximized"
-	]
-
 	connect("visibility_changed", self, "_on_visibility_changed")
 
 func _on_visibility_changed() -> void:

@@ -63,7 +63,7 @@ func done() -> void:
 
 func fail() -> void:
 	state = STATE_FAIL
-	emit_signal("fail")
+	emit_signal("fail_subquest")
 
 # Return the subquest as dictionary.
 # This is util for a save with PersistenceNode

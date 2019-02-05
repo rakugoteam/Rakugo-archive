@@ -39,7 +39,7 @@ func _on_visibility_changed() -> void:
 	
 	$Bar.value = AudioServer.get_bus_volume_db(bus_id)
 
-func set_bus_volume(value : float, bus_id : int) -> void:
+func set_bus_volume(value : int, bus_id : int) -> void:
 	AudioServer.set_bus_volume_db(bus_id, value)
 	volume = value
 

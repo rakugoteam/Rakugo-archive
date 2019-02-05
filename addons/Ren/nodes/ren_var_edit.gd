@@ -7,11 +7,11 @@ export(String) var default : = "" setget set_default, get_default
 
 var type : = "str"
 
-func set_default(value : String):
+func set_default(value) -> void:
 	default = value
 	placeholder_text = str(default)
 
-func get_default() -> String:
+func get_default():
 	return default
 
 func _ready() -> void:
