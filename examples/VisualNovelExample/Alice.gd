@@ -1,4 +1,4 @@
-extends "res://addons/Ren/nodes/ren_node2d.gd"
+extends RenNode2D
 
 var scale_x = 1
 

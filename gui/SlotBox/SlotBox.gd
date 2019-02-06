@@ -1,14 +1,14 @@
 extends VBoxContainer
 
-var screenshot = null
+export(String) var saveslots_dir : = "user://saveslot"
 
-var saveslots_dir = "user://saveslot"
+var screenshot : = null
 
-func _ready():
+func _ready() -> void:
 	# savebox()
 	pass
 	
-func savebox(saveslotsdir = saveslots_dir + "/"):
+func savebox(saveslotsdir : = saveslots_dir + "/") -> void:
 	var filehandler = File.new()
 	for x in $GridContainer.get_children():
 		if filehandler.file_exists(saveslotsdir + x.name + '.png'):
@@ -30,7 +30,7 @@ func savebox(saveslotsdir = saveslots_dir + "/"):
 
 	filehandler.close()
 
-func loadbox(saveslotsdir = saveslots_dir + "/"):
+func loadbox(saveslotsdir : = saveslots_dir + "/") -> bool:
 	var filehandler = File.new()
 	for x in $GridContainer.get_children():
 		if filehandler.file_exists(saveslotsdir + x.name + '.png'):
@@ -55,8 +55,9 @@ func loadbox(saveslotsdir = saveslots_dir + "/"):
 			b.connect("pressed", self, "loadpress", [x.name])
 
 	filehandler.close()
+	return true
 
-func savepress(caller):
+func savepress(caller : String) -> bool:
 	var dirhandler = Directory.new()
 	var filehandler = File.new()
 	if !dirhandler.dir_exists(saveslots_dir):
@@ -77,8 +78,9 @@ func savepress(caller):
 	filehandler.close()
 	
 	savebox()
+	return true
 	
-func loadpress(caller):
+func loadpress(caller : String) -> void:
 	var dirhandler = Directory.new()
 	var filehandler = File.new()
 	if !dirhandler.dir_exists(saveslots_dir):

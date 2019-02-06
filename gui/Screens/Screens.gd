@@ -1,9 +1,11 @@
 extends Control
 
-onready var in_game_gui = get_node("/root/Window/InGameGUI")
 
-var current_node = self
-var nav_path = "Navigation/ScrollContainer/VBoxContainer/"
+export(NodePath) var nav_path : = "Navigation/ScrollContainer/VBoxContainer/"
+export(String) var in_game_gui_path : = "/root/Window/InGameGUI"
+
+var current_node : Node = self
+onready var in_game_gui : = get_node(in_game_gui_path)
 
 func _ready():
 	get_tree().set_auto_accept_quit(false)
