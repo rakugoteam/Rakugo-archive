@@ -2,17 +2,24 @@ extends CollapsedList
 
 func _ready() -> void:
 	connect("visibility_changed", self, "_on_visibility_changed")
+	settings.connect("window_type_changed", self, "_on_window_type_changed")
 
 func _on_visibility_changed() -> void:
 	if not visible:
 		return
 		
-	current_choice_id = settings.get_window_type_id()
-		
-	update_label()
+	_on_window_type_changed(settings.get_window_type_id())
 
-func update_label(choice : String = options_list[current_choice_id]) -> void:
+func _on_window_type_changed(id : int) -> void:
+	current_choice_id = id
+	update_label(options_list[id], false)
+
+func update_label(choice : String = options_list[current_choice_id], apply : bool = true) -> void:
 	.update_label(choice)
+	
+	if not apply:
+		return
+	
 	settings.temp_window_type_id = current_choice_id
 	
 	if settings.temp_window_type_id == 1: # if fullscreen 

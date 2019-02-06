@@ -2,6 +2,7 @@ extends CollapsedList
 
 func _ready() -> void:
 	connect("visibility_changed", self, "_on_visibility_changed")
+	settings.connect("window_size_changed", self, "_on_window_size_changed")
 	## taken from https://freegamedev.net/wiki/Screen_Resolutions
 	options_list = [
 		Vector2(640, 480),
@@ -21,12 +22,20 @@ func _ready() -> void:
 	]
 
 func _on_visibility_changed() -> void:
-	update_label(OS.window_size)
+	update_label(OS.window_size, false)
+	
+func _on_window_size_changed(prev, now):
+	update_label(now, false)
 
-func update_label(size : Vector2 = options_list[current_choice_id]) -> void:
-	$Label.text = str(size.x) + "x" + str(size.y)
+func update_label(size : Vector2 = options_list[current_choice_id], apply : bool = true) -> void:
+	label.text = str(size.x) + "x" + str(size.y)
+	
 	if not (size in options_list):
 		options_list.append(size)
+	
+	if not apply:
+		return
+	
 	settings.temp_window_size = size
 	
 	if settings.temp_window_size != OS.get_screen_size():

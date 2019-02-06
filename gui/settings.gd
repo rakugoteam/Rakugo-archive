@@ -20,6 +20,7 @@ signal window_size_changed(prev, now)
 signal window_minimized_changed(value)
 signal window_maximized_changed(value)
 signal window_fullscreen_changed(value)
+signal window_type_changed(value)
 
 func _ready() -> void:
 	temp_window_type_id = get_window_type_id()
@@ -41,7 +42,8 @@ func get_window_type_id() -> int:
 
 	if OS.window_maximized:
 		window_type_id = 2
-
+	
+	emit_signal("window_type_changed", window_type_id)
 	return window_type_id
 
 func _set_window_size(value : Vector2) -> void:
