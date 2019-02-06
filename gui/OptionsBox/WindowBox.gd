@@ -1,13 +1,9 @@
 extends CollapsedList
 
 func _ready() -> void:
-	connect("visibility_changed", self, "_on_visibility_changed")
 	settings.connect("window_type_changed", self, "_on_window_type_changed")
 
-func _on_visibility_changed() -> void:
-	if not visible:
-		return
-		
+func _process(delta: float) -> void:
 	_on_window_type_changed(settings.get_window_type_id())
 
 func _on_window_type_changed(id : int) -> void:

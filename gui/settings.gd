@@ -177,14 +177,15 @@ func set_window_options(fullscreen, maximized):
 	_set_window_fullscreen(fullscreen)
 	_set_window_maximized(maximized)
 
-func apply() -> void:
-	match temp_window_type_id:
-		0: # Windowed
-			set_window_options(false, false)
-		1: # Fullscreen
-			set_window_options(true, false)
-		2: # Maximized
-			set_window_options(false, true)
+func apply(skip_window_type : = false) -> void:
+	if not skip_window_type:
+		match temp_window_type_id:
+			0: # Windowed
+				set_window_options(false, false)
+			1: # Fullscreen
+				set_window_options(true, false)
+			2: # Maximized
+				set_window_options(false, true)
 		
 	_set_window_size(temp_window_size)
 	OS.vsync_enabled = temp_vsync_enabled

@@ -1,7 +1,6 @@
 extends CollapsedList
 
 func _ready() -> void:
-	connect("visibility_changed", self, "_on_visibility_changed")
 	settings.connect("window_size_changed", self, "_on_window_size_changed")
 	## taken from https://freegamedev.net/wiki/Screen_Resolutions
 	options_list = [
@@ -20,8 +19,12 @@ func _ready() -> void:
 		Vector2(2560, 1440),
 		Vector2(2560, 1600)
 	]
+	
+	var max_res_id = options_list.find(OS.get_screen_size())
+	if max_res_id != -1:
+		options_list.resize(max_res_id)
 
-func _on_visibility_changed() -> void:
+func _process(delta: float) -> void:
 	update_label(OS.window_size, false)
 	
 func _on_window_size_changed(prev, now):
@@ -38,8 +41,15 @@ func update_label(size : Vector2 = options_list[current_choice_id], apply : bool
 	
 	settings.temp_window_size = size
 	
-	if settings.temp_window_size != OS.get_screen_size():
-		if settings.temp_window_type_id == 1: # if fullscreen
-			settings.temp_window_type_id = 2 # Maximized
+	if size == OS.get_screen_size():
+		settings.window_fullscreen = true
+		settings.window_maximized = false
+	
+	else:
+		if settings.window_fullscreen:
+			settings.window_fullscreen = false
+		
+		if settings.window_maximized:
+			settings.window_maximized = false
 			
-	settings.apply()
+	settings.apply(true)
