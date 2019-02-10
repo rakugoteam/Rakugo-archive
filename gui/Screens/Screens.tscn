@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://themes/new_gui/theme.tres" type="Theme" id=1]
 [ext_resource path="res://gui/Screens/Screens.gd" type="Script" id=2]
@@ -11,7 +11,7 @@
 [ext_resource path="res://gui/OptionsBox/OptionsBox.tscn" type="PackedScene" id=9]
 [ext_resource path="res://gui/Quests/QuestsBox.tscn" type="PackedScene" id=10]
 [ext_resource path="res://addons/Ren/nodes/ren_label.gd" type="Script" id=11]
-[ext_resource path="res://gui/Labels/dialogue_text.tscn" type="PackedScene" id=12]
+[ext_resource path="res://gui/Screens/QuitBox.tscn" type="PackedScene" id=12]
 [ext_resource path="res://examples/Test/TestNodes.tscn" type="PackedScene" id=13]
 
 [sub_resource type="DynamicFont" id=1]
@@ -20,7 +20,7 @@ size = 50
 use_filter = true
 font_data = ExtResource( 3 )
 
-[sub_resource type="ButtonGroup" id=2]
+[sub_resource type="ButtonGroup" id=5]
 
 
 [sub_resource type="DynamicFont" id=3]
@@ -32,18 +32,6 @@ font_data = ExtResource( 3 )
 [sub_resource type="DynamicFont" id=4]
 
 size = 40
-use_filter = true
-font_data = ExtResource( 3 )
-
-[sub_resource type="DynamicFont" id=5]
-
-size = 22
-use_filter = true
-font_data = ExtResource( 3 )
-
-[sub_resource type="DynamicFont" id=6]
-
-size = 22
 use_filter = true
 font_data = ExtResource( 3 )
 
@@ -147,7 +135,7 @@ margin_top = 72.0
 margin_right = 140.0
 margin_bottom = 104.0
 toggle_mode = true
-group = SubResource( 2 )
+group = SubResource( 5 )
 text = "History"
 align = 0
 
@@ -157,7 +145,7 @@ margin_top = 72.0
 margin_right = 140.0
 margin_bottom = 104.0
 toggle_mode = true
-group = SubResource( 2 )
+group = SubResource( 5 )
 text = "Quests"
 align = 0
 
@@ -173,7 +161,7 @@ margin_top = 128.0
 margin_right = 132.0
 margin_bottom = 162.0
 toggle_mode = true
-group = SubResource( 2 )
+group = SubResource( 5 )
 text = "Load"
 align = 0
 
@@ -183,7 +171,7 @@ margin_top = 280.0
 margin_right = 140.0
 margin_bottom = 312.0
 toggle_mode = true
-group = SubResource( 2 )
+group = SubResource( 5 )
 text = "Save"
 align = 0
 
@@ -192,7 +180,7 @@ margin_top = 182.0
 margin_right = 132.0
 margin_bottom = 216.0
 toggle_mode = true
-group = SubResource( 2 )
+group = SubResource( 5 )
 text = "Options"
 align = 0
 
@@ -201,7 +189,7 @@ margin_top = 236.0
 margin_right = 132.0
 margin_bottom = 270.0
 toggle_mode = true
-group = SubResource( 2 )
+group = SubResource( 5 )
 text = "Test Nodes"
 align = 0
 
@@ -210,7 +198,7 @@ margin_top = 290.0
 margin_right = 132.0
 margin_bottom = 324.0
 toggle_mode = true
-group = SubResource( 2 )
+group = SubResource( 5 )
 text = "About"
 align = 0
 
@@ -223,7 +211,7 @@ custom_colors/font_color = Color( 0.666667, 0.666667, 0.666667, 1 )
 custom_colors/font_color_hover = Color( 0.4, 0.756863, 0.878431, 1 )
 custom_colors/font_color_pressed = Color( 0, 0.6, 0.8, 1 )
 action_mode = 0
-group = SubResource( 2 )
+group = SubResource( 5 )
 text = "Help"
 
 [node name="Quit" parent="Navigation/ScrollContainer/VBoxContainer" instance=ExtResource( 5 )]
@@ -231,7 +219,7 @@ margin_top = 390.0
 margin_right = 132.0
 margin_bottom = 424.0
 toggle_mode = true
-group = SubResource( 2 )
+group = SubResource( 5 )
 text = "Quit"
 align = 0
 
@@ -311,62 +299,8 @@ ren_text_file = "res://about.txt"
 ren_text = "Made with {a=https://github.com/jeremi360/Ren}Ren{/a} [ren_version] on {a=https://godotengine.org/}Godot Engine{/a} [godot_version] on {a=https://github.com/jeremi360/Ren/blob/master/LICENSE} MIT License{/a}.
 "
 
-[node name="QuitBox" type="Control" parent="."]
-editor/display_folded = true
+[node name="QuitBox" parent="." instance=ExtResource( 12 )]
 visible = false
-margin_left = 257.0
-margin_top = 11.0
-margin_right = 959.0
-margin_bottom = 545.0
-
-[node name="Title" type="Label" parent="QuitBox"]
-margin_right = 702.0
-margin_bottom = 46.0
-custom_fonts/font = SubResource( 4 )
-text = "Quit"
-align = 1
-
-[node name="Question" parent="QuitBox" instance=ExtResource( 12 )]
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = 12.0
-margin_top = -128.0
-margin_right = 12.0
-margin_bottom = -82.0
-focus_mode = 0
-bbcode_text = "[center]Do you realy want to quit?[/center]"
-text = "Do you realy want to quit?"
-selection_enabled = false
-
-[node name="HBoxContainer" type="HBoxContainer" parent="QuitBox"]
-editor/display_folded = true
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 246.0
-margin_top = -328.0
-margin_right = -200.0
-margin_bottom = -296.0
-
-[node name="Yes" type="Button" parent="QuitBox/HBoxContainer"]
-margin_right = 126.0
-margin_bottom = 34.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
-text = "Yes"
-flat = true
-
-[node name="No" type="Button" parent="QuitBox/HBoxContainer"]
-margin_left = 130.0
-margin_right = 256.0
-margin_bottom = 34.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = SubResource( 6 )
-text = "No"
-flat = true
 
 [node name="TestNodes" parent="." instance=ExtResource( 13 )]
 visible = false
@@ -387,5 +321,3 @@ margin_bottom = 534.0
 [connection signal="pressed" from="Navigation/ScrollContainer/VBoxContainer/About" to="." method="_on_About_pressed"]
 [connection signal="pressed" from="Navigation/ScrollContainer/VBoxContainer/Help" to="." method="_on_Help_pressed"]
 [connection signal="pressed" from="Navigation/ScrollContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
-[connection signal="pressed" from="QuitBox/HBoxContainer/Yes" to="." method="_on_Yes_pressed"]
-[connection signal="pressed" from="QuitBox/HBoxContainer/No" to="." method="_on_Return_pressed"]

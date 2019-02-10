@@ -1,11 +1,27 @@
-extends VBoxContainer
+extends Control
 
 export var saveslots_dir : = "user://saveslot"
 
 var screenshot : = Image.new()
+var dirhandler : = Directory.new()
+var filehandler : = File.new()
+var overwrite : = true
+
+signal popup_is_closed
+
+func _ready() -> void:
+	var yes_button = $PopupPanel/ConfirmOverwrite/HBoxContainer/Yes
+	var no_button = $PopupPanel/ConfirmOverwrite/HBoxContainer/No
+	yes_button.connect("pressed", self, "close_popup", [true])
+	no_button.connect("pressed", self, "close_popup", [false])
+
+func close_popup(anwser):
+	$PopupPanel.hide()
+	$GridContainer.show()
+	overwrite = anwser
+	emit_signal("popup_is_closed")
 	
 func savebox(saveslotsdir : = saveslots_dir + "/") -> void:
-	var filehandler = File.new()
 	for x in $GridContainer.get_children():
 		if filehandler.file_exists(saveslotsdir + x.name + '.png'):
 			Ren.debug("slot exist, loading image")
@@ -27,7 +43,6 @@ func savebox(saveslotsdir : = saveslots_dir + "/") -> void:
 	filehandler.close()
 
 func loadbox(saveslotsdir : = saveslots_dir + "/") -> bool:
-	var filehandler = File.new()
 	for x in $GridContainer.get_children():
 		if filehandler.file_exists(saveslotsdir + x.name + '.png'):
 			# Ren.debug("slot exist, loading image")
@@ -54,10 +69,16 @@ func loadbox(saveslotsdir : = saveslots_dir + "/") -> bool:
 	return true
 
 func savepress(caller : String) -> bool:
-	var dirhandler = Directory.new()
-	var filehandler = File.new()
 	if !dirhandler.dir_exists(saveslots_dir):
 		dirhandler.make_dir(saveslots_dir)
+		
+	if Ren.is_save_exits(caller):
+		$GridContainer.hide()
+		$PopupPanel.popup_centered()
+		yield(self, "popup_is_closed")
+		
+	if not overwrite:
+		return false
 
 	Ren.debug(caller)
 	if screenshot == null:
@@ -77,8 +98,6 @@ func savepress(caller : String) -> bool:
 	return true
 	
 func loadpress(caller : String) -> void:
-	var dirhandler = Directory.new()
-	var filehandler = File.new()
 	if !dirhandler.dir_exists(saveslots_dir):
 		dirhandler.make_dir(saveslots_dir)
 
