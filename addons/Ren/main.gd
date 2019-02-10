@@ -637,7 +637,7 @@ func can_qload() -> bool:
 	return is_save_exits("quick")
 
 func is_save_exits(save_name : String) -> bool:
-	var path = str("user://", save_folder, "/" + save_name)
+	var path = str("user://", save_folder, "/", save_name)
 	var save_exist = file.file_exists(path + ".save")
 	var text_exist = file.file_exists(path + ".txt")
 	return save_exist or text_exist
@@ -670,6 +670,7 @@ func load_global_history() -> bool:
 	
 	if "global_history" in data:
 		global_history = data["global_history"].duplicate()
+		
 	return true
 
 func _exit_tree():
