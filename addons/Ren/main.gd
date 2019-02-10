@@ -583,7 +583,7 @@ func jump(
 	if from_save:
 		_scene = path_to_scene
 	else:
-		_scene = scenes_dir + path_to_scene + ".tscn"
+		_scene = scenes_dir + "/" + path_to_scene + ".tscn"
 	
 	debug(["jump to scene:", _scene, "with dialog:", dialog_name, "from:", state])
 
