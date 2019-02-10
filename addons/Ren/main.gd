@@ -634,7 +634,10 @@ func can_skip() -> bool:
 	return can_auto() and seen
 
 func can_qload() -> bool:
-	var path = str("user://", save_folder, "/quick")
+	return is_save_exits("quick")
+
+func is_save_exits(save_name : String) -> bool:
+	var path = str("user://", save_folder, "/" + save_name)
 	var save_exist = file.file_exists(path + ".save")
 	var text_exist = file.file_exists(path + ".txt")
 	return save_exist or text_exist

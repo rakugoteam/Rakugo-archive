@@ -9,7 +9,12 @@ onready var in_game_gui : = get_node(in_game_gui_path)
 func _ready():
 	get_tree().set_auto_accept_quit(false)
 	connect("visibility_changed", self, "_on_visibility_changed")
+	var qno_button = $QuitBox/HBoxContainer/No
+	var qyes_button = $QuitBox/HBoxContainer/Yes
+	qno_button.connect("pressed", self, "_on_Return_pressed")
+	qyes_button.connect("pressed", self, "_on_Yes_pressed")
 	var auto_save_path = str("user://" + Ren.save_folder + "/auto.save")
+	
 	if not Ren.file.file_exists(auto_save_path):
 		get_node(nav_path + "Continue").hide()
 

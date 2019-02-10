@@ -27,20 +27,18 @@ class_name Persistence, "icon.svg"
 
 enum Mode {ENCRYPTED, TEXT}
 export (Mode) var mode : int = Mode.ENCRYPTED setget set_mode, get_mode
-export (String) var password : String = "" setget set_password, get_password
-export (String) var folder_name : String = "PersistenceNode" setget set_folder_name, get_folder_name
-export (Array) var no_valid_names : Array = ["default", "example"] setget _private_set, get_no_valid_names
-export (bool) var debug_on : bool = false setget set_debug, get_debug
+export var password : = "" setget set_password, get_password
+export var folder_name : = "PersistenceNode" setget set_folder_name, get_folder_name
+export var no_valid_names : = ["default", "example"] setget _private_set, get_no_valid_names
+export var debug_on : = false setget set_debug, get_debug
+export var beautifier_active : = true setget set_beautifier_active, get_beautifier_active
+export var profile_name_min_size : = 3 setget set_profile_name_min_size, get_profile_name_min_size
+export var profile_name_max_size : = 15 setget set_profile_name_max_size, get_profile_name_max_size
 
 var beautifier setget _private_set, _private_get
-export (bool) var beautifier_active : bool = true setget set_beautifier_active, get_beautifier_active
-
-export (int) var profile_name_min_size : int = 3 setget set_profile_name_min_size, get_profile_name_min_size
-export (int) var profile_name_max_size : int = 15 setget set_profile_name_max_size, get_profile_name_max_size
-
 # Data del profile actual, esta data se puede modificar y luego usar
 # save_data()
-var data : Dictionary = {} setget _private_set
+var data : = {} setget _private_set
 
 signal saved
 signal loaded
@@ -173,14 +171,14 @@ func get_mode() -> int:
 
 # Se obtiene la data, esta data puede ser modificada para luego ser guardada
 # con save_data(). Si esta usando profiles, no olvide indicarle el profile.
-func get_data(profile_name : String = "") -> Dictionary:
+func get_data(profile_name : = "") -> Dictionary:
 	data = {}
 	load_data(profile_name)
 	return data
 
 # Retorna los perfiles existentes, por defecto los devuelve sin
 # extension.
-func get_profiles(with_extension : bool = false) -> Array:
+func get_profiles(with_extension : = false) -> Array:
 	var dir = Directory.new()
 	var profiles = []
 	
@@ -391,7 +389,7 @@ func create_main_folder() -> void:
 # Carga la data, si no se le pasa ningún argumento entonces carga la data
 # por defecto, si se le pasa argumento entonces carga la data indicada en el.
 # Devuelve true si se carga exitosamente y false si no lo hace.
-func load_data(profile_name : String = "") -> bool:
+func load_data(profile_name : = "") -> bool:
 	var result
 	
 	if profile_name == null:
