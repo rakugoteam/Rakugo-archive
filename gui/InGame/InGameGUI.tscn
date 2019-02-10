@@ -15,7 +15,6 @@
 [ext_resource path="res://ubuntu-font-family/Ubuntu-RI.ttf" type="DynamicFontData" id=13]
 [ext_resource path="res://ubuntu-font-family/Ubuntu-R.ttf" type="DynamicFontData" id=14]
 
-
 [sub_resource type="DynamicFont" id=1]
 
 size = 22
@@ -587,6 +586,6 @@ bbcode_enabled = false
 bbcode_text = "Game was saved"
 text = "Game was saved"
 
-[connection signal="toggled" from="Quick/Hide" to="ScrollContainerVMenu/RenVMenu" method="_on_Hide_toggled"]
 [connection signal="toggled" from="Quick/Hide" to="ScrollContainerHMenu/RenHMenu" method="_on_Hide_toggled"]
+[connection signal="toggled" from="Quick/Hide" to="ScrollContainerVMenu/RenVMenu" method="_on_Hide_toggled"]
 [connection signal="toggled" from="Quick/Hide" to="SayPanel" method="_on_Hide_toggled"]
