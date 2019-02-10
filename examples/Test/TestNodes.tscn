@@ -11,6 +11,7 @@
 [ext_resource path="res://addons/Ren/nodes/ren_label.gd" type="Script" id=9]
 
 [node name="TestNodes" type="VBoxContainer"]
+editor/display_folded = true
 margin_left = 282.0
 margin_top = 204.0
 margin_right = 826.0

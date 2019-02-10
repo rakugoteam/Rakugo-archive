@@ -121,7 +121,7 @@ func _on_About_pressed():
 	show()
 
 func _on_Help_pressed():
-	OS.shell_open("https://github.com/jeremi360/Ren/wiki")
+	OS.shell_open("https://github.com/jeremi360/Ren")
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
