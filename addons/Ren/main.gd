@@ -668,3 +668,8 @@ func load_global_history() -> bool:
 	if "global_history" in data:
 		global_history = data["global_history"].duplicate()
 	return true
+
+func _exit_tree():
+	history.clear()
+	global_history.clear()
+	variables.clear()
