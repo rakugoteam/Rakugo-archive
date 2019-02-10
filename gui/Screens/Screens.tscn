@@ -59,7 +59,6 @@ margin_right = 1033.0
 margin_bottom = 615.0
 
 [node name="TitleNVersion" type="HBoxContainer" parent="."]
-editor/display_folded = true
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -311,7 +310,6 @@ script = ExtResource( 11 )
 ren_text_file = "res://about.txt"
 ren_text = "Made with {a=https://github.com/jeremi360/Ren}Ren{/a} [ren_version] on {a=https://godotengine.org/}Godot Engine{/a} [godot_version] on {a=https://github.com/jeremi360/Ren/blob/master/LICENSE} MIT License{/a}.
 "
-vars_names = [ "ren_version", "godot_version" ]
 
 [node name="QuitBox" type="Control" parent="."]
 editor/display_folded = true

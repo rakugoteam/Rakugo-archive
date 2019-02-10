@@ -104,34 +104,36 @@ custom_constants/separation = 0
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2"]
 margin_right = 180.0
-margin_bottom = 35.0
+margin_bottom = 60.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "test ren nodes: bool
 "
 
-[node name="RenVarLabel" type="Label" parent="HBoxContainer/VBoxContainer2"]
-margin_top = 35.0
+[node name="RenVarCheckButton" type="Button" parent="HBoxContainer/VBoxContainer2"]
+margin_top = 60.0
 margin_right = 180.0
-margin_bottom = 70.0
+margin_bottom = 80.0
+size_flags_horizontal = 3
+toggle_mode = true
+script = ExtResource( 7 )
+var_name = "test_bool"
+
+[node name="RenVarLabel" type="Label" parent="HBoxContainer/VBoxContainer2/RenVarCheckButton"]
+margin_left = 22.0
+margin_top = 6.0
+margin_right = 161.0
+margin_bottom = 41.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+align = 1
 script = ExtResource( 1 )
 var_name = "test_bool"
 default = "False"
 type = "bool"
 
-[node name="RenVarCheckButton" type="Button" parent="HBoxContainer/VBoxContainer2"]
-margin_top = 70.0
-margin_right = 180.0
-margin_bottom = 105.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-script = ExtResource( 7 )
-var_name = "test_bool"
-
 [node name="RenVarCheckBox" type="CheckBox" parent="HBoxContainer/VBoxContainer2"]
-margin_top = 105.0
+margin_top = 80.0
 margin_right = 180.0
 margin_bottom = 141.0
 size_flags_horizontal = 3
@@ -172,7 +174,6 @@ script = ExtResource( 9 )
 ren_text = "Example text with ren markup.
 {i}test_float = {color=#4286f4}[test_float]{/color}{/i}
 {b}test_bool = {color=#318c6c}[test_bool]{/color}{/b}"
-vars_names = [ "test_bool", "test_float" ]
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer2"]
 margin_left = 271.0
@@ -199,5 +200,4 @@ mode = "bbcode"
 ren_text = "Example text with bbcode markup.
 [i]test_float = [color=#4286f4]{test_float}[/color][/i]
 [b]test_bool = [color=#318c6c]{test_bool}[/color][/b]"
-vars_names = [ "test_bool", "test_float" ]
 

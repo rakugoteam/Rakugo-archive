@@ -15,6 +15,8 @@ func get_default() -> bool:
 	return default
 
 func _ready() -> void:
+	toggle_mode = true
+	
 	if var_name in Ren.variables:
 		default = Ren.get_value(var_name)
 		var_to_change = Ren.get_var(var_name)

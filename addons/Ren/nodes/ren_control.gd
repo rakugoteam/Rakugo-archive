@@ -6,9 +6,9 @@ onready var rnode : = RenNodeCore.new()
 export var auto_define : = false
 export var node_id : = ""
 export var camera : = NodePath("")
-export var state : PoolStringArray setget _set_state, _get_state
+export var state : Array setget _set_state, _get_state
 
-var _state : PoolStringArray
+var _state : Array
 
 func _ready() -> void:
 	Ren.connect("show", self, "_on_show")
@@ -20,7 +20,7 @@ func _ready() -> void:
 	if auto_define:
 		Ren.node_link(self, node_id)
 
-func _on_show(node_id : String , state_value : PoolStringArray, show_args : Dictionary) -> void:
+func _on_show(node_id : String , state_value : Array, show_args : Dictionary) -> void:
 	if self.node_id != node_id:
 		return
 	
@@ -32,10 +32,10 @@ func _on_show(node_id : String , state_value : PoolStringArray, show_args : Dict
 		show()
 
 
-func _set_state(value : PoolStringArray) -> void:
+func _set_state(value : Array) -> void:
 	_state = state
 	
-func _get_state() -> PoolStringArray:
+func _get_state() -> Array:
 	return _state
 
 func _on_hide(_node_id : String) -> void:

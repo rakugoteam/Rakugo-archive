@@ -3,7 +3,7 @@ class_name RenVarEdit
 
 export var var_name : = "some_var"
 
-export var default : = "" setget set_default, get_default
+export var default = "" setget set_default, get_default
 
 var type : = "str"
 
@@ -27,7 +27,7 @@ func _ready() -> void:
 	connect("text_entered", self, "_on_entered")
 	var_to_change.connect("value_changed", self, "on_value_changed")
 
-func on_value_changed(new_value : String) -> void:
+func on_value_changed(new_value) -> void:
 	text = ""
 	placeholder_text = str(new_value)
 

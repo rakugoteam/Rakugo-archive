@@ -1,8 +1,7 @@
 extends Control
 
-
 export(NodePath) var nav_path : = "Navigation/ScrollContainer/VBoxContainer/"
-export(String) var in_game_gui_path : = "/root/Window/InGameGUI"
+export var in_game_gui_path : = "/root/Window/InGameGUI"
 
 var current_node : Node = self
 onready var in_game_gui : = get_node(in_game_gui_path)

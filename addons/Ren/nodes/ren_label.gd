@@ -4,7 +4,7 @@ class_name RenTextLabel
 export(String, "ren", "bbcode") var mode : = "ren"
 export(String, FILE, "*.txt") var ren_text_file : = ""
 export(String, MULTILINE) var ren_text : = ""
-export var vars_names : PoolStringArray = []
+export var vars_names : = []
 
 var file : = File.new()
 
