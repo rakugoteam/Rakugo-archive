@@ -1,13 +1,13 @@
 extends Node
 
-export (String) var game_title : = "Your New Game"
-export (String) var game_version : = "0.0.1"
-export (String) var game_credits : = "Your Company"
+export var game_title : = "Your New Game"
+export var game_version : = "0.0.1"
+export var game_credits : = "Your Company"
 export (String, "ren", "bbcode") var markup : = "ren"
-export (Color) var links_color : = Color("#225ebf")
-export (bool) var debug_on : = true
-export (String) var save_folder : = "saves"
-export (String) var save_password : = "Ren"
+export var links_color : = Color("#225ebf")
+export var debug_on : = true
+export var save_folder : = "saves"
+export var save_password : = "Ren"
 export (String, DIR) var scenes_dir : = "res://examples/"
 
 const ren_version : = "1.0.0"
@@ -352,7 +352,7 @@ func menu(parameters : Dictionary) -> void:
 ## with keywords : x, y, z, at, pos
 ## x, y and pos will use it as procent of screen if between 0 and 1
 ## "at" is lists that can have: "top", "center", "bottom", "right", "left"
-func show(node_id : String, state : = [], parameters : = {"at":["center", "bottom"]}):
+func show(node_id : String, state : PoolStringArray = [], parameters : = {"at":["center", "bottom"]}):
 	parameters["node_id"] = node_id
 	parameters["state"] = state
 	_set_statement($Show, parameters)
@@ -583,7 +583,7 @@ func jump(
 	if from_save:
 		_scene = path_to_scene
 	else:
-		_scene = scenes_dir + path_to_scene + ".tscn"
+		_scene = scenes_dir + "/" + path_to_scene + ".tscn"
 	
 	debug(["jump to scene:", _scene, "with dialog:", dialog_name, "from:", state])
 
@@ -668,3 +668,8 @@ func load_global_history() -> bool:
 	if "global_history" in data:
 		global_history = data["global_history"].duplicate()
 	return true
+
+func _exit_tree():
+	history.clear()
+	global_history.clear()
+	variables.clear()

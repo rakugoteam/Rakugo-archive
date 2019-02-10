@@ -2,8 +2,8 @@ extends Range
 # class_name RenVarRange - there is no need for that
 # we don't want it be be seen in "add new Node" dialog,
 # but to seen other Nodes that use it
-export(String) var var_name : = "some_var"
-export(float) var default : = 0.5 setget set_default, get_default
+export var var_name : = "some_var"
+export var default : = 0.5 setget set_default, get_default
 
 
 func set_default(value : float) -> void:

@@ -1,10 +1,9 @@
 extends Timer
 class_name RenTimer
 
-export(String) var var_name : = "some_var"
+export var var_name : = "some_var"
 
-export(float) var default : = 1.0 setget set_default, get_default
-
+export var default : = 1.0 setget set_default, get_default
 
 func set_default(value : float) -> void:
 	default = value

@@ -1,7 +1,7 @@
 extends RenBaseButton
 class_name RenQuestButton
 
-export(Vector2) var sprite_rect : = Vector2(64, 64)
+export var sprite_rect : = Vector2(64, 64)
 var quest : Subquest
 var quest_label : Label
 var quest_des_label : RichTextLabel

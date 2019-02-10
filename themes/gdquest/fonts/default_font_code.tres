@@ -1,6 +1,10 @@
 [gd_resource type="DynamicFont" load_steps=2 format=2]
 
+<<<<<<< HEAD
 [ext_resource path="res://src/theme/fonts/source_code_pro/SourceCodePro-Medium.otf" type="DynamicFontData" id=1]
+=======
+[ext_resource path="res://themes/gdquest/fonts/source_code_pro/SourceCodePro-Medium.otf" type="DynamicFontData" id=1]
+>>>>>>> testing
 
 [resource]
 

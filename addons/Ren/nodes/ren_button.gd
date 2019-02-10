@@ -1,9 +1,9 @@
 extends RenBaseButton
 class_name RenButton 
 
-export(NodePath) var node_path : = NodePath()
-export(bool) var auto_resize_x : = true
-export(bool) var auto_resize_y : = true
+export var node_path : = NodePath()
+export var auto_resize_x : = true
+export var auto_resize_y : = true
 
 
 func _ready() -> void:

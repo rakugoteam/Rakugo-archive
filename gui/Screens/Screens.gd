@@ -1,8 +1,7 @@
 extends Control
 
-
 export(NodePath) var nav_path : = "Navigation/ScrollContainer/VBoxContainer/"
-export(String) var in_game_gui_path : = "/root/Window/InGameGUI"
+export var in_game_gui_path : = "/root/Window/InGameGUI"
 
 var current_node : Node = self
 onready var in_game_gui : = get_node(in_game_gui_path)
@@ -122,7 +121,7 @@ func _on_About_pressed():
 	show()
 
 func _on_Help_pressed():
-	OS.shell_open("https://github.com/jeremi360/Ren/wiki")
+	OS.shell_open("https://github.com/jeremi360/Ren")
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):

@@ -1,9 +1,9 @@
 extends Button
 class_name RenVarCheckButton
 
-export(String) var var_name : = "some_var" 
+export var var_name : = "some_var" 
 
-export(bool) var default : = false setget set_default, get_default
+export var default : = false setget set_default, get_default
 
 var var_to_change : RenVar
 
@@ -15,6 +15,8 @@ func get_default() -> bool:
 	return default
 
 func _ready() -> void:
+	toggle_mode = true
+	
 	if var_name in Ren.variables:
 		default = Ren.get_value(var_name)
 		var_to_change = Ren.get_var(var_name)

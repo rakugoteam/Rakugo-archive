@@ -1,12 +1,8 @@
 extends VBoxContainer
 
-export(String) var saveslots_dir : = "user://saveslot"
+export var saveslots_dir : = "user://saveslot"
 
-var screenshot : = null
-
-func _ready() -> void:
-	# savebox()
-	pass
+var screenshot : = Image.new()
 	
 func savebox(saveslotsdir : = saveslots_dir + "/") -> void:
 	var filehandler = File.new()
