@@ -3,9 +3,9 @@ class_name RenLineEdit
 
 onready var rtl : = RichTextLabel.new()
 var input_placeholder : = ""
-var _type : = ""
+var _type : int
 
-func _ready():
+func _ready() -> void:
 	Ren.connect("exec_statement", self, "_on_statement")
 	add_child(rtl)
 	hide()
@@ -15,7 +15,7 @@ func _unhandled_key_input(delta):
 		_on_enter(get_text())
 		set_process_unhandled_key_input(false)
 
-func _on_enter(text):
+func _on_enter(text : String) -> void:
 	var final_variable = input_placeholder
 
 	if text != "":
@@ -24,7 +24,7 @@ func _on_enter(text):
 	set_process(false)
 	Ren.exit_statement({"value":final_variable})
 
-func _on_statement(type, parameters):
+func _on_statement(type : int, parameters : Dictionary) -> void:
 	_type = type
 	if type != Ren.StatementType.ASK:
 		if is_connected("text_entered", self , "_on_enter"):

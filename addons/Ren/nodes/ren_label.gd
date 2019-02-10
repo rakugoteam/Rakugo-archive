@@ -6,9 +6,9 @@ export(String, FILE, "*.txt") var ren_text_file : = ""
 export(String, MULTILINE) var ren_text : = ""
 export var vars_names : PoolStringArray = []
 
-var file = File.new()
+var file : = File.new()
 
-func _ready():
+func _ready() -> void:
 	bbcode_enabled = true
 	set_ren_file(ren_text_file)
 	update_label()
@@ -18,16 +18,16 @@ func _ready():
 	
 	connect("meta_clicked", self, "on_meta_clicked")
 
-func update_label():
+func update_label() -> void:
 	bbcode_text = Ren.text_passer(ren_text, mode)
 
-func on_meta_clicked(meta):
-	OS.shell_open(meta);
+func on_meta_clicked(meta) -> void:
+	OS.shell_open(meta)
 
-func on_value_changed(new_value):
+func on_value_changed(new_value) -> void:
 	update_label()
 
-func set_ren_file(value):
+func set_ren_file(value : String) -> void:
 	if value.empty():
 		return
 		
