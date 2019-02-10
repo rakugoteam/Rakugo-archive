@@ -1,9 +1,9 @@
 extends Object
 class_name Statement
 
-var type : int = 0 # Ren.StatementType.BASE
-var parameters : Dictionary = {"add_to_history": false} # dict of pairs keyword : argument
-var parameters_names : Array = ["add_to_history"] # possible keywords for this type of statement - to use in RenScript in near future
+var type : = 0 # Ren.StatementType.BASE
+var parameters : = {"add_to_history": false} # dict of pairs keyword : argument
+var parameters_names : = ["add_to_history"] # possible keywords for this type of statement - to use in RenScript in near future
 
 func _ready() -> void:
 	Ren.connect("exit_statement", self, "on_exit")
@@ -23,7 +23,7 @@ func set_dict(new_dict : Dictionary, current_dict : Dictionary) -> void:
 		if kw != "":
 			current_dict[kw] = new_dict[kw]
 
-func setup_exit(_type : int, new_parameters : Dictionary = {}) -> bool:
+func setup_exit(_type : int, new_parameters : = {}) -> bool:
 	if _type != type:
 		return false
 		
@@ -32,7 +32,7 @@ func setup_exit(_type : int, new_parameters : Dictionary = {}) -> bool:
 	
 	return true
 
-func on_exit(_type : int, new_parameters : Dictionary = {}) -> void:
+func on_exit(_type : int, new_parameters : = {}) -> void:
 	if !setup_exit(_type, new_parameters):
 		return
 	

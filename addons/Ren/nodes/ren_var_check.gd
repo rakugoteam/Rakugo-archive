@@ -1,9 +1,9 @@
 extends Button
 class_name RenVarCheckButton
 
-export(String) var var_name : = "some_var" 
+export var var_name : = "some_var" 
 
-export(bool) var default : = false setget set_default, get_default
+export var default : = false setget set_default, get_default
 
 var var_to_change : RenVar
 

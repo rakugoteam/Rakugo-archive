@@ -1,10 +1,10 @@
 extends RichTextLabel
 class_name RenTextLabel
 
-export(String, "ren", "bbcode") var mode = "ren"
-export(String, FILE, "*.txt") var ren_text_file = ""
-export(String, MULTILINE) var ren_text = ""
-export(Array, String) var vars_names = []
+export(String, "ren", "bbcode") var mode : = "ren"
+export(String, FILE, "*.txt") var ren_text_file : = ""
+export(String, MULTILINE) var ren_text : = ""
+export var vars_names : PoolStringArray = []
 
 var file = File.new()
 

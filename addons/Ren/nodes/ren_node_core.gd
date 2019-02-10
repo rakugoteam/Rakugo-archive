@@ -1,7 +1,7 @@
 extends Object
 class_name RenNodeCore
 
-func is_procent(x : float):
+func is_procent(x : float) -> bool:
 	return (x >= 0.0 and x <= 1.0)
 
 func show_at(camera_postion : Vector2, show_args : Dictionary) -> Vector2:

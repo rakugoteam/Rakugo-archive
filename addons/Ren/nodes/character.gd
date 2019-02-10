@@ -9,12 +9,12 @@ var _prefix : = ""
 var _suffix : = ""
 var _id : = ""
 
-export(String) var character_id : = "" setget _set_character_id, _get_character_id
-export(String) var character_name : = "" setget _set_character_name, _get_character_name
-export(Color) var color : = Color("#ffffff") setget _set_color, _get_color
-export(String) var prefix : = "" setget _set_prefix, _get_prefix
-export(String) var suffix : = "" setget _set_suffix, _get_suffix
-export(PackedScene) var avatar : PackedScene = PackedScene.new() setget _set_avatar, _get_avatar
+export var character_id : = "" setget _set_character_id, _get_character_id
+export var character_name : = "" setget _set_character_name, _get_character_name
+export var color : = Color("#ffffff") setget _set_color, _get_color
+export var prefix : = "" setget _set_prefix, _get_prefix
+export var suffix : = "" setget _set_suffix, _get_suffix
+export var avatar : PackedScene = PackedScene.new() setget _set_avatar, _get_avatar
 
 func _ready() -> void:
 	Ren.connect("started", self, "_on_start")

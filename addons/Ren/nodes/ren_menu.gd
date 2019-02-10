@@ -3,8 +3,8 @@ extends BoxContainer
 # we don't want it be be seen in "add new Node" dialog,
 # but to seen other Nodes that use it
 
-export(String) var kind = "vertical"
-export(PackedScene) var ChoiceButton
+export var kind : = "vertical"
+export var ChoiceButton : PackedScene
 
 func _ready():
 	Ren.connect("exec_statement", self, "_on_statement")

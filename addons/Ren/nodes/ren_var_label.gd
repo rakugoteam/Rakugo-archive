@@ -1,8 +1,8 @@
 extends Label
 class_name RenVarLabel
 
-export(String) var var_name : = "some_var"
-export(String) var default : = ""
+export var var_name : = "some_var"
+export var default : = ""
 export(String, "str", "bool", "float", "int") var type : = "str" 
 
 func _ready() -> void:

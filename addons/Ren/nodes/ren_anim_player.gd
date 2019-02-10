@@ -1,8 +1,8 @@
 extends AnimationPlayer
 class_name RenAnimPlayer
 
-export(bool) var auto_define : = false
-export(String) var node_id : = ""
+export var auto_define : = false
+export var node_id : = ""
 
 func _ready() -> void:
 	Ren.connect("play_anim", self, "_on_play")

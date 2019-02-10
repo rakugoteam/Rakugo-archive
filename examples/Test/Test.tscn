@@ -60,7 +60,6 @@ tracks/0/keys = {
 }
 
 [node name="Test" type="Node2D"]
-editor/display_folded = true
 script = ExtResource( 1 )
 
 [node name="RenKun" type="Node" parent="."]

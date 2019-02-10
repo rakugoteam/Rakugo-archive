@@ -1,9 +1,9 @@
 extends LineEdit
 class_name RenLineEdit
 
-onready var rtl = RichTextLabel.new()
-var input_placeholder = ""
-var _type = ""
+onready var rtl : = RichTextLabel.new()
+var input_placeholder : = ""
+var _type : = ""
 
 func _ready():
 	Ren.connect("exec_statement", self, "_on_statement")

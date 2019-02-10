@@ -1,9 +1,9 @@
 extends LineEdit
 class_name RenVarEdit
 
-export(String) var var_name : = "some_var"
+export var var_name : = "some_var"
 
-export(String) var default : = "" setget set_default, get_default
+export var default : = "" setget set_default, get_default
 
 var type : = "str"
 
