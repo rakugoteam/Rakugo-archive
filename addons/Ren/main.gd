@@ -352,7 +352,7 @@ func menu(parameters : Dictionary) -> void:
 ## with keywords : x, y, z, at, pos
 ## x, y and pos will use it as procent of screen if between 0 and 1
 ## "at" is lists that can have: "top", "center", "bottom", "right", "left"
-func show(node_id : String, state : = [], parameters : = {"at":["center", "bottom"]}):
+func show(node_id : String, state : PoolStringArray = [], parameters : = {"at":["center", "bottom"]}):
 	parameters["node_id"] = node_id
 	parameters["state"] = state
 	_set_statement($Show, parameters)
