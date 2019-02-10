@@ -9,19 +9,21 @@
 [![GitHub](https://img.shields.io/github/issues/jeremi360/Ren.svg?style=flat-square)](https://github.com/jeremi360/Ren/issues)
 [![GitHub](https://img.shields.io/github/issues-closed/jeremi360/Ren.svg?style=flat-square)](https://github.com/jeremi360/Ren/issues)
 
+Ren is framemork (inspired by [Ren'Py](https://www.renpy.org)) for story driven games in [Godot](https://godotengine.org).
+
 Now you can support this project by [Patreon](https://www.patreon.com/jeremi360).
 
 You can download 1.0 for Godot 3.0 [here](https://github.com/jeremi360/Ren/releases).
+
+Now we are working on [Ren 2.0 for Godot 3.1](https://github.com/jeremi360/Ren/issues/81) :D
+
+## Showcase
 
 Games using Ren v 0.9.x :
 - [**Space drive beats**](https://plopsis.itch.io/space-drive-beats)
 - [**Bot Saves Dream**](https://plopsis.itch.io/curator-bot)
 
 If your game uses Ren write to me on [Discord](https://discord.gg/K9gvjdg).
-
-Now we are working on [Ren 2.0 for Godot 3.1](https://github.com/jeremi360/Ren/issues/81) :D
-
-Ren is framemork (inspired by [Ren'Py](https://www.renpy.org)) for story driven games in [Godot](https://godotengine.org).
 
 ## Story driven games
 
