@@ -6,7 +6,7 @@ var rnode : = RenNodeCore.new()
 export var auto_define : = false
 export var node_id : = ""
 export var camera : = NodePath("")
-export var state : Array setget _set_state, _get_state
+export (Array, String) var state : Array setget _set_state, _get_state
 
 var _state : Array
 
