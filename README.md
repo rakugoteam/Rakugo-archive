@@ -13,6 +13,12 @@ Now you can support this project by [Patreon](https://www.patreon.com/jeremi360)
 
 You can download 1.0 for Godot 3.0 [here](https://github.com/jeremi360/Ren/releases).
 
+Games using Ren v 0.9.x :
+- [**Space drive beats**](https://plopsis.itch.io/space-drive-beats)
+- [**Bot Saves Dream**](https://plopsis.itch.io/curator-bot)
+
+If your game uses Ren write to me on [Discord](https://discord.gg/K9gvjdg).
+
 Now we are working on [Ren 2.0 for Godot 3.1](https://github.com/jeremi360/Ren/issues/81) :D
 
 Ren is framemork (inspired by [Ren'Py](https://www.renpy.org)) for story driven games in [Godot](https://godotengine.org).
@@ -33,7 +39,7 @@ You can use it with:
 
 Ren use [PersistenceNode](https://github.com/MatiasVME/Persistence) for saving/load game.
 
-If you want to help please write to us on our [Discord Server](https://discord.gg/K9gvjdg).
+If you want to help please write to us on our [Discord](https://discord.gg/K9gvjdg).
 
 I need help with this [bug](https://github.com/jeremi360/Ren/issues/68) and [visual script support](https://github.com/jeremi360/Ren/issues/26).
 
