@@ -1,13 +1,13 @@
 extends Node
 
-export (String) var game_title : = "Your New Game"
-export (String) var game_version : = "0.0.1"
-export (String) var game_credits : = "Your Company"
+export var game_title : = "Your New Game"
+export var game_version : = "0.0.1"
+export var game_credits : = "Your Company"
 export (String, "ren", "bbcode") var markup : = "ren"
-export (Color) var links_color : = Color("#225ebf")
-export (bool) var debug_on : = true
-export (String) var save_folder : = "saves"
-export (String) var save_password : = "Ren"
+export var links_color : = Color("#225ebf")
+export var debug_on : = true
+export var save_folder : = "saves"
+export var save_password : = "Ren"
 export (String, DIR) var scenes_dir : = "res://examples/"
 
 const ren_version : = "1.0.0"
