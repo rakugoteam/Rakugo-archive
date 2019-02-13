@@ -20,7 +20,7 @@ size = 50
 use_filter = true
 font_data = ExtResource( 3 )
 
-[sub_resource type="ButtonGroup" id=5]
+[sub_resource type="ButtonGroup" id=2]
 
 
 [sub_resource type="DynamicFont" id=3]
@@ -47,6 +47,7 @@ margin_right = 1033.0
 margin_bottom = 615.0
 
 [node name="TitleNVersion" type="HBoxContainer" parent="."]
+editor/display_folded = true
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -82,10 +83,10 @@ var_name = "version"
 default = "0.5.0"
 
 [node name="Navigation" type="Panel" parent="."]
-editor/display_folded = true
-margin_top = -3.0
-margin_right = 204.0
-margin_bottom = 599.0
+margin_left = 1.58669
+margin_top = -1.41333
+margin_right = 205.587
+margin_bottom = 600.587
 mouse_filter = 1
 
 [node name="Title" type="Label" parent="Navigation"]
@@ -99,29 +100,36 @@ var_name = "title"
 default = "Your new game"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Navigation"]
-editor/display_folded = true
 margin_left = 5.0
 margin_top = 109.0
 margin_right = 213.0
 margin_bottom = 598.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Navigation/ScrollContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Navigation/ScrollContainer"]
+margin_right = 208.0
+margin_bottom = 489.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Navigation/ScrollContainer/HBoxContainer"]
 editor/display_folded = true
-margin_right = 132.0
-margin_bottom = 424.0
+margin_right = 208.0
+margin_bottom = 489.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_constants/separation = 20
 
-[node name="Hack" type="Control" parent="Navigation/ScrollContainer/VBoxContainer"]
-margin_right = 132.0
+[node name="Hack" type="Control" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer"]
+margin_right = 208.0
 
-[node name="NewGame" parent="Navigation/ScrollContainer/VBoxContainer" instance=ExtResource( 5 )]
+[node name="NewGame" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 5 )]
 margin_top = 20.0
-margin_right = 132.0
+margin_right = 208.0
 margin_bottom = 54.0
 text = "New Game"
 align = 0
 
-[node name="Return" parent="Navigation/ScrollContainer/VBoxContainer" instance=ExtResource( 5 )]
+[node name="Return" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 5 )]
 visible = false
 margin_top = 20.0
 margin_right = 140.0
@@ -129,104 +137,119 @@ margin_bottom = 52.0
 text = "Return"
 align = 0
 
-[node name="History" parent="Navigation/ScrollContainer/VBoxContainer" instance=ExtResource( 5 )]
+[node name="History" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 5 )]
 visible = false
 margin_top = 72.0
 margin_right = 140.0
 margin_bottom = 104.0
 toggle_mode = true
-group = SubResource( 5 )
+group = SubResource( 2 )
 text = "History"
 align = 0
 
-[node name="Quests" parent="Navigation/ScrollContainer/VBoxContainer" instance=ExtResource( 5 )]
+[node name="Quests" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 5 )]
 visible = false
 margin_top = 72.0
 margin_right = 140.0
 margin_bottom = 104.0
 toggle_mode = true
-group = SubResource( 5 )
+group = SubResource( 2 )
 text = "Quests"
 align = 0
 
-[node name="Continue" parent="Navigation/ScrollContainer/VBoxContainer" instance=ExtResource( 5 )]
+[node name="Continue" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 5 )]
 margin_top = 74.0
-margin_right = 132.0
+margin_right = 208.0
 margin_bottom = 108.0
 text = "Continue"
 align = 0
 
-[node name="Load" parent="Navigation/ScrollContainer/VBoxContainer" instance=ExtResource( 5 )]
+[node name="Load" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 5 )]
 margin_top = 128.0
-margin_right = 132.0
+margin_right = 208.0
 margin_bottom = 162.0
 toggle_mode = true
-group = SubResource( 5 )
+group = SubResource( 2 )
 text = "Load"
 align = 0
 
-[node name="Save" parent="Navigation/ScrollContainer/VBoxContainer" instance=ExtResource( 5 )]
+[node name="Save" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 5 )]
 visible = false
 margin_top = 280.0
 margin_right = 140.0
 margin_bottom = 312.0
 toggle_mode = true
-group = SubResource( 5 )
+group = SubResource( 2 )
 text = "Save"
 align = 0
 
-[node name="Options" parent="Navigation/ScrollContainer/VBoxContainer" instance=ExtResource( 5 )]
+[node name="Options" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 5 )]
 margin_top = 182.0
-margin_right = 132.0
+margin_right = 208.0
 margin_bottom = 216.0
 toggle_mode = true
-group = SubResource( 5 )
+group = SubResource( 2 )
 text = "Options"
 align = 0
 
-[node name="TestNodes" parent="Navigation/ScrollContainer/VBoxContainer" instance=ExtResource( 5 )]
+[node name="TestNodes" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 5 )]
 margin_top = 236.0
-margin_right = 132.0
+margin_right = 208.0
 margin_bottom = 270.0
 toggle_mode = true
-group = SubResource( 5 )
+group = SubResource( 2 )
 text = "Test Nodes"
 align = 0
 
-[node name="About" parent="Navigation/ScrollContainer/VBoxContainer" instance=ExtResource( 5 )]
+[node name="About" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 5 )]
 margin_top = 290.0
-margin_right = 132.0
+margin_right = 208.0
 margin_bottom = 324.0
 toggle_mode = true
-group = SubResource( 5 )
+group = SubResource( 2 )
 text = "About"
 align = 0
 
-[node name="Help" type="LinkButton" parent="Navigation/ScrollContainer/VBoxContainer"]
+[node name="Help" type="LinkButton" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer"]
 margin_top = 344.0
-margin_right = 132.0
+margin_right = 208.0
 margin_bottom = 370.0
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.666667, 0.666667, 0.666667, 1 )
 custom_colors/font_color_hover = Color( 0.4, 0.756863, 0.878431, 1 )
 custom_colors/font_color_pressed = Color( 0, 0.6, 0.8, 1 )
 action_mode = 0
-group = SubResource( 5 )
+group = SubResource( 2 )
 text = "Help"
 
-[node name="Quit" parent="Navigation/ScrollContainer/VBoxContainer" instance=ExtResource( 5 )]
+[node name="Quit" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 5 )]
 margin_top = 390.0
-margin_right = 132.0
+margin_right = 208.0
 margin_bottom = 424.0
 toggle_mode = true
-group = SubResource( 5 )
+group = SubResource( 2 )
 text = "Quit"
 align = 0
+
+[node name="VScrollBar" type="VScrollBar" parent="Navigation/ScrollContainer/HBoxContainer"]
+visible = false
+margin_left = 198.0
+margin_top = 194.0
+margin_right = 208.0
+margin_bottom = 294.0
+rect_min_size = Vector2( 10, 100 )
+size_flags_horizontal = 4
+size_flags_vertical = 0
+step = 1.0
+rounded = true
+allow_greater = true
+allow_lesser = true
 
 [node name="SlotBox" parent="." instance=ExtResource( 6 )]
 visible = false
 
 [node name="HistoryBox" type="VBoxContainer" parent="."]
+editor/display_folded = true
 visible = false
 margin_left = 257.0
 margin_top = 11.0
@@ -309,15 +332,15 @@ margin_top = 129.0
 margin_right = 1014.0
 margin_bottom = 534.0
 
-[connection signal="pressed" from="Navigation/ScrollContainer/VBoxContainer/NewGame" to="." method="_on_NewGame_pressed"]
-[connection signal="pressed" from="Navigation/ScrollContainer/VBoxContainer/Return" to="." method="_on_Return_pressed"]
-[connection signal="pressed" from="Navigation/ScrollContainer/VBoxContainer/History" to="." method="_on_History_pressed"]
-[connection signal="pressed" from="Navigation/ScrollContainer/VBoxContainer/Quests" to="." method="_on_Quests_pressed"]
-[connection signal="pressed" from="Navigation/ScrollContainer/VBoxContainer/Continue" to="." method="_on_Continue_pressed"]
-[connection signal="pressed" from="Navigation/ScrollContainer/VBoxContainer/Load" to="." method="_on_Load_pressed"]
-[connection signal="pressed" from="Navigation/ScrollContainer/VBoxContainer/Save" to="." method="_on_Save_pressed"]
-[connection signal="pressed" from="Navigation/ScrollContainer/VBoxContainer/Options" to="." method="_on_Options_pressed"]
-[connection signal="pressed" from="Navigation/ScrollContainer/VBoxContainer/TestNodes" to="." method="_on_TestNodes_pressed"]
-[connection signal="pressed" from="Navigation/ScrollContainer/VBoxContainer/About" to="." method="_on_About_pressed"]
-[connection signal="pressed" from="Navigation/ScrollContainer/VBoxContainer/Help" to="." method="_on_Help_pressed"]
-[connection signal="pressed" from="Navigation/ScrollContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="Navigation/ScrollContainer/HBoxContainer/VBoxContainer/NewGame" to="." method="_on_NewGame_pressed"]
+[connection signal="pressed" from="Navigation/ScrollContainer/HBoxContainer/VBoxContainer/Return" to="." method="_on_Return_pressed"]
+[connection signal="pressed" from="Navigation/ScrollContainer/HBoxContainer/VBoxContainer/History" to="." method="_on_History_pressed"]
+[connection signal="pressed" from="Navigation/ScrollContainer/HBoxContainer/VBoxContainer/Quests" to="." method="_on_Quests_pressed"]
+[connection signal="pressed" from="Navigation/ScrollContainer/HBoxContainer/VBoxContainer/Continue" to="." method="_on_Continue_pressed"]
+[connection signal="pressed" from="Navigation/ScrollContainer/HBoxContainer/VBoxContainer/Load" to="." method="_on_Load_pressed"]
+[connection signal="pressed" from="Navigation/ScrollContainer/HBoxContainer/VBoxContainer/Save" to="." method="_on_Save_pressed"]
+[connection signal="pressed" from="Navigation/ScrollContainer/HBoxContainer/VBoxContainer/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="Navigation/ScrollContainer/HBoxContainer/VBoxContainer/TestNodes" to="." method="_on_TestNodes_pressed"]
+[connection signal="pressed" from="Navigation/ScrollContainer/HBoxContainer/VBoxContainer/About" to="." method="_on_About_pressed"]
+[connection signal="pressed" from="Navigation/ScrollContainer/HBoxContainer/VBoxContainer/Help" to="." method="_on_Help_pressed"]
+[connection signal="pressed" from="Navigation/ScrollContainer/HBoxContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]

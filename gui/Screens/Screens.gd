@@ -1,7 +1,8 @@
 extends Control
 
-export(NodePath) var nav_path : = "Navigation/ScrollContainer/VBoxContainer/"
+export var nav_path : NodePath = "Navigation/ScrollContainer/HBoxContainer/VBoxContainer"
 export var in_game_gui_path : = "/root/Window/InGameGUI"
+export onready var scrollbar : = $Navigation/ScrollContainer/HBoxContainer/VScrollBar 
 
 var current_node : Node = self
 onready var in_game_gui : = get_node(in_game_gui_path)
@@ -16,7 +17,7 @@ func _ready():
 	var auto_save_path = str("user://" + Ren.save_folder + "/auto.save")
 	
 	if not Ren.file.file_exists(auto_save_path):
-		get_node(nav_path + "Continue").hide()
+		get_node(str(nav_path) + "/" + "Continue").hide()
 
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
@@ -25,11 +26,12 @@ func _notification(what):
 func show_page(node):
 	if current_node != self:
 		current_node.hide()
+		
 	current_node = node
 	node.show()
 
 func save_menu(screenshot):
-	get_node(nav_path + "Save").pressed = true
+	get_node(str(nav_path) + "/" + "Save").pressed = true
 	show_page($SlotBox)
 	$SlotBox/Title.text = "Save"
 	$SlotBox.savebox()
@@ -37,14 +39,14 @@ func save_menu(screenshot):
 	show()
 
 func load_menu():
-	get_node(nav_path + "Load").pressed = true
+	get_node(str(nav_path) + "/" + "Load").pressed = true
 	show_page($SlotBox)
 	$SlotBox/Title.text = "Load"
 	$SlotBox.loadbox()
 	show()
 
 func history_menu():
-	get_node(nav_path + "History").pressed = true
+	get_node(str(nav_path) + "/" + "History").pressed = true
 	show_page($HistoryBox)
 	show()
 
@@ -67,12 +69,14 @@ func _on_Load_pressed():
 	load_menu()
 
 func in_game():
-	get_node(nav_path + "NewGame").hide()
-	get_node(nav_path + "Continue").hide()
-	get_node(nav_path + "Return").show()
-	get_node(nav_path + "Save").show()
-	get_node(nav_path + "History").show()
-	get_node(nav_path + "Quests").show()
+	get_node(str(nav_path) + "/" + "NewGame").hide()
+	get_node(str(nav_path) + "/" + "Continue").hide()
+	get_node(str(nav_path) + "/" + "Return").show()
+	get_node(str(nav_path) + "/" + "Save").show()
+	get_node(str(nav_path) + "/" + "History").show()
+	get_node(str(nav_path) + "/" + "Quests").show()
+	scrollbar.show()
+	
 
 func _on_NewGame_pressed():
 	hide()
@@ -90,7 +94,7 @@ func _on_Continue_pressed():
 	hide()
 
 func _on_Quests_pressed():
-	get_node(nav_path + "Quests").pressed = true
+	get_node(str(nav_path) + "/" + "Quests").pressed = true
 	show_page($QuestsBox)
 	show()
 
@@ -101,7 +105,7 @@ func _on_Yes_pressed():
 	get_tree().quit()
 
 func _on_Quit_pressed():
-	get_node(nav_path + "Quit").pressed = true
+	get_node(str(nav_path) + "/" + "Quit").pressed = true
 	show_page($QuitBox)
 	show()
 
@@ -117,7 +121,7 @@ func _on_TestNodes_pressed():
 	show()
 
 func _on_Options_pressed():
-	get_node(nav_path + "Options").pressed = true
+	get_node(str(nav_path) + "/" + "Options").pressed = true
 	show_page($OptionsBox)
 	show()
 
