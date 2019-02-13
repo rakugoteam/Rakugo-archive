@@ -1,34 +1,76 @@
 extends Control
 
+export onready var nav_panel : Node = $Navigation
 export var nav_path : NodePath = "Navigation/ScrollContainer/HBoxContainer/VBoxContainer"
 export var in_game_gui_path : = "/root/Window/InGameGUI"
 export onready var scrollbar : = $Navigation/ScrollContainer/HBoxContainer/VScrollBar 
+export var use_back_button : = false
+export onready var back_button : Node = $BackButton
 
 var current_node : Node = self
 onready var in_game_gui : = get_node(in_game_gui_path)
+onready var new_game_button : Button = get_node(str(nav_path) + "/" + "NewGame")
+onready var continue_button : Button = get_node(str(nav_path) + "/" + "Continue")
+onready var return_button : Button = get_node(str(nav_path) + "/" + "Return")
+onready var save_button : Button = get_node(str(nav_path) + "/" + "Save")
+onready var history_button : Button = get_node(str(nav_path) + "/" + "History")
+onready var quests_button : Button = get_node(str(nav_path) + "/" + "Quests")
+onready var load_button : Button = get_node(str(nav_path) + "/" + "Load")
+onready var options_button : Button = get_node(str(nav_path) + "/" + "Options")
+onready var about_button : Button = get_node(str(nav_path) + "/" + "About")
+onready var help_button : Button = get_node(str(nav_path) + "/" + "Help")
+onready var quit_button : Button = get_node(str(nav_path) + "/" + "Quit")
+onready var test_button : Button = get_node(str(nav_path) + "/" + "TestNodes")
 
 func _ready():
 	get_tree().set_auto_accept_quit(false)
 	connect("visibility_changed", self, "_on_visibility_changed")
+	
 	var qno_button = $QuitBox/HBoxContainer/No
 	var qyes_button = $QuitBox/HBoxContainer/Yes
 	qno_button.connect("pressed", self, "_on_Return_pressed")
 	qyes_button.connect("pressed", self, "_on_Yes_pressed")
+	
+	back_button.connect("pressed", self, "_on_back_button")
+	
+	new_game_button.connect("pressed", self, "_on_NewGame_pressed")
+	continue_button.connect("pressed", self, "_on_Continue_pressed")
+	return_button.connect("pressed", self, "_on_Return_pressed")
+	save_button.connect("pressed", self, "_on_Save_pressed")
+	history_button.connect("pressed", self, "_on_History_pressed(")
+	quests_button.connect("pressed", self, "_on_Quests_pressed")
+	load_button.connect("pressed", self, "_on_Load_pressed")
+	options_button.connect("pressed", self, "_on_Options_pressed")
+	about_button.connect("pressed", self, "_on_About_pressed")
+	help_button.connect("pressed", self, "_on_Help_pressed")
+	quit_button.connect("pressed", self, "_on_Quit_pressed")
+	test_button.connect("pressed", self, "_on_TestNodes_pressed")
+	
 	var auto_save_path = str("user://" + Ren.save_folder + "/auto.save")
 	
 	if not Ren.file.file_exists(auto_save_path):
-		get_node(str(nav_path) + "/" + "Continue").hide()
+		continue_button.hide()
 
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
 		_on_Quit_pressed()
 
 func show_page(node):
-	if current_node != self:
-		current_node.hide()
+	if not use_back_button:
+		if current_node != self:
+			current_node.hide()
 		
 	current_node = node
 	node.show()
+	
+	if use_back_button:
+		nav_panel.hide()
+		back_button.show()
+		
+func _on_back_button():
+	current_node.hide()
+	nav_panel.show()
+	back_button.hide()
 
 func save_menu(screenshot):
 	get_node(str(nav_path) + "/" + "Save").pressed = true
@@ -69,12 +111,12 @@ func _on_Load_pressed():
 	load_menu()
 
 func in_game():
-	get_node(str(nav_path) + "/" + "NewGame").hide()
-	get_node(str(nav_path) + "/" + "Continue").hide()
-	get_node(str(nav_path) + "/" + "Return").show()
-	get_node(str(nav_path) + "/" + "Save").show()
-	get_node(str(nav_path) + "/" + "History").show()
-	get_node(str(nav_path) + "/" + "Quests").show()
+	new_game_button.hide()
+	continue_button.hide()
+	return_button.show()
+	save_button.show()
+	history_button.show()
+	quests_button.show()
 	scrollbar.show()
 	
 
@@ -136,6 +178,8 @@ func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		if visible:
 			_on_Return_pressed()
+		elif use_back_button:
+			show()
 		else:
 			_on_Options_pressed()
 		
