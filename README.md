@@ -35,7 +35,6 @@ It means games that are for example:
 
 You can use it with:
 - GDScript
-- JSON (ToDo)
 - RenScript (ToDo)
 - VisualScript (ToDo)
 
