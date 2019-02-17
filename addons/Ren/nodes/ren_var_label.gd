@@ -22,4 +22,4 @@ func on_visibility_changed() -> void:
 	if visible == false:
 		return
 		
- 	text = str(Ren.get_value(var_name))
+	text = str(Ren.get_value(var_name))

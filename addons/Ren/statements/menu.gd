@@ -25,7 +25,8 @@ func on_exit(_type : int, new_parameters : Dictionary = {}) -> void:
 		return
 	
 	if "final_choice" in parameters:
-		Ren.story_state = parameters.choices[parameters.final_choice]
+		var dialog_name : String = parameters.choices[parameters.final_choice]
+		Ren.jump(Ren._scene, dialog_name, 0, false)
 	
 	else:
 		print("no final_choice recived")
