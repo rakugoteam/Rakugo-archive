@@ -2,13 +2,11 @@ extends VBoxContainer
 
 func _ready() -> void:
 	$Slider.connect("value_changed", self, "on_change_value")
-	$HBox/CheckButton.connect("toggled", self, "on_toggle")
 	connect("visibility_changed", self, "on_visibility_changed")
 
 func on_change_value(value : float) -> void:
 	var new_value = abs(1 - value/100) * Ren.get_value("auto_time")
 	Ren.set_var("text_time", new_value)
-	$HBox/CheckButton.pressed = value != 0
 
 func on_toggle(value : bool) -> void:
 	if value:

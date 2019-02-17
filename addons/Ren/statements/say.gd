@@ -5,7 +5,6 @@ func _init() -> void:
 	._init()
 	type = 1 # Ren.StatementType.SAY
 	parameters_names += ["who", "what", "typing", "kind"]
-	parameters["typing"] = true
 	parameters["who"] = ""
 	parameters["add_to_history"] = true
 

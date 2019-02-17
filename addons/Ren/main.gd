@@ -21,6 +21,7 @@ var _skip_after_choices : = false
 var _auto_time : = 1
 var _text_time : = 0.3
 var _notify_time : = 3
+var _typing_text : = true
 
 enum Type {
 	VAR,		# 0
@@ -151,6 +152,7 @@ func _ready() -> void:
 	define("auto_time", _auto_time)
 	define("text_time", _text_time)
 	define("notify_time", _notify_time)
+	define("typing_text", _typing_text)
 
 	## test vars
 	define("test_bool", false)
@@ -312,10 +314,7 @@ func get_quest(quest_id : String) -> Quest:
 	return get_var(quest_id, Type.QUEST)
 
 ## it should be "node : Statement", but it don't work for now
-func _set_statement(node : Node, parameters : Dictionary) -> void:
-	if not parameters.has("speed"):
-		parameters["speed"] = get_value("text_time")
-		
+func _set_statement(node : Node, parameters : Dictionary) -> void:		
 	node.set_parameters(parameters)
 	node.exec()
 	active = false

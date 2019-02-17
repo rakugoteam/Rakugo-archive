@@ -96,6 +96,9 @@ func _process(delta : float) -> void:
 	_prev_window_maximized = OS.window_maximized
 	_prev_window_fullscreen = OS.window_fullscreen
 
+func conf_set_ren_value(config : ConfigFile, value_name, def_ren_value):
+	config.set_value("ren", value_name, Ren.get_value(def_ren_value))
+
 func save_conf() -> void:
 	var config = ConfigFile.new()
 	config.set_value("display", "width", _get_window_size().x)
@@ -117,13 +120,15 @@ func save_conf() -> void:
 		config.set_value("audio", bus_name + "_mute", mute)
 		config.set_value("audio", bus_name + "_volume", volume)
 	
-	config.set_value("ren", "Text_Time", Ren.get_value("text_time"))
-	config.set_value("ren", "Auto_Forward_Time", Ren.get_value("auto_time"))
-	config.set_value("ren", "Notify_Time", Ren.get_value("notify_time"))
+	conf_set_ren_value(config, "Typing_Text", "typing_text")
+	conf_set_ren_value(config, "Text_Time", "text_time")
+	conf_set_ren_value(config, "Text_Time", "text_time")
+	conf_set_ren_value(config, "Auto_Forward_Time", "auto_time")
+	conf_set_ren_value(config, "Notify_Time", "notify_time")
 	
 	## do nothing for now
-	config.set_value("ren", "Skip_All_Text", Ren.get_value("skip_all_text"))
-	config.set_value("ren", "Skip_After_Choices", Ren.get_value("skip_after_choices"))
+	conf_set_ren_value(config, "Skip_All_Text", "skip_all_text")
+	conf_set_ren_value(config, "Skip_After_Choices", "skip_after_choices")
 	
 	# Save the changes by overwriting the previous file
 	config.save("user://settings.cfg")
@@ -157,6 +162,7 @@ func load_conf() -> void:
 		AudioServer.set_bus_mute(bus_id, mute)
 		AudioServer.set_bus_volume_db(bus_id, volume)
 	
+	var typing_text = config.get_value("ren", "Typing_Time", Ren._typing_text)
 	var text_time = config.get_value("ren", "Text_Time", Ren._text_time)
 	var auto_time = config.get_value("ren", "Auto_Forward_Time", Ren._auto_time)
 	var notify_time = config.get_value("ren", "Notify_Time", Ren._notify_time)
@@ -164,7 +170,8 @@ func load_conf() -> void:
 	## do nothing for now
 	var skip_all_text = config.get_value("ren", "Skip_All_Text", Ren._skip_all_text)
 	var skip_after_choices = config.get_value("ren", "Skip_After_Choices", Ren._skip_after_choices)
-
+	
+	Ren.set_var("typing_text", typing_text)
 	Ren.set_var("text_time", text_time)
 	Ren.set_var("auto_time", auto_time)
 	Ren.set_var("notify_time", notify_time)

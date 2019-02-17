@@ -26,7 +26,5 @@ func on_value_changed(new_value : float) -> void:
 		new_value = 0.1
 		
 	wait_time = new_value
-	
-	print(var_name, new_value)
 
 

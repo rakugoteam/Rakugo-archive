@@ -52,7 +52,12 @@ func _on_statement(type : int, parameters : Dictionary) -> void:
 			NameLabel.bbcode_text = parameters.who
 
 	if "what" in parameters:
-		write_dialog(parameters.what, parameters.typing)
+		var _typing = Ren.get_value("typing_text")
+		
+		if typing in parameters:
+			_typing = parameters.typing
+		
+		write_dialog(parameters.what, _typing)
 
 	if "avatar" in parameters:
 		if avatar != null:
