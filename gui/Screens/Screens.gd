@@ -5,7 +5,8 @@ export var nav_path : NodePath = "Navigation/ScrollContainer/HBoxContainer/VBoxC
 export var in_game_gui_path : = "/root/Window/InGameGUI"
 export onready var scrollbar : = $Navigation/ScrollContainer/HBoxContainer/VScrollBar 
 export var use_back_button : = false
-export onready var back_button : Node = $BackButton
+export onready var back_button : Button = $BackButton
+export onready var unpause_timer : Timer = $UnpauseTimer
 
 var current_node : Node = self
 onready var in_game_gui : = get_node(in_game_gui_path)
@@ -44,6 +45,8 @@ func _ready():
 	about_button.connect("pressed", self, "_on_About_pressed")
 	help_button.connect("pressed", self, "_on_Help_pressed")
 	quit_button.connect("pressed", self, "_on_Quit_pressed")
+	
+	## this is just for testing things
 	test_button.connect("pressed", self, "_on_TestNodes_pressed")
 	
 	var auto_save_path = str("user://" + Ren.save_folder + "/auto.save")

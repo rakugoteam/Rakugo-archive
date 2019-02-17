@@ -10,7 +10,7 @@ export var save_folder : = "saves"
 export var save_password : = "Ren"
 export (String, DIR) var scenes_dir : = "res://examples/"
 
-const ren_version : = "1.0.0"
+const ren_version : = "2.0.0"
 const credits_path : = "res://addons/Ren/credits.txt"
 # we need it because we hide base RenMenu form custom nodes
 const RenMenu : = preload("res://addons/Ren/nodes/ren_menu.gd")
@@ -18,9 +18,9 @@ const RenMenu : = preload("res://addons/Ren/nodes/ren_menu.gd")
 ## init vars for settings
 var _skip_all_text : = false
 var _skip_after_choices : = false
-var _auto_speed : = 1
-var _text_speed : = 30
-var _notify_time : = 5
+var _auto_time : = 1
+var _text_time : = 0.3
+var _notify_time : = 3
 
 enum Type {
 	VAR,		# 0
@@ -148,8 +148,8 @@ func _ready() -> void:
 	## vars for ren settings
 	define("skip_all_text", _skip_all_text)
 	define("skip_after_choices", _skip_after_choices)
-	define("auto_speed", _auto_speed)
-	define("text_speed", _text_speed)
+	define("auto_time", _auto_time)
+	define("text_time", _text_time)
 	define("notify_time", _notify_time)
 
 	## test vars
@@ -314,7 +314,7 @@ func get_quest(quest_id : String) -> Quest:
 ## it should be "node : Statement", but it don't work for now
 func _set_statement(node : Node, parameters : Dictionary) -> void:
 	if not parameters.has("speed"):
-		parameters["speed"] = get_value("text_speed")
+		parameters["speed"] = get_value("text_time")
 		
 	node.set_parameters(parameters)
 	node.exec()
@@ -324,7 +324,7 @@ func _set_statement(node : Node, parameters : Dictionary) -> void:
 ## statement of type say
 ## there can be only one say, ask or menu in story_state at it end
 ## its make given character(who) talk (what)
-## with keywords : who, what, kind, speed
+## with keywords : who, what, typing, kind
 ## speed is time to show next letter
 func say(parameters : Dictionary) -> void:
 	_set_statement($Say, parameters)
@@ -333,7 +333,7 @@ func say(parameters : Dictionary) -> void:
 ## there can be only one say, ask or menu in story_state at it end
 ## its allow player to provide keybord ask that will be assain to given variable
 ## it also will return RenVar variable
-## with keywords : who, what, kind, speed variable, value
+## with keywords : who, what, typing, kind, variable, value
 ## speed is time to show next letter
 func ask(parameters : Dictionary) -> void:
 	_set_statement($Ask, parameters)
@@ -341,7 +341,7 @@ func ask(parameters : Dictionary) -> void:
 ## statement of type menu
 ## there can be only one say, ask or menu in story_state at it end
 ## its allow player to make choice
-## with keywords : who, what, kind, speed choices, mkind
+## with keywords : who, what, typing, kind, choices, mkind
 ## speed is time to show next letter
 func menu(parameters : Dictionary) -> void:
 	_set_statement($Menu, parameters)

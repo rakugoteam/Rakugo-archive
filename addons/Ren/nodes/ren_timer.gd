@@ -22,6 +22,11 @@ func _ready() -> void:
 	Ren.connect_var(var_name, "value_changed", self, "on_value_changed")
 
 func on_value_changed(new_value : float) -> void:
+	if new_value == 0:
+		new_value = 0.1
+		
 	wait_time = new_value
+	
+	print(var_name, new_value)
 
 

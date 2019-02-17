@@ -6,18 +6,18 @@ func _ready() -> void:
 	connect("visibility_changed", self, "on_visibility_changed")
 
 func on_change_value(value : float) -> void:
-	var new_value = abs(value)
-	Ren.set_var("text_speed", new_value)
+	var new_value = abs(1 - value/100) * Ren.get_value("auto_time")
+	Ren.set_var("text_time", new_value)
 	$HBox/CheckButton.pressed = value != 0
 
 func on_toggle(value : bool) -> void:
 	if value:
 		on_change_value(0)
 	else:
-		on_change_value(-0.01)
+		on_change_value(1)
 
 func on_visibility_changed() -> void:
 	if visible == false:
 		return
 	
-	on_change_value(Ren.get_value("text_speed"))
+	on_change_value(Ren.get_value("text_time"))

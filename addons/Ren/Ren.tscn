@@ -34,7 +34,14 @@ script = ExtResource( 3 )
 
 [node name="Persistence" type="Node" parent="."]
 script = ExtResource( 4 )
+mode = 0
+password = ""
+folder_name = "PersistenceNode"
+no_valid_names = [ "default", "example" ]
+debug_on = false
+beautifier_active = true
 profile_name_min_size = 1
+profile_name_max_size = 15
 
 [node name="Say" type="Node" parent="."]
 script = ExtResource( 5 )
@@ -71,7 +78,7 @@ script = ExtResource( 15 )
 
 [node name="AutoTimer" type="Timer" parent="."]
 script = ExtResource( 16 )
-var_name = "auto_speed"
+var_name = "auto_time"
 
 [node name="SkipTimer" type="Timer" parent="."]
 script = ExtResource( 17 )
@@ -80,7 +87,7 @@ script = ExtResource( 17 )
 wait_time = 0.05
 one_shot = true
 script = ExtResource( 18 )
-var_name = "speed_text"
+var_name = "text_time"
 default = 0.05
 
 [node name="StepTimer" type="Timer" parent="."]

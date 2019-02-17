@@ -136,14 +136,14 @@ func story(dialog_name):
 			Ren.story_state = "welcome player"
 		
 		"welcome player":
-			## example of showing text slow
+			## example of showing text all at once
 			Ren.say({
 				"who": 
 					"rench",
 				"what":
 					"Welcome [player_name] in Ren Framework Version [version]",
-				"speed":
-					0.1
+				"typing":
+					false
 				})
 			Ren.story_state = "test skipping/auto"
 		

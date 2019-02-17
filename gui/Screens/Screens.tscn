@@ -23,13 +23,13 @@ font_data = ExtResource( 3 )
 [sub_resource type="ButtonGroup" id=2]
 
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=3]
 
 size = 40
 use_filter = true
 font_data = ExtResource( 3 )
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 
 resource_name = "modern_center"
 tracks/0/type = "bezier"
@@ -715,7 +715,7 @@ tracks/64/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 
 resource_name = "modern_left"
 tracks/0/type = "bezier"
@@ -1511,7 +1511,7 @@ tracks/75/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 
 resource_name = "modern_right"
 tracks/0/type = "bezier"
@@ -2287,7 +2287,7 @@ tracks/73/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=7]
 
 resource_name = "small_center"
 tracks/0/type = "bezier"
@@ -3919,7 +3919,7 @@ tracks/84/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=9]
 
 resource_name = "small_right"
 tracks/0/type = "bezier"
@@ -5003,7 +5003,7 @@ mouse_filter = 0
 [node name="Title" type="Label" parent="HistoryBox"]
 margin_right = 702.0
 margin_bottom = 54.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 text = "History"
 align = 1
 
@@ -5050,7 +5050,7 @@ margin_bottom = 540.796
 [node name="Title" type="Label" parent="AboutBox"]
 margin_right = 702.0
 margin_bottom = 54.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 text = "About"
 align = 1
 
@@ -5089,10 +5089,14 @@ margin_right = 629.883
 margin_bottom = 594.472
 
 [node name="Layouts" type="AnimationPlayer" parent="."]
-anims/modern_center = SubResource( 5 )
-anims/modern_left = SubResource( 6 )
-anims/modern_right = SubResource( 7 )
-anims/small_center = SubResource( 9 )
+anims/modern_center = SubResource( 4 )
+anims/modern_left = SubResource( 5 )
+anims/modern_right = SubResource( 6 )
+anims/small_center = SubResource( 7 )
 anims/small_left = SubResource( 8 )
-anims/small_right = SubResource( 10 )
+anims/small_right = SubResource( 9 )
+
+[node name="UnpauseTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
 

@@ -52,7 +52,7 @@ func _on_statement(type : int, parameters : Dictionary) -> void:
 			NameLabel.bbcode_text = parameters.who
 
 	if "what" in parameters:
-		write_dialog(parameters.what, parameters.speed)
+		write_dialog(parameters.what, parameters.typing)
 
 	if "avatar" in parameters:
 		if avatar != null:
@@ -75,21 +75,17 @@ func _on_statement(type : int, parameters : Dictionary) -> void:
 	
 	return
 
-func write_dialog(text : String, speed : float) -> void:
-	if speed == 0:
+func write_dialog(text : String, _typing : bool) -> void:
+	typing = _typing
+	if not typing:
 		if DialogText.has_method("set_bbcode"):
 			DialogText.bbcode_text = text
 		return
 
-	typing = true
 	if DialogText.has_method("set_bbcode"):
 		DialogText.bbcode_text = ""
 
 	var te = ""
-	var new_time = speed/100 * Ren.auto_timer.wait_time
-	if new_time <= 0:
-		new_time = 0.1
-	Ren.dialog_timer.wait_time = new_time 
 
 	var markup = false
 	for letter in text:
@@ -117,3 +113,4 @@ func write_dialog(text : String, speed : float) -> void:
 
 func _on_Hide_toggled(button_pressed : bool) -> void:
 	visible = !button_pressed
+	

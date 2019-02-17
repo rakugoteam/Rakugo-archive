@@ -117,8 +117,8 @@ func save_conf() -> void:
 		config.set_value("audio", bus_name + "_mute", mute)
 		config.set_value("audio", bus_name + "_volume", volume)
 	
-	config.set_value("ren", "Text_Speed", Ren.get_value("text_speed"))
-	config.set_value("ren", "Auto_Forward_Speed", Ren.get_value("auto_speed"))
+	config.set_value("ren", "Text_Time", Ren.get_value("text_time"))
+	config.set_value("ren", "Auto_Forward_Time", Ren.get_value("auto_time"))
 	config.set_value("ren", "Notify_Time", Ren.get_value("notify_time"))
 	
 	## do nothing for now
@@ -157,16 +157,16 @@ func load_conf() -> void:
 		AudioServer.set_bus_mute(bus_id, mute)
 		AudioServer.set_bus_volume_db(bus_id, volume)
 	
-	var text_speed = config.get_value("ren", "Text_Speed", Ren._text_speed)
-	var auto_speed = config.get_value("ren", "Auto_Forward_Speed", Ren._auto_speed)
+	var text_time = config.get_value("ren", "Text_Time", Ren._text_time)
+	var auto_time = config.get_value("ren", "Auto_Forward_Time", Ren._auto_time)
 	var notify_time = config.get_value("ren", "Notify_Time", Ren._notify_time)
 	
 	## do nothing for now
 	var skip_all_text = config.get_value("ren", "Skip_All_Text", Ren._skip_all_text)
 	var skip_after_choices = config.get_value("ren", "Skip_After_Choices", Ren._skip_after_choices)
 
-	Ren.set_var("text_speed", text_speed)
-	Ren.set_var("auto_speed", auto_speed)
+	Ren.set_var("text_time", text_time)
+	Ren.set_var("auto_time", auto_time)
 	Ren.set_var("notify_time", notify_time)
 
 	## do nothing for now
