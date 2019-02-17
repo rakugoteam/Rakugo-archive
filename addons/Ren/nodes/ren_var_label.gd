@@ -13,6 +13,13 @@ func _ready() -> void:
 	var var_to_change = Ren.get_var(var_name)
 	text = str(new_val)
 	var_to_change.connect("value_changed", self, "on_value_changed")
+	connect("visibility_changed", self, "on_visibility_changed")
 
 func on_value_changed(new_value) -> void:
 	text = str(new_value)
+
+func on_visibility_changed() -> void:
+	if visible == false:
+		return
+		
+ 	text = str(Ren.get_value(var_name))

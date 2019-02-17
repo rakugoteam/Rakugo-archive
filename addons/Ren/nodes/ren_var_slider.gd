@@ -9,5 +9,3 @@ func _ready() -> void:
 
 func on_slider_val_changed(value : float) -> void:
 	Ren.define(var_name, value)
-
-	

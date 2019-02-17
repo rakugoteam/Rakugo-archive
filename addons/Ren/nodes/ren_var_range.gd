@@ -21,8 +21,14 @@ func _ready() -> void:
 		Ren.define(var_name, default)
 	
 	Ren.connect_var(var_name, "value_changed", self, "on_value_changed")
+	connect("visibility_changed", self, "on_visibility_changed")
 
 func on_value_changed(new_value : float) -> void:
 	value = new_value
 
+func on_visibility_changed() -> void:
+	if visible == false:
+		return
+		
+	value = Ren.get_value(var_name)
 

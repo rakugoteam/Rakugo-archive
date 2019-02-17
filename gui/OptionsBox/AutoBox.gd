@@ -12,4 +12,4 @@ func on_visibility_changed() -> void:
 	if visible == false:
 		return
 	
-	on_change_value(Ren.get_value("auto_time"))
+	$Slider.value = Ren.get_value("auto_time")*100

@@ -122,7 +122,6 @@ func save_conf() -> void:
 	
 	conf_set_ren_value(config, "Typing_Text", "typing_text")
 	conf_set_ren_value(config, "Text_Time", "text_time")
-	conf_set_ren_value(config, "Text_Time", "text_time")
 	conf_set_ren_value(config, "Auto_Forward_Time", "auto_time")
 	conf_set_ren_value(config, "Notify_Time", "notify_time")
 	
@@ -161,8 +160,8 @@ func load_conf() -> void:
 
 		AudioServer.set_bus_mute(bus_id, mute)
 		AudioServer.set_bus_volume_db(bus_id, volume)
-	
-	var typing_text = config.get_value("ren", "Typing_Time", Ren._typing_text)
+
+	var typing_text = config.get_value("ren", "Typing_Text", Ren._typing_text)
 	var text_time = config.get_value("ren", "Text_Time", Ren._text_time)
 	var auto_time = config.get_value("ren", "Auto_Forward_Time", Ren._auto_time)
 	var notify_time = config.get_value("ren", "Notify_Time", Ren._notify_time)

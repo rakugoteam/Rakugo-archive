@@ -17,6 +17,8 @@ func _ready() -> void:
 		Ren.connect_var(vn, "value_changed", self, "on_value_changed")
 	
 	connect("meta_clicked", self, "on_meta_clicked")
+	connect("visibility_changed", self, "on_visibility_changed")
+	
 
 func update_label() -> void:
 	bbcode_text = Ren.text_passer(ren_text, mode)
@@ -35,3 +37,10 @@ func set_ren_file(value : String) -> void:
 	ren_text = file.get_as_text()
 	file.close()
 	update_label()
+
+func on_visibility_changed() -> void:
+	if visible == false:
+		return
+		
+	update_label()
+	

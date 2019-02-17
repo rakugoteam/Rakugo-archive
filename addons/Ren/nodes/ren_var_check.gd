@@ -25,6 +25,7 @@ func _ready() -> void:
 		var_to_change = Ren.define(var_name, default)
 	
 	connect("toggled", self, "on_toggled")
+	connect("visibility_changed", self, "on_visibility_changed")
 	var_to_change.connect("value_changed", self, "on_value_changed")
 
 func on_value_changed(new_value : bool) -> void:
@@ -32,3 +33,9 @@ func on_value_changed(new_value : bool) -> void:
 
 func on_toggled(value : bool) -> void:
 	var_to_change.v = value
+
+func on_visibility_changed() -> void:
+	if visible == false:
+		return
+		
+	pressed = Ren.get_value(var_name)
