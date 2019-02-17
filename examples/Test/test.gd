@@ -8,7 +8,7 @@ var test_subquest
 
 func _ready():
 	Ren.connect("story_step", self, "story")
-	Ren.jump("Test/Test", "example", "start", false)
+	Ren.jump("Test/Test", "example", 0, false)
 
 	if Ren.current_node != self:
 		Ren.current_node = self
@@ -31,29 +31,34 @@ func story(dialog_name):
 
 	match Ren.story_state:
 		## some tests:
-		"start":
+#		"start":
+		0:
 			# test of call node
 			Ren.call_node("TestNode", "test_func", ["test of call node"])
 			Ren.say({"what": "Test of call in func form node using call_node."})
-			Ren.story_state = "quest1"
+#			Ren.story_state = "quest1"
 
-		"quest1":
+#		"quest1":
+		1:
 			# test of quest system part1
 			test_quest.start()
 			Ren.say({"what": "For test quest system now will you start test quest."})
-			Ren.story_state = "qtest2"
+#			Ren.story_state = "qtest2"
 
-		"qtest2":
+#		"qtest2":
+		2:
 			test_quest.finish()
 			Ren.say({"what": "And now test quest is done."})
-			Ren.story_state = "test play_anim"
+#			Ren.story_state = "test play_anim"
 
-		"test play_anim":
+#		"test play_anim":
+		3:
 			Ren.play_anim("TestAnimPlayer", "test")
 			Ren.say({"who":"test", "what":"test of playing simple anim"})
-			Ren.story_state = "test stop_anim 1"
-
-		"test stop_anim 1":
+#			Ren.story_state = "test stop_anim 1"
+		
+		4:
+#		"test stop_anim 1":
 			Ren.stop_anim("TestAnimPlayer", true)
 			Ren.play_anim("TestAnimPlayer", "test_loop")
 			Ren.say({
@@ -61,66 +66,76 @@ func story(dialog_name):
 				"what":"test of stoping loop anim."+
 				"{/nl}Click to go next step and stop anim"
 			})
-			Ren.story_state = "test stop_anim 2"
-		
-		"test stop_anim 2":
+#			Ren.story_state = "test stop_anim 2"
+
+		5:
+#		"test stop_anim 2":
 			Ren.stop_anim("TestAnimPlayer", true)
 			Ren.say({
 				"who":"test",
 				"what":"test anim stopped"
 			})
-			Ren.story_state = "test sfx"
-		
-		"test sfx":
+#			Ren.story_state = "test sfx"
+			
+		6:
+#		"test sfx":
 			Ren.play_audio("SFXPlayer")
 			Ren.say({"who":"test", "what":"now you hear sfx."})
-			Ren.story_state = "test bgm 1"
+#			Ren.story_state = "test bgm 1"
 		
-		"test bgm 1":
+		7:
+#		"test bgm 1":
 			Ren.play_audio("BGMPlayer")
 			Ren.say({
 				"who":"test", "what":"now you hear music."
 				+ "{/nl}Click to next step and stop music."
 			
 			})
-			Ren.story_state = "test bgm 2"
+#			Ren.story_state = "test bgm 2"
 
-		"test bgm 2":
+		8:
+#		"test bgm 2":
 			Ren.stop_audio("BGMPlayer")
 			Ren.say({
 				"who":"test", "what":"music was stop."
 				+ "{/nl}Click to next step."
 			
 			})
-			Ren.story_state = "test dict"
+#			Ren.story_state = "test dict"
 
-		"test dict":
+		9:
+#		"test dict":
 			# example of dict in text
 			Ren.define("test_dict", {"a": 1, "b": 2})
 			Ren.say({"who":"test", "what":"test dict b element is [test_dict.b]"})
-			Ren.story_state = "test list"
+#			Ren.story_state = "test list"
 		
-		"test list":
+		10:
+#		"test list":
 			## example of using Ren.variable in text
 			Ren.define("test_list", [1,3,7])
 			Ren.say({"who":"test", "what":"test list 2 list element is [test_list[2]]"})
-			Ren.story_state = "test variables 0"
-			
-		"test variables 0":
+#			Ren.story_state = "test variables 0"
+		
+		11:
+#		"test variables 0":
 			## example of updating some Ren.variable
 			Ren.say({"what":"now test_var = [test_var]"})
-			Ren.story_state = "test variables 1"
-
-		"test variables 1":
+#			Ren.story_state = "test variables 1"
+		
+		12:
+#		"test variables 1":
 			Ren.say({"what":"add 1 to test_var"})
 			test_var.value += 1
-			Ren.story_state = "test variables 2"
+#			Ren.story_state = "test variables 2"
 		
-		"test variables 2":
+		13:
+#		"test variables 2":
 			Ren.say({"what":"and now test_var = [test_var]"})
-			Ren.story_state = "get player name"
+#			Ren.story_state = "get player name"
 
-		"get player name":
+		14:
+#		"get player name":
 			## example getting user input to Ren.variable
 			Ren.ask({
 				"who": 
@@ -133,9 +148,10 @@ func story(dialog_name):
 				"value":
 					"Developer" ## default value
 				})
-			Ren.story_state = "welcome player"
+#			Ren.story_state = "welcome player"
 		
-		"welcome player":
+		15:
+#		"welcome player":
 			## example of showing text all at once
 			Ren.say({
 				"who": 
@@ -145,9 +161,10 @@ func story(dialog_name):
 				"typing":
 					false
 				})
-			Ren.story_state = "test skipping/auto"
-		
-		"test skipping/auto":
+#			Ren.story_state = "test skipping/auto"
+
+		16:
+#		"test skipping/auto":
 			Ren.say({
 				"who": 
 					"rench",
@@ -155,64 +172,64 @@ func story(dialog_name):
 					"extra stamement to check skipping/auto",
 				})
 			
-			Ren.story_state = "example of menu"
+#			Ren.story_state = "example of menu"
 
-		"example of menu":
-			# example of creating menu
-			# menu set story_state it self
-			# Ren.hide("rench")
-			Ren.menu({
-				"who":
-					"rench",
-				"what":
-					"What want to do?",
-				"mkind":
-					"horizontal",
-				"choices":
-					[
-						"Play Visual Novel example",
-						"Play Click'n'Point Adventure example",
-						"Play RPG example",
-						"Read Docs"
-					]
-				})
-			
-		"Play Visual Novel example":
-			Ren.jump("VisualNovelExample/Garden", "garden")
-				
-		"Play Click'n'Point Adventure example":
-			Ren.say({
-				"who":
-					"rench",
-				"what":
-					"Click'n'Point Adventure example is not ready yet"
-			})
-			Ren.story_state = "end"
-
-		"Play RPG example":
-			Ren.say({
-				"who":
-					"rench",
-				"what":
-					"RPG example is not ready yet"
-			})
-			Ren.story_state = "end"
+#		"example of menu":
+#			# example of creating menu
+#			# menu set story_state it self
+#			# Ren.hide("rench")
+#			Ren.menu({
+#				"who":
+#					"rench",
+#				"what":
+#					"What want to do?",
+#				"mkind":
+#					"horizontal",
+#				"choices":
+#					[
+#						"Play Visual Novel example",
+#						"Play Click'n'Point Adventure example",
+#						"Play RPG example",
+#						"Read Docs"
+#					]
+#				})
+#
+#		"Play Visual Novel example":
+#			Ren.jump("VisualNovelExample/Garden", "garden")
+#
+#		"Play Click'n'Point Adventure example":
+#			Ren.say({
+#				"who":
+#					"rench",
+#				"what":
+#					"Click'n'Point Adventure example is not ready yet"
+#			})
+#			Ren.story_state = "end"
+#
+#		"Play RPG example":
+#			Ren.say({
+#				"who":
+#					"rench",
+#				"what":
+#					"RPG example is not ready yet"
+#			})
+#			Ren.story_state = "end"
+#
+#		"Read Docs":
+#			Ren.say({
+#				"who":
+#					"rench",
+#				"what":
+#					"Docs are not ready yet"
+#			})
+#			Ren.story_state = "end"
 		
-		"Read Docs":
-			Ren.say({
-				"who":
-					"rench",
-				"what":
-					"Docs are not ready yet"
-			})
-			Ren.story_state = "end"
-		
-		"end":
-			Ren.notifiy("You make your first choice!",3)
-			Ren.say({
-				"who": 
-					"rench",
-				"what":
-					"End of Example",
-				})
+#		"end":
+#			Ren.notifiy("You make your first choice!",3)
+#			Ren.say({
+#				"who": 
+#					"rench",
+#				"what":
+#					"End of Example",
+#				})
 

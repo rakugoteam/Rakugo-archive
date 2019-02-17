@@ -56,7 +56,6 @@ var current_dialog_name : = ""
 var _scene : = ""
 var history : = [] # [{"state":story_state, "statement":{"type":type, "parameters": parameters}}]
 var global_history : = [] # [{"state":story_state, "statement":{"type":type, "parameters": parameters}}]
-var prev_story_state : = ""
 var variables : = {}
 
 # don't save this
@@ -115,7 +114,7 @@ onready var step_timer : = $StepTimer
 onready var dialog_timer : = $DialogTimer
 onready var notify_timer : = $NotifyTimer
 
-var story_state setget _set_story_state, _get_story_state
+var story_state : int setget _set_story_state, _get_story_state
 
 signal started
 signal exec_statement(type, parameters)
@@ -144,7 +143,7 @@ func _ready() -> void:
 	var gdv = Engine.get_version_info()
 	var gdv_string = str(gdv.major) + "." + str(gdv.minor) + "." + str(gdv.patch)
 	define("godot_version", gdv_string)
-	define("story_state", "")
+	define("story_state", 0)
 
 	## vars for ren settings
 	define("skip_all_text", _skip_all_text)
@@ -415,11 +414,10 @@ func call_node(node_id : String, func_name : String, args : = []) -> void:
 	}
 	_set_statement($CallNode, parameters)
 
-func _set_story_state(state : String) -> void:
-	prev_story_state = _get_story_state()
+func _set_story_state(state : int) -> void:
 	define("story_state", state)
 
-func _get_story_state() -> String:
+func _get_story_state() -> int:
 	return get_value("story_state")
 
 ## it starts Ren
@@ -466,7 +464,7 @@ func savefile(save_name : = "quick") -> bool:
 	data["local_id"] = local_id
 	data["scene"] = _scene
 	data["dialog_name"] = current_dialog_name
-	data["state"] = prev_story_state # it must be this way
+	data["state"] = story_state - 1 # it must be this way
 
 	var result = $Persistence.save_data(save_name)
 	debug(["save data to:", save_name])
@@ -566,7 +564,7 @@ func _get_current_id() -> int:
 func jump(
 	path_to_scene : String,
 	dialog_name : String,
-	state : = "start",
+	state : = 0,
 	change : = true,
 	from_save : = false,
 	lid : = 0) -> void:

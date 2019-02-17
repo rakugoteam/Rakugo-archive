@@ -31,3 +31,7 @@ func exec() -> void:
 		parameters.what = Ren.text_passer(parameters.what)
 	
 	.exec()
+
+func on_exit(_type : int, new_parameters : = {}) -> void:
+	Ren.story_state += 1
+	.on_exit(_type, new_parameters)
