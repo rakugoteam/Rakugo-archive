@@ -106,3 +106,8 @@ func parse_bbcode_text(text:String, variables:Dictionary) -> String:
 	text = text.replace("[/nl]", new_line)
 	text = text.replace("[/tab]", tab)
 	return text
+	
+func parse_markdown_text(text:String, variables:Dictionary) -> String:
+
+    
+    return text
