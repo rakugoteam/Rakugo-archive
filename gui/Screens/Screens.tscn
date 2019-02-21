@@ -5063,7 +5063,7 @@ size_flags_vertical = 3
 bbcode_enabled = true
 script = ExtResource( 11 )
 ren_text_file = "res://about.txt"
-ren_text = "Made with {a=https://github.com/jeremi360/Ren}Ren{/a} [ren_version] on {a=https://godotengine.org/}Godot Engine{/a} [godot_version] on {a=https://github.com/jeremi360/Ren/blob/master/LICENSE} MIT License{/a}.
+ren_text = "Made with {a=https://github.com/jebedaia360/Ren}Ren{/a} [ren_version] on {a=https://godotengine.org/}Godot Engine{/a} [godot_version] on {a=https://github.com/jebedaia360/Ren/blob/master/LICENSE} MIT License{/a}.
 "
 
 [node name="QuitBox" parent="." instance=ExtResource( 12 )]

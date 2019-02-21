@@ -175,7 +175,7 @@ func _on_About_pressed():
 	show()
 
 func _on_Help_pressed():
-	OS.shell_open("https://github.com/jeremi360/Ren")
+	OS.shell_open("https://github.com/jebedaia360/Ren")
 
 func _fullscreen_on_input(event):
 	if event.is_action_pressed("ren_fullscreen"):
