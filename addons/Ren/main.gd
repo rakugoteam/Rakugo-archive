@@ -60,11 +60,12 @@ var variables : = {}
 
 # don't save this
 onready var menu_node : RenMenu = $Menu
+var current_node : Node = null
 var current_statement : Statement = null
 var using_passer : = false
 var skip_auto : = false
-var current_node : Node = null
 var active : = false
+var can_alphanumeric:= true
 var skip_types : = [
 	StatementType.SAY,
 	StatementType.SHOW,

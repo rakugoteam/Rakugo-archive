@@ -177,6 +177,26 @@ func _on_About_pressed():
 func _on_Help_pressed():
 	OS.shell_open("https://github.com/jeremi360/Ren")
 
+func _fullscreen_on_input(event):
+	if event.is_action_pressed("ren_fullscreen"):
+		if settings.window_fullscreen:
+			settings.window_fullscreen = false
+			settings.window_size = settings.default_window_size
+		
+		else:
+			settings.window_fullscreen = true
+			settings.window_size = OS.get_screen_size()
+			
+func _screenshot_on_input(event):
+	if event.is_action_pressed("ren_screenshot"):
+		var dir = Directory.new()
+		var screenshots_dir = "user://screenshots"
+		if !dir.dir_exists(screenshots_dir):
+			dir.make_dir(screenshots_dir)
+		
+		var s = Ren.get_datetime_str().replace(":", " ")
+		get_screenshot().save_png(screenshots_dir + "/" + s + '.png')
+
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		if visible:
@@ -188,21 +208,6 @@ func _input(event):
 		
 		return
 	
-	if event.is_action_pressed("ren_screenshot"):
-		var dir = Directory.new()
-		var screenshots_dir = "user://screenshots"
-		if !dir.dir_exists(screenshots_dir):
-			dir.make_dir(screenshots_dir)
-		
-		var s = Ren.get_datetime_str().replace(":", " ")
-		get_screenshot().save_png(screenshots_dir + "/" + s + '.png')
-		return
-	
-	if event.is_action_pressed("ren_fullscreen"):
-		if settings.window_fullscreen:
-			settings.window_fullscreen = false
-			settings.window_size = settings.default_window_size
-		
-		else:
-			settings.window_fullscreen = true
-			settings.window_size = OS.get_screen_size()
+	if Ren.can_alphanumeric:
+		_fullscreen_on_input(event)
+		_screenshot_on_input(event)

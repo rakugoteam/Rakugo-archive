@@ -74,12 +74,15 @@ func on_skip() -> void:
 func full_save() -> void:
 	var screenshot = Screens.get_screenshot()
 	Screens.save_menu(screenshot)
-
-func _input(event : InputEvent) -> void:
+	
+func _hide_on_input(event):
 	if event.is_action_pressed("ui_select"):
 		$Hide.pressed = !$Hide.pressed
 		$Hide.emit_signal("toggled", $Hide.pressed)
-		return
+
+func _input(event : InputEvent) -> void:
+	if Ren.can_alphanumeric:
+		_hide_on_input(event)
 	
 	if event.is_action_pressed("ren_qsave"):
 		_on_qsave()

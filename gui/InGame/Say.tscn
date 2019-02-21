@@ -10,37 +10,31 @@
 [ext_resource path="res://addons/Ren/nodes/ren_line_edit.gd" type="Script" id=8]
 
 [sub_resource type="DynamicFont" id=1]
-
 size = 30
 use_filter = true
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=2]
-
 size = 30
 use_filter = true
 font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=3]
-
 size = 30
 use_filter = true
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=4]
-
 size = 30
 use_filter = true
 font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=5]
-
 size = 30
 use_filter = true
 font_data = ExtResource( 6 )
 
 [sub_resource type="Animation" id=6]
-
 resource_name = "adv"
 tracks/0/type = "value"
 tracks/0/path = NodePath("VBox:rect_position")
@@ -152,7 +146,6 @@ tracks/8/keys = {
 }
 
 [sub_resource type="Animation" id=7]
-
 resource_name = "center"
 tracks/0/type = "value"
 tracks/0/path = NodePath("VBox:rect_position")
@@ -264,7 +257,6 @@ tracks/8/keys = {
 }
 
 [sub_resource type="Animation" id=8]
-
 resource_name = "left"
 tracks/0/type = "value"
 tracks/0/path = NodePath("VBox:rect_position")
@@ -412,7 +404,6 @@ tracks/11/keys = {
 }
 
 [sub_resource type="Animation" id=9]
-
 resource_name = "right"
 tracks/0/type = "value"
 tracks/0/path = NodePath("VBox:rect_position")
@@ -560,7 +551,6 @@ tracks/11/keys = {
 }
 
 [sub_resource type="Animation" id=10]
-
 tracks/0/type = "value"
 tracks/0/path = NodePath("VBox:rect_position")
 tracks/0/interp = 1

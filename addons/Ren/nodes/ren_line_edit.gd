@@ -7,6 +7,7 @@ var _type : int
 
 func _ready() -> void:
 	Ren.connect("exec_statement", self, "_on_statement")
+	connect("visibility_changed", self, "_on_visibility_changed")
 	add_child(rtl)
 	hide()
 
@@ -44,3 +45,6 @@ func _on_statement(type : int, parameters : Dictionary) -> void:
 	grab_focus()
 	set_process_unhandled_key_input(true)
 	connect("text_entered", self , "_on_enter")
+	
+func _on_visibility_changed():
+	Ren.can_alphanumeric = !visible
