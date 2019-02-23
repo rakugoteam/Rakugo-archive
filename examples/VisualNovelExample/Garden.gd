@@ -1,15 +1,21 @@
 extends Node2D
 
 func _ready():
-	Ren.story_step()
+	if Ren.current_root_node != self:
+		Ren.current_root_node = self
+	
+	Ren.add_dialog(self, "garden")
 
-	if "garden" == yield(Ren, "story_step"):
-		Ren.show("alice", ["happy"])
-		Ren.say({
-			"who":"alice",
-			"what":"Welcome in my Garden [player_name].",
-			"kind":"left"
-		})
+func garden(dialog_name):
+	if dialog_name != "garden":
+		return
+		
+	Ren.show("alice", ["happy"])
+	Ren.say({
+		"who":"alice",
+		"what":"Welcome in my Garden [player_name].",
+		"kind":"left"
+	})
 	
 	
 

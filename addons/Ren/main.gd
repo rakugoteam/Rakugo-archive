@@ -60,7 +60,7 @@ var variables : = {}
 
 # don't save this
 onready var menu_node : RenMenu = $Menu
-var current_node : Node = null
+var current_root_node : Node = null
 var current_statement : Statement = null
 var using_passer : = false
 var skip_auto : = false
@@ -200,6 +200,11 @@ func on_play_audio(node_id : String, from_pos : float) -> void:
 
 func on_stop_audio(node_id : String) -> void:
 	emit_signal("stop_audio", node_id)
+
+## use to add/register dialog
+## func_name is name of func that is going to be use as dialog
+func add_dialog(node : Node, func_name : String) -> void:
+	connect("story_step", node, func_name)
 
 ## parse text like in renpy to bbcode if mode == "ren"
 ## or parse bbcode with {vars} if mode == "bbcode"
@@ -586,12 +591,12 @@ func jump(
 	debug(["jump to scene:", _scene, "with dialog:", dialog_name, "from:", state])
 
 	if change:
-		if current_node != null:
-			current_node.queue_free()
+		if current_root_node != null:
+			current_root_node.queue_free()
 		
 		var lscene = load(_scene)
-		current_node = lscene.instance()
-		get_tree().get_root().add_child(current_node)
+		current_root_node = lscene.instance()
+		get_tree().get_root().add_child(current_root_node)
 
 	if loading_in_progress:
 		loading_in_progress = false
