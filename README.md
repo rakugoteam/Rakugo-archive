@@ -13,9 +13,9 @@ Ren'GD is framemork (inspired by [Ren'Py](https://www.renpy.org)) for story driv
 
 Now you can support this project by [Patreon](https://www.patreon.com/jebedaia360).
 
-You can download 1.0 for Godot 3.0 [here](https://github.com/jebedaia360/Ren'GD/releases).
+You can download 1.0 for Godot 3.0 [here](https://github.com/jebedaia360/Ren-GD/releases).
 
-Now we are working on [Ren'GD 2.0 for Godot 3.1](https://github.com/jebedaia360/Ren'GD/issues/81) :D
+Now we are working on [Ren'GD 2.0 for Godot 3.1](https://github.com/jebedaia360/Ren-GD/issues/81) :D
 
 ## Showcase
 
