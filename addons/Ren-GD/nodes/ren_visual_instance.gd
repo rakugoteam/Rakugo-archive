@@ -1,5 +1,5 @@
 extends VisualInstance
-class_name RenVisualInstance, "res://addons/Ren/icons/ren_spatial.svg"
+class_name RenVisualInstance, "res://addons/Ren-GD/icons/ren_spatial.svg"
 
 var rnode : = RenNodeCore.new()
 

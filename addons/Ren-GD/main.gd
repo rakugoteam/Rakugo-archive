@@ -11,9 +11,9 @@ export var save_password : = "Ren"
 export (String, DIR) var scenes_dir : = "res://examples/"
 
 const ren_version : = "2.0.0"
-const credits_path : = "res://addons/Ren/credits.txt"
+const credits_path : = "res://addons/Ren-GD/credits.txt"
 # we need it because we hide base RenMenu form custom nodes
-const RenMenu : = preload("res://addons/Ren/nodes/ren_menu.gd")
+const RenMenu : = preload("res://addons/Ren-GD/nodes/ren_menu.gd")
 
 ## init vars for settings
 var _skip_all_text : = false

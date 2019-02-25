@@ -9,221 +9,221 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Object",
+"base": "Say",
 "class": "Ask",
 "language": "GDScript",
-"path": "res://addons/Ren/statements/ask.gd"
+"path": "res://addons/Ren-GD/statements/ask.gd"
 }, {
-"base": "Timer",
+"base": "RenTimer",
 "class": "AutoTimer",
 "language": "GDScript",
-"path": "res://addons/Ren/statics/AutoTimer.gd"
+"path": "res://addons/Ren-GD/statics/AutoTimer.gd"
 }, {
-"base": "Object",
+"base": "Statement",
 "class": "CallNode",
 "language": "GDScript",
-"path": "res://addons/Ren/statements/call_node.gd"
+"path": "res://addons/Ren-GD/statements/call_node.gd"
 }, {
 "base": "Node",
 "class": "Character",
 "language": "GDScript",
-"path": "res://addons/Ren/nodes/character.gd"
+"path": "res://addons/Ren-GD/nodes/character.gd"
 }, {
 "base": "Object",
 "class": "CharacterObject",
 "language": "GDScript",
-"path": "res://addons/Ren/types/character_obj.gd"
+"path": "res://addons/Ren-GD/types/character_obj.gd"
 }, {
 "base": "BoxContainer",
 "class": "CollapsedList",
 "language": "GDScript",
 "path": "res://gui/OptionsBox/CollapsedList.gd"
 }, {
-"base": "Object",
+"base": "Statement",
 "class": "Hide",
 "language": "GDScript",
-"path": "res://addons/Ren/statements/hide.gd"
+"path": "res://addons/Ren-GD/statements/hide.gd"
 }, {
 "base": "Object",
 "class": "JSONBeautifier",
 "language": "GDScript",
 "path": "res://addons/json_beautifier/json_beautifier.gd"
 }, {
-"base": "Object",
+"base": "Say",
 "class": "Menu",
 "language": "GDScript",
-"path": "res://addons/Ren/statements/menu.gd"
+"path": "res://addons/Ren-GD/statements/menu.gd"
 }, {
-"base": "Object",
+"base": "Statement",
 "class": "Notify",
 "language": "GDScript",
-"path": "res://addons/Ren/statements/notify.gd"
+"path": "res://addons/Ren-GD/statements/notify.gd"
 }, {
 "base": "Node",
 "class": "Persistence",
 "language": "GDScript",
 "path": "res://addons/PersistenceNode/persistence_node.gd"
 }, {
-"base": "Object",
+"base": "Statement",
 "class": "PlayAnim",
 "language": "GDScript",
-"path": "res://addons/Ren/statements/play_anim.gd"
+"path": "res://addons/Ren-GD/statements/play_anim.gd"
 }, {
-"base": "Object",
+"base": "Statement",
 "class": "PlayAudio",
 "language": "GDScript",
-"path": "res://addons/Ren/statements/play_audio.gd"
+"path": "res://addons/Ren-GD/statements/play_audio.gd"
 }, {
-"base": "Object",
+"base": "Subquest",
 "class": "Quest",
 "language": "GDScript",
-"path": "res://addons/Ren/types/quest.gd"
+"path": "res://addons/Ren-GD/types/quest.gd"
 }, {
 "base": "AnimationPlayer",
 "class": "RenAnimPlayer",
 "language": "GDScript",
-"path": "res://addons/Ren/nodes/ren_anim_player.gd"
+"path": "res://addons/Ren-GD/nodes/ren_anim_player.gd"
 }, {
 "base": "AudioStreamPlayer",
 "class": "RenAudioPlayer",
 "language": "GDScript",
-"path": "res://addons/Ren/nodes/ren_audio_player.gd"
+"path": "res://addons/Ren-GD/nodes/ren_audio_player.gd"
 }, {
 "base": "Button",
 "class": "RenBaseButton",
 "language": "GDScript",
-"path": "res://addons/Ren/nodes/ren_base_button.gd"
+"path": "res://addons/Ren-GD/nodes/ren_base_button.gd"
 }, {
-"base": "Button",
+"base": "RenBaseButton",
 "class": "RenButton",
 "language": "GDScript",
-"path": "res://addons/Ren/nodes/ren_button.gd"
+"path": "res://addons/Ren-GD/nodes/ren_button.gd"
 }, {
-"base": "Button",
+"base": "RenBaseButton",
 "class": "RenChoiceButton",
 "language": "GDScript",
-"path": "res://addons/Ren/nodes/ren_choice_button.gd"
+"path": "res://addons/Ren-GD/nodes/ren_choice_button.gd"
 }, {
 "base": "Control",
 "class": "RenControl",
 "language": "GDScript",
-"path": "res://addons/Ren/nodes/ren_control.gd"
+"path": "res://addons/Ren-GD/nodes/ren_control.gd"
 }, {
 "base": "Object",
 "class": "RenDef",
 "language": "GDScript",
-"path": "res://addons/Ren/types/def.gd"
+"path": "res://addons/Ren-GD/types/def.gd"
 }, {
 "base": "LineEdit",
 "class": "RenLineEdit",
 "language": "GDScript",
-"path": "res://addons/Ren/nodes/ren_line_edit.gd"
+"path": "res://addons/Ren-GD/nodes/ren_line_edit.gd"
 }, {
 "base": "Node2D",
 "class": "RenNode2D",
 "language": "GDScript",
-"path": "res://addons/Ren/nodes/ren_node2d.gd"
+"path": "res://addons/Ren-GD/nodes/ren_node2d.gd"
 }, {
 "base": "Object",
 "class": "RenNodeCore",
 "language": "GDScript",
-"path": "res://addons/Ren/nodes/ren_node_core.gd"
+"path": "res://addons/Ren-GD/nodes/ren_node_core.gd"
 }, {
-"base": "Button",
+"base": "RenBaseButton",
 "class": "RenQuestButton",
 "language": "GDScript",
-"path": "res://addons/Ren/nodes/ren_quest_button.gd"
+"path": "res://addons/Ren-GD/nodes/ren_quest_button.gd"
 }, {
-"base": "Object",
+"base": "RenVar",
 "class": "RenRange",
 "language": "GDScript",
-"path": "res://addons/Ren/types/range.gd"
+"path": "res://addons/Ren-GD/types/range.gd"
 }, {
 "base": "Panel",
 "class": "RenSayPanel",
 "language": "GDScript",
-"path": "res://addons/Ren/nodes/ren_say_panel.gd"
+"path": "res://addons/Ren-GD/nodes/ren_say_panel.gd"
 }, {
 "base": "RichTextLabel",
 "class": "RenTextLabel",
 "language": "GDScript",
-"path": "res://addons/Ren/nodes/ren_label.gd"
+"path": "res://addons/Ren-GD/nodes/ren_label.gd"
 }, {
 "base": "Object",
 "class": "RenTextPasser",
 "language": "GDScript",
-"path": "res://addons/Ren/statics/text.gd"
+"path": "res://addons/Ren-GD/statics/text.gd"
 }, {
 "base": "Timer",
 "class": "RenTimer",
 "language": "GDScript",
-"path": "res://addons/Ren/nodes/ren_timer.gd"
+"path": "res://addons/Ren-GD/nodes/ren_timer.gd"
 }, {
 "base": "Object",
 "class": "RenVar",
 "language": "GDScript",
-"path": "res://addons/Ren/types/ren_var.gd"
+"path": "res://addons/Ren-GD/types/ren_var.gd"
 }, {
 "base": "Button",
 "class": "RenVarCheckButton",
 "language": "GDScript",
-"path": "res://addons/Ren/nodes/ren_var_check.gd"
+"path": "res://addons/Ren-GD/nodes/ren_var_check.gd"
 }, {
 "base": "LineEdit",
 "class": "RenVarEdit",
 "language": "GDScript",
-"path": "res://addons/Ren/nodes/ren_var_edit.gd"
+"path": "res://addons/Ren-GD/nodes/ren_var_edit.gd"
 }, {
 "base": "Label",
 "class": "RenVarLabel",
 "language": "GDScript",
-"path": "res://addons/Ren/nodes/ren_var_label.gd"
+"path": "res://addons/Ren-GD/nodes/ren_var_label.gd"
 }, {
 "base": "VisualInstance",
 "class": "RenVisualInstance",
 "language": "GDScript",
-"path": "res://addons/Ren/nodes/ren_visual_instance.gd"
+"path": "res://addons/Ren-GD/nodes/ren_visual_instance.gd"
 }, {
-"base": "Object",
+"base": "Statement",
 "class": "Say",
 "language": "GDScript",
-"path": "res://addons/Ren/statements/say.gd"
+"path": "res://addons/Ren-GD/statements/say.gd"
 }, {
-"base": "Object",
+"base": "Statement",
 "class": "Show",
 "language": "GDScript",
-"path": "res://addons/Ren/statements/show.gd"
+"path": "res://addons/Ren-GD/statements/show.gd"
 }, {
 "base": "Timer",
 "class": "SkipTimer",
 "language": "GDScript",
-"path": "res://addons/Ren/statics/SkipTimer.gd"
+"path": "res://addons/Ren-GD/statics/SkipTimer.gd"
 }, {
 "base": "Object",
 "class": "Statement",
 "language": "GDScript",
-"path": "res://addons/Ren/statements/statement.gd"
+"path": "res://addons/Ren-GD/statements/statement.gd"
 }, {
-"base": "Object",
+"base": "Statement",
 "class": "StopAnim",
 "language": "GDScript",
-"path": "res://addons/Ren/statements/stop_anim.gd"
+"path": "res://addons/Ren-GD/statements/stop_anim.gd"
 }, {
-"base": "Object",
+"base": "Statement",
 "class": "StopAudio",
 "language": "GDScript",
-"path": "res://addons/Ren/statements/stop_audio.gd"
+"path": "res://addons/Ren-GD/statements/stop_audio.gd"
 }, {
 "base": "Object",
 "class": "Subquest",
 "language": "GDScript",
-"path": "res://addons/Ren/types/subquest.gd"
+"path": "res://addons/Ren-GD/types/subquest.gd"
 } ]
 _global_script_class_icons={
 "Ask": "",
 "AutoTimer": "",
 "CallNode": "",
-"Character": "res://addons/Ren/icons/ren_character.svg",
+"Character": "",
 "CharacterObject": "",
 "CollapsedList": "",
 "Hide": "",
@@ -246,7 +246,7 @@ _global_script_class_icons={
 "RenNodeCore": "",
 "RenQuestButton": "",
 "RenRange": "",
-"RenSayPanel": "res://addons/Ren/icons/ren_panel.svg",
+"RenSayPanel": "",
 "RenTextLabel": "",
 "RenTextPasser": "",
 "RenTimer": "",
@@ -254,7 +254,7 @@ _global_script_class_icons={
 "RenVarCheckButton": "",
 "RenVarEdit": "",
 "RenVarLabel": "",
-"RenVisualInstance": "res://addons/Ren/icons/ren_spatial.svg",
+"RenVisualInstance": "",
 "Say": "",
 "Show": "",
 "SkipTimer": "",
@@ -266,14 +266,14 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Ren"
+config/name="Ren'GD"
 run/main_scene="res://examples/Test/Test.tscn"
 boot_splash/image="res://graphics/splash.png"
 config/icon="res://graphics/window_icon.png"
 
 [autoload]
 
-Ren="*res://addons/Ren/Ren.tscn"
+Ren="*res://addons/Ren-GD/Ren.tscn"
 settings="*res://gui/settings.gd"
 VNCharacters="*res://examples/VisualNovelExample/Characters.tscn"
 Window="*res://gui/Window/Window.tscn"
@@ -288,7 +288,7 @@ gdscript/warnings/return_value_discarded=false
 
 [editor_plugins]
 
-enabled=PoolStringArray( "PersistenceNode", "Ren" )
+enabled=PoolStringArray( "PersistenceNode" )
 
 [input]
 

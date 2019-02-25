@@ -1,5 +1,5 @@
 extends Panel
-class_name RenSayPanel, "res://addons/Ren/icons/ren_panel.svg"
+class_name RenSayPanel, "res://addons/Ren-GD/icons/ren_panel.svg"
 
 export var name_label_path :  = NodePath("")
 export var dialog_label_path : = NodePath("")

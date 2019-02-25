@@ -121,7 +121,7 @@ func example(dialog_name):
 				"who": 
 					"rench",
 				"what":
-					"Welcome [player_name] in Ren Framework Version [version]",
+					"Welcome [player_name] in Ren'GD Framework Version [version]",
 				"typing":
 					false
 				})

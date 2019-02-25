@@ -1,5 +1,5 @@
 extends Node
-class_name Character, "res://addons/Ren/icons/ren_character.svg"
+class_name Character, "res://addons/Ren-GD/icons/ren_character.svg"
 
 var _character : CharacterObject
 var _name : = ""
