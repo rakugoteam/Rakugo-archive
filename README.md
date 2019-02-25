@@ -19,7 +19,7 @@ Now we are working on [Ren'GD 2.0 for Godot 3.1](https://github.com/jebedaia360/
 
 ## Showcase
 
-Games using Ren v 0.9.x :
+Games using Ren'GD v 0.9.x :
 - [**Space drive beats**](https://plopsis.itch.io/space-drive-beats)
 - [**Bot Saves Dream**](https://plopsis.itch.io/curator-bot)
 
