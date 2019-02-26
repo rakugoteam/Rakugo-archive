@@ -65,7 +65,6 @@ var using_passer : = false
 var skip_auto : = false
 var active : = false
 var can_alphanumeric:= true
-var scenes_to_save = []
 var skip_types : = [
 	StatementType.SAY,
 	StatementType.SHOW,
@@ -455,17 +454,17 @@ func savefile(save_name : = "quick") -> bool:
 
 		debug([k, v])
 
-		if v.type == Type.CHARACTER:
-			vars_to_save[k] = {"type":v.type, "value":v.character2dict()}
-		elif v.type == Type.SUBQUEST:
-			vars_to_save[k] = {"type":v.type, "value":v.subquest2dict()}
-		elif v.type == Type.QUEST:
-			vars_to_save[k] = {"type":v.type, "value":v.quest2dict()}
-		else:
-			vars_to_save[k] = {"type":v.type, "value":v.value}
+		match v.type:
+			Type.CHARACTER:
+				vars_to_save[k] = {"type":v.type, "value":v.character2dict()}
+			Type.SUBQUEST:
+				vars_to_save[k] = {"type":v.type, "value":v.subquest2dict()}
+			Type.QUEST:
+				vars_to_save[k] = {"type":v.type, "value":v.quest2dict()}
+			_:
+				vars_to_save[k] = {"type":v.type, "value":v.value}
 
 	data["variables"] = vars_to_save
-
 	data["id"] = history_id
 	data["scene"] = _scene
 	data["dialog_name"] = current_dialog_name
@@ -496,17 +495,18 @@ func loadfile(save_name : = "quick") -> bool:
 
 		debug([k, v])
 
-		if v.type == Type.CHARACTER:
-			character(k, v.value)
-		elif v.type == Type.SUBQUEST:
-			subquest(k, v.value)
-		elif v.type == Type.QUEST:
-			quest(k, v.value)
-			if k in quests:
-				continue
-			quests.append(k)
-		else:
-			define(k, v.value)
+		match v.type:
+			Type.CHARACTER:
+				character(k, v.value)
+			Type.SUBQUEST:
+				subquest(k, v.value)
+			Type.QUEST:
+				quest(k, v.value)
+				if k in quests:
+					continue
+				quests.append(k)
+			_:
+				define(k, v.value)
 			
 	for q_id in quests:
 		var q = get_quest(q_id)
