@@ -65,6 +65,7 @@ var using_passer : = false
 var skip_auto : = false
 var active : = false
 var can_alphanumeric:= true
+var scenes_to_save = []
 var skip_types : = [
 	StatementType.SAY,
 	StatementType.SHOW,
@@ -127,6 +128,7 @@ signal play_anim(node_id, anim_name)
 signal stop_anim(node_id, reset)
 signal play_audio(node_id, from_pos)
 signal stop_audio(node_id)
+signal loaded
 
 func _ready() -> void:
 	## set by game devloper
@@ -516,11 +518,11 @@ func loadfile(save_name : = "quick") -> bool:
 		data["scene"],
 		data["dialog_name"],
 		data["state"],
-		true, true,
-		data["local_id"]
+		true, true
 		)
 
 	history_id = data["id"]
+	emit_signal("loaded")
 	return true
 
 func debug_dict(parameters : Dictionary, parameters_names : = [], some_custom_text : = "") -> String:
@@ -562,14 +564,13 @@ func _get_history_id() -> int:
 ## use this to change/assain current scene and dialog
 ## root of path_to_scene is scenes_dir
 ## provide path_to_scene with out ".tscn"
-## "lid" is use to setup "local_id"
 func jump(
 	path_to_scene : String,
 	dialog_name : String,
 	state : = 0,
 	change : = true,
-	from_save : = false,
-	lid : = 0) -> void:
+	from_save : = false
+	) -> void:
 
 	if not from_save and loading_in_progress:
 		return
