@@ -51,7 +51,6 @@ enum StatementType {
 
 # this must be saved
 var current_id : = 0 setget _set_current_id, _get_current_id
-var local_id : = 0
 var current_dialog_name : = ""
 var _scene : = ""
 var history : = [] # [{"state":story_state, "statement":{"type":type, "parameters": parameters}}]
@@ -431,7 +430,6 @@ func start() -> void:
 	load_global_history()
 	using_passer = false
 	current_id = 0
-	local_id = 0
 	story_step()
 	started = true
 	emit_signal("started")
@@ -467,7 +465,6 @@ func savefile(save_name : = "quick") -> bool:
 	data["variables"] = vars_to_save
 
 	data["id"] = current_id
-	data["local_id"] = local_id
 	data["scene"] = _scene
 	data["dialog_name"] = current_dialog_name
 	data["state"] = story_state - 1 # it must be this way
@@ -558,7 +555,6 @@ func debug(some_text = []) -> void:
 
 func _set_current_id(value : int) -> void:
 	current_id = value
-	local_id = value
 
 func _get_current_id() -> int:
 	return current_id
@@ -578,7 +574,6 @@ func jump(
 	if not from_save and loading_in_progress:
 		return
 
-	local_id = lid
 	current_dialog_name = dialog_name
 	
 	_set_story_state(state) # it must be this way
