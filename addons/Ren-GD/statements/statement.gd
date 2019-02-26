@@ -55,24 +55,24 @@ func get_as_history_item() -> Dictionary:
 
 
 func add_to_history() -> void:
-	if Ren.current_id < 0 or Ren.current_id > Ren.history.size() + 1:
-		Ren.debug(["some thing gone wrong Ren.current_id =", Ren.current_id])
+	if Ren.history_id < 0 or Ren.history_id > Ren.history.size() + 1:
+		Ren.debug(["some thing gone wrong Ren.history_id =", Ren.history_id])
 		Ren.debug(["history size:", Ren.history.size()])
 		return
 	
 	var history_item = get_as_history_item()
 
-	if Ren.current_id == Ren.history.size():
+	if Ren.history_id == Ren.history.size():
 		Ren.history.append(history_item)
 
 	else:
-		Ren.history[Ren.current_id] = history_item
+		Ren.history[Ren.history_id] = history_item
 	
 	if !(history_item in Ren.global_history):
 		Ren.global_history.append(history_item)
 		Ren.save_global_history()
 	
-	Ren.current_id += 1
+	Ren.history_id += 1
 
 func debug(parameters_names : Array = [], some_custom_text : String = "") -> void:
 	var dbg = (Ren.StatementType.keys()[type].to_lower() + "("

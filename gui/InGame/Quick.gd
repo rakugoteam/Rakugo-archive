@@ -46,7 +46,7 @@ func _on_qload() -> void:
 func _on_statement(type : int, parameters : Dictionary) -> void:
 	$Skip.disabled = !Ren.can_skip()
 	$Auto.disabled = !Ren.can_auto()
-	$History.disabled = Ren.current_id == 0
+	$History.disabled = Ren.history_id == 0
 	$QLoad.disabled = !Ren.can_qload()
 
 func on_auto() -> void:
