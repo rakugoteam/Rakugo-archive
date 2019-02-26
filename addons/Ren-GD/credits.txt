@@ -1,7 +1,7 @@
-Made with {a=https://github.com/jebedaia360/Ren}Ren{/a} [ren_version] on {a=https://godotengine.org/}Godot Engine{/a} [godot_version] on {a=https://github.com/jebedaia360/Ren/blob/master/LICENSE} MIT License{/a}.
-Ren can be support by {a=https://www.patreon.com/jebedaia360}Patreon{/a}.
+Made with {a=https://github.com/jebedaia360/Ren}Ren'GD{/a} [ren_version] on {a=https://godotengine.org/}Godot Engine{/a} [godot_version] on {a=https://github.com/jebedaia360/Ren/blob/master/LICENSE} MIT License{/a}.
+Ren'GD can be support by {a=https://www.patreon.com/jebedaia360}Patreon{/a}.
 
-Ren is made by:
+Ren'GD is made by:
 	{a=https://github.com/jebedaia360}Jeremi Biernacki ({i}Jebedaia{/i}){/a},
 	{a=https://github.com/ivandardi}Ivan Borgia Dardi({i}ivandardi/MelodicStream{/i}){/a},
 	{a=https://github.com/MatiasVME}Matías Muñoz Espinoza ({i}MatiasVME{/i}){/a},
