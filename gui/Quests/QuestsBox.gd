@@ -10,9 +10,9 @@ onready var QuestButton : = load(QuestButtonTemplate.resource_path)
 onready var quests_box : BoxContainer = get_node(quests_box_path)
 onready var subquests_box : BoxContainer = get_node(subquests_box_path)
 onready var quest_label : Label = get_node(quest_label_path)
-onready var quest_des_label : RenTextLabel = get_node(quest_des_label_path)
+onready var quest_des_label : RakugoTextLabel = get_node(quest_des_label_path)
 
-var current_quest_button : Button
+var currakugot_quest_button : Button
 var temp_quests : = []
 
 func _ready() -> void:
@@ -35,15 +35,15 @@ func _on_visibility_changed() -> void:
 	if not visible:
 		return
 	
-	if temp_quests == Ren.quests:
+	if temp_quests == Rakugo.quests:
 		return
 	
 	var i = 0
-	for quest_id in Ren.quests:
+	for quest_id in Rakugo.quests:
 		if quest_id in temp_quests:
 			continue
 		
-		var quest : Quest = Ren.get_quest(quest_id)
+		var quest : Quest = Rakugo.get_quest(quest_id)
 		var q_button : Button = add_quest_button(quest, quests_box)
 		if i == quests_box.get_child_count():
 			if q_button == null:

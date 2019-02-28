@@ -7,16 +7,16 @@ func _process(delta: float) -> void:
 	_on_window_type_changed(settings.get_window_type_id())
 
 func _on_window_type_changed(id : int) -> void:
-	current_choice_id = id
+	currakugot_choice_id = id
 	update_label(options_list[id], false)
 
-func update_label(choice : String = options_list[current_choice_id], apply : bool = true) -> void:
+func update_label(choice : String = options_list[currakugot_choice_id], apply : bool = true) -> void:
 	.update_label(choice)
 	
 	if not apply:
 		return
 	
-	settings.temp_window_type_id = current_choice_id
+	settings.temp_window_type_id = currakugot_choice_id
 	
 	if settings.temp_window_type_id == 1: # if fullscreen 
 		settings.temp_window_size = OS.get_screen_size()

@@ -1,13 +1,13 @@
 [gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://addons/Ren-GD/nodes/ren_say_panel.gd" type="Script" id=1]
+[ext_resource path="res://addons/Rakugo-GD/nodes/rakugo_say_panel.gd" type="Script" id=1]
 [ext_resource path="res://gui/Labels/name_text.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ubuntu-font-family/UbuntuMono-R.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://ubuntu-font-family/Ubuntu-B.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://ubuntu-font-family/Ubuntu-RI.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://ubuntu-font-family/Ubuntu-R.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://gui/Labels/dialogue_text.tscn" type="PackedScene" id=7]
-[ext_resource path="res://addons/Ren-GD/nodes/ren_line_edit.gd" type="Script" id=8]
+[ext_resource path="res://addons/Rakugo-GD/nodes/rakugo_line_edit.gd" type="Script" id=8]
 
 
 [sub_resource type="DynamicFont" id=1]
@@ -661,7 +661,7 @@ tracks/8/keys = {
 "values": [ Vector2( 100, 111 ) ]
 }
 
-[node name="RenSayPanel" type="Panel"]
+[node name="RakugoSayPanel" type="Panel"]
 margin_left = 1.0
 margin_top = 426.0
 margin_right = 1025.0
@@ -675,7 +675,7 @@ name_label_path = NodePath("VBox/Label")
 dialog_label_path = NodePath("VBox/Dialogue")
 avatar_viewport_path = NodePath("ViewportContainer/CharaterAvatar")
 
-[node name="VBox" type="VBoxContainer" parent="."]
+[node name="VBox" type="VBoxContainer" parakugot="."]
 margin_left = 101.0
 margin_right = 1006.0
 margin_bottom = 100.0
@@ -683,7 +683,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 10
 
-[node name="Label" parent="VBox" instance=ExtResource( 2 )]
+[node name="Label" parakugot="VBox" instance=ExtResource( 2 )]
 margin_right = 905.0
 rect_clip_content = false
 focus_mode = 0
@@ -696,14 +696,14 @@ custom_fonts/normal_font = SubResource( 5 )
 scroll_active = false
 selection_enabled = false
 
-[node name="Dialogue" parent="VBox" instance=ExtResource( 7 )]
+[node name="Dialogue" parakugot="VBox" instance=ExtResource( 7 )]
 margin_top = 50.0
 margin_right = 905.0
 margin_bottom = 90.0
 focus_mode = 0
 selection_enabled = false
 
-[node name="RenLineEdit" type="LineEdit" parent="VBox"]
+[node name="RakugoLineEdit" type="LineEdit" parakugot="VBox"]
 visible = false
 margin_top = 76.0
 margin_right = 905.0
@@ -711,20 +711,20 @@ margin_bottom = 100.0
 caret_blink = true
 script = ExtResource( 8 )
 
-[node name="ViewportContainer" type="ViewportContainer" parent="."]
+[node name="ViewportContainer" type="ViewportContainer" parakugot="."]
 margin_right = 100.0
 margin_bottom = 111.0
 
-[node name="CharaterAvatar" type="Viewport" parent="ViewportContainer"]
+[node name="CharaterAvatar" type="Viewport" parakugot="ViewportContainer"]
 size = Vector2( 100, 100 )
 own_world = true
-transparent_bg = true
+transparakugot_bg = true
 handle_input_locally = false
 hdr = false
 usage = 0
-render_target_update_mode = 3
+rakugoder_target_update_mode = 3
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parakugot="."]
 anims/adv = SubResource( 6 )
 anims/center = SubResource( 7 )
 anims/left = SubResource( 8 )

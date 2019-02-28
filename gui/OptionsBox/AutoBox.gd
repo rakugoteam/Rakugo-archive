@@ -6,10 +6,10 @@ func _ready() -> void:
 
 func on_change_value(value : float) -> void:
 	var new_value = abs(1 - value/100)*10
-	Ren.set_var("auto_time", new_value)
+	Rakugo.set_var("auto_time", new_value)
 
 func on_visibility_changed() -> void:
 	if visible == false:
 		return
 	
-	$Slider.value = Ren.get_value("auto_time")*100
+	$Slider.value = Rakugo.get_value("auto_time")*100

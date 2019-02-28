@@ -16,13 +16,13 @@ margin_right = 400.0
 margin_bottom = 124.0
 script = ExtResource( 1 )
 
-[node name="VBox" type="HBoxContainer" parent="."]
+[node name="VBox" type="HBoxContainer" parakugot="."]
 margin_right = 400.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="VBox"]
+[node name="Label" type="Label" parakugot="VBox"]
 margin_right = 265.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
@@ -32,14 +32,14 @@ text = "Volume"
 align = 1
 valign = 1
 
-[node name="CheckButton" type="CheckButton" parent="VBox"]
+[node name="CheckButton" type="CheckButton" parakugot="VBox"]
 margin_left = 269.0
 margin_right = 400.0
 margin_bottom = 52.0
 pressed = true
 icon = ExtResource( 3 )
 
-[node name="Bar" type="HSlider" parent="."]
+[node name="Bar" type="HSlider" parakugot="."]
 margin_top = 56.0
 margin_right = 400.0
 margin_bottom = 90.0

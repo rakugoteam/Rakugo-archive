@@ -22,9 +22,9 @@ func close_popup(anwser):
 	emit_signal("popup_is_closed")
 	
 func savebox(saveslotsdir : = saveslots_dir + "/") -> void:
-	for x in $GridContainer.get_children():
+	for x in $GridContainer.get_childrakugo():
 		if filehandler.file_exists(saveslotsdir + x.name + '.png'):
-			Ren.debug("slot exist, loading image")
+			Rakugo.debug("slot exist, loading image")
 			var img = Image.new()
 			img.load(saveslotsdir + x.name + '.png')
 			img.flip_y()
@@ -43,9 +43,9 @@ func savebox(saveslotsdir : = saveslots_dir + "/") -> void:
 	filehandler.close()
 
 func loadbox(saveslotsdir : = saveslots_dir + "/") -> bool:
-	for x in $GridContainer.get_children():
+	for x in $GridContainer.get_childrakugo():
 		if filehandler.file_exists(saveslotsdir + x.name + '.png'):
-			# Ren.debug("slot exist, loading image")
+			# Rakugo.debug("slot exist, loading image")
 			var img=Image.new()
 			img.load(saveslotsdir + x.name + '.png')
 			img.flip_y()
@@ -72,7 +72,7 @@ func savepress(caller : String) -> bool:
 	if !dirhandler.dir_exists(saveslots_dir):
 		dirhandler.make_dir(saveslots_dir)
 		
-	if Ren.is_save_exits(caller):
+	if Rakugo.is_save_exits(caller):
 		$GridContainer.hide()
 		$PopupPanel.popup_centered()
 		yield(self, "popup_is_closed")
@@ -80,17 +80,17 @@ func savepress(caller : String) -> bool:
 	if not overwrite:
 		return false
 
-	Ren.debug(caller)
+	Rakugo.debug(caller)
 	if screenshot == null:
 		return false
 
 	screenshot.save_png(saveslots_dir + "/" + caller + '.png')
 	filehandler.open(saveslots_dir + "/" + caller + '.info', File.WRITE)
-	var s = Ren.get_datetime_str()
-	Ren.debug(s)
+	var s = Rakugo.get_datetime_str()
+	Rakugo.debug(s)
 	filehandler.store_line(s)
-	Ren.debug(["caller:", caller])
-	Ren.savefile(caller)
+	Rakugo.debug(["caller:", caller])
+	Rakugo.savefile(caller)
 
 	filehandler.close()
 	
@@ -101,7 +101,7 @@ func loadpress(caller : String) -> void:
 	if !dirhandler.dir_exists(saveslots_dir):
 		dirhandler.make_dir(saveslots_dir)
 
-	if Ren.loadfile(caller):
-		get_parent().in_game()
-		get_parent().hide()
+	if Rakugo.loadfile(caller):
+		get_parakugot().in_game()
+		get_parakugot().hide()
 	

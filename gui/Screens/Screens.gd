@@ -8,7 +8,7 @@ export var use_back_button : = false
 export onready var back_button : Button = $BackButton
 export onready var unpause_timer : Timer = $UnpauseTimer
 
-var current_node : Node = self
+var currakugot_node : Node = self
 onready var in_game_gui : = get_node(in_game_gui_path)
 onready var new_game_button : Button = get_node(str(nav_path) + "/" + "NewGame")
 onready var continue_button : Button = get_node(str(nav_path) + "/" + "Continue")
@@ -49,9 +49,9 @@ func _ready():
 	## this is just for testing things
 	test_button.connect("pressed", self, "_on_TestNodes_pressed")
 	
-	var auto_save_path = str("user://" + Ren.save_folder + "/auto.save")
+	var auto_save_path = str("user://" + Rakugo.save_folder + "/auto.save")
 	
-	if not Ren.file.file_exists(auto_save_path):
+	if not Rakugo.file.file_exists(auto_save_path):
 		continue_button.hide()
 
 func _notification(what):
@@ -60,10 +60,10 @@ func _notification(what):
 
 func show_page(node):
 	if not use_back_button:
-		if current_node != self:
-			current_node.hide()
+		if currakugot_node != self:
+			currakugot_node.hide()
 		
-	current_node = node
+	currakugot_node = node
 	node.show()
 	
 	if use_back_button:
@@ -71,7 +71,7 @@ func show_page(node):
 		back_button.show()
 		
 func _on_back_button():
-	current_node.hide()
+	currakugot_node.hide()
 	nav_panel.show()
 	back_button.hide()
 
@@ -105,10 +105,10 @@ func _on_visibility_changed():
 
 ## # if press "Return" or "no" on quit page
 func _on_Return_pressed():
-	if Ren.started:
+	if Rakugo.started:
 		hide()
 	else:
-		current_node.hide()
+		currakugot_node.hide()
 
 func _on_Load_pressed():
 	load_menu()
@@ -126,13 +126,13 @@ func in_game():
 func _on_NewGame_pressed():
 	hide()
 	in_game()
-	Ren.start()
+	Rakugo.start()
 
 func _on_History_pressed():
 	history_menu()
 
 func _on_Continue_pressed():
-	if !Ren.loadfile("auto"):
+	if !Rakugo.loadfile("auto"):
 		return
 
 	in_game()
@@ -145,7 +145,7 @@ func _on_Quests_pressed():
 
 # if press "yes" on quit page
 func _on_Yes_pressed():
-	Ren.savefile("auto")
+	Rakugo.savefile("auto")
 	settings.save_conf()
 	get_tree().quit()
 
@@ -175,10 +175,10 @@ func _on_About_pressed():
 	show()
 
 func _on_Help_pressed():
-	OS.shell_open("https://github.com/jebedaia360/Ren")
+	OS.shell_open("https://github.com/jebedaia360/Rakugo")
 
 func _fullscreen_on_input(event):
-	if event.is_action_pressed("ren_fullscreen"):
+	if event.is_action_pressed("rakugo_fullscreen"):
 		if settings.window_fullscreen:
 			settings.window_fullscreen = false
 			settings.window_size = settings.default_window_size
@@ -188,13 +188,13 @@ func _fullscreen_on_input(event):
 			settings.window_size = OS.get_screen_size()
 			
 func _screenshot_on_input(event):
-	if event.is_action_pressed("ren_screenshot"):
+	if event.is_action_pressed("rakugo_screenshot"):
 		var dir = Directory.new()
 		var screenshots_dir = "user://screenshots"
 		if !dir.dir_exists(screenshots_dir):
 			dir.make_dir(screenshots_dir)
 		
-		var s = Ren.get_datetime_str().replace(":", " ")
+		var s = Rakugo.get_datetime_str().replace(":", " ")
 		get_screenshot().save_png(screenshots_dir + "/" + s + '.png')
 
 func _input(event):
@@ -208,6 +208,6 @@ func _input(event):
 		
 		return
 	
-	if Ren.can_alphanumeric:
+	if Rakugo.can_alphanumeric:
 		_fullscreen_on_input(event)
 		_screenshot_on_input(event)
