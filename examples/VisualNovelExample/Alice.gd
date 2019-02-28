@@ -1,4 +1,4 @@
-extends RakugoNode2D
+extends RenNode2D
 
 var scale_x = 1
 

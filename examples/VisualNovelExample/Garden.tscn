@@ -10,7 +10,7 @@ z_index = -2
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="garden" type="Sprite" parakugot="." index="0"]
+[node name="garden" type="Sprite" parent="." index="0"]
 
 position = Vector2( 515, 300 )
 scale = Vector2( 0.804688, 0.75 )

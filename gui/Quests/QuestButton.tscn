@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://themes/new_gui/theme.tres" type="Theme" id=1]
-[ext_resource path="res://addons/Rakugo/nodes/rakugo_quest_button.gd" type="Script" id=2]
+[ext_resource path="res://addons/Ren-GD/nodes/ren_quest_button.gd" type="Script" id=2]
 [ext_resource path="res://gui/Quests/quests-icons/available.png" type="Texture" id=3]
 [ext_resource path="res://gui/Quests/quests-icons/done.png" type="Texture" id=4]
 [ext_resource path="res://gui/Quests/quests-icons/fail.png" type="Texture" id=5]
@@ -56,7 +56,7 @@ pressed_node_color = Color( 0, 0.6, 0.8, 1 )
 disable_node_color = Color( 0.533333, 0.533333, 0.498039, 0.533333 )
 sprite_rect = Vector2( 64, 32 )
 
-[node name="RichTextLabel" type="RichTextLabel" parakugot="." index="0"]
+[node name="RichTextLabel" type="RichTextLabel" parent="." index="0"]
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -82,7 +82,7 @@ selection_enabled = false
 override_selected_font_color = false
 _sections_unfolded = [ "BBCode" ]
 
-[node name="AnimatedSprite" type="AnimatedSprite" parakugot="." index="1"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="1"]
 position = Vector2( 327.601, 18.4805 )
 scale = Vector2( 0.586735, 0.563875 )
 frames = SubResource( 1 )

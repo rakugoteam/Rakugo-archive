@@ -96,8 +96,8 @@ func _process(delta : float) -> void:
 	_prev_window_maximized = OS.window_maximized
 	_prev_window_fullscreen = OS.window_fullscreen
 
-func conf_set_rakugo_value(config : ConfigFile, value_name, def_rakugo_value):
-	config.set_value("rakugo", value_name, Rakugo.get_value(def_rakugo_value))
+func conf_set_ren_value(config : ConfigFile, value_name, def_ren_value):
+	config.set_value("ren", value_name, Ren.get_value(def_ren_value))
 
 func save_conf() -> void:
 	var config = ConfigFile.new()
@@ -120,14 +120,14 @@ func save_conf() -> void:
 		config.set_value("audio", bus_name + "_mute", mute)
 		config.set_value("audio", bus_name + "_volume", volume)
 	
-	conf_set_rakugo_value(config, "Typing_Text", "typing_text")
-	conf_set_rakugo_value(config, "Text_Time", "text_time")
-	conf_set_rakugo_value(config, "Auto_Forward_Time", "auto_time")
-	conf_set_rakugo_value(config, "Notify_Time", "notify_time")
+	conf_set_ren_value(config, "Typing_Text", "typing_text")
+	conf_set_ren_value(config, "Text_Time", "text_time")
+	conf_set_ren_value(config, "Auto_Forward_Time", "auto_time")
+	conf_set_ren_value(config, "Notify_Time", "notify_time")
 	
 	## do nothing for now
-	conf_set_rakugo_value(config, "Skip_All_Text", "skip_all_text")
-	conf_set_rakugo_value(config, "Skip_After_Choices", "skip_after_choices")
+	conf_set_ren_value(config, "Skip_All_Text", "skip_all_text")
+	conf_set_ren_value(config, "Skip_After_Choices", "skip_after_choices")
 	
 	# Save the changes by overwriting the previous file
 	config.save("user://settings.cfg")
@@ -161,23 +161,23 @@ func load_conf() -> void:
 		AudioServer.set_bus_mute(bus_id, mute)
 		AudioServer.set_bus_volume_db(bus_id, volume)
 
-	var typing_text = config.get_value("rakugo", "Typing_Text", Rakugo._typing_text)
-	var text_time = config.get_value("rakugo", "Text_Time", Rakugo._text_time)
-	var auto_time = config.get_value("rakugo", "Auto_Forward_Time", Rakugo._auto_time)
-	var notify_time = config.get_value("rakugo", "Notify_Time", Rakugo._notify_time)
+	var typing_text = config.get_value("ren", "Typing_Text", Ren._typing_text)
+	var text_time = config.get_value("ren", "Text_Time", Ren._text_time)
+	var auto_time = config.get_value("ren", "Auto_Forward_Time", Ren._auto_time)
+	var notify_time = config.get_value("ren", "Notify_Time", Ren._notify_time)
 	
 	## do nothing for now
-	var skip_all_text = config.get_value("rakugo", "Skip_All_Text", Rakugo._skip_all_text)
-	var skip_after_choices = config.get_value("rakugo", "Skip_After_Choices", Rakugo._skip_after_choices)
+	var skip_all_text = config.get_value("ren", "Skip_All_Text", Ren._skip_all_text)
+	var skip_after_choices = config.get_value("ren", "Skip_After_Choices", Ren._skip_after_choices)
 	
-	Rakugo.set_var("typing_text", typing_text)
-	Rakugo.set_var("text_time", text_time)
-	Rakugo.set_var("auto_time", auto_time)
-	Rakugo.set_var("notify_time", notify_time)
+	Ren.set_var("typing_text", typing_text)
+	Ren.set_var("text_time", text_time)
+	Ren.set_var("auto_time", auto_time)
+	Ren.set_var("notify_time", notify_time)
 
 	## do nothing for now
-	Rakugo.set_var("skip_all_text", skip_all_text)
-	Rakugo.set_var("skip_after_choices", skip_after_choices)
+	Ren.set_var("skip_all_text", skip_all_text)
+	Ren.set_var("skip_after_choices", skip_after_choices)
 
 func set_window_options(fullscreen, maximized):
 	_set_window_fullscreen(fullscreen)

@@ -24,34 +24,34 @@ func set_history_item(hi : Node, type : int, parameters : Dictionary):
 	if "what" in parameters:
 		dialog_text.bbcode_text = parameters.what
 
-	if type in [Rakugo.StatementType.ASK, Rakugo.StatementType.MENU]:
-		dialog_text.bbcode_text += Rakugo.text_passer("{nl}{b}Your answer: ")
+	if type in [Ren.StatementType.ASK, Ren.StatementType.MENU]:
+		dialog_text.bbcode_text += Ren.text_passer("{nl}{b}Your answer: ")
 	
-	if type == Rakugo.StatementType.ASK:
-		dialog_text.bbcode_text += Rakugo.text_passer("{i}" + parameters.value + "{/i}{/b}")
+	if type == Ren.StatementType.ASK:
+		dialog_text.bbcode_text += Ren.text_passer("{i}" + parameters.value + "{/i}{/b}")
 
-	if type == Rakugo.StatementType.MENU:
-		var fch = Rakugo.menu_node.choices_labels[parameters.final_choice]
-		dialog_text.bbcode_text += Rakugo.text_passer("{i}" + fch + "{/i}{/b}")
+	if type == Ren.StatementType.MENU:
+		var fch = Ren.menu_node.choices_labels[parameters.final_choice]
+		dialog_text.bbcode_text += Ren.text_passer("{i}" + fch + "{/i}{/b}")
 
 func _on_visibility_changed() -> void:
 	if not visible:
 		return
 	
-	if temp_history == Rakugo.history:
+	if temp_history == Ren.history:
 		return
 		
 	var i = 0
-	for hi_item in Rakugo.history:
+	for hi_item in Ren.history:
 		var type = hi_item.statement.type
 		var parameters = hi_item.statement.parameters
 		if i == get_child_count():
 			add_history_item(type, parameters)
 		
-		elif temp_history[i] != Rakugo.history[i]:
+		elif temp_history[i] != Ren.history[i]:
 			set_history_item(get_child(i), type, parameters)
 		
 		i += 1
 		
-	temp_history = Rakugo.history.duplicate()
+	temp_history = Ren.history.duplicate()
 		

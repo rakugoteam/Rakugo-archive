@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://addons/Rakugo/nodes/character.gd" type="Script" id=1]
+[ext_resource path="res://addons/Ren-GD/nodes/character.gd" type="Script" id=1]
 [ext_resource path="res://examples/VisualNovelExample/AliceAvatar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://examples/VisualNovelExample/Alice.gd" type="Script" id=3]
 [ext_resource path="res://examples/VisualNovelExample/PAliceSprite/PAliceDefault.png" type="Texture" id=4]
@@ -25,19 +25,19 @@ animations = [ {
 [node name="Characters" type="Node2D"]
 z_index = -1
 
-[node name="Alice" type="Node" parakugot="."]
+[node name="Alice" type="Node" parent="."]
 script = ExtResource( 1 )
 character_id = "alice"
 character_name = "Alice"
 color = Color( 0.596531, 0.160034, 0.71875, 1 )
 avatar = ExtResource( 2 )
 
-[node name="AliceRN2D" type="Node2D" parakugot="."]
+[node name="AliceRN2D" type="Node2D" parent="."]
 scale = Vector2( 0.1, 0.1 )
 script = ExtResource( 3 )
 node_id = "alice"
 
-[node name="AnimatedSprite" type="AnimatedSprite" parakugot="AliceRN2D"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="AliceRN2D"]
 position = Vector2( 0, -2400 )
 frames = SubResource( 1 )
 frame = 4
