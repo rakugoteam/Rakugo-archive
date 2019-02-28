@@ -1,5 +1,5 @@
 extends Node
-class_name Character, "res://addons/Rakugo-GD/icons/rakugo_character.svg"
+class_name Character, "res://addons/Rakugo/icons/rakugo_character.svg"
 
 var _character : CharacterObject
 var _name : = ""

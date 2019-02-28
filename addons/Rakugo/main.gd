@@ -11,9 +11,9 @@ export var save_password : = "Rakugo"
 export (String, DIR) var scenes_dir : = "res://examples/"
 
 const rakugo_version : = "2.0.0"
-const credits_path : = "res://addons/Rakugo-GD/credits.txt"
+const credits_path : = "res://addons/Rakugo/credits.txt"
 # we need it because we hide base RakugoMenu form custom nodes
-const RakugoMenu : = preload("res://addons/Rakugo-GD/nodes/rakugo_menu.gd")
+const RakugoMenu : = preload("res://addons/Rakugo/nodes/rakugo_menu.gd")
 
 ## init vars for settings
 var _skip_all_text : = false

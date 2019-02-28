@@ -1,5 +1,5 @@
 extends VisualInstance
-class_name RakugoVisualInstance, "res://addons/Rakugo-GD/icons/rakugo_spatial.svg"
+class_name RakugoVisualInstance, "res://addons/Rakugo/icons/rakugo_spatial.svg"
 
 var rnode : = RakugoNodeCore.new()
 

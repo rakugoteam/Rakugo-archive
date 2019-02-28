@@ -1,14 +1,14 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://addons/Rakugo-GD/nodes/rakugo_var_label.gd" type="Script" id=1]
-[ext_resource path="res://addons/Rakugo-GD/nodes/rakugo_var_edit.gd" type="Script" id=2]
-[ext_resource path="res://addons/Rakugo-GD/nodes/rakugo_var_slider.gd" type="Script" id=3]
-[ext_resource path="res://addons/Rakugo-GD/icons/rakugo_var_v_slider.svg" type="Texture" id=4]
-[ext_resource path="res://addons/Rakugo-GD/nodes/rakugo_var_range.gd" type="Script" id=5]
-[ext_resource path="res://addons/Rakugo-GD/icons/rakugo_progress_bar.svg" type="Texture" id=6]
-[ext_resource path="res://addons/Rakugo-GD/nodes/rakugo_var_check.gd" type="Script" id=7]
-[ext_resource path="res://addons/Rakugo-GD/icons/rakugo_check_box.svg" type="Texture" id=8]
-[ext_resource path="res://addons/Rakugo-GD/nodes/rakugo_label.gd" type="Script" id=9]
+[ext_resource path="res://addons/Rakugo/nodes/rakugo_var_label.gd" type="Script" id=1]
+[ext_resource path="res://addons/Rakugo/nodes/rakugo_var_edit.gd" type="Script" id=2]
+[ext_resource path="res://addons/Rakugo/nodes/rakugo_var_slider.gd" type="Script" id=3]
+[ext_resource path="res://addons/Rakugo/icons/rakugo_var_v_slider.svg" type="Texture" id=4]
+[ext_resource path="res://addons/Rakugo/nodes/rakugo_var_range.gd" type="Script" id=5]
+[ext_resource path="res://addons/Rakugo/icons/rakugo_progress_bar.svg" type="Texture" id=6]
+[ext_resource path="res://addons/Rakugo/nodes/rakugo_var_check.gd" type="Script" id=7]
+[ext_resource path="res://addons/Rakugo/icons/rakugo_check_box.svg" type="Texture" id=8]
+[ext_resource path="res://addons/Rakugo/nodes/rakugo_label.gd" type="Script" id=9]
 
 
 [node name="TestNodes" type="VBoxContainer"]

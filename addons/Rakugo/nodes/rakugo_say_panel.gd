@@ -1,5 +1,5 @@
 extends Panel
-class_name RakugoSayPanel, "res://addons/Rakugo-GD/icons/rakugo_panel.svg"
+class_name RakugoSayPanel, "res://addons/Rakugo/icons/rakugo_panel.svg"
 
 export var name_label_path :  = NodePath("")
 export var dialog_label_path : = NodePath("")

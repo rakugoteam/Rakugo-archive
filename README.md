@@ -2,20 +2,20 @@
 [![Patreon](https://img.shields.io/badge/support-pateron-orange.svg?style=flat-square)](https://www.patreon.com/jebedaia360)
 [![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](LICENSE)
 [![Discord Server](https://img.shields.io/discord/484604562183815169.svg?style=flat-square)](https://discord.gg/K9gvjdg)
-[![GitHub](https://img.shields.io/github/contributors/jebedaia360/Rakugo-GD.svg?style=flat-square)](https://github.com/jebedaia360/Rakugo)
-[![GitHub](https://img.shields.io/github/stars/jebedaia360/Rakugo-GD.svg?style=flat-square)](https://github.com/jebedaia360/Rakugo)
-[![GitHub](https://img.shields.io/github/forks/jebedaia360/Rakugo-GD.svg?style=flat-square)](https://github.com/jebedaia360/Rakugo/network)
+[![GitHub](https://img.shields.io/github/contributors/jebedaia360/Rakugo.svg?style=flat-square)](https://github.com/jebedaia360/Rakugo)
+[![GitHub](https://img.shields.io/github/stars/jebedaia360/Rakugo.svg?style=flat-square)](https://github.com/jebedaia360/Rakugo)
+[![GitHub](https://img.shields.io/github/forks/jebedaia360/Rakugo.svg?style=flat-square)](https://github.com/jebedaia360/Rakugo/network)
 [![GitHub](https://img.shields.io/github/watchers/badges/shields.svg?label=Watch&style=flat-square)](https://github.com/jebedaia360/Rakugo)
-[![GitHub](https://img.shields.io/github/issues/jebedaia360/Rakugo-GD.svg?style=flat-square)](https://github.com/jebedaia360/Rakugo/issues)
-[![GitHub](https://img.shields.io/github/issues-closed/jebedaia360/Rakugo-GD.svg?style=flat-square)](https://github.com/jebedaia360/Rakugo/issues)
+[![GitHub](https://img.shields.io/github/issues/jebedaia360/Rakugo.svg?style=flat-square)](https://github.com/jebedaia360/Rakugo/issues)
+[![GitHub](https://img.shields.io/github/issues-closed/jebedaia360/Rakugo.svg?style=flat-square)](https://github.com/jebedaia360/Rakugo/issues)
 
 Rakugo is framemork (inspired by [Rakugo'Py](https://www.renpy.org)) for story driven games in [Godot](https://godotengine.org).
 
 Now you can support this project by [Patreon](https://www.patreon.com/jebedaia360).
 
-You can download 1.0 for Godot 3.0 [here](https://github.com/jebedaia360/Rakugo-GD/releases).
+You can download 1.0 for Godot 3.0 [here](https://github.com/jebedaia360/Rakugo/releases).
 
-Now we are working on [Rakugo 2.0 for Godot 3.1](https://github.com/jebedaia360/Rakugo-GD/issues/81) :D
+Now we are working on [Rakugo 2.0 for Godot 3.1](https://github.com/jebedaia360/Rakugo/issues/81) :D
 
 ## Showcase
 
@@ -63,7 +63,7 @@ Rakugo use [PersistenceNode](https://github.com/MatiasVME/Persistence) for savin
 
 If you want to help please write to us on our [Discord](https://discord.gg/K9gvjdg).
 
-I need help with this [visual script support](https://github.com/jebedaia360/Rakugo-GD/issues/26).
+I need help with this [visual script support](https://github.com/jebedaia360/Rakugo/issues/26).
 
 Logo is Godot head with hair like anime character.<br/>
 Icons used by project are based on [Godot icons](https://github.com/godotengine/godot-design/tree/master/engine/icons/optimized), [Linux Pop icon theme](https://github.com/pop-os/icon-theme) and icons from [game-icons.net](https://game-icons.net).
