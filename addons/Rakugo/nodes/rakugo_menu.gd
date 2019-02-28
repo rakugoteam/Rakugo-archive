@@ -11,16 +11,16 @@ func _ready():
 
 func _on_statement(type, parameters):
 	if type != Rakugo.StatementType.MENU:
-		get_parakugot().hide()
+		get_parent().hide()
 		return
 
 	if parameters["mkind"] != kind:
-		get_parakugot().hide()
+		get_parent().hide()
 		return
 		
-	get_parakugot().show()
+	get_parent().show()
 
-	for ch in get_childrakugo():
+	for ch in get_children():
 		ch.queue_free()
 
 	var i = 0
@@ -33,7 +33,7 @@ func _on_statement(type, parameters):
 		Rakugo.debug(["create button (", ch, ") with id : ", i])
 		i += 1
 
-	get_parakugot().show()
+	get_parent().show()
 
 func _on_Hide_toggled(button_pressed):
 	visible = !button_pressed
