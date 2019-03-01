@@ -19,15 +19,9 @@
 [ext_resource path="res://addons/Rakugo/statics/SkipTimer.gd" type="Script" id=17]
 [ext_resource path="res://addons/Rakugo/nodes/rakugo_timer.gd" type="Script" id=18]
 
-
-
-
 [node name="Rakugo" type="Node"]
 pause_mode = 2
 script = ExtResource( 1 )
-debug_on = false
-save_password = "rakugo"
-scenes_dir = "res://examples"
 
 [node name="Def" type="Node" parent="."]
 script = ExtResource( 2 )
