@@ -1,6 +1,6 @@
 fontconfig
 addons/*
-!addons/Rakugo*
+!addons/Ren*
 !addons/json_beautifier
 !addons/PersistenceNode
 refences

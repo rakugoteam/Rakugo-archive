@@ -1,0 +1,37 @@
+extends Say
+class_name Menu
+
+var choices_labels : Array = []
+
+func _init() -> void:
+	._init()
+	parameters_names += ["choices"]
+	type = 3 # Ren.StatementType.MENU
+	parameters["mkind"] = "vertical"
+	
+func exec() -> void:
+	debug(parameters_names)
+	
+	choices_labels = []
+	for ch in parameters.choices:
+		var l = Ren.text_passer(ch)
+		choices_labels.append(l)
+	
+	.exec()
+
+
+func on_exit(_type : int, new_parameters : Dictionary = {}) -> void:
+	if !setup_exit(_type, new_parameters):
+		return
+	
+	if "final_choice" in parameters:
+		var dialog_name : String = parameters.choices[parameters.final_choice]
+		Ren.jump(Ren._scene, dialog_name, 0, false)
+	
+	else:
+		print("no final_choice recived")
+	
+	if parameters.add_to_history:
+		add_to_history()
+
+	Ren.story_step()
