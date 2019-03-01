@@ -288,7 +288,7 @@ gdscript/warnings/return_value_discarded=false
 
 [editor_plugins]
 
-enabled=PoolStringArray( "PersistenceNode" )
+enabled=PoolStringArray( "PersistenceNode", "Rakugo" )
 
 [input]
 
