@@ -5,14 +5,14 @@ var save_error_msg : String = "[color=red]Error saving Game[/color]"
 var load_error_msg : String = "[color=red]Error loading Game[/color]"
 
 func _ready() -> void:
-	Ren.connect("exec_statement", self, "_on_statement")
+	Rakugo.connect("exec_statement", self, "_on_statement")
 	$Auto.connect("pressed", self, "on_auto")
 	
 	$Skip.connect("pressed", self, "on_skip")
 	$Skip.disabled = true
 
-	Ren.skip_timer.connect("stop_loop", self, "on_stop_loop")
-	Ren.auto_timer.connect("stop_loop", self, "on_stop_loop")
+	Rakugo.skip_timer.connect("stop_loop", self, "on_stop_loop")
+	Rakugo.auto_timer.connect("stop_loop", self, "on_stop_loop")
 
 	$History.connect("pressed", Screens, "history_menu")
 	$History.disabled = true
@@ -27,7 +27,7 @@ func _ready() -> void:
 	$Options.connect("pressed", Screens, "_on_Options_pressed")
 
 func _on_qsave() -> void:
-	if Ren.savefile():
+	if Rakugo.savefile():
 		$InfoAnim.play("Saved")
 	
 	else:
@@ -35,23 +35,23 @@ func _on_qsave() -> void:
 		$InfoAnim.play("GeneralNotif")
 
 func _on_qload() -> void:
-	if Ren.loadfile():
+	if Rakugo.loadfile():
 		$InfoAnim.play("Loaded")
-		Ren.story_step()
+		Rakugo.story_step()
 	
 	else:
 		$InfoAnim/Panel/Label.bbcode_text = load_error_msg
 		$InfoAnim.play("GeneralNotif")
 
 func _on_statement(type : int, parameters : Dictionary) -> void:
-	$Skip.disabled = !Ren.can_skip()
-	$Auto.disabled = !Ren.can_auto()
-	$History.disabled = Ren.current_id == 0
-	$QLoad.disabled = !Ren.can_qload()
+	$Skip.disabled = !Rakugo.can_skip()
+	$Auto.disabled = !Rakugo.can_auto()
+	$History.disabled = Rakugo.current_id == 0
+	$QLoad.disabled = !Rakugo.can_qload()
 
 func on_auto() -> void:
 	$Skip.pressed = false
-	if not Ren.auto_timer.run():
+	if not Rakugo.auto_timer.run():
 		on_stop_loop()
 		return
 	
@@ -65,7 +65,7 @@ func on_stop_loop() -> void:
 
 func on_skip() -> void:
 	$Auto.pressed = false
-	if not Ren.skip_timer.run():
+	if not Rakugo.skip_timer.run():
 		on_stop_loop()
 		return
 
@@ -81,13 +81,13 @@ func _hide_on_input(event):
 		$Hide.emit_signal("toggled", $Hide.pressed)
 
 func _input(event : InputEvent) -> void:
-	if Ren.can_alphanumeric:
+	if Rakugo.can_alphanumeric:
 		_hide_on_input(event)
 	
-	if event.is_action_pressed("ren_qsave"):
+	if event.is_action_pressed("rakugo_qsave"):
 		_on_qsave()
 		return
 	
-	if event.is_action_pressed("ren_qload"):
+	if event.is_action_pressed("rakugo_qload"):
 		_on_qload()
 		return

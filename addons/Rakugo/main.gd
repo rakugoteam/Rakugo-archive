@@ -3,7 +3,7 @@ extends Node
 export var game_title : = "Your New Game"
 export var game_version : = "0.0.1"
 export var game_credits : = "Your Company"
-export (String, "rakugo", "bbcode") var markup : = "rakugo"
+export (String, "ren", "bbcode") var markup : = "ren"
 export var links_color : = Color("#225ebf")
 export var debug_on : = true
 export var save_folder : = "saves"
@@ -50,9 +50,9 @@ enum StatementType {
 }
 
 # this must be saved
-var history_id : = 0 setget _set_history_id, _get_history_id
-var currakugot_dialog_name : = ""
-var currakugot_node_name : = ""
+var current_id : = 0 setget _set_current_id, _get_current_id
+var local_id : = 0
+var current_dialog_name : = ""
 var _scene : = ""
 var history : = [] # [{"state":story_state, "statement":{"type":type, "parameters": parameters}}]
 var global_history : = [] # [{"state":story_state, "statement":{"type":type, "parameters": parameters}}]
@@ -60,12 +60,12 @@ var variables : = {}
 
 # don't save this
 onready var menu_node : RakugoMenu = $Menu
-var currakugot_root_node : Node = null
-var currakugot_statement : Statement = null
+var current_root_node : Node = null
+var current_statement : Statement = null
 var using_passer : = false
 var skip_auto : = false
 var active : = false
-var can_alphanumeric : = true
+var can_alphanumeric:= true
 var skip_types : = [
 	StatementType.SAY,
 	StatementType.SHOW,
@@ -128,7 +128,6 @@ signal play_anim(node_id, anim_name)
 signal stop_anim(node_id, reset)
 signal play_audio(node_id, from_pos)
 signal stop_audio(node_id)
-signal loaded
 
 func _ready() -> void:
 	## set by game devloper
@@ -174,12 +173,12 @@ func exec_statement(type : int, parameters : = {}) -> void:
 func exit_statement(parameters : = {}) -> void:
 	if loading_in_progress:
 			return
-	emit_signal("exit_statement", currakugot_statement.type, parameters)
+	emit_signal("exit_statement", current_statement.type, parameters)
 
 func story_step() -> void:
 	if loading_in_progress:
 		return
-	emit_signal("story_step", currakugot_dialog_name)
+	emit_signal("story_step", current_dialog_name)
 
 func notified() -> void:
 	emit_signal("notified")
@@ -207,7 +206,7 @@ func on_stop_audio(node_id : String) -> void:
 func add_dialog(node : Node, func_name : String) -> void:
 	connect("story_step", node, func_name)
 
-## parse text like in rakugopy to bbcode if mode == "rakugo"
+## parse text like in renpy to bbcode if mode == "ren"
 ## or parse bbcode with {vars} if mode == "bbcode"
 ## default mode = Rakugo.markup 
 func text_passer(text : String, mode : = markup):
@@ -218,7 +217,6 @@ func text_passer(text : String, mode : = markup):
 func define(var_name : String, value = null) -> Object:
 	if not variables.has(var_name):
 		return $Def.define(variables, var_name, value)
-
 	else:
 		return set_var(var_name, value)
 
@@ -226,7 +224,6 @@ func define(var_name : String, value = null) -> Object:
 func define_from_str(var_name : String, var_str : String, var_type : String) -> Object:
 	if not variables.has(var_name):
 		return $Def.define_from_str(variables, var_name, var_str, var_type)
-
 	else:
 		var value = $Def.str2value(var_str, var_type)
 		var var_type_int = $Def.str2rakugo_type(var_type)
@@ -354,7 +351,7 @@ func menu(parameters : Dictionary) -> void:
 	_set_statement($Menu, parameters)
 
 ## it show custom rakugo node or charater
-## 'state' arg is using to set for example currakugot emtion or/and cloths
+## 'state' arg is using to set for example current emtion or/and cloths
 ## 'state' example '['happy', 'green uniform']'
 ## with keywords : x, y, z, at, pos
 ## x, y and pos will use it as procent of screen if between 0 and 1
@@ -383,7 +380,6 @@ func play_anim(node_id : String, anim_name : String) -> void:
 		"node_id":node_id,
 		"anim_name":anim_name
 	}
-
 	_set_statement($PlayAnim, parameters)
 
 ## statement of type stop_anim
@@ -394,7 +390,6 @@ func stop_anim(node_id : String, reset : = true) -> void:
 		"node_id":node_id,
 		"reset":reset
 	}
-
 	_set_statement($StopAnim, parameters)
 
 ## statement of type play_audio
@@ -405,7 +400,6 @@ func play_audio(node_id : String, from_pos : = 0.0) -> void:
 		"node_id":node_id,
 		"from_pos":from_pos
 	}
-
 	_set_statement($PlayAudio, parameters)
 
 ## statement of type stop_audio
@@ -414,7 +408,6 @@ func stop_audio(node_id : String) -> void:
 	var parameters = {
 		"node_id":node_id
 	}
-
 	_set_statement($StopAudio, parameters)
 
 ## statement of type stop_audio
@@ -425,7 +418,6 @@ func call_node(node_id : String, func_name : String, args : = []) -> void:
 		"func_name":func_name,
 		"args":args
 	}
-
 	_set_statement($CallNode, parameters)
 
 func _set_story_state(state : int) -> void:
@@ -438,7 +430,8 @@ func _get_story_state() -> int:
 func start() -> void:
 	load_global_history()
 	using_passer = false
-	history_id = 0
+	current_id = 0
+	local_id = 0
 	story_step()
 	started = true
 	emit_signal("started")
@@ -450,7 +443,6 @@ func savefile(save_name : = "quick") -> bool:
 
 	var data = $Persistence.get_data(save_name)
 	debug(["get data from:", save_name])
-
 	if data == null:
 		return false
 
@@ -463,35 +455,21 @@ func savefile(save_name : = "quick") -> bool:
 
 		debug([k, v])
 
-		match v.type:
-			Type.CHARACTER:
-				vars_to_save[k] = {
-					"type":v.type,
-					"value":v.character2dict()
-				}
-
-			Type.SUBQUEST:
-				vars_to_save[k] = {
-					"type":v.type,
-					"value":v.subquest2dict()
-				}
-
-			Type.QUEST:
-				vars_to_save[k] = {
-					"type":v.type,
-					"value":v.quest2dict()
-				}
-			_:
-				vars_to_save[k] = {
-					"type":v.type,
-					"value":v.value
-				}
-
+		if v.type == Type.CHARACTER:
+			vars_to_save[k] = {"type":v.type, "value":v.character2dict()}
+		elif v.type == Type.SUBQUEST:
+			vars_to_save[k] = {"type":v.type, "value":v.subquest2dict()}
+		elif v.type == Type.QUEST:
+			vars_to_save[k] = {"type":v.type, "value":v.quest2dict()}
+		else:
+			vars_to_save[k] = {"type":v.type, "value":v.value}
 
 	data["variables"] = vars_to_save
-	data["history_id"] = history_id
+
+	data["id"] = current_id
+	data["local_id"] = local_id
 	data["scene"] = _scene
-	data["dialog_name"] = currakugot_dialog_name
+	data["dialog_name"] = current_dialog_name
 	data["state"] = story_state - 1 # it must be this way
 
 	var result = $Persistence.save_data(save_name)
@@ -505,7 +483,6 @@ func loadfile(save_name : = "quick") -> bool:
 	
 	var data = $Persistence.get_data(save_name)
 	debug(["load data from:", save_name])
-
 	if data == null:
 		return false
 
@@ -520,22 +497,17 @@ func loadfile(save_name : = "quick") -> bool:
 
 		debug([k, v])
 
-		match v.type:
-			Type.CHARACTER:
-				character(k, v.value)
-
-			Type.SUBQUEST:
-				subquest(k, v.value)
-
-			Type.QUEST:
-				quest(k, v.value)
-
-				if k in quests:
-					continue
-
-				quests.append(k)
-			_:
-				define(k, v.value)
+		if v.type == Type.CHARACTER:
+			character(k, v.value)
+		elif v.type == Type.SUBQUEST:
+			subquest(k, v.value)
+		elif v.type == Type.QUEST:
+			quest(k, v.value)
+			if k in quests:
+				continue
+			quests.append(k)
+		else:
+			define(k, v.value)
 			
 	for q_id in quests:
 		var q = get_quest(q_id)
@@ -546,13 +518,12 @@ func loadfile(save_name : = "quick") -> bool:
 	jump(
 		data["scene"],
 		data["dialog_name"],
-		data["node_name"],
 		data["state"],
-		true, true
+		true, true,
+		data["local_id"]
 		)
 
-	history_id = data["history_id"]
-	emit_signal("loaded")
+	current_id = data["id"]
 	return true
 
 func debug_dict(parameters : Dictionary, parameters_names : = [], some_custom_text : = "") -> String:
@@ -585,29 +556,30 @@ func debug(some_text = []) -> void:
 	print(some_text)
 
 
-func _set_history_id(value : int) -> void:
-	history_id = value
+func _set_current_id(value : int) -> void:
+	current_id = value
+	local_id = value
 
-func _get_history_id() -> int:
-	return history_id
+func _get_current_id() -> int:
+	return current_id
 
-## use this to change/assain currakugot scene and dialog
+## use this to change/assain current scene and dialog
 ## root of path_to_scene is scenes_dir
 ## provide path_to_scene with out ".tscn"
+## "lid" is use to setup "local_id"
 func jump(
 	path_to_scene : String,
 	dialog_name : String,
-	node_name : String, 
 	state : = 0,
 	change : = true,
-	from_save : = false
-	) -> void:
+	from_save : = false,
+	lid : = 0) -> void:
 
 	if not from_save and loading_in_progress:
 		return
 
-	currakugot_dialog_name = dialog_name
-	currakugot_node_name = node_name
+	local_id = lid
+	current_dialog_name = dialog_name
 	
 	_set_story_state(state) # it must be this way
 	
@@ -619,12 +591,12 @@ func jump(
 	debug(["jump to scene:", _scene, "with dialog:", dialog_name, "from:", state])
 
 	if change:
-		if currakugot_root_node != null:
-			currakugot_root_node.queue_free()
+		if current_root_node != null:
+			current_root_node.queue_free()
 		
 		var lscene = load(_scene)
-		currakugot_root_node = lscene.instance()
-		get_tree().get_root().add_child(currakugot_root_node)
+		current_root_node = lscene.instance()
+		get_tree().get_root().add_child(current_root_node)
 
 	if loading_in_progress:
 		loading_in_progress = false
@@ -633,13 +605,13 @@ func jump(
 		story_step()
 
 ## it don't work :(
-func currakugot_statement_in_global_history() -> bool:
+func current_statement_in_global_history() -> bool:
 	var r = true
 	var i = 0
-	var hi_item = currakugot_statement.get_as_history_item()
+	var hi_item = current_statement.get_as_history_item()
 	# prints(hi_item)
 	
-	if not currakugot_statement.parameters.add_to_history:
+	if not current_statement.parameters.add_to_history:
 		i = 1
 		r = true
 		# prints("r =", str(r), "i =", str(i))
@@ -657,11 +629,11 @@ func currakugot_statement_in_global_history() -> bool:
 	return r
 
 func can_auto() -> bool:
-	return currakugot_statement.type in skip_types
+	return current_statement.type in skip_types
 
 ## it don't work :(
 func can_skip() -> bool:
-	var seen = currakugot_statement_in_global_history()
+	var seen = current_statement_in_global_history()
 	return can_auto() and seen
 
 func can_qload() -> bool:

@@ -52,13 +52,13 @@ func _on_pressed() -> void:
 	if is_subquest:
 		return
 
-	if quests_box.currakugot_quest_button != null:
-		if quests_box.currakugot_quest_button.quest_sub_box != quest_sub_box:
-			quests_box.currakugot_quest_button.quest_sub_box.hide()
+	if quests_box.current_quest_button != null:
+		if quests_box.current_quest_button.quest_sub_box != quest_sub_box:
+			quests_box.current_quest_button.quest_sub_box.hide()
 		
 	if quest_sub_box != null:
 		quest_sub_box.show()
-		quests_box.currakugot_quest_button = self
+		quests_box.current_quest_button = self
 
 func on_description_changed(new_des : String) -> void:
 	if pressed:

@@ -20,6 +20,8 @@
 [ext_resource path="res://addons/Rakugo/nodes/rakugo_timer.gd" type="Script" id=18]
 
 
+
+
 [node name="Rakugo" type="Node"]
 pause_mode = 2
 script = ExtResource( 1 )
@@ -27,13 +29,13 @@ debug_on = false
 save_password = "rakugo"
 scenes_dir = "res://examples"
 
-[node name="Def" type="Node" parakugot="."]
+[node name="Def" type="Node" parent="."]
 script = ExtResource( 2 )
 
-[node name="Text" type="Node" parakugot="."]
+[node name="Text" type="Node" parent="."]
 script = ExtResource( 3 )
 
-[node name="Persistence" type="Node" parakugot="."]
+[node name="Persistence" type="Node" parent="."]
 script = ExtResource( 4 )
 mode = 0
 password = ""
@@ -44,57 +46,57 @@ beautifier_active = true
 profile_name_min_size = 1
 profile_name_max_size = 15
 
-[node name="Say" type="Node" parakugot="."]
+[node name="Say" type="Node" parent="."]
 script = ExtResource( 5 )
 
-[node name="Ask" type="Node" parakugot="."]
+[node name="Ask" type="Node" parent="."]
 script = ExtResource( 6 )
 
-[node name="Menu" type="Node" parakugot="."]
+[node name="Menu" type="Node" parent="."]
 script = ExtResource( 7 )
 
-[node name="Show" type="Node" parakugot="."]
+[node name="Show" type="Node" parent="."]
 script = ExtResource( 8 )
 
-[node name="Hide" type="Node" parakugot="."]
+[node name="Hide" type="Node" parent="."]
 script = ExtResource( 9 )
 
-[node name="Notify" type="Node" parakugot="."]
+[node name="Notify" type="Node" parent="."]
 script = ExtResource( 10 )
 
-[node name="PlayAnim" type="Node" parakugot="."]
+[node name="PlayAnim" type="Node" parent="."]
 script = ExtResource( 11 )
 
-[node name="StopAnim" type="Node" parakugot="."]
+[node name="StopAnim" type="Node" parent="."]
 script = ExtResource( 12 )
 
-[node name="PlayAudio" type="Node" parakugot="."]
+[node name="PlayAudio" type="Node" parent="."]
 script = ExtResource( 13 )
 
-[node name="StopAudio" type="Node" parakugot="."]
+[node name="StopAudio" type="Node" parent="."]
 script = ExtResource( 14 )
 
-[node name="CallNode" type="Node" parakugot="."]
+[node name="CallNode" type="Node" parent="."]
 script = ExtResource( 15 )
 
-[node name="AutoTimer" type="Timer" parakugot="."]
+[node name="AutoTimer" type="Timer" parent="."]
 script = ExtResource( 16 )
 var_name = "auto_time"
 
-[node name="SkipTimer" type="Timer" parakugot="."]
+[node name="SkipTimer" type="Timer" parent="."]
 script = ExtResource( 17 )
 
-[node name="DialogTimer" type="Timer" parakugot="."]
+[node name="DialogTimer" type="Timer" parent="."]
 wait_time = 0.05
 one_shot = true
 script = ExtResource( 18 )
 var_name = "text_time"
 default = 0.05
 
-[node name="StepTimer" type="Timer" parakugot="."]
+[node name="StepTimer" type="Timer" parent="."]
 wait_time = 0.01
 one_shot = true
 
-[node name="NotifyTimer" type="Timer" parakugot="."]
+[node name="NotifyTimer" type="Timer" parent="."]
 one_shot = true
 

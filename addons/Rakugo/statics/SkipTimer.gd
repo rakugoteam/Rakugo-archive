@@ -26,7 +26,7 @@ func on_loop() -> void:
 			stop_loop()
 			return
 
-	if Rakugo.currakugot_statement.type in Rakugo.skip_types:
+	if Rakugo.current_statement.type in Rakugo.skip_types:
 		Rakugo.exit_statement()
 		return
 

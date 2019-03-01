@@ -14,5 +14,5 @@ func on_visibility_changed() -> void:
 	if visible == false:
 		return
 		
-	_on_toggled(Ren.get_value("typing_text"))
+	_on_toggled(Rakugo.get_value("typing_text"))
 	

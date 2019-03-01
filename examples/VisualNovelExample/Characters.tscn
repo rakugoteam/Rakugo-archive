@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://addons/Ren-GD/nodes/character.gd" type="Script" id=1]
+[ext_resource path="res://addons/Rakugo/nodes/character.gd" type="Script" id=1]
 [ext_resource path="res://examples/VisualNovelExample/AliceAvatar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://examples/VisualNovelExample/Alice.gd" type="Script" id=3]
 [ext_resource path="res://examples/VisualNovelExample/PAliceSprite/PAliceDefault.png" type="Texture" id=4]
@@ -10,6 +10,7 @@
 [ext_resource path="res://examples/VisualNovelExample/PAliceSprite/PAliceHappyBlush.png" type="Texture" id=8]
 [ext_resource path="res://examples/VisualNovelExample/PAliceSprite/PAliceTeasing.png" type="Texture" id=9]
 [ext_resource path="res://examples/VisualNovelExample/PAliceSprite/PAliceWorried.png" type="Texture" id=10]
+
 
 
 

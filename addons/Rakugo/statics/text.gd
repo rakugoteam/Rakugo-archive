@@ -12,7 +12,7 @@ func text_passer(
 	mode:String = "rakugo",
 	links_color:String = "225ebf"
 	) -> String:
-	## passer for rakugopy or bbcode markup format
+	## passer for renpy or bbcode markup format
 	## its retrun bbcode
 
 	url_open = url_open.replace("225ebf", links_color)
