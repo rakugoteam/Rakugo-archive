@@ -9,221 +9,221 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Say",
+"base": "Object",
 "class": "Ask",
 "language": "GDScript",
-"path": "res://addons/Ren-GD/statements/ask.gd"
+"path": "res://addons/Rakugo/statements/ask.gd"
 }, {
-"base": "RenTimer",
+"base": "Timer",
 "class": "AutoTimer",
 "language": "GDScript",
-"path": "res://addons/Ren-GD/statics/AutoTimer.gd"
+"path": "res://addons/Rakugo/statics/AutoTimer.gd"
 }, {
-"base": "Statement",
+"base": "Object",
 "class": "CallNode",
 "language": "GDScript",
-"path": "res://addons/Ren-GD/statements/call_node.gd"
+"path": "res://addons/Rakugo/statements/call_node.gd"
 }, {
 "base": "Node",
 "class": "Character",
 "language": "GDScript",
-"path": "res://addons/Ren-GD/nodes/character.gd"
+"path": "res://addons/Rakugo/nodes/character.gd"
 }, {
 "base": "Object",
 "class": "CharacterObject",
 "language": "GDScript",
-"path": "res://addons/Ren-GD/types/character_obj.gd"
+"path": "res://addons/Rakugo/types/character_obj.gd"
 }, {
 "base": "BoxContainer",
 "class": "CollapsedList",
 "language": "GDScript",
 "path": "res://gui/OptionsBox/CollapsedList.gd"
 }, {
-"base": "Statement",
+"base": "Object",
 "class": "Hide",
 "language": "GDScript",
-"path": "res://addons/Ren-GD/statements/hide.gd"
+"path": "res://addons/Rakugo/statements/hide.gd"
 }, {
 "base": "Object",
 "class": "JSONBeautifier",
 "language": "GDScript",
 "path": "res://addons/json_beautifier/json_beautifier.gd"
 }, {
-"base": "Say",
+"base": "Object",
 "class": "Menu",
 "language": "GDScript",
-"path": "res://addons/Ren-GD/statements/menu.gd"
+"path": "res://addons/Rakugo/statements/menu.gd"
 }, {
-"base": "Statement",
+"base": "Object",
 "class": "Notify",
 "language": "GDScript",
-"path": "res://addons/Ren-GD/statements/notify.gd"
+"path": "res://addons/Rakugo/statements/notify.gd"
 }, {
 "base": "Node",
 "class": "Persistence",
 "language": "GDScript",
 "path": "res://addons/PersistenceNode/persistence_node.gd"
 }, {
-"base": "Statement",
+"base": "Object",
 "class": "PlayAnim",
 "language": "GDScript",
-"path": "res://addons/Ren-GD/statements/play_anim.gd"
+"path": "res://addons/Rakugo/statements/play_anim.gd"
 }, {
-"base": "Statement",
+"base": "Object",
 "class": "PlayAudio",
 "language": "GDScript",
-"path": "res://addons/Ren-GD/statements/play_audio.gd"
+"path": "res://addons/Rakugo/statements/play_audio.gd"
 }, {
-"base": "Subquest",
+"base": "Object",
 "class": "Quest",
 "language": "GDScript",
-"path": "res://addons/Ren-GD/types/quest.gd"
+"path": "res://addons/Rakugo/types/quest.gd"
 }, {
 "base": "AnimationPlayer",
-"class": "RenAnimPlayer",
+"class": "RakugoAnimPlayer",
 "language": "GDScript",
-"path": "res://addons/Ren-GD/nodes/ren_anim_player.gd"
+"path": "res://addons/Rakugo/nodes/rakugo_anim_player.gd"
 }, {
 "base": "AudioStreamPlayer",
-"class": "RenAudioPlayer",
+"class": "RakugoAudioPlayer",
 "language": "GDScript",
-"path": "res://addons/Ren-GD/nodes/ren_audio_player.gd"
+"path": "res://addons/Rakugo/nodes/rakugo_audio_player.gd"
 }, {
 "base": "Button",
-"class": "RenBaseButton",
+"class": "RakugoBaseButton",
 "language": "GDScript",
-"path": "res://addons/Ren-GD/nodes/ren_base_button.gd"
+"path": "res://addons/Rakugo/nodes/rakugo_base_button.gd"
 }, {
-"base": "RenBaseButton",
-"class": "RenButton",
+"base": "Button",
+"class": "RakugoButton",
 "language": "GDScript",
-"path": "res://addons/Ren-GD/nodes/ren_button.gd"
+"path": "res://addons/Rakugo/nodes/rakugo_button.gd"
 }, {
-"base": "RenBaseButton",
-"class": "RenChoiceButton",
+"base": "Button",
+"class": "RakugoChoiceButton",
 "language": "GDScript",
-"path": "res://addons/Ren-GD/nodes/ren_choice_button.gd"
+"path": "res://addons/Rakugo/nodes/rakugo_choice_button.gd"
 }, {
 "base": "Control",
-"class": "RenControl",
+"class": "RakugoControl",
 "language": "GDScript",
-"path": "res://addons/Ren-GD/nodes/ren_control.gd"
+"path": "res://addons/Rakugo/nodes/rakugo_control.gd"
 }, {
 "base": "Object",
-"class": "RenDef",
+"class": "RakugoDef",
 "language": "GDScript",
-"path": "res://addons/Ren-GD/types/def.gd"
+"path": "res://addons/Rakugo/types/def.gd"
 }, {
 "base": "LineEdit",
-"class": "RenLineEdit",
+"class": "RakugoLineEdit",
 "language": "GDScript",
-"path": "res://addons/Ren-GD/nodes/ren_line_edit.gd"
+"path": "res://addons/Rakugo/nodes/rakugo_line_edit.gd"
 }, {
 "base": "Node2D",
-"class": "RenNode2D",
+"class": "RakugoNode2D",
 "language": "GDScript",
-"path": "res://addons/Ren-GD/nodes/ren_node2d.gd"
+"path": "res://addons/Rakugo/nodes/rakugo_node2d.gd"
 }, {
 "base": "Object",
-"class": "RenNodeCore",
+"class": "RakugoNodeCore",
 "language": "GDScript",
-"path": "res://addons/Ren-GD/nodes/ren_node_core.gd"
-}, {
-"base": "RenBaseButton",
-"class": "RenQuestButton",
-"language": "GDScript",
-"path": "res://addons/Ren-GD/nodes/ren_quest_button.gd"
-}, {
-"base": "RenVar",
-"class": "RenRange",
-"language": "GDScript",
-"path": "res://addons/Ren-GD/types/range.gd"
-}, {
-"base": "Panel",
-"class": "RenSayPanel",
-"language": "GDScript",
-"path": "res://addons/Ren-GD/nodes/ren_say_panel.gd"
-}, {
-"base": "RichTextLabel",
-"class": "RenTextLabel",
-"language": "GDScript",
-"path": "res://addons/Ren-GD/nodes/ren_label.gd"
-}, {
-"base": "Object",
-"class": "RenTextPasser",
-"language": "GDScript",
-"path": "res://addons/Ren-GD/statics/text.gd"
-}, {
-"base": "Timer",
-"class": "RenTimer",
-"language": "GDScript",
-"path": "res://addons/Ren-GD/nodes/ren_timer.gd"
-}, {
-"base": "Object",
-"class": "RenVar",
-"language": "GDScript",
-"path": "res://addons/Ren-GD/types/ren_var.gd"
+"path": "res://addons/Rakugo/nodes/rakugo_node_core.gd"
 }, {
 "base": "Button",
-"class": "RenVarCheckButton",
+"class": "RakugoQuestButton",
 "language": "GDScript",
-"path": "res://addons/Ren-GD/nodes/ren_var_check.gd"
+"path": "res://addons/Rakugo/nodes/rakugo_quest_button.gd"
+}, {
+"base": "Object",
+"class": "RakugoRange",
+"language": "GDScript",
+"path": "res://addons/Rakugo/types/range.gd"
+}, {
+"base": "Panel",
+"class": "RakugoSayPanel",
+"language": "GDScript",
+"path": "res://addons/Rakugo/nodes/rakugo_say_panel.gd"
+}, {
+"base": "RichTextLabel",
+"class": "RakugoTextLabel",
+"language": "GDScript",
+"path": "res://addons/Rakugo/nodes/rakugo_label.gd"
+}, {
+"base": "Object",
+"class": "RakugoTextPasser",
+"language": "GDScript",
+"path": "res://addons/Rakugo/statics/text.gd"
+}, {
+"base": "Timer",
+"class": "RakugoTimer",
+"language": "GDScript",
+"path": "res://addons/Rakugo/nodes/rakugo_timer.gd"
+}, {
+"base": "Object",
+"class": "RakugoVar",
+"language": "GDScript",
+"path": "res://addons/Rakugo/types/rakugo_var.gd"
+}, {
+"base": "Button",
+"class": "RakugoVarCheckButton",
+"language": "GDScript",
+"path": "res://addons/Rakugo/nodes/rakugo_var_check.gd"
 }, {
 "base": "LineEdit",
-"class": "RenVarEdit",
+"class": "RakugoVarEdit",
 "language": "GDScript",
-"path": "res://addons/Ren-GD/nodes/ren_var_edit.gd"
+"path": "res://addons/Rakugo/nodes/rakugo_var_edit.gd"
 }, {
 "base": "Label",
-"class": "RenVarLabel",
+"class": "RakugoVarLabel",
 "language": "GDScript",
-"path": "res://addons/Ren-GD/nodes/ren_var_label.gd"
+"path": "res://addons/Rakugo/nodes/rakugo_var_label.gd"
 }, {
 "base": "VisualInstance",
-"class": "RenVisualInstance",
+"class": "RakugoVisualInstance",
 "language": "GDScript",
-"path": "res://addons/Ren-GD/nodes/ren_visual_instance.gd"
+"path": "res://addons/Rakugo/nodes/rakugo_visual_instance.gd"
 }, {
-"base": "Statement",
+"base": "Object",
 "class": "Say",
 "language": "GDScript",
-"path": "res://addons/Ren-GD/statements/say.gd"
+"path": "res://addons/Rakugo/statements/say.gd"
 }, {
-"base": "Statement",
+"base": "Object",
 "class": "Show",
 "language": "GDScript",
-"path": "res://addons/Ren-GD/statements/show.gd"
+"path": "res://addons/Rakugo/statements/show.gd"
 }, {
 "base": "Timer",
 "class": "SkipTimer",
 "language": "GDScript",
-"path": "res://addons/Ren-GD/statics/SkipTimer.gd"
+"path": "res://addons/Rakugo/statics/SkipTimer.gd"
 }, {
 "base": "Object",
 "class": "Statement",
 "language": "GDScript",
-"path": "res://addons/Ren-GD/statements/statement.gd"
+"path": "res://addons/Rakugo/statements/statement.gd"
 }, {
-"base": "Statement",
+"base": "Object",
 "class": "StopAnim",
 "language": "GDScript",
-"path": "res://addons/Ren-GD/statements/stop_anim.gd"
+"path": "res://addons/Rakugo/statements/stop_anim.gd"
 }, {
-"base": "Statement",
+"base": "Object",
 "class": "StopAudio",
 "language": "GDScript",
-"path": "res://addons/Ren-GD/statements/stop_audio.gd"
+"path": "res://addons/Rakugo/statements/stop_audio.gd"
 }, {
 "base": "Object",
 "class": "Subquest",
 "language": "GDScript",
-"path": "res://addons/Ren-GD/types/subquest.gd"
+"path": "res://addons/Rakugo/types/subquest.gd"
 } ]
 _global_script_class_icons={
 "Ask": "",
 "AutoTimer": "",
 "CallNode": "",
-"Character": "",
+"Character": "res://addons/Rakugo/icons/rakugo_character.svg",
 "CharacterObject": "",
 "CollapsedList": "",
 "Hide": "",
@@ -234,27 +234,27 @@ _global_script_class_icons={
 "PlayAnim": "",
 "PlayAudio": "",
 "Quest": "",
-"RenAnimPlayer": "",
-"RenAudioPlayer": "",
-"RenBaseButton": "",
-"RenButton": "",
-"RenChoiceButton": "",
-"RenControl": "",
-"RenDef": "",
-"RenLineEdit": "",
-"RenNode2D": "",
-"RenNodeCore": "",
-"RenQuestButton": "",
-"RenRange": "",
-"RenSayPanel": "",
-"RenTextLabel": "",
-"RenTextPasser": "",
-"RenTimer": "",
-"RenVar": "",
-"RenVarCheckButton": "",
-"RenVarEdit": "",
-"RenVarLabel": "",
-"RenVisualInstance": "",
+"RakugoAnimPlayer": "",
+"RakugoAudioPlayer": "",
+"RakugoBaseButton": "",
+"RakugoButton": "",
+"RakugoChoiceButton": "",
+"RakugoControl": "",
+"RakugoDef": "",
+"RakugoLineEdit": "",
+"RakugoNode2D": "",
+"RakugoNodeCore": "",
+"RakugoQuestButton": "",
+"RakugoRange": "",
+"RakugoSayPanel": "res://addons/Rakugo/icons/rakugo_panel.svg",
+"RakugoTextLabel": "",
+"RakugoTextPasser": "",
+"RakugoTimer": "",
+"RakugoVar": "",
+"RakugoVarCheckButton": "",
+"RakugoVarEdit": "",
+"RakugoVarLabel": "",
+"RakugoVisualInstance": "res://addons/Rakugo/icons/rakugo_spatial.svg",
 "Say": "",
 "Show": "",
 "SkipTimer": "",
@@ -266,14 +266,14 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Ren'GD"
+config/name="Rakugo"
 run/main_scene="res://examples/Test/Test.tscn"
 boot_splash/image="res://graphics/splash.png"
 config/icon="res://graphics/window_icon.png"
 
 [autoload]
 
-Ren="*res://addons/Ren-GD/Ren.tscn"
+Rakugo="*res://addons/Rakugo/Rakugo.tscn"
 settings="*res://gui/settings.gd"
 VNCharacters="*res://examples/VisualNovelExample/Characters.tscn"
 Window="*res://gui/Window/Window.tscn"
@@ -288,7 +288,7 @@ gdscript/warnings/return_value_discarded=false
 
 [editor_plugins]
 
-enabled=PoolStringArray( "PersistenceNode" )
+enabled=PoolStringArray( "PersistenceNode", "Rakugo" )
 
 [input]
 
@@ -315,22 +315,22 @@ ui_cancel={
 , Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
-ren_screenshot={
+rakugo_screenshot={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"unicode":0,"echo":false,"script":null)
  ]
 }
-ren_fullscreen={
+rakugo_fullscreen={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":70,"unicode":0,"echo":false,"script":null)
  ]
 }
-ren_qsave={
+rakugo_qsave={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777249,"unicode":0,"echo":false,"script":null)
  ]
 }
-ren_qload={
+rakugo_qload={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777250,"unicode":0,"echo":false,"script":null)
  ]

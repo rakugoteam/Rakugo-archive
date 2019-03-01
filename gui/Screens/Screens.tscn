@@ -3,16 +3,19 @@
 [ext_resource path="res://themes/new_gui/theme.tres" type="Theme" id=1]
 [ext_resource path="res://gui/Screens/Screens.gd" type="Script" id=2]
 [ext_resource path="res://ubuntu-font-family/Ubuntu-B.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://addons/Ren-GD/nodes/ren_var_label.gd" type="Script" id=4]
+[ext_resource path="res://addons/Rakugo/nodes/rakugo_var_label.gd" type="Script" id=4]
 [ext_resource path="res://gui/InGame/QuickMenuButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://gui/SlotBox/SlotBox.tscn" type="PackedScene" id=6]
 [ext_resource path="res://gui/History/History.gd" type="Script" id=7]
 [ext_resource path="res://gui/History/HistoryItem.tscn" type="PackedScene" id=8]
 [ext_resource path="res://gui/OptionsBox/OptionsBox.tscn" type="PackedScene" id=9]
 [ext_resource path="res://gui/Quests/QuestsBox.tscn" type="PackedScene" id=10]
-[ext_resource path="res://addons/Ren-GD/nodes/ren_label.gd" type="Script" id=11]
+[ext_resource path="res://addons/Rakugo/nodes/rakugo_label.gd" type="Script" id=11]
 [ext_resource path="res://gui/Screens/QuitBox.tscn" type="PackedScene" id=12]
 [ext_resource path="res://examples/Test/TestNodes.tscn" type="PackedScene" id=13]
+
+
+
 
 
 [sub_resource type="DynamicFont" id=1]
@@ -4805,7 +4808,7 @@ margin_right = 750.0
 margin_bottom = 65.0
 size_flags_vertical = 1
 custom_fonts/font = SubResource( 1 )
-text = "Ren"
+text = "Rakugo"
 align = 1
 script = ExtResource( 4 )
 var_name = "title"
@@ -5055,7 +5058,7 @@ custom_fonts/font = SubResource( 3 )
 text = "About"
 align = 1
 
-[node name="RenTextLabel" type="RichTextLabel" parent="AboutBox"]
+[node name="RakugoTextLabel" type="RichTextLabel" parent="AboutBox"]
 margin_top = 58.0
 margin_right = 702.0
 margin_bottom = 534.0
@@ -5063,8 +5066,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 bbcode_enabled = true
 script = ExtResource( 11 )
-ren_text_file = "res://about.txt"
-ren_text = "Made with {a=https://github.com/jebedaia360/Ren}Ren{/a} [ren_version] on {a=https://godotengine.org/}Godot Engine{/a} [godot_version] on {a=https://github.com/jebedaia360/Ren/blob/master/LICENSE} MIT License{/a}.
+rakugo_text_file = "res://about.txt"
+rakugo_text = "Made with {a=https://github.com/jebedaia360/Rakugo}Rakugo{/a} [rakugo_version] on {a=https://godotengine.org/}Godot Engine{/a} [godot_version] on {a=https://github.com/jebedaia360/Rakugo/blob/master/LICENSE} MIT License{/a}.
 "
 
 [node name="QuitBox" parent="." instance=ExtResource( 12 )]
