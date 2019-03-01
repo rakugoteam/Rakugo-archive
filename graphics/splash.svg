@@ -68,7 +68,7 @@
      showgrid="false"
      inkscape:snap-global="false"
      inkscape:zoom="0.78545995"
-     inkscape:cx="218.674"
+     inkscape:cx="221.51254"
      inkscape:cy="217.8412"
      inkscape:window-x="0"
      inkscape:window-y="48"
@@ -166,7 +166,7 @@
      xml:space="preserve"
      id="flowRoot948"
      style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-width:1.43898535;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
-     transform="matrix(1.6691795,0,0,2.6039147,-225.86393,-764.14647)"><flowRegion
+     transform="matrix(1.6691795,0,0,2.6039147,-228.66763,-764.14647)"><flowRegion
        id="flowRegion950"
        style="fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-width:1.43898535;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"><rect
          id="rect952"
@@ -176,6 +176,6 @@
          y="468.86664"
          style="fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-width:1.43898535;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" /></flowRegion><flowPara
        id="flowPara954"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-width:1.43898535;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill">Rakugo'GD Framework</flowPara><flowPara
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-width:1.43898535;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill">Rakugo Framework</flowPara><flowPara
        id="flowPara956"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-width:1.43898535;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill" /></flowRoot></svg>

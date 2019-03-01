@@ -13,7 +13,6 @@
 [ext_resource path="res://examples/Test/TestNode.gd" type="Script" id=11]
 
 [sub_resource type="Animation" id=1]
-
 resource_name = "test"
 loop = true
 tracks/0/type = "value"
@@ -42,7 +41,6 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=2]
-
 resource_name = "test_loop"
 length = 2.0
 loop = true
