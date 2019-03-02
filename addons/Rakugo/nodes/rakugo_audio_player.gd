@@ -1,7 +1,7 @@
 extends AudioStreamPlayer
 class_name RakugoAudioPlayer
 
-export var auto_define : = false
+export var auto_define : = true
 export var node_id : = ""
 
 func _ready() -> void:

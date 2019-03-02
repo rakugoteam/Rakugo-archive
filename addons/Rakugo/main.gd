@@ -458,13 +458,27 @@ func savefile(save_name : = "quick") -> bool:
 
 		match v.type:
 			Type.CHARACTER:
-				vars_to_save[k] = {"type":v.type, "value":v.character2dict()}
+				vars_to_save[k] = {
+					"type":v.type,
+					"value":v.character2dict()
+				}
+
 			Type.SUBQUEST:
-				vars_to_save[k] = {"type":v.type, "value":v.subquest2dict()}
+				vars_to_save[k] = {
+					"type":v.type,
+					"value":v.subquest2dict()
+				}
+
 			Type.QUEST:
-				vars_to_save[k] = {"type":v.type, "value":v.quest2dict()}
+				vars_to_save[k] = {
+					"type":v.type,
+					"value":v.quest2dict()
+				}
 			_:
-				vars_to_save[k] = {"type":v.type, "value":v.value}
+				vars_to_save[k] = {
+					"type":v.type,
+					"value":v.value
+				}
 
 	data["variables"] = vars_to_save
 

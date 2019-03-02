@@ -1,7 +1,7 @@
 extends AnimationPlayer
 class_name RakugoAnimPlayer
 
-export var auto_define : = false
+export var auto_define : = true
 export var node_id : = ""
 
 func _ready() -> void:
