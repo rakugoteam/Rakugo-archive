@@ -9,7 +9,7 @@
 [![GitHub](https://img.shields.io/github/issues/jebedaia360/Rakugo.svg?style=flat-square)](https://github.com/jebedaia360/Rakugo/issues)
 [![GitHub](https://img.shields.io/github/issues-closed/jebedaia360/Rakugo.svg?style=flat-square)](https://github.com/jebedaia360/Rakugo/issues)
 
-Rakugo is framemork (inspired by [Ren'Py](https://www.renpy.org)) for story driven games in [Godot](https://godotengine.org).
+Rakugo is framemork (inspired by [Ren'Py](https://www.renpy.org)) for story driven games in [Godot](https://godotengine.org) or like my friend call it *Story Management Plugin*.
 
 Now you can support this project by [Patreon](https://www.patreon.com/jebedaia360).
 
