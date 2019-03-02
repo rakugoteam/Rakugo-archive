@@ -52,6 +52,7 @@ enum StatementType {
 # this must be saved
 var history_id : = 0 setget _set_history_id, _get_history_id
 var current_dialog_name : = ""
+var current_node_name : = ""
 var _scene : = ""
 var history : = [] # [{"state":story_state, "statement":{"type":type, "parameters": parameters}}]
 var global_history : = [] # [{"state":story_state, "statement":{"type":type, "parameters": parameters}}]
@@ -122,7 +123,7 @@ signal exit_statement(previous_type, parameters)
 signal notified()
 signal show(node_id, state, show_args)
 signal hide(node_id)
-signal story_step(dialog_name)
+signal story_step(dialog_name, node_name)
 signal play_anim(node_id, anim_name)
 signal stop_anim(node_id, reset)
 signal play_audio(node_id, from_pos)
@@ -178,7 +179,7 @@ func exit_statement(parameters : = {}) -> void:
 func story_step() -> void:
 	if loading_in_progress:
 		return
-	emit_signal("story_step", current_dialog_name)
+	emit_signal("story_step", current_dialog_name, current_node_name)
 
 func notified() -> void:
 	emit_signal("notified")
@@ -468,6 +469,7 @@ func savefile(save_name : = "quick") -> bool:
 	data["id"] = history_id
 	data["scene"] = _scene
 	data["dialog_name"] = current_dialog_name
+	data["node_name"] = current_node_name
 	data["state"] = story_state - 1 # it must be this way
 
 	var result = $Persistence.save_data(save_name)
@@ -515,6 +517,7 @@ func loadfile(save_name : = "quick") -> bool:
 
 	jump(
 		data["scene"],
+		data["node_name"],
 		data["dialog_name"],
 		data["state"],
 		true, true
@@ -565,6 +568,7 @@ func _get_history_id() -> int:
 ## provide path_to_scene with out ".tscn"
 func jump(
 	path_to_scene : String,
+	node_name : String,
 	dialog_name : String,
 	state : = 0,
 	change : = true,
@@ -574,6 +578,7 @@ func jump(
 	if not from_save and loading_in_progress:
 		return
 	
+	current_node_name = node_name
 	current_dialog_name = dialog_name
 	
 	_set_story_state(state) # it must be this way
