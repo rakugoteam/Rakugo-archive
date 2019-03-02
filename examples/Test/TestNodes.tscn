@@ -10,17 +10,6 @@
 [ext_resource path="res://addons/Rakugo/icons/rakugo_check_box.svg" type="Texture" id=8]
 [ext_resource path="res://addons/Rakugo/nodes/rakugo_label.gd" type="Script" id=9]
 
-
-
-
-
-
-
-
-
-
-
-
 [node name="TestNodes" type="VBoxContainer"]
 margin_left = 282.0
 margin_top = 204.0
@@ -30,19 +19,19 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_right = 544.0
+margin_right = 587.0
 margin_bottom = 141.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
-margin_right = 178.0
+margin_right = 193.0
 margin_bottom = 141.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
-margin_right = 178.0
+margin_right = 193.0
 margin_bottom = 25.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -50,7 +39,7 @@ text = "test rakugo nodes: float"
 
 [node name="RakugoVarLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
 margin_top = 29.0
-margin_right = 178.0
+margin_right = 193.0
 margin_bottom = 54.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -60,7 +49,7 @@ type = "float"
 
 [node name="RakugoVarEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer"]
 margin_top = 58.0
-margin_right = 178.0
+margin_right = 193.0
 margin_bottom = 83.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -71,7 +60,7 @@ default = "10"
 
 [node name="RakugoVarHSlider" type="VSlider" parent="HBoxContainer/VBoxContainer"]
 margin_top = 87.0
-margin_right = 178.0
+margin_right = 193.0
 margin_bottom = 112.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -84,7 +73,7 @@ var_name = "test_float"
 
 [node name="RakugoProgressBar" type="ProgressBar" parent="HBoxContainer/VBoxContainer"]
 margin_top = 116.0
-margin_right = 178.0
+margin_right = 193.0
 margin_bottom = 141.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -95,8 +84,8 @@ __meta__ = {
 var_name = "test_float"
 
 [node name="RakugoValVSlider" type="VSlider" parent="HBoxContainer"]
-margin_left = 182.0
-margin_right = 360.0
+margin_left = 197.0
+margin_right = 390.0
 margin_bottom = 141.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -107,15 +96,15 @@ __meta__ = {
 var_name = "test_float"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
-margin_left = 364.0
-margin_right = 544.0
+margin_left = 394.0
+margin_right = 587.0
 margin_bottom = 141.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 0
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2"]
-margin_right = 180.0
+margin_right = 193.0
 margin_bottom = 60.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -124,7 +113,7 @@ text = "test rakugo nodes: bool
 
 [node name="RakugoVarCheckButton" type="Button" parent="HBoxContainer/VBoxContainer2"]
 margin_top = 60.0
-margin_right = 180.0
+margin_right = 193.0
 margin_bottom = 80.0
 size_flags_horizontal = 3
 toggle_mode = true
@@ -146,7 +135,7 @@ type = "bool"
 
 [node name="RakugoVarCheckBox" type="CheckBox" parent="HBoxContainer/VBoxContainer2"]
 margin_top = 80.0
-margin_right = 180.0
+margin_right = 193.0
 margin_bottom = 141.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -158,19 +147,19 @@ var_name = "test_bool"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
 margin_top = 145.0
-margin_right = 544.0
+margin_right = 587.0
 margin_bottom = 286.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer2"]
-margin_right = 267.0
+margin_right = 289.0
 margin_bottom = 141.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Label2" type="Label" parent="HBoxContainer2/VBoxContainer"]
-margin_right = 267.0
+margin_right = 289.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -178,7 +167,7 @@ text = "Test of RakugoTextLabel using rakugo markup"
 
 [node name="RakugoTextLabel" type="RichTextLabel" parent="HBoxContainer2/VBoxContainer"]
 margin_top = 18.0
-margin_right = 267.0
+margin_right = 289.0
 margin_bottom = 141.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -189,14 +178,14 @@ rakugo_text = "Example text with rakugo markup.
 vars_names = [ "test_float", "test_bool" ]
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer2"]
-margin_left = 271.0
-margin_right = 544.0
+margin_left = 293.0
+margin_right = 587.0
 margin_bottom = 141.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Label3" type="Label" parent="HBoxContainer2/VBoxContainer2"]
-margin_right = 273.0
+margin_right = 294.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -204,7 +193,7 @@ text = "Test of RakugoTextLabel using bbcode markup"
 
 [node name="RakugoTextLabel2" type="RichTextLabel" parent="HBoxContainer2/VBoxContainer2"]
 margin_top = 18.0
-margin_right = 273.0
+margin_right = 294.0
 margin_bottom = 141.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
