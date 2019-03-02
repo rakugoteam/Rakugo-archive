@@ -10,7 +10,7 @@ func _ready():
 	if Rakugo.current_root_node != self:
 		Rakugo.current_root_node = self
 	
-	Rakugo.jump("Test/Test", "Test", "example", 0, false)
+	Rakugo.begin("Test/Test", name, "example")
 	Rakugo.add_dialog(self, "example")
 	Rakugo.add_dialog(self, "play_vn_example")
 	Rakugo.add_dialog(self, "play_cp_adv_example")
@@ -176,7 +176,7 @@ func play_cp_adv_example(node_name, dialog_name):
 				"Click'n'Point Adventure example is not ready yet"
 		})
 		
-	Rakugo.jump("Test/Test", "Test", "end", 0, false)
+	Rakugo.jump("Test/Test", name, "end", 0, false)
 	
 func play_rpg_example(node_name, dialog_name):
 	if Rakugo.current_dialog_name == "Play RPG example":
@@ -187,7 +187,7 @@ func play_rpg_example(node_name, dialog_name):
 				"RPG example is not ready yet"
 		})
 		
-		Rakugo.jump("Test/Test", "Test", "end", 0, false)
+		Rakugo.jump("Test/Test", name, "end", 0, false)
 	
 	
 func read_docs(node_name, dialog_name):
@@ -201,7 +201,7 @@ func read_docs(node_name, dialog_name):
 			"Docs are not ready yet"
 	})
 	
-	Rakugo.jump("Test/Test", "Test", "end", 0, false)
+	Rakugo.jump("Test/Test", name, "end", 0, false)
 
 func end(node_name, dialog_name):
 	if dialog_name != "end":
