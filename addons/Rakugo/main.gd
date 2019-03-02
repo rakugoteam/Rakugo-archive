@@ -642,8 +642,8 @@ func jump(path_to_scene : String, node_name : String, dialog_name : String, stat
 ## use this to assain beginning scene and dialog
 ## root of path_to_scene is scenes_dir
 ## provide path_to_scene with out ".tscn"
-func begin(path_to_scene : String, node_name : String, dialog_name : String,) -> void:
-	jump(ath_to_scene, node_name , "example", 0, false)
+func begin(path_to_scene : String, node_name : String, dialog_name : Stringf) -> void:
+	jump(path_to_scene, node_name , dialog_name, 0, false)
 
 ## it don't work :(
 func current_statement_in_global_history() -> bool:
