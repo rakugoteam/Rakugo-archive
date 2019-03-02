@@ -115,6 +115,7 @@ onready var step_timer : = $StepTimer
 onready var dialog_timer : = $DialogTimer
 onready var notify_timer : = $NotifyTimer
 
+## saved automaticlly -it is RagukoVar
 var story_state : int setget _set_story_state, _get_story_state
 
 signal started
@@ -219,6 +220,7 @@ func text_passer(text : String, mode : = markup):
 func define(var_name : String, value = null) -> Object:
 	if not variables.has(var_name):
 		return $Def.define(variables, var_name, value)
+		
 	else:
 		return set_var(var_name, value)
 
@@ -240,8 +242,21 @@ func set_var(var_name : String, value, var_type : = -1) -> Object:
 	if var_type == -1:
 		var_type = get_type(var_name)
 	
-	variables[var_name]._type = var_type
-	variables[var_name].value = value
+	var reserved_types = [Type.QUEST, Type.SUBQUEST, Type.CHARACTER]
+	
+	if not(var_type in reserved_types):
+		variables[var_name]._type = var_type
+	
+	match var_type:
+		Type.QUEST:
+			variables[var_name].dict2quest(value)
+
+		Type.SUBQUEST:
+			variables[var_name].dict2subquest(value)
+	
+		_:
+			variables[var_name].value = value
+
 	return variables[var_name]
 
 ## returns exiting Rakugo variable as one of RakugoTypes for easy use
@@ -280,7 +295,6 @@ func get_character(character_id : String) -> CharacterObject:
 
 ## crate new link to node as global variable that Rakugo will see
 ## first arg can be node it self or path to it
-## only state of this nodes will be saved
 func node_link(node, node_id : String = "") -> Node:
 	if node_id == "":
 		node_id = node.name
@@ -440,7 +454,7 @@ func start() -> void:
 
 
 func savefile(save_name : = "quick") -> bool:
-	$Persistence.folder_name = save_folder + "/" + save_name
+	$Persistence.folder_name = save_folder
 	$Persistence.password = save_password
 
 	var data = $Persistence.get_data(save_name)
@@ -487,7 +501,6 @@ func savefile(save_name : = "quick") -> bool:
 	data["scene"] = _scene
 	data["dialog_name"] = current_dialog_name
 	data["node_name"] = current_node_name
-	data["state"] = story_state - 1 # it must be this way
 
 	var result = $Persistence.save_data(save_name)
 
@@ -496,7 +509,7 @@ func savefile(save_name : = "quick") -> bool:
 	
 func loadfile(save_name : = "quick") -> bool:
 	loading_in_progress = true
-	$Persistence.folder_name = save_folder + "/" + save_name
+	$Persistence.folder_name = save_folder
 	$Persistence.password = save_password
 	
 	var data = $Persistence.get_data(save_name)
@@ -539,15 +552,16 @@ func loadfile(save_name : = "quick") -> bool:
 	
 	started = true
 
+	history_id = data["id"]
+
 	jump(
 		data["scene"],
 		data["node_name"],
 		data["dialog_name"],
-		data["state"],
+		_get_story_state(),
 		true, true
 		)
-
-	history_id = data["id"]
+	
 	emit_signal("loaded", game_version)
 	return true
 
@@ -626,9 +640,6 @@ func jump(
 		var lscene = load(_scene)
 		current_root_node = lscene.instance()
 		get_tree().get_root().add_child(current_root_node)
-
-		if from_save:
-			pass
 
 	if loading_in_progress:
 		loading_in_progress = false

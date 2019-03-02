@@ -58,8 +58,9 @@ func example(node_name, dialog_name):
 			Rakugo.play_anim("TestAnimPlayer", "test_loop")
 			Rakugo.say({
 				"who":"test",
-				"what":"test of stoping loop anim."+
-				"{/nl}Click to go next step and stop anim"
+				"what":
+				"""Test of stoping loop anim.
+				Click to go next step and stop anim"""
 			})
 	
 		6:
@@ -76,16 +77,18 @@ func example(node_name, dialog_name):
 		8:
 			Rakugo.play_audio("BGMPlayer")
 			Rakugo.say({
-				"who":"test", "what":"now you hear music."
-				+ "{/nl}Click to next step and stop music."
+				"who":"test", "what":
+				"""Now you hear music.
+				Click to next step and stop music."""
 			
 			})
 		
 		9:
 			Rakugo.stop_audio("BGMPlayer")
 			Rakugo.say({
-				"who":"test", "what":"music was stop."
-				+ "{/nl}Click to next step."
+				"who":"test", "what":
+				"""Music was stop.
+				Click to next step."""
 			})
 		
 		10:
