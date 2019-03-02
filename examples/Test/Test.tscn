@@ -16,7 +16,7 @@
 resource_name = "test"
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("RenNode2D:visible")
+tracks/0/path = NodePath("RakugoNode2D:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -28,7 +28,7 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("RenNode2D:modulate")
+tracks/1/path = NodePath("RakugoNode2D:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -45,7 +45,7 @@ resource_name = "test_loop"
 length = 2.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("RenNode2D:rotation_degrees")
+tracks/0/path = NodePath("RakugoNode2D:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -67,16 +67,16 @@ character_name = "Rakugo"
 color = Color( 0.967169, 0.988281, 0.312698, 1 )
 avatar = ExtResource( 3 )
 
-[node name="RenNode2D" type="Node2D" parent="RakugoCharacter"]
+[node name="RakugoNode2D" type="Node2D" parent="RakugoCharacter"]
 editor/display_folded = true
 position = Vector2( 524.705, 226.134 )
 z_index = -1
 script = ExtResource( 4 )
 
-[node name="logo" type="Sprite" parent="RakugoCharacter/RenNode2D"]
+[node name="logo" type="Sprite" parent="RakugoCharacter/RakugoNode2D"]
 texture = ExtResource( 5 )
 
-[node name="RenAnimPlayer" type="AnimationPlayer" parent="RakugoCharacter"]
+[node name="RakugoAnimPlayer" type="AnimationPlayer" parent="RakugoCharacter"]
 anims/test = SubResource( 1 )
 anims/test_loop = SubResource( 2 )
 script = ExtResource( 6 )
