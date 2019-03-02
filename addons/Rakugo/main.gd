@@ -50,9 +50,9 @@ enum StatementType {
 }
 
 # this must be saved
-var current_id : = 0 setget _set_current_id, _get_current_id
-var local_id : = 0
+var history_id : = 0 setget _set_history_id, _get_history_id
 var current_dialog_name : = ""
+var current_node_name : = ""
 var _scene : = ""
 var history : = [] # [{"state":story_state, "statement":{"type":type, "parameters": parameters}}]
 var global_history : = [] # [{"state":story_state, "statement":{"type":type, "parameters": parameters}}]
@@ -123,11 +123,12 @@ signal exit_statement(previous_type, parameters)
 signal notified()
 signal show(node_id, state, show_args)
 signal hide(node_id)
-signal story_step(dialog_name)
+signal story_step(dialog_name, node_name)
 signal play_anim(node_id, anim_name)
 signal stop_anim(node_id, reset)
 signal play_audio(node_id, from_pos)
 signal stop_audio(node_id)
+signal loaded(version)
 
 func _ready() -> void:
 	## set by game devloper
@@ -178,7 +179,7 @@ func exit_statement(parameters : = {}) -> void:
 func story_step() -> void:
 	if loading_in_progress:
 		return
-	emit_signal("story_step", current_dialog_name)
+	emit_signal("story_step", current_dialog_name, current_node_name)
 
 func notified() -> void:
 	emit_signal("notified")
@@ -430,8 +431,7 @@ func _get_story_state() -> int:
 func start() -> void:
 	load_global_history()
 	using_passer = false
-	current_id = 0
-	local_id = 0
+	history_id = 0
 	story_step()
 	started = true
 	emit_signal("started")
@@ -466,10 +466,10 @@ func savefile(save_name : = "quick") -> bool:
 
 	data["variables"] = vars_to_save
 
-	data["id"] = current_id
-	data["local_id"] = local_id
+	data["id"] = history_id
 	data["scene"] = _scene
 	data["dialog_name"] = current_dialog_name
+	data["node_name"] = current_node_name
 	data["state"] = story_state - 1 # it must be this way
 
 	var result = $Persistence.save_data(save_name)
@@ -517,13 +517,14 @@ func loadfile(save_name : = "quick") -> bool:
 
 	jump(
 		data["scene"],
+		data["node_name"],
 		data["dialog_name"],
 		data["state"],
-		true, true,
-		data["local_id"]
+		true, true
 		)
 
-	current_id = data["id"]
+	history_id = data["id"]
+	emit_signal("loaded", game_version)
 	return true
 
 func debug_dict(parameters : Dictionary, parameters_names : = [], some_custom_text : = "") -> String:
@@ -556,29 +557,28 @@ func debug(some_text = []) -> void:
 	print(some_text)
 
 
-func _set_current_id(value : int) -> void:
-	current_id = value
-	local_id = value
+func _set_history_id(value : int) -> void:
+	history_id = value
 
-func _get_current_id() -> int:
-	return current_id
+func _get_history_id() -> int:
+	return history_id
 
 ## use this to change/assain current scene and dialog
 ## root of path_to_scene is scenes_dir
 ## provide path_to_scene with out ".tscn"
-## "lid" is use to setup "local_id"
 func jump(
 	path_to_scene : String,
+	node_name : String,
 	dialog_name : String,
 	state : = 0,
 	change : = true,
-	from_save : = false,
-	lid : = 0) -> void:
+	from_save : = false
+	) -> void:
 
 	if not from_save and loading_in_progress:
 		return
-
-	local_id = lid
+	
+	current_node_name = node_name
 	current_dialog_name = dialog_name
 	
 	_set_story_state(state) # it must be this way
