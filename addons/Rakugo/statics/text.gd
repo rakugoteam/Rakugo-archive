@@ -3,8 +3,6 @@ class_name RakugoTextPasser
 
 var url_open:String = "[color=225ebf][url="
 var url_close:String = "[/url][/color]"
-var new_line:String = "\n"
-var tab:String = "\t"
 
 func text_passer(
 	text:String,
@@ -37,6 +35,8 @@ func parse_text_adv(
 	open:String, close:String) -> String:
 	## code from Sebastian Holc solution:
 	## http://pastebin.com/K8zsWQtL
+
+	text = text.c_unescape()
 
 	for var_name in variables.keys():
 		if text.find(var_name) == -1:
@@ -93,8 +93,6 @@ func parse_rakugo_text(text:String, variables:Dictionary) -> String:
 	text = text.replace("{image", "[img")
 	text = text.replace("{a=", url_open)
 	text = text.replace("{/a}", url_close)
-	text = text.replace("{/nl}", new_line)
-	text = text.replace("{/tab}", tab)
 	text = text.replace("{", "[")
 	text = text.replace("}", "]")
 	return text
@@ -103,8 +101,6 @@ func parse_bbcode_text(text:String, variables:Dictionary) -> String:
 	text = parse_text_adv(text, variables, "{", "}")
 	text = text.replace("[url=", url_open)
 	text = text.replace("[/url]", url_close)
-	text = text.replace("[/nl]", new_line)
-	text = text.replace("[/tab]", tab)
 	return text
 	
 func parse_markdown_text(text:String, variables:Dictionary) -> String:

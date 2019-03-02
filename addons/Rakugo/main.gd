@@ -115,6 +115,7 @@ onready var step_timer : = $StepTimer
 onready var dialog_timer : = $DialogTimer
 onready var notify_timer : = $NotifyTimer
 
+## saved automaticlly -it is RagukoVar
 var story_state : int setget _set_story_state, _get_story_state
 
 signal started
@@ -500,7 +501,6 @@ func savefile(save_name : = "quick") -> bool:
 	data["scene"] = _scene
 	data["dialog_name"] = current_dialog_name
 	data["node_name"] = current_node_name
-	data["state"] = story_state - 1 # it must be this way
 
 	var result = $Persistence.save_data(save_name)
 
@@ -558,7 +558,7 @@ func loadfile(save_name : = "quick") -> bool:
 		data["scene"],
 		data["node_name"],
 		data["dialog_name"],
-		data["state"],
+		_get_story_state(),
 		true, true
 		)
 	
