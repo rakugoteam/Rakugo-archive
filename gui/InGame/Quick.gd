@@ -46,7 +46,7 @@ func _on_qload() -> void:
 func _on_statement(type : int, parameters : Dictionary) -> void:
 	$Skip.disabled = !Rakugo.can_skip()
 	$Auto.disabled = !Rakugo.can_auto()
-	$History.disabled = Rakugo.current_id == 0
+	$History.disabled = Rakugo.history_id == 0
 	$QLoad.disabled = !Rakugo.can_qload()
 
 func on_auto() -> void:

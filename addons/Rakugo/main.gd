@@ -50,7 +50,7 @@ enum StatementType {
 }
 
 # this must be saved
-var current_id : = 0 setget _set_current_id, _get_current_id
+var history_id : = 0 setget _set_history_id, _get_history_id
 var current_dialog_name : = ""
 var _scene : = ""
 var history : = [] # [{"state":story_state, "statement":{"type":type, "parameters": parameters}}]
@@ -430,7 +430,7 @@ func _get_story_state() -> int:
 func start() -> void:
 	load_global_history()
 	using_passer = false
-	current_id = 0
+	history_id = 0
 	story_step()
 	started = true
 	emit_signal("started")
@@ -465,7 +465,7 @@ func savefile(save_name : = "quick") -> bool:
 
 	data["variables"] = vars_to_save
 
-	data["id"] = current_id
+	data["id"] = history_id
 	data["scene"] = _scene
 	data["dialog_name"] = current_dialog_name
 	data["state"] = story_state - 1 # it must be this way
@@ -520,7 +520,7 @@ func loadfile(save_name : = "quick") -> bool:
 		true, true
 		)
 
-	current_id = data["id"]
+	history_id = data["id"]
 	emit_signal("loaded", game_version)
 	return true
 
@@ -554,11 +554,11 @@ func debug(some_text = []) -> void:
 	print(some_text)
 
 
-func _set_current_id(value : int) -> void:
-	current_id = value
+func _set_history_id(value : int) -> void:
+	history_id = value
 
-func _get_current_id() -> int:
-	return current_id
+func _get_history_id() -> int:
+	return history_id
 
 ## use this to change/assain current scene and dialog
 ## root of path_to_scene is scenes_dir

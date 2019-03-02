@@ -55,24 +55,24 @@ func get_as_history_item() -> Dictionary:
 
 
 func add_to_history() -> void:
-	if Rakugo.current_id < 0 or Rakugo.current_id > Rakugo.history.size() + 1:
-		Rakugo.debug(["some thing gone wrong Rakugo.current_id =", Rakugo.current_id])
+	if Rakugo.history_id < 0 or Rakugo.history_id > Rakugo.history.size() + 1:
+		Rakugo.debug(["some thing gone wrong Rakugo.history_id =", Rakugo.history_id])
 		Rakugo.debug(["history size:", Rakugo.history.size()])
 		return
 	
 	var history_item = get_as_history_item()
 
-	if Rakugo.current_id == Rakugo.history.size():
+	if Rakugo.history_id == Rakugo.history.size():
 		Rakugo.history.append(history_item)
 
 	else:
-		Rakugo.history[Rakugo.current_id] = history_item
+		Rakugo.history[Rakugo.history_id] = history_item
 	
 	if !(history_item in Rakugo.global_history):
 		Rakugo.global_history.append(history_item)
 		Rakugo.save_global_history()
 	
-	Rakugo.current_id += 1
+	Rakugo.history_id += 1
 
 func debug(parameters_names : Array = [], some_custom_text : String = "") -> void:
 	var dbg = (Rakugo.StatementType.keys()[type].to_lower() + "("
