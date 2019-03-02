@@ -452,7 +452,6 @@ func start() -> void:
 	started = true
 	emit_signal("started")
 
-
 func savefile(save_name : = "quick") -> bool:
 	$Persistence.folder_name = save_folder
 	$Persistence.password = save_password
@@ -604,14 +603,7 @@ func _get_history_id() -> int:
 ## use this to change/assain current scene and dialog
 ## root of path_to_scene is scenes_dir
 ## provide path_to_scene with out ".tscn"
-func jump(
-	path_to_scene : String,
-	node_name : String,
-	dialog_name : String,
-	state : = 0,
-	change : = true,
-	from_save : = false
-	) -> void:
+func jump(path_to_scene : String, node_name : String, dialog_name : String, state : = 0, change : = true, from_save : = false) -> void:
 
 	if not from_save and loading_in_progress:
 		return
@@ -646,6 +638,12 @@ func jump(
 	
 	if started:
 		story_step()
+
+## use this to assain beginning scene and dialog
+## root of path_to_scene is scenes_dir
+## provide path_to_scene with out ".tscn"
+func begin(path_to_scene : String, node_name : String, dialog_name : String,) -> void:
+	jump(ath_to_scene, node_name , "example", 0, false)
 
 ## it don't work :(
 func current_statement_in_global_history() -> bool:
