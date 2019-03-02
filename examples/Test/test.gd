@@ -29,7 +29,7 @@ func _ready():
 	test_subquest.optional = true
 	test_quest.add_subquest(test_subquest)
 
-func example(dialog_name, node_name):
+func example(node_name, dialog_name):
 	if node_name != name:
 		return
 
@@ -156,13 +156,13 @@ func example(dialog_name, node_name):
 					]
 				})
 	
-func play_vn_example(dialog_name):
+func play_vn_example(node_name, dialog_name):
 	if dialog_name != "Play Visual Novel example":
 		return
 		
 	Rakugo.jump("VisualNovelExample/Garden", "Garden", "garden")
 	
-func play_cp_adv_example(dialog_name):	
+func play_cp_adv_example(node_name, dialog_name):	
 	if dialog_name != "Play Click'n'Point Adventure example":
 		return
 		
@@ -175,7 +175,7 @@ func play_cp_adv_example(dialog_name):
 		
 	Rakugo.jump("Test/Test", "Test", "end", 0, false)
 	
-func play_rpg_example(dialog_name):
+func play_rpg_example(node_name, dialog_name):
 	if Rakugo.current_dialog_name == "Play RPG example":
 		Rakugo.say({
 			"who":
@@ -187,7 +187,7 @@ func play_rpg_example(dialog_name):
 		Rakugo.jump("Test/Test", "Test", "end", 0, false)
 	
 	
-func read_docs(dialog_name):
+func read_docs(node_name, dialog_name):
 	if dialog_name != "Read Docs":
 		return
 		
@@ -200,7 +200,7 @@ func read_docs(dialog_name):
 	
 	Rakugo.jump("Test/Test", "Test", "end", 0, false)
 
-func end(dialog_name):
+func end(node_name, dialog_name):
 	if dialog_name != "end":
 		return
 		

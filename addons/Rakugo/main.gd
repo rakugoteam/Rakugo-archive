@@ -123,7 +123,7 @@ signal exit_statement(previous_type, parameters)
 signal notified()
 signal show(node_id, state, show_args)
 signal hide(node_id)
-signal story_step(dialog_name, node_name)
+signal story_step(node_name, dialog_name)
 signal play_anim(node_id, anim_name)
 signal stop_anim(node_id, reset)
 signal play_audio(node_id, from_pos)
@@ -179,7 +179,8 @@ func exit_statement(parameters : = {}) -> void:
 func story_step() -> void:
 	if loading_in_progress:
 		return
-	emit_signal("story_step", current_dialog_name, current_node_name)
+		
+	emit_signal("story_step", current_node_name, current_dialog_name)
 
 func notified() -> void:
 	emit_signal("notified")
@@ -439,7 +440,7 @@ func start() -> void:
 
 
 func savefile(save_name : = "quick") -> bool:
-	$Persistence.folder_name = save_folder
+	$Persistence.folder_name = save_folder + "/" + save_name
 	$Persistence.password = save_password
 
 	var data = $Persistence.get_data(save_name)
@@ -489,12 +490,13 @@ func savefile(save_name : = "quick") -> bool:
 	data["state"] = story_state - 1 # it must be this way
 
 	var result = $Persistence.save_data(save_name)
+
 	debug(["save data to:", save_name])
 	return result
 	
 func loadfile(save_name : = "quick") -> bool:
 	loading_in_progress = true
-	$Persistence.folder_name = save_folder
+	$Persistence.folder_name = save_folder + "/" + save_name
 	$Persistence.password = save_password
 	
 	var data = $Persistence.get_data(save_name)
