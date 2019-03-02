@@ -123,7 +123,7 @@ signal exit_statement(previous_type, parameters)
 signal notified()
 signal show(node_id, state, show_args)
 signal hide(node_id)
-signal story_step(dialog_name, node_name)
+signal story_step(node_name, dialog_name)
 signal play_anim(node_id, anim_name)
 signal stop_anim(node_id, reset)
 signal play_audio(node_id, from_pos)
@@ -179,7 +179,8 @@ func exit_statement(parameters : = {}) -> void:
 func story_step() -> void:
 	if loading_in_progress:
 		return
-	emit_signal("story_step", current_dialog_name, current_node_name)
+		
+	emit_signal("story_step", current_node_name, current_dialog_name)
 
 func notified() -> void:
 	emit_signal("notified")
@@ -279,6 +280,7 @@ func get_character(character_id : String) -> CharacterObject:
 
 ## crate new link to node as global variable that Rakugo will see
 ## first arg can be node it self or path to it
+## only state of this nodes will be saved
 func node_link(node, node_id : String = "") -> Node:
 	if node_id == "":
 		node_id = node.name
@@ -438,7 +440,7 @@ func start() -> void:
 
 
 func savefile(save_name : = "quick") -> bool:
-	$Persistence.folder_name = save_folder
+	$Persistence.folder_name = save_folder + "/" + save_name
 	$Persistence.password = save_password
 
 	var data = $Persistence.get_data(save_name)
@@ -455,14 +457,29 @@ func savefile(save_name : = "quick") -> bool:
 
 		debug([k, v])
 
-		if v.type == Type.CHARACTER:
-			vars_to_save[k] = {"type":v.type, "value":v.character2dict()}
-		elif v.type == Type.SUBQUEST:
-			vars_to_save[k] = {"type":v.type, "value":v.subquest2dict()}
-		elif v.type == Type.QUEST:
-			vars_to_save[k] = {"type":v.type, "value":v.quest2dict()}
-		else:
-			vars_to_save[k] = {"type":v.type, "value":v.value}
+		match v.type:
+			Type.CHARACTER:
+				vars_to_save[k] = {
+					"type":v.type,
+					"value":v.character2dict()
+				}
+
+			Type.SUBQUEST:
+				vars_to_save[k] = {
+					"type":v.type,
+					"value":v.subquest2dict()
+				}
+
+			Type.QUEST:
+				vars_to_save[k] = {
+					"type":v.type,
+					"value":v.quest2dict()
+				}
+			_:
+				vars_to_save[k] = {
+					"type":v.type,
+					"value":v.value
+				}
 
 	data["variables"] = vars_to_save
 
@@ -473,12 +490,13 @@ func savefile(save_name : = "quick") -> bool:
 	data["state"] = story_state - 1 # it must be this way
 
 	var result = $Persistence.save_data(save_name)
+
 	debug(["save data to:", save_name])
 	return result
 	
 func loadfile(save_name : = "quick") -> bool:
 	loading_in_progress = true
-	$Persistence.folder_name = save_folder
+	$Persistence.folder_name = save_folder + "/" + save_name
 	$Persistence.password = save_password
 	
 	var data = $Persistence.get_data(save_name)
@@ -497,17 +515,23 @@ func loadfile(save_name : = "quick") -> bool:
 
 		debug([k, v])
 
-		if v.type == Type.CHARACTER:
-			character(k, v.value)
-		elif v.type == Type.SUBQUEST:
-			subquest(k, v.value)
-		elif v.type == Type.QUEST:
-			quest(k, v.value)
-			if k in quests:
-				continue
-			quests.append(k)
-		else:
-			define(k, v.value)
+		match v.type:
+			Type.CHARACTER:
+				character(k, v.value)
+
+			Type.SUBQUEST:
+				subquest(k, v.value)
+
+			Type.QUEST:
+				quest(k, v.value)
+
+				if k in quests:
+					continue
+
+				quests.append(k)
+
+			_:
+				define(k, v.value)
 			
 	for q_id in quests:
 		var q = get_quest(q_id)
@@ -591,12 +615,20 @@ func jump(
 	debug(["jump to scene:", _scene, "with dialog:", dialog_name, "from:", state])
 
 	if change:
+		if not from_save:
+			for k in variables.keys:
+				if get_type(k) == Type.NODE:
+					variables.erase(k)
+
 		if current_root_node != null:
 			current_root_node.queue_free()
 		
 		var lscene = load(_scene)
 		current_root_node = lscene.instance()
 		get_tree().get_root().add_child(current_root_node)
+
+		if from_save:
+			pass
 
 	if loading_in_progress:
 		loading_in_progress = false

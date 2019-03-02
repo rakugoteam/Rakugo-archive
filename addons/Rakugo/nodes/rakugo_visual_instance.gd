@@ -3,7 +3,7 @@ class_name RakugoVisualInstance, "res://addons/Rakugo/icons/rakugo_spatial.svg"
 
 var rnode : = RakugoNodeCore.new()
 
-export var auto_define : = false
+export var auto_define : = true
 export var node_id : = ""
 export var camera : = NodePath("")
 export (Array, String) var state : Array setget _set_state, _get_state

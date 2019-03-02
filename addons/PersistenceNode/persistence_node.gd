@@ -91,6 +91,7 @@ func save_data(profile_name : String = "") -> bool:
 			emit_signal("saved")
 			debug("save_profile_default() retorna true")
 			return true
+			
 		else:
 			debug("save_profile_default() retorna falso")
 			return false
@@ -99,8 +100,10 @@ func save_data(profile_name : String = "") -> bool:
 		match mode:
 			Mode.ENCRYPTED:
 				result = save_profile_encripted(profile_name)
+			
 			Mode.TEXT:
 				result = save_profile_text(profile_name)
+	
 	else:
 		debug("No ha pasado la validación")
 		result = false
@@ -120,6 +123,7 @@ func remove_profile(profile_name : String) -> bool:
 	match mode:
 		Mode.ENCRYPTED:
 			path = str("user://", folder_name, "/", profile_name, ".save")
+		
 		Mode.TEXT:
 			path = str("user://", folder_name, "/", profile_name, ".txt")
 	
@@ -128,6 +132,7 @@ func remove_profile(profile_name : String) -> bool:
 	if err != OK:
 		debug("Error al remover el profile: ", err)
 		return false
+
 	else:
 		data = {}
 	
@@ -154,6 +159,7 @@ func remove_all_data() -> bool:
 		data = {}
 		
 		return true
+
 	else:
 		debug("No se a removido ningún archivo.")
 		return false
@@ -190,10 +196,12 @@ func get_profiles(with_extension : = false) -> Array:
 			if file_name != "." and file_name != "..":
 				if not with_extension:
 					profiles.append(file_name.get_basename())
+				
 				else:
 					profiles.append(file_name)
 		
 			file_name = dir.get_next()
+	
 	else:
 		debug("Un error ha ocurrido al intentar entrar al path.")
 	
@@ -271,6 +279,7 @@ func save_profile_default() -> bool:
 	match mode:
 		Mode.ENCRYPTED:
 			return save_profile_encripted("default")
+
 		Mode.TEXT:
 			return save_profile_text("default")
 	
@@ -280,6 +289,7 @@ func load_profile_default() -> bool:
 	match mode:
 		Mode.ENCRYPTED:
 			return load_profile_encripted("default")
+
 		Mode.TEXT:
 			return load_profile_text("default")
 	
@@ -299,6 +309,7 @@ func save_profile_encripted(profile_name : String) -> bool:
 		file.close()
 		
 		return true
+
 	else:
 		debug("Error al crear/guardar el archivo: ", err)
 		debug("Path: ", file_path)
@@ -317,6 +328,7 @@ func save_profile_text(profile_name : String) -> bool:
 		file.close()
 		
 		return true
+
 	else:
 		debug("Error al crear/leer el archivo: ", err)
 		return false
@@ -342,6 +354,7 @@ func load_profile_encripted(profile_name : String) -> bool:
 		
 		debug("Se a cargado el archivo con éxito: ")
 		return true
+
 	else:
 		debug("Error al leer el archivo: ", err)
 		return false
@@ -364,6 +377,7 @@ func load_profile_text(profile_name : String) -> bool:
 		save_profile_text(profile_name)
 
 		return true
+
 	else:
 		debug("Error al leer el archivo: ", err)
 		return false
@@ -375,6 +389,7 @@ func erase_profile_encripted(profile_name : String, file_path : String) -> void:
 	if err == OK:
 		file.get_var()
 		file.close()
+
 	else:
 		debug("No se a podido limpiar el profile: ", err)
 
@@ -396,6 +411,7 @@ func load_data(profile_name : = "") -> bool:
 		if load_profile_default():
 			emit_signal("loaded")
 			return true
+
 		else:
 			debug("load_profile_default retorna false.")
 			return false
@@ -404,6 +420,7 @@ func load_data(profile_name : = "") -> bool:
 		match mode:
 			Mode.ENCRYPTED:
 				result = load_profile_encripted(profile_name)
+
 			Mode.TEXT:
 				result = load_profile_text(profile_name)
 	else:
