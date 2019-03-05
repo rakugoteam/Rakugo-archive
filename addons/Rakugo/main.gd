@@ -621,11 +621,6 @@ func jump(path_to_scene : String, node_name : String, dialog_name : String, stat
 	debug(["jump to scene:", _scene, "with dialog:", dialog_name, "from:", state])
 
 	if change:
-		if not from_save:
-			for k in variables.keys:
-				if get_type(k) == Type.NODE:
-					variables.erase(k)
-
 		if current_root_node != null:
 			current_root_node.queue_free()
 		
