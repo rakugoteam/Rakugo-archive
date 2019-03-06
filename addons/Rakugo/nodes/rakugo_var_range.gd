@@ -5,7 +5,6 @@ extends Range
 export var var_name : = "some_var"
 export var default : = 0.5 setget set_default, get_default
 
-
 func set_default(value : float) -> void:
 	default = value
 	value = default

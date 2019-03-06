@@ -9,8 +9,9 @@ var _max_value : float = 100
 signal min_value_changed(var_name, new_min_value)
 signal max_value_changed(var_name, new_max_value)
 
-func _init() -> void:
-	_type = 8 # Rakugo.Type.RANGE
+#func _init(var_name:String, var_value) -> void:
+#	._init(var_name, var_value, 8)
+#	# Rakugo.Type.RANGE == 8
 
 func _set_value(var_value : float) -> void:
 	if var_value > max_value:

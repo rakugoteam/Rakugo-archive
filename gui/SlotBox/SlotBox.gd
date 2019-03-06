@@ -103,6 +103,10 @@ func savepress(caller : String) -> bool:
 	filehandler.close()
 	
 	savebox()
+	
+	get_parent().in_game()
+	get_parent().hide()
+	
 	return true
 	
 func loadpress(caller : String) -> void:
