@@ -160,12 +160,18 @@ func example(node_name, dialog_name):
 				})
 	
 func play_vn_example(node_name, dialog_name):
+	if node_name != name:
+		return
+
 	if dialog_name != "Play Visual Novel example":
 		return
 		
 	Rakugo.jump("VisualNovelExample/Garden", "Garden", "garden")
 	
-func play_cp_adv_example(node_name, dialog_name):	
+func play_cp_adv_example(node_name, dialog_name):
+	if node_name != name:
+		return
+
 	if dialog_name != "Play Click'n'Point Adventure example":
 		return
 		
@@ -176,9 +182,12 @@ func play_cp_adv_example(node_name, dialog_name):
 				"Click'n'Point Adventure example is not ready yet"
 		})
 		
-	Rakugo.jump("Test/Test", name, "end", 0, false)
+	Rakugo.jump("Test/Test", name, "end", false)
 	
 func play_rpg_example(node_name, dialog_name):
+	if node_name != name:
+		return
+
 	if Rakugo.current_dialog_name == "Play RPG example":
 		Rakugo.say({
 			"who":
@@ -187,10 +196,13 @@ func play_rpg_example(node_name, dialog_name):
 				"RPG example is not ready yet"
 		})
 		
-		Rakugo.jump("Test/Test", name, "end", 0, false)
+		Rakugo.jump("Test/Test", name, "end", false)
 	
 	
 func read_docs(node_name, dialog_name):
+	if node_name != name:
+		return
+
 	if dialog_name != "Read Docs":
 		return
 		
@@ -201,9 +213,12 @@ func read_docs(node_name, dialog_name):
 			"Docs are not ready yet"
 	})
 	
-	Rakugo.jump("Test/Test", name, "end", 0, false)
+	Rakugo.jump("Test/Test", name, "end", false)
 
 func end(node_name, dialog_name):
+	if node_name != name:
+		return
+		
 	if dialog_name != "end":
 		return
 		
