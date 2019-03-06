@@ -1,7 +1,7 @@
 extends RichTextLabel
 class_name RakugoTextLabel
 
-export(String, "rakugo", "bbcode") var mode : = "rakugo"
+export(String, "renpy", "bbcode") var mode : = "renpy"
 export(String, FILE, "*.txt") var rakugo_text_file : = ""
 export(String, MULTILINE) var rakugo_text : = ""
 export(Array, String) var vars_names : = []
@@ -26,8 +26,9 @@ func update_label() -> void:
 func on_meta_clicked(meta) -> void:
 	OS.shell_open(meta)
 
-func on_value_changed(new_value) -> void:
-	update_label()
+func on_value_changed(var_name:String, new_value) -> void:
+	if var_name in vars_names:
+		update_label()
 
 func set_rakugo_file(value : String) -> void:
 	if value.empty():

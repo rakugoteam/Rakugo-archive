@@ -3,7 +3,7 @@ extends Node
 export var game_title : = "Your New Game"
 export var game_version : = "0.0.1"
 export var game_credits : = "Your Company"
-export (String, "ren", "bbcode") var markup : = "ren"
+export (String, "renpy", "bbcode") var markup : = "renpy"
 export var links_color : = Color("#225ebf")
 export var debug_on : = true
 export var save_folder : = "saves"
@@ -209,7 +209,7 @@ func on_stop_audio(node_id : String) -> void:
 func add_dialog(node : Node, func_name : String) -> void:
 	connect("story_step", node, func_name)
 
-## parse text like in renpy to bbcode if mode == "ren"
+## parse text like in renpy to bbcode if mode == "renpy"
 ## or parse bbcode with {vars} if mode == "bbcode"
 ## default mode = Rakugo.markup 
 func text_passer(text : String, mode : = markup):
@@ -577,7 +577,7 @@ func debug_dict(parameters : Dictionary, parameters_names : = [], some_custom_te
 
 	return some_custom_text + dbg
 
-## for printting debugs is only print if debug_on == true
+## for printing debugs is only print if debug_on == true
 ## put some string array or string as argument
 func debug(some_text = []) -> void:
 	if not debug_on:
@@ -621,11 +621,6 @@ func jump(path_to_scene : String, node_name : String, dialog_name : String, stat
 	debug(["jump to scene:", _scene, "with dialog:", dialog_name, "from:", state])
 
 	if change:
-		if not from_save:
-			for k in variables.keys:
-				if get_type(k) == Type.NODE:
-					variables.erase(k)
-
 		if current_root_node != null:
 			current_root_node.queue_free()
 		

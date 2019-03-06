@@ -20,6 +20,7 @@ func on_state(state):
 	
 	if "right" in state:
 		scale.x = scale_x
+		
 	elif "left" in state:
 		scale.x = -scale_x
 	

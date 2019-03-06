@@ -4,45 +4,48 @@ class_name RakugoDef
 func get_type(variable) -> String:
 	var type = "str"
 		
-	if typeof(variable) == TYPE_BOOL:
-		type = "bool"
+	match typeof(variable):
+		TYPE_BOOL:
+			type = "bool"
+		
+		TYPE_INT:
+			type = "int"
 	
-	elif typeof(variable) == TYPE_INT:
-		type = "int"
-	
-	elif typeof(variable) == TYPE_REAL:
-		type = "float"
+		TYPE_REAL:
+			type = "float"
 	
 	return type
 
 func str2rakugo_type(str_type) -> int:
-	if str_type == "str":
-		return Rakugo.Type.TEXT
+	match str_type:
+		"str":
+			return Rakugo.Type.TEXT
 	
-	elif str_type == "character":
-		return Rakugo.Type.CHARACTER
+		"character":
+			return Rakugo.Type.CHARACTER
 	
-	elif str_type == "quest":
-		return Rakugo.Type.QUEST
+		"quest":
+			return Rakugo.Type.QUEST
 	
-	elif str_type == "subquest":
-		return Rakugo.Type.SUBQUEST
+		"subquest":
+			return Rakugo.Type.SUBQUEST
 	
-	else:
-		return Rakugo.Type.VAR
+		_:
+			return Rakugo.Type.VAR
 
 func str2value(str_value : String, var_type : String):
-	if var_type == "str":
-		return str_value
+	match var_type:
+		"str":
+			return str_value
 	
-	elif var_type == "bool":
-		return bool(str_value)
+		"bool":
+			return bool(str_value)
 	
-	elif var_type == "int":
-		return int(str_value)
+		"int":
+			return int(str_value)
 	
-	elif var_type == "float":
-		return float(str_value)
+		"float":
+			return float(str_value)
 
 func define_from_str(variables : Dictionary, var_name : String, var_str : String, var_type : String):
 	var value = str2value(var_str, var_type)
@@ -54,49 +57,56 @@ func define(variables : Dictionary, var_name : String, var_value = null, var_typ
 		var_type = Rakugo.Type.VAR
 		var type = typeof(var_value)
 
-		if type == TYPE_STRING:
-			var_type = Rakugo.Type.TEXT
+		match type:
+			TYPE_STRING:
+				var_type = Rakugo.Type.TEXT
 		
-		elif type == TYPE_DICTIONARY:
-			var_type = Rakugo.Type.DICT
+			TYPE_DICTIONARY:
+				var_type = Rakugo.Type.DICT
 		
-		elif type == TYPE_ARRAY:
-			var_type = Rakugo.Type.LIST
+			TYPE_ARRAY:
+				var_type = Rakugo.Type.LIST
 		
-		elif type == TYPE_NODE_PATH:
-			var_type = Rakugo.Type.NODE
-			var_value = var_value
+			TYPE_NODE_PATH:
+				var_type = Rakugo.Type.NODE
+				var_value = var_value
 
-	if var_type == Rakugo.Type.QUEST:
-		var new_quest = Quest.new()
-		new_quest.quest_id = var_name
-		if typeof(var_value) == TYPE_DICTIONARY:
-			new_quest.dict2quest(var_value)
-		variables[var_name] = new_quest
-		return new_quest
+	match var_type:
+		Rakugo.Type.QUEST:
+			var new_quest = Quest.new()
+			new_quest.quest_id = var_name
+			
+			if is_dict(var_value):
+				new_quest.dict2quest(var_value)
+				
+			variables[var_name] = new_quest
+			return new_quest
 	
-	if var_type == Rakugo.Type.SUBQUEST:
-		var new_subquest = Subquest.new()
-		new_subquest.quest_id = var_name
-		if typeof(var_value) == TYPE_DICTIONARY:
-			new_subquest.dict2subquest(var_value)
-		variables[var_name] = new_subquest
-		return new_subquest
+		Rakugo.Type.SUBQUEST:
+			var new_subquest = Subquest.new()
+			new_subquest.quest_id = var_name
+			
+			if is_dict(var_value):
+				new_subquest.dict2subquest(var_value)
+				
+			variables[var_name] = new_subquest
+			return new_subquest
 	
-	if var_type == Rakugo.Type.CHARACTER:
-		var new_character = CharacterObject.new()
-		if typeof(var_value) == TYPE_DICTIONARY:
-			new_character.dict2character(var_value)
-		variables[var_name] = new_character
-		return new_character
+		Rakugo.Type.CHARACTER:
+			var new_character = CharacterObject.new()
+			
+			if is_dict(var_value):
+				new_character.dict2character(var_value)
+				
+			variables[var_name] = new_character
+			return new_character
 	
-	else:
-		var new_var = RakugoVar.new()
-		new_var._type = var_type
-		new_var._value = var_value
-		variables[var_name] = new_var
-		return new_var
+		_:
+			var new_var = RakugoVar.new(var_name, var_value, var_type)
+			variables[var_name] = new_var
+			return new_var
 
 		
-	
+func is_dict(value) -> bool:
+	return typeof(value) == TYPE_DICTIONARY
 	
