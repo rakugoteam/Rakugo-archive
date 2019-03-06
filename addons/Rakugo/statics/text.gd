@@ -7,7 +7,7 @@ var url_close:String = "[/url][/color]"
 func text_passer(
 	text:String,
 	variables:Dictionary, 
-	mode:String = "rakugo",
+	mode:String = "renpy",
 	links_color:String = "225ebf"
 	) -> String:
 	## passer for renpy or bbcode markup format
@@ -19,7 +19,7 @@ func text_passer(
 		return text
 	
 	match mode:
-		"rakugo":
+		"renpy":
 			text = parse_rakugo_text(text, variables)
 
 		"bbcode":
