@@ -15,10 +15,10 @@ func _ready() -> void:
 	yes_button.connect("pressed", self, "close_popup", [true])
 	no_button.connect("pressed", self, "close_popup", [false])
 
-func close_popup(anwser):
+func close_popup(answer):
 	$PopupPanel.hide()
 	$GridContainer.show()
-	overwrite = anwser
+	overwrite = answer
 	emit_signal("popup_is_closed")
 	
 func savebox(saveslotsdir : = saveslots_dir + "/") -> void:
@@ -37,6 +37,10 @@ func savebox(saveslotsdir : = saveslots_dir + "/") -> void:
 			filehandler.close()
 		
 		var b = x.get_node("Button")
+		
+		if b.is_connected("pressed", self, "loadpress"):
+			b.disconnect("pressed", self, "loadpress")
+
 		if !b.is_connected("pressed", self, "savepress"):
 			b.connect("pressed", self, "savepress", [x.name])
 
@@ -62,6 +66,10 @@ func loadbox(saveslotsdir : = saveslots_dir + "/") -> bool:
 			return false
 		
 		var b = x.get_node("Button")
+
+		if b.is_connected("pressed", self, "savepress"):
+			b.disconnect("pressed", self, "savepress")
+
 		if !b.is_connected("pressed", self, "loadpress"):
 			b.connect("pressed", self, "loadpress", [x.name])
 
