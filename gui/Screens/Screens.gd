@@ -99,20 +99,22 @@ func _on_visibility_changed():
 	if visible:
 		get_tree().paused = true
 		in_game_gui.hide()
-		
-	else:
-		in_game_gui.show()
-		unpause_timer.start()
-		yield(unpause_timer, "timeout")
-		get_tree().paused = false
+		return
+
+	in_game_gui.show()
+	unpause_timer.start()
+	yield(unpause_timer, "timeout")
+	get_tree().paused = false
 
 ## # if press "Return" or "no" on quit page
 func _on_Return_pressed():
 	if Rakugo.started:
 		hide()
-		
-	else:
-		current_node.hide()
+		unpause_timer.start()
+		yield(unpause_timer, "timeout")
+		return
+	
+	current_node.hide()
 
 func _on_Load_pressed():
 	load_menu()
@@ -149,6 +151,7 @@ func _on_Quests_pressed():
 # if press "yes" on quit page
 func _on_Yes_pressed():
 	Rakugo.savefile("auto")
+	Rakugo.save_global_history()
 	settings.save_conf()
 	get_tree().quit()
 

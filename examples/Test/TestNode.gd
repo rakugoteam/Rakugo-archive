@@ -8,14 +8,15 @@ var is_show : RakugoVar
 
 func _ready():
 	Rakugo.node_link(self, name)
-	is_show = Rakugo.define("test_node_is_show", visible)
+	Rakugo.define("test_node_is_show", visible)
 	connect("visibility_changed", self, "_on_vis_changed")
+	Rakugo.connect("loaded", self, "_on_loaded")
 
 func _on_vis_changed():
-	is_show.v = visible;
+	Rakugo.define("test_node_is_show", visible)
 
-func _on_load(version):
-	visible = is_show.v
+func _on_loaded(version):
+	visible = Rakugo.get_value("test_node_is_show")
 
 func test_func(some_text):
 	print(some_text)

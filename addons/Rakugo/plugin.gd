@@ -23,12 +23,12 @@ func _enter_tree():
 		preload("icons/rakugo_menu_h.svg")
 		)
 		
-	add_custom_type(
-	 	"RakugoVarCheckBox",
-	 	"CheckBox",
-	 	preload("nodes/rakugo_var_check.gd"),
-	 	preload("icons/rakugo_check_box.svg")
-	 	)
+	# add_custom_type(
+	# 	"RakugoVarCheckBox",
+	# 	"CheckBox",
+	# 	preload("nodes/rakugo_var_check.gd"),
+	# 	preload("icons/rakugo_check_box.svg")
+	# 	)
 	
 	add_custom_type(
 		"RakugoVarHSlider",

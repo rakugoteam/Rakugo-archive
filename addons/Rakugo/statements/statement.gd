@@ -70,11 +70,10 @@ func add_to_history() -> void:
 	
 	if !(history_item in Rakugo.global_history):
 		Rakugo.global_history.append(history_item)
-		Rakugo.save_global_history()
 	
 	Rakugo.history_id += 1
 
 func debug(parameters_names : Array = [], some_custom_text : String = "") -> void:
 	var dbg = (Rakugo.StatementType.keys()[type].to_lower() + "("
-	        + Rakugo.debug_dict(parameters, parameters_names, some_custom_text) + ")")
+			+ Rakugo.debug_dict(parameters, parameters_names, some_custom_text) + ")")
 	Rakugo.debug(dbg)

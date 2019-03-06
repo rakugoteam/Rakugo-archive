@@ -461,7 +461,7 @@ func savefile(save_name : = "quick") -> bool:
 	if data == null:
 		return false
 
-	data["history"] = history.duplicate()
+	data["history"] = history
 
 	var vars_to_save = {}
 	for i in range(variables.size()):
@@ -517,9 +517,9 @@ func loadfile(save_name : = "quick") -> bool:
 		return false
 
 	quests.clear()
-	history = data["history"].duplicate()
+	history = data["history"]
 
-	var vars_to_load = data["variables"].duplicate()
+	var vars_to_load = data["variables"]
 
 	for i in range(vars_to_load.size()):
 		var k = vars_to_load.keys()[i]
@@ -601,7 +601,7 @@ func _set_history_id(value : int) -> void:
 func _get_history_id() -> int:
 	return history_id
 
-## use this to change/assain current scene and dialog
+## use this to change/assign current scene and dialog
 ## root of path_to_scene is scenes_dir
 ## provide path_to_scene with out ".tscn"
 func jump(path_to_scene : String, node_name : String, dialog_name : String, change : = true, state : = 0, from_save : = false) -> void:
@@ -692,7 +692,7 @@ func save_global_history() -> bool:
 	if data == null:
 		return false
 
-	data["global_history"] = global_history.duplicate()
+	data["global_history"] = global_history
 	
 	var result = $Persistence.save_data(save_name)
 	debug(["save global_history to:", save_name])
@@ -710,7 +710,7 @@ func load_global_history() -> bool:
 		return false
 	
 	if "global_history" in data:
-		global_history = data["global_history"].duplicate()
+		global_history = data["global_history"]
 		
 	return true
 
