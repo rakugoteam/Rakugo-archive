@@ -14,27 +14,19 @@
 [ext_resource path="res://gui/Screens/QuitBox.tscn" type="PackedScene" id=12]
 [ext_resource path="res://examples/Test/TestNodes.tscn" type="PackedScene" id=13]
 
-
-
-
-
 [sub_resource type="DynamicFont" id=1]
-
 size = 50
 use_filter = true
 font_data = ExtResource( 3 )
 
 [sub_resource type="ButtonGroup" id=2]
 
-
 [sub_resource type="DynamicFont" id=3]
-
 size = 40
 use_filter = true
 font_data = ExtResource( 3 )
 
 [sub_resource type="Animation" id=4]
-
 resource_name = "modern_center"
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("Navigation:rect_position:x")
@@ -720,7 +712,6 @@ tracks/64/keys = {
 }
 
 [sub_resource type="Animation" id=5]
-
 resource_name = "modern_left"
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("Navigation:rect_position:x")
@@ -1516,7 +1507,6 @@ tracks/75/keys = {
 }
 
 [sub_resource type="Animation" id=6]
-
 resource_name = "modern_right"
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("Navigation:rect_position:x")
@@ -2292,7 +2282,6 @@ tracks/73/keys = {
 }
 
 [sub_resource type="Animation" id=7]
-
 resource_name = "small_center"
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("Navigation:rect_position:x")
@@ -3038,7 +3027,6 @@ tracks/70/keys = {
 }
 
 [sub_resource type="Animation" id=8]
-
 resource_name = "small_left"
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("Navigation:rect_position:x")
@@ -3924,7 +3912,6 @@ tracks/84/keys = {
 }
 
 [sub_resource type="Animation" id=9]
-
 resource_name = "small_right"
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("Navigation:rect_position:x")
@@ -4803,7 +4790,7 @@ grow_horizontal = 0
 alignment = 2
 
 [node name="Title" type="Label" parent="TitleNVersion"]
-margin_left = 651.0
+margin_left = 563.0
 margin_right = 750.0
 margin_bottom = 65.0
 size_flags_vertical = 1

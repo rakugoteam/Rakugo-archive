@@ -14,7 +14,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/statements/ask.gd"
 }, {
-"base": "RenTimer",
+"base": "RakugoTimer",
 "class": "AutoTimer",
 "language": "GDScript",
 "path": "res://addons/Rakugo/statics/AutoTimer.gd"
@@ -49,7 +49,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/json_beautifier/json_beautifier.gd"
 }, {
-"base": "Object",
+"base": "Say",
 "class": "Menu",
 "language": "GDScript",
 "path": "res://addons/Rakugo/statements/menu.gd"
@@ -74,7 +74,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/statements/play_audio.gd"
 }, {
-"base": "Object",
+"base": "Subquest",
 "class": "Quest",
 "language": "GDScript",
 "path": "res://addons/Rakugo/types/quest.gd"
@@ -134,7 +134,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/nodes/rakugo_quest_button.gd"
 }, {
-"base": "Object",
+"base": "RakugoVar",
 "class": "RakugoRange",
 "language": "GDScript",
 "path": "res://addons/Rakugo/types/range.gd"

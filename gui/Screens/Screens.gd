@@ -108,6 +108,7 @@ func _on_visibility_changed():
 func _on_Return_pressed():
 	if Rakugo.started:
 		hide()
+		
 	else:
 		current_node.hide()
 
@@ -122,7 +123,6 @@ func in_game():
 	history_button.show()
 	quests_button.show()
 	scrollbar.show()
-	
 
 func _on_NewGame_pressed():
 	hide()
@@ -202,8 +202,10 @@ func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		if visible:
 			_on_Return_pressed()
+			
 		elif use_back_button:
 			show()
+			
 		else:
 			_on_Options_pressed()
 		
