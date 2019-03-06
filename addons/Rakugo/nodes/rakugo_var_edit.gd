@@ -27,7 +27,10 @@ func _ready() -> void:
 	connect("text_entered", self, "_on_entered")
 	var_to_change.connect("value_changed", self, "on_value_changed")
 
-func on_value_changed(new_value) -> void:
+func on_value_changed(vname:String, new_value) -> void:
+	if vname != var_name:
+		return
+
 	text = ""
 	placeholder_text = str(new_value)
 

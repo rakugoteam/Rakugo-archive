@@ -23,7 +23,10 @@ func _ready() -> void:
 	Rakugo.connect_var(var_name, "value_changed", self, "on_value_changed")
 	connect("visibility_changed", self, "on_visibility_changed")
 
-func on_value_changed(new_value : float) -> void:
+func on_value_changed(vname:String, new_value : float) -> void:
+	if vname != var_name:
+		return
+		
 	value = new_value
 
 func on_visibility_changed() -> void:

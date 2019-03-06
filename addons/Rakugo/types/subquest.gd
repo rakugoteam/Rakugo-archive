@@ -79,11 +79,13 @@ func subquest2dict() -> Dictionary:
 # This is util for to use in run time.
 func dict2subquest(dict : Dictionary) -> void :
 	if dict.has("title"):
-		title		= dict["title"]
+		title = dict["title"]
+
 	if dict.has("optional"):
-		optional	= dict["optional"]
+		optional = dict["optional"]
+
 	if dict.has("state"):
-		state		= dict["state"]
+		state = dict["state"]
 
 func _get_type() -> int:
 	return Rakugo.Type.SUBQUEST

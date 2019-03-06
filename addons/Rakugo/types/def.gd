@@ -70,30 +70,34 @@ func define(variables : Dictionary, var_name : String, var_value = null, var_typ
 	if var_type == Rakugo.Type.QUEST:
 		var new_quest = Quest.new()
 		new_quest.quest_id = var_name
+		
 		if typeof(var_value) == TYPE_DICTIONARY:
 			new_quest.dict2quest(var_value)
+			
 		variables[var_name] = new_quest
 		return new_quest
 	
 	if var_type == Rakugo.Type.SUBQUEST:
 		var new_subquest = Subquest.new()
 		new_subquest.quest_id = var_name
+		
 		if typeof(var_value) == TYPE_DICTIONARY:
 			new_subquest.dict2subquest(var_value)
+			
 		variables[var_name] = new_subquest
 		return new_subquest
 	
 	if var_type == Rakugo.Type.CHARACTER:
 		var new_character = CharacterObject.new()
+		
 		if typeof(var_value) == TYPE_DICTIONARY:
 			new_character.dict2character(var_value)
+			
 		variables[var_name] = new_character
 		return new_character
 	
 	else:
-		var new_var = RakugoVar.new()
-		new_var._type = var_type
-		new_var._value = var_value
+		var new_var = RakugoVar.new(var_name, var_value, var_type)
 		variables[var_name] = new_var
 		return new_var
 

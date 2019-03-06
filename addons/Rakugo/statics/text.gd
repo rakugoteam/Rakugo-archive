@@ -3,6 +3,8 @@ class_name RakugoTextPasser
 
 var url_open:String = "[color=225ebf][url="
 var url_close:String = "[/url][/color]"
+var new_line:String = "\n"
+var tab:String = "\t"
 
 func text_passer(
 	text:String,
@@ -30,6 +32,27 @@ func text_passer(
 
 	return text
 
+func dict_or_character(
+	var_name:String, open:String,
+	s:String, close:String, dict,
+	text:String, type:int,
+	variables:Dictionary) -> String:
+	text = text.replace(s, str(dict))
+	
+	for k in dict.keys():
+		var sk = open + var_name + "." + k + close
+		if text.find(sk) == -1:
+			continue # no variable in this string
+		
+		var kvalue = str(dict[k])
+
+		if k == "name" and type == Rakugo.Type.CHARACTER:
+			kvalue = variables[var_name].parse_character()
+		
+		text = text.replace(sk, kvalue)
+	
+	return text
+
 func parse_text_adv(
 	text:String, variables:Dictionary,
 	open:String, close:String) -> String:
@@ -47,44 +70,38 @@ func parse_text_adv(
 
 		# Rakugo.debug([var_name, type, value])
 		var s = open + var_name + close
-		if type == Rakugo.Type.TEXT:
-			text = text.replace(s, value)
-		
-		elif type == Rakugo.Type.VAR:
-			text = text.replace(s, str(value))
-		
-		elif type in [Rakugo.Type.DICT, Rakugo.Type.CHARACTER]:
-			var dict = value
 
-			text = text.replace(s, str(dict))
+		match type:
+			Rakugo.Type.TEXT:
+				text = text.replace(s, value)
+		
+			Rakugo.Type.VAR:
+				text = text.replace(s, str(value))
+		
+			Rakugo.Type.DICT:
+				text = dict_or_character(
+					var_name, open, s, close,
+					value, text, type, variables
+				)
 			
-			for k in dict.keys():
-				var sk = open + var_name + "." + k + close
-				if text.find(sk) == -1:
-					continue # no variable in this string
-				
-				var kvalue = str(dict[k])
-
-				if k == "name" and type == Rakugo.Type.CHARACTER:
-					kvalue = variables[var_name].parse_character()
-				
-				# if "()" in k:
-				# 	kvalue = variables[var_name].callv()
-				
-				text = text.replace(sk, kvalue)
+			Rakugo.Type.CHARACTER:
+				text = dict_or_character(
+					var_name, open, s, close,
+					value, text, type, variables
+				)
 		
-		elif type == Rakugo.Type.LIST:
-			text = text.replace(s, str(value))
-			
-			for i in range(value.size()):
-				var sa = open + var_name + open + str(i) + close + close
-				if text.find(sa) == -1:
-					continue # no variable in this string
+			Rakugo.Type.LIST:
+				text = text.replace(s, str(value))
 				
-				text = text.replace(sa, str(value[i]))
+				for i in range(value.size()):
+					var sa = open + var_name + open + str(i) + close + close
+					if text.find(sa) == -1:
+						continue # no variable in this string
+					
+					text = text.replace(sa, str(value[i]))
 
-		else:
-			print(var_name," is unsuported variable type: ", type)
+			_:
+				print(var_name," is unsuported variable type: ", type)
 		
 	return text
 
@@ -93,6 +110,8 @@ func parse_rakugo_text(text:String, variables:Dictionary) -> String:
 	text = text.replace("{image", "[img")
 	text = text.replace("{a=", url_open)
 	text = text.replace("{/a}", url_close)
+	text = text.replace("{/nl}", new_line)
+	text = text.replace("{/tab}", tab)
 	text = text.replace("{", "[")
 	text = text.replace("}", "]")
 	return text
@@ -101,5 +120,6 @@ func parse_bbcode_text(text:String, variables:Dictionary) -> String:
 	text = parse_text_adv(text, variables, "{", "}")
 	text = text.replace("[url=", url_open)
 	text = text.replace("[/url]", url_close)
+	text = text.replace("[/url]", url_close)
+	text = text.replace("[/nl]", new_line)
 	return text
-	

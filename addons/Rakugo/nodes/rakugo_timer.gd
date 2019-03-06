@@ -21,7 +21,10 @@ func _ready() -> void:
 	
 	Rakugo.connect_var(var_name, "value_changed", self, "on_value_changed")
 
-func on_value_changed(new_value : float) -> void:
+func on_value_changed(vname:String, new_value : float) -> void:
+	if var_name != vname:
+		return
+		
 	if new_value == 0:
 		new_value = 0.1
 		
