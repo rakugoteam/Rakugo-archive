@@ -103,7 +103,3 @@ func parse_bbcode_text(text:String, variables:Dictionary) -> String:
 	text = text.replace("[/url]", url_close)
 	return text
 	
-func parse_markdown_text(text:String, variables:Dictionary) -> String:
-
-    
-    return text
