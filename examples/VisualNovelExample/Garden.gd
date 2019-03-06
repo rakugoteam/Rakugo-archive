@@ -6,7 +6,10 @@ func _ready():
 	
 	Rakugo.add_dialog(self, "garden")
 
-func garden(dialog_name):
+func garden(node_name, dialog_name):
+	if node_name != name:
+		return
+		
 	if dialog_name != "garden":
 		return
 		

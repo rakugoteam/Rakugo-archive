@@ -557,8 +557,9 @@ func loadfile(save_name : = "quick") -> bool:
 		data["scene"],
 		data["node_name"],
 		data["dialog_name"],
+		true,
 		_get_story_state(),
-		true, true
+		true
 		)
 	
 	emit_signal("loaded", game_version)
@@ -603,7 +604,7 @@ func _get_history_id() -> int:
 ## use this to change/assain current scene and dialog
 ## root of path_to_scene is scenes_dir
 ## provide path_to_scene with out ".tscn"
-func jump(path_to_scene : String, node_name : String, dialog_name : String, state : = 0, change : = true, from_save : = false) -> void:
+func jump(path_to_scene : String, node_name : String, dialog_name : String, change : = true, state : = 0, from_save : = false) -> void:
 
 	if not from_save and loading_in_progress:
 		return
@@ -638,7 +639,7 @@ func jump(path_to_scene : String, node_name : String, dialog_name : String, stat
 ## root of path_to_scene is scenes_dir
 ## provide path_to_scene with out ".tscn"
 func begin(path_to_scene : String, node_name : String, dialog_name : String) -> void:
-	jump(path_to_scene, node_name , dialog_name, 0, false)
+	jump(path_to_scene, node_name , dialog_name, false)
 
 ## it don't work :(
 func current_statement_in_global_history() -> bool:
