@@ -101,8 +101,10 @@ func _on_visibility_changed():
 		in_game_gui.hide()
 		
 	else:
-		get_tree().paused = false
 		in_game_gui.show()
+		unpause_timer.start()
+		yield(unpause_timer, "timeout")
+		get_tree().paused = false
 
 ## # if press "Return" or "no" on quit page
 func _on_Return_pressed():
