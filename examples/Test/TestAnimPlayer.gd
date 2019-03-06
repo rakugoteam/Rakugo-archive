@@ -15,6 +15,7 @@ func _ready():
 	Rakugo.connect("loaded", self, "_on_loaded")
 
 func _on_anim_name_changed(old_name, new_name):
+	print(new_name)
 	anim_name.value = new_name
 	
 func _on_anim_finished(a_name):
@@ -23,6 +24,7 @@ func _on_anim_finished(a_name):
 	## anim_is_playing.value = false;
 	
 func _on_anim_started(a_name):
+	anim_name.value = a_name
 	anim_is_playing.v = true
 
 func _on_loaded(version):
