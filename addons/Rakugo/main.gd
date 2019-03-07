@@ -129,7 +129,6 @@ signal play_anim(node_id, anim_name)
 signal stop_anim(node_id, reset)
 signal play_audio(node_id, from_pos)
 signal stop_audio(node_id)
-signal loaded(version)
 
 func _ready() -> void:
 	## set by game developer
@@ -562,7 +561,6 @@ func loadfile(save_name : = "quick") -> bool:
 		true
 		)
 	
-	emit_signal("loaded", game_version)
 	return true
 
 func debug_dict(parameters : Dictionary, parameters_names : = [], some_custom_text : = "") -> String:
@@ -692,7 +690,7 @@ func save_global_history() -> bool:
 	if data == null:
 		return false
 
-	data["global_history"] = global_history
+	data["global_history"] = global_history.duplicate()
 	
 	var result = $Persistence.save_data(save_name)
 	debug(["save global_history to:", save_name])
@@ -710,11 +708,6 @@ func load_global_history() -> bool:
 		return false
 	
 	if "global_history" in data:
-		global_history = data["global_history"]
+		global_history = data["global_history"].duplicate()
 		
 	return true
-
-func _exit_tree():
-	history.clear()
-	global_history.clear()
-	variables.clear()

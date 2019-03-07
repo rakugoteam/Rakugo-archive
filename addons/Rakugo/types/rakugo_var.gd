@@ -24,7 +24,7 @@ func _get_type() -> int:
 
 func _set_value(var_value) -> void:
 	_value = var_value
-	emit_signal("value_changed", _name, var_value)
+	emit_signal("value_changed", _name, _value)
 
 func _get_value():
 	return _value

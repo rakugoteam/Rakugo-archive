@@ -184,24 +184,28 @@ func _on_Help_pressed():
 	OS.shell_open("https://github.com/jebedaia360/Rakugo")
 
 func _fullscreen_on_input(event):
-	if event.is_action_pressed("rakugo_fullscreen"):
-		if settings.window_fullscreen:
-			settings.window_fullscreen = false
-			settings.window_size = settings.default_window_size
+	if !event.is_action_pressed("rakugo_fullscreen"):
+		return
 		
-		else:
-			settings.window_fullscreen = true
-			settings.window_size = OS.get_screen_size()
+	if settings.window_fullscreen:
+		settings.window_fullscreen = false
+		settings.window_size = settings.default_window_size
+	
+	else:
+		settings.window_fullscreen = true
+		settings.window_size = OS.get_screen_size()
 			
 func _screenshot_on_input(event):
-	if event.is_action_pressed("rakugo_screenshot"):
-		var dir = Directory.new()
-		var screenshots_dir = "user://screenshots"
-		if !dir.dir_exists(screenshots_dir):
-			dir.make_dir(screenshots_dir)
+	if !event.is_action_pressed("rakugo_screenshot"):
+		return
 		
-		var s = Rakugo.get_datetime_str().replace(":", " ")
-		get_screenshot().save_png(screenshots_dir + "/" + s + '.png')
+	var dir = Directory.new()
+	var screenshots_dir = "user://screenshots"
+	if !dir.dir_exists(screenshots_dir):
+		dir.make_dir(screenshots_dir)
+	
+	var s = Rakugo.get_datetime_str().replace(":", " ")
+	get_screenshot().save_png(screenshots_dir + "/" + s + '.png')
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):

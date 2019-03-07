@@ -28,7 +28,7 @@ func _ready() -> void:
 	connect("visibility_changed", self, "on_visibility_changed")
 	var_to_change.connect("value_changed", self, "on_value_changed")
 
-func on_value_changed(vname:String, new_value : bool) -> void:
+func on_value_changed(vname:String, new_value:bool) -> void:
 	if vname != var_name:
 		return
 	
