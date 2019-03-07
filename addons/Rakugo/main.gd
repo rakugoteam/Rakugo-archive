@@ -115,7 +115,7 @@ onready var step_timer : = $StepTimer
 onready var dialog_timer : = $DialogTimer
 onready var notify_timer : = $NotifyTimer
 
-## saved automaticlly -it is RagukoVar
+## saved automatically -it is RagukoVar
 var story_state : int setget _set_story_state, _get_story_state
 
 signal started
@@ -129,10 +129,9 @@ signal play_anim(node_id, anim_name)
 signal stop_anim(node_id, reset)
 signal play_audio(node_id, from_pos)
 signal stop_audio(node_id)
-signal loaded(version)
 
 func _ready() -> void:
-	## set by game devloper
+	## set by game developer
 	define("title", game_title)
 	define("version", game_version)
 	OS.set_window_title(game_title + " " + game_version)
@@ -233,7 +232,7 @@ func define_from_str(var_name : String, var_str : String, var_type : String) -> 
 		var var_type_int = $Def.str2rakugo_type(var_type)
 		return set_var(var_name, value, var_type_int)
 
-## overwrite exitsing global variable and returns it as RakugoVar
+## overwrite existing global variable and returns it as RakugoVar
 func set_var(var_name : String, value, var_type : = -1) -> Object:
 	if not variables.has(var_name):
 		prints(var_name, "variable don't exist in Rakugo")
@@ -268,7 +267,7 @@ func get_var(var_name : String, type : = Type.VAR):
 	return variables[var_name]
 
 ## to use with `define_from_str` func as var_type arg
-## it can't use optinal typing
+## it can't use optional typing
 func get_def_type(variable):
 	return $Def.get_type(variable)
 
@@ -281,11 +280,11 @@ func get_value(var_name : String):
 func get_type(var_name : String) -> int:
 	return variables[var_name].type
 
-## just faster way to connect singal to rakugo's variable
+## just faster way to connect signal to rakugo's variable
 func connect_var(var_name : String, signal_name : String, node : Object, func_name : String, binds : = [], flags : = 0) -> void:
 	get_var(var_name).connect(signal_name, node, func_name, binds, flags)
 	
-## crate new charater as global variable that Rakugo will see
+## crate new character as global variable that Rakugo will see
 ## possible parameters: name, color, what_prefix, what_suffix, kind, avatar
 func character(character_id : String, parameters : Dictionary) -> CharacterObject:
 	return $Def.define(variables, character_id, parameters, Type.CHARACTER)
@@ -352,7 +351,7 @@ func say(parameters : Dictionary) -> void:
 
 ## statement of type ask
 ## there can be only one say, ask or menu in story_state at it end
-## its allow player to provide keybord ask that will be assain to given variable
+## its allow player to provide keyboard ask that will be assign to given variable
 ## it also will return RakugoVar variable
 ## with keywords : who, what, typing, kind, variable, value
 ## speed is time to show next letter
@@ -367,11 +366,11 @@ func ask(parameters : Dictionary) -> void:
 func menu(parameters : Dictionary) -> void:
 	_set_statement($Menu, parameters)
 
-## it show custom rakugo node or charater
-## 'state' arg is using to set for example current emtion or/and cloths
+## it show custom rakugo node or character
+## 'state' arg is using to set for example current emotion or/and cloths
 ## 'state' example '['happy', 'green uniform']'
 ## with keywords : x, y, z, at, pos
-## x, y and pos will use it as procent of screen if between 0 and 1
+## x, y and pos will use it as protect of screen if between 0 and 1
 ## "at" is lists that can have: "top", "center", "bottom", "right", "left"
 func show(node_id : String, state : PoolStringArray = [], parameters : = {"at":["center", "bottom"]}):
 	parameters["node_id"] = node_id
@@ -461,7 +460,7 @@ func savefile(save_name : = "quick") -> bool:
 	if data == null:
 		return false
 
-	data["history"] = history.duplicate()
+	data["history"] = history
 
 	var vars_to_save = {}
 	for i in range(variables.size()):
@@ -517,9 +516,9 @@ func loadfile(save_name : = "quick") -> bool:
 		return false
 
 	quests.clear()
-	history = data["history"].duplicate()
+	history = data["history"]
 
-	var vars_to_load = data["variables"].duplicate()
+	var vars_to_load = data["variables"]
 
 	for i in range(vars_to_load.size()):
 		var k = vars_to_load.keys()[i]
@@ -562,7 +561,6 @@ func loadfile(save_name : = "quick") -> bool:
 		true
 		)
 	
-	emit_signal("loaded", game_version)
 	return true
 
 func debug_dict(parameters : Dictionary, parameters_names : = [], some_custom_text : = "") -> String:
@@ -601,7 +599,7 @@ func _set_history_id(value : int) -> void:
 func _get_history_id() -> int:
 	return history_id
 
-## use this to change/assain current scene and dialog
+## use this to change/assign current scene and dialog
 ## root of path_to_scene is scenes_dir
 ## provide path_to_scene with out ".tscn"
 func jump(path_to_scene : String, node_name : String, dialog_name : String, change : = true, state : = 0, from_save : = false) -> void:
@@ -686,9 +684,9 @@ func save_global_history() -> bool:
 	var save_name = "global_history"
 	$Persistence.folder_name = save_folder
 	$Persistence.password = save_password
-
 	var data = $Persistence.get_data(save_name)
 	debug(["get global_history from:", save_name])
+
 	if data == null:
 		return false
 
@@ -705,6 +703,7 @@ func load_global_history() -> bool:
 	global_history = []
 	var data = $Persistence.get_data(save_name)
 	debug(["load global_history from:", save_name])
+
 	if data == null:
 		return false
 	
@@ -712,8 +711,3 @@ func load_global_history() -> bool:
 		global_history = data["global_history"].duplicate()
 		
 	return true
-
-func _exit_tree():
-	history.clear()
-	global_history.clear()
-	variables.clear()

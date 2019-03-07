@@ -1,14 +1,15 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://addons/Rakugo/nodes/rakugo_var_label.gd" type="Script" id=1]
 [ext_resource path="res://addons/Rakugo/nodes/rakugo_var_edit.gd" type="Script" id=2]
 [ext_resource path="res://addons/Rakugo/nodes/rakugo_var_slider.gd" type="Script" id=3]
-[ext_resource path="res://addons/Rakugo/icons/rakugo_var_v_slider.svg" type="Texture" id=4]
+[ext_resource path="res://addons/Rakugo/icons/rakugo_var_h_slider.svg" type="Texture" id=4]
 [ext_resource path="res://addons/Rakugo/nodes/rakugo_var_range.gd" type="Script" id=5]
 [ext_resource path="res://addons/Rakugo/icons/rakugo_progress_bar.svg" type="Texture" id=6]
-[ext_resource path="res://addons/Rakugo/nodes/rakugo_var_check.gd" type="Script" id=7]
-[ext_resource path="res://addons/Rakugo/icons/rakugo_check_box.svg" type="Texture" id=8]
-[ext_resource path="res://addons/Rakugo/nodes/rakugo_label.gd" type="Script" id=9]
+[ext_resource path="res://addons/Rakugo/icons/rakugo_var_v_slider.svg" type="Texture" id=7]
+[ext_resource path="res://addons/Rakugo/nodes/rakugo_var_check.gd" type="Script" id=8]
+[ext_resource path="res://addons/Rakugo/icons/rakugo_check_box.svg" type="Texture" id=9]
+[ext_resource path="res://addons/Rakugo/nodes/rakugo_label.gd" type="Script" id=10]
 
 [node name="TestNodes" type="VBoxContainer"]
 margin_left = 282.0
@@ -58,7 +59,7 @@ script = ExtResource( 2 )
 var_name = "test_float"
 default = "10"
 
-[node name="RakugoVarHSlider" type="VSlider" parent="HBoxContainer/VBoxContainer"]
+[node name="RakugoVarHSlider" type="HSlider" parent="HBoxContainer/VBoxContainer"]
 margin_top = 87.0
 margin_right = 193.0
 margin_bottom = 112.0
@@ -91,11 +92,12 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 3 )
 __meta__ = {
-"_editor_icon": ExtResource( 4 )
+"_editor_icon": ExtResource( 7 )
 }
 var_name = "test_float"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+editor/display_folded = true
 margin_left = 394.0
 margin_right = 587.0
 margin_bottom = 141.0
@@ -112,12 +114,13 @@ text = "test rakugo nodes: bool
 "
 
 [node name="RakugoVarCheckButton" type="Button" parent="HBoxContainer/VBoxContainer2"]
+editor/display_folded = true
 margin_top = 60.0
 margin_right = 193.0
 margin_bottom = 80.0
 size_flags_horizontal = 3
 toggle_mode = true
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 var_name = "test_bool"
 
 [node name="RakugoVarLabel" type="Label" parent="HBoxContainer/VBoxContainer2/RakugoVarCheckButton"]
@@ -139,9 +142,9 @@ margin_right = 193.0
 margin_bottom = 141.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 __meta__ = {
-"_editor_icon": ExtResource( 8 )
+"_editor_icon": ExtResource( 9 )
 }
 var_name = "test_bool"
 
@@ -171,7 +174,7 @@ margin_right = 289.0
 margin_bottom = 141.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource( 9 )
+script = ExtResource( 10 )
 rakugo_text = "Example text with rakugo markup.
 {i}test_float = {color=#4286f4}[test_float]{/color}{/i}
 {b}test_bool = {color=#318c6c}[test_bool]{/color}{/b}"
@@ -197,7 +200,7 @@ margin_right = 294.0
 margin_bottom = 141.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource( 9 )
+script = ExtResource( 10 )
 mode = "bbcode"
 rakugo_text = "Example text with bbcode markup.
 [i]test_float = [color=#4286f4]{test_float}[/color][/i]

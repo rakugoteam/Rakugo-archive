@@ -62,7 +62,7 @@ script = ExtResource( 1 )
 
 [node name="RakugoCharacter" type="Node" parent="."]
 script = ExtResource( 2 )
-character_id = "rach"
+character_id = "ra"
 character_name = "Rakugo"
 color = Color( 0.967169, 0.988281, 0.312698, 1 )
 avatar = ExtResource( 3 )
