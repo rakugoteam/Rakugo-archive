@@ -46,7 +46,7 @@ func _on_visibility_changed() -> void:
 		var quest : Quest = Rakugo.get_quest(quest_id)
 		var q_button : Button = add_quest_button(quest, quests_box)
 		if i == quests_box.get_child_count():
-			if q_button == null:
+			if q_button:
 				continue
 		
 		temp_quests.append(quest_id)
@@ -59,7 +59,7 @@ func _on_visibility_changed() -> void:
 		for subquest in quest.get_subquests():
 			var subq_button = add_quest_button(subquest, sub_box, true)
 			if j == sub_box.get_child_count():
-				if subq_button == null:
+				if subq_button:
 					continue
 				
 			j += 1

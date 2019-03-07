@@ -87,7 +87,7 @@ func save_data(profile_name : String = "") -> bool:
 	
 	# Crea el profile por defecto, en el caso de que no se quiera
 	# utilizar profiles.
-	if profile_name == "":
+	if profile_name:
 		if save_profile_default():
 			emit_signal("saved")
 			debug("save_profile_default() retorna true")
@@ -394,7 +394,7 @@ func create_main_folder() -> void:
 func load_data(profile_name : String = "") -> bool:
 	var result
 	
-	if profile_name == "":
+	if profile_name:
 		if load_profile_default():
 			emit_signal("loaded")
 			return true
