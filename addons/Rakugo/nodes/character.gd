@@ -34,48 +34,48 @@ func _get_character_id() -> String:
 
 func _set_character_name(value : String) -> void:
 	_name = value
-	if _character != null:
+	if _character:
 		_character.name = value
 
 func _get_character_name() -> String:
-	if _character != null:
-		if _character.name != null:
+	if _character:
+		if _character.name:
 			return _character.name
 			
 	return _name
 
 func _set_color(value : Color) -> void:
 	_color = value
-	if _character != null:
+	if _character:
 		_character.color = value.to_html()
 
 func _get_color() -> Color:
-	if _character != null:
-		if _character.color != null:
+	if _character:
+		if _character.color:
 			return Color(_character.color)
 			
 	return _color
 
 func _set_prefix(value : String) -> void:
 	_prefix = value
-	if _character != null:
+	if _character:
 		_character.prefix = value
 
 func _get_prefix() -> String:
-	if _character != null:
-		if _character.prefix != null: 
+	if _character:
+		if _character.prefix: 
 			return _character.prefix
 			
 	return _prefix
 
 func _set_suffix(value : String) -> void:
 	_suffix = value
-	if _character != null:
+	if _character:
 		_character.suffix = value
 
 func _get_suffix() -> String:
-	if _character != null:
-		if _character.suffix != null:
+	if _character:
+		if _character.suffix:
 			return _character.suffix
 			
 	return _suffix
@@ -83,11 +83,11 @@ func _get_suffix() -> String:
 func _set_avatar(value : PackedScene) -> void:
 	_avatar = value
 	
-	if _character != null:
+	if _character:
 		_character.avatar = value
 	
 func _get_avatar() -> PackedScene:
-	if _character != null:
+	if _character:
 		if _character.avatar != null:
 			return _character.avatar
 			

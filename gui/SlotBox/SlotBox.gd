@@ -89,7 +89,7 @@ func savepress(caller : String) -> bool:
 		return false
 
 	Rakugo.debug(caller)
-	if screenshot:
+	if !screenshot:
 		return false
 
 	screenshot.save_png(saveslots_dir + "/" + caller + '.png')

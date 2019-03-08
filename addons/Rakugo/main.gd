@@ -172,7 +172,8 @@ func exec_statement(type:int, parameters:= {}) -> void:
 
 func exit_statement(parameters:= {}) -> void:
 	if loading_in_progress:
-			return
+		return
+
 	emit_signal("exit_statement", current_statement.type, parameters)
 
 func story_step() -> void:
@@ -350,7 +351,7 @@ func node_link(node, node_id:String = "") -> Node:
 func get_node_by_id(node_id:String) -> Node:
 	var n = _get_var(node_id, Type.NODE)
 	
-	if n:
+	if !n:
 		return null
 		
 	return get_node(n.v)
@@ -514,7 +515,7 @@ func savefile(save_name:= "quick") -> bool:
 	var data = $Persistence.get_data(save_name)
 	debug(["get data from:", save_name])
 	
-	if data:
+	if !data:
 		return false
 		
 	if data.empty():
@@ -523,6 +524,7 @@ func savefile(save_name:= "quick") -> bool:
 	data["history"] = history
 
 	var vars_to_save = {}
+
 	for i in range(variables.size()):
 		var k = variables.keys()[i]
 		var v = variables.values()[i]
@@ -572,7 +574,8 @@ func loadfile(save_name:= "quick") -> bool:
 	
 	var data = $Persistence.get_data(save_name)
 	debug(["load data from:", save_name])
-	if data:
+
+	if !data:
 		return false
 		
 	if data.empty():
@@ -751,7 +754,7 @@ func save_global_history() -> bool:
 	var data = $Persistence.get_data(save_name)
 	debug(["get global_history from:", save_name])
 
-	if data:
+	if !data:
 		return false
 
 	if data.empty():
@@ -771,7 +774,7 @@ func load_global_history() -> bool:
 	var data = $Persistence.get_data(save_name)
 	debug(["load global_history from:", save_name])
 
-	if data:
+	if !data:
 		return false
 
 	if data.empty():

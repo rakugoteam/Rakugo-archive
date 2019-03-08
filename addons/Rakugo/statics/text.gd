@@ -17,7 +17,7 @@ func text_passer(
 
 	url_open = url_open.replace("225ebf", links_color)
 
-	if text:
+	if !text:
 		return text
 	
 	match mode:
