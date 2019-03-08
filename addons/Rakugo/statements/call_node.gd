@@ -11,7 +11,8 @@ func _init() -> void:
 
 func exec() -> void:
 	var node = Rakugo.get_node_by_id(parameters.node_id)
-	if node == null:
+	
+	if !node:
 		prints(parameters.node_id, "can't be find")
 		return
 

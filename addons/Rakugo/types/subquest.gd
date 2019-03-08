@@ -1,7 +1,8 @@
 extends Object
 class_name Subquest
 
-var quest_id : String = "some_quest_id" # used for save/load/connection with other quests
+var _quest_id : String = "some_quest_id" # used for save/load/connection with other quests
+var quest_id : String setget , _get_id
 var title : String = "Quest Title" setget _set_title, _get_title
 var description : String = "Overall description of quest." setget _set_title, _get_title
 # is this subquest needed for finish whole quest
@@ -9,6 +10,7 @@ var optional : bool = false setget _set_optional, _get_optional
 var type : int setget , _get_type
 enum {STATE_NOT_AVAILABLE, STATE_AVAILABLE, STATE_IN_PROGRESS, STATE_DONE, STATE_FAIL}
 var state : int = STATE_AVAILABLE setget _set_state, _get_state
+var value : Dictionary setget _set_value, _get_value
 
 signal done_subquest
 signal fail_subquest
@@ -16,6 +18,12 @@ signal optional_changed(is_optional)
 signal title_changed(new_title)
 signal description_changed(new_des)
 signal state_changed(new_state)
+	
+func _set_value(parameters: = {}) -> void:
+	dict2subquest(parameters)
+	
+func _get_value() -> Dictionary:
+	return subquest2dict()
 
 func is_done() -> bool:
 	if state == STATE_DONE:
@@ -89,3 +97,7 @@ func dict2subquest(dict : Dictionary) -> void :
 
 func _get_type() -> int:
 	return Rakugo.Type.SUBQUEST
+
+func _get_id() -> String:
+	return _quest_id
+	

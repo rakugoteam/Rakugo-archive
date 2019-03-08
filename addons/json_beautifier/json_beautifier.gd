@@ -7,7 +7,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.                    #
 ###############################################################################
 
-extends Object
+extends Node
 class_name JSONBeautifier
 
 # Takes valid JSON (if invalid, it will return a error according with Godot's

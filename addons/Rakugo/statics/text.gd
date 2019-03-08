@@ -17,12 +17,12 @@ func text_passer(
 
 	url_open = url_open.replace("225ebf", links_color)
 
-	if text == "":
+	if !text:
 		return text
 	
 	match mode:
 		"renpy":
-			text = parse_rakugo_text(text, variables)
+			text = parse_renpy_text(text, variables)
 
 		"bbcode":
 			text = parse_bbcode_text(text, variables)
@@ -105,7 +105,7 @@ func parse_text_adv(
 		
 	return text
 
-func parse_rakugo_text(text:String, variables:Dictionary) -> String:
+func parse_renpy_text(text:String, variables:Dictionary) -> String:
 	text = parse_text_adv(text, variables, "[", "]")
 	text = text.replace("{image", "[img")
 	text = text.replace("{a=", url_open)

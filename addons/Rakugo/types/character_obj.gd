@@ -2,16 +2,21 @@ extends Object
 class_name CharacterObject
 
 var parameters_names : Array = ["name", "color", "prefix", "suffix", "avatar"]
+
 var _color : Color
 var _avatar : String 
+var _id : String
+
 var type : int setget , _get_type
-var value setget dict2character, character2dict
+var value : Dictionary setget dict2character, character2dict
+var id : String setget , _get_id
 
 var name  : String = ""
 var color : String = "#ffffff" setget _set_color, _get_color
 var prefix: String = ""
 var suffix: String = ""
 var avatar setget _set_avatar, _get_avatar
+
 
 func _set_color(vcolor : String) -> void:
 	_color = Color(vcolor)
@@ -51,14 +56,21 @@ func character2dict() -> Dictionary:
 
 	return dict
 
-func dict2character(dict : Dictionary):
+func dict2character(dict : Dictionary) -> void:
 	if dict.has("name"):
 		name = dict.name
+		
 	if dict.has("color"):
 		color = dict.color
+		
 	if dict.has("prefix"):
 		prefix = dict.prefix
+		
 	if dict.has("suffix"):
 		suffix = dict.suffix
+		
 	if dict.has("avatar"):
 		_avatar = dict.avatar
+
+func _get_id() -> String:
+	return _id

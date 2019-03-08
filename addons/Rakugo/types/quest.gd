@@ -1,14 +1,21 @@
 extends Subquest
 class_name Quest
 
-var _subquests : Array	= []
+var _subquests : Array = []
 
 ## wip
-var rewards : Array		= [] setget , _get_rewards # Maybe we need a Object Reward
+var rewards : Array	= [] setget , _get_rewards # Maybe we need a Object Reward
 
 signal start_quest
 signal done_quest # when all quests is done
 signal fail_quest # when fail the quest (all no optional quest)
+
+
+func _set_value(parameters: = {}) -> void:
+	dict2quest(parameters)
+	
+func _get_value() -> Dictionary:
+	return quest2dict()
 
 # begin quest
 func start() -> void:
@@ -36,6 +43,7 @@ func finish() -> void:
 	if is_all_subquest_completed():
 		state = STATE_DONE
 		emit_signal("done_quest")
+		
 	else:
 		state = STATE_FAIL
 		emit_signal("fail_quest")
@@ -46,6 +54,7 @@ func is_all_subquest_completed() -> bool:
 			subq.is_done()
 			and subq.is_optional()
 			)
+			
 		if not is_done_and_opt:
 			return false
 			
@@ -70,16 +79,20 @@ func dict2quest(dict : Dictionary) -> void:
 # usefull for saveing
 func subquests2list_of_ids() -> Array:
 	var list_of_ids : = []
+	
 	for subq in _subquests:
 		list_of_ids.append(subq.quest_id)
+		
 	return list_of_ids
 
 # useful after loading quest
 func get_subquests_list(list_of_subquests_ids : Array) -> Array:
 	var new_subquests : = []
+	
 	for subq_id in list_of_subquests_ids:
 		if typeof(subq_id) != TYPE_STRING:
-			continue 
+			continue
+			
 		var subquest = Rakugo.get_subquest(subq_id)
 		new_subquests.append(subquest)
 	

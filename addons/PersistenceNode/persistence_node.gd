@@ -1,7 +1,7 @@
 # MIT License
 #
-# Copyright (c) 2018 Matías Muñoz Espinoza
-# Copyright (c) 2019 Rakugo Project
+# Copyright (c) 2018-2019 Matías Muñoz Espinoza
+# Copyright (c) 2019 Ren Project
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -21,24 +21,25 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-tool
 extends Node
-class_name Persistence, "icon.svg"
+class_name Persistence, "icon.png"
 
 enum Mode {ENCRYPTED, TEXT}
 export (Mode) var mode : int = Mode.ENCRYPTED setget set_mode, get_mode
-export var password : = "" setget set_password, get_password
-export var folder_name : = "PersistenceNode" setget set_folder_name, get_folder_name
-export var no_valid_names : = ["default", "example"] setget _private_set, get_no_valid_names
-export var debug_on : = false setget set_debug, get_debug
-export var beautifier_active : = true setget set_beautifier_active, get_beautifier_active
-export var profile_name_min_size : = 3 setget set_profile_name_min_size, get_profile_name_min_size
-export var profile_name_max_size : = 15 setget set_profile_name_max_size, get_profile_name_max_size
+export (String) var password : String = "" setget set_password, get_password
+export (String) var folder_name : String = "PersistenceNode" setget set_folder_name, get_folder_name
+export (Array) var no_valid_names : Array = ["default", "example"] setget _private_set, get_no_valid_names
+export (bool) var debug_on : bool = false setget set_debug, get_debug
 
 var beautifier setget _private_set, _private_get
+export (bool) var beautifier_active : bool = true setget set_beautifier_active, get_beautifier_active
+
+export (int) var profile_name_min_size : int = 3 setget set_profile_name_min_size, get_profile_name_min_size
+export (int) var profile_name_max_size : int = 15 setget set_profile_name_max_size, get_profile_name_max_size
+
 # Data del profile actual, esta data se puede modificar y luego usar
 # save_data()
-var data : = {} setget _private_set
+var data : Dictionary = {} setget _private_set
 
 signal saved
 signal loaded
@@ -86,12 +87,11 @@ func save_data(profile_name : String = "") -> bool:
 	
 	# Crea el profile por defecto, en el caso de que no se quiera
 	# utilizar profiles.
-	if profile_name == "":
+	if profile_name:
 		if save_profile_default():
 			emit_signal("saved")
 			debug("save_profile_default() retorna true")
 			return true
-			
 		else:
 			debug("save_profile_default() retorna falso")
 			return false
@@ -100,10 +100,8 @@ func save_data(profile_name : String = "") -> bool:
 		match mode:
 			Mode.ENCRYPTED:
 				result = save_profile_encripted(profile_name)
-			
 			Mode.TEXT:
 				result = save_profile_text(profile_name)
-	
 	else:
 		debug("No ha pasado la validación")
 		result = false
@@ -123,7 +121,6 @@ func remove_profile(profile_name : String) -> bool:
 	match mode:
 		Mode.ENCRYPTED:
 			path = str("user://", folder_name, "/", profile_name, ".save")
-		
 		Mode.TEXT:
 			path = str("user://", folder_name, "/", profile_name, ".txt")
 	
@@ -132,7 +129,6 @@ func remove_profile(profile_name : String) -> bool:
 	if err != OK:
 		debug("Error al remover el profile: ", err)
 		return false
-
 	else:
 		data = {}
 	
@@ -159,7 +155,6 @@ func remove_all_data() -> bool:
 		data = {}
 		
 		return true
-
 	else:
 		debug("No se a removido ningún archivo.")
 		return false
@@ -177,14 +172,15 @@ func get_mode() -> int:
 
 # Se obtiene la data, esta data puede ser modificada para luego ser guardada
 # con save_data(). Si esta usando profiles, no olvide indicarle el profile.
-func get_data(profile_name : = "") -> Dictionary:
+func get_data(profile_name : String = "") -> Dictionary:
 	data = {}
 	load_data(profile_name)
+	
 	return data
 
 # Retorna los perfiles existentes, por defecto los devuelve sin
 # extension.
-func get_profiles(with_extension : = false) -> Array:
+func get_profiles(with_extension : bool = false) -> Array:
 	var dir = Directory.new()
 	var profiles = []
 	
@@ -196,12 +192,10 @@ func get_profiles(with_extension : = false) -> Array:
 			if file_name != "." and file_name != "..":
 				if not with_extension:
 					profiles.append(file_name.get_basename())
-				
 				else:
 					profiles.append(file_name)
 		
 			file_name = dir.get_next()
-	
 	else:
 		debug("Un error ha ocurrido al intentar entrar al path.")
 	
@@ -279,7 +273,6 @@ func save_profile_default() -> bool:
 	match mode:
 		Mode.ENCRYPTED:
 			return save_profile_encripted("default")
-
 		Mode.TEXT:
 			return save_profile_text("default")
 	
@@ -289,7 +282,6 @@ func load_profile_default() -> bool:
 	match mode:
 		Mode.ENCRYPTED:
 			return load_profile_encripted("default")
-
 		Mode.TEXT:
 			return load_profile_text("default")
 	
@@ -309,7 +301,6 @@ func save_profile_encripted(profile_name : String) -> bool:
 		file.close()
 		
 		return true
-
 	else:
 		debug("Error al crear/guardar el archivo: ", err)
 		debug("Path: ", file_path)
@@ -328,7 +319,6 @@ func save_profile_text(profile_name : String) -> bool:
 		file.close()
 		
 		return true
-
 	else:
 		debug("Error al crear/leer el archivo: ", err)
 		return false
@@ -354,7 +344,6 @@ func load_profile_encripted(profile_name : String) -> bool:
 		
 		debug("Se a cargado el archivo con éxito: ")
 		return true
-
 	else:
 		debug("Error al leer el archivo: ", err)
 		return false
@@ -377,7 +366,6 @@ func load_profile_text(profile_name : String) -> bool:
 		save_profile_text(profile_name)
 
 		return true
-
 	else:
 		debug("Error al leer el archivo: ", err)
 		return false
@@ -389,7 +377,6 @@ func erase_profile_encripted(profile_name : String, file_path : String) -> void:
 	if err == OK:
 		file.get_var()
 		file.close()
-
 	else:
 		debug("No se a podido limpiar el profile: ", err)
 
@@ -404,14 +391,13 @@ func create_main_folder() -> void:
 # Carga la data, si no se le pasa ningún argumento entonces carga la data
 # por defecto, si se le pasa argumento entonces carga la data indicada en el.
 # Devuelve true si se carga exitosamente y false si no lo hace.
-func load_data(profile_name : = "") -> bool:
+func load_data(profile_name : String = "") -> bool:
 	var result
 	
-	if profile_name == null:
+	if profile_name:
 		if load_profile_default():
 			emit_signal("loaded")
 			return true
-
 		else:
 			debug("load_profile_default retorna false.")
 			return false
@@ -420,7 +406,6 @@ func load_data(profile_name : = "") -> bool:
 		match mode:
 			Mode.ENCRYPTED:
 				result = load_profile_encripted(profile_name)
-
 			Mode.TEXT:
 				result = load_profile_text(profile_name)
 	else:

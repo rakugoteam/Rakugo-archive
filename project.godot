@@ -44,7 +44,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/statements/hide.gd"
 }, {
-"base": "Object",
+"base": "Node",
 "class": "JSONBeautifier",
 "language": "GDScript",
 "path": "res://addons/json_beautifier/json_beautifier.gd"
@@ -108,11 +108,6 @@ _global_script_classes=[ {
 "class": "RakugoControl",
 "language": "GDScript",
 "path": "res://addons/Rakugo/nodes/rakugo_control.gd"
-}, {
-"base": "Object",
-"class": "RakugoDef",
-"language": "GDScript",
-"path": "res://addons/Rakugo/types/def.gd"
 }, {
 "base": "LineEdit",
 "class": "RakugoLineEdit",
@@ -230,7 +225,7 @@ _global_script_class_icons={
 "JSONBeautifier": "",
 "Menu": "",
 "Notify": "",
-"Persistence": "res://addons/PersistenceNode/icon.svg",
+"Persistence": "res://addons/PersistenceNode/icon.png",
 "PlayAnim": "",
 "PlayAudio": "",
 "Quest": "",
@@ -240,7 +235,6 @@ _global_script_class_icons={
 "RakugoButton": "",
 "RakugoChoiceButton": "",
 "RakugoControl": "",
-"RakugoDef": "",
 "RakugoLineEdit": "",
 "RakugoNode2D": "",
 "RakugoNodeCore": "",
@@ -275,8 +269,8 @@ config/icon="res://graphics/window_icon.png"
 
 Rakugo="*res://addons/Rakugo/Rakugo.tscn"
 settings="*res://gui/settings.gd"
-VNCharacters="*res://examples/VisualNovelExample/Characters.tscn"
 Window="*res://gui/Window/Window.tscn"
+VNCharacters="*res://examples/VisualNovelExample/Characters.tscn"
 
 [debug]
 
