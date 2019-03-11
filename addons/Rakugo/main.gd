@@ -258,29 +258,11 @@ func set_var(var_name:String, value) -> RakugoVar:
 	return var_to_change
 
 func _get_var(var_name:String, type:int) -> Object:
-
-	if check_type(var_name, type) != OK: 
-		return null
-		
 	return variables[var_name]
-
-## return ERR_DOES_NOT_EXIST if var with var_name don't exits
-## return ERR_ALREADY_EXISTS if var with var_name exits and have different type
-## other wise its returns OK
-func check_type(var_name:String, type:int) -> int:
-	if not (var_name in variables):
-		return ERR_DOES_NOT_EXIST
-		
-	var var_to_get = variables[var_name]
-		
-	if var_to_get.type != type:
-		return ERR_ALREADY_EXISTS
-	
-	return OK
 
 ## returns exiting Rakugo variable as one of RakugoTypes for easy use
 ## It must be with out returned type, because we can't set it as list of types
-func get_var(var_name:String) -> RakugoVar: #, type:= Type.VAR):
+func get_var(var_name:String) -> RakugoVar:
 	return _get_var(var_name, Type.VAR) as RakugoVar
 
 ## to use with `define_from_str` func as var_type arg
@@ -316,14 +298,12 @@ func connect_var(var_name:String, signal_name:String, node:Object, func_name:Str
 ## crate new character as global variable that Rakugo will see
 ## possible parameters: name, color, what_prefix, what_suffix, kind, avatar
 func character(character_id:String, parameters:Dictionary) -> CharacterObject:
-	if check_type(character_id, Type.CHARACTER) == ERR_DOES_NOT_EXIST:
-		var new_ch := CharacterObject.new()
-		new_ch.id = character_id
-		new_ch.value = parameters
-		variables[character_id] = new_ch
-		return new_ch
-		
-	return null
+	var new_ch := CharacterObject.new()
+	new_ch.id = character_id
+	new_ch.value = parameters
+	variables[character_id] = new_ch
+	return new_ch
+	
 
 func get_character(character_id:String) -> CharacterObject:
 	return _get_var(character_id, Type.CHARACTER) as CharacterObject
@@ -333,9 +313,6 @@ func get_character(character_id:String) -> CharacterObject:
 func node_link(node, node_id:String = "") -> Node:
 	if node_id:
 		node_id = node.name
-		
-	if check_type(node_id, Type.NODE) != ERR_DOES_NOT_EXIST:
-		return null
 
 	var path
 	if typeof(node) == TYPE_NODE_PATH:
@@ -360,10 +337,6 @@ func get_node_by_id(node_id:String) -> Node:
 ## and returns it as RakugoSubQuest for easy use
 ## possible parameters: "who", "title", "description", "optional", "state", "subquests"
 func subquest(subquest_id:String, parameters:= {}) -> Subquest:
-		
-	if check_type(subquest_id, Type.SUBQUEST) != ERR_DOES_NOT_EXIST:
-		return null
-		
 	var new_subq : = Subquest.new()
 	new_subq._quest_id = subquest_id
 	new_subq.value = parameters
@@ -378,10 +351,6 @@ func get_subquest(subquest_id:String) -> Subquest:
 ## and returns it as RakugoQuest for easy use
 ## possible parameters: "who", "title", "description", "optional", "state", "subquests"
 func quest(quest_id:String, parameters:= {}) -> Quest:
-	
-	if check_type(quest_id, Type.QUEST) != ERR_DOES_NOT_EXIST:
-		return null
-
 	var q := Quest.new()
 	q._quest_id = quest_id
 	q.value = parameters
@@ -505,9 +474,9 @@ func start(after_load:=false) -> void:
 	load_global_history()
 	history_id = 0
 	started = true
-	emit_signal("started")
 	
 	if not after_load:
+		emit_signal("started")
 		story_step()
 
 func savefile(save_name:= "quick") -> bool:
@@ -695,6 +664,8 @@ func jump(path_to_scene:String, node_name:String, dialog_name:String, change:= t
 		var lscene = load(_scene)
 		current_root_node = lscene.instance()
 		get_tree().get_root().add_child(current_root_node)
+
+		emit_signal("started")
 
 	if loading_in_progress:
 		loading_in_progress = false

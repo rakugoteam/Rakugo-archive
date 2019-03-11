@@ -21,7 +21,7 @@ func _ready() -> void:
 
 func _on_start() -> void:	
 	var dict : = get_dict()
-	_character = Rakugo.character(_id, dict)
+	_character = Rakugo.character(_id, dict)		
 	var dbg = Rakugo.debug_dict(dict, _character.parameters_names, "Set Character " + _id + " with ")
 
 func _set_character_id(value : String) -> void:
@@ -29,7 +29,6 @@ func _set_character_id(value : String) -> void:
 		Rakugo.variables.erase(_id)
 		
 	_id = value
-
 
 func _get_character_id() -> String:
 	return _id
