@@ -62,7 +62,6 @@ var variables:= {}
 onready var menu_node:RakugoMenu = $Menu
 var current_root_node:Node = null
 var current_statement:Statement = null
-var using_passer:= false
 var skip_auto:= false
 var active:= false
 var can_alphanumeric:= true
@@ -115,9 +114,10 @@ onready var step_timer:= $StepTimer
 onready var dialog_timer:= $DialogTimer
 onready var notify_timer:= $NotifyTimer
 
-## saved automatically -it is RagukoVar
+## saved automatically - it is RagukoVar
 var story_state:int setget _set_story_state, _get_story_state
 
+signal started
 signal exec_statement(type, parameters)
 signal exit_statement(previous_type, parameters)
 signal notified()
@@ -501,12 +501,14 @@ func _get_story_state() -> int:
 	return get_value("story_state")
 
 ## it starts Rakugo
-func start() -> void:
+func start(after_load:=false) -> void:
 	load_global_history()
-	using_passer = false
 	history_id = 0
-	story_step()
 	started = true
+	emit_signal("started")
+	
+	if not after_load:
+		story_step()
 
 func savefile(save_name:= "quick") -> bool:
 	$Persistence.folder_name = save_folder
@@ -613,10 +615,10 @@ func loadfile(save_name:= "quick") -> bool:
 	for q_id in quests:
 		var q = get_quest(q_id)
 		q.update_subquests()
-	
-	started = true
 
 	history_id = data["id"]
+
+	start(true)
 
 	jump(
 		data["scene"],
@@ -781,6 +783,6 @@ func load_global_history() -> bool:
 		return false
 	
 	if "global_history" in data:
-		global_history = data["global_history"].duplicate()
+		global_history = data["global_history"]
 		
 	return true

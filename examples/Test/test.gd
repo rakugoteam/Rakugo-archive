@@ -127,7 +127,7 @@ func example(node_name, dialog_name):
 				"who": 
 					"ra",
 				"what":
-					"Welcome [player_name] in Rakugo'GD Framework Version [version]",
+					"Welcome [player_name] in Rakugo Framework Version [version]",
 				"typing":
 					false
 				})

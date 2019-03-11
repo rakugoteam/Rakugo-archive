@@ -17,10 +17,12 @@ export var suffix : = "" setget _set_suffix, _get_suffix
 export var avatar : PackedScene = PackedScene.new() setget _set_avatar, _get_avatar
 
 func _ready() -> void:
+	Rakugo.connect("started", self, "_on_start")	
+
+func _on_start() -> void:	
 	var dict : = get_dict()
 	_character = Rakugo.character(_id, dict)
 	var dbg = Rakugo.debug_dict(dict, _character.parameters_names, "Set Character " + _id + " with ")
-	Rakugo.debug(dbg)
 
 func _set_character_id(value : String) -> void:
 	if Rakugo.variables.has(_id):
