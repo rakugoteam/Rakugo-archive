@@ -6,7 +6,6 @@ func _enter_tree():
 	## add Rakugo as singleton in ProjectSettings
 #	ProjectSettings.add_singleton(Rakugo.tscn)
 
-
 	## they must stay to don't make few times script that
 	## is almost the same, but in to first lines diffRakugot 
 	add_custom_type(
