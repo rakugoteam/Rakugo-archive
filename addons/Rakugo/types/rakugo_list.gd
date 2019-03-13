@@ -1,14 +1,15 @@
 extends Object
+# implements RakugoVar
 """
 Base object used to handling Rakugo's variables
 """
-class_name RakugoVar
+class_name RakugoList
 
 var type : int setget , _get_type
-var _type : int = Rakugo.Type.Var
-var value setget _set_value, _get_value
-var _value = null
-var v setget _set_value, _get_value
+var _type : int = 0 # Rakugo.Type.Var
+var value : Array setget _set_value, _get_value
+var _value : = []
+var v : Array setget _set_value, _get_value
 var name : String setget , _get_name
 var _name : = ""
 
@@ -31,6 +32,7 @@ func _get_value():
 
 func _get_name() -> String:
 	return _name
+
 
 
 

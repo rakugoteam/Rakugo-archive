@@ -94,7 +94,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/nodes/rakugo_base_button.gd"
 }, {
-"base": "Object",
+"base": "RakugoVar",
 "class": "RakugoBool",
 "language": "GDScript",
 "path": "res://addons/Rakugo/types/rakugo_bool.gd"
@@ -114,7 +114,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/nodes/rakugo_control.gd"
 }, {
-"base": "Object",
+"base": "RakugoVar",
 "class": "RakugoDict",
 "language": "GDScript",
 "path": "res://addons/Rakugo/types/rakugo_dict.gd"
@@ -123,6 +123,11 @@ _global_script_classes=[ {
 "class": "RakugoLineEdit",
 "language": "GDScript",
 "path": "res://addons/Rakugo/nodes/rakugo_line_edit.gd"
+}, {
+"base": "Object",
+"class": "RakugoList",
+"language": "GDScript",
+"path": "res://addons/Rakugo/types/rakugo_list.gd"
 }, {
 "base": "Node2D",
 "class": "RakugoNode2D",
@@ -248,6 +253,7 @@ _global_script_class_icons={
 "RakugoControl": "",
 "RakugoDict": "",
 "RakugoLineEdit": "",
+"RakugoList": "",
 "RakugoNode2D": "",
 "RakugoNodeCore": "",
 "RakugoQuestButton": "",

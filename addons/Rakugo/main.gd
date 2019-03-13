@@ -31,7 +31,10 @@ enum Type {
 	NODE,		# 4
 	QUEST,		# 5
 	SUBQUEST,	# 6
-	CHARACTER	# 7
+	CHARACTER,	# 7
+	RANGE,		# 8
+	BOOL,		# 9
+	
 }
 
 enum StatementType {
@@ -46,7 +49,7 @@ enum StatementType {
 	STOP_ANIM,	# 8
 	PLAY_AUDIO,	# 9
 	STOP_AUDIO,	# 10
-	CALL_NODE	# 11
+	CALL_NODE,	# 11
 }
 
 # this must be saved
@@ -74,7 +77,7 @@ var skip_types:= [
 	StatementType.STOP_ANIM,
 	StatementType.PLAY_AUDIO,
 	StatementType.STOP_AUDIO,
-	StatementType.CALL_NODE
+	StatementType.CALL_NODE,
 ]
 
 const weekdays = {

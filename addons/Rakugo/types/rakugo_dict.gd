@@ -1,38 +1,22 @@
-extends Object
-# implements RakugoVar
+extends RakugoVar
 """
 This object used to handling Rakugo's
  variables that are dictionaries
 """
 class_name RakugoDict
 
-var type : int setget , _get_type
-var _type : int = 12 # Rakugo.Type.Dict
-var value : Dictionary setget _set_value, _get_value
-var _value : = {}
-var v : Dictionary setget _set_value, _get_value
-var name : String setget , _get_name
-var _name : = ""
-
 signal value_changed(var_name, new_value)
 signal key_value_changed(var_name, key, new_value)
 
-func _init(var_name:String, var_value:Dictionary):
-	_name = var_name
-	_value = var_value
-
-func _get_type() -> int:
-	return _type
+func _init(var_name:String, var_value:Dictionary
+	).(var_name, var_value, Rakugo.Type.DICT) -> void:
+	pass
 
 func _set_value(dict:Dictionary) -> void:
-	
-	emit_signal("value_changed", _name, self)
+	._set_value(dict)
 
 func _get_value() -> Dictionary:
 	return _value
-
-func _get_name() -> String:
-	return _name
 
 func set_key_value(key, key_value) -> void: 
 	value[key] = key_value
