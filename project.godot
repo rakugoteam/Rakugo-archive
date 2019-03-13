@@ -94,6 +94,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/nodes/rakugo_base_button.gd"
 }, {
+"base": "Object",
+"class": "RakugoBool",
+"language": "GDScript",
+"path": "res://addons/Rakugo/types/rakugo_bool.gd"
+}, {
 "base": "RakugoBaseButton",
 "class": "RakugoButton",
 "language": "GDScript",
@@ -232,6 +237,7 @@ _global_script_class_icons={
 "RakugoAnimPlayer": "",
 "RakugoAudioPlayer": "",
 "RakugoBaseButton": "",
+"RakugoBool": "",
 "RakugoButton": "",
 "RakugoChoiceButton": "",
 "RakugoControl": "",

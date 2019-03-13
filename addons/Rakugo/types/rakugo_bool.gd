@@ -1,23 +1,23 @@
 extends Object
+# impements RakugoVar
 """
-Base object used to handling Rakugo's variables
+Object used to handling Rakugo's booleans
 """
-class_name RakugoVar
+class_name RakugoBool
 
 var type : int setget , _get_type
-var _type : int = 0 # Rakugo.Type.Var
+var _type : int = 12 # Rakugo.Type.Bool
 var value setget _set_value, _get_value
-var _value = null
-var v = null setget _set_value, _get_value
+var _value:bool
+var v:bool setget _set_value, _get_value
 var name : String setget , _get_name
 var _name : = ""
 
 signal value_changed(var_name, new_value)
 
-func _init(var_name:String, var_value, var_type: = 0):
+func _init(var_name:String, var_value:bool):
 	_name = var_name
 	_value = var_value
-	_type = var_type
 
 func _get_type() -> int:
 	return _type
@@ -31,6 +31,15 @@ func _get_value():
 
 func _get_name() -> String:
 	return _name
+
+func on():
+	value = true
+
+func off():
+	value = false
+
+func switch():
+	value != value
 
 
 

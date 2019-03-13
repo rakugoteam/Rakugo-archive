@@ -350,7 +350,7 @@ func get_subquest(subquest_id:String) -> Subquest:
 ## add/overwrite global quest that Rakugo will see
 ## and returns it as RakugoQuest for easy use
 ## possible parameters: "who", "title", "description", "optional", "state", "subquests"
-func quest(quest_id:String, parameters:= {}) -> Quest:
+func quest(quest_id:String, parameters:={}) -> Quest:
 	var q := Quest.new()
 	q._quest_id = quest_id
 	q.value = parameters
