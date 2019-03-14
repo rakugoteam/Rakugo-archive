@@ -9,6 +9,7 @@ var _id : String
 
 var type : int setget , _get_type
 var value : Dictionary setget dict2character, character2dict
+var v : Dictionary setget dict2character, character2dict
 var id : String setget , _get_id
 
 var name  : String = ""

@@ -28,6 +28,8 @@ script = ExtResource( 2 )
 
 [node name="Persistence" type="Node" parent="."]
 script = ExtResource( 3 )
+mode = 1
+debug_on = true
 profile_name_min_size = 1
 
 [node name="Say" type="Node" parent="."]

@@ -1,14 +1,14 @@
-"""
-This base object used to handling Rakugo's variables
-"""
 extends Object
+"""
+Base object used to handling Rakugo's variables
+"""
 class_name RakugoVar
 
 var type : int setget , _get_type
-var _type : int = 0 # Rakugo.Type.Var
+var _type : = 0 # Rakugo.Type.Var
 var value setget _set_value, _get_value
 var _value = null
-var v = null setget _set_value, _get_value
+var v setget _set_value, _get_value
 var name : String setget , _get_name
 var _name : = ""
 

@@ -4,10 +4,11 @@ class_name RakugoLineEdit
 onready var rtl : = RichTextLabel.new()
 var input_placeholder : = ""
 var _type : int
+var _active : = true
+var active : bool setget _set_active, _get_active
 
 func _ready() -> void:
-	Rakugo.connect("exec_statement", self, "_on_statement")
-	connect("visibility_changed", self, "_on_visibility_changed")
+	_set_active(true)
 	add_child(rtl)
 	hide()
 
@@ -48,3 +49,23 @@ func _on_statement(type : int, parameters : Dictionary) -> void:
 	
 func _on_visibility_changed():
 	Rakugo.can_alphanumeric = !visible
+	
+func _set_active(value:bool) -> void:
+	_active = value
+	
+	if value:
+		if not Rakugo.is_connected("exec_statement", self, "_on_statement"):
+			Rakugo.connect("exec_statement", self, "_on_statement")
+		
+		if not is_connected("visibility_changed", self, "_on_visibility_changed"):
+			connect("visibility_changed", self, "_on_visibility_changed")
+	
+	else:
+		if Rakugo.is_connected("exec_statement", self, "_on_statement"):
+			Rakugo.disconnect("exec_statement", self, "_on_statement")
+		
+		if is_connected("visibility_changed", self, "_on_visibility_changed"):
+			disconnect("visibility_changed", self, "_on_visibility_changed")
+		
+func _get_active() -> bool:
+	return _active

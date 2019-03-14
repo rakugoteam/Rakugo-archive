@@ -16,12 +16,14 @@ func _ready():
 	anim_is_playing.connect("value_changed", self, "_on_anim_is_playing_changed")
 
 func _on_anim_changed(old_name, new_name):
-	anim_is_playing.v = new_name
+	anim_name.v = new_name
 	
 func _on_anim_finished(a_name):
+	anim_name.v = a_name
 	anim_is_playing.v = false
 	
 func _on_anim_started(a_name):
+	anim_name.v = a_name
 	anim_is_playing.v = true
 
 func _on_anim_name_changed(vname:String, new_value:String):
