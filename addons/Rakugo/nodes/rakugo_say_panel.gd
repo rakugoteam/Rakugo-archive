@@ -1,20 +1,45 @@
 extends Panel
 class_name RakugoSayPanel, "res://addons/Rakugo/icons/rakugo_panel.svg"
 
-export var name_label_path :  = NodePath("")
-export var dialog_label_path : = NodePath("")
-export var avatar_viewport_path : = NodePath("")
+export var main_container_path : = NodePath("")
+export var std_kind_container_path : = NodePath("")
+export (Array, String) var extra_kinds : = ["nvl", "phone_right", "phone_left"] 
+export (Array, PackedScene) var extra_kinds_scenes : = []
+export (Array, String) var extra_kinds_anims : = ["nvl", "phone", "phone"]
 
-onready var NameLabel : RichTextLabel = get_node(name_label_path)
-onready var DialogText : RichTextLabel = get_node(dialog_label_path)
-onready var CharacterAvatar : Viewport = get_node(avatar_viewport_path)
+var NameLabel : RichTextLabel
+var DialogText : RichTextLabel
+var CharacterAvatar : Viewport
+var LineEditNode : RakugoLineEdit
+var StdKindContainer : KindContainer
+var MainContainer : BoxContainer
 
 var avatar_path : = ""
 var avatar : Node
 var _type : int
 var typing : = false
 
-func _ready() -> void:	
+func _setup(kind_container:KindContainer):	
+	var nl_path : = kind_container.name_label_path
+	NameLabel = kind_container.get_node(nl_path)
+	
+	var dl_path := kind_container.dialog_label_path
+	DialogText = kind_container.get_node(dl_path)
+	
+	var av_path : = kind_container.avatar_viewport_path
+	CharacterAvatar = kind_container.get_node(av_path)
+	
+	if LineEditNode:
+		LineEditNode.active = false
+	
+	var le_path := kind_container.line_edit_path
+	LineEditNode = kind_container.get_node(le_path)
+	LineEditNode.active = true
+	
+func _ready() -> void:
+	MainContainer = get_node(main_container_path)
+	StdKindContainer = get_node(std_kind_container_path)
+	_setup(StdKindContainer)
 	Rakugo.connect("exec_statement", self, "_on_statement")
 
 func _input(event : InputEvent) -> void:
@@ -42,9 +67,30 @@ func _input(event : InputEvent) -> void:
 		Rakugo.exit_statement()
 
 func _on_statement(type : int, parameters : Dictionary) -> void:
+	var kind : String 
 	if "kind" in parameters:
-		$AnimationPlayer.play(parameters.kind)
+		kind = parameters.kind
 	
+	if not extra_kinds.has(kind):
+		$AnimationPlayer.play(kind)
+		
+	if kind in extra_kinds:
+		var i := extra_kinds.find(kind)
+		
+		if i == -1:
+			return
+		
+		$AnimationPlayer.play(extra_kinds_anims[i])
+		
+		StdKindContainer.hide()
+		var scene_to_use : PackedScene = extra_kinds_scenes[i]
+		var instace : KindContainer = scene_to_use.instance()
+		MainContainer.add_child(instace)
+		_setup(instace)
+	
+	else:
+		StdKindContainer.show()
+		
 	_type = type
 
 	if "who" in parameters:

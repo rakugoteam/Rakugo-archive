@@ -1,37 +1,110 @@
-extends Object
-# implements RakugoVar
+extends RakugoVar
 """
 Base object used to handling Rakugo's variables
 """
 class_name RakugoList
 
-var type : int setget , _get_type
-var _type : int = 0 # Rakugo.Type.Var
-var value : Array setget _set_value, _get_value
-var _value : = []
-var v : Array setget _set_value, _get_value
-var name : String setget , _get_name
-var _name : = ""
+signal index_value_change(var_name, index, index_value)
 
-signal value_changed(var_name, new_value)
+func _init(var_name:String, var_value:Array
+	).(var_name, var_value, Rakugo.Type.LIST):
+	pass
 
-func _init(var_name:String, var_value, var_type: = 0):
-	_name = var_name
-	_value = var_value
-	_type = var_type
+func _set_value(var_value:Array) -> void:
+	._set_value(var_value)
 
-func _get_type() -> int:
-	return _type
-
-func _set_value(var_value) -> void:
-	_value = var_value
-	emit_signal("value_changed", _name, _value)
-
-func _get_value():
+func _get_value() -> Array:
 	return _value
 
-func _get_name() -> String:
-	return _name
+func set_index_value(index:int, index_value) -> void:
+	value[index] = index_value
+	emit_signal("index_value_change", name, index, index_value)
+
+func get_index_value(index:int):
+	return value[index]
+
+func add(value_to_add) -> void:
+	value.append(value_to_add)
+	
+func back():
+	value.back()
+
+func bsearch(index_value, before:=true) -> int:
+	return value.bsearch(index_value, before)
+
+func bsearch_custom(index_value, obj:Object, func_name:String, before:=true) -> int:
+	return value.bsearch_custom(index_value, obj, func_name, before)
+
+func clear():
+	value.clear()
+
+func count(value_to_count) -> int:
+	return value.count(value_to_count)
+
+func empty() -> bool:
+	return value.empty()
+
+func erase(value_to_erase) -> void:
+	value.erase(value_to_erase)
+
+func find(what, from:=0) -> int:
+	return value.find(what, from)
+
+func find_last(what) -> int:
+	return value.find_last(what)
+
+func front():
+	value.front()
+
+func has(value_to_check) -> bool:
+	return value.has(value_to_check)
+
+func insert(position:int, value_to_insert) -> void:
+	value.insert(position, value_to_insert)
+
+func invert() -> void:
+	value.invert()
+
+func max_value():
+	return value.max()
+
+func min_value():
+	return value.min()
+
+func pop_back():
+	return value.pop_back()
+
+func pop_front():
+	return value.pop_front()
+
+func push_back(value_to_push) -> void:
+	value.push_back(value_to_push)
+
+func push_front(value_to_push) -> void:
+	value.push_front(value_to_push)
+
+func remove(position:int) -> void:
+	value.remove(position)
+
+func resize(size:int) -> void:
+	value.resize(size)
+
+func rfind(what, from:=-1) -> int:
+	return value.rfind(what, from)
+
+func shuffle() -> void:
+	value.shuffle()
+
+func size() -> int:
+	return value.size()
+
+func sort() -> void:
+	value.sort()
+
+func sort_custom(obj:Object, func_name:String) -> void:
+	value.sort_custom(obj, func_name)
+
+	
 
 
 
