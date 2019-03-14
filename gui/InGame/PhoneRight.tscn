@@ -62,7 +62,7 @@ font_data = ExtResource( 6 )
 [node name="PhoneRight" type="Panel"]
 self_modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
-margin_bottom = 144.0
+rect_min_size = Vector2( 1024, 144 )
 size_flags_horizontal = 3
 script = ExtResource( 1 )
 name_label_path = NodePath("HBoxContainer/VBox/Label")
@@ -75,6 +75,7 @@ margin_left = 90.1899
 margin_top = 8.35092
 margin_right = 1010.19
 margin_bottom = 132.351
+rect_min_size = Vector2( 920, 0 )
 color = Color( 0.529412, 0.92549, 0.709804, 1 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]

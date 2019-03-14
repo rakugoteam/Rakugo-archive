@@ -18,6 +18,7 @@ var avatar_path : = ""
 var avatar : Node
 var _type : int
 var typing : = false
+var kind : String 
 
 func _setup(kind_container:KindContainer):	
 	var nl_path : = kind_container.name_label_path
@@ -67,7 +68,6 @@ func _input(event : InputEvent) -> void:
 		Rakugo.exit_statement()
 
 func _on_statement(type : int, parameters : Dictionary) -> void:
-	var kind : String 
 	if "kind" in parameters:
 		kind = parameters.kind
 	
@@ -106,8 +106,9 @@ func _on_statement(type : int, parameters : Dictionary) -> void:
 		write_dialog(parameters.what, _typing)
 
 	if "avatar" in parameters:
-		if avatar != null:
-			avatar.free()
+		if StdKindContainer.visible:
+			if avatar != null:
+				avatar.free()
 
 		if parameters.avatar != "":
 			avatar_path = parameters.avatar
@@ -120,6 +121,7 @@ func _on_statement(type : int, parameters : Dictionary) -> void:
 		if (!wr.get_ref()):
 			# object is erased
 			avatar = null
+			
 		else:
 			# object is fine so you can do something with it:
 			avatar.free()

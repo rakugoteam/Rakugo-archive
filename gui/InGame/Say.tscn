@@ -941,7 +941,7 @@ tracks/22/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 150 ]
+"values": [ 20 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -1246,10 +1246,10 @@ tracks/13/keys = {
 }
 
 [node name="RakugoSayPanel" type="Panel"]
-self_modulate = Color( 1, 1, 1, 0 )
-margin_top = 2.0
+self_modulate = Color( 1, 1, 1, 0.784314 )
+margin_top = 452.0
 margin_right = 1024.0
-margin_bottom = 602.0
+margin_bottom = 603.0
 rect_min_size = Vector2( 100, 100 )
 mouse_filter = 2
 size_flags_horizontal = 3
@@ -1271,28 +1271,30 @@ anims/top = SubResource( 6 )
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
 margin_right = 1024.0
-margin_bottom = 596.0
+margin_bottom = 143.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+scroll_horizontal_enabled = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer"]
 margin_right = 1024.0
-margin_bottom = 596.0
+margin_bottom = 143.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/HBoxContainer"]
-margin_right = 1008.0
-margin_bottom = 596.0
+margin_right = 1024.0
+margin_bottom = 143.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/separation = 150
+custom_constants/separation = 20
 
 [node name="NVL" parent="ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 2 )]
 anchor_right = 0.0
-margin_right = 1008.0
+margin_right = 1024.0
 
 [node name="VScrollBar" type="VScrollBar" parent="ScrollContainer/HBoxContainer"]
+visible = false
 margin_left = 1012.0
 margin_right = 1024.0
 margin_bottom = 596.0
