@@ -1,13 +1,23 @@
 tool
 extends EditorPlugin
 
+# A class member to hold the dock during the plugin lifecycle
+var dock
 
 func _enter_tree():
 	## add Rakugo as singleton in ProjectSettings
 #	ProjectSettings.add_singleton(Rakugo.tscn)
-
+	
+	# Initialization of the plugin goes here
+	# Load the dock scene and instance it
+	dock = preload("emojis/EmojiPanel.tscn").instance()
+	
+	# Add the loaded scene to the docks
+	add_control_to_dock(DOCK_SLOT_RIGHT_UL, dock)
+	# Note that LEFT_UL means the left of the editor, upper-left dock
+	
 	## they must stay to don't make few times script that
-	## is almost the same, but in to first lines diffRakugot 
+	## is almost the same, but in to first lines diffRakugo
 	add_custom_type(
 		"VRakugoMenu",
 		"VBoxContainer",
@@ -60,6 +70,12 @@ func _enter_tree():
 	print("Rakugo is Active")
 	
 func _exit_tree():
+	# Clean-up of the plugin goes here
+	# Remove the dock
+	remove_control_from_docks(dock)
+	 # Erase the control from the memory
+	dock.free()
+	
 	remove_custom_type("RakugoVarHSlider")
 	remove_custom_type("RakugoVarVSlider")
 	remove_custom_type("RakugoHMenu")

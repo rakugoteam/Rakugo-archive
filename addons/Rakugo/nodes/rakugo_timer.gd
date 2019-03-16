@@ -14,7 +14,7 @@ func get_default() -> float:
 
 func _ready() -> void:
 	if var_name in Rakugo.variables:
-		wait_time = float(Rakugo.get_value(var_name))
+		reset()
 	
 	else:
 		Rakugo.define(var_name, default)
@@ -30,4 +30,5 @@ func on_value_changed(vname:String, new_value:float) -> void:
 		
 	wait_time = new_value
 
-
+func reset():
+	wait_time = float(Rakugo.get_value(var_name))

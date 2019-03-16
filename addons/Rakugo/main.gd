@@ -68,6 +68,7 @@ var current_statement:Statement = null
 var skip_auto:= false
 var active:= false
 var can_alphanumeric:= true
+var emoji_size := 16
 var skip_types:= [
 	StatementType.SAY,
 	StatementType.SHOW,

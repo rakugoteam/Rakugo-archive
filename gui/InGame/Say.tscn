@@ -701,7 +701,7 @@ tracks/22/keys = {
 "values": [ 20 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=5]
 resource_name = "phone"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rect_position")
@@ -944,8 +944,7 @@ tracks/22/keys = {
 "values": [ 20 ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "right"
+[sub_resource type="Animation" id=6]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rect_position")
 tracks/0/interp = 1
@@ -1095,7 +1094,7 @@ tracks/13/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rect_position")
 tracks/0/interp = 1
@@ -1264,9 +1263,9 @@ anims/adv = SubResource( 1 )
 anims/center = SubResource( 2 )
 anims/left = SubResource( 3 )
 anims/nvl = SubResource( 4 )
-anims/phone = SubResource( 7 )
-anims/right = SubResource( 5 )
-anims/top = SubResource( 6 )
+anims/phone = SubResource( 5 )
+anims/right = SubResource( 6 )
+anims/top = SubResource( 7 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
