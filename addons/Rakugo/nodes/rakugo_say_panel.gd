@@ -126,6 +126,18 @@ func _on_statement(type : int, parameters : Dictionary) -> void:
 			# object is fine so you can do something with it:
 			avatar.free()
 	
+	if "time" in parameters:
+		if parameters.time == 0:
+			typing = false
+		
+		else:
+			typing = true
+			Rakugo.dialog_timer.wait_time = parameters.time
+		
+	else:
+		typing = true
+		Rakugo.dialog_timer.reset()
+	
 	return
 
 func write_dialog(text : String, _typing : bool) -> void:
@@ -138,25 +150,36 @@ func write_dialog(text : String, _typing : bool) -> void:
 	if DialogText.has_method("set_bbcode"):
 		DialogText.bbcode_text = ""
 
-	var te = ""
-
-	var markup = false
+	var new_text : = ""
+	var markup : = false
+	
 	for letter in text:
-		Rakugo.dialog_timer.start()
-		te += letter
+		new_text += letter
+		
 		if letter == "[":
 			markup = true
+			continue
+			
+		if new_text.ends_with("[img]"):
+			markup = true
+			continue
 		
 		if letter == "]":
+			markup = false
+		
+		if new_text.ends_with("[/img]"):
 			markup = false
 
 		if markup:
 			continue
-
-		if DialogText.has_method("set_bbcode"):
-			DialogText.bbcode_text = te
-
+			
+		Rakugo.dialog_timer.start()
+			
 		yield(Rakugo.dialog_timer, "timeout")
+			
+		if DialogText.has_method("set_bbcode"):
+			DialogText.bbcode_text = new_text
+		
 		if !typing:
 
 			if DialogText.has_method("set_bbcode"):

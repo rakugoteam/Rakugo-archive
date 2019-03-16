@@ -1,10 +1,12 @@
-extends Object
+extends Node
 class_name RakugoTextPasser
 
 var url_open:String = "[color=225ebf][url="
 var url_close:String = "[/url][/color]"
 var new_line:String = "\n"
 var tab:String = "\t"
+
+onready var emojis : Emojis = $Emojis 
 
 func text_passer(
 	text:String,
@@ -105,9 +107,27 @@ func parse_text_adv(
 		
 	return text
 
+func parse_text_emojis(
+	text:String, open:String,
+	close:String) -> String:
+
+	text = text.c_unescape()
+
+	for emoji_name in emojis.emojis_dict.keys():
+		if text.find(emoji_name) == -1:
+			continue # no variable in this string
+		
+		var emoji_png = emojis.get_path_to_emoji(emoji_name, Rakugo.emoji_size)
+		var s = open + emoji_name + close
+		var e = "[img]" + emoji_png + "[/img]"
+		text = text.replace(s, e)
+	
+	return text
+			
+
 func parse_renpy_text(text:String, variables:Dictionary) -> String:
 	text = parse_text_adv(text, variables, "[", "]")
-	text = text.replace("{image", "[img")
+	text = parse_text_emojis(text, "{:", ":}")
 	text = text.replace("{a=", url_open)
 	text = text.replace("{/a}", url_close)
 	text = text.replace("{/nl}", new_line)
@@ -118,6 +138,7 @@ func parse_renpy_text(text:String, variables:Dictionary) -> String:
 
 func parse_bbcode_text(text:String, variables:Dictionary) -> String:
 	text = parse_text_adv(text, variables, "{", "}")
+	text = parse_text_emojis(text, "[:", ":]")
 	text = text.replace("[url=", url_open)
 	text = text.replace("[/url]", url_close)
 	text = text.replace("[/url]", url_close)
