@@ -9,7 +9,8 @@
 [![GitHub](https://img.shields.io/github/issues/jebedaia360/Rakugo.svg?style=flat-square)](https://github.com/jebedaia360/Rakugo/issues)
 [![GitHub](https://img.shields.io/github/issues-closed/jebedaia360/Rakugo.svg?style=flat-square)](https://github.com/jebedaia360/Rakugo/issues)
 
-Rakugo is framemork (inspired by [Ren'Py](https://www.renpy.org)) for story driven games in [Godot](https://godotengine.org) or like my friend call it *Story Management Plugin*.
+Rakugo is framemork (inspired by [Ren'Py](https://www.renpy.org)) for story driven games in [Godot](https://godotengine.org)
+or like my friend call it *Story Management Plugin*.
 
 Now you can support this project by [Patreon](https://www.patreon.com/jebedaia360).
 
@@ -66,6 +67,11 @@ If you want to help please write to us on our [Discord](https://discord.gg/K9gvj
 I need help with this [visual script support](https://github.com/jebedaia360/Rakugo/issues/26).
 
 Logo is Godot head with hair like anime character.<br/>
-Icons used by project are based on [Godot icons](https://github.com/godotengine/godot-design/tree/master/engine/icons/optimized), [Linux Pop icon theme](https://github.com/pop-os/icon-theme) and icons from [game-icons.net](https://game-icons.net).
+Icons used by project are based on:
+- [Godot icons](https://github.com/godotengine/godot-design/tree/master/engine/icons/optimized)
+- [Linux Pop icon theme](https://github.com/pop-os/icon-theme)
+- icons from [game-icons.net](https://game-icons.net)
+
+New emoji mode use [![Creative Commons](https://img.shields.io/badge/license-CC0%201.0-orange.svg?style=flat-square)](http://creativecommons.org/publicdomain/zero/1.0/) [Twemoji](https://twemoji.twitter.com/).
 
 
