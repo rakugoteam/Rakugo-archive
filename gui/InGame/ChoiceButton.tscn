@@ -3,9 +3,6 @@
 [ext_resource path="res://themes/new_gui/theme.tres" type="Theme" id=1]
 [ext_resource path="res://addons/Rakugo/nodes/rakugo_choice_button.gd" type="Script" id=2]
 
-
-
-
 [node name="ChoiceButton" type="Button"]
 margin_right = 296.0
 margin_bottom = 34.0
