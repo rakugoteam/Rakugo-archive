@@ -66,8 +66,6 @@ If you want to help please write to us on our [Discord](https://discord.gg/K9gvj
 
 I need help with this [visual script support](https://github.com/jebedaia360/Rakugo/issues/26).
 
-Logo is Godot head with hair like anime character.<br/>
-Icons used by project are based on:
 - [Godot icons](https://github.com/godotengine/godot-design/tree/master/engine/icons/optimized)
 - [Linux Pop icon theme](https://github.com/pop-os/icon-theme)
 - icons from [game-icons.net](https://game-icons.net)
