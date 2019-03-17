@@ -71,25 +71,23 @@ func _on_statement(type : int, parameters : Dictionary) -> void:
 	if "kind" in parameters:
 		kind = parameters.kind
 	
-	if not extra_kinds.has(kind):
-		$AnimationPlayer.play(kind)
-		
-	if kind in extra_kinds:
-		var i := extra_kinds.find(kind)
-		
-		if i == -1:
-			return
-		
-		$AnimationPlayer.play(extra_kinds_anims[i])
-		
-		StdKindContainer.hide()
-		var scene_to_use : PackedScene = extra_kinds_scenes[i]
-		var instace : KindContainer = scene_to_use.instance()
-		MainContainer.add_child(instace)
-		_setup(instace)
-	
-	else:
-		StdKindContainer.show()
+		if not extra_kinds.has(kind):
+			StdKindContainer.show()
+			$AnimationPlayer.play(kind)
+			
+		if kind in extra_kinds:
+			var i := extra_kinds.find(kind)
+			
+			if i == -1:
+				return
+			
+			$AnimationPlayer.play(extra_kinds_anims[i])
+			
+			StdKindContainer.hide()
+			var scene_to_use : PackedScene = extra_kinds_scenes[i]
+			var instace : KindContainer = scene_to_use.instance()
+			MainContainer.add_child(instace)
+			_setup(instace)
 		
 	_type = type
 
