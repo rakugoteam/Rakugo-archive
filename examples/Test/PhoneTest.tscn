@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://examples/Test/test.gd" type="Script" id=1]
+[ext_resource path="res://examples/Test/test_phone.gd" type="Script" id=1]
 [ext_resource path="res://addons/Rakugo/nodes/character.gd" type="Script" id=2]
 [ext_resource path="res://examples/VisualNovelExample/AliceAvatar.tscn" type="PackedScene" id=3]
 [ext_resource path="res://examples/Test/RakugoAvatar.tscn" type="PackedScene" id=4]
