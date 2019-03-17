@@ -4,7 +4,6 @@ addons/*
 !addons/json_beautifier
 !addons/PersistenceNode
 refences
-*.import
-.import
+.import/
 .directory
 .vscode
