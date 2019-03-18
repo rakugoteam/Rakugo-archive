@@ -19,7 +19,7 @@ func _ready():
 	$LineEdit.connect("text_changed", self, "on_text_changed")
 	
 func on_button(button:Button):
-	$Label.text = button.name
+	$Label.text = '"' + button.name + '"' + "copied to clipboard" 
 	OS.clipboard = button.name
 	
 func on_text_changed(text:String):
