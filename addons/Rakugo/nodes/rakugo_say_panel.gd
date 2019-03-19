@@ -13,6 +13,7 @@ var CharacterAvatar : Viewport
 var LineEditNode : RakugoLineEdit
 var StdKindContainer : KindContainer
 var MainContainer : BoxContainer
+var CurrentKind : KindContainer
 
 var avatar_path : = ""
 var avatar : Node
@@ -21,21 +22,16 @@ var typing : = false
 var kind : String 
 
 func _setup(kind_container:KindContainer):	
-	var nl_path : = kind_container.name_label_path
-	NameLabel = kind_container.get_node(nl_path)
-	
-	var dl_path := kind_container.dialog_label_path
-	DialogText = kind_container.get_node(dl_path)
-	
-	var av_path : = kind_container.avatar_viewport_path
-	CharacterAvatar = kind_container.get_node(av_path)
+	NameLabel = kind_container.NameLabel
+	DialogText = kind_container.DialogText
+	CharacterAvatar = kind_container.CharacterAvatar
 	
 	if LineEditNode:
 		LineEditNode.active = false
-	
-	var le_path := kind_container.line_edit_path
-	LineEditNode = kind_container.get_node(le_path)
+
+	LineEditNode = kind_container.LineEditNode
 	LineEditNode.active = true
+	CurrentKind = kind_container
 	
 func _ready() -> void:
 	MainContainer = get_node(main_container_path)
@@ -109,9 +105,13 @@ func _on_statement(type : int, parameters : Dictionary) -> void:
 				avatar.free()
 
 		if parameters.avatar != "":
+			CurrentKind.show_avatar()
 			avatar_path = parameters.avatar
 			avatar = load(parameters.avatar).instance()
 			CharacterAvatar.add_child(avatar)
+		
+		else:
+			CurrentKind.hide_avatar()
 	
 	elif avatar != null:
 		var wr = weakref(avatar)
@@ -123,6 +123,8 @@ func _on_statement(type : int, parameters : Dictionary) -> void:
 		else:
 			# object is fine so you can do something with it:
 			avatar.free()
+		
+		CurrentKind.hide_avatar()
 	
 	if "time" in parameters:
 		if parameters.time == 0:
