@@ -39,6 +39,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://gui/OptionsBox/CollapsedList.gd"
 }, {
+"base": "TabContainer",
+"class": "Cycle",
+"language": "GDScript",
+"path": "res://addons/godot-next/gui/cycle.gd"
+}, {
 "base": "Node",
 "class": "Emojis",
 "language": "GDScript",
@@ -238,6 +243,11 @@ _global_script_classes=[ {
 "class": "Subquest",
 "language": "GDScript",
 "path": "res://addons/Rakugo/types/subquest.gd"
+}, {
+"base": "Line2D",
+"class": "Trail2D",
+"language": "GDScript",
+"path": "res://addons/godot-next/2d/trail_2d.gd"
 } ]
 _global_script_class_icons={
 "Ask": "",
@@ -246,6 +256,7 @@ _global_script_class_icons={
 "Character": "res://addons/Rakugo/icons/rakugo_character.svg",
 "CharacterObject": "",
 "CollapsedList": "",
+"Cycle": "",
 "Emojis": "res://addons/Rakugo/emojis/16x16/1f600.png",
 "Hide": "",
 "JSONBeautifier": "",
@@ -285,7 +296,8 @@ _global_script_class_icons={
 "Statement": "",
 "StopAnim": "",
 "StopAudio": "",
-"Subquest": ""
+"Subquest": "",
+"Trail2D": "res://addons/godot-next/icons/icon_trail_2d.svg"
 }
 
 [application]

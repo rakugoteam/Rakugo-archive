@@ -7,6 +7,8 @@ export onready var scrollbar : = $Navigation/ScrollContainer/HBoxContainer/VScro
 export var use_back_button : = false
 export onready var back_button : Button = $BackButton
 export onready var unpause_timer : Timer = $UnpauseTimer
+export onready var qno_button = $QuitBox/HBoxContainer/No
+export onready var qyes_button = $QuitBox/HBoxContainer/Yes
 
 var current_node : Node = self
 onready var in_game_gui : = get_node(in_game_gui_path)
@@ -27,8 +29,6 @@ func _ready():
 	get_tree().set_auto_accept_quit(false)
 	connect("visibility_changed", self, "_on_visibility_changed")
 	
-	var qno_button = $QuitBox/HBoxContainer/No
-	var qyes_button = $QuitBox/HBoxContainer/Yes
 	qno_button.connect("pressed", self, "_on_Return_pressed")
 	qyes_button.connect("pressed", self, "_on_Yes_pressed")
 	
@@ -76,7 +76,7 @@ func _on_back_button():
 	back_button.hide()
 
 func save_menu(screenshot):
-	get_node(str(nav_path) + "/" + "Save").pressed = true
+	save_button.pressed = true
 	show_page($SlotBox)
 	$SlotBox/Title.text = "Save"
 	$SlotBox.savebox()
@@ -84,14 +84,14 @@ func save_menu(screenshot):
 	show()
 
 func load_menu():
-	get_node(str(nav_path) + "/" + "Load").pressed = true
+	load_button.pressed = true
 	show_page($SlotBox)
 	$SlotBox/Title.text = "Load"
 	$SlotBox.loadbox()
 	show()
 
 func history_menu():
-	get_node(str(nav_path) + "/" + "History").pressed = true
+	history_button.pressed = true
 	show_page($HistoryBox)
 	show()
 
@@ -144,7 +144,7 @@ func _on_Continue_pressed():
 	hide()
 
 func _on_Quests_pressed():
-	get_node(str(nav_path) + "/" + "Quests").pressed = true
+	quests_button.pressed = true
 	show_page($QuestsBox)
 	show()
 
@@ -156,7 +156,7 @@ func _on_Yes_pressed():
 	get_tree().quit()
 
 func _on_Quit_pressed():
-	get_node(str(nav_path) + "/" + "Quit").pressed = true
+	quests_button.pressed = true
 	show_page($QuitBox)
 	show()
 
@@ -172,7 +172,7 @@ func _on_TestNodes_pressed():
 	show()
 
 func _on_Options_pressed():
-	get_node(str(nav_path) + "/" + "Options").pressed = true
+	options_button.pressed = true
 	show_page($OptionsBox)
 	show()
 
@@ -201,6 +201,7 @@ func _screenshot_on_input(event):
 		
 	var dir = Directory.new()
 	var screenshots_dir = "user://screenshots"
+	
 	if !dir.dir_exists(screenshots_dir):
 		dir.make_dir(screenshots_dir)
 	

@@ -16,18 +16,28 @@ func _ready():
 	anim_is_playing.connect("value_changed", self, "_on_anim_is_playing_changed")
 
 func _on_anim_changed(old_name, new_name):
+	if new_name == "":
+		return
+		
 	anim_name.v = new_name
 	
 func _on_anim_finished(a_name):
-	anim_name.v = a_name
+	if a_name != "":
+		anim_name.v = a_name
+		
 	anim_is_playing.v = false
 	
 func _on_anim_started(a_name):
-	anim_name.v = a_name
+	if a_name != "":
+		anim_name.v = a_name
+		
 	anim_is_playing.v = true
 
 func _on_anim_name_changed(vname:String, new_value:String):
 	if vname != anim_name.name:
+		return
+		
+	if new_value == "":
 		return
 
 	current_animation = anim_name.v

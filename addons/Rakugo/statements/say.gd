@@ -7,6 +7,7 @@ func _init() -> void:
 	parameters_names += ["who", "what", "typing", "kind"]
 	parameters["who"] = ""
 	parameters["add_to_history"] = true
+	parameters["kind"] = "adv"
 
 func exec() -> void:
 	debug(parameters_names)
