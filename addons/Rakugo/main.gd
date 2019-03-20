@@ -175,15 +175,9 @@ func exec_statement(type:int, parameters:= {}) -> void:
 	emit_signal("exec_statement", type, parameters)
 
 func exit_statement(parameters:= {}) -> void:
-	if loading_in_progress:
-		return
-
 	emit_signal("exit_statement", current_statement.type, parameters)
 
 func story_step() -> void:
-	if loading_in_progress:
-		return
-		
 	emit_signal("story_step", current_node_name, current_dialog_name)
 
 func notified() -> void:
