@@ -28,6 +28,7 @@ func emoji_list_to_dict(list:Array)->Dictionary:
 		for emoji in group.emojis:
 			var key : String = emoji.shortname
 			key = key.replace(":", "")
+			key = key.replace("regional_indicator_", "")
 			var value : String = emoji.hex
 			dict[key] = value
 	

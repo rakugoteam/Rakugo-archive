@@ -175,15 +175,9 @@ func exec_statement(type:int, parameters:= {}) -> void:
 	emit_signal("exec_statement", type, parameters)
 
 func exit_statement(parameters:= {}) -> void:
-	if loading_in_progress:
-		return
-
 	emit_signal("exit_statement", current_statement.type, parameters)
 
 func story_step() -> void:
-	if loading_in_progress:
-		return
-		
 	emit_signal("story_step", current_node_name, current_dialog_name)
 
 func notified() -> void:
@@ -592,13 +586,13 @@ func loadfile(save_name:= "quick") -> bool:
 	history_id = data["id"]
 
 	start(true)
-
+	
+	loading_in_progress = false
+	
 	jump(
 		data["scene"],
 		data["node_name"],
 		data["dialog_name"],
-		true,
-		_get_story_state(),
 		true
 		)
 	
@@ -643,23 +637,17 @@ func _get_history_id() -> int:
 ## use this to change/assign current scene and dialog
 ## root of path_to_scene is scenes_dir
 ## provide path_to_scene with out ".tscn"
-func jump(path_to_scene:String, node_name:String, dialog_name:String, change:= true, state:= 0, from_save:= false) -> void:
-
-	if not from_save and loading_in_progress:
-		return
+func jump(path_to_scene:String, node_name:String, dialog_name:String, change:= true) -> void:
 	
 	current_node_name = node_name
 	current_dialog_name = dialog_name
 	
-	_set_story_state(state) # it must be this way
+	_scene = scenes_dir + "/" + path_to_scene + ".tscn"
 	
-	if from_save:
+	if path_to_scene.ends_with(".tscn"):
 		_scene = path_to_scene
-
-	else:
-		_scene = scenes_dir + "/" + path_to_scene + ".tscn"
 	
-	debug(["jump to scene:", _scene, "with dialog:", dialog_name, "from:", state])
+	debug(["jump to scene:", _scene, "with dialog:", dialog_name, "from:", story_state])
 
 	if change:
 		if current_root_node != null:
@@ -670,9 +658,6 @@ func jump(path_to_scene:String, node_name:String, dialog_name:String, change:= t
 		get_tree().get_root().add_child(current_root_node)
 
 		emit_signal("started")
-
-	if loading_in_progress:
-		loading_in_progress = false
 	
 	if started:
 		story_step()
@@ -681,6 +666,9 @@ func jump(path_to_scene:String, node_name:String, dialog_name:String, change:= t
 ## root of path_to_scene is scenes_dir
 ## provide path_to_scene with out ".tscn"
 func begin(path_to_scene:String, node_name:String, dialog_name:String) -> void:
+	if loading_in_progress:
+		return
+		
 	jump(path_to_scene, node_name , dialog_name, false)
 
 ## it don't work :(

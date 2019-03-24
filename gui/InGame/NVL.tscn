@@ -88,7 +88,6 @@ margin_right = 1024.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/separation = 10
 
 [node name="Label" parent="VBox" instance=ExtResource( 2 )]
 margin_right = 920.0
@@ -102,9 +101,9 @@ custom_fonts/normal_font = SubResource( 5 )
 scroll_active = false
 
 [node name="Dialogue" parent="VBox" instance=ExtResource( 7 )]
-margin_top = 50.0
+margin_top = 44.0
 margin_right = 920.0
-margin_bottom = 90.0
+margin_bottom = 84.0
 custom_fonts/mono_font = SubResource( 6 )
 custom_fonts/bold_italics_font = SubResource( 7 )
 custom_fonts/italics_font = SubResource( 8 )
