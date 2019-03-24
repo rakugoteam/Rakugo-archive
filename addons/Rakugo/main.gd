@@ -478,112 +478,112 @@ func start(after_load:=false) -> void:
 		story_step()
 
 func savefile(save_name:= "quick") -> bool:
-	$Persistence.folder_name = save_folder
-	$Persistence.password = save_password
+	# $Persistence.folder_name = save_folder
+	# $Persistence.password = save_password
 
-	var data = $Persistence.get_data(save_name)
+	# var data = $Persistence.get_data(save_name)
 	debug(["get data from:", save_name])
 	
-	if !data:
-		return false
+	# if !data:
+	# 	return false
 		
-	if data.empty():
-		return false
+	# if data.empty():
+	# 	return false
 
-	data["history"] = history
+	# data["history"] = history
 
-	var vars_to_save = {}
+	# var vars_to_save = {}
 
-	for i in range(variables.size()):
-		var k = variables.keys()[i]
-		var v = variables.values()[i]
+	# for i in range(variables.size()):
+	# 	var k = variables.keys()[i]
+	# 	var v = variables.values()[i]
 
-		debug([k, v])
+	# 	debug([k, v])
 
-		match v.type:
-			Type.CHARACTER:
-				vars_to_save[k] = {
-					"type":v.type,
-					"value":v.character2dict()
-				}
+	# 	match v.type:
+	# 		Type.CHARACTER:
+	# 			vars_to_save[k] = {
+	# 				"type":v.type,
+	# 				"value":v.character2dict()
+	# 			}
 
-			Type.SUBQUEST:
-				vars_to_save[k] = {
-					"type":v.type,
-					"value":v.subquest2dict()
-				}
+	# 		Type.SUBQUEST:
+	# 			vars_to_save[k] = {
+	# 				"type":v.type,
+	# 				"value":v.subquest2dict()
+	# 			}
 
-			Type.QUEST:
-				vars_to_save[k] = {
-					"type":v.type,
-					"value":v.quest2dict()
-				}
-			_:
-				vars_to_save[k] = {
-					"type":v.type,
-					"value":v.value
-				}
+	# 		Type.QUEST:
+	# 			vars_to_save[k] = {
+	# 				"type":v.type,
+	# 				"value":v.quest2dict()
+	# 			}
+	# 		_:
+	# 			vars_to_save[k] = {
+	# 				"type":v.type,
+	# 				"value":v.value
+	# 			}
 
-	data["variables"] = vars_to_save
+	# data["variables"] = vars_to_save
 
-	data["id"] = history_id
-	data["scene"] = _scene
-	data["dialog_name"] = current_dialog_name
-	data["node_name"] = current_node_name
+	# data["id"] = history_id
+	# data["scene"] = _scene
+	# data["dialog_name"] = current_dialog_name
+	# data["node_name"] = current_node_name
 
-	var result = $Persistence.save_data(save_name)
+	# var result = $Persistence.save_data(save_name)
 
 	debug(["save data to:", save_name])
 	return result
 	
 func loadfile(save_name:= "quick") -> bool:
 	loading_in_progress = true
-	$Persistence.folder_name = save_folder
-	$Persistence.password = save_password
+	# $Persistence.folder_name = save_folder
+	# $Persistence.password = save_password
 	
-	var data = $Persistence.get_data(save_name)
+	# var data = $Persistence.get_data(save_name)
 	debug(["load data from:", save_name])
 
-	if !data:
-		return false
+	# if !data:
+	# 	return false
 		
-	if data.empty():
-		return false
+	# if data.empty():
+	# 	return false
 
-	quests.clear()
-	history = data["history"]
+	# quests.clear()
+	# history = data["history"]
 
-	var vars_to_load = data["variables"]
+	# var vars_to_load = data["variables"]
 
-	for i in range(vars_to_load.size()):
-		var k = vars_to_load.keys()[i]
-		var v = vars_to_load.values()[i]
+	# for i in range(vars_to_load.size()):
+	# 	var k = vars_to_load.keys()[i]
+	# 	var v = vars_to_load.values()[i]
 
-		debug([k, v])
+	# 	debug([k, v])
 
-		match v.type:
-			Type.CHARACTER:
-				character(k, v.value)
+	# 	match v.type:
+	# 		Type.CHARACTER:
+	# 			character(k, v.value)
 
-			Type.SUBQUEST:
-				subquest(k, v.value)
+	# 		Type.SUBQUEST:
+	# 			subquest(k, v.value)
 
-			Type.QUEST:
-				quest(k, v.value)
+	# 		Type.QUEST:
+	# 			quest(k, v.value)
 
-				if k in quests:
-					continue
+	# 			if k in quests:
+	# 				continue
 
-				quests.append(k)
+	# 			quests.append(k)
 
-			_:
-				define(k, v.value)
+	# 		_:
+	# 			define(k, v.value)
 			
-	for q_id in quests:
-		var q = get_quest(q_id)
-		q.update_subquests()
+	# for q_id in quests:
+	# 	var q = get_quest(q_id)
+	# 	q.update_subquests()
 
-	history_id = data["id"]
+	# history_id = data["id"]
 
 	start(true)
 	
@@ -707,45 +707,47 @@ func can_qload() -> bool:
 	return is_save_exits("quick")
 
 func is_save_exits(save_name:String) -> bool:
-	var path = str("user://", save_folder, "/", save_name)
-	var save_exist = file.file_exists(path + ".save")
-	var text_exist = file.file_exists(path + ".txt")
-	return save_exist or text_exist
+	# var path = str("user://", save_folder, "/", save_name)
+	# var save_exist = file.file_exists(path + ".save")
+	# var text_exist = file.file_exists(path + ".txt")
+	# return save_exist or text_exist
+	return false
 
 func save_global_history() -> bool:
 	var save_name = "global_history"
-	$Persistence.folder_name = save_folder
-	$Persistence.password = save_password
-	var data = $Persistence.get_data(save_name)
+	# $Persistence.folder_name = save_folder
+	# $Persistence.password = save_password
+	# var data = $Persistence.get_data(save_name)
 	debug(["get global_history from:", save_name])
 
-	if !data:
-		return false
+	# if !data:
+	# 	return false
 
-	if data.empty():
-		return false
+	# if data.empty():
+	# 	return false
 
-	data["global_history"] = global_history.duplicate()
+	# data["global_history"] = global_history.duplicate()
 	
-	var result = $Persistence.save_data(save_name)
+	# var result = $Persistence.save_data(save_name)
 	debug(["save global_history to:", save_name])
-	return result
+	# return result
+	return true
 
 func load_global_history() -> bool:
 	var save_name = "global_history"
-	$Persistence.folder_name = save_folder
-	$Persistence.password = save_password
-	global_history = []
-	var data = $Persistence.get_data(save_name)
+	# $Persistence.folder_name = save_folder
+	# $Persistence.password = save_password
+	# global_history = []
+	# var data = $Persistence.get_data(save_name)
 	debug(["load global_history from:", save_name])
 
-	if !data:
-		return false
+	# if !data:
+	# 	return false
 
-	if data.empty():
-		return false
+	# if data.empty():
+	# 	return false
 	
-	if "global_history" in data:
-		global_history = data["global_history"]
+	# if "global_history" in data:
+	# 	global_history = data["global_history"]
 		
 	return true
