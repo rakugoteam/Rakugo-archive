@@ -5,11 +5,11 @@ This object used to handling Rakugo's
 """
 class_name RakugoDict
 
-signal value_changed(var_name, new_value)
-signal key_value_changed(var_name, key, new_value)
+signal value_changed(var_id, new_value)
+signal key_value_changed(var_id, key, new_value)
 
-func _init(var_name:String, var_value:Dictionary
-	).(var_name, var_value, Rakugo.Type.DICT) -> void:
+func _init(var_id:String, var_value:Dictionary
+	).(var_id, var_value, Rakugo.Type.DICT) -> void:
 	pass
 
 func _set_value(dict:Dictionary) -> void:

@@ -29,7 +29,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/nodes/character.gd"
 }, {
-"base": "Object",
+"base": "RakugoVar",
 "class": "CharacterObject",
 "language": "GDScript",
 "path": "res://addons/Rakugo/types/character_obj.gd"
@@ -152,12 +152,17 @@ _global_script_classes=[ {
 "base": "RakugoVar",
 "class": "RakugoRange",
 "language": "GDScript",
-"path": "res://addons/Rakugo/types/range.gd"
+"path": "res://addons/Rakugo/types/rakugo_range.gd"
 }, {
 "base": "Panel",
 "class": "RakugoSayPanel",
 "language": "GDScript",
 "path": "res://addons/Rakugo/nodes/rakugo_say_panel.gd"
+}, {
+"base": "RakugoVar",
+"class": "RakugoText",
+"language": "GDScript",
+"path": "res://addons/Rakugo/types/rakugo_text.gd"
 }, {
 "base": "RichTextLabel",
 "class": "RakugoTextLabel",
@@ -229,7 +234,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/statements/stop_audio.gd"
 }, {
-"base": "Object",
+"base": "RakugoVar",
 "class": "Subquest",
 "language": "GDScript",
 "path": "res://addons/Rakugo/types/subquest.gd"
@@ -270,6 +275,7 @@ _global_script_class_icons={
 "RakugoQuestButton": "",
 "RakugoRange": "",
 "RakugoSayPanel": "res://addons/Rakugo/icons/rakugo_panel.svg",
+"RakugoText": "",
 "RakugoTextLabel": "",
 "RakugoTextPasser": "",
 "RakugoTimer": "",
