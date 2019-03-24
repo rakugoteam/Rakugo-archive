@@ -18,12 +18,23 @@ func _set_value(dict:Dictionary) -> void:
 func _get_value() -> Dictionary:
 	return _value
 
-func set_key_value(key, key_value) -> void: 
-	value[key] = key_value
-	emit_signal("key_value_changed", name, key, key_value)
+func _get(p_property):
+	if _value.has(p_property):
+		return _value[p_property]
 
-func get_key_value(key):	
-	return value.get(key)
+func _set(p_property, p_value):
+	if _value.has(p_property):
+		_value[p_property] = p_value
+		emit_signal("key_value_changed", name, p_property, p_value)
+
+func _get_property_list():
+	var ret := []
+	for a_key in _value:
+		ret.append({
+			"name": a_key,
+			"type": typeof(_value[a_key])
+		})
+	return ret
 
 func clear():
 	value.clear()
@@ -48,3 +59,14 @@ func size() -> int:
 	
 func values() -> Array:
 	return value.values()
+
+func save_to(dict : Dictionary) -> void:
+	var save := {
+		"value": value,
+		"type" : type
+	}
+	dict[name] = save
+	
+
+func load(dict : Dictionary) -> void:
+	pass
