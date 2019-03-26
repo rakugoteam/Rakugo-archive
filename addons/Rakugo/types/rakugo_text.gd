@@ -68,17 +68,19 @@ func get_extension() -> String:
 func get_file()-> String:
 	return _value.get_file()
 
-func hash() ->int:
+func hash() -> int:
 	return _value.hash()
 
 func hex_to_int() ->int:
 	return _value.hex_to_int()
 
-#Stringinsert( int position, String what )
-func is_abs_path() ->bool:
+func insert(position:int, what:String) -> String:
+	return _value.insert(position, what)
+
+func is_abs_path() -> bool:
 	return _value.is_abs_path()
 
-func is_rel_path() ->bool:
+func is_rel_path() -> bool:
 	return _value.is_rel_path()
 
 func is_subsequence_of(text) -> bool:
@@ -87,22 +89,23 @@ func is_subsequence_of(text) -> bool:
 func is_subsequence_ofi(text) -> bool:
 	return _value.is_subsequence_ofi(text)
 
-func is_valid_float() ->bool:
+func is_valid_float() -> bool:
 	return _value.is_valid_float()
 
-#boolis_valid_hex_number( bool with_prefix=False )
-func is_valid_html_color() ->bool:
+func is_valid_hex_number(with_prefix:=false) -> bool:
+	return _value.s_valid_hex_number(with_prefix)
+
+func is_valid_html_color() -> bool:
 	return _value.is_valid_html_color()
 
-func is_valid_identifier() ->bool:
+func is_valid_identifier() -> bool:
 	return _value.is_valid_identifier()
 
-func is_valid_integer() ->bool:
+func is_valid_integer() -> bool:
 	return _value.is_valid_integer()
 
-func is_valid_ip_address() ->bool:
+func is_valid_ip_address() -> bool:
 	return _value.is_valid_ip_address()
-
 
 func json_escape() -> String:
 	return _value.json_escape()
@@ -110,16 +113,16 @@ func json_escape() -> String:
 func left(position:int) -> String:
 	return _value.left(position)
 	
-func length() ->int:
+func length() -> int:
 	return _value.length()
 
-func lstrip(chars) -> String:
+func lstrip(chars:String) -> String:
 	return _value.lstrip(chars)
 
-func match(expr) -> bool:
+func match(expr:String) -> bool:
 	return _value.match(expr)
 
-func matchn(expr) -> bool:
+func matchn(expr:String) -> bool:
 	return _value.matchn(expr)
 
 func md5_buffer() -> PoolByteArray:
@@ -128,16 +131,16 @@ func md5_buffer() -> PoolByteArray:
 func md5_text() -> String:
 	return _value.md5_text()
 
-func nocasecmp_to(to) -> int:
+func nocasecmp_to(to:String) -> int:
 	return _value.nocasecmp_to(to)
 
-func ord_at(at) -> int:
+func ord_at(at:int) -> int:
 	return _value.ord_at(at)
 
-func pad_decimals(digits) -> String:
+func pad_decimals(digits:int) -> String:
 	return _value.pad_decimals(digits)
 
-func pad_zeros(digits) -> String:
+func pad_zeros(digits:int) -> String:
 	return _value.pad_zeros(digits)
 
 func percent_decode() -> String:
@@ -146,27 +149,28 @@ func percent_decode() -> String:
 func percent_encode() -> String:
 	return _value.percent_encode()
 
-func plus_file(file) -> String:
+func plus_file(file:String) -> String:
 	return _value.plus_file(file)
 
-func replace(what, forwhat) -> String:
+func replace(what:String, forwhat:String) -> String:
 	return _value.replace(what, forwhat)
 
-func replacen(what, forwhat) -> String:
+func replacen(what:String, forwhat:String) -> String:
 	return _value.replacen(what, forwhat)
 
-func find(what:String, from:=-1 ) -> int:
-	return _value.find(what, from)
+func rfind(what:String, from:=-1 ) -> int:
+	return _value.rfind(what, from)
 
-# func findn(what:String, return _value.find(what, from)t from=-1 )
+func rfindn(what:String, from:=-1 ) -> int:
+	return _value.rfindn(what, from)
 
-func right(position) -> String:
+func right(position:int) -> String:
 	return _value.right(position)
 
 func split(divisor:String, allow_empty:=true, maxsplit:=0) -> PoolStringArray:
 	return _value.split(divisor, allow_empty, maxsplit)
 
-func rstrip(chars) -> String:
+func rstrip(chars:String) -> String:
 	return _value.rstrip(chars)
 
 func sha256_buffer() -> PoolByteArray:
@@ -175,11 +179,20 @@ func sha256_buffer() -> PoolByteArray:
 func sha256_text() -> String:
 	return _value.sha256_text()
 
-#floatsimilarity( String text )
-#PoolStringArraysplit( String divisor, bool allow_empty=True, int maxsplit=0 )
-#PoolRealArraysplit_floats( String divisor, bool allow_empty=True )
-#Stringstrip_edges( bool left=True, bool right=True )
-#Stringsubstr( int from, int len )
+func similarity(text:String) -> float:
+	return _value.similarity(text)
+
+func split(divisor:String, allow_empty:=true, maxsplit:=0) -> PoolStringArray:
+	return _value.split(divisor, allow_empty, maxsplit)
+
+func split_floats(divisor:String, allow_empty:=true) -> PoolRealArray:
+	return _value.split_floats(divisor, allow_empty)
+
+func strip_edges(left:=true, right:=true) -> String:
+	return _value.strip_edges(left, right)
+
+func substr(from:int, len:int) -> String:
+	return _value.substr(from, len)
 
 func to_ascii() -> PoolByteArray:
 	return _value.to_ascii()
