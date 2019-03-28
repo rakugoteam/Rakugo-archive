@@ -477,8 +477,8 @@ func savefile(save_name:= "quick") -> bool:
 	new_save.game_version= game_version
 	new_save.rakugo_version = rakugo_version
 	
-#	for node in get_tree().get_nodes_in_group("save"):
-#		node.save(new_save)
+	# for node in get_tree().get_nodes_in_group("save"):
+	# 	node.save(new_save)
 	
 	for v in variables.values():
 		v.save(new_save.data)
@@ -499,61 +499,59 @@ func savefile(save_name:= "quick") -> bool:
 	
 func loadfile(save_name:= "quick") -> bool:
 	loading_in_progress = true
-	# $Persistence.folder_name = save_folder
-	# $Persistence.password = save_password
-	
-	# var data = $Persistence.get_data(save_name)
+	var save_file_path := save_folder.plus_file(save_name)
 	debug(["load data from:", save_name])
 
-	# if !data:
-	# 	return false
-		
-	# if data.empty():
-	# 	return false
+	if not file.file_exists(save_file_path):
+		print("Save file %s doesn't exist" % save_file_path)
+		return false
+	
+	var save : Resource = load(save_file_path)
 
-	# quests.clear()
-	# history = data["history"]
+	# for node in get_tree().get_nodes_in_group("save"):
+	# 	node.load(save_game)
+	
+	quests.clear()
+	# history = save.data["history"]
 
-	# var vars_to_load = data["variables"]
+	for i in range(save.data.size()):
+		var k = save.data.keys()[i]
+		var v = save.data.values()[i]
 
-	# for i in range(vars_to_load.size()):
-	# 	var k = vars_to_load.keys()[i]
-	# 	var v = vars_to_load.values()[i]
+		debug([k, v])
 
-	# 	debug([k, v])
+		match v.type:
+			Type.CHARACTER:
+				character(k, v.value)
 
-	# 	match v.type:
-	# 		Type.CHARACTER:
-	# 			character(k, v.value)
+			Type.SUBQUEST:
+				subquest(k, v.value)
 
-	# 		Type.SUBQUEST:
-	# 			subquest(k, v.value)
+			Type.QUEST:
+				quest(k, v.value)
 
-	# 		Type.QUEST:
-	# 			quest(k, v.value)
+				if k in quests:
+					continue
 
-	# 			if k in quests:
-	# 				continue
+				quests.append(k)
 
-	# 			quests.append(k)
-
-	# 		_:
-	# 			define(k, v.value)
+			_:
+				define(k, v.value)
 			
-	# for q_id in quests:
-	# 	var q = get_quest(q_id)
-	# 	q.update_subquests()
+	for q_id in quests:
+		var q = get_quest(q_id)
+		q.update_subquests()
 
-	# history_id = data["id"]
+	# history_id = save.data["id"]
 
 	start(true)
 	
 	loading_in_progress = false
 	
 #	jump(
-#		data["scene"],
-#		data["node_name"],
-#		data["dialog_name"],
+#		save.data["scene"],
+#		save.data["node_name"],
+#		save.data["dialog_name"],
 #		true
 #		)
 	

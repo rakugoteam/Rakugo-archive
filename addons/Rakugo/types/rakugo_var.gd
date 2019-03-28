@@ -72,18 +72,6 @@ func save_to(dict:Dictionary) -> void:
 	}
 	
 	dict[id] = save
-
-func load_to(data:Dictionary, dict:Dictionary) -> bool:
-	if !save_included:
-		return true
-		
-	if type == dict["type"]:
-		_id = dict["id"]
-		._set_value(dict["value"])
-		dict[_id] = self
-		return true
-	
-	return false
 	
 func to_string() -> String:
 	return str(value)
