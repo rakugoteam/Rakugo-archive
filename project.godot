@@ -54,6 +54,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/statements/hide.gd"
 }, {
+"base": "Resource",
+"class": "HistorySave",
+"language": "GDScript",
+"path": "res://addons/Rakugo/types/history_save.gd"
+}, {
 "base": "Control",
 "class": "KindContainer",
 "language": "GDScript",
@@ -204,6 +209,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/nodes/rakugo_visual_instance.gd"
 }, {
+"base": "Resource",
+"class": "Save",
+"language": "GDScript",
+"path": "res://addons/Rakugo/types/save.gd"
+}, {
 "base": "Statement",
 "class": "Say",
 "language": "GDScript",
@@ -254,6 +264,7 @@ _global_script_class_icons={
 "Cycle": "",
 "Emojis": "res://addons/Rakugo/emojis/16x16/1f600.png",
 "Hide": "",
+"HistorySave": "",
 "KindContainer": "",
 "Menu": "",
 "Notify": "",
@@ -284,6 +295,7 @@ _global_script_class_icons={
 "RakugoVarEdit": "",
 "RakugoVarLabel": "",
 "RakugoVisualInstance": "res://addons/Rakugo/icons/rakugo_spatial.svg",
+"Save": "",
 "Say": "",
 "Show": "",
 "SkipTimer": "",
@@ -300,6 +312,7 @@ config/name="Rakugo"
 run/main_scene="res://examples/Test/Test.tscn"
 boot_splash/image="res://graphics/splash.png"
 config/icon="res://graphics/window_icon.png"
+config/version=""
 
 [autoload]
 

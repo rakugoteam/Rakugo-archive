@@ -13,6 +13,7 @@ var id : String setget , _get_id
 var _id : = ""
 
 var _inited := false
+var save_included:=true
 
 signal value_changed(var_id, new_value)
 
@@ -61,6 +62,9 @@ func _get_property_list() -> Array:
 	return ret
 
 func save_to(dict:Dictionary) -> void:
+	if !save_included:
+		return
+		
 	var save := {
 		"id" : id,
 		"value": value,
@@ -70,6 +74,9 @@ func save_to(dict:Dictionary) -> void:
 	dict[id] = save
 
 func load_to(data:Dictionary, dict:Dictionary) -> bool:
+	if !save_included:
+		return true
+		
 	if type == dict["type"]:
 		_id = dict["id"]
 		._set_value(dict["value"])

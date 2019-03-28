@@ -136,28 +136,29 @@ signal stop_audio(node_id)
 
 func _ready() -> void:
 	## set by game developer
-	define("title", game_title)
-	define("version", game_version)
+	define("title", game_title, false)
+	define("version", game_version, false)
 	OS.set_window_title(game_title + " " + game_version)
-	define("credits", game_credits)
+	define("credits", game_credits, false)
 
 	## set by rakugo
-	define("rakugo_version", rakugo_version)
+	define("rakugo_version", rakugo_version, false)
 	file.open(credits_path, file.READ)
-	define("rakugo_credits", file.get_as_text())
+	define("rakugo_credits", file.get_as_text(), false)
 	file.close()
 	var gdv = Engine.get_version_info()
 	var gdv_string = str(gdv.major) + "." + str(gdv.minor) + "." + str(gdv.patch)
-	define("godot_version", gdv_string)
+	define("godot_version", gdv_string, false)
 	define("story_state", 0)
 
 	## vars for rakugo settings
-	define("skip_all_text", _skip_all_text)
-	define("skip_after_choices", _skip_after_choices)
-	define("auto_time", _auto_time)
-	define("text_time", _text_time)
-	define("notify_time", _notify_time)
-	define("typing_text", _typing_text)
+	## `false` because is loaded from settings and not from save
+	define("skip_all_text", _skip_all_text, false)
+	define("skip_after_choices", _skip_after_choices, false)
+	define("auto_time", _auto_time, false)
+	define("text_time", _text_time, false)
+	define("notify_time", _notify_time, false)
+	define("typing_text", _typing_text, false)
 
 	## test vars
 	define("test_bool", false)
@@ -215,9 +216,10 @@ func text_passer(text:String, mode:= markup):
 
 ## add/overwrite global variable that Rakugo will see
 ## and returns it as RakugoVar for easy use
-func define(var_name:String, value = null) -> RakugoVar:
+func define(var_name:String, value = null, save_included := true) -> RakugoVar:
 	if not variables.has(var_name):
 		var new_var = RakugoVar.new(var_name, value)
+		new_var.save_included = save_included
 		variables[var_name] = new_var
 		return new_var
 		
@@ -300,7 +302,6 @@ func character(character_id:String, parameters:Dictionary) -> CharacterObject:
 	var new_ch := CharacterObject.new(character_id, parameters)
 	variables[character_id] = new_ch
 	return new_ch
-	
 
 func get_character(character_id:String) -> CharacterObject:
 	return _get_var(character_id, Type.CHARACTER) as CharacterObject
@@ -472,65 +473,29 @@ func start(after_load:=false) -> void:
 		story_step()
 
 func savefile(save_name:= "quick") -> bool:
-	# $Persistence.folder_name = save_folder
-	# $Persistence.password = save_password
-
-	# var data = $Persistence.get_data(save_name)
+	var new_save = Save.new()
+	new_save.game_version= game_version
+	new_save.rakugo_version = rakugo_version
 	
-
-	debug(["get data from:", save_name])
+#	for node in get_tree().get_nodes_in_group("save"):
+#		node.save(new_save)
 	
-	# if !data:
-	# 	return false
+	for v in variables.values():
+		v.save(new_save.data)
 		
-	# if data.empty():
-	# 	return false
-
-	# data["history"] = history
-
-	# var vars_to_save = {}
-
-	# for i in range(variables.size()):
-	# 	var k = variables.keys()[i]
-	# 	var v = variables.values()[i]
-
-	# 	debug([k, v])
-
-	# 	match v.type:
-	# 		Type.CHARACTER:
-	# 			vars_to_save[k] = {
-	# 				"type":v.type,
-	# 				"value":v.character2dict()
-	# 			}
-
-	# 		Type.SUBQUEST:
-	# 			vars_to_save[k] = {
-	# 				"type":v.type,
-	# 				"value":v.subquest2dict()
-	# 			}
-
-	# 		Type.QUEST:
-	# 			vars_to_save[k] = {
-	# 				"type":v.type,
-	# 				"value":v.quest2dict()
-	# 			}
-	# 		_:
-	# 			vars_to_save[k] = {
-	# 				"type":v.type,
-	# 				"value":v.value
-	# 			}
-
-	# data["variables"] = vars_to_save
-
-	# data["id"] = history_id
-	# data["scene"] = _scene
-	# data["dialog_name"] = current_dialog_name
-	# data["node_name"] = current_node_name
-
-	# var result = $Persistence.save_data(save_name)
-
-	debug(["save data to:", save_name])
-	return  true #result
+	var dir := Directory.new()
+	if not dir.dir_exists(save_folder):
+		dir.make_dir_recursive(save_folder)
+		
+	var save_path = save_folder.plus_file(save_name)
+	var  error := ResourceSaver.save(save_path, new_save)
+	debug(["save data to :", save_name])
+	
+	if error != OK:
+		print("There was issue writing save %s to %s" % [save_name, save_path])
+		return false
+		
+	return  true
 	
 func loadfile(save_name:= "quick") -> bool:
 	loading_in_progress = true
@@ -711,10 +676,10 @@ func is_save_exits(save_name:String) -> bool:
 
 func save_global_history() -> bool:
 	var save_name = "global_history"
+	
 	# $Persistence.folder_name = save_folder
 	# $Persistence.password = save_password
 	# var data = $Persistence.get_data(save_name)
-	debug(["get global_history from:", save_name])
 
 	# if !data:
 	# 	return false
