@@ -1,7 +1,5 @@
 extends Node
 
-export var game_title:= "Your New Game"
-export var game_version:= "0.0.1"
 export var game_credits:= "Your Company"
 export (String, "renpy", "bbcode") var markup:= "renpy"
 export var links_color:= Color("#225ebf")
@@ -14,6 +12,9 @@ const rakugo_version:= "2.0.0"
 const credits_path:= "res://addons/Rakugo/credits.txt"
 # we need it because we hide base RakugoMenu form custom nodes
 const RakugoMenu:= preload("res://addons/Rakugo/nodes/rakugo_menu.gd")
+
+onready var game_version = ProjectSettings.get_setting("application/config/version")
+onready var game_title = ProjectSettings.get_setting("application/config/name")
 
 ## init vars for settings
 var _skip_all_text:= false
@@ -296,9 +297,7 @@ func connect_var(var_name:String, signal_name:String, node:Object, func_name:Str
 ## crate new character as global variable that Rakugo will see
 ## possible parameters: name, color, what_prefix, what_suffix, kind, avatar
 func character(character_id:String, parameters:Dictionary) -> CharacterObject:
-	var new_ch := CharacterObject.new()
-	new_ch.id = character_id
-	new_ch.value = parameters
+	var new_ch := CharacterObject.new(character_id, parameters)
 	variables[character_id] = new_ch
 	return new_ch
 	
@@ -335,10 +334,7 @@ func get_node_by_id(node_id:String) -> Node:
 ## and returns it as RakugoSubQuest for easy use
 ## possible parameters: "who", "title", "description", "optional", "state", "subquests"
 func subquest(subquest_id:String, parameters:= {}) -> Subquest:
-	var new_subq : = Subquest.new()
-	new_subq._quest_id = subquest_id
-	new_subq.value = parameters
-	
+	var new_subq : = Subquest.new(subquest_id, parameters)	
 	return new_subq
 
 ## returns exiting Rakugo subquest as RakugoSubQuest for easy use
@@ -349,9 +345,7 @@ func get_subquest(subquest_id:String) -> Subquest:
 ## and returns it as RakugoQuest for easy use
 ## possible parameters: "who", "title", "description", "optional", "state", "subquests"
 func quest(quest_id:String, parameters:={}) -> Quest:
-	var q := Quest.new()
-	q._quest_id = quest_id
-	q.value = parameters
+	var q := Quest.new(quest_id, parameters)
 	quests.append(quest_id)
 	return q
 
@@ -482,6 +476,8 @@ func savefile(save_name:= "quick") -> bool:
 	# $Persistence.password = save_password
 
 	# var data = $Persistence.get_data(save_name)
+	
+
 	debug(["get data from:", save_name])
 	
 	# if !data:
@@ -534,7 +530,7 @@ func savefile(save_name:= "quick") -> bool:
 	# var result = $Persistence.save_data(save_name)
 
 	debug(["save data to:", save_name])
-	return result
+	return  true #result
 	
 func loadfile(save_name:= "quick") -> bool:
 	loading_in_progress = true
@@ -589,12 +585,12 @@ func loadfile(save_name:= "quick") -> bool:
 	
 	loading_in_progress = false
 	
-	jump(
-		data["scene"],
-		data["node_name"],
-		data["dialog_name"],
-		true
-		)
+#	jump(
+#		data["scene"],
+#		data["node_name"],
+#		data["dialog_name"],
+#		true
+#		)
 	
 	return true
 
