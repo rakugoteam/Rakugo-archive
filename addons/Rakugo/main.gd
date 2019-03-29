@@ -70,6 +70,7 @@ var skip_auto:= false
 var active:= false
 var can_alphanumeric:= true
 var emoji_size := 16
+
 var skip_types:= [
 	StatementType.SAY,
 	StatementType.SHOW,
@@ -473,33 +474,12 @@ func start(after_load:=false) -> void:
 		story_step()
 
 func savefile(save_name:= "quick") -> bool:
-	var new_save = Save.new()
-	new_save.game_version = game_version
-	new_save.rakugo_version = rakugo_version
-	new_save.history = history.duplicate()
-	new_save.scene = current_scene
-	new_save.node_name = current_node_name
-	new_save.dialog_name = current_dialog_name
-	
-	# for node in get_tree().get_nodes_in_group("save"):
-	# 	node.save(new_save)
-	
-	for v in variables.values():
-		v.save(new_save.data)
-		
-	var dir := Directory.new()
-	if not dir.dir_exists(save_folder):
-		dir.make_dir_recursive(save_folder)
-		
-	var save_path = save_folder.plus_file(save_name)
-	var  error := ResourceSaver.save(save_path, new_save)
 	debug(["save data to :", save_name])
-	
-	if error != OK:
-		print("There was issue writing save %s to %s" % [save_name, save_path])
-		return false
-		
-	return  true
+	return  SaveFile.invoke(
+		save_folder, save_name, game_version, rakugo_version, 
+		history, current_scene, current_node_name,
+		current_dialog_name, variables
+	)
 	
 func loadfile(save_name:= "quick") -> bool:
 	loading_in_progress = true
