@@ -311,6 +311,7 @@ _global_script_class_icons={
 config/name="Rakugo"
 run/main_scene="res://examples/Test/Test.tscn"
 boot_splash/image="res://graphics/splash.png"
+boot_splash/bg_color=Color( 0.741176, 0.733333, 0.733333, 1 )
 config/icon="res://graphics/window_icon.png"
 config/version=""
 
@@ -377,4 +378,5 @@ rakugo_qload={
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 environment/default_environment="res://default_env.tres"

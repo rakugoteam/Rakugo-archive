@@ -675,38 +675,37 @@ func is_save_exits(save_name:String) -> bool:
 func save_global_history() -> bool:
 	var save_name = "global_history"
 	
-	# $Persistence.folder_name = save_folder
-	# $Persistence.password = save_password
-	# var data = $Persistence.get_data(save_name)
-
-	# if !data:
-	# 	return false
-
-	# if data.empty():
-	# 	return false
-
-	# data["global_history"] = global_history.duplicate()
+	var new_save := HistorySave.new()
+	new_save.game_version= game_version
+	new_save.rakugo_version = rakugo_version
+	new_save.history_data = global_history.duplicate()
+		
+	var dir := Directory.new()
+	if not dir.dir_exists(save_folder):
+		dir.make_dir_recursive(save_folder)
+		
+	var save_path = save_folder.plus_file(save_name)
+	var  error := ResourceSaver.save(save_path, new_save)
+	debug(["save global history to:", save_name])
 	
-	# var result = $Persistence.save_data(save_name)
-	debug(["save global_history to:", save_name])
-	# return result
-	return true
+	if error != OK:
+		print("There was issue writing global history %s to %s" % [save_name, save_path])
+		return false
+		
+	return  true
 
 func load_global_history() -> bool:
 	var save_name = "global_history"
-	# $Persistence.folder_name = save_folder
-	# $Persistence.password = save_password
-	# global_history = []
-	# var data = $Persistence.get_data(save_name)
-	debug(["load global_history from:", save_name])
-
-	# if !data:
-	# 	return false
-
-	# if data.empty():
-	# 	return false
 	
-	# if "global_history" in data:
-	# 	global_history = data["global_history"]
+	loading_in_progress = true
+	var save_file_path := save_folder.plus_file(save_name)
+	debug(["load global history from:", save_name])
+
+	if not file.file_exists(save_file_path):
+		print("global history file %s doesn't exist" % save_file_path)
+		return false
+	
+	var save : HistorySave = load(save_file_path)
+	global_history = save.history
 		
 	return true
