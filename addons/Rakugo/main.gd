@@ -57,7 +57,7 @@ enum StatementType {
 var history_id:= 0 setget _set_history_id, _get_history_id
 var current_dialog_name:= ""
 var current_node_name:= ""
-var _scene:= ""
+var current_scene:= ""
 var history:= [] # [{"state":story_state, "statement":{"type":type, "parameters": parameters}}]
 var global_history:= [] # [{"state":story_state, "statement":{"type":type, "parameters": parameters}}]
 var variables:= {}
@@ -474,8 +474,12 @@ func start(after_load:=false) -> void:
 
 func savefile(save_name:= "quick") -> bool:
 	var new_save = Save.new()
-	new_save.game_version= game_version
+	new_save.game_version = game_version
 	new_save.rakugo_version = rakugo_version
+	new_save.history = history.duplicate()
+	new_save.scene = current_scene
+	new_save.node_name = current_node_name
+	new_save.dialog_name = current_dialog_name
 	
 	# for node in get_tree().get_nodes_in_group("save"):
 	# 	node.save(new_save)
@@ -512,7 +516,7 @@ func loadfile(save_name:= "quick") -> bool:
 	# 	node.load(save_game)
 	
 	quests.clear()
-	# history = save.data["history"]
+	history = save.history.duplicate()
 
 	for i in range(save.data.size()):
 		var k = save.data.keys()[i]
@@ -542,18 +546,18 @@ func loadfile(save_name:= "quick") -> bool:
 		var q = get_quest(q_id)
 		q.update_subquests()
 
-	# history_id = save.data["id"]
+	history_id = save.history_id
 
 	start(true)
 	
 	loading_in_progress = false
 	
-#	jump(
-#		save.data["scene"],
-#		save.data["node_name"],
-#		save.data["dialog_name"],
-#		true
-#		)
+	jump(
+		save.scene,
+		save.node_name,
+		save.dialog_name,
+		true
+		)
 	
 	return true
 
@@ -586,7 +590,6 @@ func debug(some_text = []) -> void:
 		
 	print(some_text)
 
-
 func _set_history_id(value:int) -> void:
 	history_id = value
 
@@ -594,25 +597,25 @@ func _get_history_id() -> int:
 	return history_id
 
 ## use this to change/assign current scene and dialog
-## root of path_to_scene is scenes_dir
-## provide path_to_scene with out ".tscn"
-func jump(path_to_scene:String, node_name:String, dialog_name:String, change:= true) -> void:
+## root of path_tocurrent_scene is scenes_dir
+## provide path_tocurrent_scene with out ".tscn"
+func jump(path_tocurrent_scene:String, node_name:String, dialog_name:String, change:= true) -> void:
 	
 	current_node_name = node_name
 	current_dialog_name = dialog_name
 	
-	_scene = scenes_dir + "/" + path_to_scene + ".tscn"
+	current_scene = scenes_dir + "/" + path_tocurrent_scene + ".tscn"
 	
-	if path_to_scene.ends_with(".tscn"):
-		_scene = path_to_scene
+	if path_tocurrent_scene.ends_with(".tscn"):
+		current_scene = path_tocurrent_scene
 	
-	debug(["jump to scene:", _scene, "with dialog:", dialog_name, "from:", story_state])
+	debug(["jump to scene:", current_scene, "with dialog:", dialog_name, "from:", story_state])
 
 	if change:
 		if current_root_node != null:
 			current_root_node.queue_free()
 		
-		var lscene = load(_scene)
+		var lscene = load(current_scene)
 		current_root_node = lscene.instance()
 		get_tree().get_root().add_child(current_root_node)
 
@@ -622,13 +625,13 @@ func jump(path_to_scene:String, node_name:String, dialog_name:String, change:= t
 		story_step()
 
 ## use this to assign beginning scene and dialog
-## root of path_to_scene is scenes_dir
-## provide path_to_scene with out ".tscn"
-func begin(path_to_scene:String, node_name:String, dialog_name:String) -> void:
+## root of path_tocurrent_scene is scenes_dir
+## provide path_tocurrent_scene with out ".tscn"
+func begin(path_tocurrent_scene:String, node_name:String, dialog_name:String) -> void:
 	if loading_in_progress:
 		return
 		
-	jump(path_to_scene, node_name , dialog_name, false)
+	jump(path_tocurrent_scene, node_name , dialog_name, false)
 
 ## it don't work :(
 func current_statement_in_global_history() -> bool:
