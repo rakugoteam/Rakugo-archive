@@ -35,7 +35,6 @@ enum Type {
 	CHARACTER,	# 7
 	RANGE,		# 8
 	BOOL,		# 9
-	
 }
 
 enum StatementType {
@@ -218,14 +217,7 @@ func text_passer(text:String, mode:= markup):
 ## add/overwrite global variable that Rakugo will see
 ## and returns it as RakugoVar for easy use
 func define(var_name:String, value = null, save_included := true) -> RakugoVar:
-	if not variables.has(var_name):
-		var new_var = RakugoVar.new(var_name, value)
-		new_var.save_included = save_included
-		variables[var_name] = new_var
-		return new_var
-		
-	else:
-		return set_var(var_name, value)
+	return Define.invoke(var_name, value , save_included, variables)
 
 func str2value(str_value : String, var_type : String):
 	match var_type:

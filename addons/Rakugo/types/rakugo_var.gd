@@ -16,6 +16,7 @@ var _inited := false
 var save_included:=true
 
 signal value_changed(var_id, new_value)
+signal key_value_changed(var_id, key, new_value)
 
 func _init(var_id:String, var_value, var_type: = 0):
 	_id = var_id
@@ -30,7 +31,7 @@ func _set_value(var_value) -> void:
 	_value = var_value
 	
 	if _inited:
-		emit_signal("value_changed", _id, _value)
+		emit_signal("value_changed", id, value)
 
 func _get_value():
 	return _value

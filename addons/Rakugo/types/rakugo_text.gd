@@ -167,9 +167,6 @@ func rfindn(what:String, from:=-1 ) -> int:
 func right(position:int) -> String:
 	return _value.right(position)
 
-func split(divisor:String, allow_empty:=true, maxsplit:=0) -> PoolStringArray:
-	return _value.split(divisor, allow_empty, maxsplit)
-
 func rstrip(chars:String) -> String:
 	return _value.rstrip(chars)
 
@@ -191,8 +188,8 @@ func split_floats(divisor:String, allow_empty:=true) -> PoolRealArray:
 func strip_edges(left:=true, right:=true) -> String:
 	return _value.strip_edges(left, right)
 
-func substr(from:int, len:int) -> String:
-	return _value.substr(from, len)
+func substr(from:int, lenght:int) -> String:
+	return _value.substr(from, lenght)
 
 func to_ascii() -> PoolByteArray:
 	return _value.to_ascii()

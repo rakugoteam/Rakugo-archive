@@ -4,8 +4,6 @@ Object used to handling Rakugo's booleans
 """
 class_name RakugoBool
 
-signal value_changed(var_id, new_value)
-
 func _init(var_id:String, var_value:bool
 	).(var_id, var_value, Rakugo.Type.BOOL):
 	pass

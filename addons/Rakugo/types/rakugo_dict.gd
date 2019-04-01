@@ -5,9 +5,6 @@ This object used to handling Rakugo's
 """
 class_name RakugoDict
 
-signal value_changed(var_id, new_value)
-signal key_value_changed(var_id, key, new_value)
-
 func _init(var_id:String, var_value:Dictionary
 	).(var_id, var_value, Rakugo.Type.DICT) -> void:
 	pass
@@ -18,10 +15,10 @@ func _set_value(dict:Dictionary) -> void:
 func _get_value() -> Dictionary:
 	return _value
 
-func clear():
+func clear() -> void:
 	value.clear()
 	
-func empty():
+func empty() -> void:
 	value.empty()
 	
 func erase(key) -> bool:
