@@ -217,7 +217,13 @@ func text_passer(text:String, mode:= markup):
 ## add/overwrite global variable that Rakugo will see
 ## and returns it as RakugoVar for easy use
 func define(var_name:String, value = null, save_included := true) -> RakugoVar:
-	return Define.invoke(var_name, value , save_included, variables)
+	var v = Define.invoke(var_name, value , save_included, variables)
+	
+	if v:
+		return v
+		
+	else:
+		return set_var(var_name, value)
 
 func str2value(str_value : String, var_type : String):
 	match var_type:
@@ -248,7 +254,7 @@ func set_var(var_name:String, value) -> RakugoVar:
 		return null
 
 	var var_to_change = variables[var_name]
-	var_to_change.v = value
+	var_to_change.value = value
 	return var_to_change
 
 func _get_var(var_name:String, type:int) -> Object:
@@ -286,7 +292,11 @@ func get_type(var_name:String) -> int:
 	return variables[var_name].type
 
 ## just faster way to connect signal to rakugo's variable
-func connect_var(var_name:String, signal_name:String, node:Object, func_name:String, binds:= [], flags:= 0) -> void:
+func connect_var(
+	var_name:String, signal_name:String,
+	node:Object, func_name:String, 
+	binds:= [], flags:= 0
+	) -> void:
 	get_var(var_name).connect(signal_name, node, func_name, binds, flags)
 	
 ## crate new character as global variable that Rakugo will see
@@ -301,20 +311,11 @@ func get_character(character_id:String) -> CharacterObject:
 
 ## crate new link to node as global variable that Rakugo will see
 ## first arg can be node it self or path to it
-func node_link(node, node_id:String = "") -> Node:
-	if node_id:
-		node_id = node.name
-
-	var path
-	if typeof(node) == TYPE_NODE_PATH:
-		path = node
-
-	elif node is Node:
-		path = node.get_path()
-	
-	var node_var = RakugoVar.new(node_id, path, Type.NODE)
-	variables[node_id] = node_var
-	return get_node(path)
+func node_link(node, node_id: = "") -> RakugoVar:
+	if  typeof(node) == TYPE_NODE_PATH:
+		node = get_node(node)
+		
+	return Define.node_link(node, variables, node_id) 
 
 func get_node_by_id(node_id:String) -> Node:
 	var n = _get_var(node_id, Type.NODE)
@@ -322,7 +323,7 @@ func get_node_by_id(node_id:String) -> Node:
 	if !n:
 		return null
 		
-	return get_node(n.v)
+	return get_node(n.value)
 
 ## add/overwrite global subquest that Rakugo will see
 ## and returns it as RakugoSubQuest for easy use
@@ -533,7 +534,12 @@ func loadfile(save_name:= "quick") -> bool:
 	
 	return true
 
-func debug_dict(parameters:Dictionary, parameters_names:= [], some_custom_text:= "") -> String:
+func debug_dict(
+	parameters:Dictionary,
+	parameters_names:= [],
+	some_custom_text:= ""
+	) -> String:
+		
 	var dbg = ""
 	
 	for k in parameters_names:

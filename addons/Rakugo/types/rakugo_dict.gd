@@ -1,8 +1,4 @@
 extends RakugoVar
-"""
-This object used to handling Rakugo's
- variables that are dictionaries
-"""
 class_name RakugoDict
 
 func _init(var_id:String, var_value:Dictionary

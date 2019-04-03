@@ -1,7 +1,4 @@
 extends RakugoVar
-"""
-Object used to handling Rakugo's booleans
-"""
 class_name RakugoBool
 
 func _init(var_id:String, var_value:bool

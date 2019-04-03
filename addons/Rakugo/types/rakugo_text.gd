@@ -1,7 +1,4 @@
 extends RakugoVar
-"""
-Base object used to handling Rakugo's variables
-"""
 class_name RakugoText
 
 func _init(var_id:String, var_value:String

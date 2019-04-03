@@ -1,7 +1,4 @@
 extends Object
-"""
-Base object used to handling Rakugo's variables
-"""
 class_name RakugoVar
 
 var type : int setget , _get_type
