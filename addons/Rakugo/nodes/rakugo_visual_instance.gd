@@ -18,7 +18,7 @@ func _ready() -> void:
 		node_id = name
 	
 	if auto_define:
-		Rakugo.node_link(self, node_id)
+		Rakugo.node_link(node_id, get_path())
 	
 func _on_show(node_id : String, state_value : Array, show_args : Dictionary) -> void:
 	if self.node_id != node_id:

@@ -310,20 +310,8 @@ func get_character(character_id:String) -> CharacterObject:
 	return _get_var(character_id, Type.CHARACTER) as CharacterObject
 
 ## crate new link to node as global variable that Rakugo will see
-## first arg can be node it self or path to it
-func node_link(node, node_id: = "") -> RakugoVar:
-	if  typeof(node) == TYPE_NODE_PATH:
-		node = get_node(node)
-		
-	return Define.node_link(node, variables, node_id) 
-
-func get_node_by_id(node_id:String) -> Node:
-	var n = _get_var(node_id, Type.NODE)
-	
-	if !n:
-		return null
-		
-	return get_node(n.value)
+func node_link(node_id:String, node:NodePath) -> NodeLink:		
+	return Define.node_link(node_id, node, variables) 
 
 ## add/overwrite global subquest that Rakugo will see
 ## and returns it as RakugoSubQuest for easy use

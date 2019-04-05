@@ -12,7 +12,7 @@ func _ready() -> void:
 		node_id = name
 
 	if auto_define:
-		Rakugo.node_link(self, node_id)
+		Rakugo.node_link(node_id, get_path())
 
 func _on_play(id : String, anim_name : String) -> void:
 	if id != node_id:

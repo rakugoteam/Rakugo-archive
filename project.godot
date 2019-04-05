@@ -74,6 +74,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/statements/menu.gd"
 }, {
+"base": "RakugoVar",
+"class": "NodeLink",
+"language": "GDScript",
+"path": "res://addons/Rakugo/types/node_link.gd"
+}, {
 "base": "Statement",
 "class": "Notify",
 "language": "GDScript",
@@ -278,6 +283,7 @@ _global_script_class_icons={
 "HistorySave": "",
 "KindContainer": "",
 "Menu": "",
+"NodeLink": "",
 "Notify": "",
 "PlayAnim": "",
 "PlayAudio": "",
@@ -341,6 +347,10 @@ gdscript/warnings/unused_variable=false
 gdscript/warnings/unused_class_variable=false
 gdscript/warnings/unused_argument=false
 gdscript/warnings/return_value_discarded=false
+
+[editor_plugins]
+
+enabled=PoolStringArray( "Rakugo", "godot-plugin-refresher" )
 
 [input]
 

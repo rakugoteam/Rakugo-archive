@@ -7,7 +7,7 @@ extends Sprite
 var is_show : RakugoVar
 
 func _ready():
-	Rakugo.node_link(self, name)
+	Rakugo.node_link(name, get_path())
 	is_show = Rakugo.define("test_node_is_show", visible)
 	connect("visibility_changed", self, "_on_vis_changed")
 	is_show.connect("value_changed", self, "on_value_changed")
