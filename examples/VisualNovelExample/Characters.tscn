@@ -33,7 +33,6 @@ avatar = ExtResource( 2 )
 editor/display_folded = true
 scale = Vector2( 0.1, 0.1 )
 script = ExtResource( 3 )
-node_id = "alice"
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="AliceRN2D"]
 position = Vector2( 0, -2400 )

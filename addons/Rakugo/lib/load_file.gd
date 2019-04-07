@@ -16,6 +16,9 @@ static func invoke(save_folder: String, save_name: String,  variables: Dictionar
 	
 	if Rakugo.test_save:
 		save_file_path += ".tres"
+		
+	else:
+		save_file_path += ".res"
 
 	if not file.file_exists(save_file_path):
 		print("Save file %s doesn't exist" % save_file_path)
@@ -23,6 +26,16 @@ static func invoke(save_folder: String, save_name: String,  variables: Dictionar
 	
 	var save : Resource = load(save_file_path)
 	var game_version = save.game_version
+	
+	Rakugo.start(true)
+	Rakugo._set_story_state(save.story_state - 1)
+	
+	Rakugo.jump(
+		save.scene,
+		save.node_name,
+		save.dialog_name,
+		true
+		)
 	
 	Rakugo.quests.clear()
 	Rakugo.history = save.history.duplicate()
@@ -47,6 +60,11 @@ static func invoke(save_folder: String, save_name: String,  variables: Dictionar
 					continue
 
 				Rakugo.quests.append(k)
+			
+			Rakugo.Type.NODE:
+				var n = NodeLink.new(k)
+				n.load_from(v.value)
+				Rakugo.variables[k] = n
 
 			_:
 				Rakugo.define(k, v.value)
@@ -54,21 +72,12 @@ static func invoke(save_folder: String, save_name: String,  variables: Dictionar
 	for q_id in Rakugo.quests:
 		var q = Rakugo.get_quest(q_id)
 		q.update_subquests()
-		
-	for node in Rakugo.get_tree().get_nodes_in_group("save"):
-		node.on_load(game_version)
 
 	Rakugo.history_id = save.history_id
-
-	Rakugo.start(true)
 	
 	Rakugo.loading_in_progress = false
-	
-	Rakugo.jump(
-		save.scene,
-		save.node_name,
-		save.dialog_name,
-		true
-		)
+			
+	for node in Rakugo.get_tree().get_nodes_in_group("save"):
+		node.on_load(game_version)
 	
 	return true

@@ -258,7 +258,10 @@ func set_var(var_name:String, value) -> RakugoVar:
 	return var_to_change
 
 func _get_var(var_name:String, type:int) -> Object:
-	return variables[var_name]
+	if  variables.has(var_name):
+		return variables[var_name]
+	
+	return null
 
 ## returns exiting Rakugo variable as one of RakugoTypes for easy use
 ## It must be with out returned type, because we can't set it as list of types
@@ -285,7 +288,10 @@ func get_def_type(variable) -> String:
 ## returns value of variable defined using define
 ## It must be with out returned type, because we can't set it as list of types
 func get_value(var_name:String):
-	return variables[var_name].value
+	if variables.has(var_name):
+		return variables[var_name].value
+	
+	return null
 
 ## returns type of variable defined using define
 func get_type(var_name:String) -> int:
@@ -311,7 +317,10 @@ func get_character(character_id:String) -> CharacterObject:
 
 ## crate new link to node as global variable that Rakugo will see
 func node_link(node_id:String, node:NodePath) -> NodeLink:		
-	return Define.node_link(node_id, node, variables) 
+	return Define.node_link(node_id, node, variables)
+
+func get_node_link(node_id:String) -> NodeLink:
+	return _get_var(node_id, Type.NODE) as NodeLink
 
 ## add/overwrite global subquest that Rakugo will see
 ## and returns it as RakugoSubQuest for easy use
@@ -530,20 +539,20 @@ func _get_history_id() -> int:
 	return history_id
 
 ## use this to change/assign current scene and dialog
-## root of path_tocurrent_scene is scenes_dir
-## provide path_tocurrent_scene with out ".tscn"
+## root of path_to_current_scene is scenes_dir
+## provide path_to_current_scene with out ".tscn"
 func jump(
-	path_tocurrent_scene:String, node_name:String, 
+	path_to_current_scene:String, node_name:String, 
 	dialog_name:String, change:= true
 	) -> void:
 	
 	current_node_name = node_name
 	current_dialog_name = dialog_name
 	
-	current_scene = scenes_dir + "/" + path_tocurrent_scene + ".tscn"
+	current_scene = scenes_dir + "/" + path_to_current_scene + ".tscn"
 	
-	if path_tocurrent_scene.ends_with(".tscn"):
-		current_scene = path_tocurrent_scene
+	if path_to_current_scene.ends_with(".tscn"):
+		current_scene = path_to_current_scene
 	
 	debug(["jump to scene:", current_scene, "with dialog:", dialog_name, "from:", story_state])
 
@@ -561,13 +570,13 @@ func jump(
 		story_step()
 
 ## use this to assign beginning scene and dialog
-## root of path_tocurrent_scene is scenes_dir
-## provide path_tocurrent_scene with out ".tscn"
-func begin(path_tocurrent_scene:String, node_name:String, dialog_name:String) -> void:
+## root of path_to_current_scene is scenes_dir
+## provide path_to_current_scene with out ".tscn"
+func begin(path_to_current_scene:String, node_name:String, dialog_name:String) -> void:
 	if loading_in_progress:
 		return
 		
-	jump(path_tocurrent_scene, node_name , dialog_name, false)
+	jump(path_to_current_scene, node_name , dialog_name, false)
 
 ## it don't work :(
 func current_statement_in_global_history() -> bool:
@@ -620,11 +629,23 @@ func save_global_history() -> bool:
 	new_save.history_data = global_history.duplicate()
 		
 	var dir := Directory.new()
+
+	var save_folder_path = "usr://".plus_file(save_folder)
+	
+	if test_save:
+		save_folder_path = "res://".plus_file(save_folder)
 	
 	if not dir.dir_exists(save_folder):
-		dir.make_dir_recursive(save_folder)
+		dir.make_dir_recursive(save_folder_path)
 		
 	var save_path = save_folder.plus_file(save_name)
+
+	if test_save:
+		save_path += ".tres"
+		
+	else:
+		save_path += ".res"
+
 	var  error := ResourceSaver.save(save_path, new_save)
 	debug(["save global history to:", save_name])
 	
@@ -638,14 +659,27 @@ func load_global_history() -> bool:
 	var save_name = "global_history"
 	
 	loading_in_progress = true
-	var save_file_path := save_folder.plus_file(save_name)
+
+	var save_folder_path = "usr://".plus_file(save_folder)
+	
+	if test_save:
+		save_folder_path = "res://".plus_file(save_folder)
+
+	var save_path = save_folder_path.plus_file(save_name)
+	
+	if test_save:
+		save_path += ".tres"
+		
+	else:
+		save_path += ".res"
+
 	debug(["load global history from:", save_name])
 
-	if not file.file_exists(save_file_path):
-		print("global history file %s doesn't exist" % save_file_path)
+	if not file.file_exists(save_path):
+		print("global history file %s doesn't exist" % save_path)
 		return false
 	
-	var save : HistorySave = load(save_file_path)
+	var save : HistorySave = load(save_path)
 	global_history = save.history
 		
 	return true

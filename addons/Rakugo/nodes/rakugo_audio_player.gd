@@ -1,7 +1,6 @@
 extends AudioStreamPlayer
 class_name RakugoAudioPlayer
 
-export var auto_define : = true
 export var node_id : = ""
 
 var node_link:NodeLink
@@ -13,9 +12,13 @@ func _ready() -> void:
 
 	if node_id.empty():
 		node_id = name
-
-	if auto_define:
+		
+	node_link = Rakugo.get_node_link(node_id)
+	
+	if  not node_link:
 		node_link = Rakugo.node_link(node_id, get_path())
+		
+	add_to_group("save", true)
 
 func _on_play(id : String, from_pos : = 0.0) -> void:
 	if id != node_id:
@@ -34,12 +37,15 @@ func _on_stop(id : String) -> void:
 	stop()
 
 func on_save():
-	node_link["is_playing"] = is_playing()
-	node_link["from_pos"] = last_pos
+	node_link.value["is_playing"] = is_playing()
+	node_link.value["from_pos"] = last_pos
 
 func on_load(game_version:String) -> void:
-	if node_link.is_playing:
-		_on_play(node_id, node_link.from_pos)
+	node_link =  Rakugo.get_node_link(node_id)
+	
+	if node_link.value["is_playing"]:	
+		var last_pos = node_link.value["from_pos"] 
+		_on_play(node_id, last_pos)
 	
 	else:
 		_on_stop(node_id)

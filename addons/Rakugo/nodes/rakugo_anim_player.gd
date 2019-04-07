@@ -1,7 +1,6 @@
 extends AnimationPlayer
 class_name RakugoAnimPlayer
 
-export var auto_define : = true
 export var node_id : = ""
 
 var node_link:NodeLink
@@ -13,7 +12,9 @@ func _ready() -> void:
 	if node_id.empty():
 		node_id = name
 
-	if auto_define:
+	node_link = Rakugo.get_node_link(node_id)
+	
+	if  not node_link:
 		node_link = Rakugo.node_link(node_id, get_path())
 		
 	add_to_group("save", true)
@@ -42,5 +43,8 @@ func on_save():
 	node_link.value["is_playing"] = is_playing()
 
 func on_load(game_version:String) -> void:
-	if node_link.is_playing:
-		_on_play(node_id, node_link.anim_name)
+	node_link =  Rakugo.get_node_link(node_id)
+	
+	if node_link.value["is_playing"]:
+		var anim_name = node_link.value["anim_name"] 
+		_on_play(node_id, anim_name)

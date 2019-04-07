@@ -15,6 +15,7 @@ static func invoke(
 	new_save.scene = current_scene
 	new_save.node_name = current_node_name
 	new_save.dialog_name = current_dialog_name
+	new_save.story_state = Rakugo.story_state
 
 	var save_folder_path = "usr://".plus_file(save_folder)
 	
@@ -36,6 +37,9 @@ static func invoke(
 	
 	if Rakugo.test_save:
 		save_path += ".tres"
+		
+	else:
+		save_path += ".res"
 	
 	var error := ResourceSaver.save(save_path, new_save)
 	

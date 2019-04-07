@@ -107,3 +107,6 @@ func get_dict() -> Dictionary:
 func on_save() ->void:
 	var dict : = get_dict()
 	Rakugo.character(_id, dict)
+
+func on_load(game_version) -> void:
+	_character = Rakugo.get_character(_id)

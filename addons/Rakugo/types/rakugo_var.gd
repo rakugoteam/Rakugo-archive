@@ -46,29 +46,35 @@ func _set(p_property:String, p_value) -> bool:
 			_value[p_property] = p_value
 			emit_signal("key_value_changed", _id, p_property, p_value)
 			return true
-			
+
 	return false
 
-func _get_property_list() -> Array:
-	var ret := []
-	for a_key in _value:
-		ret.append({
-			"id": a_key,
-			"type": typeof(_value[a_key])
-		})
-	return ret
+#func _get_property_list() -> Array:
+#	var ret := []
+#	for a_key in _value:
+#		ret.append({
+#			"id": a_key,
+#			"type": typeof(_value[a_key])
+#		})
+#
+#	return ret
 
 func save_to(dict:Dictionary) -> void:
 	if !save_included:
 		return
 		
 	var save := {
-		"id" : _id,
 		"value": _value,
 		"type" : _type
 	}
 	
-	dict[id] = save
+	dict[_id] = save
+	
+	Rakugo.debug(["saveing", _id])
+
+func load_from(dict:Dictionary) -> void :
+	_value = dict
+	_inited = true
 	
 func to_string() -> String:
 	return str(value)

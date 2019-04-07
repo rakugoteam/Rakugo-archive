@@ -4,6 +4,7 @@ class_name Define
 static func invoke(var_name:String, value, save_included: bool, variables: Dictionary) -> RakugoVar:
 	if not variables.has(var_name):
 		var type = typeof(value)
+		
 		match type:
 			TYPE_INT:
 				return _rakugo_var(var_name, value, save_included, variables)
