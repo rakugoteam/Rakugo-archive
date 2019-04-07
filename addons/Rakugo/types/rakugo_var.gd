@@ -49,16 +49,6 @@ func _set(p_property:String, p_value) -> bool:
 
 	return false
 
-#func _get_property_list() -> Array:
-#	var ret := []
-#	for a_key in _value:
-#		ret.append({
-#			"id": a_key,
-#			"type": typeof(_value[a_key])
-#		})
-#
-#	return ret
-
 func save_to(dict:Dictionary) -> void:
 	if !save_included:
 		return

@@ -680,6 +680,6 @@ func load_global_history() -> bool:
 		return false
 	
 	var save : HistorySave = load(save_path)
-	global_history = save.history
+	global_history = save.history_data
 		
 	return true

@@ -4,10 +4,14 @@ class_name RakugoNodeCore
 func is_procent(x : float) -> bool:
 	return (x >= 0.0 and x <= 1.0)
 
-func show_at(camera_postion : Vector2, show_args : Dictionary) -> Vector2:
+func show_at(camera_postion : Vector2, show_args : Dictionary, def_pos:Vector2) -> Vector2:
 	var x = camera_postion.x
 	var y = camera_postion.y
 	# Rakugo.debug(["cam_pos", camera_postion])
+
+	if show_args.empty():
+		x = def_pos.x
+		y = def_pos.y
 
 	if "pos" in show_args:
 		x = x + show_args.pos.x

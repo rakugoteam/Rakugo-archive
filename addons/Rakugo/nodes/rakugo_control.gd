@@ -30,7 +30,7 @@ func _on_show(node_id : String , state_value : Array, show_args : Dictionary) ->
 	if self.node_id != node_id:
 		return
 	
-	rect_position = rnode.show_at(Vector2(0, 0), show_args)
+	rect_position = rnode.show_at(Vector2(0, 0), show_args, rect_position)
 	
 	_set_state(state_value)
 

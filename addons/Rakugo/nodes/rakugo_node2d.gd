@@ -33,13 +33,13 @@ func _on_show(node_id : String, state_value : Array, show_args : Dictionary) -> 
 	if self.node_id != node_id:
 		return
 	
-	last_show_args = show_args
 	var cam_pos = Vector2(0, 0)
 	
 	if !camera.is_empty():
 		cam_pos = get_node(camera).positon
-		
-	position = rnode.show_at(cam_pos, show_args)
+	
+	last_show_args = show_args
+	position = rnode.show_at(cam_pos, show_args, position)
 	
 	if "z" in show_args:
 		z_index = show_args.z
