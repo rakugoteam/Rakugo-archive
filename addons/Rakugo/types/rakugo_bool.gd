@@ -18,7 +18,7 @@ func off() -> void:
 	value = false
 
 func switch() -> void:
-	value != value
+	value = !value
 
 func is_on() -> bool:
 	return value == true

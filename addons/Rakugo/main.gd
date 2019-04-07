@@ -459,7 +459,7 @@ func call_node(node_id:String, func_name:String, args:= []) -> void:
 		"func_name":func_name,
 		"args":args
 	}
-	
+
 	_set_statement($CallNode, parameters)
 
 func _set_story_state(state:int) -> void:
@@ -487,63 +487,6 @@ func savefile(save_name:= "quick") -> bool:
 	)
 	
 func loadfile(save_name:= "quick") -> bool:
-	loading_in_progress = true
-	var save_file_path := save_folder.plus_file(save_name)
-	debug(["load data from:", save_name])
-
-	if not file.file_exists(save_file_path):
-		print("Save file %s doesn't exist" % save_file_path)
-		return false
-	
-	var save : Resource = load(save_file_path)
-
-	# for node in get_tree().get_nodes_in_group("save"):
-	# 	node.load(save_game)
-	
-	quests.clear()
-	history = save.history.duplicate()
-
-	for i in range(save.data.size()):
-		var k = save.data.keys()[i]
-		var v = save.data.values()[i]
-
-		debug([k, v])
-
-		match v.type:
-			Type.CHARACTER:
-				character(k, v.value)
-
-			Type.SUBQUEST:
-				subquest(k, v.value)
-
-			Type.QUEST:
-				quest(k, v.value)
-
-				if k in quests:
-					continue
-
-				quests.append(k)
-
-			_:
-				define(k, v.value)
-			
-	for q_id in quests:
-		var q = get_quest(q_id)
-		q.update_subquests()
-
-	history_id = save.history_id
-
-	start(true)
-	
-	loading_in_progress = false
-	
-	jump(
-		save.scene,
-		save.node_name,
-		save.dialog_name,
-		true
-		)
-	
 	return true
 
 func debug_dict(
@@ -589,7 +532,10 @@ func _get_history_id() -> int:
 ## use this to change/assign current scene and dialog
 ## root of path_tocurrent_scene is scenes_dir
 ## provide path_tocurrent_scene with out ".tscn"
-func jump(path_tocurrent_scene:String, node_name:String, dialog_name:String, change:= true) -> void:
+func jump(
+	path_tocurrent_scene:String, node_name:String, 
+	dialog_name:String, change:= true
+	) -> void:
 	
 	current_node_name = node_name
 	current_dialog_name = dialog_name
@@ -674,6 +620,7 @@ func save_global_history() -> bool:
 	new_save.history_data = global_history.duplicate()
 		
 	var dir := Directory.new()
+	
 	if not dir.dir_exists(save_folder):
 		dir.make_dir_recursive(save_folder)
 		

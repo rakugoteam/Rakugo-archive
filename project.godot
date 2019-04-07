@@ -69,6 +69,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/nodes/kind_container.gd"
 }, {
+"base": "Object",
+"class": "LoadFile",
+"language": "GDScript",
+"path": "res://addons/Rakugo/lib/load_file.gd"
+}, {
 "base": "Say",
 "class": "Menu",
 "language": "GDScript",
@@ -282,6 +287,7 @@ _global_script_class_icons={
 "Hide": "",
 "HistorySave": "",
 "KindContainer": "",
+"LoadFile": "",
 "Menu": "",
 "NodeLink": "",
 "Notify": "",

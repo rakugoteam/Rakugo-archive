@@ -41,6 +41,6 @@ func on_save():
 	node_link.value["anim_name"] = current_animation
 	node_link.value["is_playing"] = is_playing()
 
-func on_load():
+func on_load(game_version:String) -> void:
 	if node_link.is_playing:
 		_on_play(node_id, node_link.anim_name)

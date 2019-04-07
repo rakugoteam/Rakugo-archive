@@ -37,7 +37,7 @@ func on_save():
 	node_link["is_playing"] = is_playing()
 	node_link["from_pos"] = last_pos
 
-func on_load():
+func on_load(game_version:String) -> void:
 	if node_link.is_playing:
 		_on_play(node_id, node_link.from_pos)
 	

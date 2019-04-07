@@ -54,7 +54,7 @@ func  on_save() -> void:
 	node_link.value["state"] = _state
 	node_link.value["show_args"] = last_args
 
-func on_load() -> void:
+on_load(game_version:String) -> void:
 	if node_link.visible:
 		_on_show(node_id, node_link.state, node_link.show_args)
 		

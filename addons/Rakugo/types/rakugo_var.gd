@@ -27,7 +27,7 @@ func _set_value(var_value) -> void:
 	_value = var_value
 	
 	if _inited:
-		emit_signal("value_changed", id, value)
+		emit_signal("value_changed", id, _value)
 
 func _get_value():
 	return _value

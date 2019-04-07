@@ -51,6 +51,6 @@ static func _rakugo_var(var_name:String , value, save_included: bool, variables:
 
 static func node_link(node_id:String, node_path: NodePath, variables:Dictionary) -> NodeLink:
 	var node_var = NodeLink.new(node_id)
-	node_var.node_path = node_path
+	node_var.value["node_path"] = node_path
 	variables[node_id] = node_var
 	return node_var
