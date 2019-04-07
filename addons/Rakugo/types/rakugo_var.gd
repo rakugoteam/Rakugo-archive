@@ -5,7 +5,6 @@ var type : int setget , _get_type
 var _type : = 0 # Rakugo.Type.Var
 var value setget _set_value, _get_value
 var _value = null
-var v setget _set_value, _get_value
 var id : String setget , _get_id
 var _id : = ""
 

@@ -2,9 +2,10 @@ extends Object
 class_name SaveFile
 
 static func invoke(
-	save_folder: String, save_name: String, game_version: String , rakugo_version: String, 
+	save_folder: String, save_name: String, 
+	game_version: String , rakugo_version: String, 
 	history: Array, current_scene: String, current_node_name: String,
-	current_dialog_name: String, variables: Dictionary
+	current_dialog_name: String, variables: Dictionary,
 	) -> bool:
 		
 	var new_save = Save.new()
@@ -15,8 +16,8 @@ static func invoke(
 	new_save.node_name = current_node_name
 	new_save.dialog_name = current_dialog_name
 	
-	# for node in get_tree().get_nodes_in_group("save"):
-	# 	node.save(new_save)
+	for node in Rakugo.get_tree().get_nodes_in_group("save"):
+		node.on_save(new_save)
 	
 	for v in variables.values():
 		v.save(new_save.data)

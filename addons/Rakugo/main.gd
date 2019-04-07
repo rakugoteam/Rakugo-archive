@@ -374,30 +374,50 @@ func menu(parameters:Dictionary) -> void:
 ## with keywords:x, y, z, at, pos
 ## x, y and pos will use it as protect of screen if between 0 and 1
 ## "at" is lists that can have: "top", "center", "bottom", "right", "left"
-func show(node_id:String, state:PoolStringArray = [], parameters:= {"at":["center", "bottom"]}):
+func show(
+	node_id:String, state:PoolStringArray = [],
+	parameters:= {"at":["center", "bottom"]}
+	):
+
 	parameters["node_id"] = node_id
 	parameters["state"] = state
 	_set_statement($Show, parameters)
 
 ## statement of type hide
 func hide(node_id:String) -> void:
-	var parameters = {"node_id":node_id}
+	var parameters = {
+		"node_id":node_id
+	}
+
 	_set_statement($Hide, parameters)
 
 ## statement of type notify
-func notifiy(info:String, length:int = Rakugo.get_value("notify_time")) -> void:
-	var parameters = {"info": info,"length":length}
+func notifiy(
+	info:String,
+	length:int = get_value("notify_time")
+	) -> void:
+
+	var parameters = {
+		"info": info,
+		"length":length
+	}
+
 	_set_statement($Notify, parameters)
 	notify_timer.wait_time = parameters.length
 	notify_timer.start()
 
 ## statement of type play_anim
 ## it will play animation with anim_name form RakugoAnimPlayer with given node_id
-func play_anim(node_id:String, anim_name:String) -> void:
+func play_anim(
+	node_id:String,
+	anim_name:String
+	) -> void:
+	
 	var parameters = {
 		"node_id":node_id,
 		"anim_name":anim_name
 	}
+
 	_set_statement($PlayAnim, parameters)
 
 ## statement of type stop_anim
@@ -408,6 +428,7 @@ func stop_anim(node_id:String, reset:= true) -> void:
 		"node_id":node_id,
 		"reset":reset
 	}
+
 	_set_statement($StopAnim, parameters)
 
 ## statement of type play_audio
@@ -418,6 +439,7 @@ func play_audio(node_id:String, from_pos:= 0.0) -> void:
 		"node_id":node_id,
 		"from_pos":from_pos
 	}
+
 	_set_statement($PlayAudio, parameters)
 
 ## statement of type stop_audio
@@ -426,6 +448,7 @@ func stop_audio(node_id:String) -> void:
 	var parameters = {
 		"node_id":node_id
 	}
+
 	_set_statement($StopAudio, parameters)
 
 ## statement of type stop_audio
@@ -436,6 +459,7 @@ func call_node(node_id:String, func_name:String, args:= []) -> void:
 		"func_name":func_name,
 		"args":args
 	}
+	
 	_set_statement($CallNode, parameters)
 
 func _set_story_state(state:int) -> void:

@@ -9,7 +9,8 @@ export var camera : = NodePath("")
 export(Array, String) var state : Array setget _set_state, _get_state
 
 var _state : Array
-
+var node_link:NodeLink
+var last_args:Dictionary
 
 func _ready() -> void:
 	hide()
@@ -20,12 +21,15 @@ func _ready() -> void:
 		node_id = name
 
 	if auto_define:
-		Rakugo.node_link(node_id, get_path())
+		node_link = Rakugo.node_link(node_id, get_path())
+	
+	add_to_group("save", true)
 
 func _on_show(node_id : String, state_value : Array, show_args : Dictionary) -> void:
 	if self.node_id != node_id:
 		return
 	
+	last_args = show_args
 	var cam_pos = Vector2(0, 0)
 	
 	if !camera.is_empty():
@@ -41,7 +45,6 @@ func _on_show(node_id : String, state_value : Array, show_args : Dictionary) -> 
 	if not self.visible:
 		show()
 
-
 func _set_state(value : Array) -> void:
 	_state = state
 	
@@ -56,3 +59,16 @@ func _on_hide(_node_id) -> void:
 
 func _exit_tree() -> void:
 	Rakugo.variables.erase(node_id)
+
+func  on_save() -> void:
+	node_link.value["visible"] = visible
+	node_link.value["state"] = _state
+	node_link.value["show_args"] = last_args
+
+func on_load() -> void:
+	if node_link.visible:
+		_on_show(node_id, node_link.state, node_link.show_args)
+		
+	else:
+		_on_hide(node_id)
+	
