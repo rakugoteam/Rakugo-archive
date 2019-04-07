@@ -15,6 +15,11 @@ static func invoke(
 	new_save.scene = current_scene
 	new_save.node_name = current_node_name
 	new_save.dialog_name = current_dialog_name
+
+	var save_folder_path = "usr://".plus_file(save_folder)
+	
+	if Rakugo.test_save:
+		save_folder_path = "res://".plus_file(save_folder)
 	
 	for node in Rakugo.get_tree().get_nodes_in_group("save"):
 		node.on_save()
@@ -23,11 +28,16 @@ static func invoke(
 		v.save_to(new_save.data)
 		
 	var dir := Directory.new()
-	if not dir.dir_exists(save_folder):
-		dir.make_dir_recursive(save_folder)
+	
+	if not dir.dir_exists(save_folder_path):
+		dir.make_dir_recursive(save_folder_path)
 		
-	var save_path = save_folder.plus_file(save_name)
-	var  error := ResourceSaver.save(save_path, new_save)
+	var save_path = save_folder_path.plus_file(save_name)
+	
+	if Rakugo.test_save:
+		save_path += ".tres"
+	
+	var error := ResourceSaver.save(save_path, new_save)
 	
 	if error != OK:
 		print("There was issue writing save %s to %s" % [save_name, save_path])

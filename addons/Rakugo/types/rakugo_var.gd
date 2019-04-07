@@ -63,9 +63,9 @@ func save_to(dict:Dictionary) -> void:
 		return
 		
 	var save := {
-		"id" : id,
-		"value": value,
-		"type" : type
+		"id" : _id,
+		"value": _value,
+		"type" : _type
 	}
 	
 	dict[id] = save

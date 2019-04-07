@@ -68,6 +68,7 @@ color = Color( 0.967169, 0.988281, 0.312698, 1 )
 avatar = ExtResource( 3 )
 
 [node name="TestNode2D" type="Node2D" parent="RakugoCharacter"]
+editor/display_folded = true
 position = Vector2( 524.705, 226.134 )
 rotation = 0.628319
 z_index = -1

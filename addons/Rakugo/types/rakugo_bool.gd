@@ -21,10 +21,7 @@ func switch() -> void:
 	value = !value
 
 func is_on() -> bool:
-	return value == true
+	return _value == true
 
 func is_off() -> bool:
-	return  value == false
-
-
-
+	return  _value == false

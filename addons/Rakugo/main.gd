@@ -5,7 +5,7 @@ export (String, "renpy", "bbcode") var markup:= "renpy"
 export var links_color:= Color("#225ebf")
 export var debug_on:= true
 export var save_folder:= "saves"
-export var save_password:= "Rakugo"
+export var test_save:= false
 export (String, DIR) var scenes_dir:= "res://examples/"
 
 const rakugo_version:= "2.0.0"
@@ -487,7 +487,7 @@ func savefile(save_name:= "quick") -> bool:
 	)
 	
 func loadfile(save_name:= "quick") -> bool:
-	return true
+	return LoadFile.invoke(save_folder, save_name, variables)
 
 func debug_dict(
 	parameters:Dictionary,
