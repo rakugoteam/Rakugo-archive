@@ -135,6 +135,7 @@ func save_conf() -> void:
 func load_conf() -> void:
 	var config = ConfigFile.new()
 	var err = config.load("user://settings.cfg")
+	
 	if err != OK: # if not, something went wrong with the file loading
 		return
 		

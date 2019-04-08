@@ -677,9 +677,12 @@ func load_global_history() -> bool:
 
 	if not file.file_exists(save_path):
 		print("global history file %s doesn't exist" % save_path)
+		loading_in_progress = false
 		return false
 	
 	var save : HistorySave = load(save_path)
 	global_history = save.history_data
+
+	loading_in_progress = false
 		
 	return true

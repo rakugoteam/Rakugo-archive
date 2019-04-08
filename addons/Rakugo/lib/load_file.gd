@@ -22,13 +22,14 @@ static func invoke(save_folder: String, save_name: String,  variables: Dictionar
 
 	if not file.file_exists(save_file_path):
 		print("Save file %s doesn't exist" % save_file_path)
+		Rakugo.loading_in_progress = false
 		return false
 	
 	var save : Resource = load(save_file_path)
 	var game_version = save.game_version
 	
 	Rakugo.start(true)
-	Rakugo._set_story_state(save.story_state - 1)
+	Rakugo.story_state = save.story_state - 1
 	
 	Rakugo.jump(
 		save.scene,
@@ -75,9 +76,9 @@ static func invoke(save_folder: String, save_name: String,  variables: Dictionar
 
 	Rakugo.history_id = save.history_id
 	
-	Rakugo.loading_in_progress = false
-			
 	for node in Rakugo.get_tree().get_nodes_in_group("save"):
 		node.on_load(game_version)
+	
+	Rakugo.loading_in_progress = false
 	
 	return true
