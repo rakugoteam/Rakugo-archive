@@ -1,9 +1,8 @@
 fontconfig
-addons/*
-!addons/Rakugo*
-!addons/json_beautifier
-!addons/PersistenceNode
-refences
+addons/
+!addons/Rakugo/
+refences/
+saves/
 .import/
 .directory
-.vscode
+.vscode/
