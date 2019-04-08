@@ -35,9 +35,6 @@ static func invoke(var_name:String, value, save_included: bool, variables: Dicti
 				new_var.save_included = save_included
 				variables[var_name] = new_var
 				return new_var as RakugoText
-
-			TYPE_NODE_PATH:
-				return node_link(var_name, value, variables) as NodeLink
 				
 			_: 
 				return null
@@ -48,10 +45,4 @@ static func _rakugo_var(var_name:String , value, save_included: bool, variables:
 	var new_var = RakugoVar.new(var_name, value)
 	new_var.save_included = save_included
 	variables[var_name] = new_var
-	return new_var 
-
-static func node_link(node_id:String, node_path: NodePath, variables:Dictionary) -> NodeLink:
-	var node_var = NodeLink.new(node_id)
-	node_var.value["node_path"] = node_path
-	variables[node_id] = node_var
-	return node_var
+	return new_var

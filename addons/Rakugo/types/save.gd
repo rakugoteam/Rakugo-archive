@@ -10,3 +10,4 @@ export var node_name : =""
 export var dialog_name := ""
 export var story_state := 0
 export var data :={}
+export var data_nodes :={}

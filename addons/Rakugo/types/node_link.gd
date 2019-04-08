@@ -31,3 +31,7 @@ func load_from(dict:Dictionary) -> void :
 	dict["node_path"] = _value["node_path"]
 	_value = dict
 	_inited = true
+
+func node_link(node_path: NodePath, variables:Dictionary) -> void:
+	_value["node_path"] = node_path
+	variables[id] = self

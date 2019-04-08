@@ -61,12 +61,7 @@ static func invoke(save_folder: String, save_name: String,  variables: Dictionar
 					continue
 
 				Rakugo.quests.append(k)
-			
-			Rakugo.Type.NODE:
-				var n = NodeLink.new(k)
-				n.load_from(v.value)
-				Rakugo.variables[k] = n
-
+				
 			_:
 				Rakugo.define(k, v.value)
 			
@@ -75,6 +70,15 @@ static func invoke(save_folder: String, save_name: String,  variables: Dictionar
 		q.update_subquests()
 
 	Rakugo.history_id = save.history_id
+	
+	for i in range(save.data.size()):
+		var k = save.data.keys()[i]
+		var v = save.data.values()[i]
+
+		Rakugo.debug([k, v])
+		var n = NodeLink.new(k)
+		n.load_from(v.value)
+		Rakugo.nodes[k] = n
 	
 	for node in Rakugo.get_tree().get_nodes_in_group("save"):
 		node.on_load(game_version)

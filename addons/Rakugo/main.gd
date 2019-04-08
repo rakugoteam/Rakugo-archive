@@ -60,6 +60,7 @@ var current_scene:= ""
 var history:= [] # [{"state":story_state, "statement":{"type":type, "parameters": parameters}}]
 var global_history:= [] # [{"state":story_state, "statement":{"type":type, "parameters": parameters}}]
 var variables:= {}
+var nodes := {}
 
 # don't save this
 onready var menu_node:RakugoMenu = $Menu
@@ -242,6 +243,7 @@ func str2value(str_value : String, var_type : String):
 ## add/overwrite global variable, from string, that Rakugo will see
 func define_from_str(var_name:String, var_str:String, var_type:String) -> RakugoVar:
 	var value = str2value(var_str, var_type)
+	
 	if not variables.has(var_name):
 		return define(var_name, value)
 
@@ -257,16 +259,16 @@ func set_var(var_name:String, value) -> RakugoVar:
 	var_to_change.value = value
 	return var_to_change
 
-func _get_var(var_name:String, type:int) -> Object:
-	if  variables.has(var_name):
-		return variables[var_name]
+func _get_var(var_name:String, type:int, dict:Dictionary) -> Object:
+	if  dict.has(var_name):
+		return dict[var_name]
 	
 	return null
 
 ## returns exiting Rakugo variable as one of RakugoTypes for easy use
 ## It must be with out returned type, because we can't set it as list of types
 func get_var(var_name:String) -> RakugoVar:
-	return _get_var(var_name, Type.VAR) as RakugoVar
+	return _get_var(var_name, Type.VAR, variables) as RakugoVar
 
 ## to use with `define_from_str` func as var_type arg
 ## it can't use optional typing
@@ -313,14 +315,17 @@ func character(character_id:String, parameters:Dictionary) -> CharacterObject:
 	return new_ch
 
 func get_character(character_id:String) -> CharacterObject:
-	return _get_var(character_id, Type.CHARACTER) as CharacterObject
+	return _get_var(character_id, Type.CHARACTER, variables) as CharacterObject
 
 ## crate new link to node as global variable that Rakugo will see
+## node_id can be the same as other variable
 func node_link(node_id:String, node:NodePath) -> NodeLink:		
-	return Define.node_link(node_id, node, variables)
+	var nl = NodeLink.new(node_id)
+	nl.node_link(node, nodes)
+	return nl
 
 func get_node_link(node_id:String) -> NodeLink:
-	return _get_var(node_id, Type.NODE) as NodeLink
+	return _get_var(node_id, Type.NODE, nodes) as NodeLink
 
 ## add/overwrite global subquest that Rakugo will see
 ## and returns it as RakugoSubQuest for easy use
@@ -331,7 +336,7 @@ func subquest(subquest_id:String, parameters:= {}) -> Subquest:
 
 ## returns exiting Rakugo subquest as RakugoSubQuest for easy use
 func get_subquest(subquest_id:String) -> Subquest:
-	return _get_var(subquest_id, Type.SUBQUEST) as Subquest
+	return _get_var(subquest_id, Type.SUBQUEST, variables) as Subquest
 
 ## add/overwrite global quest that Rakugo will see
 ## and returns it as RakugoQuest for easy use
@@ -343,7 +348,7 @@ func quest(quest_id:String, parameters:={}) -> Quest:
 
 ## returns exiting Rakugo quest as RakugoQuest for easy use
 func get_quest(quest_id:String) -> Quest:
-	return _get_var(quest_id, Type.QUEST) as Quest
+	return _get_var(quest_id, Type.QUEST, variables) as Quest
 
 ## it should be "node:Statement", but it don't work for now
 func _set_statement(node:Node, parameters:Dictionary) -> void:		
@@ -489,11 +494,7 @@ func start(after_load:=false) -> void:
 
 func savefile(save_name:= "quick") -> bool:
 	debug(["save data to :", save_name])
-	return  SaveFile.invoke(
-		save_folder, save_name, game_version, rakugo_version, 
-		history, current_scene, current_node_name,
-		current_dialog_name, variables
-	)
+	return  SaveFile.invoke(save_name)
 	
 func loadfile(save_name:= "quick") -> bool:
 	return LoadFile.invoke(save_folder, save_name, variables)
