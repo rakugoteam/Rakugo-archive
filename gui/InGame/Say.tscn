@@ -1268,6 +1268,7 @@ anims/right = SubResource( 6 )
 anims/top = SubResource( 7 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
+editor/display_folded = true
 self_modulate = Color( 1, 1, 1, 0 )
 margin_right = 1024.0
 margin_bottom = 143.0
@@ -1276,12 +1277,14 @@ size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer"]
+editor/display_folded = true
 margin_right = 1024.0
 margin_bottom = 143.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/HBoxContainer"]
+editor/display_folded = true
 margin_right = 1024.0
 margin_bottom = 143.0
 size_flags_horizontal = 3

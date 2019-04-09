@@ -1,6 +1,4 @@
 fontconfig
-addons/
-!addons/Rakugo/
 refences/
 saves/
 .import/

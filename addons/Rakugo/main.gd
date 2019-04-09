@@ -621,68 +621,8 @@ func is_save_exits(save_name:String) -> bool:
 	return false
 
 func save_global_history() -> bool:
-	var save_name = "global_history"
-	
-	var new_save := HistorySave.new()
-	new_save.game_version= game_version
-	new_save.rakugo_version = rakugo_version
-	new_save.history_data = global_history.duplicate()
-		
-	var dir := Directory.new()
-
-	var save_folder_path = "usr://".plus_file(save_folder)
-	
-	if test_save:
-		save_folder_path = "res://".plus_file(save_folder)
-	
-	if not dir.dir_exists(save_folder):
-		dir.make_dir_recursive(save_folder_path)
-		
-	var save_path = save_folder.plus_file(save_name)
-
-	if test_save:
-		save_path += ".tres"
-		
-	else:
-		save_path += ".res"
-
-	var  error := ResourceSaver.save(save_path, new_save)
-	debug(["save global history to:", save_name])
-	
-	if error != OK:
-		print("There was issue writing global history %s to %s" % [save_name, save_path])
-		return false
-		
-	return  true
+	return SaveGlobalHistory.invoke()
 
 func load_global_history() -> bool:
-	var save_name = "global_history"
+	return LoadGlobalHistory.invoke()
 	
-	loading_in_progress = true
-
-	var save_folder_path = "usr://".plus_file(save_folder)
-	
-	if test_save:
-		save_folder_path = "res://".plus_file(save_folder)
-
-	var save_path = save_folder_path.plus_file(save_name)
-	
-	if test_save:
-		save_path += ".tres"
-		
-	else:
-		save_path += ".res"
-
-	debug(["load global history from:", save_name])
-
-	if not file.file_exists(save_path):
-		print("global history file %s doesn't exist" % save_path)
-		loading_in_progress = false
-		return false
-	
-	var save : HistorySave = load(save_path)
-	global_history = save.history_data
-
-	loading_in_progress = false
-		
-	return true

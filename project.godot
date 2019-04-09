@@ -39,11 +39,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://gui/OptionsBox/CollapsedList.gd"
 }, {
-"base": "TabContainer",
-"class": "Cycle",
-"language": "GDScript",
-"path": "res://addons/godot-next/gui/cycle.gd"
-}, {
 "base": "Object",
 "class": "Define",
 "language": "GDScript",
@@ -73,6 +68,11 @@ _global_script_classes=[ {
 "class": "LoadFile",
 "language": "GDScript",
 "path": "res://addons/Rakugo/lib/load_file.gd"
+}, {
+"base": "Object",
+"class": "LoadGlobalHistory",
+"language": "GDScript",
+"path": "res://addons/Rakugo/lib/load_global_history.gd"
 }, {
 "base": "Say",
 "class": "Menu",
@@ -234,6 +234,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/lib/save_file.gd"
 }, {
+"base": "Object",
+"class": "SaveGlobalHistory",
+"language": "GDScript",
+"path": "res://addons/Rakugo/lib/save_global_history.gd"
+}, {
 "base": "Statement",
 "class": "Say",
 "language": "GDScript",
@@ -268,11 +273,6 @@ _global_script_classes=[ {
 "class": "Subquest",
 "language": "GDScript",
 "path": "res://addons/Rakugo/types/subquest.gd"
-}, {
-"base": "Line2D",
-"class": "Trail2D",
-"language": "GDScript",
-"path": "res://addons/godot-next/2d/trail_2d.gd"
 } ]
 _global_script_class_icons={
 "Ask": "",
@@ -281,13 +281,13 @@ _global_script_class_icons={
 "Character": "res://addons/Rakugo/icons/rakugo_character.svg",
 "CharacterObject": "",
 "CollapsedList": "",
-"Cycle": "",
 "Define": "",
 "Emojis": "res://addons/Rakugo/emojis/16x16/1f600.png",
 "Hide": "",
 "HistorySave": "",
 "KindContainer": "",
 "LoadFile": "",
+"LoadGlobalHistory": "",
 "Menu": "",
 "NodeLink": "",
 "Notify": "",
@@ -320,14 +320,14 @@ _global_script_class_icons={
 "RakugoVisualInstance": "res://addons/Rakugo/icons/rakugo_spatial.svg",
 "Save": "",
 "SaveFile": "",
+"SaveGlobalHistory": "",
 "Say": "",
 "Show": "",
 "SkipTimer": "",
 "Statement": "",
 "StopAnim": "",
 "StopAudio": "",
-"Subquest": "",
-"Trail2D": "res://addons/godot-next/icons/icon_trail_2d.svg"
+"Subquest": ""
 }
 
 [application]
@@ -356,7 +356,7 @@ gdscript/warnings/return_value_discarded=false
 
 [editor_plugins]
 
-enabled=PoolStringArray( "Rakugo", "godot-plugin-refresher" )
+enabled=PoolStringArray( "Rakugo" )
 
 [input]
 
