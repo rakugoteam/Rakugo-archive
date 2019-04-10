@@ -1,16 +1,10 @@
-extends Object
+extends RakugoVar
 class_name CharacterObject
 
 var parameters_names : Array = ["name", "color", "prefix", "suffix", "avatar"]
 
 var _color : Color
 var _avatar : String 
-var _id : String
-
-var type : int setget , _get_type
-var value : Dictionary setget dict2character, character2dict
-var v : Dictionary setget dict2character, character2dict
-var id : String setget , _get_id
 
 var name  : String = ""
 var color : String = "#ffffff" setget _set_color, _get_color
@@ -18,6 +12,9 @@ var prefix: String = ""
 var suffix: String = ""
 var avatar setget _set_avatar, _get_avatar
 
+func _init(var_id:String, var_value:Dictionary
+	).(var_id, var_value, Rakugo.Type.CHARACTER) -> void:
+	_set_value(_value)
 
 func _set_color(vcolor : String) -> void:
 	_color = Color(vcolor)
@@ -44,9 +41,12 @@ func parse_character() -> String:
 func parse_what(what : String) -> String:
 	return prefix + what + suffix
 
-func _get_type() -> int:
-	return Rakugo.Type.CHARACTER
-
+func _set_value(parameters: = {}) -> void:
+	dict2character(parameters)
+	
+func _get_value() -> Dictionary:
+	return character2dict()
+	
 func character2dict() -> Dictionary:
 	var dict = {}
 	dict["name"]	= name
@@ -73,5 +73,3 @@ func dict2character(dict : Dictionary) -> void:
 	if dict.has("avatar"):
 		_avatar = dict.avatar
 
-func _get_id() -> String:
-	return _id

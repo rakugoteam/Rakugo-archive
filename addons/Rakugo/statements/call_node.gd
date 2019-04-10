@@ -10,9 +10,16 @@ func _init() -> void:
 	parameters["args"] = []
 
 func exec() -> void:
-	var node = Rakugo.get_node_by_id(parameters.node_id)
+	var n = Rakugo.get_value(parameters.node_id)
 	
-	if !node:
+	if not n:
+		prints(parameters.node_id, "can't be find")
+		return
+	
+	var node_path = n["node_path"]
+	var node = Rakugo.get_node(node_path)
+	
+	if  not node:
 		prints(parameters.node_id, "can't be find")
 		return
 

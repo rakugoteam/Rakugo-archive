@@ -1,15 +1,8 @@
 extends RakugoVar
-"""
-This object used to handling Rakugo's
- variables that are dictionaries
-"""
 class_name RakugoDict
 
-signal value_changed(var_name, new_value)
-signal key_value_changed(var_name, key, new_value)
-
-func _init(var_name:String, var_value:Dictionary
-	).(var_name, var_value, Rakugo.Type.DICT) -> void:
+func _init(var_id:String, var_value:Dictionary
+	).(var_id, var_value, Rakugo.Type.DICT) -> void:
 	pass
 
 func _set_value(dict:Dictionary) -> void:
@@ -18,17 +11,10 @@ func _set_value(dict:Dictionary) -> void:
 func _get_value() -> Dictionary:
 	return _value
 
-func set_key_value(key, key_value) -> void: 
-	value[key] = key_value
-	emit_signal("key_value_changed", name, key, key_value)
-
-func get_key_value(key):	
-	return value.get(key)
-
-func clear():
+func clear() -> void:
 	value.clear()
 	
-func empty():
+func empty() -> void:
 	value.empty()
 	
 func erase(key) -> bool:

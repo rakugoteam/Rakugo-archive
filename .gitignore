@@ -1,9 +1,7 @@
+addons/godot-plugin-refresher/
 fontconfig
-addons/*
-!addons/Rakugo*
-!addons/json_beautifier
-!addons/PersistenceNode
-refences
+refences/
+saves/
 .import/
 .directory
-.vscode
+.vscode/

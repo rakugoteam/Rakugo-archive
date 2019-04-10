@@ -17,7 +17,8 @@ export var suffix : = "" setget _set_suffix, _get_suffix
 export var avatar : PackedScene = PackedScene.new() setget _set_avatar, _get_avatar
 
 func _ready() -> void:
-	Rakugo.connect("started", self, "_on_start")	
+	Rakugo.connect("started", self, "_on_start")
+	add_to_group("save", true)
 
 func _on_start() -> void:	
 	var dict : = get_dict()
@@ -102,3 +103,10 @@ func get_dict() -> Dictionary:
 	dict["suffix"]	= _suffix
 	dict["avatar"]	= _avatar.resource_path
 	return dict
+	
+func on_save() ->void:
+	var dict : = get_dict()
+	Rakugo.character(_id, dict)
+
+func on_load(game_version) -> void:
+	_character = Rakugo.get_character(_id)

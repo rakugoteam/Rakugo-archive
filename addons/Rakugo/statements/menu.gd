@@ -26,7 +26,7 @@ func on_exit(_type : int, new_parameters : Dictionary = {}) -> void:
 	
 	if "final_choice" in parameters:
 		var dialog_name : String = parameters.choices[parameters.final_choice]
-		Rakugo.jump(Rakugo._scene, Rakugo.current_node_name, dialog_name, false)
+		Rakugo.jump(Rakugo.current_scene, Rakugo.current_node_name, dialog_name, false)
 	
 	else:
 		print("no final_choice recived")

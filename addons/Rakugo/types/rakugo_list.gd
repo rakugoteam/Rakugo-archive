@@ -1,13 +1,10 @@
 extends RakugoVar
-"""
-Base object used to handling Rakugo's variables
-"""
 class_name RakugoList
 
-signal index_value_change(var_name, index, index_value)
+signal index_value_change(var_id, index, index_value)
 
-func _init(var_name:String, var_value:Array
-	).(var_name, var_value, Rakugo.Type.LIST):
+func _init(var_id:String, var_value:Array
+	).(var_id, var_value, Rakugo.Type.LIST):
 	pass
 
 func _set_value(var_value:Array) -> void:
@@ -18,7 +15,7 @@ func _get_value() -> Array:
 
 func set_index_value(index:int, index_value) -> void:
 	value[index] = index_value
-	emit_signal("index_value_change", name, index, index_value)
+	emit_signal("index_value_change", id, index, index_value)
 
 func get_index_value(index:int):
 	return value[index]
