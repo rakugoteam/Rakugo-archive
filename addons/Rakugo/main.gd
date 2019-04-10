@@ -1,19 +1,20 @@
 extends Node
 
-export var game_title:= "Your New Game"
-export var game_version:= "0.0.1"
 export var game_credits:= "Your Company"
 export (String, "renpy", "bbcode") var markup:= "renpy"
 export var links_color:= Color("#225ebf")
 export var debug_on:= true
 export var save_folder:= "saves"
-export var save_password:= "Rakugo"
+export var test_save:= false
 export (String, DIR) var scenes_dir:= "res://examples/"
 
 const rakugo_version:= "2.0.0"
 const credits_path:= "res://addons/Rakugo/credits.txt"
 # we need it because we hide base RakugoMenu form custom nodes
 const RakugoMenu:= preload("res://addons/Rakugo/nodes/rakugo_menu.gd")
+
+onready var game_version = ProjectSettings.get_setting("application/config/version")
+onready var game_title = ProjectSettings.get_setting("application/config/name")
 
 ## init vars for settings
 var _skip_all_text:= false
@@ -34,7 +35,6 @@ enum Type {
 	CHARACTER,	# 7
 	RANGE,		# 8
 	BOOL,		# 9
-	
 }
 
 enum StatementType {
@@ -56,7 +56,7 @@ enum StatementType {
 var history_id:= 0 setget _set_history_id, _get_history_id
 var current_dialog_name:= ""
 var current_node_name:= ""
-var _scene:= ""
+var current_scene:= ""
 var history:= [] # [{"state":story_state, "statement":{"type":type, "parameters": parameters}}]
 var global_history:= [] # [{"state":story_state, "statement":{"type":type, "parameters": parameters}}]
 var variables:= {}
@@ -69,6 +69,7 @@ var skip_auto:= false
 var active:= false
 var can_alphanumeric:= true
 var emoji_size := 16
+
 var skip_types:= [
 	StatementType.SAY,
 	StatementType.SHOW,
@@ -135,28 +136,29 @@ signal stop_audio(node_id)
 
 func _ready() -> void:
 	## set by game developer
-	define("title", game_title)
-	define("version", game_version)
+	define("title", game_title, false)
+	define("version", game_version, false)
 	OS.set_window_title(game_title + " " + game_version)
-	define("credits", game_credits)
+	define("credits", game_credits, false)
 
 	## set by rakugo
-	define("rakugo_version", rakugo_version)
+	define("rakugo_version", rakugo_version, false)
 	file.open(credits_path, file.READ)
-	define("rakugo_credits", file.get_as_text())
+	define("rakugo_credits", file.get_as_text(), false)
 	file.close()
 	var gdv = Engine.get_version_info()
 	var gdv_string = str(gdv.major) + "." + str(gdv.minor) + "." + str(gdv.patch)
-	define("godot_version", gdv_string)
+	define("godot_version", gdv_string, false)
 	define("story_state", 0)
 
 	## vars for rakugo settings
-	define("skip_all_text", _skip_all_text)
-	define("skip_after_choices", _skip_after_choices)
-	define("auto_time", _auto_time)
-	define("text_time", _text_time)
-	define("notify_time", _notify_time)
-	define("typing_text", _typing_text)
+	## `false` because is loaded from settings and not from save
+	define("skip_all_text", _skip_all_text, false)
+	define("skip_after_choices", _skip_after_choices, false)
+	define("auto_time", _auto_time, false)
+	define("text_time", _text_time, false)
+	define("notify_time", _notify_time, false)
+	define("typing_text", _typing_text, false)
 
 	## test vars
 	define("test_bool", false)
@@ -214,11 +216,11 @@ func text_passer(text:String, mode:= markup):
 
 ## add/overwrite global variable that Rakugo will see
 ## and returns it as RakugoVar for easy use
-func define(var_name:String, value = null) -> RakugoVar:
-	if not variables.has(var_name):
-		var new_var = RakugoVar.new(var_name, value)
-		variables[var_name] = new_var
-		return new_var
+func define(var_name:String, value = null, save_included := true) -> RakugoVar:
+	var v = Define.invoke(var_name, value , save_included, variables)
+	
+	if v:
+		return v
 		
 	else:
 		return set_var(var_name, value)
@@ -252,11 +254,14 @@ func set_var(var_name:String, value) -> RakugoVar:
 		return null
 
 	var var_to_change = variables[var_name]
-	var_to_change.v = value
+	var_to_change.value = value
 	return var_to_change
 
 func _get_var(var_name:String, type:int) -> Object:
-	return variables[var_name]
+	if  variables.has(var_name):
+		return variables[var_name]
+	
+	return null
 
 ## returns exiting Rakugo variable as one of RakugoTypes for easy use
 ## It must be with out returned type, because we can't set it as list of types
@@ -283,62 +288,45 @@ func get_def_type(variable) -> String:
 ## returns value of variable defined using define
 ## It must be with out returned type, because we can't set it as list of types
 func get_value(var_name:String):
-	return variables[var_name].value
+	if variables.has(var_name):
+		return variables[var_name].value
+	
+	return null
 
 ## returns type of variable defined using define
 func get_type(var_name:String) -> int:
 	return variables[var_name].type
 
 ## just faster way to connect signal to rakugo's variable
-func connect_var(var_name:String, signal_name:String, node:Object, func_name:String, binds:= [], flags:= 0) -> void:
+func connect_var(
+	var_name:String, signal_name:String,
+	node:Object, func_name:String, 
+	binds:= [], flags:= 0
+	) -> void:
 	get_var(var_name).connect(signal_name, node, func_name, binds, flags)
 	
 ## crate new character as global variable that Rakugo will see
 ## possible parameters: name, color, what_prefix, what_suffix, kind, avatar
 func character(character_id:String, parameters:Dictionary) -> CharacterObject:
-	var new_ch := CharacterObject.new()
-	new_ch.id = character_id
-	new_ch.value = parameters
+	var new_ch := CharacterObject.new(character_id, parameters)
 	variables[character_id] = new_ch
 	return new_ch
-	
 
 func get_character(character_id:String) -> CharacterObject:
 	return _get_var(character_id, Type.CHARACTER) as CharacterObject
 
 ## crate new link to node as global variable that Rakugo will see
-## first arg can be node it self or path to it
-func node_link(node, node_id:String = "") -> Node:
-	if node_id:
-		node_id = node.name
+func node_link(node_id:String, node:NodePath) -> NodeLink:		
+	return Define.node_link(node_id, node, variables)
 
-	var path
-	if typeof(node) == TYPE_NODE_PATH:
-		path = node
-
-	elif node is Node:
-		path = node.get_path()
-	
-	var node_var = RakugoVar.new(node_id, path, Type.NODE)
-	variables[node_id] = node_var
-	return get_node(path)
-
-func get_node_by_id(node_id:String) -> Node:
-	var n = _get_var(node_id, Type.NODE)
-	
-	if !n:
-		return null
-		
-	return get_node(n.v)
+func get_node_link(node_id:String) -> NodeLink:
+	return _get_var(node_id, Type.NODE) as NodeLink
 
 ## add/overwrite global subquest that Rakugo will see
 ## and returns it as RakugoSubQuest for easy use
 ## possible parameters: "who", "title", "description", "optional", "state", "subquests"
 func subquest(subquest_id:String, parameters:= {}) -> Subquest:
-	var new_subq : = Subquest.new()
-	new_subq._quest_id = subquest_id
-	new_subq.value = parameters
-	
+	var new_subq : = Subquest.new(subquest_id, parameters)	
 	return new_subq
 
 ## returns exiting Rakugo subquest as RakugoSubQuest for easy use
@@ -349,9 +337,7 @@ func get_subquest(subquest_id:String) -> Subquest:
 ## and returns it as RakugoQuest for easy use
 ## possible parameters: "who", "title", "description", "optional", "state", "subquests"
 func quest(quest_id:String, parameters:={}) -> Quest:
-	var q := Quest.new()
-	q._quest_id = quest_id
-	q.value = parameters
+	var q := Quest.new(quest_id, parameters)
 	quests.append(quest_id)
 	return q
 
@@ -397,30 +383,50 @@ func menu(parameters:Dictionary) -> void:
 ## with keywords:x, y, z, at, pos
 ## x, y and pos will use it as protect of screen if between 0 and 1
 ## "at" is lists that can have: "top", "center", "bottom", "right", "left"
-func show(node_id:String, state:PoolStringArray = [], parameters:= {"at":["center", "bottom"]}):
+func show(
+	node_id:String, state:PoolStringArray = [],
+	parameters:= {"at":["center", "bottom"]}
+	):
+
 	parameters["node_id"] = node_id
 	parameters["state"] = state
 	_set_statement($Show, parameters)
 
 ## statement of type hide
 func hide(node_id:String) -> void:
-	var parameters = {"node_id":node_id}
+	var parameters = {
+		"node_id":node_id
+	}
+
 	_set_statement($Hide, parameters)
 
 ## statement of type notify
-func notifiy(info:String, length:int = Rakugo.get_value("notify_time")) -> void:
-	var parameters = {"info": info,"length":length}
+func notifiy(
+	info:String,
+	length:int = get_value("notify_time")
+	) -> void:
+
+	var parameters = {
+		"info": info,
+		"length":length
+	}
+
 	_set_statement($Notify, parameters)
 	notify_timer.wait_time = parameters.length
 	notify_timer.start()
 
 ## statement of type play_anim
 ## it will play animation with anim_name form RakugoAnimPlayer with given node_id
-func play_anim(node_id:String, anim_name:String) -> void:
+func play_anim(
+	node_id:String,
+	anim_name:String
+	) -> void:
+	
 	var parameters = {
 		"node_id":node_id,
 		"anim_name":anim_name
 	}
+
 	_set_statement($PlayAnim, parameters)
 
 ## statement of type stop_anim
@@ -431,6 +437,7 @@ func stop_anim(node_id:String, reset:= true) -> void:
 		"node_id":node_id,
 		"reset":reset
 	}
+
 	_set_statement($StopAnim, parameters)
 
 ## statement of type play_audio
@@ -441,6 +448,7 @@ func play_audio(node_id:String, from_pos:= 0.0) -> void:
 		"node_id":node_id,
 		"from_pos":from_pos
 	}
+
 	_set_statement($PlayAudio, parameters)
 
 ## statement of type stop_audio
@@ -449,6 +457,7 @@ func stop_audio(node_id:String) -> void:
 	var parameters = {
 		"node_id":node_id
 	}
+
 	_set_statement($StopAudio, parameters)
 
 ## statement of type stop_audio
@@ -459,6 +468,7 @@ func call_node(node_id:String, func_name:String, args:= []) -> void:
 		"func_name":func_name,
 		"args":args
 	}
+
 	_set_statement($CallNode, parameters)
 
 func _set_story_state(state:int) -> void:
@@ -478,127 +488,22 @@ func start(after_load:=false) -> void:
 		story_step()
 
 func savefile(save_name:= "quick") -> bool:
-	$Persistence.folder_name = save_folder
-	$Persistence.password = save_password
-
-	var data = $Persistence.get_data(save_name)
-	debug(["get data from:", save_name])
-	
-	if !data:
-		return false
-		
-	if data.empty():
-		return false
-
-	data["history"] = history
-
-	var vars_to_save = {}
-
-	for i in range(variables.size()):
-		var k = variables.keys()[i]
-		var v = variables.values()[i]
-
-		debug([k, v])
-
-		match v.type:
-			Type.CHARACTER:
-				vars_to_save[k] = {
-					"type":v.type,
-					"value":v.character2dict()
-				}
-
-			Type.SUBQUEST:
-				vars_to_save[k] = {
-					"type":v.type,
-					"value":v.subquest2dict()
-				}
-
-			Type.QUEST:
-				vars_to_save[k] = {
-					"type":v.type,
-					"value":v.quest2dict()
-				}
-			_:
-				vars_to_save[k] = {
-					"type":v.type,
-					"value":v.value
-				}
-
-	data["variables"] = vars_to_save
-
-	data["id"] = history_id
-	data["scene"] = _scene
-	data["dialog_name"] = current_dialog_name
-	data["node_name"] = current_node_name
-
-	var result = $Persistence.save_data(save_name)
-
-	debug(["save data to:", save_name])
-	return result
+	debug(["save data to :", save_name])
+	return  SaveFile.invoke(
+		save_folder, save_name, game_version, rakugo_version, 
+		history, current_scene, current_node_name,
+		current_dialog_name, variables
+	)
 	
 func loadfile(save_name:= "quick") -> bool:
-	loading_in_progress = true
-	$Persistence.folder_name = save_folder
-	$Persistence.password = save_password
-	
-	var data = $Persistence.get_data(save_name)
-	debug(["load data from:", save_name])
+	return LoadFile.invoke(save_folder, save_name, variables)
 
-	if !data:
-		return false
+func debug_dict(
+	parameters:Dictionary,
+	parameters_names:= [],
+	some_custom_text:= ""
+	) -> String:
 		
-	if data.empty():
-		return false
-
-	quests.clear()
-	history = data["history"]
-
-	var vars_to_load = data["variables"]
-
-	for i in range(vars_to_load.size()):
-		var k = vars_to_load.keys()[i]
-		var v = vars_to_load.values()[i]
-
-		debug([k, v])
-
-		match v.type:
-			Type.CHARACTER:
-				character(k, v.value)
-
-			Type.SUBQUEST:
-				subquest(k, v.value)
-
-			Type.QUEST:
-				quest(k, v.value)
-
-				if k in quests:
-					continue
-
-				quests.append(k)
-
-			_:
-				define(k, v.value)
-			
-	for q_id in quests:
-		var q = get_quest(q_id)
-		q.update_subquests()
-
-	history_id = data["id"]
-
-	start(true)
-	
-	loading_in_progress = false
-	
-	jump(
-		data["scene"],
-		data["node_name"],
-		data["dialog_name"],
-		true
-		)
-	
-	return true
-
-func debug_dict(parameters:Dictionary, parameters_names:= [], some_custom_text:= "") -> String:
 	var dbg = ""
 	
 	for k in parameters_names:
@@ -627,7 +532,6 @@ func debug(some_text = []) -> void:
 		
 	print(some_text)
 
-
 func _set_history_id(value:int) -> void:
 	history_id = value
 
@@ -635,25 +539,28 @@ func _get_history_id() -> int:
 	return history_id
 
 ## use this to change/assign current scene and dialog
-## root of path_to_scene is scenes_dir
-## provide path_to_scene with out ".tscn"
-func jump(path_to_scene:String, node_name:String, dialog_name:String, change:= true) -> void:
+## root of path_to_current_scene is scenes_dir
+## provide path_to_current_scene with out ".tscn"
+func jump(
+	path_to_current_scene:String, node_name:String, 
+	dialog_name:String, change:= true
+	) -> void:
 	
 	current_node_name = node_name
 	current_dialog_name = dialog_name
 	
-	_scene = scenes_dir + "/" + path_to_scene + ".tscn"
+	current_scene = scenes_dir + "/" + path_to_current_scene + ".tscn"
 	
-	if path_to_scene.ends_with(".tscn"):
-		_scene = path_to_scene
+	if path_to_current_scene.ends_with(".tscn"):
+		current_scene = path_to_current_scene
 	
-	debug(["jump to scene:", _scene, "with dialog:", dialog_name, "from:", story_state])
+	debug(["jump to scene:", current_scene, "with dialog:", dialog_name, "from:", story_state])
 
 	if change:
 		if current_root_node != null:
 			current_root_node.queue_free()
 		
-		var lscene = load(_scene)
+		var lscene = load(current_scene)
 		current_root_node = lscene.instance()
 		get_tree().get_root().add_child(current_root_node)
 
@@ -663,13 +570,13 @@ func jump(path_to_scene:String, node_name:String, dialog_name:String, change:= t
 		story_step()
 
 ## use this to assign beginning scene and dialog
-## root of path_to_scene is scenes_dir
-## provide path_to_scene with out ".tscn"
-func begin(path_to_scene:String, node_name:String, dialog_name:String) -> void:
+## root of path_to_current_scene is scenes_dir
+## provide path_to_current_scene with out ".tscn"
+func begin(path_to_current_scene:String, node_name:String, dialog_name:String) -> void:
 	if loading_in_progress:
 		return
 		
-	jump(path_to_scene, node_name , dialog_name, false)
+	jump(path_to_current_scene, node_name , dialog_name, false)
 
 ## it don't work :(
 func current_statement_in_global_history() -> bool:
@@ -707,45 +614,15 @@ func can_qload() -> bool:
 	return is_save_exits("quick")
 
 func is_save_exits(save_name:String) -> bool:
-	var path = str("user://", save_folder, "/", save_name)
-	var save_exist = file.file_exists(path + ".save")
-	var text_exist = file.file_exists(path + ".txt")
-	return save_exist or text_exist
+	# var path = str("user://", save_folder, "/", save_name)
+	# var save_exist = file.file_exists(path + ".save")
+	# var text_exist = file.file_exists(path + ".txt")
+	# return save_exist or text_exist
+	return false
 
 func save_global_history() -> bool:
-	var save_name = "global_history"
-	$Persistence.folder_name = save_folder
-	$Persistence.password = save_password
-	var data = $Persistence.get_data(save_name)
-	debug(["get global_history from:", save_name])
-
-	if !data:
-		return false
-
-	if data.empty():
-		return false
-
-	data["global_history"] = global_history.duplicate()
-	
-	var result = $Persistence.save_data(save_name)
-	debug(["save global_history to:", save_name])
-	return result
+	return SaveGlobalHistory.invoke()
 
 func load_global_history() -> bool:
-	var save_name = "global_history"
-	$Persistence.folder_name = save_folder
-	$Persistence.password = save_password
-	global_history = []
-	var data = $Persistence.get_data(save_name)
-	debug(["load global_history from:", save_name])
-
-	if !data:
-		return false
-
-	if data.empty():
-		return false
+	return LoadGlobalHistory.invoke()
 	
-	if "global_history" in data:
-		global_history = data["global_history"]
-		
-	return true

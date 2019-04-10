@@ -25,6 +25,7 @@ func _on_statement(type, parameters):
 
 	var i = 0
 	var choices = Rakugo.menu_node.choices_labels
+	
 	for ch in choices:
 		var ch_button = ChoiceButton.instance()
 		add_child(ch_button)

@@ -10,6 +10,9 @@ signal start_quest
 signal done_quest # when all quests is done
 signal fail_quest # when fail the quest (all no optional quest)
 
+func _init(var_id:String, var_value:Dictionary
+	).(var_id, var_value, Rakugo.Type.QUEST) -> void:
+	pass
 
 func _set_value(parameters: = {}) -> void:
 	dict2quest(parameters)
@@ -120,6 +123,3 @@ func _on_fail_subquest(subquest : Subquest) -> void:
 	
 	if not subquest.is_optional:
 		emit_signal("fail_quest")
-
-func _get_type() -> int:
-	return Rakugo.Type.QUEST

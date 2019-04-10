@@ -3,9 +3,9 @@
 [ext_resource path="res://examples/Test/test.gd" type="Script" id=1]
 [ext_resource path="res://addons/Rakugo/nodes/character.gd" type="Script" id=2]
 [ext_resource path="res://examples/Test/RakugoAvatar.tscn" type="PackedScene" id=3]
-[ext_resource path="res://examples/Test/TestNode2D.gd" type="Script" id=4]
+[ext_resource path="res://addons/Rakugo/nodes/rakugo_node2d.gd" type="Script" id=4]
 [ext_resource path="res://graphics/logo.svg" type="Texture" id=5]
-[ext_resource path="res://examples/Test/TestAnimPlayer.gd" type="Script" id=6]
+[ext_resource path="res://addons/Rakugo/nodes/rakugo_anim_player.gd" type="Script" id=6]
 [ext_resource path="res://examples/Test/bell-counter-a.wav" type="AudioStream" id=7]
 [ext_resource path="res://addons/Rakugo/nodes/rakugo_audio_player.gd" type="Script" id=8]
 [ext_resource path="res://examples/Test/Welcome_in_the_intox.ogg" type="AudioStream" id=9]
@@ -68,6 +68,7 @@ color = Color( 0.967169, 0.988281, 0.312698, 1 )
 avatar = ExtResource( 3 )
 
 [node name="TestNode2D" type="Node2D" parent="RakugoCharacter"]
+editor/display_folded = true
 position = Vector2( 524.705, 226.134 )
 rotation = 0.628319
 z_index = -1

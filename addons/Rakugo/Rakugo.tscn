@@ -1,85 +1,80 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://addons/Rakugo/main.gd" type="Script" id=1]
 [ext_resource path="res://addons/Rakugo/statics/text.gd" type="Script" id=2]
 [ext_resource path="res://addons/Rakugo/emojis/emojis.gd" type="Script" id=3]
-[ext_resource path="res://addons/PersistenceNode/persistence_node.gd" type="Script" id=4]
-[ext_resource path="res://addons/Rakugo/statements/say.gd" type="Script" id=5]
-[ext_resource path="res://addons/Rakugo/statements/ask.gd" type="Script" id=6]
-[ext_resource path="res://addons/Rakugo/statements/menu.gd" type="Script" id=7]
-[ext_resource path="res://addons/Rakugo/statements/show.gd" type="Script" id=8]
-[ext_resource path="res://addons/Rakugo/statements/hide.gd" type="Script" id=9]
-[ext_resource path="res://addons/Rakugo/statements/notify.gd" type="Script" id=10]
-[ext_resource path="res://addons/Rakugo/statements/play_anim.gd" type="Script" id=11]
-[ext_resource path="res://addons/Rakugo/statements/stop_anim.gd" type="Script" id=12]
-[ext_resource path="res://addons/Rakugo/statements/play_audio.gd" type="Script" id=13]
-[ext_resource path="res://addons/Rakugo/statements/stop_audio.gd" type="Script" id=14]
-[ext_resource path="res://addons/Rakugo/statements/call_node.gd" type="Script" id=15]
-[ext_resource path="res://addons/Rakugo/statics/AutoTimer.gd" type="Script" id=16]
-[ext_resource path="res://addons/Rakugo/statics/SkipTimer.gd" type="Script" id=17]
-[ext_resource path="res://addons/Rakugo/nodes/rakugo_timer.gd" type="Script" id=18]
+[ext_resource path="res://addons/Rakugo/statements/say.gd" type="Script" id=4]
+[ext_resource path="res://addons/Rakugo/statements/ask.gd" type="Script" id=5]
+[ext_resource path="res://addons/Rakugo/statements/menu.gd" type="Script" id=6]
+[ext_resource path="res://addons/Rakugo/statements/show.gd" type="Script" id=7]
+[ext_resource path="res://addons/Rakugo/statements/hide.gd" type="Script" id=8]
+[ext_resource path="res://addons/Rakugo/statements/notify.gd" type="Script" id=9]
+[ext_resource path="res://addons/Rakugo/statements/play_anim.gd" type="Script" id=10]
+[ext_resource path="res://addons/Rakugo/statements/stop_anim.gd" type="Script" id=11]
+[ext_resource path="res://addons/Rakugo/statements/play_audio.gd" type="Script" id=12]
+[ext_resource path="res://addons/Rakugo/statements/stop_audio.gd" type="Script" id=13]
+[ext_resource path="res://addons/Rakugo/statements/call_node.gd" type="Script" id=14]
+[ext_resource path="res://addons/Rakugo/statics/AutoTimer.gd" type="Script" id=15]
+[ext_resource path="res://addons/Rakugo/statics/SkipTimer.gd" type="Script" id=16]
+[ext_resource path="res://addons/Rakugo/nodes/rakugo_timer.gd" type="Script" id=17]
 
 [node name="Rakugo" type="Node"]
 pause_mode = 2
 script = ExtResource( 1 )
 debug_on = false
+test_save = true
 
 [node name="Text" type="Node" parent="."]
+editor/display_folded = true
 script = ExtResource( 2 )
 
 [node name="Emojis" type="Node" parent="Text"]
 script = ExtResource( 3 )
 
-[node name="Persistence" type="Node" parent="."]
-script = ExtResource( 4 )
-mode = 1
-debug_on = true
-profile_name_min_size = 1
-
 [node name="Say" type="Node" parent="."]
-script = ExtResource( 5 )
+script = ExtResource( 4 )
 
 [node name="Ask" type="Node" parent="."]
-script = ExtResource( 6 )
+script = ExtResource( 5 )
 
 [node name="Menu" type="Node" parent="."]
-script = ExtResource( 7 )
+script = ExtResource( 6 )
 
 [node name="Show" type="Node" parent="."]
-script = ExtResource( 8 )
+script = ExtResource( 7 )
 
 [node name="Hide" type="Node" parent="."]
-script = ExtResource( 9 )
+script = ExtResource( 8 )
 
 [node name="Notify" type="Node" parent="."]
-script = ExtResource( 10 )
+script = ExtResource( 9 )
 
 [node name="PlayAnim" type="Node" parent="."]
-script = ExtResource( 11 )
+script = ExtResource( 10 )
 
 [node name="StopAnim" type="Node" parent="."]
-script = ExtResource( 12 )
+script = ExtResource( 11 )
 
 [node name="PlayAudio" type="Node" parent="."]
-script = ExtResource( 13 )
+script = ExtResource( 12 )
 
 [node name="StopAudio" type="Node" parent="."]
-script = ExtResource( 14 )
+script = ExtResource( 13 )
 
 [node name="CallNode" type="Node" parent="."]
-script = ExtResource( 15 )
+script = ExtResource( 14 )
 
 [node name="AutoTimer" type="Timer" parent="."]
-script = ExtResource( 16 )
+script = ExtResource( 15 )
 var_name = "auto_time"
 
 [node name="SkipTimer" type="Timer" parent="."]
-script = ExtResource( 17 )
+script = ExtResource( 16 )
 
 [node name="DialogTimer" type="Timer" parent="."]
 wait_time = 0.05
 one_shot = true
-script = ExtResource( 18 )
+script = ExtResource( 17 )
 var_name = "text_time"
 default = 0.05
 

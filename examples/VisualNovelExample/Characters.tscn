@@ -11,11 +11,7 @@
 [ext_resource path="res://examples/VisualNovelExample/PAliceSprite/PAliceTeasing.png" type="Texture" id=9]
 [ext_resource path="res://examples/VisualNovelExample/PAliceSprite/PAliceWorried.png" type="Texture" id=10]
 
-
-
-
 [sub_resource type="SpriteFrames" id=1]
-
 animations = [ {
 "frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
 "loop": false,
@@ -34,9 +30,9 @@ color = Color( 0.596531, 0.160034, 0.71875, 1 )
 avatar = ExtResource( 2 )
 
 [node name="AliceRN2D" type="Node2D" parent="."]
+editor/display_folded = true
 scale = Vector2( 0.1, 0.1 )
 script = ExtResource( 3 )
-node_id = "alice"
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="AliceRN2D"]
 position = Vector2( 0, -2400 )

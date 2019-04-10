@@ -29,7 +29,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/nodes/character.gd"
 }, {
-"base": "Object",
+"base": "RakugoVar",
 "class": "CharacterObject",
 "language": "GDScript",
 "path": "res://addons/Rakugo/types/character_obj.gd"
@@ -39,10 +39,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://gui/OptionsBox/CollapsedList.gd"
 }, {
-"base": "TabContainer",
-"class": "Cycle",
+"base": "Object",
+"class": "Define",
 "language": "GDScript",
-"path": "res://addons/godot-next/gui/cycle.gd"
+"path": "res://addons/Rakugo/lib/define.gd"
 }, {
 "base": "Node",
 "class": "Emojis",
@@ -54,30 +54,40 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/statements/hide.gd"
 }, {
-"base": "Node",
-"class": "JSONBeautifier",
+"base": "Resource",
+"class": "HistorySave",
 "language": "GDScript",
-"path": "res://addons/json_beautifier/json_beautifier.gd"
+"path": "res://addons/Rakugo/types/history_save.gd"
 }, {
 "base": "Control",
 "class": "KindContainer",
 "language": "GDScript",
 "path": "res://addons/Rakugo/nodes/kind_container.gd"
 }, {
+"base": "Object",
+"class": "LoadFile",
+"language": "GDScript",
+"path": "res://addons/Rakugo/lib/load_file.gd"
+}, {
+"base": "Object",
+"class": "LoadGlobalHistory",
+"language": "GDScript",
+"path": "res://addons/Rakugo/lib/load_global_history.gd"
+}, {
 "base": "Say",
 "class": "Menu",
 "language": "GDScript",
 "path": "res://addons/Rakugo/statements/menu.gd"
 }, {
+"base": "RakugoVar",
+"class": "NodeLink",
+"language": "GDScript",
+"path": "res://addons/Rakugo/types/node_link.gd"
+}, {
 "base": "Statement",
 "class": "Notify",
 "language": "GDScript",
 "path": "res://addons/Rakugo/statements/notify.gd"
-}, {
-"base": "Node",
-"class": "Persistence",
-"language": "GDScript",
-"path": "res://addons/PersistenceNode/persistence_node.gd"
 }, {
 "base": "Statement",
 "class": "PlayAnim",
@@ -162,12 +172,17 @@ _global_script_classes=[ {
 "base": "RakugoVar",
 "class": "RakugoRange",
 "language": "GDScript",
-"path": "res://addons/Rakugo/types/range.gd"
+"path": "res://addons/Rakugo/types/rakugo_range.gd"
 }, {
 "base": "Panel",
 "class": "RakugoSayPanel",
 "language": "GDScript",
 "path": "res://addons/Rakugo/nodes/rakugo_say_panel.gd"
+}, {
+"base": "RakugoVar",
+"class": "RakugoText",
+"language": "GDScript",
+"path": "res://addons/Rakugo/types/rakugo_text.gd"
 }, {
 "base": "RichTextLabel",
 "class": "RakugoTextLabel",
@@ -209,6 +224,21 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/nodes/rakugo_visual_instance.gd"
 }, {
+"base": "Resource",
+"class": "Save",
+"language": "GDScript",
+"path": "res://addons/Rakugo/types/save.gd"
+}, {
+"base": "Object",
+"class": "SaveFile",
+"language": "GDScript",
+"path": "res://addons/Rakugo/lib/save_file.gd"
+}, {
+"base": "Object",
+"class": "SaveGlobalHistory",
+"language": "GDScript",
+"path": "res://addons/Rakugo/lib/save_global_history.gd"
+}, {
 "base": "Statement",
 "class": "Say",
 "language": "GDScript",
@@ -239,15 +269,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/statements/stop_audio.gd"
 }, {
-"base": "Object",
+"base": "RakugoVar",
 "class": "Subquest",
 "language": "GDScript",
 "path": "res://addons/Rakugo/types/subquest.gd"
-}, {
-"base": "Line2D",
-"class": "Trail2D",
-"language": "GDScript",
-"path": "res://addons/godot-next/2d/trail_2d.gd"
 } ]
 _global_script_class_icons={
 "Ask": "",
@@ -256,14 +281,16 @@ _global_script_class_icons={
 "Character": "res://addons/Rakugo/icons/rakugo_character.svg",
 "CharacterObject": "",
 "CollapsedList": "",
-"Cycle": "",
+"Define": "",
 "Emojis": "res://addons/Rakugo/emojis/16x16/1f600.png",
 "Hide": "",
-"JSONBeautifier": "",
+"HistorySave": "",
 "KindContainer": "",
+"LoadFile": "",
+"LoadGlobalHistory": "",
 "Menu": "",
+"NodeLink": "",
 "Notify": "",
-"Persistence": "res://addons/PersistenceNode/icon.png",
 "PlayAnim": "",
 "PlayAudio": "",
 "Quest": "",
@@ -282,6 +309,7 @@ _global_script_class_icons={
 "RakugoQuestButton": "",
 "RakugoRange": "",
 "RakugoSayPanel": "res://addons/Rakugo/icons/rakugo_panel.svg",
+"RakugoText": "",
 "RakugoTextLabel": "",
 "RakugoTextPasser": "",
 "RakugoTimer": "",
@@ -290,14 +318,16 @@ _global_script_class_icons={
 "RakugoVarEdit": "",
 "RakugoVarLabel": "",
 "RakugoVisualInstance": "res://addons/Rakugo/icons/rakugo_spatial.svg",
+"Save": "",
+"SaveFile": "",
+"SaveGlobalHistory": "",
 "Say": "",
 "Show": "",
 "SkipTimer": "",
 "Statement": "",
 "StopAnim": "",
 "StopAudio": "",
-"Subquest": "",
-"Trail2D": "res://addons/godot-next/icons/icon_trail_2d.svg"
+"Subquest": ""
 }
 
 [application]
@@ -305,7 +335,9 @@ _global_script_class_icons={
 config/name="Rakugo"
 run/main_scene="res://examples/Test/Test.tscn"
 boot_splash/image="res://graphics/splash.png"
+boot_splash/bg_color=Color( 0.741176, 0.733333, 0.733333, 1 )
 config/icon="res://graphics/window_icon.png"
+config/version="2.0.0"
 
 [autoload]
 
@@ -324,7 +356,7 @@ gdscript/warnings/return_value_discarded=false
 
 [editor_plugins]
 
-enabled=PoolStringArray( "PersistenceNode", "Rakugo" )
+enabled=PoolStringArray( "Rakugo" )
 
 [input]
 
@@ -374,4 +406,5 @@ rakugo_qload={
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 environment/default_environment="res://default_env.tres"
