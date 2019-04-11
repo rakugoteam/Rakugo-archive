@@ -341,6 +341,7 @@ func get_character(character_id:String) -> CharacterObject:
 	return _get_var(character_id, Type.CHARACTER) as CharacterObject
 
 ## crate new link to node as global variable that Rakugo will see
+## it can have name as other existing varbiable
 func node_link(node_id:String, node:NodePath) -> NodeLink:		
 	return Define.node_link(node_id, node, variables)
 
