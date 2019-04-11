@@ -60,8 +60,6 @@ For now here is example using GDScript: [examples/Test/test.gd](examples/Test/te
 
 ## Other Info
 
-Rakugo uses [PersistenceNode](https://github.com/MatiasVME/Persistence) for saving/load game.
-
 If you want to help please write to us on our [Discord](https://discord.gg/K9gvjdg).
 
 I need help with this [visual script support](https://github.com/jebedaia360/Rakugo/issues/26).
