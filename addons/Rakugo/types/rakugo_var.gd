@@ -7,6 +7,8 @@ var value setget _set_value, _get_value
 var _value = null
 var id : String setget , _get_id
 var _id : = ""
+var var_suffix: String setget , _get_var_suffix
+var _suffix:= ""
 
 var _inited := false
 var save_included:=true
@@ -14,10 +16,11 @@ var save_included:=true
 signal value_changed(var_id, new_value)
 signal key_value_changed(var_id, key, new_value)
 
-func _init(var_id:String, var_value, var_type: = 0):
-	_id = var_id
+func _init(var_id:String, var_value, var_type: = 0, var_suffix: = ""):
+	_id = var_suffix + var_id
 	_value = var_value
 	_type = var_type
+	_suffix = var_suffix
 	_inited = true
 
 func _get_type() -> int:
@@ -69,4 +72,5 @@ func load_from(dict:Dictionary) -> void :
 func to_string() -> String:
 	return str(value)
 
-
+func _get_var_suffix() -> String:
+	return _suffix

@@ -2,7 +2,11 @@ extends RakugoVar
 class_name NodeLink
 
 func _init(var_id:String).(
-	var_id, {"node_path":""}, Rakugo.Type.NODE) -> void:
+	var_id,
+	{"node_path":""},
+	Rakugo.Type.NODE,
+	"node_link_"
+	) -> void:
 	pass
 
 func _set_value(dict:Dictionary) -> void:
