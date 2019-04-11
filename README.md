@@ -44,23 +44,23 @@ You can use it with:
 **Q:** So it's about adding a refined writing and dialogue system to the engine? </p>
 **A:** Yes, and more - nodes, objects and funcs to make easy to provide mechanics like in point&click and rpgs.
 
-**Q:** As a scenarist, what would I gain from using Rakugo over Ren'Py or twine ? </p>
-**A:** It is made as godot addon - you can use all got features.
+**Q:** As a scenarist, what would I gain from using Rakugo over Ren'Py or Twine ? </p>
+**A:** It is made as godot addon - you can use all godot features.
 You can make your game 2d, 2.5d or 3d - you can only 2d in Ren'Py.
 You can easy add minigames or mix it with other game genre.
-It will have mechanics for point&click and rpgs - Ren'Py and twain are only for nv.
-This project dialogs funcs can more then Ren'Py's equivalents.
+It will have mechanics for point&click games and rpgs - Ren'Py and Twine are only for vn.
+This project's dialog functions can do more than Ren'Py's equivalents.
 
 **Q:** How does the framework interact with the engine ? </p>
-**A:** For now this framework is singleton and collection of special nodes. There is also gui include in example project that is connect with framework and has all funcs like in Ren'Py game.
+**A:** For now this framework is a singleton and a collection of special nodes. There is also gui include in example project that is connected with the framework and has all functions like in a Ren'Py game.
 
 **Q:** Is it easy to use ?</p>
-**A:** For now it is not that easy as I want it to be, but I work to make it use with JSON(it will be ready in 2.0), RakugoScript (this framework own langue) and visual script.
-For now here is example using gdscript: [examples/Test/test.gd](examples/Test/test.gd)
+**A:** For now it is not that easy as I want it to be, but I am working to make it use JSON(it will be ready in 2.0), RakugoScript (this framework's own language) and visual script.
+For now here is example using GDScript: [examples/Test/test.gd](examples/Test/test.gd)
 
 ## Other Info
 
-Rakugo use [PersistenceNode](https://github.com/MatiasVME/Persistence) for saving/load game.
+Rakugo uses [PersistenceNode](https://github.com/MatiasVME/Persistence) for saving/load game.
 
 If you want to help please write to us on our [Discord](https://discord.gg/K9gvjdg).
 
