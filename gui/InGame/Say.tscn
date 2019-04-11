@@ -96,27 +96,27 @@ tracks/7/keys = {
 "values": [ false ]
 }
 tracks/8/type = "bezier"
-tracks/8/path = NodePath("ScrollContainer:rect_size:x")
+tracks/8/path = NodePath(".:self_modulate:r")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"points": PoolRealArray( 1024, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 tracks/9/type = "bezier"
-tracks/9/path = NodePath("ScrollContainer:rect_size:y")
+tracks/9/path = NodePath(".:self_modulate:g")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"points": PoolRealArray( 143, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 tracks/10/type = "bezier"
-tracks/10/path = NodePath(".:self_modulate:r")
+tracks/10/path = NodePath(".:self_modulate:b")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -126,34 +126,26 @@ tracks/10/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/11/type = "bezier"
-tracks/11/path = NodePath(".:self_modulate:g")
+tracks/11/path = NodePath(".:self_modulate:a")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 0.784314, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
-tracks/12/type = "bezier"
-tracks/12/path = NodePath(".:self_modulate:b")
+tracks/12/type = "value"
+tracks/12/path = NodePath("ScrollContainer:rect_size")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/13/type = "bezier"
-tracks/13/path = NodePath(".:self_modulate:a")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/keys = {
-"points": PoolRealArray( 0.784314, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1024, 147 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -247,27 +239,27 @@ tracks/7/keys = {
 "values": [ false ]
 }
 tracks/8/type = "bezier"
-tracks/8/path = NodePath("ScrollContainer:rect_size:x")
+tracks/8/path = NodePath(".:self_modulate:r")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"points": PoolRealArray( 1024, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 tracks/9/type = "bezier"
-tracks/9/path = NodePath("ScrollContainer:rect_size:y")
+tracks/9/path = NodePath(".:self_modulate:g")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"points": PoolRealArray( 143, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 tracks/10/type = "bezier"
-tracks/10/path = NodePath(".:self_modulate:r")
+tracks/10/path = NodePath(".:self_modulate:b")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -277,34 +269,26 @@ tracks/10/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/11/type = "bezier"
-tracks/11/path = NodePath(".:self_modulate:g")
+tracks/11/path = NodePath(".:self_modulate:a")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 0.784314, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
-tracks/12/type = "bezier"
-tracks/12/path = NodePath(".:self_modulate:b")
+tracks/12/type = "value"
+tracks/12/path = NodePath("ScrollContainer:rect_size")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/13/type = "bezier"
-tracks/13/path = NodePath(".:self_modulate:a")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/keys = {
-"points": PoolRealArray( 0.784314, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1024, 119 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -398,27 +382,27 @@ tracks/7/keys = {
 "values": [ false ]
 }
 tracks/8/type = "bezier"
-tracks/8/path = NodePath("ScrollContainer:rect_size:x")
+tracks/8/path = NodePath(".:self_modulate:r")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"points": PoolRealArray( 1024, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 tracks/9/type = "bezier"
-tracks/9/path = NodePath("ScrollContainer:rect_size:y")
+tracks/9/path = NodePath(".:self_modulate:g")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"points": PoolRealArray( 143, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 tracks/10/type = "bezier"
-tracks/10/path = NodePath(".:self_modulate:r")
+tracks/10/path = NodePath(".:self_modulate:b")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -428,34 +412,26 @@ tracks/10/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/11/type = "bezier"
-tracks/11/path = NodePath(".:self_modulate:g")
+tracks/11/path = NodePath(".:self_modulate:a")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 0.784314, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
-tracks/12/type = "bezier"
-tracks/12/path = NodePath(".:self_modulate:b")
+tracks/12/type = "value"
+tracks/12/path = NodePath("ScrollContainer:rect_size")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/13/type = "bezier"
-tracks/13/path = NodePath(".:self_modulate:a")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/keys = {
-"points": PoolRealArray( 0.784314, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 297, 598 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -537,27 +513,27 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/7/type = "bezier"
-tracks/7/path = NodePath("ScrollContainer:rect_size:x")
+tracks/7/path = NodePath(".:self_modulate:r")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"points": PoolRealArray( 1024, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 tracks/8/type = "bezier"
-tracks/8/path = NodePath("ScrollContainer:rect_size:y")
+tracks/8/path = NodePath(".:self_modulate:g")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"points": PoolRealArray( 596, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 tracks/9/type = "bezier"
-tracks/9/path = NodePath(".:self_modulate:r")
+tracks/9/path = NodePath(".:self_modulate:b")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -567,49 +543,49 @@ tracks/9/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/10/type = "bezier"
-tracks/10/path = NodePath(".:self_modulate:g")
+tracks/10/path = NodePath(".:self_modulate:a")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 0.388235, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
-tracks/11/type = "bezier"
-tracks/11/path = NodePath(".:self_modulate:b")
+tracks/11/type = "value"
+tracks/11/path = NodePath("ScrollContainer/HBoxContainer/VScrollBar:visible")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/12/type = "bezier"
-tracks/12/path = NodePath(".:self_modulate:a")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/keys = {
-"points": PoolRealArray( 0.388235, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/13/type = "value"
-tracks/13/path = NodePath("ScrollContainer/HBoxContainer/VScrollBar:visible")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
 }
+tracks/12/type = "bezier"
+tracks/12/path = NodePath("ScrollContainer:self_modulate:r")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.1 )
+}
+tracks/13/type = "bezier"
+tracks/13/path = NodePath("ScrollContainer:self_modulate:g")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.1 )
+}
 tracks/14/type = "bezier"
-tracks/14/path = NodePath("ScrollContainer:self_modulate:r")
+tracks/14/path = NodePath("ScrollContainer:self_modulate:b")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
@@ -619,37 +595,37 @@ tracks/14/keys = {
 "times": PoolRealArray( 0.1 )
 }
 tracks/15/type = "bezier"
-tracks/15/path = NodePath("ScrollContainer:self_modulate:g")
+tracks/15/path = NodePath("ScrollContainer:self_modulate:a")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/imported = false
 tracks/15/enabled = true
 tracks/15/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 0.784314, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0.1 )
 }
 tracks/16/type = "bezier"
-tracks/16/path = NodePath("ScrollContainer:self_modulate:b")
+tracks/16/path = NodePath(".:self_modulate:r")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/imported = false
 tracks/16/enabled = true
 tracks/16/keys = {
 "points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0.1 )
+"times": PoolRealArray( 0 )
 }
 tracks/17/type = "bezier"
-tracks/17/path = NodePath("ScrollContainer:self_modulate:a")
+tracks/17/path = NodePath(".:self_modulate:g")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/imported = false
 tracks/17/enabled = true
 tracks/17/keys = {
-"points": PoolRealArray( 0.784314, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0.1 )
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
 }
 tracks/18/type = "bezier"
-tracks/18/path = NodePath(".:self_modulate:r")
+tracks/18/path = NodePath(".:self_modulate:b")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
@@ -659,46 +635,38 @@ tracks/18/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/19/type = "bezier"
-tracks/19/path = NodePath(".:self_modulate:g")
+tracks/19/path = NodePath(".:self_modulate:a")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/imported = false
 tracks/19/enabled = true
 tracks/19/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 0.784314, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
-tracks/20/type = "bezier"
-tracks/20/path = NodePath(".:self_modulate:b")
+tracks/20/type = "value"
+tracks/20/path = NodePath("ScrollContainer/HBoxContainer/VBoxContainer:custom_constants/separation")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/imported = false
 tracks/20/enabled = true
 tracks/20/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 20 ]
 }
-tracks/21/type = "bezier"
-tracks/21/path = NodePath(".:self_modulate:a")
+tracks/21/type = "value"
+tracks/21/path = NodePath("ScrollContainer:rect_size")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/imported = false
 tracks/21/enabled = true
 tracks/21/keys = {
-"points": PoolRealArray( 0.784314, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/22/type = "value"
-tracks/22/path = NodePath("ScrollContainer/HBoxContainer/VBoxContainer:custom_constants/separation")
-tracks/22/interp = 1
-tracks/22/loop_wrap = true
-tracks/22/imported = false
-tracks/22/enabled = true
-tracks/22/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 20 ]
+"update": 0,
+"values": [ Vector2( 1024, 596 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -780,27 +748,27 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/7/type = "bezier"
-tracks/7/path = NodePath("ScrollContainer:rect_size:x")
+tracks/7/path = NodePath(".:self_modulate:r")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"points": PoolRealArray( 1024, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 tracks/8/type = "bezier"
-tracks/8/path = NodePath("ScrollContainer:rect_size:y")
+tracks/8/path = NodePath(".:self_modulate:g")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"points": PoolRealArray( 596, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 tracks/9/type = "bezier"
-tracks/9/path = NodePath(".:self_modulate:r")
+tracks/9/path = NodePath(".:self_modulate:b")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -810,49 +778,49 @@ tracks/9/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/10/type = "bezier"
-tracks/10/path = NodePath(".:self_modulate:g")
+tracks/10/path = NodePath(".:self_modulate:a")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 0.388235, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
-tracks/11/type = "bezier"
-tracks/11/path = NodePath(".:self_modulate:b")
+tracks/11/type = "value"
+tracks/11/path = NodePath("ScrollContainer/HBoxContainer/VScrollBar:visible")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/12/type = "bezier"
-tracks/12/path = NodePath(".:self_modulate:a")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/keys = {
-"points": PoolRealArray( 0.388235, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/13/type = "value"
-tracks/13/path = NodePath("ScrollContainer/HBoxContainer/VScrollBar:visible")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
 }
+tracks/12/type = "bezier"
+tracks/12/path = NodePath("ScrollContainer:self_modulate:r")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/13/type = "bezier"
+tracks/13/path = NodePath("ScrollContainer:self_modulate:g")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
 tracks/14/type = "bezier"
-tracks/14/path = NodePath("ScrollContainer:self_modulate:r")
+tracks/14/path = NodePath("ScrollContainer:self_modulate:b")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
@@ -862,17 +830,17 @@ tracks/14/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/15/type = "bezier"
-tracks/15/path = NodePath("ScrollContainer:self_modulate:g")
+tracks/15/path = NodePath("ScrollContainer:self_modulate:a")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/imported = false
 tracks/15/enabled = true
 tracks/15/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 tracks/16/type = "bezier"
-tracks/16/path = NodePath("ScrollContainer:self_modulate:b")
+tracks/16/path = NodePath(".:self_modulate:r")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/imported = false
@@ -882,17 +850,17 @@ tracks/16/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/17/type = "bezier"
-tracks/17/path = NodePath("ScrollContainer:self_modulate:a")
+tracks/17/path = NodePath(".:self_modulate:g")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/imported = false
 tracks/17/enabled = true
 tracks/17/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 tracks/18/type = "bezier"
-tracks/18/path = NodePath(".:self_modulate:r")
+tracks/18/path = NodePath(".:self_modulate:b")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
@@ -902,46 +870,38 @@ tracks/18/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/19/type = "bezier"
-tracks/19/path = NodePath(".:self_modulate:g")
+tracks/19/path = NodePath(".:self_modulate:a")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/imported = false
 tracks/19/enabled = true
 tracks/19/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
-tracks/20/type = "bezier"
-tracks/20/path = NodePath(".:self_modulate:b")
+tracks/20/type = "value"
+tracks/20/path = NodePath("ScrollContainer/HBoxContainer/VBoxContainer:custom_constants/separation")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/imported = false
 tracks/20/enabled = true
 tracks/20/keys = {
-"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 20 ]
 }
-tracks/21/type = "bezier"
-tracks/21/path = NodePath(".:self_modulate:a")
+tracks/21/type = "value"
+tracks/21/path = NodePath("ScrollContainer:rect_size")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/imported = false
 tracks/21/enabled = true
 tracks/21/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/22/type = "value"
-tracks/22/path = NodePath("ScrollContainer/HBoxContainer/VBoxContainer:custom_constants/separation")
-tracks/22/interp = 1
-tracks/22/loop_wrap = true
-tracks/22/imported = false
-tracks/22/enabled = true
-tracks/22/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 20 ]
+"update": 0,
+"values": [ Vector2( 1024, 596 ) ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -1093,6 +1053,18 @@ tracks/13/keys = {
 "points": PoolRealArray( 0.784314, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
+tracks/14/type = "value"
+tracks/14/path = NodePath("ScrollContainer:rect_size")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 295, 597 ) ]
+}
 
 [sub_resource type="Animation" id=7]
 tracks/0/type = "value"
@@ -1243,12 +1215,24 @@ tracks/13/keys = {
 "points": PoolRealArray( 0.784314, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
+tracks/14/type = "value"
+tracks/14/path = NodePath("ScrollContainer:rect_size")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1024, 117 ) ]
+}
 
 [node name="RakugoSayPanel" type="Panel"]
 self_modulate = Color( 1, 1, 1, 0.784314 )
-margin_top = 452.0
+margin_top = 2.0
 margin_right = 1024.0
-margin_bottom = 603.0
+margin_bottom = 116.0
 rect_min_size = Vector2( 100, 100 )
 mouse_filter = 2
 size_flags_horizontal = 3
@@ -1271,22 +1255,25 @@ anims/top = SubResource( 7 )
 editor/display_folded = true
 self_modulate = Color( 1, 1, 1, 0 )
 margin_right = 1024.0
-margin_bottom = 143.0
+margin_bottom = 117.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer"]
 editor/display_folded = true
 margin_right = 1024.0
-margin_bottom = 143.0
+margin_bottom = 117.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/HBoxContainer"]
 editor/display_folded = true
 margin_right = 1024.0
-margin_bottom = 143.0
+margin_bottom = 117.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 20
