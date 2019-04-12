@@ -39,11 +39,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://gui/OptionsBox/CollapsedList.gd"
 }, {
-"base": "Object",
-"class": "Define",
-"language": "GDScript",
-"path": "res://addons/Rakugo/lib/define.gd"
-}, {
 "base": "Node",
 "class": "Emojis",
 "language": "GDScript",
@@ -63,16 +58,6 @@ _global_script_classes=[ {
 "class": "KindContainer",
 "language": "GDScript",
 "path": "res://addons/Rakugo/nodes/kind_container.gd"
-}, {
-"base": "Object",
-"class": "LoadFile",
-"language": "GDScript",
-"path": "res://addons/Rakugo/lib/load_file.gd"
-}, {
-"base": "Object",
-"class": "LoadGlobalHistory",
-"language": "GDScript",
-"path": "res://addons/Rakugo/lib/load_global_history.gd"
 }, {
 "base": "Say",
 "class": "Menu",
@@ -229,16 +214,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/types/save.gd"
 }, {
-"base": "Object",
-"class": "SaveFile",
-"language": "GDScript",
-"path": "res://addons/Rakugo/lib/save_file.gd"
-}, {
-"base": "Object",
-"class": "SaveGlobalHistory",
-"language": "GDScript",
-"path": "res://addons/Rakugo/lib/save_global_history.gd"
-}, {
 "base": "Statement",
 "class": "Say",
 "language": "GDScript",
@@ -281,13 +256,10 @@ _global_script_class_icons={
 "Character": "res://addons/Rakugo/icons/rakugo_character.svg",
 "CharacterObject": "",
 "CollapsedList": "",
-"Define": "",
 "Emojis": "res://addons/Rakugo/emojis/16x16/1f600.png",
 "Hide": "",
 "HistorySave": "",
 "KindContainer": "",
-"LoadFile": "",
-"LoadGlobalHistory": "",
 "Menu": "",
 "NodeLink": "",
 "Notify": "",
@@ -319,8 +291,6 @@ _global_script_class_icons={
 "RakugoVarLabel": "",
 "RakugoVisualInstance": "res://addons/Rakugo/icons/rakugo_spatial.svg",
 "Save": "",
-"SaveFile": "",
-"SaveGlobalHistory": "",
 "Say": "",
 "Show": "",
 "SkipTimer": "",
@@ -337,7 +307,12 @@ run/main_scene="res://examples/Test/Test.tscn"
 boot_splash/image="res://graphics/splash.png"
 boot_splash/bg_color=Color( 0.741176, 0.733333, 0.733333, 1 )
 config/icon="res://graphics/window_icon.png"
-config/version="2.0.0"
+rakugo/game_credits="Your Company"
+rakugo/version="2.0.0"
+rakugo/markup="renpy"
+rakugo/debug=false
+rakugo/save_folder="saves"
+rakugo/scenes_dir="res://examples/"
 
 [autoload]
 
@@ -356,7 +331,7 @@ gdscript/warnings/return_value_discarded=false
 
 [editor_plugins]
 
-enabled=PoolStringArray( "Rakugo" )
+enabled=PoolStringArray( "Rakugo", "godot-plugin-refresher" )
 
 [input]
 

@@ -1,4 +1,5 @@
 extends "rakugo_var_range.gd"
+
 # extends RakugoVarRange
 # class_name RakugoVarSlider - there is no need for that
 # we don't want it be be seen in "add new Node" dialog,

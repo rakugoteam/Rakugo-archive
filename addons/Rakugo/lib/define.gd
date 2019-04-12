@@ -1,7 +1,8 @@
 extends Object
-class_name Define
 
-static func invoke(var_name:String, value, save_included: bool, variables: Dictionary) -> RakugoVar:
+func invoke(var_name:String, value, save_included: bool) -> RakugoVar:
+	var variables = Rakugo.variables
+	
 	if not variables.has(var_name):
 		var type = typeof(value)
 		
@@ -44,13 +45,13 @@ static func invoke(var_name:String, value, save_included: bool, variables: Dicti
 
 	return null
 
-static func _rakugo_var(var_name:String , value, save_included: bool, variables: Dictionary) -> RakugoVar :
+func _rakugo_var(var_name:String , value, save_included: bool, variables: Dictionary) -> RakugoVar :
 	var new_var = RakugoVar.new(var_name, value)
 	new_var.save_included = save_included
 	variables[var_name] = new_var
 	return new_var 
 
-static func node_link(node_id:String, node_path: NodePath, variables:Dictionary) -> NodeLink:
+func node_link(node_id:String, node_path: NodePath, variables:Dictionary) -> NodeLink:
 	var node_var = NodeLink.new(node_id)
 	node_var.value["node_path"] = node_path
 	variables[node_var.id] = node_var

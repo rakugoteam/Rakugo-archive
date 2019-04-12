@@ -5033,7 +5033,6 @@ margin_right = 1039.35
 margin_bottom = 602.796
 
 [node name="AboutBox" type="VBoxContainer" parent="."]
-editor/display_folded = true
 visible = false
 margin_left = 271.354
 margin_top = 6.79639
@@ -5050,14 +5049,12 @@ align = 1
 [node name="RakugoTextLabel" type="RichTextLabel" parent="AboutBox"]
 margin_top = 58.0
 margin_right = 702.0
-margin_bottom = 534.0
+margin_bottom = 533.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 bbcode_enabled = true
 script = ExtResource( 11 )
 rakugo_text_file = "res://about.txt"
-rakugo_text = "Made with {a=https://github.com/jebedaia360/Rakugo}Rakugo{/a} [rakugo_version] on {a=https://godotengine.org/}Godot Engine{/a} [godot_version] on {a=https://github.com/jebedaia360/Rakugo/blob/master/LICENSE} MIT License{/a}.
-"
 
 [node name="QuitBox" parent="." instance=ExtResource( 12 )]
 visible = false
