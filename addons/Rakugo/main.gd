@@ -1,20 +1,20 @@
 extends Node
 
-export var game_credits:= "Your Company"
-export (String, "renpy", "bbcode") var markup:= "renpy"
-export var links_color:= Color("#225ebf")
-export var debug_on:= true
-export var save_folder:= "saves"
-export var test_save:= false
-export (String, DIR) var scenes_dir:= "res://examples/"
+var links_color:= Color("#225ebf")
+var test_save:= true
 
 const rakugo_version:= "2.0.0"
 const credits_path:= "res://addons/Rakugo/credits.txt"
 # we need it because we hide base RakugoMenu form custom nodes
 const RakugoMenu:= preload("res://addons/Rakugo/nodes/rakugo_menu.gd")
 
-onready var game_version = ProjectSettings.get_setting("application/config/version")
 onready var game_title = ProjectSettings.get_setting("application/config/name")
+onready var game_version = ProjectSettings.get_setting("application/rakugo/version")
+onready var game_credits = ProjectSettings.get_setting("application/rakugo/game_credits")
+onready var markup = ProjectSettings.get_setting("application/rakugo/markup")
+onready var debug_on =  ProjectSettings.get_setting("application/rakugo/debug")
+onready var scenes_dir = ProjectSettings.get_setting("application/rakugo/scenes_dir")
+onready var save_folder = ProjectSettings.get_setting("application/rakugo/save_folder")
 
 ## init vars for settings
 var _skip_all_text:= false
@@ -143,9 +143,11 @@ func _ready() -> void:
 
 	## set by rakugo
 	define("rakugo_version", rakugo_version, false)
+
 	file.open(credits_path, file.READ)
 	define("rakugo_credits", file.get_as_text(), false)
 	file.close()
+
 	var gdv = Engine.get_version_info()
 	var gdv_string = str(gdv.major) + "." + str(gdv.minor) + "." + str(gdv.patch)
 	define("godot_version", gdv_string, false)
@@ -261,15 +263,6 @@ func _get_var(var_name:String, type:int) -> RakugoVar:
 	if  variables.has(var_name):
 		var v = variables[var_name]
 		return v
-#
-#		if v.type != type:
-#			prints("There is", var_name, ", but it is a", v.type)
-#
-#		else:
-#			return v
-#
-#	else:
-#		prints(var_name, " does not exist")
 		
 	return null
 
@@ -306,14 +299,6 @@ func get_value(var_name:String):
 func get_node_value(var_name:String) -> Dictionary:
 	var s = NodeLink.new("").var_suffix
 	return get_value(s + var_name)
-
-#func get_node_path(var_name:String) -> String:
-#	var value = get_node_value(var_name)
-#
-#	if value:
-#		return value["node_path"]
-#
-#	return ""
 
 ## returns type of variable defined using define
 func get_type(var_name:String) -> int:

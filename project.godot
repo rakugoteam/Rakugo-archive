@@ -337,7 +337,12 @@ run/main_scene="res://examples/Test/Test.tscn"
 boot_splash/image="res://graphics/splash.png"
 boot_splash/bg_color=Color( 0.741176, 0.733333, 0.733333, 1 )
 config/icon="res://graphics/window_icon.png"
-config/version="2.0.0"
+rakugo/game_credits="Your Company"
+rakugo/version="2.0.0"
+rakugo/markup="renpy"
+rakugo/debug=false
+rakugo/save_folder="saves"
+rakugo/scenes_dir="res://examples/"
 
 [autoload]
 
@@ -356,7 +361,11 @@ gdscript/warnings/return_value_discarded=false
 
 [editor_plugins]
 
-enabled=PoolStringArray( "Rakugo" )
+enabled=PoolStringArray( "Rakugo", "godot-plugin-refresher" )
+
+[gui]
+
+theme/use_hidpi=true
 
 [input]
 
