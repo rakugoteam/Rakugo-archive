@@ -22,7 +22,6 @@
 pause_mode = 2
 script = ExtResource( 1 )
 debug_on = false
-test_save = true
 
 [node name="Text" type="Node" parent="."]
 editor/display_folded = true

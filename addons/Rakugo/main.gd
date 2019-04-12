@@ -257,10 +257,20 @@ func set_var(var_name:String, value) -> RakugoVar:
 	var_to_change.value = value
 	return var_to_change
 
-func _get_var(var_name:String, type:int) -> Object:
+func _get_var(var_name:String, type:int) -> RakugoVar:
 	if  variables.has(var_name):
-		return variables[var_name]
-	
+		var v = variables[var_name]
+		return v
+#
+#		if v.type != type:
+#			prints("There is", var_name, ", but it is a", v.type)
+#
+#		else:
+#			return v
+#
+#	else:
+#		prints(var_name, " does not exist")
+		
 	return null
 
 ## returns exiting Rakugo variable as one of RakugoTypes for easy use
@@ -293,6 +303,18 @@ func get_value(var_name:String):
 	
 	return null
 
+func get_node_value(var_name:String) -> Dictionary:
+	var s = NodeLink.new("").var_suffix
+	return get_value(s + var_name)
+
+#func get_node_path(var_name:String) -> String:
+#	var value = get_node_value(var_name)
+#
+#	if value:
+#		return value["node_path"]
+#
+#	return ""
+
 ## returns type of variable defined using define
 func get_type(var_name:String) -> int:
 	return variables[var_name].type
@@ -303,7 +325,10 @@ func connect_var(
 	node:Object, func_name:String, 
 	binds:= [], flags:= 0
 	) -> void:
-	get_var(var_name).connect(signal_name, node, func_name, binds, flags)
+	get_var(var_name).connect(
+		signal_name, node, func_name,
+		 binds, flags
+	)
 	
 ## crate new character as global variable that Rakugo will see
 ## possible parameters: name, color, what_prefix, what_suffix, kind, avatar
@@ -316,11 +341,13 @@ func get_character(character_id:String) -> CharacterObject:
 	return _get_var(character_id, Type.CHARACTER) as CharacterObject
 
 ## crate new link to node as global variable that Rakugo will see
+## it can have name as other existing varbiable
 func node_link(node_id:String, node:NodePath) -> NodeLink:		
 	return Define.node_link(node_id, node, variables)
 
 func get_node_link(node_id:String) -> NodeLink:
-	return _get_var(node_id, Type.NODE) as NodeLink
+	var s = NodeLink.new("").var_suffix
+	return _get_var(s + node_id, Type.NODE) as NodeLink
 
 ## add/overwrite global subquest that Rakugo will see
 ## and returns it as RakugoSubQuest for easy use

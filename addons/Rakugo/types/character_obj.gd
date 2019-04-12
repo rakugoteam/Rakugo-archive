@@ -1,7 +1,13 @@
 extends RakugoVar
 class_name CharacterObject
 
-var parameters_names : Array = ["name", "color", "prefix", "suffix", "avatar"]
+var parameters_names : Array = [
+	"name",
+	"color", 
+	"prefix",
+	"suffix", 
+	"avatar"
+	]
 
 var _color : Color
 var _avatar : String 

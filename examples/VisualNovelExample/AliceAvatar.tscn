@@ -6,5 +6,4 @@
 position = Vector2( 39.7222, 37.1113 )
 scale = Vector2( 0.05, 0.05 )
 texture = ExtResource( 1 )
-_sections_unfolded = [ "Transform" ]
 
