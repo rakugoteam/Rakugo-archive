@@ -5,8 +5,8 @@ extends EditorPlugin
 var dock
 
 func _enter_tree():
-	## add Rakugo as singleton in ProjectSettings
-#	ProjectSettings.add_singleton(Rakugo.tscn)
+	## add Rakugo as singleton in ProjectSetting
+	add_autoload_singleton("Rakugo", "res://addons/Rakugo/Rakugo.tscn")
 	
 	# Initialization of the plugin goes here
 	# Load the dock scene and instance it
@@ -16,8 +16,6 @@ func _enter_tree():
 	add_control_to_dock(DOCK_SLOT_RIGHT_UL, dock)
 	# Note that LEFT_UL means the left of the editor, upper-left dock
 	
-	## they must stay to don't make few times script that
-	## is almost the same, but in to first lines diffRakugo
 	add_custom_type(
 		"VRakugoMenu",
 		"VBoxContainer",
@@ -71,6 +69,9 @@ func _enter_tree():
 	
 func _exit_tree():
 	# Clean-up of the plugin goes here
+	
+	remove_autoload_singleton("Rakugo")
+	
 	# Remove the dock
 	remove_control_from_docks(dock)
 	 # Erase the control from the memory
