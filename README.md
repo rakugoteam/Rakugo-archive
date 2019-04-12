@@ -12,6 +12,8 @@
 Rakugo is framemork (inspired by [Ren'Py](https://www.renpy.org)) for story driven games in [Godot](https://godotengine.org)
 or like my friend call it *Story Management Plugin*.
 
+The idea is to have a ready to use plug-in for stories, so developers can create narrative driven games with all the amazing features and tools of Godot 3.1+. 
+
 Now you can support this project by [Patreon](https://www.patreon.com/jebedaia360).
 
 You can download 1.0 for Godot 3.0 [here](https://github.com/jebedaia360/Rakugo/releases).
