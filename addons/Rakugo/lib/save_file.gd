@@ -4,7 +4,7 @@ func invoke(save_name: String) -> bool:
 	var r = Rakugo
 	var new_save = Save.new()
 	new_save.game_version = r.game_version
-	new_save.rakugo_version = r.akugo_version
+	new_save.rakugo_version = r.rakugo_version
 	new_save.history = r.history.duplicate()
 	new_save.scene = r.current_scene
 	new_save.node_name = r.current_node_name

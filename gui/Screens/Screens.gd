@@ -150,8 +150,10 @@ func _on_Quests_pressed():
 
 # if press "yes" on quit page
 func _on_Yes_pressed():
-	Rakugo.savefile("auto")
-	Rakugo.save_global_history()
+	if Rakugo.started:
+		Rakugo.savefile("auto")
+		Rakugo.save_global_history()
+		
 	settings.save_conf()
 	get_tree().quit()
 

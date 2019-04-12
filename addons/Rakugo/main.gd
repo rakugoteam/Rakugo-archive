@@ -12,7 +12,7 @@ onready var game_title = ProjectSettings.get_setting("application/config/name")
 onready var game_version = ProjectSettings.get_setting("application/rakugo/version")
 onready var game_credits = ProjectSettings.get_setting("application/rakugo/game_credits")
 onready var markup = ProjectSettings.get_setting("application/rakugo/markup")
-onready var debug_on =  ProjectSettings.get_setting("application/rakugo/debug")
+onready var debug_on = ProjectSettings.get_setting("application/rakugo/debug")
 onready var scenes_dir = ProjectSettings.get_setting("application/rakugo/scenes_dir")
 onready var save_folder = ProjectSettings.get_setting("application/rakugo/save_folder")
 
@@ -219,7 +219,7 @@ func text_passer(text:String, mode:= markup):
 ## add/overwrite global variable that Rakugo will see
 ## and returns it as RakugoVar for easy use
 func define(var_name:String, value = null, save_included := true) -> RakugoVar:
-	var v = $Define.invoke(var_name, value , save_included, variables)
+	var v = $Define.invoke(var_name, value , save_included)
 	
 	if v:
 		return v
@@ -502,7 +502,7 @@ func start(after_load:=false) -> void:
 
 func savefile(save_name:= "quick") -> bool:
 	debug(["save data to :", save_name])
-	return  $SaveFile.invoke(save_name)
+	return $SaveFile.invoke(save_name)
 	
 func loadfile(save_name:= "quick") -> bool:
 	return $LoadFile.invoke(save_folder, save_name, variables)

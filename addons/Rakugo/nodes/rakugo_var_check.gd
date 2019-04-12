@@ -35,7 +35,7 @@ func on_value_changed(vname:String, new_value:bool) -> void:
 	pressed = new_value
 
 func on_toggled(value : bool) -> void:
-	var_to_change.v = value
+	var_to_change.value = value
 
 func on_visibility_changed() -> void:
 	if visible == false:

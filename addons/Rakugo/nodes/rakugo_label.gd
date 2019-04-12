@@ -18,7 +18,6 @@ func _ready() -> void:
 	
 	connect("meta_clicked", self, "on_meta_clicked")
 	connect("visibility_changed", self, "on_visibility_changed")
-	
 
 func update_label() -> void:
 	bbcode_text = Rakugo.text_passer(rakugo_text, mode)
