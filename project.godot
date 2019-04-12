@@ -39,11 +39,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://gui/OptionsBox/CollapsedList.gd"
 }, {
-"base": "Object",
-"class": "Define",
-"language": "GDScript",
-"path": "res://addons/Rakugo/lib/define.gd"
-}, {
 "base": "Node",
 "class": "Emojis",
 "language": "GDScript",
@@ -63,16 +58,6 @@ _global_script_classes=[ {
 "class": "KindContainer",
 "language": "GDScript",
 "path": "res://addons/Rakugo/nodes/kind_container.gd"
-}, {
-"base": "Object",
-"class": "LoadFile",
-"language": "GDScript",
-"path": "res://addons/Rakugo/lib/load_file.gd"
-}, {
-"base": "Object",
-"class": "LoadGlobalHistory",
-"language": "GDScript",
-"path": "res://addons/Rakugo/lib/load_global_history.gd"
 }, {
 "base": "Say",
 "class": "Menu",
@@ -229,16 +214,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/types/save.gd"
 }, {
-"base": "Object",
-"class": "SaveFile",
-"language": "GDScript",
-"path": "res://addons/Rakugo/lib/save_file.gd"
-}, {
-"base": "Object",
-"class": "SaveGlobalHistory",
-"language": "GDScript",
-"path": "res://addons/Rakugo/lib/save_global_history.gd"
-}, {
 "base": "Statement",
 "class": "Say",
 "language": "GDScript",
@@ -281,13 +256,10 @@ _global_script_class_icons={
 "Character": "res://addons/Rakugo/icons/rakugo_character.svg",
 "CharacterObject": "",
 "CollapsedList": "",
-"Define": "",
 "Emojis": "res://addons/Rakugo/emojis/16x16/1f600.png",
 "Hide": "",
 "HistorySave": "",
 "KindContainer": "",
-"LoadFile": "",
-"LoadGlobalHistory": "",
 "Menu": "",
 "NodeLink": "",
 "Notify": "",
@@ -319,8 +291,6 @@ _global_script_class_icons={
 "RakugoVarLabel": "",
 "RakugoVisualInstance": "res://addons/Rakugo/icons/rakugo_spatial.svg",
 "Save": "",
-"SaveFile": "",
-"SaveGlobalHistory": "",
 "Say": "",
 "Show": "",
 "SkipTimer": "",
@@ -362,10 +332,6 @@ gdscript/warnings/return_value_discarded=false
 [editor_plugins]
 
 enabled=PoolStringArray( "Rakugo", "godot-plugin-refresher" )
-
-[gui]
-
-theme/use_hidpi=true
 
 [input]
 

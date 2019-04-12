@@ -219,7 +219,7 @@ func text_passer(text:String, mode:= markup):
 ## add/overwrite global variable that Rakugo will see
 ## and returns it as RakugoVar for easy use
 func define(var_name:String, value = null, save_included := true) -> RakugoVar:
-	var v = Define.invoke(var_name, value , save_included, variables)
+	var v = $Define.invoke(var_name, value , save_included, variables)
 	
 	if v:
 		return v
@@ -310,6 +310,7 @@ func connect_var(
 	node:Object, func_name:String, 
 	binds:= [], flags:= 0
 	) -> void:
+		
 	get_var(var_name).connect(
 		signal_name, node, func_name,
 		 binds, flags
@@ -328,7 +329,7 @@ func get_character(character_id:String) -> CharacterObject:
 ## crate new link to node as global variable that Rakugo will see
 ## it can have name as other existing varbiable
 func node_link(node_id:String, node:NodePath) -> NodeLink:		
-	return Define.node_link(node_id, node, variables)
+	return $Define.node_link(node_id, node, variables)
 
 func get_node_link(node_id:String) -> NodeLink:
 	var s = NodeLink.new("").var_suffix
@@ -501,14 +502,10 @@ func start(after_load:=false) -> void:
 
 func savefile(save_name:= "quick") -> bool:
 	debug(["save data to :", save_name])
-	return  SaveFile.invoke(
-		save_folder, save_name, game_version, rakugo_version, 
-		history, current_scene, current_node_name,
-		current_dialog_name, variables
-	)
+	return  $SaveFile.invoke(save_name)
 	
 func loadfile(save_name:= "quick") -> bool:
-	return LoadFile.invoke(save_folder, save_name, variables)
+	return $LoadFile.invoke(save_folder, save_name, variables)
 
 func debug_dict(
 	parameters:Dictionary,
@@ -558,28 +555,11 @@ func jump(
 	dialog_name:String, change:= true
 	) -> void:
 	
-	current_node_name = node_name
-	current_dialog_name = dialog_name
-	
-	current_scene = scenes_dir + "/" + path_to_current_scene + ".tscn"
-	
-	if path_to_current_scene.ends_with(".tscn"):
-		current_scene = path_to_current_scene
-	
-	debug(["jump to scene:", current_scene, "with dialog:", dialog_name, "from:", story_state])
-
-	if change:
-		if current_root_node != null:
-			current_root_node.queue_free()
-		
-		var lscene = load(current_scene)
-		current_root_node = lscene.instance()
-		get_tree().get_root().add_child(current_root_node)
-
-		emit_signal("started")
-	
-	if started:
-		story_step()
+	$Jump.invoke(
+		path_to_current_scene, 
+		node_name, dialog_name, 
+		change
+	)
 
 ## use this to assign beginning scene and dialog
 ## root of path_to_current_scene is scenes_dir
@@ -633,8 +613,8 @@ func is_save_exits(save_name:String) -> bool:
 	return false
 
 func save_global_history() -> bool:
-	return SaveGlobalHistory.invoke()
+	return $SaveGlobalHistory.invoke()
 
 func load_global_history() -> bool:
-	return LoadGlobalHistory.invoke()
+	return $LoadGlobalHistory.invoke()
 	
