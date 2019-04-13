@@ -142,5 +142,6 @@ func parse_bbcode_text(text:String, variables:Dictionary) -> String:
 	text = text.replace("[url=", url_open)
 	text = text.replace("[/url]", url_close)
 	text = text.replace("[/url]", url_close)
+	text = text.replace("[/tab]", tab)
 	text = text.replace("[/nl]", new_line)
 	return text
