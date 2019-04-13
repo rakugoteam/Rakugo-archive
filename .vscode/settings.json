@@ -1,0 +1,42 @@
+{
+	"GodotTools.godotVersion": 3.1,
+	"files.exclude": {
+		"**/.git": true,
+		"**/.svn": true,
+		"**/.hg": true,
+		"**/CVS": true,
+		"**/.DS_Store": true,
+		"**/.vscode": true,
+		"**/.import": true
+	},
+	"cSpell.enabledLanguageIds": [
+		"asciidoc",
+		"c",
+		"cpp",
+		"csharp",
+		"css",
+		"gdscript",
+		"go",
+		"handlebars",
+		"html",
+		"jade",
+		"javascript",
+		"javascriptreact",
+		"json",
+		"latex",
+		"less",
+		"markdown",
+		"php",
+		"plaintext",
+		"pub",
+		"python",
+		"restructuredtext",
+		"rust",
+		"scss",
+		"text",
+		"typescript",
+		"typescriptreact",
+		"yml"
+	],
+	"git.ignoreLimitWarning": true
+}
