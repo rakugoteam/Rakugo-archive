@@ -218,8 +218,21 @@ func xml_escape() -> String:
 func xml_unescape() -> String:
 	return _value.xml_unescape()
 
+func to_string() -> String:
+	return _value
 
+func parse_code(code:String, open:="", close:="") -> String:
+	code = .parse_code(code, open, close)
+	
+	for i in range(_value.length() ):
+		var sa = open + _id + "[" + str(i) + "]" + close
 
+		if code.find(sa) == -1:
+			continue # no variable in this string
+		
+		code = code.replace(sa, _value[i])
+	
+	return code
 
 
 

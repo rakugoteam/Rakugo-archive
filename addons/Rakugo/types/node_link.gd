@@ -34,4 +34,4 @@ func save_to(dict:Dictionary) -> void:
 func load_from(dict:Dictionary) -> void :
 	dict["node_path"] = _value["node_path"]
 	_value = dict
-	_inited = true
+	

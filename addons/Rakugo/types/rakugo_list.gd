@@ -101,6 +101,18 @@ func sort() -> void:
 func sort_custom(obj:Object, func_name:String) -> void:
 	value.sort_custom(obj, func_name)
 
+func parse_code(code:String, open:="", close:="") -> String:
+	code = .parse_code(code, open, close)
+	
+	for i in range(_value.size()):
+		var sa = _id + "[" + str(i) + "]"
+		
+		if code.find(sa) == -1:
+			continue # no variable in this string
+	
+		code = code.replace(sa, str(_value[i]))
+	
+	return code
 	
 
 

@@ -58,52 +58,21 @@ func dict_or_character(
 func parse_text_adv(
 	text:String, variables:Dictionary,
 	open:String, close:String) -> String:
-	## code from Sebastian Holc solution:
-	## http://pastebin.com/K8zsWQtL
-
+	
+	if text == null:
+		return ""
+		
 	text = text.c_unescape()
 
 	for var_name in variables.keys():
 		if text.find(var_name) == -1:
 			continue # no variable in this string
 		
-		var value = variables[var_name].value
-		var type = variables[var_name].type
+		var variable:RakugoVar = variables[var_name]
+		var type = Rakugo.Type.keys()[variable.type]
 
-		# Rakugo.debug([var_name, type, value])
-		var s = open + var_name + close
-
-		match type:
-			Rakugo.Type.TEXT:
-				text = text.replace(s, value)
-		
-			Rakugo.Type.VAR:
-				text = text.replace(s, str(value))
-		
-			Rakugo.Type.DICT:
-				text = dict_or_character(
-					var_name, open, s, close,
-					value, text, type, variables
-				)
-			
-			Rakugo.Type.CHARACTER:
-				text = dict_or_character(
-					var_name, open, s, close,
-					value, text, type, variables
-				)
-		
-			Rakugo.Type.LIST:
-				text = text.replace(s, str(value))
-				
-				for i in range(value.size()):
-					var sa = open + var_name + open + str(i) + close + close
-					if text.find(sa) == -1:
-						continue # no variable in this string
-					
-					text = text.replace(sa, str(value[i]))
-
-			_:
-				print(var_name," is unsuported variable type: ", type)
+		Rakugo.debug([var_name, type, variable.value])
+		text = variable.parse_code(text, open, close)
 		
 	return text
 
