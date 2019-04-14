@@ -14,105 +14,105 @@ func _get_value() -> Array:
 	return _value
 
 func set_index_value(index:int, index_value) -> void:
-	value[index] = index_value
+	_value[index] = index_value
 	emit_signal("index_value_change", id, index, index_value)
 
 func get_index_value(index:int):
-	return value[index]
+	return _value[index]
 
 func add(value_to_add) -> void:
-	value.append(value_to_add)
+	_value.append(value_to_add)
 	
 func back():
-	value.back()
+	_value.back()
 
 func bsearch(index_value, before:=true) -> int:
-	return value.bsearch(index_value, before)
+	return _value.bsearch(index_value, before)
 
 func bsearch_custom(index_value, obj:Object, func_name:String, before:=true) -> int:
-	return value.bsearch_custom(index_value, obj, func_name, before)
+	return _value.bsearch_custom(index_value, obj, func_name, before)
 
 func clear():
-	value.clear()
+	_value.clear()
 
 func count(value_to_count) -> int:
-	return value.count(value_to_count)
+	return _value.count(value_to_count)
 
 func empty() -> bool:
-	return value.empty()
+	return _value.empty()
 
 func erase(value_to_erase) -> void:
-	value.erase(value_to_erase)
+	_value.erase(value_to_erase)
 
 func find(what, from:=0) -> int:
-	return value.find(what, from)
+	return _value.find(what, from)
 
 func find_last(what) -> int:
-	return value.find_last(what)
+	return _value.find_last(what)
 
 func front():
-	value.front()
+	_value.front()
 
 func has(value_to_check) -> bool:
-	return value.has(value_to_check)
+	return _value.has(value_to_check)
 
 func insert(position:int, value_to_insert) -> void:
-	value.insert(position, value_to_insert)
+	_value.insert(position, value_to_insert)
 
 func invert() -> void:
-	value.invert()
+	_value.invert()
 
 func max_value():
-	return value.max()
+	return _value.max()
 
 func min_value():
-	return value.min()
+	return _value.min()
 
 func pop_back():
-	return value.pop_back()
+	return _value.pop_back()
 
 func pop_front():
-	return value.pop_front()
+	return _value.pop_front()
 
 func push_back(value_to_push) -> void:
-	value.push_back(value_to_push)
+	_value.push_back(value_to_push)
 
 func push_front(value_to_push) -> void:
-	value.push_front(value_to_push)
+	_value.push_front(value_to_push)
 
 func remove(position:int) -> void:
-	value.remove(position)
+	_value.remove(position)
 
 func resize(size:int) -> void:
-	value.resize(size)
+	_value.resize(size)
 
 func rfind(what, from:=-1) -> int:
-	return value.rfind(what, from)
+	return _value.rfind(what, from)
 
 func shuffle() -> void:
-	value.shuffle()
+	_value.shuffle()
 
 func size() -> int:
-	return value.size()
+	return _value.size()
 
 func sort() -> void:
-	value.sort()
+	_value.sort()
 
 func sort_custom(obj:Object, func_name:String) -> void:
-	value.sort_custom(obj, func_name)
+	_value.sort_custom(obj, func_name)
 
-func parse_code(code:String, open:="", close:="") -> String:
-	code = .parse_code(code, open, close)
+func parse_text(text:String, open:="", close:="") -> String:
+	text = .parse_text(text, open, close)
 	
 	for i in range(_value.size()):
-		var sa = _id + "[" + str(i) + "]"
+		var sa = open + _id + "[" + str(i) + "]" + close
 		
-		if code.find(sa) == -1:
+		if text.find(sa) == -1:
 			continue # no variable in this string
 	
-		code = code.replace(sa, str(_value[i]))
+		text = text.replace(sa, str(_value[i]))
 	
-	return code
+	return text
 	
 
 

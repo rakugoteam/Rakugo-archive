@@ -310,7 +310,7 @@ config/icon="res://graphics/window_icon.png"
 rakugo/game_credits="Your Company"
 rakugo/version="2.0.0"
 rakugo/markup="renpy"
-rakugo/debug=true
+rakugo/debug=false
 rakugo/save_folder="saves"
 rakugo/scenes_dir="res://examples/"
 

@@ -67,9 +67,9 @@ func load_from(dict:Dictionary) -> void :
 func to_string() -> String:
 	return str(_value)
 	
-func parse_code(code:String, open:="", close:="") -> String:
+func parse_text(text:String, open:="", close:="") -> String:
 	var s = open + _id + close
-	return code.replace(s, to_string())
+	return text.replace(s, to_string())
 
 func _get_var_suffix() -> String:
 	return _suffix

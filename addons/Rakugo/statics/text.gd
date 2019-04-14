@@ -22,6 +22,8 @@ func text_passer(
 	if !text:
 		return text
 	
+	var _text : = text
+	
 	match mode:
 		"renpy":
 			text = parse_renpy_text(text, variables)
@@ -29,30 +31,8 @@ func text_passer(
 		"bbcode":
 			text = parse_bbcode_text(text, variables)
 	
-	
-	# Rakugo.debug("org: ''", _text, "', bbcode: ''", text , "'")
+	Rakugo.debug(["org: ''", _text, "', bbcode: ''", text , "'"])
 
-	return text
-
-func dict_or_character(
-	var_name:String, open:String,
-	s:String, close:String, dict,
-	text:String, type:int,
-	variables:Dictionary) -> String:
-	text = text.replace(s, str(dict))
-	
-	for k in dict.keys():
-		var sk = open + var_name + "." + k + close
-		if text.find(sk) == -1:
-			continue # no variable in this string
-		
-		var kvalue = str(dict[k])
-
-		if k == "name" and type == Rakugo.Type.CHARACTER:
-			kvalue = variables[var_name].parse_character()
-		
-		text = text.replace(sk, kvalue)
-	
 	return text
 
 func parse_text_adv(
@@ -72,7 +52,7 @@ func parse_text_adv(
 		var type = Rakugo.Type.keys()[variable.type]
 
 		Rakugo.debug([var_name, type, variable.value])
-		text = variable.parse_code(text, open, close)
+		text = variable.parse_text(text, open, close)
 		
 	return text
 

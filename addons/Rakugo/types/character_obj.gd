@@ -34,7 +34,7 @@ func _set_avatar(vavatar : Resource) -> void:
 func _get_avatar() -> String:
 	return _avatar
 
-func parse_character() -> String: 
+func parse_name() -> String: 
 	var ncharacter = ""
 	
 	if name != "":
@@ -79,3 +79,19 @@ func dict2character(dict : Dictionary) -> void:
 	if dict.has("avatar"):
 		_avatar = dict.avatar
 
+func parse_text(text:String, open:="", close:="") -> String:
+	text = .parse_text(text, open, close)
+	
+	for k in character2dict().keys():
+		var sa = open +  _id + "." + k + close
+		var r = _value[k]
+		
+		if k == "name":
+			r = parse_name()
+		
+		if text.find(sa) == -1:
+			continue # no variable in this string
+	
+		text = text.replace(sa, r)
+	
+	return text
