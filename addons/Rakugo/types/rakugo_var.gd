@@ -10,7 +10,6 @@ var _id : = ""
 var var_suffix: String setget , _get_var_suffix
 var _suffix:= ""
 
-var _inited := false
 var save_included:=true
 
 signal value_changed(var_id, new_value)
@@ -21,16 +20,13 @@ func _init(var_id:String, var_value, var_type: = 0, var_suffix: = ""):
 	_value = var_value
 	_type = var_type
 	_suffix = var_suffix
-	_inited = true
 
 func _get_type() -> int:
 	return _type
 
 func _set_value(var_value) -> void:
 	_value = var_value
-	
-	if _inited:
-		emit_signal("value_changed", id, _value)
+	emit_signal("value_changed", id, _value)
 
 func _get_value():
 	return _value
@@ -67,10 +63,13 @@ func save_to(dict:Dictionary) -> void:
 
 func load_from(dict:Dictionary) -> void :
 	_value = dict
-	_inited = true
-	
+
 func to_string() -> String:
-	return str(value)
+	return str(_value)
+	
+func parse_text(text:String, open:="", close:="") -> String:
+	var s = open + _id + close
+	return text.replace(s, to_string())
 
 func _get_var_suffix() -> String:
 	return _suffix

@@ -140,11 +140,11 @@ func pad_decimals(digits:int) -> String:
 func pad_zeros(digits:int) -> String:
 	return _value.pad_zeros(digits)
 
-func percent_decode() -> String:
-	return _value.percent_decode()
+func percent_detext() -> String:
+	return _value.percent_detext()
 
-func percent_encode() -> String:
-	return _value.percent_encode()
+func percent_entext() -> String:
+	return _value.percent_entext()
 
 func plus_file(file:String) -> String:
 	return _value.plus_file(file)
@@ -218,8 +218,21 @@ func xml_escape() -> String:
 func xml_unescape() -> String:
 	return _value.xml_unescape()
 
+func to_string() -> String:
+	return _value
 
+func parse_text(text:String, open:="", close:="") -> String:
+	text = .parse_text(text, open, close)
+	
+	for i in range(_value.length() ):
+		var sa = open + _id + "[" + str(i) + "]" + close
 
+		if text.find(sa) == -1:
+			continue # no variable in this string
+		
+		text = text.replace(sa, _value[i])
+	
+	return text
 
 
 

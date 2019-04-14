@@ -12,25 +12,38 @@ func _get_value() -> Dictionary:
 	return _value
 
 func clear() -> void:
-	value.clear()
+	_value.clear()
 	
 func empty() -> void:
-	value.empty()
+	_value.empty()
 	
 func erase(key) -> bool:
-	return value.erase(key)
+	return _value.erase(key)
 	
 func has(key) -> bool:
-	return value.has(key)
+	return _value.has(key)
 	
 func has_all(keys:Array) -> bool:
-	return value.has_all(keys)
+	return _value.has_all(keys)
 	
 func keys() -> Array:
-	return value.keys()
+	return _value.keys()
 	
 func size() -> int:
-	return value.size()
+	return _value.size()
 	
 func values() -> Array:
-	return value.values()
+	return _value.values()
+	
+func parse_text(text:String, open:="", close:="") -> String:
+	text = .parse_text(text, open, close)
+	
+	for k in _value.keys():
+		var sa = open +  _id + "." + k + close
+		
+		if text.find(sa) == -1:
+			continue # no variable in this string
+	
+		text = text.replace(sa, _value[k])
+	
+	return text
