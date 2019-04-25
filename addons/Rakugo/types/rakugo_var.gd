@@ -26,7 +26,7 @@ func _get_type() -> int:
 
 func _set_value(var_value) -> void:
 	_value = var_value
-	emit_signal("value_changed", id, _value)
+	emit_signal("value_changed", _id, _value)
 
 func _get_value():
 	return _value
@@ -35,7 +35,7 @@ func _get_id() -> String:
 	return _id
 	
 func _get(p_property : String):
-	if _value is Object: 
+	if _value is Object:
 		if _value.has(p_property):
 			return _value[p_property]
 
@@ -51,14 +51,14 @@ func _set(p_property:String, p_value) -> bool:
 func save_to(dict:Dictionary) -> void:
 	if !save_included:
 		return
-		
+
 	var save := {
 		"value": _value,
 		"type" : _type
 	}
-	
+
 	dict[_id] = save
-	
+
 	Rakugo.debug(["saveing", _id])
 
 func load_from(dict:Dictionary) -> void :
@@ -66,7 +66,7 @@ func load_from(dict:Dictionary) -> void :
 
 func to_string() -> String:
 	return str(_value)
-	
+
 func parse_text(text:String, open:="", close:="") -> String:
 	var s = open + _id + close
 	return text.replace(s, to_string())
