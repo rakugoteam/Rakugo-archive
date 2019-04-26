@@ -1,5 +1,5 @@
 # Rakugo ![Logo](graphics/window_icon.png)
-[![Documentation Status](https://readthedocs.org/projects/rakugo/badge/?version=docs)](https://rakugo.readthedocs.io/en/docs/?badge=docs)
+[![Documentation Status](https://readthedocs.org/projects/rakugo/badge/?version=latest)](https://rakugo.readthedocs.io/en/latest/?badge=latest)
 [![Patreon](https://img.shields.io/badge/support-pateron-orange.svg?style=flat-square)](https://www.patreon.com/jebedaia360)
 [![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](LICENSE)
 [![Discord Server](https://img.shields.io/discord/484604562183815169.svg?style=flat-square)](https://discord.gg/K9gvjdg)
@@ -13,7 +13,7 @@
 Rakugo is framemork (inspired by [Ren'Py](https://www.renpy.org)) for story driven games in [Godot](https://godotengine.org)
 or like my friend call it *Story Management Plugin*.
 
-The idea is to have a ready to use plug-in for stories, so developers can create narrative driven games with all the amazing features and tools of Godot 3.1+. 
+The idea is to have a ready to use plug-in for stories, so developers can create narrative driven games with all the amazing features and tools of Godot 3.1+.
 
 Now you can support this project by [Patreon](https://www.patreon.com/jebedaia360).
 
@@ -72,5 +72,3 @@ I need help with this [visual script support](https://github.com/jebedaia360/Rak
 - icons from [game-icons.net](https://game-icons.net)
 
 New emoji mode use [![Creative Commons](https://img.shields.io/badge/license-CC0%201.0-orange.svg?style=flat-square)](http://creativecommons.org/publicdomain/zero/1.0/) [Twemoji](https://twemoji.twitter.com/).
-
-
