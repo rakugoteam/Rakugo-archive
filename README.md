@@ -65,6 +65,8 @@ For now here is example using GDScript: [examples/Test/test.gd](examples/Test/te
 
 If you want to help please write to us on our [Discord](https://discord.gg/K9gvjdg).
 
+Docs repo is here: https://github.com/jebedaia360/RakugoDocs
+
 I need help with this [visual script support](https://github.com/jebedaia360/Rakugo/issues/26).
 
 - [Godot icons](https://github.com/godotengine/godot-design/tree/master/engine/icons/optimized)
