@@ -316,10 +316,10 @@ rakugo/scenes_dir="res://examples/"
 
 [autoload]
 
-Rakugo="*res://addons/Rakugo/Rakugo.tscn"
 settings="*res://gui/settings.gd"
 Window="*res://gui/Window/Window.tscn"
 VNCharacters="*res://examples/VisualNovelExample/Characters.tscn"
+Rakugo="*res://addons/Rakugo/Rakugo.tscn"
 
 [debug]
 

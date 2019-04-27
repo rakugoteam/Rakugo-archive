@@ -212,7 +212,7 @@ func add_dialog(node:Node, func_name:String) -> void:
 
 ## parse text like in renpy to bbcode if mode == "renpy"
 ## or parse bbcode with {vars} if mode == "bbcode"
-## default mode = Rakugo.markup 
+## default mode = Rakugo.markup
 func text_passer(text:String, mode:= markup):
 	return $Text.text_passer(text, variables, mode, links_color.to_html())
 
@@ -220,10 +220,10 @@ func text_passer(text:String, mode:= markup):
 ## and returns it as RakugoVar for easy use
 func define(var_name:String, value = null, save_included := true) -> RakugoVar:
 	var v = $Define.invoke(var_name, value , save_included)
-	
+
 	if v:
 		return v
-		
+
 	else:
 		return set_var(var_name, value)
 
@@ -231,13 +231,13 @@ func str2value(str_value : String, var_type : String):
 	match var_type:
 		"str":
 			return str_value
-	
+
 		"bool":
 			return bool(str_value)
-	
+
 		"int":
 			return int(str_value)
-	
+
 		"float":
 			return float(str_value)
 
@@ -263,7 +263,7 @@ func _get_var(var_name:String, type:int) -> RakugoVar:
 	if  variables.has(var_name):
 		var v = variables[var_name]
 		return v
-		
+
 	return null
 
 ## returns exiting Rakugo variable as one of RakugoTypes for easy use
@@ -275,17 +275,17 @@ func get_var(var_name:String) -> RakugoVar:
 ## it can't use optional typing
 func get_def_type(variable) -> String:
 	var type = "str"
-		
+
 	match typeof(variable):
 		TYPE_BOOL:
 			type = "bool"
-		
+
 		TYPE_INT:
 			type = "int"
-	
+
 		TYPE_REAL:
 			type = "float"
-	
+
 	return type
 
 ## returns value of variable defined using define
@@ -293,7 +293,7 @@ func get_def_type(variable) -> String:
 func get_value(var_name:String):
 	if variables.has(var_name):
 		return variables[var_name].value
-	
+
 	return null
 
 func get_node_value(var_name:String) -> Dictionary:
@@ -307,17 +307,17 @@ func get_type(var_name:String) -> int:
 ## just faster way to connect signal to rakugo's variable
 func connect_var(
 	var_name:String, signal_name:String,
-	node:Object, func_name:String, 
+	node:Object, func_name:String,
 	binds:= [], flags:= 0
 	) -> void:
-		
+
 	get_var(var_name).connect(
 		signal_name, node, func_name,
 		 binds, flags
 	)
-	
+
 ## crate new character as global variable that Rakugo will see
-## possible parameters: name, color, what_prefix, what_suffix, kind, avatar
+## possible parameters: name, color, what_prefix, what_suffix, kind, avatar, stats
 func character(character_id:String, parameters:Dictionary) -> CharacterObject:
 	var new_ch := CharacterObject.new(character_id, parameters)
 	variables[character_id] = new_ch
@@ -328,7 +328,7 @@ func get_character(character_id:String) -> CharacterObject:
 
 ## crate new link to node as global variable that Rakugo will see
 ## it can have name as other existing varbiable
-func node_link(node_id:String, node:NodePath) -> NodeLink:		
+func node_link(node_id:String, node:NodePath) -> NodeLink:
 	return $Define.node_link(node_id, node, variables)
 
 func get_node_link(node_id:String) -> NodeLink:
@@ -339,7 +339,7 @@ func get_node_link(node_id:String) -> NodeLink:
 ## and returns it as RakugoSubQuest for easy use
 ## possible parameters: "who", "title", "description", "optional", "state", "subquests"
 func subquest(subquest_id:String, parameters:= {}) -> Subquest:
-	var new_subq : = Subquest.new(subquest_id, parameters)	
+	var new_subq : = Subquest.new(subquest_id, parameters)
 	return new_subq
 
 ## returns exiting Rakugo subquest as RakugoSubQuest for easy use
@@ -359,7 +359,7 @@ func get_quest(quest_id:String) -> Quest:
 	return _get_var(quest_id, Type.QUEST) as Quest
 
 ## it should be "node:Statement", but it don't work for now
-func _set_statement(node:Node, parameters:Dictionary) -> void:		
+func _set_statement(node:Node, parameters:Dictionary) -> void:
 	node.set_parameters(parameters)
 	node.exec()
 	active = false
@@ -434,7 +434,7 @@ func play_anim(
 	node_id:String,
 	anim_name:String
 	) -> void:
-	
+
 	var parameters = {
 		"node_id":node_id,
 		"anim_name":anim_name
@@ -495,7 +495,7 @@ func start(after_load:=false) -> void:
 	load_global_history()
 	history_id = 0
 	started = true
-	
+
 	if not after_load:
 		emit_signal("started")
 		story_step()
@@ -503,7 +503,7 @@ func start(after_load:=false) -> void:
 func savefile(save_name:= "quick") -> bool:
 	debug(["save data to :", save_name])
 	return $SaveFile.invoke(save_name)
-	
+
 func loadfile(save_name:= "quick") -> bool:
 	return $LoadFile.invoke(save_folder, save_name, variables)
 
@@ -512,14 +512,14 @@ func debug_dict(
 	parameters_names:= [],
 	some_custom_text:= ""
 	) -> String:
-		
+
 	var dbg = ""
-	
+
 	for k in parameters_names:
 		if k in parameters:
 			if not k in [null, ""]:
 				dbg += k + ":" + str(parameters[k]) + ", "
-	
+
 	if parameters_names.size() > 0:
 		dbg.erase(dbg.length() - 2, 2)
 
@@ -530,15 +530,15 @@ func debug_dict(
 func debug(some_text = []) -> void:
 	if not debug_on:
 		return
-		
+
 	if typeof(some_text) == TYPE_ARRAY:
 		var new_text = ""
-		
+
 		for i in some_text:
 			new_text += str(i) + " "
-			
+
 		some_text = new_text
-		
+
 	print(some_text)
 
 func _set_history_id(value:int) -> void:
@@ -551,13 +551,13 @@ func _get_history_id() -> int:
 ## root of path_to_current_scene is scenes_dir
 ## provide path_to_current_scene with out ".tscn"
 func jump(
-	path_to_current_scene:String, node_name:String, 
+	path_to_current_scene:String, node_name:String,
 	dialog_name:String, change:= true
 	) -> void:
-	
+
 	$Jump.invoke(
-		path_to_current_scene, 
-		node_name, dialog_name, 
+		path_to_current_scene,
+		node_name, dialog_name,
 		change
 	)
 
@@ -567,7 +567,7 @@ func jump(
 func begin(path_to_current_scene:String, node_name:String, dialog_name:String) -> void:
 	if loading_in_progress:
 		return
-		
+
 	jump(path_to_current_scene, node_name , dialog_name, false)
 
 ## it don't work :(
@@ -576,19 +576,19 @@ func current_statement_in_global_history() -> bool:
 	var i = 0
 	var hi_item = current_statement.get_as_history_item()
 	# prints(hi_item)
-	
+
 	if not current_statement.parameters.add_to_history:
 		i = 1
 		r = true
 		# prints("r =", str(r), "i =", str(i))
 		return r
-	
+
 	if not hi_item.has("state"):
 		i = 2
 		r = true
 		# prints("r =", str(r), "i =", str(i))
 		return r
-	
+
 	i = 3
 	r = hi_item in global_history
 	# prints("r =", str(r), "i =", str(i))
@@ -617,4 +617,3 @@ func save_global_history() -> bool:
 
 func load_global_history() -> bool:
 	return $LoadGlobalHistory.invoke()
-	
