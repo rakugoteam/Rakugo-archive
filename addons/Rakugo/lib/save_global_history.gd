@@ -5,7 +5,7 @@ func invoke() -> bool:
 	var save_name = "global_history"
 	var new_save := HistorySave.new()
 	new_save.game_version= r.game_version
-	new_save.r_version = r.rakugo_version
+	new_save.rakugo_version = r.rakugo_version
 	new_save.history_data = r.global_history.duplicate()
 		
 	var dir := Directory.new()
