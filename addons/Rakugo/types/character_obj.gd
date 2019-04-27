@@ -41,9 +41,15 @@ func parse_name() -> String:
 	var ncharacter = ""
 
 	if name != "":
-		ncharacter = "{color=#" + color + "}"
-		ncharacter += name
-		ncharacter += "{/color}"
+		if Rakugo.markup == "bbcode":
+			ncharacter = "{color=#" + color + "}"
+			ncharacter += name
+			ncharacter += "{/color}"
+		
+		if Rakugo.markup == "renpy":
+			ncharacter = "[color=#" + color + "]"
+			ncharacter += name
+			ncharacter += "[/color]"
 
 	return ncharacter
 
