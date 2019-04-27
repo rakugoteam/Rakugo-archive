@@ -317,8 +317,8 @@ func connect_var(
 	)
 
 ## crate new character as global variable that Rakugo will see
-## possible parameters: name, color, what_prefix, what_suffix, kind, avatar, stats
-func character(character_id:String, parameters:Dictionary) -> CharacterObject:
+## possible parameters: name, color, what_prefix, what_suffix, avatar, stats
+func character(character_id:String, parameters:={}) -> CharacterObject:
 	var new_ch := CharacterObject.new(character_id, parameters)
 	variables[character_id] = new_ch
 	return new_ch
