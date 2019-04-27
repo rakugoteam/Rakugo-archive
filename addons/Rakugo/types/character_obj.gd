@@ -13,7 +13,7 @@ var parameters_names : Array = [
 var _color : Color
 var _avatar : String
 
-var name  : = ""
+var name  : = "" 
 var prefix: = ""
 var suffix: = ""
 var stats: = {}
@@ -86,7 +86,7 @@ func dict2character(dict : Dictionary) -> void:
 		if dict.has("stats"):
 			stats = dict.stats
 
-func parse_text(text:String, open:="", close:="") -> String:
+func parse_text(text:String, open:String, close:String) -> String:
 	text = .parse_text(text, open, close)
 
 	for k in character2dict().keys():

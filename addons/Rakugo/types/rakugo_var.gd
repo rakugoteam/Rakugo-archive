@@ -67,7 +67,7 @@ func load_from(dict:Dictionary) -> void :
 func to_string() -> String:
 	return str(_value)
 
-func parse_text(text:String, open:="", close:="") -> String:
+func parse_text(text:String, open:String, close:String) -> String:
 	var s = open + _id + close
 	return text.replace(s, to_string())
 

@@ -221,7 +221,7 @@ func xml_unescape() -> String:
 func to_string() -> String:
 	return _value
 
-func parse_text(text:String, open:="", close:="") -> String:
+func parse_text(text:String, open:String, close:String) -> String:
 	text = .parse_text(text, open, close)
 	
 	for i in range(_value.length() ):

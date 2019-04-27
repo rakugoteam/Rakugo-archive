@@ -35,7 +35,7 @@ func size() -> int:
 func values() -> Array:
 	return _value.values()
 	
-func parse_text(text:String, open:="", close:="") -> String:
+func parse_text(text:String, open:String, close:String) -> String:
 	text = .parse_text(text, open, close)
 	
 	for k in _value.keys():

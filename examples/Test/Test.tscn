@@ -65,7 +65,7 @@ editor/display_folded = true
 script = ExtResource( 2 )
 character_id = "ra"
 character_name = "Rakugo"
-color = Color( 0.967169, 0.988281, 0.312698, 1 )
+color = Color( 0.968627, 0.988235, 0.313726, 1 )
 avatar = ExtResource( 3 )
 
 [node name="TestNode2D" type="Node2D" parent="RakugoCharacter"]
