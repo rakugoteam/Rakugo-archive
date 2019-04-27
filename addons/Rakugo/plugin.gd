@@ -5,9 +5,6 @@ extends EditorPlugin
 var dock
 
 func _enter_tree():
-	## add Rakugo as singleton in ProjectSetting
-	add_autoload_singleton("Rakugo", "res://addons/Rakugo/Rakugo.tscn")
-	
 	# Initialization of the plugin goes here
 	# Load the dock scene and instance it
 	dock = preload("emojis/EmojiPanel.tscn").instance()
@@ -68,10 +65,6 @@ func _enter_tree():
 	print("Rakugo is Active")
 	
 func _exit_tree():
-	# Clean-up of the plugin goes here
-	
-	remove_autoload_singleton("Rakugo")
-	
 	# Remove the dock
 	remove_control_from_docks(dock)
 	# Erase the control from the memory
