@@ -1,5 +1,4 @@
 extends Button
-class_name RakugoVarCheckButton
 
 export var var_name : = "some_var" 
 
