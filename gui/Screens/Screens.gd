@@ -183,7 +183,7 @@ func _on_About_pressed():
 	show()
 
 func _on_Help_pressed():
-	OS.shell_open("https://github.com/jebedaia360/Rakugo")
+	OS.shell_open("https://rakugo.readthedocs.io/en/latest/")
 
 func _fullscreen_on_input(event):
 	if !event.is_action_pressed("rakugo_fullscreen"):
