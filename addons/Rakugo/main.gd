@@ -164,10 +164,6 @@ func _ready() -> void:
 	define("notify_time", _notify_time, false)
 	define("typing_text", _typing_text, false)
 
-	## test vars
-	define("test_bool", false)
-	define("test_float", 10.0)
-
 	step_timer.connect("timeout", self, "_on_time_active_timeout")
 
 func get_datetime_str() -> String:
