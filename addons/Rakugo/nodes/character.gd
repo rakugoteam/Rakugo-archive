@@ -125,4 +125,4 @@ func on_save() ->void:
 	Rakugo.character(_id, dict)
 
 func on_load(game_version) -> void:
-	_character = Rakugo.get_character(_id)
+	_character = Rakugo.get_var(_id)

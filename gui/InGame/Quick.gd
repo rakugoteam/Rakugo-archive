@@ -29,6 +29,7 @@ func _ready() -> void:
 func _on_qsave() -> void:
 	if Rakugo.savefile():
 		$InfoAnim.play("Saved")
+		$QLoad.disabled = !Rakugo.can_qload()
 	
 	else:
 		$InfoAnim/Panel/Label.bbcode_text = save_error_msg
@@ -51,6 +52,7 @@ func _on_statement(type : int, parameters : Dictionary) -> void:
 
 func on_auto() -> void:
 	$Skip.pressed = false
+	
 	if not Rakugo.auto_timer.run():
 		on_stop_loop()
 		return

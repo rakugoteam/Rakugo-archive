@@ -34,25 +34,25 @@ func add_quest_button(quest : Subquest, place_to_add : Node, is_subquest : bool 
 func _on_visibility_changed() -> void:
 	if not visible:
 		return
-	
+
 	if temp_quests == Rakugo.quests:
 		return
-	
+
 	var i = 0
 	for quest_id in Rakugo.quests:
 		if quest_id in temp_quests:
 			continue
-		
-		var quest : Quest = Rakugo.get_quest(quest_id)
+
+		var quest : Quest = Rakugo.get_var(quest_id)
 		var q_button : Button = add_quest_button(quest, quests_box)
 		if i == quests_box.get_child_count():
 			if !q_button:
 				continue
-		
+
 		temp_quests.append(quest_id)
 		if quest.is_subquests_empty():
 			continue
-		
+
 		var j = 0
 		var sub_box = VBoxContainer.new()
 		var subquest : Subquest
@@ -61,7 +61,7 @@ func _on_visibility_changed() -> void:
 			if j == sub_box.get_child_count():
 				if !subq_button:
 					continue
-				
+
 			j += 1
 
 		if sub_box.get_child_count() > 0:
@@ -71,8 +71,5 @@ func _on_visibility_changed() -> void:
 
 		else:
 			sub_box.queue_free()
-		
+
 		i += 1
-		
-
-

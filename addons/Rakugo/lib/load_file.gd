@@ -4,18 +4,18 @@ func invoke(save_folder: String, save_name: String,  variables: Dictionary):
 	var r = Rakugo
 	r.loading_in_progress = true
 	var save_folder_path = "usr://".plus_file(save_folder)
-	
+
 	if r.test_save:
 		save_folder_path = "res://".plus_file(save_folder)
 
 	var save_file_path = save_folder_path.plus_file(save_name)
 	r.debug(["load data from:", save_name])
-	
+
 	var file:= File.new()
-	
+
 	if r.test_save:
 		save_file_path += ".tres"
-		
+
 	else:
 		save_file_path += ".res"
 
@@ -23,20 +23,20 @@ func invoke(save_folder: String, save_name: String,  variables: Dictionary):
 		print("Save file %s doesn't exist" % save_file_path)
 		r.loading_in_progress = false
 		return false
-	
+
 	var save : Resource = load(save_file_path)
 	var game_version = save.game_version
-	
+
 	r.start(true)
 	r.story_state = save.story_state - 1
-	
+
 	r.jump(
 		save.scene,
 		save.node_name,
 		save.dialog_name,
 		true
 		)
-	
+
 	r.quests.clear()
 	r.history = save.history.duplicate()
 
@@ -60,7 +60,7 @@ func invoke(save_folder: String, save_name: String,  variables: Dictionary):
 					continue
 
 				r.quests.append(k)
-			
+
 			r.Type.NODE:
 				var n = NodeLink.new(k)
 				n.load_from(v.value)
@@ -70,14 +70,14 @@ func invoke(save_folder: String, save_name: String,  variables: Dictionary):
 				r.define(k, v.value)
 			
 	for q_id in r.quests:
-		var q = r.get_quest(q_id)
+		var q = r.get_var(q_id)
 		q.update_subquests()
 
 	r.history_id = save.history_id
-	
+
 	for node in r.get_tree().get_nodes_in_group("save"):
 		node.on_load(game_version)
-	
+
 	r.loading_in_progress = false
-	
+
 	return true

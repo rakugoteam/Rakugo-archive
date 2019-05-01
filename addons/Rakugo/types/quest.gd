@@ -16,7 +16,7 @@ func _init(var_id:String, var_value:Dictionary
 
 func _set_value(parameters: = {}) -> void:
 	dict2quest(parameters)
-	
+
 func _get_value() -> Dictionary:
 	return quest2dict()
 
@@ -46,7 +46,7 @@ func finish() -> void:
 	if is_all_subquest_completed():
 		state = STATE_DONE
 		emit_signal("done_quest")
-		
+
 	else:
 		state = STATE_FAIL
 		emit_signal("fail_quest")
@@ -57,10 +57,10 @@ func is_all_subquest_completed() -> bool:
 			subq.is_done()
 			and subq.is_optional()
 			)
-			
+
 		if not is_done_and_opt:
 			return false
-			
+
 	return true
 
 # Return the quest with his subquest as dictionary.
@@ -76,33 +76,33 @@ func dict2quest(dict : Dictionary) -> void:
 	dict2subquest(dict)
 	if not dict.has("subquests"):
 		return
-	
+
 	_subquests = get_subquests_list(dict["subquests"])
 
 # usefull for saveing
 func subquests2list_of_ids() -> Array:
 	var list_of_ids : = []
-	
+
 	for subq in _subquests:
 		list_of_ids.append(subq.quest_id)
-		
+
 	return list_of_ids
 
 # useful after loading quest
 func get_subquests_list(list_of_subquests_ids : Array) -> Array:
 	var new_subquests : = []
-	
+
 	for subq_id in list_of_subquests_ids:
 		if typeof(subq_id) != TYPE_STRING:
 			continue
-			
-		var subquest = Rakugo.get_subquest(subq_id)
+
+		var subquest = Rakugo.get_var(subq_id)
 		new_subquests.append(subquest)
-	
+
 	return new_subquests
-	
+
 func update_subquests() -> void:
-	_subquests = get_subquests_list(_subquests) 
+	_subquests = get_subquests_list(_subquests)
 
 ## wip
 func add_rewards(reward) -> void:
@@ -114,12 +114,12 @@ func _get_rewards():
 
 func _on_done_subquest() -> void:
 	emit_signal("done_subquest")
-	
+
 	if is_all_subquest_completed():
 		emit_signal("done_quest")
-	
+
 func _on_fail_subquest(subquest : Subquest) -> void:
 	emit_signal("fail_subquest")
-	
+
 	if not subquest.is_optional:
 		emit_signal("fail_quest")

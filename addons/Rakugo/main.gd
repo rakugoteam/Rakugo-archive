@@ -592,11 +592,16 @@ func can_qload() -> bool:
 	return is_save_exits("quick")
 
 func is_save_exits(save_name:String) -> bool:
-	# var path = str("user://", save_folder, "/", save_name)
-	# var save_exist = file.file_exists(path + ".save")
-	# var text_exist = file.file_exists(path + ".txt")
-	# return save_exist or text_exist
-	return false
+	loading_in_progress = true
+	var save_folder_path = "usr://".plus_file(save_folder)
+
+	if test_save:
+		save_folder_path = "res://".plus_file(save_folder)
+
+	var save_file_path = save_folder_path.plus_file(save_name)
+	save_file_path += ".tres"
+
+	return file.file_exists(save_file_path)
 
 func save_global_history() -> bool:
 	return $SaveGlobalHistory.invoke()
