@@ -5033,6 +5033,7 @@ margin_right = 1039.35
 margin_bottom = 602.796
 
 [node name="AboutBox" type="VBoxContainer" parent="."]
+editor/display_folded = true
 visible = false
 margin_left = 271.354
 margin_top = 6.79639

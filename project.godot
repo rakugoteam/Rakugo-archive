@@ -189,11 +189,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/types/rakugo_var.gd"
 }, {
-"base": "Button",
-"class": "RakugoVarCheckButton",
-"language": "GDScript",
-"path": "res://addons/Rakugo/nodes/rakugo_var_check.gd"
-}, {
 "base": "LineEdit",
 "class": "RakugoVarEdit",
 "language": "GDScript",
@@ -286,7 +281,6 @@ _global_script_class_icons={
 "RakugoTextPasser": "",
 "RakugoTimer": "",
 "RakugoVar": "",
-"RakugoVarCheckButton": "",
 "RakugoVarEdit": "",
 "RakugoVarLabel": "",
 "RakugoVisualInstance": "res://addons/Rakugo/icons/rakugo_spatial.svg",
@@ -331,7 +325,7 @@ gdscript/warnings/return_value_discarded=false
 
 [editor_plugins]
 
-enabled=PoolStringArray( "Rakugo", "godot-plugin-refresher" )
+enabled=PoolStringArray( "Rakugo" )
 
 [input]
 

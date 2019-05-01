@@ -140,17 +140,19 @@ func _ready() -> void:
 	define("version", game_version, false)
 	OS.set_window_title(game_title + " " + game_version)
 	define("credits", game_credits, false)
-
-	## set by rakugo
-	define("rakugo_version", rakugo_version, false)
-
+	
+	## it must be before define rakugo_version and godot_version to parse corretly :o
 	file.open(credits_path, file.READ)
 	define("rakugo_credits", file.get_as_text(), false)
 	file.close()
 
+	## set by rakugo
+	define("rakugo_version", rakugo_version, false)
+	
 	var gdv = Engine.get_version_info()
 	var gdv_string = str(gdv.major) + "." + str(gdv.minor) + "." + str(gdv.patch)
 	define("godot_version", gdv_string, false)
+
 	define("story_state", 0)
 
 	## vars for rakugo settings
