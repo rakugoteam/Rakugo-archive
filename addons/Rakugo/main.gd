@@ -33,7 +33,7 @@ enum Type {
 	QUEST,		# 5
 	SUBQUEST,	# 6
 	CHARACTER,	# 7
-	RANGE,		# 8
+	RANGED,		# 8
 	BOOL,		# 9
 }
 
@@ -140,7 +140,7 @@ func _ready() -> void:
 	define("version", game_version, false)
 	OS.set_window_title(game_title + " " + game_version)
 	define("credits", game_credits, false)
-	
+
 	## it must be before define rakugo_version and godot_version to parse corretly :o
 	file.open(credits_path, file.READ)
 	define("rakugo_credits", file.get_as_text(), false)
@@ -148,7 +148,7 @@ func _ready() -> void:
 
 	## set by rakugo
 	define("rakugo_version", rakugo_version, false)
-	
+
 	var gdv = Engine.get_version_info()
 	var gdv_string = str(gdv.major) + "." + str(gdv.minor) + "." + str(gdv.patch)
 	define("godot_version", gdv_string, false)
@@ -261,17 +261,10 @@ func set_var(var_name:String, value) -> RakugoVar:
 	var_to_change.value = value
 	return var_to_change
 
-func _get_var(var_name:String, type:int) -> RakugoVar:
-	if  variables.has(var_name):
-		var v = variables[var_name]
-		return v
-
-	return null
-
 ## returns exiting Rakugo variable as one of RakugoTypes for easy use
 ## It must be with out returned type, because we can't set it as list of types
 func get_var(var_name:String) -> RakugoVar:
-	return _get_var(var_name, Type.VAR) as RakugoVar
+	return $GetVar.invoke(var_name)
 
 ## to use with `define_from_str` func as var_type arg
 ## it can't use optional typing
@@ -315,8 +308,14 @@ func connect_var(
 
 	get_var(var_name).connect(
 		signal_name, node, func_name,
-		 binds, flags
+		binds, flags
 	)
+
+## crate new RangedVar as global variable that Rakugo will see
+func ranged_var(var_name, start_value := 0.0, min_value := 0.0, max_value := 0.0) -> RakugoRangedVar:
+	var rrv = RakugoRangedVar.new(var_name, start_value, min_value, max_value)
+	variables[var_name] = rrv
+	return rrv
 
 ## crate new character as global variable that Rakugo will see
 ## possible parameters: name, color, what_prefix, what_suffix, avatar, stats
@@ -325,9 +324,6 @@ func character(character_id:String, parameters:={}) -> CharacterObject:
 	variables[character_id] = new_ch
 	return new_ch
 
-func get_character(character_id:String) -> CharacterObject:
-	return _get_var(character_id, Type.CHARACTER) as CharacterObject
-
 ## crate new link to node as global variable that Rakugo will see
 ## it can have name as other existing varbiable
 func node_link(node_id:String, node:NodePath) -> NodeLink:
@@ -335,7 +331,7 @@ func node_link(node_id:String, node:NodePath) -> NodeLink:
 
 func get_node_link(node_id:String) -> NodeLink:
 	var s = NodeLink.new("").var_suffix
-	return _get_var(s + node_id, Type.NODE) as NodeLink
+	return get_var(s + node_id) as NodeLink
 
 ## add/overwrite global subquest that Rakugo will see
 ## and returns it as RakugoSubQuest for easy use
@@ -344,10 +340,6 @@ func subquest(subquest_id:String, parameters:= {}) -> Subquest:
 	var new_subq : = Subquest.new(subquest_id, parameters)
 	return new_subq
 
-## returns exiting Rakugo subquest as RakugoSubQuest for easy use
-func get_subquest(subquest_id:String) -> Subquest:
-	return _get_var(subquest_id, Type.SUBQUEST) as Subquest
-
 ## add/overwrite global quest that Rakugo will see
 ## and returns it as RakugoQuest for easy use
 ## possible parameters: "who", "title", "description", "optional", "state", "subquests"
@@ -355,10 +347,6 @@ func quest(quest_id:String, parameters:={}) -> Quest:
 	var q := Quest.new(quest_id, parameters)
 	quests.append(quest_id)
 	return q
-
-## returns exiting Rakugo quest as RakugoQuest for easy use
-func get_quest(quest_id:String) -> Quest:
-	return _get_var(quest_id, Type.QUEST) as Quest
 
 ## it should be "node:Statement", but it don't work for now
 func _set_statement(node:Node, parameters:Dictionary) -> void:

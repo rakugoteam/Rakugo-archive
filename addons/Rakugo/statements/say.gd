@@ -16,11 +16,11 @@ func exec() -> void:
 		if parameters.who in Rakugo.variables:
 			if Rakugo.get_type(parameters.who) == Rakugo.Type.CHARACTER:
 				var org_who = parameters.who
-				var who = Rakugo.get_character(org_who)
+				var who = Rakugo.get_var(org_who)
 				parameters.who = who.parse_name()
 				
-				if "avatar" in Rakugo.get_character(org_who).value:
-					parameters["avatar"] = Rakugo.get_character(org_who).avatar
+				if "avatar" in who.value:
+					parameters["avatar"] = who.avatar
 				
 				if "what" in parameters:
 					parameters.what = who.parse_what(parameters.what)

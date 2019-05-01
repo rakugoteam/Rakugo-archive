@@ -155,9 +155,9 @@ _global_script_classes=[ {
 "path": "res://addons/Rakugo/nodes/rakugo_quest_button.gd"
 }, {
 "base": "RakugoVar",
-"class": "RakugoRange",
+"class": "RakugoRangedVar",
 "language": "GDScript",
-"path": "res://addons/Rakugo/types/rakugo_range.gd"
+"path": "res://addons/Rakugo/types/rakugo_ranged.gd"
 }, {
 "base": "Panel",
 "class": "RakugoSayPanel",
@@ -188,6 +188,11 @@ _global_script_classes=[ {
 "class": "RakugoVar",
 "language": "GDScript",
 "path": "res://addons/Rakugo/types/rakugo_var.gd"
+}, {
+"base": "Button",
+"class": "RakugoVarCheckButton",
+"language": "GDScript",
+"path": "res://addons/Rakugo/nodes/rakugo_var_check.gd"
 }, {
 "base": "LineEdit",
 "class": "RakugoVarEdit",
@@ -274,13 +279,14 @@ _global_script_class_icons={
 "RakugoNode2D": "",
 "RakugoNodeCore": "",
 "RakugoQuestButton": "",
-"RakugoRange": "",
+"RakugoRangedVar": "",
 "RakugoSayPanel": "res://addons/Rakugo/icons/rakugo_panel.svg",
 "RakugoText": "",
 "RakugoTextLabel": "",
 "RakugoTextPasser": "",
 "RakugoTimer": "",
 "RakugoVar": "",
+"RakugoVarCheckButton": "",
 "RakugoVarEdit": "",
 "RakugoVarLabel": "",
 "RakugoVisualInstance": "res://addons/Rakugo/icons/rakugo_spatial.svg",
@@ -325,7 +331,7 @@ gdscript/warnings/return_value_discarded=false
 
 [editor_plugins]
 
-enabled=PoolStringArray( "Rakugo" )
+enabled=PoolStringArray( "Rakugo", "godot-plugin-refresher" )
 
 [input]
 

@@ -90,6 +90,7 @@ margin_right = 303.0
 margin_bottom = 141.0
 size_flags_horizontal = 1
 size_flags_vertical = 3
+ticks_on_borders = true
 script = ExtResource( 3 )
 __meta__ = {
 "_editor_icon": ExtResource( 7 )
