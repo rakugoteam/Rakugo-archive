@@ -1,6 +1,7 @@
 extends Button
 class_name RakugoBaseButton
 
+export var use_form_theme : = true
 ## theme (RakugoTheme), if any, will override this
 export var idle_node_color : = Color(0.533333, 0.533333, 0.533333, 1)
 export var focus_node_color : = Color(0, 0.506836, 0.675781, 1)
@@ -11,7 +12,7 @@ export var disable_node_color : = Color(0.533333, 0.533333, 0.498039, 0.533333)
 var node_to_change : Node
 
 func _ready() -> void:
-	if theme != null:
+	if theme != null and use_form_theme:
 		var rt := theme as RakugoTheme
 		idle_node_color = rt.idle_node_color
 		focus_node_color = rt.focus_node_color
