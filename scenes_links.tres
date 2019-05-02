@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://examples/Test/Test.tscn" type="PackedScene" id=1]
+[ext_resource path="res://examples/Test/PhoneTest.tscn" type="PackedScene" id=2]
+[ext_resource path="res://examples/VisualNovelExample/Garden.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/Rakugo/types/scenes_links.gd" type="Script" id=4]
+
+[resource]
+script = ExtResource( 4 )
+ids = [ "Test", "Phone", "Garden" ]
+scenes = [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ) ]
+

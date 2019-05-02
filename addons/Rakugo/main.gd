@@ -8,13 +8,33 @@ const credits_path:= "res://addons/Rakugo/credits.txt"
 # we need it because we hide base RakugoMenu form custom nodes
 const RakugoMenu:= preload("res://addons/Rakugo/nodes/rakugo_menu.gd")
 
-onready var game_title = ProjectSettings.get_setting("application/config/name")
-onready var game_version = ProjectSettings.get_setting("application/rakugo/version")
-onready var game_credits = ProjectSettings.get_setting("application/rakugo/game_credits")
-onready var markup = ProjectSettings.get_setting("application/rakugo/markup")
-onready var debug_on = ProjectSettings.get_setting("application/rakugo/debug")
-onready var scenes_dir = ProjectSettings.get_setting("application/rakugo/scenes_dir")
-onready var save_folder = ProjectSettings.get_setting("application/rakugo/save_folder")
+onready var game_title = ProjectSettings.get_setting(
+	"application/config/name"
+)
+
+onready var game_version = ProjectSettings.get_setting(
+	"application/rakugo/version"
+)
+
+onready var game_credits = ProjectSettings.get_setting(
+	"application/rakugo/game_credits"
+)
+
+onready var markup = ProjectSettings.get_setting(
+	"application/rakugo/markup"
+)
+
+onready var debug_on = ProjectSettings.get_setting(
+	"application/rakugo/debug"
+)
+
+onready var scenes_links = ProjectSettings.get_setting(
+	"application/rakugo/scenes_links"
+)
+
+onready var save_folder = ProjectSettings.get_setting(
+	"application/rakugo/save_folder"
+)
 
 ## init vars for settings
 var _skip_all_text:= false
@@ -534,15 +554,14 @@ func _get_history_id() -> int:
 	return history_id
 
 ## use this to change/assign current scene and dialog
-## root of path_to_current_scene is scenes_dir
-## provide path_to_current_scene with out ".tscn"
+## id_of_current_scene is id to scene defined in scenes_links or full path to scene
 func jump(
-	path_to_current_scene:String, node_name:String,
+	id_of_scene:String, node_name:String,
 	dialog_name:String, change:= true
 	) -> void:
 
 	$Jump.invoke(
-		path_to_current_scene,
+		id_of_scene,
 		node_name, dialog_name,
 		change
 	)
