@@ -179,6 +179,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/statics/text.gd"
 }, {
+"base": "Theme",
+"class": "RakugoTheme",
+"language": "GDScript",
+"path": "res://addons/Rakugo/types/rakugo_theme.gd"
+}, {
 "base": "Timer",
 "class": "RakugoTimer",
 "language": "GDScript",
@@ -284,6 +289,7 @@ _global_script_class_icons={
 "RakugoText": "",
 "RakugoTextLabel": "",
 "RakugoTextPasser": "",
+"RakugoTheme": "",
 "RakugoTimer": "",
 "RakugoVar": "",
 "RakugoVarCheckButton": "",

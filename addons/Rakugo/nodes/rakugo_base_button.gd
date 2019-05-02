@@ -1,6 +1,7 @@
 extends Button
 class_name RakugoBaseButton
 
+## theme (RakugoTheme), if any, will override this
 export var idle_node_color : = Color(0.533333, 0.533333, 0.533333, 1)
 export var focus_node_color : = Color(0, 0.506836, 0.675781, 1)
 export var hover_node_color : = Color(0.877647, 0.882353, 0.887059, 1)
@@ -10,6 +11,14 @@ export var disable_node_color : = Color(0.533333, 0.533333, 0.498039, 0.533333)
 var node_to_change : Node
 
 func _ready() -> void:
+	if theme != null:
+		var rt := theme as RakugoTheme
+		idle_node_color = rt.idle_node_color
+		focus_node_color = rt.focus_node_color
+		hover_node_color = rt.hover_node_color
+		pressed_node_color = rt.pressed_node_color
+		disable_node_color = rt.disable_node_color
+
 	connect("focus_entered", self, "_on_focus")
 	connect("focus_exited", self, "_on_idle")
 	connect("mouse_entered", self, "_on_hover")
@@ -39,7 +48,7 @@ func _on_hover() -> void:
 func _on_pressed() -> void:
 	if toggle_mode:
 		return
-		
+
 	node_to_change.add_color_override(
 		"default_color", pressed_node_color
 	)
@@ -48,16 +57,16 @@ func _on_toggled(toggled:bool) -> void:
 	if toggled:
 		_on_pressed()
 		return
-	
+
 	_on_idle()
 
 func set_disabled(value:bool) -> void:
 	.set_disabled(value)
-	
+
 	if value:
 		node_to_change.add_color_override(
 			"default_color", disable_node_color
 		)
 		return
-	
+
 	_on_idle()

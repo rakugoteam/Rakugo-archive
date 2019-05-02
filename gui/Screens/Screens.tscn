@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://themes/new_gui/theme.tres" type="Theme" id=1]
+[ext_resource path="res://themes/new_gui/new_gui.theme" type="Theme" id=1]
 [ext_resource path="res://gui/Screens/Screens.gd" type="Script" id=2]
 [ext_resource path="res://ubuntu-font-family/Ubuntu-B.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://addons/Rakugo/nodes/rakugo_var_label.gd" type="Script" id=4]
@@ -4778,7 +4778,6 @@ margin_right = 1033.0
 margin_bottom = 615.0
 
 [node name="TitleNVersion" type="HBoxContainer" parent="."]
-editor/display_folded = true
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -4807,11 +4806,11 @@ margin_left = 754.0
 margin_right = 808.0
 margin_bottom = 65.0
 size_flags_vertical = 1
-text = "0.5.0"
+text = "2.0.0"
 valign = 1
 script = ExtResource( 4 )
 var_name = "version"
-default = "0.5.0"
+default = "2.0.0"
 
 [node name="Navigation" type="Panel" parent="."]
 editor/display_folded = true
