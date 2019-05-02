@@ -437,9 +437,10 @@ selection_enabled = true
 
 [node name="Quick" type="HBoxContainer" parent="."]
 editor/display_folded = true
-margin_top = 570.0
-margin_right = 1024.0
-margin_bottom = 602.0
+margin_top = 571.0
+margin_right = 1463.0
+margin_bottom = 611.0
+rect_scale = Vector2( 0.7, 0.7 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
@@ -457,7 +458,7 @@ text = "Hide"
 
 [node name="History" parent="Quick" instance=ExtResource( 9 )]
 margin_left = 131.0
-margin_right = 221.0
+margin_right = 277.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -465,8 +466,8 @@ custom_fonts/font = SubResource( 1 )
 text = "History"
 
 [node name="Quests" parent="Quick" instance=ExtResource( 9 )]
-margin_left = 225.0
-margin_right = 315.0
+margin_left = 281.0
+margin_right = 427.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -483,16 +484,16 @@ enabled_focus_mode = 0
 text = "Skip"
 
 [node name="Auto" type="CheckButton" parent="Quick"]
-margin_left = 319.0
-margin_right = 449.0
+margin_left = 431.0
+margin_right = 561.0
 margin_bottom = 40.0
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Auto"
 
 [node name="Save" parent="Quick" instance=ExtResource( 9 )]
-margin_left = 453.0
-margin_right = 543.0
+margin_left = 565.0
+margin_right = 711.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -500,8 +501,8 @@ custom_fonts/font = SubResource( 1 )
 text = "Save"
 
 [node name="Load" parent="Quick" instance=ExtResource( 9 )]
-margin_left = 547.0
-margin_right = 637.0
+margin_left = 715.0
+margin_right = 861.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -509,8 +510,8 @@ custom_fonts/font = SubResource( 1 )
 text = "Load"
 
 [node name="QSave" parent="Quick" instance=ExtResource( 9 )]
-margin_left = 641.0
-margin_right = 731.0
+margin_left = 865.0
+margin_right = 1011.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -518,8 +519,8 @@ custom_fonts/font = SubResource( 1 )
 text = "Q. Save"
 
 [node name="QLoad" parent="Quick" instance=ExtResource( 9 )]
-margin_left = 735.0
-margin_right = 825.0
+margin_left = 1015.0
+margin_right = 1161.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -527,8 +528,8 @@ custom_fonts/font = SubResource( 1 )
 text = "Q. Load"
 
 [node name="Options" parent="Quick" instance=ExtResource( 9 )]
-margin_left = 829.0
-margin_right = 924.0
+margin_left = 1165.0
+margin_right = 1311.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -536,8 +537,8 @@ custom_fonts/font = SubResource( 1 )
 text = "Options"
 
 [node name="Quit" parent="Quick" instance=ExtResource( 9 )]
-margin_left = 928.0
-margin_right = 1024.0
+margin_left = 1315.0
+margin_right = 1463.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -545,6 +546,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Quit"
 
 [node name="InfoAnim" type="AnimationPlayer" parent="Quick"]
+editor/display_folded = true
 anims/Auto = SubResource( 2 )
 anims/GeneralNotif = SubResource( 3 )
 anims/Loaded = SubResource( 4 )

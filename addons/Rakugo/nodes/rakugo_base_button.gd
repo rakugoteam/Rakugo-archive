@@ -22,28 +22,42 @@ func _on_resized() -> void:
 	node_to_change.rect_size = rect_size
 
 func _on_idle() -> void:
-	node_to_change.add_color_override("default_color", idle_node_color)
+	node_to_change.add_color_override(
+		"default_color", idle_node_color
+	)
 
 func _on_focus() -> void:
-	node_to_change.add_color_override("default_color", focus_node_color)
+	node_to_change.add_color_override(
+		"default_color", focus_node_color
+	)
 
 func _on_hover() -> void:
-	node_to_change.add_color_override("default_color", hover_node_color)
+	node_to_change.add_color_override(
+		"default_color", hover_node_color
+	)
 
 func _on_pressed() -> void:
 	if toggle_mode:
 		return
-	node_to_change.add_color_override("default_color", pressed_node_color)
+		
+	node_to_change.add_color_override(
+		"default_color", pressed_node_color
+	)
 
 func _on_toggled(toggled:bool) -> void:
 	if toggled:
 		_on_pressed()
-	else:
-		_on_idle()
+		return
+	
+	_on_idle()
 
 func set_disabled(value:bool) -> void:
 	.set_disabled(value)
+	
 	if value:
-		node_to_change.add_color_override("default_color", disable_node_color)
-	else:
-		_on_idle()
+		node_to_change.add_color_override(
+			"default_color", disable_node_color
+		)
+		return
+	
+	_on_idle()
