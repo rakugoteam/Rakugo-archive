@@ -1,5 +1,5 @@
 extends Theme
-class_name RakugoTheme
+class_name RakugoTheme, "res://addons/Rakugo/icons/theme.svg"
 
 export var idle_node_color : = Color(0.533333, 0.533333, 0.533333, 1)
 export var focus_node_color : = Color(0, 0.506836, 0.675781, 1)

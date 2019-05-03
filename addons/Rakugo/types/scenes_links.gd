@@ -1,7 +1,7 @@
 extends Resource
-class_name SceneLinks
+class_name SceneLinks, "res://addons/Rakugo/icons/scenes_links.svg"
 
-export (Array, String) var ids : = []
+export (Array, String) var ids := []
 export (Array, PackedScene) var scenes := []
 
 func get_as_dict() -> Dictionary:
