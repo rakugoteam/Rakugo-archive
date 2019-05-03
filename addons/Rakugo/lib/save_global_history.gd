@@ -10,7 +10,7 @@ func invoke() -> bool:
 
 	var dir := Directory.new()
 
-	var save_folder  = r.save_folder
+	var save_folder = r.save_folder
 
 	var save_folder_path = "usr://".plus_file(save_folder)
 
@@ -28,7 +28,7 @@ func invoke() -> bool:
 	else:
 		save_path += ".res"
 
-	var  error := ResourceSaver.save(save_path, new_save)
+	var error := ResourceSaver.save(save_path, new_save)
 	r.debug(["save global history to:", save_name])
 
 	if error != OK:

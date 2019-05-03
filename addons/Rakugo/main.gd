@@ -159,7 +159,7 @@ signal stop_audio(node_id)
 
 func _ready() -> void:
 
-	# links_color = 
+	# links_color =
 
 	## set by game developer
 	define("title", game_title, false)
@@ -581,36 +581,38 @@ func begin(path_to_current_scene:String, node_name:String, dialog_name:String) -
 
 	jump(path_to_current_scene, node_name , dialog_name, false)
 
-## it don't work :(
-func current_statement_in_global_history() -> bool:
-	var r = true
-	var i = 0
-	var hi_item = current_statement.get_as_history_item()
-	# prints(hi_item)
-
+func is_current_statement_in_global_history() -> bool:
 	if not current_statement.parameters.add_to_history:
-		i = 1
-		r = true
-		# prints("r =", str(r), "i =", str(i))
-		return r
+		return true
 
-	if not hi_item.has("state"):
-		i = 2
-		r = true
-		# prints("r =", str(r), "i =", str(i))
-		return r
+	var id = current_statement.get_history_id()
+	var c_item = current_statement.get_as_history_item()
 
-	i = 3
-	r = hi_item in global_history
-	# prints("r =", str(r), "i =", str(i))
-	return r
+	if global_history.has(id):
+		var type = c_item.type
+		var parameters = c_item.parameters
+
+		if type == global_history[id].type:
+			var hi_parameters = global_history[id].parameters
+
+			if parameters.size() == hi_parameters.size():
+				var keys = parameters.keys()
+				var hi_keys = hi_parameters.keys()
+				
+				for i in range(parameters.size()):
+					var p = parameters[keys[i]]
+					var hi_p = hi_parameters[hi_keys[i]]
+					
+					if p != hi_p:
+						return false
+				
+	return true
 
 func can_auto() -> bool:
 	return current_statement.type in skip_types
 
-## it don't work :(
 func can_skip() -> bool:
-	var seen = current_statement_in_global_history()
+	var seen = is_current_statement_in_global_history()
 	return can_auto() and seen
 
 func can_qload() -> bool:

@@ -42,12 +42,17 @@ func on_exit(_type : int, new_parameters : = {}) -> void:
 	Rakugo.story_step()
 
 func get_history_id() -> Array:
-	return [
+	var id_list = [
 		Rakugo.current_scene,
 		Rakugo.current_node_name,
 		Rakugo.current_dialog_name,
 		Rakugo.story_state
 	]
+	
+	var id = PoolStringArray(id_list).join(",")
+	
+	return id
+
 
 func get_as_history_item() -> Dictionary:
 	var hparameters = parameters.duplicate()
@@ -64,7 +69,7 @@ func add_to_history() -> void:
 	var history_item = get_as_history_item()
 	Rakugo.history[id] = history_item
 	Rakugo.global_history[id] = history_item
-	
+
 	Rakugo.history_id += 1
 
 func debug(parameters_names : Array = [], some_custom_text : String = "") -> void:
