@@ -77,8 +77,11 @@ var history_id:= 0 setget _set_history_id, _get_history_id
 var current_dialog_name:= ""
 var current_node_name:= ""
 var current_scene:= ""
-var history:= [] # [{"state":story_state, "statement":{"type":type, "parameters": parameters}}]
-var global_history:= [] # [{"state":story_state, "statement":{"type":type, "parameters": parameters}}]
+
+# {["scene_id", "node_name", "dialog_name", story_step]:{"type":type, "parameters": parameters}}
+var history:= {}
+var global_history:= {}
+
 var variables:= {}
 
 # don't save this
@@ -155,6 +158,9 @@ signal play_audio(node_id, from_pos)
 signal stop_audio(node_id)
 
 func _ready() -> void:
+
+	# links_color = 
+
 	## set by game developer
 	define("title", game_title, false)
 	define("version", game_version, false)

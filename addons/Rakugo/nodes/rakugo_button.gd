@@ -5,7 +5,6 @@ export var node_path : = NodePath()
 export var auto_resize_x : = true
 export var auto_resize_y : = true
 
-
 func _ready() -> void:
 	node_to_change = get_node(node_path)
 

@@ -4,33 +4,43 @@ extends EditorPlugin
 # A class member to hold the dock during the plugin lifecycle
 var dock
 
+func default_setting(setting:String, value):
+	if not ProjectSettings.has_setting(setting):
+		ProjectSettings.set_setting(setting, value)
+
 func _enter_tree():
 	# Initialization of the plugin goes here
 
 	# ProjectSettings for first time
-	ProjectSettings.set_initial_value(
-		"application/rakugo/version", "0.0.1"
-		)
+	default_setting(
+		"application/rakugo/version",
+		"0.0.1"
+	)
 
-	ProjectSettings.set_initial_value(
-		"application/rakugo/game_credits", "Your Company"
-		)
+	default_setting(
+		"application/rakugo/game_credits",
+		"Your Company"
+	)
 
-	ProjectSettings.set_initial_value(
-		"application/rakugo/markup", "renpy"
-		)
+	default_setting(
+		"application/rakugo/markup",
+		"renpy"
+	)
 
-	ProjectSettings.set_initial_value(
-		"application/rakugo/debug", false
-		)
+	default_setting(
+		"application/rakugo/debug",
+		false
+	)
 
-	ProjectSettings.set_initial_value(
-		"application/rakugo/scenes_links", "res://scenes_links.tres"
-		)
+	default_setting(
+		"application/rakugo/scenes_links",
+		"res://scenes_links.tres"
+	)
 
-	ProjectSettings.set_initial_value(
-		"application/rakugo/save_folder", "saves"
-		)
+	default_setting(
+		"application/rakugo/save_folder",
+		"saves"
+	)
 
 	# Load the dock scene and instance it
 	dock = preload("emojis/EmojiPanel.tscn").instance()

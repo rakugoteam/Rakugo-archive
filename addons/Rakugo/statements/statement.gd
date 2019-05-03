@@ -10,7 +10,7 @@ func _ready() -> void:
 
 func exec() -> void:
 	debug(parameters_names)
-	
+
 	Rakugo.current_statement = self
 	Rakugo.exec_statement(type, parameters)
 
@@ -26,50 +26,44 @@ func set_dict(new_dict : Dictionary, current_dict : Dictionary) -> void:
 func setup_exit(_type : int, new_parameters : = {}) -> bool:
 	if _type != type:
 		return false
-		
+
 	if new_parameters != {}:
 		set_parameters(new_parameters)
-	
+
 	return true
 
 func on_exit(_type : int, new_parameters : = {}) -> void:
 	if !setup_exit(_type, new_parameters):
 		return
-	
+
 	if parameters.add_to_history:
 		add_to_history()
-	
+
 	Rakugo.story_step()
+
+func get_history_id() -> Array:
+	return [
+		Rakugo.current_scene,
+		Rakugo.current_node_name,
+		Rakugo.current_dialog_name,
+		Rakugo.story_state
+	]
 
 func get_as_history_item() -> Dictionary:
 	var hparameters = parameters.duplicate()
 	hparameters.erase("avatar")
 	var history_item = {
-		"state": Rakugo.story_state,
-		"statement":{
-			"type": type,
-			"parameters": hparameters
-		}
+		"type": type,
+		"parameters": hparameters
 	}
+
 	return history_item
 
-
 func add_to_history() -> void:
-	if Rakugo.history_id < 0 or Rakugo.history_id > Rakugo.history.size() + 1:
-		Rakugo.debug(["some thing gone wrong Rakugo.history_id =", Rakugo.history_id])
-		Rakugo.debug(["history size:", Rakugo.history.size()])
-		return
-	
+	var id = get_history_id()
 	var history_item = get_as_history_item()
-
-	if Rakugo.history_id == Rakugo.history.size():
-		Rakugo.history.append(history_item)
-
-	else:
-		Rakugo.history[Rakugo.history_id] = history_item
-	
-	if !(history_item in Rakugo.global_history):
-		Rakugo.global_history.append(history_item)
+	Rakugo.history[id] = history_item
+	Rakugo.global_history[id] = history_item
 	
 	Rakugo.history_id += 1
 

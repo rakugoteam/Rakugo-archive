@@ -8,9 +8,9 @@ func get_as_dict() -> Dictionary:
 	var dict := {}
 	var r = ids.size()
 
-	if ids.size() != scenes.size():
+	if r != scenes.size():
 		print("id and scenes are in diffrent size!!!")
-		r = min(ids.size(), scenes.size())
+		r = min(r, scenes.size())
 		prints("will return only", r, "links")
 
 	for i in range(r):

@@ -6,6 +6,7 @@
 
 [node name="Window" type="Node2D"]
 pause_mode = 2
+z_index = 10
 script = ExtResource( 1 )
 
 [node name="InGameGUI" parent="." instance=ExtResource( 2 )]
