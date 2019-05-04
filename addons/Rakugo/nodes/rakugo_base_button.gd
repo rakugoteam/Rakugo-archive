@@ -12,7 +12,10 @@ export var disable_node_color : = Color(0.533333, 0.533333, 0.498039, 0.533333)
 var node_to_change : Node
 
 func _ready() -> void:
-	if theme != null and use_form_theme:
+	if use_form_theme:
+		if theme == null:
+			theme = Rakugo.theme
+			
 		var rt := theme as RakugoTheme
 		idle_node_color = rt.idle_node_color
 		focus_node_color = rt.focus_node_color
