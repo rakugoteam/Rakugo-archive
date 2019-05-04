@@ -1,13 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://themes/new_gui/new_gui.theme" type="Theme" id=1]
-[ext_resource path="res://addons/Rakugo/nodes/rakugo_choice_button.gd" type="Script" id=2]
+[ext_resource path="res://addons/Rakugo/nodes/rakugo_choice_button.gd" type="Script" id=1]
 
 [node name="ChoiceButton" type="Button"]
 margin_right = 296.0
 margin_bottom = 34.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource( 1 )
-script = ExtResource( 2 )
+script = ExtResource( 1 )
 

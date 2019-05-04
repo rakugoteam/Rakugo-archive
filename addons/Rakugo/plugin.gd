@@ -42,6 +42,11 @@ func _enter_tree():
 		"saves"
 	)
 
+	default_setting(
+		"application/rakugo/theme",
+		"res://themes/new_gui/new_gui.theme"
+	)
+
 	# Load the dock scene and instance it
 	dock = preload("emojis/EmojiPanel.tscn").instance()
 
@@ -118,5 +123,6 @@ func _exit_tree():
 	remove_custom_type("RakugoHMenu")
 	remove_custom_type("RakugoVMenu")
 	remove_custom_type("RakugoVarCheckBox")
+	remove_custom_type("RakugoVarCheckButton")
 	remove_custom_type("RakugoProgressBar")
 	remove_custom_type("RakugoTextureProgress")

@@ -1,31 +1,37 @@
 extends Node
 
-var links_color:= Color("#225ebf")
-var test_save:= true
+var test_save := true
 
 const rakugo_version:= "2.0.0"
 const credits_path:= "res://addons/Rakugo/credits.txt"
 # we need it because we hide base RakugoMenu form custom nodes
-const RakugoMenu:= preload("res://addons/Rakugo/nodes/rakugo_menu.gd")
-
-onready var game_title = ProjectSettings.get_setting(
-	"application/config/name"
+const RakugoMenu:= preload(
+	"res://addons/Rakugo/nodes/rakugo_menu.gd"
 )
 
-onready var game_version = ProjectSettings.get_setting(
-	"application/rakugo/version"
+onready var game_title =
+	ProjectSettings.get_setting(
+		"application/config/name"
 )
 
-onready var game_credits = ProjectSettings.get_setting(
-	"application/rakugo/game_credits"
+onready var game_version =
+	ProjectSettings.get_setting(
+		"application/rakugo/version"
 )
 
-onready var markup = ProjectSettings.get_setting(
-	"application/rakugo/markup"
+onready var game_credits =
+	ProjectSettings.get_setting(
+		"application/rakugo/game_credits"
 )
 
-onready var debug_on = ProjectSettings.get_setting(
-	"application/rakugo/debug"
+onready var markup =
+	ProjectSettings.get_setting(
+		"application/rakugo/markup"
+)
+
+onready var debug_on =
+	ProjectSettings.get_setting(
+		"application/rakugo/debug"
 )
 
 onready var scenes_links = ProjectSettings.get_setting(
@@ -34,6 +40,13 @@ onready var scenes_links = ProjectSettings.get_setting(
 
 onready var save_folder = ProjectSettings.get_setting(
 	"application/rakugo/save_folder"
+)
+
+onready var theme =
+	load(
+		ProjectSettings.get_setting(
+			"application/rakugo/theme"
+		)
 )
 
 ## init vars for settings
@@ -158,9 +171,6 @@ signal play_audio(node_id, from_pos)
 signal stop_audio(node_id)
 
 func _ready() -> void:
-
-	# links_color =
-
 	## set by game developer
 	define("title", game_title, false)
 	define("version", game_version, false)
@@ -598,14 +608,14 @@ func is_current_statement_in_global_history() -> bool:
 			if parameters.size() == hi_parameters.size():
 				var keys = parameters.keys()
 				var hi_keys = hi_parameters.keys()
-				
+
 				for i in range(parameters.size()):
 					var p = parameters[keys[i]]
 					var hi_p = hi_parameters[hi_keys[i]]
-					
+
 					if p != hi_p:
 						return false
-				
+
 	return true
 
 func can_auto() -> bool:

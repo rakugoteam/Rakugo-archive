@@ -319,6 +319,7 @@ rakugo/markup="renpy"
 rakugo/debug=false
 rakugo/scenes_links="res://scenes_links.tres"
 rakugo/save_folder="saves"
+rakugo/theme="res://themes/new_gui/new_gui.theme"
 
 [autoload]
 
@@ -337,7 +338,7 @@ gdscript/warnings/return_value_discarded=false
 
 [editor_plugins]
 
-enabled=PoolStringArray( "Rakugo" )
+enabled=PoolStringArray( "Rakugo", "godot-plugin-refresher" )
 
 [input]
 

@@ -48,11 +48,10 @@ func get_history_id() -> Array:
 		Rakugo.current_dialog_name,
 		Rakugo.story_state
 	]
-	
-	var id = PoolStringArray(id_list).join(",")
-	
-	return id
 
+	var id = PoolStringArray(id_list).join(",")
+
+	return id
 
 func get_as_history_item() -> Dictionary:
 	var hparameters = parameters.duplicate()
