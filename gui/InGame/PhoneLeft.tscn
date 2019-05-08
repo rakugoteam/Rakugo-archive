@@ -68,6 +68,7 @@ script = ExtResource( 1 )
 name_label_path = NodePath("HBoxContainer/VBox/Label")
 dialog_label_path = NodePath("HBoxContainer/VBox/Dialogue")
 avatar_viewport_path = NodePath("HBoxContainer/ViewportContainer/CharaterAvatar")
+avatar_container_path = NodePath("HBoxContainer/ViewportContainer")
 line_edit_path = NodePath("HBoxContainer/VBox/RakugoLineEdit")
 
 [node name="ColorRect" type="ColorRect" parent="."]

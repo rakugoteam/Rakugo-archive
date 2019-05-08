@@ -67,6 +67,7 @@ script = ExtResource( 1 )
 name_label_path = NodePath("../NVL/VBox/Label")
 dialog_label_path = NodePath("../NVL/VBox/Dialogue")
 avatar_viewport_path = NodePath("../NVL/ViewportContainer/CharaterAvatar")
+avatar_container_path = NodePath("ViewportContainer")
 line_edit_path = NodePath("../NVL/VBox/RakugoLineEdit")
 
 [node name="ViewportContainer" type="ViewportContainer" parent="."]

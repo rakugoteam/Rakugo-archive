@@ -3,7 +3,7 @@ extends BoxContainer
 # we don't want it be be seen in "add new Node" dialog,
 # but to seen other Nodes that use it
 
-export var kind : = "vertical"
+export var kind := "vertical"
 export var ChoiceButton : PackedScene
 
 func _ready():
@@ -13,16 +13,16 @@ func _on_statement(type, parameters):
 	if type != Rakugo.StatementType.MENU:
 		get_parent().hide()
 		return
-
+	
 	if parameters["mkind"] != kind:
 		get_parent().hide()
 		return
-		
+	
 	get_parent().show()
-
+	
 	for ch in get_children():
 		ch.queue_free()
-
+	
 	var i = 0
 	var choices = Rakugo.menu_node.choices_labels
 	
@@ -33,7 +33,7 @@ func _on_statement(type, parameters):
 		ch_button.id = i
 		Rakugo.debug(["create button (", ch, ") with id : ", i])
 		i += 1
-
+	
 	get_parent().show()
 
 func _on_Hide_toggled(button_pressed):

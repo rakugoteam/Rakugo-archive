@@ -1,4 +1,5 @@
-extends Control
+tool
+extends RakugoControl
 
 export onready var nav_panel : Node = $Navigation
 export var nav_path : NodePath = "Navigation/ScrollContainer/HBoxContainer/VBoxContainer"
@@ -26,6 +27,9 @@ onready var quit_button : Button = get_node(str(nav_path) + "/" + "Quit")
 onready var test_button : Button = get_node(str(nav_path) + "/" + "TestNodes")
 
 func _ready():
+	if(Engine.editor_hint):
+		return
+	
 	get_tree().set_auto_accept_quit(false)
 	connect("visibility_changed", self, "_on_visibility_changed")
 	
@@ -211,6 +215,9 @@ func _screenshot_on_input(event):
 	get_screenshot().save_png(screenshots_dir + "/" + s + '.png')
 
 func _input(event):
+	if(Engine.editor_hint):
+		return
+		
 	if event.is_action_pressed("ui_cancel"):
 		if visible:
 			_on_Return_pressed()
