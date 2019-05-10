@@ -21,7 +21,7 @@ var _type : int
 var typing : = false
 var kind : String 
 
-func _setup(kind_container:KindContainer):	
+func _setup(kind_container:KindContainer):
 	NameLabel = kind_container.NameLabel
 	DialogText = kind_container.DialogText
 	CharacterAvatar = kind_container.CharacterAvatar

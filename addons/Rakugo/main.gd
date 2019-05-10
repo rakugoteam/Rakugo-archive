@@ -49,6 +49,12 @@ onready var theme =
 		)
 )
 
+onready var default_kind =
+	ProjectSettings.get_setting(
+		"application/rakugo/default_kind"
+	)
+)
+
 ## init vars for settings
 var _skip_all_text:= false
 var _skip_after_choices:= false

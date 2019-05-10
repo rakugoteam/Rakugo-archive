@@ -1,3 +1,4 @@
+tool
 extends Node
 class_name Character, "res://addons/Rakugo/icons/rakugo_character.svg"
 
@@ -17,9 +18,14 @@ export var stats : = {} setget _set_stats, _get_stats
 export var prefix : = "" setget _set_prefix, _get_prefix
 export var suffix : = "" setget _set_suffix, _get_suffix
 export var avatar : PackedScene = PackedScene.new() setget _set_avatar, _get_avatar
+export var kind := ProjectSettings.get_setting(
+		"application/rakugo/default_kind"
+	)
 
 func _ready() -> void:
-	Rakugo.connect("started", self, "_on_start")
+	if(!Engine.editor_hint):
+		Rakugo.connect("started", self, "_on_start")
+
 	add_to_group("save", true)
 
 func _on_start() -> void:
@@ -126,3 +132,8 @@ func on_save() ->void:
 
 func on_load(game_version) -> void:
 	_character = Rakugo.get_var(_id)
+
+func _exit_tree() -> void:
+	if(Engine.editor_hint):
+		remove_from_group("save")
+		return

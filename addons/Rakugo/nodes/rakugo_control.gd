@@ -2,7 +2,7 @@ tool
 extends Control
 class_name RakugoControl
 
-onready var rnode : = RakugoNodeCore.new()
+onready var rnode := RakugoNodeCore.new()
 
 export var use_theme_from_setting : bool setget set_use_theme_form_settings, get_use_theme_form_settings
 export var node_id := ""
@@ -17,8 +17,12 @@ var _use_theme_from_settings := true
 
 func _ready() -> void:
 	if(Engine.editor_hint):
+		if node_id.empty():
+			node_id = name
+
+		add_to_group("save", true)
 		return
-	
+
 	Rakugo.connect("show", self, "_on_show")
 	Rakugo.connect("hide", self, "_on_hide")
 
@@ -32,6 +36,8 @@ func _ready() -> void:
 
 	else:
 		node_link.value["node_path"] = get_path()
+
+	add_to_group("save", true)
 
 func _on_show(node_id : String , state_value : Array, show_args : Dictionary) -> void:
 	if self.node_id != node_id:
@@ -57,6 +63,10 @@ func _on_hide(_node_id : String) -> void:
 	hide()
 
 func _exit_tree() -> void:
+	if(Engine.editor_hint):
+		remove_from_group("save")
+		return
+
 	Rakugo.variables.erase(node_id)
 
 func on_save() -> void:
@@ -83,7 +93,7 @@ func set_use_theme_form_settings(value:bool):
 				"application/rakugo/theme"
 			)
 		)
-	
+
 	_use_theme_from_settings = value
 
 func get_use_theme_form_settings() -> bool:

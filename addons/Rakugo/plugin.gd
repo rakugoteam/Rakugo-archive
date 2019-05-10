@@ -47,6 +47,11 @@ func _enter_tree():
 		"res://themes/new_gui/new_gui.theme"
 	)
 
+	default_setting(
+		"application/rakugo/default_kind",
+		"adv"
+	)
+
 	# Load the dock scene and instance it
 	dock = preload("emojis/EmojiPanel.tscn").instance()
 

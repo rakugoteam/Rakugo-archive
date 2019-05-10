@@ -7,22 +7,25 @@ var parameters_names : Array = [
 	"prefix",
 	"suffix",
 	"avatar",
-	"stats"
+	"stats",
+	"kind"
 	]
 
 var _color : Color
 var _avatar : String
 
-var name  : = "" 
-var prefix: = ""
-var suffix: = ""
-var stats: = {}
+var name	:= ""
+var prefix	:= ""
+var suffix	:= ""
+var kind	:= ""
+var stats	:= {}
 
 var color : String = "#ffffff" setget _set_color, _get_color
 var avatar setget _set_avatar, _get_avatar
 
 func _init(var_id:String, var_value:Dictionary
 	).(var_id, var_value, Rakugo.Type.CHARACTER) -> void:
+	kind = Rakugo.default_kind
 	_set_value(_value)
 
 func _set_color(vcolor : String) -> void:
@@ -45,7 +48,7 @@ func parse_name() -> String:
 			ncharacter = "{color=#" + color + "}"
 			ncharacter += name
 			ncharacter += "{/color}"
-		
+
 		if Rakugo.markup == "renpy":
 			ncharacter = "[color=#" + color + "]"
 			ncharacter += name
@@ -70,10 +73,12 @@ func character2dict() -> Dictionary:
 	dict["suffix"]	= suffix
 	dict["avatar"]	= _avatar
 	dict["stats"]	= stats
+	dict["kind"]	= kind
 
 	return dict
 
 func dict2character(dict : Dictionary) -> void:
+	for
 	if dict.has("name"):
 		name = dict.name
 
@@ -89,8 +94,11 @@ func dict2character(dict : Dictionary) -> void:
 	if dict.has("avatar"):
 		_avatar = dict.avatar
 
-		if dict.has("stats"):
-			stats = dict.stats
+	if dict.has("stats"):
+		stats = dict.stats
+
+	if dict.has("kind"):
+		kind = dict.kind
 
 func parse_text(text:String, open:String, close:String) -> String:
 	text = .parse_text(text, open, close)
