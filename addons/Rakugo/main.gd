@@ -4,56 +4,40 @@ var test_save := true
 
 const rakugo_version:= "2.0.0"
 const credits_path:= "res://addons/Rakugo/credits.txt"
+
 # we need it because we hide base RakugoMenu form custom nodes
-const RakugoMenu:= preload(
-	"res://addons/Rakugo/nodes/rakugo_menu.gd"
-)
+const RakugoMenu:= preload("res://addons/Rakugo/nodes/rakugo_menu.gd")
 
-onready var game_title =
-	ProjectSettings.get_setting(
-		"application/config/name"
-)
+onready var game_title = ProjectSettings.get_setting(
+	"application/config/name")
 
-onready var game_version =
-	ProjectSettings.get_setting(
-		"application/rakugo/version"
-)
+onready var game_version = ProjectSettings.get_setting(
+	"application/rakugo/version")
 
-onready var game_credits =
-	ProjectSettings.get_setting(
-		"application/rakugo/game_credits"
-)
+onready var game_credits = ProjectSettings.get_setting(
+	"application/rakugo/game_credits")
 
-onready var markup =
-	ProjectSettings.get_setting(
-		"application/rakugo/markup"
-)
+onready var markup = ProjectSettings.get_setting(
+	"application/rakugo/markup")
 
-onready var debug_on =
-	ProjectSettings.get_setting(
-		"application/rakugo/debug"
-)
+onready var debug_on = ProjectSettings.get_setting(
+	"application/rakugo/debug")
 
 onready var scenes_links = ProjectSettings.get_setting(
-	"application/rakugo/scenes_links"
-)
+	"application/rakugo/scenes_links")
 
 onready var save_folder = ProjectSettings.get_setting(
-	"application/rakugo/save_folder"
-)
+	"application/rakugo/save_folder")
 
-onready var theme =
-	load(
+onready var theme = load(
 		ProjectSettings.get_setting(
 			"application/rakugo/theme"
 		)
 )
 
-onready var default_kind =
-	ProjectSettings.get_setting(
+onready var default_kind = ProjectSettings.get_setting(
 		"application/rakugo/default_kind"
 	)
-)
 
 ## init vars for settings
 var _skip_all_text:= false
@@ -205,7 +189,7 @@ func _ready() -> void:
 	define("text_time", _text_time, false)
 	define("notify_time", _notify_time, false)
 	define("typing_text", _typing_text, false)
-
+	
 	step_timer.connect("timeout", self, "_on_time_active_timeout")
 
 func get_datetime_str() -> String:
@@ -254,7 +238,7 @@ func add_dialog(node:Node, func_name:String) -> void:
 ## or parse bbcode with {vars} if mode == "bbcode"
 ## default mode = Rakugo.markup
 func text_passer(text:String, mode:= markup):
-	return $Text.text_passer(text, variables, mode, links_color.to_html())
+	return $Text.text_passer(text, variables, mode, theme.links_color.to_html())
 
 ## add/overwrite global variable that Rakugo will see
 ## and returns it as RakugoVar for easy use

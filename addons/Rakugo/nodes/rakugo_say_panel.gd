@@ -66,16 +66,14 @@ func _input(event : InputEvent) -> void:
 func _on_statement(type : int, parameters : Dictionary) -> void:
 	if "kind" in parameters:
 		kind = parameters.kind
-	
+		
+		# adv and backfall
 		if not extra_kinds.has(kind):
 			StdKindContainer.show()
 			$AnimationPlayer.play(kind)
 			
 		if kind in extra_kinds:
 			var i := extra_kinds.find(kind)
-			
-			if i == -1:
-				return
 			
 			$AnimationPlayer.play(extra_kinds_anims[i])
 			

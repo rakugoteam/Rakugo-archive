@@ -22,15 +22,15 @@ func example(node_name, dialog_name):
 		0:
 			Rakugo.say({
 				"who": "ch1",
-				"kind": "phone_left",
-#				"time" : 0, # time bettwen letters
+#				"kind": "phone_left",
+				"time" : 0, # time bettwen letters
 				"what": "Test 1 {:grinning:}"
 				})
 	
 		1:
 			Rakugo.say({
 				"who": "ch2",
-				"kind": "phone_right",
+#				"kind": "phone_right",
 				"time" : 0, # time bettwen letters
 				"what": "Test 2 {:thumbsup:}"
 				})
@@ -38,7 +38,7 @@ func example(node_name, dialog_name):
 		2:
 			Rakugo.say({
 				"who": "ch1",
-				"kind": "phone_left",
+#				"kind": "phone_left",
 				"time" : 0, # time bettwen letters
 				"what": "Test 3"
 				})
@@ -46,7 +46,7 @@ func example(node_name, dialog_name):
 		3:
 			Rakugo.say({
 				"who": "ch2",
-				"kind": "phone_right",
+#				"kind": "phone_right",
 				"time" : 0, # time bettwen letters
 				"what": "Test 4"
 				})

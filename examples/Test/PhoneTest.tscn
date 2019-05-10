@@ -13,12 +13,20 @@ script = ExtResource( 2 )
 character_id = "ch1"
 character_name = "Alice"
 color = Color( 0.521569, 0, 1, 1 )
+stats = {
+
+}
 avatar = ExtResource( 3 )
+kind = "phone_left"
 
 [node name="Character2" type="Node" parent="."]
 script = ExtResource( 2 )
 character_id = "ch2"
 character_name = "Rakugo"
 color = Color( 0.967169, 0.988281, 0.312698, 1 )
+stats = {
+
+}
 avatar = ExtResource( 4 )
+kind = "phone_right"
 

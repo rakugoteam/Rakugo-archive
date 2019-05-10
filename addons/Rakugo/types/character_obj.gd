@@ -78,7 +78,6 @@ func character2dict() -> Dictionary:
 	return dict
 
 func dict2character(dict : Dictionary) -> void:
-	for
 	if dict.has("name"):
 		name = dict.name
 
