@@ -189,7 +189,9 @@ func _ready() -> void:
 	define("text_time", _text_time, false)
 	define("notify_time", _notify_time, false)
 	define("typing_text", _typing_text, false)
-	
+
+	character("Narrator")
+
 	step_timer.connect("timeout", self, "_on_time_active_timeout")
 
 func get_datetime_str() -> String:
@@ -340,7 +342,7 @@ func ranged_var(var_name, start_value := 0.0, min_value := 0.0, max_value := 0.0
 	return rrv
 
 ## crate new character as global variable that Rakugo will see
-## possible parameters: name, color, what_prefix, what_suffix, avatar, stats
+## possible parameters: name, color, prefix, suffix, avatar, stats, kind
 func character(character_id:String, parameters:={}) -> CharacterObject:
 	var new_ch := CharacterObject.new(character_id, parameters)
 	variables[character_id] = new_ch

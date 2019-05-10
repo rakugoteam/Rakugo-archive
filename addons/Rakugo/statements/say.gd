@@ -11,6 +11,9 @@ func _init() -> void:
 func exec() -> void:
 	debug(parameters_names)
 
+	if not ("who" in parameters):
+		parameters["who"] = "Narrator"
+
 	if "who" in parameters:
 		if parameters.who in Rakugo.variables:
 			if Rakugo.get_type(parameters.who) == Rakugo.Type.CHARACTER:

@@ -77,6 +77,7 @@ position = Vector2( 524.705, 226.134 )
 rotation = 0.628319
 z_index = -1
 script = ExtResource( 4 )
+node_id = "TestNode2D"
 
 [node name="logo" type="Sprite" parent="RakugoCharacter/TestNode2D"]
 texture = ExtResource( 5 )
@@ -85,18 +86,21 @@ texture = ExtResource( 5 )
 anims/test = SubResource( 1 )
 anims/test_loop = SubResource( 2 )
 script = ExtResource( 6 )
+node_id = "TestAnimPlayer"
 
 [node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 volume_db = 6.0
 bus = "SFX"
 script = ExtResource( 8 )
+node_id = "SFXPlayer"
 
 [node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
 volume_db = 3.0
 bus = "BGM"
 script = ExtResource( 8 )
+node_id = "BGMPlayer"
 
 [node name="TestNode" type="Sprite" parent="."]
 visible = false

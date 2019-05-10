@@ -11,7 +11,7 @@ var parameters_names : Array = [
 	"kind"
 	]
 
-var _color : Color
+var _color := Color("#ffffff")
 var _avatar : String
 
 var name	:= ""
@@ -25,7 +25,28 @@ var avatar setget _set_avatar, _get_avatar
 
 func _init(var_id:String, var_value:Dictionary
 	).(var_id, var_value, Rakugo.Type.CHARACTER) -> void:
-	kind = Rakugo.default_kind
+
+	if not ("name" in _value):
+		_value["name"] = name
+
+	if not ("color" in _value):
+		_value["color"] = _color.to_html()
+
+	if not ("prefix" in _value):
+		_value["prefix"] = prefix
+
+	if not ("suffix" in _value):
+		_value["suffix"] = suffix
+
+	if not ("avatar" in _value):
+		_value["avatar"] = ""
+
+	if not ("stats" in _value):
+		_value["stats"] = stats
+
+	if not ("kind" in _value):
+		_value["kind"] = Rakugo.default_kind
+
 	_set_value(_value)
 
 func _set_color(vcolor : String) -> void:
@@ -59,8 +80,8 @@ func parse_name() -> String:
 func parse_what(what : String) -> String:
 	return prefix + what + suffix
 
-func _set_value(parameters: = {}) -> void:
-	dict2character(parameters)
+func _set_value(_value: = {}) -> void:
+	dict2character(_value)
 
 func _get_value() -> Dictionary:
 	return character2dict()

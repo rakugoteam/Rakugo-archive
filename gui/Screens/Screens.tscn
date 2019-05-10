@@ -4771,6 +4771,7 @@ mouse_filter = 1
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
 use_theme_from_setting = true
+node_id = "Screens"
 
 [node name="Panel" type="Panel" parent="."]
 margin_left = -11.0
