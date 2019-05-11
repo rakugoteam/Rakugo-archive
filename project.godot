@@ -339,7 +339,7 @@ gdscript/warnings/return_value_discarded=false
 
 [editor_plugins]
 
-enabled=PoolStringArray( "Rakugo", "godot-plugin-refresher" )
+enabled=PoolStringArray( "Rakugo" )
 
 [input]
 
