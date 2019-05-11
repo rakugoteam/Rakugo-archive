@@ -8,3 +8,8 @@ func _ready() -> void:
 func _on_window_size_changed(prev : Vector2, now : Vector2) -> void:
 	var default = settings.default_window_size
 	scale = now / default
+
+func _process(delta: float) -> void:
+	var now = OS.window_size
+	var default = settings.default_window_size
+	scale = now / default
