@@ -383,6 +383,7 @@ __meta__ = {
 ChoiceButton = ExtResource( 5 )
 
 [node name="ScrollContainerHMenu" type="ScrollContainer" parent="."]
+editor/display_folded = true
 visible = false
 anchor_left = 0.5
 anchor_top = 1.0

@@ -1,14 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://gui/SlotBox/SlotBox.gd" type="Script" id=1]
-[ext_resource path="res://ubuntu-font-family/Ubuntu-B.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://gui/SlotBox/Slot.tscn" type="PackedScene" id=3]
+[ext_resource path="res://gui/SlotBox/Slot.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ubuntu-font-family/Ubuntu-B.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://gui/SlotBox/ConfirmOverwrite.tscn" type="PackedScene" id=4]
+[ext_resource path="res://gui/SlotBox/ConfirmName.tscn" type="PackedScene" id=5]
 
 [sub_resource type="DynamicFont" id=1]
-
 size = 40
-font_data = ExtResource( 2 )
+font_data = ExtResource( 3 )
 
 [node name="SlotBox" type="Control"]
 margin_left = 257.0
@@ -16,6 +16,8 @@ margin_top = 13.0
 margin_right = 959.0
 margin_bottom = 545.0
 script = ExtResource( 1 )
+container_path = NodePath("ScrollGrid/GridContainer")
+slot = ExtResource( 2 )
 
 [node name="Title" type="Label" parent="."]
 margin_right = 702.0
@@ -24,59 +26,56 @@ custom_fonts/font = SubResource( 1 )
 text = "Save/Load"
 align = 1
 
-[node name="GridContainer" type="GridContainer" parent="."]
-margin_top = 62.0
-margin_right = 702.0
-margin_bottom = 532.0
+[node name="ScrollVBox" type="ScrollContainer" parent="."]
+visible = false
+margin_top = 53.0
+margin_right = 755.0
+margin_bottom = 580.0
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollVBox"]
+margin_right = 755.0
+margin_bottom = 527.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ScrollGrid" type="ScrollContainer" parent="."]
+margin_top = 53.0
+margin_right = 755.0
+margin_bottom = 580.0
+
+[node name="GridContainer" type="GridContainer" parent="ScrollGrid"]
+margin_right = 755.0
+margin_bottom = 527.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 3
 
-[node name="1" parent="GridContainer" instance=ExtResource( 3 )]
-margin_right = 231.0
-margin_bottom = 233.0
-
-[node name="2" parent="GridContainer" instance=ExtResource( 3 )]
-margin_left = 235.0
-margin_right = 466.0
-margin_bottom = 233.0
-
-[node name="3" parent="GridContainer" instance=ExtResource( 3 )]
-margin_left = 470.0
-margin_right = 701.0
-margin_bottom = 233.0
-
-[node name="4" parent="GridContainer" instance=ExtResource( 3 )]
-margin_top = 237.0
-margin_right = 231.0
-margin_bottom = 470.0
-
-[node name="5" parent="GridContainer" instance=ExtResource( 3 )]
-margin_left = 235.0
-margin_top = 237.0
-margin_right = 466.0
-margin_bottom = 470.0
-
-[node name="6" parent="GridContainer" instance=ExtResource( 3 )]
-margin_left = 470.0
-margin_top = 237.0
-margin_right = 701.0
-margin_bottom = 470.0
-
-[node name="PopupPanel" type="PopupPanel" parent="."]
-margin_left = -13.0
-margin_top = 51.0
-margin_right = 717.0
-margin_bottom = 538.0
+[node name="PopupPanel" type="WindowDialog" parent="."]
+margin_left = 69.0
+margin_top = 82.0
+margin_right = 591.0
+margin_bottom = 414.0
 
 [node name="ConfirmOverwrite" parent="PopupPanel" instance=ExtResource( 4 )]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -361.0
-margin_top = -239.5
-margin_right = 361.0
-margin_bottom = 239.5
+margin_left = -253.0
+margin_top = -156.5
+margin_right = 253.0
+margin_bottom = 128.5
+alignment = 1
+
+[node name="ConfirmName" parent="PopupPanel" instance=ExtResource( 5 )]
+visible = false
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -161.0
+margin_right = 0.0
+margin_bottom = 163.0
 alignment = 1
 

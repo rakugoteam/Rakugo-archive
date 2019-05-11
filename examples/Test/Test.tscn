@@ -110,6 +110,8 @@ visible = false
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 206.506, 241.174 )
 scale = Vector2( 2, 2 )
+z_index = -1
+z_as_relative = false
 texture = ExtResource( 10 )
 script = ExtResource( 11 )
 
