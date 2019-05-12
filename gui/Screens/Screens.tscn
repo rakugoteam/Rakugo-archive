@@ -4767,6 +4767,7 @@ tracks/81/keys = {
 }
 
 [node name="Screens" type="Control"]
+editor/display_folded = true
 mouse_filter = 1
 theme = ExtResource( 1 )
 script = ExtResource( 2 )

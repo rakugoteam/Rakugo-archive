@@ -341,7 +341,8 @@ gdscript/warnings/return_value_discarded=false
 
 [display]
 
-window/size/fullscreen=true
+window/size/test_width=1024
+window/size/test_height=600
 
 [editor_plugins]
 

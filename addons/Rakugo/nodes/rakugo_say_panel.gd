@@ -64,6 +64,8 @@ func _input(event : InputEvent) -> void:
 		Rakugo.exit_statement()
 
 func _on_statement(type : int, parameters : Dictionary) -> void:
+	kind = Rakugo.default_kind
+	
 	if "kind" in parameters:
 		kind = parameters.kind
 
