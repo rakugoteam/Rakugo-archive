@@ -36,178 +36,134 @@ func example(node_name, dialog_name):
 	if dialog_name != "example":
 		return
 
-	var step = 0
-	
-	if Rakugo.story_state == step:
-		Rakugo.call_node("TestNode", "test_func", ["test of call node"])
-		Rakugo.say({"what": "Test of call in func form node using call_node."})
-	yield(Rakugo, "story_step")
+	match Rakugo.story_state:
+		0:
+			Rakugo.call_node("TestNode", "test_func", ["test of call node"])
+			Rakugo.say({"what": "Test of call in func form node using call_node."})
 
-	if Rakugo.story_state - 1 == step:
-		step = Rakugo.story_state
-		test_quest.start()
-		Rakugo.say({"what": "For test quest system now will you start test quest."})
-	yield(Rakugo, "story_step")
+		1:
+			test_quest.start()
+			Rakugo.say({"what": "For test quest system now will you start test quest."})
 
-	if Rakugo.story_state - 1 == step:
-		step = Rakugo.story_state
-		test_quest.finish()
-		Rakugo.say({"what": "And now test quest is done."})
-	yield(Rakugo, "story_step")
+		2:
+			test_quest.finish()
+			Rakugo.say({"what": "And now test quest is done."})
 
-	if Rakugo.story_state - 1 == step:
-		step = Rakugo.story_state
-		Rakugo.play_anim("TestAnimPlayer", "test")
-		Rakugo.say({"who":"test", "what":"test of playing simple anim"})
-	yield(Rakugo, "story_step")
+		3:
+			Rakugo.play_anim("TestAnimPlayer", "test")
+			Rakugo.say({"who":"test", "what":"test of playing simple anim"})
 
-	if Rakugo.story_state - 1 == step:
-		step = Rakugo.story_state
-		Rakugo.stop_anim("TestAnimPlayer", true)
-		Rakugo.play_anim("TestAnimPlayer", "test_loop")
-		Rakugo.say({
-			"who":"test",
-			"what":
-			"Test of stoping loop anim." +
-			"{/nl}Click to go next step and stop anim"
-		})
-	yield(Rakugo, "story_step")
+		4:
+			Rakugo.stop_anim("TestAnimPlayer", true)
+			Rakugo.play_anim("TestAnimPlayer", "test_loop")
+			Rakugo.say({
+				"who":"test",
+				"what":
+				"Test of stoping loop anim." +
+				"{/nl}Click to go next step and stop anim"
+			})
 
-	if Rakugo.story_state - 1 == step:
-		step = Rakugo.story_state
-		Rakugo.stop_anim("TestAnimPlayer", true)
-		Rakugo.say({
-			"who":"test",
-			"what":"test anim stopped"
-		})
-	yield(Rakugo, "story_step")
+		6:
+			Rakugo.stop_anim("TestAnimPlayer", true)
+			Rakugo.say({
+				"who":"test",
+				"what":"test anim stopped"
+			})
 
-	if Rakugo.story_state - 1 == step:
-		step = Rakugo.story_state
-		Rakugo.play_audio("SFXPlayer")
-		Rakugo.say({"who":"test", "what":"now you hear sfx."})
-	yield(Rakugo, "story_step")
+		7:
+			Rakugo.play_audio("SFXPlayer")
+			Rakugo.say({"who":"test", "what":"now you hear sfx."})
 
-	if Rakugo.story_state - 1 == step:
-		step = Rakugo.story_state
-		Rakugo.play_audio("BGMPlayer")
-		Rakugo.say({
-			"who":
-				"test", 
-			"what":
+		8:
+			Rakugo.play_audio("BGMPlayer")
+			Rakugo.say({
+				"who":"test", "what":
 				"Now you hear music." +
 				"{/nl}Click to next step and stop music."
 
-		})
-	yield(Rakugo, "story_step")
-
-	if Rakugo.story_state - 1 == step:
-		step = Rakugo.story_state
-		Rakugo.stop_audio("BGMPlayer")
-		Rakugo.say({
-			"who":"test", "what":
-			"Music was stop." +
-			"{/nl}Click to next step."
-		})
-	yield(Rakugo, "story_step")
-
-	if Rakugo.story_state - 1 == step:
-		step = Rakugo.story_state
-		Rakugo.define("test_dict", {"a": 1, "b": 2})
-		Rakugo.say({"who":"test", "what":"test dict b element is [test_dict.b]"})
-	yield(Rakugo, "story_step")
-
-	if Rakugo.story_state - 1 == step:
-		step = Rakugo.story_state
-		Rakugo.define("test_list", [1,3,7])
-		Rakugo.say({"who":"test", "what":"test list 2 list element is [test_list[2]]"})
-	yield(Rakugo, "story_step")
-
-	if Rakugo.story_state - 1 == step:
-		step = Rakugo.story_state
-		Rakugo.say({"what":"now test_var = [test_var]"})
-	yield(Rakugo, "story_step")
-
-	if Rakugo.story_state - 1 == step:
-		step = Rakugo.story_state
-		Rakugo.say({"what":"add 1 to test_var"})
-		test_var.value += 1
-	yield(Rakugo, "story_step")
-
-	if Rakugo.story_state - 1 == step:
-		step = Rakugo.story_state
-		Rakugo.say({"what":"and now test_var = [test_var]"})
-	yield(Rakugo, "story_step")
-
-	if Rakugo.story_state - 1 == step:
-		step = Rakugo.story_state
-		Rakugo.ask({
-			"who":
-				"ra",
-			"what":
-				"Hi! I'm [ra.name]. What is your name?",
-			"variable":
-					"player_name", ## Rakugo variable to be changed
-					## it don't have to be define before input
-			"value":
-				"Developer" ## default value
 			})
-	yield(Rakugo, "story_step")
 
-	if Rakugo.story_state - 1 == step:
-		step = Rakugo.story_state
-		Rakugo.say({
-			"who":
-				"ra",
-			"what":
-				"Welcome [player_name] in Rakugo Framework Version [version]",
-			"typing":
-				false
+		9:
+			Rakugo.stop_audio("BGMPlayer")
+			Rakugo.say({
+				"who":"test", "what":
+				"Music was stop." +
+				"{/nl}Click to next step."
 			})
-	yield(Rakugo, "story_step")
 
-	if Rakugo.story_state - 1 == step:
-		step = Rakugo.story_state
-		Rakugo.say({
-			"who":
-				"[player_name]",
-			"what":
-				"Nice to be here.",
-		})
-	yield(Rakugo, "story_step")
+		10:
+			Rakugo.define("test_dict", {"a": 1, "b": 2})
+			Rakugo.say({"who":"test", "what":"test dict b element is [test_dict.b]"})
 
-	if Rakugo.story_state - 1 == step:
-		step = Rakugo.story_state
-		Rakugo.say({
-			"who":
-				"ra",
-			"what":
-				"extra stamement to check skipping/auto",
-			})
-	yield(Rakugo, "story_step")
+		11:
+			Rakugo.define("test_list", [1,3,7])
+			Rakugo.say({"who":"test", "what":"test list 2 list element is [test_list[2]]"})
 
-	Rakugo.hide("ra")
-	Rakugo.menu({
-		"who":
-			"ra",
-		"what":
-			"What want to do?",
-		"mkind":
-			"horizontal",
-		"choices":
-			[
-				"Play Visual Novel example",
-				"Play Click'n'Point Adventure example",
-				"Play RPG example",
-				"Read Docs"
-			]
-		})
+		12:
+			Rakugo.say({"what":"now test_var = [test_var]"})
+
+		13:
+			Rakugo.say({"what":"add 1 to test_var"})
+			test_var.value += 1
+
+		14:
+			Rakugo.say({"what":"and now test_var = [test_var]"})
+
+		15:
+			Rakugo.ask({
+				"who":
+					"ra",
+				"what":
+					"Hi! I'm [ra.name]. What is your name?",
+				"variable":
+						"player_name", ## Rakugo variable to be changed
+						## it don't have to be define before input
+				"value":
+					"Developer" ## default value
+				})
+
+		16:
+			Rakugo.say({
+				"who":
+					"ra",
+				"what":
+					"Welcome [player_name] in Rakugo Framework Version [version]",
+				"typing":
+					false
+				})
+
+		17:
+			Rakugo.say({
+				"who":
+					"ra",
+				"what":
+					"extra stamement to check skipping/auto",
+				})
+
+
+		18:
+			Rakugo.hide("ra")
+			Rakugo.menu({
+				"who":
+					"ra",
+				"what":
+					"What want to do?",
+				"mkind":
+					"horizontal",
+				"choices":
+					{
+						"Play Visual Novel example" : "vn",
+						"Play Click'n'Point Adventure example" : "cp",
+						"Play RPG example" : "rpg",
+						"Read Docs" : "docs"
+					}
+				})
 
 func play_vn_example(node_name, dialog_name):
 	if node_name != name:
 		return
 
-	if dialog_name != "Play Visual Novel example":
+	if dialog_name != "vn":
 		return
 
 	Rakugo.jump("Garden", "Garden", "garden")
@@ -216,7 +172,7 @@ func play_cp_adv_example(node_name, dialog_name):
 	if node_name != name:
 		return
 
-	if dialog_name != "Play Click'n'Point Adventure example":
+	if dialog_name != "cp":
 		return
 
 	Rakugo.say({
@@ -232,7 +188,7 @@ func play_rpg_example(node_name, dialog_name):
 	if node_name != name:
 		return
 
-	if Rakugo.current_dialog_name == "Play RPG example":
+	if Rakugo.current_dialog_name == "rpg":
 		Rakugo.say({
 			"who":
 				"ra",
@@ -247,7 +203,7 @@ func read_docs(node_name, dialog_name):
 	if node_name != name:
 		return
 
-	if dialog_name != "Read Docs":
+	if dialog_name != "docs":
 		return
 
 	Rakugo.say({
