@@ -9,14 +9,10 @@ pause_mode = 2
 z_as_relative = false
 script = ExtResource( 1 )
 
-[node name="InGameGUI" parent="." groups=[
-"save",
-] instance=ExtResource( 2 )]
+[node name="InGameGUI" parent="." instance=ExtResource( 2 )]
 visible = false
 margin_right = 0.0
 margin_bottom = 0.0
 
-[node name="Screens" parent="." groups=[
-"save",
-] instance=ExtResource( 3 )]
+[node name="Screens" parent="." instance=ExtResource( 3 )]
 
