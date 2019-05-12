@@ -17,34 +17,44 @@ func example(node_name, dialog_name):
 
 	if dialog_name != "example":
 		return
-	
-	Rakugo.say({
-		"who": "ch1",
-#		"kind": "phone_left",
-		"time" : 0, # time bettwen letters
-		"what": "Test 1 {:grinning:}"
-	})
+
+	var step = 0
+
+	if Rakugo.story_state == step:
+		step = Rakugo.story_state
+		Rakugo.say({
+			"who": "ch1",
+	#		"kind": "phone_left",
+			"time" : 0, # time bettwen letters
+			"what": "Test 1 {:grinning:}"
+		})
 	yield(Rakugo, "story_step")
 
-	Rakugo.say({
-		"who": "ch2",
-#		"kind": "phone_right",
-		"time" : 0, # time bettwen letters
-		"what": "Test 2 {:thumbsup:}"
-	})
+	if Rakugo.story_state - 1 == step:
+		step = Rakugo.story_state
+		Rakugo.say({
+			"who": "ch2",
+	#		"kind": "phone_right",
+			"time" : 0, # time bettwen letters
+			"what": "Test 2 {:thumbsup:}"
+		})
 	yield(Rakugo, "story_step")
 
-	Rakugo.say({
-		"who": "ch1",
-#		"kind": "phone_left",
-		"time" : 0, # time bettwen letters
-		"what": "Test 3"
-	})
+	if Rakugo.story_state - 1 == step:
+		step = Rakugo.story_state
+		Rakugo.say({
+			"who": "ch1",
+	#		"kind": "phone_left",
+			"time" : 0, # time bettwen letters
+			"what": "Test 3"
+		})
 	yield(Rakugo, "story_step")
 
-	Rakugo.say({
-		"who": "ch2",
-#		"kind": "phone_right",
-		"time" : 0, # time bettwen letters
-		"what": "Test 4"
-	})
+	if Rakugo.story_state - 1 == step:
+		step = Rakugo.story_state
+		Rakugo.say({
+			"who": "ch2",
+	#		"kind": "phone_right",
+			"time" : 0, # time bettwen letters
+			"what": "Test 4"
+		})

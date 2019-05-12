@@ -99,8 +99,9 @@ func _on_statement(type : int, parameters : Dictionary) -> void:
 
 	if "avatar" in parameters:
 		if StdKindContainer.visible:
-			if avatar != null:
-				avatar.free()
+			if parameters.avatar == "":
+				if avatar != null:
+					avatar.free()
 
 		if parameters.avatar != "":
 			CurrentKind.show_avatar()
