@@ -407,7 +407,6 @@ kind = "horizontal"
 ChoiceButton = ExtResource( 5 )
 
 [node name="SayPanel" parent="." instance=ExtResource( 7 )]
-margin_bottom = 602.0
 
 [node name="Notify" type="Panel" parent="."]
 editor/display_folded = true

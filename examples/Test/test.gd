@@ -2,7 +2,8 @@
 
 extends Node
 
-export (String, "adv", "hide", "top", "center", "left", "right", "nvl") var kind = "adv"
+export var start_from = 0
+export (String, "adv", "hide", "top", "center", "left", "right", "nvl", "fullscreen") var kind = "adv"
 var test_var
 var test_quest
 var test_subquest
@@ -37,7 +38,7 @@ func example(node_name, dialog_name):
 	if dialog_name != "example":
 		return
 
-	match Rakugo.story_state:
+	match Rakugo.story_state + start_from:
 		0:
 			Rakugo.call_node("TestNode", "test_func", ["test of call node"])
 			Rakugo.say({
@@ -61,9 +62,7 @@ func example(node_name, dialog_name):
 
 		3:
 			Rakugo.play_anim("TestAnimPlayer", "test")
-			Rakugo.say({
-				"who":"test",
-				"what":"test of playing simple anim",
+			Rakugo.say({"who":"test", "what":"test of playing simple anim",
 				"kind": kind
 			})
 
@@ -112,7 +111,8 @@ func example(node_name, dialog_name):
 			})
 
 		10:
-			Rakugo.define("test_dict", {"a": 1, "b": 2})
+			Rakugo.define(
+			"test_dict", {"a": 1, "b": 2})
 			Rakugo.say({
 				"who":"test",
 				"what":"test dict b element is [test_dict.b]",
@@ -128,21 +128,18 @@ func example(node_name, dialog_name):
 			})
 
 		12:
-			Rakugo.say({
-				"what":"now test_var = [test_var]",
+			Rakugo.say({"what":"now test_var = [test_var]",
 				"kind": kind
 			})
 
 		13:
-			Rakugo.say({
-				"what":"add 1 to test_var",
+			Rakugo.say({"what":"add 1 to test_var",
 				"kind": kind
 			})
 			test_var.value += 1
 
 		14:
-			Rakugo.say({
-				"what":"and now test_var = [test_var]",
+			Rakugo.say({"what":"and now test_var = [test_var]",
 				"kind": kind
 			})
 

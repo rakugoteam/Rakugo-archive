@@ -69,7 +69,6 @@ func _on_statement(type : int, parameters : Dictionary) -> void:
 	if "kind" in parameters:
 		kind = parameters.kind
 
-		# adv and backfall
 		if not extra_kinds.has(kind):
 			StdKindContainer.show()
 			$AnimationPlayer.play(kind)
@@ -84,6 +83,7 @@ func _on_statement(type : int, parameters : Dictionary) -> void:
 			var instace : KindContainer = scene_to_use.instance()
 			MainContainer.add_child(instace)
 			_setup(instace)
+			$ScrollContainer.scroll_vertical += instace.rect_size.y*2
 
 	_type = type
 

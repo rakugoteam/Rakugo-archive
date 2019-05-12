@@ -339,11 +339,6 @@ gdscript/warnings/unused_class_variable=false
 gdscript/warnings/unused_argument=false
 gdscript/warnings/return_value_discarded=false
 
-[display]
-
-window/size/test_width=1024
-window/size/test_height=600
-
 [editor_plugins]
 
 enabled=PoolStringArray( "Rakugo" )
