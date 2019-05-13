@@ -4,13 +4,13 @@
 [ext_resource path="res://gui/Screens/Screens.gd" type="Script" id=2]
 [ext_resource path="res://ubuntu-font-family/Ubuntu-B.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://addons/Rakugo/nodes/rakugo_var_label.gd" type="Script" id=4]
-[ext_resource path="res://gui/InGame/QuickMenuButton.tscn" type="PackedScene" id=5]
-[ext_resource path="res://gui/SlotBox/SlotBox.tscn" type="PackedScene" id=6]
-[ext_resource path="res://gui/History/History.gd" type="Script" id=7]
-[ext_resource path="res://gui/History/HistoryItem.tscn" type="PackedScene" id=8]
-[ext_resource path="res://gui/OptionsBox/OptionsBox.tscn" type="PackedScene" id=9]
-[ext_resource path="res://gui/Quests/QuestsBox.tscn" type="PackedScene" id=10]
-[ext_resource path="res://addons/Rakugo/nodes/rakugo_label.gd" type="Script" id=11]
+[ext_resource path="res://addons/Rakugo/nodes/rakugo_label.gd" type="Script" id=5]
+[ext_resource path="res://gui/InGame/QuickMenuButton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://gui/SlotBox/SlotBox.tscn" type="PackedScene" id=7]
+[ext_resource path="res://gui/History/History.gd" type="Script" id=8]
+[ext_resource path="res://gui/History/HistoryItem.tscn" type="PackedScene" id=9]
+[ext_resource path="res://gui/OptionsBox/OptionsBox.tscn" type="PackedScene" id=10]
+[ext_resource path="res://gui/Quests/QuestsBox.tscn" type="PackedScene" id=11]
 [ext_resource path="res://gui/Screens/QuitBox.tscn" type="PackedScene" id=12]
 [ext_resource path="res://examples/Test/TestNodes.tscn" type="PackedScene" id=13]
 
@@ -89,7 +89,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/6/type = "bezier"
-tracks/6/path = NodePath("TitleNVersion:rect_position:x")
+tracks/6/path = NodePath("VBoxContainer/TitleNVersion:rect_position:x")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -99,7 +99,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/7/type = "bezier"
-tracks/7/path = NodePath("TitleNVersion:rect_position:y")
+tracks/7/path = NodePath("VBoxContainer/TitleNVersion:rect_position:y")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -241,7 +241,7 @@ tracks/18/keys = {
 "values": [ 1 ]
 }
 tracks/19/type = "value"
-tracks/19/path = NodePath("TitleNVersion:alignment")
+tracks/19/path = NodePath("VBoxContainer/TitleNVersion:alignment")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/imported = false
@@ -293,7 +293,7 @@ tracks/23/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/24/type = "bezier"
-tracks/24/path = NodePath("TitleNVersion:rect_position:x")
+tracks/24/path = NodePath("VBoxContainer/TitleNVersion:rect_position:x")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/imported = false
@@ -303,7 +303,7 @@ tracks/24/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/25/type = "bezier"
-tracks/25/path = NodePath("TitleNVersion:rect_position:y")
+tracks/25/path = NodePath("VBoxContainer/TitleNVersion:rect_position:y")
 tracks/25/interp = 1
 tracks/25/loop_wrap = true
 tracks/25/imported = false
@@ -385,7 +385,7 @@ tracks/32/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/33/type = "value"
-tracks/33/path = NodePath("TitleNVersion/Title:visible")
+tracks/33/path = NodePath("VBoxContainer/TitleNVersion/Title:visible")
 tracks/33/interp = 1
 tracks/33/loop_wrap = true
 tracks/33/imported = false
@@ -774,7 +774,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/6/type = "bezier"
-tracks/6/path = NodePath("TitleNVersion:rect_position:x")
+tracks/6/path = NodePath("VBoxContainer/TitleNVersion:rect_position:x")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -784,7 +784,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/7/type = "bezier"
-tracks/7/path = NodePath("TitleNVersion:rect_position:y")
+tracks/7/path = NodePath("VBoxContainer/TitleNVersion:rect_position:y")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -926,7 +926,7 @@ tracks/18/keys = {
 "values": [ 0 ]
 }
 tracks/19/type = "value"
-tracks/19/path = NodePath("TitleNVersion:alignment")
+tracks/19/path = NodePath("VBoxContainer/TitleNVersion:alignment")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/imported = false
@@ -978,7 +978,7 @@ tracks/23/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/24/type = "bezier"
-tracks/24/path = NodePath("TitleNVersion:rect_position:x")
+tracks/24/path = NodePath("VBoxContainer/TitleNVersion:rect_position:x")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/imported = false
@@ -988,7 +988,7 @@ tracks/24/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/25/type = "bezier"
-tracks/25/path = NodePath("TitleNVersion:rect_position:y")
+tracks/25/path = NodePath("VBoxContainer/TitleNVersion:rect_position:y")
 tracks/25/interp = 1
 tracks/25/loop_wrap = true
 tracks/25/imported = false
@@ -1202,7 +1202,7 @@ tracks/45/keys = {
 "values": [ 0 ]
 }
 tracks/46/type = "value"
-tracks/46/path = NodePath("TitleNVersion/Title:visible")
+tracks/46/path = NodePath("VBoxContainer/TitleNVersion/Title:visible")
 tracks/46/interp = 1
 tracks/46/loop_wrap = true
 tracks/46/imported = false
@@ -1569,7 +1569,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/6/type = "bezier"
-tracks/6/path = NodePath("TitleNVersion:rect_position:x")
+tracks/6/path = NodePath("VBoxContainer/TitleNVersion:rect_position:x")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -1579,7 +1579,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/7/type = "bezier"
-tracks/7/path = NodePath("TitleNVersion:rect_position:y")
+tracks/7/path = NodePath("VBoxContainer/TitleNVersion:rect_position:y")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -1721,7 +1721,7 @@ tracks/18/keys = {
 "values": [ 2 ]
 }
 tracks/19/type = "value"
-tracks/19/path = NodePath("TitleNVersion:alignment")
+tracks/19/path = NodePath("VBoxContainer/TitleNVersion:alignment")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/imported = false
@@ -1753,7 +1753,7 @@ tracks/21/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/22/type = "bezier"
-tracks/22/path = NodePath("TitleNVersion:rect_position:x")
+tracks/22/path = NodePath("VBoxContainer/TitleNVersion:rect_position:x")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/imported = false
@@ -1763,7 +1763,7 @@ tracks/22/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/23/type = "bezier"
-tracks/23/path = NodePath("TitleNVersion:rect_position:y")
+tracks/23/path = NodePath("VBoxContainer/TitleNVersion:rect_position:y")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/imported = false
@@ -2133,7 +2133,7 @@ tracks/59/keys = {
 "times": PoolRealArray(  )
 }
 tracks/60/type = "value"
-tracks/60/path = NodePath("TitleNVersion/Title:visible")
+tracks/60/path = NodePath("VBoxContainer/TitleNVersion/Title:visible")
 tracks/60/interp = 1
 tracks/60/loop_wrap = true
 tracks/60/imported = false
@@ -2344,7 +2344,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/6/type = "bezier"
-tracks/6/path = NodePath("TitleNVersion:rect_position:x")
+tracks/6/path = NodePath("VBoxContainer/TitleNVersion:rect_position:x")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -2354,7 +2354,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/7/type = "bezier"
-tracks/7/path = NodePath("TitleNVersion:rect_position:y")
+tracks/7/path = NodePath("VBoxContainer/TitleNVersion:rect_position:y")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -2496,7 +2496,7 @@ tracks/18/keys = {
 "values": [ 1 ]
 }
 tracks/19/type = "value"
-tracks/19/path = NodePath("TitleNVersion:alignment")
+tracks/19/path = NodePath("VBoxContainer/TitleNVersion:alignment")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/imported = false
@@ -2548,7 +2548,7 @@ tracks/23/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/24/type = "bezier"
-tracks/24/path = NodePath("TitleNVersion:rect_position:x")
+tracks/24/path = NodePath("VBoxContainer/TitleNVersion:rect_position:x")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/imported = false
@@ -2558,7 +2558,7 @@ tracks/24/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/25/type = "bezier"
-tracks/25/path = NodePath("TitleNVersion:rect_position:y")
+tracks/25/path = NodePath("VBoxContainer/TitleNVersion:rect_position:y")
 tracks/25/interp = 1
 tracks/25/loop_wrap = true
 tracks/25/imported = false
@@ -2640,7 +2640,7 @@ tracks/32/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/33/type = "value"
-tracks/33/path = NodePath("TitleNVersion/Title:visible")
+tracks/33/path = NodePath("VBoxContainer/TitleNVersion/Title:visible")
 tracks/33/interp = 1
 tracks/33/loop_wrap = true
 tracks/33/imported = false
@@ -3089,7 +3089,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/6/type = "bezier"
-tracks/6/path = NodePath("TitleNVersion:rect_position:x")
+tracks/6/path = NodePath("VBoxContainer/TitleNVersion:rect_position:x")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -3099,7 +3099,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/7/type = "bezier"
-tracks/7/path = NodePath("TitleNVersion:rect_position:y")
+tracks/7/path = NodePath("VBoxContainer/TitleNVersion:rect_position:y")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -3241,7 +3241,7 @@ tracks/18/keys = {
 "values": [ 0 ]
 }
 tracks/19/type = "value"
-tracks/19/path = NodePath("TitleNVersion:alignment")
+tracks/19/path = NodePath("VBoxContainer/TitleNVersion:alignment")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/imported = false
@@ -3293,7 +3293,7 @@ tracks/23/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/24/type = "bezier"
-tracks/24/path = NodePath("TitleNVersion:rect_position:x")
+tracks/24/path = NodePath("VBoxContainer/TitleNVersion:rect_position:x")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/imported = false
@@ -3303,7 +3303,7 @@ tracks/24/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/25/type = "bezier"
-tracks/25/path = NodePath("TitleNVersion:rect_position:y")
+tracks/25/path = NodePath("VBoxContainer/TitleNVersion:rect_position:y")
 tracks/25/interp = 1
 tracks/25/loop_wrap = true
 tracks/25/imported = false
@@ -3517,7 +3517,7 @@ tracks/45/keys = {
 "values": [ 0 ]
 }
 tracks/46/type = "value"
-tracks/46/path = NodePath("TitleNVersion/Title:visible")
+tracks/46/path = NodePath("VBoxContainer/TitleNVersion/Title:visible")
 tracks/46/interp = 1
 tracks/46/loop_wrap = true
 tracks/46/imported = false
@@ -3974,7 +3974,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/6/type = "bezier"
-tracks/6/path = NodePath("TitleNVersion:rect_position:x")
+tracks/6/path = NodePath("VBoxContainer/TitleNVersion:rect_position:x")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -3984,7 +3984,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/7/type = "bezier"
-tracks/7/path = NodePath("TitleNVersion:rect_position:y")
+tracks/7/path = NodePath("VBoxContainer/TitleNVersion:rect_position:y")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -4126,7 +4126,7 @@ tracks/18/keys = {
 "values": [ 2 ]
 }
 tracks/19/type = "value"
-tracks/19/path = NodePath("TitleNVersion:alignment")
+tracks/19/path = NodePath("VBoxContainer/TitleNVersion:alignment")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/imported = false
@@ -4158,7 +4158,7 @@ tracks/21/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/22/type = "bezier"
-tracks/22/path = NodePath("TitleNVersion:rect_position:x")
+tracks/22/path = NodePath("VBoxContainer/TitleNVersion:rect_position:x")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/imported = false
@@ -4168,7 +4168,7 @@ tracks/22/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/23/type = "bezier"
-tracks/23/path = NodePath("TitleNVersion:rect_position:y")
+tracks/23/path = NodePath("VBoxContainer/TitleNVersion:rect_position:y")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/imported = false
@@ -4538,7 +4538,7 @@ tracks/59/keys = {
 "times": PoolRealArray(  )
 }
 tracks/60/type = "value"
-tracks/60/path = NodePath("TitleNVersion/Title:visible")
+tracks/60/path = NodePath("VBoxContainer/TitleNVersion/Title:visible")
 tracks/60/interp = 1
 tracks/60/loop_wrap = true
 tracks/60/imported = false
@@ -4766,7 +4766,9 @@ tracks/81/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[node name="Screens" type="Control"]
+[node name="Screens" type="Control" groups=[
+"save",
+]]
 mouse_filter = 1
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
@@ -4779,22 +4781,21 @@ margin_top = -8.0
 margin_right = 1033.0
 margin_bottom = 615.0
 
-[node name="TitleNVersion" type="HBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 774.774
+margin_top = 486.871
+margin_right = 1019.77
+margin_bottom = 555.871
+
+[node name="TitleNVersion" type="HBoxContainer" parent="VBoxContainer"]
 editor/display_folded = true
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 209.0
-margin_top = 529.0
-margin_right = 1017.0
-margin_bottom = 594.0
+margin_right = 245.0
+margin_bottom = 65.0
 grow_horizontal = 0
 alignment = 2
 
-[node name="Title" type="Label" parent="TitleNVersion"]
-margin_left = 563.0
-margin_right = 750.0
+[node name="Title" type="Label" parent="VBoxContainer/TitleNVersion"]
+margin_right = 187.0
 margin_bottom = 65.0
 size_flags_vertical = 1
 custom_fonts/font = SubResource( 1 )
@@ -4804,9 +4805,9 @@ script = ExtResource( 4 )
 var_name = "title"
 default = "Your new game"
 
-[node name="Version" type="Label" parent="TitleNVersion"]
-margin_left = 754.0
-margin_right = 808.0
+[node name="Version" type="Label" parent="VBoxContainer/TitleNVersion"]
+margin_left = 191.0
+margin_right = 245.0
 margin_bottom = 65.0
 size_flags_vertical = 1
 text = "2.0.0"
@@ -4814,6 +4815,21 @@ valign = 1
 script = ExtResource( 4 )
 var_name = "version"
 default = "2.0.0"
+
+[node name="RakugoVersion" type="RichTextLabel" parent="VBoxContainer"]
+anchor_right = 0.38
+margin_top = 69.0
+margin_right = 151.9
+margin_bottom = 109.0
+rect_min_size = Vector2( 100, 40 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = "[right]Rakugo 2.0.0"
+text = "Rakugo 2.0.0"
+script = ExtResource( 5 )
+rakugo_text = "{right}Rakugo [rakugo_version]"
+vars_names = [ "rakugo_version" ]
 
 [node name="Navigation" type="Panel" parent="."]
 editor/display_folded = true
@@ -4860,14 +4876,14 @@ custom_constants/separation = 20
 [node name="Hack" type="Control" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer"]
 margin_right = 208.0
 
-[node name="NewGame" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 5 )]
+[node name="NewGame" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
 margin_top = 20.0
 margin_right = 208.0
 margin_bottom = 54.0
 text = "New Game"
 align = 0
 
-[node name="Return" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 5 )]
+[node name="Return" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
 visible = false
 margin_top = 20.0
 margin_right = 140.0
@@ -4875,7 +4891,7 @@ margin_bottom = 52.0
 text = "Return"
 align = 0
 
-[node name="History" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 5 )]
+[node name="History" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
 visible = false
 margin_top = 72.0
 margin_right = 140.0
@@ -4885,7 +4901,7 @@ group = SubResource( 2 )
 text = "History"
 align = 0
 
-[node name="Quests" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 5 )]
+[node name="Quests" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
 visible = false
 margin_top = 72.0
 margin_right = 140.0
@@ -4895,14 +4911,14 @@ group = SubResource( 2 )
 text = "Quests"
 align = 0
 
-[node name="Continue" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 5 )]
+[node name="Continue" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
 margin_top = 74.0
 margin_right = 208.0
 margin_bottom = 108.0
 text = "Continue"
 align = 0
 
-[node name="Load" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 5 )]
+[node name="Load" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
 margin_top = 128.0
 margin_right = 208.0
 margin_bottom = 162.0
@@ -4911,7 +4927,7 @@ group = SubResource( 2 )
 text = "Load"
 align = 0
 
-[node name="Save" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 5 )]
+[node name="Save" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
 visible = false
 margin_top = 280.0
 margin_right = 140.0
@@ -4921,7 +4937,7 @@ group = SubResource( 2 )
 text = "Save"
 align = 0
 
-[node name="Options" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 5 )]
+[node name="Options" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
 margin_top = 182.0
 margin_right = 208.0
 margin_bottom = 216.0
@@ -4930,7 +4946,7 @@ group = SubResource( 2 )
 text = "Options"
 align = 0
 
-[node name="TestNodes" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 5 )]
+[node name="TestNodes" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
 margin_top = 236.0
 margin_right = 208.0
 margin_bottom = 270.0
@@ -4939,7 +4955,7 @@ group = SubResource( 2 )
 text = "Test Nodes"
 align = 0
 
-[node name="About" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 5 )]
+[node name="About" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
 margin_top = 290.0
 margin_right = 208.0
 margin_bottom = 324.0
@@ -4948,7 +4964,7 @@ group = SubResource( 2 )
 text = "About"
 align = 0
 
-[node name="Help" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 5 )]
+[node name="Help" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
 margin_top = 344.0
 margin_right = 208.0
 margin_bottom = 378.0
@@ -4957,7 +4973,7 @@ group = SubResource( 2 )
 text = "Help"
 align = 0
 
-[node name="Quit" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 5 )]
+[node name="Quit" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 6 )]
 margin_top = 398.0
 margin_right = 208.0
 margin_bottom = 432.0
@@ -4979,7 +4995,7 @@ rounded = true
 allow_greater = true
 allow_lesser = true
 
-[node name="SlotBox" parent="." instance=ExtResource( 6 )]
+[node name="SlotBox" parent="." instance=ExtResource( 7 )]
 visible = false
 margin_left = 269.303
 margin_top = 33.5055
@@ -5017,17 +5033,17 @@ margin_bottom = 476.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 5
-script = ExtResource( 7 )
-HistoryItemTemplate = ExtResource( 8 )
+script = ExtResource( 8 )
+HistoryItemTemplate = ExtResource( 9 )
 
-[node name="OptionsBox" parent="." instance=ExtResource( 9 )]
+[node name="OptionsBox" parent="." instance=ExtResource( 10 )]
 visible = false
 margin_left = 213.354
 margin_top = 33.1516
 margin_right = 1027.35
 margin_bottom = 551.152
 
-[node name="QuestsBox" parent="." instance=ExtResource( 10 )]
+[node name="QuestsBox" parent="." instance=ExtResource( 11 )]
 visible = false
 margin_left = 215.354
 margin_top = -2.20361
@@ -5056,7 +5072,7 @@ margin_bottom = 533.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 bbcode_enabled = true
-script = ExtResource( 11 )
+script = ExtResource( 5 )
 rakugo_text_file = "res://about.txt"
 
 [node name="QuitBox" parent="." instance=ExtResource( 12 )]
@@ -5074,7 +5090,7 @@ margin_right = 1190.21
 margin_bottom = 537.15
 rect_scale = Vector2( 0.9, 0.9 )
 
-[node name="BackButton" parent="." instance=ExtResource( 5 )]
+[node name="BackButton" parent="." instance=ExtResource( 6 )]
 visible = false
 margin_left = 421.883
 margin_top = 560.472
