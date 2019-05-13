@@ -4767,7 +4767,6 @@ tracks/81/keys = {
 }
 
 [node name="Screens" type="Control"]
-editor/display_folded = true
 mouse_filter = 1
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
@@ -4781,6 +4780,7 @@ margin_right = 1033.0
 margin_bottom = 615.0
 
 [node name="TitleNVersion" type="HBoxContainer" parent="."]
+editor/display_folded = true
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -4816,6 +4816,7 @@ var_name = "version"
 default = "2.0.0"
 
 [node name="Navigation" type="Panel" parent="."]
+editor/display_folded = true
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = 1.58669

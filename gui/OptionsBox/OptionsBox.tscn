@@ -13,13 +13,7 @@
 [ext_resource path="res://gui/OptionsBox/VSyncBox.gd" type="Script" id=11]
 [ext_resource path="res://gui/OptionsBox/SoundBusControl.tscn" type="PackedScene" id=12]
 
-
-
-
-
-
 [sub_resource type="DynamicFont" id=1]
-
 size = 26
 use_filter = true
 font_data = ExtResource( 1 )
@@ -54,6 +48,7 @@ custom_constants/separation = 10
 alignment = 1
 
 [node name="GameplayBox" type="VBoxContainer" parent="HBoxContainer"]
+editor/display_folded = true
 margin_left = 50.0
 margin_right = 304.0
 margin_bottom = 352.0
@@ -240,7 +235,6 @@ var_name = "notify_time"
 default = 5.0
 
 [node name="GraphicsBox" type="VBoxContainer" parent="HBoxContainer"]
-editor/display_folded = true
 margin_left = 314.0
 margin_right = 518.0
 margin_bottom = 352.0
@@ -271,6 +265,7 @@ align = 1
 valign = 1
 
 [node name="WTBox" type="HBoxContainer" parent="HBoxContainer/GraphicsBox"]
+editor/display_folded = true
 margin_top = 124.0
 margin_right = 204.0
 margin_bottom = 156.0
@@ -365,6 +360,7 @@ margin_right = 180.0
 margin_bottom = 40.0
 
 [node name="MusicBox" type="VBoxContainer" parent="HBoxContainer"]
+editor/display_folded = true
 margin_left = 528.0
 margin_right = 758.0
 margin_bottom = 352.0

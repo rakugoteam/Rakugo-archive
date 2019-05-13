@@ -69,6 +69,8 @@ color = Color( 0.968627, 0.988235, 0.313726, 1 )
 stats = {
 
 }
+prefix = ""
+suffix = ""
 avatar = ExtResource( 3 )
 kind = "adv"
 
@@ -113,12 +115,16 @@ z_as_relative = false
 texture = ExtResource( 10 )
 script = ExtResource( 11 )
 
-[node name="Character" type="Node" parent="." groups=[
-"save",
-]]
+[node name="Character" type="Node" parent="."]
 script = ExtResource( 2 )
+character_id = ""
+character_name = ""
+color = Color( 1, 1, 1, 1 )
 stats = {
 
 }
+prefix = ""
+suffix = ""
+avatar = null
 kind = "adv"
 
