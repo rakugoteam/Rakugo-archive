@@ -5,7 +5,7 @@ class_name Character, "res://addons/Rakugo/icons/rakugo_character.svg"
 var _character : CharacterObject
 var _name : = ""
 var _color : = Color("#ffffff")
-var _avatar : PackedScene = PackedScene.new()
+var _avatar : PackedScene
 var _prefix : = ""
 var _suffix : = ""
 var _id : = ""
@@ -18,7 +18,7 @@ export var color : = Color("#ffffff") setget _set_color, _get_color
 export var stats : = {} setget _set_stats, _get_stats
 export var prefix : = "" setget _set_prefix, _get_prefix
 export var suffix : = "" setget _set_suffix, _get_suffix
-export var avatar : PackedScene = PackedScene.new() setget _set_avatar, _get_avatar
+export var avatar : PackedScene setget _set_avatar, _get_avatar
 export var kind : String setget _set_kind, _get_kind
 
 func _ready() -> void:
@@ -147,7 +147,10 @@ func get_dict() -> Dictionary:
 	dict["color"]	= _color.to_html()
 	dict["prefix"]	= _prefix
 	dict["suffix"]	= _suffix
-	dict["avatar"]	= _avatar.resource_path
+	
+	if _avatar:
+		dict["avatar"]	= _avatar.resource_path
+		
 	dict["stats"]	= _stats
 	dict["kind"]	= _kind
 

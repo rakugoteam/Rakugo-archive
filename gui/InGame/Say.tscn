@@ -339,7 +339,7 @@ tracks/14/keys = {
 "values": [ Vector2( -4.78333, -2.51675 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=3]
 resource_name = "fullscreen"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rect_position")
@@ -506,8 +506,7 @@ tracks/14/keys = {
 "values": [ Vector2( 175, 226 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "hide"
+[sub_resource type="Animation" id=4]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rect_position")
 tracks/0/interp = 1
@@ -661,7 +660,7 @@ tracks/13/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rect_position")
 tracks/0/interp = 1
@@ -827,7 +826,7 @@ tracks/14/keys = {
 "values": [ Vector2( 0, 3 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rect_position")
 tracks/0/interp = 1
@@ -1085,7 +1084,7 @@ tracks/23/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rect_position")
 tracks/0/interp = 1
@@ -1331,7 +1330,7 @@ tracks/22/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rect_position")
 tracks/0/interp = 1
@@ -1553,7 +1552,7 @@ tracks/20/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rect_position")
 tracks/0/interp = 1
@@ -1761,16 +1760,16 @@ main_container_path = NodePath("ScrollContainer/HBoxContainer/VBoxContainer")
 std_kind_container_path = NodePath("ScrollContainer/HBoxContainer/VBoxContainer/NVL")
 extra_kinds_scenes = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Kinds" type="AnimationPlayer" parent="."]
 anims/adv = SubResource( 1 )
 anims/center = SubResource( 2 )
-anims/fullscreen = SubResource( 9 )
-anims/hide = SubResource( 3 )
-anims/left = SubResource( 4 )
-anims/nvl = SubResource( 5 )
-anims/phone = SubResource( 6 )
-anims/right = SubResource( 7 )
-anims/top = SubResource( 8 )
+anims/fullscreen = SubResource( 3 )
+anims/hide = SubResource( 4 )
+anims/left = SubResource( 5 )
+anims/nvl = SubResource( 6 )
+anims/phone = SubResource( 7 )
+anims/right = SubResource( 8 )
+anims/top = SubResource( 9 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 self_modulate = Color( 1, 1, 1, 0.784314 )

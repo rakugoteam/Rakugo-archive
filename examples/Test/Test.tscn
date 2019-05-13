@@ -59,7 +59,6 @@ tracks/0/keys = {
 
 [node name="Test" type="Node2D"]
 script = ExtResource( 1 )
-kind = "nvl"
 
 [node name="RakugoCharacter" type="Node" parent="."]
 editor/display_folded = true
@@ -113,4 +112,13 @@ z_index = -1
 z_as_relative = false
 texture = ExtResource( 10 )
 script = ExtResource( 11 )
+
+[node name="Character" type="Node" parent="." groups=[
+"save",
+]]
+script = ExtResource( 2 )
+stats = {
+
+}
+kind = "adv"
 

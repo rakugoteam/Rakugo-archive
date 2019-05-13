@@ -1,6 +1,7 @@
 extends Panel
 class_name RakugoSayPanel, "res://addons/Rakugo/icons/rakugo_panel.svg"
 
+export (String, "adv", "hide", "top", "center", "left", "right", "nvl", "fullscreen") var kind = "adv"
 export var main_container_path : = NodePath("")
 export var std_kind_container_path : = NodePath("")
 export (Array, String) var extra_kinds : = ["nvl", "phone_right", "phone_left"]
@@ -19,7 +20,6 @@ var avatar_path : = ""
 var avatar : Node
 var _type : int
 var typing : = false
-var kind : String
 
 func _setup(kind_container:KindContainer):
 	NameLabel = kind_container.NameLabel
@@ -71,12 +71,12 @@ func _on_statement(type : int, parameters : Dictionary) -> void:
 
 		if not extra_kinds.has(kind):
 			StdKindContainer.show()
-			$AnimationPlayer.play(kind)
+			$Kinds.play(kind)
 
 		if kind in extra_kinds:
 			var i := extra_kinds.find(kind)
 
-			$AnimationPlayer.play(extra_kinds_anims[i])
+			$Kinds.play(extra_kinds_anims[i])
 
 			StdKindContainer.hide()
 			var scene_to_use : PackedScene = extra_kinds_scenes[i]
