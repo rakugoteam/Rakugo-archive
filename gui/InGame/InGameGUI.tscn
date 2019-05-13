@@ -437,7 +437,6 @@ scroll_active = false
 selection_enabled = true
 
 [node name="Quick" type="HBoxContainer" parent="."]
-editor/display_folded = true
 margin_top = 571.0
 margin_right = 1463.0
 margin_bottom = 611.0
@@ -474,6 +473,15 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Quests"
+
+[node name="Back" parent="Quick" instance=ExtResource( 10 )]
+visible = false
+margin_left = 397.0
+margin_right = 526.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
 
 [node name="Skip" type="CheckButton" parent="Quick"]
 visible = false
