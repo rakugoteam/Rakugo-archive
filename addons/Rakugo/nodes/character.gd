@@ -1,8 +1,8 @@
 tool
 extends Node
-class_name Character, "res://addons/Rakugo/icons/rakugo_character.svg"
+class_name Character, "res://addons/Rakugo/icons/rakugocharacter.svg"
 
-var _character : CharacterObject
+var character : CharacterObject
 var _name : = ""
 var _color : = Color("#ffffff")
 var _avatar : PackedScene
@@ -12,8 +12,8 @@ var _id : = ""
 var _stats : = {}
 var _kind : = ""
 
-export var character_id : = "" setget _set_character_id, _get_character_id
-export var character_name : = "" setget _set_character_name, _get_character_name
+export var character_id : = "" setget _setcharacter_id, _getcharacter_id
+export var character_name : = "" setget _setcharacter_name, _getcharacter_name
 export var color : = Color("#ffffff") setget _set_color, _get_color
 export var stats : = {} setget _set_stats, _get_stats
 export var prefix : = "" setget _set_prefix, _get_prefix
@@ -29,10 +29,10 @@ func _ready() -> void:
 
 func _on_start() -> void:
 	var dict : = get_dict()
-	_character = Rakugo.character(_id, dict)
-	var dbg = Rakugo.debug_dict(dict, _character.parameters_names, "Set Character " + _id + " with ")
+	character = Rakugo.character(_id, dict)
+	var dbg = Rakugo.debug_dict(dict, character.parameters_names, "Set Character " + _id + " with ")
 
-func _set_character_id(value : String) -> void:
+func _setcharacter_id(value : String) -> void:
 	if(Engine.editor_hint):
 		_id = value
 		return
@@ -42,102 +42,102 @@ func _set_character_id(value : String) -> void:
 
 	_id = value
 
-func _get_character_id() -> String:
+func _getcharacter_id() -> String:
 	return _id
 
-func _set_character_name(value : String) -> void:
+func _setcharacter_name(value : String) -> void:
 	_name = value
-	
-	if _character:
-		_character.name = value
 
-func _get_character_name() -> String:
-	if _character:
-		if _character.name:
-			return _character.name
+	if character:
+		character.name = value
+
+func _getcharacter_name() -> String:
+	if character:
+		if character.name:
+			return character.name
 
 	return _name
 
 func _set_color(value : Color) -> void:
 	_color = value
 
-	if _character:
-		_character.color = value.to_html()
+	if character:
+		character.color = value.to_html()
 
 func _get_color() -> Color:
-	if _character:
-		if _character.color:
-			return Color(_character.color)
+	if character:
+		if character.color:
+			return Color(character.color)
 
 	return _color
 
 func _set_prefix(value : String) -> void:
 	_prefix = value
 
-	if _character:
-		_character.prefix = value
+	if character:
+		character.prefix = value
 
 func _get_prefix() -> String:
-	if _character:
-		if _character.prefix:
-			return _character.prefix
+	if character:
+		if character.prefix:
+			return character.prefix
 
 	return _prefix
 
 func _set_suffix(value : String) -> void:
 	_suffix = value
 
-	if _character:
-		_character.suffix = value
+	if character:
+		character.suffix = value
 
 func _get_suffix() -> String:
-	if _character:
-		if _character.suffix:
-			return _character.suffix
+	if character:
+		if character.suffix:
+			return character.suffix
 
 	return _suffix
 
 func _set_avatar(value : PackedScene) -> void:
 	_avatar = value
 
-	if _character:
-		_character.avatar = value
+	if character:
+		character.avatar = value
 
 func _get_avatar() -> PackedScene:
-	if _character:
-		if _character.avatar != null:
-			return _character.avatar
+	if character:
+		if character.avatar != null:
+			return character.avatar
 
 	return _avatar
 
 func _set_stats(value : Dictionary) -> void:
 	_stats = value
 
-	if _character:
-		_character.stats = value
+	if character:
+		character.stats = value
 
 func _get_stats() -> Dictionary:
-	if _character:
-		if _character.stats:
-			return _character.stats
+	if character:
+		if character.stats:
+			return character.stats
 
 	return _stats
 
 func _set_kind(value : String) -> void:
 	_kind = value
 
-	if _character:
-		_character.kind = value
+	if character:
+		character.kind = value
 
 func _get_kind() -> String:
 	if _kind == "":
 		_kind = ProjectSettings.get_setting(
 			"application/rakugo/default_kind"
 		)
-	
-	if _character:
-		if _character.kind:
-			return _character.kind
+
+	if character:
+		if character.kind:
+			return character.kind
 
 	return _kind
 
@@ -147,10 +147,10 @@ func get_dict() -> Dictionary:
 	dict["color"]	= _color.to_html()
 	dict["prefix"]	= _prefix
 	dict["suffix"]	= _suffix
-	
+
 	if _avatar:
 		dict["avatar"]	= _avatar.resource_path
-		
+
 	dict["stats"]	= _stats
 	dict["kind"]	= _kind
 
@@ -161,7 +161,7 @@ func on_save() -> void:
 	Rakugo.character(_id, dict)
 
 func on_load(game_version) -> void:
-	_character = Rakugo.get_var(_id)
+	character = Rakugo.get_var(_id)
 
 func _exit_tree() -> void:
 	if(Engine.editor_hint):

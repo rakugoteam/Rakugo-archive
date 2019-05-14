@@ -61,6 +61,24 @@ func _set_avatar(vavatar : Resource) -> void:
 func _get_avatar() -> String:
 	return _avatar
 
+func _set_value(_value: = {}) -> void:
+	dict2character(_value)
+
+func _get_value() -> Dictionary:
+	return character2dict()
+
+func say(parameters := {}) -> void:
+	parameters["who"] = _id
+	Rakugo.say(parameters)
+
+func ask(parameters := {}) -> void:
+	parameters["who"] = _id
+	Rakugo.ask(parameters)
+
+func menu(parameters := {}) -> void:
+	parameters["who"] = _id
+	Rakugo.menu(parameters)
+
 func parse_name() -> String:
 	var ncharacter = ""
 
@@ -79,12 +97,6 @@ func parse_name() -> String:
 
 func parse_what(what : String) -> String:
 	return prefix + what + suffix
-
-func _set_value(_value: = {}) -> void:
-	dict2character(_value)
-
-func _get_value() -> Dictionary:
-	return character2dict()
 
 func character2dict() -> Dictionary:
 	var dict = {}
