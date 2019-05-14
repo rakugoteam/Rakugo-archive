@@ -258,7 +258,7 @@ _global_script_class_icons={
 "Ask": "",
 "AutoTimer": "",
 "CallNode": "",
-"Character": "res://addons/Rakugo/icons/rakugo_character.svg",
+"Character": "",
 "CharacterObject": "",
 "CollapsedList": "",
 "Emojis": "res://addons/Rakugo/emojis/16x16/1f600.png",
@@ -341,7 +341,7 @@ gdscript/warnings/return_value_discarded=false
 
 [editor_plugins]
 
-enabled=PoolStringArray( "Rakugo" )
+enabled=PoolStringArray( "Rakugo", "godot-plugin-refresher" )
 
 [input]
 

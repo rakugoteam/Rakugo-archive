@@ -74,7 +74,9 @@ suffix = ""
 avatar = ExtResource( 3 )
 kind = "adv"
 
-[node name="TestNode2D" type="Node2D" parent="RakugoCharacter"]
+[node name="TestNode2D" type="Node2D" parent="RakugoCharacter" groups=[
+"save",
+]]
 editor/display_folded = true
 position = Vector2( 524.705, 226.134 )
 rotation = 0.628319
@@ -85,20 +87,26 @@ node_id = "TestNode2D"
 [node name="logo" type="Sprite" parent="RakugoCharacter/TestNode2D"]
 texture = ExtResource( 5 )
 
-[node name="TestAnimPlayer" type="AnimationPlayer" parent="RakugoCharacter"]
+[node name="TestAnimPlayer" type="AnimationPlayer" parent="RakugoCharacter" groups=[
+"save",
+]]
 anims/test = SubResource( 1 )
 anims/test_loop = SubResource( 2 )
 script = ExtResource( 6 )
 node_id = "TestAnimPlayer"
 
-[node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="." groups=[
+"save",
+]]
 stream = ExtResource( 7 )
 volume_db = 6.0
 bus = "SFX"
 script = ExtResource( 8 )
 node_id = "SFXPlayer"
 
-[node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
+[node name="BGMPlayer" type="AudioStreamPlayer" parent="." groups=[
+"save",
+]]
 stream = ExtResource( 9 )
 volume_db = 3.0
 bus = "BGM"

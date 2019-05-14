@@ -6,11 +6,11 @@ var _type : = 0 # Rakugo.Type.Var
 var value setget _set_value, _get_value
 var _value = null
 var id : String setget , _get_id
-var _id : = ""
-var var_suffix: String setget , _get_var_suffix
-var _suffix:= ""
+var _id := ""
+var var_suffix : String setget , _get_var_suffix
+var _suffix := ""
 
-var save_included:=true
+var save_included := true
 
 signal value_changed(var_id, new_value)
 signal key_value_changed(var_id, key, new_value)
@@ -33,7 +33,7 @@ func _get_value():
 
 func _get_id() -> String:
 	return _id
-	
+
 func _get(p_property : String):
 	if _value is Object:
 		if _value.has(p_property):

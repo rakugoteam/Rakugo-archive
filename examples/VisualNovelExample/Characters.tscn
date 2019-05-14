@@ -22,17 +22,24 @@ animations = [ {
 [node name="Characters" type="Node2D"]
 z_index = -1
 
-[node name="Alice" type="Node" parent="."]
+[node name="Alice" type="Node" parent="." groups=[
+"save",
+]]
 script = ExtResource( 1 )
 character_id = "alice"
 character_name = "Alice"
-color = Color( 0.596531, 0.160034, 0.71875, 1 )
+color = Color( 0.52549, 0.231373, 0.501961, 1 )
+stats = {
+
+}
 avatar = ExtResource( 2 )
+kind = "adv"
 
 [node name="AliceRN2D" type="Node2D" parent="."]
 editor/display_folded = true
 scale = Vector2( 0.1, 0.1 )
 script = ExtResource( 3 )
+node_id = "alice"
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="AliceRN2D"]
 position = Vector2( 0, -2400 )

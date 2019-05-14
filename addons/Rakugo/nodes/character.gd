@@ -1,6 +1,6 @@
 tool
 extends Node
-class_name Character, "res://addons/Rakugo/icons/rakugocharacter.svg"
+class_name Character, "res://addons/Rakugo/icons/rakugo_character.svg"
 
 var character : CharacterObject
 var _name : = ""

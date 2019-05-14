@@ -411,12 +411,11 @@ func menu(parameters:Dictionary) -> void:
 ## x, y and pos will use it as protect of screen if between 0 and 1
 ## "at" is lists that can have: "top", "center", "bottom", "right", "left"
 func show(
-	node_id:String, state:PoolStringArray = [],
-	parameters:= {"at":["center", "bottom"]}
+	node_id:String,
+	parameters := {"state": [], "at":["center", "bottom"]}
 	):
 
 	parameters["node_id"] = node_id
-	parameters["state"] = state
 	_set_statement($Show, parameters)
 
 ## statement of type hide
