@@ -60,7 +60,9 @@ tracks/0/keys = {
 [node name="Test" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="RakugoCharacter" type="Node" parent="."]
+[node name="RakugoCharacter" type="Node" parent="." groups=[
+"save",
+]]
 editor/display_folded = true
 script = ExtResource( 2 )
 character_id = "ra"
@@ -123,7 +125,9 @@ z_as_relative = false
 texture = ExtResource( 10 )
 script = ExtResource( 11 )
 
-[node name="Character" type="Node" parent="."]
+[node name="Character" type="Node" parent="." groups=[
+"save",
+]]
 script = ExtResource( 2 )
 character_id = ""
 character_name = ""

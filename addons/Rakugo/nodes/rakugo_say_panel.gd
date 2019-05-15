@@ -21,6 +21,12 @@ var avatar : Node
 var _type : int
 var typing : = false
 
+onready var allowed_statement_types = [
+	Rakugo.StatementType.SAY,
+	Rakugo.StatementType.ASK,
+	Rakugo.StatementType.MENU
+]
+
 func _setup(kind_container:KindContainer):
 	NameLabel = kind_container.NameLabel
 	DialogText = kind_container.DialogText
@@ -66,6 +72,11 @@ func _input(event : InputEvent) -> void:
 func _on_statement(type : int, parameters : Dictionary) -> void:
 	kind = Rakugo.default_kind
 	
+	_type = type
+	
+	if not( _type in allowed_statement_types):
+		return;
+	
 	if "kind" in parameters:
 		kind = parameters.kind
 
@@ -85,8 +96,6 @@ func _on_statement(type : int, parameters : Dictionary) -> void:
 			_setup(instace)
 			$ScrollContainer.scroll_vertical += instace.rect_size.y*2
 
-	_type = type
-
 	if "who" in parameters:
 		if NameLabel.has_method("set_bbcode"):
 			NameLabel.bbcode_text = parameters.who
@@ -100,11 +109,11 @@ func _on_statement(type : int, parameters : Dictionary) -> void:
 		write_dialog(parameters.what, _typing)
 
 	if "avatar" in parameters:
-		if StdKindContainer.visible:
-			if avatar != null:
-				avatar.free()
-
 		if parameters.avatar != "":
+			if StdKindContainer.visible:
+				if avatar != null:
+					avatar.free()
+					
 			CurrentKind.show_avatar()
 			avatar_path = parameters.avatar
 			avatar = load(parameters.avatar).instance()

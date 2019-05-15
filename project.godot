@@ -258,7 +258,7 @@ _global_script_class_icons={
 "Ask": "",
 "AutoTimer": "",
 "CallNode": "",
-"Character": "",
+"Character": "res://addons/Rakugo/icons/rakugo_character.svg",
 "CharacterObject": "",
 "CollapsedList": "",
 "Emojis": "res://addons/Rakugo/emojis/16x16/1f600.png",

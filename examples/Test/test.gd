@@ -14,9 +14,9 @@ func _ready():
 
 	Rakugo.begin("Test", name, "example")
 	Rakugo.add_dialog(self, "example")
-	Rakugo.add_dialog(self, "play_vn_example")
-	Rakugo.add_dialog(self, "play_cp_adv_example")
-	Rakugo.add_dialog(self, "play_rpg_example")
+	Rakugo.add_dialog(self, "play_vn")
+	Rakugo.add_dialog(self, "play_adv")
+	Rakugo.add_dialog(self, "play_rpg")
 	Rakugo.add_dialog(self, "read_docs")
 	Rakugo.add_dialog(self, "end")
 
@@ -189,28 +189,28 @@ func example(node_name, dialog_name):
 					"horizontal",
 				"choices":
 					{
-						"Play Visual Novel example" : "vn",
-						"Play Click'n'Point Adventure example" : "cp",
-						"Play RPG example" : "rpg",
-						"Read Docs" : "docs"
+						"Play Visual Novel example" : "play_vn",
+						"Play Click'n'Point Adventure example" : "play_adv",
+						"Play RPG example" : "play_rpg",
+						"Read Docs" : "read_docs"
 					},
 				"kind": kind
 			})
 
-func play_vn_example(node_name, dialog_name):
+func play_vn(node_name, dialog_name):
 	if node_name != name:
 		return
 
-	if dialog_name != "vn":
+	if dialog_name != "play_vn":
 		return
 
 	Rakugo.jump("Garden", "Garden", "garden")
 
-func play_cp_adv_example(node_name, dialog_name):
+func play_adv(node_name, dialog_name):
 	if node_name != name:
 		return
 
-	if dialog_name != "cp":
+	if dialog_name != "play_adv":
 		return
 
 	Rakugo.say({
@@ -223,11 +223,11 @@ func play_cp_adv_example(node_name, dialog_name):
 
 	Rakugo.jump("Test", name, "end", false)
 
-func play_rpg_example(node_name, dialog_name):
+func play_rpg(node_name, dialog_name):
 	if node_name != name:
 		return
 
-	if Rakugo.current_dialog_name == "rpg":
+	if Rakugo.current_dialog_name == "play_rpg":
 		Rakugo.say({
 			"who":
 				"ra",
@@ -243,7 +243,7 @@ func read_docs(node_name, dialog_name):
 	if node_name != name:
 		return
 
-	if dialog_name != "docs":
+	if dialog_name != "read_docs":
 		return
 
 	Rakugo.say({
