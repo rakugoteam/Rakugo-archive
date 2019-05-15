@@ -33,7 +33,7 @@ If your game uses Rakugo write to me on [Discord](https://discord.gg/K9gvjdg).
 
 It means games that are for example:
 
-- Visual Novels ![](https://img.shields.io/badge/VN-90%25-brightgreen.svg?style=flat-square)
+- Visual Novels ![](https://img.shields.io/badge/VN-95%25-brightgreen.svg?style=flat-square)
 - Click & Point Adventures ![](https://img.shields.io/badge/Adv-25%25-yellowgreen.svg?style=flat-square)
 - RPG ![](https://img.shields.io/badge/RPG-40%25-green.svg?style=flat-square)
 
