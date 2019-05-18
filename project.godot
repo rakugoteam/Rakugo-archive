@@ -44,6 +44,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/emojis/emojis.gd"
 }, {
+"base": "Node",
+"class": "GDScriptDialog",
+"language": "GDScript",
+"path": "res://addons/Rakugo/nodes/gdscript_dialog.gd"
+}, {
 "base": "Statement",
 "class": "Hide",
 "language": "GDScript",
@@ -262,6 +267,7 @@ _global_script_class_icons={
 "CharacterObject": "",
 "CollapsedList": "",
 "Emojis": "res://addons/Rakugo/emojis/16x16/1f600.png",
+"GDScriptDialog": "",
 "Hide": "",
 "HistorySave": "",
 "KindContainer": "",

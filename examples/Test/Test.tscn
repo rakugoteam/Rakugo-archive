@@ -59,11 +59,13 @@ tracks/0/keys = {
 
 [node name="Test" type="Node2D"]
 script = ExtResource( 1 )
+root = true
+begin_from = [ "Test", "example" ]
+dialog_names = [ "play_vn", "play_adv", "play_rpg", "read_docs", "end" ]
 
 [node name="RakugoCharacter" type="Node" parent="." groups=[
 "save",
 ]]
-editor/display_folded = true
 script = ExtResource( 2 )
 character_id = "ra"
 character_name = "Rakugo"
@@ -125,18 +127,9 @@ z_as_relative = false
 texture = ExtResource( 10 )
 script = ExtResource( 11 )
 
-[node name="Character" type="Node" parent="." groups=[
+[node name="RakugoAnimPlayer" type="AnimationPlayer" parent="." groups=[
 "save",
 ]]
-script = ExtResource( 2 )
-character_id = ""
-character_name = ""
-color = Color( 1, 1, 1, 1 )
-stats = {
-
-}
-prefix = ""
-suffix = ""
-avatar = null
-kind = "adv"
+script = ExtResource( 6 )
+node_id = "RakugoAnimPlayer"
 

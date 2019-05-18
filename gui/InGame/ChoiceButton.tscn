@@ -1,11 +1,17 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://addons/Rakugo/nodes/rakugo_choice_button.gd" type="Script" id=1]
+[ext_resource path="res://gui/Labels/dialogue_text.tscn" type="PackedScene" id=2]
 
 [node name="ChoiceButton" type="Button"]
-margin_right = 296.0
-margin_bottom = 34.0
+margin_right = 320.0
+margin_bottom = 31.0
 size_flags_horizontal = 3
-size_flags_vertical = 3
 script = ExtResource( 1 )
+
+[node name="RichTextLabel" parent="." instance=ExtResource( 2 )]
+margin_right = 319.0
+margin_bottom = 41.0
+bbcode_text = "[center]Lorem ipsum dolor sit "
+text = "Lorem ipsum dolor sit "
 

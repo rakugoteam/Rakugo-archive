@@ -358,6 +358,7 @@ use_theme_from_setting = true
 node_id = "InGameGUI"
 
 [node name="ScrollContainerVMenu" type="ScrollContainer" parent="."]
+editor/display_folded = true
 visible = false
 anchor_left = 0.5
 anchor_top = 1.0
@@ -374,7 +375,10 @@ __meta__ = {
 [node name="RakugoVMenu" type="VBoxContainer" parent="ScrollContainerVMenu"]
 margin_right = 500.0
 margin_bottom = 300.0
+grow_horizontal = 0
+grow_vertical = 0
 rect_min_size = Vector2( 500, 300 )
+alignment = 1
 script = ExtResource( 3 )
 __meta__ = {
 "_editor_icon": ExtResource( 4 )
@@ -382,6 +386,7 @@ __meta__ = {
 ChoiceButton = ExtResource( 5 )
 
 [node name="ScrollContainerHMenu" type="ScrollContainer" parent="."]
+editor/display_folded = true
 visible = false
 anchor_left = 0.5
 anchor_top = 1.0
@@ -398,7 +403,10 @@ __meta__ = {
 [node name="RakugoHMenu" type="HBoxContainer" parent="ScrollContainerHMenu"]
 margin_right = 1021.0
 margin_bottom = 300.0
+grow_horizontal = 0
+grow_vertical = 0
 rect_min_size = Vector2( 1021, 300 )
+alignment = 1
 script = ExtResource( 3 )
 __meta__ = {
 "_editor_icon": ExtResource( 6 )
@@ -437,6 +445,7 @@ scroll_active = false
 selection_enabled = true
 
 [node name="Quick" type="HBoxContainer" parent="."]
+editor/display_folded = true
 margin_top = 571.0
 margin_right = 1463.0
 margin_bottom = 611.0
