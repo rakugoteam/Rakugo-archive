@@ -191,7 +191,6 @@ func play_rpg(node_name, dialog_name):
 
 	jump("Test", name, "end", false)
 
-
 func read_docs(node_name, dialog_name):
 	if not check_dialog(node_name, dialog_name, "read_docs"):
 		return
