@@ -1,22 +1,98 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://themes/new_gui/save_slot.tres" type="Theme" id=1]
-[ext_resource path="res://ubuntu-font-family/Ubuntu-L.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://themes/new_gui/new_gui.theme" type="Theme" id=1]
+[ext_resource path="res://addons/Rakugo/nodes/save_button.gd" type="Script" id=2]
+[ext_resource path="res://ubuntu-font-family/Ubuntu-L.ttf" type="DynamicFontData" id=3]
 
-[sub_resource type="DynamicFont" id=1]
-font_data = ExtResource( 2 )
+[sub_resource type="StyleBoxFlat" id=1771]
+content_margin_left = 6.0
+content_margin_right = 6.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0, 0.6, 0.8, 0.618784 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=1773]
+content_margin_left = 6.0
+content_margin_right = 6.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0, 0, 0, 0.77898 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0, 0.506836, 0.675781, 1 )
+
+[sub_resource type="StyleBoxFlat" id=1770]
+content_margin_left = 6.0
+content_margin_right = 6.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0, 0.6, 0.8, 0.762431 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=1769]
+content_margin_left = 6.0
+content_margin_right = 6.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0.533333, 0.533333, 0.533333, 0 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=1772]
+content_margin_left = 6.0
+content_margin_right = 6.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color( 0, 0, 0, 0.845294 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 3 )
 
 [node name="Slot" type="VBoxContainer"]
-margin_right = 200.0
-margin_bottom = 200.0
-rect_min_size = Vector2( 200, 200 )
-theme = ExtResource( 1 )
+margin_right = 220.0
+margin_bottom = 230.0
+rect_min_size = Vector2( 220, 230 )
+
+[node name="Delete" type="Button" parent="."]
+margin_right = 220.0
+margin_bottom = 20.0
+text = "Delete"
 
 [node name="Button" type="Button" parent="."]
-margin_right = 200.0
-margin_bottom = 169.0
+margin_top = 24.0
+margin_right = 220.0
+margin_bottom = 207.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource( 1 )
+custom_styles/hover = SubResource( 1771 )
+custom_styles/pressed = SubResource( 1773 )
+custom_styles/focus = SubResource( 1770 )
+custom_styles/disabled = SubResource( 1769 )
+custom_styles/normal = SubResource( 1772 )
+script = ExtResource( 2 )
+use_theme_from_setting = true
+register = false
+node_id = "Button"
 
 [node name="TextureRect" type="TextureRect" parent="Button"]
 margin_left = 6.0
@@ -27,12 +103,11 @@ rect_scale = Vector2( 0.2, 0.25 )
 stretch_mode = 3
 
 [node name="Label" type="Label" parent="."]
-margin_left = 57.0
-margin_top = 173.0
-margin_right = 142.0
-margin_bottom = 200.0
+margin_left = 71.0
+margin_top = 211.0
+margin_right = 148.0
+margin_bottom = 230.0
 size_flags_horizontal = 4
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 6 )
 text = "Empty Slot"
 align = 1
-

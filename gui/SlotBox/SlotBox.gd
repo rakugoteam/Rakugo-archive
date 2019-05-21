@@ -1,10 +1,9 @@
 extends Control
 
-export var container_path : NodePath
 export var slot: PackedScene
 
 onready var saveslots_dir : String = "res://" + Rakugo.save_folder
-onready var container := get_node(container_path)
+onready var container := $ScrollGrid/GridContainer
 onready var popup := $PopupPanel
 
 var screenshot := Image.new()
@@ -16,6 +15,8 @@ var save_name := "new_save"
 signal popup_is_closed
 
 func _ready() -> void:
+	connect("visibility_changed", self, "_on_visibility_changed")
+
 	var con = popup.get_node("ConfirmOverwrite/HBoxContainer")
 	var yes_button = con.get_node("Yes")
 	var no_button = con.get_node("No")
@@ -26,13 +27,62 @@ func _ready() -> void:
 	con = popup.get_node("ConfirmName/HBoxContainer")
 	yes_button = con.get_node("Yes")
 	no_button = con.get_node("No")
-	
+
 	yes_button.connect("pressed", self, "close_popup", [true])
 	no_button.connect("pressed", self, "close_popup", [false])
-	
+
+	con = popup.get_node("ConfirmDelete/HBoxContainer")
+	yes_button = con.get_node("Yes")
+	no_button = con.get_node("No")
+
+	yes_button.connect("pressed", self, "close_popup", [true])
+	no_button.connect("pressed", self, "close_popup", [false])
+
 	var line_edit = popup.get_node("ConfirmName/VBoxContainer/LineEdit")
 	line_edit.connect("text_changed", self, "on_save_name_changed")
 	line_edit.connect("text_entered", self, "on_save_name_entered")
+
+func delete_save(caller : String, mod : String):
+	container.hide()
+	var conf = popup.get_node("ConfirmDelete")
+	conf.show()
+	popup.popup_centered()
+	yield(self, "popup_is_closed")
+	conf.hide()
+
+	if not overwrite:
+		return
+
+	var dir = Directory.new()
+	var saveslotsdir = saveslots_dir + "/"
+
+	if filehandler.file_exists(saveslotsdir + caller + '.png'):
+		Rakugo.debug("remove image")
+		var img = saveslotsdir + caller + '.png'
+		dir.remove(img)
+
+	if filehandler.file_exists(saveslotsdir + caller + '.info'):
+		Rakugo.debug("remove info")
+		var info = saveslotsdir + caller + '.info'
+		dir.remove(info)
+
+	if filehandler.file_exists(saveslotsdir + caller + '.tres'):
+		Rakugo.debug("remove save")
+		var save = saveslotsdir + caller + '.tres'
+		dir.remove(save)
+
+	if mod == "save":
+		savebox()
+
+	if mod == "load":
+		loadbox()
+
+func _on_visibility_changed():
+	if visible:
+		$ScrollGrid.scroll_vertical = settings.saves_scroll
+		return
+
+	settings.saves_scroll = $ScrollGrid.scroll_vertical
 
 func on_save_name_changed(value):
 	save_name = value
@@ -44,13 +94,16 @@ func on_save_name_entered(value):
 func get_dir_contents(path, ext, ignore = [""]):
 	var contents = []
 	var dir = Directory.new()
+
 	if dir.open(path) == OK:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
+
 		while (file_name != ""):
 			if !dir.current_is_dir():
 				if file_name.ends_with(ext):
 					var i = 0
+
 					for ig in ignore:
 						if ig in file_name:
 							i += 1
@@ -59,6 +112,7 @@ func get_dir_contents(path, ext, ignore = [""]):
 						contents.append(file_name)
 
 			file_name = dir.get_next()
+
 	else:
 		print("An error occurred when trying to access the path.")
 
@@ -103,9 +157,18 @@ func savebox(saveslotsdir : = saveslots_dir + "/") -> void:
 
 		if !b.is_connected("pressed", self, "savepress"):
 			b.connect("pressed", self, "savepress", [x])
-		
+
+		var bd = s.get_node("Delete")
+
+		if x in ["empty"]:
+			bd.hide()
+
+		else:
+			if not bd.is_connected("pressed", self, "delete_save"):
+				bd.connect("pressed", self, "delete_save", [x, "save"])
+
 		s.show()
-		
+
 	filehandler.close()
 
 func loadbox(saveslotsdir : = saveslots_dir + "/") -> bool:
@@ -123,7 +186,7 @@ func loadbox(saveslotsdir : = saveslots_dir + "/") -> bool:
 			# Rakugo.debug("slot exist, loading image")
 			var tex = load(saveslotsdir + x + '.png')
 			s.get_node("Button/TextureRect").texture = tex
-		
+
 		s.get_node("Label").text = x
 
 		if filehandler.file_exists(saveslotsdir + x + '.info'):
@@ -138,7 +201,16 @@ func loadbox(saveslotsdir : = saveslots_dir + "/") -> bool:
 
 		if !b.is_connected("pressed", self, "loadpress"):
 			b.connect("pressed", self, "loadpress", [x])
-			
+
+		var bd = s.get_node("Delete")
+
+		if x in ["empty", "auto"]:
+			bd.hide()
+
+		else:
+			if not bd.is_connected("pressed", self, "delete_save"):
+				bd.connect("pressed", self, "delete_save", [x, "load"])
+
 		s.show()
 
 	filehandler.close()
@@ -147,7 +219,7 @@ func loadbox(saveslotsdir : = saveslots_dir + "/") -> bool:
 func savepress(caller : String) -> bool:
 	if !dirhandler.dir_exists(saveslots_dir):
 		dirhandler.make_dir(saveslots_dir)
-	
+
 	if caller == "empty":
 		container.hide()
 		var conf = popup.get_node("ConfirmName")
@@ -156,7 +228,7 @@ func savepress(caller : String) -> bool:
 		yield(self, "popup_is_closed")
 		conf.hide()
 		caller = save_name
-	
+
 	else:
 		container.hide()
 		var conf = popup.get_node("ConfirmOverwrite")
@@ -169,10 +241,10 @@ func savepress(caller : String) -> bool:
 		return false
 
 	Rakugo.debug(caller)
-	
+
 	if !screenshot:
 		return false
-	
+
 	screenshot.flip_y()
 	screenshot.save_png(saveslots_dir + "/" + caller + '.png')
 	filehandler.open(saveslots_dir + "/" + caller + '.info', File.WRITE)
