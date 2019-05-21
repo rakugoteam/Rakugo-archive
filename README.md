@@ -55,8 +55,7 @@ This project's dialog functions can do more than Ren'Py's equivalents.
 **A:** For now this framework is a singleton and a collection of special nodes. There is also gui include in example project that is connected with the framework and has all functions like in a Ren'Py game.
 
 **Q:** Is it easy to use ?</p>
-**A:** For now it is not that easy as I want it to be, but I am working to make it use RakugoScript (this framework's own language) and visual script.
-For now here is example using GDScript: [examples/Test/test.gd](examples/Test/test.gd)
+**A:** For now it is not that easy as I want it to be, but I am working to make it use RakugoScript (this framework's own language) and visual script. Now are docs/tutorials available: https://rakugo.readthedocs.io/en/latest/?badge=latest
 
 ## Other Info
 
