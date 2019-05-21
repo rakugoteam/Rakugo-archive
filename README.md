@@ -1,6 +1,5 @@
 # Rakugo ![Logo](graphics/window_icon.png)
 [![Documentation Status](https://readthedocs.org/projects/rakugo/badge/?version=latest)](https://rakugo.readthedocs.io/en/latest/?badge=latest)
-[![Patreon](https://img.shields.io/badge/support-pateron-orange.svg?style=flat-square)](https://www.patreon.com/jebedaia360)
 [![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](LICENSE)
 [![Discord Server](https://img.shields.io/discord/484604562183815169.svg?style=flat-square)](https://discord.gg/K9gvjdg)
 [![GitHub](https://img.shields.io/github/contributors/jebedaia360/Rakugo.svg?style=flat-square)](https://github.com/jebedaia360/Rakugo)
@@ -14,8 +13,6 @@ Rakugo is framemork (inspired by [Ren'Py](https://www.renpy.org)) for story driv
 or like my friend call it *Story Management Plugin*.
 
 The idea is to have a ready to use plug-in for stories, so developers can create narrative driven games with all the amazing features and tools of Godot 3.1+.
-
-Now you can support this project by [Patreon](https://www.patreon.com/jebedaia360).
 
 You can download 1.0 for Godot 3.0 [here](https://github.com/jebedaia360/Rakugo/releases).
 
