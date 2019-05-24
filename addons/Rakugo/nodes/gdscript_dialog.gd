@@ -1,14 +1,10 @@
-extends Node
+extends RootNode
 class_name GDScriptDialog
 
-export var root = false
 export (Array, String) var begin_from = ["", ""]
 export (Array, String) var dialog_names = [""]
 
 func _ready() -> void:
-	if Rakugo.current_root_node != self and root:
-		Rakugo.current_root_node = self
-
 	if begin_from != []:
 		Rakugo.begin(begin_from[0], name, begin_from[1])
 
