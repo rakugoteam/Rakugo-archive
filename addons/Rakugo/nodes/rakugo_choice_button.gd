@@ -1,3 +1,4 @@
+tool
 extends RakugoBaseButton
 class_name RakugoChoiceButton
 

@@ -1,11 +1,13 @@
 tool
-extends RakugoControl
+extends RakugoBaseButton
 class_name SaveButton
+
+export var use_theme_from_setting := true
 
 func _ready() -> void:
 	if not use_theme_from_setting:
 		return
-		
+
 	var t = theme as RakugoTheme
 	add_stylebox_override("disabled", t.save_button_disabled)
 	add_stylebox_override("focus", t.save_button_focus)
@@ -16,4 +18,3 @@ func _ready() -> void:
 func set_use_theme_form_settings(value:bool):
 	.set_use_theme_form_settings(value)
 	_ready()
-
