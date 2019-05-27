@@ -4,7 +4,7 @@
 [ext_resource path="res://addons/Rakugo/nodes/save_button.gd" type="Script" id=2]
 [ext_resource path="res://ubuntu-font-family/Ubuntu-L.ttf" type="DynamicFontData" id=3]
 
-[sub_resource type="StyleBoxFlat" id=1771]
+[sub_resource type="StyleBoxFlat" id=1]
 content_margin_left = 6.0
 content_margin_right = 6.0
 content_margin_top = 4.0
@@ -16,7 +16,7 @@ border_width_right = 4
 border_width_bottom = 4
 border_color = Color( 1, 1, 1, 1 )
 
-[sub_resource type="StyleBoxFlat" id=1773]
+[sub_resource type="StyleBoxFlat" id=2]
 content_margin_left = 6.0
 content_margin_right = 6.0
 content_margin_top = 4.0
@@ -28,7 +28,7 @@ border_width_right = 4
 border_width_bottom = 4
 border_color = Color( 0, 0.506836, 0.675781, 1 )
 
-[sub_resource type="StyleBoxFlat" id=1770]
+[sub_resource type="StyleBoxFlat" id=3]
 content_margin_left = 6.0
 content_margin_right = 6.0
 content_margin_top = 4.0
@@ -40,7 +40,7 @@ border_width_right = 4
 border_width_bottom = 4
 border_color = Color( 1, 1, 1, 1 )
 
-[sub_resource type="StyleBoxFlat" id=1769]
+[sub_resource type="StyleBoxFlat" id=4]
 content_margin_left = 6.0
 content_margin_right = 6.0
 content_margin_top = 4.0
@@ -52,7 +52,7 @@ border_width_right = 4
 border_width_bottom = 4
 border_color = Color( 1, 1, 1, 1 )
 
-[sub_resource type="StyleBoxFlat" id=1772]
+[sub_resource type="StyleBoxFlat" id=5]
 content_margin_left = 6.0
 content_margin_right = 6.0
 content_margin_top = 4.0
@@ -64,7 +64,7 @@ border_width_right = 4
 border_width_bottom = 4
 border_color = Color( 1, 1, 1, 1 )
 
-[sub_resource type="DynamicFont" id=1774]
+[sub_resource type="DynamicFont" id=6]
 font_data = ExtResource( 3 )
 
 [node name="Slot" type="VBoxContainer"]
@@ -84,12 +84,13 @@ margin_bottom = 207.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 1 )
-custom_styles/hover = SubResource( 1771 )
-custom_styles/pressed = SubResource( 1773 )
-custom_styles/focus = SubResource( 1770 )
-custom_styles/disabled = SubResource( 1769 )
-custom_styles/normal = SubResource( 1772 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
 script = ExtResource( 2 )
+use_theme_from_setting = true
 use_form_theme = true
 color_node = false
 node_to_change_path = NodePath("TextureRect")
@@ -98,7 +99,6 @@ focus_node_color = Color( 0, 0.506836, 0.675781, 1 )
 hover_node_color = Color( 0.877647, 0.882353, 0.887059, 1 )
 pressed_node_color = Color( 0, 0.6, 0.8, 1 )
 disable_node_color = Color( 0.533333, 0.533333, 0.498039, 0.533333 )
-use_theme_from_setting = true
 
 [node name="TextureRect" type="TextureRect" parent="Button"]
 margin_left = 6.0
@@ -114,8 +114,9 @@ margin_top = 211.0
 margin_right = 148.0
 margin_bottom = 230.0
 size_flags_horizontal = 4
-custom_fonts/font = SubResource( 1774 )
+custom_fonts/font = SubResource( 6 )
 text = "Empty Slot"
 align = 1
 
 [node name="Node" type="Node" parent="."]
+

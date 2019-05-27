@@ -6,6 +6,9 @@
 [node name="Garden" type="Node2D"]
 z_index = -2
 script = ExtResource( 1 )
+root = true
+begin_from = [ "Graden", "garden" ]
+dialog_names = [ "garden" ]
 
 [node name="garden" type="Sprite" parent="."]
 position = Vector2( 515, 300 )

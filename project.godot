@@ -104,6 +104,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/nodes/rakugo_audio_player.gd"
 }, {
+"base": "Node",
+"class": "RakugoAvatar",
+"language": "GDScript",
+"path": "res://addons/Rakugo/nodes/rakugo_avatar.gd"
+}, {
 "base": "Button",
 "class": "RakugoBaseButton",
 "language": "GDScript",
@@ -283,7 +288,7 @@ _global_script_class_icons={
 "Ask": "",
 "AutoTimer": "",
 "CallNode": "",
-"Character": "",
+"Character": "res://addons/Rakugo/icons/rakugo_character.svg",
 "CharacterObject": "",
 "CollapsedList": "",
 "Emojis": "res://addons/Rakugo/emojis/16x16/1f600.png",
@@ -299,6 +304,7 @@ _global_script_class_icons={
 "Quest": "",
 "RakugoAnimPlayer": "",
 "RakugoAudioPlayer": "",
+"RakugoAvatar": "res://addons/Rakugo/icons/rakugo_avatar.svg",
 "RakugoBaseButton": "",
 "RakugoBaseControl": "",
 "RakugoBool": "",
@@ -312,7 +318,7 @@ _global_script_class_icons={
 "RakugoNodeCore": "",
 "RakugoQuestButton": "",
 "RakugoRangedVar": "",
-"RakugoSayPanel": "",
+"RakugoSayPanel": "res://addons/Rakugo/icons/rakugo_panel.svg",
 "RakugoText": "",
 "RakugoTextLabel": "",
 "RakugoTextPasser": "",
@@ -321,7 +327,7 @@ _global_script_class_icons={
 "RakugoVar": "",
 "RakugoVarEdit": "",
 "RakugoVarLabel": "",
-"RakugoVisualInstance": "",
+"RakugoVisualInstance": "res://addons/Rakugo/icons/rakugo_spatial.svg",
 "RootNode": "",
 "RootNode2D": "",
 "Save": "",

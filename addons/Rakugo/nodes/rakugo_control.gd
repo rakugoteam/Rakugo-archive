@@ -4,7 +4,7 @@ class_name RakugoControl
 
 onready var rnode := RakugoNodeCore.new()
 
-export var register := true
+export var register : bool setget _set_register, _get_register
 export var node_id : String setget _set_node_id, _get_node_id
 export var camera := NodePath("")
 export (Array, String) var state : Array setget _set_state, _get_state
@@ -12,18 +12,18 @@ export (Array, String) var state : Array setget _set_state, _get_state
 var _state : Array
 var node_link: NodeLink
 var last_show_args:Dictionary
+var _register := true
 
 var _node_id := ""
 
 func _ready() -> void:
 	if(Engine.editor_hint):
-		add_to_group("save", register)
 		return
 
 	Rakugo.connect("show", self, "_on_show")
 	Rakugo.connect("hide", self, "_on_hide")
 
-	if not register:
+	if not _register:
 		return
 
 	if node_id.empty():
@@ -37,7 +37,18 @@ func _ready() -> void:
 	else:
 		node_link.value["node_path"] = get_path()
 
-	add_to_group("save", register)
+func _set_register(value:bool):
+	_register = value
+
+	if _register:
+		add_to_group("save", false)
+		return
+
+	if is_in_group("save"):
+		remove_from_group("save")
+
+func _get_register() -> bool:
+	return _register
 
 func _set_node_id(value : String):
 	_node_id = value
@@ -76,11 +87,11 @@ func _exit_tree() -> void:
 		remove_from_group("save")
 		return
 
-	if register:
+	if _register:
 		Rakugo.variables.erase(node_id)
 
 func on_save() -> void:
-	if not register:
+	if not _register:
 		return
 
 	node_link.value["visible"] = visible
@@ -88,10 +99,10 @@ func on_save() -> void:
 	node_link.value["show_args"] = last_show_args
 
 func on_load(game_version:String) -> void:
-	if not register:
+	if not _register:
 		return
 
-	node_link =  Rakugo.get_node_link(node_id)
+	node_link = Rakugo.get_node_link(node_id)
 	visible = node_link.value["visible"]
 
 	if visible:

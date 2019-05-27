@@ -2,8 +2,6 @@ tool
 extends RakugoBaseButton
 class_name SaveButton
 
-export var use_theme_from_setting := true
-
 func _ready() -> void:
 	if not use_theme_from_setting:
 		return

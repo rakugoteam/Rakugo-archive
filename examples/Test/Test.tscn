@@ -64,6 +64,7 @@ begin_from = [ "Test", "example" ]
 dialog_names = [ "play_vn", "play_adv", "play_rpg", "read_docs", "end", "example" ]
 
 [node name="RakugoCharacter" type="Node" parent="."]
+editor/display_folded = true
 script = ExtResource( 2 )
 character_id = "ra"
 character_name = "Rakugo"
@@ -120,3 +121,4 @@ script = ExtResource( 11 )
 [node name="RakugoAnimPlayer" type="AnimationPlayer" parent="."]
 script = ExtResource( 6 )
 node_id = "RakugoAnimPlayer"
+

@@ -355,7 +355,10 @@ margin_bottom = 40.0
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
 use_theme_from_setting = true
+register = false
 node_id = "InGameGUI"
+camera = NodePath("")
+state = [  ]
 
 [node name="ScrollContainerVMenu" type="ScrollContainer" parent="."]
 editor/display_folded = true

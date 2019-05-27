@@ -1,21 +1,16 @@
-extends Node2D
+extends GDScriptDialog
 
-func _ready():
-	if Rakugo.current_root_node != self:
-		Rakugo.current_root_node = self
-
-	Rakugo.add_dialog(self, "garden")
 
 func garden(node_name, dialog_name):
-	if node_name != name:
+	if not check_dialog(node_name, dialog_name, "garden"):
 		return
 
-	if dialog_name != "garden":
-		return
-
-	Rakugo.show("alice", {"state":["happy"]})
-	Rakugo.say({
-		"who":"alice",
-		"what":"Welcome in my Garden [player_name].",
-		"kind":"left"
-	})
+	match get_story_state():
+		0:
+			show("alice", {"state":["happy"]})
+			say({
+				"who":"alice",
+				"what":"Welcome in my Garden [player_name].",
+				"kind":"left",
+				"avatar_state":["happy"]
+			})
