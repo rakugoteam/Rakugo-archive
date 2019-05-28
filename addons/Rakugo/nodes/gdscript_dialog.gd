@@ -26,7 +26,7 @@ func check_dialog(node_name, dialog_name, check_for) -> bool:
 func define(var_name:String, value = null, save_included := true) -> RakugoVar:
 	return Rakugo.define(var_name, value, save_included)
 
-func ranged_var(var_name, start_value := 0.0, min_value := 0.0, max_value := 0.0) -> RakugoRangedVar:
+func ranged_var(var_name:String, start_value := 0.0, min_value := 0.0, max_value := 0.0) -> RakugoRangedVar:
 	return Rakugo.ranged_var(var_name, start_value, min_value, max_value)
 
 func character(character_id:String, parameters:={}) -> CharacterObject:
@@ -62,8 +62,8 @@ func show(node_id:String, parameters := {"state": [], "at":["center", "bottom"]}
 func hide(node_id:String) -> void:
 	Rakugo.hide(node_id)
 
-func notifiy(info:String, length:int = get_value("notify_time")) -> void:
-	Rakugo.notifiy(info, length)
+func notify(info:String, length:int = get_value("notify_time")) -> void:
+	Rakugo.notify(info, length)
 
 func play_anim( node_id:String, anim_name:String) -> void:
 	Rakugo.play_anim(node_id, anim_name)

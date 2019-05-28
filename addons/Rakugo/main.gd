@@ -414,7 +414,7 @@ func hide(node_id:String) -> void:
 	_set_statement($Hide, parameters)
 
 ## statement of type notify
-func notifiy(
+func notify(
 	info:String,
 	length:int = get_value("notify_time")
 	) -> void:

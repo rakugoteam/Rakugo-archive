@@ -208,7 +208,7 @@ func end(node_name, dialog_name):
 	if not check_dialog(node_name, dialog_name, "end"):
 		return
 
-	notifiy("You make your first choice!", 3)
+	notify("You make your first choice!", 3)
 	say({
 		"who":
 			"ra",
