@@ -7,6 +7,9 @@ export (Array, String) var state setget _set_state, _get_state
 
 var _state : = []
 
+func _ready():
+	connect("on_substate", self, "_on_substate")
+
 func _set_state(state : Array) -> void:
 	_state = state
 
@@ -18,3 +21,6 @@ func _set_state(state : Array) -> void:
 
 func _get_state() -> Array:
 	return _state
+
+func _on_substate(substate):
+	pass

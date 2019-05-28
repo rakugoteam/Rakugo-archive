@@ -2,6 +2,8 @@ tool
 extends RakugoBaseControl
 class_name RakugoControl
 
+signal on_substate(substate)
+
 onready var rnode := RakugoNodeCore.new()
 
 export var register : bool setget _set_register, _get_register
@@ -22,6 +24,7 @@ func _ready() -> void:
 
 	Rakugo.connect("show", self, "_on_show")
 	Rakugo.connect("hide", self, "_on_hide")
+	rnode.connect("on_substate", self, "_on_substate")
 
 	if not _register:
 		return
@@ -71,7 +74,7 @@ func _on_show(node_id : String , state_value : Array, show_args : Dictionary) ->
 		show()
 
 func _set_state(value : Array) -> void:
-	_state = state
+	_state = rnode.setup_state(value)
 
 func _get_state() -> Array:
 	return _state
@@ -112,3 +115,6 @@ func on_load(game_version:String) -> void:
 
 	else:
 		_on_hide(node_id)
+
+func _on_substate(substate):
+	pass

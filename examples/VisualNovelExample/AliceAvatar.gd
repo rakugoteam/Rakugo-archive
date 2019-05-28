@@ -6,8 +6,6 @@ func _ready():
 	for c in get_children():
 		c.hide()
 
-	connect("on_substate", self, "_on_substate")
-
 func _on_substate(substate):
 	match substate:
 		"doubt":
