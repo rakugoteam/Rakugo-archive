@@ -2,13 +2,13 @@ extends RootNode
 class_name GDScriptDialog
 
 export (Array, String) var begin_from = ["", ""]
-export (Array, String) var dialog_names = [""]
+export (Array, String) var dialogs_names = [""]
 
 func _ready() -> void:
 	if begin_from != []:
 		Rakugo.begin(begin_from[0], name, begin_from[1])
 
-	for dn in dialog_names:
+	for dn in dialogs_names:
 		Rakugo.add_dialog(self, dn)
 
 func get_story_state() -> int:

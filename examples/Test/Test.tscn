@@ -61,7 +61,7 @@ tracks/0/keys = {
 script = ExtResource( 1 )
 root = true
 begin_from = [ "Test", "example" ]
-dialog_names = [ "play_vn", "play_adv", "play_rpg", "read_docs", "end", "example" ]
+dialogs_names = [ "play_vn", "play_adv", "play_rpg", "read_docs", "end", "example" ]
 
 [node name="RakugoCharacter" type="Node" parent="."]
 editor/display_folded = true
