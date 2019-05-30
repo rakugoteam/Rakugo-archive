@@ -10,12 +10,12 @@ export var node_id : = ""
 export var camera : = NodePath("")
 export(Array, String) var state : Array setget _set_state, _get_state
 
-var _state : []
+var _state : = []
 var node_link:NodeLink
 var last_show_args:Dictionary
 
 func _ready() -> void:
-	if(Engine.editor_hint):
+	if Engine.editor_hint:
 		if node_id.empty():
 			node_id = name
 
@@ -62,7 +62,8 @@ func _on_show(node_id : String, state_value : Array, show_args : Dictionary) -> 
 		show()
 
 func _set_state(value : Array) -> void:
-	_state = rnode.setup_state(value)
+	if not Engine.editor_hint:
+		_state = rnode.setup_state(value)
 
 func _get_state() -> Array:
 	return _state

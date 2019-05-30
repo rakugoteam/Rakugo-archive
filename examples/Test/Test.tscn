@@ -63,7 +63,9 @@ root = true
 begin_from = [ "Test", "example" ]
 dialogs_names = [ "play_vn", "play_adv", "play_rpg", "read_docs", "end", "example" ]
 
-[node name="RakugoCharacter" type="Node" parent="."]
+[node name="RakugoCharacter" type="Node" parent="." groups=[
+"save",
+]]
 editor/display_folded = true
 script = ExtResource( 2 )
 character_id = "ra"
@@ -88,20 +90,26 @@ node_id = "TestNode2D"
 [node name="logo" type="Sprite" parent="RakugoCharacter/TestNode2D"]
 texture = ExtResource( 5 )
 
-[node name="TestAnimPlayer" type="AnimationPlayer" parent="RakugoCharacter"]
+[node name="TestAnimPlayer" type="AnimationPlayer" parent="RakugoCharacter" groups=[
+"save",
+]]
 anims/test = SubResource( 1 )
 anims/test_loop = SubResource( 2 )
 script = ExtResource( 6 )
 node_id = "TestAnimPlayer"
 
-[node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="." groups=[
+"save",
+]]
 stream = ExtResource( 7 )
 volume_db = 6.0
 bus = "SFX"
 script = ExtResource( 8 )
 node_id = "SFXPlayer"
 
-[node name="BGMPlayer" type="AudioStreamPlayer" parent="."]
+[node name="BGMPlayer" type="AudioStreamPlayer" parent="." groups=[
+"save",
+]]
 stream = ExtResource( 9 )
 volume_db = 3.0
 bus = "BGM"
@@ -118,7 +126,8 @@ z_as_relative = false
 texture = ExtResource( 10 )
 script = ExtResource( 11 )
 
-[node name="RakugoAnimPlayer" type="AnimationPlayer" parent="."]
+[node name="RakugoAnimPlayer" type="AnimationPlayer" parent="." groups=[
+"save",
+]]
 script = ExtResource( 6 )
 node_id = "RakugoAnimPlayer"
-
