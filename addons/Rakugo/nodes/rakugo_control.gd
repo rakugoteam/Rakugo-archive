@@ -24,7 +24,7 @@ func _ready() -> void:
 
 	Rakugo.connect("show", self, "_on_show")
 	Rakugo.connect("hide", self, "_on_hide")
-	rnode.connect("on_substate", self, "_on_substate")
+	rnode.connect("on_substate", self, "_on_rnode_substate")
 
 	if not _register:
 		return
@@ -39,6 +39,9 @@ func _ready() -> void:
 
 	else:
 		node_link.value["node_path"] = get_path()
+
+func _on_rnode_substate(substate):
+	emit_signal("on_substate", substate)
 
 func _set_register(value:bool):
 	_register = value
@@ -78,6 +81,7 @@ func _set_state(value : Array) -> void:
 
 	if not Engine.editor_hint:
 		_state = rnode.setup_state(value)
+
 
 func _get_state() -> Array:
 	return _state

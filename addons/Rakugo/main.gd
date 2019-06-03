@@ -576,7 +576,7 @@ func go_back():
 	pass
 
 func is_current_statement_in_global_history() -> bool:
-	return true
+	
 	if not current_statement.parameters.add_to_history:
 		return true
 

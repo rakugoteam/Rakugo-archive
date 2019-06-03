@@ -4773,11 +4773,6 @@ script = ExtResource( 2 )
 use_theme_from_setting = true
 register = false
 node_id = "Screens"
-camera = NodePath("")
-state = [  ]
-nav_path = NodePath("Navigation/ScrollContainer/HBoxContainer/VBoxContainer")
-in_game_gui_path = "/root/Window/InGameGUI"
-use_back_button = false
 
 [node name="Panel" type="Panel" parent="."]
 margin_left = -11.0

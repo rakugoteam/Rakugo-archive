@@ -7,9 +7,13 @@ func _init() -> void:
 	parameters_names += ["who", "what", "typing", "kind", "avatar", "avatar_state"]
 	parameters["who"] = ""
 	parameters["add_to_history"] = true
+	parameters_always += ["avatar_state"]
 
 func exec() -> void:
 	debug(parameters_names)
+
+	if not ("avatar_state" in parameters):
+		parameters["avatar_state"] = []
 
 	if not ("who" in parameters):
 		parameters["who"] = "Narrator"

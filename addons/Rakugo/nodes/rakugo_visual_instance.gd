@@ -22,7 +22,7 @@ func _ready() -> void:
 
 	Rakugo.connect("show", self, "_on_show")
 	Rakugo.connect("hide", self, "_on_hide")
-	rnode.connect("on_substate", self, "_on_substate")
+	rnode.connect("on_substate", self, "_on_rnode_substate")
 
 	if node_id.empty():
 		node_id = name
@@ -36,6 +36,9 @@ func _ready() -> void:
 		node_link.value["node_path"] = get_path()
 
 	add_to_group("save", true)
+
+func _on_rnode_substate(substate):
+	emit_signal("on_substate", substate)
 
 func _on_show(node_id : String, state_value : Array, show_args : Dictionary) -> void:
 	if self.node_id != node_id:

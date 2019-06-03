@@ -219,11 +219,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/nodes/rakugo_var_label.gd"
 }, {
-"base": "RakugoVar",
-"class": "RakugoVector2",
-"language": "GDScript",
-"path": "res://addons/Rakugo/types/RakugoVector2.gd"
-}, {
 "base": "VisualInstance",
 "class": "RakugoVisualInstance",
 "language": "GDScript",
@@ -332,7 +327,6 @@ _global_script_class_icons={
 "RakugoVar": "",
 "RakugoVarEdit": "",
 "RakugoVarLabel": "",
-"RakugoVector2": "",
 "RakugoVisualInstance": "res://addons/Rakugo/icons/rakugo_spatial.svg",
 "RootNode": "",
 "RootNode2D": "",
@@ -351,7 +345,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Rakugo"
-run/main_scene="res://examples/Test/PhoneTest.tscn"
+run/main_scene="res://examples/Test/Test.tscn"
 boot_splash/image="res://graphics/splash.png"
 boot_splash/bg_color=Color( 0.741176, 0.733333, 0.733333, 1 )
 config/icon="res://graphics/window_icon.png"
