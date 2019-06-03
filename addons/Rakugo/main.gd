@@ -82,6 +82,7 @@ var skip_auto:= false
 var active:= false
 var can_alphanumeric:= true
 var emoji_size := 16
+var skipping := false
 
 var skip_types:= [
 	StatementType.SAY,
@@ -576,7 +577,7 @@ func go_back():
 	pass
 
 func is_current_statement_in_global_history() -> bool:
-	
+
 	if not current_statement.parameters.add_to_history:
 		return true
 

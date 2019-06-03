@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://themes/new_gui/new_gui.theme" type="Theme" id=1]
 [ext_resource path="res://addons/Rakugo/nodes/rakugo_control.gd" type="Script" id=2]
@@ -20,6 +20,12 @@
 size = 22
 use_filter = true
 font_data = ExtResource( 11 )
+
+[sub_resource type="InputEventAction" id=12]
+action = "ui_focus_next"
+
+[sub_resource type="ShortCut" id=13]
+shortcut = SubResource( 12 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "Auto"
@@ -498,6 +504,7 @@ margin_right = 521.0
 margin_bottom = 40.0
 focus_mode = 0
 enabled_focus_mode = 0
+shortcut = SubResource( 13 )
 text = "Skip"
 
 [node name="Auto" type="CheckButton" parent="Quick"]

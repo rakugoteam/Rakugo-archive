@@ -106,6 +106,9 @@ func _on_statement(type : int, parameters : Dictionary) -> void:
 		if typing in parameters:
 			_typing = parameters.typing
 
+		if Rakugo.skipping:
+			_typing = false
+
 		write_dialog(parameters.what, _typing)
 
 	if "avatar" in parameters:
