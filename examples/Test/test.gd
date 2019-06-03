@@ -162,7 +162,7 @@ func example(node_name, dialog_name):
 func play_vn(node_name, dialog_name):
 	if not check_dialog(node_name, dialog_name, "play_vn"):
 		return
-
+		
 	jump("Garden", "Garden", "garden")
 
 func play_adv(node_name, dialog_name):
