@@ -219,6 +219,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/nodes/rakugo_var_label.gd"
 }, {
+"base": "RakugoVar",
+"class": "RakugoVector2",
+"language": "GDScript",
+"path": "res://addons/Rakugo/types/RakugoVector2.gd"
+}, {
 "base": "VisualInstance",
 "class": "RakugoVisualInstance",
 "language": "GDScript",
@@ -327,6 +332,7 @@ _global_script_class_icons={
 "RakugoVar": "",
 "RakugoVarEdit": "",
 "RakugoVarLabel": "",
+"RakugoVector2": "",
 "RakugoVisualInstance": "res://addons/Rakugo/icons/rakugo_spatial.svg",
 "RootNode": "",
 "RootNode2D": "",
