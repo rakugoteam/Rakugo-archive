@@ -98,6 +98,10 @@ func _input(event : InputEvent) -> void:
 		_on_qload()
 		return
 
+	if event.is_action_pressed("rakugo_skipping"):
+		on_skip()
+		return
+
 	if event.is_action_pressed("rakugo_skipping_ctrl"):
 		on_skip()
 		return
