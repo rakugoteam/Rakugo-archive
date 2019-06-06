@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "RakugoTimer",
 "class": "AutoTimer",
 "language": "GDScript",
-"path": "res://addons/Rakugo/statics/AutoTimer.gd"
+"path": "res://addons/Rakugo/lib/AutoTimer.gd"
 }, {
 "base": "Statement",
 "class": "CallNode",
@@ -134,6 +134,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/nodes/rakugo_choice_button.gd"
 }, {
+"base": "RakugoVar",
+"class": "RakugoColor",
+"language": "GDScript",
+"path": "res://addons/Rakugo/types/rakugo_color.gd"
+}, {
 "base": "RakugoBaseControl",
 "class": "RakugoControl",
 "language": "GDScript",
@@ -192,7 +197,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "RakugoTextPasser",
 "language": "GDScript",
-"path": "res://addons/Rakugo/statics/text.gd"
+"path": "res://addons/Rakugo/lib/text.gd"
 }, {
 "base": "Theme",
 "class": "RakugoTheme",
@@ -218,6 +223,16 @@ _global_script_classes=[ {
 "class": "RakugoVarLabel",
 "language": "GDScript",
 "path": "res://addons/Rakugo/nodes/rakugo_var_label.gd"
+}, {
+"base": "RakugoVar",
+"class": "RakugoVector2",
+"language": "GDScript",
+"path": "res://addons/Rakugo/types/rakugo_vector2.gd"
+}, {
+"base": "RakugoVector2",
+"class": "RakugoVector3",
+"language": "GDScript",
+"path": "res://addons/Rakugo/types/rakugo_vector3.gd"
 }, {
 "base": "VisualInstance",
 "class": "RakugoVisualInstance",
@@ -262,7 +277,7 @@ _global_script_classes=[ {
 "base": "Timer",
 "class": "SkipTimer",
 "language": "GDScript",
-"path": "res://addons/Rakugo/statics/SkipTimer.gd"
+"path": "res://addons/Rakugo/lib/SkipTimer.gd"
 }, {
 "base": "Object",
 "class": "Statement",
@@ -310,6 +325,7 @@ _global_script_class_icons={
 "RakugoBool": "",
 "RakugoButton": "",
 "RakugoChoiceButton": "",
+"RakugoColor": "",
 "RakugoControl": "",
 "RakugoDict": "",
 "RakugoLineEdit": "",
@@ -327,6 +343,8 @@ _global_script_class_icons={
 "RakugoVar": "",
 "RakugoVarEdit": "",
 "RakugoVarLabel": "",
+"RakugoVector2": "",
+"RakugoVector3": "",
 "RakugoVisualInstance": "res://addons/Rakugo/icons/rakugo_spatial.svg",
 "RootNode": "",
 "RootNode2D": "",
