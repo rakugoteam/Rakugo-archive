@@ -1,13 +1,13 @@
 extends RakugoVar
 class_name RakugoColor
 
-var r : setget : float _set_r, _get_r
-var g : setget : float _set_g, _get_g
-var b : setget : float _set_b, _get_b
-var a : setget : float _set_a, _get_a
-var h : setget : float _set_h, _get_h
-var s : setget : float _set_s, _get_s
-var v : setget : float _set_v, _get_v
+var r : float setget _set_r, _get_r
+var g : float setget _set_g, _get_g
+var b : float setget _set_b, _get_b
+var a : float setget _set_a, _get_a
+var h : float setget _set_h, _get_h
+var s : float setget _set_s, _get_s
+var v : float setget _set_v, _get_v
 var r8 : int setget _set_r8, _get_r8
 var g8 : int setget _set_g8, _get_g8
 var b8 : int setget _set_b8, _get_b8
