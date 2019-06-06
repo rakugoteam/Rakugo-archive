@@ -75,7 +75,7 @@ func _on_statement(type : int, parameters : Dictionary) -> void:
 	_type = type
 
 	if not( _type in allowed_statement_types):
-		return;
+		return
 
 	if "kind" in parameters:
 		kind = parameters.kind
@@ -105,9 +105,6 @@ func _on_statement(type : int, parameters : Dictionary) -> void:
 
 		if typing in parameters:
 			_typing = parameters.typing
-
-		if Rakugo.skipping:
-			_typing = false
 
 		write_dialog(parameters.what, _typing)
 
@@ -158,7 +155,12 @@ func _on_statement(type : int, parameters : Dictionary) -> void:
 	return
 
 func write_dialog(text : String, _typing : bool) -> void:
+
+	if Rakugo.skipping:
+		_typing = false
+
 	typing = _typing
+
 	if not typing:
 		if DialogText.has_method("set_bbcode"):
 			DialogText.bbcode_text = text
