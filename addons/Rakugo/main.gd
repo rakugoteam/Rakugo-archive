@@ -333,25 +333,25 @@ func _ready() -> void:
 
 	## conts
 	## Vectors2
-	define("v2_zero", Vector2( 0, 0 ), false)
-	define("v2_one", Vector2( 1, 1 ), false)
-	define("v2_inf", Vector2( INF, INF ), false)
-	define("v2_left", Vector2( -1, 0 ), false)
-	define("v2_right", Vector2( 1, 0 ), false)
-	define("v2_up", Vector2( 0, -1 ), false)
-	define("v2_down", Vector2( 0, 1 ), false)
+	define("v2_zero", Vector2.ZERO, false)
+	define("v2_one", Vector2.ONE, false)
+	define("v2_inf", Vector2.INF, false)
+	define("v2_left", Vector2.LEFT, false)
+	define("v2_right", Vector2.RIGHT, false)
+	define("v2_up", Vector2.UP, false)
+	define("v2_down", Vector2.DOWN, false)
 
 	## conts
 	## Vectors3
-	define("v3_zero", Vector3( 0, 0, 0 ), false)
-	define("v3_one", Vector3( 1, 1, 1 ), false)
-	define("v3_inf", Vector3( INF, INF, INF ), false)
-	define("v3_left", Vector3( -1, 0, 0 ), false)
-	define("v3_right", Vector3( 1, 0, 0 ), false)
-	define("v3_up", Vector3( 0, -1, 0 ), false)
-	define("v3_down", Vector3( 0, 1, 0 ), false)
-	define("v3_forward", Vector3( 0, 0, -1 ), false)
-	define("v3_back", Vector3( 0, 0, 1 ), false)
+	define("v3_zero", Vector3.ZERO, false)
+	define("v3_one", Vector3.ONE, false)
+	define("v3_inf", Vector3.INF, false)
+	define("v3_left", Vector3.LEFT, false)
+	define("v3_right", Vector3.RIGHT, false)
+	define("v3_up", Vector3.UP, false)
+	define("v3_down", Vector3.DOWN, false)
+	define("v3_forward", Vector3.FORWARD, false)
+	define("v3_back", Vector3.BACK, false)
 
 	step_timer.connect("timeout", self, "_on_time_active_timeout")
 
