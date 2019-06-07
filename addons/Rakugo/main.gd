@@ -1,5 +1,6 @@
 extends Node
 
+## don't change - to be removed / change how it works
 var test_save := true
 
 const rakugo_version:= "2.0.0"
@@ -8,22 +9,15 @@ const credits_path:= "res://addons/Rakugo/credits.txt"
 # we need it because we hide base RakugoMenu form custom nodes
 const RakugoMenu:= preload("res://addons/Rakugo/nodes/rakugo_menu.gd")
 
+# project settings integration
 onready var game_title = ProjectSettings.get_setting("application/config/name")
-
 onready var game_version = ProjectSettings.get_setting("application/rakugo/version")
-
 onready var game_credits = ProjectSettings.get_setting("application/rakugo/game_credits")
-
 onready var markup = ProjectSettings.get_setting("application/rakugo/markup")
-
 onready var debug_on = ProjectSettings.get_setting("application/rakugo/debug")
-
 onready var scenes_links = ProjectSettings.get_setting("application/rakugo/scenes_links")
-
 onready var save_folder = ProjectSettings.get_setting("application/rakugo/save_folder")
-
 onready var theme = load(ProjectSettings.get_setting("application/rakugo/theme"))
-
 onready var default_kind = ProjectSettings.get_setting("application/rakugo/default_kind")
 
 ## init vars for settings
