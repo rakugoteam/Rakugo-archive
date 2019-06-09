@@ -33,9 +33,9 @@ func invoke(var_name:String, value, save_included: bool) -> RakugoVar:
 
 			TYPE_STRING:
 				if value.is_valid_html_color():
-					var c = _color(var_name, value.to_html())
+					var c = _color(var_name, value.to_html(), save_included, variables)
 					return c as RakugoColor
-					
+
 				var new_var = RakugoText.new(var_name, value)
 				new_var.save_included = save_included
 				variables[var_name] = new_var
@@ -57,7 +57,7 @@ func invoke(var_name:String, value, save_included: bool) -> RakugoVar:
 				return new_var as RakugoVector3
 
 			TYPE_COLOR:
-				var c = _color(var_name, value.to_html())
+				var c = _color(var_name, value.to_html(), save_included, variables)
 				return c as RakugoColor
 
 			_:
@@ -77,7 +77,7 @@ func node_link(node_id:String, node_path: NodePath, variables:Dictionary) -> Nod
 	variables[node_var.id] = node_var
 	return node_var
 
-func _color(var_name:String , value:String, save_included: bool) -> RakugoColor:
+func _color(var_name:String , value:String, save_included: bool, variables:Dictionary) -> RakugoColor:
 	var new_var = RakugoColor.new(var_name, value)
 	new_var.save_included = save_included
 	variables[var_name] = new_var

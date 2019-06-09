@@ -738,10 +738,13 @@ func begin(path_to_current_scene:String, node_name:String, dialog_name:String) -
 	jump(path_to_current_scene, node_name , dialog_name, false)
 
 func can_go_back():
-	return false
+	return is_save_exits("back")
+
+func checkpoint():
+	savefile("back")
 
 func go_back():
-	pass
+	loadfile("back")
 
 func is_current_statement_in_global_history() -> bool:
 

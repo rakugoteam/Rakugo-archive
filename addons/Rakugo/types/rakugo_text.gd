@@ -11,8 +11,8 @@ var center : bool setget _set_center, _get_center
 var right : bool setget _set_right, _get_right
 var fill : bool setget _set_fill, _get_fill
 var indent : bool setget _set_indent, _get_indent
-var is_link : bool setget _set_is_link, _get_is_link
-var is_image : bool setget _set_is_image, _get_is_image
+var is_link : bool setget _set_self_url, _get_url
+var is_image : bool setget _set_image, _get_image
 
 var link : String setget _set_link, _get_link
 var font : String setget _set_font, _get_font
@@ -20,6 +20,7 @@ var color : String setget _set_color, _get_color
 
 var _prevfont : String
 var _prevurl : String
+var _prevcolor : String
 
 func _init(var_id:String, var_value:String
 	).(var_id, var_value, Rakugo.Type.TEXT):
@@ -38,7 +39,7 @@ func _set_tag(on : bool, open : String, close : String) -> void:
 	if on:
 		_value = open + _value + close
 
-func _get_tag(open : String, close : String) -> void:
+func _get_tag(open : String, close : String) -> bool:
 	var o = _value.begins_with(open)
 	var c = _value.ends_with(close)
 	return o && c
@@ -74,32 +75,32 @@ func _get_code() -> bool:
 	return _get_tag("[code]", "[/code]")
 
 func _set_center(_center : bool) -> void:
-	_set_tag(_code, "[center]", "[/center]")
+	_set_tag(_center, "[center]", "[/center]")
 
 func _get_center() -> bool:
 	return _get_tag("[center]", "[/center]")
 
 func _set_right(_right : bool) -> void:
-	_set_tag(_code, "[right]", "[/right]")
+	_set_tag(_right, "[right]", "[/right]")
 
 func _get_right() -> bool:
 	return _get_tag("[right]", "[/right]")
 
 func _set_fill(_fill : bool) -> void:
-	_set_tag(_code, "[fill]", "[/fill]")
+	_set_tag(_fill, "[fill]", "[/fill]")
 
 func _get_fill() -> bool:
 	return 	_get_tag("[fill]", "[/fill]")
 
 func _set_indent(_indent : bool) -> void:
-	_set_tag(_code, "[indent]", "[/indent]")
+	_set_tag(_indent, "[indent]", "[/indent]")
 
 func _get_indent() -> bool:
 	return 	_get_tag("[indent]", "[/indent]")
 
 func _set_self_url(_url : bool) -> void:
-	var o = "[url=" + _prevlink + "]"
-	_set_tag(true, o, "[/url]")
+	var o = "[url=" + _prevurl + "]"
+	_set_tag(false, o, "[/url]")
 	_prevurl = ""
 
 	if _url:
@@ -111,9 +112,17 @@ func _get_url() -> bool:
 	return bool(_prevurl)
 
 func _set_link(_link : String) -> void:
-	_prevurl = _link
-	var o = "[url=" _link + "]"
-	_set_tag(true, o, "[/url]")
+	var o = "[url=" + _prevurl + "]"
+	_set_tag(false, o, "[/url]")
+	_prevurl = ""
+
+	if _link:
+		_prevurl = _link
+		o = "[url=" + _link + "]"
+		_set_tag(true, o, "[/url]")
+
+func _get_link() -> String:
+	return _prevurl
 
 func _set_image(_image : bool) -> void:
 	_set_tag(_image, "[img]", "[/img]")
@@ -123,14 +132,27 @@ func _get_image() -> bool:
 
 func _set_font(_font : String) -> void:
 	var o = "[font=" + _prevfont + "]"
-	_set_tag(_font, o, "[/font]")
-	o = "[font=" + _font + "]"
-	_set_tag(_font, o, "[/font]")
-	_prevfont = _font
+	_set_tag(false, o, "[/font]")
 
-func _get_font() -> bool:
-	var o = "[font=" + _prevfont + "]"
-	return _get_tag(_font, o, "[/font]")
+	if _font:
+		o = "[font=" + _font + "]"
+		_set_tag(true, o, "[/font]")
+		_prevfont = _font
+
+func _get_font() -> String:
+	return _prevfont
+
+func _set_color(_color : String) -> void:
+	var o = "[color=" + _prevcolor + "]"
+	_set_tag(false, o, "[/color]")
+
+	if _color:
+		o = "[color=" + _color + "]"
+		_set_tag(true, o, "[/color]")
+		_prevcolor = _color
+
+func _get_color() -> String:
+	return _prevcolor
 
 func begins_with(text:String) ->bool:
 	return _value.begins_with(text)
@@ -282,7 +304,7 @@ func rfind(what:String, from:=-1 ) -> int:
 func rfindn(what:String, from:=-1 ) -> int:
 	return _value.rfindn(what, from)
 
-func right(position:int) -> String:
+func right_at(position:int) -> String:
 	return _value.right(position)
 
 func rstrip(chars:String) -> String:

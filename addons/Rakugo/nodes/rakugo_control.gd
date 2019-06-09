@@ -79,9 +79,8 @@ func _on_show(node_id : String , state_value : Array, show_args : Dictionary) ->
 func _set_state(value : Array) -> void:
 	_state = value
 
-	if not Engine.editor_hint:
+	if not Engine.editor_hint and rnode:
 		_state = rnode.setup_state(value)
-
 
 func _get_state() -> Array:
 	return _state

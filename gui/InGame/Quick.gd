@@ -11,6 +11,9 @@ func _ready() -> void:
 	$Skip.connect("pressed", self, "on_skip")
 	$Skip.disabled = true
 
+	$Back.connect("pressed", Rakugo, "go_back")
+	$Back.disabled = true
+
 	Rakugo.skip_timer.connect("stop_loop", self, "on_stop_loop")
 	Rakugo.auto_timer.connect("stop_loop", self, "on_stop_loop")
 
@@ -46,6 +49,7 @@ func _on_qload() -> void:
 
 func _on_statement(type : int, parameters : Dictionary) -> void:
 	$Skip.disabled = !Rakugo.can_skip()
+	$Back.disabled = !Rakugo.can_go_back()
 	$Auto.disabled = !Rakugo.can_auto()
 	$History.disabled = Rakugo.history_id == 0
 	$QLoad.disabled = !Rakugo.can_qload()

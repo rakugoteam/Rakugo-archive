@@ -13,8 +13,8 @@ var g8 : int setget _set_g8, _get_g8
 var b8 : int setget _set_b8, _get_b8
 var a8 : int setget _set_a8, _get_a8
 
-func _init(var_id : String, color : Color.white.to_html())
-.(var_id, color, Rakugo.Type.COLOR):
+func _init(var_id : String, color := Color.white.to_html()
+	).(var_id, color, Rakugo.Type.COLOR):
 	pass
 
 func _set_value(v : Color) -> void:
@@ -536,7 +536,7 @@ func from_rgba( r : float, g : float, b : float, a := 1.0 ) -> void:
 func from_hsv( h : float, s : float, v : float, a := 1.0 ) -> void:
 	_value.from_hsv(h, s, v, a)
 
-func blend( string over ) -> void:
+func blend( over: String ) -> void:
 	_value.blend(Color(over))
 
 func contrasted() -> void:
@@ -545,7 +545,7 @@ func contrasted() -> void:
 func darkened( amount : float ) -> void:
 	_value = _value.darkened(amount)
 
-func gray() -> float:
+func fgray() -> float:
 	return _value.gray()
 
 func inverted() -> void:
@@ -554,10 +554,10 @@ func inverted() -> void:
 func lightened( amount : float ) -> void:
 	_value = _value.lightened(amount)
 
-func linear_interpolate( Color b, t : float ) -> void:
-	_value = _value.linear_interpolate(b, t)
+func linear_interpolate( b : String, t : float ) -> void:
+	_value = _value.linear_interpolate(Color(b), t)
 
-func to_html( bool with_alpha := true ) -> String:
+func to_html( with_alpha := true ) -> String:
 	return _value.to_html(with_alpha)
 
 func to_string() -> String:
