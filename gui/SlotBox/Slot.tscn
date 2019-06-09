@@ -80,7 +80,7 @@ text = "Delete"
 [node name="Button" type="Button" parent="."]
 margin_top = 24.0
 margin_right = 220.0
-margin_bottom = 207.0
+margin_bottom = 184.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 1 )
@@ -103,10 +103,20 @@ disable_node_color = Color( 0.533333, 0.533333, 0.498039, 0.533333 )
 [node name="TextureRect" type="TextureRect" parent="Button"]
 margin_left = 6.0
 margin_top = 6.0
-margin_right = 1055.0
-margin_bottom = 692.0
+margin_right = 226.0
+margin_bottom = 166.0
 rect_scale = Vector2( 0.2, 0.25 )
 expand = true
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 71.0
+margin_top = 188.0
+margin_right = 148.0
+margin_bottom = 207.0
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 6 )
+text = "Empty Slot"
+align = 1
 
 [node name="Label" type="Label" parent="."]
 margin_left = 71.0

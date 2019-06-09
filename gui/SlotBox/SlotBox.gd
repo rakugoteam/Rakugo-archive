@@ -126,7 +126,7 @@ func close_popup(answer):
 
 func savebox(saveslotsdir : = saveslots_dir + "/") -> void:
 	var saves = get_dir_contents(saveslots_dir, "tres",
-		["history", "auto", "quick"])
+		["history", "auto", "quick", "back"])
 
 	saves.append("empty")
 
@@ -147,7 +147,7 @@ func savebox(saveslotsdir : = saveslots_dir + "/") -> void:
 
 		if filehandler.file_exists(saveslotsdir + x + '.info'):
 			filehandler.open(saveslotsdir + x + '.info', File.READ)
-			s.get_node("Label").text = filehandler.get_line()
+			s.get_node("Label2").text = filehandler.get_line()
 			filehandler.close()
 
 		var b = s.get_node("Button")
@@ -191,7 +191,7 @@ func loadbox(saveslotsdir : = saveslots_dir + "/") -> bool:
 
 		if filehandler.file_exists(saveslotsdir + x + '.info'):
 			filehandler.open(saveslotsdir + x + '.info', File.READ)
-			s.get_node("Label").text = filehandler.get_line()
+			s.get_node("Label2").text = filehandler.get_line()
 			filehandler.close()
 
 		var b = s.get_node("Button")
