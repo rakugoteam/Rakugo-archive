@@ -3,8 +3,8 @@ class_name RakugoVector3
 
 var z : float setget _set_z, _get_z
 
-func _init(var_id : String, var_value : Vector3
-	).(var_id, var_value, Rakugo.Type.VECT3):
+func _init(var_id : String, var_value : Vector3)
+.(var_id, var_value, Rakugo.Type.VECT3):
 	pass
 
 func _set_value(v : Vector3) -> void:

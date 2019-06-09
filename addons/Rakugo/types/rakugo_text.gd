@@ -98,7 +98,7 @@ func _get_indent() -> bool:
 	return 	_get_tag("[indent]", "[/indent]")
 
 func _set_self_url(_url : bool) -> void:
-	var o = "[url=" _prevlink + "]"
+	var o = "[url=" + _prevlink + "]"
 	_set_tag(true, o, "[/url]")
 	_prevurl = ""
 

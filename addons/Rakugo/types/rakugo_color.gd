@@ -13,8 +13,8 @@ var g8 : int setget _set_g8, _get_g8
 var b8 : int setget _set_b8, _get_b8
 var a8 : int setget _set_a8, _get_a8
 
-func _init(var_id : String, color : Color.white.to_html()
-	).(var_id, color, Rakugo.Type.COLOR):
+func _init(var_id : String, color : Color.white.to_html())
+.(var_id, color, Rakugo.Type.COLOR):
 	pass
 
 func _set_value(v : Color) -> void:
