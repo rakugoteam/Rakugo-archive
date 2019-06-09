@@ -19,7 +19,7 @@ func exec() -> void:
 	for p in optional:
 		if p in parameters.keys():
 			any_oparam = true
-			break;
+			break
 
 	if !any_oparam:
 		parameters["at"] = ["center", "bottom"]
