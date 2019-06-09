@@ -121,4 +121,3 @@ script = ExtResource( 11 )
 [node name="RakugoAnimPlayer" type="AnimationPlayer" parent="."]
 script = ExtResource( 6 )
 node_id = "RakugoAnimPlayer"
-

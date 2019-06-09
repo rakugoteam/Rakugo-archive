@@ -357,6 +357,8 @@ script = ExtResource( 2 )
 use_theme_from_setting = true
 register = false
 node_id = "InGameGUI"
+camera = NodePath("")
+state = [  ]
 
 [node name="ScrollContainerVMenu" type="ScrollContainer" parent="."]
 editor/display_folded = true
@@ -595,4 +597,3 @@ custom_colors/selection_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = false
 bbcode_text = "Game was saved"
 text = "Game was saved"
-

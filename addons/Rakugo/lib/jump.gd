@@ -7,7 +7,7 @@ func invoke(
 		change := true
 	) ->void :
 
-	var r = Rakugo
+	var r = Rakugo	
 	var scenes_links = load(r.scenes_links).get_as_dict()
 	r.current_node_name = node_name
 	r.current_dialog_name = dialog_name

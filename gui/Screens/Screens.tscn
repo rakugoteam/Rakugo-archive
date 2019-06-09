@@ -5111,4 +5111,3 @@ anims/small_right = SubResource( 9 )
 
 [node name="UnpauseTimer" type="Timer" parent="."]
 one_shot = true
-

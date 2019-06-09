@@ -129,4 +129,3 @@ text = "Empty Slot"
 align = 1
 
 [node name="Node" type="Node" parent="."]
-
