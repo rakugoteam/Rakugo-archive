@@ -101,6 +101,7 @@ func _exit_tree() -> void:
 
 func on_save() -> void:
 	if not _register:
+		remove_from_group("save")
 		return
 
 	node_link.value["visible"] = visible

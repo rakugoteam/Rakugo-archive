@@ -29,6 +29,8 @@ func invoke(
 		r.current_root_node = lscene.instance()
 		get_tree().get_root().add_child(r.current_root_node)
 
+		yield(r.current_root_node, "ready")
+
 		Rakugo.emit_signal("started")
 
 	if r.started:
