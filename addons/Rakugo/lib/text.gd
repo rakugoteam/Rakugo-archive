@@ -73,7 +73,6 @@ func parse_text_emojis(
 
 	return text
 
-
 func parse_renpy_text(text:String, variables:Dictionary) -> String:
 	text = parse_text_adv(text, variables, "[", "]")
 	text = parse_text_emojis(text, "{:", ":}")

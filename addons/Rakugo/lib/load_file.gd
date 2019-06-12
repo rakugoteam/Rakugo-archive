@@ -25,17 +25,8 @@ func invoke(save_folder: String, save_name: String,  variables: Dictionary):
 		return false
 
 	var save : Resource = load(save_file_path)
+
 	var game_version = save.game_version
-
-	r.start(true)
-	r.story_state = save.story_state - 1
-
-	r.jump(
-		save.scene,
-		save.node_name,
-		save.dialog_name,
-		true
-		)
 
 	r.quests.clear()
 	r.history = save.history.duplicate()
@@ -68,15 +59,36 @@ func invoke(save_folder: String, save_name: String,  variables: Dictionary):
 
 			_:
 				r.define(k, v.value)
-			
+
 	for q_id in r.quests:
 		var q = r.get_var(q_id)
 		q.update_subquests()
 
+	r.start(true)
+	r.story_state = save.story_state - 1
+
+	r.jump(
+		save.scene,
+		save.node_name,
+		save.dialog_name,
+		true
+		)
+
+	yield(r.current_root_node, "ready")
+
 	r.history_id = save.history_id
 
 	for node in r.get_tree().get_nodes_in_group("save"):
-		node.on_load(game_version)
+		if node.has_method("on_load"):
+			node.on_load()
+			continue
+
+		# to fix bug
+		var rc = node as RakugoControl
+
+		if rc:
+			if rc.register:
+				rc.on_load()
 
 	r.loading_in_progress = false
 
