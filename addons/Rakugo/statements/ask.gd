@@ -10,6 +10,7 @@ func _init() -> void:
 	parameters_names += ["temp", "variable"]
 
 func exec() -> void:
+	Rakugo.checkpoint()
 	debug(parameters_names)
 
 	value = parameters.value

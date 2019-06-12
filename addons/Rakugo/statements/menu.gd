@@ -11,6 +11,7 @@ func _init() -> void:
 	parameters["mkind"] = "vertical"
 
 func exec() -> void:
+	Rakugo.checkpoint()
 	debug(parameters_names)
 
 	choices_labels = []

@@ -4,12 +4,16 @@ class_name Say
 func _init() -> void:
 	._init()
 	type = 1 # Rakugo.StatementType.SAY
-	parameters_names += ["who", "what", "typing", "kind"]
+	parameters_names += ["who", "what", "typing", "kind", "avatar", "avatar_state"]
 	parameters["who"] = ""
 	parameters["add_to_history"] = true
+	parameters_always += ["avatar_state"]
 
 func exec() -> void:
 	debug(parameters_names)
+
+	if not ("avatar_state" in parameters):
+		parameters["avatar_state"] = []
 
 	if not ("who" in parameters):
 		parameters["who"] = "Narrator"
