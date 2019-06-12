@@ -1,6 +1,5 @@
 # Rakugo ![Logo](graphics/window_icon.png)
 [![Documentation Status](https://readthedocs.org/projects/rakugo/badge/?version=latest)](https://rakugo.readthedocs.io/en/latest/?badge=latest)
-[![Patreon](https://img.shields.io/badge/support-pateron-orange.svg?style=flat-square)](https://www.patreon.com/jebedaia360)
 [![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](LICENSE)
 [![Discord Server](https://img.shields.io/discord/484604562183815169.svg?style=flat-square)](https://discord.gg/K9gvjdg)
 [![GitHub](https://img.shields.io/github/contributors/jebedaia360/Rakugo.svg?style=flat-square)](https://github.com/jebedaia360/Rakugo)
@@ -14,8 +13,6 @@ Rakugo is framemork (inspired by [Ren'Py](https://www.renpy.org)) for story driv
 or like my friend call it *Story Management Plugin*.
 
 The idea is to have a ready to use plug-in for stories, so developers can create narrative driven games with all the amazing features and tools of Godot 3.1+.
-
-Now you can support this project by [Patreon](https://www.patreon.com/jebedaia360).
 
 You can download 1.0 for Godot 3.0 [here](https://github.com/jebedaia360/Rakugo/releases).
 
@@ -58,8 +55,7 @@ This project's dialog functions can do more than Ren'Py's equivalents.
 **A:** For now this framework is a singleton and a collection of special nodes. There is also gui include in example project that is connected with the framework and has all functions like in a Ren'Py game.
 
 **Q:** Is it easy to use ?</p>
-**A:** For now it is not that easy as I want it to be, but I am working to make it use RakugoScript (this framework's own language) and visual script.
-For now here is example using GDScript: [examples/Test/test.gd](examples/Test/test.gd)
+**A:** For now it is not that easy as I want it to be, but I am working to make it use RakugoScript (this framework's own language) and visual script. Now are docs/tutorials available: https://rakugo.readthedocs.io/en/latest/?badge=latest
 
 ## Other Info
 
