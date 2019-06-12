@@ -1,17 +1,9 @@
-## you can remove this part for your own game
 addons/godot-plugin-refresher/
-refences/
-examples/the_question_org/
-
-## should keep this part
-# godot stuff
 fontconfig
+refences/
 saves/
 .import/
 .directory
-
-# vscode
 .vscode/
-
-# krita backup files
 .*.kra
+examples/the_question_org/
