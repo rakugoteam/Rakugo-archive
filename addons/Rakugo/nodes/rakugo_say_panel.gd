@@ -15,11 +15,13 @@ var LineEditNode : RakugoLineEdit
 var StdKindContainer : KindContainer
 var MainContainer : BoxContainer
 var CurrentKind : KindContainer
+var ButtonNext : BaseButton
 
 var avatar_path : = ""
 var avatar : Node
 var _type : int
 var typing : = false
+var _ui_accept := false
 
 onready var allowed_statement_types = [
 	Rakugo.StatementType.SAY,
@@ -28,16 +30,32 @@ onready var allowed_statement_types = [
 ]
 
 func _setup(kind_container:KindContainer):
+	
+	if ButtonNext:
+		if ButtonNext.is_connected("pressed", self, "_press_accept"):
+			ButtonNext.disconnect("pressed", self, "_press_accept")
+			
+		ButtonNext.hide()
+	
 	NameLabel = kind_container.NameLabel
 	DialogText = kind_container.DialogText
 	CharacterAvatar = kind_container.CharacterAvatar
 
 	if LineEditNode:
 		LineEditNode.active = false
+		if ButtonNext.is_connected("pressed", LineEditNode, "enter"):
+			ButtonNext.disconnect("pressed", LineEditNode, "enter")
 
 	LineEditNode = kind_container.LineEditNode
 	LineEditNode.active = true
+	ButtonNext = kind_container.NextButton
+	ButtonNext.connect("pressed", self, "_press_accept")
+	ButtonNext.connect("pressed", LineEditNode, "enter")
+	Rakugo.dialog_timer.connect("timeout", ButtonNext, "set_disabled", [true])
 	CurrentKind = kind_container
+	
+func _press_accept() -> void:
+	_ui_accept = true
 
 func _ready() -> void:
 	MainContainer = get_node(main_container_path)
@@ -45,9 +63,14 @@ func _ready() -> void:
 	_setup(StdKindContainer)
 	Rakugo.connect("exec_statement", self, "_on_statement")
 
-func _input(event : InputEvent) -> void:
-	if not event.is_action_pressed("ui_accept"):
+func _process(delta) -> void:
+	var ui_accept = Input.is_action_just_pressed("ui_accept")
+	ui_accept = ui_accept or _ui_accept
+	
+	if not ui_accept:
 		return
+	
+	_ui_accept = false
 
 	if not visible:
 		visible = true
@@ -71,11 +94,13 @@ func _input(event : InputEvent) -> void:
 
 func _on_statement(type : int, parameters : Dictionary) -> void:
 	kind = Rakugo.default_kind
-
 	_type = type
 
 	if not( _type in allowed_statement_types):
 		return
+	
+	if _type != Rakugo.StatementType.MENU:
+		ButtonNext.disabled = false
 
 	if "kind" in parameters:
 		kind = parameters.kind
@@ -121,7 +146,7 @@ func _on_statement(type : int, parameters : Dictionary) -> void:
 
 			var a = avatar as RakugoAvatar
 
-			if(a):
+			if a:
 				a.state = parameters.avatar_state
 
 		else:
@@ -130,7 +155,7 @@ func _on_statement(type : int, parameters : Dictionary) -> void:
 	elif avatar != null:
 		var wr = weakref(avatar)
 
-		if (!wr.get_ref()):
+		if not wr.get_ref():
 			# object is erased
 			avatar = null
 

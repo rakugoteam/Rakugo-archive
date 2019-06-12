@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://addons/Rakugo/nodes/kind_container.gd" type="Script" id=1]
 [ext_resource path="res://gui/Labels/name_text.tscn" type="PackedScene" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://ubuntu-font-family/Ubuntu-R.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://gui/Labels/dialogue_text.tscn" type="PackedScene" id=7]
 [ext_resource path="res://addons/Rakugo/nodes/rakugo_line_edit.gd" type="Script" id=8]
+[ext_resource path="res://themes/new_gui/new_gui.theme" type="Theme" id=9]
+[ext_resource path="res://addons/Rakugo/nodes/rakugo_base_button.gd" type="Script" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -62,6 +64,9 @@ font_data = ExtResource( 6 )
 [node name="PhoneRight" type="Panel"]
 self_modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
+margin_left = -1.22766
+margin_right = -1.22766
+margin_bottom = 144.0
 rect_min_size = Vector2( 1024, 144 )
 size_flags_horizontal = 3
 script = ExtResource( 1 )
@@ -70,6 +75,7 @@ dialog_label_path = NodePath("HBoxContainer/VBox/Dialogue")
 avatar_viewport_path = NodePath("HBoxContainer/ViewportContainer/CharaterAvatar")
 avatar_container_path = NodePath("HBoxContainer/ViewportContainer")
 line_edit_path = NodePath("HBoxContainer/VBox/RakugoLineEdit")
+next_button_path = NodePath("Next")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_left = 90.1899
@@ -146,3 +152,18 @@ hdr = false
 usage = 0
 render_target_update_mode = 3
 
+[node name="Next" type="Button" parent="."]
+margin_left = 960.495
+margin_top = 93.1489
+margin_right = 1010.49
+margin_bottom = 133.149
+rect_min_size = Vector2( 50, 40 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
+theme = ExtResource( 9 )
+button_mask = 3
+text = ">>>"
+script = ExtResource( 10 )
+use_theme_from_setting = true
+use_form_theme = true

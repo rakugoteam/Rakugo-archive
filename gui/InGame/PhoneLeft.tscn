@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://addons/Rakugo/nodes/kind_container.gd" type="Script" id=1]
 [ext_resource path="res://gui/Labels/name_text.tscn" type="PackedScene" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://ubuntu-font-family/Ubuntu-R.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://gui/Labels/dialogue_text.tscn" type="PackedScene" id=7]
 [ext_resource path="res://addons/Rakugo/nodes/rakugo_line_edit.gd" type="Script" id=8]
+[ext_resource path="res://themes/new_gui/new_gui.theme" type="Theme" id=9]
+[ext_resource path="res://addons/Rakugo/nodes/rakugo_base_button.gd" type="Script" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -70,6 +72,7 @@ dialog_label_path = NodePath("HBoxContainer/VBox/Dialogue")
 avatar_viewport_path = NodePath("HBoxContainer/ViewportContainer/CharaterAvatar")
 avatar_container_path = NodePath("HBoxContainer/ViewportContainer")
 line_edit_path = NodePath("HBoxContainer/VBox/RakugoLineEdit")
+next_button_path = NodePath("Next")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_left = 18.1766
@@ -145,3 +148,18 @@ custom_colors/clear_button_color = Color( 0, 0, 0, 1 )
 caret_blink = true
 script = ExtResource( 8 )
 
+[node name="Next" type="Button" parent="."]
+margin_left = 891.742
+margin_top = 106.654
+margin_right = 941.742
+margin_bottom = 146.654
+rect_min_size = Vector2( 50, 40 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
+theme = ExtResource( 9 )
+button_mask = 3
+text = ">>>"
+script = ExtResource( 10 )
+use_theme_from_setting = true
+use_form_theme = true
