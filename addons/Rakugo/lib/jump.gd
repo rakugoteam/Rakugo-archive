@@ -4,14 +4,15 @@ func invoke(
 		id_of_scene:String,
 		node_name:String,
 		dialog_name:String,
-		change := true
+		change := true,
+		state := 0
 	) ->void :
 
 	var r = Rakugo
 	var scenes_links = load(r.scenes_links).get_as_dict()
 	r.current_node_name = node_name
 	r.current_dialog_name = dialog_name
-
+	r.story_state = state
 	r.current_scene = id_of_scene
 
 	r.debug(["jump to scene:", r.current_scene, "with dialog:", dialog_name, "from:", r.story_state])

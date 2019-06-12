@@ -87,18 +87,21 @@ func _exit_tree() -> void:
 	Rakugo.variables.erase(node_id)
 
 func  on_save() -> void:
+	node_link = Rakugo.get_node_link(node_id)
 	node_link.value["visible"] = visible
 	node_link.value["state"] = _state
 	node_link.value["show_args"] = last_show_args
 
 func on_load(game_version:String) -> void:
-	node_link =  Rakugo.get_node_link(node_id)
-	visible = node_link.value["visible"]
+	node_link = Rakugo.get_node_link(node_id)
+	
+	if "visible" in node_link.value:
+		visible = node_link.value["visible"]
 
-	if visible:
-		_state = node_link.value["state"]
-		last_show_args = node_link.value["show_args"]
-		_on_show(node_id, _state , last_show_args )
+		if visible:
+			_state = node_link.value["state"]
+			last_show_args = node_link.value["show_args"]
+			_on_show(node_id, _state , last_show_args )
 
 	else:
 		_on_hide(node_id)

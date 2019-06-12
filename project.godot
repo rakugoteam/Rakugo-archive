@@ -391,6 +391,7 @@ gdscript/completion/autocomplete_setters_and_getters=true
 gdscript/warnings/unused_variable=false
 gdscript/warnings/unused_class_variable=false
 gdscript/warnings/unused_argument=false
+gdscript/warnings/unused_signal=false
 gdscript/warnings/return_value_discarded=false
 
 [editor_plugins]
@@ -454,6 +455,12 @@ rakugo_skipping_ctrl={
 rakugo_skipping={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777218,"unicode":0,"echo":false,"script":null)
+ ]
+}
+rakugo_enter={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777221,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777222,"unicode":0,"echo":false,"script":null)
  ]
 }
 
