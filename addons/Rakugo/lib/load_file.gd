@@ -65,7 +65,7 @@ func invoke(save_folder: String, save_name: String,  variables: Dictionary):
 		q.update_subquests()
 
 	r.start(true)
-	r.story_state = save.story_state - 1
+	r.story_state = save.story_state # - 1
 
 	r.jump(
 		save.scene,
