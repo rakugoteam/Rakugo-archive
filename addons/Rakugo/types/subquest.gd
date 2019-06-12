@@ -42,7 +42,7 @@ func _set_optional(is_optional) -> void:
 # begin quest
 func start() -> void:
 	state = STATE_IN_PROGRESS
-	Rakugo.notifiy("You begin \"" + title + "\"")
+	Rakugo.notify("You begin \"" + title + "\"")
 
 func _set_title(new_title : String) -> void:
 	title = new_title
@@ -68,7 +68,7 @@ func _get_state() -> int:
 func done() -> void:
 	state = STATE_DONE
 	emit_signal("done_subquest")
-	Rakugo.notifiy("You finish \"" + title + "\"")
+	Rakugo.notify("You finish \"" + title + "\"")
 
 func fail() -> void:
 	state = STATE_FAIL

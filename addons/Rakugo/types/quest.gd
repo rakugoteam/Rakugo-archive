@@ -24,7 +24,7 @@ func _get_value() -> Dictionary:
 func start() -> void:
 	state = STATE_IN_PROGRESS
 	emit_signal("start_quest")
-	Rakugo.notifiy("You begin \"" + title + "\"")
+	Rakugo.notify("You begin \"" + title + "\"")
 
 # it adds a subquest to list
 func add_subquest(subquest : Subquest) -> void:

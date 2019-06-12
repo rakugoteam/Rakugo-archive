@@ -1,6 +1,27 @@
 extends RakugoVar
 class_name RakugoText
 
+var bold : bool setget _set_bold, _get_bold
+var italics : bool setget _set_italics, _get_italics
+var underline : bool setget _set_underline, _get_underline
+var strikethrough : bool setget _set_strikethrough, _get_strikethrough
+var code : bool setget _set_code, _get_code
+var monospace : bool setget _set_code, _get_code
+var center : bool setget _set_center, _get_center
+var right : bool setget _set_right, _get_right
+var fill : bool setget _set_fill, _get_fill
+var indent : bool setget _set_indent, _get_indent
+var is_link : bool setget _set_self_url, _get_url
+var is_image : bool setget _set_image, _get_image
+
+var link : String setget _set_link, _get_link
+var font : String setget _set_font, _get_font
+var color : String setget _set_color, _get_color
+
+var _prevfont : String
+var _prevurl : String
+var _prevcolor : String
+
 func _init(var_id:String, var_value:String
 	).(var_id, var_value, Rakugo.Type.TEXT):
 	pass
@@ -11,15 +32,137 @@ func _set_value(var_value:String) -> void:
 func _get_value() -> String:
 	return _value
 
+func _set_tag(on : bool, open : String, close : String) -> void:
+	_value = _value.trim_prefix(open)
+	_value = _value.trim_suffix(close)
+
+	if on:
+		_value = open + _value + close
+
+func _get_tag(open : String, close : String) -> bool:
+	var o = _value.begins_with(open)
+	var c = _value.ends_with(close)
+	return o && c
+
+func _set_bold(_bold : bool) -> void:
+	_set_tag(_bold, "[b]", "[/b]")
+
+func _get_bold() -> bool:
+	return _get_tag("[b]", "[/b]")
+
+func _set_italics(_italics : bool) -> void:
+	_set_tag(_italics, "[i]", "[/i]")
+
+func _get_italics() -> bool:
+	return _get_tag("[i]", "[/i]")
+
+func _set_underline(_underline : bool) -> void:
+	_set_tag(_underline, "[u]", "[/u]")
+
+func _get_underline() -> bool:
+	return _get_tag("[u]", "[/u]")
+
+func _set_strikethrough(_strikethrough : bool) -> void:
+	_set_tag(_strikethrough, "[s]", "[/s]")
+
+func _get_strikethrough() -> bool:
+	return _get_tag("[s]", "[/s]")
+
+func _set_code(_code : bool) -> void:
+	_set_tag(_code, "[code]", "[/code]")
+
+func _get_code() -> bool:
+	return _get_tag("[code]", "[/code]")
+
+func _set_center(_center : bool) -> void:
+	_set_tag(_center, "[center]", "[/center]")
+
+func _get_center() -> bool:
+	return _get_tag("[center]", "[/center]")
+
+func _set_right(_right : bool) -> void:
+	_set_tag(_right, "[right]", "[/right]")
+
+func _get_right() -> bool:
+	return _get_tag("[right]", "[/right]")
+
+func _set_fill(_fill : bool) -> void:
+	_set_tag(_fill, "[fill]", "[/fill]")
+
+func _get_fill() -> bool:
+	return 	_get_tag("[fill]", "[/fill]")
+
+func _set_indent(_indent : bool) -> void:
+	_set_tag(_indent, "[indent]", "[/indent]")
+
+func _get_indent() -> bool:
+	return 	_get_tag("[indent]", "[/indent]")
+
+func _set_self_url(_url : bool) -> void:
+	var o = "[url=" + _prevurl + "]"
+	_set_tag(false, o, "[/url]")
+	_prevurl = ""
+
+	if _url:
+		_prevurl = _value
+
+	_set_tag(_url, "[url]", "[/url]")
+
+func _get_url() -> bool:
+	return bool(_prevurl)
+
+func _set_link(_link : String) -> void:
+	var o = "[url=" + _prevurl + "]"
+	_set_tag(false, o, "[/url]")
+	_prevurl = ""
+
+	if _link:
+		_prevurl = _link
+		o = "[url=" + _link + "]"
+		_set_tag(true, o, "[/url]")
+
+func _get_link() -> String:
+	return _prevurl
+
+func _set_image(_image : bool) -> void:
+	_set_tag(_image, "[img]", "[/img]")
+
+func _get_image() -> bool:
+	return 	_get_tag("[img]", "[/img]")
+
+func _set_font(_font : String) -> void:
+	var o = "[font=" + _prevfont + "]"
+	_set_tag(false, o, "[/font]")
+
+	if _font:
+		o = "[font=" + _font + "]"
+		_set_tag(true, o, "[/font]")
+		_prevfont = _font
+
+func _get_font() -> String:
+	return _prevfont
+
+func _set_color(_color : String) -> void:
+	var o = "[color=" + _prevcolor + "]"
+	_set_tag(false, o, "[/color]")
+
+	if _color:
+		o = "[color=" + _color + "]"
+		_set_tag(true, o, "[/color]")
+		_prevcolor = _color
+
+func _get_color() -> String:
+	return _prevcolor
+
 func begins_with(text:String) ->bool:
 	return _value.begins_with(text)
-	
+
 func bigrams() -> PoolStringArray:
 	return _value.bigrams()
 
 func c_escape() -> String:
 	return _value.c_escape()
-	
+
 func c_unescape() -> String:
 	return _value.c_unescape()
 
@@ -31,10 +174,10 @@ func casecmp_to(to:String) -> int:
 
 func dedent() -> String:
 	return _value.dedent()
-	
+
 func empty() -> bool:
 	return _value.empty()
-	
+
 func ends_with(text:String) -> bool:
 	return _value.ends_with(text)
 
@@ -43,13 +186,13 @@ func erase(position:int, chars:int) -> void:
 
 func find(what:String, from:=0) -> int:
 	return _value.find(what, from)
-	
+
 func find_last(what:String) -> int:
 	return _value.find_last(what)
 
 func findn(what:String, from:=0) -> int:
 	return _value.findn(what, from)
-	
+
 func format(values, placeholder:="_") -> String:
 	return _value.format(values, placeholder)
 
@@ -109,7 +252,7 @@ func json_escape() -> String:
 
 func left(position:int) -> String:
 	return _value.left(position)
-	
+
 func length() -> int:
 	return _value.length()
 
@@ -161,7 +304,7 @@ func rfind(what:String, from:=-1 ) -> int:
 func rfindn(what:String, from:=-1 ) -> int:
 	return _value.rfindn(what, from)
 
-func right(position:int) -> String:
+func right_at(position:int) -> String:
 	return _value.right(position)
 
 func rstrip(chars:String) -> String:
@@ -223,18 +366,13 @@ func to_string() -> String:
 
 func parse_text(text:String, open:String, close:String) -> String:
 	text = .parse_text(text, open, close)
-	
+
 	for i in range(_value.length() ):
 		var sa = open + _id + "[" + str(i) + "]" + close
 
 		if text.find(sa) == -1:
 			continue # no variable in this string
-		
+
 		text = text.replace(sa, _value[i])
-	
+
 	return text
-
-
-
-
-

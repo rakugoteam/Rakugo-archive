@@ -12,13 +12,13 @@ func _get_value() -> bool:
 	return _value
 
 func on() -> void:
-	value = true
+	_value = true
 
 func off() -> void:
-	value = false
+	_value = false
 
 func switch() -> void:
-	value = !value
+	_value = !_value
 
 func is_on() -> bool:
 	return _value == true
