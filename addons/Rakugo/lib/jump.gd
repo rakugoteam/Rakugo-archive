@@ -19,17 +19,17 @@ func invoke(
 	if change:
 		if r.current_root_node != null:
 			r.current_root_node.queue_free()
-		
+
 		var path = r.current_scene
-		
+
 		if scenes_links.has(id_of_scene):
 			path = scenes_links[id_of_scene].resource_path
-		
+
 		var lscene = load(path)
 		r.current_root_node = lscene.instance()
 		get_tree().get_root().add_child(r.current_root_node)
-
-		Rakugo.emit_signal("started")
+		r.started = true
+		r.emit_signal("started")
 
 	if r.started:
 		r.story_step()
