@@ -1,30 +1,33 @@
 tool
-extends Control
+extends RakugoBaseControl
 class_name RakugoControl
+
+signal on_substate(substate)
 
 onready var rnode := RakugoNodeCore.new()
 
-export var use_theme_from_setting : bool setget set_use_theme_form_settings, get_use_theme_form_settings
-export var node_id := ""
+export var register : bool setget _set_register, _get_register
+export var node_id : String setget _set_node_id, _get_node_id
 export var camera := NodePath("")
 export (Array, String) var state : Array setget _set_state, _get_state
 
 var _state : Array
 var node_link: NodeLink
 var last_show_args:Dictionary
+var _register := true
 
-var _use_theme_from_settings := true
+var _node_id := ""
 
 func _ready() -> void:
 	if(Engine.editor_hint):
-		if node_id.empty():
-			node_id = name
-
-		add_to_group("save", true)
 		return
 
 	Rakugo.connect("show", self, "_on_show")
 	Rakugo.connect("hide", self, "_on_hide")
+	rnode.connect("on_substate", self, "_on_rnode_substate")
+
+	if not _register:
+		return
 
 	if node_id.empty():
 		node_id = name
@@ -37,7 +40,30 @@ func _ready() -> void:
 	else:
 		node_link.value["node_path"] = get_path()
 
-	add_to_group("save", true)
+func _on_rnode_substate(substate):
+	emit_signal("on_substate", substate)
+
+func _set_register(value:bool):
+	_register = value
+
+	if _register:
+		add_to_group("save", false)
+		return
+
+	if is_in_group("save"):
+		remove_from_group("save")
+
+func _get_register() -> bool:
+	return _register
+
+func _set_node_id(value : String):
+	_node_id = value
+
+func _get_node_id() -> String:
+	if _node_id == "":
+		_node_id = name
+
+	return _node_id
 
 func _on_show(node_id : String , state_value : Array, show_args : Dictionary) -> void:
 	if self.node_id != node_id:
@@ -51,7 +77,10 @@ func _on_show(node_id : String , state_value : Array, show_args : Dictionary) ->
 		show()
 
 func _set_state(value : Array) -> void:
-	_state = state
+	_state = value
+
+	if not Engine.editor_hint and rnode:
+		_state = rnode.setup_state(value)
 
 func _get_state() -> Array:
 	return _state
@@ -67,15 +96,23 @@ func _exit_tree() -> void:
 		remove_from_group("save")
 		return
 
-	Rakugo.variables.erase(node_id)
+	if _register:
+		Rakugo.variables.erase(node_id)
 
 func on_save() -> void:
+	if not _register:
+		remove_from_group("save")
+		return
+
 	node_link.value["visible"] = visible
 	node_link.value["state"] = _state
 	node_link.value["show_args"] = last_show_args
 
 func on_load(game_version:String) -> void:
-	node_link =  Rakugo.get_node_link(node_id)
+	if not _register:
+		return
+
+	node_link = Rakugo.get_node_link(node_id)
 	visible = node_link.value["visible"]
 
 	if visible:
@@ -86,15 +123,5 @@ func on_load(game_version:String) -> void:
 	else:
 		_on_hide(node_id)
 
-func set_use_theme_form_settings(value:bool):
-	if(value):
-		theme = load(
-			ProjectSettings.get_setting(
-				"application/rakugo/theme"
-			)
-		)
-
-	_use_theme_from_settings = value
-
-func get_use_theme_form_settings() -> bool:
-	return _use_theme_from_settings
+func _on_substate(substate):
+	pass

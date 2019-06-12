@@ -71,12 +71,12 @@ func _input(event : InputEvent) -> void:
 
 func _on_statement(type : int, parameters : Dictionary) -> void:
 	kind = Rakugo.default_kind
-	
+
 	_type = type
-	
+
 	if not( _type in allowed_statement_types):
-		return;
-	
+		return
+
 	if "kind" in parameters:
 		kind = parameters.kind
 
@@ -113,11 +113,16 @@ func _on_statement(type : int, parameters : Dictionary) -> void:
 			if StdKindContainer.visible:
 				if avatar != null:
 					avatar.free()
-					
+
 			CurrentKind.show_avatar()
 			avatar_path = parameters.avatar
-			avatar = load(parameters.avatar).instance()
+			avatar = load(avatar_path).instance()
 			CharacterAvatar.add_child(avatar)
+
+			var a = avatar as RakugoAvatar
+
+			if(a):
+				a.state = parameters.avatar_state
 
 		else:
 			CurrentKind.hide_avatar()
@@ -150,7 +155,12 @@ func _on_statement(type : int, parameters : Dictionary) -> void:
 	return
 
 func write_dialog(text : String, _typing : bool) -> void:
+
+	if Rakugo.skipping:
+		_typing = false
+
 	typing = _typing
+
 	if not typing:
 		if DialogText.has_method("set_bbcode"):
 			DialogText.bbcode_text = text

@@ -2,18 +2,20 @@ tool
 extends Node2D
 class_name RakugoNode2D
 
+signal on_substate(substate)
+
 onready var rnode : = RakugoNodeCore.new()
 
 export var node_id : = ""
 export var camera : = NodePath("")
 export(Array, String) var state : Array setget _set_state, _get_state
 
-var _state : Array
+var _state : = []
 var node_link:NodeLink
 var last_show_args:Dictionary
 
 func _ready() -> void:
-	if(Engine.editor_hint):
+	if Engine.editor_hint:
 		if node_id.empty():
 			node_id = name
 
@@ -21,8 +23,10 @@ func _ready() -> void:
 		return
 
 	hide()
+
 	Rakugo.connect("show", self, "_on_show")
 	Rakugo.connect("hide", self, "_on_hide")
+	rnode.connect("on_substate", self, "_on_rnode_substate")
 
 	if node_id.empty():
 		node_id = name
@@ -36,6 +40,9 @@ func _ready() -> void:
 		node_link.value["node_path"] = get_path()
 
 	add_to_group("save", true)
+
+func _on_rnode_substate(substate):
+	emit_signal("on_substate", substate)
 
 func _on_show(node_id : String, state_value : Array, show_args : Dictionary) -> void:
 	if self.node_id != node_id:
@@ -58,7 +65,10 @@ func _on_show(node_id : String, state_value : Array, show_args : Dictionary) -> 
 		show()
 
 func _set_state(value : Array) -> void:
-	_state = state
+	_state = value
+
+	if not Engine.editor_hint:
+		_state = rnode.setup_state(value)
 
 func _get_state() -> Array:
 	return _state
@@ -73,7 +83,7 @@ func _exit_tree() -> void:
 	if(Engine.editor_hint):
 		remove_from_group("save")
 		return
-		
+
 	Rakugo.variables.erase(node_id)
 
 func  on_save() -> void:
@@ -92,3 +102,6 @@ func on_load(game_version:String) -> void:
 
 	else:
 		_on_hide(node_id)
+
+func _on_substate(substate):
+	pass
