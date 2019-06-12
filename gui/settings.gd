@@ -16,6 +16,8 @@ var window_minimized : bool setget _set_window_minimized, _get_window_minimized
 var window_maximized : bool setget _set_window_maximized, _get_window_maximized
 var window_fullscreen : bool setget _set_window_fullscreen, _get_window_fullscreen
 
+var saves_scroll := 0
+
 signal window_size_changed(prev, now)
 signal window_minimized_changed(value)
 signal window_maximized_changed(value)
@@ -101,6 +103,7 @@ func conf_set_rakugo_value(config : ConfigFile, value_name, def_rakugo_value):
 
 func save_conf() -> void:
 	var config = ConfigFile.new()
+	config.set_value("saves", "scroll", saves_scroll) 
 	config.set_value("display", "width", _get_window_size().x)
 	config.set_value("display", "height", _get_window_size().y)
 	config.set_value("display", "fullscreen", get_window_type_id())
@@ -140,6 +143,7 @@ func load_conf() -> void:
 		return
 		
 	# Look for the display/width pair, and default to 1024 if missing
+	saves_scroll = config.get_value("saves", "scroll", 0) 
 	temp_window_size.x = config.get_value("display", "width", default_window_size.x)
 	temp_window_size.y = config.get_value("display", "height", default_window_size.y)
 	temp_window_type_id = config.get_value("display", "fullscreen", 0)
