@@ -103,7 +103,8 @@ func on_save() -> void:
 	if not _register:
 		remove_from_group("save")
 		return
-
+	
+	node_link = Rakugo.get_node_link(node_id)
 	node_link.value["visible"] = visible
 	node_link.value["state"] = _state
 	node_link.value["show_args"] = last_show_args

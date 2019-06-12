@@ -168,50 +168,58 @@ func play_vn(node_name, dialog_name):
 func play_adv(node_name, dialog_name):
 	if not check_dialog(node_name, dialog_name, "play_adv"):
 		return
-
-	say({
-			"who":
-				"ra",
-			"what":
-				"Click'n'Point Adventure example is not ready yet"
+	
+	match get_story_state():
+		0:
+			say({
+				"who":
+					"ra",
+				"what":
+					"Click'n'Point Adventure example is not ready yet"
 			})
-
-	jump("Test", name, "end", false)
+		1:
+			jump("Test", name, "end", false)
 
 func play_rpg(node_name, dialog_name):
 	if not check_dialog(node_name, dialog_name, "play_vn"):
 		return
-
-	say({
-		"who":
-			"ra",
-		"what":
-			"RPG example is not ready yet"
-		})
-
-	jump("Test", name, "end", false)
+	
+	match get_story_state():
+		0:
+			say({
+				"who":
+					"ra",
+				"what":
+					"RPG example is not ready yet"
+				})
+		1:
+			jump("Test", name, "end", false)
 
 func read_docs(node_name, dialog_name):
 	if not check_dialog(node_name, dialog_name, "read_docs"):
 		return
-
-	say({
-		"who":
-			"ra",
-		"what":
-			"Docs are not ready yet"
-			})
-
-	jump("Test", name, "end", false)
+	
+	match get_story_state():
+		0:
+			say({
+				"who":
+					"ra",
+				"what":
+					"Docs are not ready yet"
+				})
+		1:
+			jump("Test", name, "end", false)
 
 func end(node_name, dialog_name):
 	if not check_dialog(node_name, dialog_name, "end"):
 		return
-
-	notify("You make your first choice!", 3)
-	say({
-		"who":
-			"ra",
-		"what":
-			"End of Example"
-			})
+	
+	match get_story_state():
+		0:
+			notify("You make your first choice!", 3)
+			say({
+				"who":
+					"ra",
+				"what":
+					"End of Example"
+				})

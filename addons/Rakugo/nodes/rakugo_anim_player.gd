@@ -47,15 +47,18 @@ func _on_stop(id : String, reset : bool) -> void:
 		seek(0, true)
 
 func on_save():
+	node_link = Rakugo.get_node_link(node_id)
 	node_link.value["anim_name"] = current_animation
 	node_link.value["is_playing"] = is_playing()
 
 func on_load(game_version:String) -> void:
 	node_link = Rakugo.get_node_link(node_id)
-
-	if node_link.value["is_playing"]:
-		var anim_name = node_link.value["anim_name"]
-		_on_play(node_id, anim_name)
+	
+	if "is_playing" in node_link.value:
+		if node_link.value["is_playing"]:
+			if "anim_name" in node_link.value:
+				var anim_name = node_link.value["anim_name"]
+				_on_play(node_id, anim_name)
 
 func _exit_tree() -> void:
 	if(Engine.editor_hint):

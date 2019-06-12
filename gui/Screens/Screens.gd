@@ -138,6 +138,7 @@ func _on_NewGame_pressed():
 	hide()
 	in_game()
 	Rakugo.start()
+	Rakugo.emit_signal("begin")
 
 func _on_History_pressed():
 	history_menu()

@@ -65,22 +65,19 @@ func invoke(save_folder: String, save_name: String,  variables: Dictionary):
 		q.update_subquests()
 
 	r.start(true)
-	r.story_state = save.story_state - 1
 
 	r.jump(
 		save.scene,
 		save.node_name,
 		save.dialog_name,
-		true
+		true, save.story_state
 		)
-
-	yield(r.current_root_node, "ready")
 
 	r.history_id = save.history_id
 
 	for node in r.get_tree().get_nodes_in_group("save"):
 		if node.has_method("on_load"):
-			node.on_load()
+			node.on_load(r.game_version)
 			continue
 
 		# to fix bug

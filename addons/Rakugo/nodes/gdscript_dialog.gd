@@ -5,8 +5,12 @@ export (Array, String) var begin_from = ["", ""]
 export (Array, String) var dialogs_names = [""]
 
 func _ready() -> void:
-	if begin_from != []:
-		Rakugo.begin(begin_from[0], name, begin_from[1])
+	if begin_from.size() == 2:
+		var b = begin_from.duplicate()
+		b.insert(1, name)
+		
+		if not Rakugo.is_connected("begin", Rakugo, "on_begin"):
+			Rakugo.connect("begin", Rakugo, "on_begin", b)
 
 	for dn in dialogs_names:
 		Rakugo.add_dialog(self, dn)

@@ -45,15 +45,17 @@ func _on_stop(id : String) -> void:
 	stop()
 
 func on_save():
+	node_link = Rakugo.get_node_link(node_id)
 	node_link.value["is_playing"] = is_playing()
 	node_link.value["from_pos"] = last_pos
 
 func on_load(game_version:String) -> void:
 	node_link =  Rakugo.get_node_link(node_id)
-
-	if node_link.value["is_playing"]:
-		var last_pos = node_link.value["from_pos"]
-		_on_play(node_id, last_pos)
+	
+	if "is_playing" in node_link:
+		if node_link.value["is_playing"]:
+			var last_pos = node_link.value["from_pos"]
+			_on_play(node_id, last_pos)
 
 	else:
 		_on_stop(node_id)

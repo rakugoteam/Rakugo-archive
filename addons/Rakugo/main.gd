@@ -145,6 +145,7 @@ signal play_anim(node_id, anim_name)
 signal stop_anim(node_id, reset)
 signal play_audio(node_id, from_pos)
 signal stop_audio(node_id)
+signal begin
 
 func _ready() -> void:
 	## set by game developer
@@ -659,7 +660,7 @@ func _get_story_state() -> int:
 	return get_value("story_state")
 
 ## it starts Rakugo
-func start(after_load:=false) -> void:
+func start(after_load := false) -> void:
 	load_global_history()
 	history_id = 0
 	started = true
@@ -719,19 +720,19 @@ func _get_history_id() -> int:
 ## id_of_current_scene is id to scene defined in scenes_links or full path to scene
 func jump(
 	id_of_scene:String, node_name:String,
-	dialog_name:String, change:= true
+	dialog_name:String, change:= true, state := 0
 	) -> void:
 
 	$Jump.invoke(
 		id_of_scene,
 		node_name, dialog_name,
-		change
+		change, state
 	)
 
 ## use this to assign beginning scene and dialog
 ## root of path_to_current_scene is scenes_dir
 ## provide path_to_current_scene with out ".tscn"
-func begin(path_to_current_scene:String, node_name:String, dialog_name:String) -> void:
+func on_begin(path_to_current_scene:String, node_name:String, dialog_name:String) -> void:
 	if loading_in_progress:
 		return
 

@@ -45,7 +45,9 @@ func _on_statement(type : int, parameters : Dictionary) -> void:
 	show()
 	grab_focus()
 	set_process_unhandled_key_input(true)
-	connect("text_entered", self , "_on_enter")
+	
+	if not is_connected("text_entered", self , "_on_enter"):
+		connect("text_entered", self , "_on_enter")
 	
 func _on_visibility_changed():
 	Rakugo.can_alphanumeric = !visible
