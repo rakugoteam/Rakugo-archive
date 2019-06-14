@@ -99,6 +99,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/nodes/rakugo_anim_player.gd"
 }, {
+"base": "LineEdit",
+"class": "RakugoAsk",
+"language": "GDScript",
+"path": "res://addons/Rakugo/nodes/rakugo_ask.gd"
+}, {
 "base": "AudioStreamPlayer",
 "class": "RakugoAudioPlayer",
 "language": "GDScript",
@@ -148,11 +153,6 @@ _global_script_classes=[ {
 "class": "RakugoDict",
 "language": "GDScript",
 "path": "res://addons/Rakugo/types/rakugo_dict.gd"
-}, {
-"base": "LineEdit",
-"class": "RakugoLineEdit",
-"language": "GDScript",
-"path": "res://addons/Rakugo/nodes/rakugo_ask.gd"
 }, {
 "base": "RakugoVar",
 "class": "RakugoList",
@@ -318,6 +318,7 @@ _global_script_class_icons={
 "PlayAudio": "",
 "Quest": "",
 "RakugoAnimPlayer": "",
+"RakugoAsk": "",
 "RakugoAudioPlayer": "",
 "RakugoAvatar": "res://addons/Rakugo/icons/rakugo_avatar.svg",
 "RakugoBaseButton": "",
@@ -328,7 +329,6 @@ _global_script_class_icons={
 "RakugoColor": "",
 "RakugoControl": "",
 "RakugoDict": "",
-"RakugoLineEdit": "",
 "RakugoList": "",
 "RakugoNode2D": "",
 "RakugoNodeCore": "",

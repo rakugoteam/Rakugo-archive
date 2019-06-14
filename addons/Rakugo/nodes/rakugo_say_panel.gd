@@ -11,7 +11,7 @@ export (Array, String) var extra_kinds_anims : = ["nvl", "phone", "phone"]
 var NameLabel : RichTextLabel
 var DialogText : RichTextLabel
 var CharacterAvatar : Viewport
-var LineEditNode : RakugoLineEdit
+var LineEditNode : RakugoAsk
 var StdKindContainer : KindContainer
 var MainContainer : BoxContainer
 var CurrentKind : KindContainer
