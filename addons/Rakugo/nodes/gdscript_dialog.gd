@@ -8,7 +8,7 @@ func _ready() -> void:
 	if begin_from.size() == 2:
 		var b = begin_from.duplicate()
 		b.insert(1, name)
-		
+
 		if not Rakugo.is_connected("begin", Rakugo, "on_begin"):
 			Rakugo.connect("begin", Rakugo, "on_begin", b)
 
@@ -19,13 +19,25 @@ func get_story_state() -> int:
 	return Rakugo.story_state
 
 func check_dialog(node_name, dialog_name, check_for) -> bool:
+	var result = true
+
 	if node_name != name:
-		return false
+		result = false
+
+	if name.begins_with("@"):
+		var real_name = name.split("@")[1]
+		# print(name.split("@")[1])
+
+		if node_name != real_name:
+			result = false
+
+		else:
+			result = true
 
 	if dialog_name != check_for:
-		return false
+		result = false
 
-	return true
+	return result
 
 func define(var_name:String, value = null, save_included := true) -> RakugoVar:
 	return Rakugo.define(var_name, value, save_included)

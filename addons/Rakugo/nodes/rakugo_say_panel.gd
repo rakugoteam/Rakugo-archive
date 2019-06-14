@@ -43,7 +43,7 @@ func _setup(kind_container:KindContainer):
 
 	if LineEditNode:
 		LineEditNode.active = false
-		
+
 		if ButtonNext.is_connected("pressed", LineEditNode, "enter"):
 			ButtonNext.disconnect("pressed", LineEditNode, "enter")
 
@@ -79,6 +79,9 @@ func _process(delta) -> void:
 
 	if not Rakugo.active:
 		return
+
+	Rakugo.debug(["ui_accept:", ui_accept])
+	Rakugo.debug(["story_state", Rakugo.story_state])
 
 	if Rakugo.skip_auto:
 		Rakugo.auto_timer.stop_loop()

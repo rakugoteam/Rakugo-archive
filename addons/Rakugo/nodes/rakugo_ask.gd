@@ -12,21 +12,22 @@ func _ready() -> void:
 	add_child(rtl)
 	hide()
 
-func _unhandled_key_input(delta):
-	if Input.is_key_pressed(KEY_ENTER):
-		enter()
+# func _unhandled_key_input(delta):
+# 	if Input.is_key_pressed(KEY_ENTER):
+# 		enter()
 
 func enter() -> void:
 	_on_enter(get_text())
-	set_process_unhandled_key_input(false)
 
-func _on_enter(text : String) -> void:
+func _on_enter(_text : String) -> void:
 	var final_variable = input_placeholder
 
 	if text != "":
-		final_variable = get_text()
+		final_variable = _text
 
-	set_process(false)
+	# set_process(false)
+	# set_process_unhandled_key_input(false)
+
 	Rakugo.exit_statement({"value":final_variable})
 
 func _on_statement(type : int, parameters : Dictionary) -> void:
@@ -36,7 +37,7 @@ func _on_statement(type : int, parameters : Dictionary) -> void:
 		if is_connected("text_entered", self , "_on_enter"):
 			disconnect("text_entered", self , "_on_enter")
 
-		set_process_unhandled_key_input(false)
+		# set_process_unhandled_key_input(false)
 
 		hide()
 		return
@@ -48,7 +49,7 @@ func _on_statement(type : int, parameters : Dictionary) -> void:
 
 	show()
 	grab_focus()
-	set_process_unhandled_key_input(true)
+	# set_process_unhandled_key_input(true)
 
 	if not is_connected("text_entered", self , "_on_enter"):
 		connect("text_entered", self , "_on_enter")

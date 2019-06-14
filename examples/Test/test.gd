@@ -19,7 +19,10 @@ func _ready():
 	test_quest.add_subquest(test_subquest)
 
 func example(node_name, dialog_name):
-	if not check_dialog(node_name, dialog_name, "example"):
+	var cd = check_dialog(node_name, dialog_name, "example")
+	Rakugo.debug(["check_dialog:", cd, name, node_name, dialog_name])
+	
+	if not cd:
 		return
 
 	match get_story_state():
@@ -56,20 +59,20 @@ func example(node_name, dialog_name):
 				"{/nl}Click to go next step and stop anim"
 			})
 
-		6:
+		5:
 			stop_anim("TestAnimPlayer", true)
 			say({
 				"who":"test",
 				"what":"test anim stopped"
 			})
 
-		7:
+		6:
 			play_audio("SFXPlayer")
 			say({
 				"who":"test", "what":"now you hear sfx."
 			})
 
-		8:
+		7:
 			play_audio("BGMPlayer")
 			say({
 				"who":"test", "what":
@@ -77,7 +80,7 @@ func example(node_name, dialog_name):
 				"{/nl}Click to next step and stop music."
 			})
 
-		9:
+		8:
 			stop_audio("BGMPlayer")
 			say({
 				"who":"test", "what":
@@ -85,7 +88,7 @@ func example(node_name, dialog_name):
 				"{/nl}Click to next step."
 			})
 
-		10:
+		9:
 			define(
 			"test_dict", {"a": 1, "b": 2})
 			say({
@@ -93,24 +96,24 @@ func example(node_name, dialog_name):
 				"what":"test dict b element is [test_dict.b]"
 			})
 
-		11:
+		10:
 			define("test_list", [1,3,7])
 			say({
 				"who":"test",
 				"what":"test list 2 list element is [test_list[2]]"
 			})
 
-		12:
+		11:
 			say({"what":"now test_var = [test_var]"})
 
-		13:
+		12:
 			say({"what":"add 1 to test_var"})
 			test_var.value += 1
 
-		14:
+		13:
 			say({"what":"and now test_var = [test_var]"})
 
-		15:
+		14:
 			ask({
 				"who":
 					"ra",
@@ -123,7 +126,7 @@ func example(node_name, dialog_name):
 					"Developer" ## default value
 			})
 
-		16:
+		15:
 			say({
 				"who":
 					"ra",
@@ -133,7 +136,7 @@ func example(node_name, dialog_name):
 					false
 			})
 
-		17:
+		16:
 			say({
 				"who":
 					"ra",
@@ -141,7 +144,7 @@ func example(node_name, dialog_name):
 					"extra stamement to check skipping/auto"
 			})
 
-		18:
+		17:
 			hide("ra")
 			menu({
 				"who":
@@ -162,13 +165,13 @@ func example(node_name, dialog_name):
 func play_vn(node_name, dialog_name):
 	if not check_dialog(node_name, dialog_name, "play_vn"):
 		return
-		
+
 	jump("Garden", "Garden", "garden")
 
 func play_adv(node_name, dialog_name):
 	if not check_dialog(node_name, dialog_name, "play_adv"):
 		return
-	
+
 	match get_story_state():
 		0:
 			say({
@@ -183,7 +186,7 @@ func play_adv(node_name, dialog_name):
 func play_rpg(node_name, dialog_name):
 	if not check_dialog(node_name, dialog_name, "play_vn"):
 		return
-	
+
 	match get_story_state():
 		0:
 			say({
@@ -198,7 +201,7 @@ func play_rpg(node_name, dialog_name):
 func read_docs(node_name, dialog_name):
 	if not check_dialog(node_name, dialog_name, "read_docs"):
 		return
-	
+
 	match get_story_state():
 		0:
 			say({
@@ -213,7 +216,7 @@ func read_docs(node_name, dialog_name):
 func end(node_name, dialog_name):
 	if not check_dialog(node_name, dialog_name, "end"):
 		return
-	
+
 	match get_story_state():
 		0:
 			notify("You make your first choice!", 3)

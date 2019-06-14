@@ -183,7 +183,7 @@ func loadbox(saveslotsdir : = saveslots_dir + "/") -> bool:
 		container.add_child(s)
 
 		if filehandler.file_exists(saveslotsdir + x + '.png'):
-			# Rakugo.debug("slot exist, loading image")
+			Rakugo.debug("slot exist, loading image")
 			var tex = load(saveslotsdir + x + '.png')
 			s.get_node("Button/TextureRect").texture = tex
 

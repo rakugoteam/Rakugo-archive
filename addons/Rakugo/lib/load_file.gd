@@ -3,6 +3,7 @@ extends Object
 func invoke(save_folder: String, save_name: String,  variables: Dictionary):
 	var r = Rakugo
 	r.loading_in_progress = true
+
 	var save_folder_path = "usr://".plus_file(save_folder)
 
 	if r.test_save:
