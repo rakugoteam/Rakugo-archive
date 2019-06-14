@@ -7,9 +7,10 @@
 [ext_resource path="res://ubuntu-font-family/Ubuntu-RI.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://ubuntu-font-family/Ubuntu-R.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://gui/Labels/dialogue_text.tscn" type="PackedScene" id=7]
-[ext_resource path="res://addons/Rakugo/nodes/rakugo_line_edit.gd" type="Script" id=8]
+[ext_resource path="res://addons/Rakugo/nodes/rakugo_ask.gd" type="Script" id=8]
 [ext_resource path="res://themes/new_gui/new_gui.theme" type="Theme" id=9]
 [ext_resource path="res://addons/Rakugo/nodes/rakugo_base_button.gd" type="Script" id=10]
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 30

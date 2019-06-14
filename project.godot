@@ -152,7 +152,7 @@ _global_script_classes=[ {
 "base": "LineEdit",
 "class": "RakugoLineEdit",
 "language": "GDScript",
-"path": "res://addons/Rakugo/nodes/rakugo_line_edit.gd"
+"path": "res://addons/Rakugo/nodes/rakugo_ask.gd"
 }, {
 "base": "RakugoVar",
 "class": "RakugoList",

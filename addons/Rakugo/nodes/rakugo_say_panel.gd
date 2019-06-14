@@ -30,19 +30,20 @@ onready var allowed_statement_types = [
 ]
 
 func _setup(kind_container:KindContainer):
-	
+
 	if ButtonNext:
 		if ButtonNext.is_connected("pressed", self, "_press_accept"):
 			ButtonNext.disconnect("pressed", self, "_press_accept")
-			
+
 		ButtonNext.hide()
-	
+
 	NameLabel = kind_container.NameLabel
 	DialogText = kind_container.DialogText
 	CharacterAvatar = kind_container.CharacterAvatar
 
 	if LineEditNode:
 		LineEditNode.active = false
+		
 		if ButtonNext.is_connected("pressed", LineEditNode, "enter"):
 			ButtonNext.disconnect("pressed", LineEditNode, "enter")
 
@@ -53,7 +54,7 @@ func _setup(kind_container:KindContainer):
 	ButtonNext.connect("pressed", LineEditNode, "enter")
 	Rakugo.dialog_timer.connect("timeout", ButtonNext, "set_disabled", [true])
 	CurrentKind = kind_container
-	
+
 func _press_accept() -> void:
 	_ui_accept = true
 
@@ -66,10 +67,10 @@ func _ready() -> void:
 func _process(delta) -> void:
 	var ui_accept = Input.is_action_just_pressed("ui_accept")
 	ui_accept = ui_accept or _ui_accept
-	
+
 	if not ui_accept:
 		return
-	
+
 	_ui_accept = false
 
 	if not visible:
@@ -98,7 +99,7 @@ func _on_statement(type : int, parameters : Dictionary) -> void:
 
 	if not( _type in allowed_statement_types):
 		return
-	
+
 	if _type != Rakugo.StatementType.MENU:
 		ButtonNext.disabled = false
 

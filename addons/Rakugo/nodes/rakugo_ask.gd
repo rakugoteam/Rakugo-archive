@@ -1,5 +1,5 @@
 extends LineEdit
-class_name RakugoLineEdit
+class_name RakugoAsk
 
 onready var rtl : = RichTextLabel.new()
 var input_placeholder : = ""
@@ -31,6 +31,7 @@ func _on_enter(text : String) -> void:
 
 func _on_statement(type : int, parameters : Dictionary) -> void:
 	_type = type
+
 	if type != Rakugo.StatementType.ASK:
 		if is_connected("text_entered", self , "_on_enter"):
 			disconnect("text_entered", self , "_on_enter")
@@ -48,29 +49,29 @@ func _on_statement(type : int, parameters : Dictionary) -> void:
 	show()
 	grab_focus()
 	set_process_unhandled_key_input(true)
-	
+
 	if not is_connected("text_entered", self , "_on_enter"):
 		connect("text_entered", self , "_on_enter")
-	
+
 func _on_visibility_changed():
 	Rakugo.can_alphanumeric = !visible
-	
+
 func _set_active(value:bool) -> void:
 	_active = value
-	
+
 	if value:
 		if not Rakugo.is_connected("exec_statement", self, "_on_statement"):
 			Rakugo.connect("exec_statement", self, "_on_statement")
-		
+
 		if not is_connected("visibility_changed", self, "_on_visibility_changed"):
 			connect("visibility_changed", self, "_on_visibility_changed")
-	
+
 	else:
 		if Rakugo.is_connected("exec_statement", self, "_on_statement"):
 			Rakugo.disconnect("exec_statement", self, "_on_statement")
-		
+
 		if is_connected("visibility_changed", self, "_on_visibility_changed"):
 			disconnect("visibility_changed", self, "_on_visibility_changed")
-		
+
 func _get_active() -> bool:
 	return _active
