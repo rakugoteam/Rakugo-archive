@@ -26,7 +26,6 @@ func check_dialog(node_name, dialog_name, check_for) -> bool:
 
 	if name.begins_with("@"):
 		var real_name = name.split("@")[1]
-		# print(name.split("@")[1])
 
 		if node_name != real_name:
 			result = false
@@ -37,6 +36,7 @@ func check_dialog(node_name, dialog_name, check_for) -> bool:
 	if dialog_name != check_for:
 		result = false
 
+	Rakugo.debug(["check_dialog:", result, "(", name, node_name, "), (", dialog_name, check_for, ")"])
 	return result
 
 func define(var_name:String, value = null, save_included := true) -> RakugoVar:

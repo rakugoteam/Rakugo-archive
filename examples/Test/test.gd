@@ -20,7 +20,6 @@ func _ready():
 
 func example(node_name, dialog_name):
 	var cd = check_dialog(node_name, dialog_name, "example")
-	Rakugo.debug(["check_dialog:", cd, name, node_name, dialog_name])
 	
 	if not cd:
 		return
