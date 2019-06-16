@@ -13,6 +13,7 @@ func _ready() -> void:
 	hide()
 
 func enter() -> void:
+	grab_focus()
 	_on_enter(get_text())
 
 func _on_enter(_text : String) -> void:

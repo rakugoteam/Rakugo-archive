@@ -229,7 +229,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/types/rakugo_vector2.gd"
 }, {
-"base": "RakugoVar",
+"base": "RakugoVector2",
 "class": "RakugoVector3",
 "language": "GDScript",
 "path": "res://addons/Rakugo/types/rakugo_vector3.gd"

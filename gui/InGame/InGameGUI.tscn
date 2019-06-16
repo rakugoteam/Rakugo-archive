@@ -352,13 +352,12 @@ font_data = ExtResource( 15 )
 pause_mode = 1
 margin_right = 40.0
 margin_bottom = 40.0
+mouse_filter = 1
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
 use_theme_from_setting = true
 register = false
 node_id = "InGameGUI"
-camera = NodePath("")
-state = [  ]
 
 [node name="ScrollContainerVMenu" type="ScrollContainer" parent="."]
 editor/display_folded = true
@@ -418,6 +417,7 @@ kind = "horizontal"
 ChoiceButton = ExtResource( 5 )
 
 [node name="SayPanel" parent="." instance=ExtResource( 7 )]
+mouse_filter = 0
 
 [node name="Notify" type="Panel" parent="."]
 editor/display_folded = true
@@ -448,7 +448,6 @@ scroll_active = false
 selection_enabled = true
 
 [node name="Quick" type="HBoxContainer" parent="."]
-editor/display_folded = true
 margin_top = 571.0
 margin_right = 1463.0
 margin_bottom = 611.0

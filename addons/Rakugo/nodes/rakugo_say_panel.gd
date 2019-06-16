@@ -52,8 +52,12 @@ func _setup(kind_container:KindContainer):
 	ButtonNext = kind_container.NextButton
 	ButtonNext.connect("pressed", self, "_press_accept")
 	ButtonNext.connect("pressed", LineEditNode, "enter")
+	Rakugo.connect("hide_ui", self, "_on_hide")
 	Rakugo.dialog_timer.connect("timeout", ButtonNext, "set_disabled", [true])
 	CurrentKind = kind_container
+
+func _on_hide(value:bool) -> void:
+	visible = value
 
 func _press_accept() -> void:
 	_ui_accept = true
@@ -64,9 +68,12 @@ func _ready() -> void:
 	_setup(StdKindContainer)
 	Rakugo.connect("exec_statement", self, "_on_statement")
 
-func _process(delta) -> void:
-	var ui_accept = Input.is_action_just_pressed("ui_accept")
-	ui_accept = ui_accept or _ui_accept
+func _unhandled_input(event: InputEvent) -> void:
+	var ui_accept = event.is_action_pressed("ui_accept")
+	_on_ui_accept(ui_accept)
+
+func _on_ui_accept (value:bool) -> void:
+	var ui_accept = value or _ui_accept
 
 	if not ui_accept:
 		return
@@ -74,7 +81,7 @@ func _process(delta) -> void:
 	_ui_accept = false
 
 	if not visible:
-		visible = true
+		Rakugo.emit_signal("hide_ui")
 		return
 
 	if not Rakugo.active:
@@ -169,6 +176,10 @@ func _on_statement(type : int, parameters : Dictionary) -> void:
 
 		CurrentKind.hide_avatar()
 
+	if Rakugo.skipping:
+		typing = false
+		return
+
 	if "time" in parameters:
 		if parameters.time == 0:
 			typing = false
@@ -184,11 +195,10 @@ func _on_statement(type : int, parameters : Dictionary) -> void:
 	return
 
 func write_dialog(text : String, _typing : bool) -> void:
+	typing = _typing
 
 	if Rakugo.skipping:
-		_typing = false
-
-	typing = _typing
+		typing = false
 
 	if not typing:
 		if DialogText.has_method("set_bbcode"):

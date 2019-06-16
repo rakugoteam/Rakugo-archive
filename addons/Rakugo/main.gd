@@ -146,6 +146,7 @@ signal stop_anim(node_id, reset)
 signal play_audio(node_id, from_pos)
 signal stop_audio(node_id)
 signal begin
+signal hide_ui(value)
 
 func _ready() -> void:
 	## set by game developer

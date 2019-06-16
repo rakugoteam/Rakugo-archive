@@ -11,7 +11,7 @@ func _ready() -> void:
 	$Skip.connect("pressed", self, "on_skip")
 	$Skip.disabled = true
 
-	$Back.connect("pressed", Rakugo, "go_back")
+	$Back.connect("pressed", self, "_on_back")
 	$Back.disabled = true
 
 	Rakugo.skip_timer.connect("stop_loop", self, "on_stop_loop")
@@ -28,6 +28,11 @@ func _ready() -> void:
 	$Quests.connect("pressed", Screens, "_on_Quests_pressed")
 	$Quit.connect("pressed", Screens, "_on_Quit_pressed")
 	$Options.connect("pressed", Screens, "_on_Options_pressed")
+	$Hide.connect("toggled", self, "_on_Hide_toggled")
+
+func _on_back() -> void:
+	$Back.release_focus()
+	Rakugo.go_back()
 
 func _on_qsave() -> void:
 	if Rakugo.savefile():
@@ -88,7 +93,10 @@ func full_save() -> void:
 func _hide_on_input(event):
 	if event.is_action_pressed("ui_select"):
 		$Hide.pressed = !$Hide.pressed
-		$Hide.emit_signal("toggled", $Hide.pressed)
+		_on_Hide_toggled($Hide.pressed)
+
+func _on_Hide_toggled(value:bool) -> void:
+	Rakugo.emit_signal("hide_ui", !value)
 
 func _input(event : InputEvent) -> void:
 	if Rakugo.can_alphanumeric:
@@ -110,6 +118,6 @@ func _input(event : InputEvent) -> void:
 		on_skip()
 		return
 
-	if event. is_action_released("rakugo_skipping_ctrl"):
+	if event.is_action_released("rakugo_skipping_ctrl"):
 		on_skip()
 		return
