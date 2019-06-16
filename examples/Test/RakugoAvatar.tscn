@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=2]
-
-[ext_resource path="res://graphics/window_icon.png" type="Texture" id=1]
-
-[node name="RakugoAvatar" type="Sprite"]
-position = Vector2( 52.7569, 58.7862 )
-texture = ExtResource( 1 )
-

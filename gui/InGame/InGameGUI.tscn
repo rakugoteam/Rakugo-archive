@@ -86,7 +86,7 @@ tracks/4/keys = {
 "values": [ Color( 1, 1, 1, 0.756863 ) ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=3]
 resource_name = "Checkpoint"
 tracks/0/type = "value"
 tracks/0/path = NodePath("InfoAnim/Panel:modulate")
@@ -149,7 +149,7 @@ tracks/4/keys = {
 "values": [ Vector2( 301, 40 ), Vector2( 301, 40 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 tracks/0/type = "value"
 tracks/0/path = NodePath("InfoAnim/Panel:modulate")
 tracks/0/interp = 1
@@ -199,7 +199,7 @@ tracks/3/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath("InfoAnim/Panel:modulate")
 tracks/0/interp = 1
@@ -261,7 +261,7 @@ tracks/4/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 tracks/0/type = "value"
 tracks/0/path = NodePath("InfoAnim/Panel:modulate")
 tracks/0/interp = 1
@@ -323,7 +323,7 @@ tracks/4/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("InfoAnim/Panel/Label:text")
@@ -386,27 +386,27 @@ tracks/4/keys = {
 "values": [ Color( 1, 1, 1, 0.756863 ) ]
 }
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=8]
 size = 30
 use_filter = true
 font_data = ExtResource( 13 )
 
-[sub_resource type="DynamicFont" id=8]
-size = 30
-use_filter = true
-font_data = ExtResource( 11 )
-
 [sub_resource type="DynamicFont" id=9]
 size = 30
 use_filter = true
-font_data = ExtResource( 14 )
+font_data = ExtResource( 11 )
 
 [sub_resource type="DynamicFont" id=10]
 size = 30
 use_filter = true
-font_data = ExtResource( 11 )
+font_data = ExtResource( 14 )
 
 [sub_resource type="DynamicFont" id=11]
+size = 30
+use_filter = true
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=12]
 size = 30
 use_filter = true
 font_data = ExtResource( 15 )
@@ -628,11 +628,11 @@ text = "Quit"
 
 [node name="InfoAnim" type="AnimationPlayer" parent="Quick"]
 anims/Auto = SubResource( 2 )
-anims/Checkpoint = SubResource( 12 )
-anims/GeneralNotif = SubResource( 3 )
-anims/Loaded = SubResource( 4 )
-anims/Saved = SubResource( 5 )
-anims/Skip = SubResource( 6 )
+anims/Checkpoint = SubResource( 3 )
+anims/GeneralNotif = SubResource( 4 )
+anims/Loaded = SubResource( 5 )
+anims/Saved = SubResource( 6 )
+anims/Skip = SubResource( 7 )
 
 [node name="Panel" type="Panel" parent="Quick/InfoAnim"]
 visible = false
@@ -652,13 +652,14 @@ margin_right = 301.0
 rect_pivot_offset = Vector2( 190, 470 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/mono_font = SubResource( 7 )
-custom_fonts/bold_italics_font = SubResource( 8 )
-custom_fonts/italics_font = SubResource( 9 )
-custom_fonts/bold_font = SubResource( 10 )
-custom_fonts/normal_font = SubResource( 11 )
+custom_fonts/mono_font = SubResource( 8 )
+custom_fonts/bold_italics_font = SubResource( 9 )
+custom_fonts/italics_font = SubResource( 10 )
+custom_fonts/bold_font = SubResource( 11 )
+custom_fonts/normal_font = SubResource( 12 )
 custom_colors/default_color = Color( 1, 1, 1, 1 )
 custom_colors/selection_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = false
 bbcode_text = "Game was saved"
-text = "You can go back here"
+text = "Game was saved"
+

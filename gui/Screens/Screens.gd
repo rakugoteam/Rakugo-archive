@@ -24,7 +24,6 @@ onready var options_button : Button = get_node(str(nav_path) + "/" + "Options")
 onready var about_button : Button = get_node(str(nav_path) + "/" + "About")
 onready var help_button : Button = get_node(str(nav_path) + "/" + "Help")
 onready var quit_button : Button = get_node(str(nav_path) + "/" + "Quit")
-onready var test_button : Button = get_node(str(nav_path) + "/" + "TestNodes")
 
 func _ready():
 	if(Engine.editor_hint):
@@ -51,9 +50,6 @@ func _ready():
 	about_button.connect("pressed", self, "_on_About_pressed")
 	help_button.connect("pressed", self, "_on_Help_pressed")
 	quit_button.connect("pressed", self, "_on_Quit_pressed")
-
-	## this is just for testing things
-	test_button.connect("pressed", self, "_on_TestNodes_pressed")
 
 	var auto_save_path = str("user://" + Rakugo.save_folder + "/auto.save")
 
@@ -175,10 +171,6 @@ func get_screenshot():
 func _on_Save_pressed():
 	hide()
 	save_menu(get_screenshot())
-
-func _on_TestNodes_pressed():
-	show_page($TestNodes)
-	show()
 
 func _on_Options_pressed():
 	options_button.pressed = true
