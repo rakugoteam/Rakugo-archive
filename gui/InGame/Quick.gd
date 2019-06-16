@@ -13,6 +13,7 @@ func _ready() -> void:
 
 	$Back.connect("pressed", self, "_on_back")
 	$Back.disabled = true
+	Rakugo.connect("checkpoint", self, "_on_checkpoint")
 
 	Rakugo.skip_timer.connect("stop_loop", self, "on_stop_loop")
 	Rakugo.auto_timer.connect("stop_loop", self, "on_stop_loop")
@@ -29,6 +30,9 @@ func _ready() -> void:
 	$Quit.connect("pressed", Screens, "_on_Quit_pressed")
 	$Options.connect("pressed", Screens, "_on_Options_pressed")
 	$Hide.connect("toggled", self, "_on_Hide_toggled")
+
+func _on_checkpoint() -> void:
+	$InfoAnim.play("Checkpoint")
 
 func _on_back() -> void:
 	$Back.release_focus()

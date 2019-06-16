@@ -147,6 +147,7 @@ signal play_audio(node_id, from_pos)
 signal stop_audio(node_id)
 signal begin
 signal hide_ui(value)
+signal checkpoint
 
 func _ready() -> void:
 	## set by game developer
@@ -743,7 +744,8 @@ func can_go_back():
 	return is_save_exits("back")
 
 func checkpoint():
-	savefile("back")
+	if savefile("back"):
+		emit_signal("checkpoint")
 
 func go_back():
 	loadfile("back")

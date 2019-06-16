@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://themes/new_gui/new_gui.theme" type="Theme" id=1]
 [ext_resource path="res://addons/Rakugo/nodes/rakugo_control.gd" type="Script" id=2]
@@ -84,6 +84,69 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0.756863 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "Checkpoint"
+tracks/0/type = "value"
+tracks/0/path = NodePath("InfoAnim/Panel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.756863 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("InfoAnim/Panel:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 305, 42 ), Vector2( 305, 42 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("InfoAnim/Panel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("InfoAnim/Panel/Label:text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "You can go back here" ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("InfoAnim/Panel/Label:rect_size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 301, 40 ), Vector2( 301, 40 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -564,8 +627,8 @@ custom_fonts/font = SubResource( 1 )
 text = "Quit"
 
 [node name="InfoAnim" type="AnimationPlayer" parent="Quick"]
-editor/display_folded = true
 anims/Auto = SubResource( 2 )
+anims/Checkpoint = SubResource( 12 )
 anims/GeneralNotif = SubResource( 3 )
 anims/Loaded = SubResource( 4 )
 anims/Saved = SubResource( 5 )
@@ -573,10 +636,10 @@ anims/Skip = SubResource( 6 )
 
 [node name="Panel" type="Panel" parent="Quick/InfoAnim"]
 visible = false
-modulate = Color( 1, 1, 1, 0.756863 )
+modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 margin_top = 81.0
-margin_right = -901.0
+margin_right = -719.0
 margin_bottom = 123.0
 rect_min_size = Vector2( 100, 20 )
 theme = ExtResource( 1 )
@@ -585,7 +648,10 @@ __meta__ = {
 }
 
 [node name="Label" parent="Quick/InfoAnim/Panel" instance=ExtResource( 12 )]
-margin_right = 126.0
+margin_right = 301.0
+rect_pivot_offset = Vector2( 190, 470 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_fonts/mono_font = SubResource( 7 )
 custom_fonts/bold_italics_font = SubResource( 8 )
 custom_fonts/italics_font = SubResource( 9 )
@@ -595,4 +661,4 @@ custom_colors/default_color = Color( 1, 1, 1, 1 )
 custom_colors/selection_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = false
 bbcode_text = "Game was saved"
-text = "Game was saved"
+text = "You can go back here"
