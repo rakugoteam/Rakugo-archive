@@ -41,9 +41,6 @@ func invoke(var_name:String, value, save_included: bool) -> RakugoVar:
 				variables[var_name] = new_var
 				return new_var as RakugoText
 
-			TYPE_NODE_PATH:
-				return node_link(var_name, value, variables) as NodeLink
-
 			TYPE_VECTOR2:
 				var new_var = RakugoVector2.new(var_name, value)
 				new_var.save_included = save_included
@@ -73,9 +70,15 @@ func _rakugo_var(var_name:String , value, save_included: bool, variables: Dictio
 
 func node_link(node_id:String, node_path: NodePath, variables:Dictionary) -> NodeLink:
 	var node_var = NodeLink.new(node_id)
-	node_var.value["node_path"] = node_path
+	node_var.value.node_path = node_path
 	variables[node_var.id] = node_var
 	return node_var
+
+func avatar_link(avatar_id:String, node_path: NodePath, variables:Dictionary) -> Avatar:
+	var avatar_var = Avatar.new(avatar_id)
+	avatar_var.value.node_path =  node_path
+	variables[avatar_var.id] = avatar_var
+	return avatar_var
 
 func _color(var_name:String , value:String, save_included: bool, variables:Dictionary) -> RakugoColor:
 	var new_var = RakugoColor.new(var_name, value)

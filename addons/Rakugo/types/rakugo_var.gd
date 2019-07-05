@@ -7,19 +7,19 @@ var value setget _set_value, _get_value
 var _value = null
 var id : String setget , _get_id
 var _id := ""
-var var_suffix : String setget , _get_var_suffix
-var _suffix := ""
+var var_prefix : String setget , _get_var_prefix
+var _prefix := ""
 
 var save_included := true
 
 signal value_changed(var_id, new_value)
 signal key_value_changed(var_id, key, new_value)
 
-func _init(var_id:String, var_value, var_type: = 0, var_suffix: = ""):
-	_id = var_suffix + var_id
+func _init(var_id:String, var_value, var_type: = 0, var_prefix: = ""):
+	_id = var_prefix + var_id
 	_value = var_value
 	_type = var_type
-	_suffix = var_suffix
+	_prefix = var_prefix
 
 func _get_type() -> int:
 	return _type
@@ -71,5 +71,5 @@ func parse_text(text:String, open:String, close:String) -> String:
 	var s = open + _id + close
 	return text.replace(s, to_string())
 
-func _get_var_suffix() -> String:
-	return _suffix
+func _get_var_prefix() -> String:
+	return _prefix

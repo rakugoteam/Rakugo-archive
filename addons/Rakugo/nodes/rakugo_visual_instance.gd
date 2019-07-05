@@ -1,6 +1,6 @@
 tool
-extends VisualInstance
-class_name RakugoVisualInstance, "res://addons/Rakugo/icons/rakugo_spatial.svg"
+extends Spatial
+class_name RakugoSpatial, "res://addons/Rakugo/icons/rakugo_spatial.svg"
 
 var rnode : = RakugoNodeCore.new()
 
@@ -33,7 +33,7 @@ func _ready() -> void:
 		node_link = Rakugo.node_link(node_id, get_path())
 
 	else:
-		node_link.value["node_path"] = get_path()
+		node_link.node_path = get_path()
 
 	add_to_group("save", true)
 
@@ -71,6 +71,12 @@ func _on_show(node_id : String, state_value : Array, show_args : Dictionary) -> 
 func _set_state(value : Array) -> void:
 	_state = value
 
+	if not value:
+		return
+
+	if not rnode:
+		return
+
 	if not Engine.editor_hint:
 		_state = rnode.setup_state(value)
 
@@ -88,7 +94,8 @@ func _exit_tree() -> void:
 		remove_from_group("save")
 		return
 
-	Rakugo.variables.erase(node_id)
+	var id = NodeLink.new("").var_prefix + node_id
+	Rakugo.variables.erase(id)
 
 func on_save() -> void:
 	node_link.value["visible"] = visible

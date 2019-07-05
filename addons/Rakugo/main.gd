@@ -41,7 +41,7 @@ enum Type {
 	BOOL,		# 9
 	VECT2, # 10
 	VECT3, # 11
-	VECT4, # 12
+	AVATAR, # 12
 	COLOR, # 13
 }
 
@@ -392,7 +392,8 @@ func on_stop_audio(node_id:String) -> void:
 ## use to add/register dialog
 ## func_name is name of func that is going to be use as dialog
 func add_dialog(node:Node, func_name:String) -> void:
-	connect("story_step", node, func_name)
+	if  not is_connected("story_step", node, func_name):
+		connect("story_step", node, func_name)
 
 ## parse text like in renpy to bbcode if mode == "renpy"
 ## or parse bbcode with {vars} if mode == "bbcode"
@@ -474,7 +475,11 @@ func get_value(var_name:String):
 	return null
 
 func get_node_value(var_name:String) -> Dictionary:
-	var s = NodeLink.new("").var_suffix
+	var s = NodeLink.new("").var_prefix
+	return get_value(s + var_name)
+
+func get_avatar_value(var_name:String) -> Dictionary:
+	var s = Avatar.new("").var_prefix
 	return get_value(s + var_name)
 
 ## returns type of variable defined using define
@@ -512,8 +517,17 @@ func node_link(node_id:String, node:NodePath) -> NodeLink:
 	return $Define.node_link(node_id, node, variables)
 
 func get_node_link(node_id:String) -> NodeLink:
-	var s = NodeLink.new("").var_suffix
+	var s = NodeLink.new("").var_prefix
 	return get_var(s + node_id) as NodeLink
+
+## crate new link to node avatar as global variable that Rakugo will see
+## it can have name as other existing varbiable
+func avatar_link(node_id:String, node:NodePath) -> Avatar:
+	return $Define.avatar_link(node_id, node, variables)
+
+func get_avatar_link(node_id:String) -> Avatar:
+	var s = Avatar.new("").var_prefix
+	return get_var(s + node_id) as Avatar
 
 ## add/overwrite global subquest that Rakugo will see
 ## and returns it as RakugoSubQuest for easy use
@@ -570,7 +584,7 @@ func menu(parameters:Dictionary) -> void:
 ## "at" is lists that can have: "top", "center", "bottom", "right", "left"
 func show(
 	node_id:String,
-	parameters := {"state": [], "at":["center", "bottom"]}
+	parameters := {"state": []}
 	):
 
 	parameters["node_id"] = node_id

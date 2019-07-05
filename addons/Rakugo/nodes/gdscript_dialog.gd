@@ -25,7 +25,7 @@ func check_dialog(node_name, dialog_name, check_for) -> bool:
 		result = false
 
 	if name.begins_with("@"):
-		var real_name = name.split("@")[1]
+		var real_name = name.split("@", false)[0]
 
 		if node_name != real_name:
 			result = false
@@ -72,7 +72,7 @@ func ask(parameters:Dictionary) -> void:
 func menu(parameters:Dictionary) -> void:
 	Rakugo.menu(parameters)
 
-func show(node_id:String, parameters := {"state": [], "at":["center", "bottom"]}):
+func show(node_id:String, parameters := {"state": []}):
 	Rakugo.show(node_id, parameters)
 
 func hide(node_id:String) -> void:

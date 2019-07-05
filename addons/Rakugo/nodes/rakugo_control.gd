@@ -79,6 +79,12 @@ func _on_show(node_id : String , state_value : Array, show_args : Dictionary) ->
 func _set_state(value : Array) -> void:
 	_state = value
 
+	if not value:
+		return
+
+	if not rnode:
+		return
+
 	if not Engine.editor_hint and rnode:
 		_state = rnode.setup_state(value)
 
@@ -103,7 +109,7 @@ func on_save() -> void:
 	if not _register:
 		remove_from_group("save")
 		return
-	
+
 	node_link = Rakugo.get_node_link(node_id)
 	node_link.value["visible"] = visible
 	node_link.value["state"] = _state

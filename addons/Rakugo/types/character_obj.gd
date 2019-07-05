@@ -79,7 +79,7 @@ func menu(parameters := {}) -> void:
 	parameters["who"] = _id
 	Rakugo.menu(parameters)
 
-func show(parameters := {"state": [], "at":["center", "bottom"]}) -> void:
+func show(parameters := {"state": []}) -> void:
 	Rakugo.show(_id, parameters)
 
 func hide() -> void:
