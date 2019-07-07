@@ -37,7 +37,7 @@ func _ready() -> void:
 		node_link = Rakugo.node_link(node_id, get_path())
 
 	else:
-		node_link.node_path = get_path()
+		node_link.value.node_path = get_path()
 
 	add_to_group("save", true)
 
@@ -99,13 +99,18 @@ func _exit_tree() -> void:
 	Rakugo.variables.erase(id)
 
 func on_save() -> void:
-	node_link = Rakugo.get_node_link(node_id)
+	if not node_link:
+		prints("error with saveing:" , node_id)
+		return
+
 	node_link.value["visible"] = visible
 	node_link.value["state"] = _state
 	node_link.value["show_args"] = last_show_args
 
 func on_load(game_version:String) -> void:
-	node_link = Rakugo.get_node_link(node_id)
+	if not node_link:
+		prints("error with loading:" , node_id)
+		return
 
 	if "visible" in node_link.value:
 		visible = node_link.value["visible"]

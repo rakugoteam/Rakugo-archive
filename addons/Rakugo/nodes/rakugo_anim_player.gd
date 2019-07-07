@@ -13,7 +13,7 @@ func _ready() -> void:
 
 		add_to_group("save", true)
 		return
-	
+
 	Rakugo.connect("play_anim", self, "_on_play")
 	Rakugo.connect("stop_anim", self, "_on_stop")
 
@@ -47,13 +47,18 @@ func _on_stop(id : String, reset : bool) -> void:
 		seek(0, true)
 
 func on_save():
-	node_link = Rakugo.get_node_link(node_id)
+	if not node_link:
+		prints("error with saveing:" , node_id)
+		return
+
 	node_link.value["anim_name"] = current_animation
 	node_link.value["is_playing"] = is_playing()
 
 func on_load(game_version:String) -> void:
-	node_link = Rakugo.get_node_link(node_id)
-	
+	if not node_link:
+		prints("error with loading:" , node_id)
+		return
+
 	if "is_playing" in node_link.value:
 		if node_link.value["is_playing"]:
 			if "anim_name" in node_link.value:

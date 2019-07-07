@@ -475,12 +475,12 @@ func get_value(var_name:String):
 	return null
 
 func get_node_value(var_name:String) -> Dictionary:
-	var s = NodeLink.new("").var_prefix
-	return get_value(s + var_name)
+	var p = NodeLink.new("").var_prefix
+	return get_value(p + var_name)
 
 func get_avatar_value(var_name:String) -> Dictionary:
-	var s = Avatar.new("").var_prefix
-	return get_value(s + var_name)
+	var p = Avatar.new("").var_prefix
+	return get_value(p + var_name)
 
 ## returns type of variable defined using define
 func get_type(var_name:String) -> int:
@@ -736,13 +736,13 @@ func _get_history_id() -> int:
 ## id_of_current_scene is id to scene defined in scenes_links or full path to scene
 func jump(
 	id_of_scene:String, node_name:String,
-	dialog_name:String, state := 0
+	dialog_name:String, state := 0, force_reload := false
 	) -> void:
 
 	$Jump.invoke(
 		id_of_scene,
 		node_name, dialog_name,
-		state
+		state, force_reload
 	)
 
 ## use this to assign beginning scene and dialog

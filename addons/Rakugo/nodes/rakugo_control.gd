@@ -110,7 +110,10 @@ func on_save() -> void:
 		remove_from_group("save")
 		return
 
-	node_link = Rakugo.get_node_link(node_id)
+	if not node_link:
+		prints("error with saveing:" , node_id)
+		return
+
 	node_link.value["visible"] = visible
 	node_link.value["state"] = _state
 	node_link.value["show_args"] = last_show_args
@@ -119,7 +122,10 @@ func on_load(game_version:String) -> void:
 	if not _register:
 		return
 
-	node_link = Rakugo.get_node_link(node_id)
+	if not node_link:
+		prints("error with loading:" , node_id)
+		return
+		
 	visible = node_link.value["visible"]
 
 	if visible:

@@ -68,11 +68,9 @@ func _exit_tree() -> void:
 	Rakugo.variables.erase(id)
 
 func on_save() -> void:
-	avatar_link = Rakugo.get_avatar_link(avatar_id)
 	avatar_link.value["state"] = _state
 
 func on_load(game_version:String) -> void:
-	avatar_link = Rakugo.get_avatar_link(avatar_id)
 	_state = avatar_link.value["state"]
 	_on_show(avatar_id, _state , {})
 
