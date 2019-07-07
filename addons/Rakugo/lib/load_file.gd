@@ -21,7 +21,7 @@ func invoke(save_folder: String, save_name: String,  variables: Dictionary):
 		save_file_path += ".res"
 
 	if not file.file_exists(save_file_path):
-		printerr("Save file %s doesn't exist" % save_file_path)
+		push_error("Save file %s doesn't exist" % save_file_path)
 		r.loading_in_progress = false
 		return false
 

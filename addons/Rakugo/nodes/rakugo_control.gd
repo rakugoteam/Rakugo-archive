@@ -111,7 +111,7 @@ func on_save() -> void:
 		return
 
 	if not node_link:
-		printerr("error with saveing:" , node_id)
+		push_error("error with saveing:" , node_id)
 		return
 
 	node_link.value["visible"] = visible
@@ -123,7 +123,7 @@ func on_load(game_version:String) -> void:
 		return
 
 	if not node_link:
-		printerr("error with loading:" , node_id)
+		push_error("error with loading:" , node_id)
 		return
 		
 	visible = node_link.value["visible"]

@@ -437,7 +437,7 @@ func define_from_str(var_name:String, var_str:String, var_type:String) -> Rakugo
 ## overwrite existing global variable and returns it as RakugoVar
 func set_var(var_name:String, value) -> RakugoVar:
 	if not (var_name in variables):
-		printerr("%s variable don't exist in Rakugo" %var_name)
+		push_warning("%s variable don't exist in Rakugo" %var_name)
 		return null
 
 	var var_to_change = variables[var_name]

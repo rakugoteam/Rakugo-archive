@@ -24,7 +24,7 @@ func invoke() -> bool:
 	var file:= File.new()
 
 	if not file.file_exists(save_path):
-		printerr("global history file %s doesn't exist" % save_path)
+		push_error("global history file %s doesn't exist" % save_path)
 		r.loading_in_progress = false
 		return false
 
