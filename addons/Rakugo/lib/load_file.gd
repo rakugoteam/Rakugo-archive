@@ -21,7 +21,7 @@ func invoke(save_folder: String, save_name: String,  variables: Dictionary):
 		save_file_path += ".res"
 
 	if not file.file_exists(save_file_path):
-		print("Save file %s doesn't exist" % save_file_path)
+		printerr("Save file %s doesn't exist" % save_file_path)
 		r.loading_in_progress = false
 		return false
 
@@ -67,15 +67,18 @@ func invoke(save_folder: String, save_name: String,  variables: Dictionary):
 
 	r.start(true)
 
+	var story_state = save.story_state
+
+	if story_state > 0:
+		story_state -= 1
+
 	r.jump(
 		save.scene,
 		save.node_name,
 		save.dialog_name,
-		save.story_state,
+		story_state,
 		true
 		)
-
-	r.history_id = save.history_id
 
 	for node in r.get_tree().get_nodes_in_group("save"):
 		if node.has_method("on_load"):
@@ -90,5 +93,4 @@ func invoke(save_folder: String, save_name: String,  variables: Dictionary):
 				rc.on_load()
 
 	r.loading_in_progress = false
-
 	return true

@@ -1,7 +1,7 @@
 extends Node
 
 func invoke(
-		id_of_scene:String,
+		scene_id:String,
 		node_name:String,
 		dialog_name:String,
 		state := 0,
@@ -9,17 +9,25 @@ func invoke(
 	) ->void :
 
 	var r = Rakugo
-	var scenes_links = load(r.scenes_links).get_as_dict()
-	var path = r.current_scene
 	r.current_node_name = node_name
 	r.current_dialog_name = dialog_name
 	r.story_state = state
-	r.current_scene = id_of_scene
 
 	r.debug(["jump to scene:", r.current_scene, "with dialog:", dialog_name, "from:", r.story_state])
 
-	if scenes_links.has(id_of_scene):
-		path = scenes_links[id_of_scene].resource_path
+	load_scene(scene_id, force_reload)
+
+	if r.started:
+		r.story_step()
+
+func load_scene(scene_id, force_reload = true):
+	var r = Rakugo
+	var scenes_links = load(r.scenes_links).get_as_dict()
+	var path = r.current_scene
+	r.current_scene = scene_id
+
+	if scene_id in scenes_links:
+		path = scenes_links[scene_id].resource_path
 
 	if (r.current_scene_path != path) or force_reload:
 		r.current_scene = path
@@ -32,6 +40,3 @@ func invoke(
 		get_tree().get_root().add_child(r.current_root_node)
 		r.started = true
 		r.emit_signal("started")
-
-	if r.started:
-		r.story_step()

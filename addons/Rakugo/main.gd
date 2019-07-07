@@ -437,7 +437,7 @@ func define_from_str(var_name:String, var_str:String, var_type:String) -> Rakugo
 ## overwrite existing global variable and returns it as RakugoVar
 func set_var(var_name:String, value) -> RakugoVar:
 	if not (var_name in variables):
-		prints(var_name, "variable don't exist in Rakugo")
+		printerr("%s variable don't exist in Rakugo" %var_name)
 		return null
 
 	var var_to_change = variables[var_name]
@@ -735,15 +735,19 @@ func _get_history_id() -> int:
 ## use this to change/assign current scene and dialog
 ## id_of_current_scene is id to scene defined in scenes_links or full path to scene
 func jump(
-	id_of_scene:String, node_name:String,
+	scene_id:String, node_name:String,
 	dialog_name:String, state := 0, force_reload := false
 	) -> void:
 
 	$Jump.invoke(
-		id_of_scene,
+		scene_id,
 		node_name, dialog_name,
 		state, force_reload
 	)
+
+## use this to load scene don't start with dialog or don't have any
+func load_scene(scene_id:String) -> void:
+	$Jump.load_scene(scene_id)
 
 ## use this to assign beginning scene and dialog
 ## root of path_to_current_scene is scenes_dir

@@ -46,7 +46,7 @@ func _on_stop(id : String) -> void:
 
 func on_save():
 	if not node_link:
-		prints("error with saveing:" , node_id)
+		printerr("error with saveing:" , node_id)
 		return
 
 	node_link.value["is_playing"] = is_playing()
@@ -54,7 +54,7 @@ func on_save():
 
 func on_load(game_version:String) -> void:
 	if not node_link:
-		prints("error with loading:" , node_id)
+		printerr("error with loading:" , node_id)
 		return
 		
 	if "is_playing" in node_link:
