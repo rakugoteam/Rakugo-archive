@@ -1,4 +1,4 @@
-extends RootNode
+extends Node
 class_name GDScriptDialog
 
 export (Array, String) var begin_from = ["", ""]
@@ -24,19 +24,24 @@ func check_dialog(node_name, dialog_name, check_for) -> bool:
 	if node_name != name:
 		result = false
 
+	var real_name = name
 	if name.begins_with("@"):
-		var real_name = name.split("@", false)[0]
+		real_name = name.split("@", false)[0]
 
-		if node_name != real_name:
-			result = false
+	if node_name != real_name:
+		result = false
 
-		else:
-			result = true
+	else:
+		result = true
 
 	if dialog_name != check_for:
 		result = false
 
-	Rakugo.debug(["check_dialog:", result, "(", name, node_name, "), (", dialog_name, check_for, ")"])
+	Rakugo.debug([
+		"check_dialog:", result,
+		"(",'"'+name +'"', '"'+node_name+'"', '"'+real_name+'"', ")",
+		"(", '"'+dialog_name+'"', '"'+check_for+'"', ")"
+	])
 	return result
 
 func define(var_name:String, value = null, save_included := true) -> RakugoVar:

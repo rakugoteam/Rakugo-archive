@@ -71,7 +71,8 @@ func invoke(save_folder: String, save_name: String,  variables: Dictionary):
 		save.scene,
 		save.node_name,
 		save.dialog_name,
-		true, save.story_state
+		save.story_state,
+		true
 		)
 
 	r.history_id = save.history_id

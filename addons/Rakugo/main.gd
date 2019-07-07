@@ -69,11 +69,11 @@ var current_scene:= ""
 # {["scene_id", "node_name", "dialog_name", story_step]:{"type":type, "parameters": parameters}}
 var history:= {}
 var global_history:= {}
-
 var variables:= {}
 
 # don't save this
 onready var menu_node:RakugoMenu = $Menu
+var current_scene_path: = ""
 var current_root_node:Node = null
 var current_statement:Statement = null
 var skip_auto:= false
@@ -736,13 +736,13 @@ func _get_history_id() -> int:
 ## id_of_current_scene is id to scene defined in scenes_links or full path to scene
 func jump(
 	id_of_scene:String, node_name:String,
-	dialog_name:String, change:= true, state := 0
+	dialog_name:String, state := 0
 	) -> void:
 
 	$Jump.invoke(
 		id_of_scene,
 		node_name, dialog_name,
-		change, state
+		state
 	)
 
 ## use this to assign beginning scene and dialog
@@ -752,7 +752,9 @@ func on_begin(path_to_current_scene:String, node_name:String, dialog_name:String
 	if loading_in_progress:
 		return
 
-	jump(path_to_current_scene, node_name , dialog_name, false)
+	var resource = load(scenes_links).get_as_dict()
+	current_scene_path = resource[path_to_current_scene].resource_path
+	jump(path_to_current_scene, node_name , dialog_name)
 
 func can_go_back():
 	return is_save_exits("back")
