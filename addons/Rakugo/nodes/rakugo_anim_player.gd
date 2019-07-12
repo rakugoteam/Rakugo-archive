@@ -48,7 +48,7 @@ func _on_stop(id : String, reset : bool) -> void:
 
 func on_save():
 	if not node_link:
-		push_error("error with saveing:" , node_id)
+		push_error("error with saveing: %s"  %node_id)
 		return
 
 	node_link.value["anim_name"] = current_animation
@@ -56,7 +56,7 @@ func on_save():
 
 func on_load(game_version:String) -> void:
 	if not node_link:
-		push_error("error with loading:" , node_id)
+		push_error("error with loading: %s"  %node_id)
 		return
 
 	if "is_playing" in node_link.value:

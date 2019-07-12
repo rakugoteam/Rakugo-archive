@@ -81,7 +81,7 @@ func _on_ui_accept (value:bool) -> void:
 	_ui_accept = false
 
 	if not visible:
-		Rakugo.emit_signal("hide_ui")
+		Rakugo.emit_signal("hide_ui", false)
 		return
 
 	if not Rakugo.active:

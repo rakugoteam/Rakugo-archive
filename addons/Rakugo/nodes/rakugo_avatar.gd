@@ -35,6 +35,11 @@ func _ready():
 
 	add_to_group("save", true)
 
+	var node_link = Rakugo.get_node_link(avatar_id)
+
+	if node_link:
+		_set_state(node_link.value.state)
+
 func _on_rnode_substate(substate):
 	emit_signal("on_substate", substate)
 
