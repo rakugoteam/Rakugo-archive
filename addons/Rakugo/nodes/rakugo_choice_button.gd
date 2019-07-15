@@ -13,6 +13,7 @@ func _ready() -> void:
 	label.bbcode_enabled = true
 	node_to_change = label
 
+
 func _on_pressed() -> void:
 	._on_pressed()
 	Rakugo.debug(["final_choice", id])

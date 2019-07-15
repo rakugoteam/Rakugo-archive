@@ -10,8 +10,10 @@ func set_default(value : bool) -> void:
 	default = value
 	pressed = default
 
+
 func get_default() -> bool:
 	return default
+
 
 func _ready() -> void:
 	toggle_mode = true
@@ -27,14 +29,17 @@ func _ready() -> void:
 	connect("visibility_changed", self, "on_visibility_changed")
 	var_to_change.connect("value_changed", self, "on_value_changed")
 
+
 func on_value_changed(vname:String, new_value:bool) -> void:
 	if vname != var_name:
 		return
 	
 	pressed = new_value
 
+
 func on_toggled(value : bool) -> void:
 	var_to_change.value = value
+
 
 func on_visibility_changed() -> void:
 	if visible == false:

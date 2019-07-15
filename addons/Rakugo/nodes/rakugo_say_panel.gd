@@ -56,11 +56,14 @@ func _setup(kind_container:KindContainer):
 	Rakugo.dialog_timer.connect("timeout", ButtonNext, "set_disabled", [true])
 	CurrentKind = kind_container
 
+
 func _on_hide(value:bool) -> void:
 	visible = value
 
+
 func _press_accept() -> void:
 	_ui_accept = true
+
 
 func _ready() -> void:
 	MainContainer = get_node(main_container_path)
@@ -68,9 +71,11 @@ func _ready() -> void:
 	_setup(StdKindContainer)
 	Rakugo.connect("exec_statement", self, "_on_statement")
 
+
 func _unhandled_input(event: InputEvent) -> void:
 	var ui_accept = event.is_action_pressed("ui_accept")
 	_on_ui_accept(ui_accept)
+
 
 func _on_ui_accept (value:bool) -> void:
 	var ui_accept = value or _ui_accept
@@ -102,6 +107,7 @@ func _on_ui_accept (value:bool) -> void:
 
 	elif _type == Rakugo.StatementType.SAY: # else exit statement
 		Rakugo.exit_statement()
+
 
 func _on_statement(type : int, parameters : Dictionary) -> void:
 	kind = Rakugo.default_kind
@@ -194,6 +200,7 @@ func _on_statement(type : int, parameters : Dictionary) -> void:
 
 	return
 
+
 func write_dialog(text : String, _typing : bool) -> void:
 	typing = _typing
 
@@ -244,6 +251,7 @@ func write_dialog(text : String, _typing : bool) -> void:
 				DialogText.bbcode_text = text
 
 			break
+
 
 func _on_Hide_toggled(button_pressed : bool) -> void:
 	visible = !button_pressed

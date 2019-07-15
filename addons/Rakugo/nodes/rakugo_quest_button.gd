@@ -12,6 +12,7 @@ var is_subquest : = false
 func _ready() -> void:
 	node_to_change = $RichTextLabel
 
+
 func _on_resized() -> void:
 	._on_resized()
 	var sprite_pos = rect_size
@@ -31,10 +32,12 @@ func setup(quest_to_use : Subquest) -> void:
 	quest.connect("optional_changed", self, "on_optional_changed")
 	quest.connect("state_changed", self, "on_state_changed")
 
+
 func on_title_changed(new_title : String) -> void:
 	$RichTextLabel.bbcode_text = quest.title
 	if pressed:
 		quest_label.text = quest.title
+
 
 func on_optional_changed(opt : bool) -> void:
 	if opt:
@@ -42,8 +45,10 @@ func on_optional_changed(opt : bool) -> void:
 	else:
 		$AnimatedSprite.animation = "default"
 
+
 func on_state_changed(new_state : int) -> void:
 	$AnimatedSprite.frame = abs(new_state - 1)
+
 
 func _on_pressed() -> void:
 	._on_pressed()
@@ -59,6 +64,7 @@ func _on_pressed() -> void:
 	if quest_sub_box != null:
 		quest_sub_box.show()
 		quests_box.current_quest_button = self
+
 
 func on_description_changed(new_des : String) -> void:
 	if pressed:

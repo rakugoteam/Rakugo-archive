@@ -19,15 +19,19 @@ func _ready() -> void:
 	connect("meta_clicked", self, "on_meta_clicked")
 	connect("visibility_changed", self, "on_visibility_changed")
 
+
 func update_label() -> void:
 	bbcode_text = Rakugo.text_passer(rakugo_text, mode)
+
 
 func on_meta_clicked(meta) -> void:
 	OS.shell_open(meta)
 
+
 func on_value_changed(var_name:String, new_value) -> void:
 	if var_name in vars_names:
 		update_label()
+
 
 func set_rakugo_file(value : String) -> void:
 	if value.empty():
@@ -38,9 +42,9 @@ func set_rakugo_file(value : String) -> void:
 	file.close()
 	update_label()
 
+
 func on_visibility_changed() -> void:
 	if visible == false:
 		return
 		
 	update_label()
-	

@@ -12,9 +12,11 @@ func _ready():
 	Rakugo.connect("exec_statement", self, "_on_statement")
 	Rakugo.connect("hide_ui", self, "_on_hide")
 
+
 func _on_hide(value:bool) -> void:
 	if value:
 		get_parent().visible = prev_visible
+
 
 func _on_statement(type, parameters):
 	if type != Rakugo.StatementType.MENU:
@@ -46,6 +48,7 @@ func _on_statement(type, parameters):
 		i += 1
 
 	get_parent().show()
+
 
 func _on_Hide_toggled(button_pressed):
 	visible = !button_pressed

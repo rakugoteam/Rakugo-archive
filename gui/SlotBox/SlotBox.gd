@@ -42,6 +42,7 @@ func _ready() -> void:
 	line_edit.connect("text_changed", self, "on_save_name_changed")
 	line_edit.connect("text_entered", self, "on_save_name_entered")
 
+
 func delete_save(caller : String, mod : String):
 	container.hide()
 	var conf = popup.get_node("ConfirmDelete")
@@ -77,6 +78,7 @@ func delete_save(caller : String, mod : String):
 	if mod == "load":
 		loadbox()
 
+
 func _on_visibility_changed():
 	if visible:
 		$ScrollGrid.scroll_vertical = settings.saves_scroll
@@ -84,12 +86,15 @@ func _on_visibility_changed():
 
 	settings.saves_scroll = $ScrollGrid.scroll_vertical
 
+
 func on_save_name_changed(value):
 	save_name = value
+
 
 func on_save_name_entered(value):
 	save_name = value
 	close_popup(true)
+
 
 func get_dir_contents(path, ext, ignore = [""]):
 	var contents = []
@@ -118,11 +123,13 @@ func get_dir_contents(path, ext, ignore = [""]):
 
 	return contents
 
+
 func close_popup(answer):
 	popup.hide()
 	container.show()
 	overwrite = answer
 	emit_signal("popup_is_closed")
+
 
 func savebox(saveslotsdir : = saveslots_dir + "/") -> void:
 	var saves = get_dir_contents(saveslots_dir, "tres",
@@ -171,6 +178,7 @@ func savebox(saveslotsdir : = saveslots_dir + "/") -> void:
 
 	filehandler.close()
 
+
 func loadbox(saveslotsdir : = saveslots_dir + "/") -> bool:
 	var saves = get_dir_contents(saveslots_dir, "tres", ["history"])
 
@@ -215,6 +223,7 @@ func loadbox(saveslotsdir : = saveslots_dir + "/") -> bool:
 
 	filehandler.close()
 	return true
+
 
 func savepress(caller : String) -> bool:
 	if !dirhandler.dir_exists(saveslots_dir):
@@ -262,6 +271,7 @@ func savepress(caller : String) -> bool:
 	get_parent().hide()
 
 	return true
+
 
 func loadpress(caller : String) -> void:
 	if !dirhandler.dir_exists(saveslots_dir):

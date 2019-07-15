@@ -9,10 +9,10 @@ var tab:String = "\t"
 onready var emojis : Emojis = $Emojis
 
 func text_passer(
-	text:String,
-	variables:Dictionary,
-	mode:String = "renpy",
-	links_color:String = Rakugo.theme.links_color
+		text:String,
+		variables:Dictionary,
+		mode:String = "renpy",
+		links_color:String = Rakugo.theme.links_color
 	) -> String:
 	## passer for renpy or bbcode markup format
 	## its retrun bbcode
@@ -35,6 +35,7 @@ func text_passer(
 
 	return text
 
+
 func parse_text_adv(
 	text:String, variables:Dictionary,
 	open:String, close:String) -> String:
@@ -56,6 +57,7 @@ func parse_text_adv(
 
 	return text
 
+
 func parse_text_emojis(
 	text:String, open:String,
 	close:String) -> String:
@@ -73,6 +75,7 @@ func parse_text_emojis(
 
 	return text
 
+
 func parse_renpy_text(text:String, variables:Dictionary) -> String:
 	text = parse_text_adv(text, variables, "[", "]")
 	text = parse_text_emojis(text, "{:", ":}")
@@ -83,6 +86,7 @@ func parse_renpy_text(text:String, variables:Dictionary) -> String:
 	text = text.replace("{", "[")
 	text = text.replace("}", "]")
 	return text
+
 
 func parse_bbcode_text(text:String, variables:Dictionary) -> String:
 	text = parse_text_adv(text, variables, "{", "}")

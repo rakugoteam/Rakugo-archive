@@ -9,6 +9,7 @@ func _init() -> void:
 	type = 2 # Rakugo.StatementType.ASK
 	parameters_names += ["temp", "variable"]
 
+
 func exec() -> void:
 	Rakugo.checkpoint()
 	debug(parameters_names)
@@ -20,6 +21,7 @@ func exec() -> void:
 		parameters["value"] = Rakugo.text_passer(parameters.value)
 
 	.exec()
+
 
 func on_exit(_type : int, new_parameters : Dictionary = {}) -> void:
 	if !setup_exit(_type, new_parameters):

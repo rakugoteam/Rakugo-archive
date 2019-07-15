@@ -24,11 +24,14 @@ func _ready() -> void:
 	if max_res_id != -1:
 		options_list.resize(max_res_id)
 
+
 func _process(delta: float) -> void:
 	update_label(OS.window_size, false)
-	
+
+
 func _on_window_size_changed(prev, now):
 	update_label(now, false)
+
 
 func update_label(size : Vector2 = options_list[current_choice_id], apply : bool = true) -> void:
 	label.text = str(size.x) + "x" + str(size.y)

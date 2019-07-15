@@ -8,6 +8,7 @@ func _init() -> void:
 	parameters["node_id"] = ""
 	parameters["anim_name"] = ""
 
+
 func exec() -> void:
 	.exec()
 	Rakugo.on_play_anim(parameters.node_id, parameters.anim_name)

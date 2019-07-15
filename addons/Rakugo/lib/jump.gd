@@ -20,6 +20,7 @@ func invoke(
 	if r.started:
 		r.story_step()
 
+
 func load_scene(scene_id, force_reload = true):
 	var r = Rakugo
 	var scenes_links = load(r.scenes_links).get_as_dict()

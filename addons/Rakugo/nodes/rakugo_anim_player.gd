@@ -27,11 +27,13 @@ func _ready() -> void:
 
 	add_to_group("save", true)
 
+
 func _on_play(id : String, anim_name : String) -> void:
 	if id != node_id:
 		return
 
 	play(anim_name)
+
 
 func _on_stop(id : String, reset : bool) -> void:
 	if id != node_id:
@@ -46,6 +48,7 @@ func _on_stop(id : String, reset : bool) -> void:
 	if reset:
 		seek(0, true)
 
+
 func on_save():
 	if not node_link:
 		push_error("error with saveing: %s"  %node_id)
@@ -53,6 +56,7 @@ func on_save():
 
 	node_link.value["anim_name"] = current_animation
 	node_link.value["is_playing"] = is_playing()
+
 
 func on_load(game_version:String) -> void:
 	if not node_link:
@@ -64,6 +68,7 @@ func on_load(game_version:String) -> void:
 			if "anim_name" in node_link.value:
 				var anim_name = node_link.value["anim_name"]
 				_on_play(node_id, anim_name)
+
 
 func _exit_tree() -> void:
 	if(Engine.editor_hint):

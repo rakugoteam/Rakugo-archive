@@ -49,6 +49,7 @@ func _init(var_id:String, var_value:Dictionary
 
 	_set_value(_value)
 
+
 func _set_color(vcolor : String) -> void:
 	_color = Color(vcolor)
 
@@ -67,23 +68,29 @@ func _set_value(_value: = {}) -> void:
 func _get_value() -> Dictionary:
 	return character2dict()
 
+
 func say(parameters := {}) -> void:
 	parameters["who"] = _id
 	Rakugo.say(parameters)
+
 
 func ask(parameters := {}) -> void:
 	parameters["who"] = _id
 	Rakugo.ask(parameters)
 
+
 func menu(parameters := {}) -> void:
 	parameters["who"] = _id
 	Rakugo.menu(parameters)
 
+
 func show(parameters := {"state": []}) -> void:
 	Rakugo.show(_id, parameters)
 
+
 func hide() -> void:
 	Rakugo.hide(_id)
+
 
 func parse_name() -> String:
 	var ncharacter = ""
@@ -101,8 +108,10 @@ func parse_name() -> String:
 
 	return ncharacter
 
+
 func parse_what(what : String) -> String:
 	return prefix + what + suffix
+
 
 func character2dict() -> Dictionary:
 	var dict = {}
@@ -115,6 +124,7 @@ func character2dict() -> Dictionary:
 	dict["kind"]	= kind
 
 	return dict
+
 
 func dict2character(dict : Dictionary) -> void:
 	if dict.has("name"):
@@ -137,6 +147,7 @@ func dict2character(dict : Dictionary) -> void:
 
 	if dict.has("kind"):
 		kind = dict.kind
+
 
 func parse_text(text:String, open:String, close:String) -> String:
 	text = .parse_text(text, open, close)

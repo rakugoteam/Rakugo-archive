@@ -6,6 +6,7 @@ func _ready() -> void:
 	$CheckButton.connect("toggled", self, "_on_toggled")
 	connect("visibility_changed", self, "on_visibility_changed")
 
+
 func _on_toggled(value):
 	text_speed_slider.editable = value	
 

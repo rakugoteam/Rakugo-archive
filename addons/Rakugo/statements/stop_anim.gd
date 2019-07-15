@@ -8,6 +8,7 @@ func _init() -> void:
 	parameters["node_id"] = ""
 	parameters["reset"] = false
 
+
 func exec() -> void:
 	.exec()
 	Rakugo.on_stop_anim(parameters.node_id, parameters.reset)

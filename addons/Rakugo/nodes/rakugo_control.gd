@@ -40,8 +40,10 @@ func _ready() -> void:
 	else:
 		node_link.value["node_path"] = get_path()
 
+
 func _on_rnode_substate(substate):
 	emit_signal("on_substate", substate)
+
 
 func _set_register(value:bool):
 	_register = value
@@ -53,17 +55,21 @@ func _set_register(value:bool):
 	if is_in_group("save"):
 		remove_from_group("save")
 
+
 func _get_register() -> bool:
 	return _register
 
+
 func _set_node_id(value : String):
 	_node_id = value
+
 
 func _get_node_id() -> String:
 	if _node_id == "":
 		_node_id = name
 
 	return _node_id
+
 
 func _on_show(node_id : String , state_value : Array, show_args : Dictionary) -> void:
 	if self.node_id != node_id:
@@ -75,6 +81,7 @@ func _on_show(node_id : String , state_value : Array, show_args : Dictionary) ->
 
 	if not self.visible:
 		show()
+
 
 func _set_state(value : Array) -> void:
 	_state = value
@@ -88,14 +95,17 @@ func _set_state(value : Array) -> void:
 	if not Engine.editor_hint and rnode:
 		_state = rnode.setup_state(value)
 
+
 func _get_state() -> Array:
 	return _state
+
 
 func _on_hide(_node_id : String) -> void:
 	if _node_id != node_id:
 		return
 
 	hide()
+
 
 func _exit_tree() -> void:
 	if(Engine.editor_hint):
@@ -104,6 +114,7 @@ func _exit_tree() -> void:
 
 	if _register:
 		Rakugo.variables.erase(node_id)
+
 
 func on_save() -> void:
 	if not _register:
@@ -117,6 +128,7 @@ func on_save() -> void:
 	node_link.value["visible"] = visible
 	node_link.value["state"] = _state
 	node_link.value["show_args"] = last_show_args
+
 
 func on_load(game_version:String) -> void:
 	if not _register:
@@ -135,6 +147,7 @@ func on_load(game_version:String) -> void:
 
 	else:
 		_on_hide(node_id)
+
 
 func _on_substate(substate):
 	pass

@@ -26,15 +26,18 @@ func _ready() -> void:
 
 	connect("visibility_changed", self, "_on_visibility_changed")
 
+
 func _on_visibility_changed() -> void:
 	if not visible:
 		return
 	
 	$Bar.value = AudioServer.get_bus_volume_db(bus_id)
 
+
 func set_bus_volume(value : int, bus_id : int) -> void:
 	AudioServer.set_bus_volume_db(bus_id, value)
 	volume = value
+
 
 func set_bus_on(bus_id : int, value : bool) -> void:
 	AudioServer.set_bus_mute(bus_id, !value)

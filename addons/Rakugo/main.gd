@@ -352,42 +352,55 @@ func _ready() -> void:
 
 	step_timer.connect("timeout", self, "_on_time_active_timeout")
 
+
 func get_datetime_str() -> String:
 	var d = OS.get_datetime()
 	return weekdays[d['weekday']] + ' ' + months[d['month']] + ' ' + str(d['day']) + ', ' + str(d['hour']) + ':' + str(d['minute'])
 
+
 func _on_time_active_timeout() -> void:
 	active = true
+
 
 func exec_statement(type:int, parameters:= {}) -> void:
 	emit_signal("exec_statement", type, parameters)
 
+
 func exit_statement(parameters:= {}) -> void:
 	emit_signal("exit_statement", current_statement.type, parameters)
+
 
 func story_step() -> void:
 	emit_signal("story_step", current_node_name, current_dialog_name)
 
+
 func notified() -> void:
 	emit_signal("notified")
+
 
 func on_show(node_id:String, state:Array, show_args:Dictionary) -> void:
 	emit_signal("show", node_id, state, show_args)
 
+
 func on_hide(node_id:String) -> void:
 	emit_signal("hide", node_id)
+
 
 func on_play_anim(node_id:String, anim_name:String) -> void:
 	emit_signal("play_anim", node_id, anim_name)
 
+
 func on_stop_anim(node_id:String, reset:bool) -> void:
 	emit_signal("stop_anim", node_id, reset)
+
 
 func on_play_audio(node_id:String, from_pos:float) -> void:
 	emit_signal("play_audio", node_id, from_pos)
 
+
 func on_stop_audio(node_id:String) -> void:
 	emit_signal("stop_audio", node_id)
+
 
 ## use to add/register dialog
 ## func_name is name of func that is going to be use as dialog
@@ -395,11 +408,13 @@ func add_dialog(node:Node, func_name:String) -> void:
 	if  not is_connected("story_step", node, func_name):
 		connect("story_step", node, func_name)
 
+
 ## parse text like in renpy to bbcode if mode == "renpy"
 ## or parse bbcode with {vars} if mode == "bbcode"
 ## default mode = Rakugo.markup
 func text_passer(text:String, mode:= markup):
 	return $Text.text_passer(text, variables, mode, theme.links_color.to_html())
+
 
 ## add/overwrite global variable that Rakugo will see
 ## and returns it as RakugoVar for easy use
@@ -411,6 +426,7 @@ func define(var_name:String, value = null, save_included := true) -> RakugoVar:
 
 	else:
 		return set_var(var_name, value)
+
 
 func str2value(str_value : String, var_type : String):
 	match var_type:
@@ -426,6 +442,7 @@ func str2value(str_value : String, var_type : String):
 		"float":
 			return float(str_value)
 
+
 ## add/overwrite global variable, from string, that Rakugo will see
 func define_from_str(var_name:String, var_str:String, var_type:String) -> RakugoVar:
 	var value = str2value(var_str, var_type)
@@ -433,6 +450,7 @@ func define_from_str(var_name:String, var_str:String, var_type:String) -> Rakugo
 		return define(var_name, value)
 
 	return set_var(var_name, value)
+
 
 ## overwrite existing global variable and returns it as RakugoVar
 func set_var(var_name:String, value) -> RakugoVar:
@@ -444,10 +462,12 @@ func set_var(var_name:String, value) -> RakugoVar:
 	var_to_change.value = value
 	return var_to_change
 
+
 ## returns exiting Rakugo variable as one of RakugoTypes for easy use
 ## It must be with out returned type, because we can't set it as list of types
 func get_var(var_name:String) -> RakugoVar:
 	return $GetVar.invoke(var_name)
+
 
 ## to use with `define_from_str` func as var_type arg
 ## it can't use optional typing
@@ -466,6 +486,7 @@ func get_def_type(variable) -> String:
 
 	return type
 
+
 ## returns value of variable defined using define
 ## It must be with out returned type, because we can't set it as list of types
 func get_value(var_name:String):
@@ -474,17 +495,21 @@ func get_value(var_name:String):
 
 	return null
 
+
 func get_node_value(var_name:String) -> Dictionary:
 	var p = NodeLink.new("").var_prefix
 	return get_value(p + var_name)
+
 
 func get_avatar_value(var_name:String) -> Dictionary:
 	var p = Avatar.new("").var_prefix
 	return get_value(p + var_name)
 
+
 ## returns type of variable defined using define
 func get_type(var_name:String) -> int:
 	return variables[var_name].type
+
 
 ## just faster way to connect signal to rakugo's variable
 func connect_var(
@@ -498,11 +523,13 @@ func connect_var(
 		binds, flags
 	)
 
+
 ## crate new RangedVar as global variable that Rakugo will see
 func ranged_var(var_name, start_value := 0.0, min_value := 0.0, max_value := 0.0) -> RakugoRangedVar:
 	var rrv = RakugoRangedVar.new(var_name, start_value, min_value, max_value)
 	variables[var_name] = rrv
 	return rrv
+
 
 ## crate new character as global variable that Rakugo will see
 ## possible parameters: name, color, prefix, suffix, avatar, stats, kind
@@ -511,23 +538,28 @@ func character(character_id:String, parameters:={}) -> CharacterObject:
 	variables[character_id] = new_ch
 	return new_ch
 
+
 ## crate new link to node as global variable that Rakugo will see
 ## it can have name as other existing varbiable
 func node_link(node_id:String, node:NodePath) -> NodeLink:
 	return $Define.node_link(node_id, node, variables)
 
+
 func get_node_link(node_id:String) -> NodeLink:
 	var s = NodeLink.new("").var_prefix
 	return get_var(s + node_id) as NodeLink
+
 
 ## crate new link to node avatar as global variable that Rakugo will see
 ## it can have name as other existing varbiable
 func avatar_link(node_id:String, node:NodePath) -> Avatar:
 	return $Define.avatar_link(node_id, node, variables)
 
+
 func get_avatar_link(node_id:String) -> Avatar:
 	var s = Avatar.new("").var_prefix
 	return get_var(s + node_id) as Avatar
+
 
 ## add/overwrite global subquest that Rakugo will see
 ## and returns it as RakugoSubQuest for easy use
@@ -535,6 +567,7 @@ func get_avatar_link(node_id:String) -> Avatar:
 func subquest(subquest_id:String, parameters:= {}) -> Subquest:
 	var new_subq : = Subquest.new(subquest_id, parameters)
 	return new_subq
+
 
 ## add/overwrite global quest that Rakugo will see
 ## and returns it as RakugoQuest for easy use
@@ -544,12 +577,14 @@ func quest(quest_id:String, parameters:={}) -> Quest:
 	quests.append(quest_id)
 	return q
 
+
 ## it should be "node:Statement", but it don't work for now
 func _set_statement(node:Node, parameters:Dictionary) -> void:
 	node.set_parameters(parameters)
 	node.exec()
 	active = false
 	step_timer.start()
+
 
 ## statement of type say
 ## there can be only one say, ask or menu in story_state at it end
@@ -558,6 +593,7 @@ func _set_statement(node:Node, parameters:Dictionary) -> void:
 ## speed is time to show next letter
 func say(parameters:Dictionary) -> void:
 	_set_statement($Say, parameters)
+
 
 ## statement of type ask
 ## there can be only one say, ask or menu in story_state at it end
@@ -568,6 +604,7 @@ func say(parameters:Dictionary) -> void:
 func ask(parameters:Dictionary) -> void:
 	_set_statement($Ask, parameters)
 
+
 ## statement of type menu
 ## there can be only one say, ask or menu in story_state at it end
 ## its allow player to make choice
@@ -575,6 +612,7 @@ func ask(parameters:Dictionary) -> void:
 ## speed is time to show next letter
 func menu(parameters:Dictionary) -> void:
 	_set_statement($Menu, parameters)
+
 
 ## it show custom rakugo node or character
 ## 'state' arg is using to set for example current emotion or/and cloths
@@ -590,6 +628,7 @@ func show(
 	parameters["node_id"] = node_id
 	_set_statement($Show, parameters)
 
+
 ## statement of type hide
 func hide(node_id:String) -> void:
 	var parameters = {
@@ -597,6 +636,7 @@ func hide(node_id:String) -> void:
 	}
 
 	_set_statement($Hide, parameters)
+
 
 ## statement of type notify
 func notify(
@@ -613,6 +653,7 @@ func notify(
 	notify_timer.wait_time = parameters.length
 	notify_timer.start()
 
+
 ## statement of type play_anim
 ## it will play animation with anim_name form RakugoAnimPlayer with given node_id
 func play_anim(
@@ -627,6 +668,7 @@ func play_anim(
 
 	_set_statement($PlayAnim, parameters)
 
+
 ## statement of type stop_anim
 ## it will stop animation form RakugoAnimPlayer with given node_id
 ## and by default is reset to 0 pos on exit from statment
@@ -637,6 +679,7 @@ func stop_anim(node_id:String, reset:= true) -> void:
 	}
 
 	_set_statement($StopAnim, parameters)
+
 
 ## statement of type play_audio
 ## it will play audio form RakugoAudioPlayer with given node_id
@@ -649,6 +692,7 @@ func play_audio(node_id:String, from_pos:= 0.0) -> void:
 
 	_set_statement($PlayAudio, parameters)
 
+
 ## statement of type stop_audio
 ## it will stop audio form RakugoAudioPlayer with given node_id
 func stop_audio(node_id:String) -> void:
@@ -657,6 +701,7 @@ func stop_audio(node_id:String) -> void:
 	}
 
 	_set_statement($StopAudio, parameters)
+
 
 ## statement of type stop_audio
 ## it will stop audio form RakugoAudioPlayer with given node_id
@@ -669,11 +714,14 @@ func call_node(node_id:String, func_name:String, args:= []) -> void:
 
 	_set_statement($CallNode, parameters)
 
+
 func _set_story_state(state:int) -> void:
 	define("story_state", state)
 
+
 func _get_story_state() -> int:
 	return get_value("story_state")
+
 
 ## it starts Rakugo
 func start(after_load := false) -> void:
@@ -685,12 +733,15 @@ func start(after_load := false) -> void:
 		emit_signal("started")
 		story_step()
 
+
 func savefile(save_name:= "quick") -> bool:
 	debug(["save data to :", save_name])
 	return $SaveFile.invoke(save_name)
 
+
 func loadfile(save_name:= "quick") -> bool:
 	return $LoadFile.invoke(save_folder, save_name, variables)
+
 
 func debug_dict(
 	parameters:Dictionary,
@@ -710,6 +761,7 @@ func debug_dict(
 
 	return some_custom_text + dbg
 
+
 ## for printing debugs is only print if debug_on == true
 ## put some string array or string as argument
 func debug(some_text = []) -> void:
@@ -726,11 +778,14 @@ func debug(some_text = []) -> void:
 
 	print(some_text)
 
+
 func _set_history_id(value:int) -> void:
 	history_id = value
 
+
 func _get_history_id() -> int:
 	return history_id
+
 
 ## use this to change/assign current scene and dialog
 ## id_of_current_scene is id to scene defined in scenes_links or full path to scene
@@ -745,9 +800,11 @@ func jump(
 		state, force_reload
 	)
 
+
 ## use this to load scene don't start with dialog or don't have any
 func load_scene(scene_id:String) -> void:
 	$Jump.load_scene(scene_id)
+
 
 ## use this to assign beginning scene and dialog
 ## root of path_to_current_scene is scenes_dir
@@ -760,15 +817,19 @@ func on_begin(path_to_current_scene:String, node_name:String, dialog_name:String
 	current_scene_path = resource[path_to_current_scene].resource_path
 	jump(path_to_current_scene, node_name , dialog_name)
 
+
 func can_go_back():
 	return is_save_exits("back")
+
 
 func checkpoint():
 	if savefile("back"):
 		emit_signal("checkpoint")
 
+
 func go_back():
 	loadfile("back")
+
 
 func is_current_statement_in_global_history() -> bool:
 
@@ -798,15 +859,19 @@ func is_current_statement_in_global_history() -> bool:
 
 	return true
 
+
 func can_auto() -> bool:
 	return current_statement.type in skip_types
+
 
 func can_skip() -> bool:
 	var seen = is_current_statement_in_global_history()
 	return can_auto() and seen
 
+
 func can_qload() -> bool:
 	return is_save_exits("quick")
+
 
 func is_save_exits(save_name:String) -> bool:
 	loading_in_progress = true
@@ -820,8 +885,10 @@ func is_save_exits(save_name:String) -> bool:
 
 	return file.file_exists(save_file_path)
 
+
 func save_global_history() -> bool:
 	return $SaveGlobalHistory.invoke()
+
 
 func load_global_history() -> bool:
 	return $LoadGlobalHistory.invoke()

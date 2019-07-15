@@ -12,11 +12,13 @@ func set_use_theme_form_settings(value:bool):
 
 	_use_theme_from_settings = value
 
+
 func get_use_theme_form_settings() -> bool:
 	if _use_theme_from_settings:
 		load_theme()
 
 	return _use_theme_from_settings
+
 
 func load_theme():
 	theme = load(

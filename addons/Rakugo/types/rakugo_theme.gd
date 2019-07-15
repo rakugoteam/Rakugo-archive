@@ -24,14 +24,17 @@ var _save_button_pressed : StyleBoxFlat
 func _set_button_disabled(s : StyleBoxFlat):
 	_save_button_disabled = s
 
+
 func _get_button_disabled() -> StyleBoxFlat:
 	if(_save_button_disabled == null):
 		_save_button_disabled = get_stylebox("disabled", "Button") as StyleBoxFlat
 
 	return _save_button_disabled
 
+
 func _set_button_focus(s : StyleBoxFlat):
 	_save_button_focus = s
+
 
 func _get_button_focus() -> StyleBoxFlat:
 	if(_save_button_focus == null):
@@ -39,8 +42,10 @@ func _get_button_focus() -> StyleBoxFlat:
 
 	return _save_button_focus
 
+
 func _set_button_hover(s : StyleBoxFlat):
 	_save_button_hover = s
+
 
 func _get_button_hover() -> StyleBoxFlat:
 	if(_save_button_hover == null):
@@ -48,8 +53,10 @@ func _get_button_hover() -> StyleBoxFlat:
 
 	return _save_button_hover
 
+
 func _set_button_normal(s : StyleBoxFlat):
 	_save_button_normal = s
+
 
 func _get_button_normal() -> StyleBoxFlat:
 	if(_save_button_normal == null):
@@ -57,8 +64,10 @@ func _get_button_normal() -> StyleBoxFlat:
 
 	return _save_button_normal
 
+
 func _set_button_pressed(s : StyleBoxFlat):
 	_save_button_pressed = s
+
 
 func _get_button_pressed() -> StyleBoxFlat:
 	if(_save_button_pressed == null):

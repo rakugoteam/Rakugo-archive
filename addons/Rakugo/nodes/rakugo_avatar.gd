@@ -40,14 +40,17 @@ func _ready():
 	if node_link:
 		_set_state(node_link.value.state)
 
+
 func _on_rnode_substate(substate):
 	emit_signal("on_substate", substate)
+
 
 func _on_show(avatar_id : String, state_value : Array, show_args : Dictionary) -> void:
 	if self.avatar_id != avatar_id:
 		return
 
 	_set_state(state_value)
+
 
 func _set_state(value : Array) -> void:
 	_state = value
@@ -61,8 +64,10 @@ func _set_state(value : Array) -> void:
 	if not Engine.editor_hint:
 		_state = rnode.setup_state(value)
 
+
 func _get_state() -> Array:
 	return _state
+
 
 func _exit_tree() -> void:
 	if(Engine.editor_hint):
@@ -72,12 +77,15 @@ func _exit_tree() -> void:
 	var id = Avatar.new("").var_prefix + avatar_id
 	Rakugo.variables.erase(id)
 
+
 func on_save() -> void:
 	avatar_link.value["state"] = _state
+
 
 func on_load(game_version:String) -> void:
 	_state = avatar_link.value["state"]
 	_on_show(avatar_id, _state , {})
+
 
 func _on_substate(substate):
 	pass

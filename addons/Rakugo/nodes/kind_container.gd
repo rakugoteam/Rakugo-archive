@@ -18,5 +18,6 @@ onready var NextButton : BaseButton = get_node(next_button_path)
 func hide_avatar():
 	AvatarContainer.hide()
 
+
 func show_avatar():
 	AvatarContainer.show()

@@ -9,6 +9,7 @@ func _init() -> void:
 	parameters["func_name"] = ""
 	parameters["args"] = []
 
+
 func exec() -> void:
 	var n = Rakugo.get_node_value(parameters.node_id)
 	

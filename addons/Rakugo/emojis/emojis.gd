@@ -11,6 +11,7 @@ func _ready():
 	var emojis_list : Array = parse_json(content)
 	emojis_dict = emoji_list_to_dict(emojis_list)
 
+
 func get_file_content(path:String) -> String:
 	var file = File.new()
 	var error : int = file.open(path, file.READ)
@@ -21,6 +22,7 @@ func get_file_content(path:String) -> String:
 		file.close()
 		
 	return content
+
 
 func emoji_list_to_dict(list:Array)->Dictionary:
 	var dict : = {}
@@ -34,8 +36,8 @@ func emoji_list_to_dict(list:Array)->Dictionary:
 	
 	return dict
 
+
 func get_path_to_emoji(emoji_name:String, size:=16) -> String:
 	var size_dir : = str(size) + "x" + str(size) + "/"
 	var emoji_png : String = emojis_dict[emoji_name] + ".png" 
 	return path_here + size_dir + emoji_png
-

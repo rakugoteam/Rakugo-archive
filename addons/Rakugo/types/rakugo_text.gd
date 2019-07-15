@@ -98,6 +98,7 @@ func _set_indent(_indent : bool) -> void:
 func _get_indent() -> bool:
 	return 	_get_tag("[indent]", "[/indent]")
 
+
 func _set_self_url(_url : bool) -> void:
 	var o = "[url=" + _prevurl + "]"
 	_set_tag(false, o, "[/url]")
@@ -108,8 +109,10 @@ func _set_self_url(_url : bool) -> void:
 
 	_set_tag(_url, "[url]", "[/url]")
 
+
 func _get_url() -> bool:
 	return bool(_prevurl)
+
 
 func _set_link(_link : String) -> void:
 	var o = "[url=" + _prevurl + "]"
@@ -121,14 +124,18 @@ func _set_link(_link : String) -> void:
 		o = "[url=" + _link + "]"
 		_set_tag(true, o, "[/url]")
 
+
 func _get_link() -> String:
 	return _prevurl
+
 
 func _set_image(_image : bool) -> void:
 	_set_tag(_image, "[img]", "[/img]")
 
+
 func _get_image() -> bool:
 	return 	_get_tag("[img]", "[/img]")
+
 
 func _set_font(_font : String) -> void:
 	var o = "[font=" + _prevfont + "]"
@@ -139,8 +146,10 @@ func _set_font(_font : String) -> void:
 		_set_tag(true, o, "[/font]")
 		_prevfont = _font
 
+
 func _get_font() -> String:
 	return _prevfont
+
 
 func _set_color(_color : String) -> void:
 	var o = "[color=" + _prevcolor + "]"
@@ -150,6 +159,7 @@ func _set_color(_color : String) -> void:
 		o = "[color=" + _color + "]"
 		_set_tag(true, o, "[/color]")
 		_prevcolor = _color
+
 
 func _get_color() -> String:
 	return _prevcolor
@@ -363,6 +373,7 @@ func xml_unescape() -> String:
 
 func to_string() -> String:
 	return _value
+
 
 func parse_text(text:String, open:String, close:String) -> String:
 	text = .parse_text(text, open, close)

@@ -9,6 +9,7 @@ func _init() -> void:
 	parameters["add_to_history"] = true
 	parameters_always += ["avatar_state"]
 
+
 func exec() -> void:
 	debug(parameters_names)
 

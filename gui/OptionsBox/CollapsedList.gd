@@ -15,8 +15,10 @@ func _ready() -> void:
 	prev_button.connect("pressed", self, "_on_prev_button")
 	next_buton.connect("pressed", self, "_on_next_button")
 
+
 func update_label(choice : = options_list[current_choice_id]) -> void:
 	label.text = choice
+
 
 func _on_prev_button() -> void:
 	if current_choice_id == 0:
@@ -25,6 +27,7 @@ func _on_prev_button() -> void:
 		current_choice_id -= 1
 	
 	update_label()
+
 
 func _on_next_button() -> void:
 	if current_choice_id == options_list.size() - 1:

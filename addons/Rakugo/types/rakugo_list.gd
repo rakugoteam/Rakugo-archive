@@ -101,6 +101,7 @@ func sort() -> void:
 func sort_custom(obj:Object, func_name:String) -> void:
 	_value.sort_custom(obj, func_name)
 
+
 func parse_text(text:String, open:String, close:String) -> String:
 	text = .parse_text(text, open, close)
 	
@@ -113,8 +114,3 @@ func parse_text(text:String, open:String, close:String) -> String:
 		text = text.replace(sa, str(_value[i]))
 	
 	return text
-	
-
-
-
-

@@ -6,6 +6,7 @@ func _init() -> void:
 	type = 5 # Rakugo.StatementType.HIDE
 	parameters_names = ["node_id"]
 
+
 func exec() -> void:
 	debug(parameters_names)
 

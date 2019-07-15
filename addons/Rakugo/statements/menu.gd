@@ -10,6 +10,7 @@ func _init() -> void:
 	type = 3 # Rakugo.StatementType.MENU
 	parameters["mkind"] = "vertical"
 
+
 func exec() -> void:
 	Rakugo.checkpoint()
 	debug(parameters_names)
@@ -20,6 +21,7 @@ func exec() -> void:
 		choices_labels.append(l)
 
 	.exec()
+
 
 func on_exit(_type : int, new_parameters : Dictionary = {}) -> void:
 	if !setup_exit(_type, new_parameters):

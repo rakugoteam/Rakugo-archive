@@ -6,8 +6,10 @@ var parameters : = {"add_to_history": false} # dict of pairs keyword : argument
 var parameters_names : = ["add_to_history"] # possible keywords for this type of statement - to use in RakugoScript in near future
 var parameters_always := ["add_to_history"]
 
+
 func _ready() -> void:
 	Rakugo.connect("exit_statement", self, "on_exit")
+
 
 func exec() -> void:
 	debug(parameters_names)
@@ -15,9 +17,11 @@ func exec() -> void:
 	Rakugo.current_statement = self
 	Rakugo.exec_statement(type, parameters)
 
+
 func set_parameters(new_parameters : Dictionary) -> void:
 	# update statement
 	set_dict(new_parameters, parameters)
+
 
 func set_dict(new_dict : Dictionary, current_dict : Dictionary) -> void:
 	for kw in current_dict.keys():
@@ -40,6 +44,7 @@ func setup_exit(_type : int, new_parameters : = {}) -> bool:
 
 	return true
 
+
 func on_exit(_type : int, new_parameters : = {}) -> void:
 	if !setup_exit(_type, new_parameters):
 		return
@@ -48,6 +53,7 @@ func on_exit(_type : int, new_parameters : = {}) -> void:
 		add_to_history()
 
 	Rakugo.story_step()
+
 
 func get_history_id() -> Array:
 	var id_list = [
@@ -61,6 +67,7 @@ func get_history_id() -> Array:
 
 	return id
 
+
 func get_as_history_item() -> Dictionary:
 	var hparameters = parameters.duplicate()
 	hparameters.erase("avatar")
@@ -71,6 +78,7 @@ func get_as_history_item() -> Dictionary:
 
 	return history_item
 
+
 func add_to_history() -> void:
 	var id = get_history_id()
 	var history_item = get_as_history_item()
@@ -78,6 +86,7 @@ func add_to_history() -> void:
 	Rakugo.global_history[id] = history_item
 
 	Rakugo.history_id += 1
+
 
 func debug(parameters_names : Array = [], some_custom_text : String = "") -> void:
 	var dbg = (Rakugo.StatementType.keys()[type].to_lower() + "("

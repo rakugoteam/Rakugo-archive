@@ -18,6 +18,7 @@ var temp_quests : = []
 func _ready() -> void:
 	connect("visibility_changed", self, "_on_visibility_changed")
 
+
 func add_quest_button(quest : Subquest, place_to_add : Node, is_subquest : bool = false) -> Object:
 	if quest.state == quest.STATE_NOT_AVAILABLE:
 		return null
@@ -30,6 +31,7 @@ func add_quest_button(quest : Subquest, place_to_add : Node, is_subquest : bool 
 	q_button.is_subquest = is_subquest
 	place_to_add.add_child(q_button)
 	return q_button
+
 
 func _on_visibility_changed() -> void:
 	if not visible:

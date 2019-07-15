@@ -15,8 +15,10 @@ func _ready() -> void:
 	for dn in dialogs_names:
 		Rakugo.add_dialog(self, dn)
 
+
 func get_story_state() -> int:
 	return Rakugo.story_state
+
 
 func check_dialog(node_name, dialog_name, check_for) -> bool:
 	var result = true
@@ -44,6 +46,7 @@ func check_dialog(node_name, dialog_name, check_for) -> bool:
 	])
 	return result
 
+
 func fake_check_dialog(fake_node_name, node_name, dialog_name, check_for) -> bool:
 	var result = true
 
@@ -59,6 +62,7 @@ func fake_check_dialog(fake_node_name, node_name, dialog_name, check_for) -> boo
 		"(", '"'+dialog_name+'"', '"'+check_for+'"', ")"
 	])
 	return result
+
 
 func define(var_name:String, value = null, save_included := true) -> RakugoVar:
 	return Rakugo.define(var_name, value, save_included)

@@ -62,11 +62,13 @@ func invoke(var_name:String, value, save_included: bool) -> RakugoVar:
 
 	return null
 
+
 func _rakugo_var(var_name:String , value, save_included: bool, variables: Dictionary) -> RakugoVar :
 	var new_var = RakugoVar.new(var_name, value)
 	new_var.save_included = save_included
 	variables[var_name] = new_var
 	return new_var
+
 
 func node_link(node_id:String, node_path: NodePath, variables:Dictionary) -> NodeLink:
 	var node_var = NodeLink.new(node_id)
@@ -74,11 +76,13 @@ func node_link(node_id:String, node_path: NodePath, variables:Dictionary) -> Nod
 	variables[node_var.id] = node_var
 	return node_var
 
+
 func avatar_link(avatar_id:String, node_path: NodePath, variables:Dictionary) -> Avatar:
 	var avatar_var = Avatar.new(avatar_id)
 	avatar_var.value.node_path =  node_path
 	variables[avatar_var.id] = avatar_var
 	return avatar_var
+
 
 func _color(var_name:String , value:String, save_included: bool, variables:Dictionary) -> RakugoColor:
 	var new_var = RakugoColor.new(var_name, value)

@@ -15,11 +15,13 @@ func _ready() -> void:
 	var_to_change.connect("value_changed", self, "on_value_changed")
 	connect("visibility_changed", self, "on_visibility_changed")
 
+
 func on_value_changed(vname:String, new_value) -> void:
 	if vname != var_name:
 		return
 		
 	text = str(new_value)
+
 
 func on_visibility_changed() -> void:
 	if visible == false:

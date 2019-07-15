@@ -28,6 +28,7 @@ func _ready() -> void:
 	connect("toggled", self, "_on_toggled")
 	connect("pressed", self, "_on_pressed")
 
+
 func set_use_from_theme(value:bool):
 	_use_from_theme = value
 
@@ -35,6 +36,7 @@ func set_use_from_theme(value:bool):
 		return
 
 	upadate_colors()
+
 
 func upadate_colors():
 	var rt := theme as RakugoTheme
@@ -44,11 +46,13 @@ func upadate_colors():
 	pressed_node_color = rt.pressed_node_color
 	disable_node_color = rt.disable_node_color
 
+
 func get_use_from_theme() -> bool:
 	if _use_from_theme:
 		upadate_colors()
 
 	return _use_from_theme
+
 
 func set_use_theme_form_settings(value:bool):
 	if value:
@@ -56,11 +60,13 @@ func set_use_theme_form_settings(value:bool):
 
 	_use_theme_from_settings = value
 
+
 func get_use_theme_form_settings() -> bool:
 	if _use_theme_from_settings:
 		load_theme()
 
 	return _use_theme_from_settings
+
 
 func load_theme():
 	theme = load(
@@ -69,23 +75,28 @@ func load_theme():
 		)
 	)
 
+
 func _on_resized() -> void:
 	node_to_change.rect_size = rect_size
+
 
 func _on_idle() -> void:
 	node_to_change.add_color_override(
 		"default_color", idle_node_color
 	)
 
+
 func _on_focus() -> void:
 	node_to_change.add_color_override(
 		"default_color", focus_node_color
 	)
 
+
 func _on_hover() -> void:
 	node_to_change.add_color_override(
 		"default_color", hover_node_color
 	)
+
 
 func _on_pressed() -> void:
 	if toggle_mode:
@@ -95,12 +106,14 @@ func _on_pressed() -> void:
 		"default_color", pressed_node_color
 	)
 
+
 func _on_toggled(toggled:bool) -> void:
 	if toggled:
 		_on_pressed()
 		return
 
 	_on_idle()
+
 
 func set_disabled(value:bool) -> void:
 	.set_disabled(value)
