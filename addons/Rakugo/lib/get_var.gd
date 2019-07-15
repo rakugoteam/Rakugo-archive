@@ -1,6 +1,6 @@
 extends Object
 
-func invoke(var_name:String) -> RakugoVar:
+func invoke(var_name: String) -> RakugoVar:
 	if  Rakugo.variables.has(var_name):
 		var v = Rakugo.variables[var_name]
 		var Type = Rakugo.Type

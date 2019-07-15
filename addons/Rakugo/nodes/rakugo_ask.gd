@@ -1,11 +1,11 @@
 extends LineEdit
 class_name RakugoAsk
 
-onready var rtl : = RichTextLabel.new()
-var input_placeholder : = ""
-var _type : int
-var _active : = true
-var active : bool setget _set_active, _get_active
+onready var rtl := RichTextLabel.new()
+var input_placeholder := ""
+var _type: int
+var _active := true
+var active: bool setget _set_active, _get_active
 
 func _ready() -> void:
 	_set_active(true)
@@ -18,7 +18,7 @@ func enter() -> void:
 	_on_enter(get_text())
 
 
-func _on_enter(_text : String) -> void:
+func _on_enter(_text: String) -> void:
 	var final_variable = input_placeholder
 
 	if text != "":
@@ -27,7 +27,7 @@ func _on_enter(_text : String) -> void:
 	Rakugo.exit_statement({"value":final_variable})
 
 
-func _on_statement(type : int, parameters : Dictionary) -> void:
+func _on_statement(type: int, parameters: Dictionary) -> void:
 	_type = type
 
 	if type != Rakugo.StatementType.ASK:

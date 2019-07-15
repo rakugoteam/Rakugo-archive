@@ -1,11 +1,11 @@
 extends LineEdit
 class_name RakugoVarEdit
 
-export var var_name : = "some_var"
+export var var_name := "some_var"
 
 export var default = "" setget set_default, get_default
 
-var type : = "str"
+var type := "str"
 
 func set_default(value) -> void:
 	default = value
@@ -30,7 +30,7 @@ func _ready() -> void:
 	var_to_change.connect("value_changed", self, "on_value_changed")
 
 
-func on_value_changed(vname:String, new_value) -> void:
+func on_value_changed(vname: String, new_value) -> void:
 	if vname != var_name:
 		return
 
@@ -38,7 +38,7 @@ func on_value_changed(vname:String, new_value) -> void:
 	placeholder_text = str(new_value)
 
 
-func _on_entered(text : String) -> void:
+func _on_entered(text: String) -> void:
 	if text.empty():
 		Rakugo.define_from_str(var_name, default, type)
 	

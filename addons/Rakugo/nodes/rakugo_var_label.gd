@@ -1,9 +1,9 @@
 extends Label
 class_name RakugoVarLabel
 
-export var var_name : = "some_var"
+export var var_name := "some_var"
 export var default = ""
-export(String, "str", "bool", "float", "int") var type : = "str" 
+export(String, "str", "bool", "float", "int") var type := "str" 
 
 func _ready() -> void:
 	if not (var_name in Rakugo.variables):
@@ -16,7 +16,7 @@ func _ready() -> void:
 	connect("visibility_changed", self, "on_visibility_changed")
 
 
-func on_value_changed(vname:String, new_value) -> void:
+func on_value_changed(vname: String, new_value) -> void:
 	if vname != var_name:
 		return
 		

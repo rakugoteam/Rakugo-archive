@@ -2,13 +2,13 @@ tool
 extends AudioStreamPlayer
 class_name RakugoAudioPlayer
 
-export var node_id : = ""
+export var node_id := ""
 
-var node_link:NodeLink
-var last_pos : = 0.0
+var node_link: NodeLink
+var last_pos := 0.0
 
 func _ready() -> void:
-	if(Engine.editor_hint):
+	if Engine.editor_hint:
 		if node_id.empty():
 			node_id = name
 
@@ -29,7 +29,7 @@ func _ready() -> void:
 	add_to_group("save", true)
 
 
-func _on_play(id : String, from_pos : = 0.0) -> void:
+func _on_play(id: String, from_pos := 0.0) -> void:
 	if id != node_id:
 		return
 
@@ -37,7 +37,7 @@ func _on_play(id : String, from_pos : = 0.0) -> void:
 	play(from_pos)
 
 
-func _on_stop(id : String) -> void:
+func _on_stop(id: String) -> void:
 	if id != node_id:
 		return
 
@@ -56,7 +56,7 @@ func on_save():
 	node_link.value["from_pos"] = last_pos
 
 
-func on_load(game_version:String) -> void:
+func on_load(game_version: String) -> void:
 	if not node_link:
 		push_error("error with loading: %s" %node_id)
 		return

@@ -2,17 +2,17 @@ tool
 extends Button
 class_name RakugoBaseButton
 
-export var use_theme_from_setting : bool setget set_use_theme_form_settings, get_use_theme_form_settings
-export var use_form_theme : bool setget set_use_from_theme, get_use_from_theme
-export var color_node : = true
+export var use_theme_from_setting: bool setget set_use_theme_form_settings, get_use_theme_form_settings
+export var use_form_theme: bool setget set_use_from_theme, get_use_from_theme
+export var color_node := true
 export (NodePath) var node_to_change_path
 
 ## theme (RakugoTheme), if any, will override this
-export var idle_node_color : = Color(0.533333, 0.533333, 0.533333, 1)
-export var focus_node_color : = Color(0, 0.506836, 0.675781, 1)
-export var hover_node_color : = Color(0.877647, 0.882353, 0.887059, 1)
-export var pressed_node_color : = Color(0, 0.6, 0.8, 1)
-export var disable_node_color : = Color(0.533333, 0.533333, 0.498039, 0.533333)
+export var idle_node_color := Color(0.533333, 0.533333, 0.533333, 1)
+export var focus_node_color := Color(0, 0.506836, 0.675781, 1)
+export var hover_node_color := Color(0.877647, 0.882353, 0.887059, 1)
+export var pressed_node_color := Color(0, 0.6, 0.8, 1)
+export var disable_node_color := Color(0.533333, 0.533333, 0.498039, 0.533333)
 
 onready var node_to_change = get_node(node_to_change_path)
 
@@ -29,7 +29,7 @@ func _ready() -> void:
 	connect("pressed", self, "_on_pressed")
 
 
-func set_use_from_theme(value:bool):
+func set_use_from_theme(value: bool):
 	_use_from_theme = value
 
 	if !value:
@@ -54,7 +54,7 @@ func get_use_from_theme() -> bool:
 	return _use_from_theme
 
 
-func set_use_theme_form_settings(value:bool):
+func set_use_theme_form_settings(value: bool):
 	if value:
 		load_theme()
 
@@ -107,7 +107,7 @@ func _on_pressed() -> void:
 	)
 
 
-func _on_toggled(toggled:bool) -> void:
+func _on_toggled(toggled: bool) -> void:
 	if toggled:
 		_on_pressed()
 		return
@@ -115,7 +115,7 @@ func _on_toggled(toggled:bool) -> void:
 	_on_idle()
 
 
-func set_disabled(value:bool) -> void:
+func set_disabled(value: bool) -> void:
 	.set_disabled(value)
 
 	if value:

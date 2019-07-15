@@ -33,7 +33,7 @@ func _on_window_size_changed(prev, now):
 	update_label(now, false)
 
 
-func update_label(size : Vector2 = options_list[current_choice_id], apply : bool = true) -> void:
+func update_label(size: Vector2 = options_list[current_choice_id], apply: bool = true) -> void:
 	label.text = str(size.x) + "x" + str(size.y)
 	
 	if not (size in options_list):

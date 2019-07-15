@@ -3,7 +3,7 @@ extends RakugoBaseButton
 class_name RakugoChoiceButton
 
 var label
-var id : = -1
+var id := -1
 
 func _ready() -> void:
 	disconnect("pressed", self, "_on_pressed")

@@ -2,11 +2,11 @@ tool
 extends Control
 class_name RakugoBaseControl
 
-export var use_theme_from_setting : bool setget set_use_theme_form_settings, get_use_theme_form_settings
+export var use_theme_from_setting: bool setget set_use_theme_form_settings, get_use_theme_form_settings
 
 var _use_theme_from_settings := true
 
-func set_use_theme_form_settings(value:bool):
+func set_use_theme_form_settings(value: bool):
 	if value:
 		load_theme()
 

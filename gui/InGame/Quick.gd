@@ -1,8 +1,8 @@
 extends HBoxContainer
 
-onready var Screens : = get_node("../../Screens")
-var save_error_msg : String = "[color=red]Error saving Game[/color]"
-var load_error_msg : String = "[color=red]Error loading Game[/color]"
+onready var Screens := get_node("../../Screens")
+var save_error_msg: String = "[color=red]Error saving Game[/color]"
+var load_error_msg: String = "[color=red]Error loading Game[/color]"
 
 func _ready() -> void:
 	Rakugo.connect("exec_statement", self, "_on_statement")
@@ -61,7 +61,7 @@ func _on_qload() -> void:
 		$InfoAnim.play("GeneralNotif")
 
 
-func _on_statement(type : int, parameters : Dictionary) -> void:
+func _on_statement(type: int, parameters: Dictionary) -> void:
 	$Skip.disabled = !Rakugo.can_skip()
 	$Back.disabled = !Rakugo.can_go_back()
 	$Auto.disabled = !Rakugo.can_auto()
@@ -110,11 +110,11 @@ func _hide_on_input(event):
 		_on_Hide_toggled($Hide.pressed)
 
 
-func _on_Hide_toggled(value:bool) -> void:
+func _on_Hide_toggled(value: bool) -> void:
 	Rakugo.emit_signal("hide_ui", !value)
 
 
-func _input(event : InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if Rakugo.can_alphanumeric:
 		_hide_on_input(event)
 

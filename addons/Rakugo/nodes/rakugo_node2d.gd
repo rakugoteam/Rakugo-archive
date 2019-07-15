@@ -4,15 +4,15 @@ class_name RakugoNode2D
 
 signal on_substate(substate)
 
-onready var rnode : = RakugoNodeCore.new()
+onready var rnode := RakugoNodeCore.new()
 
-export var node_id : String = name
-export var camera : = NodePath("")
-export(Array, String) var state : Array setget _set_state, _get_state
+export var node_id: String = name
+export var camera := NodePath("")
+export(Array, String) var state: Array setget _set_state, _get_state
 
-var _state : = []
-var node_link:NodeLink
-var last_show_args:Dictionary
+var _state := []
+var node_link: NodeLink
+var last_show_args: Dictionary
 
 func _ready() -> void:
 	if Engine.editor_hint:
@@ -55,7 +55,7 @@ func _get_cam_pos() -> Vector2:
 	return cam_pos
 
 
-func _on_show(node_id : String, state_value : Array, show_args : Dictionary) -> void:
+func _on_show(node_id: String, state_value: Array, show_args: Dictionary) -> void:
 	if self.node_id != node_id:
 		return
 
@@ -73,7 +73,7 @@ func _on_show(node_id : String, state_value : Array, show_args : Dictionary) -> 
 		show()
 
 
-func _set_state(value : Array) -> void:
+func _set_state(value: Array) -> void:
 	_state = value
 
 	if not value:
@@ -108,7 +108,7 @@ func _exit_tree() -> void:
 
 func on_save() -> void:
 	if not node_link:
-		push_error("error with saveing: %s"  %node_id)
+		push_error("error with saving: %s" %node_id)
 		return
 
 	node_link.value["visible"] = visible
@@ -116,7 +116,7 @@ func on_save() -> void:
 	node_link.value["show_args"] = last_show_args
 
 
-func on_load(game_version:String) -> void:
+func on_load(game_version: String) -> void:
 	if not node_link:
 		push_error("error with loading: %s"  %node_id)
 		return

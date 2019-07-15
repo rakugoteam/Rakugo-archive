@@ -1,8 +1,8 @@
 extends Node2D
 class_name RootNode2D
 
-export var root : = false
-export var default : = Vector2(1024, 600)
+export var root := false
+export var default := Vector2(1024, 600)
 var prev
 
 func _ready() -> void:
@@ -13,7 +13,7 @@ func _ready() -> void:
 	scale = OS.window_size / default
 
 
-func _on_window_size_changed(prev : Vector2, now : Vector2) -> void:
+func _on_window_size_changed(prev: Vector2, now: Vector2) -> void:
 	scale = now / default
 	prev = prev
 

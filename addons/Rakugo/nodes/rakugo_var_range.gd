@@ -4,10 +4,10 @@ extends Range
 # we don't want it be be seen in "add new Node" dialog,
 # but to seen other Nodes that use it
 
-export var var_name : = "some_var"
-export var default : = 0.5 setget set_default, get_default
+export var var_name := "some_var"
+export var default := 0.5 setget set_default, get_default
 
-func set_default(value : float) -> void:
+func set_default(value: float) -> void:
 	default = value
 	value = default
 
@@ -27,7 +27,7 @@ func _ready() -> void:
 	connect("visibility_changed", self, "on_visibility_changed")
 
 
-func on_value_changed(vname:String, new_value:float) -> void:
+func on_value_changed(vname: String, new_value: float) -> void:
 	if vname != var_name:
 		return
 		

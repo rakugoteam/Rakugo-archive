@@ -4,15 +4,15 @@ class_name RakugoSpatial, "res://addons/Rakugo/icons/rakugo_spatial.svg"
 
 signal on_substate(substate)
 
-var rnode : = RakugoNodeCore.new()
+var rnode := RakugoNodeCore.new()
 
-export var node_id : = ""
-export var camera : = NodePath("")
-export (Array, String) var state : Array setget _set_state, _get_state
+export var node_id := ""
+export var camera := NodePath("")
+export (Array, String) var state: Array setget _set_state, _get_state
 
-var _state : Array
-var node_link:NodeLink
-var last_show_args:Dictionary
+var _state: Array
+var node_link: NodeLink
+var last_show_args: Dictionary
 
 func _ready() -> void:
 	if(Engine.editor_hint):
@@ -44,11 +44,11 @@ func _on_rnode_substate(substate):
 	emit_signal("on_substate", substate)
 
 
-func _on_show(node_id : String, state_value : Array, show_args : Dictionary) -> void:
+func _on_show(node_id: String, state_value: Array, show_args: Dictionary) -> void:
 	if self.node_id != node_id:
 		return
 
-	var cam_pos = Vector2(0, 0)
+	var cam_pos := Vector2(0, 0)
 
 	if !camera.is_empty():
 		if 'x' in show_args:
@@ -73,7 +73,7 @@ func _on_show(node_id : String, state_value : Array, show_args : Dictionary) -> 
 		show()
 
 
-func _set_state(value : Array) -> void:
+func _set_state(value: Array) -> void:
 	_state = value
 
 	if not value:
@@ -90,7 +90,7 @@ func _get_state() -> Array:
 	return _state
 
 
-func _on_hide(_node_id : String) -> void:
+func _on_hide(_node_id: String) -> void:
 	if _node_id != node_id:
 		return
 
@@ -108,7 +108,7 @@ func _exit_tree() -> void:
 
 func on_save() -> void:
 	if not node_link:
-		push_error("error with saveing: %s"  %node_id)
+		push_error("error with saving: %s" %node_id)
 		return
 
 	node_link.value["visible"] = visible
@@ -116,9 +116,9 @@ func on_save() -> void:
 	node_link.value["show_args"] = last_show_args
 
 
-func on_load(game_version:String) -> void:
+func on_load(game_version: String) -> void:
 	if not node_link:
-		push_error("error with loading: %s"  %node_id)
+		push_error("error with loading: %s" %node_id)
 		return
 
 	visible = node_link.value["visible"]

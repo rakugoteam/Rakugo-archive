@@ -3,7 +3,7 @@ class_name Show
 
 var required = ["node_id", "state"]
 var optional =  ["x", "y", "z", "at", "pos"]
-onready var rnode : = RakugoNodeCore.new()
+onready var rnode := RakugoNodeCore.new()
 
 func _init() -> void:
 	._init()

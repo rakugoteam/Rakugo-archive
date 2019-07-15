@@ -1,29 +1,29 @@
 tool
 extends RakugoControl
 
-export onready var nav_panel : Node = $Navigation
-export var nav_path : NodePath = "Navigation/ScrollContainer/HBoxContainer/VBoxContainer"
-export var in_game_gui_path : = "/root/Window/InGameGUI"
-export onready var scrollbar : = $Navigation/ScrollContainer/HBoxContainer/VScrollBar
-export var use_back_button : = false
-export onready var back_button : Button = $BackButton
-export onready var unpause_timer : Timer = $UnpauseTimer
+export onready var nav_panel: Node = $Navigation
+export var nav_path: NodePath = "Navigation/ScrollContainer/HBoxContainer/VBoxContainer"
+export var in_game_gui_path := "/root/Window/InGameGUI"
+export onready var scrollbar := $Navigation/ScrollContainer/HBoxContainer/VScrollBar
+export var use_back_button := false
+export onready var back_button: Button = $BackButton
+export onready var unpause_timer: Timer = $UnpauseTimer
 export onready var qno_button = $QuitBox/HBoxContainer/No
 export onready var qyes_button = $QuitBox/HBoxContainer/Yes
 
-var current_node : Node = self
-var in_game_gui : Node
-onready var new_game_button : Button = get_node(str(nav_path) + "/" + "NewGame")
-onready var continue_button : Button = get_node(str(nav_path) + "/" + "Continue")
-onready var return_button : Button = get_node(str(nav_path) + "/" + "Return")
-onready var save_button : Button = get_node(str(nav_path) + "/" + "Save")
-onready var history_button : Button = get_node(str(nav_path) + "/" + "History")
-onready var quests_button : Button = get_node(str(nav_path) + "/" + "Quests")
-onready var load_button : Button = get_node(str(nav_path) + "/" + "Load")
-onready var options_button : Button = get_node(str(nav_path) + "/" + "Options")
-onready var about_button : Button = get_node(str(nav_path) + "/" + "About")
-onready var help_button : Button = get_node(str(nav_path) + "/" + "Help")
-onready var quit_button : Button = get_node(str(nav_path) + "/" + "Quit")
+var current_node: Node = self
+var in_game_gui: Node
+onready var new_game_button: Button = get_node(str(nav_path) + "/" + "NewGame")
+onready var continue_button: Button = get_node(str(nav_path) + "/" + "Continue")
+onready var return_button: Button = get_node(str(nav_path) + "/" + "Return")
+onready var save_button: Button = get_node(str(nav_path) + "/" + "Save")
+onready var history_button: Button = get_node(str(nav_path) + "/" + "History")
+onready var quests_button: Button = get_node(str(nav_path) + "/" + "Quests")
+onready var load_button: Button = get_node(str(nav_path) + "/" + "Load")
+onready var options_button: Button = get_node(str(nav_path) + "/" + "Options")
+onready var about_button: Button = get_node(str(nav_path) + "/" + "About")
+onready var help_button: Button = get_node(str(nav_path) + "/" + "Help")
+onready var quit_button: Button = get_node(str(nav_path) + "/" + "Quit")
 
 func _ready():
 	if(Engine.editor_hint):

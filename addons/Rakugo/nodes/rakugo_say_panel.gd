@@ -2,25 +2,25 @@ extends Panel
 class_name RakugoSayPanel, "res://addons/Rakugo/icons/rakugo_panel.svg"
 
 export (String, "adv", "hide", "top", "center", "left", "right", "nvl", "fullscreen") var kind = "adv"
-export var main_container_path : = NodePath("")
-export var std_kind_container_path : = NodePath("")
-export (Array, String) var extra_kinds : = ["nvl", "phone_right", "phone_left"]
-export (Array, PackedScene) var extra_kinds_scenes : = []
-export (Array, String) var extra_kinds_anims : = ["nvl", "phone", "phone"]
+export var main_container_path := NodePath("")
+export var std_kind_container_path := NodePath("")
+export (Array, String) var extra_kinds := ["nvl", "phone_right", "phone_left"]
+export (Array, PackedScene) var extra_kinds_scenes := []
+export (Array, String) var extra_kinds_anims := ["nvl", "phone", "phone"]
 
-var NameLabel : RichTextLabel
-var DialogText : RichTextLabel
-var CharacterAvatar : Viewport
-var LineEditNode : RakugoAsk
-var StdKindContainer : KindContainer
-var MainContainer : BoxContainer
-var CurrentKind : KindContainer
-var ButtonNext : BaseButton
+var NameLabel: RichTextLabel
+var DialogText: RichTextLabel
+var CharacterAvatar: Viewport
+var LineEditNode: RakugoAsk
+var StdKindContainer: KindContainer
+var MainContainer: BoxContainer
+var CurrentKind: KindContainer
+var ButtonNext: BaseButton
 
-var avatar_path : = ""
-var avatar : Node
-var _type : int
-var typing : = false
+var avatar_path := ""
+var avatar: Node
+var _type: int
+var typing := false
 var _ui_accept := false
 
 onready var allowed_statement_types = [
@@ -29,7 +29,7 @@ onready var allowed_statement_types = [
 	Rakugo.StatementType.MENU
 ]
 
-func _setup(kind_container:KindContainer):
+func _setup(kind_container: KindContainer):
 
 	if ButtonNext:
 		if ButtonNext.is_connected("pressed", self, "_press_accept"):
@@ -57,7 +57,7 @@ func _setup(kind_container:KindContainer):
 	CurrentKind = kind_container
 
 
-func _on_hide(value:bool) -> void:
+func _on_hide(value: bool) -> void:
 	visible = value
 
 
@@ -77,7 +77,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	_on_ui_accept(ui_accept)
 
 
-func _on_ui_accept (value:bool) -> void:
+func _on_ui_accept(value: bool) -> void:
 	var ui_accept = value or _ui_accept
 
 	if not ui_accept:
@@ -109,7 +109,7 @@ func _on_ui_accept (value:bool) -> void:
 		Rakugo.exit_statement()
 
 
-func _on_statement(type : int, parameters : Dictionary) -> void:
+func _on_statement(type: int, parameters: Dictionary) -> void:
 	kind = Rakugo.default_kind
 	_type = type
 
@@ -132,8 +132,8 @@ func _on_statement(type : int, parameters : Dictionary) -> void:
 			$Kinds.play(extra_kinds_anims[i])
 
 			StdKindContainer.hide()
-			var scene_to_use : PackedScene = extra_kinds_scenes[i]
-			var instace : KindContainer = scene_to_use.instance()
+			var scene_to_use: PackedScene = extra_kinds_scenes[i]
+			var instace: KindContainer = scene_to_use.instance()
 			MainContainer.add_child(instace)
 			_setup(instace)
 			$ScrollContainer.scroll_vertical += instace.rect_size.y*2
@@ -201,7 +201,7 @@ func _on_statement(type : int, parameters : Dictionary) -> void:
 	return
 
 
-func write_dialog(text : String, _typing : bool) -> void:
+func write_dialog(text: String, _typing: bool) -> void:
 	typing = _typing
 
 	if Rakugo.skipping:
@@ -215,8 +215,8 @@ func write_dialog(text : String, _typing : bool) -> void:
 	if DialogText.has_method("set_bbcode"):
 		DialogText.bbcode_text = ""
 
-	var new_text : = ""
-	var markup : = false
+	var new_text := ""
+	var markup := false
 
 	for letter in text:
 		new_text += letter
@@ -253,5 +253,5 @@ func write_dialog(text : String, _typing : bool) -> void:
 			break
 
 
-func _on_Hide_toggled(button_pressed : bool) -> void:
+func _on_Hide_toggled(button_pressed: bool) -> void:
 	visible = !button_pressed

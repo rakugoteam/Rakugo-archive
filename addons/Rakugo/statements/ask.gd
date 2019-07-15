@@ -2,7 +2,7 @@ extends Say
 class_name Ask
 
 var value = "value"
-var variable : String = "variable"
+var variable := "variable"
 
 func _init() -> void:
 	._init()
@@ -23,7 +23,7 @@ func exec() -> void:
 	.exec()
 
 
-func on_exit(_type : int, new_parameters : Dictionary = {}) -> void:
+func on_exit(_type: int, new_parameters: Dictionary = {}) -> void:
 	if !setup_exit(_type, new_parameters):
 		return
 

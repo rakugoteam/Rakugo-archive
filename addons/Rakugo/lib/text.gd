@@ -1,19 +1,19 @@
 extends Node
 class_name RakugoTextPasser
 
-var url_open:String = "[color=225ebf][url="
-var url_close:String = "[/url][/color]"
-var new_line:String = "\n"
-var tab:String = "\t"
+var url_open: String = "[color=225ebf][url="
+var url_close: String = "[/url][/color]"
+var new_line: String = "\n"
+var tab: String = "\t"
 
-onready var emojis : Emojis = $Emojis
+onready var emojis: Emojis = $Emojis
 
 func text_passer(
-		text:String,
-		variables:Dictionary,
-		mode:String = "renpy",
-		links_color:String = Rakugo.theme.links_color
-	) -> String:
+		text: String,
+		variables: Dictionary,
+		mode: String = "renpy",
+		links_color: String = Rakugo.theme.links_color
+		) -> String:
 	## passer for renpy or bbcode markup format
 	## its retrun bbcode
 
@@ -22,7 +22,7 @@ func text_passer(
 	if !text:
 		return text
 
-	var _text : = text
+	var _text := text
 
 	match mode:
 		"renpy":
@@ -37,8 +37,8 @@ func text_passer(
 
 
 func parse_text_adv(
-	text:String, variables:Dictionary,
-	open:String, close:String) -> String:
+		text: String, variables: Dictionary,
+		open: String, close: String) -> String:
 
 	if text == null:
 		return ""
@@ -59,8 +59,8 @@ func parse_text_adv(
 
 
 func parse_text_emojis(
-	text:String, open:String,
-	close:String) -> String:
+		text: String, open: String,
+		close: String) -> String:
 
 	text = text.c_unescape()
 
@@ -76,7 +76,7 @@ func parse_text_emojis(
 	return text
 
 
-func parse_renpy_text(text:String, variables:Dictionary) -> String:
+func parse_renpy_text(text: String, variables: Dictionary) -> String:
 	text = parse_text_adv(text, variables, "[", "]")
 	text = parse_text_emojis(text, "{:", ":}")
 	text = text.replace("{a=", url_open)
@@ -88,7 +88,7 @@ func parse_renpy_text(text:String, variables:Dictionary) -> String:
 	return text
 
 
-func parse_bbcode_text(text:String, variables:Dictionary) -> String:
+func parse_bbcode_text(text: String, variables: Dictionary) -> String:
 	text = parse_text_adv(text, variables, "{", "}")
 	text = parse_text_emojis(text, "[:", ":]")
 	text = text.replace("[url=", url_open)

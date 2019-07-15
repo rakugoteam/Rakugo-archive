@@ -9,5 +9,5 @@ func _ready() -> void:
 	connect("value_changed", self, "on_slider_val_changed")
 
 
-func on_slider_val_changed(value : float) -> void:
+func on_slider_val_changed(value: float) -> void:
 	Rakugo.define(var_name, value)

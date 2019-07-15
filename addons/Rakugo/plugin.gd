@@ -4,7 +4,7 @@ extends EditorPlugin
 # A class member to hold the dock during the plugin lifecycle
 var dock
 
-func default_setting(setting:String, value):
+func default_setting(setting: String, value):
 	if not ProjectSettings.has_setting(setting):
 		ProjectSettings.set_setting(setting, value)
 
@@ -115,7 +115,7 @@ func _enter_tree():
 		preload("icons/rakugo_texture_progress.svg")
 	)
 
-	print("Rakugo is Active")
+	print("Rakugo is enabled")
 
 func _exit_tree():
 	# Remove the dock

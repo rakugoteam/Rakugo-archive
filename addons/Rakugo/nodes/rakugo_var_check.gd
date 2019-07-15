@@ -1,12 +1,12 @@
 extends Button
 
-export var var_name : = "some_var" 
+export var var_name := "some_var" 
 
-export var default : = false setget set_default, get_default
+export var default := false setget set_default, get_default
 
-var var_to_change : RakugoVar
+var var_to_change: RakugoVar
 
-func set_default(value : bool) -> void:
+func set_default(value: bool) -> void:
 	default = value
 	pressed = default
 
@@ -30,14 +30,14 @@ func _ready() -> void:
 	var_to_change.connect("value_changed", self, "on_value_changed")
 
 
-func on_value_changed(vname:String, new_value:bool) -> void:
+func on_value_changed(vname: String, new_value: bool) -> void:
 	if vname != var_name:
 		return
 	
 	pressed = new_value
 
 
-func on_toggled(value : bool) -> void:
+func on_toggled(value: bool) -> void:
 	var_to_change.value = value
 
 

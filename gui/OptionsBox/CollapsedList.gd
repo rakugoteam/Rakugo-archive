@@ -1,8 +1,8 @@
 extends BoxContainer
 class_name CollapsedList 
 
-export(Array) var options_list : = []
-export(int) var current_choice_id : = 0
+export(Array) var options_list := []
+export(int) var current_choice_id := 0
 export(NodePath) var label_path = "Label"
 export(NodePath) var prev_button_path = "PrevButton"
 export(NodePath) var next_button_path = "NextButton"
@@ -16,7 +16,7 @@ func _ready() -> void:
 	next_buton.connect("pressed", self, "_on_next_button")
 
 
-func update_label(choice : = options_list[current_choice_id]) -> void:
+func update_label(choice := options_list[current_choice_id]) -> void:
 	label.text = choice
 
 

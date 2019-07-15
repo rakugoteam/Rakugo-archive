@@ -2,24 +2,24 @@ tool
 extends Node
 class_name Character, "res://addons/Rakugo/icons/rakugo_character.svg"
 
-var character : CharacterObject
-var _name : = ""
-var _color : = Color("#ffffff")
-var _avatar : PackedScene
-var _prefix : = ""
-var _suffix : = ""
-var _id : = ""
-var _stats : = {}
-var _kind : = ""
+var character: CharacterObject
+var _name := ""
+var _color := Color("#ffffff")
+var _avatar: PackedScene
+var _prefix := ""
+var _suffix := ""
+var _id := ""
+var _stats := {}
+var _kind := ""
 
-export var character_id : = "" setget _setcharacter_id, _getcharacter_id
-export var character_name : = "" setget _setcharacter_name, _getcharacter_name
-export var color : = Color("#ffffff") setget _set_color, _get_color
-export var stats : = {} setget _set_stats, _get_stats
-export var prefix : = "" setget _set_prefix, _get_prefix
-export var suffix : = "" setget _set_suffix, _get_suffix
-export var avatar : PackedScene setget _set_avatar, _get_avatar
-export var kind : String setget _set_kind, _get_kind
+export var character_id := "" setget _setcharacter_id, _getcharacter_id
+export var character_name := "" setget _setcharacter_name, _getcharacter_name
+export var color := Color("#ffffff") setget _set_color, _get_color
+export var stats := {} setget _set_stats, _get_stats
+export var prefix := "" setget _set_prefix, _get_prefix
+export var suffix := "" setget _set_suffix, _get_suffix
+export var avatar: PackedScene setget _set_avatar, _get_avatar
+export var kind: String setget _set_kind, _get_kind
 
 func _ready() -> void:
 	if(!Engine.editor_hint):
@@ -29,12 +29,12 @@ func _ready() -> void:
 
 
 func _on_start() -> void:
-	var dict : = get_dict()
+	var dict := get_dict()
 	character = Rakugo.character(_id, dict)
 	var dbg = Rakugo.debug_dict(dict, character.parameters_names, "Set Character " + _id + " with ")
 
 
-func _setcharacter_id(value : String) -> void:
+func _setcharacter_id(value: String) -> void:
 	if(Engine.editor_hint):
 		_id = value
 		return
@@ -49,7 +49,7 @@ func _getcharacter_id() -> String:
 	return _id
 
 
-func _setcharacter_name(value : String) -> void:
+func _setcharacter_name(value: String) -> void:
 	_name = value
 
 	if character:
@@ -64,7 +64,7 @@ func _getcharacter_name() -> String:
 	return _name
 
 
-func _set_color(value : Color) -> void:
+func _set_color(value: Color) -> void:
 	_color = value
 
 	if character:
@@ -79,7 +79,7 @@ func _get_color() -> Color:
 	return _color
 
 
-func _set_prefix(value : String) -> void:
+func _set_prefix(value: String) -> void:
 	_prefix = value
 
 	if character:
@@ -94,7 +94,7 @@ func _get_prefix() -> String:
 	return _prefix
 
 
-func _set_suffix(value : String) -> void:
+func _set_suffix(value: String) -> void:
 	_suffix = value
 
 	if character:
@@ -109,7 +109,7 @@ func _get_suffix() -> String:
 	return _suffix
 
 
-func _set_avatar(value : PackedScene) -> void:
+func _set_avatar(value: PackedScene) -> void:
 	_avatar = value
 
 	if character:
@@ -124,7 +124,7 @@ func _get_avatar() -> PackedScene:
 	return _avatar
 
 
-func _set_stats(value : Dictionary) -> void:
+func _set_stats(value: Dictionary) -> void:
 	_stats = value
 
 	if character:
@@ -139,7 +139,7 @@ func _get_stats() -> Dictionary:
 	return _stats
 
 
-func _set_kind(value : String) -> void:
+func _set_kind(value: String) -> void:
 	_kind = value
 
 	if character:
@@ -160,7 +160,7 @@ func _get_kind() -> String:
 
 
 func get_dict() -> Dictionary:
-	var dict : = {}
+	var dict := {}
 	dict["name"]	= _name
 	dict["color"]	= _color.to_html()
 	dict["prefix"]	= _prefix
@@ -176,7 +176,7 @@ func get_dict() -> Dictionary:
 
 
 func on_save() -> void:
-	var dict : = get_dict()
+	var dict := get_dict()
 	Rakugo.character(_id, dict)
 
 

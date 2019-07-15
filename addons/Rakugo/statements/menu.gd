@@ -1,7 +1,7 @@
 extends Say
 class_name Menu
 
-var choices_labels : Array = []
+var choices_labels: Array = []
 
 func _init() -> void:
 	._init()
@@ -23,12 +23,12 @@ func exec() -> void:
 	.exec()
 
 
-func on_exit(_type : int, new_parameters : Dictionary = {}) -> void:
+func on_exit(_type: int, new_parameters: Dictionary = {}) -> void:
 	if !setup_exit(_type, new_parameters):
 		return
 
 	if "final_choice" in parameters:
-		var dialog_name : String = parameters.choices.values()[parameters.final_choice]
+		var dialog_name: String = parameters.choices.values()[parameters.final_choice]
 		Rakugo.jump(Rakugo.current_scene, Rakugo.current_node_name, dialog_name)
 
 	else:

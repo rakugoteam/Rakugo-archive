@@ -2,7 +2,7 @@ extends Control
 
 export var slot: PackedScene
 
-onready var saveslots_dir : String = "res://" + Rakugo.save_folder
+onready var saveslots_dir: String = "res://" + Rakugo.save_folder
 onready var container := $ScrollGrid/GridContainer
 onready var popup := $PopupPanel
 
@@ -43,7 +43,7 @@ func _ready() -> void:
 	line_edit.connect("text_entered", self, "on_save_name_entered")
 
 
-func delete_save(caller : String, mod : String):
+func delete_save(caller: String, mod: String):
 	container.hide()
 	var conf = popup.get_node("ConfirmDelete")
 	conf.show()
@@ -131,7 +131,7 @@ func close_popup(answer):
 	emit_signal("popup_is_closed")
 
 
-func savebox(saveslotsdir : = saveslots_dir + "/") -> void:
+func savebox(saveslotsdir := saveslots_dir + "/") -> void:
 	var saves = get_dir_contents(saveslots_dir, "tres",
 		["history", "auto", "quick", "back"])
 
@@ -179,7 +179,7 @@ func savebox(saveslotsdir : = saveslots_dir + "/") -> void:
 	filehandler.close()
 
 
-func loadbox(saveslotsdir : = saveslots_dir + "/") -> bool:
+func loadbox(saveslotsdir := saveslots_dir + "/") -> bool:
 	var saves = get_dir_contents(saveslots_dir, "tres", ["history"])
 
 	for c in container.get_children():
@@ -225,7 +225,7 @@ func loadbox(saveslotsdir : = saveslots_dir + "/") -> bool:
 	return true
 
 
-func savepress(caller : String) -> bool:
+func savepress(caller: String) -> bool:
 	if !dirhandler.dir_exists(saveslots_dir):
 		dirhandler.make_dir(saveslots_dir)
 
@@ -273,7 +273,7 @@ func savepress(caller : String) -> bool:
 	return true
 
 
-func loadpress(caller : String) -> void:
+func loadpress(caller: String) -> void:
 	if !dirhandler.dir_exists(saveslots_dir):
 		dirhandler.make_dir(saveslots_dir)
 

@@ -5,7 +5,7 @@ func _ready() -> void:
 	$CheckButton.connect("toggled", self, "_on_toggle")
 
 
-func _on_toggle(value : bool) -> void:
+func _on_toggle(value: bool) -> void:
 	settings.temp_vsync_enabled = value
 
 

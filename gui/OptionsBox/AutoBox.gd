@@ -5,8 +5,8 @@ func _ready() -> void:
 	connect("visibility_changed", self, "on_visibility_changed")
 
 
-func on_change_value(value : float) -> void:
-	var new_value = abs(1 - value/100)*10
+func on_change_value(value: float) -> void:
+	var new_value = abs(1 - value / 100) * 10
 	Rakugo.set_var("auto_time", new_value)
 
 
