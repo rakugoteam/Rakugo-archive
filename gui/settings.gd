@@ -1,20 +1,20 @@
 extends Node
 
-const default_window_size : = Vector2(1024, 600)
+const default_window_size := Vector2(1024, 600)
 
-var _prev_window_size : Vector2
-var _prev_window_minimized : bool
-var _prev_window_maximized : bool
-var _prev_window_fullscreen : bool
+var _prev_window_size: Vector2
+var _prev_window_minimized: bool
+var _prev_window_maximized: bool
+var _prev_window_fullscreen: bool
 
-var temp_window_size : Vector2
-var temp_vsync_enabled : bool
-var temp_window_type_id : int
+var temp_window_size: Vector2
+var temp_vsync_enabled: bool
+var temp_window_type_id: int
 
-var window_size : Vector2 setget _set_window_size, _get_window_size
-var window_minimized : bool setget _set_window_minimized, _get_window_minimized
-var window_maximized : bool setget _set_window_maximized, _get_window_maximized
-var window_fullscreen : bool setget _set_window_fullscreen, _get_window_fullscreen
+var window_size: Vector2 setget _set_window_size, _get_window_size
+var window_minimized: bool setget _set_window_minimized, _get_window_minimized
+var window_maximized: bool setget _set_window_maximized, _get_window_maximized
+var window_fullscreen: bool setget _set_window_fullscreen, _get_window_fullscreen
 
 var saves_scroll := 0
 
@@ -36,6 +36,7 @@ func _ready() -> void:
 	_prev_window_maximized = OS.window_maximized
 	_prev_window_fullscreen = OS.window_fullscreen
 
+
 func get_window_type_id() -> int:
 	var window_type_id = 0
 	
@@ -48,39 +49,48 @@ func get_window_type_id() -> int:
 	emit_signal("window_type_changed", window_type_id)
 	return window_type_id
 
-func _set_window_size(value : Vector2) -> void:
+
+func _set_window_size(value: Vector2) -> void:
 	_prev_window_size = OS.window_size
 	OS.window_size = value
 	emit_signal("window_size_changed", _prev_window_size, value)
 
+
 func _get_window_size() -> Vector2:
 	return OS.window_size
 
-func _set_window_minimized(value : bool) -> void:
+
+func _set_window_minimized(value: bool) -> void:
 	_prev_window_minimized = OS.window_minimized
 	OS.window_minimized = value
 	emit_signal("window_minimized_changed", value)
 
+
 func _get_window_minimized() -> bool:
 	return OS.window_minimized
 
-func _set_window_maximized(value : bool) -> void:
+
+func _set_window_maximized(value: bool) -> void:
 	_prev_window_maximized = OS.window_maximized
 	OS.window_maximized = value
 	emit_signal("window_maximized_changed", value)
 
+
 func _get_window_maximized() -> bool:
 	return OS.window_maximized
 
-func _set_window_fullscreen(value : bool) -> void:
+
+func _set_window_fullscreen(value: bool) -> void:
 	_prev_window_fullscreen = OS.window_fullscreen
 	OS.window_fullscreen = value
 	emit_signal("window_fullscreen_changed", value)
 
+
 func _get_window_fullscreen() -> bool:
 	return OS.window_fullscreen
 
-func _process(delta : float) -> void:
+
+func _process(delta: float) -> void:
 	if OS.window_size != _prev_window_size:
 		emit_signal("window_size_changed", _prev_window_size, OS.window_size)
 	
@@ -98,8 +108,10 @@ func _process(delta : float) -> void:
 	_prev_window_maximized = OS.window_maximized
 	_prev_window_fullscreen = OS.window_fullscreen
 
-func conf_set_rakugo_value(config : ConfigFile, value_name, def_rakugo_value):
+
+func conf_set_rakugo_value(config: ConfigFile, value_name, def_rakugo_value):
 	config.set_value("rakugo", value_name, Rakugo.get_value(def_rakugo_value))
+
 
 func save_conf() -> void:
 	var config = ConfigFile.new()
@@ -134,6 +146,7 @@ func save_conf() -> void:
 	
 	# Save the changes by overwriting the previous file
 	config.save("user://settings.cfg")
+
 
 func load_conf() -> void:
 	var config = ConfigFile.new()
@@ -184,11 +197,13 @@ func load_conf() -> void:
 	Rakugo.set_var("skip_all_text", skip_all_text)
 	Rakugo.set_var("skip_after_choices", skip_after_choices)
 
+
 func set_window_options(fullscreen, maximized):
 	_set_window_fullscreen(fullscreen)
 	_set_window_maximized(maximized)
 
-func apply(skip_window_type : = false) -> void:
+
+func apply(skip_window_type := false) -> void:
 	if not skip_window_type:
 		match temp_window_type_id:
 			0: # Windowed
@@ -200,4 +215,3 @@ func apply(skip_window_type : = false) -> void:
 		
 	_set_window_size(temp_window_size)
 	OS.vsync_enabled = temp_vsync_enabled
-

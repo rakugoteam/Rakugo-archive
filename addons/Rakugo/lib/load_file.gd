@@ -12,7 +12,7 @@ func invoke(save_folder: String, save_name: String,  variables: Dictionary):
 	var save_file_path = save_folder_path.plus_file(save_name)
 	r.debug(["load data from:", save_name])
 
-	var file:= File.new()
+	var file := File.new()
 
 	if r.test_save:
 		save_file_path += ".tres"
@@ -25,7 +25,7 @@ func invoke(save_folder: String, save_name: String,  variables: Dictionary):
 		r.loading_in_progress = false
 		return false
 
-	var save : Resource = load(save_file_path)
+	var save: Resource = load(save_file_path)
 
 	var game_version = save.game_version
 

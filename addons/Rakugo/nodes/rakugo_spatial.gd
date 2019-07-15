@@ -4,15 +4,15 @@ class_name RakugoSpatial, "res://addons/Rakugo/icons/rakugo_spatial.svg"
 
 signal on_substate(substate)
 
-var rnode : = RakugoNodeCore.new()
+var rnode := RakugoNodeCore.new()
 
-export var node_id : = ""
-export var camera : = NodePath("")
-export (Array, String) var state : Array setget _set_state, _get_state
+export var node_id := ""
+export var camera := NodePath("")
+export (Array, String) var state: Array setget _set_state, _get_state
 
-var _state : Array
-var node_link:NodeLink
-var last_show_args:Dictionary
+var _state: Array
+var node_link: NodeLink
+var last_show_args: Dictionary
 
 func _ready() -> void:
 	if(Engine.editor_hint):
@@ -39,14 +39,16 @@ func _ready() -> void:
 
 	add_to_group("save", true)
 
+
 func _on_rnode_substate(substate):
 	emit_signal("on_substate", substate)
 
-func _on_show(node_id : String, state_value : Array, show_args : Dictionary) -> void:
+
+func _on_show(node_id: String, state_value: Array, show_args: Dictionary) -> void:
 	if self.node_id != node_id:
 		return
 
-	var cam_pos = Vector2(0, 0)
+	var cam_pos := Vector2(0, 0)
 
 	if !camera.is_empty():
 		if 'x' in show_args:
@@ -70,7 +72,8 @@ func _on_show(node_id : String, state_value : Array, show_args : Dictionary) -> 
 	if not self.visible:
 		show()
 
-func _set_state(value : Array) -> void:
+
+func _set_state(value: Array) -> void:
 	_state = value
 
 	if not value:
@@ -82,14 +85,17 @@ func _set_state(value : Array) -> void:
 	if not Engine.editor_hint:
 		_state = rnode.setup_state(value)
 
+
 func _get_state() -> Array:
 	return _state
 
-func _on_hide(_node_id : String) -> void:
+
+func _on_hide(_node_id: String) -> void:
 	if _node_id != node_id:
 		return
 
 	hide()
+
 
 func _exit_tree() -> void:
 	if(Engine.editor_hint):
@@ -99,18 +105,20 @@ func _exit_tree() -> void:
 	var id = NodeLink.new("").var_prefix + node_id
 	Rakugo.variables.erase(id)
 
+
 func on_save() -> void:
 	if not node_link:
-		push_error("error with saveing: %s"  %node_id)
+		push_error("error with saving: %s" %node_id)
 		return
 
 	node_link.value["visible"] = visible
 	node_link.value["state"] = _state
 	node_link.value["show_args"] = last_show_args
 
-func on_load(game_version:String) -> void:
+
+func on_load(game_version: String) -> void:
 	if not node_link:
-		push_error("error with loading: %s"  %node_id)
+		push_error("error with loading: %s" %node_id)
 		return
 
 	visible = node_link.value["visible"]
@@ -122,6 +130,7 @@ func on_load(game_version:String) -> void:
 
 	else:
 		_on_hide(node_id)
+
 
 func _on_substate(substate):
 	pass

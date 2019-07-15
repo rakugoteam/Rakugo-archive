@@ -7,6 +7,7 @@ func _init() -> void:
 	parameters["node_id"] = ""
 	parameters["from_pos"] = 0.0
 
+
 func exec() -> void:
 	.exec()
 	Rakugo.on_play_audio(parameters.node_id, parameters.from_pos)

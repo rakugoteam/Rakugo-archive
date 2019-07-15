@@ -13,6 +13,7 @@ func _ready() -> void:
 	add_stylebox_override("normal", t.save_button_normal)
 	add_stylebox_override("pressed", t.save_button_pressed)
 
+
 func set_use_theme_form_settings(value:bool):
 	.set_use_theme_form_settings(value)
 	_ready()

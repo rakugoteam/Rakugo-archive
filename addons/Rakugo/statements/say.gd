@@ -9,6 +9,7 @@ func _init() -> void:
 	parameters["add_to_history"] = true
 	parameters_always += ["avatar_state"]
 
+
 func exec() -> void:
 	debug(parameters_names)
 
@@ -45,6 +46,6 @@ func exec() -> void:
 
 	.exec()
 
-func on_exit(_type : int, new_parameters : = {}) -> void:
+func on_exit(_type: int, new_parameters := {}) -> void:
 	Rakugo.story_state += 1
 	.on_exit(_type, new_parameters)

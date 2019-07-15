@@ -7,6 +7,7 @@ func _init() -> void:
 	parameters_names = ["node_id"]
 	parameters["node_id"] = ""
 
+
 func exec() -> void:
 	.exec()
 	Rakugo.on_stop_audio(parameters.node_id)

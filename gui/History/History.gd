@@ -1,18 +1,20 @@
 extends VBoxContainer
 
-export(PackedScene) var HistoryItemTemplate : PackedScene
-onready var HistoryItem : = load(HistoryItemTemplate.resource_path)
-var temp_history : = []
+export(PackedScene) var HistoryItemTemplate: PackedScene
+onready var HistoryItem := load(HistoryItemTemplate.resource_path)
+var temp_history := []
 
 func _ready() -> void:
 	connect("visibility_changed", self, "_on_visibility_changed")
 
-func add_history_item(type : int, parameters : Dictionary) -> void:
+
+func add_history_item(type: int, parameters: Dictionary) -> void:
 	var new_hi = HistoryItem.instance()
 	set_history_item(new_hi, type, parameters)
 	add_child(new_hi)
 
-func set_history_item(hi : Node, type : int, parameters : Dictionary):
+
+func set_history_item(hi: Node, type: int, parameters: Dictionary):
 	var label = hi.get_node("VBox/Label")
 	var dialog_text = hi.get_node("VBox/Dialog")
 	label.bbcode_text = ""
@@ -33,6 +35,7 @@ func set_history_item(hi : Node, type : int, parameters : Dictionary):
 	if type == Rakugo.StatementType.MENU:
 		var fch = Rakugo.menu_node.choices_labels[parameters.final_choice]
 		dialog_text.bbcode_text += Rakugo.text_passer("{i}" + fch + "{/i}{/b}")
+
 
 func _on_visibility_changed() -> void:
 	if not visible:

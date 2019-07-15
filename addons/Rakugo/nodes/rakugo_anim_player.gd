@@ -2,12 +2,12 @@ tool
 extends AnimationPlayer
 class_name RakugoAnimPlayer
 
-export var node_id : = ""
+export var node_id := ""
 
-var node_link:NodeLink
+var node_link: NodeLink
 
 func _ready() -> void:
-	if(Engine.editor_hint):
+	if Engine.editor_hint:
 		if node_id.empty():
 			node_id = name
 
@@ -27,13 +27,15 @@ func _ready() -> void:
 
 	add_to_group("save", true)
 
-func _on_play(id : String, anim_name : String) -> void:
+
+func _on_play(id: String, anim_name: String) -> void:
 	if id != node_id:
 		return
 
 	play(anim_name)
 
-func _on_stop(id : String, reset : bool) -> void:
+
+func _on_stop(id: String, reset: bool) -> void:
 	if id != node_id:
 		return
 
@@ -46,17 +48,19 @@ func _on_stop(id : String, reset : bool) -> void:
 	if reset:
 		seek(0, true)
 
+
 func on_save():
 	if not node_link:
-		push_error("error with saveing: %s"  %node_id)
+		push_error("error with saving: %s"  %node_id)
 		return
 
 	node_link.value["anim_name"] = current_animation
 	node_link.value["is_playing"] = is_playing()
 
-func on_load(game_version:String) -> void:
+
+func on_load(game_version: String) -> void:
 	if not node_link:
-		push_error("error with loading: %s"  %node_id)
+		push_error("error with loading: %s" %node_id)
 		return
 
 	if "is_playing" in node_link.value:
@@ -64,6 +68,7 @@ func on_load(game_version:String) -> void:
 			if "anim_name" in node_link.value:
 				var anim_name = node_link.value["anim_name"]
 				_on_play(node_id, anim_name)
+
 
 func _exit_tree() -> void:
 	if(Engine.editor_hint):

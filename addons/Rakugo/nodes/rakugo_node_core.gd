@@ -3,10 +3,11 @@ class_name RakugoNodeCore
 
 signal on_substate(substate)
 
-func is_procent(x : float) -> bool:
+func is_procent(x: float) -> bool:
 	return (x >= 0.0 and x <= 1.0)
 
-func show_at(camera_postion : Vector2, show_args : Dictionary, def_pos:Vector2) -> Vector2:
+
+func show_at(camera_postion: Vector2, show_args: Dictionary, def_pos:Vector2) -> Vector2:
 	var x = camera_postion.x
 	var y = camera_postion.y
 	Rakugo.debug(["cam_pos", camera_postion])
@@ -37,6 +38,7 @@ func show_at(camera_postion : Vector2, show_args : Dictionary, def_pos:Vector2) 
 		Rakugo.debug(["y%", y])
 
 	return Vector2(x, y)
+
 
 func setup_state(state:Array) -> Array:
 	if state == []:

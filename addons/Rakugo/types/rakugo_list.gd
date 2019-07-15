@@ -3,21 +3,21 @@ class_name RakugoList
 
 signal index_value_change(var_id, index, index_value)
 
-func _init(var_id:String, var_value:Array
-	).(var_id, var_value, Rakugo.Type.LIST):
+func _init(var_id: String, var_value: Array
+		).(var_id, var_value, Rakugo.Type.LIST):
 	pass
 
-func _set_value(var_value:Array) -> void:
+func _set_value(var_value: Array) -> void:
 	._set_value(var_value)
 
 func _get_value() -> Array:
 	return _value
 
-func set_index_value(index:int, index_value) -> void:
+func set_index_value(index: int, index_value) -> void:
 	_value[index] = index_value
 	emit_signal("index_value_change", id, index, index_value)
 
-func get_index_value(index:int):
+func get_index_value(index: int):
 	return _value[index]
 
 func add(value_to_add) -> void:
@@ -26,10 +26,10 @@ func add(value_to_add) -> void:
 func back():
 	_value.back()
 
-func bsearch(index_value, before:=true) -> int:
+func bsearch(index_value, before := true) -> int:
 	return _value.bsearch(index_value, before)
 
-func bsearch_custom(index_value, obj:Object, func_name:String, before:=true) -> int:
+func bsearch_custom(index_value, obj:Object, func_name:String, before :=true) -> int:
 	return _value.bsearch_custom(index_value, obj, func_name, before)
 
 func clear():
@@ -44,7 +44,7 @@ func empty() -> bool:
 func erase(value_to_erase) -> void:
 	_value.erase(value_to_erase)
 
-func find(what, from:=0) -> int:
+func find(what, from := 0) -> int:
 	return _value.find(what, from)
 
 func find_last(what) -> int:
@@ -86,7 +86,7 @@ func remove(position:int) -> void:
 func resize(size:int) -> void:
 	_value.resize(size)
 
-func rfind(what, from:=-1) -> int:
+func rfind(what, from := -1) -> int:
 	return _value.rfind(what, from)
 
 func shuffle() -> void:
@@ -98,10 +98,11 @@ func size() -> int:
 func sort() -> void:
 	_value.sort()
 
-func sort_custom(obj:Object, func_name:String) -> void:
+func sort_custom(obj: Object, func_name: String) -> void:
 	_value.sort_custom(obj, func_name)
 
-func parse_text(text:String, open:String, close:String) -> String:
+
+func parse_text(text: String, open: String, close: String) -> String:
 	text = .parse_text(text, open, close)
 	
 	for i in range(_value.size()):
@@ -113,8 +114,3 @@ func parse_text(text:String, open:String, close:String) -> String:
 		text = text.replace(sa, str(_value[i]))
 	
 	return text
-	
-
-
-
-

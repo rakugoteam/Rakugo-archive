@@ -1,8 +1,8 @@
 extends HBoxContainer
 
-onready var Screens : = get_node("../../Screens")
-var save_error_msg : String = "[color=red]Error saving Game[/color]"
-var load_error_msg : String = "[color=red]Error loading Game[/color]"
+onready var Screens := get_node("../../Screens")
+var save_error_msg: String = "[color=red]Error saving Game[/color]"
+var load_error_msg: String = "[color=red]Error loading Game[/color]"
 
 func _ready() -> void:
 	Rakugo.connect("exec_statement", self, "_on_statement")
@@ -31,12 +31,15 @@ func _ready() -> void:
 	$Options.connect("pressed", Screens, "_on_Options_pressed")
 	$Hide.connect("toggled", self, "_on_Hide_toggled")
 
+
 func _on_checkpoint() -> void:
 	$InfoAnim.play("Checkpoint")
+
 
 func _on_back() -> void:
 	$Back.release_focus()
 	Rakugo.go_back()
+
 
 func _on_qsave() -> void:
 	if Rakugo.savefile():
@@ -47,6 +50,7 @@ func _on_qsave() -> void:
 		$InfoAnim/Panel/Label.bbcode_text = save_error_msg
 		$InfoAnim.play("GeneralNotif")
 
+
 func _on_qload() -> void:
 	if Rakugo.loadfile():
 		$InfoAnim.play("Loaded")
@@ -56,12 +60,14 @@ func _on_qload() -> void:
 		$InfoAnim/Panel/Label.bbcode_text = load_error_msg
 		$InfoAnim.play("GeneralNotif")
 
-func _on_statement(type : int, parameters : Dictionary) -> void:
+
+func _on_statement(type: int, parameters: Dictionary) -> void:
 	$Skip.disabled = !Rakugo.can_skip()
 	$Back.disabled = !Rakugo.can_go_back()
 	$Auto.disabled = !Rakugo.can_auto()
 	$History.disabled = Rakugo.history_id == 0
 	$QLoad.disabled = !Rakugo.can_qload()
+
 
 func on_auto() -> void:
 	$Skip.pressed = false
@@ -72,12 +78,14 @@ func on_auto() -> void:
 
 	$InfoAnim.play("Auto")
 
+
 func on_stop_loop() -> void:
 	$Auto.pressed = false
 	$Skip.pressed = false
 	Rakugo.skipping = false
 	$InfoAnim.stop()
 	$InfoAnim/Panel.hide()
+
 
 func on_skip() -> void:
 	$Auto.pressed = false
@@ -90,19 +98,23 @@ func on_skip() -> void:
 
 	$InfoAnim.play("Skip")
 
+
 func full_save() -> void:
 	var screenshot = Screens.get_screenshot()
 	Screens.save_menu(screenshot)
+
 
 func _hide_on_input(event):
 	if event.is_action_pressed("ui_select"):
 		$Hide.pressed = !$Hide.pressed
 		_on_Hide_toggled($Hide.pressed)
 
-func _on_Hide_toggled(value:bool) -> void:
+
+func _on_Hide_toggled(value: bool) -> void:
 	Rakugo.emit_signal("hide_ui", !value)
 
-func _input(event : InputEvent) -> void:
+
+func _input(event: InputEvent) -> void:
 	if Rakugo.can_alphanumeric:
 		_hide_on_input(event)
 

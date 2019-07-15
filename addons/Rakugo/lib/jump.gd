@@ -1,12 +1,12 @@
 extends Node
 
 func invoke(
-		scene_id:String,
-		node_name:String,
-		dialog_name:String,
+		scene_id: String,
+		node_name: String,
+		dialog_name: String,
 		state := 0,
 		force_reload := false
-	) ->void :
+		) -> void:
 
 	var r = Rakugo
 	r.current_node_name = node_name
@@ -20,7 +20,8 @@ func invoke(
 	if r.started:
 		r.story_step()
 
-func load_scene(scene_id, force_reload = true):
+
+func load_scene(scene_id, force_reload := true):
 	var r = Rakugo
 	var scenes_links = load(r.scenes_links).get_as_dict()
 	var path = r.current_scene

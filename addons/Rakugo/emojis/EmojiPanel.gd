@@ -17,12 +17,14 @@ func _ready():
 		grid.add_child(b)
 	
 	$LineEdit.connect("text_changed", self, "on_text_changed")
-	
-func on_button(button:Button):
+
+
+func on_button(button: Button):
 	$Label.text = '"' + button.name + '"' + "copied to clipboard" 
 	OS.clipboard = button.name
-	
-func on_text_changed(text:String):
+
+
+func on_text_changed(text: String):
 	if text == "":
 		for ch in grid.get_children():
 			ch.visible = true
@@ -33,6 +35,3 @@ func on_text_changed(text:String):
 			ch.visible = false
 			if ch.name.find(text) != -1:
 				ch.visible = true
-	
-
-		

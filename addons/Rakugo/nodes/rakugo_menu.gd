@@ -4,7 +4,7 @@ extends BoxContainer
 # but to seen other Nodes that use it
 
 export var kind := "vertical"
-export var ChoiceButton : PackedScene
+export var ChoiceButton: PackedScene
 
 var prev_visible := false
 
@@ -12,9 +12,11 @@ func _ready():
 	Rakugo.connect("exec_statement", self, "_on_statement")
 	Rakugo.connect("hide_ui", self, "_on_hide")
 
-func _on_hide(value:bool) -> void:
+
+func _on_hide(value: bool) -> void:
 	if value:
 		get_parent().visible = prev_visible
+
 
 func _on_statement(type, parameters):
 	if type != Rakugo.StatementType.MENU:
@@ -42,10 +44,11 @@ func _on_statement(type, parameters):
 		add_child(ch_button)
 		ch_button.label.bbcode_text = "[center]" + ch + "[/center]"
 		ch_button.id = i
-		Rakugo.debug(["create button (", ch, ") with id : ", i])
+		Rakugo.debug(["create button (", ch, ") with id: ", i])
 		i += 1
 
 	get_parent().show()
+
 
 func _on_Hide_toggled(button_pressed):
 	visible = !button_pressed

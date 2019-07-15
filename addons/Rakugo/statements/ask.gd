@@ -2,12 +2,13 @@ extends Say
 class_name Ask
 
 var value = "value"
-var variable : String = "variable"
+var variable := "variable"
 
 func _init() -> void:
 	._init()
 	type = 2 # Rakugo.StatementType.ASK
 	parameters_names += ["temp", "variable"]
+
 
 func exec() -> void:
 	Rakugo.checkpoint()
@@ -21,7 +22,8 @@ func exec() -> void:
 
 	.exec()
 
-func on_exit(_type : int, new_parameters : Dictionary = {}) -> void:
+
+func on_exit(_type: int, new_parameters: Dictionary = {}) -> void:
 	if !setup_exit(_type, new_parameters):
 		return
 

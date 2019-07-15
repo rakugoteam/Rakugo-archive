@@ -3,13 +3,13 @@ class_name RakugoAvatar, "res://addons/Rakugo/icons/rakugo_avatar.svg"
 
 signal on_substate(substate)
 
-onready var rnode : = RakugoNodeCore.new()
+onready var rnode := RakugoNodeCore.new()
 
-export var avatar_id:String = name
-export (Array, String) var state : Array setget _set_state, _get_state
+export var avatar_id: String = name
+export (Array, String) var state: Array setget _set_state, _get_state
 
-var _state : = []
-var avatar_link : Avatar
+var _state := []
+var avatar_link: Avatar
 
 func _ready():
 	if Engine.editor_hint:
@@ -40,16 +40,19 @@ func _ready():
 	if node_link:
 		_set_state(node_link.value.state)
 
+
 func _on_rnode_substate(substate):
 	emit_signal("on_substate", substate)
 
-func _on_show(avatar_id : String, state_value : Array, show_args : Dictionary) -> void:
+
+func _on_show(avatar_id: String, state_value: Array, show_args: Dictionary) -> void:
 	if self.avatar_id != avatar_id:
 		return
 
 	_set_state(state_value)
 
-func _set_state(value : Array) -> void:
+
+func _set_state(value: Array) -> void:
 	_state = value
 
 	if not value:
@@ -61,8 +64,10 @@ func _set_state(value : Array) -> void:
 	if not Engine.editor_hint:
 		_state = rnode.setup_state(value)
 
+
 func _get_state() -> Array:
 	return _state
+
 
 func _exit_tree() -> void:
 	if(Engine.editor_hint):
@@ -72,12 +77,15 @@ func _exit_tree() -> void:
 	var id = Avatar.new("").var_prefix + avatar_id
 	Rakugo.variables.erase(id)
 
+
 func on_save() -> void:
 	avatar_link.value["state"] = _state
 
-func on_load(game_version:String) -> void:
+
+func on_load(game_version: String) -> void:
 	_state = avatar_link.value["state"]
 	_on_show(avatar_id, _state , {})
+
 
 func _on_substate(substate):
 	pass

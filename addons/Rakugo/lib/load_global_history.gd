@@ -19,16 +19,16 @@ func invoke() -> bool:
 	else:
 		save_path += ".res"
 
-	r.debug(["load global history from:", save_name])
+	r.debug(["load global history from: %s" %save_name])
 
-	var file:= File.new()
+	var file := File.new()
 
 	if not file.file_exists(save_path):
-		push_error("global history file %s doesn't exist" % save_path)
+		push_error("global history file %s doesn't exist" %save_path)
 		r.loading_in_progress = false
 		return false
 
-	var save_hist : HistorySave = load(save_path)
+	var save_hist: HistorySave = load(save_path)
 	r.global_history = save_hist.history_data
 
 	r.loading_in_progress = false
