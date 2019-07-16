@@ -15,11 +15,9 @@ or like my friend call it *Story Management Plugin*.
 
 The idea is to have a ready to use plug-in for stories, so developers can create narrative driven games with all the amazing features and tools of Godot 3.1+.
 
-Now you can support this project by [Patreon](https://www.patreon.com/jebedaia360).
+Now you can support this project by buing it on [itch.io](https://jebedaia.itch.io/rakugo).
 
-You can download 1.0 for Godot 3.0 [here](https://github.com/jebedaia360/Rakugo/releases).
-
-Now we are working on [Rakugo 2.0 for Godot 3.1](https://github.com/jebedaia360/Rakugo/issues/81) :D
+You can download 2.0 for Godot 3.1 [here](https://github.com/jebedaia360/Rakugo/releases).
 
 ## Showcase
 
@@ -33,7 +31,7 @@ If your game uses Rakugo write to me on [Discord](https://discord.gg/K9gvjdg).
 
 It means games that are for example:
 
-- Visual Novels ![](https://img.shields.io/badge/VN-95%25-brightgreen.svg?style=flat-square)
+- [Visual Novels](https://github.com/jebedaia360/Rakugo-The-Question) ![](https://img.shields.io/badge/VN-100%25-brightgreen.svg?style=flat-square)
 - Click & Point Adventures ![](https://img.shields.io/badge/Adv-25%25-yellowgreen.svg?style=flat-square)
 - RPG ![](https://img.shields.io/badge/RPG-40%25-green.svg?style=flat-square)
 
