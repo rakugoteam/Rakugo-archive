@@ -92,8 +92,7 @@ func _set_state(value: Array) -> void:
 	if not rnode:
 		return
 
-	if not Engine.editor_hint and rnode:
-		_state = rnode.setup_state(value)
+	_state = rnode.setup_state(value)
 
 
 func _get_state() -> Array:
@@ -137,7 +136,7 @@ func on_load(game_version: String) -> void:
 	if not node_link:
 		push_error("error with loading: %s" %node_id)
 		return
-		
+
 	visible = node_link.value["visible"]
 
 	if visible:

@@ -1,3 +1,4 @@
+tool
 extends Node
 class_name RakugoAvatar, "res://addons/Rakugo/icons/rakugo_avatar.svg"
 

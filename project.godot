@@ -368,19 +368,20 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Rakugo"
+config/name="The Question: Rakugo Edition"
+run/main_scene="res://game/scenes/Start/start.tscn"
 boot_splash/image="res://graphics/splash.png"
 boot_splash/bg_color=Color( 0.741176, 0.733333, 0.733333, 1 )
 config/icon="res://graphics/window_icon.png"
 config/auto_accept_quit=false
 config/quit_on_go_back=false
-rakugo/version="2.0.0"
-rakugo/game_credits="Your Company"
+rakugo/version="1.0.0"
+rakugo/game_credits="{a=https://github.com/jebedaia360}Jeremi Biernacki ({i}Jebedaia{/i}){/a}"
 rakugo/markup="renpy"
 rakugo/debug=false
 rakugo/scenes_links="res://scenes_links.tres"
 rakugo/save_folder="saves"
-rakugo/theme="res://themes/new_gui/new_gui.theme"
+rakugo/theme="res://themes/question/question.theme"
 rakugo/default_kind="adv"
 
 [autoload]
@@ -400,7 +401,7 @@ gdscript/warnings/return_value_discarded=false
 
 [editor_plugins]
 
-enabled=PoolStringArray( "Rakugo" )
+enabled=PoolStringArray( "Rakugo", "godot-plugin-refresher" )
 
 [input]
 
