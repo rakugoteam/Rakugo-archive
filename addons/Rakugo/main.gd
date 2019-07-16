@@ -3,7 +3,7 @@ extends Node
 ## don't change - to be removed / change how it works
 var test_save := true
 
-const rakugo_version := "2.0.0"
+const rakugo_version := "2.0.3"
 const credits_path := "res://addons/Rakugo/credits.txt"
 
 # we need it because we hide base RakugoMenu form custom nodes
