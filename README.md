@@ -57,7 +57,7 @@ This project's dialog functions can do more than Ren'Py's equivalents.
 
 **Q:** Is it easy to use ?</p>
 **A:** For now it is not that easy as I want it to be, but I am working to make it use RakugoScript (this framework's own language) and visual script.
-For now here is example using GDScript: [examples/Test/test.gd](examples/Test/test.gd)
+
 
 ## Other Info
 
