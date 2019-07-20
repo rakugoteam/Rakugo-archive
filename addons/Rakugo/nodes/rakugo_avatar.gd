@@ -39,7 +39,8 @@ func _ready():
 	var node_link = Rakugo.get_node_link(avatar_id)
 
 	if node_link:
-		_set_state(node_link.value.state)
+		if "state" in node_link.value:
+			_set_state(node_link.value.state)
 
 
 func _on_rnode_substate(substate):
