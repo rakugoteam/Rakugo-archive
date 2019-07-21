@@ -3,3 +3,4 @@
 *.tscn diff=toml
 *.tres diff=toml
 *.cfg diff=toml
+*.png[[:space:]]*.svg[[:space:]]*.ogg[[:space:]]*.jpg[[:space:]]*.jpeg[[:space:]] filter=lfs diff=lfs merge=lfs -text
