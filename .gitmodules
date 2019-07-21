@@ -1,0 +1,9 @@
+[submodule "addons/Rakugo"]
+	path = addons/Rakugo
+	url = https://github.com/rakugoteam/Rakugo-Core
+[submodule "gui"]
+	path = gui
+	url = https://github.com/rakugoteam/Rakugo-GUI-VN
+[submodule "themes"]
+	path = themes
+	url = https://github.com/rakugoteam/Rakugo-Themes
