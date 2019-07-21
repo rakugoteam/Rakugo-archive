@@ -4,3 +4,6 @@
 [submodule "gui"]
 	path = gui
 	url = https://github.com/rakugoteam/Rakugo-GUI-VN
+[submodule "themes"]
+	path = themes
+	url = https://github.com/rakugoteam/Rakugo-Themes
