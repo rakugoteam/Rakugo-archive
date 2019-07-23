@@ -2,12 +2,12 @@
 [![Documentation Status](https://readthedocs.org/projects/rakugo/badge/?version=latest)](https://rakugo.readthedocs.io/en/latest/?badge=latest)
 [![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](LICENSE)
 [![Discord Server](https://img.shields.io/discord/484604562183815169.svg?style=flat-square)](https://discord.gg/K9gvjdg)
-[![GitHub](https://img.shields.io/github/contributors/jebedaia360/Rakugo.svg?style=flat-square)](https://github.com/jebedaia360/Rakugo)
-[![GitHub](https://img.shields.io/github/stars/jebedaia360/Rakugo.svg?style=flat-square)](https://github.com/jebedaia360/Rakugo)
-[![GitHub](https://img.shields.io/github/forks/jebedaia360/Rakugo.svg?style=flat-square)](https://github.com/jebedaia360/Rakugo/network)
-[![GitHub](https://img.shields.io/github/watchers/badges/shields.svg?label=Watch&style=flat-square)](https://github.com/jebedaia360/Rakugo)
-[![GitHub](https://img.shields.io/github/issues/jebedaia360/Rakugo.svg?style=flat-square)](https://github.com/jebedaia360/Rakugo/issues)
-[![GitHub](https://img.shields.io/github/issues-closed/jebedaia360/Rakugo.svg?style=flat-square)](https://github.com/jebedaia360/Rakugo/issues)
+[![GitHub](https://img.shields.io/github/contributors/rakugoteam/Rakugo.svg?style=flat-square)](https://github.com/rakugoteam/Rakugo)
+[![GitHub](https://img.shields.io/github/stars/rakugoteam/Rakugo.svg?style=flat-square)](https://github.com/rakugoteam/Rakugo)
+[![GitHub](https://img.shields.io/github/forks/rakugoteam/Rakugo.svg?style=flat-square)](https://github.com/rakugoteam/Rakugo/network)
+[![GitHub](https://img.shields.io/github/watchers/badges/shields.svg?label=Watch&style=flat-square)](https://github.com/rakugoteam/Rakugo)
+[![GitHub](https://img.shields.io/github/issues/rakugoteam/Rakugo.svg?style=flat-square)](https://github.com/rakugoteam/Rakugo/issues)
+[![GitHub](https://img.shields.io/github/issues-closed/rakugoteam/Rakugo.svg?style=flat-square)](https://github.com/rakugoteam/Rakugo/issues)
 
 Rakugo is framework (inspired by [Ren'Py](https://www.renpy.org)) for story driven games in [Godot](https://godotengine.org)
 or like my friend call it *Story Management Plugin*.
@@ -16,7 +16,7 @@ The idea is to have a ready to use plug-in for stories, so developers can create
 
 Now you can support this project by buing it on [itch.io](https://jebedaia.itch.io/rakugo).
 
-You can download 2.0 for Godot 3.1 [here](https://github.com/jebedaia360/Rakugo/releases).
+You can download 2.0 for Godot 3.1 [here](https://github.com/rakugoteam/Rakugo/releases).
 
 ## Showcase
 
@@ -30,7 +30,7 @@ If your game uses Rakugo write to me on [Discord](https://discord.gg/K9gvjdg).
 
 It means games that are for example:
 
-- [Visual Novels](https://github.com/jebedaia360/Rakugo-The-Question) ![](https://img.shields.io/badge/VN-100%25-brightgreen.svg?style=flat-square)
+- [Visual Novels](https://github.com/rakugoteam/Rakugo-The-Question) ![](https://img.shields.io/badge/VN-100%25-brightgreen.svg?style=flat-square)
 - Click & Point Adventures ![](https://img.shields.io/badge/Adv-25%25-yellowgreen.svg?style=flat-square)
 - RPG ![](https://img.shields.io/badge/RPG-40%25-green.svg?style=flat-square)
 
@@ -62,9 +62,9 @@ This project's dialog functions can do more than Ren'Py's equivalents.
 
 If you want to help please write to us on our [Discord](https://discord.gg/K9gvjdg).
 
-Docs repo is here: https://github.com/jebedaia360/RakugoDocs
+Docs repo is here: https://github.com/rakugoteam/RakugoDocs
 
-I need help with this [visual script support](https://github.com/jebedaia360/Rakugo/issues/26).
+I need help with this [visual script support](https://github.com/rakugoteam/Rakugo/issues/26).
 
 - [Godot icons](https://github.com/godotengine/godot-design/tree/master/engine/icons/optimized)
 - [Linux Pop icon theme](https://github.com/pop-os/icon-theme)
