@@ -1,6 +1,5 @@
 # Rakugo ![Logo](graphics/window_icon.png)
 [![Documentation Status](https://readthedocs.org/projects/rakugo/badge/?version=latest)](https://rakugo.readthedocs.io/en/latest/?badge=latest)
-[![Patreon](https://img.shields.io/badge/support-pateron-orange.svg?style=flat-square)](https://www.patreon.com/jebedaia360)
 [![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](LICENSE)
 [![Discord Server](https://img.shields.io/discord/484604562183815169.svg?style=flat-square)](https://discord.gg/K9gvjdg)
 [![GitHub](https://img.shields.io/github/contributors/jebedaia360/Rakugo.svg?style=flat-square)](https://github.com/jebedaia360/Rakugo)
