@@ -2,6 +2,7 @@ addons/godot-plugin-refresher/
 fontconfig
 refences/
 saves/
+*.import
 .import/
 .directory
 .vscode/
