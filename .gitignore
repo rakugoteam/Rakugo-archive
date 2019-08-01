@@ -1,10 +1,16 @@
+# Godot-specific ignores
+.import/
+export.cfg
+export_presets.cfg
+
+# Mono-specific ignores
+.mono/
+
+# Project specific
 addons/godot-plugin-refresher/
 fontconfig
 refences/
 saves/
-*.import
-.import/
 .directory
 .vscode/
 .*.kra
-examples/the_question_org/
