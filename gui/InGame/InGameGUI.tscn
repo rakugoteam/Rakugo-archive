@@ -1,0 +1,662 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://themes/question/question.theme" type="Theme" id=1]
+[ext_resource path="res://addons/Rakugo/nodes/rakugo_control.gd" type="Script" id=2]
+[ext_resource path="res://addons/Rakugo/nodes/rakugo_menu.gd" type="Script" id=3]
+[ext_resource path="res://addons/Rakugo/icons/rakugo_menu_v.svg" type="Texture" id=4]
+[ext_resource path="res://gui/InGame/ChoiceButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://addons/Rakugo/icons/rakugo_menu_h.svg" type="Texture" id=6]
+[ext_resource path="res://gui/InGame/Say.tscn" type="PackedScene" id=7]
+[ext_resource path="res://themes/new_gui/new_gui.theme" type="Theme" id=8]
+[ext_resource path="res://gui/InGame/Notify.gd" type="Script" id=9]
+[ext_resource path="res://gui/InGame/Quick.gd" type="Script" id=10]
+[ext_resource path="res://gui/InGame/QuickMenuButton.tscn" type="PackedScene" id=11]
+[ext_resource path="res://ubuntu-font-family/Ubuntu-B.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://gui/Labels/name_text.tscn" type="PackedScene" id=13]
+[ext_resource path="res://ubuntu-font-family/UbuntuMono-R.ttf" type="DynamicFontData" id=14]
+[ext_resource path="res://ubuntu-font-family/Ubuntu-RI.ttf" type="DynamicFontData" id=15]
+[ext_resource path="res://ubuntu-font-family/Ubuntu-R.ttf" type="DynamicFontData" id=16]
+
+[sub_resource type="DynamicFont" id=1]
+size = 22
+use_filter = true
+font_data = ExtResource( 12 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Auto"
+length = 2.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("InfoAnim/Panel/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 0.9, 1.2, 1.5, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "Auto", "Auto .", "Auto ..", "Skip >>>", "Auto ...", "Auto ....", "Auto .....", "Auto ....." ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("InfoAnim/Panel:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 123, 42 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("InfoAnim/Panel/Label:rect_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 126, 40 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("InfoAnim/Panel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("InfoAnim/Panel:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.756863 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Checkpoint"
+tracks/0/type = "value"
+tracks/0/path = NodePath("InfoAnim/Panel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.756863 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("InfoAnim/Panel:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 305, 42 ), Vector2( 305, 42 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("InfoAnim/Panel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("InfoAnim/Panel/Label:text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "You can go back here" ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("InfoAnim/Panel/Label:rect_size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 301, 40 ), Vector2( 301, 40 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+tracks/0/type = "value"
+tracks/0/path = NodePath("InfoAnim/Panel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.756863 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("InfoAnim/Panel/Label:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 249, 40 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("InfoAnim/Panel:rect_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 247, 42 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("InfoAnim/Panel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=5]
+tracks/0/type = "value"
+tracks/0/path = NodePath("InfoAnim/Panel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.756863 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("InfoAnim/Panel/Label:bbcode_text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Game was loaded" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("InfoAnim/Panel/Label:rect_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 249, 40 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("InfoAnim/Panel:rect_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 247, 42 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("InfoAnim/Panel:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=6]
+tracks/0/type = "value"
+tracks/0/path = NodePath("InfoAnim/Panel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.756863 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("InfoAnim/Panel/Label:bbcode_text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "Game was saved" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("InfoAnim/Panel/Label:rect_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 239, 40 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("InfoAnim/Panel:rect_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 234, 42 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("InfoAnim/Panel:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=7]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("InfoAnim/Panel/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "Skip", "Skip >", "Skip >>", "Skip >>>" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("InfoAnim/Panel:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 123, 42 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("InfoAnim/Panel/Label:rect_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 126, 40 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("InfoAnim/Panel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("InfoAnim/Panel:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.756863 ) ]
+}
+
+[sub_resource type="DynamicFont" id=8]
+size = 30
+use_filter = true
+font_data = ExtResource( 14 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 30
+use_filter = true
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 30
+use_filter = true
+font_data = ExtResource( 15 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 30
+use_filter = true
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 30
+use_filter = true
+font_data = ExtResource( 16 )
+
+[node name="InGameGUI" type="Control"]
+pause_mode = 1
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 1
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+use_theme_from_setting = true
+register = false
+node_id = "InGameGUI"
+
+[node name="ScrollContainerVMenu" type="ScrollContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 267.0
+margin_top = 33.0
+margin_right = 767.0
+margin_bottom = 333.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="RakugoVMenu" type="VBoxContainer" parent="ScrollContainerVMenu"]
+margin_right = 500.0
+margin_bottom = 300.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_min_size = Vector2( 500, 300 )
+alignment = 1
+script = ExtResource( 3 )
+__meta__ = {
+"_editor_icon": ExtResource( 4 )
+}
+ChoiceButton = ExtResource( 5 )
+
+[node name="ScrollContainerHMenu" type="ScrollContainer" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -21.0
+margin_top = 121.0
+margin_right = 1004.0
+margin_bottom = 224.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="RakugoHMenu" type="HBoxContainer" parent="ScrollContainerHMenu"]
+margin_right = 1021.0
+margin_bottom = 300.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_min_size = Vector2( 1021, 300 )
+alignment = 1
+script = ExtResource( 3 )
+__meta__ = {
+"_editor_icon": ExtResource( 6 )
+}
+kind = "horizontal"
+ChoiceButton = ExtResource( 5 )
+
+[node name="SayPanel" parent="." instance=ExtResource( 7 )]
+mouse_filter = 0
+
+[node name="Notify" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+margin_left = -2.0
+margin_top = 36.0
+margin_right = 769.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 100, 20 )
+theme = ExtResource( 8 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Dialog" type="RichTextLabel" parent="Notify"]
+margin_left = -1.0
+margin_right = 780.0
+margin_bottom = 32.0
+focus_mode = 2
+size_flags_horizontal = 15
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis."
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis."
+scroll_active = false
+selection_enabled = true
+
+[node name="Quick" type="HBoxContainer" parent="."]
+margin_top = 571.0
+margin_right = 1463.0
+margin_bottom = 611.0
+rect_scale = Vector2( 0.7, 0.7 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Hide" type="CheckButton" parent="Quick"]
+margin_right = 127.0
+margin_bottom = 40.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Hide"
+
+[node name="History" parent="Quick" instance=ExtResource( 11 )]
+margin_left = 131.0
+margin_right = 246.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+text = "History"
+
+[node name="Quests" parent="Quick" instance=ExtResource( 11 )]
+margin_left = 250.0
+margin_right = 365.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+text = "Quests"
+
+[node name="Back" parent="Quick" instance=ExtResource( 11 )]
+margin_left = 369.0
+margin_right = 484.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+
+[node name="Skip" type="CheckButton" parent="Quick"]
+margin_left = 488.0
+margin_right = 610.0
+margin_bottom = 40.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Skip"
+
+[node name="Auto" type="CheckButton" parent="Quick"]
+margin_left = 614.0
+margin_right = 744.0
+margin_bottom = 40.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Auto"
+
+[node name="Save" parent="Quick" instance=ExtResource( 11 )]
+margin_left = 748.0
+margin_right = 863.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+text = "Save"
+
+[node name="Load" parent="Quick" instance=ExtResource( 11 )]
+margin_left = 867.0
+margin_right = 982.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+text = "Load"
+
+[node name="QSave" parent="Quick" instance=ExtResource( 11 )]
+margin_left = 986.0
+margin_right = 1101.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+text = "Q. Save"
+
+[node name="QLoad" parent="Quick" instance=ExtResource( 11 )]
+margin_left = 1105.0
+margin_right = 1220.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+text = "Q. Load"
+
+[node name="Options" parent="Quick" instance=ExtResource( 11 )]
+margin_left = 1224.0
+margin_right = 1339.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+text = "Options"
+
+[node name="Quit" parent="Quick" instance=ExtResource( 11 )]
+margin_left = 1343.0
+margin_right = 1463.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+text = "Quit"
+
+[node name="InfoAnim" type="AnimationPlayer" parent="Quick"]
+anims/Auto = SubResource( 2 )
+anims/Checkpoint = SubResource( 3 )
+anims/GeneralNotif = SubResource( 4 )
+anims/Loaded = SubResource( 5 )
+anims/Saved = SubResource( 6 )
+anims/Skip = SubResource( 7 )
+
+[node name="Panel" type="Panel" parent="Quick/InfoAnim"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+margin_top = 81.0
+margin_right = -719.0
+margin_bottom = 123.0
+rect_min_size = Vector2( 100, 20 )
+theme = ExtResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" parent="Quick/InfoAnim/Panel" instance=ExtResource( 13 )]
+margin_right = 301.0
+rect_pivot_offset = Vector2( 190, 470 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/mono_font = SubResource( 8 )
+custom_fonts/bold_italics_font = SubResource( 9 )
+custom_fonts/italics_font = SubResource( 10 )
+custom_fonts/bold_font = SubResource( 11 )
+custom_fonts/normal_font = SubResource( 12 )
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+custom_colors/selection_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = false
+bbcode_text = "Game was saved"
+text = "Game was saved"

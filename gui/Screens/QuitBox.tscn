@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://ubuntu-font-family/UB40outline.tres" type="DynamicFont" id=1]
+[ext_resource path="res://gui/Labels/dialogue_text.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ubuntu-font-family/UB22outline.tres" type="DynamicFont" id=3]
+
+[node name="QuitBox" type="VBoxContainer"]
+margin_left = 257.0
+margin_top = 11.0
+margin_right = 959.0
+margin_bottom = 545.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 20
+
+[node name="Title" type="Label" parent="."]
+margin_right = 702.0
+margin_bottom = 46.0
+custom_fonts/font = ExtResource( 1 )
+text = "Quit"
+align = 1
+
+[node name="Question" parent="." instance=ExtResource( 2 )]
+margin_top = 66.0
+margin_right = 702.0
+margin_bottom = 106.0
+bbcode_text = "[center]Do you realy want to quit?[/center]"
+text = "Do you realy want to quit?"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 254.0
+margin_top = 126.0
+margin_right = 447.0
+margin_bottom = 158.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_constants/separation = 100
+
+[node name="Yes" type="Button" parent="HBoxContainer"]
+margin_right = 51.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 3 )
+text = "Yes"
+flat = true
+
+[node name="No" type="Button" parent="HBoxContainer"]
+margin_left = 151.0
+margin_right = 193.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 3 )
+text = "No"
+flat = true
