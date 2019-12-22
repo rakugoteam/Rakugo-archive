@@ -1,0 +1,14 @@
+Made with {a=https://github.com/jebedaia360/Rakugo}Rakugo{/a} [rakugo_version] on {a=https://godotengine.org/}Godot Engine{/a} [godot_version] on {a=https://github.com/jebedaia360/Rakugo/blob/master/LICENSE} MIT License{/a}.
+Rakugo can be support by {a=https://www.patreon.com/jebedaia360}Patreon{/a}.
+
+Rakugo is made by:
+	{a=https://github.com/jebedaia360}Jeremi Biernacki ({i}Jebedaia{/i}){/a},
+	{a=https://github.com/BurningWood}Zon Petilla ({i}Title Pending{/i}){/a},
+	{a=https://github.com/ivandardi}Ivan Borgia Dardi({i}ivandardi/MelodicStream{/i}){/a},
+	{a=https://github.com/deep-gaurav}Deep Gaurav{/a}
+
+Special Thanks for:
+	{a=https://github.com/Kermer}Sebastian Holc ({i}Kermer{/i}){/a},
+	{a=https://github.com/Plopsiskopsis}Plopsiskopsis{/a},
+	{a=https://github.com/MatiasVME}Matías Muñoz Espinoza ({i}MatiasVME{/i}){/a},
+	Michael Alexsander Silva Dias

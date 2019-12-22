@@ -1,0 +1,86 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://themes/arc.theme" type="Theme" id=1]
+[ext_resource path="res://ubuntu-font-family/UB32.tres" type="DynamicFont" id=2]
+[ext_resource path="res://addons/Rakugo/tools/SceneLinksChooser.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/Rakugo/tools/Add.gd" type="Script" id=4]
+[ext_resource path="res://addons/Rakugo/tools/SceneLinkEdit.tscn" type="PackedScene" id=5]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.121569, 0.145098, 0.192157, 1 )
+
+[node name="LinkSceneCreate" type="WindowDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -3.0
+margin_bottom = 2.0
+theme = ExtResource( 1 )
+custom_fonts/title_font = ExtResource( 2 )
+window_title = "Link Scene Create "
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 9.0
+margin_right = -5.0
+margin_bottom = -8.0
+
+[node name="SceneLinksChooser" parent="VBoxContainer" instance=ExtResource( 3 )]
+editor/display_folded = false
+
+[node name="Add" type="Button" parent="VBoxContainer/SceneLinksChooser"]
+margin_left = 851.0
+margin_right = 1015.0
+margin_bottom = 22.0
+custom_constants/hseparation = 0
+text = "Add Another Scene Link"
+script = ExtResource( 4 )
+SceneLinkEdit = ExtResource( 5 )
+box_path = NodePath("../../HBoxContainer/ScrollContainer/VBoxContainer")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 26.0
+margin_right = 1015.0
+margin_bottom = 562.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer"]
+margin_right = 1015.0
+margin_bottom = 536.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/bg = SubResource( 1 )
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/ScrollContainer"]
+margin_right = 1015.0
+margin_bottom = 536.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SceneLinkEdit" parent="VBoxContainer/HBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource( 5 )]
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+editor/display_folded = true
+margin_top = 566.0
+margin_right = 1015.0
+margin_bottom = 588.0
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer2"]
+margin_right = 505.0
+margin_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+text = "Apply"
+
+[node name="Button2" type="Button" parent="VBoxContainer/HBoxContainer2"]
+margin_left = 509.0
+margin_right = 1015.0
+margin_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+text = "Cancel"

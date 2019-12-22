@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0 0 512 512"
+   style="height: 512px; width: 512px;"
+   version="1.1"
+   id="svg18"
+   sodipodi:docname="sound-on.svg"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)">
+  <metadata
+     id="metadata24">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs22" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1366"
+     inkscape:window-height="707"
+     id="namedview20"
+     showgrid="false"
+     inkscape:pagecheckerboard="true"
+     inkscape:zoom="0.4609375"
+     inkscape:cx="256"
+     inkscape:cy="256"
+     inkscape:window-x="0"
+     inkscape:window-y="36"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg18" />
+  <g
+     class=""
+     transform="translate(0,0)"
+     style="touch-action:none;fill:#ffffff"
+     id="g16"
+     inkscape:export-xdpi="12"
+     inkscape:export-ydpi="12">
+    <path
+       d="M333.782 80c128 64 128 288 0 352 192-64 192-288 0-352zm-48 16c64 50.843 64 270.217 0 321.06 128-50.843 128-270.217 0-321.06zm-75.13 49.922c-35.468.215-70.268 6.618-89.253 14.863-14.084 43.136-16.33 127.919-6.736 180.518-8.452-4.265-18.337-6.543-28.445-6.555-28.719 0-52 17.909-52 40s23.281 40 52 40 52-17.909 52-40c-6.166-49.187-13.74-115.12-8.225-165.437 37.756-7.722 77.49-17.422 114.688-10.715-4.152 38.294-3.029 82.424 3.379 117.552-8.452-4.265-18.337-6.543-28.446-6.554-28.719 0-52 17.908-52 40 0 22.091 23.281 40 52 40 28.72 0 52-17.909 52-40-4.618-72.485-18.78-132.767.33-196.436-18.491-5.267-40.012-7.365-61.293-7.236zm5.456 15.635c11.697-.073 23.313.706 34.174 2.558-1.185 5.199-2.232 10.67-3.156 16.336-37.913-5.64-78.578 1.385-114.332 9.656a227.233 227.233 0 0 1 3.277-14.884c19.722-7.718 50.145-13.48 80.037-13.666z"
+       fill="#9b9b9b"
+       fill-opacity="1"
+       id="path14"
+       style="fill:#ffffff" />
+  </g>
+</svg>

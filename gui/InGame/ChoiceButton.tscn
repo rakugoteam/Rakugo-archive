@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://themes/new_gui/new_gui.theme" type="Theme" id=1]
+[ext_resource path="res://addons/Rakugo/nodes/rakugo_choice_button.gd" type="Script" id=2]
+[ext_resource path="res://gui/Labels/dialogue_text.tscn" type="PackedScene" id=3]
+
+[node name="ChoiceButton" type="Button"]
+margin_right = 320.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+use_theme_from_setting = true
+use_form_theme = true
+color_node = true
+node_to_change_path = NodePath("")
+idle_node_color = Color( 0.533333, 0.533333, 0.533333, 1 )
+focus_node_color = Color( 0, 0.506836, 0.675781, 1 )
+hover_node_color = Color( 0.877647, 0.882353, 0.887059, 1 )
+pressed_node_color = Color( 0, 0.6, 0.8, 1 )
+disable_node_color = Color( 0.533333, 0.533333, 0.498039, 0.533333 )
+
+[node name="RichTextLabel" parent="." instance=ExtResource( 3 )]
+margin_right = 319.0
+margin_bottom = 41.0
+mouse_filter = 2
+bbcode_text = "[center]Lorem ipsum dolor sit "
+text = "Lorem ipsum dolor sit "
