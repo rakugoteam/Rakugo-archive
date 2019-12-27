@@ -1,5 +1,6 @@
+tool
 extends Resource
-class_name SceneLinks#, "res://addons/Rakugo/icons/scenes_links.svg"
+class_name ScenesLinks, "res://addons/Rakugo/icons/scenes_links.svg"
 
 export (Array, String) var ids := []
 export (Array, PackedScene) var scenes := []
@@ -17,3 +18,9 @@ func get_as_dict() -> Dictionary:
 		dict[ids[i]] = scenes[i]
 
 	return dict
+
+func set_using_dict(_ids:Array, _scenes:Array) -> void:
+	ids = _ids
+	for s in _scenes:
+		var ps : PackedScene = load(s)
+		scenes.append(ps)

@@ -4,6 +4,10 @@ extends EditorPlugin
 # A class member to hold the dock during the plugin lifecycle
 var dock
 
+# A class member to hold the tools menu during the plugin lifecycle
+var sl_tool
+
+
 func default_setting(setting: String, value):
 	if not ProjectSettings.has_setting(setting):
 		ProjectSettings.set_setting(setting, value)
@@ -63,6 +67,11 @@ func _enter_tree():
 	# Add the loaded scene to the docks
 	add_control_to_dock(DOCK_SLOT_RIGHT_UL, dock)
 	# Note that LEFT_UL means the left of the editor, upper-left dock
+
+	sl_tool = preload("tools/scenes_links/ScenesLinksModify.tscn").instance()
+	sl_tool.plugin_ready(get_editor_interface())
+	add_control_to_dock(DOCK_SLOT_RIGHT_UL, sl_tool)
+
 
 	add_custom_type(
 		"VRakugoMenu",
@@ -127,6 +136,9 @@ func _exit_tree():
 	remove_control_from_docks(dock)
 	# Erase the control from the memory
 	dock.free()
+
+	remove_control_from_docks(sl_tool)
+	sl_tool.free()
 
 	remove_custom_type("RakugoVarHSlider")
 	remove_custom_type("RakugoVarVSlider")

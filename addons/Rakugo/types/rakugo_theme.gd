@@ -1,6 +1,6 @@
 tool
 extends Theme
-class_name RakugoTheme #, "res://addons/Rakugo/icons/theme.svg"
+class_name RakugoTheme, "res://addons/Rakugo/icons/theme.svg"
 
 export var links_color := Color("#225ebf")
 export var idle_node_color := Color(0.533333, 0.533333, 0.533333, 1)

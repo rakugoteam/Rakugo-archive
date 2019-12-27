@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://addons/Rakugo/tools/scenes_links/SceneLinksChooser.gd" type="Script" id=1]
+[ext_resource path="res://addons/Rakugo/icons/cm_extractfiles.svg" type="Texture" id=2]
+[ext_resource path="res://addons/Rakugo/icons/document-save.svg" type="Texture" id=3]
+[ext_resource path="res://addons/Rakugo/icons/edit-undo.svg" type="Texture" id=4]
+
+[node name="ScenesLinksChooser" type="HBoxContainer"]
+margin_right = 492.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+script = ExtResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_top = 5.0
+margin_right = 78.0
+margin_bottom = 19.0
+size_flags_horizontal = 0
+text = "ScenesLinks"
+
+[node name="LineEdit" type="LineEdit" parent="."]
+margin_left = 82.0
+margin_right = 382.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+editable = false
+
+[node name="Choose" type="Button" parent="."]
+margin_left = 386.0
+margin_right = 414.0
+margin_bottom = 24.0
+hint_tooltip = "Open ScenesLinks"
+size_flags_horizontal = 0
+icon = ExtResource( 2 )
+clip_text = true
+
+[node name="VSeparator" type="VSeparator" parent="."]
+margin_left = 418.0
+margin_right = 422.0
+margin_bottom = 24.0
+
+[node name="Apply" type="Button" parent="."]
+margin_left = 426.0
+margin_right = 456.0
+margin_bottom = 24.0
+hint_tooltip = "Save Changes"
+text = "Apply"
+icon = ExtResource( 3 )
+clip_text = true
+
+[node name="Cancel" type="Button" parent="."]
+margin_left = 460.0
+margin_right = 488.0
+margin_bottom = 24.0
+hint_tooltip = "Undo Changes"
+icon = ExtResource( 4 )
+
+[node name="Control" type="Control" parent="."]
+margin_left = 492.0
+margin_right = 492.0
+margin_bottom = 24.0
+
+[node name="FileDialog" type="FileDialog" parent="Control"]
+margin_left = -785.939
+margin_top = 113.449
+margin_right = -225.939
+margin_bottom = 455.449
+window_title = "Otwórz plik"
+mode = 0
+filters = PoolStringArray( "*.tres" )
+current_file = "scenes_links.tres"
+current_path = "res://scenes_links.tres"
