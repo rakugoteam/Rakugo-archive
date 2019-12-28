@@ -1,0 +1,407 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://addons/Rakugo/tools/project_settings/RakugoProjectSettings.gd" type="Script" id=1]
+[ext_resource path="res://addons/Rakugo/tools/project_settings/VersionBox.gd" type="Script" id=2]
+[ext_resource path="res://addons/Rakugo/tools/project_settings/GameCreditsBox.gd" type="Script" id=3]
+[ext_resource path="res://addons/Rakugo/tools/project_settings/MarkupBox.gd" type="Script" id=4]
+[ext_resource path="res://addons/Rakugo/icons/ren_py_16x16.png" type="Texture" id=5]
+[ext_resource path="res://addons/Rakugo/tools/project_settings/KindBox.gd" type="Script" id=6]
+[ext_resource path="res://addons/Rakugo/tools/project_settings/ThemeBox.gd" type="Script" id=7]
+[ext_resource path="res://addons/Rakugo/icons/theme.svg" type="Texture" id=8]
+[ext_resource path="res://addons/Rakugo/tools/project_settings/ScenesLinksBox.gd" type="Script" id=9]
+[ext_resource path="res://addons/Rakugo/icons/scenes_links.svg" type="Texture" id=10]
+[ext_resource path="res://addons/Rakugo/tools/scenes_links/ScenesLinksChooser.tscn" type="PackedScene" id=11]
+[ext_resource path="res://addons/Rakugo/tools/project_settings/DebugBox.gd" type="Script" id=12]
+[ext_resource path="res://addons/Rakugo/tools/project_settings/SaveBox.gd" type="Script" id=13]
+[ext_resource path="res://addons/Rakugo/icons/save.svg" type="Texture" id=14]
+
+[sub_resource type="Image" id=3]
+data = {
+"data": PoolByteArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ),
+"format": "LumAlpha8",
+"height": 16,
+"mipmaps": false,
+"width": 16
+}
+
+[sub_resource type="ImageTexture" id=2]
+flags = 4
+flags = 4
+image = SubResource( 3 )
+size = Vector2( 16, 16 )
+
+[sub_resource type="Image" id=4]
+data = {
+"data": PoolByteArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ),
+"format": "LumAlpha8",
+"height": 16,
+"mipmaps": false,
+"width": 16
+}
+
+[sub_resource type="ImageTexture" id=5]
+flags = 4
+flags = 4
+image = SubResource( 4 )
+size = Vector2( 16, 16 )
+
+[node name="RakugoProjectSettings" type="ConfirmationDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -428.0
+margin_bottom = -216.0
+window_title = "Rakugo Project Settings"
+script = ExtResource( 1 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -36.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+margin_right = 580.0
+margin_bottom = 340.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VersionBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+editor/display_folded = true
+margin_right = 580.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+script = ExtResource( 2 )
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/VersionBox"]
+margin_right = 24.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+texture = SubResource( 2 )
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/VersionBox"]
+margin_left = 28.0
+margin_top = 5.0
+margin_right = 302.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "Version"
+valign = 1
+
+[node name="LineEdit" type="LineEdit" parent="ScrollContainer/VBoxContainer/VersionBox"]
+margin_left = 306.0
+margin_right = 580.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "1.2.0"
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="GameCreditsBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+editor/display_folded = true
+margin_top = 28.0
+margin_right = 580.0
+margin_bottom = 128.0
+size_flags_horizontal = 3
+script = ExtResource( 3 )
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/GameCreditsBox"]
+margin_right = 24.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 24, 24 )
+texture = SubResource( 2 )
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/GameCreditsBox"]
+margin_left = 28.0
+margin_top = 43.0
+margin_right = 302.0
+margin_bottom = 57.0
+size_flags_horizontal = 3
+text = "Game Credits"
+valign = 1
+
+[node name="TextEdit" type="TextEdit" parent="ScrollContainer/VBoxContainer/GameCreditsBox"]
+margin_left = 306.0
+margin_right = 580.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 200, 100 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "{a=https://github.com/jebedaia360}Jeremi Biernacki ({i}Jebedaia{/i}){/a}"
+
+[node name="MarkupBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+editor/display_folded = true
+margin_top = 132.0
+margin_right = 580.0
+margin_bottom = 156.0
+size_flags_horizontal = 3
+script = ExtResource( 4 )
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/MarkupBox"]
+margin_right = 24.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+texture = SubResource( 2 )
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/MarkupBox"]
+margin_left = 28.0
+margin_top = 5.0
+margin_right = 286.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "Markup"
+valign = 1
+
+[node name="MenuButton" type="MenuButton" parent="ScrollContainer/VBoxContainer/MarkupBox"]
+margin_left = 290.0
+margin_right = 548.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "BBCode Like"
+icon = SubResource( 5 )
+flat = false
+items = [ "Ren'Py Like", ExtResource( 5 ), 0, false, false, 0, 0, null, "", false, "BBCode Like", SubResource( 2 ), 0, false, false, 1, 0, null, "", false ]
+
+[node name="Reload" type="Button" parent="ScrollContainer/VBoxContainer/MarkupBox"]
+margin_left = 552.0
+margin_right = 580.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+icon = SubResource( 2 )
+
+[node name="KindBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+editor/display_folded = true
+margin_top = 160.0
+margin_right = 580.0
+margin_bottom = 184.0
+size_flags_horizontal = 3
+script = ExtResource( 6 )
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/KindBox"]
+margin_right = 24.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+texture = SubResource( 2 )
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/KindBox"]
+margin_left = 28.0
+margin_top = 5.0
+margin_right = 286.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "Default Kind (Dialog Style)"
+valign = 1
+
+[node name="MenuButton" type="MenuButton" parent="ScrollContainer/VBoxContainer/KindBox"]
+margin_left = 290.0
+margin_right = 548.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "adv"
+icon = SubResource( 5 )
+flat = false
+items = [ "adv", SubResource( 2 ), 0, false, false, 0, 0, null, "", false, "center", SubResource( 2 ), 0, false, false, 1, 0, null, "", false, "fullscreen", SubResource( 2 ), 0, false, false, 2, 0, null, "", false, "right", SubResource( 2 ), 0, false, false, 3, 0, null, "", false, "left", SubResource( 2 ), 0, false, false, 4, 0, null, "", false, "top", SubResource( 2 ), 0, false, false, 5, 0, null, "", false, "phone-right", SubResource( 2 ), 0, false, false, 6, 0, null, "", false, "phone-left", SubResource( 2 ), 0, false, false, 7, 0, null, "", false, "nvl", SubResource( 2 ), 0, false, false, 8, 0, null, "", false, "hide", SubResource( 2 ), 0, false, false, 9, 0, null, "", false ]
+
+[node name="Reload" type="Button" parent="ScrollContainer/VBoxContainer/KindBox"]
+margin_left = 552.0
+margin_right = 580.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+icon = SubResource( 2 )
+
+[node name="ThemeBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+editor/display_folded = true
+margin_top = 188.0
+margin_right = 580.0
+margin_bottom = 212.0
+size_flags_horizontal = 3
+script = ExtResource( 7 )
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/ThemeBox"]
+margin_right = 24.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+texture = ExtResource( 8 )
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/ThemeBox"]
+margin_left = 28.0
+margin_top = 5.0
+margin_right = 263.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "Theme"
+valign = 1
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/ThemeBox"]
+editor/display_folded = true
+margin_left = 267.0
+margin_right = 548.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "res://themes/question/question.theme"
+icon = SubResource( 2 )
+
+[node name="FileDialog" type="FileDialog" parent="ScrollContainer/VBoxContainer/ThemeBox/Button"]
+margin_left = -195.0
+margin_top = -122.0
+margin_right = 261.0
+margin_bottom = 198.0
+window_title = "Otwórz plik"
+mode = 0
+filters = PoolStringArray( "*.tres" )
+current_dir = "res://themes/new_gui"
+current_file = "new_gui.tres"
+current_path = "res://themes/new_gui/new_gui.tres"
+
+[node name="Reload" type="Button" parent="ScrollContainer/VBoxContainer/ThemeBox"]
+margin_left = 552.0
+margin_right = 580.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+icon = SubResource( 2 )
+
+[node name="ScenesLinksBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+editor/display_folded = true
+margin_top = 216.0
+margin_right = 580.0
+margin_bottom = 240.0
+script = ExtResource( 9 )
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/ScenesLinksBox"]
+margin_right = 16.0
+margin_bottom = 24.0
+texture = ExtResource( 10 )
+stretch_mode = 4
+
+[node name="ScenesLinksChooser" parent="ScrollContainer/VBoxContainer/ScenesLinksBox" instance=ExtResource( 11 )]
+editor/display_folded = true
+margin_left = 20.0
+margin_right = 580.0
+only_open = true
+
+[node name="Label" parent="ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser" index="0"]
+margin_right = 244.0
+size_flags_horizontal = 3
+
+[node name="LineEdit" parent="ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser" index="1"]
+margin_left = 248.0
+margin_right = 492.0
+text = "res://game/scenes_links.tres"
+
+[node name="Choose" parent="ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser" index="2"]
+margin_left = 496.0
+margin_right = 524.0
+icon = SubResource( 2 )
+
+[node name="HBoxContainer" parent="ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser" index="3"]
+visible = false
+
+[node name="SetAsDef" parent="ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser/HBoxContainer" index="0"]
+icon = SubResource( 2 )
+
+[node name="Apply" parent="ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser/HBoxContainer" index="2"]
+icon = SubResource( 2 )
+
+[node name="Cancel" parent="ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser" index="4"]
+margin_left = 528.0
+margin_right = 556.0
+icon = SubResource( 2 )
+
+[node name="Control" parent="ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser" index="5"]
+margin_left = 560.0
+margin_right = 560.0
+
+[node name="DebugBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+editor/display_folded = true
+margin_top = 244.0
+margin_right = 580.0
+margin_bottom = 284.0
+size_flags_horizontal = 3
+script = ExtResource( 12 )
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/DebugBox"]
+margin_right = 24.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 24, 24 )
+texture = SubResource( 2 )
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/DebugBox"]
+margin_left = 28.0
+margin_top = 13.0
+margin_right = 500.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+text = "Debug"
+valign = 1
+
+[node name="CheckButton" type="CheckButton" parent="ScrollContainer/VBoxContainer/DebugBox"]
+margin_left = 504.0
+margin_right = 580.0
+margin_bottom = 40.0
+
+[node name="SaveBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+editor/display_folded = true
+margin_top = 288.0
+margin_right = 580.0
+margin_bottom = 328.0
+size_flags_horizontal = 3
+script = ExtResource( 13 )
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/SaveBox"]
+margin_right = 24.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 24, 24 )
+texture = ExtResource( 14 )
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/SaveBox"]
+margin_left = 28.0
+margin_top = 13.0
+margin_right = 210.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+text = "Save Folder Name"
+valign = 1
+
+[node name="LineEdit" type="LineEdit" parent="ScrollContainer/VBoxContainer/SaveBox"]
+margin_left = 214.0
+margin_top = 8.0
+margin_right = 396.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "saves"
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/SaveBox"]
+margin_left = 400.0
+margin_top = 13.0
+margin_right = 467.0
+margin_bottom = 27.0
+text = "Test saves"
+valign = 1
+
+[node name="CheckButton" type="CheckButton" parent="ScrollContainer/VBoxContainer/SaveBox"]
+margin_left = 471.0
+margin_right = 547.0
+margin_bottom = 40.0
+
+[node name="Reload" type="Button" parent="ScrollContainer/VBoxContainer/SaveBox"]
+margin_left = 551.0
+margin_top = 8.0
+margin_right = 579.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 24, 24 )
+size_flags_horizontal = 5
+size_flags_vertical = 4
+icon = SubResource( 2 )
+
+[editable path="ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser"]

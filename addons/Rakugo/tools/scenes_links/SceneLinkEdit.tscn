@@ -1,9 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://addons/Rakugo/tools/scenes_links/SceneLinkEdit.gd" type="Script" id=1]
-[ext_resource path="res://addons/Rakugo/icons/bookmark-new-list.svg" type="Texture" id=2]
-[ext_resource path="res://addons/Rakugo/icons/debug-run.svg" type="Texture" id=3]
-[ext_resource path="res://addons/Rakugo/icons/bookmark-remove.svg" type="Texture" id=4]
 
 [node name="SceneLinkEdit" type="HBoxContainer"]
 margin_right = 501.0
@@ -12,24 +9,25 @@ size_flags_horizontal = 3
 script = ExtResource( 1 )
 menu_rect = Rect2( 0, 3, 200, 100 )
 
-[node name="Label" type="Label" parent="."]
-margin_top = 5.0
-margin_right = 38.0
-margin_bottom = 19.0
-text = "Scene"
+[node name="Icon" type="TextureRect" parent="."]
+margin_right = 24.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+expand = true
+stretch_mode = 4
 
 [node name="SceneEdit" type="LineEdit" parent="."]
-margin_left = 42.0
-margin_right = 209.0
+margin_left = 28.0
+margin_right = 210.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 
 [node name="Choose" type="Button" parent="."]
-margin_left = 213.0
-margin_right = 241.0
+margin_left = 214.0
+margin_right = 238.0
 margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
 hint_tooltip = "Choose from open scenes"
-icon = ExtResource( 2 )
 clip_text = true
 
 [node name="Menu" type="PopupMenu" parent="Choose"]
@@ -39,34 +37,32 @@ margin_right = 187.0
 margin_bottom = 178.0
 
 [node name="Browse" type="Button" parent="."]
-margin_left = 245.0
-margin_right = 275.0
+margin_left = 242.0
+margin_right = 266.0
 margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
 hint_tooltip = "Browse Scene"
-text = "Browse Scene"
-icon = ExtResource( 3 )
 clip_text = true
 
 [node name="Label2" type="Label" parent="."]
-margin_left = 279.0
+margin_left = 270.0
 margin_top = 5.0
-margin_right = 292.0
+margin_right = 283.0
 margin_bottom = 19.0
 text = "Id"
 
 [node name="IdEdit" type="LineEdit" parent="."]
-margin_left = 296.0
-margin_right = 463.0
+margin_left = 287.0
+margin_right = 469.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 
 [node name="Remove" type="Button" parent="."]
-margin_left = 467.0
+margin_left = 473.0
 margin_right = 497.0
 margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
 hint_tooltip = "Remove this scene link"
-text = "Remove"
-icon = ExtResource( 4 )
 clip_text = true
 
 [node name="FreePos" type="Control" parent="."]
@@ -84,3 +80,6 @@ resizable = true
 dialog_hide_on_ok = true
 mode = 0
 filters = PoolStringArray( "*.tscn" )
+current_dir = "res://game"
+current_file = "scenes_links.tres"
+current_path = "res://game/scenes_links.tres"

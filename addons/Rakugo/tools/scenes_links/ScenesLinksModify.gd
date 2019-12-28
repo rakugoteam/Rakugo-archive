@@ -2,21 +2,46 @@ tool
 extends VBoxContainer
 
 export var scene_link_edit:PackedScene
-export var box_path:NodePath
 
 var editor:EditorInterface
 var file_path:String
 var scenes_links: ScenesLinks
-var box:BoxContainer
+var box : BoxContainer
+var tween : Tween
+var fd : FileDialog
+
 
 func plugin_ready(_editor:EditorInterface) -> void:
 	editor = _editor
-	box = get_node(box_path)
+	box = $ScrollContainer/VBoxContainer
+	tween = $Panel/Tween
+	fd = $Control/FileDialog
+	
+	$Add.icon = get_icon("CreateNewSceneFrom", "EditorIcons")
+	
 	$Add.connect("pressed", self, "on_add")
 	$ScenesLinksChooser.connect("open", self, "_on_open")
 	$ScenesLinksChooser.connect("cancel", self, "_on_cancel")
 	$ScenesLinksChooser.connect("apply", self, "_on_apply")
-	$Control/FileDialog.connect("confirmed", self, "_on_file_dialog")
+	$ScenesLinksChooser.connect("set_as_def", self, "notify",
+	 ["Setted as Default "])
+	fd.connect("confirmed", self, "_on_file_dialog")
+	tween.connect("tween_all_completed", $Panel, "hide")
+
+
+func notify(text:String) -> void:
+	$Panel/Label.text = text
+	var scolor = Color(0, 0, 0, 0)
+	tween.interpolate_property(
+		$Panel, "modulate", scolor, Color.white,
+		1, Tween.TRANS_LINEAR,Tween.EASE_IN)
+		
+	tween.interpolate_property(
+		$Panel, "modulate", Color.white, scolor,
+		1, Tween.TRANS_LINEAR,Tween.EASE_IN, 0.5)
+		
+	$Panel.show()
+	tween.start()
 
 
 func on_add() -> void:
@@ -33,6 +58,7 @@ func add_sle(scene_id:String, scene_path:String):
 
 func _on_cancel() -> void:
 	_on_open(file_path)
+	notify("Undo all changes")
 
 
 func _on_open(_file_path:String) -> void:
@@ -58,28 +84,31 @@ func _on_apply() -> void:
 	for ch in box.get_children():
 		ids.append(ch.id)
 		scenes.append(ch.scene)
-	
+
 	if not exits:
 		scenes_links = ScenesLinks.new()
-	
+
 	scenes_links.set_using_dict(ids, scenes)
-	
+
 	if not exits:
-		$Control/FileDialog.popup()
-		return 
+		fd.popup()
+		return
 
 	save_sl(file_path, scenes_links)
 
 
-func save_sl(_file_path:String, _scenes_links:ScenesLinks): 
+func save_sl(_file_path:String, _scenes_links:ScenesLinks):
 	var error := ResourceSaver.save(_file_path, _scenes_links)
 
 	if error != OK:
-		print("There was issue writing ScenesLinks to %s error_number: %s" % 
+		notify("error see console")
+		print("There was issue writing ScenesLinks to %s error_number: %s" %
 			[file_path, error])
-
+		return
+	
+	notify("Saved")
 
 func _on_file_dialog():
-	file_path = $Control/FileDialog.current_path
+	file_path = fd.current_path
 	$ScenesLinksChooser/LineEdit.text = file_path
 	save_sl(file_path, scenes_links)

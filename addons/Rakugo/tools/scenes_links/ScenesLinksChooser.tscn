@@ -1,9 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://addons/Rakugo/tools/scenes_links/SceneLinksChooser.gd" type="Script" id=1]
-[ext_resource path="res://addons/Rakugo/icons/cm_extractfiles.svg" type="Texture" id=2]
-[ext_resource path="res://addons/Rakugo/icons/document-save.svg" type="Texture" id=3]
-[ext_resource path="res://addons/Rakugo/icons/edit-undo.svg" type="Texture" id=4]
 
 [node name="ScenesLinksChooser" type="HBoxContainer"]
 margin_right = 492.0
@@ -20,42 +17,55 @@ text = "ScenesLinks"
 
 [node name="LineEdit" type="LineEdit" parent="."]
 margin_left = 82.0
-margin_right = 382.0
+margin_right = 368.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 editable = false
 
 [node name="Choose" type="Button" parent="."]
-margin_left = 386.0
-margin_right = 414.0
+margin_left = 372.0
+margin_right = 396.0
 margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
 hint_tooltip = "Open ScenesLinks"
 size_flags_horizontal = 0
-icon = ExtResource( 2 )
 clip_text = true
 
-[node name="VSeparator" type="VSeparator" parent="."]
-margin_left = 418.0
-margin_right = 422.0
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+editor/display_folded = true
+margin_left = 400.0
+margin_right = 460.0
 margin_bottom = 24.0
 
-[node name="Apply" type="Button" parent="."]
-margin_left = 426.0
-margin_right = 456.0
+[node name="SetAsDef" type="Button" parent="HBoxContainer"]
+margin_right = 24.0
 margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+hint_tooltip = "Set as default"
+clip_text = true
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+margin_left = 28.0
+margin_right = 32.0
+margin_bottom = 24.0
+
+[node name="Apply" type="Button" parent="HBoxContainer"]
+margin_left = 36.0
+margin_right = 60.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
 hint_tooltip = "Save Changes"
-text = "Apply"
-icon = ExtResource( 3 )
 clip_text = true
 
 [node name="Cancel" type="Button" parent="."]
-margin_left = 460.0
+margin_left = 464.0
 margin_right = 488.0
 margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
 hint_tooltip = "Undo Changes"
-icon = ExtResource( 4 )
 
 [node name="Control" type="Control" parent="."]
+editor/display_folded = true
 margin_left = 492.0
 margin_right = 492.0
 margin_bottom = 24.0
@@ -68,5 +78,5 @@ margin_bottom = 455.449
 window_title = "Otwórz plik"
 mode = 0
 filters = PoolStringArray( "*.tres" )
-current_file = "scenes_links.tres"
-current_path = "res://scenes_links.tres"
+current_dir = "res://game"
+current_path = "res://game/"

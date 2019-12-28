@@ -8,6 +8,7 @@ export_presets.cfg
 
 # Project specific
 addons/godot-plugin-refresher/
+addons/editor_icon_previewer
 fontconfig
 refences/
 saves/

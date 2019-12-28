@@ -12,7 +12,13 @@ var id : String setget _set_id, _get_id
 var menu_rect_offset : Rect2
 
 func _ready() -> void:
-	menu_rect_offset = menu_rect;
+	menu_rect_offset = menu_rect
+	
+	$Icon.texture = get_icon("PackedScene", "EditorIcons")
+	$Choose.icon = get_icon("GuiDropdown", "EditorIcons")
+	$Browse.icon = get_icon("InstanceOptions", "EditorIcons")
+	$Remove.icon = get_icon("GuiClose", "EditorIcons")
+	
 	$Choose.connect("pressed", self, "_on_choose")
 	$Choose/Menu.connect("index_pressed", self, "_on_item")
 	$Choose/Menu.connect("id_pressed", self, "_on_item")
@@ -30,6 +36,7 @@ func _on_choose() -> void:
 	menu_rect = menu_rect_offset
 	menu_rect.position.y += $Choose.rect_size.y
 	menu_rect.position += $Choose.rect_global_position
+	menu_rect.position.x -= menu_rect.size.x
 	$Choose/Menu.popup(menu_rect)
 
 

@@ -12,7 +12,7 @@ func text_passer(
 		text: String,
 		variables: Dictionary,
 		mode: String = "renpy",
-		links_color: String = Rakugo.theme.links_color
+		links_color: String = Rakugo.tres.links_color
 		) -> String:
 	## passer for renpy or bbcode markup format
 	## its retrun bbcode
