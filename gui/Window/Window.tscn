@@ -17,6 +17,4 @@ margin_right = 0.0
 margin_bottom = 0.0
 script = null
 
-[node name="Screens" parent="." groups=[
-"save",
-] instance=ExtResource( 3 )]
+[node name="Screens" parent="." instance=ExtResource( 3 )]
