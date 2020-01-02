@@ -8,7 +8,7 @@ var tools_menu
 
 func default_setting(setting: String, value):
 	if not ProjectSettings.has_setting(setting):
-		ProjectSettings.set_initial_value(setting, value)
+		ProjectSettings.set_setting(setting, value)
 
 
 func init_project_settings():
@@ -57,45 +57,63 @@ func init_project_settings():
 		"adv"
 	)
 
+	default_setting(
+		"application/rakugo/default_mkind",
+		"vertical"
+	)
+
+	default_setting(
+		"application/rakugo/default_mcolumns",
+		2
+	)
+
+	default_setting(
+		"application/rakugo/default_manchor",
+		"center"
+	)
+
 
 func init_tools():
 	var theme = get_editor_interface().get_base_control().theme
-	
+
 	# Load the emoji_panel scene and instance it
 	emoji_panel = preload("emojis/EmojiPanel.tscn").instance()
 	emoji_panel.theme = theme
 	add_child(emoji_panel)
+	add_tool_menu_item("Browse Rakugo Emojis", self, "open_emojis")
 
 	sl_tool = preload("tools/scenes_links/ScenesLinksModify.tscn").instance()
 	sl_tool.theme = theme
 	sl_tool.get_node("ScenesLinks").plugin_ready(get_editor_interface())
 	add_child(sl_tool)
+	add_tool_menu_item("Edit Rakugo ScenesLinks", self, "open_sl_tool")
 
 	rakugo_project_settings = preload("tools/project_settings/RakugoProjectSettings.tscn").instance()
 	rakugo_project_settings.theme = theme
 	add_child(rakugo_project_settings)
+	add_tool_menu_item("Edit Rakugo Project Settings", self, "open_rakugo_project_settings")
 
-	tools_menu = preload("tools/menu/ToolsMenu.tscn").instance()
-	tools_menu.plugin = self
-	add_control_to_container(
-		EditorPlugin.CONTAINER_TOOLBAR, tools_menu)
+	add_tool_menu_item("Open RakugoDocs", self, "open_rakugo_docs")
+
+
+func open_emojis(arg) -> void:
+	emoji_panel.popup_centered()
+
+
+func open_sl_tool(arg) -> void:
+	sl_tool.popup_centered()
+
+
+func open_rakugo_project_settings(arg) -> void:
+	rakugo_project_settings.load_settings()
+	rakugo_project_settings.popup_centered()
+
+
+func open_rakugo_docs(arg) -> void:
+	OS.shell_open("https://rakugo.readthedocs.io/en/latest/")
 
 
 func add_custom_types():
-	add_custom_type(
-		"VRakugoMenu",
-		"VBoxContainer",
-		preload("nodes/rakugo_menu.gd"),
-		preload("icons/rakugo_menu_v.svg")
-	)
-
-	add_custom_type(
-		"HRakugoMenu",
-		"HBoxContainer",
-		preload("nodes/rakugo_menu.gd"),
-		preload("icons/rakugo_menu_h.svg")
-	)
-
 	add_custom_type(
 		"RakugoVarCheckButton",
 		"CheckButton",
@@ -151,14 +169,17 @@ func _enter_tree():
 
 	print("Rakugo is enabled")
 
+
 func remove_tools():
 	emoji_panel.free()
 	sl_tool.free()
 	rakugo_project_settings.free()
 
-	remove_control_from_container(
-		EditorPlugin.CONTAINER_TOOLBAR, tools_menu)
-	tools_menu.free()
+	remove_tool_menu_item("Browse Rakugo Emojis")
+	remove_tool_menu_item("Edit Rakugo ScenesLinks")
+	remove_tool_menu_item("Edit Rakugo Project Settings")
+	remove_tool_menu_item("Open RakugoDocs")
+
 
 func remove_custom_types():
 		remove_custom_type("RakugoVarHSlider")

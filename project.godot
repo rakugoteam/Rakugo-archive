@@ -377,13 +377,13 @@ config/auto_accept_quit=false
 config/quit_on_go_back=false
 rakugo/version="1.0.0"
 rakugo/game_credits="{a=https://github.com/jebedaia360}Jeremi Biernacki ({i}Jebedaia{/i}){/a}"
-rakugo/markup="renpy"
 rakugo/debug=true
 rakugo/scenes_links="res://game/scenes_links.tres"
 rakugo/save_folder="saves"
 rakugo/theme="res://themes/new_gui/new_gui.theme"
 rakugo/default_kind="adv"
 rakugo/test_saves=false
+rakugo/markup="renpy"
 
 [autoload]
 

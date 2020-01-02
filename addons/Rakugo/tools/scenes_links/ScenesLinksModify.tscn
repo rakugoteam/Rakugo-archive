@@ -5,7 +5,6 @@
 [ext_resource path="res://addons/Rakugo/tools/scenes_links/ScenesLinksChooser.tscn" type="PackedScene" id=3]
 
 [node name="WindowDialog" type="WindowDialog"]
-visible = true
 margin_right = 623.0
 margin_bottom = 383.0
 window_title = "Modify Scenes Links"
@@ -25,22 +24,16 @@ scene_link_edit = ExtResource( 2 )
 [node name="ScenesLinksChooser" parent="ScenesLinks" instance=ExtResource( 3 )]
 margin_right = 606.0
 
-[node name="Panel" type="ColorRect" parent="ScenesLinks"]
-visible = false
-margin_top = 28.0
-margin_right = 294.0
-margin_bottom = 44.0
-rect_min_size = Vector2( 0, 16 )
-color = Color( 0.733333, 0.72549, 0.105882, 1 )
-
-[node name="Label" type="Label" parent="ScenesLinks/Panel"]
-modulate = Color( 0, 0, 0, 1 )
+[node name="Label" type="Label" parent="ScenesLinks"]
+modulate = Color( 0.176471, 1, 0.305882, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 28.0
+margin_bottom = 28.0
 text = "notify"
 valign = 1
 
-[node name="Tween" type="Tween" parent="ScenesLinks/Panel"]
+[node name="Tween" type="Tween" parent="ScenesLinks/Label"]
 
 [node name="HSeparator" type="HSeparator" parent="ScenesLinks"]
 margin_top = 28.0
