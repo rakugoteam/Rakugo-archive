@@ -164,6 +164,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/types/rakugo_list.gd"
 }, {
+"base": "GridContainer",
+"class": "RakugoMenu",
+"language": "GDScript",
+"path": "res://addons/Rakugo/nodes/rakugo_menu.gd"
+}, {
 "base": "Node2D",
 "class": "RakugoNode2D",
 "language": "GDScript",
@@ -336,6 +341,7 @@ _global_script_class_icons={
 "RakugoControl": "",
 "RakugoDict": "",
 "RakugoList": "",
+"RakugoMenu": "res://addons/Rakugo/icons/rakugo_menu_v.svg",
 "RakugoNode2D": "",
 "RakugoNodeCore": "",
 "RakugoQuestButton": "",
@@ -377,13 +383,16 @@ config/auto_accept_quit=false
 config/quit_on_go_back=false
 rakugo/version="1.0.0"
 rakugo/game_credits="{a=https://github.com/jebedaia360}Jeremi Biernacki ({i}Jebedaia{/i}){/a}"
-rakugo/debug=true
+rakugo/debug=false
 rakugo/scenes_links="res://game/scenes_links.tres"
 rakugo/save_folder="saves"
 rakugo/theme="res://themes/new_gui/new_gui.theme"
 rakugo/default_kind="adv"
 rakugo/test_saves=false
 rakugo/markup="renpy"
+rakugo/default_mkind="vertical"
+rakugo/default_mcolumns=2.0
+rakugo/default_manchor="center"
 
 [autoload]
 

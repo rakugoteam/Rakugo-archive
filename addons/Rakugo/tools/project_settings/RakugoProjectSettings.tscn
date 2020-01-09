@@ -49,6 +49,7 @@ image = SubResource( 6 )
 size = Vector2( 16, 16 )
 
 [node name="RakugoProjectSettings" type="ConfirmationDialog"]
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -380.0
@@ -66,6 +67,7 @@ margin_right = -8.0
 margin_bottom = -36.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+editor/display_folded = true
 margin_right = 628.0
 margin_bottom = 373.0
 size_flags_horizontal = 3
@@ -150,7 +152,7 @@ margin_left = -565.0
 margin_top = -12.0
 margin_right = 13.0
 margin_bottom = 335.0
-window_title = "Otwórz plik"
+window_title = "Open a File"
 mode = 0
 filters = PoolStringArray( "*.txt" )
 show_hidden_files = true
@@ -249,6 +251,7 @@ rect_min_size = Vector2( 24, 24 )
 icon = SubResource( 2 )
 
 [node name="MKindBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+editor/display_folded = true
 margin_top = 188.0
 margin_right = 628.0
 margin_bottom = 212.0
@@ -307,7 +310,7 @@ size_flags_stretch_ratio = 0.6
 text = "vertical"
 icon = SubResource( 4 )
 flat = false
-items = [ "top_left", SubResource( 2 ), 0, false, false, 0, 0, null, "", false, "top_right", SubResource( 2 ), 0, false, false, 1, 0, null, "", false, "bottom_left", SubResource( 2 ), 0, false, false, 2, 0, null, "", false, "bottom_right", SubResource( 2 ), 0, false, false, 3, 0, null, "", false, "center_left", SubResource( 2 ), 0, false, false, 4, 0, null, "", false, "center_top", SubResource( 2 ), 0, false, false, 5, 0, null, "", false, "center_right", SubResource( 2 ), 0, false, false, 6, 0, null, "", false, "center_bottom", SubResource( 2 ), 0, false, false, 7, 0, null, "", false, "center", SubResource( 2 ), 0, false, false, 8, 0, null, "", false, "top_left", null, 0, false, false, 9, 0, null, "", false, "top_right", null, 0, false, false, 10, 0, null, "", false, "bottom_left", null, 0, false, false, 11, 0, null, "", false, "bottom_right", null, 0, false, false, 12, 0, null, "", false, "center_left", null, 0, false, false, 13, 0, null, "", false, "center_top", null, 0, false, false, 14, 0, null, "", false, "center_right", null, 0, false, false, 15, 0, null, "", false, "center_bottom", null, 0, false, false, 16, 0, null, "", false, "center", null, 0, false, false, 17, 0, null, "", false, "top_left", null, 0, false, false, 18, 0, null, "", false, "top_right", null, 0, false, false, 19, 0, null, "", false, "bottom_left", null, 0, false, false, 20, 0, null, "", false, "bottom_right", null, 0, false, false, 21, 0, null, "", false, "center_left", null, 0, false, false, 22, 0, null, "", false, "center_top", null, 0, false, false, 23, 0, null, "", false, "center_right", null, 0, false, false, 24, 0, null, "", false, "center_bottom", null, 0, false, false, 25, 0, null, "", false, "center", null, 0, false, false, 26, 0, null, "", false ]
+items = [ "top_left", SubResource( 2 ), 0, false, false, 0, 0, null, "", false, "top_right", SubResource( 2 ), 0, false, false, 1, 0, null, "", false, "bottom_left", SubResource( 2 ), 0, false, false, 2, 0, null, "", false, "bottom_right", SubResource( 2 ), 0, false, false, 3, 0, null, "", false, "center_left", SubResource( 2 ), 0, false, false, 4, 0, null, "", false, "center_top", SubResource( 2 ), 0, false, false, 5, 0, null, "", false, "center_right", SubResource( 2 ), 0, false, false, 6, 0, null, "", false, "center_bottom", SubResource( 2 ), 0, false, false, 7, 0, null, "", false, "center", SubResource( 2 ), 0, false, false, 8, 0, null, "", false, "top_left", null, 0, false, false, 9, 0, null, "", false, "top_right", null, 0, false, false, 10, 0, null, "", false, "bottom_left", null, 0, false, false, 11, 0, null, "", false, "bottom_right", null, 0, false, false, 12, 0, null, "", false, "center_left", null, 0, false, false, 13, 0, null, "", false, "center_top", null, 0, false, false, 14, 0, null, "", false, "center_right", null, 0, false, false, 15, 0, null, "", false, "center_bottom", null, 0, false, false, 16, 0, null, "", false, "center", null, 0, false, false, 17, 0, null, "", false, "top_left", null, 0, false, false, 18, 0, null, "", false, "top_right", null, 0, false, false, 19, 0, null, "", false, "bottom_left", null, 0, false, false, 20, 0, null, "", false, "bottom_right", null, 0, false, false, 21, 0, null, "", false, "center_left", null, 0, false, false, 22, 0, null, "", false, "center_top", null, 0, false, false, 23, 0, null, "", false, "center_right", null, 0, false, false, 24, 0, null, "", false, "center_bottom", null, 0, false, false, 25, 0, null, "", false, "center", null, 0, false, false, 26, 0, null, "", false, "top_left", null, 0, false, false, 27, 0, null, "", false, "top_right", null, 0, false, false, 28, 0, null, "", false, "bottom_left", null, 0, false, false, 29, 0, null, "", false, "bottom_right", null, 0, false, false, 30, 0, null, "", false, "center_left", null, 0, false, false, 31, 0, null, "", false, "center_top", null, 0, false, false, 32, 0, null, "", false, "center_right", null, 0, false, false, 33, 0, null, "", false, "center_bottom", null, 0, false, false, 34, 0, null, "", false, "center", null, 0, false, false, 35, 0, null, "", false ]
 
 [node name="Reload" type="Button" parent="ScrollContainer/VBoxContainer/MKindBox"]
 margin_left = 600.0
@@ -358,7 +361,7 @@ margin_left = -195.0
 margin_top = -122.0
 margin_right = 261.0
 margin_bottom = 198.0
-window_title = "Otwórz plik"
+window_title = "Open a File"
 mode = 0
 filters = PoolStringArray( "*.tres" )
 current_dir = "res://themes/new_gui"
@@ -422,6 +425,9 @@ icon = SubResource( 2 )
 [node name="Control" parent="ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser" index="5"]
 margin_left = 608.0
 margin_right = 608.0
+
+[node name="FileDialog" parent="ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser/Control" index="0"]
+window_title = "Open a File"
 
 [node name="DebugBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
 editor/display_folded = true
