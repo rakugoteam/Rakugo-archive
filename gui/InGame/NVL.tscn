@@ -39,13 +39,17 @@ size_flags_vertical = 3
 [node name="Label" parent="VBox" instance=ExtResource( 2 )]
 margin_right = 920.0
 rect_clip_content = false
+focus_mode = 0
 mouse_filter = 2
 scroll_active = false
+selection_enabled = false
 
 [node name="Dialogue" parent="VBox" instance=ExtResource( 3 )]
 margin_top = 44.0
 margin_right = 920.0
 margin_bottom = 84.0
+focus_mode = 0
+selection_enabled = false
 
 [node name="RakugoLineEdit" type="LineEdit" parent="VBox"]
 visible = false

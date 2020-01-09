@@ -100,6 +100,7 @@ custom_constants/separation = 10
 [node name="Label" parent="HBoxContainer/VBox" instance=ExtResource( 2 )]
 margin_right = 817.0
 rect_clip_content = false
+focus_mode = 0
 mouse_filter = 2
 custom_fonts/mono_font = SubResource( 1 )
 custom_fonts/bold_italics_font = SubResource( 2 )
@@ -107,17 +108,20 @@ custom_fonts/italics_font = SubResource( 3 )
 custom_fonts/bold_font = SubResource( 4 )
 custom_fonts/normal_font = SubResource( 5 )
 scroll_active = false
+selection_enabled = false
 
 [node name="Dialogue" parent="HBoxContainer/VBox" instance=ExtResource( 7 )]
 margin_top = 50.0
 margin_right = 817.0
 margin_bottom = 90.0
+focus_mode = 0
 custom_fonts/mono_font = SubResource( 6 )
 custom_fonts/bold_italics_font = SubResource( 7 )
 custom_fonts/italics_font = SubResource( 8 )
 custom_fonts/bold_font = SubResource( 9 )
 custom_fonts/normal_font = SubResource( 10 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
+selection_enabled = false
 
 [node name="RakugoLineEdit" type="LineEdit" parent="HBoxContainer/VBox"]
 visible = false

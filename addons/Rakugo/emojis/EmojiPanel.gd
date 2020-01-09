@@ -2,7 +2,7 @@ tool
 extends Node
 
 onready var grid := $ScrollContainer/GridContainer
-onready var tween := $Panel/Tween
+onready var tween := $Label/Tween
 var file := File.new()
 
 func _ready():
@@ -18,21 +18,21 @@ func _ready():
 		grid.add_child(b)
 	
 	$LineEdit.connect("text_changed", self, "on_text_changed")
-	tween.connect("tween_all_completed", $Panel, "hide")
+	tween.connect("tween_all_completed", $Label, "hide")
 
 
 func notify(text:String) -> void:
-	$Panel/Label.text = text
+	$Label.text = text
 	var scolor = Color(0, 0, 0, 0)
 	tween.interpolate_property(
-		$Panel, "modulate", scolor, Color.white, 
+		$Label, "modulate", scolor, Color.green, 
 		1, Tween.TRANS_LINEAR,Tween.EASE_IN)
 		
 	tween.interpolate_property(
-		$Panel, "modulate", Color.white, scolor,
+		$Label, "modulate", Color.green, scolor,
 		1, Tween.TRANS_LINEAR,Tween.EASE_IN, 0.5)
 		
-	$Panel.show()
+	$Label.show()
 	tween.start()
 
 

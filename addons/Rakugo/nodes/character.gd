@@ -9,17 +9,23 @@ var _avatar: PackedScene
 var _prefix := ""
 var _suffix := ""
 var _id := ""
+var _kind := "adv"
+var _mkind := "vertical"
+var _mcolumns := 0
+var _manchor := "center"
 var _stats := {}
-var _kind := ""
 
-export var character_id := "" setget _setcharacter_id, _getcharacter_id
-export var character_name := "" setget _setcharacter_name, _getcharacter_name
+export var character_id := "" setget _set_character_id, _get_character_id
+export var character_name := "" setget _set_character_name, _get_character_name
 export var color := Color("#ffffff") setget _set_color, _get_color
-export var stats := {} setget _set_stats, _get_stats
 export var prefix := "" setget _set_prefix, _get_prefix
 export var suffix := "" setget _set_suffix, _get_suffix
 export var avatar: PackedScene setget _set_avatar, _get_avatar
-export var kind: String setget _set_kind, _get_kind
+export (String, "adv", "top", "center", "left", "right", "nvl", "fullscreen") var kind: String setget _set_kind, _get_kind
+export (String, "vertical", "horizontal", "grid") var mkind: String setget _set_mkind, _get_mkind
+export (int, 0, 10) var mcolumns: int setget _set_mcolumns, _get_mcolumns
+export (String, "top_left", "top_right", "bottom_left", "bottom_right", "center_left", "center_top", "center_right", "center_bottom", "center") var manchor:= "center" setget _set_manchor, _get_manchor
+export var stats := {} setget _set_stats, _get_stats
 
 func _ready() -> void:
 	if(!Engine.editor_hint):
@@ -34,7 +40,7 @@ func _on_start() -> void:
 	var dbg = Rakugo.debug_dict(dict, character.parameters_names, "Set Character " + _id + " with ")
 
 
-func _setcharacter_id(value: String) -> void:
+func _set_character_id(value: String) -> void:
 	if(Engine.editor_hint):
 		_id = value
 		return
@@ -45,18 +51,18 @@ func _setcharacter_id(value: String) -> void:
 	_id = value
 
 
-func _getcharacter_id() -> String:
+func _get_character_id() -> String:
 	return _id
 
 
-func _setcharacter_name(value: String) -> void:
+func _set_character_name(value: String) -> void:
 	_name = value
 
 	if character:
 		character.name = value
 
 
-func _getcharacter_name() -> String:
+func _get_character_name() -> String:
 	if character:
 		if character.name:
 			return character.name
@@ -124,21 +130,6 @@ func _get_avatar() -> PackedScene:
 	return _avatar
 
 
-func _set_stats(value: Dictionary) -> void:
-	_stats = value
-
-	if character:
-		character.stats = value
-
-
-func _get_stats() -> Dictionary:
-	if character:
-		if character.stats:
-			return character.stats
-
-	return _stats
-
-
 func _set_kind(value: String) -> void:
 	_kind = value
 
@@ -158,6 +149,80 @@ func _get_kind() -> String:
 
 	return _kind
 
+
+func _set_mkind(value: String) -> void:
+	_mkind = value
+
+	if character:
+		character.mkind = value
+
+
+func _get_mkind() -> String:
+	if _mkind == "":
+		_mkind = ProjectSettings.get_setting(
+			"application/rakugo/default_mkind"
+		)
+
+	if character:
+		if character.mkind:
+			return character.mkind
+
+	return _mkind
+
+
+func _set_mcolumns(value: int) -> void:
+	_mcolumns = value
+
+	if character:
+		character.mcolumns = value
+
+
+func _get_mcolumns() -> int:
+	if _mcolumns == 0:
+		_mcolumns = int(ProjectSettings.get_setting(
+			"application/rakugo/default_mcolumns"
+		))
+
+	if character:
+		if character.mcolumns:
+			return character.mcolumns
+
+	return _mcolumns
+
+
+func _set_manchor(value: String) -> void:
+	_manchor = value
+
+	if character:
+		character.manchor = value
+
+
+func _get_manchor() -> String:
+	if _manchor == "":
+		_manchor = ProjectSettings.get_setting(
+			"application/rakugo/default_manchor"
+		)
+
+	if character:
+		if character.manchor:
+			return character.manchor
+
+	return _manchor
+
+
+func _set_stats(value: Dictionary) -> void:
+	_stats = value
+
+	if character:
+		character.stats = value
+
+
+func _get_stats() -> Dictionary:
+	if character:
+		if character.stats:
+			return character.stats
+
+	return _stats
 
 func get_dict() -> Dictionary:
 	var dict := {}

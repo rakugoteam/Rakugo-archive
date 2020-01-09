@@ -31,6 +31,7 @@ func _ready() -> void:
 	$Options.connect("pressed", Screens, "_on_Options_pressed")
 	$Hide.connect("toggled", self, "_on_Hide_toggled")
 
+
 func _on_checkpoint() -> void:
 	$InfoAnim.play("Checkpoint")
 

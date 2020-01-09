@@ -3,6 +3,10 @@ extends HBoxContainer
 
 var mode : String
 var popup : PopupMenu
+var modes := [
+	"renpy",
+	"bbcode"
+]
 
 func _ready() -> void:
 	$TextureRect.texture = get_icon("TextFile", "EditorIcons")
@@ -21,25 +25,14 @@ func _on_reload() -> void:
 func _on_text_mode(id:int) -> void:
 	$MenuButton.text = popup.get_item_text(id)
 	$MenuButton.icon = popup.get_item_icon(id)
-	
-	match id:
-		0:
-			mode = "renpy"
-		
-		1:
-			mode = "bbcode"
+	mode = modes[id]
 
 
 func load_setting() -> void:
 	mode = ProjectSettings.get_setting(
 		"application/rakugo/markup")
 	
-	match mode:
-		"renpy":
-			_on_text_mode(0)
-		
-		"bbcode":
-			_on_text_mode(1)
+	_on_text_mode(modes.find(mode))
 
 
 func save_setting() -> void:

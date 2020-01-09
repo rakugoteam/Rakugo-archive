@@ -10,7 +10,6 @@ func _ready() -> void:
 	connect("pressed", self, "_on_pressed", [], CONNECT_ONESHOT)
 	label = $RichTextLabel
 	label.mouse_filter = MOUSE_FILTER_IGNORE
-	label.bbcode_enabled = true
 	node_to_change = label
 
 

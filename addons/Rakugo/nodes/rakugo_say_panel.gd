@@ -1,7 +1,7 @@
 extends Panel
 class_name RakugoSayPanel, "res://addons/Rakugo/icons/rakugo_panel.svg"
 
-export (String, "adv", "hide", "top", "center", "left", "right", "nvl", "fullscreen") var kind = "adv"
+export (String, "adv", "top", "center", "left", "right", "nvl", "fullscreen") var kind = "adv"
 export var main_container_path := NodePath("")
 export var std_kind_container_path := NodePath("")
 export (Array, String) var extra_kinds := ["nvl", "phone_right", "phone_left"]

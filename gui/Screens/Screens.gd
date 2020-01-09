@@ -1,6 +1,9 @@
 tool
 extends RakugoControl
 
+var was_skipping = false
+var was_skip_auto = false
+
 export onready var nav_panel: Node = $Navigation
 export var nav_path: NodePath = "Navigation/ScrollContainer/HBoxContainer/VBoxContainer"
 export var in_game_gui_path := "/root/Window/InGameGUI"
@@ -110,6 +113,14 @@ func history_menu():
 
 func _on_visibility_changed():
 	if visible:
+		if Rakugo.skipping:
+			was_skipping = true
+			Rakugo.skipping = false
+		
+		if Rakugo.skip_auto:
+			was_skip_auto = true
+			Rakugo.skip_auto = false
+			
 		get_tree().paused = true
 		in_game_gui.hide()
 		return
@@ -118,6 +129,14 @@ func _on_visibility_changed():
 	unpause_timer.start()
 	yield(unpause_timer, "timeout")
 	get_tree().paused = false
+	
+	if was_skipping:
+		Rakugo.skipping = true
+		was_skipping = false
+	
+	if was_skip_auto:
+		Rakugo.skip_auto = true
+		was_skip_auto = false
 
 
 # if press "Return" or "no" on quit page

@@ -14,7 +14,7 @@ var fd : FileDialog
 func plugin_ready(_editor:EditorInterface) -> void:
 	editor = _editor
 	box = $ScrollContainer/VBoxContainer
-	tween = $Panel/Tween
+	tween = $Label/Tween
 	fd = $Control/FileDialog
 	
 	$Add.icon = get_icon("CreateNewSceneFrom", "EditorIcons")
@@ -26,21 +26,21 @@ func plugin_ready(_editor:EditorInterface) -> void:
 	$ScenesLinksChooser.connect("set_as_def", self, "notify",
 	 ["Setted as Default "])
 	fd.connect("confirmed", self, "_on_file_dialog")
-	tween.connect("tween_all_completed", $Panel, "hide")
+	tween.connect("tween_all_completed", $Label, "hide")
 
 
 func notify(text:String) -> void:
 	$Panel/Label.text = text
 	var scolor = Color(0, 0, 0, 0)
 	tween.interpolate_property(
-		$Panel, "modulate", scolor, Color.white,
+		$Label, "modulate", scolor, Color.green,
 		1, Tween.TRANS_LINEAR,Tween.EASE_IN)
 		
 	tween.interpolate_property(
-		$Panel, "modulate", Color.white, scolor,
+		$Label, "modulate", Color.green, scolor,
 		1, Tween.TRANS_LINEAR,Tween.EASE_IN, 0.5)
 		
-	$Panel.show()
+	$Label.show()
 	tween.start()
 
 
