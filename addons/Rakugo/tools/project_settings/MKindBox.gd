@@ -36,7 +36,11 @@ func _ready() -> void:
 	]
 
 	kpopup = $MKindButton.get_popup()
+	kpopup.clear()
 	kpopup.connect("id_pressed", self, "_on_kind")
+	
+	for k in kinds:
+		kpopup.add_item(k)
 
 	for id in range(kinds_icons.size()):
 		kpopup.set_item_icon(id, kinds_icons[id])
@@ -54,6 +58,7 @@ func _ready() -> void:
 	]
 
 	apopup = $MAnchorButton.get_popup()
+	apopup.clear()
 	apopup.connect("id_pressed", self, "_on_anchor")
 	
 	for a in anchors:
@@ -76,8 +81,8 @@ func _on_kind(id:int) -> void:
 
 
 func _on_anchor(id:int) -> void:
-	$MKindButton.text = kpopup.get_item_text(id)
-	$MKindButton.icon = kpopup.get_item_icon(id)
+	$MAnchorButton.text = apopup.get_item_text(id)
+	$MAnchorButton.icon = apopup.get_item_icon(id)
 	anchor = anchors[id]
 
 
@@ -100,12 +105,6 @@ func load_setting() -> void:
 
 func update_box() -> void:
 	$SpinBox.visible = kind == "grid"
-
-	if $SpinBox.visible:
-		$MKindButton.set_stretch_ratio(0.75)
-
-	else:
-		$MKindButton.set_stretch_ratio(1)
 
 
 func save_setting() -> void:
