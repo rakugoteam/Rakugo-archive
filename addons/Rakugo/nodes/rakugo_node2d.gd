@@ -7,7 +7,6 @@ signal on_substate(substate)
 onready var rnode := RakugoNodeCore.new()
 
 export var node_id: String = name
-export var camera := NodePath("")
 export(Array, String) var state: Array setget _set_state, _get_state
 
 var _state := []
@@ -46,23 +45,12 @@ func _on_rnode_substate(substate):
 	emit_signal("on_substate", substate)
 
 
-func _get_cam_pos() -> Vector2:
-	var cam_pos = Vector2(0, 0)
-
-	if !camera.is_empty():
-		cam_pos = get_node(camera).positon
-
-	return cam_pos
-
-
 func _on_show(node_id: String, state_value: Array, show_args: Dictionary) -> void:
 	if self.node_id != node_id:
 		return
 
-	var cam_pos = _get_cam_pos()
-
 	last_show_args = show_args
-	position = rnode.show_at(cam_pos, show_args, position)
+	position = rnode.show_at(show_args, position)
 
 	if "z" in show_args:
 		z_index = show_args.z

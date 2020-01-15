@@ -434,6 +434,7 @@ margin_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_clip_content = false
+mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -443,7 +444,6 @@ __meta__ = {
 [node name="RakugoMenu" type="GridContainer" parent="ScrollContainerMenu"]
 margin_right = 512.0
 margin_bottom = 300.0
-mouse_filter = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 63.4
@@ -451,14 +451,13 @@ script = ExtResource( 3 )
 ChoiceButton = ExtResource( 4 )
 
 [node name="SayPanel" parent="." instance=ExtResource( 5 )]
-mouse_filter = 0
 
 [node name="Notify" type="Panel" parent="."]
 visible = false
 anchor_right = 1.0
 margin_left = -2.0
 margin_top = 36.0
-margin_right = 769.0
+margin_right = -260.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 100, 20 )
 theme = ExtResource( 6 )
@@ -467,9 +466,9 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Dialog" type="RichTextLabel" parent="Notify"]
+[node name="Label" type="RichTextLabel" parent="Notify"]
 margin_left = -1.0
-margin_right = 780.0
+margin_right = 763.0
 margin_bottom = 32.0
 focus_mode = 2
 size_flags_horizontal = 15

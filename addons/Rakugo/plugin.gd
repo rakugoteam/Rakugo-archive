@@ -5,6 +5,7 @@ var emoji_panel
 var sl_tool
 var rakugo_project_settings
 var tools_menu
+var about_dialog
 
 func default_setting(setting: String, value):
 	if not ProjectSettings.has_setting(setting):
@@ -94,6 +95,11 @@ func init_tools():
 	add_tool_menu_item("Edit Rakugo Project Settings", self, "open_rakugo_project_settings")
 
 	add_tool_menu_item("Open RakugoDocs", self, "open_rakugo_docs")
+	
+	about_dialog = preload("tools/about/AboutDialog.tscn").instance()
+	about_dialog.theme = theme
+	add_child(about_dialog)
+	add_tool_menu_item("About Rakugo", self, "open_about_dialog")
 
 
 func open_emojis(arg) -> void:
@@ -111,6 +117,10 @@ func open_rakugo_project_settings(arg) -> void:
 
 func open_rakugo_docs(arg) -> void:
 	OS.shell_open("https://rakugo.readthedocs.io/en/latest/")
+
+
+func open_about_dialog(arg):
+	about_dialog.popup_centered()
 
 
 func add_custom_types():
@@ -174,11 +184,13 @@ func remove_tools():
 	emoji_panel.free()
 	sl_tool.free()
 	rakugo_project_settings.free()
+	about_dialog.free()
 
 	remove_tool_menu_item("Browse Rakugo Emojis")
 	remove_tool_menu_item("Edit Rakugo ScenesLinks")
 	remove_tool_menu_item("Edit Rakugo Project Settings")
 	remove_tool_menu_item("Open RakugoDocs")
+	remove_tool_menu_item("About Rakugo")
 
 
 func remove_custom_types():

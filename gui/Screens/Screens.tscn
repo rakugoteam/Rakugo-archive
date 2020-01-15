@@ -4304,7 +4304,8 @@ node_id = "Screens"
 
 [node name="Panel" type="Panel" parent="."]
 editor/display_folded = true
-margin_right = 1023.0
+anchor_bottom = 1.0
+margin_right = 1024.0
 margin_bottom = 600.0
 
 [node name="TextureRect" type="TextureRect" parent="Panel"]
@@ -4583,14 +4584,15 @@ margin_right = 1023.0
 margin_bottom = 601.0
 
 [node name="AboutBox" type="VBoxContainer" parent="."]
+editor/display_folded = true
 visible = false
-margin_left = 260.304
-margin_top = 62.0446
-margin_right = 962.304
-margin_bottom = 596.044
+margin_left = 260.0
+margin_top = 62.0
+margin_right = 937.0
+margin_bottom = 519.0
 
 [node name="Title" type="Label" parent="AboutBox"]
-margin_right = 702.0
+margin_right = 677.0
 margin_bottom = 54.0
 custom_fonts/font = ExtResource( 9 )
 text = "About"
@@ -4598,8 +4600,8 @@ align = 1
 
 [node name="RakugoTextLabel" parent="AboutBox" instance=ExtResource( 14 )]
 margin_top = 58.0
-margin_right = 702.0
-margin_bottom = 533.0
+margin_right = 677.0
+margin_bottom = 457.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 5 )
