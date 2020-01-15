@@ -4304,6 +4304,7 @@ node_id = "Screens"
 
 [node name="Panel" type="Panel" parent="."]
 editor/display_folded = true
+modulate = Color( 1, 1, 1, 0.784314 )
 anchor_bottom = 1.0
 margin_right = 1024.0
 margin_bottom = 600.0
@@ -4332,6 +4333,7 @@ rect_pivot_offset = Vector2( 1.16077, 0.622498 )
 alignment = 2
 
 [node name="TitleNVersion" type="HBoxContainer" parent="VBoxContainer"]
+editor/display_folded = true
 margin_right = 265.0
 margin_bottom = 38.0
 grow_horizontal = 0
@@ -4385,7 +4387,7 @@ vars_names = [ "rakugo_version" ]
 editor/display_folded = true
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -4.0
+margin_left = 1.0
 margin_top = -1.0
 margin_right = 206.0
 margin_bottom = 601.0

@@ -421,29 +421,11 @@ use_theme_from_setting = true
 register = false
 node_id = "InGameGUI"
 
-[node name="ScrollContainerMenu" type="ScrollContainer" parent="."]
-visible = false
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -256.0
-margin_top = -150.0
-margin_right = 256.0
-margin_bottom = 150.0
-grow_horizontal = 2
-grow_vertical = 2
-rect_clip_content = false
-mouse_filter = 1
-size_flags_horizontal = 3
-size_flags_vertical = 3
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="RakugoMenu" type="GridContainer" parent="ScrollContainerMenu"]
-margin_right = 512.0
-margin_bottom = 300.0
+[node name="RakugoMenu" type="GridContainer" parent="."]
+margin_left = 256.0
+margin_top = 150.0
+margin_right = 768.0
+margin_bottom = 450.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 63.4
@@ -451,6 +433,7 @@ script = ExtResource( 3 )
 ChoiceButton = ExtResource( 4 )
 
 [node name="SayPanel" parent="." instance=ExtResource( 5 )]
+mouse_filter = 0
 
 [node name="Notify" type="Panel" parent="."]
 visible = false
