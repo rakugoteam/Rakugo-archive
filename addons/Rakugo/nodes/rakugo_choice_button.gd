@@ -9,7 +9,6 @@ func _ready() -> void:
 	disconnect("pressed", self, "_on_pressed")
 	connect("pressed", self, "_on_pressed", [], CONNECT_ONESHOT)
 	label = $RichTextLabel
-	label.mouse_filter = MOUSE_FILTER_IGNORE
 	node_to_change = label
 
 
