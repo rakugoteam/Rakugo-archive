@@ -44,11 +44,6 @@ func init_project_settings():
 	)
 
 	default_setting(
-		"application/rakugo/save_folder",
-		"saves"
-	)
-
-	default_setting(
 		"application/rakugo/theme",
 		"res://themes/question/question.tres"
 	)
@@ -95,7 +90,7 @@ func init_tools():
 	add_tool_menu_item("Edit Rakugo Project Settings", self, "open_rakugo_project_settings")
 
 	add_tool_menu_item("Open RakugoDocs", self, "open_rakugo_docs")
-	
+
 	about_dialog = preload("tools/about/AboutDialog.tscn").instance()
 	about_dialog.theme = theme
 	add_child(about_dialog)

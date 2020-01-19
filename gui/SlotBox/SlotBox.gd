@@ -11,12 +11,12 @@ var dirhandler := Directory.new()
 var filehandler := File.new()
 var overwrite := true
 var save_name := "new_save"
+var file_ext := "res"
 
 signal popup_is_closed
 
 func _ready() -> void:
 	update_save_dir()
-	connect("visibility_changed", self, "_on_visibility_changed")
 
 	var con = popup.get_node("ConfirmOverwrite/HBoxContainer")
 	var yes_button = con.get_node("Yes")
@@ -69,9 +69,9 @@ func delete_save(caller: String, mod: String):
 		var info = saveslotsdir + caller + '.info'
 		dir.remove(info)
 
-	if filehandler.file_exists(saveslotsdir + caller + '.tres'):
+	if filehandler.file_exists(saveslotsdir + caller + '.' + file_ext):
 		Rakugo.debug("remove save")
-		var save = saveslotsdir + caller + '.tres'
+		var save = saveslotsdir + caller + '.' + file_ext
 		dir.remove(save)
 
 	if mod == "save":
@@ -79,14 +79,6 @@ func delete_save(caller: String, mod: String):
 
 	if mod == "load":
 		loadbox()
-
-
-func _on_visibility_changed():
-	if visible:
-		$ScrollGrid.scroll_vertical = settings.saves_scroll
-		return
-
-	settings.saves_scroll = $ScrollGrid.scroll_vertical
 
 
 func on_save_name_changed(value):
@@ -131,17 +123,20 @@ func close_popup(answer):
 	container.show()
 	overwrite = answer
 	emit_signal("popup_is_closed")
-	
+
+
 func update_save_dir():
 	saveslots_dir = "user://" +  Rakugo.save_folder
-	
+	file_ext = "res"
+
 	if Rakugo.test_save:
 		saveslots_dir = "res://" + Rakugo.save_folder
-	
+		file_ext = "tres"
+
 
 func savebox(saveslotsdir := saveslots_dir + "/") -> void:
-	
-	var saves = get_dir_contents(saveslots_dir, "tres",
+
+	var saves = get_dir_contents(saveslots_dir, file_ext,
 		["history", "auto", "quick", "back"])
 
 	saves.append("empty")
@@ -189,8 +184,8 @@ func savebox(saveslotsdir := saveslots_dir + "/") -> void:
 
 
 func loadbox(saveslotsdir := saveslots_dir + "/") -> bool:
-	
-	var saves = get_dir_contents(saveslots_dir, "tres", ["history"])
+
+	var saves = get_dir_contents(saveslots_dir, file_ext, ["history"])
 
 	for c in container.get_children():
 		c.queue_free()

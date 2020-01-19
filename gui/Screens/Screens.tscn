@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://themes/question/question.theme" type="Theme" id=1]
+[ext_resource path="res://themes/new_gui/new_gui.theme" type="Theme" id=1]
 [ext_resource path="res://gui/Screens/Screens.gd" type="Script" id=2]
 [ext_resource path="res://ubuntu-font-family/UB32outline.tres" type="DynamicFont" id=3]
 [ext_resource path="res://addons/Rakugo/nodes/rakugo_var_label.gd" type="Script" id=4]
@@ -4333,14 +4333,14 @@ rect_pivot_offset = Vector2( 1.16077, 0.622498 )
 alignment = 2
 
 [node name="TitleNVersion" type="HBoxContainer" parent="VBoxContainer"]
-editor/display_folded = true
-margin_right = 265.0
+margin_right = 264.0
 margin_bottom = 38.0
 grow_horizontal = 0
 alignment = 2
 
 [node name="Title" type="Label" parent="VBoxContainer/TitleNVersion"]
-margin_right = 195.0
+margin_left = 11.0
+margin_right = 206.0
 margin_bottom = 38.0
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 3 )
@@ -4351,8 +4351,8 @@ var_name = "title"
 default = "Your new game"
 
 [node name="Version" type="Label" parent="VBoxContainer/TitleNVersion"]
-margin_left = 199.0
-margin_right = 253.0
+margin_left = 210.0
+margin_right = 264.0
 margin_bottom = 38.0
 size_flags_vertical = 1
 text = "2.0.0"
@@ -4361,16 +4361,9 @@ script = ExtResource( 4 )
 var_name = "version"
 default = "2.0.0"
 
-[node name="RakugoVarLabel" type="Label" parent="VBoxContainer/TitleNVersion"]
-margin_left = 257.0
-margin_top = 2.0
-margin_right = 265.0
-margin_bottom = 36.0
-script = ExtResource( 4 )
-
 [node name="RakugoVersion" type="RichTextLabel" parent="VBoxContainer"]
 margin_top = 42.0
-margin_right = 265.0
+margin_right = 264.0
 margin_bottom = 82.0
 rect_min_size = Vector2( 100, 40 )
 size_flags_horizontal = 3
