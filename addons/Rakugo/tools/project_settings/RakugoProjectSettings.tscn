@@ -58,7 +58,6 @@ window_title = "Rakugo Project Settings"
 script = ExtResource( 1 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 8.0
@@ -67,7 +66,6 @@ margin_right = -8.0
 margin_bottom = -36.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
-editor/display_folded = true
 margin_right = 628.0
 margin_bottom = 373.0
 size_flags_horizontal = 3
@@ -225,8 +223,10 @@ margin_left = 28.0
 margin_top = 5.0
 margin_right = 310.0
 margin_bottom = 19.0
+hint_tooltip = "Dialog Display Style"
+mouse_filter = 1
 size_flags_horizontal = 3
-text = "Default Kind (Dialog Display Style)"
+text = "Default Kind"
 valign = 1
 
 [node name="MenuButton" type="MenuButton" parent="ScrollContainer/VBoxContainer/KindBox"]
@@ -251,7 +251,6 @@ rect_min_size = Vector2( 24, 24 )
 icon = SubResource( 2 )
 
 [node name="MKindBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
-editor/display_folded = true
 margin_top = 188.0
 margin_right = 628.0
 margin_bottom = 212.0
@@ -268,16 +267,18 @@ stretch_mode = 4
 [node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/MKindBox"]
 margin_left = 28.0
 margin_top = 5.0
-margin_right = 296.0
+margin_right = 247.0
 margin_bottom = 19.0
+hint_tooltip = "Dialog Menu Display Style"
+mouse_filter = 1
 size_flags_horizontal = 3
-text = "Default MKind (Dialog Menu Display Style)"
+text = "Default MKind"
 valign = 1
 
 [node name="MKindButton" type="MenuButton" parent="ScrollContainer/VBoxContainer/MKindBox"]
-margin_left = 300.0
+margin_left = 251.0
 margin_top = 1.0
-margin_right = 407.0
+margin_right = 382.0
 margin_bottom = 23.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -290,17 +291,17 @@ flat = false
 items = [ "vertical", SubResource( 2 ), 0, false, false, 0, 0, null, "", false, "horizontal", SubResource( 2 ), 0, false, false, 1, 0, null, "", false, "grid", SubResource( 2 ), 0, false, false, 2, 0, null, "", false ]
 
 [node name="SpinBox" type="SpinBox" parent="ScrollContainer/VBoxContainer/MKindBox"]
-margin_left = 411.0
-margin_right = 485.0
+margin_left = 386.0
+margin_right = 460.0
 margin_bottom = 24.0
 min_value = 1.0
 max_value = 10.0
 value = 1.0
 
 [node name="MAnchorButton" type="MenuButton" parent="ScrollContainer/VBoxContainer/MKindBox"]
-margin_left = 489.0
+margin_left = 464.0
 margin_top = 1.0
-margin_right = 596.0
+margin_right = 595.0
 margin_bottom = 23.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -310,11 +311,11 @@ size_flags_stretch_ratio = 0.6
 text = "vertical"
 icon = SubResource( 4 )
 flat = false
-items = [ "top_left", SubResource( 2 ), 0, false, false, 0, 0, null, "", false, "top_right", SubResource( 2 ), 0, false, false, 1, 0, null, "", false, "bottom_left", SubResource( 2 ), 0, false, false, 2, 0, null, "", false, "bottom_right", SubResource( 2 ), 0, false, false, 3, 0, null, "", false, "center_left", SubResource( 2 ), 0, false, false, 4, 0, null, "", false, "center_top", SubResource( 2 ), 0, false, false, 5, 0, null, "", false, "center_right", SubResource( 2 ), 0, false, false, 6, 0, null, "", false, "center_bottom", SubResource( 2 ), 0, false, false, 7, 0, null, "", false, "center", SubResource( 2 ), 0, false, false, 8, 0, null, "", false, "top_left", null, 0, false, false, 9, 0, null, "", false, "top_right", null, 0, false, false, 10, 0, null, "", false, "bottom_left", null, 0, false, false, 11, 0, null, "", false, "bottom_right", null, 0, false, false, 12, 0, null, "", false, "center_left", null, 0, false, false, 13, 0, null, "", false, "center_top", null, 0, false, false, 14, 0, null, "", false, "center_right", null, 0, false, false, 15, 0, null, "", false, "center_bottom", null, 0, false, false, 16, 0, null, "", false, "center", null, 0, false, false, 17, 0, null, "", false, "top_left", null, 0, false, false, 18, 0, null, "", false, "top_right", null, 0, false, false, 19, 0, null, "", false, "bottom_left", null, 0, false, false, 20, 0, null, "", false, "bottom_right", null, 0, false, false, 21, 0, null, "", false, "center_left", null, 0, false, false, 22, 0, null, "", false, "center_top", null, 0, false, false, 23, 0, null, "", false, "center_right", null, 0, false, false, 24, 0, null, "", false, "center_bottom", null, 0, false, false, 25, 0, null, "", false, "center", null, 0, false, false, 26, 0, null, "", false, "top_left", null, 0, false, false, 27, 0, null, "", false, "top_right", null, 0, false, false, 28, 0, null, "", false, "bottom_left", null, 0, false, false, 29, 0, null, "", false, "bottom_right", null, 0, false, false, 30, 0, null, "", false, "center_left", null, 0, false, false, 31, 0, null, "", false, "center_top", null, 0, false, false, 32, 0, null, "", false, "center_right", null, 0, false, false, 33, 0, null, "", false, "center_bottom", null, 0, false, false, 34, 0, null, "", false, "center", null, 0, false, false, 35, 0, null, "", false ]
+items = [ "top_left", SubResource( 2 ), 0, false, false, 0, 0, null, "", false, "top_right", SubResource( 2 ), 0, false, false, 1, 0, null, "", false, "bottom_left", SubResource( 2 ), 0, false, false, 2, 0, null, "", false, "bottom_right", SubResource( 2 ), 0, false, false, 3, 0, null, "", false, "center_left", SubResource( 2 ), 0, false, false, 4, 0, null, "", false, "center_top", SubResource( 2 ), 0, false, false, 5, 0, null, "", false, "center_right", SubResource( 2 ), 0, false, false, 6, 0, null, "", false, "center_bottom", SubResource( 2 ), 0, false, false, 7, 0, null, "", false, "center", SubResource( 2 ), 0, false, false, 8, 0, null, "", false ]
 
 [node name="Reload" type="Button" parent="ScrollContainer/VBoxContainer/MKindBox"]
-margin_left = 600.0
-margin_right = 628.0
+margin_left = 599.0
+margin_right = 627.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 24, 24 )
 size_flags_vertical = 4
@@ -459,7 +460,6 @@ margin_right = 628.0
 margin_bottom = 40.0
 
 [node name="SaveBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
-editor/display_folded = true
 margin_top = 316.0
 margin_right = 628.0
 margin_bottom = 356.0
@@ -473,49 +473,34 @@ rect_min_size = Vector2( 24, 24 )
 texture = ExtResource( 17 )
 stretch_mode = 4
 
-[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/SaveBox"]
-margin_left = 28.0
-margin_top = 13.0
-margin_right = 234.0
-margin_bottom = 27.0
-size_flags_horizontal = 3
-text = "Save Folder Name"
-valign = 1
-
-[node name="LineEdit" type="LineEdit" parent="ScrollContainer/VBoxContainer/SaveBox"]
-margin_left = 238.0
-margin_top = 8.0
-margin_right = 444.0
-margin_bottom = 32.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-text = "saves"
-caret_blink = true
-caret_blink_speed = 0.5
-
 [node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/SaveBox"]
-margin_left = 448.0
-margin_top = 13.0
-margin_right = 515.0
-margin_bottom = 27.0
+margin_left = 28.0
+margin_right = 307.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 5
 text = "Test saves"
 valign = 1
 
 [node name="CheckButton" type="CheckButton" parent="ScrollContainer/VBoxContainer/SaveBox"]
-margin_left = 519.0
-margin_right = 595.0
+margin_left = 311.0
+margin_right = 387.0
 margin_bottom = 40.0
 
-[node name="Reload" type="Button" parent="ScrollContainer/VBoxContainer/SaveBox"]
-margin_left = 599.0
-margin_top = 8.0
-margin_right = 627.0
-margin_bottom = 32.0
+[node name="TextureRect2" type="TextureRect" parent="ScrollContainer/VBoxContainer/SaveBox"]
+margin_left = 391.0
+margin_right = 415.0
+margin_bottom = 40.0
 rect_min_size = Vector2( 24, 24 )
-size_flags_horizontal = 5
-size_flags_vertical = 4
-icon = SubResource( 2 )
+texture = ExtResource( 17 )
+stretch_mode = 4
+
+[node name="Label3" type="Label" parent="ScrollContainer/VBoxContainer/SaveBox"]
+margin_left = 419.0
+margin_right = 628.0
+margin_bottom = 40.0
+size_flags_vertical = 1
+text = "
+Must set it to OFF before export."
 
 [editable path="ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser"]
