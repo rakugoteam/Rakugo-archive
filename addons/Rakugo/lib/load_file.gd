@@ -3,15 +3,18 @@ extends Object
 func invoke(save_folder: String, save_name: String,  variables: Dictionary):
 	var r = Rakugo
 	r.loading_in_progress = true
-
+	
+	var file_ext = ".res"
 	var save_folder_path = "user://".plus_file(save_folder)
 
 	if r.test_save:
+		file_ext = ".tres"
 		save_folder_path = "res://".plus_file(save_folder)
-
+	
 	var save_file_path = save_folder_path.plus_file(save_name)
+	save_file_path += file_ext
 	r.debug(["load data from:", save_name])
-
+	
 	var file := File.new()
 
 	if not file.file_exists(save_file_path):

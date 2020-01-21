@@ -57,22 +57,21 @@ func delete_save(caller: String, mod: String):
 
 	update_save_dir()
 	var dir = Directory.new()
-	var saveslotsdir = saveslots_dir + "/"
-
-	if filehandler.file_exists(saveslotsdir + caller + '.png'):
+	
+	var png_path = saveslots_dir.plus_file(caller + '.png')
+	if filehandler.file_exists(png_path):
 		Rakugo.debug("remove image")
-		var img = saveslotsdir + caller + '.png'
-		dir.remove(img)
+		dir.remove(png_path)
 
-	if filehandler.file_exists(saveslotsdir + caller + '.info'):
+	var info_path = saveslots_dir.plus_file(caller + '.info')
+	if filehandler.file_exists(info_path):
 		Rakugo.debug("remove info")
-		var info = saveslotsdir + caller + '.info'
-		dir.remove(info)
+		dir.remove(info_path)
 
-	if filehandler.file_exists(saveslotsdir + caller + '.' + file_ext):
+	var save_path = saveslots_dir.plus_file(caller + '.' + file_ext)
+	if filehandler.file_exists(save_path):
 		Rakugo.debug("remove save")
-		var save = saveslotsdir + caller + '.' + file_ext
-		dir.remove(save)
+		dir.remove(save_path)
 
 	if mod == "save":
 		savebox()
@@ -133,8 +132,15 @@ func update_save_dir():
 		saveslots_dir = "res://" + Rakugo.save_folder
 		file_ext = "tres"
 
+func load_img(path:String) -> ImageTexture:
+	var img = Image.new()
+	img.load(path)
+	var tex = ImageTexture.new()
+	tex.create_from_image(img)
+	return tex
 
-func savebox(saveslotsdir := saveslots_dir + "/") -> void:
+
+func savebox() -> void:
 
 	var saves = get_dir_contents(saveslots_dir, file_ext,
 		["history", "auto", "quick", "back"])
@@ -145,19 +151,21 @@ func savebox(saveslotsdir := saveslots_dir + "/") -> void:
 		c.queue_free()
 
 	for x in saves:
-		x = x.replace(".tres", "")
+		x = x.replace("." + file_ext, "")
 		var s = slot.instance()
 		container.add_child(s)
-
-		if filehandler.file_exists(saveslotsdir + x + '.png'):
+		
+		var png_path = saveslots_dir.plus_file(x + '.png')
+		if filehandler.file_exists(png_path):
 			Rakugo.debug("slot exist, loading image")
-			var tex = load(saveslotsdir + x + '.png')
+			var tex = load_img(png_path)
 			s.get_node("Button/TextureRect").texture = tex
 
 		s.get_node("Label").text = x
-
-		if filehandler.file_exists(saveslotsdir + x + '.info'):
-			filehandler.open(saveslotsdir + x + '.info', File.READ)
+		
+		var info_path = saveslots_dir.plus_file(x + '.info')
+		if filehandler.file_exists(info_path):
+			filehandler.open(info_path, File.READ)
 			s.get_node("Label2").text = filehandler.get_line()
 			filehandler.close()
 
@@ -183,7 +191,8 @@ func savebox(saveslotsdir := saveslots_dir + "/") -> void:
 	filehandler.close()
 
 
-func loadbox(saveslotsdir := saveslots_dir + "/") -> bool:
+
+func loadbox() -> bool:
 
 	var saves = get_dir_contents(saveslots_dir, file_ext, ["history"])
 
@@ -191,19 +200,21 @@ func loadbox(saveslotsdir := saveslots_dir + "/") -> bool:
 		c.queue_free()
 
 	for x in saves:
-		x = x.replace(".tres", "")
+		x = x.replace("." + file_ext, "")
 		var s = slot.instance()
 		container.add_child(s)
-
-		if filehandler.file_exists(saveslotsdir + x + '.png'):
+		
+		var png_path = saveslots_dir.plus_file(x + '.png')
+		if filehandler.file_exists(png_path):
 			Rakugo.debug("slot exist, loading image")
-			var tex = load(saveslotsdir + x + '.png')
+			var tex = load_img(png_path)
 			s.get_node("Button/TextureRect").texture = tex
 
 		s.get_node("Label").text = x
-
-		if filehandler.file_exists(saveslotsdir + x + '.info'):
-			filehandler.open(saveslotsdir + x + '.info', File.READ)
+		
+		var info_path = saveslots_dir.plus_file(x + '.info')
+		if filehandler.file_exists(info_path):
+			filehandler.open(info_path, File.READ)
 			s.get_node("Label2").text = filehandler.get_line()
 			filehandler.close()
 
@@ -260,8 +271,11 @@ func savepress(caller: String) -> bool:
 		return false
 
 	screenshot.flip_y()
-	screenshot.save_png(saveslots_dir + "/" + caller + '.png')
-	filehandler.open(saveslots_dir + "/" + caller + '.info', File.WRITE)
+	var png_path = saveslots_dir.plus_file(caller + '.png')
+	screenshot.save_png(png_path)
+	
+	var info_path = saveslots_dir.plus_file(caller + '.info')
+	filehandler.open(info_path, File.WRITE)
 	var s = Rakugo.get_datetime_str()
 	Rakugo.debug(s)
 	filehandler.store_line(s)
@@ -281,7 +295,7 @@ func savepress(caller: String) -> bool:
 func loadpress(caller: String) -> void:
 	if !dirhandler.dir_exists(saveslots_dir):
 		dirhandler.make_dir(saveslots_dir)
-
+	
 	if Rakugo.loadfile(caller):
 		get_parent().in_game()
 		get_parent().hide()
