@@ -174,6 +174,7 @@ func _on_game_end():
 	scrollbar.hide()
 	show()
 
+
 func _on_NewGame_pressed():
 	hide()
 	in_game()
