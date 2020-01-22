@@ -17,7 +17,6 @@ export onready var qyes_button = $QuitBox/HBoxContainer/Yes
 var current_node: Node = self
 var in_game_gui: Node
 onready var new_game_button: Button = get_node(str(nav_path) + "/NewGame")
-onready var continue_button: Button = get_node(str(nav_path) + "/Continue")
 onready var return_button: Button = get_node(str(nav_path) + "/Return")
 onready var save_button: Button = get_node(str(nav_path) + "/Save")
 onready var history_button: Button = get_node(str(nav_path) + "/History")
@@ -43,7 +42,6 @@ func _ready():
 	back_button.connect("pressed", self, "_on_back_button")
 
 	new_game_button.connect("pressed", self, "_on_NewGame_pressed")
-	continue_button.connect("pressed", self, "_on_Continue_pressed")
 	return_button.connect("pressed", self, "_on_Return_pressed")
 	save_button.connect("pressed", self, "_on_Save_pressed")
 	history_button.connect("pressed", self, "_on_History_pressed(")
@@ -54,14 +52,6 @@ func _ready():
 	help_button.connect("pressed", self, "_on_Help_pressed")
 	quit_button.connect("pressed", self, "_on_Quit_pressed")
 	Rakugo.connect("game_ended", self, "_on_game_end")
-
-	var auto_save_path = str("user://" + Rakugo.save_folder + "/auto.res")
-
-	if Rakugo.test_save:
-		auto_save_path = str("res://" + Rakugo.save_folder + "/auto.tres")
-
-	if not Rakugo.file.file_exists(auto_save_path):
-		continue_button.hide()
 
 
 func _notification(what):
@@ -156,7 +146,6 @@ func _on_Load_pressed():
 
 func in_game():
 	new_game_button.hide()
-	continue_button.hide()
 	return_button.show()
 	save_button.show()
 	history_button.show()
@@ -166,7 +155,6 @@ func in_game():
 
 func _on_game_end():
 	new_game_button.show()
-	continue_button.show()
 	return_button.hide()
 	save_button.hide()
 	history_button.hide()
@@ -184,14 +172,6 @@ func _on_NewGame_pressed():
 
 func _on_History_pressed():
 	history_menu()
-
-
-func _on_Continue_pressed():
-	if !Rakugo.loadfile("auto"):
-		return
-
-	in_game()
-	hide()
 
 
 func _on_Quests_pressed():
