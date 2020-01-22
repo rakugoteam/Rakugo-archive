@@ -40,6 +40,7 @@ func load_scene(scene_id, force_reload := true):
 	if "://" in scene_id:
 		path = scene_id
 		if scene_id in scenes_links:
+			force_reload = true
 			scene_id = scenes_links[scene_id]
 	
 	elif scene_id in scenes_links:

@@ -8,6 +8,7 @@ Rakugo is made by:
 	{a=https://github.com/deep-gaurav}Deep Gaurav{/a}
 
 Special Thanks for:
+	{a=https://github.com/kurinoku}kurinoku{/a},
 	{a=https://github.com/Kermer}Sebastian Holc ({i}Kermer{/i}){/a},
 	{a=https://github.com/Plopsiskopsis}Plopsiskopsis{/a},
 	{a=https://github.com/MatiasVME}Matías Muñoz Espinoza ({i}MatiasVME{/i}){/a},
