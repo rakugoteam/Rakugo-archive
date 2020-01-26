@@ -1,8 +1,10 @@
 extends Node
 
-const rakugo_version := "2.1.0"
+const rakugo_version := "2.0.7"
 const credits_path := "res://addons/Rakugo/credits.txt"
-const save_folder := "saves" 
+
+# we need it because we hide base RakugoMenu form custom nodes
+const RakugoMenu := preload("res://addons/Rakugo/nodes/rakugo_menu.gd")
 
 # project settings integration
 onready var game_title = ProjectSettings.get_setting("application/config/name")
@@ -12,12 +14,9 @@ onready var markup = ProjectSettings.get_setting("application/rakugo/markup")
 onready var debug_on = ProjectSettings.get_setting("application/rakugo/debug")
 onready var test_save = ProjectSettings.get_setting("application/rakugo/test_saves")
 onready var scenes_links = ProjectSettings.get_setting("application/rakugo/scenes_links")
-
+onready var save_folder = ProjectSettings.get_setting("application/rakugo/save_folder")
 onready var theme = load(ProjectSettings.get_setting("application/rakugo/theme"))
 onready var default_kind = ProjectSettings.get_setting("application/rakugo/default_kind")
-onready var default_mkind = ProjectSettings.get_setting("application/rakugo/default_mkind")
-onready var default_mcolumns = ProjectSettings.get_setting("application/rakugo/default_mcolumns")
-onready var default_manchor = ProjectSettings.get_setting("application/rakugo/default_manchor")
 
 ## init vars for settings
 var _skip_all_text := false
@@ -149,7 +148,6 @@ signal begin
 signal hide_ui(value)
 signal checkpoint
 signal game_ended
-signal rakugo_ready
 
 func _ready() -> void:
 	## set by game developer
@@ -355,7 +353,6 @@ func _ready() -> void:
 	variables_init = variables.duplicate()
 
 	step_timer.connect("timeout", self, "_on_time_active_timeout")
-	emit_signal("rakugo_ready")
 
 
 func get_datetime_str() -> String:
