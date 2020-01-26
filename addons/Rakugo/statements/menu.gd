@@ -6,7 +6,6 @@ var choices_labels: Array = []
 func _init() -> void:
 	._init()
 	parameters_names += ["node", "choices"]
-	parameters_always += ["node", "choices", "mkind", "mcolumns", "manchor"]
 	type = 3 # Rakugo.StatementType.MENU
 
 
