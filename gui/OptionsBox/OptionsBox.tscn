@@ -63,6 +63,7 @@ align = 1
 valign = 1
 
 [node name="UnSeenTextBox" type="HBoxContainer" parent="HBoxContainer/GameplayBox"]
+editor/display_folded = true
 visible = false
 margin_top = 63.0
 margin_right = 254.0
@@ -89,6 +90,7 @@ script = ExtResource( 3 )
 var_name = "skip_all_text"
 
 [node name="AfterChoicesBox" type="HBoxContainer" parent="HBoxContainer/GameplayBox"]
+editor/display_folded = true
 visible = false
 margin_top = 136.0
 margin_right = 254.0
@@ -117,6 +119,7 @@ script = ExtResource( 3 )
 var_name = "skip_after_choices"
 
 [node name="TypingBox" type="HBoxContainer" parent="HBoxContainer/GameplayBox"]
+editor/display_folded = true
 margin_top = 63.0
 margin_right = 254.0
 margin_bottom = 103.0
@@ -178,6 +181,7 @@ value = 30.0
 ticks_on_borders = true
 
 [node name="AutoBox" type="VBoxContainer" parent="HBoxContainer/GameplayBox"]
+editor/display_folded = true
 margin_top = 219.0
 margin_right = 254.0
 margin_bottom = 269.0
@@ -201,6 +205,7 @@ size_flags_vertical = 1
 value = 50.0
 
 [node name="NotifyBox" type="VBoxContainer" parent="HBoxContainer/GameplayBox"]
+editor/display_folded = true
 margin_top = 302.0
 margin_right = 254.0
 margin_bottom = 352.0
@@ -234,6 +239,7 @@ var_name = "notify_time"
 default = 5.0
 
 [node name="GraphicsBox" type="VBoxContainer" parent="HBoxContainer"]
+editor/display_folded = true
 margin_left = 303.0
 margin_right = 511.0
 margin_bottom = 352.0
@@ -263,6 +269,7 @@ align = 1
 valign = 1
 
 [node name="WTBox" type="HBoxContainer" parent="HBoxContainer/GraphicsBox"]
+editor/display_folded = true
 margin_top = 120.0
 margin_right = 208.0
 margin_bottom = 156.0
@@ -304,6 +311,7 @@ align = 1
 valign = 1
 
 [node name="ResBox" type="HBoxContainer" parent="HBoxContainer/GraphicsBox"]
+editor/display_folded = true
 margin_top = 246.0
 margin_right = 208.0
 margin_bottom = 282.0
@@ -334,6 +342,7 @@ margin_bottom = 36.0
 text = ">"
 
 [node name="VSyncBox" type="HBoxContainer" parent="HBoxContainer/GraphicsBox"]
+editor/display_folded = true
 margin_top = 312.0
 margin_right = 208.0
 margin_bottom = 352.0
@@ -357,6 +366,7 @@ margin_right = 182.0
 margin_bottom = 40.0
 
 [node name="MusicBox" type="VBoxContainer" parent="HBoxContainer"]
+editor/display_folded = true
 margin_left = 521.0
 margin_right = 770.0
 margin_bottom = 352.0
