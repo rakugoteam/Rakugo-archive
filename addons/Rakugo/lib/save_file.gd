@@ -19,14 +19,6 @@ func invoke(save_name: String) -> bool:
 	for node in r.get_tree().get_nodes_in_group("save"):
 		if node.has_method("on_save"):
 			node.on_save()
-			continue
-
-		# to fix bug
-		var rc = node as RakugoControl
-
-		if rc:
-			if rc.register:
-				rc.on_save()
 
 	for v in r.variables.values():
 		v.save_to(new_save.data)
@@ -47,7 +39,7 @@ func invoke(save_name: String) -> bool:
 	var error := ResourceSaver.save(save_path, new_save)
 
 	if error != OK:
-		print("There was issue writing save %s to %s error_number: %s" % 
+		print("There was issue writing save %s to %s error_number: %s" %
 				[save_name, save_path, error])
 		return false
 
