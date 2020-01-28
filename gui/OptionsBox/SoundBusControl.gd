@@ -10,15 +10,15 @@ func _ready() -> void:
 	bus_id = AudioServer.get_bus_index(bus_name)
 
 	$VBox/Label.text = label
-	
+
 	var _mute := AudioServer.is_bus_mute(bus_id)
 	$VBox/CheckButton.pressed = !_mute
-	
+
 	$VBox/CheckButton.connect(
 		"toggled", self,
 		"set_bus_on", [bus_id]
 	)
-	
+
 	$Bar.connect(
 		"value_changed", self,
 		"set_bus_volume", [bus_id]
@@ -30,15 +30,15 @@ func _ready() -> void:
 func _on_visibility_changed() -> void:
 	if not visible:
 		return
-	
+
 	$Bar.value = AudioServer.get_bus_volume_db(bus_id)
 
 
-func set_bus_volume(value: int, bus_id: int) -> void:
-	AudioServer.set_bus_volume_db(bus_id, value)
+func set_bus_volume(value: int, _bus_id: int) -> void:
+	AudioServer.set_bus_volume_db(_bus_id, value)
 	volume = value
 
 
-func set_bus_on(bus_id: int, value: bool) -> void:
-	AudioServer.set_bus_mute(bus_id, !value)
+func set_bus_on(_bus_id: int, value: bool) -> void:
+	AudioServer.set_bus_mute(_bus_id, !value)
 	mute = value
