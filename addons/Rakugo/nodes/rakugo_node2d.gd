@@ -120,12 +120,17 @@ func on_load(game_version: String) -> void:
 		push_error("error with loading: %s"  %node_id)
 		return
 
+	print(node_id)
+
 	if "visible" in node_link.value:
 		visible = node_link.value["visible"]
+		prints("visible", visible)
 
 		if visible:
 			_state = node_link.value["state"]
+			prints("state", state)
 			last_show_args = node_link.value["show_args"]
+			prints("show_args", last_show_args)
 			_on_show(node_id, _state , last_show_args )
 
 	else:
