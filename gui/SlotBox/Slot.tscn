@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://themes/question/question.tres" type="Theme" id=1]
+[ext_resource path="res://themes/new_gui/new_gui.theme" type="Theme" id=1]
 [ext_resource path="res://addons/Rakugo/nodes/save_button.gd" type="Script" id=2]
 [ext_resource path="res://graphics/not_available.png" type="Texture" id=3]
 [ext_resource path="res://ubuntu-font-family/Ubuntu-L.ttf" type="DynamicFontData" id=4]
