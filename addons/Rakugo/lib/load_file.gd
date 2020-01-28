@@ -85,12 +85,5 @@ func invoke(save_folder: String, save_name: String,  variables: Dictionary):
 			node.on_load(r.game_version)
 			continue
 
-		# to fix bug
-		var rc = node as RakugoControl
-
-		if rc:
-			if rc.register:
-				rc.on_load()
-
 	r.loading_in_progress = false
 	return true

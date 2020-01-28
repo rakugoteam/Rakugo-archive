@@ -1,6 +1,6 @@
 extends Node
 
-const rakugo_version := "2.0.7"
+const rakugo_version := "2.0.8"
 const credits_path := "res://addons/Rakugo/credits.txt"
 
 # we need it because we hide base RakugoMenu form custom nodes
