@@ -28,21 +28,21 @@ func invoke(
 
 	load_scene(scene_id, force_reload)
 
-	if r.started:
-		r.story_step()
+	yield(r, "started")
+	r.story_step()
 
 
 func load_scene(scene_id, force_reload := true):
 	var path = r.current_scene
 	r.current_scene = scene_id
-	
-	# to fix #194 bug 
+
+	# to fix #194 bug
 	if "://" in scene_id:
 		path = scene_id
 		if scene_id in scenes_links:
 			force_reload = true
 			scene_id = scenes_links[scene_id]
-	
+
 	elif scene_id in scenes_links:
 		path = scenes_links[scene_id].resource_path
 
@@ -51,9 +51,10 @@ func load_scene(scene_id, force_reload := true):
 
 		if r.current_root_node != null:
 			r.current_root_node.queue_free()
-		
+
 		var lscene = load(path)
 		r.current_root_node = lscene.instance()
 		get_tree().get_root().add_child(r.current_root_node)
-		r.started = true
-		r.emit_signal("started")
+
+	r.started = true
+	r.emit_signal("started")
