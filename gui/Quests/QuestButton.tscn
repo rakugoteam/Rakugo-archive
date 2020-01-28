@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://themes/question/question.tres" type="Theme" id=1]
+[ext_resource path="res://themes/new_gui/new_gui.theme" type="Theme" id=1]
 [ext_resource path="res://addons/Rakugo/nodes/rakugo_quest_button.gd" type="Script" id=2]
 [ext_resource path="res://gui/Labels/dialogue_text.tscn" type="PackedScene" id=3]
 [ext_resource path="res://gui/Quests/quests-icons/available.png" type="Texture" id=4]

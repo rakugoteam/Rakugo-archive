@@ -4,6 +4,7 @@ class_name Statement
 var type := 0 # Rakugo.StatementType.BASE
 var parameters := {"add_to_history": false} # dict of pairs keyword: argument
 var parameters_names := ["add_to_history"] # possible keywords for this type of statement - to use in RakugoScript in near future
+var parameters_always := ["add_to_history"]
 
 
 func _ready() -> void:
@@ -23,6 +24,12 @@ func set_parameters(new_parameters: Dictionary) -> void:
 
 
 func set_dict(new_dict: Dictionary, current_dict: Dictionary) -> void:
+	for kw in current_dict.keys():
+		if kw in parameters_always:
+			continue
+
+		if not (kw in new_dict):
+			current_dict.erase(kw)
 
 	for kw in new_dict.keys():
 		current_dict[kw] = new_dict[kw]
@@ -49,20 +56,27 @@ func on_exit(_type: int, new_parameters := {}) -> void:
 
 
 func get_history_id() -> Array:
-	return [
+	var id_list = [
 		Rakugo.current_scene,
 		Rakugo.current_node_name,
 		Rakugo.current_dialog_name,
 		Rakugo.story_state
 	]
 
+	var id = PoolStringArray(id_list).join(",")
+
+	return id
+
 
 func get_as_history_item() -> Dictionary:
 	var hparameters = parameters.duplicate()
-	return {
+	hparameters.erase("avatar")
+	var history_item = {
 		"type": type,
 		"parameters": hparameters
 	}
+
+	return history_item
 
 
 func add_to_history() -> void:

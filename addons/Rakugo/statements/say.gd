@@ -7,28 +7,7 @@ func _init() -> void:
 	parameters_names += ["who", "what", "typing", "kind", "avatar", "avatar_state"]
 	parameters["who"] = ""
 	parameters["add_to_history"] = true
-
-
-func if_who(_parameters:Dictionary, _who:CharacterObject):
-	if "avatar" in _who.value:
-		_parameters["avatar"] = _who.avatar
-
-	if "what" in _parameters:
-		_parameters.what = _who.parse_what(_parameters.what)
-
-	if not ("kind" in _parameters):
-		_parameters["kind"] = _who.kind
-
-
-func if_not_who(_parameters:Dictionary):
-	if "who" in _parameters:
-		_parameters.who = Rakugo.text_passer(_parameters.who)
-
-	if "what" in _parameters:
-		_parameters.what = Rakugo.text_passer(_parameters.what)
-
-	if not ("kind" in _parameters):
-		_parameters["kind"] = Rakugo.default_kind
+	parameters_always += ["avatar_state"]
 
 
 func exec() -> void:
@@ -47,10 +26,23 @@ func exec() -> void:
 				var who = Rakugo.get_var(org_who)
 				parameters.who = who.parse_name()
 
-				if_who(parameters, who)
+				if "avatar" in who.value:
+					parameters["avatar"] = who.avatar
 
+				if "what" in parameters:
+					parameters.what = who.parse_what(parameters.what)
 
-	if_not_who(parameters)
+				if not ("kind" in parameters):
+					parameters["kind"] = who.kind
+
+	if "who" in parameters:
+		parameters.who = Rakugo.text_passer(parameters.who)
+
+	if "what" in parameters:
+		parameters.what = Rakugo.text_passer(parameters.what)
+
+	if not ("kind" in parameters):
+		parameters["kind"] = Rakugo.default_kind
 
 	.exec()
 
