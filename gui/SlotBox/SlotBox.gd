@@ -139,6 +139,46 @@ func load_img(path:String) -> ImageTexture:
 	tex.create_from_image(img)
 	return tex
 
+func new_slot_instance(is_save_mode: bool, filename: String, parent: Node, hide_dl_btn_for_names: PoolStringArray) -> Node:
+	var delete_save_mod: String = "save" if is_save_mode else "load"
+	var fn_name_to_connect: String = "savepress" if is_save_mode else "loadpress"
+	var fn_name_to_disconnect: String = "savepress" if not is_save_mode else "loadpress"
+	
+	var s = slot.instance()
+	parent.add_child(s)
+	
+	var png_path = saveslots_dir.plus_file(filename + '.png')
+	if filehandler.file_exists(png_path):
+		Rakugo.debug("slot exist, loading image")
+		var tex = load_img(png_path)
+		s.get_node("Button/TextureRect").texture = tex
+		
+	s.get_node("Label").text = filename
+	
+	var info_path = saveslots_dir.plus_file(filename + '.info')
+	if filehandler.file_exists(info_path):
+		filehandler.open(info_path, File.READ)
+		s.get_node("Label2").text = filehandler.get_line()
+		filehandler.close()
+
+	var b = s.get_node("Button")
+
+	if b.is_connected("pressed", self, fn_name_to_disconnect):
+		b.disconnect("pressed", self, fn_name_to_disconnect)
+
+	if !b.is_connected("pressed", self, fn_name_to_connect):
+		b.connect("pressed", self, fn_name_to_connect, [filename])
+
+	var bd = s.get_node("Delete")
+
+	if filename in hide_dl_btn_for_names:
+		bd.hide()
+	else:
+		if not bd.is_connected("pressed", self, "delete_save"):
+			bd.connect("pressed", self, "delete_save", [filename, delete_save_mod])
+
+	s.show()
+	return s
 
 func savebox() -> void:
 
@@ -152,41 +192,7 @@ func savebox() -> void:
 
 	for x in saves:
 		x = x.replace("." + file_ext, "")
-		var s = slot.instance()
-		container.add_child(s)
-		
-		var png_path = saveslots_dir.plus_file(x + '.png')
-		if filehandler.file_exists(png_path):
-			Rakugo.debug("slot exist, loading image")
-			var tex = load_img(png_path)
-			s.get_node("Button/TextureRect").texture = tex
-
-		s.get_node("Label").text = x
-		
-		var info_path = saveslots_dir.plus_file(x + '.info')
-		if filehandler.file_exists(info_path):
-			filehandler.open(info_path, File.READ)
-			s.get_node("Label2").text = filehandler.get_line()
-			filehandler.close()
-
-		var b = s.get_node("Button")
-
-		if b.is_connected("pressed", self, "loadpress"):
-			b.disconnect("pressed", self, "loadpress")
-
-		if !b.is_connected("pressed", self, "savepress"):
-			b.connect("pressed", self, "savepress", [x])
-
-		var bd = s.get_node("Delete")
-
-		if x in ["empty"]:
-			bd.hide()
-
-		else:
-			if not bd.is_connected("pressed", self, "delete_save"):
-				bd.connect("pressed", self, "delete_save", [x, "save"])
-
-		s.show()
+		var s = new_slot_instance(true, x, container, PoolStringArray(["empty"]))
 
 	filehandler.close()
 
@@ -201,41 +207,7 @@ func loadbox() -> bool:
 
 	for x in saves:
 		x = x.replace("." + file_ext, "")
-		var s = slot.instance()
-		container.add_child(s)
-		
-		var png_path = saveslots_dir.plus_file(x + '.png')
-		if filehandler.file_exists(png_path):
-			Rakugo.debug("slot exist, loading image")
-			var tex = load_img(png_path)
-			s.get_node("Button/TextureRect").texture = tex
-
-		s.get_node("Label").text = x
-		
-		var info_path = saveslots_dir.plus_file(x + '.info')
-		if filehandler.file_exists(info_path):
-			filehandler.open(info_path, File.READ)
-			s.get_node("Label2").text = filehandler.get_line()
-			filehandler.close()
-
-		var b = s.get_node("Button")
-
-		if b.is_connected("pressed", self, "savepress"):
-			b.disconnect("pressed", self, "savepress")
-
-		if !b.is_connected("pressed", self, "loadpress"):
-			b.connect("pressed", self, "loadpress", [x])
-
-		var bd = s.get_node("Delete")
-
-		if x in ["empty", "auto"]:
-			bd.hide()
-
-		else:
-			if not bd.is_connected("pressed", self, "delete_save"):
-				bd.connect("pressed", self, "delete_save", [x, "load"])
-
-		s.show()
+		var s = new_slot_instance(false, x, container, PoolStringArray(["empty", "auto"]))
 
 	filehandler.close()
 	return true
