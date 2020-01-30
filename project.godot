@@ -376,6 +376,7 @@ _global_script_class_icons={
 
 config/name="New Rakugo Game"
 run/main_scene="res://game/Start/Start.tscn"
+config/project_settings_override="res://game/rakugo.cfg"
 boot_splash/image="res://graphics/splash.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://graphics/window_icon.png"
@@ -404,14 +405,13 @@ Window="*res://gui/Window/Window.tscn"
 
 gdscript/completion/autocomplete_setters_and_getters=true
 gdscript/warnings/unused_variable=false
-gdscript/warnings/unused_class_variable=false
 gdscript/warnings/unused_argument=false
 gdscript/warnings/unused_signal=false
 gdscript/warnings/return_value_discarded=false
 
 [editor_plugins]
 
-enabled=PoolStringArray( "Rakugo", "godot-plugin-refresher" )
+enabled=PoolStringArray( "Rakugo" )
 
 [input]
 

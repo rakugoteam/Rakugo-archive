@@ -2,7 +2,7 @@ extends Node
 
 const rakugo_version := "2.1.0"
 const credits_path := "res://addons/Rakugo/credits.txt"
-const save_folder := "saves" 
+const save_folder := "saves"
 
 # project settings integration
 onready var game_title = ProjectSettings.get_setting("application/config/name")
@@ -149,7 +149,6 @@ signal begin
 signal hide_ui(value)
 signal checkpoint
 signal game_ended
-signal rakugo_ready
 
 func _ready() -> void:
 	## set by game developer
@@ -355,7 +354,6 @@ func _ready() -> void:
 	variables_init = variables.duplicate()
 
 	step_timer.connect("timeout", self, "_on_time_active_timeout")
-	emit_signal("rakugo_ready")
 
 
 func get_datetime_str() -> String:

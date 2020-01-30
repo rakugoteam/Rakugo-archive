@@ -7,8 +7,8 @@ export_presets.cfg
 .mono/
 
 # Project specific
-addons/godot-plugin-refresher/
-addons/editor_icon_previewer
+addons/*
+!addons/Rakugo
 fontconfig
 refences/
 saves/
