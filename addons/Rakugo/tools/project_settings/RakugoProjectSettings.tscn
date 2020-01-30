@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://addons/Rakugo/tools/project_settings/RakugoProjectSettings.gd" type="Script" id=1]
 [ext_resource path="res://addons/Rakugo/tools/project_settings/VersionBox.gd" type="Script" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://addons/Rakugo/tools/project_settings/DebugBox.gd" type="Script" id=15]
 [ext_resource path="res://addons/Rakugo/tools/project_settings/SaveBox.gd" type="Script" id=16]
 [ext_resource path="res://addons/Rakugo/icons/save.svg" type="Texture" id=17]
+[ext_resource path="res://addons/Rakugo/tools/project_settings/OverBox.gd" type="Script" id=18]
 
 [sub_resource type="Image" id=5]
 data = {
@@ -49,12 +50,16 @@ image = SubResource( 6 )
 size = Vector2( 16, 16 )
 
 [node name="RakugoProjectSettings" type="ConfirmationDialog"]
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -380.0
-margin_bottom = -183.0
+margin_right = -324.0
+margin_bottom = -170.0
 window_title = "Rakugo Project Settings"
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 anchor_right = 1.0
@@ -65,15 +70,78 @@ margin_right = -8.0
 margin_bottom = -36.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
-margin_right = 628.0
-margin_bottom = 373.0
+margin_right = 672.0
+margin_bottom = 400.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="OverBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_right = 672.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+script = ExtResource( 18 )
+root_path = NodePath("../../..")
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/OverBox"]
+margin_right = 24.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 24, 24 )
+texture = ExtResource( 11 )
+stretch_mode = 4
+
+[node name="CheckButton" type="CheckButton" parent="ScrollContainer/VBoxContainer/OverBox"]
+margin_left = 28.0
+margin_right = 104.0
+margin_bottom = 40.0
+pressed = true
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/OverBox"]
+margin_left = 108.0
+margin_top = 13.0
+margin_right = 365.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+text = "Use Project Settings Override"
+valign = 1
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/OverBox"]
+margin_left = 369.0
+margin_top = 9.0
+margin_right = 640.0
+margin_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "res://themes/new_gui/new_gui.theme"
+icon = SubResource( 2 )
+
+[node name="FileDialog" type="FileDialog" parent="ScrollContainer/VBoxContainer/OverBox/Button"]
+margin_left = -195.0
+margin_top = -122.0
+margin_right = 261.0
+margin_bottom = 198.0
+window_title = "Otwórz plik"
+mode = 0
+filters = PoolStringArray( "*.cfg" )
+current_dir = "res://game"
+current_file = "rakugo.cfg"
+current_path = "res://game/rakugo.cfg"
+
+[node name="Reload" type="Button" parent="ScrollContainer/VBoxContainer/OverBox"]
+margin_left = 644.0
+margin_top = 8.0
+margin_right = 672.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 24, 24 )
+size_flags_horizontal = 5
+size_flags_vertical = 4
+icon = SubResource( 2 )
+
 [node name="VersionBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
-editor/display_folded = true
-margin_right = 628.0
-margin_bottom = 24.0
+margin_top = 44.0
+margin_right = 672.0
+margin_bottom = 68.0
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 
@@ -87,15 +155,15 @@ stretch_mode = 4
 [node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/VersionBox"]
 margin_left = 28.0
 margin_top = 5.0
-margin_right = 326.0
+margin_right = 348.0
 margin_bottom = 19.0
 size_flags_horizontal = 3
 text = "Version"
 valign = 1
 
 [node name="LineEdit" type="LineEdit" parent="ScrollContainer/VBoxContainer/VersionBox"]
-margin_left = 330.0
-margin_right = 628.0
+margin_left = 352.0
+margin_right = 672.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 text = "1.2.0"
@@ -103,10 +171,9 @@ caret_blink = true
 caret_blink_speed = 0.5
 
 [node name="GameCreditsBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
-editor/display_folded = true
-margin_top = 28.0
-margin_right = 628.0
-margin_bottom = 128.0
+margin_top = 72.0
+margin_right = 672.0
+margin_bottom = 172.0
 size_flags_horizontal = 3
 script = ExtResource( 3 )
 
@@ -120,15 +187,15 @@ stretch_mode = 4
 [node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/GameCreditsBox"]
 margin_left = 28.0
 margin_top = 43.0
-margin_right = 310.0
+margin_right = 332.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 text = "Game Credits"
 valign = 1
 
 [node name="TextEdit" type="TextEdit" parent="ScrollContainer/VBoxContainer/GameCreditsBox"]
-margin_left = 314.0
-margin_right = 596.0
+margin_left = 336.0
+margin_right = 640.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 200, 100 )
 size_flags_horizontal = 3
@@ -136,9 +203,8 @@ size_flags_vertical = 3
 text = "{a=https://github.com/jebedaia360}Jeremi Biernacki ({i}Jebedaia{/i}){/a}"
 
 [node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/GameCreditsBox"]
-editor/display_folded = true
-margin_left = 600.0
-margin_right = 628.0
+margin_left = 644.0
+margin_right = 672.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 24, 24 )
 size_flags_vertical = 0
@@ -158,10 +224,9 @@ current_file = "about.txt"
 current_path = "res://game/about.txt"
 
 [node name="MarkupBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
-editor/display_folded = true
-margin_top = 132.0
-margin_right = 628.0
-margin_bottom = 156.0
+margin_top = 176.0
+margin_right = 672.0
+margin_bottom = 200.0
 size_flags_horizontal = 3
 script = ExtResource( 4 )
 
@@ -175,16 +240,16 @@ stretch_mode = 4
 [node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/MarkupBox"]
 margin_left = 28.0
 margin_top = 5.0
-margin_right = 310.0
+margin_right = 332.0
 margin_bottom = 19.0
 size_flags_horizontal = 3
 text = "Markup"
 valign = 1
 
 [node name="MenuButton" type="MenuButton" parent="ScrollContainer/VBoxContainer/MarkupBox"]
-margin_left = 314.0
+margin_left = 336.0
 margin_top = 1.0
-margin_right = 596.0
+margin_right = 640.0
 margin_bottom = 23.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -196,17 +261,16 @@ flat = false
 items = [ "Ren'Py Like", ExtResource( 5 ), 0, false, false, 0, 0, null, "", false, "BBCode Like", SubResource( 2 ), 0, false, false, 1, 0, null, "", false ]
 
 [node name="Reload" type="Button" parent="ScrollContainer/VBoxContainer/MarkupBox"]
-margin_left = 600.0
-margin_right = 628.0
+margin_left = 644.0
+margin_right = 672.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 24, 24 )
 icon = SubResource( 2 )
 
 [node name="KindBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
-editor/display_folded = true
-margin_top = 160.0
-margin_right = 628.0
-margin_bottom = 184.0
+margin_top = 204.0
+margin_right = 672.0
+margin_bottom = 228.0
 size_flags_horizontal = 3
 script = ExtResource( 6 )
 
@@ -220,7 +284,7 @@ stretch_mode = 4
 [node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/KindBox"]
 margin_left = 28.0
 margin_top = 5.0
-margin_right = 310.0
+margin_right = 332.0
 margin_bottom = 19.0
 hint_tooltip = "Dialog Display Style"
 mouse_filter = 1
@@ -229,9 +293,9 @@ text = "Default Kind"
 valign = 1
 
 [node name="MenuButton" type="MenuButton" parent="ScrollContainer/VBoxContainer/KindBox"]
-margin_left = 314.0
+margin_left = 336.0
 margin_top = 1.0
-margin_right = 596.0
+margin_right = 640.0
 margin_bottom = 23.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -243,16 +307,16 @@ flat = false
 items = [ "adv", SubResource( 2 ), 0, false, false, 0, 0, null, "", false, "center", SubResource( 2 ), 0, false, false, 1, 0, null, "", false, "fullscreen", SubResource( 2 ), 0, false, false, 2, 0, null, "", false, "right", SubResource( 2 ), 0, false, false, 3, 0, null, "", false, "left", SubResource( 2 ), 0, false, false, 4, 0, null, "", false, "top", SubResource( 2 ), 0, false, false, 5, 0, null, "", false, "phone-right", SubResource( 2 ), 0, false, false, 6, 0, null, "", false, "phone-left", SubResource( 2 ), 0, false, false, 7, 0, null, "", false, "nvl", SubResource( 2 ), 0, false, false, 8, 0, null, "", false ]
 
 [node name="Reload" type="Button" parent="ScrollContainer/VBoxContainer/KindBox"]
-margin_left = 600.0
-margin_right = 628.0
+margin_left = 644.0
+margin_right = 672.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 24, 24 )
 icon = SubResource( 2 )
 
 [node name="MKindBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
-margin_top = 188.0
-margin_right = 628.0
-margin_bottom = 212.0
+margin_top = 232.0
+margin_right = 672.0
+margin_bottom = 256.0
 size_flags_horizontal = 3
 script = ExtResource( 8 )
 
@@ -266,7 +330,7 @@ stretch_mode = 4
 [node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/MKindBox"]
 margin_left = 28.0
 margin_top = 5.0
-margin_right = 247.0
+margin_right = 267.0
 margin_bottom = 19.0
 hint_tooltip = "Dialog Menu Display Style"
 mouse_filter = 1
@@ -275,9 +339,9 @@ text = "Default MKind"
 valign = 1
 
 [node name="MKindButton" type="MenuButton" parent="ScrollContainer/VBoxContainer/MKindBox"]
-margin_left = 251.0
+margin_left = 271.0
 margin_top = 1.0
-margin_right = 382.0
+margin_right = 414.0
 margin_bottom = 23.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -290,17 +354,17 @@ flat = false
 items = [ "vertical", SubResource( 2 ), 0, false, false, 0, 0, null, "", false, "horizontal", SubResource( 2 ), 0, false, false, 1, 0, null, "", false, "grid", SubResource( 2 ), 0, false, false, 2, 0, null, "", false ]
 
 [node name="SpinBox" type="SpinBox" parent="ScrollContainer/VBoxContainer/MKindBox"]
-margin_left = 386.0
-margin_right = 460.0
+margin_left = 418.0
+margin_right = 492.0
 margin_bottom = 24.0
 min_value = 1.0
 max_value = 10.0
 value = 1.0
 
 [node name="MAnchorButton" type="MenuButton" parent="ScrollContainer/VBoxContainer/MKindBox"]
-margin_left = 464.0
+margin_left = 496.0
 margin_top = 1.0
-margin_right = 595.0
+margin_right = 639.0
 margin_bottom = 23.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -313,18 +377,17 @@ flat = false
 items = [ "top_left", SubResource( 2 ), 0, false, false, 0, 0, null, "", false, "top_right", SubResource( 2 ), 0, false, false, 1, 0, null, "", false, "bottom_left", SubResource( 2 ), 0, false, false, 2, 0, null, "", false, "bottom_right", SubResource( 2 ), 0, false, false, 3, 0, null, "", false, "center_left", SubResource( 2 ), 0, false, false, 4, 0, null, "", false, "center_top", SubResource( 2 ), 0, false, false, 5, 0, null, "", false, "center_right", SubResource( 2 ), 0, false, false, 6, 0, null, "", false, "center_bottom", SubResource( 2 ), 0, false, false, 7, 0, null, "", false, "center", SubResource( 2 ), 0, false, false, 8, 0, null, "", false ]
 
 [node name="Reload" type="Button" parent="ScrollContainer/VBoxContainer/MKindBox"]
-margin_left = 599.0
-margin_right = 627.0
+margin_left = 643.0
+margin_right = 671.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 24, 24 )
 size_flags_vertical = 4
 icon = SubResource( 2 )
 
 [node name="ThemeBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
-editor/display_folded = true
-margin_top = 216.0
-margin_right = 628.0
-margin_bottom = 240.0
+margin_top = 260.0
+margin_right = 672.0
+margin_bottom = 284.0
 size_flags_horizontal = 3
 script = ExtResource( 10 )
 
@@ -338,22 +401,22 @@ stretch_mode = 4
 [node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/ThemeBox"]
 margin_left = 28.0
 margin_top = 5.0
-margin_right = 310.0
+margin_right = 332.0
 margin_bottom = 19.0
 size_flags_horizontal = 3
 text = "Theme"
 valign = 1
 
 [node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/ThemeBox"]
-margin_left = 314.0
+margin_left = 336.0
 margin_top = 1.0
-margin_right = 596.0
+margin_right = 640.0
 margin_bottom = 23.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-text = "res://themes/question/question.theme"
+text = "res://themes/new_gui/new_gui.theme"
 icon = SubResource( 2 )
 
 [node name="FileDialog" type="FileDialog" parent="ScrollContainer/VBoxContainer/ThemeBox/Button"]
@@ -369,17 +432,16 @@ current_file = "new_gui.tres"
 current_path = "res://themes/new_gui/new_gui.tres"
 
 [node name="Reload" type="Button" parent="ScrollContainer/VBoxContainer/ThemeBox"]
-margin_left = 600.0
-margin_right = 628.0
+margin_left = 644.0
+margin_right = 672.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 24, 24 )
 icon = SubResource( 2 )
 
 [node name="ScenesLinksBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
-editor/display_folded = true
-margin_top = 244.0
-margin_right = 628.0
-margin_bottom = 268.0
+margin_top = 288.0
+margin_right = 672.0
+margin_bottom = 312.0
 script = ExtResource( 12 )
 
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/ScenesLinksBox"]
@@ -389,23 +451,22 @@ texture = ExtResource( 13 )
 stretch_mode = 4
 
 [node name="ScenesLinksChooser" parent="ScrollContainer/VBoxContainer/ScenesLinksBox" instance=ExtResource( 14 )]
-editor/display_folded = true
 margin_left = 20.0
-margin_right = 628.0
+margin_right = 672.0
 only_open = true
 
 [node name="Label" parent="ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser" index="0"]
-margin_right = 268.0
+margin_right = 290.0
 size_flags_horizontal = 3
 
 [node name="LineEdit" parent="ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser" index="1"]
-margin_left = 272.0
-margin_right = 540.0
+margin_left = 294.0
+margin_right = 584.0
 text = "res://game/scenes_links.tres"
 
 [node name="Choose" parent="ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser" index="2"]
-margin_left = 544.0
-margin_right = 572.0
+margin_left = 588.0
+margin_right = 616.0
 icon = SubResource( 2 )
 
 [node name="HBoxContainer" parent="ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser" index="3"]
@@ -418,22 +479,21 @@ icon = SubResource( 2 )
 icon = SubResource( 2 )
 
 [node name="Cancel" parent="ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser" index="4"]
-margin_left = 576.0
-margin_right = 604.0
+margin_left = 620.0
+margin_right = 648.0
 icon = SubResource( 2 )
 
 [node name="Control" parent="ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser" index="5"]
-margin_left = 608.0
-margin_right = 608.0
+margin_left = 652.0
+margin_right = 652.0
 
 [node name="FileDialog" parent="ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser/Control" index="0"]
 window_title = "Open a File"
 
 [node name="DebugBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
-editor/display_folded = true
-margin_top = 272.0
-margin_right = 628.0
-margin_bottom = 312.0
+margin_top = 316.0
+margin_right = 672.0
+margin_bottom = 356.0
 size_flags_horizontal = 3
 script = ExtResource( 15 )
 
@@ -447,21 +507,21 @@ stretch_mode = 4
 [node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/DebugBox"]
 margin_left = 28.0
 margin_top = 13.0
-margin_right = 548.0
+margin_right = 592.0
 margin_bottom = 27.0
 size_flags_horizontal = 3
 text = "Debug"
 valign = 1
 
 [node name="CheckButton" type="CheckButton" parent="ScrollContainer/VBoxContainer/DebugBox"]
-margin_left = 552.0
-margin_right = 628.0
+margin_left = 596.0
+margin_right = 672.0
 margin_bottom = 40.0
 
 [node name="SaveBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
-margin_top = 316.0
-margin_right = 628.0
-margin_bottom = 356.0
+margin_top = 360.0
+margin_right = 672.0
+margin_bottom = 400.0
 size_flags_horizontal = 3
 script = ExtResource( 16 )
 
@@ -474,7 +534,7 @@ stretch_mode = 4
 
 [node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/SaveBox"]
 margin_left = 28.0
-margin_right = 307.0
+margin_right = 351.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 5
@@ -482,21 +542,21 @@ text = "Test saves"
 valign = 1
 
 [node name="CheckButton" type="CheckButton" parent="ScrollContainer/VBoxContainer/SaveBox"]
-margin_left = 311.0
-margin_right = 387.0
+margin_left = 355.0
+margin_right = 431.0
 margin_bottom = 40.0
 
 [node name="TextureRect2" type="TextureRect" parent="ScrollContainer/VBoxContainer/SaveBox"]
-margin_left = 391.0
-margin_right = 415.0
+margin_left = 435.0
+margin_right = 459.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 24, 24 )
 texture = SubResource( 2 )
 stretch_mode = 4
 
 [node name="Label3" type="Label" parent="ScrollContainer/VBoxContainer/SaveBox"]
-margin_left = 419.0
-margin_right = 628.0
+margin_left = 463.0
+margin_right = 672.0
 margin_bottom = 40.0
 size_flags_vertical = 1
 text = "
