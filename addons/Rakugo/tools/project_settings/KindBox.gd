@@ -48,13 +48,13 @@ func _on_kind(id:int) -> void:
 	kind = kinds[id]
 
 
-func load_setting() -> void:
+func load_setting(use_cfg:bool, cfg:ConfigFile) -> void:
 	kind = ProjectSettings.get_setting(
 		"application/rakugo/default_kind")
 
 	_on_kind(kinds.find(kind))
 
 
-func save_setting() -> void:
+func save_setting(use_cfg:bool, cfg:ConfigFile) -> void:
 	 ProjectSettings.set_setting(
 		"application/rakugo/default_kind", kind)

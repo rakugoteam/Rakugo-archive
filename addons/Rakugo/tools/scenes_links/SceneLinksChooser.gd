@@ -14,7 +14,7 @@ func _ready() -> void:
 	$Cancel.icon = get_icon("Reload", "EditorIcons")
 	$HBoxContainer/Apply.icon = get_icon("Save", "EditorIcons")
 	$HBoxContainer/SetAsDef.icon = get_icon("GDScript", "EditorIcons")
-	
+
 	tres_dialog.connect("confirmed", self, "_on_tres_dialog")
 	$Choose.connect("pressed", self, "_on_browse_file")
 	$Cancel.connect("pressed", self, "emit_signal", ["cancel"])
@@ -32,7 +32,7 @@ func _on_tres_dialog() -> void:
 	emit_signal("open", tres_dialog.current_path)
 
 
-func _on_set_as_def() -> void:
+func _on_set_as_def(use_cfg:=false, cfg:ConfigFile=null) -> void:
 	ProjectSettings.set_setting(
 		"application/rakugo/scenes_links", $LineEdit.text)
 	emit_signal("set_as_def")

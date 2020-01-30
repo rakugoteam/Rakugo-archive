@@ -38,7 +38,7 @@ func _ready() -> void:
 	kpopup = $MKindButton.get_popup()
 	kpopup.clear()
 	kpopup.connect("id_pressed", self, "_on_kind")
-	
+
 	for k in kinds:
 		kpopup.add_item(k)
 
@@ -60,7 +60,7 @@ func _ready() -> void:
 	apopup = $MAnchorButton.get_popup()
 	apopup.clear()
 	apopup.connect("id_pressed", self, "_on_anchor")
-	
+
 	for a in anchors:
 		apopup.add_item(a)
 
@@ -86,19 +86,28 @@ func _on_anchor(id:int) -> void:
 	anchor = anchors[id]
 
 
-func load_setting() -> void:
+func load_setting(use_cfg:bool, cfg:ConfigFile) -> void:
 	kind = ProjectSettings.get_setting(
 		"application/rakugo/default_mkind")
+
+	if use_cfg:
+		kind = cfg.get_value("application", "rakugo/default_mkind")
 
 	_on_kind(kinds.find(kind))
 
 	$SpinBox.value = ProjectSettings.get_setting(
 		"application/rakugo/default_mcolumns")
-	
+
+	if use_cfg:
+			$SpinBox.value = cfg.get_value("application", "rakugo/default_mcolumns")
+
 	update_box()
-	
+
 	anchor = ProjectSettings.get_setting(
 		"application/rakugo/default_manchor")
+
+	if use_cfg:
+			anchor = cfg.get_value("application", "rakugo/default_manchor")
 
 	_on_anchor(anchors.find(anchor))
 
@@ -107,7 +116,13 @@ func update_box() -> void:
 	$SpinBox.visible = kind == "grid"
 
 
-func save_setting() -> void:
+func save_setting(use_cfg:bool, cfg:ConfigFile) -> void:
+	if use_cfg:
+		cfg.set_value("application", "rakugo/default_mkind", kind)
+		cfg.set_value("application", "rakugo/default_mcolumns", $SpinBox.value)
+		cfg.set_value("application", "rakugo/default_manchor", anchor)
+		return
+
 	ProjectSettings.set_setting(
 		"application/rakugo/default_mkind", kind)
 	ProjectSettings.set_setting(
@@ -115,4 +130,3 @@ func save_setting() -> void:
 		$SpinBox.value)
 	ProjectSettings.set_setting(
 		"application/rakugo/default_manchor", anchor)
-	
