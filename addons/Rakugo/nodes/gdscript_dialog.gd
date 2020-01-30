@@ -44,18 +44,13 @@ func story_step() -> void:
 func check_dialog(node_name, dialog_name, check_for) -> bool:
 	var result = true
 
-	if node_name != name:
-		result = false
+	result = node_name == name
 
 	var real_name = name
 	if name.begins_with("@"):
 		real_name = name.split("@", false)[0]
 
-	if node_name != real_name:
-		result = false
-
-	else:
-		result = true
+	result = node_name == real_name
 
 	if dialog_name != check_for:
 		result = false

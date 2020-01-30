@@ -1,6 +1,6 @@
 [gd_scene load_steps=27 format=2]
 
-[ext_resource path="res://themes/question/question.theme" type="Theme" id=1]
+[ext_resource path="res://themes/new_gui/new_gui.theme" type="Theme" id=1]
 [ext_resource path="res://addons/Rakugo/nodes/rakugo_control.gd" type="Script" id=2]
 [ext_resource path="res://addons/Rakugo/nodes/rakugo_menu.gd" type="Script" id=3]
 [ext_resource path="res://gui/InGame/ChoiceButton.tscn" type="PackedScene" id=4]
@@ -417,8 +417,10 @@ anchor_bottom = 1.0
 mouse_filter = 1
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 use_theme_from_setting = true
-register = false
 node_id = "InGameGUI"
 
 [node name="RakugoMenu" type="GridContainer" parent="."]
@@ -463,7 +465,6 @@ scroll_active = false
 selection_enabled = true
 
 [node name="Quick" type="HBoxContainer" parent="."]
-editor/display_folded = true
 margin_top = 571.0
 margin_right = 1463.0
 margin_bottom = 611.0
@@ -580,7 +581,6 @@ custom_fonts/font = SubResource( 1 )
 text = "Quit"
 
 [node name="InfoAnim" type="AnimationPlayer" parent="Quick"]
-editor/display_folded = true
 anims/Auto = SubResource( 2 )
 anims/Checkpoint = SubResource( 3 )
 anims/GeneralNotif = SubResource( 4 )
