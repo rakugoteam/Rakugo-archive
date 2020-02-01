@@ -28,13 +28,20 @@ func _on_text_mode(id:int) -> void:
 	mode = modes[id]
 
 
-func load_setting() -> void:
+func load_setting(use_cfg:bool, cfg:ConfigFile) -> void:
 	mode = ProjectSettings.get_setting(
 		"application/rakugo/markup")
-	
+
+	if use_cfg:
+		mode = cfg.get_value("application", "rakugo/markup")
+
 	_on_text_mode(modes.find(mode))
 
 
-func save_setting() -> void:
-	 ProjectSettings.set_setting(
+func save_setting(use_cfg:bool, cfg:ConfigFile) -> void:
+	if use_cfg:
+		cfg.set_value("application", "rakugo/markup", mode)
+		return
+
+	ProjectSettings.set_setting(
 		"application/rakugo/markup", mode)
