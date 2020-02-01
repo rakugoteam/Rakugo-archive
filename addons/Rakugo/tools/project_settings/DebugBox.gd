@@ -6,7 +6,7 @@ func _ready() -> void:
 
 
 func load_setting(use_cfg:bool, cfg:ConfigFile) -> void:
-	if use_cfg:
+	if use_cfg and cfg:
 		$CheckButton.pressed = cfg.get_value("application", "rakugo/debug")
 		return
 
@@ -15,7 +15,7 @@ func load_setting(use_cfg:bool, cfg:ConfigFile) -> void:
 
 
 func save_setting(use_cfg:bool, cfg:ConfigFile) -> void:
-	if use_cfg:
+	if use_cfg and cfg:
 		cfg.set_value("application", "rakugo/debug", $CheckButton.pressed)
 		return
 

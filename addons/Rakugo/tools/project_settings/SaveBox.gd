@@ -5,7 +5,7 @@ func _ready() -> void:
 	$TextureRect2.texture = get_icon("NodeWarning", "EditorIcons")
 
 func load_setting(use_cfg:bool, cfg:ConfigFile) -> void:
-	if use_cfg:
+	if use_cfg and cfg:
 		$CheckButton.pressed = cfg.get_value("application", "rakugo/test_saves")
 		return
 
@@ -14,7 +14,7 @@ func load_setting(use_cfg:bool, cfg:ConfigFile) -> void:
 
 
 func save_setting(use_cfg:bool, cfg:ConfigFile) -> void:
-	if use_cfg:
+	if use_cfg and cfg:
 		cfg.set_value("application", "rakugo/test_saves", $CheckButton.pressed)
 		return
 

@@ -9,17 +9,17 @@ func _ready() -> void:
 
 func load_setting(use_cfg:bool, cfg:ConfigFile) -> void:
 	if use_cfg and cfg:
-		$LineEdit.text = cfg.get_value("application", "rakugo/version")
+		$LineEdit.text = cfg.get_value("application", "config/name")
 		return
 		
 	$LineEdit.text = ProjectSettings.get_setting(
-		"application/rakugo/version")
+		"application/config/name")
 
 
 func save_setting(use_cfg:bool, cfg:ConfigFile) -> void:
 	if use_cfg and cfg:
-		cfg.set_value("application", "rakugo/version", $LineEdit.text)
+		cfg.set_value("application", "config/name", $LineEdit.text)
 		return
 		
 	ProjectSettings.set_setting(
-		"application/rakugo/version", $LineEdit.text)
+		"application/config/name", $LineEdit.text)
