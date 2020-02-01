@@ -11,7 +11,7 @@ func _ready() -> void:
 
 
 func load_setting(use_cfg:bool, cfg:ConfigFile) -> void:
-	if use_cfg:
+	if use_cfg and cfg:
 		$TextEdit.text = cfg.get_value("application", "rakugo/game_credits")
 		return
 
@@ -20,7 +20,7 @@ func load_setting(use_cfg:bool, cfg:ConfigFile) -> void:
 
 
 func save_setting(use_cfg:bool, cfg:ConfigFile) -> void:
-	if use_cfg:
+	if use_cfg and cfg:
 		cfg.set_value("application", "rakugo/game_credits", $TextEdit.text)
 		return
 

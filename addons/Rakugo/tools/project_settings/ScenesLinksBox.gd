@@ -12,8 +12,8 @@ func _on_reload() -> void:
 
 
 func load_setting(use_cfg:bool, cfg:ConfigFile) -> void:
-	if use_cfg:
-		$CheckButton.pressed = cfg.get_value("application", "rakugo/debug")
+	if use_cfg and cfg:
+		$ScenesLinksChooser/LineEdit.text  = cfg.get_value("application", "rakugo/scenes_links")
 		return
 
 	$ScenesLinksChooser/LineEdit.text = ProjectSettings.get_setting(
