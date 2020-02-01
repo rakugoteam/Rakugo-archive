@@ -36,6 +36,7 @@ align = 1
 valign = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+editor/display_folded = true
 margin_top = 66.0
 margin_right = 809.0
 margin_bottom = 418.0
@@ -44,6 +45,7 @@ custom_constants/separation = 10
 alignment = 1
 
 [node name="GameplayBox" type="VBoxContainer" parent="HBoxContainer"]
+editor/display_folded = true
 margin_left = 39.0
 margin_right = 293.0
 margin_bottom = 352.0
@@ -181,7 +183,6 @@ value = 30.0
 ticks_on_borders = true
 
 [node name="AutoBox" type="VBoxContainer" parent="HBoxContainer/GameplayBox"]
-editor/display_folded = true
 margin_top = 219.0
 margin_right = 254.0
 margin_bottom = 269.0
@@ -202,7 +203,9 @@ margin_right = 254.0
 margin_bottom = 50.0
 grow_horizontal = 0
 size_flags_vertical = 1
+min_value = 1.0
 value = 50.0
+ticks_on_borders = true
 
 [node name="NotifyBox" type="VBoxContainer" parent="HBoxContainer/GameplayBox"]
 editor/display_folded = true
