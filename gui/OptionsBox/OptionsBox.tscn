@@ -24,6 +24,9 @@ mouse_filter = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Title" type="Label" parent="."]
 margin_right = 809.0
@@ -151,15 +154,8 @@ margin_right = 254.0
 margin_bottom = 186.0
 script = ExtResource( 5 )
 
-[node name="HBox" type="HBoxContainer" parent="HBoxContainer/GameplayBox/TextSpeedBox"]
+[node name="Label" type="Label" parent="HBoxContainer/GameplayBox/TextSpeedBox"]
 margin_right = 254.0
-margin_bottom = 30.0
-grow_horizontal = 0
-alignment = 1
-
-[node name="Label" type="Label" parent="HBoxContainer/GameplayBox/TextSpeedBox/HBox"]
-margin_left = 57.0
-margin_right = 197.0
 margin_bottom = 30.0
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 2 )
@@ -198,6 +194,7 @@ margin_right = 254.0
 margin_bottom = 50.0
 grow_horizontal = 0
 size_flags_vertical = 1
+min_value = 1.0
 value = 50.0
 
 [node name="NotifyBox" type="VBoxContainer" parent="HBoxContainer/GameplayBox"]
