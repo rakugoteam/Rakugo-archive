@@ -411,7 +411,7 @@ gdscript/warnings/return_value_discarded=false
 
 [editor_plugins]
 
-enabled=PoolStringArray( "Rakugo" )
+enabled=PoolStringArray( "Rakugo", "editor_icon_previewer", "godot-plugin-refresher" )
 
 [input]
 
