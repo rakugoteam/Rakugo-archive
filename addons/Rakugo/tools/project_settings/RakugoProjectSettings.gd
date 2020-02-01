@@ -2,11 +2,12 @@ tool
 extends WindowDialog
 
 var boxes : Array
+var cfg_path := ""
 onready var cfg := ConfigFile.new()
 var use_cfg : bool
 
 func _ready() -> void:
-	var cfg_path = ProjectSettings.get_setting(
+	cfg_path = ProjectSettings.get_setting(
 	 "application/config/project_settings_override")
 
 	if cfg_path:
@@ -25,3 +26,6 @@ func load_settings() -> void:
 func _on_ok() -> void:
 	for box in boxes:
 		box.save_setting(use_cfg, cfg)
+	
+	if use_cfg and cfg:
+		cfg.save(cfg_path)
