@@ -9,17 +9,23 @@ func _ready() -> void:
 
 func load_setting(use_cfg:bool, cfg:ConfigFile) -> void:
 	if use_cfg and cfg:
-		$SpinBox.value = cfg.get_value("application", "rakugo/punctuation_pause")
+		$SpinBox.value = int(
+			cfg.get_value("application", 
+			"rakugo/punctuation_pause"))
 		return
 		
-	$LineEdit.text = ProjectSettings.get_setting(
-		"application/rakugo/punctuation_pause")
+	$SpinBox.value = int(
+		ProjectSettings.get_setting(
+		"application/rakugo/punctuation_pause"))
 
 
 func save_setting(use_cfg:bool, cfg:ConfigFile) -> void:
 	if use_cfg and cfg:
-		cfg.set_value("application", "rakugo/punctuation_pause", $SpinBox.value)
+		cfg.set_value("application",
+		 "rakugo/punctuation_pause",
+		str($SpinBox.value))
 		return
 		
 	ProjectSettings.set_setting(
-		"application/rakugo/punctuation_pause", $SpinBox.value)
+		"application/rakugo/punctuation_pause",
+		 str($SpinBox.value))
