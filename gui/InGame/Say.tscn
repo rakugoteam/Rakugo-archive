@@ -1602,6 +1602,9 @@ mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
 main_container_path = NodePath("ScrollContainer/HBoxContainer/VBoxContainer")
 std_kind_container_path = NodePath("ScrollContainer/HBoxContainer/VBoxContainer/NVL")
 extra_kinds_scenes = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ]
