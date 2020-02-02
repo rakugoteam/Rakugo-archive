@@ -3,8 +3,7 @@ extends HBoxContainer
 
 
 func _ready() -> void:
-	var icon = get_icon("Label", "EditorIcons")
-	$TextureRect.texture = icon
+	$TextureRect.texture = get_icon("Label", "EditorIcons")
 
 
 func load_setting(use_cfg:bool, cfg:ConfigFile) -> void:
