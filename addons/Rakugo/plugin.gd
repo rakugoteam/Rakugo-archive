@@ -52,10 +52,10 @@ func init_project_settings():
 		"application/rakugo/default_kind",
 		"adv"
 	)
-
+	
 	default_setting(
 		"application/rakugo/punctuation_pause",
-		"1"
+		"adv"
 	)
 
 	default_setting(

@@ -53,11 +53,10 @@ image = SubResource( 6 )
 size = Vector2( 16, 16 )
 
 [node name="RakugoProjectSettings" type="ConfirmationDialog"]
-visible = true
 anchor_right = 0.684
 anchor_bottom = 0.833
 margin_right = -0.416016
-margin_bottom = 20.2
+margin_bottom = 0.199951
 window_title = "Rakugo Project Settings"
 script = ExtResource( 1 )
 __meta__ = {
@@ -76,7 +75,7 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
-margin_right = 672.0
+margin_right = 684.0
 margin_bottom = 484.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -680,7 +679,7 @@ stretch_mode = 4
 
 [node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/SaveBox"]
 margin_left = 28.0
-margin_right = 351.0
+margin_right = 294.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -688,26 +687,31 @@ text = "Test saves"
 valign = 1
 
 [node name="CheckButton" type="CheckButton" parent="ScrollContainer/VBoxContainer/SaveBox"]
-margin_left = 355.0
-margin_right = 431.0
+margin_left = 298.0
+margin_right = 374.0
 margin_bottom = 40.0
 size_flags_vertical = 3
 
 [node name="TextureRect2" type="TextureRect" parent="ScrollContainer/VBoxContainer/SaveBox"]
-margin_left = 435.0
-margin_right = 459.0
+margin_left = 378.0
+margin_right = 402.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 24, 24 )
 size_flags_vertical = 3
 texture = SubResource( 2 )
 stretch_mode = 4
 
-[node name="Label3" type="Label" parent="ScrollContainer/VBoxContainer/SaveBox"]
-margin_left = 463.0
-margin_top = 13.0
+[node name="Label3" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/SaveBox"]
+margin_left = 406.0
 margin_right = 672.0
-margin_bottom = 27.0
-size_flags_horizontal = 5
-text = "Must set it to OFF before export."
+margin_bottom = 40.0
+size_flags_horizontal = 3
+bbcode_enabled = true
+bbcode_text = "
+Must set it to [b]OFF[/b] before export."
+meta_underlined = false
+text = "
+Must set it to OFF before export."
+scroll_active = false
 
 [editable path="ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser"]
