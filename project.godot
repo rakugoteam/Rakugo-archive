@@ -394,8 +394,6 @@ rakugo/markup="renpy"
 rakugo/default_mkind="vertical"
 rakugo/default_mcolumns=2.0
 rakugo/default_manchor="center"
-rakugo/punctuation_pause="1"
-rakugo/default_mcolums=2.0
 
 [autoload]
 
