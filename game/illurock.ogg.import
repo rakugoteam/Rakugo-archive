@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/illurock.ogg-c700a73d73d6aae6e9291ac733b290ed.oggstr"
+
+[deps]
+
+source_file="res://game/illurock.ogg"
+dest_files=[ "res://.import/illurock.ogg-c700a73d73d6aae6e9291ac733b290ed.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
