@@ -169,8 +169,10 @@ margin_right = 254.0
 margin_bottom = 50.0
 grow_horizontal = 0
 size_flags_vertical = 1
-min_value = 1.0
-value = 30.0
+min_value = -300.0
+max_value = -10.0
+step = 1.0
+value = -30.0
 ticks_on_borders = true
 
 [node name="AutoBox" type="VBoxContainer" parent="HBoxContainer/GameplayBox"]
@@ -194,8 +196,10 @@ margin_right = 254.0
 margin_bottom = 50.0
 grow_horizontal = 0
 size_flags_vertical = 1
-min_value = 1.0
-value = 50.0
+min_value = -5.0
+max_value = -0.5
+step = 0.1
+value = -3.0
 
 [node name="NotifyBox" type="VBoxContainer" parent="HBoxContainer/GameplayBox"]
 margin_top = 302.0
