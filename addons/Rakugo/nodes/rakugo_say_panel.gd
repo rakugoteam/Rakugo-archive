@@ -236,13 +236,13 @@ func write_dialog(text: String, _typing: bool) -> void:
 
 		if markup:
 			continue
-		
-		Rakugo.dialog_timer.wait_time = Rakugo._text_time
+
+		Rakugo.dialog_timer.wait_time = Rakugo.get_value("text_time")
 		
 		if letter in ",;.!?":
 			var p = ProjectSettings.get_setting(
 		"application/rakugo/punctuation_pause")
-			Rakugo.dialog_timer.wait_time *= p
+			Rakugo.dialog_timer.wait_time *= int(p)
 
 		Rakugo.dialog_timer.start()
 

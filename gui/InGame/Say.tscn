@@ -1631,7 +1631,8 @@ size_flags_vertical = 3
 scroll_horizontal_enabled = false
 scroll_deadzone = 200
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_use_anchors_": false
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer"]
