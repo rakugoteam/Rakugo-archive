@@ -423,7 +423,6 @@ use_theme_from_setting = true
 node_id = "InGameGUI"
 
 [node name="ScrollContainerVMenu" type="ScrollContainer" parent="."]
-visible = false
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
