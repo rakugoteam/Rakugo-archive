@@ -377,13 +377,17 @@ config/auto_accept_quit=false
 config/quit_on_go_back=false
 rakugo/version="1.2.0"
 rakugo/game_credits="{a=https://github.com/jebedaia360}Jeremi Biernacki ({i}Jebedaia{/i}){/a}"
-rakugo/markup="renpy"
 rakugo/debug=false
 rakugo/scenes_links="res://scenes_links.tres"
 rakugo/save_folder="saves"
 rakugo/theme="res://themes/question/question.theme"
 rakugo/default_kind="adv"
 rakugo/test_saves=false
+rakugo/markup="renpy"
+rakugo/default_mkind="vertical"
+rakugo/default_mcolumns=2.0
+rakugo/default_manchor="center"
+rakugo/punctuation_pause="1"
 
 [autoload]
 
@@ -395,14 +399,13 @@ Window="*res://gui/Window/Window.tscn"
 
 gdscript/completion/autocomplete_setters_and_getters=true
 gdscript/warnings/unused_variable=false
-gdscript/warnings/unused_class_variable=false
 gdscript/warnings/unused_argument=false
 gdscript/warnings/unused_signal=false
 gdscript/warnings/return_value_discarded=false
 
 [editor_plugins]
 
-enabled=PoolStringArray( "Rakugo" )
+enabled=PoolStringArray( "Rakugo", "editor_icon_previewer", "godot-plugin-refresher" )
 
 [input]
 
