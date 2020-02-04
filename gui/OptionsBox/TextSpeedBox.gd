@@ -1,17 +1,19 @@
 extends VBoxContainer
 
 func _ready() -> void:
-	$Slider.connect("value_changed", self, "on_change_value")
-	connect("visibility_changed", self, "on_visibility_changed")
+	$Slider.connect("value_changed",
+		self, "on_change_value")
+	connect("visibility_changed",
+		self, "on_visblity_changed")
 
 
 func on_change_value(value: float) -> void:
-	var new_value = abs(1 - value/100) * Rakugo.get_value("auto_time")
+	var new_value = abs(value)
+	prints("text_time", new_value)
 	Rakugo.set_var("text_time", new_value)
 
 
-func on_visibility_changed() -> void:
-	if visible == false:
-		return
-	
-	$Slider.value = Rakugo.get_value("text_time")*100
+func on_visblity_changed() -> void:
+	if visible:
+		$Slider.value = -Rakugo.get_value("text_time")
+		print($Slider.value)

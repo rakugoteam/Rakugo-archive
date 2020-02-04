@@ -24,6 +24,9 @@ mouse_filter = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Title" type="Label" parent="."]
 margin_right = 809.0
@@ -63,7 +66,6 @@ align = 1
 valign = 1
 
 [node name="UnSeenTextBox" type="HBoxContainer" parent="HBoxContainer/GameplayBox"]
-editor/display_folded = true
 visible = false
 margin_top = 63.0
 margin_right = 254.0
@@ -90,7 +92,6 @@ script = ExtResource( 3 )
 var_name = "skip_all_text"
 
 [node name="AfterChoicesBox" type="HBoxContainer" parent="HBoxContainer/GameplayBox"]
-editor/display_folded = true
 visible = false
 margin_top = 136.0
 margin_right = 254.0
@@ -119,7 +120,6 @@ script = ExtResource( 3 )
 var_name = "skip_after_choices"
 
 [node name="TypingBox" type="HBoxContainer" parent="HBoxContainer/GameplayBox"]
-editor/display_folded = true
 margin_top = 63.0
 margin_right = 254.0
 margin_bottom = 103.0
@@ -154,15 +154,8 @@ margin_right = 254.0
 margin_bottom = 186.0
 script = ExtResource( 5 )
 
-[node name="HBox" type="HBoxContainer" parent="HBoxContainer/GameplayBox/TextSpeedBox"]
+[node name="Label" type="Label" parent="HBoxContainer/GameplayBox/TextSpeedBox"]
 margin_right = 254.0
-margin_bottom = 30.0
-grow_horizontal = 0
-alignment = 1
-
-[node name="Label" type="Label" parent="HBoxContainer/GameplayBox/TextSpeedBox/HBox"]
-margin_left = 57.0
-margin_right = 197.0
 margin_bottom = 30.0
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 2 )
@@ -176,12 +169,13 @@ margin_right = 254.0
 margin_bottom = 50.0
 grow_horizontal = 0
 size_flags_vertical = 1
-min_value = 1.0
-value = 30.0
+min_value = -0.3
+max_value = -0.01
+step = 0.01
+value = -0.3
 ticks_on_borders = true
 
 [node name="AutoBox" type="VBoxContainer" parent="HBoxContainer/GameplayBox"]
-editor/display_folded = true
 margin_top = 219.0
 margin_right = 254.0
 margin_bottom = 269.0
@@ -202,10 +196,12 @@ margin_right = 254.0
 margin_bottom = 50.0
 grow_horizontal = 0
 size_flags_vertical = 1
-value = 50.0
+min_value = -5.0
+max_value = -0.5
+step = 0.1
+value = -3.0
 
 [node name="NotifyBox" type="VBoxContainer" parent="HBoxContainer/GameplayBox"]
-editor/display_folded = true
 margin_top = 302.0
 margin_right = 254.0
 margin_bottom = 352.0
@@ -239,7 +235,6 @@ var_name = "notify_time"
 default = 5.0
 
 [node name="GraphicsBox" type="VBoxContainer" parent="HBoxContainer"]
-editor/display_folded = true
 margin_left = 303.0
 margin_right = 511.0
 margin_bottom = 352.0
@@ -269,7 +264,6 @@ align = 1
 valign = 1
 
 [node name="WTBox" type="HBoxContainer" parent="HBoxContainer/GraphicsBox"]
-editor/display_folded = true
 margin_top = 120.0
 margin_right = 208.0
 margin_bottom = 156.0
@@ -311,7 +305,6 @@ align = 1
 valign = 1
 
 [node name="ResBox" type="HBoxContainer" parent="HBoxContainer/GraphicsBox"]
-editor/display_folded = true
 margin_top = 246.0
 margin_right = 208.0
 margin_bottom = 282.0
@@ -342,7 +335,6 @@ margin_bottom = 36.0
 text = ">"
 
 [node name="VSyncBox" type="HBoxContainer" parent="HBoxContainer/GraphicsBox"]
-editor/display_folded = true
 margin_top = 312.0
 margin_right = 208.0
 margin_bottom = 352.0
@@ -366,7 +358,6 @@ margin_right = 182.0
 margin_bottom = 40.0
 
 [node name="MusicBox" type="VBoxContainer" parent="HBoxContainer"]
-editor/display_folded = true
 margin_left = 521.0
 margin_right = 770.0
 margin_bottom = 352.0

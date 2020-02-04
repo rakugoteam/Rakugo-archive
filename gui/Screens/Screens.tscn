@@ -1,21 +1,20 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://themes/question/question.theme" type="Theme" id=1]
+[ext_resource path="res://themes/new_gui/new_gui.theme" type="Theme" id=1]
 [ext_resource path="res://gui/Screens/Screens.gd" type="Script" id=2]
-[ext_resource path="res://game/backgrounds/main_menu.png" type="Texture" id=3]
-[ext_resource path="res://ubuntu-font-family/UB32outline.tres" type="DynamicFont" id=4]
-[ext_resource path="res://addons/Rakugo/nodes/rakugo_var_label.gd" type="Script" id=5]
-[ext_resource path="res://addons/Rakugo/nodes/rakugo_label.gd" type="Script" id=6]
-[ext_resource path="res://gui/Labels/TitleText.tscn" type="PackedScene" id=7]
-[ext_resource path="res://gui/InGame/QuickMenuButton.tscn" type="PackedScene" id=8]
-[ext_resource path="res://gui/SlotBox/SlotBox.tscn" type="PackedScene" id=9]
-[ext_resource path="res://ubuntu-font-family/UB40outline.tres" type="DynamicFont" id=10]
-[ext_resource path="res://gui/History/History.gd" type="Script" id=11]
-[ext_resource path="res://gui/History/HistoryItem.tscn" type="PackedScene" id=12]
-[ext_resource path="res://gui/OptionsBox/OptionsBox.tscn" type="PackedScene" id=13]
-[ext_resource path="res://gui/Quests/QuestsBox.tscn" type="PackedScene" id=14]
-[ext_resource path="res://gui/Labels/dialogue_text.tscn" type="PackedScene" id=15]
-[ext_resource path="res://gui/Screens/QuitBox.tscn" type="PackedScene" id=16]
+[ext_resource path="res://ubuntu-font-family/UB32outline.tres" type="DynamicFont" id=3]
+[ext_resource path="res://addons/Rakugo/nodes/rakugo_var_label.gd" type="Script" id=4]
+[ext_resource path="res://addons/Rakugo/nodes/rakugo_label.gd" type="Script" id=5]
+[ext_resource path="res://gui/Labels/TitleText.tscn" type="PackedScene" id=6]
+[ext_resource path="res://gui/InGame/QuickMenuButton.tscn" type="PackedScene" id=7]
+[ext_resource path="res://gui/SlotBox/SlotBox.tscn" type="PackedScene" id=8]
+[ext_resource path="res://ubuntu-font-family/UB40outline.tres" type="DynamicFont" id=9]
+[ext_resource path="res://gui/History/History.gd" type="Script" id=10]
+[ext_resource path="res://gui/History/HistoryItem.tscn" type="PackedScene" id=11]
+[ext_resource path="res://gui/OptionsBox/OptionsBox.tscn" type="PackedScene" id=12]
+[ext_resource path="res://gui/Quests/QuestsBox.tscn" type="PackedScene" id=13]
+[ext_resource path="res://gui/Labels/dialogue_text.tscn" type="PackedScene" id=14]
+[ext_resource path="res://gui/Screens/QuitBox.tscn" type="PackedScene" id=15]
 
 [sub_resource type="ButtonGroup" id=1]
 
@@ -4307,15 +4306,6 @@ node_id = "Screens"
 margin_right = 1023.0
 margin_bottom = 600.0
 
-[node name="TextureRect" type="TextureRect" parent="Panel"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource( 3 )
-expand = true
-stretch_mode = 1
-
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = 1.0
 anchor_top = 1.0
@@ -4341,10 +4331,10 @@ margin_left = 11.0
 margin_right = 206.0
 margin_bottom = 38.0
 size_flags_vertical = 1
-custom_fonts/font = ExtResource( 4 )
+custom_fonts/font = ExtResource( 3 )
 text = "Your new game"
 align = 1
-script = ExtResource( 5 )
+script = ExtResource( 4 )
 var_name = "title"
 default = "Your new game"
 
@@ -4355,7 +4345,7 @@ margin_bottom = 38.0
 size_flags_vertical = 1
 text = "2.0.0"
 valign = 1
-script = ExtResource( 5 )
+script = ExtResource( 4 )
 var_name = "version"
 default = "2.0.0"
 
@@ -4366,11 +4356,11 @@ margin_bottom = 82.0
 rect_min_size = Vector2( 100, 40 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/normal_font = ExtResource( 4 )
+custom_fonts/normal_font = ExtResource( 3 )
 bbcode_enabled = true
 bbcode_text = "[right]Rakugo 2.0.0"
 text = "Rakugo 2.0.0"
-script = ExtResource( 6 )
+script = ExtResource( 5 )
 rakugo_text = "{right}Rakugo [rakugo_version]"
 vars_names = [ "rakugo_version" ]
 
@@ -4384,7 +4374,7 @@ margin_right = 206.0
 margin_bottom = 601.0
 mouse_filter = 1
 
-[node name="Title" parent="Navigation" instance=ExtResource( 7 )]
+[node name="Title" parent="Navigation" instance=ExtResource( 6 )]
 margin_right = 187.0
 margin_bottom = 65.0
 text = "Your new game"
@@ -4412,14 +4402,14 @@ custom_constants/separation = 20
 [node name="Hack" type="Control" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer"]
 margin_right = 198.0
 
-[node name="NewGame" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 8 )]
+[node name="NewGame" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
 margin_top = 20.0
 margin_right = 198.0
 margin_bottom = 58.0
 text = "New Game"
 align = 0
 
-[node name="Return" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 8 )]
+[node name="Return" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
 visible = false
 margin_top = 20.0
 margin_right = 140.0
@@ -4427,7 +4417,7 @@ margin_bottom = 52.0
 text = "Return"
 align = 0
 
-[node name="History" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 8 )]
+[node name="History" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
 visible = false
 margin_top = 72.0
 margin_right = 140.0
@@ -4437,7 +4427,7 @@ group = SubResource( 1 )
 text = "History"
 align = 0
 
-[node name="Quests" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 8 )]
+[node name="Quests" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
 visible = false
 margin_top = 72.0
 margin_right = 140.0
@@ -4448,14 +4438,14 @@ group = SubResource( 1 )
 text = "Quests"
 align = 0
 
-[node name="Continue" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 8 )]
+[node name="Continue" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
 margin_top = 78.0
 margin_right = 198.0
 margin_bottom = 116.0
 text = "Continue"
 align = 0
 
-[node name="Load" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 8 )]
+[node name="Load" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
 margin_top = 136.0
 margin_right = 198.0
 margin_bottom = 174.0
@@ -4464,7 +4454,7 @@ group = SubResource( 1 )
 text = "Load"
 align = 0
 
-[node name="Save" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 8 )]
+[node name="Save" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
 visible = false
 margin_top = 280.0
 margin_right = 140.0
@@ -4474,7 +4464,7 @@ group = SubResource( 1 )
 text = "Save"
 align = 0
 
-[node name="Options" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 8 )]
+[node name="Options" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
 margin_top = 194.0
 margin_right = 198.0
 margin_bottom = 232.0
@@ -4483,7 +4473,7 @@ group = SubResource( 1 )
 text = "Options"
 align = 0
 
-[node name="About" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 8 )]
+[node name="About" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
 margin_top = 252.0
 margin_right = 198.0
 margin_bottom = 290.0
@@ -4492,7 +4482,7 @@ group = SubResource( 1 )
 text = "About"
 align = 0
 
-[node name="Help" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 8 )]
+[node name="Help" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
 margin_top = 310.0
 margin_right = 198.0
 margin_bottom = 348.0
@@ -4501,7 +4491,7 @@ group = SubResource( 1 )
 text = "Help"
 align = 0
 
-[node name="Quit" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 8 )]
+[node name="Quit" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
 margin_top = 368.0
 margin_right = 198.0
 margin_bottom = 406.0
@@ -4523,7 +4513,7 @@ rounded = true
 allow_greater = true
 allow_lesser = true
 
-[node name="SlotBox" parent="." instance=ExtResource( 9 )]
+[node name="SlotBox" parent="." instance=ExtResource( 8 )]
 visible = false
 margin_left = 259.481
 margin_top = 69.1099
@@ -4542,7 +4532,7 @@ mouse_filter = 0
 [node name="Title" type="Label" parent="HistoryBox"]
 margin_right = 702.0
 margin_bottom = 54.0
-custom_fonts/font = ExtResource( 10 )
+custom_fonts/font = ExtResource( 9 )
 text = "History"
 align = 1
 
@@ -4561,17 +4551,17 @@ margin_bottom = 475.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 5
-script = ExtResource( 11 )
-HistoryItemTemplate = ExtResource( 12 )
+script = ExtResource( 10 )
+HistoryItemTemplate = ExtResource( 11 )
 
-[node name="OptionsBox" parent="." instance=ExtResource( 13 )]
+[node name="OptionsBox" parent="." instance=ExtResource( 12 )]
 visible = false
 margin_left = 209.143
 margin_top = 75.2569
 margin_right = 1023.14
 margin_bottom = 593.257
 
-[node name="QuestsBox" parent="." instance=ExtResource( 14 )]
+[node name="QuestsBox" parent="." instance=ExtResource( 13 )]
 visible = false
 margin_left = 206.0
 margin_top = 64.0
@@ -4589,27 +4579,27 @@ margin_bottom = 596.044
 [node name="Title" type="Label" parent="AboutBox"]
 margin_right = 702.0
 margin_bottom = 54.0
-custom_fonts/font = ExtResource( 10 )
+custom_fonts/font = ExtResource( 9 )
 text = "About"
 align = 1
 
-[node name="RakugoTextLabel" parent="AboutBox" instance=ExtResource( 15 )]
+[node name="RakugoTextLabel" parent="AboutBox" instance=ExtResource( 14 )]
 margin_top = 58.0
 margin_right = 702.0
 margin_bottom = 533.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource( 6 )
+script = ExtResource( 5 )
 rakugo_text_file = "res://about.txt"
 
-[node name="QuitBox" parent="." instance=ExtResource( 16 )]
+[node name="QuitBox" parent="." instance=ExtResource( 15 )]
 visible = false
 margin_left = 266.091
 margin_top = 64.6911
 margin_right = 968.091
 margin_bottom = 598.691
 
-[node name="BackButton" parent="." instance=ExtResource( 8 )]
+[node name="BackButton" parent="." instance=ExtResource( 7 )]
 visible = false
 margin_left = 421.883
 margin_top = 560.472
