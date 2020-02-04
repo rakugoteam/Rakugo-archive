@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://gui/Window/Window.gd" type="Script" id=1]
 [ext_resource path="res://gui/InGame/InGameGUI.tscn" type="PackedScene" id=2]
-[ext_resource path="res://gui/Screens/Screens.tscn" type="PackedScene" id=3]
+[ext_resource path="res://themes/new_gui/new_gui.theme" type="Theme" id=3]
+[ext_resource path="res://gui/Screens/Screens.tscn" type="PackedScene" id=4]
 
 [node name="Window" type="Node2D"]
 pause_mode = 2
@@ -15,6 +16,8 @@ script = ExtResource( 1 )
 visible = false
 margin_right = 0.0
 margin_bottom = 0.0
+theme = ExtResource( 3 )
 script = null
 
-[node name="Screens" parent="." instance=ExtResource( 3 )]
+[node name="Screens" parent="." instance=ExtResource( 4 )]
+theme = ExtResource( 3 )
