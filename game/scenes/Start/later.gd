@@ -15,7 +15,7 @@ func later(node_name, dialog_name):
 
 	if next_state():
 		# scene black
- 	 	# with dissolve
+		# with dissolve
 		say({"what": "But I'm an indecisive person."})
 
 	if next_state():
@@ -29,6 +29,6 @@ func later(node_name, dialog_name):
 			"what": "{center}{b}Bad Ending{/b}{/center}.",
 			"kind":"fullscreen"
 		})
-	
+
 	if next_state():
 		end_game()

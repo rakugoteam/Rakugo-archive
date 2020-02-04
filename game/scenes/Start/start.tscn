@@ -16,7 +16,6 @@ script = ExtResource( 1 )
 root = true
 
 [node name="backgrounds" parent="." instance=ExtResource( 2 )]
-editor/display_folded = true
 z_index = -2
 
 [node name="characters" parent="." instance=ExtResource( 3 )]
