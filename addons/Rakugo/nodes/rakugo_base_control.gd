@@ -6,11 +6,6 @@ export var use_theme_from_setting: bool setget set_use_theme_form_settings, get_
 
 var _use_theme_from_settings := true
 
-func _ready():
-	if _use_theme_from_settings:
-		load_theme()
-
-
 func set_use_theme_form_settings(value: bool):
 	if value:
 		load_theme()
