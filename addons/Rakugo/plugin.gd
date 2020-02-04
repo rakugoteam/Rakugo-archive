@@ -79,7 +79,7 @@ func _enter_tree():
 	)
 
 	add_custom_type(
-	 	"RakugoVarCheckButton",
+		"RakugoVarCheckButton",
 		"CheckButton",
 		preload("nodes/rakugo_var_check.gd"),
 		preload("icons/rakugo_check_box.svg")
