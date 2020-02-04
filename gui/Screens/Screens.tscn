@@ -1,6 +1,6 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
-[ext_resource path="res://themes/new_gui/new_gui.theme" type="Theme" id=1]
+[ext_resource path="res://themes/question/question.theme" type="Theme" id=1]
 [ext_resource path="res://gui/Screens/Screens.gd" type="Script" id=2]
 [ext_resource path="res://ubuntu-font-family/UB32outline.tres" type="DynamicFont" id=3]
 [ext_resource path="res://addons/Rakugo/nodes/rakugo_var_label.gd" type="Script" id=4]
@@ -15,6 +15,7 @@
 [ext_resource path="res://gui/Quests/QuestsBox.tscn" type="PackedScene" id=13]
 [ext_resource path="res://gui/Labels/dialogue_text.tscn" type="PackedScene" id=14]
 [ext_resource path="res://gui/Screens/QuitBox.tscn" type="PackedScene" id=15]
+[ext_resource path="res://game/backgrounds/main_menu.png" type="Texture" id=16]
 
 [sub_resource type="ButtonGroup" id=1]
 
@@ -4298,13 +4299,22 @@ tracks/73/keys = {
 mouse_filter = 1
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 use_theme_from_setting = true
-register = false
+register = true
 node_id = "Screens"
 
 [node name="Panel" type="Panel" parent="."]
 margin_right = 1023.0
 margin_bottom = 600.0
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 16 )
+expand = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = 1.0
@@ -4365,7 +4375,6 @@ rakugo_text = "{right}Rakugo [rakugo_version]"
 vars_names = [ "rakugo_version" ]
 
 [node name="Navigation" type="Panel" parent="."]
-editor/display_folded = true
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -4.0
@@ -4380,7 +4389,6 @@ margin_bottom = 65.0
 text = "Your new game"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Navigation"]
-editor/display_folded = true
 margin_left = 13.0
 margin_top = 109.0
 margin_right = 211.0
@@ -4521,7 +4529,6 @@ margin_right = 961.481
 margin_bottom = 601.109
 
 [node name="HistoryBox" type="VBoxContainer" parent="."]
-editor/display_folded = true
 visible = false
 margin_left = 259.077
 margin_top = 69.411
@@ -4537,7 +4544,6 @@ text = "History"
 align = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="HistoryBox"]
-editor/display_folded = true
 margin_top = 58.0
 margin_right = 702.0
 margin_bottom = 533.0
@@ -4569,7 +4575,6 @@ margin_right = 1023.0
 margin_bottom = 601.0
 
 [node name="AboutBox" type="VBoxContainer" parent="."]
-editor/display_folded = true
 visible = false
 margin_left = 260.304
 margin_top = 62.0446
