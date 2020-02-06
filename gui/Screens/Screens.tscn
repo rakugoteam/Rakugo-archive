@@ -4578,6 +4578,7 @@ margin_right = 1023.0
 margin_bottom = 601.0
 
 [node name="AboutBox" type="VBoxContainer" parent="."]
+visible = false
 margin_left = 260.0
 margin_top = 62.0
 margin_right = 962.0
