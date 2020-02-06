@@ -9,7 +9,7 @@ func _ready() -> void:
 
 func on_change_value(value: float) -> void:
 	var new_value = abs(value)
-	prints("auto_time", new_value)
+#	prints("auto_time", new_value)
 	Rakugo.set_var("auto_time", new_value)
 
 

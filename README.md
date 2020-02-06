@@ -1,4 +1,5 @@
-# Rakugo ![Logo](graphics/window_icon.png)
+
+# Rakugo The Question ![Logo](graphics/window_icon.png)
 [![Documentation Status](https://readthedocs.org/projects/rakugo/badge/?version=latest)](https://rakugo.readthedocs.io/en/latest/?badge=latest)
 [![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](LICENSE)
 [![Discord Server](https://img.shields.io/discord/484604562183815169.svg?style=flat-square)](https://discord.gg/K9gvjdg)
@@ -9,6 +10,12 @@
 [![GitHub](https://img.shields.io/github/issues/rakugoteam/Rakugo.svg?style=flat-square)](https://github.com/rakugoteam/Rakugo/issues)
 [![GitHub](https://img.shields.io/github/issues-closed/rakugoteam/Rakugo.svg?style=flat-square)](https://github.com/rakugoteam/Rakugo/issues)
 
+## This Repo
+
+This is repo for VN Rakugo Template.
+This template is port of Ren'Py game [*The Question*](https://games.renpy.org/game/question).
+
+## Rakugo it Self
 Rakugo is framework (inspired by [Ren'Py](https://www.renpy.org)) for story driven games in [Godot](https://godotengine.org)
 or like my friend call it *Story Management Plugin*.
 
