@@ -420,6 +420,7 @@ mouse_filter = 1
 theme = ExtResource( 16 )
 script = ExtResource( 2 )
 use_theme_from_setting = true
+register = true
 node_id = "InGameGUI"
 
 [node name="ScrollContainerVMenu" type="ScrollContainer" parent="."]
