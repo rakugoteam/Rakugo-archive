@@ -1,16 +1,3 @@
-[title] [version]
-
-Rakugo Edition: [credits]
-
-Original {i}Ren'Py{/i} version:
-Character Art: Deji.
-Original Character Art: derik.
-
-Background Art: Mugenjohncel.
-Original Background Art: DaFool
-
-Music By: Alessio
-
-Written By: mikey
+[title] [version] by [credits]
 
 [rakugo_credits]
