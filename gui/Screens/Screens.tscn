@@ -4309,6 +4309,9 @@ node_id = "Screens"
 [node name="Panel" type="Panel" parent="."]
 margin_right = 1023.0
 margin_bottom = 600.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureRect" type="TextureRect" parent="Panel"]
 anchor_right = 1.0
@@ -4575,11 +4578,13 @@ margin_right = 1023.0
 margin_bottom = 601.0
 
 [node name="AboutBox" type="VBoxContainer" parent="."]
-visible = false
-margin_left = 260.304
-margin_top = 62.0446
-margin_right = 962.304
-margin_bottom = 596.044
+margin_left = 260.0
+margin_top = 62.0
+margin_right = 962.0
+margin_bottom = 510.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Title" type="Label" parent="AboutBox"]
 margin_right = 702.0
@@ -4591,9 +4596,12 @@ align = 1
 [node name="RakugoTextLabel" parent="AboutBox" instance=ExtResource( 14 )]
 margin_top = 58.0
 margin_right = 702.0
-margin_bottom = 533.0
+margin_bottom = 448.0
+focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+scroll_active = true
+selection_enabled = false
 script = ExtResource( 5 )
 rakugo_text_file = "res://about.txt"
 
