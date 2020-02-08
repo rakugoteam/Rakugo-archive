@@ -164,6 +164,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/types/rakugo_list.gd"
 }, {
+"base": "GridContainer",
+"class": "RakugoMenu",
+"language": "GDScript",
+"path": "res://addons/Rakugo/nodes/rakugo_menu.gd"
+}, {
 "base": "Node2D",
 "class": "RakugoNode2D",
 "language": "GDScript",
@@ -270,7 +275,7 @@ _global_script_classes=[ {
 "path": "res://addons/Rakugo/statements/say.gd"
 }, {
 "base": "Resource",
-"class": "SceneLinks",
+"class": "ScenesLinks",
 "language": "GDScript",
 "path": "res://addons/Rakugo/types/scenes_links.gd"
 }, {
@@ -336,6 +341,7 @@ _global_script_class_icons={
 "RakugoControl": "",
 "RakugoDict": "",
 "RakugoList": "",
+"RakugoMenu": "res://addons/Rakugo/icons/rakugo_menu_v.svg",
 "RakugoNode2D": "",
 "RakugoNodeCore": "",
 "RakugoQuestButton": "",
@@ -357,7 +363,7 @@ _global_script_class_icons={
 "Save": "",
 "SaveButton": "",
 "Say": "",
-"SceneLinks": "",
+"ScenesLinks": "res://addons/Rakugo/icons/scenes_links.svg",
 "Show": "",
 "SkipTimer": "",
 "Statement": "",
@@ -376,7 +382,7 @@ boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://graphics/window_icon.png"
 config/auto_accept_quit=false
 config/quit_on_go_back=false
-rakugo/version="1.2f4"
+rakugo/version="0.0.1"
 rakugo/game_credits="{a=https://github.com/jebedaia360}Jeremi Biernacki ({i}Jebedaia{/i}){/a}"
 rakugo/debug=false
 rakugo/scenes_links="res://game/scenes_links.tres"
