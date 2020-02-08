@@ -8,6 +8,7 @@ onready var rnode := RakugoNodeCore.new()
 
 export var register: bool setget _set_register, _get_register
 export var node_id: String setget _set_node_id, _get_node_id
+export var camera := NodePath("")
 export (Array, String) var state: Array setget _set_state, _get_state
 
 var _state: Array
@@ -74,7 +75,7 @@ func _on_show(node_id: String , state_value: Array, show_args: Dictionary) -> vo
 	if self.node_id != node_id:
 		return
 
-	rect_position = rnode.show_at(show_args, rect_position)
+	rect_position = rnode.show_at(Vector2(0, 0), show_args, rect_position)
 
 	_set_state(state_value)
 
@@ -135,13 +136,14 @@ func on_load(game_version: String) -> void:
 	if not node_link:
 		push_error("error with loading: %s" %node_id)
 		return
+	
+	if "visible" in node_link.value:
+		visible = node_link.value["visible"]
 
-	visible = node_link.value["visible"]
-
-	if visible:
-		_state = node_link.value["state"]
-		last_show_args = node_link.value["show_args"]
-		_on_show(node_id, _state, last_show_args)
+		if visible:
+			_state = node_link.value["state"]
+			last_show_args = node_link.value["show_args"]
+			_on_show(node_id, _state , last_show_args )
 
 	else:
 		_on_hide(node_id)
