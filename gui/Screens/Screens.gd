@@ -1,9 +1,6 @@
 tool
 extends RakugoControl
 
-var was_skipping = false
-var was_skip_auto = false
-
 export onready var nav_panel: Node = $Navigation
 export var nav_path: NodePath = "Navigation/ScrollContainer/HBoxContainer/VBoxContainer"
 export var in_game_gui_path := "/root/Window/InGameGUI"
@@ -16,16 +13,17 @@ export onready var qyes_button = $QuitBox/HBoxContainer/Yes
 
 var current_node: Node = self
 var in_game_gui: Node
-onready var new_game_button: Button = get_node(str(nav_path) + "/NewGame")
-onready var return_button: Button = get_node(str(nav_path) + "/Return")
-onready var save_button: Button = get_node(str(nav_path) + "/Save")
-onready var history_button: Button = get_node(str(nav_path) + "/History")
-onready var quests_button: Button = get_node(str(nav_path) + "/Quests")
-onready var load_button: Button = get_node(str(nav_path) + "/Load")
-onready var options_button: Button = get_node(str(nav_path) + "/Options")
-onready var about_button: Button = get_node(str(nav_path) + "/About")
-onready var help_button: Button = get_node(str(nav_path) + "/Help")
-onready var quit_button: Button = get_node(str(nav_path) + "/Quit")
+onready var new_game_button: Button = get_node(str(nav_path) + "/" + "NewGame")
+onready var continue_button: Button = get_node(str(nav_path) + "/" + "Continue")
+onready var return_button: Button = get_node(str(nav_path) + "/" + "Return")
+onready var save_button: Button = get_node(str(nav_path) + "/" + "Save")
+onready var history_button: Button = get_node(str(nav_path) + "/" + "History")
+onready var quests_button: Button = get_node(str(nav_path) + "/" + "Quests")
+onready var load_button: Button = get_node(str(nav_path) + "/" + "Load")
+onready var options_button: Button = get_node(str(nav_path) + "/" + "Options")
+onready var about_button: Button = get_node(str(nav_path) + "/" + "About")
+onready var help_button: Button = get_node(str(nav_path) + "/" + "Help")
+onready var quit_button: Button = get_node(str(nav_path) + "/" + "Quit")
 
 func _ready():
 	if(Engine.editor_hint):
@@ -42,6 +40,7 @@ func _ready():
 	back_button.connect("pressed", self, "_on_back_button")
 
 	new_game_button.connect("pressed", self, "_on_NewGame_pressed")
+	continue_button.connect("pressed", self, "_on_Continue_pressed")
 	return_button.connect("pressed", self, "_on_Return_pressed")
 	save_button.connect("pressed", self, "_on_Save_pressed")
 	history_button.connect("pressed", self, "_on_History_pressed(")
@@ -52,6 +51,14 @@ func _ready():
 	help_button.connect("pressed", self, "_on_Help_pressed")
 	quit_button.connect("pressed", self, "_on_Quit_pressed")
 	Rakugo.connect("game_ended", self, "_on_game_end")
+
+	var auto_save_path = str("user://" + Rakugo.save_folder + "/auto.res")
+
+	if Rakugo.test_save:
+		auto_save_path = str("res://" + Rakugo.save_folder + "/auto.tres")
+
+	if not Rakugo.file.file_exists(auto_save_path):
+		continue_button.hide()
 
 
 func _notification(what):
@@ -103,14 +110,6 @@ func history_menu():
 
 func _on_visibility_changed():
 	if visible:
-		if Rakugo.skipping:
-			was_skipping = true
-			Rakugo.skipping = false
-		
-		if Rakugo.skip_auto:
-			was_skip_auto = true
-			Rakugo.skip_auto = false
-			
 		get_tree().paused = true
 		in_game_gui.hide()
 		return
@@ -119,17 +118,9 @@ func _on_visibility_changed():
 	unpause_timer.start()
 	yield(unpause_timer, "timeout")
 	get_tree().paused = false
-	
-	if was_skipping:
-		Rakugo.skipping = true
-		was_skipping = false
-	
-	if was_skip_auto:
-		Rakugo.skip_auto = true
-		was_skip_auto = false
 
 
-# if press "Return" or "no" on quit page
+## # if press "Return" or "no" on quit page
 func _on_Return_pressed():
 	if Rakugo.started:
 		hide()
@@ -146,6 +137,7 @@ func _on_Load_pressed():
 
 func in_game():
 	new_game_button.hide()
+	continue_button.hide()
 	return_button.show()
 	save_button.show()
 	history_button.show()
@@ -155,13 +147,13 @@ func in_game():
 
 func _on_game_end():
 	new_game_button.show()
+	continue_button.show()
 	return_button.hide()
 	save_button.hide()
 	history_button.hide()
 	quests_button.hide()
 	scrollbar.hide()
 	show()
-
 
 func _on_NewGame_pressed():
 	hide()
@@ -172,6 +164,14 @@ func _on_NewGame_pressed():
 
 func _on_History_pressed():
 	history_menu()
+
+
+func _on_Continue_pressed():
+	if !Rakugo.loadfile("auto"):
+		return
+
+	in_game()
+	hide()
 
 
 func _on_Quests_pressed():
@@ -249,9 +249,6 @@ func _screenshot_on_input(event):
 
 func _input(event):
 	if(Engine.editor_hint):
-		return
-		
-	if not Rakugo.started:
 		return
 
 	if event.is_action_pressed("ui_cancel"):

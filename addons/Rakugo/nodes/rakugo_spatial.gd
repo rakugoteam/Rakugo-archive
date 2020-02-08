@@ -7,6 +7,7 @@ signal on_substate(substate)
 var rnode := RakugoNodeCore.new()
 
 export var node_id := ""
+export var camera := NodePath("")
 export (Array, String) var state: Array setget _set_state, _get_state
 
 var _state: Array
@@ -47,15 +48,24 @@ func _on_show(node_id: String, state_value: Array, show_args: Dictionary) -> voi
 	if self.node_id != node_id:
 		return
 
-	var def_pos = Vector2(translation.x , translation.y)
-	var pos = rnode.show_at(show_args, def_pos)
+	var cam_pos := Vector2(0, 0)
 
-	var z = translation.z
+	if !camera.is_empty():
+		if 'x' in show_args:
+			cam_pos.x = get_node(camera).project_position(Vector2(show_args.x,0))
 
-	if z in show_args:
-		z = show_args.z
+		if 'y' in show_args:
+			cam_pos.y = get_node(camera).project_position(Vector2(show_args.y,0))
 
-	translation = Vector3(pos.x, pos.y, z)
+		var def_pos = Vector2(translation.x , translation.y)
+		var pos = rnode.show_at(cam_pos, show_args, def_pos)
+
+		var z = translation.z
+
+		if z in show_args:
+			z = show_args.z
+
+		translation = Vector3(pos.x, pos.y, z)
 
 	_set_state(state_value)
 

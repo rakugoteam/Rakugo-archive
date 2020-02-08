@@ -111,7 +111,7 @@ func _hide_on_input(event):
 
 
 func _on_Hide_toggled(value: bool) -> void:
-	Rakugo.emit_signal("hide_ui", value)
+	Rakugo.emit_signal("hide_ui", !value)
 
 
 func _input(event: InputEvent) -> void:

@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://themes/question/question.tres" type="Theme" id=1]
+[ext_resource path="res://themes/question/question.theme" type="Theme" id=1]
 [ext_resource path="res://addons/Rakugo/nodes/save_button.gd" type="Script" id=2]
 [ext_resource path="res://graphics/not_available.png" type="Texture" id=3]
 [ext_resource path="res://ubuntu-font-family/Ubuntu-L.ttf" type="DynamicFontData" id=4]
@@ -96,9 +96,9 @@ use_form_theme = true
 color_node = false
 node_to_change_path = NodePath("TextureRect")
 idle_node_color = Color( 0.533333, 0.533333, 0.533333, 1 )
-focus_node_color = Color( 0, 0.506836, 0.675781, 1 )
+focus_node_color = Color( 0.709804, 0.290196, 0.101961, 1 )
 hover_node_color = Color( 0.877647, 0.882353, 0.887059, 1 )
-pressed_node_color = Color( 0, 0.6, 0.8, 1 )
+pressed_node_color = Color( 0.819608, 0.392157, 0.203922, 1 )
 disable_node_color = Color( 0.533333, 0.533333, 0.498039, 0.533333 )
 
 [node name="TextureRect" type="TextureRect" parent="Button"]
