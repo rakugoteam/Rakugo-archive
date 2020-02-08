@@ -4600,7 +4600,6 @@ align = 1
 margin_top = 58.0
 margin_right = 702.0
 margin_bottom = 448.0
-focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 scroll_active = true
