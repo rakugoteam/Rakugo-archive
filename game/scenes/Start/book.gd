@@ -3,17 +3,17 @@ extends GDScriptDialog
 var s
 var m
 
-func book(node_name, dialog_name):
-	var cd = check_dialog(node_name, dialog_name, "book")
+func _init_book():
+	s = get_var("s")
+	m = get_var("m")
 
-	if not cd:
+func book(node_name, dialog_name):
+	if !check_dialog(node_name, dialog_name, "book"):
 		return
 
-	if not s:
-		s = get_var("s")
-
-	if not m:
-		m = get_var("m")
+	if !dialog_init:
+		_init_book()
+		dialog_init = true
 
 	if next_state():
 		define("book", true)
@@ -50,7 +50,7 @@ func book(node_name, dialog_name):
 			})
 
 	if next_state():
-		s.say({"what":  "I'd love to!"})
+		s.say({"what": "I'd love to!"})
 
 	if next_state():
 		jump("Start", "marry", "marry")

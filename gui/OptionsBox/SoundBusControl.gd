@@ -3,7 +3,7 @@ extends VBoxContainer
 export(String) var label := "Volume"
 export(String) var bus_name := "Master"
 var bus_id := 0
-var volume := 0
+var volume := 0.0
 var mute := false
 
 

@@ -1,6 +1,6 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
-[ext_resource path="res://themes/new_gui/new_gui.theme" type="Theme" id=1]
+[ext_resource path="res://themes/question/question.theme" type="Theme" id=1]
 [ext_resource path="res://gui/Screens/Screens.gd" type="Script" id=2]
 [ext_resource path="res://ubuntu-font-family/UB32outline.tres" type="DynamicFont" id=3]
 [ext_resource path="res://addons/Rakugo/nodes/rakugo_var_label.gd" type="Script" id=4]
@@ -15,6 +15,7 @@
 [ext_resource path="res://gui/Quests/QuestsBox.tscn" type="PackedScene" id=13]
 [ext_resource path="res://gui/Labels/dialogue_text.tscn" type="PackedScene" id=14]
 [ext_resource path="res://gui/Screens/QuitBox.tscn" type="PackedScene" id=15]
+[ext_resource path="res://game/backgrounds/main_menu.png" type="Texture" id=16]
 
 [sub_resource type="ButtonGroup" id=1]
 
@@ -4298,12 +4299,25 @@ tracks/73/keys = {
 mouse_filter = 1
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 use_theme_from_setting = true
+register = true
 node_id = "Screens"
 
 [node name="Panel" type="Panel" parent="."]
 margin_right = 1023.0
 margin_bottom = 600.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 16 )
+expand = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = 1.0
@@ -4366,11 +4380,13 @@ vars_names = [ "rakugo_version" ]
 [node name="Navigation" type="Panel" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -4.0
 margin_top = -1.0
 margin_right = 206.0
 margin_bottom = 601.0
 mouse_filter = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Title" parent="Navigation" instance=ExtResource( 6 )]
 margin_right = 187.0
@@ -4568,7 +4584,7 @@ visible = false
 margin_left = 260.0
 margin_top = 62.0
 margin_right = 962.0
-margin_bottom = 514.0
+margin_bottom = 510.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -4583,8 +4599,7 @@ align = 1
 [node name="RakugoTextLabel" parent="AboutBox" instance=ExtResource( 14 )]
 margin_top = 58.0
 margin_right = 702.0
-margin_bottom = 452.0
-focus_mode = 0
+margin_bottom = 448.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 scroll_active = true

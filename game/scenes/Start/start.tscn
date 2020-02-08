@@ -9,14 +9,13 @@
 [ext_resource path="res://game/scenes/Start/later.gd" type="Script" id=7]
 [ext_resource path="res://game/scenes/Start/book.gd" type="Script" id=8]
 [ext_resource path="res://game/scenes/Start/marry.gd" type="Script" id=9]
-[ext_resource path="res://game/illurock.ogg" type="AudioStream" id=10]
+[ext_resource path="res://game/illurock-stereo.ogg" type="AudioStream" id=10]
 
 [node name="Start" type="Node2D"]
 script = ExtResource( 1 )
 root = true
 
 [node name="backgrounds" parent="." instance=ExtResource( 2 )]
-editor/display_folded = true
 z_index = -2
 
 [node name="characters" parent="." instance=ExtResource( 3 )]
@@ -48,8 +47,10 @@ dialogs_names = [ "book" ]
 
 [node name="marry" type="Node" parent="dialogs"]
 script = ExtResource( 9 )
+dialogs_names = [ "marry" ]
 
 [node name="BGMusic" type="AudioStreamPlayer2D" parent="."]
+pause_mode = 2
 stream = ExtResource( 10 )
 autoplay = true
 bus = "BGM"

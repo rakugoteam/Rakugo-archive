@@ -6,17 +6,18 @@ signal book
 var s
 var m
 
-func rightaway(node_name, dialog_name):
-	var cd = check_dialog(node_name, dialog_name, "rightaway")
+func _init_rightaway():
+	s = get_var("s")
+	m = get_var("m")
 
-	if not cd:
+
+func rightaway(node_name, dialog_name):
+	if !check_dialog(node_name, dialog_name, "rightaway"):
 		return
 
-	if not s:
-		s = get_var("s")
-
-	if not m:
-		m = get_var("m")
+	if !dialog_init:
+		_init_rightaway()
+		dialog_init = true
 
 	if next_state():
 		show("sylvie green smile")

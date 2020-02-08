@@ -3,17 +3,17 @@ extends GDScriptDialog
 var s
 var m
 
-func marry(node_name, dialog_name):
-	var cd = check_dialog(node_name, dialog_name, "marry")
+func _init_marry():
+	s = get_var("s")
+	m = get_var("m")
 
-	if not cd:
+func marry(node_name, dialog_name):
+	if !check_dialog(node_name, dialog_name, "marry"):
 		return
 
-	if not s:
-		s = get_var("s")
-
-	if not m:
-		m = get_var("m")
+	if !dialog_init:
+		_init_marry()
+		dialog_init = true
 
 	if next_state():
 		say({
@@ -33,10 +33,6 @@ func marry(node_name, dialog_name):
 				"Our first game is based on one of Sylvie's ideas,"
 			+ " but afterwards I get to come up with stories of my own, too."
 			})
-
-		else:
-			# this will skip this state
-			story_step()
 
 	if next_state():
 		say({"what":
@@ -85,6 +81,6 @@ func marry(node_name, dialog_name):
 	if next_state():
 		show("sylvie blue normal")
 		s.say({"what": "So will you marry me?"})
-	
+
 	if next_state():
 		end_game()
