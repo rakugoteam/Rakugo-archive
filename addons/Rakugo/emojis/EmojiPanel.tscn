@@ -30,7 +30,6 @@ caret_blink = true
 caret_blink_speed = 0.5
 
 [node name="Label" type="Label" parent="Emoji"]
-editor/display_folded = true
 visible = false
 modulate = Color( 0.176471, 1, 0.305882, 1 )
 margin_top = 28.0
@@ -42,7 +41,6 @@ valign = 1
 [node name="Tween" type="Tween" parent="Emoji/Label"]
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Emoji"]
-editor/display_folded = true
 margin_top = 28.0
 margin_right = 272.0
 margin_bottom = 499.0
@@ -51,7 +49,7 @@ size_flags_vertical = 3
 
 [node name="GridContainer" type="GridContainer" parent="Emoji/ScrollContainer"]
 margin_right = 272.0
-margin_bottom = 471.0
+margin_bottom = 7862.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 5
