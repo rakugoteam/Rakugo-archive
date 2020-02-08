@@ -379,7 +379,7 @@ config/quit_on_go_back=false
 rakugo/version="0.0.1"
 rakugo/game_credits="{a=https://github.com/jebedaia360}Jeremi Biernacki ({i}Jebedaia{/i}){/a}"
 rakugo/debug=false
-rakugo/scenes_links="res://scenes_links.tres"
+rakugo/scenes_links="res://game/scenes_links.tres"
 rakugo/save_folder="saves"
 rakugo/theme="res://themes/new_gui/new_gui.theme"
 rakugo/default_kind="adv"
