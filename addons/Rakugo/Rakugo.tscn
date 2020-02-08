@@ -51,7 +51,6 @@ script = ExtResource( 7 )
 script = ExtResource( 8 )
 
 [node name="Text" type="Node" parent="."]
-editor/display_folded = true
 script = ExtResource( 9 )
 
 [node name="Emojis" type="Node" parent="Text"]

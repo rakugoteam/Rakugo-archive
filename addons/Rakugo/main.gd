@@ -1,6 +1,6 @@
 extends Node
 
-const rakugo_version := "2.0.8"
+const rakugo_version := "2.0.8f4"
 const credits_path := "res://addons/Rakugo/credits.txt"
 
 # we need it because we hide base RakugoMenu form custom nodes
@@ -904,3 +904,4 @@ func save_global_history() -> bool:
 
 func load_global_history() -> bool:
 	return $LoadGlobalHistory.invoke()
+  
