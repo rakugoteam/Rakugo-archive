@@ -4,11 +4,11 @@ signal rightaway
 signal later
 
 func start(node_name, dialog_name):
-	var cd = check_dialog(node_name, dialog_name, "start")
-
-	if not cd:
+	if !check_dialog(node_name, dialog_name, "start"):
 		return
-
+	
+	dialog_init = true
+	
 	if next_state():
 		show("bg lecturehall")
 		# play music "illurock.opus"
@@ -20,13 +20,13 @@ func start(node_name, dialog_name):
 	if next_state():
 		say({
 		"what":
-	    "Professor Eileen's lectures are usually interesting, but today I just couldn't concentrate on it."
+		"Professor Eileen's lectures are usually interesting, but today I just couldn't concentrate on it."
 		})
 
 	if next_state():
 		say({
 		"what":
-	    "I've had a lot of other thoughts on my mind...thoughts that culminate in a question."
+		"I've had a lot of other thoughts on my mind...thoughts that culminate in a question."
 		})
 
 	if next_state():
@@ -58,7 +58,7 @@ func start(node_name, dialog_name):
 	if next_state():
 		say({
 		"what":
-	    "But recently... I've felt that I want something more."
+		"But recently... I've felt that I want something more."
 		})
 
 	if next_state():

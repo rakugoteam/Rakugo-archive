@@ -4380,11 +4380,13 @@ vars_names = [ "rakugo_version" ]
 [node name="Navigation" type="Panel" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -4.0
 margin_top = -1.0
 margin_right = 206.0
 margin_bottom = 601.0
 mouse_filter = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Title" parent="Navigation" instance=ExtResource( 6 )]
 margin_right = 187.0
@@ -4598,7 +4600,6 @@ align = 1
 margin_top = 58.0
 margin_right = 702.0
 margin_bottom = 448.0
-focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 scroll_active = true

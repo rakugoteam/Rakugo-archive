@@ -47,6 +47,7 @@ dialogs_names = [ "book" ]
 
 [node name="marry" type="Node" parent="dialogs"]
 script = ExtResource( 9 )
+dialogs_names = [ "marry" ]
 
 [node name="BGMusic" type="AudioStreamPlayer2D" parent="."]
 pause_mode = 2

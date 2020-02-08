@@ -31,7 +31,7 @@ func text_passer(
 		"bbcode":
 			text = parse_bbcode_text(text, variables)
 
-	Rakugo.debug(["org: ''", _text, "', bbcode: ''", text , "'"])
+	# Rakugo.debug(["org: ''", _text, "', bbcode: ''", text , "'"])
 
 	return text
 
