@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://game/backgrounds/backgrounds.gd" type="Script" id=1]
+[ext_resource path="res://game/backgrounds/bg lecturehall.jpg" type="Texture" id=2]
+[ext_resource path="res://game/backgrounds/bg club.jpg" type="Texture" id=3]
+[ext_resource path="res://game/backgrounds/bg meadow.jpg" type="Texture" id=4]
+[ext_resource path="res://game/backgrounds/bg uni.jpg" type="Texture" id=5]
+
+[node name="backgrounds" type="Node2D"]
+position = Vector2( 511.814, 298.957 )
+scale = Vector2( 0.8, 0.835 )
+script = ExtResource( 1 )
+node_id = "bg"
+
+[node name="lecturehall" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="club" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+
+[node name="meadow" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+
+[node name="uni" type="Sprite" parent="."]
+texture = ExtResource( 5 )
