@@ -1,18 +1,17 @@
 tool
 extends EditorPlugin
 
-var emoji_panel
-var sl_tool
-var rakugo_project_settings
-var tools_menu
-var about_dialog
+# A class member to hold the dock during the plugin lifecycle
+var dock
 
 func default_setting(setting: String, value):
 	if not ProjectSettings.has_setting(setting):
 		ProjectSettings.set_setting(setting, value)
 
+func _enter_tree():
+	# Initialization of the plugin goes here
 
-func init_project_settings():
+	# ProjectSettings for first time
 	default_setting(
 		"application/rakugo/version",
 		"0.0.1"
@@ -40,12 +39,17 @@ func init_project_settings():
 
 	default_setting(
 		"application/rakugo/scenes_links",
-		"res://game/scenes_links.tres"
+		"res://scenes_links.tres"
+	)
+
+	default_setting(
+		"application/rakugo/save_folder",
+		"saves"
 	)
 
 	default_setting(
 		"application/rakugo/theme",
-		"res://themes/question/question.tres"
+		"res://themes/new_gui/new_gui.theme"
 	)
 
 	default_setting(
@@ -58,72 +62,27 @@ func init_project_settings():
 		"adv"
 	)
 
-	default_setting(
-		"application/rakugo/default_mkind",
-		"vertical"
+	# Load the dock scene and instance it
+	dock = preload("emojis/EmojiPanel.tscn").instance()
+
+	# Add the loaded scene to the docks
+	add_control_to_dock(DOCK_SLOT_RIGHT_UL, dock)
+	# Note that LEFT_UL means the left of the editor, upper-left dock
+
+	add_custom_type(
+		"VRakugoMenu",
+		"VBoxContainer",
+		preload("nodes/rakugo_menu.gd"),
+		preload("icons/rakugo_menu_v.svg")
 	)
 
-	default_setting(
-		"application/rakugo/default_mcolumns",
-		2
+	add_custom_type(
+		"HRakugoMenu",
+		"HBoxContainer",
+		preload("nodes/rakugo_menu.gd"),
+		preload("icons/rakugo_menu_h.svg")
 	)
 
-	default_setting(
-		"application/rakugo/default_manchor",
-		"center"
-	)
-
-
-func init_tools():
-	var theme = get_editor_interface().get_base_control().theme
-
-	# Load the emoji_panel scene and instance it
-	emoji_panel = preload("emojis/EmojiPanel.tscn").instance()
-	emoji_panel.theme = theme
-	add_child(emoji_panel)
-	add_tool_menu_item("Browse Rakugo Emojis", self, "open_emojis")
-
-	sl_tool = preload("tools/scenes_links/ScenesLinksModify.tscn").instance()
-	sl_tool.theme = theme
-	sl_tool.get_node("ScenesLinks").plugin_ready(get_editor_interface())
-	add_child(sl_tool)
-	add_tool_menu_item("Edit Rakugo ScenesLinks", self, "open_sl_tool")
-
-	rakugo_project_settings = preload("tools/project_settings/RakugoProjectSettings.tscn").instance()
-	rakugo_project_settings.theme = theme
-	add_child(rakugo_project_settings)
-	add_tool_menu_item("Edit Rakugo Project Settings", self, "open_rakugo_project_settings")
-
-	add_tool_menu_item("Open RakugoDocs", self, "open_rakugo_docs")
-
-	about_dialog = preload("tools/about/AboutDialog.tscn").instance()
-	about_dialog.theme = theme
-	add_child(about_dialog)
-	add_tool_menu_item("About Rakugo", self, "open_about_dialog")
-
-
-func open_emojis(arg) -> void:
-	emoji_panel.popup_centered()
-
-
-func open_sl_tool(arg) -> void:
-	sl_tool.popup_centered()
-
-
-func open_rakugo_project_settings(arg) -> void:
-	rakugo_project_settings.load_settings()
-	rakugo_project_settings.popup_centered()
-
-
-func open_rakugo_docs(arg) -> void:
-	OS.shell_open("https://rakugo.readthedocs.io/en/latest/")
-
-
-func open_about_dialog(arg):
-	about_dialog.popup_centered()
-
-
-func add_custom_types():
 	add_custom_type(
 		"RakugoVarCheckButton",
 		"CheckButton",
@@ -166,44 +125,19 @@ func add_custom_types():
 		preload("icons/rakugo_texture_progress.svg")
 	)
 
-
-func _enter_tree():
-	# Initialization of the plugin goes here
-
-	# ProjectSettings for first time
-	init_project_settings()
-
-	add_custom_types()
-
-	init_tools()
-
 	print("Rakugo is enabled")
 
-
-func remove_tools():
-	emoji_panel.free()
-	sl_tool.free()
-	rakugo_project_settings.free()
-	about_dialog.free()
-
-	remove_tool_menu_item("Browse Rakugo Emojis")
-	remove_tool_menu_item("Edit Rakugo ScenesLinks")
-	remove_tool_menu_item("Edit Rakugo Project Settings")
-	remove_tool_menu_item("Open RakugoDocs")
-	remove_tool_menu_item("About Rakugo")
-
-
-func remove_custom_types():
-		remove_custom_type("RakugoVarHSlider")
-		remove_custom_type("RakugoVarVSlider")
-		remove_custom_type("RakugoHMenu")
-		remove_custom_type("RakugoVMenu")
-		remove_custom_type("RakugoVarCheckBox")
-		remove_custom_type("RakugoVarCheckButton")
-		remove_custom_type("RakugoProgressBar")
-		remove_custom_type("RakugoTextureProgress")
-
-
 func _exit_tree():
-	remove_tools()
-	remove_custom_types()
+	# Remove the dock
+	remove_control_from_docks(dock)
+	# Erase the control from the memory
+	dock.free()
+
+	remove_custom_type("RakugoVarHSlider")
+	remove_custom_type("RakugoVarVSlider")
+	remove_custom_type("RakugoHMenu")
+	remove_custom_type("RakugoVMenu")
+	remove_custom_type("RakugoVarCheckBox")
+	remove_custom_type("RakugoVarCheckButton")
+	remove_custom_type("RakugoProgressBar")
+	remove_custom_type("RakugoTextureProgress")

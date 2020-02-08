@@ -1,6 +1,6 @@
 extends Node
 
-const rakugo_version := "2.1.0"
+const rakugo_version := "2.0.8f4"
 const credits_path := "res://addons/Rakugo/credits.txt"
 const save_folder := "saves"
 
@@ -12,12 +12,9 @@ onready var markup = ProjectSettings.get_setting("application/rakugo/markup")
 onready var debug_on = ProjectSettings.get_setting("application/rakugo/debug")
 onready var test_save = ProjectSettings.get_setting("application/rakugo/test_saves")
 onready var scenes_links = ProjectSettings.get_setting("application/rakugo/scenes_links")
-
+onready var save_folder = ProjectSettings.get_setting("application/rakugo/save_folder")
 onready var theme = load(ProjectSettings.get_setting("application/rakugo/theme"))
 onready var default_kind = ProjectSettings.get_setting("application/rakugo/default_kind")
-onready var default_mkind = ProjectSettings.get_setting("application/rakugo/default_mkind")
-onready var default_mcolumns = ProjectSettings.get_setting("application/rakugo/default_mcolumns")
-onready var default_manchor = ProjectSettings.get_setting("application/rakugo/default_manchor")
 
 ## init vars for settings
 var _skip_all_text := false
