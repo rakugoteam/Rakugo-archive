@@ -70,7 +70,7 @@ func check_dialog(node_name, dialog_name, check_for) -> bool:
 					"(",'"'+name +'"', '"'+node_name+'"', '"'+real_name+'"', ")",
 					"(", '"'+dialog_name+'"', '"'+check_for+'"', ")"
 				])
-			
+
 
 	else:
 		dialog_init = false

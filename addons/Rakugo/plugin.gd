@@ -56,6 +56,11 @@ func _enter_tree():
 		"application/rakugo/default_kind",
 		"adv"
 	)
+	
+	default_setting(
+		"application/rakugo/punctuation_pause",
+		"adv"
+	)
 
 	# Load the dock scene and instance it
 	dock = preload("emojis/EmojiPanel.tscn").instance()
