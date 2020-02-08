@@ -35,7 +35,6 @@ avatar = ExtResource( 3 )
 kind = "adv"
 
 [node name="green" type="Sprite" parent="."]
-editor/display_folded = true
 visible = false
 texture = ExtResource( 4 )
 
@@ -59,7 +58,6 @@ position = Vector2( -38.5953, -231.822 )
 texture = ExtResource( 8 )
 
 [node name="blue" type="Sprite" parent="."]
-editor/display_folded = true
 visible = false
 texture = ExtResource( 9 )
 

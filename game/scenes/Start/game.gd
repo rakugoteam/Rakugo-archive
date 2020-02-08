@@ -3,17 +3,17 @@ extends GDScriptDialog
 var s
 var m
 
+func _init_game():
+	s = get_var("s")
+	m = get_var("m")
+
 func game(node_name, dialog_name):
-	var cd = check_dialog(node_name, dialog_name, "game")
-
-	if not cd:
+	if !check_dialog(node_name, dialog_name, "game"):
 		return
-
-	if not s:
-		s = get_var("s")
-
-	if not m:
-		m = get_var("m")
+	
+	if !dialog_init:
+		_init_game()
+		dialog_init = true
 
 	if next_state():
 		define("book", false)

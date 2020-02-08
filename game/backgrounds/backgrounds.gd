@@ -1,6 +1,12 @@
 extends RakugoNode2D
 
 var current_bg : Node2D
+var bgs := [
+	"lecturehall",
+	"club",
+	"meadow",
+	"uni"
+	]
 
 func hide_all(n:Node):
 	for ch in n.get_children():
@@ -8,7 +14,7 @@ func hide_all(n:Node):
 				ch.hide()
 
 func _on_substate(substate):	
-	if substate  in ["lecturehall", "club", "meadow", "uni"]:
+	if substate in bgs:
 		hide_all(self)
 		
 		current_bg = get_node(substate)
