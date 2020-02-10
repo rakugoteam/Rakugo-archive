@@ -2,9 +2,7 @@ extends Node
 
 const rakugo_version := "2.0.8f4"
 const credits_path := "res://addons/Rakugo/credits.txt"
-
-# we need it because we hide base RakugoMenu form custom nodes
-const RakugoMenu := preload("res://addons/Rakugo/nodes/rakugo_menu.gd")
+const save_folder := "saves"
 
 # project settings integration
 onready var game_title = ProjectSettings.get_setting("application/config/name")
@@ -904,4 +902,3 @@ func save_global_history() -> bool:
 
 func load_global_history() -> bool:
 	return $LoadGlobalHistory.invoke()
-  
