@@ -395,6 +395,7 @@ rakugo/default_mkind="vertical"
 rakugo/default_mcolumns=2.0
 rakugo/default_manchor="center"
 rakugo/punctuation_pause="1"
+rakugo/default_mcolums=2.0
 
 [autoload]
 
@@ -412,7 +413,7 @@ gdscript/warnings/return_value_discarded=false
 
 [editor_plugins]
 
-enabled=PoolStringArray( "Rakugo", "godot-plugin-refresher" )
+enabled=PoolStringArray( "Rakugo" )
 
 [input]
 

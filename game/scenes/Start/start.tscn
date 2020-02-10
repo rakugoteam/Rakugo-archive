@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://addons/Rakugo/nodes/root_node2d.gd" type="Script" id=1]
 [ext_resource path="res://game/backgrounds/backgrounds.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://game/scenes/Start/book.gd" type="Script" id=8]
 [ext_resource path="res://game/scenes/Start/marry.gd" type="Script" id=9]
 [ext_resource path="res://game/illurock-stero.ogg" type="AudioStream" id=10]
+[ext_resource path="res://addons/Rakugo/nodes/rakugo_audio_player.gd" type="Script" id=11]
 
 [node name="Start" type="Node2D"]
 script = ExtResource( 1 )
@@ -49,7 +50,12 @@ dialogs_names = [ "book" ]
 script = ExtResource( 9 )
 dialogs_names = [ "marry" ]
 
-[node name="BGMusic" type="AudioStreamPlayer2D" parent="."]
+[node name="BGMusic" type="AudioStreamPlayer" parent="." groups=[
+"save",
+]]
+pause_mode = 2
 stream = ExtResource( 10 )
 autoplay = true
 bus = "BGM"
+script = ExtResource( 11 )
+node_id = "RakugoAudioPlayer"
