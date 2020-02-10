@@ -11,7 +11,7 @@
    height="16"
    version="1"
    id="svg48"
-   sodipodi:docname="rakugo_menu.svg"
+   sodipodi:docname="rakugo_menu_v.svg"
    inkscape:version="0.92.3 (2405546, 2018-03-11)">
   <metadata
      id="metadata54">
@@ -26,7 +26,55 @@
     </rdf:RDF>
   </metadata>
   <defs
-     id="defs52" />
+     id="defs52">
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Colorize"
+       id="filter44">
+      <feComposite
+         in2="SourceGraphic"
+         operator="arithmetic"
+         k1="0"
+         k2="2.2"
+         result="composite1"
+         id="feComposite30" />
+      <feColorMatrix
+         in="composite1"
+         values="1"
+         type="saturate"
+         result="colormatrix1"
+         id="feColorMatrix32" />
+      <feFlood
+         flood-opacity="1"
+         flood-color="rgb(165,239,172)"
+         result="flood1"
+         id="feFlood34" />
+      <feBlend
+         in="flood1"
+         in2="colormatrix1"
+         mode="multiply"
+         result="blend1"
+         id="feBlend36" />
+      <feBlend
+         in2="blend1"
+         mode="screen"
+         result="blend2"
+         id="feBlend38" />
+      <feColorMatrix
+         in="blend2"
+         values="1"
+         type="saturate"
+         result="colormatrix2"
+         id="feColorMatrix40" />
+      <feComposite
+         in="colormatrix2"
+         in2="SourceGraphic"
+         operator="in"
+         k2="1"
+         result="composite2"
+         id="feComposite42" />
+    </filter>
+  </defs>
   <sodipodi:namedview
      pagecolor="#ffffff"
      bordercolor="#666666"
@@ -37,19 +85,21 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="1366"
-     inkscape:window-height="720"
+     inkscape:window-height="703"
      id="namedview50"
      showgrid="false"
-     inkscape:zoom="7.375"
-     inkscape:cx="16"
-     inkscape:cy="16"
+     inkscape:zoom="14.75"
+     inkscape:cx="12.317685"
+     inkscape:cy="10.046156"
      inkscape:window-x="0"
-     inkscape:window-y="48"
+     inkscape:window-y="40"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg48" />
+     inkscape:current-layer="svg48"
+     inkscape:pagecheckerboard="true" />
   <g
      id="g128"
-     transform="matrix(0.52543051,0,0,0.57235984,-0.40679299,8.1355932)">
+     transform="matrix(0.52543051,0,0,0.57235984,-0.40679299,8.1355932)"
+     style="filter:url(#filter44)">
     <path
        style="fill:#4789d2"
        inkscape:connector-curvature="0"

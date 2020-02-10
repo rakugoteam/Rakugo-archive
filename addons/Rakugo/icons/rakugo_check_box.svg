@@ -26,7 +26,55 @@
     </rdf:RDF>
   </metadata>
   <defs
-     id="defs40" />
+     id="defs40">
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Colorize"
+       id="filter48">
+      <feComposite
+         in2="SourceGraphic"
+         operator="arithmetic"
+         k1="0"
+         k2="2.2"
+         result="composite1"
+         id="feComposite34" />
+      <feColorMatrix
+         in="composite1"
+         values="1"
+         type="saturate"
+         result="colormatrix1"
+         id="feColorMatrix36" />
+      <feFlood
+         flood-opacity="1"
+         flood-color="rgb(165,239,172)"
+         result="flood1"
+         id="feFlood38" />
+      <feBlend
+         in="flood1"
+         in2="colormatrix1"
+         mode="multiply"
+         result="blend1"
+         id="feBlend40" />
+      <feBlend
+         in2="blend1"
+         mode="screen"
+         result="blend2"
+         id="feBlend42" />
+      <feColorMatrix
+         in="blend2"
+         values="1"
+         type="saturate"
+         result="colormatrix2"
+         id="feColorMatrix44" />
+      <feComposite
+         in="colormatrix2"
+         in2="SourceGraphic"
+         operator="in"
+         k2="1"
+         result="composite2"
+         id="feComposite46" />
+    </filter>
+  </defs>
   <sodipodi:namedview
      pagecolor="#ffffff"
      bordercolor="#666666"
@@ -37,78 +85,83 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="1366"
-     inkscape:window-height="720"
+     inkscape:window-height="703"
      id="namedview38"
      showgrid="false"
      inkscape:zoom="14.75"
-     inkscape:cx="11.807357"
+     inkscape:cx="9.6039672"
      inkscape:cy="11.052501"
      inkscape:window-x="0"
-     inkscape:window-y="48"
+     inkscape:window-y="40"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg36" />
+     inkscape:current-layer="svg36"
+     inkscape:pagecheckerboard="true" />
   <g
-     id="g142"
-     transform="translate(-1.1525424,-6.0338983)">
-    <circle
-       id="circle18"
-       r="1.5"
-       cy="11.5"
-       cx="6.5"
-       style="opacity:0.2" />
-    <circle
-       id="circle20"
-       r="1.5"
-       cy="10.5"
-       cx="6.5"
-       style="fill:#fffff7" />
+     id="g62"
+     transform="matrix(1.5085012,0,0,1.518322,-4.3802848,-3.3745478)">
     <rect
        id="rect22"
        ry="0.51599997"
        rx="0.472"
-       y="15"
-       x="11"
+       y="8.9661016"
+       x="9.8474579"
        height="3"
        width="3"
-       style="opacity:0.1" />
+       style="opacity:0.1;filter:url(#filter48)" />
     <rect
        id="rect24"
        ry="0.51599997"
        rx="0.472"
-       y="14"
-       x="11"
+       y="7.9661016"
+       x="9.8474579"
        height="3"
        width="3"
-       style="fill:#48b9c7" />
+       style="fill:#48b9c7;filter:url(#filter48)" />
     <circle
        id="circle26"
        r="1.5"
-       cy="16.5"
-       cx="6.5"
-       style="opacity:0.1" />
+       cy="10.466102"
+       cx="5.3474574"
+       style="opacity:0.1;filter:url(#filter48)" />
     <circle
        id="circle28"
        r="1.5"
-       cy="15.5"
-       cx="6.5"
-       style="fill:#48b9c7" />
+       cy="9.4661016"
+       cx="5.3474574"
+       style="fill:#48b9c7;filter:url(#filter48)" />
+  </g>
+  <g
+     id="g72"
+     transform="matrix(1.5085012,0,0,1.518322,-4.3802848,-10.888955)">
     <rect
-       id="rect30"
-       ry="0.51599997"
-       rx="0.472"
-       y="10"
-       x="11"
-       height="3"
+       style="opacity:0.1;filter:url(#filter48)"
        width="3"
-       style="opacity:0.2" />
+       height="3"
+       x="9.8474579"
+       y="8.9661016"
+       rx="0.472"
+       ry="0.51599997"
+       id="rect64" />
     <rect
-       id="rect32"
-       ry="0.51599997"
-       rx="0.472"
-       y="9"
-       x="11"
-       height="3"
+       style="fill:#48b9c7;filter:url(#filter48)"
        width="3"
-       style="fill:#ffffff" />
+       height="3"
+       x="9.8474579"
+       y="7.9661016"
+       rx="0.472"
+       ry="0.51599997"
+       id="rect66" />
+    <circle
+       style="opacity:0.1;filter:url(#filter48)"
+       cx="5.3474574"
+       cy="10.466102"
+       r="1.5"
+       id="circle68" />
+    <circle
+       style="fill:#48b9c7;filter:url(#filter48)"
+       cx="5.3474574"
+       cy="9.4661016"
+       r="1.5"
+       id="circle70" />
   </g>
 </svg>

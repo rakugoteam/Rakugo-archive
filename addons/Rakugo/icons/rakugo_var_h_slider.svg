@@ -37,55 +37,39 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="1366"
-     inkscape:window-height="720"
+     inkscape:window-height="703"
      id="namedview38"
      showgrid="false"
      inkscape:zoom="14.75"
-     inkscape:cx="11.807357"
-     inkscape:cy="11.052501"
+     inkscape:cx="10.620916"
+     inkscape:cy="5.2819092"
      inkscape:window-x="0"
-     inkscape:window-y="48"
+     inkscape:window-y="40"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg36" />
+     inkscape:current-layer="svg36"
+     inkscape:pagecheckerboard="true" />
   <g
-     id="g100"
-     transform="matrix(0.64285714,0,0,0.6440678,-2.3535108,4.3728814)">
-    <rect
-       id="rect4"
-       ry="1.161"
-       rx="1.066"
-       y="4.5499992"
-       x="4.8000002"
-       height="2.8"
-       width="22.4"
-       style="opacity:0.2" />
-    <rect
-       id="rect10"
-       ry="1.244"
-       rx="1.0470001"
-       y="5"
-       x="5"
-       height="3"
-       width="22"
-       style="opacity:0.2" />
-    <rect
-       id="rect12"
-       ry="1.244"
-       rx="1.0470001"
-       y="4"
-       x="5"
-       height="3"
-       width="22"
-       style="fill:#ffffff" />
+     transform="matrix(0.75352217,0,0,0.89152542,4.6499159,-923.48225)"
+     id="layer1"
+     inkscape:label="Layer 1">
     <path
+       sodipodi:nodetypes="ssssssssssssssssssscscccccccccc"
        inkscape:connector-curvature="0"
-       id="path14"
-       d="M 24,6.5 C 24,8.431998 22.431998,10 20.5,10 18.568,10 17,8.431998 17,6.5 17,4.568 18.568,3 20.5,3 22.431998,3 24,4.568 24,6.5 Z"
-       style="opacity:0.1;fill-rule:evenodd" />
-    <path
-       inkscape:connector-curvature="0"
-       id="path16"
-       d="M 24,5.5 C 24,7.431998 22.431998,9 20.5,9 18.568,9 17,7.431998 17,5.5 17,3.568 18.568,2 20.5,2 22.431998,2 24,3.568 24,5.5 Z"
-       style="fill:#48b9c7;fill-rule:evenodd" />
+       id="path817"
+       transform="translate(0,1036.3622)"
+       d="M 2,3 C 1.4477153,3 1,3.4477153 1,4 V 6 C 1,6.5522847 1.4477153,7 2,7 2.5522847,7 3,6.5522847 3,6 V 4 C 3,3.4477153 2.5522847,3 2,3 Z m 12,0 c -0.552285,0 -1,0.4477153 -1,1 v 2 c 0,0.5522847 0.447715,1 1,1 0.552285,0 1,-0.4477153 1,-1 V 4 C 15,3.4477153 14.552285,3 14,3 Z M 8,4 C 7.4477153,4 7,4.4477153 7,5 7,5.5522847 7.4477153,6 8,6 8.5522847,6 9,5.5522847 9,5 9,4.4477153 8.5522847,4 8,4 Z m 5,5 c -1.104569,0 -2,0.8954305 -2,2 0,1.104569 0.895431,2 2,2 1.009901,-3.37e-4 1.861096,-0.753511 1.984375,-1.755859 0.04003,-0.161043 0.03936,-0.329516 -0.002,-0.490235 C 14.85833,9.7530708 14.008498,9.0012 13,9 Z M 2,10 C 0.64767732,9.980875 0.64767732,12.019125 2,12 H 9.1308594 C 9.0452241,11.673523 9.0012549,11.337519 9,11 9.00189,10.662398 9.046518,10.326393 9.1328125,10 Z"
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#a5efac;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate" />
   </g>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:12.15540791px;line-height:1.25;font-family:'JetBrains Mono';-inkscape-font-specification:'JetBrains Mono Medium';letter-spacing:0px;word-spacing:0px;fill:#a5efac;fill-opacity:1;stroke:none;stroke-width:0.30388516"
+     x="-0.88962293"
+     y="10.658599"
+     id="text23"
+     transform="scale(0.87341292,1.1449338)"><tspan
+       sodipodi:role="line"
+       id="tspan21"
+       x="-0.88962293"
+       y="10.658599"
+       style="fill:#a5efac;fill-opacity:1;stroke-width:0.30388516">R</tspan></text>
 </svg>

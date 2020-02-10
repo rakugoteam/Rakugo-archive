@@ -37,55 +37,38 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="1366"
-     inkscape:window-height="720"
+     inkscape:window-height="703"
      id="namedview38"
      showgrid="false"
      inkscape:zoom="14.75"
-     inkscape:cx="11.807357"
-     inkscape:cy="11.052501"
+     inkscape:cx="10.620916"
+     inkscape:cy="6.637841"
      inkscape:window-x="0"
-     inkscape:window-y="48"
+     inkscape:window-y="40"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg36" />
+     inkscape:current-layer="svg36"
+     inkscape:pagecheckerboard="true" />
   <g
-     id="g100"
-     transform="matrix(0,-0.64285714,0.6440678,0,4.0677964,18.523002)">
-    <rect
-       id="rect4"
-       ry="1.161"
-       rx="1.066"
-       y="4.5499992"
-       x="4.8000002"
-       height="2.8"
-       width="22.4"
-       style="opacity:0.2" />
-    <rect
-       id="rect10"
-       ry="1.244"
-       rx="1.0470001"
-       y="5"
-       x="5"
-       height="3"
-       width="22"
-       style="opacity:0.2" />
-    <rect
-       id="rect12"
-       ry="1.244"
-       rx="1.0470001"
-       y="4"
-       x="5"
-       height="3"
-       width="22"
-       style="fill:#ffffff" />
+     transform="matrix(0.94576271,0,0,1,3.4169489,-1036.3694)"
+     id="layer1"
+     inkscape:label="Layer 1">
     <path
-       inkscape:connector-curvature="0"
-       id="path14"
-       d="M 24,6.5 C 24,8.431998 22.431998,10 20.5,10 18.568,10 17,8.431998 17,6.5 17,4.568 18.568,3 20.5,3 22.431998,3 24,4.568 24,6.5 Z"
-       style="opacity:0.1;fill-rule:evenodd" />
-    <path
-       inkscape:connector-curvature="0"
-       id="path16"
-       d="M 24,5.5 C 24,7.431998 22.431998,9 20.5,9 18.568,9 17,7.431998 17,5.5 17,3.568 18.568,2 20.5,2 22.431998,2 24,3.568 24,5.5 Z"
-       style="fill:#48b9c7;fill-rule:evenodd" />
+       id="path817"
+       transform="translate(0,1036.3622)"
+       d="M 5,1 A 2,2 0 0 0 3,3 2,2 0 0 0 5,5 2,2 0 0 0 7,3 2,2 0 0 0 5,1 Z m 5,0 C 9.4477153,1 9,1.4477153 9,2 9,2.5522847 9.4477153,3 10,3 h 2 C 12.552285,3 13,2.5522847 13,2 13,1.4477153 12.552285,1 12,1 Z M 6,6.8671875 C 5.6736072,6.9534819 5.3376025,6.9981075 5,7 4.6624807,6.9987451 4.3264773,6.9547759 4,6.8691406 V 11.869141 13 14 c -0.019125,1.352323 2.0191252,1.352323 2,0 V 13 11.867188 Z M 11,7 c -0.552285,0 -1,0.4477153 -1,1 0,0.5522847 0.447715,1 1,1 0.552285,0 1,-0.4477153 1,-1 0,-0.5522847 -0.447715,-1 -1,-1 z m -1,6 c -0.5522847,0 -1,0.447715 -1,1 0,0.552285 0.4477153,1 1,1 h 2 c 0.552285,0 1,-0.447715 1,-1 0,-0.552285 -0.447715,-1 -1,-1 z"
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#a5efac;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       inkscape:connector-curvature="0" />
   </g>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:16.28638077px;line-height:1.25;font-family:'JetBrains Mono';-inkscape-font-specification:'JetBrains Mono Medium';letter-spacing:0px;word-spacing:0px;fill:#a5efac;fill-opacity:1;stroke:none;stroke-width:0.40715948;"
+     x="-1.3879279"
+     y="12.226107"
+     id="text23"
+     transform="scale(0.80148911,1.2476776)"><tspan
+       sodipodi:role="line"
+       id="tspan21"
+       x="-1.3879279"
+       y="12.226107"
+       style="stroke-width:0.40715948;fill:#a5efac;fill-opacity:1;">R</tspan></text>
 </svg>
