@@ -1,6 +1,6 @@
 tool
 extends RakugoBaseButton
-class_name RakugoChoiceButton
+class_name RakugoChoiceButton, "res://addons/Rakugo/icons/rakugo_choice_button.svg"
 
 var label
 var id := -1

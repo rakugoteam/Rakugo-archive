@@ -1,5 +1,5 @@
 extends LineEdit
-class_name RakugoVarEdit
+class_name RakugoVarEdit, "res://addons/Rakugo/icons/rakugo_var_edit.svg"
 
 export var var_name := "some_var"
 
@@ -21,11 +21,11 @@ func _ready() -> void:
 	if var_name in Rakugo.variables:
 		s = Rakugo.get_value(var_name)
 		default = str(s)
-	
+
 	var var_to_change = Rakugo.get_var(var_name)
-	
+
 	type = Rakugo.get_def_type(s)
-	
+
 	connect("text_entered", self, "_on_entered")
 	var_to_change.connect("value_changed", self, "on_value_changed")
 
@@ -41,6 +41,6 @@ func on_value_changed(vname: String, new_value) -> void:
 func _on_entered(text: String) -> void:
 	if text.empty():
 		Rakugo.define_from_str(var_name, default, type)
-	
+
 	else:
 		Rakugo.define_from_str(var_name, text, type)

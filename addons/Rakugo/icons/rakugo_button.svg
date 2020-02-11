@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="16"
+   height="16"
+   viewBox="0 0 16 16"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   inkscape:export-filename="/home/djrm/Projects/godot/tools/editor/icons/icon_button.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90"
+   sodipodi:docname="rakugo_button.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="32"
+     inkscape:cx="12.421529"
+     inkscape:cy="7.1476577"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     units="px"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-paths="true"
+     inkscape:bbox-nodes="true"
+     inkscape:snap-bbox-edge-midpoints="true"
+     inkscape:snap-bbox-midpoints="true"
+     inkscape:snap-object-midpoints="true"
+     inkscape:snap-center="true"
+     inkscape:window-width="1366"
+     inkscape:window-height="708"
+     inkscape:window-x="0"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:document-rotation="0"
+     inkscape:pagecheckerboard="true">
+    <inkscape:grid
+       type="xygrid"
+       id="grid3336"
+       empspacing="4" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-1036.3622)">
+    <path
+       style="fill:#a5efac;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 15.5,1040.3622 c -6,8 -3,4 0,0 z m -5,-1 v 3.1328 l -1.4453125,-0.9648 -1.109375,1.664 3.0000005,2 c 0.335901,0.2239 0.773473,0.2239 1.109375,0 l 3,-2 -1.109375,-1.664 L 12.5,1042.495 v -3.1328 z m -0.5,8 c -0.831,0 -1.5,0.669 -1.5,1.5 v 0.5 h -1 v 2 h 8 v -2 h -1 v -0.5 c 0,-0.831 -0.669,-1.5 -1.5,-1.5 z"
+       id="rect829"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccccccccssccccccsss" />
+    <g
+       aria-label="R"
+       transform="scale(0.80309596,1.2451812)"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:15.05800629px;line-height:1.25;font-family:'JetBrains Mono';-inkscape-font-specification:'JetBrains Mono Medium';letter-spacing:0px;word-spacing:0px;fill:#a5efac;fill-opacity:1;stroke:none;stroke-width:0.37645015"
+       id="text816">
+      <path
+         d="m 1.4195063,833.30216 h 3.5085155 q 0.7830163,0 1.4154526,0.24092 0.6474943,0.22587 1.0992345,0.6475 0.4517401,0.40656 0.6926682,1.00889 0.2559862,0.58726 0.2559862,1.31004 0,1.09924 -0.5571463,1.88225 -0.5571462,0.76796 -1.5208586,1.11429 l 2.2285849,4.63787 H 6.6747505 L 4.6569777,839.73193 H 3.060829 v 4.41199 H 1.4195063 Z m 1.6413227,5.04443 h 1.8671928 q 0.8131323,0 1.2949885,-0.48186 0.4818562,-0.49691 0.4818562,-1.31004 0,-0.82819 -0.4818562,-1.32511 -0.4818562,-0.49691 -1.2949885,-0.49691 H 3.060829 Z"
+         style="stroke-width:0.37645015"
+         id="path818" />
+    </g>
+  </g>
+</svg>

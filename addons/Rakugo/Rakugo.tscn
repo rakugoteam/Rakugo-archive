@@ -97,7 +97,6 @@ var_name = "auto_time"
 script = ExtResource( 23 )
 
 [node name="DialogTimer" type="Timer" parent="."]
-wait_time = 0.05
 one_shot = true
 script = ExtResource( 24 )
 
