@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -9,12 +11,203 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="16"
    height="16"
-   version="1"
-   id="svg30"
-   sodipodi:docname="rakugo_menu_v.svg"
-   inkscape:version="0.92.3 (2405546, 2018-03-11)">
+   viewBox="0 0 16 16"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   inkscape:export-filename="/home/djrm/Projects/godot/tools/editor/icons/icon_center_container.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90"
+   sodipodi:docname="rakugo_menu_v.svg">
+  <defs
+     id="defs4">
+    <filter
+       id="filter29"
+       inkscape:label="Colorize"
+       style="color-interpolation-filters:sRGB">
+      <feComposite
+         id="feComposite15"
+         result="composite1"
+         k2="2.2"
+         k1="0"
+         operator="arithmetic"
+         in2="SourceGraphic"
+         k3="0"
+         k4="0" />
+      <feColorMatrix
+         id="feColorMatrix17"
+         result="colormatrix1"
+         type="saturate"
+         values="1"
+         in="composite1" />
+      <feFlood
+         id="feFlood19"
+         result="flood1"
+         flood-color="rgb(165,239,172)"
+         flood-opacity="1" />
+      <feBlend
+         id="feBlend21"
+         result="blend1"
+         mode="multiply"
+         in2="colormatrix1"
+         in="flood1" />
+      <feBlend
+         id="feBlend23"
+         result="blend2"
+         mode="screen"
+         in2="blend1" />
+      <feColorMatrix
+         id="feColorMatrix25"
+         result="colormatrix2"
+         type="saturate"
+         values="1"
+         in="blend2" />
+      <feComposite
+         id="feComposite27"
+         result="composite2"
+         operator="in"
+         in2="SourceGraphic"
+         in="colormatrix2" />
+    </filter>
+    <filter
+       id="filter34"
+       inkscape:label="Colorize"
+       style="color-interpolation-filters:sRGB">
+      <feComposite
+         id="feComposite20"
+         result="composite1"
+         k2="2.2"
+         k1="0"
+         operator="arithmetic"
+         in2="SourceGraphic"
+         k3="0"
+         k4="0" />
+      <feColorMatrix
+         id="feColorMatrix22"
+         result="colormatrix1"
+         type="saturate"
+         values="1"
+         in="composite1" />
+      <feFlood
+         id="feFlood24"
+         result="flood1"
+         flood-color="rgb(165,239,172)"
+         flood-opacity="1" />
+      <feBlend
+         id="feBlend26"
+         result="blend1"
+         mode="multiply"
+         in2="colormatrix1"
+         in="flood1" />
+      <feBlend
+         id="feBlend28"
+         result="blend2"
+         mode="screen"
+         in2="blend1" />
+      <feColorMatrix
+         id="feColorMatrix30"
+         result="colormatrix2"
+         type="saturate"
+         values="1"
+         in="blend2" />
+      <feComposite
+         id="feComposite32"
+         result="fbSourceGraphic"
+         operator="in"
+         in2="SourceGraphic"
+         in="colormatrix2" />
+      <feColorMatrix
+         id="feColorMatrix492"
+         values="0 0 0 -1 0 0 0 0 -1 0 0 0 0 -1 0 0 0 0 1 0"
+         in="fbSourceGraphic"
+         result="fbSourceGraphicAlpha" />
+      <feComposite
+         in="fbSourceGraphic"
+         result="composite1"
+         k2="2.2"
+         k1="0"
+         operator="arithmetic"
+         id="feComposite494"
+         in2="fbSourceGraphic"
+         k3="0"
+         k4="0" />
+      <feColorMatrix
+         result="colormatrix1"
+         type="saturate"
+         values="1"
+         in="composite1"
+         id="feColorMatrix496" />
+      <feFlood
+         result="flood1"
+         flood-color="rgb(100,210,57)"
+         flood-opacity="1"
+         id="feFlood498" />
+      <feBlend
+         result="blend1"
+         mode="multiply"
+         in="flood1"
+         id="feBlend500"
+         in2="colormatrix1" />
+      <feBlend
+         result="blend2"
+         mode="screen"
+         id="feBlend502"
+         in2="blend1" />
+      <feColorMatrix
+         result="colormatrix2"
+         type="saturate"
+         values="1"
+         in="blend2"
+         id="feColorMatrix504" />
+      <feComposite
+         result="composite2"
+         operator="in"
+         in="colormatrix2"
+         id="feComposite506"
+         in2="fbSourceGraphic" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="22.627417"
+     inkscape:cx="14.511121"
+     inkscape:cy="6.4505448"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     units="px"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-paths="true"
+     inkscape:bbox-nodes="true"
+     inkscape:snap-bbox-edge-midpoints="true"
+     inkscape:snap-bbox-midpoints="true"
+     inkscape:snap-object-midpoints="true"
+     inkscape:snap-center="true"
+     inkscape:window-width="1366"
+     inkscape:window-height="708"
+     inkscape:window-x="0"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:document-rotation="0"
+     inkscape:pagecheckerboard="true"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:snap-global="false">
+    <inkscape:grid
+       type="xygrid"
+       id="grid3336"
+       originx="7.5000004"
+       originy="-1" />
+  </sodipodi:namedview>
   <metadata
-     id="metadata36">
+     id="metadata7">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
@@ -25,144 +218,37 @@
       </cc:Work>
     </rdf:RDF>
   </metadata>
-  <defs
-     id="defs34">
-    <filter
-       style="color-interpolation-filters:sRGB;"
-       inkscape:label="Colorize"
-       id="filter34">
-      <feComposite
-         in2="SourceGraphic"
-         operator="arithmetic"
-         k1="0"
-         k2="2.2"
-         result="composite1"
-         id="feComposite20" />
-      <feColorMatrix
-         in="composite1"
-         values="1"
-         type="saturate"
-         result="colormatrix1"
-         id="feColorMatrix22" />
-      <feFlood
-         flood-opacity="1"
-         flood-color="rgb(165,239,172)"
-         result="flood1"
-         id="feFlood24" />
-      <feBlend
-         in="flood1"
-         in2="colormatrix1"
-         mode="multiply"
-         result="blend1"
-         id="feBlend26" />
-      <feBlend
-         in2="blend1"
-         mode="screen"
-         result="blend2"
-         id="feBlend28" />
-      <feColorMatrix
-         in="blend2"
-         values="1"
-         type="saturate"
-         result="colormatrix2"
-         id="feColorMatrix30" />
-      <feComposite
-         in="colormatrix2"
-         in2="SourceGraphic"
-         operator="in"
-         k2="1"
-         result="fbSourceGraphic"
-         id="feComposite32" />
-      <feColorMatrix
-         result="fbSourceGraphicAlpha"
-         in="fbSourceGraphic"
-         values="0 0 0 -1 0 0 0 0 -1 0 0 0 0 -1 0 0 0 0 1 0"
-         id="feColorMatrix492" />
-      <feComposite
-         in2="fbSourceGraphic"
-         id="feComposite494"
-         operator="arithmetic"
-         k1="0"
-         k2="2.2"
-         result="composite1"
-         in="fbSourceGraphic" />
-      <feColorMatrix
-         id="feColorMatrix496"
-         in="composite1"
-         values="1"
-         type="saturate"
-         result="colormatrix1" />
-      <feFlood
-         id="feFlood498"
-         flood-opacity="1"
-         flood-color="rgb(100,210,57)"
-         result="flood1" />
-      <feBlend
-         in2="colormatrix1"
-         id="feBlend500"
-         in="flood1"
-         mode="multiply"
-         result="blend1" />
-      <feBlend
-         in2="blend1"
-         id="feBlend502"
-         mode="screen"
-         result="blend2" />
-      <feColorMatrix
-         id="feColorMatrix504"
-         in="blend2"
-         values="1"
-         type="saturate"
-         result="colormatrix2" />
-      <feComposite
-         in2="fbSourceGraphic"
-         id="feComposite506"
-         in="colormatrix2"
-         operator="in"
-         k2="1"
-         result="composite2" />
-    </filter>
-  </defs>
-  <sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="1366"
-     inkscape:window-height="700"
-     id="namedview32"
-     showgrid="false"
-     inkscape:zoom="20.85965"
-     inkscape:cx="11.144079"
-     inkscape:cy="5.3705818"
-     inkscape:window-x="0"
-     inkscape:window-y="40"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="svg30"
-     inkscape:pagecheckerboard="true" />
   <g
-     transform="matrix(0,0.6644239,-0.61990871,0,658.9147,2.1753336)"
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
      id="layer1"
-     inkscape:label="Layer 1">
-    <path
-       id="rect4140"
-       transform="translate(0,1036.3622)"
-       d="M 3,1 C 1.8954305,1 1,1.8954305 1,3 v 10 c 0,1.104569 0.8954305,2 2,2 h 10 c 1.104569,0 2,-0.895431 2,-2 V 3 C 15,1.8954305 14.104569,1 13,1 Z M 3,3 H 5 V 13 H 3 Z M 7,3 H 9 V 13 H 7 Z m 4,0 h 2 v 10 h -2 z"
-       style="opacity:1;fill:#a5efac;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       inkscape:connector-curvature="0" />
-  </g>
-  <g
-     aria-label="R"
-     transform="scale(0.94144388,1.0621982)"
-     style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:16.21991539px;line-height:1.25;font-family:'JetBrains Mono';-inkscape-font-specification:'JetBrains Mono Medium';letter-spacing:0px;word-spacing:0px;fill:#a5efac;fill-opacity:1;stroke:none;stroke-width:0.40549785"
-     id="text519">
-    <path
-       d="M 0.47966057,1.128147 H 4.2589009 q 0.8434356,0 1.524672,0.2595187 0.6974564,0.2432987 1.1840538,0.6974564 0.4865975,0.4379377 0.7461161,1.0867343 0.2757386,0.6325767 0.2757386,1.4111326 0,1.1840539 -0.6001369,2.0274895 Q 6.7892077,7.4376941 5.7511331,7.8107522 L 8.1516805,12.806486 H 6.140411 L 3.9669424,8.0540509 H 2.2476313 V 12.806486 H 0.47966057 Z M 2.2476313,6.5618187 h 2.0112696 q 0.8758754,0 1.3949127,-0.5190373 0.5190373,-0.5352572 0.5190373,-1.4111326 0,-0.8920954 -0.5190373,-1.4273526 Q 5.1347763,2.669039 4.2589009,2.669039 H 2.2476313 Z"
-       style="fill:#a5efac;fill-opacity:1;stroke-width:0.40549785"
-       id="path521" />
+     transform="translate(7.5000004,-1035.3622)">
+    <g
+       aria-label="R"
+       transform="matrix(0.75330109,0,0,1.0123406,-2.1732168,-0.26802785)"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:16.05187416px;line-height:1.25;font-family:'JetBrains Mono';-inkscape-font-specification:'JetBrains Mono Medium';letter-spacing:0px;word-spacing:0px;fill:#a5efac;fill-opacity:1;stroke:none;stroke-width:0.40129685"
+       id="text816">
+      <path
+         d="m -6.5801983,1025.855 h 3.7400867 q 0.8346974,0 1.5088761,0.2568 0.69023062,0.2408 1.17178692,0.6903 0.48155618,0.4334 0.73838617,1.0754 0.27288186,0.6261 0.27288186,1.3966 0,1.1717 -0.59391934,2.0064 -0.59391939,0.8187 -1.62123931,1.1879 l 2.3756774,4.944 h -1.99043238 l -2.15095122,-4.7032 H -4.830544 v 4.7032 h -1.7496543 z m 1.7496543,5.3774 h 1.9904324 q 0.8668012,0 1.3804612,-0.5137 0.51365992,-0.5297 0.51365992,-1.3965 0,-0.8828 -0.51365992,-1.4126 -0.51366,-0.5297 -1.3804612,-0.5297 H -4.830544 Z"
+         style="fill:#a5efac;fill-opacity:1;stroke-width:0.40129685"
+         id="path838"
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       transform="matrix(0,0.81840385,-1.0370198,0,1091.5578,1029.4463)"
+       id="layer1-6"
+       inkscape:label="Layer 1">
+      <g
+         transform="matrix(1.1346154,0,0,0.61990871,8.5377931,401.80678)"
+         id="layer1-7"
+         inkscape:label="Layer 1">
+        <path
+           id="rect4140"
+           transform="translate(0,1036.3622)"
+           d="M 3,1 C 1.8954305,1 1,1.8954305 1,3 v 10 c 0,1.104569 0.8954305,2 2,2 h 10 c 1.104569,0 2,-0.895431 2,-2 V 3 C 15,1.8954305 14.104569,1 13,1 Z M 3,3 H 5 V 13 H 3 Z M 7,3 H 9 V 13 H 7 Z m 4,0 h 2 v 10 h -2 z"
+           style="opacity:1;fill:#a5efac;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           inkscape:connector-curvature="0" />
+      </g>
+    </g>
   </g>
 </svg>
