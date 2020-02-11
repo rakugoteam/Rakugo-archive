@@ -1,0 +1,72 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://game/characters/sylvie/SylvieAvatar.gd" type="Script" id=1]
+[ext_resource path="res://game/characters/sylvie/green/sylvie green.png" type="Texture" id=2]
+[ext_resource path="res://game/characters/sylvie/green/sylvie green giggle.png" type="Texture" id=3]
+[ext_resource path="res://game/characters/sylvie/green/sylvie green normal.png" type="Texture" id=4]
+[ext_resource path="res://game/characters/sylvie/green/sylvie green smile.png" type="Texture" id=5]
+[ext_resource path="res://game/characters/sylvie/green/sylvie green surprised.png" type="Texture" id=6]
+[ext_resource path="res://game/characters/sylvie/blue/sylvie blue.png" type="Texture" id=7]
+[ext_resource path="res://game/characters/sylvie/blue/sylvie blue giggle.png" type="Texture" id=8]
+[ext_resource path="res://game/characters/sylvie/blue/sylvie blue normal.png" type="Texture" id=9]
+[ext_resource path="res://game/characters/sylvie/blue/sylvie blue smile.png" type="Texture" id=10]
+[ext_resource path="res://game/characters/sylvie/blue/sylvie blue surprised.png" type="Texture" id=11]
+
+[node name="Sylvie" type="Node" groups=[
+"save",
+]]
+script = ExtResource( 1 )
+avatar_id = "sylvie"
+
+[node name="Node2D" type="Node2D" parent="."]
+scale = Vector2( 0.36, 0.36 )
+
+[node name="green" type="Sprite" parent="Node2D"]
+editor/display_folded = true
+position = Vector2( 125.763, 118.844 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 97.9495, 1.26561, 255.385, 240.994 )
+
+[node name="giggle" type="Sprite" parent="Node2D/green"]
+position = Vector2( -35.0328, -3.132 )
+texture = ExtResource( 3 )
+
+[node name="normal" type="Sprite" parent="Node2D/green"]
+position = Vector2( -35.0328, -3.132 )
+texture = ExtResource( 4 )
+
+[node name="smile" type="Sprite" parent="Node2D/green"]
+position = Vector2( -35.0328, -3.132 )
+texture = ExtResource( 5 )
+
+[node name="surprised" type="Sprite" parent="Node2D/green"]
+position = Vector2( -35.0328, -3.132 )
+texture = ExtResource( 6 )
+
+[node name="blue" type="Sprite" parent="Node2D"]
+editor/display_folded = true
+position = Vector2( 108.338, 118.011 )
+texture = ExtResource( 7 )
+region_enabled = true
+region_rect = Rect2( 61.2884, 3.53768, 215.488, 237.967 )
+
+[node name="giggle" type="Sprite" parent="Node2D/blue"]
+position = Vector2( -12.3068, -10.4144 )
+z_index = -1
+texture = ExtResource( 8 )
+
+[node name="normal" type="Sprite" parent="Node2D/blue"]
+position = Vector2( -13.2334, -11.8339 )
+z_index = -1
+texture = ExtResource( 9 )
+
+[node name="smile" type="Sprite" parent="Node2D/blue"]
+position = Vector2( -12.7701, -8.60606 )
+z_index = -1
+texture = ExtResource( 10 )
+
+[node name="surprised" type="Sprite" parent="Node2D/blue"]
+position = Vector2( -12.7701, -9.54796 )
+z_index = -1
+texture = ExtResource( 11 )

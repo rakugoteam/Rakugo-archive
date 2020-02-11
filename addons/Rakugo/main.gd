@@ -12,7 +12,6 @@ onready var markup = ProjectSettings.get_setting("application/rakugo/markup")
 onready var debug_on = ProjectSettings.get_setting("application/rakugo/debug")
 onready var test_save = ProjectSettings.get_setting("application/rakugo/test_saves")
 onready var scenes_links = ProjectSettings.get_setting("application/rakugo/scenes_links")
-onready var save_folder = ProjectSettings.get_setting("application/rakugo/save_folder")
 onready var theme = load(ProjectSettings.get_setting("application/rakugo/theme"))
 onready var default_kind = ProjectSettings.get_setting("application/rakugo/default_kind")
 
@@ -902,3 +901,4 @@ func save_global_history() -> bool:
 
 func load_global_history() -> bool:
 	return $LoadGlobalHistory.invoke()
+  
