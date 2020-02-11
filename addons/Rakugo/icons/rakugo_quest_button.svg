@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="16"
+   height="16"
+   viewBox="0 0 16 16"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   inkscape:export-filename="/home/djrm/Projects/godot/tools/editor/icons/icon_button.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90"
+   sodipodi:docname="rakugo_quest_button.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="32"
+     inkscape:cx="12.204674"
+     inkscape:cy="8.6103265"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     units="px"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-paths="true"
+     inkscape:bbox-nodes="true"
+     inkscape:snap-bbox-edge-midpoints="true"
+     inkscape:snap-bbox-midpoints="true"
+     inkscape:snap-object-midpoints="true"
+     inkscape:snap-center="true"
+     inkscape:window-width="1366"
+     inkscape:window-height="708"
+     inkscape:window-x="0"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:document-rotation="0"
+     inkscape:pagecheckerboard="true">
+    <inkscape:grid
+       type="xygrid"
+       id="grid3336"
+       empspacing="4" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-1036.3622)">
+    <path
+       sodipodi:nodetypes="cccccccccccccssccccccsss"
+       inkscape:connector-curvature="0"
+       id="path844"
+       d="m 16,1039.3622 c -6,8 -3,4 0,0 z m -5,-1 v 3.1328 l -1.445312,-0.9648 -1.109375,1.664 3,2 c 0.335901,0.2239 0.773473,0.2239 1.109375,0 l 3,-2 -1.109375,-1.664 L 13,1041.495 v -3.1328 z m -0.5,8 c -0.831,0 -1.5,0.669 -1.5,1.5 v 0.5 H 8 v 2 h 8 v -2 h -1 v -0.5 c 0,-0.831 -0.669,-1.5 -1.5,-1.5 z"
+       style="fill:#a5efac;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <g
+       aria-label="Q"
+       transform="scale(1.1814609,0.84640972)"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:13.50872326px;line-height:1.25;font-family:'JetBrains Mono';-inkscape-font-specification:'JetBrains Mono Medium';letter-spacing:0px;word-spacing:0px;fill:#a5efac;fill-opacity:1;stroke:none;stroke-width:0.50657713"
+       id="text872">
+      <path
+         d="m 0.23135203,1230.7729 q 0,-0.6755 0.21613957,-1.2158 0.2296483,-0.5404 0.63491,-0.9186 0.4052617,-0.3918 0.9726281,-0.5944 0.5808751,-0.2161 1.2968374,-0.2161 0.7159623,0 1.2833287,0.2161 0.5808751,0.2026 0.9861368,0.5944 0.4052617,0.3782 0.6214013,0.9186 0.2296483,0.5403 0.2296483,1.2158 v 4.1066 q 0,0.9051 -0.4052617,1.5805 -0.4052617,0.6755 -1.1347328,1.0267 l 1.6075381,2.4316 H 4.9053703 l -1.3913985,-2.0939 q -0.7024536,0 -1.3103462,-0.1756 -0.5943838,-0.1756 -1.0401717,-0.5403 -0.43227911,-0.3648 -0.68894485,-0.9186 -0.24315702,-0.5539 -0.24315702,-1.3104 z m 1.48595957,4.1066 q 0,0.743 0.4457879,1.1888 0.4457878,0.4458 1.1887676,0.4458 0.7429798,0 1.1887677,-0.4458 0.4457878,-0.4458 0.4457878,-1.1888 v -4.1066 q 0,-0.7565 -0.4457878,-1.2023 -0.4457879,-0.4458 -1.1887677,-0.4458 -0.7429798,0 -1.1887676,0.4458 -0.4457879,0.4458 -0.4457879,1.2023 z"
+         style="fill:#a5efac;fill-opacity:1;stroke-width:0.50657713"
+         id="path874" />
+    </g>
+  </g>
+</svg>

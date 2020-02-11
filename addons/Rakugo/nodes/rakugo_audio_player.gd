@@ -1,6 +1,6 @@
 tool
 extends AudioStreamPlayer
-class_name RakugoAudioPlayer
+class_name RakugoAudioPlayer, "res://addons/Rakugo/icons/rakugo_audio_player.svg"
 
 export var node_id := ""
 
@@ -60,7 +60,7 @@ func on_load(game_version: String) -> void:
 	if not node_link:
 		push_error("error with loading: %s" %node_id)
 		return
-		
+
 	if "is_playing" in node_link:
 		if node_link.value["is_playing"]:
 			var last_pos = node_link.value["from_pos"]

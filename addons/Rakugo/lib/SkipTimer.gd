@@ -1,5 +1,5 @@
 extends Timer
-class_name SkipTimer
+class_name SkipTimer, "res://addons/Rakugo/icons/rakugo_skip_timer.svg"
 
 signal stop_loop
 
