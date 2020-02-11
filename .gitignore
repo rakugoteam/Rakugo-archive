@@ -8,8 +8,8 @@ export_presets.cfg
 mono_crash.*.*.json
 
 # Project specific
-addons/godot-plugin-refresher/
-addons/editor_icon_previewer
+addons/*
+!addons/Rakugo
 fontconfig
 refences/
 saves/

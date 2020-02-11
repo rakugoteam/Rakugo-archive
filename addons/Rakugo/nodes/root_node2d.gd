@@ -1,5 +1,5 @@
 extends Node2D
-class_name RootNode2D
+class_name RootNode2D, "res://addons/Rakugo/icons/rakugo_root_node2d.svg"
 
 export var root := false
 export var default := Vector2(1024, 600)

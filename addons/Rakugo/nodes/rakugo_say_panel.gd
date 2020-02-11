@@ -1,7 +1,7 @@
 extends Panel
 class_name RakugoSayPanel, "res://addons/Rakugo/icons/rakugo_panel.svg"
 
-export (String, "adv", "hide", "top", "center", "left", "right", "nvl", "fullscreen") var kind = "adv"
+export (String, "adv", "top", "center", "left", "right", "nvl", "fullscreen") var kind = "adv"
 export var main_container_path := NodePath("")
 export var std_kind_container_path := NodePath("")
 export (Array, String) var extra_kinds := ["nvl", "phone_right", "phone_left"]
@@ -36,7 +36,7 @@ func _ready() -> void:
 
 	_setup(StdKindContainer)
 	Rakugo.connect("exec_statement", self, "_on_statement")
-	Rakugo.connect("hide_ui", self, "on_hide")
+	Rakugo.connect("hide_ui", self, "_on_Hide_toggled")
 
 func _setup(kind_container: KindContainer):
 	NameLabel = kind_container.NameLabel
@@ -236,6 +236,13 @@ func write_dialog(text: String, _typing: bool) -> void:
 
 		if markup:
 			continue
+
+		Rakugo.dialog_timer.wait_time = Rakugo.get_value("text_time")
+
+		if letter in ",;.!?":
+			var p = ProjectSettings.get_setting(
+		"application/rakugo/punctuation_pause")
+			Rakugo.dialog_timer.wait_time *= int(p)
 
 		Rakugo.dialog_timer.start()
 
