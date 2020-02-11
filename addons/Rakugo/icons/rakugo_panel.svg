@@ -27,10 +27,19 @@
   </metadata>
   <defs
      id="defs10">
+    <linearGradient
+       id="linearGradient4561">
+      <stop
+         style="stop-color:#a5efac;stop-opacity:1;"
+         offset="0"
+         id="stop4559" />
+    </linearGradient>
     <filter
        style="color-interpolation-filters:sRGB;"
        inkscape:label="Colorize"
-       id="filter26">
+       id="filter26"
+       inkscape:menu="Color"
+       inkscape:menu-tooltip="Adds a colorizable edges glow inside objects and pictures">
       <feComposite
          in2="SourceGraphic"
          operator="arithmetic"
@@ -71,8 +80,120 @@
          in2="SourceGraphic"
          operator="in"
          k2="1"
-         result="composite2"
+         result="fbSourceGraphic"
          id="feComposite24" />
+      <feColorMatrix
+         result="fbSourceGraphicAlpha"
+         in="fbSourceGraphic"
+         values="0 0 0 -1 0 0 0 0 -1 0 0 0 0 -1 0 0 0 0 1 0"
+         id="feColorMatrix18" />
+      <feColorMatrix
+         id="feColorMatrix20"
+         type="saturate"
+         values="1"
+         result="result91"
+         in="fbSourceGraphic" />
+      <feComposite
+         in2="result91"
+         id="feComposite22"
+         result="result15"
+         operator="arithmetic"
+         k2="0.4"
+         k1="0.3"
+         k3="0.3" />
+      <feGaussianBlur
+         id="feGaussianBlur24"
+         in="result15"
+         result="result8"
+         stdDeviation="5" />
+      <feColorMatrix
+         id="feColorMatrix26"
+         values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 50 0 "
+         result="result92" />
+      <feComposite
+         in2="fbSourceGraphic"
+         id="feComposite28"
+         operator="in"
+         result="result13" />
+      <feComposite
+         in2="result13"
+         id="feComposite30"
+         k3="0.3"
+         k1="0.3"
+         k2="0.4"
+         operator="arithmetic"
+         in="result15"
+         result="result6" />
+      <feFlood
+         id="feFlood32"
+         flood-color="rgb(128,172,0)"
+         flood-opacity="1"
+         result="result10" />
+      <feBlend
+         in2="result10"
+         id="feBlend34"
+         result="result12"
+         in="result6"
+         mode="darken" />
+      <feBlend
+         in2="result6"
+         id="feBlend36"
+         result="result14"
+         mode="screen" />
+      <feComposite
+         in2="fbSourceGraphic"
+         id="feComposite38"
+         in="result14"
+         operator="in"
+         result="fbSourceGraphic" />
+      <feColorMatrix
+         result="fbSourceGraphicAlpha"
+         in="fbSourceGraphic"
+         values="0 0 0 -1 0 0 0 0 -1 0 0 0 0 -1 0 0 0 0 1 0"
+         id="feColorMatrix104" />
+      <feComposite
+         in2="fbSourceGraphic"
+         id="feComposite106"
+         operator="arithmetic"
+         k1="0"
+         k2="2.2"
+         result="composite1"
+         in="fbSourceGraphic" />
+      <feColorMatrix
+         id="feColorMatrix108"
+         in="composite1"
+         values="1"
+         type="saturate"
+         result="colormatrix1" />
+      <feFlood
+         id="feFlood110"
+         flood-opacity="1"
+         flood-color="rgb(135,255,33)"
+         result="flood1" />
+      <feBlend
+         in2="colormatrix1"
+         id="feBlend112"
+         in="flood1"
+         mode="multiply"
+         result="blend1" />
+      <feBlend
+         in2="blend1"
+         id="feBlend114"
+         mode="screen"
+         result="blend2" />
+      <feColorMatrix
+         id="feColorMatrix116"
+         in="blend2"
+         values="1"
+         type="saturate"
+         result="colormatrix2" />
+      <feComposite
+         in2="fbSourceGraphic"
+         id="feComposite118"
+         in="colormatrix2"
+         operator="in"
+         k2="1"
+         result="composite2" />
     </filter>
   </defs>
   <sodipodi:namedview
@@ -85,36 +206,22 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="1366"
-     inkscape:window-height="703"
+     inkscape:window-height="700"
      id="namedview8"
      showgrid="false"
      inkscape:zoom="20.85965"
-     inkscape:cx="-0.14753817"
-     inkscape:cy="8.1502066"
+     inkscape:cx="16.755257"
+     inkscape:cy="9.4445716"
      inkscape:window-x="0"
      inkscape:window-y="40"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg6"
      inkscape:snap-global="false"
      inkscape:pagecheckerboard="true" />
-  <g
-     id="g23"
-     transform="matrix(0.53772681,0,0,0.44582004,10.32232,6.7196176)"
-     style="filter:url(#filter26)">
-    <path
-       id="path2-3"
-       d="m -16.663072,-8.5874679 c -0.861857,0 -1.555599,0.6668943 -1.555599,1.5200154 V 11.112686 c 0,0.853457 0.693745,1.302276 1.555599,1.299846 h 14.124603 l 3.36006703,3 2.80005597,-3 h 4.605084 c 0.861297,0 1.554591,-0.446389 1.554591,-1.299846 V -7.0674525 c 0,-0.8531211 -0.693294,-1.5200154 -1.555711,-1.5200154 z"
-       style="opacity:0.2"
-       inkscape:connector-curvature="0" />
-    <path
-       id="path4"
-       style="fill:#02a8f3"
-       d="m -16.663072,-9.5874679 c -0.861857,0 -1.555599,0.6668943 -1.555599,1.5200154 V 10.112686 c 0,0.853457 0.693745,1.302276 1.555599,1.299846 h 14.124603 l 3.36006703,3 2.80005597,-3 h 4.605084 c 0.861297,0 1.554591,-0.446389 1.554591,-1.299846 V -8.0674525 c 0,-0.8531211 -0.693294,-1.5200154 -1.555711,-1.5200154 z"
-       inkscape:connector-curvature="0" />
-    <path
-       id="path8"
-       d="m -16.663983,-9.5874679 c -0.861858,0 -1.554688,0.6664101 -1.554688,1.5195312 v 1 c 0,-0.8531211 0.69283,-1.5195312 1.554688,-1.5195312 H 8.224688 c 0.862417,0 1.556641,0.6664101 1.556641,1.5195312 v -1 c 0,-0.8531211 -0.694224,-1.5195312 -1.556641,-1.5195312 z"
-       style="opacity:0.2;fill:#ffffff"
-       inkscape:connector-curvature="0" />
-  </g>
+  <path
+     style="fill:#a5efac;fill-opacity:1;stroke:none;stroke-width:1.05390358;stroke-opacity:1"
+     d="M 1.3670925,1.4264094 H 14.692621 c 0.544902,0 0.983577,0.4386754 0.983577,0.9835771 v 7.7166145 c 0,0.544901 -0.438675,0.983577 -0.983577,0.983577 H 12.450798 L 11.074011,15.23297 9.0605547,11.110178 H 1.3670925 c -0.54490162,0 -0.98357662,-0.438676 -0.98357662,-0.983577 V 2.4099865 c 0,-0.5449017 0.438675,-0.9835771 0.98357662,-0.9835771 z"
+     id="rect4585"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ssssscccssss" />
 </svg>

@@ -21,7 +21,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -85,11 +85,11 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="1366"
-     inkscape:window-height="703"
+     inkscape:window-height="700"
      id="namedview26"
      showgrid="false"
      inkscape:zoom="29.5"
-     inkscape:cx="8.3610609"
+     inkscape:cx="7.7678406"
      inkscape:cy="8.4852992"
      inkscape:window-x="0"
      inkscape:window-y="40"
@@ -107,16 +107,14 @@
        style="opacity:1;fill:#a5efac;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        inkscape:connector-curvature="0" />
   </g>
-  <text
-     xml:space="preserve"
+  <g
+     aria-label="R"
+     transform="scale(0.77425904,1.2915574)"
      style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:11.21290302px;line-height:1.25;font-family:'JetBrains Mono';-inkscape-font-specification:'JetBrains Mono Medium';letter-spacing:0px;word-spacing:0px;fill:#a5efac;fill-opacity:1;stroke:none;stroke-width:0.28032258"
-     x="-0.79862088"
-     y="10.025999"
-     id="text33"
-     transform="scale(0.77425904,1.2915574)"><tspan
-       sodipodi:role="line"
-       id="tspan31"
-       x="-0.79862088"
-       y="10.025999"
-       style="fill:#a5efac;fill-opacity:1;stroke-width:0.28032258">R</tspan></text>
+     id="text33">
+    <path
+       d="M 0.12083717,1.9527089 H 2.7334436 q 0.5830709,0 1.0540129,0.1794064 0.4821548,0.1681936 0.8185419,0.4821549 0.3363871,0.3027484 0.5157935,0.7512645 0.1906194,0.4373032 0.1906194,0.9755225 0,0.818542 -0.4148774,1.4016129 -0.4148775,0.5718581 -1.1325032,0.8297548 l 1.6595096,3.4535741 h -1.3904 L 2.5316113,6.7406185 H 1.3430436 V 10.025999 H 0.12083717 Z M 1.3430436,5.7090314 h 1.3904 q 0.6054967,0 0.9643096,-0.3588129 0.3588129,-0.3700258 0.3588129,-0.9755226 0,-0.6167096 -0.3588129,-0.9867354 Q 3.3389403,3.0179347 2.7334436,3.0179347 h -1.3904 z"
+       style="fill:#a5efac;fill-opacity:1;stroke-width:0.28032258"
+       id="path823" />
+  </g>
 </svg>

@@ -12,7 +12,7 @@
    version="1.1"
    viewBox="0 0 16 16"
    id="svg16"
-   sodipodi:docname="rakugo_spatial.svg"
+   sodipodi:docname="rakugo_node2d.svg"
    inkscape:version="0.92.3 (2405546, 2018-03-11)">
   <metadata
      id="metadata22">
@@ -42,7 +42,7 @@
      id="namedview18"
      showgrid="false"
      inkscape:zoom="14.75"
-     inkscape:cx="23.023875"
+     inkscape:cx="21.837434"
      inkscape:cy="10.502248"
      inkscape:window-x="0"
      inkscape:window-y="40"
@@ -51,12 +51,12 @@
      inkscape:pagecheckerboard="true" />
   <g
      aria-label="R"
-     transform="scale(0.9151209,1.0927518)"
-     style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:16.61349297px;line-height:1.25;font-family:'JetBrains Mono';-inkscape-font-specification:'JetBrains Mono Medium';letter-spacing:0px;word-spacing:0px;fill:#fc9c9c;fill-opacity:0.99607843;stroke:none;stroke-width:0.41533732"
+     transform="scale(0.96932729,1.0316433)"
+     style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:16.86738777px;line-height:1.25;font-family:'JetBrains Mono';-inkscape-font-specification:'JetBrains Mono Medium';letter-spacing:0px;word-spacing:0px;fill:#a5b7f3;fill-opacity:1;stroke:none;stroke-width:0.42168471"
      id="text25">
     <path
-       d="m 5.0659233,1.3773335 h 3.8709438 q 0.8639017,0 1.5616679,0.2658158 0.714381,0.2492024 1.212785,0.7143802 0.498405,0.4485643 0.764221,1.1131041 0.28243,0.6479262 0.28243,1.4453739 0,1.2127849 -0.6147,2.0766866 -0.614699,0.8472881 -1.677963,1.2293985 l 2.458797,5.1169554 H 10.864032 L 8.6378243,8.4712949 H 6.876794 V 13.339048 H 5.0659233 Z M 6.876794,6.9428536 h 2.0600731 q 0.8971287,0 1.4287609,-0.5316318 0.531631,-0.5482452 0.531631,-1.4453739 0,-0.9137421 -0.531631,-1.4619874 Q 9.8339958,2.9556153 8.9368671,2.9556153 H 6.876794 Z"
-       style="fill:#fc9c9c;fill-opacity:0.99607843;stroke-width:0.41533732"
+       d="m 4.6427446,1.8532225 h 3.9301013 q 0.8771042,0 1.5855341,0.2698782 0.725298,0.2530108 1.23132,0.7252977 0.506021,0.4554195 0.7759,1.130115 0.286745,0.6578281 0.286745,1.4674627 0,1.2313193 -0.624093,2.1084235 -0.624094,0.8602367 -1.703606,1.2481867 l 2.496373,5.1951557 H 10.529463 L 8.2692329,9.0555971 H 6.4812898 V 13.997742 H 4.6427446 Z m 1.8385452,5.6505749 h 2.0915561 q 0.9108389,0 1.4505951,-0.5397564 0.539757,-0.5566238 0.539757,-1.4674627 0,-0.9277064 -0.539757,-1.4843302 Q 9.4836848,3.4556243 8.5728459,3.4556243 H 6.4812898 Z"
+       style="fill:#a5b7f3;fill-opacity:1;stroke-width:0.42168471"
        id="path8" />
   </g>
 </svg>
