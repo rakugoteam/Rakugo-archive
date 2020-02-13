@@ -57,6 +57,11 @@ func _enter_tree():
 		"adv"
 	)
 
+	default_setting(
+		"application/rakugo/punctuation_pause",
+		"adv"
+	)
+
 	# Load the dock scene and instance it
 	dock = preload("emojis/EmojiPanel.tscn").instance()
 
@@ -82,7 +87,7 @@ func _enter_tree():
 		"RakugoVarCheckButton",
 		"CheckButton",
 		preload("nodes/rakugo_var_check.gd"),
-		preload("icons/rakugo_check_box.svg")
+		preload("icons/rakugo_check_button.svg")
 	)
 
 	add_custom_type(

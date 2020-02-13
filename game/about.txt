@@ -1,0 +1,3 @@
+[title] [version] by [credits]
+
+[rakugo_credits]
