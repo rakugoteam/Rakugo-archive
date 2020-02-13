@@ -421,6 +421,9 @@ margin_bottom = 40.0
 mouse_filter = 1
 theme = ExtResource( 16 )
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 use_theme_from_setting = true
 register = true
 node_id = "InGameGUI"

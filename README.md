@@ -1,5 +1,5 @@
 
-# Rakugo The Question ![Logo](graphics/window_icon.png)
+# Rakugo![Logo](graphics/window_icon.png)
 [![Documentation Status](https://readthedocs.org/projects/rakugo/badge/?version=latest)](https://rakugo.readthedocs.io/en/latest/?badge=latest)
 [![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](LICENSE)
 [![Discord Server](https://img.shields.io/discord/484604562183815169.svg?style=flat-square)](https://discord.gg/K9gvjdg)
@@ -10,14 +10,11 @@
 [![GitHub](https://img.shields.io/github/issues/rakugoteam/Rakugo.svg?style=flat-square)](https://github.com/rakugoteam/Rakugo/issues)
 [![GitHub](https://img.shields.io/github/issues-closed/rakugoteam/Rakugo.svg?style=flat-square)](https://github.com/rakugoteam/Rakugo/issues)
 
-## This Repo
+## Rakugo
 
-This is repo for VN Rakugo Template.
-This template is port of Ren'Py game [*The Question*](https://games.renpy.org/game/question).
+Rakugo Framework is inspired by [Ren'Py](https://www.renpy.org) game template with addon for story driven games in [Godot](https://godotengine.org).
 
-## Rakugo it Self
-Rakugo is framework (inspired by [Ren'Py](https://www.renpy.org)) for story driven games in [Godot](https://godotengine.org)
-or like my friend call it *Story Management Plugin*.
+It has dialogue system, some extra tools, nodes, gui and features that most games have auto of the box
 
 The idea is to have a ready to use plug-in for stories, so developers can create narrative driven games with all the amazing features and tools of Godot 3.1+.
 
@@ -32,6 +29,14 @@ Games using Rakugo v 0.9.x :
 - [**Bot Saves Dream**](https://plopsis.itch.io/curator-bot)
 
 If your game uses Rakugo write to me on [Discord](https://discord.gg/K9gvjdg).
+
+Games using Rakugo v 2.0.x :
+- [**The Question: Rakugo Editon**](https://github.com/rakugoteam/Rakugo/tree/the-question-1.2)
+
+## The Question: Rakugo Editon
+
+This is game is a demo of VN Rakugo Template.
+This template is port of Ren'Py game [*The Question*](https://games.renpy.org/game/question).
 
 ## Story driven games
 

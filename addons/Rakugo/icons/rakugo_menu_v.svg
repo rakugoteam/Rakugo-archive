@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -9,12 +11,203 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="16"
    height="16"
-   version="1"
-   id="svg48"
-   sodipodi:docname="rakugo_menu.svg"
-   inkscape:version="0.92.3 (2405546, 2018-03-11)">
+   viewBox="0 0 16 16"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   inkscape:export-filename="/home/djrm/Projects/godot/tools/editor/icons/icon_center_container.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90"
+   sodipodi:docname="rakugo_menu_v.svg">
+  <defs
+     id="defs4">
+    <filter
+       id="filter29"
+       inkscape:label="Colorize"
+       style="color-interpolation-filters:sRGB">
+      <feComposite
+         id="feComposite15"
+         result="composite1"
+         k2="2.2"
+         k1="0"
+         operator="arithmetic"
+         in2="SourceGraphic"
+         k3="0"
+         k4="0" />
+      <feColorMatrix
+         id="feColorMatrix17"
+         result="colormatrix1"
+         type="saturate"
+         values="1"
+         in="composite1" />
+      <feFlood
+         id="feFlood19"
+         result="flood1"
+         flood-color="rgb(165,239,172)"
+         flood-opacity="1" />
+      <feBlend
+         id="feBlend21"
+         result="blend1"
+         mode="multiply"
+         in2="colormatrix1"
+         in="flood1" />
+      <feBlend
+         id="feBlend23"
+         result="blend2"
+         mode="screen"
+         in2="blend1" />
+      <feColorMatrix
+         id="feColorMatrix25"
+         result="colormatrix2"
+         type="saturate"
+         values="1"
+         in="blend2" />
+      <feComposite
+         id="feComposite27"
+         result="composite2"
+         operator="in"
+         in2="SourceGraphic"
+         in="colormatrix2" />
+    </filter>
+    <filter
+       id="filter34"
+       inkscape:label="Colorize"
+       style="color-interpolation-filters:sRGB">
+      <feComposite
+         id="feComposite20"
+         result="composite1"
+         k2="2.2"
+         k1="0"
+         operator="arithmetic"
+         in2="SourceGraphic"
+         k3="0"
+         k4="0" />
+      <feColorMatrix
+         id="feColorMatrix22"
+         result="colormatrix1"
+         type="saturate"
+         values="1"
+         in="composite1" />
+      <feFlood
+         id="feFlood24"
+         result="flood1"
+         flood-color="rgb(165,239,172)"
+         flood-opacity="1" />
+      <feBlend
+         id="feBlend26"
+         result="blend1"
+         mode="multiply"
+         in2="colormatrix1"
+         in="flood1" />
+      <feBlend
+         id="feBlend28"
+         result="blend2"
+         mode="screen"
+         in2="blend1" />
+      <feColorMatrix
+         id="feColorMatrix30"
+         result="colormatrix2"
+         type="saturate"
+         values="1"
+         in="blend2" />
+      <feComposite
+         id="feComposite32"
+         result="fbSourceGraphic"
+         operator="in"
+         in2="SourceGraphic"
+         in="colormatrix2" />
+      <feColorMatrix
+         id="feColorMatrix492"
+         values="0 0 0 -1 0 0 0 0 -1 0 0 0 0 -1 0 0 0 0 1 0"
+         in="fbSourceGraphic"
+         result="fbSourceGraphicAlpha" />
+      <feComposite
+         in="fbSourceGraphic"
+         result="composite1"
+         k2="2.2"
+         k1="0"
+         operator="arithmetic"
+         id="feComposite494"
+         in2="fbSourceGraphic"
+         k3="0"
+         k4="0" />
+      <feColorMatrix
+         result="colormatrix1"
+         type="saturate"
+         values="1"
+         in="composite1"
+         id="feColorMatrix496" />
+      <feFlood
+         result="flood1"
+         flood-color="rgb(100,210,57)"
+         flood-opacity="1"
+         id="feFlood498" />
+      <feBlend
+         result="blend1"
+         mode="multiply"
+         in="flood1"
+         id="feBlend500"
+         in2="colormatrix1" />
+      <feBlend
+         result="blend2"
+         mode="screen"
+         id="feBlend502"
+         in2="blend1" />
+      <feColorMatrix
+         result="colormatrix2"
+         type="saturate"
+         values="1"
+         in="blend2"
+         id="feColorMatrix504" />
+      <feComposite
+         result="composite2"
+         operator="in"
+         in="colormatrix2"
+         id="feComposite506"
+         in2="fbSourceGraphic" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="22.627417"
+     inkscape:cx="14.511121"
+     inkscape:cy="6.4505448"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     units="px"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-paths="true"
+     inkscape:bbox-nodes="true"
+     inkscape:snap-bbox-edge-midpoints="true"
+     inkscape:snap-bbox-midpoints="true"
+     inkscape:snap-object-midpoints="true"
+     inkscape:snap-center="true"
+     inkscape:window-width="1366"
+     inkscape:window-height="708"
+     inkscape:window-x="0"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:document-rotation="0"
+     inkscape:pagecheckerboard="true"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:snap-global="false">
+    <inkscape:grid
+       type="xygrid"
+       id="grid3336"
+       originx="7.5000004"
+       originy="-1" />
+  </sodipodi:namedview>
   <metadata
-     id="metadata54">
+     id="metadata7">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
@@ -25,157 +218,37 @@
       </cc:Work>
     </rdf:RDF>
   </metadata>
-  <defs
-     id="defs52" />
-  <sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="1366"
-     inkscape:window-height="720"
-     id="namedview50"
-     showgrid="false"
-     inkscape:zoom="7.375"
-     inkscape:cx="16"
-     inkscape:cy="16"
-     inkscape:window-x="0"
-     inkscape:window-y="48"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="svg48" />
   <g
-     id="g128"
-     transform="matrix(0.52543051,0,0,0.57235984,-0.40679299,8.1355932)">
-    <path
-       style="fill:#4789d2"
-       inkscape:connector-curvature="0"
-       id="path2"
-       d="M 30,10.611 V -11.611 C 30,-12.3806 29.376,-13 28.6,-13 H 3.4 C 2.6244,-13 2,-12.3806 2,-11.6111 v 22.222 c 0,0.77 0.6244,1.389 1.4,1.389 h 25.2 c 0.7756,0 1.4,-0.61944 1.4,-1.3889 z" />
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(7.5000004,-1035.3622)">
     <g
-       style="opacity:0.2"
-       id="g22"
-       transform="translate(0,-15)">
-      <g
-         id="g8"
-         transform="translate(-0.50371,-2.999)">
-        <path
-           style="fill-rule:evenodd"
-           inkscape:connector-curvature="0"
-           id="path4"
-           d="M 10.939,9 A 0.58872,0.58872 0 0 0 10.443,9.2324 C 9.7699,10.095 9.0672,11.26 8.3984,12.301 L 7.6015,10.934 a 0.58908,0.58908 0 1 0 -1.0176,0.59375 l 1.2715,2.1797 a 0.58872,0.58872 0 0 0 0.99609,0.0332 c 0.82755,-1.2279 1.7643,-2.8153 2.5195,-3.7832 a 0.58872,0.58872 0 0 0 -0.432,-0.9578 z" />
-        <rect
-           id="rect6"
-           ry="1"
-           rx="1"
-           y="11"
-           x="12.5"
-           height="2"
-           width="13" />
-      </g>
-      <g
-         id="g14"
-         transform="translate(-0.50371,-0.99982)">
-        <rect
-           id="rect10"
-           ry="1"
-           rx="1"
-           y="16"
-           x="12.5"
-           height="2"
-           width="13" />
-        <circle
-           id="circle12"
-           r="1"
-           cy="17"
-           cx="8.5" />
-      </g>
-      <g
-         id="g20"
-         transform="translate(-0.50371)">
-        <rect
-           id="rect16"
-           ry="1"
-           rx="1"
-           y="21"
-           x="12.5"
-           height="2"
-           width="13" />
-        <circle
-           id="circle18"
-           r="1"
-           cy="22"
-           cx="8.5" />
-      </g>
+       aria-label="R"
+       transform="matrix(0.75330109,0,0,1.0123406,-2.1732168,-0.26802785)"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:16.05187416px;line-height:1.25;font-family:'JetBrains Mono';-inkscape-font-specification:'JetBrains Mono Medium';letter-spacing:0px;word-spacing:0px;fill:#a5efac;fill-opacity:1;stroke:none;stroke-width:0.40129685"
+       id="text816">
+      <path
+         d="m -6.5801983,1025.855 h 3.7400867 q 0.8346974,0 1.5088761,0.2568 0.69023062,0.2408 1.17178692,0.6903 0.48155618,0.4334 0.73838617,1.0754 0.27288186,0.6261 0.27288186,1.3966 0,1.1717 -0.59391934,2.0064 -0.59391939,0.8187 -1.62123931,1.1879 l 2.3756774,4.944 h -1.99043238 l -2.15095122,-4.7032 H -4.830544 v 4.7032 h -1.7496543 z m 1.7496543,5.3774 h 1.9904324 q 0.8668012,0 1.3804612,-0.5137 0.51365992,-0.5297 0.51365992,-1.3965 0,-0.8828 -0.51365992,-1.4126 -0.51366,-0.5297 -1.3804612,-0.5297 H -4.830544 Z"
+         style="fill:#a5efac;fill-opacity:1;stroke-width:0.40129685"
+         id="path838"
+         inkscape:connector-curvature="0" />
     </g>
     <g
-       transform="translate(0,-16)"
-       style="fill:#ffdd73"
-       id="g42">
+       transform="matrix(0,0.81840385,-1.0370198,0,1091.5578,1029.4463)"
+       id="layer1-6"
+       inkscape:label="Layer 1">
       <g
-         id="g28"
-         transform="translate(-0.50371,-2.999)">
+         transform="matrix(1.1346154,0,0,0.61990871,8.5377931,401.80678)"
+         id="layer1-7"
+         inkscape:label="Layer 1">
         <path
-           style="fill-rule:evenodd"
-           inkscape:connector-curvature="0"
-           id="path24"
-           d="M 10.939,9 A 0.58872,0.58872 0 0 0 10.443,9.2324 C 9.7699,10.095 9.0672,11.26 8.3984,12.301 L 7.60152,10.9338 a 0.58907742,0.58907742 0 1 0 -1.0176,0.59375 l 1.2715,2.1797 a 0.58872,0.58872 0 0 0 0.99609,0.0332 c 0.82755,-1.2279 1.7643,-2.8153 2.5195,-3.7832 a 0.58872,0.58872 0 0 0 -0.432,-0.9578 z" />
-        <rect
-           id="rect26"
-           ry="1"
-           rx="1"
-           y="11"
-           x="12.5"
-           height="2"
-           width="13" />
-      </g>
-      <g
-         id="g34"
-         transform="translate(-0.50371,-0.99982)">
-        <rect
-           id="rect30"
-           ry="1"
-           rx="1"
-           y="16"
-           x="12.5"
-           height="2"
-           width="13" />
-        <circle
-           id="circle32"
-           r="1"
-           cy="17"
-           cx="8.5" />
-      </g>
-      <g
-         id="g40"
-         transform="translate(-0.50371)">
-        <rect
-           id="rect36"
-           ry="1"
-           rx="1"
-           y="21"
-           x="12.5"
-           height="2"
-           width="13" />
-        <circle
-           id="circle38"
-           r="1"
-           cy="22"
-           cx="8.5" />
+           id="rect4140"
+           transform="translate(0,1036.3622)"
+           d="M 3,1 C 1.8954305,1 1,1.8954305 1,3 v 10 c 0,1.104569 0.8954305,2 2,2 h 10 c 1.104569,0 2,-0.895431 2,-2 V 3 C 15,1.8954305 14.104569,1 13,1 Z M 3,3 H 5 V 13 H 3 Z M 7,3 H 9 V 13 H 7 Z m 4,0 h 2 v 10 h -2 z"
+           style="opacity:1;fill:#a5efac;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           inkscape:connector-curvature="0" />
       </g>
     </g>
-    <path
-       style="opacity:0.2"
-       inkscape:connector-curvature="0"
-       id="path44"
-       d="m 2,10.611 v 1 C 2,12.381 2.6248,13 3.4004,13 h 25.2 c 0.775,0 1.4,-0.619 1.4,-1.389 v -1 c 0,0.77 -0.625,1.389 -1.4,1.389 h -25.2 c -0.7752,0 -1.4,-0.619 -1.4,-1.389 z" />
-    <path
-       style="opacity:0.2;fill:#ffffff"
-       inkscape:connector-curvature="0"
-       id="path46"
-       d="M 3.4004,-13 C 2.6248,-13 2,-12.3808 2,-11.6113 v 1 C 2,-11.3808 2.6248,-12 3.4004,-12 h 25.2 c 0.776,0 1.4,0.6191 1.4,1.3887 v -1 c 0,-0.7696 -0.624,-1.3887 -1.4,-1.3887 z" />
   </g>
 </svg>

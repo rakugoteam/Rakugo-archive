@@ -1,5 +1,5 @@
 extends RakugoTimer
-class_name AutoTimer
+class_name AutoTimer, "res://addons/Rakugo/icons/rakugo_auto_timer.svg"
 
 signal stop_loop
 
@@ -17,7 +17,7 @@ func run() -> bool:
 	if not is_stopped():
 		stop_loop()
 		return false
-	
+
 	Rakugo.skip_auto = true
 	start()
 	return true
@@ -26,6 +26,6 @@ func run() -> bool:
 func on_loop() -> void:
 	if Rakugo.can_auto():
 		Rakugo.exit_statement()
-	
+
 	else:
 		stop_loop()
