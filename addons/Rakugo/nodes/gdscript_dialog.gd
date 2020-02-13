@@ -1,11 +1,12 @@
 extends Node
-class_name GDScriptDialog
+class_name GDScriptDialog, "res://addons/Rakugo/icons/gdscript.svg"
 
 export (Array, String) var begin_from = ["", ""]
 export (Array, String) var dialogs_names
 export var start_from_state = 0
 
 var state = 0
+var dialog_init = false
 
 func _ready() -> void:
 	if begin_from.size() == 2:
@@ -62,28 +63,18 @@ func check_dialog(node_name, dialog_name, check_for) -> bool:
 
 	state = start_from_state
 
-	Rakugo.debug([
-		"check_dialog:", result,
-		"(",'"'+name +'"', '"'+node_name+'"', '"'+real_name+'"', ")",
-		"(", '"'+dialog_name+'"', '"'+check_for+'"', ")"
-	])
-	return result
+	if result:
+		if !dialog_init:
+			Rakugo.debug([
+					"check_dialog:", result,
+					"(",'"'+name +'"', '"'+node_name+'"', '"'+real_name+'"', ")",
+					"(", '"'+dialog_name+'"', '"'+check_for+'"', ")"
+				])
 
 
-func fake_check_dialog(fake_node_name, node_name, dialog_name, check_for) -> bool:
-	var result = true
+	else:
+		dialog_init = false
 
-	if node_name != fake_node_name:
-		result = false
-
-	if dialog_name != check_for:
-		result = false
-
-	Rakugo.debug([
-		"check_dialog:", result,
-		"(",'"'+fake_node_name +'"', '"'+node_name+'"', ")",
-		"(", '"'+dialog_name+'"', '"'+check_for+'"', ")"
-	])
 	return result
 
 

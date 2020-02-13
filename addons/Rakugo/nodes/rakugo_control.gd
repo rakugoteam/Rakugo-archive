@@ -1,6 +1,6 @@
 tool
 extends RakugoBaseControl
-class_name RakugoControl
+class_name RakugoControl, "res://addons/Rakugo/icons/rakugo_control.svg"
 
 signal on_substate(substate)
 
@@ -137,12 +137,13 @@ func on_load(game_version: String) -> void:
 		push_error("error with loading: %s" %node_id)
 		return
 
-	visible = node_link.value["visible"]
+	if "visible" in node_link.value:
+		visible = node_link.value["visible"]
 
-	if visible:
-		_state = node_link.value["state"]
-		last_show_args = node_link.value["show_args"]
-		_on_show(node_id, _state, last_show_args)
+		if visible:
+			_state = node_link.value["state"]
+			last_show_args = node_link.value["show_args"]
+			_on_show(node_id, _state , last_show_args )
 
 	else:
 		_on_hide(node_id)

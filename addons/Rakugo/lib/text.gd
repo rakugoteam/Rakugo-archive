@@ -1,5 +1,5 @@
 extends Node
-class_name RakugoTextPasser
+class_name RakugoTextPasser, "res://addons/Rakugo/icons/rakugo_text_paser.svg"
 
 var url_open: String = "[color=225ebf][url="
 var url_close: String = "[/url][/color]"
@@ -31,7 +31,7 @@ func text_passer(
 		"bbcode":
 			text = parse_bbcode_text(text, variables)
 
-	Rakugo.debug(["org: ''", _text, "', bbcode: ''", text , "'"])
+	# Rakugo.debug(["org: ''", _text, "', bbcode: ''", text , "'"])
 
 	return text
 

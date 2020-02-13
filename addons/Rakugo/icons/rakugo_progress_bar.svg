@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -9,12 +11,105 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="16"
    height="16"
-   version="1"
-   id="svg24"
-   sodipodi:docname="rakugo_progress_bar.svg"
-   inkscape:version="0.92.3 (2405546, 2018-03-11)">
+   viewBox="0 0 16 16"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   inkscape:export-filename="/home/djrm/Projects/godot/tools/editor/icons/icon_center_container.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90"
+   sodipodi:docname="rakugo_progress_bar.svg">
+  <defs
+     id="defs4">
+    <filter
+       id="filter29"
+       inkscape:label="Colorize"
+       style="color-interpolation-filters:sRGB">
+      <feComposite
+         id="feComposite15"
+         result="composite1"
+         k2="2.2"
+         k1="0"
+         operator="arithmetic"
+         in2="SourceGraphic"
+         k3="0"
+         k4="0" />
+      <feColorMatrix
+         id="feColorMatrix17"
+         result="colormatrix1"
+         type="saturate"
+         values="1"
+         in="composite1" />
+      <feFlood
+         id="feFlood19"
+         result="flood1"
+         flood-color="rgb(165,239,172)"
+         flood-opacity="1" />
+      <feBlend
+         id="feBlend21"
+         result="blend1"
+         mode="multiply"
+         in2="colormatrix1"
+         in="flood1" />
+      <feBlend
+         id="feBlend23"
+         result="blend2"
+         mode="screen"
+         in2="blend1" />
+      <feColorMatrix
+         id="feColorMatrix25"
+         result="colormatrix2"
+         type="saturate"
+         values="1"
+         in="blend2" />
+      <feComposite
+         id="feComposite27"
+         result="composite2"
+         operator="in"
+         in2="SourceGraphic"
+         in="colormatrix2" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="22.627417"
+     inkscape:cx="14.511121"
+     inkscape:cy="6.4505448"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     units="px"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-paths="true"
+     inkscape:bbox-nodes="true"
+     inkscape:snap-bbox-edge-midpoints="true"
+     inkscape:snap-bbox-midpoints="true"
+     inkscape:snap-object-midpoints="true"
+     inkscape:snap-center="true"
+     inkscape:window-width="1366"
+     inkscape:window-height="708"
+     inkscape:window-x="0"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:document-rotation="0"
+     inkscape:pagecheckerboard="true"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0">
+    <inkscape:grid
+       type="xygrid"
+       id="grid3336"
+       originx="7.5000004"
+       originy="-1" />
+  </sodipodi:namedview>
   <metadata
-     id="metadata30">
+     id="metadata7">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
@@ -25,80 +120,31 @@
       </cc:Work>
     </rdf:RDF>
   </metadata>
-  <defs
-     id="defs28" />
-  <sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="640"
-     inkscape:window-height="492"
-     id="namedview26"
-     showgrid="false"
-     inkscape:zoom="7.375"
-     inkscape:cx="16"
-     inkscape:cy="16"
-     inkscape:window-x="76"
-     inkscape:window-y="69"
-     inkscape:window-maximized="0"
-     inkscape:current-layer="svg24" />
   <g
-     id="g39"
-     transform="matrix(0.55932519,0,0,0.63196126,-1.0170436,-8.0387409)">
-    <path
-       id="path4"
-       style="fill:#cccccc"
-       d="M 4.3008,28 C 3.0266,28 2,26.978025 2,25.710258 V 22 h 28 v 3.710258 C 30,26.978025 28.973,28 27.699,28 Z"
-       inkscape:connector-curvature="0" />
-    <rect
-       id="rect6"
-       style="fill:#999999"
-       ry="1"
-       height="2"
-       width="8"
-       y="24"
-       x="20" />
-    <rect
-       id="rect8"
-       style="fill:#4bae4f"
-       ry="1"
-       height="2"
-       width="16"
-       y="24"
-       x="4" />
-    <circle
-       id="circle10"
-       style="opacity:0.2"
-       r="2"
-       cy="26"
-       cx="20" />
-    <circle
-       id="circle12"
-       style="fill:#ffffff"
-       r="2"
-       cy="25"
-       cx="20" />
-    <rect
-       id="rect14"
-       style="opacity:0.2;fill:#ffffff"
-       height="1"
-       width="28"
-       y="22"
-       x="2" />
-    <path
-       id="path20"
-       d="m 2,25.699 v 1 C 2,27.973 3.0266,29 4.3008,29 h 23.398 c 1.274,0 2.301,-1.027 2.301,-2.301 v -1 c 0,1.274 -1.027,2.301 -2.301,2.301 H 4.3008 c -1.2744,0 -2.301,-1.027 -2.301,-2.301 z"
-       inkscape:connector-curvature="0"
-       style="opacity:0.2" />
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(7.5000004,-1035.3622)">
+    <g
+       aria-label="R"
+       transform="matrix(0.68049284,0,0,0.85226745,-2.3333334,164.20938)"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:16.05187416px;line-height:1.25;font-family:'JetBrains Mono';-inkscape-font-specification:'JetBrains Mono Medium';letter-spacing:0px;word-spacing:0px;fill:#a5efac;fill-opacity:1;stroke:none;stroke-width:0.40129685"
+       id="text816">
+      <path
+         d="m -7.5925369,1025.855 h 3.7400867 q 0.8346974,0 1.5088761,0.2568 0.6902306,0.2408 1.1717869,0.6903 0.48155618,0.4334 0.73838617,1.0754 0.27288186,0.6261 0.27288186,1.3966 0,1.1717 -0.59391934,2.0064 -0.59391939,0.8187 -1.62123929,1.1879 l 2.37567737084656,4.944 H -1.9904328 l -2.1509512,-4.7032 h -1.7014986 v 4.7032 h -1.7496543 z m 1.7496543,5.3774 h 1.9904324 q 0.8668012,0 1.3804612,-0.5137 0.5136599,-0.5297 0.5136599,-1.3965 0,-0.8828 -0.5136599,-1.4126 -0.51366,-0.5297 -1.3804612,-0.5297 h -1.9904324 z"
+         style="fill:#a5efac;fill-opacity:1;stroke-width:0.40129685"
+         id="path838"
+         inkscape:connector-curvature="0" />
+    </g>
+    <g
+       transform="matrix(0.563788,0,0,0.84188017,-6.4087436,160.12306)"
+       id="layer1-6"
+       inkscape:label="Layer 1">
+      <path
+         id="rect4140"
+         d="m 10.321183,1044.216 c -1.4024206,0 -2.539307,0.8954 -2.539307,2 v 6 c 0,1.1046 1.1368864,2 2.539307,2 h 12.696534 c 1.40242,0 2.539307,-0.8954 2.539307,-2 v -6 c 0,-1.1046 -1.136887,-2 -2.539307,-2 z m 0,2 h 12.696534 v 6 H 10.321183 Z m 1.269653,1 v 4 h 1.269654 v -4 z m 2.539307,0 v 4 h 1.269654 v -4 z m 2.539307,0 v 4 h 1.269653 v -4 z"
+         style="opacity:1;fill:#a5efac;fill-opacity:1;stroke:none;stroke-width:2.25357795;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         inkscape:connector-curvature="0" />
+    </g>
   </g>
-  <path
-     d="M 4.3007812,-12 C 3.0265813,-12 2,-10.973419 2,-9.6992188 v 1 C 2,-9.9734188 3.0265813,-11 4.3007812,-11 H 27.699219 C 28.973219,-11 30,-9.9734187 30,-8.6992188 v -1 C 30,-10.973419 28.973219,-12 27.699219,-12 Z"
-     style="opacity:0.2;fill:#ffffff"
-     id="path22"
-     inkscape:connector-curvature="0" />
 </svg>

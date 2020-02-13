@@ -1,0 +1,712 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://addons/Rakugo/tools/project_settings/RakugoProjectSettings.gd" type="Script" id=1]
+[ext_resource path="res://addons/Rakugo/tools/project_settings/OverBox.gd" type="Script" id=2]
+[ext_resource path="res://addons/Rakugo/icons/theme.svg" type="Texture" id=3]
+[ext_resource path="res://addons/Rakugo/tools/project_settings/NameBox.gd" type="Script" id=4]
+[ext_resource path="res://addons/Rakugo/tools/project_settings/VersionBox.gd" type="Script" id=5]
+[ext_resource path="res://addons/Rakugo/tools/project_settings/StartSceneBox.gd" type="Script" id=6]
+[ext_resource path="res://addons/Rakugo/tools/project_settings/GameCreditsBox.gd" type="Script" id=7]
+[ext_resource path="res://addons/Rakugo/tools/project_settings/MarkupBox.gd" type="Script" id=8]
+[ext_resource path="res://addons/Rakugo/icons/ren_py_16x16.png" type="Texture" id=9]
+[ext_resource path="res://addons/Rakugo/tools/project_settings/KindBox.gd" type="Script" id=10]
+[ext_resource path="res://addons/Rakugo/icons/rakugo_panel.svg" type="Texture" id=11]
+[ext_resource path="res://addons/Rakugo/tools/project_settings/MKindBox.gd" type="Script" id=12]
+[ext_resource path="res://addons/Rakugo/icons/rakugo_menu_v.svg" type="Texture" id=13]
+[ext_resource path="res://addons/Rakugo/tools/project_settings/ThemeBox.gd" type="Script" id=14]
+[ext_resource path="res://addons/Rakugo/tools/project_settings/ScenesLinksBox.gd" type="Script" id=15]
+[ext_resource path="res://addons/Rakugo/icons/scenes_links.svg" type="Texture" id=16]
+[ext_resource path="res://addons/Rakugo/tools/scenes_links/ScenesLinksChooser.tscn" type="PackedScene" id=17]
+[ext_resource path="res://addons/Rakugo/tools/project_settings/DebugBox.gd" type="Script" id=18]
+[ext_resource path="res://addons/Rakugo/tools/project_settings/SaveBox.gd" type="Script" id=19]
+[ext_resource path="res://addons/Rakugo/icons/save.svg" type="Texture" id=20]
+[ext_resource path="res://addons/Rakugo/tools/project_settings/PunctuationBox.gd" type="Script" id=21]
+
+[sub_resource type="Image" id=5]
+data = {
+"data": PoolByteArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ),
+"format": "LumAlpha8",
+"height": 16,
+"mipmaps": false,
+"width": 16
+}
+
+[sub_resource type="ImageTexture" id=2]
+flags = 4
+flags = 4
+image = SubResource( 5 )
+size = Vector2( 16, 16 )
+
+[sub_resource type="Image" id=6]
+data = {
+"data": PoolByteArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ),
+"format": "LumAlpha8",
+"height": 16,
+"mipmaps": false,
+"width": 16
+}
+
+[sub_resource type="ImageTexture" id=4]
+flags = 4
+flags = 4
+image = SubResource( 6 )
+size = Vector2( 16, 16 )
+
+[node name="RakugoProjectSettings" type="ConfirmationDialog"]
+anchor_right = 0.684
+anchor_bottom = 0.833
+margin_right = -0.416016
+margin_bottom = 47.2
+window_title = "Rakugo Project Settings"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -36.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+margin_right = 684.0
+margin_bottom = 503.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="OverBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_right = 684.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+script = ExtResource( 2 )
+root_path = NodePath("../../..")
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/OverBox"]
+margin_right = 24.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 24, 24 )
+texture = ExtResource( 3 )
+stretch_mode = 4
+
+[node name="CheckButton" type="CheckButton" parent="ScrollContainer/VBoxContainer/OverBox"]
+margin_left = 28.0
+margin_right = 104.0
+margin_bottom = 40.0
+pressed = true
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/OverBox"]
+margin_left = 108.0
+margin_top = 13.0
+margin_right = 378.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+text = "Use Project Settings Override"
+valign = 1
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/OverBox"]
+margin_left = 382.0
+margin_top = 9.0
+margin_right = 652.0
+margin_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "res://game/rakugo.cfg"
+icon = SubResource( 2 )
+
+[node name="FileDialog" type="FileDialog" parent="ScrollContainer/VBoxContainer/OverBox/Button"]
+margin_left = -195.0
+margin_top = -122.0
+margin_right = 261.0
+margin_bottom = 198.0
+window_title = "Open a File"
+mode = 0
+filters = PoolStringArray( "*.cfg" )
+current_dir = "res://game"
+current_file = "rakugo.cfg"
+current_path = "res://game/rakugo.cfg"
+
+[node name="Reload" type="Button" parent="ScrollContainer/VBoxContainer/OverBox"]
+margin_left = 656.0
+margin_top = 8.0
+margin_right = 684.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 24, 24 )
+size_flags_horizontal = 5
+size_flags_vertical = 4
+icon = SubResource( 2 )
+
+[node name="NameBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_top = 44.0
+margin_right = 684.0
+margin_bottom = 68.0
+size_flags_horizontal = 3
+script = ExtResource( 4 )
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/NameBox"]
+margin_right = 24.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+texture = SubResource( 2 )
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/NameBox"]
+margin_left = 28.0
+margin_top = 5.0
+margin_right = 354.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "Name"
+valign = 1
+
+[node name="LineEdit" type="LineEdit" parent="ScrollContainer/VBoxContainer/NameBox"]
+margin_left = 358.0
+margin_right = 684.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "New Rakugo Game"
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="VersionBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_top = 72.0
+margin_right = 684.0
+margin_bottom = 96.0
+size_flags_horizontal = 3
+script = ExtResource( 5 )
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/VersionBox"]
+margin_right = 24.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+texture = SubResource( 2 )
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/VersionBox"]
+margin_left = 28.0
+margin_top = 5.0
+margin_right = 354.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "Version"
+valign = 1
+
+[node name="LineEdit" type="LineEdit" parent="ScrollContainer/VBoxContainer/VersionBox"]
+margin_left = 358.0
+margin_right = 684.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "1.2.0"
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="StartSceneBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_top = 100.0
+margin_right = 684.0
+margin_bottom = 124.0
+size_flags_horizontal = 3
+script = ExtResource( 6 )
+root_path = NodePath("")
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/StartSceneBox"]
+margin_right = 24.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+texture = ExtResource( 3 )
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/StartSceneBox"]
+margin_left = 28.0
+margin_top = 5.0
+margin_right = 354.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "Start Scene"
+valign = 1
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/StartSceneBox"]
+margin_left = 358.0
+margin_top = 1.0
+margin_right = 684.0
+margin_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+icon = SubResource( 2 )
+
+[node name="FileDialog" type="FileDialog" parent="ScrollContainer/VBoxContainer/StartSceneBox/Button"]
+margin_left = -195.0
+margin_top = -122.0
+margin_right = 261.0
+margin_bottom = 198.0
+window_title = "Open a File"
+mode = 0
+filters = PoolStringArray( "*.tscn" )
+
+[node name="GameCreditsBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_top = 128.0
+margin_right = 684.0
+margin_bottom = 228.0
+size_flags_horizontal = 3
+script = ExtResource( 7 )
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/GameCreditsBox"]
+margin_right = 24.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 24, 24 )
+texture = SubResource( 2 )
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/GameCreditsBox"]
+margin_left = 28.0
+margin_top = 43.0
+margin_right = 338.0
+margin_bottom = 57.0
+size_flags_horizontal = 3
+text = "Game Credits"
+valign = 1
+
+[node name="TextEdit" type="TextEdit" parent="ScrollContainer/VBoxContainer/GameCreditsBox"]
+margin_left = 342.0
+margin_right = 652.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 200, 100 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "{a=https://github.com/jebedaia360}Jeremi Biernacki ({i}Jebedaia{/i}){/a}"
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/GameCreditsBox"]
+margin_left = 656.0
+margin_right = 684.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+size_flags_vertical = 0
+icon = SubResource( 2 )
+
+[node name="FileDialog" type="FileDialog" parent="ScrollContainer/VBoxContainer/GameCreditsBox/Button"]
+margin_left = -565.0
+margin_top = -12.0
+margin_right = 13.0
+margin_bottom = 335.0
+window_title = "Open a File"
+mode = 0
+filters = PoolStringArray( "*.txt" )
+show_hidden_files = true
+current_dir = "res://game"
+current_file = "about.txt"
+current_path = "res://game/about.txt"
+
+[node name="MarkupBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_top = 232.0
+margin_right = 684.0
+margin_bottom = 256.0
+size_flags_horizontal = 3
+script = ExtResource( 8 )
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/MarkupBox"]
+margin_right = 24.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+texture = SubResource( 2 )
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/MarkupBox"]
+margin_left = 28.0
+margin_top = 5.0
+margin_right = 338.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "Markup"
+valign = 1
+
+[node name="MenuButton" type="MenuButton" parent="ScrollContainer/VBoxContainer/MarkupBox"]
+margin_left = 342.0
+margin_top = 1.0
+margin_right = 652.0
+margin_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "BBCode Like"
+icon = SubResource( 4 )
+flat = false
+items = [ "Ren'Py Like", ExtResource( 9 ), 0, false, false, 0, 0, null, "", false, "BBCode Like", SubResource( 2 ), 0, false, false, 1, 0, null, "", false ]
+
+[node name="Reload" type="Button" parent="ScrollContainer/VBoxContainer/MarkupBox"]
+margin_left = 656.0
+margin_right = 684.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+icon = SubResource( 2 )
+
+[node name="PunctuationBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_top = 260.0
+margin_right = 684.0
+margin_bottom = 284.0
+size_flags_horizontal = 3
+script = ExtResource( 21 )
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/PunctuationBox"]
+margin_right = 24.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+texture = SubResource( 2 )
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/PunctuationBox"]
+margin_left = 28.0
+margin_top = 5.0
+margin_right = 274.0
+margin_bottom = 19.0
+hint_tooltip = "Dialog Menu Display Style"
+mouse_filter = 1
+size_flags_horizontal = 3
+text = "Punctuation Pause"
+valign = 1
+
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/PunctuationBox"]
+margin_left = 278.0
+margin_top = 5.0
+margin_right = 524.0
+margin_bottom = 19.0
+hint_tooltip = "Dialog Menu Display Style"
+mouse_filter = 1
+size_flags_horizontal = 3
+text = ".;,!? treated as"
+align = 2
+valign = 1
+
+[node name="SpinBox" type="SpinBox" parent="ScrollContainer/VBoxContainer/PunctuationBox"]
+margin_left = 528.0
+margin_right = 602.0
+margin_bottom = 24.0
+min_value = 1.0
+max_value = 10.0
+value = 1.0
+
+[node name="Label3" type="Label" parent="ScrollContainer/VBoxContainer/PunctuationBox"]
+margin_left = 606.0
+margin_right = 652.0
+margin_bottom = 24.0
+hint_tooltip = "Dialog Menu Display Style"
+mouse_filter = 1
+size_flags_vertical = 5
+text = "letters."
+valign = 1
+
+[node name="Reload" type="Button" parent="ScrollContainer/VBoxContainer/PunctuationBox"]
+margin_left = 656.0
+margin_right = 684.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+size_flags_vertical = 4
+icon = SubResource( 2 )
+
+[node name="KindBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_top = 288.0
+margin_right = 684.0
+margin_bottom = 312.0
+size_flags_horizontal = 3
+script = ExtResource( 10 )
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/KindBox"]
+margin_right = 24.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+texture = ExtResource( 11 )
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/KindBox"]
+margin_left = 28.0
+margin_top = 5.0
+margin_right = 338.0
+margin_bottom = 19.0
+hint_tooltip = "Dialog Display Style"
+mouse_filter = 1
+size_flags_horizontal = 3
+text = "Default Kind"
+valign = 1
+
+[node name="MenuButton" type="MenuButton" parent="ScrollContainer/VBoxContainer/KindBox"]
+margin_left = 342.0
+margin_top = 1.0
+margin_right = 652.0
+margin_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "adv"
+icon = SubResource( 4 )
+flat = false
+items = [ "adv", SubResource( 2 ), 0, false, false, 0, 0, null, "", false, "center", SubResource( 2 ), 0, false, false, 1, 0, null, "", false, "fullscreen", SubResource( 2 ), 0, false, false, 2, 0, null, "", false, "right", SubResource( 2 ), 0, false, false, 3, 0, null, "", false, "left", SubResource( 2 ), 0, false, false, 4, 0, null, "", false, "top", SubResource( 2 ), 0, false, false, 5, 0, null, "", false, "phone-right", SubResource( 2 ), 0, false, false, 6, 0, null, "", false, "phone-left", SubResource( 2 ), 0, false, false, 7, 0, null, "", false, "nvl", SubResource( 2 ), 0, false, false, 8, 0, null, "", false ]
+
+[node name="Reload" type="Button" parent="ScrollContainer/VBoxContainer/KindBox"]
+margin_left = 656.0
+margin_right = 684.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+icon = SubResource( 2 )
+
+[node name="MKindBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_top = 316.0
+margin_right = 684.0
+margin_bottom = 340.0
+size_flags_horizontal = 3
+script = ExtResource( 12 )
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/MKindBox"]
+margin_right = 24.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+texture = ExtResource( 13 )
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/MKindBox"]
+margin_left = 28.0
+margin_top = 5.0
+margin_right = 272.0
+margin_bottom = 19.0
+hint_tooltip = "Dialog Menu Display Style"
+mouse_filter = 1
+size_flags_horizontal = 3
+text = "Default MKind"
+valign = 1
+
+[node name="MKindButton" type="MenuButton" parent="ScrollContainer/VBoxContainer/MKindBox"]
+margin_left = 276.0
+margin_top = 1.0
+margin_right = 422.0
+margin_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.6
+text = "vertical"
+icon = SubResource( 4 )
+flat = false
+items = [ "vertical", SubResource( 2 ), 0, false, false, 0, 0, null, "", false, "horizontal", SubResource( 2 ), 0, false, false, 1, 0, null, "", false, "grid", SubResource( 2 ), 0, false, false, 2, 0, null, "", false ]
+
+[node name="SpinBox" type="SpinBox" parent="ScrollContainer/VBoxContainer/MKindBox"]
+margin_left = 426.0
+margin_right = 500.0
+margin_bottom = 24.0
+min_value = 1.0
+max_value = 10.0
+value = 1.0
+
+[node name="MAnchorButton" type="MenuButton" parent="ScrollContainer/VBoxContainer/MKindBox"]
+margin_left = 504.0
+margin_top = 1.0
+margin_right = 650.0
+margin_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.6
+text = "vertical"
+icon = SubResource( 4 )
+flat = false
+items = [ "top_left", SubResource( 2 ), 0, false, false, 0, 0, null, "", false, "top_right", SubResource( 2 ), 0, false, false, 1, 0, null, "", false, "bottom_left", SubResource( 2 ), 0, false, false, 2, 0, null, "", false, "bottom_right", SubResource( 2 ), 0, false, false, 3, 0, null, "", false, "center_left", SubResource( 2 ), 0, false, false, 4, 0, null, "", false, "center_top", SubResource( 2 ), 0, false, false, 5, 0, null, "", false, "center_right", SubResource( 2 ), 0, false, false, 6, 0, null, "", false, "center_bottom", SubResource( 2 ), 0, false, false, 7, 0, null, "", false, "center", SubResource( 2 ), 0, false, false, 8, 0, null, "", false ]
+
+[node name="Reload" type="Button" parent="ScrollContainer/VBoxContainer/MKindBox"]
+margin_left = 654.0
+margin_right = 682.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+size_flags_vertical = 4
+icon = SubResource( 2 )
+
+[node name="ThemeBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_top = 344.0
+margin_right = 684.0
+margin_bottom = 368.0
+size_flags_horizontal = 3
+script = ExtResource( 14 )
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/ThemeBox"]
+margin_right = 24.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+texture = ExtResource( 3 )
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/ThemeBox"]
+margin_left = 28.0
+margin_top = 5.0
+margin_right = 338.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "Theme"
+valign = 1
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/ThemeBox"]
+margin_left = 342.0
+margin_top = 1.0
+margin_right = 652.0
+margin_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "res://themes/new_gui/new_gui.theme"
+icon = SubResource( 2 )
+
+[node name="FileDialog" type="FileDialog" parent="ScrollContainer/VBoxContainer/ThemeBox/Button"]
+margin_left = -195.0
+margin_top = -122.0
+margin_right = 261.0
+margin_bottom = 198.0
+window_title = "Open a File"
+mode = 0
+filters = PoolStringArray( "*.tres" )
+current_dir = "res://themes/new_gui"
+current_file = "new_gui.tres"
+current_path = "res://themes/new_gui/new_gui.tres"
+
+[node name="Reload" type="Button" parent="ScrollContainer/VBoxContainer/ThemeBox"]
+margin_left = 656.0
+margin_right = 684.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+icon = SubResource( 2 )
+
+[node name="ScenesLinksBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_top = 372.0
+margin_right = 684.0
+margin_bottom = 396.0
+script = ExtResource( 15 )
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/ScenesLinksBox"]
+margin_right = 16.0
+margin_bottom = 24.0
+texture = ExtResource( 16 )
+stretch_mode = 4
+
+[node name="ScenesLinksChooser" parent="ScrollContainer/VBoxContainer/ScenesLinksBox" instance=ExtResource( 17 )]
+margin_left = 20.0
+margin_right = 684.0
+only_open = true
+
+[node name="Label" parent="ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser" index="0"]
+margin_right = 296.0
+size_flags_horizontal = 3
+
+[node name="LineEdit" parent="ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser" index="1"]
+margin_left = 300.0
+margin_right = 596.0
+text = "res://game/scenes_links.tres"
+
+[node name="Choose" parent="ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser" index="2"]
+margin_left = 600.0
+margin_right = 628.0
+icon = SubResource( 2 )
+
+[node name="HBoxContainer" parent="ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser" index="3"]
+visible = false
+
+[node name="SetAsDef" parent="ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser/HBoxContainer" index="0"]
+icon = SubResource( 2 )
+
+[node name="Apply" parent="ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser/HBoxContainer" index="2"]
+icon = SubResource( 2 )
+
+[node name="Cancel" parent="ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser" index="4"]
+margin_left = 632.0
+margin_right = 660.0
+icon = SubResource( 2 )
+
+[node name="Control" parent="ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser" index="5"]
+margin_left = 664.0
+margin_right = 664.0
+
+[node name="FileDialog" parent="ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser/Control" index="0"]
+window_title = "Open a File"
+
+[node name="DebugBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_top = 400.0
+margin_right = 684.0
+margin_bottom = 440.0
+size_flags_horizontal = 3
+script = ExtResource( 18 )
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/DebugBox"]
+margin_right = 24.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 24, 24 )
+texture = SubResource( 2 )
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/DebugBox"]
+margin_left = 28.0
+margin_top = 13.0
+margin_right = 604.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+text = "Debug"
+valign = 1
+
+[node name="CheckButton" type="CheckButton" parent="ScrollContainer/VBoxContainer/DebugBox"]
+margin_left = 608.0
+margin_right = 684.0
+margin_bottom = 40.0
+
+[node name="SaveBox" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_top = 444.0
+margin_right = 684.0
+margin_bottom = 484.0
+size_flags_horizontal = 3
+script = ExtResource( 19 )
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/SaveBox"]
+margin_right = 24.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 24, 24 )
+size_flags_vertical = 3
+texture = ExtResource( 20 )
+stretch_mode = 4
+
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/SaveBox"]
+margin_left = 28.0
+margin_right = 300.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Test saves"
+valign = 1
+
+[node name="CheckButton" type="CheckButton" parent="ScrollContainer/VBoxContainer/SaveBox"]
+margin_left = 304.0
+margin_right = 380.0
+margin_bottom = 40.0
+size_flags_vertical = 3
+
+[node name="TextureRect2" type="TextureRect" parent="ScrollContainer/VBoxContainer/SaveBox"]
+margin_left = 384.0
+margin_right = 408.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 24, 24 )
+size_flags_vertical = 3
+texture = SubResource( 2 )
+stretch_mode = 4
+
+[node name="Label3" type="Label" parent="ScrollContainer/VBoxContainer/SaveBox"]
+margin_left = 412.0
+margin_top = 13.0
+margin_right = 684.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+text = "Must set it to OFF before export."
+
+[editable path="ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser"]

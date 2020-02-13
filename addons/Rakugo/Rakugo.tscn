@@ -51,7 +51,6 @@ script = ExtResource( 7 )
 script = ExtResource( 8 )
 
 [node name="Text" type="Node" parent="."]
-editor/display_folded = true
 script = ExtResource( 9 )
 
 [node name="Emojis" type="Node" parent="Text"]
@@ -98,7 +97,6 @@ var_name = "auto_time"
 script = ExtResource( 23 )
 
 [node name="DialogTimer" type="Timer" parent="."]
-wait_time = 0.05
 one_shot = true
 script = ExtResource( 24 )
 

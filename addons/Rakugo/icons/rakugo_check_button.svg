@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="21.809725"
+   height="10.999967"
+   viewBox="0 0 21.809725 10.999967"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   inkscape:export-filename="/home/djrm/Projects/godot/tools/editor/icons/icon_check_button.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90"
+   sodipodi:docname="rakugo_check_button.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="32"
+     inkscape:cx="11.439934"
+     inkscape:cy="6.5310368"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     units="px"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-paths="true"
+     inkscape:bbox-nodes="true"
+     inkscape:snap-bbox-edge-midpoints="true"
+     inkscape:snap-bbox-midpoints="true"
+     inkscape:snap-object-midpoints="true"
+     inkscape:snap-center="true"
+     inkscape:window-width="1366"
+     inkscape:window-height="708"
+     inkscape:window-x="0"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:document-rotation="0"
+     inkscape:pagecheckerboard="true"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:snap-global="false">
+    <inkscape:grid
+       type="xygrid"
+       id="grid3336"
+       empspacing="4"
+       originx="6.8097251"
+       originy="-2.2945101" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(6.8097251,-1039.0677)">
+    <path
+       style="opacity:1;fill:#a5efac;fill-opacity:1;stroke:none;stroke-width:3.68530297;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 4.8482141,1040.8329 A 3.8482141,3.5292882 0 0 0 1,1044.3622 a 3.8482141,3.5292882 0 0 0 3.8482141,3.5293 h 5.7723209 a 3.8482141,3.5292882 0 0 0 3.848215,-3.5293 3.8482141,3.5292882 0 0 0 -3.848215,-3.5293 z m 0,1.7647 H 7.292807 a 3.8482141,3.5292882 0 0 0 -0.5204859,1.7646 3.8482141,3.5292882 0 0 0 0.5204859,1.7647 H 4.8482141 a 1.924107,1.7646441 0 0 1 -1.9241071,-1.7647 1.924107,1.7646441 0 0 1 1.9241071,-1.7646 z"
+       id="rect4143"
+       inkscape:connector-curvature="0" />
+    <g
+       aria-label="R"
+       transform="matrix(1.0079955,0,0,0.89647555,-2.0579232,122.86651)"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:15.03655052px;line-height:1.25;font-family:'JetBrains Mono';-inkscape-font-specification:'JetBrains Mono Medium';letter-spacing:0px;word-spacing:0px;fill:#a5efac;fill-opacity:1;stroke:none;stroke-width:0.37591374"
+       id="text816">
+      <path
+         inkscape:connector-curvature="0"
+         d="m -4.3181751,1022.8298 h 3.50351626 q 0.78190063,0 1.41343575,0.2406 0.64657169,0.2255 1.09766819,0.6466 0.4510965,0.406 0.6916813,1.0074 0.2556214,0.5864 0.2556214,1.3082 0,1.0977 -0.5563524,1.8796 -0.5563524,0.7668 -1.51869159,1.1127 l 2.22540949,4.6312 H 0.92958102 l -2.01489782,-4.4057 h -1.5938743 v 4.4057 h -1.638984 z m 1.638984,5.0373 h 1.86453226 q 0.81197373,0 1.29314334,-0.4812 0.48116962,-0.4962 0.48116962,-1.3082 0,-0.827 -0.48116962,-1.3232 -0.48116961,-0.4962 -1.29314334,-0.4962 H -2.6791911 Z"
+         style="fill:#a5efac;fill-opacity:1;stroke-width:0.37591374"
+         id="path818" />
+    </g>
+  </g>
+</svg>

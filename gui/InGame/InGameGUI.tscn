@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://themes/new_gui/new_gui.theme" type="Theme" id=1]
 [ext_resource path="res://addons/Rakugo/nodes/rakugo_control.gd" type="Script" id=2]
@@ -15,9 +15,12 @@
 [ext_resource path="res://ubuntu-font-family/UbuntuMono-R.ttf" type="DynamicFontData" id=13]
 [ext_resource path="res://ubuntu-font-family/Ubuntu-RI.ttf" type="DynamicFontData" id=14]
 [ext_resource path="res://ubuntu-font-family/Ubuntu-R.ttf" type="DynamicFontData" id=15]
+[ext_resource path="res://themes/question/question.theme" type="Theme" id=16]
 
 [sub_resource type="DynamicFont" id=1]
 size = 22
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 11 )
 
@@ -416,15 +419,16 @@ pause_mode = 1
 margin_right = 40.0
 margin_bottom = 40.0
 mouse_filter = 1
-theme = ExtResource( 1 )
+theme = ExtResource( 16 )
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 use_theme_from_setting = true
-register = false
+register = true
 node_id = "InGameGUI"
 
 [node name="ScrollContainerVMenu" type="ScrollContainer" parent="."]
-editor/display_folded = true
-visible = false
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -451,7 +455,6 @@ __meta__ = {
 ChoiceButton = ExtResource( 5 )
 
 [node name="ScrollContainerHMenu" type="ScrollContainer" parent="."]
-editor/display_folded = true
 visible = false
 anchor_left = 0.5
 anchor_top = 1.0
@@ -483,7 +486,6 @@ ChoiceButton = ExtResource( 5 )
 mouse_filter = 0
 
 [node name="Notify" type="Panel" parent="."]
-editor/display_folded = true
 visible = false
 anchor_right = 1.0
 margin_left = -2.0
@@ -511,7 +513,6 @@ scroll_active = false
 selection_enabled = true
 
 [node name="Quick" type="HBoxContainer" parent="."]
-editor/display_folded = true
 margin_top = 571.0
 margin_right = 1463.0
 margin_bottom = 611.0
@@ -628,7 +629,6 @@ custom_fonts/font = SubResource( 1 )
 text = "Quit"
 
 [node name="InfoAnim" type="AnimationPlayer" parent="Quick"]
-editor/display_folded = true
 anims/Auto = SubResource( 2 )
 anims/Checkpoint = SubResource( 3 )
 anims/GeneralNotif = SubResource( 4 )
