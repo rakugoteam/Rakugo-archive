@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://themes/new_gui/new_gui.theme" type="Theme" id=1]
+[ext_resource path="res://themes/question/question.theme" type="Theme" id=1]
 [ext_resource path="res://gui/Screens/Screens.gd" type="Script" id=2]
 [ext_resource path="res://ubuntu-font-family/UB32outline.tres" type="DynamicFont" id=3]
 [ext_resource path="res://addons/Rakugo/nodes/rakugo_var_label.gd" type="Script" id=4]
@@ -4233,11 +4233,14 @@ use_theme_from_setting = true
 register = true
 node_id = "Screens"
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="TextureRect" parent="."]
 modulate = Color( 1, 1, 1, 0.784314 )
+anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 1024.0
-margin_bottom = 600.0
+margin_bottom = 597.0
+texture = ExtResource( 16 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -4303,7 +4306,7 @@ vars_names = [ "rakugo_version" ]
 [node name="Navigation" type="Panel" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = 1.0
+margin_left = -1.0
 margin_top = -1.0
 margin_right = 206.0
 margin_bottom = 601.0
@@ -4491,10 +4494,10 @@ HistoryItemTemplate = ExtResource( 11 )
 
 [node name="OptionsBox" parent="." instance=ExtResource( 12 )]
 visible = false
-margin_left = 209.143
-margin_top = 75.2569
-margin_right = 1023.14
-margin_bottom = 593.257
+margin_left = 209.0
+margin_top = 75.0
+margin_right = 1023.0
+margin_bottom = 533.0
 
 [node name="QuestsBox" parent="." instance=ExtResource( 13 )]
 visible = false

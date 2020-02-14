@@ -375,7 +375,7 @@ boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://graphics/window_icon.png"
 config/auto_accept_quit=false
 config/quit_on_go_back=false
-rakugo/version="1.2.0"
+rakugo/version="1.2f4"
 rakugo/game_credits="{a=https://github.com/jebedaia360}Jeremi Biernacki ({i}Jebedaia{/i}){/a}"
 rakugo/debug=false
 rakugo/scenes_links="res://game/scenes_links.tres"
