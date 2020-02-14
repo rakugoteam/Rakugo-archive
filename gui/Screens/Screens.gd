@@ -14,12 +14,7 @@ export onready var qyes_button = $QuitBox/HBoxContainer/Yes
 var current_node: Node = self
 var in_game_gui: Node
 onready var new_game_button: Button = get_node(str(nav_path) + "/" + "NewGame")
-onready var continue_button: Button = get_node(str(nav_path) + "/" + "Continue")
 onready var return_button: Button = get_node(str(nav_path) + "/" + "Return")
-onready var save_button: Button = get_node(str(nav_path) + "/" + "Save")
-onready var history_button: Button = get_node(str(nav_path) + "/" + "History")
-onready var quests_button: Button = get_node(str(nav_path) + "/" + "Quests")
-onready var load_button: Button = get_node(str(nav_path) + "/" + "Load")
 onready var options_button: Button = get_node(str(nav_path) + "/" + "Options")
 onready var about_button: Button = get_node(str(nav_path) + "/" + "About")
 onready var help_button: Button = get_node(str(nav_path) + "/" + "Help")
@@ -40,25 +35,12 @@ func _ready():
 	back_button.connect("pressed", self, "_on_back_button")
 
 	new_game_button.connect("pressed", self, "_on_NewGame_pressed")
-	continue_button.connect("pressed", self, "_on_Continue_pressed")
 	return_button.connect("pressed", self, "_on_Return_pressed")
-	save_button.connect("pressed", self, "_on_Save_pressed")
-	history_button.connect("pressed", self, "_on_History_pressed(")
-	quests_button.connect("pressed", self, "_on_Quests_pressed")
-	load_button.connect("pressed", self, "_on_Load_pressed")
 	options_button.connect("pressed", self, "_on_Options_pressed")
 	about_button.connect("pressed", self, "_on_About_pressed")
 	help_button.connect("pressed", self, "_on_Help_pressed")
 	quit_button.connect("pressed", self, "_on_Quit_pressed")
 	Rakugo.connect("game_ended", self, "_on_game_end")
-
-	var auto_save_path = str("user://" + Rakugo.save_folder + "/auto.res")
-
-	if Rakugo.test_save:
-		auto_save_path = str("res://" + Rakugo.save_folder + "/auto.tres")
-
-	if not Rakugo.file.file_exists(auto_save_path):
-		continue_button.hide()
 
 
 func _notification(what):
@@ -85,29 +67,6 @@ func _on_back_button():
 	back_button.hide()
 
 
-func save_menu(screenshot):
-	save_button.pressed = true
-	show_page($SlotBox)
-	$SlotBox/Title.text = "Save"
-	$SlotBox.savebox()
-	$SlotBox.screenshot = screenshot
-	show()
-
-
-func load_menu():
-	load_button.pressed = true
-	show_page($SlotBox)
-	$SlotBox/Title.text = "Load"
-	$SlotBox.loadbox()
-	show()
-
-
-func history_menu():
-	history_button.pressed = true
-	show_page($HistoryBox)
-	show()
-
-
 func _on_visibility_changed():
 	if visible:
 		get_tree().paused = true
@@ -131,29 +90,17 @@ func _on_Return_pressed():
 	current_node.hide()
 
 
-func _on_Load_pressed():
-	load_menu()
-
-
 func in_game():
 	new_game_button.hide()
-	continue_button.hide()
 	return_button.show()
-	save_button.show()
-	history_button.show()
-	quests_button.show()
 	scrollbar.show()
 
 
 func _on_game_end():
 	new_game_button.show()
-	continue_button.show()
-	return_button.hide()
-	save_button.hide()
-	history_button.hide()
-	quests_button.hide()
 	scrollbar.hide()
 	show()
+
 
 func _on_NewGame_pressed():
 	hide()
@@ -162,47 +109,19 @@ func _on_NewGame_pressed():
 	Rakugo.emit_signal("begin")
 
 
-func _on_History_pressed():
-	history_menu()
-
-
-func _on_Continue_pressed():
-	if !Rakugo.loadfile("auto"):
-		return
-
-	in_game()
-	hide()
-
-
-func _on_Quests_pressed():
-	quests_button.pressed = true
-	show_page($QuestsBox)
-	show()
-
-
 # if press "yes" on quit page
 func _on_Yes_pressed():
-	if Rakugo.started:
-		Rakugo.savefile("auto")
-		Rakugo.save_global_history()
-
 	settings.save_conf()
 	get_tree().quit()
 
 
 func _on_Quit_pressed():
-	quests_button.pressed = true
 	show_page($QuitBox)
 	show()
 
 
 func get_screenshot():
 	return get_viewport().get_texture().get_data()
-
-
-func _on_Save_pressed():
-	hide()
-	save_menu(get_screenshot())
 
 
 func _on_Options_pressed():

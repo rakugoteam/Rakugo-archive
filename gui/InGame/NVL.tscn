@@ -10,6 +10,9 @@ anchor_right = 1.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 name_label_path = NodePath("VBox/Label")
 dialog_label_path = NodePath("VBox/Dialogue")
 avatar_viewport_path = NodePath("../NVL/ViewportContainer/CharaterAvatar")
@@ -40,17 +43,24 @@ size_flags_vertical = 3
 margin_right = 920.0
 rect_clip_content = false
 mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 scroll_active = false
 
 [node name="Dialogue" parent="VBox" instance=ExtResource( 7 )]
 margin_top = 44.0
 margin_right = 920.0
-margin_bottom = 84.0
+margin_bottom = 100.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
 
 [node name="RakugoLineEdit" type="LineEdit" parent="VBox"]
 visible = false
-margin_top = 76.0
-margin_right = 905.0
-margin_bottom = 100.0
+margin_top = 102.0
+margin_right = 920.0
+margin_bottom = 130.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 caret_blink = true
 script = ExtResource( 8 )
