@@ -1,14 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://addons/Rakugo/nodes/root_node2d.gd" type="Script" id=1]
 [ext_resource path="res://game/backgrounds/backgrounds.tscn" type="PackedScene" id=2]
 [ext_resource path="res://game/characters/characters.tscn" type="PackedScene" id=3]
 [ext_resource path="res://game/scenes/Start/start.gd" type="Script" id=4]
-[ext_resource path="res://game/scenes/Start/rightaway.gd" type="Script" id=5]
-[ext_resource path="res://game/scenes/Start/game.gd" type="Script" id=6]
-[ext_resource path="res://game/scenes/Start/later.gd" type="Script" id=7]
-[ext_resource path="res://game/scenes/Start/book.gd" type="Script" id=8]
-[ext_resource path="res://game/scenes/Start/marry.gd" type="Script" id=9]
 [ext_resource path="res://game/illurock-stereo.ogg" type="AudioStream" id=10]
 [ext_resource path="res://addons/Rakugo/nodes/rakugo_audio_player.gd" type="Script" id=11]
 
@@ -30,26 +25,6 @@ script = ExtResource( 4 )
 begin_from = [ "Start", "start" ]
 dialogs_names = [ "start" ]
 
-[node name="rightaway" type="Node" parent="dialogs"]
-script = ExtResource( 5 )
-dialogs_names = [ "rightaway" ]
-
-[node name="game" type="Node" parent="dialogs"]
-script = ExtResource( 6 )
-dialogs_names = [ "game" ]
-
-[node name="later" type="Node" parent="dialogs"]
-script = ExtResource( 7 )
-dialogs_names = [ "later" ]
-
-[node name="book" type="Node" parent="dialogs"]
-script = ExtResource( 8 )
-dialogs_names = [ "book" ]
-
-[node name="marry" type="Node" parent="dialogs"]
-script = ExtResource( 9 )
-dialogs_names = [ "marry" ]
-
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
 stream = ExtResource( 10 )
@@ -57,7 +32,3 @@ autoplay = true
 bus = "BGM"
 script = ExtResource( 11 )
 node_id = "RakugoAudioPlayer"
-[connection signal="later" from="dialogs/start" to="dialogs/start" method="_on_start_later"]
-[connection signal="rightaway" from="dialogs/start" to="dialogs/start" method="_on_start_rightaway"]
-[connection signal="book" from="dialogs/rightaway" to="dialogs/rightaway" method="_on_rightaway_book"]
-[connection signal="game" from="dialogs/rightaway" to="dialogs/rightaway" method="_on_rightaway_game"]
