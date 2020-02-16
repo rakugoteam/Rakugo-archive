@@ -1,9 +1,5 @@
 Made with {a=https://github.com/jebedaia360/Rakugo}Rakugo{/a} [rakugo_version] on {a=https://godotengine.org/}Godot Engine{/a} [godot_version] on {a=https://github.com/jebedaia360/Rakugo/blob/master/LICENSE} MIT License{/a}.
-
-Rakugo can be support through:
-- {a=https://jebedaia.itch.io/rakugo}buy it on Itch.io{/a}
-- {a=https://paypal.me/jeremi360}PayPal{/a}
-- {a=https://github.com/sponsors/jebedaia360}Github Sponsor{/a}
+Rakugo can be support by {a=https://www.patreon.com/jebedaia360}Patreon{/a}.
 
 Rakugo is made by:
 	{a=https://github.com/jebedaia360}Jeremi Biernacki ({i}Jebedaia{/i}){/a},
@@ -12,6 +8,9 @@ Rakugo is made by:
 	{a=https://github.com/deep-gaurav}Deep Gaurav{/a}
 
 Special Thanks for:
+	InaneFool,
+	Crystalwarrior,
+	{a=https://github.com/kurinoku}kurinoku{/a},
 	{a=https://github.com/Kermer}Sebastian Holc ({i}Kermer{/i}){/a},
 	{a=https://github.com/Plopsiskopsis}Plopsiskopsis{/a},
 	{a=https://github.com/MatiasVME}Matías Muñoz Espinoza ({i}MatiasVME{/i}){/a},

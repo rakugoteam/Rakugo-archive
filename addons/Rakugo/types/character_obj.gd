@@ -8,17 +8,23 @@ var parameters_names: Array = [
 	"suffix",
 	"avatar",
 	"stats",
-	"kind"
+	"kind",
+	"mkind",
+	"mcolumns",
+	"manchor"
 	]
 
 var _color := Color("#ffffff")
 var _avatar: String
 
-var name	 := ""
-var prefix	 := ""
-var suffix	 := ""
-var kind	 := ""
-var stats	 := {}
+var name			:= ""
+var prefix		:= ""
+var suffix	 	:= ""
+var kind	 		:= ""
+var mkind	 		:= ""
+var mcolumns 	:= 0
+var manchor	 	:= ""
+var stats	 		:= {}
 
 var color: String = "#ffffff" setget _set_color, _get_color
 var avatar setget _set_avatar, _get_avatar
@@ -41,11 +47,20 @@ func _init(var_id: String, var_value: Dictionary
 	if not ("avatar" in _value):
 		_value["avatar"] = ""
 
-	if not ("stats" in _value):
-		_value["stats"] = stats
-
 	if not ("kind" in _value):
 		_value["kind"] = Rakugo.default_kind
+
+	if not ("mkind" in _value):
+		_value["mkind"] = Rakugo.default_mkind
+
+	if not ("mcolumns" in _value):
+		_value["mcolumns"] = Rakugo.default_mcolumns
+
+	if not ("manchor" in _value):
+		_value["manchor"] = Rakugo.default_manchor
+
+	if not ("stats" in _value):
+		_value["stats"] = stats
 
 	_set_value(_value)
 
@@ -53,17 +68,22 @@ func _init(var_id: String, var_value: Dictionary
 func _set_color(vcolor: String) -> void:
 	_color = Color(vcolor)
 
+
 func _get_color() -> String:
 	return _color.to_html()
+
 
 func _set_avatar(vavatar: Resource) -> void:
 	_avatar = vavatar.resource_path
 
+
 func _get_avatar() -> String:
 	return _avatar
 
+
 func _set_value(_value := {}) -> void:
 	dict2character(_value)
+
 
 func _get_value() -> Dictionary:
 	return character2dict()
@@ -115,13 +135,16 @@ func parse_what(what: String) -> String:
 
 func character2dict() -> Dictionary:
 	var dict = {}
-	dict["name"]	= name
-	dict["color"]	= color
-	dict["prefix"]	= prefix
-	dict["suffix"]	= suffix
-	dict["avatar"]	= _avatar
-	dict["stats"]	= stats
-	dict["kind"]	= kind
+	dict["name"]			= name
+	dict["color"]			= color
+	dict["prefix"]		= prefix
+	dict["suffix"]		= suffix
+	dict["avatar"]		= _avatar
+	dict["kind"]			= kind
+	dict["mkind"]			= mkind
+	dict["mcolumns"]		= mcolumns
+	dict["manchor"]		= manchor
+	dict["stats"]			= stats
 
 	return dict
 
@@ -142,11 +165,20 @@ func dict2character(dict: Dictionary) -> void:
 	if dict.has("avatar"):
 		_avatar = dict.avatar
 
-	if dict.has("stats"):
-		stats = dict.stats
-
 	if dict.has("kind"):
 		kind = dict.kind
+
+	if dict.has("mkind"):
+		mkind = dict.mkind
+
+	if dict.has("mcolumns"):
+		mcolumns = dict.mcolumns
+
+	if dict.has("manchor"):
+		manchor = dict.manchor
+
+	if dict.has("stats"):
+		stats = dict.stats
 
 
 func parse_text(text: String, open: String, close: String) -> String:
