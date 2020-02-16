@@ -421,7 +421,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 use_theme_from_setting = true
-register = true
 node_id = "InGameGUI"
 
 [node name="RakugoMenu" type="GridContainer" parent="."]

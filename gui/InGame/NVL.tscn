@@ -2,8 +2,8 @@
 
 [ext_resource path="res://addons/Rakugo/nodes/kind_container.gd" type="Script" id=1]
 [ext_resource path="res://gui/Labels/name_text.tscn" type="PackedScene" id=2]
-[ext_resource path="res://gui/Labels/dialogue_text.tscn" type="PackedScene" id=7]
-[ext_resource path="res://addons/Rakugo/nodes/rakugo_ask.gd" type="Script" id=8]
+[ext_resource path="res://gui/Labels/dialogue_text.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/Rakugo/nodes/rakugo_ask.gd" type="Script" id=4]
 
 [node name="NVL" type="HBoxContainer"]
 anchor_right = 1.0
@@ -39,13 +39,17 @@ size_flags_vertical = 3
 [node name="Label" parent="VBox" instance=ExtResource( 2 )]
 margin_right = 920.0
 rect_clip_content = false
+focus_mode = 0
 mouse_filter = 2
 scroll_active = false
+selection_enabled = false
 
-[node name="Dialogue" parent="VBox" instance=ExtResource( 7 )]
+[node name="Dialogue" parent="VBox" instance=ExtResource( 3 )]
 margin_top = 44.0
 margin_right = 920.0
 margin_bottom = 84.0
+focus_mode = 0
+selection_enabled = false
 
 [node name="RakugoLineEdit" type="LineEdit" parent="VBox"]
 visible = false
@@ -53,4 +57,4 @@ margin_top = 76.0
 margin_right = 905.0
 margin_bottom = 100.0
 caret_blink = true
-script = ExtResource( 8 )
+script = ExtResource( 4 )

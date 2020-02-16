@@ -1,14 +1,10 @@
 tool
 extends Control
-class_name RakugoBaseControl
+class_name RakugoBaseControl, "res://addons/Rakugo/icons/rakugo_base_control.svg"
 
 export var use_theme_from_setting: bool setget set_use_theme_form_settings, get_use_theme_form_settings
 
 var _use_theme_from_settings := true
-
-func _ready():
-	if _use_theme_from_settings:
-		load_theme()
 
 func set_use_theme_form_settings(value: bool):
 	if value:
