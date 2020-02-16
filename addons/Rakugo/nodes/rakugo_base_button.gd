@@ -1,6 +1,6 @@
 tool
 extends Button
-class_name RakugoBaseButton
+class_name RakugoBaseButton, "res://addons/Rakugo/icons/rakugo_base_button.svg"
 
 export var use_theme_from_setting: bool setget set_use_theme_form_settings, get_use_theme_form_settings
 export var use_form_theme: bool setget set_use_from_theme, get_use_from_theme

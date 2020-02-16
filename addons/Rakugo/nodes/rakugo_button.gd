@@ -1,5 +1,5 @@
 extends RakugoBaseButton
-class_name RakugoButton 
+class_name RakugoButton, "res://addons/Rakugo/icons/rakugo_button.svg"
 
 export var node_path := NodePath()
 export var auto_resize_x := true
@@ -12,6 +12,6 @@ func _ready() -> void:
 func _on_resized() -> void:
 	if auto_resize_x:
 		node_to_change.rect_size.x = rect_size.x
-	
+
 	if auto_resize_y:
 		node_to_change.rect_size.y = rect_size.y
