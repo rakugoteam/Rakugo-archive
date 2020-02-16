@@ -1,5 +1,5 @@
 extends Node
-class_name RakugoTextPasser
+class_name RakugoTextPasser, "res://addons/Rakugo/icons/rakugo_text_paser.svg"
 
 var url_open: String = "[color=225ebf][url="
 var url_close: String = "[/url][/color]"

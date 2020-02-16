@@ -1,5 +1,5 @@
 extends Node
-class_name GDScriptDialog
+class_name GDScriptDialog, "res://addons/Rakugo/icons/gdscript.svg"
 
 export (Array, String) var begin_from = ["", ""]
 export (Array, String) var dialogs_names
