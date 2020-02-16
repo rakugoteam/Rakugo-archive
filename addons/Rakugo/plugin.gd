@@ -128,7 +128,7 @@ func add_custom_types():
 		"RakugoVarCheckButton",
 		"CheckButton",
 		preload("nodes/rakugo_var_check.gd"),
-		preload("icons/rakugo_check_box.svg")
+		preload("icons/rakugo_check_button.svg")
 	)
 
 	add_custom_type(

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="16"
+   height="16"
+   viewBox="0 0 16 16"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   inkscape:export-filename="/home/djrm/Projects/godot/tools/editor/icons/icon_animation_player.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90"
+   sodipodi:docname="rakugo_animation_player.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="31.999998"
+     inkscape:cx="13.421874"
+     inkscape:cy="7.8664082"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     units="px"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-paths="true"
+     inkscape:bbox-nodes="true"
+     inkscape:snap-bbox-edge-midpoints="true"
+     inkscape:snap-bbox-midpoints="false"
+     inkscape:snap-object-midpoints="true"
+     inkscape:snap-center="true"
+     inkscape:window-width="1366"
+     inkscape:window-height="708"
+     inkscape:window-x="0"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:document-rotation="0"
+     inkscape:pagecheckerboard="true"
+     inkscape:lockguides="false"
+     inkscape:snap-global="true">
+    <inkscape:grid
+       type="xygrid"
+       id="grid3336" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-1036.3622)">
+    <path
+       style="opacity:1;fill:#cea4f1;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 1,1 V 15 H 2.1660156 V 13 H 4 v 2 h 8 v -2 h 2 v 2 h 1 V 1 H 14 V 3 H 12 V 1 H 4 V 3 H 2.1660156 V 1 Z m 3.3417969,0.3242188 h 3.6796875 c 0.5474842,0 1.0421762,0.095527 1.484375,0.2851562 0.4527273,0.1777775 0.8384406,0.4318205 1.1542966,0.7636719 0.315857,0.3199996 0.558106,0.7173328 0.726563,1.1914062 0.178985,0.4622216 0.267578,0.9779869 0.267578,1.546875 0,0.8651841 -0.194428,1.6063608 -0.583985,2.2226563 C 10.680756,7.938428 10.148436,8.3758453 9.4746094,8.6484375 L 11.8125,14.125 H 9.8535156 L 7.7382812,8.9160156 H 6.0644531 V 14.125 H 4.3417969 Z M 6.0644531,3.0136719 V 7.28125 h 1.9570313 c 0.5685413,0 1.0224616,-0.1910537 1.359375,-0.5703125 0.3369134,-0.3911106 0.5058593,-0.9068758 0.5058594,-1.546875 0,-0.651851 -0.168946,-1.1733425 -0.5058594,-1.5644531 C 9.043946,3.2084988 8.5900257,3.0136719 8.0214844,3.0136719 Z M 2.1660156,5 H 4 V 7 H 2.1660156 Z M 12,5 h 2 V 7 H 12 Z M 2.1660156,9 H 4 v 2 H 2.1660156 Z M 12,9 h 2 v 2 h -2 z"
+       id="rect4136"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccccccccccccccccscccscccccccccccscsssccccccccccccccccccccc"
+       transform="translate(0,1036.3622)" />
+  </g>
+</svg>
