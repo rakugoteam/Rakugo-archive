@@ -72,6 +72,7 @@ var variables := {}
 var variables_init := {}
 
 # don't save this
+onready var menu_node: RakugoMenu = $Menu
 var current_scene_path := ""
 var current_root_node: Node = null
 var current_statement: Statement = null

@@ -52,7 +52,7 @@ func init_project_settings():
 		"application/rakugo/default_kind",
 		"adv"
 	)
-
+	
 	default_setting(
 		"application/rakugo/punctuation_pause",
 		"adv"
@@ -128,7 +128,7 @@ func add_custom_types():
 		"RakugoVarCheckButton",
 		"CheckButton",
 		preload("nodes/rakugo_var_check.gd"),
-		preload("icons/rakugo_check_button.svg")
+		preload("icons/rakugo_check_box.svg")
 	)
 
 	add_custom_type(
