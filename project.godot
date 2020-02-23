@@ -407,10 +407,6 @@ gdscript/warnings/return_value_discarded=false
 
 enabled=PoolStringArray( "Rakugo" )
 
-[gui]
-
-theme/custom_font="res://test_font.tres"
-
 [input]
 
 ui_accept={

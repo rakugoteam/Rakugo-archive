@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://game/Start/SomeDialog.gd" type="Script" id=1]
-[ext_resource path="res://test_font.tres" type="DynamicFont" id=2]
 
 [node name="Start" type="Node2D"]
 
@@ -9,12 +8,3 @@
 script = ExtResource( 1 )
 begin_from = [ "Start", "some_dialog" ]
 dialogs_names = [ "some_dialog" ]
-
-[node name="Label" type="Label" parent="."]
-margin_right = 40.0
-margin_bottom = 14.0
-custom_fonts/font = ExtResource( 2 )
-text = "这是中国人"
-__meta__ = {
-"_edit_use_anchors_": false
-}

@@ -13,8 +13,6 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-use_theme_from_setting = true
-use_form_theme = true
 node_to_change_path = NodePath("RichTextLabel")
 focus_node_color = Color( 0.709804, 0.290196, 0.101961, 1 )
 pressed_node_color = Color( 0.819608, 0.392157, 0.203922, 1 )
