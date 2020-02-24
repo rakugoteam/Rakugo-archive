@@ -19,36 +19,35 @@ var _toggled := false
 var _idle_color := Color(0.533333, 0.533333, 0.533333, 1)
 var _disable_color := Color(0.533333, 0.533333, 0.498039, 0.533333)
 
-onready var tween := Tween.new()
-
 signal toggled(value)
 signal pressed
 
 func _ready() -> void:
-	add_child(tween)
 	upadate_colors()
+	modulate = idle_color
 	set_process_input(true)
 
-	connect("input_event", self, "_on_input")
 	connect_if_not("mouse_entered", self, "_on_hover")
 	connect_if_not("mouse_exited", self, "_on_idle")
 	connect_if_not("toggled", self, "_on_toggled")
 	connect_if_not("pressed", self, "_on_pressed")
-	modulate = idle_color
+	Rakugo.connect("begin", self, "_on_begin")
 
 
-func connect_if_not(sig:String, target:Node, method:String):
+func connect_if_not(sig:String, target:Node, method:String) -> void:
 	if !is_connected(sig, target, method):
 		connect(sig, target, method)
 
 
-func upadate_colors():
+func upadate_colors() -> void:
 	if !_use_colors_from_theme:
 		return
+
 	var t = load(
 		ProjectSettings.get_setting(
 			"application/rakugo/theme"
 	))
+
 	var rt := t as RakugoTheme
 	idle_color = rt.idle_node_color
 	hover_color = rt.hover_node_color
@@ -56,7 +55,7 @@ func upadate_colors():
 	disable_color = rt.disable_node_color
 
 
-func set_colors_from_theme(value: bool):
+func set_colors_from_theme(value: bool) -> void:
 	_use_colors_from_theme = value
 
 	if !value:
@@ -70,24 +69,15 @@ func are_colors_from_theme() -> bool:
 	return _use_colors_from_theme
 
 
-func tween_color(value:Color) -> void:
-	var m = modulate
-	tween.interpolate_property(
-		self, "modulate", m, value,
-		0.2, Tween.TRANS_LINEAR)
-
-
 func _on_idle() -> void:
 	_mouse_in = false
-	tween_color(idle_color)
-
+	modulate = idle_color
 	print("idle")
 
 
 func _on_hover() -> void:
 	_mouse_in = true
-	tween_color(hover_color)
-
+	modulate = hover_color
 	print("hover")
 
 
@@ -95,27 +85,28 @@ func _on_pressed() -> void:
 	if toggle_mode:
 		return
 
-	tween_color(pressed_color)
-
+	modulate = pressed_color
 	print("pressed")
-	_on_idle()
+
+	_on_hover()
 
 
 func _on_toggled(toggled: bool) -> void:
 	_toggled = toggled
 
 	if toggled:
-		_on_pressed()
-		return
+		modulate = pressed_color
 
-	_on_idle()
+	_on_hover()
 
 
 func set_disabled(value: bool) -> void:
 	_disabled = value
-	modulate = disable_color
 
-	_on_idle()
+	if _disabled:
+		modulate = disable_color
+	else:
+		modulate = idle_color
 
 
 func get_disabled() -> bool:
@@ -144,14 +135,18 @@ func get_idle_color() -> Color:
 	return _idle_color
 
 
-func _on_input(viewport: Node, event: InputEvent, shape_idx: int):
+func _input(event:InputEvent) -> void:
+	if !_mouse_in || _disabled:
+		return
+
 	if event is InputEventMouseButton:
 		var e = event as InputEventMouseButton
 
-		if e.button_index == mouse_button + 1:
+		if e.pressed:
+			if e.button_index == mouse_button + 1:
 
-			if toggle_mode:
-				emit_signal("toggled", !_toggled)
-				return
-		
-			emit_signal("pressed")
+				if toggle_mode:
+					emit_signal("toggled", !_toggled)
+					return
+
+				emit_signal("pressed")

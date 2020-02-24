@@ -7,11 +7,16 @@
 [node name="Button2D" type="Area2D" parent="."]
 position = Vector2( 325.32, 212.334 )
 script = ExtResource( 1 )
+use_theme_from_settings = false
+idle_color = Color( 1, 1, 1, 1 )
+hover_color = Color( 0.0117647, 0.415686, 0.819608, 1 )
+pressed_color = Color( 0.0156863, 0.321569, 0.423529, 1 )
+disable_color = Color( 0.419608, 0.419608, 0.419608, 1 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Button2D"]
+[node name="Polygon2D" type="Polygon2D" parent="Button2D"]
 position = Vector2( -138.041, -69.8138 )
 polygon = PoolVector2Array( 99.8146, 34.6954, 83.3194, 101.814, 205.043, 121.153, 204.474, 26.7322 )
 
-[node name="Polygon2D" type="Polygon2D" parent="Button2D"]
+[node name="Polygon2D2" type="CollisionPolygon2D" parent="Button2D"]
 position = Vector2( -138.041, -69.8138 )
 polygon = PoolVector2Array( 99.8146, 34.6954, 83.3194, 101.814, 205.043, 121.153, 204.474, 26.7322 )
