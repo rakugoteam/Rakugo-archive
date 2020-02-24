@@ -1,17 +1,12 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://addons/Rakugo/nodes/Button2D.gd" type="Script" id=1]
+[ext_resource path="res://addons/Rakugo/nodes/button2D.gd" type="Script" id=1]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Button2D" type="Area2D" parent="."]
 position = Vector2( 325.32, 212.334 )
 script = ExtResource( 1 )
-use_theme_from_settings = false
-idle_color = Color( 1, 1, 1, 1 )
-hover_color = Color( 0.0117647, 0.415686, 0.819608, 1 )
-pressed_color = Color( 0.0156863, 0.321569, 0.423529, 1 )
-disable_color = Color( 0.419608, 0.419608, 0.419608, 1 )
 
 [node name="Polygon2D" type="Polygon2D" parent="Button2D"]
 position = Vector2( -138.041, -69.8138 )

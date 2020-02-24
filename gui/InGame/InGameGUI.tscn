@@ -427,7 +427,19 @@ use_theme_from_setting = true
 register = true
 node_id = "InGameGUI"
 
-[node name="ScrollContainerVMenu" type="ScrollContainer" parent="."]
+[node name="Dialog" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+use_theme_from_setting = true
+register = true
+node_id = "Dialog"
+
+[node name="ScrollContainerVMenu" type="ScrollContainer" parent="Dialog"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -441,7 +453,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RakugoVMenu" type="VBoxContainer" parent="ScrollContainerVMenu"]
+[node name="RakugoVMenu" type="VBoxContainer" parent="Dialog/ScrollContainerVMenu"]
 margin_right = 500.0
 margin_bottom = 300.0
 grow_horizontal = 0
@@ -454,7 +466,7 @@ __meta__ = {
 }
 ChoiceButton = ExtResource( 5 )
 
-[node name="ScrollContainerHMenu" type="ScrollContainer" parent="."]
+[node name="ScrollContainerHMenu" type="ScrollContainer" parent="Dialog"]
 visible = false
 anchor_left = 0.5
 anchor_top = 1.0
@@ -468,7 +480,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="RakugoHMenu" type="HBoxContainer" parent="ScrollContainerHMenu"]
+[node name="RakugoHMenu" type="HBoxContainer" parent="Dialog/ScrollContainerHMenu"]
 margin_right = 1021.0
 margin_bottom = 300.0
 grow_horizontal = 0
@@ -482,7 +494,7 @@ __meta__ = {
 kind = "horizontal"
 ChoiceButton = ExtResource( 5 )
 
-[node name="SayPanel" parent="." instance=ExtResource( 7 )]
+[node name="SayPanel" parent="Dialog" instance=ExtResource( 7 )]
 mouse_filter = 0
 
 [node name="Notify" type="Panel" parent="."]
@@ -522,7 +534,8 @@ size_flags_vertical = 3
 alignment = 1
 script = ExtResource( 9 )
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_use_anchors_": false
 }
 
 [node name="Hide" type="CheckButton" parent="Quick"]
