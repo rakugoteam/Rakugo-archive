@@ -14,7 +14,7 @@ export var hover_node_color := Color(0.877647, 0.882353, 0.887059, 1)
 export var pressed_node_color := Color(0, 0.6, 0.8, 1)
 export var disable_node_color := Color(0.533333, 0.533333, 0.498039, 0.533333)
 
-onready var node_to_change = get_node(node_to_change_path)
+onready var node_to_change : CanvasItem = get_node(node_to_change_path)
 var _use_colors_from_theme := true
 
 
@@ -66,17 +66,17 @@ func _on_resized() -> void:
 
 func _on_idle() -> void:
 	if node_to_change:
-		node_to_change.module = idle_node_color
+		node_to_change.modulate = idle_node_color
 
 
 func _on_focus() -> void:
 	if node_to_change:
-		node_to_change.module = focus_node_color
+		node_to_change.modulate = focus_node_color
 
 
 func _on_hover() -> void:
 	if node_to_change:
-		node_to_change.module = hover_node_color
+		node_to_change.modulate = hover_node_color
 
 
 func _on_pressed() -> void:
@@ -84,7 +84,7 @@ func _on_pressed() -> void:
 		return
 
 	if node_to_change:
-		node_to_change.module = pressed_node_color
+		node_to_change.modulate = pressed_node_color
 
 
 func _on_toggled(toggled: bool) -> void:
@@ -100,7 +100,7 @@ func set_disabled(value: bool) -> void:
 
 	if value:
 		if node_to_change:
-			node_to_change.module = disable_node_color
+			node_to_change.modulate = disable_node_color
 		return
 
 	_on_idle()
