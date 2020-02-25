@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/types/avatar.gd"
 }, {
+"base": "Area2D",
+"class": "Button2D",
+"language": "GDScript",
+"path": "res://addons/Rakugo/nodes/button2D.gd"
+}, {
 "base": "Statement",
 "class": "CallNode",
 "language": "GDScript",
@@ -184,7 +189,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/types/rakugo_ranged.gd"
 }, {
-"base": "Panel",
+"base": "RakugoControl",
 "class": "RakugoSayPanel",
 "language": "GDScript",
 "path": "res://addons/Rakugo/nodes/rakugo_say_panel.gd"
@@ -308,6 +313,7 @@ _global_script_class_icons={
 "Ask": "",
 "AutoTimer": "res://addons/Rakugo/icons/rakugo_auto_timer.svg",
 "Avatar": "",
+"Button2D": "res://addons/Rakugo/icons/button_2d.svg",
 "CallNode": "",
 "Character": "res://addons/Rakugo/icons/rakugo_character.svg",
 "CharacterObject": "",
@@ -375,7 +381,7 @@ boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://graphics/window_icon.png"
 config/auto_accept_quit=false
 config/quit_on_go_back=false
-rakugo/version="1.2.0"
+rakugo/version="1.2f4"
 rakugo/game_credits="{a=https://github.com/jebedaia360}Jeremi Biernacki ({i}Jebedaia{/i}){/a}"
 rakugo/debug=false
 rakugo/scenes_links="res://game/scenes_links.tres"
