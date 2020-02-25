@@ -32,7 +32,7 @@ func _ready() -> void:
 	connect_if_not("mouse_exited", self, "_on_idle")
 	connect_if_not("toggled", self, "_on_toggled")
 	connect_if_not("pressed", self, "_on_pressed")
-	Rakugo.connect("begin", Rakugo, "hide", ["Dialog"])
+	
 
 func connect_if_not(sig:String, target:Node, method:String) -> void:
 	if !is_connected(sig, target, method):
