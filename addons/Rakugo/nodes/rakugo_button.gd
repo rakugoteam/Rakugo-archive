@@ -1,3 +1,4 @@
+tool
 extends RakugoBaseButton
 class_name RakugoButton, "res://addons/Rakugo/icons/rakugo_button.svg"
 
