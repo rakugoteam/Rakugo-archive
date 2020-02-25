@@ -1,6 +1,6 @@
 extends Node
 
-const rakugo_version := "2.0.8f4"
+const rakugo_version := "2.0.9"
 const credits_path := "res://addons/Rakugo/credits.txt"
 const save_folder := "saves"
 
@@ -68,6 +68,7 @@ var variables := {}
 var variables_init := {}
 
 # don't save this
+onready var menu_node := $Menu 
 var current_scene_path := ""
 var current_root_node: Node = null
 var current_statement: Statement = null

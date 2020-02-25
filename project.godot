@@ -169,6 +169,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/types/rakugo_list.gd"
 }, {
+"base": "GridContainer",
+"class": "RakugoMenu",
+"language": "GDScript",
+"path": "res://addons/Rakugo/nodes/rakugo_menu.gd"
+}, {
 "base": "Node2D",
 "class": "RakugoNode2D",
 "language": "GDScript",
@@ -189,7 +194,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/types/rakugo_ranged.gd"
 }, {
-"base": "Panel",
+"base": "RakugoControl",
 "class": "RakugoSayPanel",
 "language": "GDScript",
 "path": "res://addons/Rakugo/nodes/rakugo_say_panel.gd"
@@ -275,7 +280,7 @@ _global_script_classes=[ {
 "path": "res://addons/Rakugo/statements/say.gd"
 }, {
 "base": "Resource",
-"class": "SceneLinks",
+"class": "ScenesLinks",
 "language": "GDScript",
 "path": "res://addons/Rakugo/types/scenes_links.gd"
 }, {
@@ -342,6 +347,7 @@ _global_script_class_icons={
 "RakugoControl": "res://addons/Rakugo/icons/rakugo_control.svg",
 "RakugoDict": "",
 "RakugoList": "",
+"RakugoMenu": "res://addons/Rakugo/icons/rakugo_menu_v.svg",
 "RakugoNode2D": "res://addons/Rakugo/icons/rakugo_node2d.svg",
 "RakugoNodeCore": "",
 "RakugoQuestButton": "res://addons/Rakugo/icons/rakugo_quest_button.svg",
@@ -363,7 +369,7 @@ _global_script_class_icons={
 "Save": "",
 "SaveButton": "res://addons/Rakugo/icons/rakugo_save_button.svg",
 "Say": "",
-"SceneLinks": "",
+"ScenesLinks": "res://addons/Rakugo/icons/scenes_links.svg",
 "Show": "",
 "SkipTimer": "res://addons/Rakugo/icons/rakugo_skip_timer.svg",
 "Statement": "",
@@ -374,19 +380,19 @@ _global_script_class_icons={
 
 [application]
 
-config/name="New Rakugo Game"
-run/main_scene="res://game/Start/Start.tscn"
+config/name="The Question: Rakugo Edition"
+run/main_scene="res://game/scenes/Start/start.tscn"
 boot_splash/image="res://graphics/splash.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://graphics/window_icon.png"
 config/auto_accept_quit=false
 config/quit_on_go_back=false
-rakugo/version="1.2f4"
+rakugo/version="1.3"
 rakugo/game_credits="{a=https://github.com/jebedaia360}Jeremi Biernacki ({i}Jebedaia{/i}){/a}"
 rakugo/debug=false
 rakugo/scenes_links="res://game/scenes_links.tres"
 rakugo/save_folder="saves"
-rakugo/theme="res://themes/new_gui/new_gui.theme"
+rakugo/theme="res://themes/question/question.theme"
 rakugo/default_kind="adv"
 rakugo/test_saves=false
 rakugo/markup="renpy"

@@ -1,4 +1,4 @@
-extends Panel
+extends RakugoControl
 class_name RakugoSayPanel, "res://addons/Rakugo/icons/rakugo_panel.svg"
 
 export (String, "adv", "top", "center", "left", "right", "nvl", "fullscreen") var kind = "adv"
