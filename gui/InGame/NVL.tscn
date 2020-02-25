@@ -10,6 +10,9 @@ anchor_right = 1.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 name_label_path = NodePath("VBox/Label")
 dialog_label_path = NodePath("VBox/Dialogue")
 avatar_viewport_path = NodePath("../NVL/ViewportContainer/CharaterAvatar")

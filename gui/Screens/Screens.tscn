@@ -1,6 +1,6 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://themes/question/question.theme" type="Theme" id=1]
+[ext_resource path="res://themes/new_gui/new_gui.theme" type="Theme" id=1]
 [ext_resource path="res://gui/Screens/Screens.gd" type="Script" id=2]
 [ext_resource path="res://ubuntu-font-family/UB32outline.tres" type="DynamicFont" id=3]
 [ext_resource path="res://addons/Rakugo/nodes/rakugo_var_label.gd" type="Script" id=4]
@@ -15,7 +15,6 @@
 [ext_resource path="res://gui/Quests/QuestsBox.tscn" type="PackedScene" id=13]
 [ext_resource path="res://gui/Labels/dialogue_text.tscn" type="PackedScene" id=14]
 [ext_resource path="res://gui/Screens/QuitBox.tscn" type="PackedScene" id=15]
-[ext_resource path="res://game/backgrounds/main_menu.png" type="Texture" id=16]
 
 [sub_resource type="ButtonGroup" id=1]
 
@@ -4234,18 +4233,6 @@ use_theme_from_setting = true
 register = true
 node_id = "Screens"
 
-[node name="Panel" type="TextureRect" parent="."]
-modulate = Color( 1, 1, 1, 0.784314 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = 1024.0
-margin_bottom = 597.0
-texture = ExtResource( 16 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = 1.0
 anchor_top = 1.0
@@ -4267,8 +4254,8 @@ grow_horizontal = 0
 alignment = 2
 
 [node name="Title" type="Label" parent="VBoxContainer/TitleNVersion"]
-margin_left = 11.0
-margin_right = 206.0
+margin_left = 7.0
+margin_right = 202.0
 margin_bottom = 38.0
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 3 )
@@ -4279,7 +4266,7 @@ var_name = "title"
 default = "Your new game"
 
 [node name="Version" type="Label" parent="VBoxContainer/TitleNVersion"]
-margin_left = 210.0
+margin_left = 206.0
 margin_right = 264.0
 margin_bottom = 38.0
 size_flags_vertical = 1
@@ -4296,7 +4283,6 @@ margin_bottom = 82.0
 rect_min_size = Vector2( 100, 40 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/normal_font = ExtResource( 3 )
 bbcode_enabled = true
 bbcode_text = "[right]Rakugo 2.0.0"
 text = "Rakugo 2.0.0"
@@ -4346,14 +4332,14 @@ margin_right = 198.0
 [node name="NewGame" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
 margin_top = 20.0
 margin_right = 198.0
-margin_bottom = 58.0
+margin_bottom = 48.0
 text = "New Game"
 align = 0
 
 [node name="Continue" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
-margin_top = 78.0
+margin_top = 68.0
 margin_right = 198.0
-margin_bottom = 116.0
+margin_bottom = 96.0
 text = "Continue"
 align = 0
 
@@ -4387,9 +4373,9 @@ text = "Quests"
 align = 0
 
 [node name="Load" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
-margin_top = 136.0
+margin_top = 116.0
 margin_right = 198.0
-margin_bottom = 174.0
+margin_bottom = 144.0
 toggle_mode = true
 group = SubResource( 1 )
 text = "Load"
@@ -4406,36 +4392,36 @@ text = "Save"
 align = 0
 
 [node name="Options" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
-margin_top = 194.0
+margin_top = 164.0
 margin_right = 198.0
-margin_bottom = 232.0
+margin_bottom = 192.0
 toggle_mode = true
 group = SubResource( 1 )
 text = "Options"
 align = 0
 
 [node name="About" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
-margin_top = 252.0
+margin_top = 212.0
 margin_right = 198.0
-margin_bottom = 290.0
+margin_bottom = 240.0
 toggle_mode = true
 group = SubResource( 1 )
 text = "About"
 align = 0
 
 [node name="Help" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
-margin_top = 310.0
+margin_top = 260.0
 margin_right = 198.0
-margin_bottom = 348.0
+margin_bottom = 288.0
 toggle_mode = true
 group = SubResource( 1 )
 text = "Help"
 align = 0
 
 [node name="Quit" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
-margin_top = 368.0
+margin_top = 308.0
 margin_right = 198.0
-margin_bottom = 406.0
+margin_bottom = 336.0
 toggle_mode = true
 group = SubResource( 1 )
 text = "Quit"

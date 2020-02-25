@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sylvie green surprised.png-dc0a1eb0a4c83ac7b4bb77fb9ff2c38e.stex"
+path="res://.import/button_2d.svg-4c1fa2bb034c48ad90f10c5d1e31ff8f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/characters/sylvie/green/sylvie green surprised.png"
-dest_files=[ "res://.import/sylvie green surprised.png-dc0a1eb0a4c83ac7b4bb77fb9ff2c38e.stex" ]
+source_file="res://addons/Rakugo/icons/button_2d.svg"
+dest_files=[ "res://.import/button_2d.svg-4c1fa2bb034c48ad90f10c5d1e31ff8f.stex" ]
 
 [params]
 

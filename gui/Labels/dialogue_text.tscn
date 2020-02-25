@@ -1,9 +1,4 @@
-[gd_scene load_steps=6 format=2]
-[ext_resource path="res://ubuntu-font-family/UM22outline.tres" type="DynamicFont" id=1]
-[ext_resource path="res://ubuntu-font-family/UBI22outline.tres" type="DynamicFont" id=2]
-[ext_resource path="res://ubuntu-font-family/UI22outline.tres" type="DynamicFont" id=3]
-[ext_resource path="res://ubuntu-font-family/UB22outline.tres" type="DynamicFont" id=4]
-[ext_resource path="res://ubuntu-font-family/U22outline.tres" type="DynamicFont" id=5]
+[gd_scene format=2]
 
 [node name="dialogue_text" type="RichTextLabel"]
 margin_top = 1.0
@@ -12,11 +7,6 @@ margin_bottom = 96.0
 rect_min_size = Vector2( 100, 40 )
 rect_clip_content = false
 focus_mode = 2
-custom_fonts/mono_font = ExtResource( 1 )
-custom_fonts/bold_italics_font = ExtResource( 2 )
-custom_fonts/italics_font = ExtResource( 3 )
-custom_fonts/bold_font = ExtResource( 4 )
-custom_fonts/normal_font = ExtResource( 5 )
 custom_colors/selection_color = Color( 0, 0.6, 0.8, 1 )
 custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
@@ -26,3 +16,6 @@ text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque tu
 Lorem ipsum dolor sit "
 scroll_active = false
 selection_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
