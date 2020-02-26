@@ -169,11 +169,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/types/rakugo_list.gd"
 }, {
-"base": "GridContainer",
-"class": "RakugoMenu",
-"language": "GDScript",
-"path": "res://addons/Rakugo/nodes/rakugo_menu.gd"
-}, {
 "base": "Node2D",
 "class": "RakugoNode2D",
 "language": "GDScript",
@@ -280,7 +275,7 @@ _global_script_classes=[ {
 "path": "res://addons/Rakugo/statements/say.gd"
 }, {
 "base": "Resource",
-"class": "ScenesLinks",
+"class": "SceneLinks",
 "language": "GDScript",
 "path": "res://addons/Rakugo/types/scenes_links.gd"
 }, {
@@ -347,7 +342,6 @@ _global_script_class_icons={
 "RakugoControl": "res://addons/Rakugo/icons/rakugo_control.svg",
 "RakugoDict": "",
 "RakugoList": "",
-"RakugoMenu": "res://addons/Rakugo/icons/rakugo_menu_v.svg",
 "RakugoNode2D": "res://addons/Rakugo/icons/rakugo_node2d.svg",
 "RakugoNodeCore": "",
 "RakugoQuestButton": "res://addons/Rakugo/icons/rakugo_quest_button.svg",
@@ -369,7 +363,7 @@ _global_script_class_icons={
 "Save": "",
 "SaveButton": "res://addons/Rakugo/icons/rakugo_save_button.svg",
 "Say": "",
-"ScenesLinks": "res://addons/Rakugo/icons/scenes_links.svg",
+"SceneLinks": "",
 "Show": "",
 "SkipTimer": "res://addons/Rakugo/icons/rakugo_skip_timer.svg",
 "Statement": "",
