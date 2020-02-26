@@ -6,9 +6,9 @@ export var toggle_mode := false
 export var disabled := false setget set_disabled, get_disabled
 
 ## theme (RakugoTheme), if any, will override this
-export var use_theme_from_settings := true setget set_colors_from_theme, are_colors_from_theme
+export var use_colors_from_theme := true setget set_colors_from_theme, are_colors_from_theme
 
-export var idle_color : Color setget set_idle_color, get_disabled_color
+export var idle_color : Color setget set_idle_color, get_idle_color
 export var hover_color := Color(0.877647, 0.882353, 0.887059, 1)
 export var pressed_color := Color(0, 0.6, 0.8, 1)
 export var disable_color : Color setget set_disabled_color, get_disabled_color
@@ -25,7 +25,7 @@ signal pressed
 
 func _ready() -> void:
 	upadate_colors()
-	modulate = idle_color
+	modulate = _idle_color
 	set_process_input(true)
 
 	connect_if_not("mouse_entered", self, "_on_hover")
@@ -49,10 +49,10 @@ func upadate_colors() -> void:
 	))
 
 	var rt := t as RakugoTheme
-	idle_color = rt.idle_node_color
+	_idle_color = rt.idle_node_color
 	hover_color = rt.hover_node_color
 	pressed_color = rt.pressed_node_color
-	disable_color = rt.disable_node_color
+	_disable_color = rt.disable_node_color
 
 
 func set_colors_from_theme(value: bool) -> void:
@@ -71,14 +71,14 @@ func are_colors_from_theme() -> bool:
 
 func _on_idle() -> void:
 	_mouse_in = false
-	modulate = idle_color
-	print("idle")
+	modulate = _idle_color
+#	print("idle")
 
 
 func _on_hover() -> void:
 	_mouse_in = true
 	modulate = hover_color
-	print("hover")
+#	print("hover")
 
 
 func _on_pressed() -> void:
@@ -86,7 +86,7 @@ func _on_pressed() -> void:
 		return
 
 	modulate = pressed_color
-	print("pressed")
+#	print("pressed")
 
 	_on_hover()
 
@@ -104,9 +104,9 @@ func set_disabled(value: bool) -> void:
 	_disabled = value
 
 	if _disabled:
-		modulate = disable_color
+		modulate = _disable_color
 	else:
-		modulate = idle_color
+		modulate = _idle_color
 
 
 func get_disabled() -> bool:

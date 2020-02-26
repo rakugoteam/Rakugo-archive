@@ -6,7 +6,7 @@ export var color_node := true
 export var node_to_change_path := NodePath()
 
 ## theme (RakugoTheme), if any, will override this
-export var use_theme_from_settings := true setget set_colors_from_theme, are_colors_from_theme
+export var use_colors_from_theme := true setget set_colors_from_theme, are_colors_from_theme
 
 export var idle_node_color := Color(0.533333, 0.533333, 0.533333, 1)
 export var focus_node_color := Color(0, 0.506836, 0.675781, 1)
