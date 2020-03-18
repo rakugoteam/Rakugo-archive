@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://addons/Rakugo/nodes/character.gd" type="Script" id=1]
+[ext_resource path="res://question/characters/sylvie/Sylvie.tscn" type="PackedScene" id=2]
+
+[node name="characters" type="Node2D"]
+
+[node name="Me" type="Node" parent="." groups=[
+"save",
+]]
+script = ExtResource( 1 )
+character_id = "m"
+character_name = "Me"
+color = Color( 0.784314, 0.784314, 1, 1 )
+stats = {
+
+}
+kind = "adv"
+
+[node name="Sylvie" parent="." instance=ExtResource( 2 )]
