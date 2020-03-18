@@ -16,9 +16,9 @@ func plugin_ready(_editor:EditorInterface) -> void:
 	box = $ScrollContainer/VBoxContainer
 	tween = $Label/Tween
 	fd = $Control/FileDialog
-
+	
 	$Add.icon = get_icon("CreateNewSceneFrom", "EditorIcons")
-
+	
 	$Add.connect("pressed", self, "on_add")
 	$ScenesLinksChooser.connect("open", self, "_on_open")
 	$ScenesLinksChooser.connect("cancel", self, "_on_cancel")
@@ -35,11 +35,11 @@ func notify(text:String) -> void:
 	tween.interpolate_property(
 		$Label, "modulate", scolor, Color.green,
 		1, Tween.TRANS_LINEAR,Tween.EASE_IN)
-
+		
 	tween.interpolate_property(
 		$Label, "modulate", Color.green, scolor,
-		1, Tween.TRANS_LINEAR,Tween.EASE_IN, 1)
-
+		1, Tween.TRANS_LINEAR,Tween.EASE_IN, 0.5)
+		
 	$Label.show()
 	tween.start()
 
@@ -105,7 +105,7 @@ func save_sl(_file_path:String, _scenes_links:ScenesLinks):
 		print("There was issue writing ScenesLinks to %s error_number: %s" %
 			[file_path, error])
 		return
-
+	
 	notify("Saved")
 
 func _on_file_dialog():

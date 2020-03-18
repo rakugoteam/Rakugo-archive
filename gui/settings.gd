@@ -18,6 +18,8 @@ var window_fullscreen: bool setget _set_window_fullscreen, _get_window_fullscree
 
 var saves_scroll := 0
 
+var audio_buses := {}
+
 signal window_size_changed(prev, now)
 signal window_minimized_changed(value)
 signal window_maximized_changed(value)
@@ -134,6 +136,7 @@ func save_conf() -> void:
 		var volume = AudioServer.get_bus_volume_db(bus_id)
 		config.set_value("audio", bus_name + "_mute", mute)
 		config.set_value("audio", bus_name + "_volume", volume)
+		audio_buses[bus_name] = {"mute": mute, "volume": volume}
 	
 	conf_set_rakugo_value(config, "Typing_Text", "typing_text")
 	conf_set_rakugo_value(config, "Text_Time", "text_time")
@@ -175,7 +178,7 @@ func load_conf() -> void:
 		var bus_id = AudioServer.get_bus_index(bus_name)
 		var mute = config.get_value("audio", bus_name + "_mute", false)
 		var volume = config.get_value("audio", bus_name + "_volume", 0)
-
+		audio_buses[bus_name] = {"mute":mute, "volume":volume}
 		AudioServer.set_bus_mute(bus_id, mute)
 		AudioServer.set_bus_volume_db(bus_id, volume)
 

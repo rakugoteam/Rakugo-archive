@@ -19,7 +19,6 @@ func invoke(save_name: String) -> bool:
 	for node in r.get_tree().get_nodes_in_group("save"):
 		if node.has_method("on_save"):
 			node.on_save()
-			continue
 
 	for v in r.variables.values():
 		v.save_to(new_save.data)

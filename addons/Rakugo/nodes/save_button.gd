@@ -1,6 +1,6 @@
 tool
 extends RakugoBaseButton
-class_name SaveButton
+class_name SaveButton, "res://addons/Rakugo/icons/rakugo_save_button.svg"
 
 func _ready() -> void:
 	if not use_theme_from_setting:

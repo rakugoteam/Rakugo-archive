@@ -1,5 +1,5 @@
 extends Timer
-class_name RakugoTimer
+class_name RakugoTimer, "res://addons/Rakugo/icons/rakugo_timer.svg"
 
 export var var_name := "some_var"
 
@@ -17,20 +17,20 @@ func get_default() -> float:
 func _ready() -> void:
 	if var_name in Rakugo.variables:
 		reset()
-	
+
 	else:
 		Rakugo.define(var_name, default)
-	
+
 	Rakugo.connect_var(var_name, "value_changed", self, "on_value_changed")
 
 
 func on_value_changed(vname: String, new_value: float) -> void:
 	if var_name != vname:
 		return
-		
+
 	if new_value == 0:
 		new_value = 0.1
-		
+
 	wait_time = new_value
 
 

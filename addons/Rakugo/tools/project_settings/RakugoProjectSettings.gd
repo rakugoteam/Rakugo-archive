@@ -1,5 +1,5 @@
 tool
-extends WindowDialog
+extends Panel
 
 var boxes : Array
 var cfg_path := ""
@@ -14,8 +14,14 @@ func _ready() -> void:
 		use_cfg = true
 		cfg.load(cfg_path)
 
-	boxes = $ScrollContainer/VBoxContainer.get_children()
-	connect("confirmed", self, "_on_ok")
+	boxes = $VBoxContainer/ScrollContainer/VBoxContainer.get_children()
+	$VBoxContainer/SaveButton.connect("pressed",  self, "_on_ok")
+	connect("visibility_changed", self, "_on_visibility_changed")
+
+
+func _on_visibility_changed():
+	if visible:
+		load_settings()
 
 
 func load_settings() -> void:
@@ -26,6 +32,6 @@ func load_settings() -> void:
 func _on_ok() -> void:
 	for box in boxes:
 		box.save_setting(use_cfg, cfg)
-	
+
 	if use_cfg and cfg:
 		cfg.save(cfg_path)

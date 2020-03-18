@@ -30,7 +30,7 @@ func notify(text:String) -> void:
 		
 	tween.interpolate_property(
 		$Label, "modulate", Color.green, scolor,
-		1, Tween.TRANS_LINEAR,Tween.EASE_IN, 1)
+		1, Tween.TRANS_LINEAR,Tween.EASE_IN, 0.5)
 		
 	$Label.show()
 	tween.start()

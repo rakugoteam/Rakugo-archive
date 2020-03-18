@@ -1,6 +1,6 @@
 tool
 extends RakugoBaseButton
-class_name RakugoChoiceButton
+class_name RakugoChoiceButton, "res://addons/Rakugo/icons/rakugo_choice_button.svg"
 
 var label
 var id := -1
@@ -9,8 +9,6 @@ func _ready() -> void:
 	disconnect("pressed", self, "_on_pressed")
 	connect("pressed", self, "_on_pressed", [], CONNECT_ONESHOT)
 	label = $RichTextLabel
-	label.mouse_filter = MOUSE_FILTER_IGNORE
-	label.bbcode_enabled = true
 	node_to_change = label
 
 
