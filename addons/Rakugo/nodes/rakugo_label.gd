@@ -1,5 +1,5 @@
 extends RichTextLabel
-class_name RakugoTextLabel
+class_name RakugoTextLabel, "res://addons/Rakugo/icons/rakugo_text_label.svg"
 
 export(String, "renpy", "bbcode") var mode := "renpy"
 export(String, FILE, "*.txt") var rakugo_text_file := ""
@@ -12,10 +12,10 @@ func _ready() -> void:
 	bbcode_enabled = true
 	set_rakugo_file(rakugo_text_file)
 	update_label()
-	
+
 	for vn in vars_names:
 		Rakugo.connect_var(vn, "value_changed", self, "on_value_changed")
-	
+
 	connect("meta_clicked", self, "on_meta_clicked")
 	connect("visibility_changed", self, "on_visibility_changed")
 
@@ -36,7 +36,7 @@ func on_value_changed(var_name: String, new_value) -> void:
 func set_rakugo_file(value: String) -> void:
 	if value.empty():
 		return
-	
+
 	file.open(value, file.READ)
 	rakugo_text = file.get_as_text()
 	file.close()
@@ -46,5 +46,5 @@ func set_rakugo_file(value: String) -> void:
 func on_visibility_changed() -> void:
 	if visible == false:
 		return
-	
+
 	update_label()

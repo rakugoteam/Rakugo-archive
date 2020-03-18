@@ -1,5 +1,5 @@
 extends RakugoBaseButton
-class_name RakugoQuestButton
+class_name RakugoQuestButton, "res://addons/Rakugo/icons/rakugo_quest_button.svg"
 
 export var sprite_rect := Vector2(64, 64)
 var quest: Subquest
@@ -60,7 +60,7 @@ func _on_pressed() -> void:
 	if quests_box.current_quest_button != null:
 		if quests_box.current_quest_button.quest_sub_box != quest_sub_box:
 			quests_box.current_quest_button.quest_sub_box.hide()
-		
+
 	if quest_sub_box != null:
 		quest_sub_box.show()
 		quests_box.current_quest_button = self

@@ -1,6 +1,6 @@
 tool
 extends AnimationPlayer
-class_name RakugoAnimPlayer
+class_name RakugoAnimPlayer, "res://addons/Rakugo/icons/rakugo_animation_player.svg"
 
 export var node_id := ""
 

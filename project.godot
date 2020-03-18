@@ -318,50 +318,50 @@ _global_script_class_icons={
 "CharacterObject": "",
 "CollapsedList": "",
 "Emojis": "res://addons/Rakugo/emojis/16x16/1f600.png",
-"GDScriptDialog": "",
+"GDScriptDialog": "res://addons/Rakugo/icons/gdscript.svg",
 "Hide": "",
-"HistorySave": "",
-"KindContainer": "",
+"HistorySave": "res://addons/Rakugo/icons/save.svg",
+"KindContainer": "res://addons/Rakugo/icons/rakugo_kind_container.svg",
 "Menu": "",
 "NodeLink": "",
 "Notify": "",
 "PlayAnim": "",
 "PlayAudio": "",
 "Quest": "",
-"RakugoAnimPlayer": "",
-"RakugoAsk": "",
-"RakugoAudioPlayer": "",
+"RakugoAnimPlayer": "res://addons/Rakugo/icons/rakugo_animation_player.svg",
+"RakugoAsk": "res://addons/Rakugo/icons/rakugo_ask.svg",
+"RakugoAudioPlayer": "res://addons/Rakugo/icons/rakugo_audio_player.svg",
 "RakugoAvatar": "res://addons/Rakugo/icons/rakugo_avatar.svg",
-"RakugoBaseButton": "",
-"RakugoBaseControl": "",
+"RakugoBaseButton": "res://addons/Rakugo/icons/rakugo_base_button.svg",
+"RakugoBaseControl": "res://addons/Rakugo/icons/rakugo_base_control.svg",
 "RakugoBool": "",
-"RakugoButton": "",
-"RakugoChoiceButton": "",
+"RakugoButton": "res://addons/Rakugo/icons/rakugo_button.svg",
+"RakugoChoiceButton": "res://addons/Rakugo/icons/rakugo_choice_button.svg",
 "RakugoColor": "",
-"RakugoControl": "",
+"RakugoControl": "res://addons/Rakugo/nodes/rakugo_control.gd",
 "RakugoDict": "",
 "RakugoList": "",
 "RakugoMenu": "res://addons/Rakugo/icons/rakugo_menu_v.svg",
-"RakugoNode2D": "",
+"RakugoNode2D": "res://addons/Rakugo/icons/rakugo_node2d.svg",
 "RakugoNodeCore": "",
-"RakugoQuestButton": "",
+"RakugoQuestButton": "res://addons/Rakugo/icons/rakugo_quest_button.svg",
 "RakugoRangedVar": "",
 "RakugoSayPanel": "res://addons/Rakugo/icons/rakugo_panel.svg",
 "RakugoSpatial": "res://addons/Rakugo/icons/rakugo_spatial.svg",
 "RakugoText": "",
-"RakugoTextLabel": "",
+"RakugoTextLabel": "res://addons/Rakugo/icons/rakugo_text_label.svg",
 "RakugoTextPasser": "",
-"RakugoTheme": "",
-"RakugoTimer": "",
+"RakugoTheme": "res://addons/Rakugo/icons/theme.svg",
+"RakugoTimer": "res://addons/Rakugo/icons/rakugo_timer.svg",
 "RakugoVar": "",
-"RakugoVarEdit": "",
-"RakugoVarLabel": "",
+"RakugoVarEdit": "res://addons/Rakugo/icons/rakugo_var_edit.svg",
+"RakugoVarLabel": "res://addons/Rakugo/icons/rakugo_var_label.svg",
 "RakugoVector2": "",
 "RakugoVector3": "",
-"RootNode": "",
-"RootNode2D": "",
-"Save": "",
-"SaveButton": "",
+"RootNode": "res://addons/Rakugo/icons/rakugo_root_node.svg",
+"RootNode2D": "res://addons/Rakugo/icons/rakugo_root_node2d.svg",
+"Save": "res://addons/Rakugo/icons/save.svg",
+"SaveButton": "res://addons/Rakugo/icons/rakugo_save_button.svg",
 "Say": "",
 "ScenesLinks": "res://addons/Rakugo/icons/scenes_links.svg",
 "Show": "",
@@ -374,9 +374,9 @@ _global_script_class_icons={
 
 [application]
 
-config/name="The Question: Rakugo Edition"
+config/name="New Rakugo Game"
 run/main_scene="res://game/scenes/Start/start.tscn"
-config/project_settings_override="res://game/rakugo.cfg"
+config/project_settings_override="res://question/rakugo.cfg"
 boot_splash/image="res://graphics/splash.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://graphics/window_icon.png"
@@ -387,13 +387,13 @@ rakugo/game_credits="Jeremi {i}jebedaia360{/i} Biernacki, kurinoku"
 rakugo/debug=false
 rakugo/scenes_links="res://game/scenes_links.tres"
 rakugo/save_folder="saves"
-rakugo/theme="res://themes/question/question.theme"
+rakugo/theme="res://themes/question/question.tres"
 rakugo/default_kind="adv"
 rakugo/test_saves=false
 rakugo/markup="renpy"
 rakugo/default_mkind="vertical"
 rakugo/default_mcolumns=2.0
-rakugo/default_manchor="center"
+rakugo/default_manchor=""
 rakugo/punctuation_pause="1"
 rakugo/default_mcolums=2.0
 
@@ -413,7 +413,7 @@ gdscript/warnings/return_value_discarded=false
 
 [editor_plugins]
 
-enabled=PoolStringArray( "Rakugo" )
+enabled=PoolStringArray( "Rakugo", "editor_icon_previewer", "godot-plugin-refresher" )
 
 [input]
 

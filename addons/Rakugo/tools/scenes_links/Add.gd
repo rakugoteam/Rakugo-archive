@@ -1,7 +1,7 @@
 tool
 extends Button
 
-export(PackedScene) var ScenesLinksEdit: PackedScene
+export(PackedScene) var SceneLinkEdit: PackedScene
 export(NodePath) var box_path: NodePath
 onready var box:BoxContainer = get_node(box_path)
 
@@ -11,6 +11,6 @@ func _ready() -> void:
 
 
 func _on_pressed() -> void:
-	var nsle = ScenesLinksEdit.instance()
+	var nsle = SceneLinkEdit.instance()
 	box.add_child(nsle)
 
