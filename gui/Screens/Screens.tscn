@@ -4246,6 +4246,9 @@ grow_horizontal = 0
 grow_vertical = 0
 rect_pivot_offset = Vector2( 1.16077, 0.622498 )
 alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TitleNVersion" type="HBoxContainer" parent="VBoxContainer"]
 margin_right = 264.0
