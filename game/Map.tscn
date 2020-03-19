@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/Rakugo/nodes/button2D.gd" type="Script" id=1]
+[ext_resource path="res://game/City.png" type="Texture" id=2]
+[ext_resource path="res://game/Map.gd" type="Script" id=3]
+
+[node name="Map" type="Node2D"]
+z_index = -10
+script = ExtResource( 3 )
+
+[node name="City" type="Sprite" parent="."]
+position = Vector2( 509.936, 299.991 )
+scale = Vector2( 1.68471, 2.04677 )
+texture = ExtResource( 2 )
+
+[node name="ParkBtn" type="Area2D" parent="."]
+position = Vector2( 744.626, 149.227 )
+script = ExtResource( 1 )
+use_colors_from_theme = false
+idle_color = Color( 1, 1, 1, 0 )
+hover_color = Color( 0.160784, 0.572549, 0.980392, 0.690196 )
+pressed_color = Color( 0.0431373, 0.184314, 0.231373, 0.698039 )
+disable_color = Color( 0.0470588, 0.0470588, 0.0470588, 0.466667 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ParkBtn"]
+position = Vector2( -1.99023, -6.63422 )
+polygon = PoolVector2Array( -11.1022, -88.2991, -188.236, 18.5116, -1.15094, 133.283, 174.656, 25.8092 )
+
+[node name="Polygon2D" type="Polygon2D" parent="ParkBtn"]
+modulate = Color( 0.992157, 0.972549, 0.972549, 1 )
+show_behind_parent = true
+position = Vector2( -1.99023, -6.63422 )
+color = Color( 0.988235, 0.952941, 0.952941, 1 )
+polygon = PoolVector2Array( -11.1022, -88.2991, -188.236, 18.5116, -1.15094, 133.283, 174.656, 25.8092 )
+[connection signal="pressed" from="ParkBtn" to="." method="_on_ParkBtn_pressed"]
