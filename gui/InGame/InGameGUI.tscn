@@ -474,7 +474,8 @@ size_flags_vertical = 3
 alignment = 1
 script = ExtResource( 8 )
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_use_anchors_": false
 }
 
 [node name="Hide" type="CheckButton" parent="Quick"]
