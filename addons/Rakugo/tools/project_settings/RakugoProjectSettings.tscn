@@ -22,7 +22,7 @@
 [ext_resource path="res://addons/Rakugo/icons/save.svg" type="Texture" id=20]
 [ext_resource path="res://addons/Rakugo/tools/project_settings/PunctuationBox.gd" type="Script" id=21]
 
-[sub_resource type="Image" id=1]
+[sub_resource type="Image" id=3]
 data = {
 "data": PoolByteArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ),
 "format": "LumAlpha8",
@@ -34,7 +34,7 @@ data = {
 [sub_resource type="ImageTexture" id=2]
 flags = 4
 flags = 4
-image = SubResource( 1 )
+image = SubResource( 3 )
 size = Vector2( 16, 16 )
 
 [node name="Rakugo" type="Panel"]
@@ -115,7 +115,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-text = "res://game/rakugo.cfg"
+text = "res://question/rakugo.cfg"
 icon = SubResource( 2 )
 
 [node name="FileDialog" type="FileDialog" parent="VBoxContainer/ScrollContainer/VBoxContainer/OverBox/Button"]
@@ -168,7 +168,7 @@ margin_left = 366.0
 margin_right = 700.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
-text = "New Rakugo Game"
+text = "The Question"
 caret_blink = true
 caret_blink_speed = 0.5
 
@@ -200,7 +200,7 @@ margin_left = 366.0
 margin_right = 700.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
-text = "1.3.0"
+text = "1.4.0"
 caret_blink = true
 caret_blink_speed = 0.5
 
@@ -237,7 +237,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-text = "res://game/scenes/Start/start.tscn"
+text = "res://question/scenes/Start/start.tscn"
 icon = SubResource( 2 )
 
 [node name="FileDialog" type="FileDialog" parent="VBoxContainer/ScrollContainer/VBoxContainer/StartSceneBox/Button"]
@@ -506,14 +506,16 @@ value = 2.0
 
 [node name="MAnchorButton" type="MenuButton" parent="VBoxContainer/ScrollContainer/VBoxContainer/MKindBox"]
 margin_left = 495.0
-margin_top = 2.0
+margin_top = 1.0
 margin_right = 667.0
-margin_bottom = 22.0
+margin_bottom = 23.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.6
+text = "center"
+icon = SubResource( 2 )
 flat = false
 items = [ "top_left", SubResource( 2 ), 0, false, false, 0, 0, null, "", false, "top_right", SubResource( 2 ), 0, false, false, 1, 0, null, "", false, "bottom_left", SubResource( 2 ), 0, false, false, 2, 0, null, "", false, "bottom_right", SubResource( 2 ), 0, false, false, 3, 0, null, "", false, "center_left", SubResource( 2 ), 0, false, false, 4, 0, null, "", false, "center_top", SubResource( 2 ), 0, false, false, 5, 0, null, "", false, "center_right", SubResource( 2 ), 0, false, false, 6, 0, null, "", false, "center_bottom", SubResource( 2 ), 0, false, false, 7, 0, null, "", false, "center", SubResource( 2 ), 0, false, false, 8, 0, null, "", false ]
 
@@ -557,7 +559,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-text = "res://themes/new_gui/new_gui.theme"
+text = "res://themes/question/question.tres"
 icon = SubResource( 2 )
 
 [node name="FileDialog" type="FileDialog" parent="VBoxContainer/ScrollContainer/VBoxContainer/ThemeBox/Button"]
@@ -583,6 +585,7 @@ icon = SubResource( 2 )
 margin_top = 372.0
 margin_right = 700.0
 margin_bottom = 396.0
+size_flags_horizontal = 3
 script = ExtResource( 15 )
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/ScrollContainer/VBoxContainer/ScenesLinksBox"]
@@ -595,6 +598,39 @@ stretch_mode = 4
 margin_left = 20.0
 margin_right = 700.0
 only_open = true
+
+[node name="LineEdit" parent="VBoxContainer/ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser" index="1"]
+margin_left = 312.0
+margin_right = 612.0
+rect_min_size = Vector2( 300, 24 )
+size_flags_horizontal = 10
+text = "res://question/scenes_links.tres"
+
+[node name="Choose" parent="VBoxContainer/ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser" index="2"]
+margin_left = 616.0
+margin_right = 644.0
+icon = SubResource( 2 )
+
+[node name="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser" index="3"]
+visible = false
+
+[node name="SetAsDef" parent="VBoxContainer/ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser/HBoxContainer" index="0"]
+icon = SubResource( 2 )
+
+[node name="Apply" parent="VBoxContainer/ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser/HBoxContainer" index="2"]
+icon = SubResource( 2 )
+
+[node name="Cancel" parent="VBoxContainer/ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser" index="4"]
+margin_left = 648.0
+margin_right = 676.0
+icon = SubResource( 2 )
+
+[node name="Control" parent="VBoxContainer/ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser" index="5"]
+margin_left = 680.0
+margin_right = 680.0
+
+[node name="FileDialog" parent="VBoxContainer/ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser/Control" index="0"]
+window_title = "Open a File"
 
 [node name="DebugBox" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
 margin_top = 400.0
@@ -670,3 +706,5 @@ margin_right = 700.0
 margin_bottom = 27.0
 size_flags_horizontal = 3
 text = "Must set it to OFF before export."
+
+[editable path="VBoxContainer/ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser"]

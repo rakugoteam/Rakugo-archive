@@ -40,9 +40,13 @@ func save_setting(use_cfg:=false, cfg:ConfigFile = null) -> void:
 	root.use_cfg = $CheckButton.pressed
 	root.cfg.load($Button.text)
 	ProjectSettings.set_setting(
-		"application/config/project_settings_override", $Button.text)
+		"application/config/project_settings_override",
+		 $Button.text
+		)
 
 
 func _on_fd():
 	$Button.text = $Button/FileDialog.current_path
 	root.cfg_path = $Button.text
+	root.cfg.load($Button.text)
+	root.load_setting()
