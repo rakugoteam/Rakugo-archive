@@ -60,7 +60,9 @@ dialogs_names = [ "book" ]
 script = ExtResource( 9 )
 dialogs_names = [ "marry" ]
 
-[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+[node name="BGMusic" type="AudioStreamPlayer" parent="." groups=[
+"save",
+]]
 pause_mode = 2
 stream = ExtResource( 10 )
 autoplay = true
