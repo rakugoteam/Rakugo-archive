@@ -5,34 +5,21 @@ var choices_labels: Array = []
 
 func _init() -> void:
 	._init()
-	parameters_names += ["node", "choices"]
+	parameters_names += [
+		"node", "choices",
+		"mkind", "manchor",
+		"mcolumns"
+		]
+
+	parameters_always += [
+		"node", "choices",
+		"mkind", "manchor",
+		"mcolumns"
+		]
+		
 	type = 3 # Rakugo.StatementType.MENU
-
-
-func if_who(_parameters:Dictionary, _who:CharacterObject):
-	.if_who(_parameters, _who)
-
-	if not ("mkind" in _parameters):
-		_parameters["mkind"] = _who.mkind
-
-	if not ("mcolumns" in _parameters):
-		_parameters["mcolumns"] = _who.mcolumns
-
-	if not ("manchor" in _parameters):
-		_parameters["manchor"] = _who.manchor
-
-
-func if_not_who(_parameters:Dictionary):
-	.if_not_who(_parameters)
-
-	if not ("mkind" in _parameters):
-		_parameters["mkind"] = Rakugo.default_mkind
-
-	if not ("mcolumns" in _parameters):
-		_parameters["mcolumns"] = Rakugo.default_mcolumns
-
-	if not ("manchor" in _parameters):
-		_parameters["manchor"] = Rakugo.default_manchor
+	parameters["mkind"] = "vertical"
+	parameters["manchor"] = "center"
 
 
 func exec() -> void:

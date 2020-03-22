@@ -15,9 +15,9 @@ func rightaway(node_name, dialog_name):
 	if !check_dialog(node_name, dialog_name, "rightaway"):
 		return
 
-#	if !dialog_init:
-#		_init_rightaway()
-#		dialog_init = true
+	if !dialog_init:
+		_init_rightaway()
+		dialog_init = true
 
 	if next_state():
 		show("sylvie green smile")

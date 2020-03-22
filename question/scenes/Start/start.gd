@@ -7,7 +7,7 @@ func start(node_name, dialog_name):
 	if !check_dialog(node_name, dialog_name, "start"):
 		return
 	
-#	dialog_init = true
+	dialog_init = true
 	
 	if next_state():
 		show("bg lecturehall")

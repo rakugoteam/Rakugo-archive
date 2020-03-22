@@ -11,9 +11,9 @@ func marry(node_name, dialog_name):
 	if !check_dialog(node_name, dialog_name, "marry"):
 		return
 
-#	if !dialog_init:
-#		_init_marry()
-#		dialog_init = true
+	if !dialog_init:
+		_init_marry()
+		dialog_init = true
 
 	if next_state():
 		say({
