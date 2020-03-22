@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://themes/question/question.tres" type="Theme" id=1]
+[ext_resource path="res://themes/new_gui/new_gui.tres" type="Theme" id=1]
 [ext_resource path="res://gui/Screens/Screens.gd" type="Script" id=2]
 [ext_resource path="res://ubuntu-font-family/UB32outline.tres" type="DynamicFont" id=3]
 [ext_resource path="res://addons/Rakugo/nodes/rakugo_var_label.gd" type="Script" id=4]
@@ -4246,6 +4246,9 @@ grow_horizontal = 0
 grow_vertical = 0
 rect_pivot_offset = Vector2( 1.16077, 0.622498 )
 alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TitleNVersion" type="HBoxContainer" parent="VBoxContainer"]
 margin_right = 264.0
@@ -4283,7 +4286,6 @@ margin_bottom = 82.0
 rect_min_size = Vector2( 100, 40 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/normal_font = ExtResource( 3 )
 bbcode_enabled = true
 bbcode_text = "[right]Rakugo 2.0.0"
 text = "Rakugo 2.0.0"
@@ -4333,14 +4335,14 @@ margin_right = 198.0
 [node name="NewGame" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
 margin_top = 20.0
 margin_right = 198.0
-margin_bottom = 58.0
+margin_bottom = 54.0
 text = "New Game"
 align = 0
 
 [node name="Continue" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
-margin_top = 78.0
+margin_top = 74.0
 margin_right = 198.0
-margin_bottom = 116.0
+margin_bottom = 108.0
 text = "Continue"
 align = 0
 
@@ -4374,9 +4376,9 @@ text = "Quests"
 align = 0
 
 [node name="Load" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
-margin_top = 136.0
+margin_top = 128.0
 margin_right = 198.0
-margin_bottom = 174.0
+margin_bottom = 162.0
 toggle_mode = true
 group = SubResource( 1 )
 text = "Load"
@@ -4393,36 +4395,36 @@ text = "Save"
 align = 0
 
 [node name="Options" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
-margin_top = 194.0
+margin_top = 182.0
 margin_right = 198.0
-margin_bottom = 232.0
+margin_bottom = 216.0
 toggle_mode = true
 group = SubResource( 1 )
 text = "Options"
 align = 0
 
 [node name="About" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
-margin_top = 252.0
+margin_top = 236.0
 margin_right = 198.0
-margin_bottom = 290.0
+margin_bottom = 270.0
 toggle_mode = true
 group = SubResource( 1 )
 text = "About"
 align = 0
 
 [node name="Help" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
-margin_top = 310.0
+margin_top = 290.0
 margin_right = 198.0
-margin_bottom = 348.0
+margin_bottom = 324.0
 toggle_mode = true
 group = SubResource( 1 )
 text = "Help"
 align = 0
 
 [node name="Quit" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
-margin_top = 368.0
+margin_top = 344.0
 margin_right = 198.0
-margin_bottom = 406.0
+margin_bottom = 378.0
 toggle_mode = true
 group = SubResource( 1 )
 text = "Quit"

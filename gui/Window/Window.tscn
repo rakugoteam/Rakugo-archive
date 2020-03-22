@@ -2,18 +2,37 @@
 
 [ext_resource path="res://gui/Window/Window.gd" type="Script" id=1]
 [ext_resource path="res://gui/InGame/InGameGUI.tscn" type="PackedScene" id=2]
-[ext_resource path="res://themes/question/question.theme" type="Theme" id=3]
+[ext_resource path="res://gui/Window/Viewport.gd" type="Script" id=3]
 [ext_resource path="res://gui/Screens/Screens.tscn" type="PackedScene" id=4]
 
 [node name="Window" type="Node2D"]
 pause_mode = 2
 z_as_relative = false
 script = ExtResource( 1 )
+root = false
+
+[node name="ViewportContainer" type="ViewportContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 1024, 600 )
+mouse_filter = 1
+stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="ViewportContainer"]
+size = Vector2( 1024, 600 )
+own_world = true
+handle_input_locally = false
+usage = 0
+render_target_update_mode = 3
+audio_listener_enable_2d = true
+audio_listener_enable_3d = true
+script = ExtResource( 3 )
 
 [node name="InGameGUI" parent="." instance=ExtResource( 2 )]
 visible = false
-theme = ExtResource( 3 )
 script = null
 
 [node name="Screens" parent="." instance=ExtResource( 4 )]
-theme = ExtResource( 3 )

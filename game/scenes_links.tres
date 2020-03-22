@@ -6,4 +6,4 @@
 [resource]
 script = ExtResource( 2 )
 ids = [ "Start" ]
-scenes = [ ExtResource( 1 ) ]
+scenes = [ ExtResource( 1 ), ExtResource( 1 ) ]

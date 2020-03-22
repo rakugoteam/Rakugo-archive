@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://addons/Rakugo/nodes/root_node2d.gd" type="Script" id=1]
 [ext_resource path="res://question/backgrounds/backgrounds.tscn" type="PackedScene" id=2]
@@ -11,12 +11,22 @@
 [ext_resource path="res://question/scenes/Start/marry.gd" type="Script" id=9]
 [ext_resource path="res://question/illurock-stereo.ogg" type="AudioStream" id=10]
 [ext_resource path="res://addons/Rakugo/nodes/rakugo_audio_player.gd" type="Script" id=11]
+[ext_resource path="res://question/backgrounds/main_menu.png" type="Texture" id=12]
 
 [node name="Start" type="Node2D"]
 script = ExtResource( 1 )
-root = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="main_menu" type="Sprite" parent="."]
+position = Vector2( 514.415, 301.891 )
+scale = Vector2( 0.80048, 0.83293 )
+z_index = -10
+texture = ExtResource( 12 )
 
 [node name="backgrounds" parent="." instance=ExtResource( 2 )]
+position = Vector2( 511.651, 298.479 )
 z_index = -2
 
 [node name="characters" parent="." instance=ExtResource( 3 )]
@@ -50,7 +60,9 @@ dialogs_names = [ "book" ]
 script = ExtResource( 9 )
 dialogs_names = [ "marry" ]
 
-[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+[node name="BGMusic" type="AudioStreamPlayer" parent="." groups=[
+"save",
+]]
 pause_mode = 2
 stream = ExtResource( 10 )
 autoplay = true

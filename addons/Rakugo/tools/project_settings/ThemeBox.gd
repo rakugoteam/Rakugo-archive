@@ -12,18 +12,27 @@ func _ready() -> void:
 
 
 func _on_reload() -> void:
-	$Button.text = "res://themes/question/question.tres"
+	$Button.text = ProjectSettings.get_setting(
+		"application/rakugo/theme")
 
 
 func load_setting(use_cfg:bool, cfg:ConfigFile) -> void:
+	if use_cfg:
+		$Button.text = cfg.get_value("application", "rakugo/theme")
+		return
+	
 	$Button.text = ProjectSettings.get_setting(
 		"application/rakugo/theme")
 
 
 func save_setting(use_cfg:bool, cfg:ConfigFile) -> void:
-	 ProjectSettings.set_setting(
+	if use_cfg:
+		cfg.set_value("application", "rakugo/theme", $Button.text)
+		return
+	
+	ProjectSettings.set_setting(
 		"application/rakugo/theme", $Button.text)
-
+	
 
 func _on_fd():
 	$Button.text = $Button/FileDialog.current_path
