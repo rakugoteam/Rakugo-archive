@@ -10,8 +10,7 @@ func load_setting(use_cfg:bool, cfg:ConfigFile) -> void:
 		$CheckButton.pressed = cfg.get_value("application", "rakugo/debug")
 		return
 
-	$CheckButton.pressed = ProjectSettings.get_setting(
-		"application/rakugo/debug")
+	$CheckButton.pressed = ProjectSettings.get_setting("application/rakugo/debug")
 
 
 func save_setting(use_cfg:bool, cfg:ConfigFile) -> void:
@@ -19,5 +18,4 @@ func save_setting(use_cfg:bool, cfg:ConfigFile) -> void:
 		cfg.set_value("application", "rakugo/debug", $CheckButton.pressed)
 		return
 
-	ProjectSettings.set_setting(
-		"application/rakugo/debug", $CheckButton.pressed)
+	ProjectSettings.set_setting("application/rakugo/debug", $CheckButton.pressed)
