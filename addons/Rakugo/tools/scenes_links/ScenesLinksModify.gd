@@ -30,7 +30,7 @@ func plugin_ready(_editor:EditorInterface) -> void:
 
 
 func notify(text:String) -> void:
-	$Panel/Label.text = text
+	$Label.text = text
 	var scolor = Color(0, 0, 0, 0)
 	tween.interpolate_property(
 		$Label, "modulate", scolor, Color.green,

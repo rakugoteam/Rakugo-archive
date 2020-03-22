@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/types/avatar.gd"
 }, {
+"base": "Area2D",
+"class": "Button2D",
+"language": "GDScript",
+"path": "res://addons/Rakugo/nodes/button2D.gd"
+}, {
 "base": "Statement",
 "class": "CallNode",
 "language": "GDScript",
@@ -189,7 +194,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/types/rakugo_ranged.gd"
 }, {
-"base": "Panel",
+"base": "RakugoControl",
 "class": "RakugoSayPanel",
 "language": "GDScript",
 "path": "res://addons/Rakugo/nodes/rakugo_say_panel.gd"
@@ -313,6 +318,7 @@ _global_script_class_icons={
 "Ask": "",
 "AutoTimer": "",
 "Avatar": "",
+"Button2D": "res://addons/Rakugo/icons/button_2d.svg",
 "CallNode": "",
 "Character": "res://addons/Rakugo/icons/rakugo_character.svg",
 "CharacterObject": "",
@@ -375,27 +381,27 @@ _global_script_class_icons={
 [application]
 
 config/name="New Rakugo Game"
-run/main_scene="res://game/scenes/Start/start.tscn"
-config/project_settings_override="res://question/rakugo.cfg"
+run/main_scene="res://game/Start/Start.tscn"
+config/project_settings_override="res://game/rakugo.cfg"
 boot_splash/image="res://graphics/splash.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://graphics/window_icon.png"
 config/auto_accept_quit=false
 config/quit_on_go_back=false
-rakugo/version="1.3.0"
-rakugo/game_credits="Jeremi {i}jebedaia360{/i} Biernacki, kurinoku"
+rakugo/version="0.0.1"
+rakugo/game_credits="Jeremi {i}jebedaia360{/i} Biernacki"
 rakugo/debug=false
 rakugo/scenes_links="res://game/scenes_links.tres"
 rakugo/save_folder="saves"
-rakugo/theme="res://themes/question/question.tres"
-rakugo/default_kind="adv"
+rakugo/default_kind="nvl"
 rakugo/test_saves=false
 rakugo/markup="renpy"
 rakugo/default_mkind="vertical"
 rakugo/default_mcolumns=2.0
-rakugo/default_manchor=""
+rakugo/default_manchor="center"
 rakugo/punctuation_pause="1"
 rakugo/default_mcolums=2.0
+rakugo/theme="res://themes/new_gui/new_gui.tres"
 
 [autoload]
 
@@ -437,7 +443,6 @@ ui_cancel={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"unicode":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":1,"pressure":0.0,"pressed":false,"script":null)
-, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
 ui_focus_next={

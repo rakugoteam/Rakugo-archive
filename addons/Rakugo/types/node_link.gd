@@ -1,9 +1,22 @@
 extends RakugoVar
 class_name NodeLink
 
+
+var node : Node setget _set_node, _get_node
+var _node : Node
+
 func _init(var_id: String, var_type := Rakugo.Type.NODE, var_prefix := "node_link_").(
 		var_id, {"node_path":""}, var_type, var_prefix) -> void:
+	_node = Node.new()
 	pass
+
+
+func _set_node(n:Node):
+	_set_value({"node_path": n.get_path()})
+
+
+func _get_node()->Node:
+	return _node.get_node(value)
 
 
 func _set_value(dict: Dictionary) -> void:

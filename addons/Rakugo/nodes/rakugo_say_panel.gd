@@ -1,4 +1,4 @@
-extends Panel
+extends RakugoControl
 class_name RakugoSayPanel, "res://addons/Rakugo/icons/rakugo_panel.svg"
 
 export (String, "adv", "top", "center", "left", "right", "nvl", "fullscreen") var kind = "adv"
@@ -59,6 +59,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	var ui_accept = event.is_action_pressed("ui_accept")
 	_on_ui_accept(ui_accept)
 
+func _input(event) -> void:
+	var ui_accept = event.is_action_pressed("ui_accept")
+	_on_ui_accept(ui_accept)
 
 func _on_ui_accept(value: bool) -> void:
 	var ui_accept = value or _ui_accept

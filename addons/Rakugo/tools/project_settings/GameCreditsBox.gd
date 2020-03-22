@@ -24,8 +24,7 @@ func save_setting(use_cfg:bool, cfg:ConfigFile) -> void:
 		cfg.set_value("application", "rakugo/game_credits", $TextEdit.text)
 		return
 
-	ProjectSettings.set_setting(
-		"application/rakugo/game_credits", $TextEdit.text)
+	ProjectSettings.set_setting("application/rakugo/game_credits", $TextEdit.text)
 
 
 func _on_fd():
