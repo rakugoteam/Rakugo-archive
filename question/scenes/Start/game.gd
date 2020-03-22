@@ -11,9 +11,9 @@ func game(node_name, dialog_name):
 	if !check_dialog(node_name, dialog_name, "game"):
 		return
 	
-#	if !dialog_init:
-#		_init_game()
-#		dialog_init = true
+	if !dialog_init:
+		_init_game()
+		dialog_init = true
 
 	if next_state():
 		define("book", false)
