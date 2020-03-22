@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://addons/Rakugo/tools/project_settings/RakugoProjectSettings.gd" type="Script" id=1]
 [ext_resource path="res://addons/Rakugo/tools/project_settings/OverBox.gd" type="Script" id=2]
@@ -22,7 +22,7 @@
 [ext_resource path="res://addons/Rakugo/icons/save.svg" type="Texture" id=20]
 [ext_resource path="res://addons/Rakugo/tools/project_settings/PunctuationBox.gd" type="Script" id=21]
 
-[sub_resource type="Image" id=5]
+[sub_resource type="Image" id=3]
 data = {
 "data": PoolByteArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ),
 "format": "LumAlpha8",
@@ -34,22 +34,7 @@ data = {
 [sub_resource type="ImageTexture" id=2]
 flags = 4
 flags = 4
-image = SubResource( 5 )
-size = Vector2( 16, 16 )
-
-[sub_resource type="Image" id=6]
-data = {
-"data": PoolByteArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ),
-"format": "LumAlpha8",
-"height": 16,
-"mipmaps": false,
-"width": 16
-}
-
-[sub_resource type="ImageTexture" id=4]
-flags = 4
-flags = 4
-image = SubResource( 6 )
+image = SubResource( 3 )
 size = Vector2( 16, 16 )
 
 [node name="Rakugo" type="Panel"]
@@ -70,14 +55,15 @@ __meta__ = {
 }
 
 [node name="SaveButton" type="Button" parent="VBoxContainer"]
-margin_left = 329.0
-margin_right = 370.0
-margin_bottom = 20.0
-size_flags_horizontal = 4
+margin_left = 641.0
+margin_right = 700.0
+margin_bottom = 22.0
+size_flags_horizontal = 8
 text = "Save"
+icon = SubResource( 2 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
-margin_top = 24.0
+margin_top = 26.0
 margin_right = 700.0
 margin_bottom = 547.0
 size_flags_horizontal = 3
@@ -88,7 +74,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
 margin_right = 700.0
-margin_bottom = 523.0
+margin_bottom = 521.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -97,7 +83,7 @@ margin_right = 700.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 script = ExtResource( 2 )
-root_path = NodePath("../../../../../Rakugo")
+root_path = NodePath("../../../..")
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/ScrollContainer/VBoxContainer/OverBox"]
 margin_right = 24.0
@@ -121,6 +107,18 @@ size_flags_horizontal = 3
 text = "Use Project Settings Override"
 valign = 1
 
+[node name="FileDialog" type="FileDialog" parent="VBoxContainer/ScrollContainer/VBoxContainer/OverBox"]
+margin_left = 195.0
+margin_top = -113.0
+margin_right = 651.0
+margin_bottom = 207.0
+window_title = "Open a File"
+mode = 0
+filters = PoolStringArray( "*.cfg" )
+current_dir = "res://game"
+current_file = "rakugo.cfg"
+current_path = "res://game/rakugo.cfg"
+
 [node name="Button" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/OverBox"]
 margin_left = 390.0
 margin_top = 9.0
@@ -132,18 +130,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 4
 text = "res://question/rakugo.cfg"
 icon = SubResource( 2 )
-
-[node name="FileDialog" type="FileDialog" parent="VBoxContainer/ScrollContainer/VBoxContainer/OverBox/Button"]
-margin_left = -195.0
-margin_top = -122.0
-margin_right = 261.0
-margin_bottom = 198.0
-window_title = "Open a File"
-mode = 0
-filters = PoolStringArray( "*.cfg" )
-current_dir = "res://game"
-current_file = "rakugo.cfg"
-current_path = "res://game/rakugo.cfg"
 
 [node name="Reload" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/OverBox"]
 margin_left = 672.0
@@ -183,7 +169,7 @@ margin_left = 366.0
 margin_right = 700.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
-text = "The Question"
+text = "The Question: Rakugo Editon"
 caret_blink = true
 caret_blink_speed = 0.5
 
@@ -225,7 +211,6 @@ margin_right = 700.0
 margin_bottom = 124.0
 size_flags_horizontal = 3
 script = ExtResource( 6 )
-root_path = NodePath("")
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/ScrollContainer/VBoxContainer/StartSceneBox"]
 margin_right = 24.0
@@ -459,7 +444,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 text = "adv"
-icon = SubResource( 4 )
+icon = SubResource( 2 )
 flat = false
 items = [ "adv", SubResource( 2 ), 0, false, false, 0, 0, null, "", false, "center", SubResource( 2 ), 0, false, false, 1, 0, null, "", false, "fullscreen", SubResource( 2 ), 0, false, false, 2, 0, null, "", false, "right", SubResource( 2 ), 0, false, false, 3, 0, null, "", false, "left", SubResource( 2 ), 0, false, false, 4, 0, null, "", false, "top", SubResource( 2 ), 0, false, false, 5, 0, null, "", false, "phone-right", SubResource( 2 ), 0, false, false, 6, 0, null, "", false, "phone-left", SubResource( 2 ), 0, false, false, 7, 0, null, "", false, "nvl", SubResource( 2 ), 0, false, false, 8, 0, null, "", false ]
 
@@ -506,7 +491,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.6
 text = "vertical"
-icon = SubResource( 4 )
+icon = SubResource( 2 )
 flat = false
 items = [ "vertical", SubResource( 2 ), 0, false, false, 0, 0, null, "", false, "horizontal", SubResource( 2 ), 0, false, false, 1, 0, null, "", false, "grid", SubResource( 2 ), 0, false, false, 2, 0, null, "", false ]
 
@@ -530,7 +515,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.6
 text = "center"
-icon = SubResource( 4 )
+icon = SubResource( 2 )
 flat = false
 items = [ "top_left", SubResource( 2 ), 0, false, false, 0, 0, null, "", false, "top_right", SubResource( 2 ), 0, false, false, 1, 0, null, "", false, "bottom_left", SubResource( 2 ), 0, false, false, 2, 0, null, "", false, "bottom_right", SubResource( 2 ), 0, false, false, 3, 0, null, "", false, "center_left", SubResource( 2 ), 0, false, false, 4, 0, null, "", false, "center_top", SubResource( 2 ), 0, false, false, 5, 0, null, "", false, "center_right", SubResource( 2 ), 0, false, false, 6, 0, null, "", false, "center_bottom", SubResource( 2 ), 0, false, false, 7, 0, null, "", false, "center", SubResource( 2 ), 0, false, false, 8, 0, null, "", false ]
 
@@ -692,22 +677,16 @@ stretch_mode = 4
 
 [node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/SaveBox"]
 margin_left = 28.0
-margin_right = 308.0
+margin_right = 379.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Test saves"
 valign = 1
 
-[node name="CheckButton" type="CheckButton" parent="VBoxContainer/ScrollContainer/VBoxContainer/SaveBox"]
-margin_left = 312.0
-margin_right = 388.0
-margin_bottom = 40.0
-size_flags_vertical = 3
-
 [node name="TextureRect2" type="TextureRect" parent="VBoxContainer/ScrollContainer/VBoxContainer/SaveBox"]
-margin_left = 392.0
-margin_right = 416.0
+margin_left = 383.0
+margin_right = 407.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 24, 24 )
 size_flags_vertical = 3
@@ -715,11 +694,25 @@ texture = SubResource( 2 )
 stretch_mode = 4
 
 [node name="Label3" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/SaveBox"]
-margin_left = 420.0
+margin_left = 411.0
 margin_top = 13.0
-margin_right = 700.0
+margin_right = 620.0
 margin_bottom = 27.0
-size_flags_horizontal = 3
 text = "Must set it to OFF before export."
+align = 2
+
+[node name="CheckButton" type="CheckButton" parent="VBoxContainer/ScrollContainer/VBoxContainer/SaveBox"]
+margin_left = 624.0
+margin_right = 700.0
+margin_bottom = 40.0
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Saved"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [editable path="VBoxContainer/ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser"]

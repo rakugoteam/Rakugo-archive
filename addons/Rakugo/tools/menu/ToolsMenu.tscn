@@ -21,8 +21,8 @@ image = SubResource( 3 )
 size = Vector2( 16, 16 )
 
 [node name="ToolsMenu" type="MenuButton"]
-margin_right = 24.0
-margin_bottom = 22.0
+margin_right = 74.0
+margin_bottom = 23.0
 hint_tooltip = "Rakugo Tools"
 text = "Rakugo"
 icon = ExtResource( 1 )
