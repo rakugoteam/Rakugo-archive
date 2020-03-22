@@ -1,0 +1,18 @@
+
+Rakugo is made by:
+	[url=https://github.com/jebedaia360]Jeremi Biernacki ([i]Jebedaia[/i])[/url],
+	[url=https://github.com/BurningWood]Zon Petilla ([i]Title Pending[/i])[/url],
+	[url=https://github.com/ivandardi]Ivan Borgia Dardi([i]ivandardi/MelodicStream[/i])[/url],
+	[url=https://github.com/deep-gaurav]Deep Gaurav[/url]
+
+Special Thanks for:
+	Nefaras,
+	txjjzyzqbx,
+	Kurinoku,
+	[url=https://github.com/Sslaxx]Stuart Moore ([i]Sslaxx[/i])[/url],
+	Crystalwarrior,
+	[url=https://github.com/kurinoku]kurinoku[/url],
+	[url=https://github.com/Kermer]Sebastian Holc ([i]Kermer[/i])[/url],
+	[url=https://github.com/Plopsiskopsis]Plopsiskopsis[/url],
+	[url=https://github.com/MatiasVME]Matías Muñoz Espinoza ([i]MatiasVME[/i])[/url],
+	Michael Alexsander Silva Dias

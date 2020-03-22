@@ -169,6 +169,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/types/rakugo_list.gd"
 }, {
+"base": "GridContainer",
+"class": "RakugoMenu",
+"language": "GDScript",
+"path": "res://addons/Rakugo/nodes/rakugo_menu.gd"
+}, {
 "base": "Node2D",
 "class": "RakugoNode2D",
 "language": "GDScript",
@@ -275,7 +280,7 @@ _global_script_classes=[ {
 "path": "res://addons/Rakugo/statements/say.gd"
 }, {
 "base": "Resource",
-"class": "SceneLinks",
+"class": "ScenesLinks",
 "language": "GDScript",
 "path": "res://addons/Rakugo/types/scenes_links.gd"
 }, {
@@ -311,7 +316,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Ask": "",
-"AutoTimer": "res://addons/Rakugo/icons/rakugo_auto_timer.svg",
+"AutoTimer": "",
 "Avatar": "",
 "Button2D": "res://addons/Rakugo/icons/button_2d.svg",
 "CallNode": "",
@@ -321,7 +326,7 @@ _global_script_class_icons={
 "Emojis": "res://addons/Rakugo/emojis/16x16/1f600.png",
 "GDScriptDialog": "res://addons/Rakugo/icons/gdscript.svg",
 "Hide": "",
-"HistorySave": "",
+"HistorySave": "res://addons/Rakugo/icons/save.svg",
 "KindContainer": "res://addons/Rakugo/icons/rakugo_kind_container.svg",
 "Menu": "",
 "NodeLink": "",
@@ -334,14 +339,15 @@ _global_script_class_icons={
 "RakugoAudioPlayer": "res://addons/Rakugo/icons/rakugo_audio_player.svg",
 "RakugoAvatar": "res://addons/Rakugo/icons/rakugo_avatar.svg",
 "RakugoBaseButton": "res://addons/Rakugo/icons/rakugo_base_button.svg",
-"RakugoBaseControl": "res://addons/Rakugo/icons/rakugo_control_base.svg",
+"RakugoBaseControl": "res://addons/Rakugo/icons/rakugo_base_control.svg",
 "RakugoBool": "",
 "RakugoButton": "res://addons/Rakugo/icons/rakugo_button.svg",
 "RakugoChoiceButton": "res://addons/Rakugo/icons/rakugo_choice_button.svg",
 "RakugoColor": "",
-"RakugoControl": "res://addons/Rakugo/icons/rakugo_control.svg",
+"RakugoControl": "res://addons/Rakugo/nodes/rakugo_control.gd",
 "RakugoDict": "",
 "RakugoList": "",
+"RakugoMenu": "res://addons/Rakugo/icons/rakugo_menu_v.svg",
 "RakugoNode2D": "res://addons/Rakugo/icons/rakugo_node2d.svg",
 "RakugoNodeCore": "",
 "RakugoQuestButton": "res://addons/Rakugo/icons/rakugo_quest_button.svg",
@@ -350,8 +356,8 @@ _global_script_class_icons={
 "RakugoSpatial": "res://addons/Rakugo/icons/rakugo_spatial.svg",
 "RakugoText": "",
 "RakugoTextLabel": "res://addons/Rakugo/icons/rakugo_text_label.svg",
-"RakugoTextPasser": "res://addons/Rakugo/icons/rakugo_text_paser.svg",
-"RakugoTheme": "",
+"RakugoTextPasser": "",
+"RakugoTheme": "res://addons/Rakugo/icons/theme.svg",
 "RakugoTimer": "res://addons/Rakugo/icons/rakugo_timer.svg",
 "RakugoVar": "",
 "RakugoVarEdit": "res://addons/Rakugo/icons/rakugo_var_edit.svg",
@@ -360,12 +366,12 @@ _global_script_class_icons={
 "RakugoVector3": "",
 "RootNode": "res://addons/Rakugo/icons/rakugo_root_node.svg",
 "RootNode2D": "res://addons/Rakugo/icons/rakugo_root_node2d.svg",
-"Save": "",
+"Save": "res://addons/Rakugo/icons/save.svg",
 "SaveButton": "res://addons/Rakugo/icons/rakugo_save_button.svg",
 "Say": "",
-"SceneLinks": "",
+"ScenesLinks": "res://addons/Rakugo/icons/scenes_links.svg",
 "Show": "",
-"SkipTimer": "res://addons/Rakugo/icons/rakugo_skip_timer.svg",
+"SkipTimer": "",
 "Statement": "",
 "StopAnim": "",
 "StopAudio": "",
@@ -376,24 +382,26 @@ _global_script_class_icons={
 
 config/name="New Rakugo Game"
 run/main_scene="res://game/Start/Start.tscn"
+config/project_settings_override="res://question/rakugo.cfg"
 boot_splash/image="res://graphics/splash.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://graphics/window_icon.png"
 config/auto_accept_quit=false
 config/quit_on_go_back=false
-rakugo/version="1.2f4"
-rakugo/game_credits="{a=https://github.com/jebedaia360}Jeremi Biernacki ({i}Jebedaia{/i}){/a}"
+rakugo/version="0.0.1"
+rakugo/game_credits="Jeremi {i}jebedaia360{/i} Biernacki"
 rakugo/debug=false
-rakugo/scenes_links="res://game/scenes_links.tres"
+rakugo/scenes_links="res://question/scenes_links.tres"
 rakugo/save_folder="saves"
-rakugo/theme="res://themes/new_gui/new_gui.theme"
 rakugo/default_kind="adv"
 rakugo/test_saves=false
-rakugo/markup="renpy"
-rakugo/default_mkind="vertical"
+rakugo/markup="bbcode"
+rakugo/default_mkind="grid"
 rakugo/default_mcolumns=2.0
 rakugo/default_manchor="center"
 rakugo/punctuation_pause="1"
+rakugo/default_mcolums=2.0
+rakugo/theme="res://themes/new_gui/new_gui.tres"
 
 [autoload]
 
@@ -411,7 +419,7 @@ gdscript/warnings/return_value_discarded=false
 
 [editor_plugins]
 
-enabled=PoolStringArray( "Rakugo" )
+enabled=PoolStringArray( "Rakugo", "editor_icon_previewer", "godot-plugin-refresher" )
 
 [input]
 
@@ -435,7 +443,6 @@ ui_cancel={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"unicode":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":1,"pressure":0.0,"pressed":false,"script":null)
-, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
 ui_focus_next={

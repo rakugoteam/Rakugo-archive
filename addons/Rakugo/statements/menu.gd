@@ -5,10 +5,21 @@ var choices_labels: Array = []
 
 func _init() -> void:
 	._init()
-	parameters_names += ["node", "choices"]
-	parameters_always += ["node", "choices", "mkind"]
+	parameters_names += [
+		"node", "choices",
+		"mkind", "manchor",
+		"mcolumns"
+		]
+
+	parameters_always += [
+		"node", "choices",
+		"mkind", "manchor",
+		"mcolumns"
+		]
+		
 	type = 3 # Rakugo.StatementType.MENU
 	parameters["mkind"] = "vertical"
+	parameters["manchor"] = "center"
 
 
 func exec() -> void:

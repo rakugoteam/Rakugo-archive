@@ -1,8 +1,8 @@
 extends Object
 
 func invoke(save_name: String) -> bool:
-	var r := Rakugo
-	var new_save := Save.new()
+	var r = Rakugo
+	var new_save = Save.new()
 	new_save.game_version = r.game_version
 	new_save.rakugo_version = r.rakugo_version
 	new_save.history = r.history.duplicate()
@@ -19,7 +19,6 @@ func invoke(save_name: String) -> bool:
 	for node in r.get_tree().get_nodes_in_group("save"):
 		if node.has_method("on_save"):
 			node.on_save()
-			continue
 
 	for v in r.variables.values():
 		v.save_to(new_save.data)

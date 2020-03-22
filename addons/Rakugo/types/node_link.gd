@@ -1,6 +1,7 @@
 extends RakugoVar
 class_name NodeLink
 
+
 var node : Node setget _set_node, _get_node
 var _node : Node
 

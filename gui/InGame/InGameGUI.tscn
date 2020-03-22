@@ -1,27 +1,24 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=27 format=2]
 
-[ext_resource path="res://themes/new_gui/new_gui.theme" type="Theme" id=1]
+[ext_resource path="res://themes/new_gui/new_gui.tres" type="Theme" id=1]
 [ext_resource path="res://addons/Rakugo/nodes/rakugo_control.gd" type="Script" id=2]
 [ext_resource path="res://addons/Rakugo/nodes/rakugo_menu.gd" type="Script" id=3]
-[ext_resource path="res://addons/Rakugo/icons/rakugo_menu_v.svg" type="Texture" id=4]
-[ext_resource path="res://gui/InGame/ChoiceButton.tscn" type="PackedScene" id=5]
-[ext_resource path="res://addons/Rakugo/icons/rakugo_menu_h.svg" type="Texture" id=6]
-[ext_resource path="res://gui/InGame/Say.tscn" type="PackedScene" id=7]
-[ext_resource path="res://gui/InGame/Notify.gd" type="Script" id=8]
-[ext_resource path="res://gui/InGame/Quick.gd" type="Script" id=9]
-[ext_resource path="res://gui/InGame/QuickMenuButton.tscn" type="PackedScene" id=10]
-[ext_resource path="res://ubuntu-font-family/Ubuntu-B.ttf" type="DynamicFontData" id=11]
-[ext_resource path="res://gui/Labels/name_text.tscn" type="PackedScene" id=12]
-[ext_resource path="res://ubuntu-font-family/UbuntuMono-R.ttf" type="DynamicFontData" id=13]
-[ext_resource path="res://ubuntu-font-family/Ubuntu-RI.ttf" type="DynamicFontData" id=14]
-[ext_resource path="res://ubuntu-font-family/Ubuntu-R.ttf" type="DynamicFontData" id=15]
+[ext_resource path="res://gui/InGame/ChoiceButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://gui/InGame/Say.tscn" type="PackedScene" id=5]
+[ext_resource path="res://themes/question/question.tres" type="Theme" id=6]
+[ext_resource path="res://gui/InGame/Notify.gd" type="Script" id=7]
+[ext_resource path="res://gui/InGame/Quick.gd" type="Script" id=8]
+[ext_resource path="res://gui/InGame/QuickMenuButton.tscn" type="PackedScene" id=9]
+[ext_resource path="res://ubuntu-font-family/Ubuntu-B.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://gui/Labels/name_text.tscn" type="PackedScene" id=11]
+[ext_resource path="res://ubuntu-font-family/UbuntuMono-R.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://ubuntu-font-family/Ubuntu-RI.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://ubuntu-font-family/Ubuntu-R.ttf" type="DynamicFontData" id=14]
 
 [sub_resource type="DynamicFont" id=1]
 size = 22
-outline_size = 1
-outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
-font_data = ExtResource( 11 )
+font_data = ExtResource( 10 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "Auto"
@@ -391,32 +388,32 @@ tracks/4/keys = {
 [sub_resource type="DynamicFont" id=8]
 size = 30
 use_filter = true
-font_data = ExtResource( 13 )
+font_data = ExtResource( 12 )
 
 [sub_resource type="DynamicFont" id=9]
 size = 30
 use_filter = true
-font_data = ExtResource( 11 )
+font_data = ExtResource( 10 )
 
 [sub_resource type="DynamicFont" id=10]
 size = 30
 use_filter = true
-font_data = ExtResource( 14 )
+font_data = ExtResource( 13 )
 
 [sub_resource type="DynamicFont" id=11]
 size = 30
 use_filter = true
-font_data = ExtResource( 11 )
+font_data = ExtResource( 10 )
 
 [sub_resource type="DynamicFont" id=12]
 size = 30
 use_filter = true
-font_data = ExtResource( 15 )
+font_data = ExtResource( 14 )
 
 [node name="InGameGUI" type="Control"]
 pause_mode = 1
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 mouse_filter = 1
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
@@ -427,74 +424,25 @@ use_theme_from_setting = true
 register = true
 node_id = "InGameGUI"
 
-[node name="Dialog" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-theme = ExtResource( 1 )
-script = ExtResource( 2 )
+[node name="RakugoMenu" type="GridContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -256.0
+margin_top = -150.0
+margin_right = 256.0
+margin_bottom = 150.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 63.4
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-use_theme_from_setting = true
-register = true
-node_id = "Dialog"
+ChoiceButton = ExtResource( 4 )
 
-[node name="ScrollContainerVMenu" type="ScrollContainer" parent="Dialog"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = 267.0
-margin_top = 33.0
-margin_right = 767.0
-margin_bottom = 333.0
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="RakugoVMenu" type="VBoxContainer" parent="Dialog/ScrollContainerVMenu"]
-margin_right = 500.0
-margin_bottom = 300.0
-grow_horizontal = 0
-grow_vertical = 0
-rect_min_size = Vector2( 500, 300 )
-alignment = 1
-script = ExtResource( 3 )
-__meta__ = {
-"_editor_icon": ExtResource( 4 )
-}
-ChoiceButton = ExtResource( 5 )
-
-[node name="ScrollContainerHMenu" type="ScrollContainer" parent="Dialog"]
-visible = false
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -21.0
-margin_top = 121.0
-margin_right = 1004.0
-margin_bottom = 224.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="RakugoHMenu" type="HBoxContainer" parent="Dialog/ScrollContainerHMenu"]
-margin_right = 1021.0
-margin_bottom = 300.0
-grow_horizontal = 0
-grow_vertical = 0
-rect_min_size = Vector2( 1021, 300 )
-alignment = 1
-script = ExtResource( 3 )
-__meta__ = {
-"_editor_icon": ExtResource( 6 )
-}
-kind = "horizontal"
-ChoiceButton = ExtResource( 5 )
-
-[node name="SayPanel" parent="Dialog" instance=ExtResource( 7 )]
+[node name="SayPanel" parent="." instance=ExtResource( 5 )]
 mouse_filter = 0
 
 [node name="Notify" type="Panel" parent="."]
@@ -502,18 +450,18 @@ visible = false
 anchor_right = 1.0
 margin_left = -2.0
 margin_top = 36.0
-margin_right = 769.0
+margin_right = -260.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 100, 20 )
-theme = ExtResource( 1 )
-script = ExtResource( 8 )
+theme = ExtResource( 6 )
+script = ExtResource( 7 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Dialog" type="RichTextLabel" parent="Notify"]
+[node name="Label" type="RichTextLabel" parent="Notify"]
 margin_left = -1.0
-margin_right = 780.0
+margin_right = 763.0
 margin_bottom = 32.0
 focus_mode = 2
 size_flags_horizontal = 15
@@ -532,7 +480,7 @@ rect_scale = Vector2( 0.7, 0.7 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
-script = ExtResource( 9 )
+script = ExtResource( 8 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
@@ -545,7 +493,7 @@ focus_mode = 0
 enabled_focus_mode = 0
 text = "Hide"
 
-[node name="History" parent="Quick" instance=ExtResource( 10 )]
+[node name="History" parent="Quick" instance=ExtResource( 9 )]
 margin_left = 131.0
 margin_right = 246.0
 margin_bottom = 40.0
@@ -554,7 +502,7 @@ size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "History"
 
-[node name="Quests" parent="Quick" instance=ExtResource( 10 )]
+[node name="Quests" parent="Quick" instance=ExtResource( 9 )]
 margin_left = 250.0
 margin_right = 365.0
 margin_bottom = 40.0
@@ -563,7 +511,7 @@ size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Quests"
 
-[node name="Back" parent="Quick" instance=ExtResource( 10 )]
+[node name="Back" parent="Quick" instance=ExtResource( 9 )]
 margin_left = 369.0
 margin_right = 484.0
 margin_bottom = 40.0
@@ -587,7 +535,7 @@ focus_mode = 0
 enabled_focus_mode = 0
 text = "Auto"
 
-[node name="Save" parent="Quick" instance=ExtResource( 10 )]
+[node name="Save" parent="Quick" instance=ExtResource( 9 )]
 margin_left = 748.0
 margin_right = 863.0
 margin_bottom = 40.0
@@ -596,7 +544,7 @@ size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Save"
 
-[node name="Load" parent="Quick" instance=ExtResource( 10 )]
+[node name="Load" parent="Quick" instance=ExtResource( 9 )]
 margin_left = 867.0
 margin_right = 982.0
 margin_bottom = 40.0
@@ -605,7 +553,7 @@ size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Load"
 
-[node name="QSave" parent="Quick" instance=ExtResource( 10 )]
+[node name="QSave" parent="Quick" instance=ExtResource( 9 )]
 margin_left = 986.0
 margin_right = 1101.0
 margin_bottom = 40.0
@@ -614,7 +562,7 @@ size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Q. Save"
 
-[node name="QLoad" parent="Quick" instance=ExtResource( 10 )]
+[node name="QLoad" parent="Quick" instance=ExtResource( 9 )]
 margin_left = 1105.0
 margin_right = 1220.0
 margin_bottom = 40.0
@@ -623,7 +571,7 @@ size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Q. Load"
 
-[node name="Options" parent="Quick" instance=ExtResource( 10 )]
+[node name="Options" parent="Quick" instance=ExtResource( 9 )]
 margin_left = 1224.0
 margin_right = 1339.0
 margin_bottom = 40.0
@@ -632,7 +580,7 @@ size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Options"
 
-[node name="Quit" parent="Quick" instance=ExtResource( 10 )]
+[node name="Quit" parent="Quick" instance=ExtResource( 9 )]
 margin_left = 1343.0
 margin_right = 1463.0
 margin_bottom = 40.0
@@ -657,12 +605,12 @@ margin_top = 81.0
 margin_right = -719.0
 margin_bottom = 123.0
 rect_min_size = Vector2( 100, 20 )
-theme = ExtResource( 1 )
+theme = ExtResource( 6 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Label" parent="Quick/InfoAnim/Panel" instance=ExtResource( 12 )]
+[node name="Label" parent="Quick/InfoAnim/Panel" instance=ExtResource( 11 )]
 margin_right = 301.0
 rect_pivot_offset = Vector2( 190, 470 )
 size_flags_horizontal = 3

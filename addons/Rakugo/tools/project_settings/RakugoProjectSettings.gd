@@ -1,31 +1,30 @@
 tool
-extends WindowDialog
+extends Panel
 
-var boxes : Array
+onready var boxes := $VBoxContainer/ScrollContainer/VBoxContainer
 var cfg_path := ""
 onready var cfg := ConfigFile.new()
 var use_cfg : bool
 
 func _ready() -> void:
-	cfg_path = ProjectSettings.get_setting(
-	 "application/config/project_settings_override")
-
+	$VBoxContainer/SaveButton.icon = get_icon("Save", "EditorIcons")
+	cfg_path = ProjectSettings.get_setting("application/config/project_settings_override")
+	
 	if cfg_path:
 		use_cfg = true
-		cfg.load(cfg_path)
+		load_settings()
 
-	boxes = $ScrollContainer/VBoxContainer.get_children()
-	connect("confirmed", self, "_on_ok")
+	$VBoxContainer/SaveButton.connect("pressed", self, "_on_ok")
+	connect("visibility_changed", self, "_on_visibility_changed")
 
+
+func _on_visibility_changed():
+	if visible:
+		load_settings()
 
 func load_settings() -> void:
-	for box in boxes:
-		box.load_setting(use_cfg, cfg)
+	boxes.get_node("OverBox").load_setting()
 
 
 func _on_ok() -> void:
-	for box in boxes:
-		box.save_setting(use_cfg, cfg)
-	
-	if use_cfg and cfg:
-		cfg.save(cfg_path)
+	boxes.get_node("OverBox").save_setting()

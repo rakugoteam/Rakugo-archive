@@ -1,23 +1,23 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://themes/question/question.theme" type="Theme" id=1]
+[ext_resource path="res://themes/question/question.tres" type="Theme" id=1]
 [ext_resource path="res://addons/Rakugo/nodes/save_button.gd" type="Script" id=2]
 [ext_resource path="res://graphics/not_available.png" type="Texture" id=3]
 [ext_resource path="res://ubuntu-font-family/Ubuntu-L.ttf" type="DynamicFontData" id=4]
 
-[sub_resource type="StyleBoxFlat" id=1]
+[sub_resource type="StyleBoxFlat" id=1210]
 content_margin_left = 6.0
 content_margin_right = 6.0
 content_margin_top = 4.0
 content_margin_bottom = 4.0
-bg_color = Color( 0, 0.6, 0.8, 0.618784 )
+bg_color = Color( 0.709804, 0.290196, 0.101961, 1 )
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
 border_color = Color( 1, 1, 1, 1 )
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=1212]
 content_margin_left = 6.0
 content_margin_right = 6.0
 content_margin_top = 4.0
@@ -27,21 +27,21 @@ border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
-border_color = Color( 0, 0.506836, 0.675781, 1 )
+border_color = Color( 0.819608, 0.392157, 0.203922, 1 )
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=1209]
 content_margin_left = 6.0
 content_margin_right = 6.0
 content_margin_top = 4.0
 content_margin_bottom = 4.0
-bg_color = Color( 0, 0.6, 0.8, 0.762431 )
+bg_color = Color( 0.819608, 0.392157, 0.203922, 1 )
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
 border_color = Color( 1, 1, 1, 1 )
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=1208]
 content_margin_left = 6.0
 content_margin_right = 6.0
 content_margin_top = 4.0
@@ -53,7 +53,7 @@ border_width_right = 4
 border_width_bottom = 4
 border_color = Color( 1, 1, 1, 1 )
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=1211]
 content_margin_left = 6.0
 content_margin_right = 6.0
 content_margin_top = 4.0
@@ -65,7 +65,7 @@ border_width_right = 4
 border_width_bottom = 4
 border_color = Color( 1, 1, 1, 1 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=1213]
 font_data = ExtResource( 4 )
 
 [node name="Slot" type="VBoxContainer"]
@@ -85,16 +85,15 @@ margin_bottom = 184.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 1 )
-custom_styles/hover = SubResource( 1 )
-custom_styles/pressed = SubResource( 2 )
-custom_styles/focus = SubResource( 3 )
-custom_styles/disabled = SubResource( 4 )
-custom_styles/normal = SubResource( 5 )
+custom_styles/hover = SubResource( 1210 )
+custom_styles/pressed = SubResource( 1212 )
+custom_styles/focus = SubResource( 1209 )
+custom_styles/disabled = SubResource( 1208 )
+custom_styles/normal = SubResource( 1211 )
 script = ExtResource( 2 )
-use_theme_from_setting = true
-use_form_theme = true
 color_node = false
 node_to_change_path = NodePath("TextureRect")
+use_colors_from_theme = true
 idle_node_color = Color( 0.533333, 0.533333, 0.533333, 1 )
 focus_node_color = Color( 0.709804, 0.290196, 0.101961, 1 )
 hover_node_color = Color( 0.877647, 0.882353, 0.887059, 1 )
@@ -117,7 +116,7 @@ margin_top = 188.0
 margin_right = 148.0
 margin_bottom = 207.0
 size_flags_horizontal = 4
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 1213 )
 text = "Empty Slot"
 align = 1
 
@@ -127,7 +126,7 @@ margin_top = 211.0
 margin_right = 148.0
 margin_bottom = 230.0
 size_flags_horizontal = 4
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 1213 )
 text = "Empty Slot"
 align = 1
 

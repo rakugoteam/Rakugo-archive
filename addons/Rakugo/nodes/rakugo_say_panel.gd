@@ -59,6 +59,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	var ui_accept = event.is_action_pressed("ui_accept")
 	_on_ui_accept(ui_accept)
 
+func _input(event) -> void:
+	var ui_accept = event.is_action_pressed("ui_accept")
+	_on_ui_accept(ui_accept)
 
 func _on_ui_accept(value: bool) -> void:
 	var ui_accept = value or _ui_accept
@@ -238,7 +241,7 @@ func write_dialog(text: String, _typing: bool) -> void:
 			continue
 
 		Rakugo.dialog_timer.wait_time = Rakugo.get_value("text_time")
-
+		
 		if letter in ",;.!?":
 			var p = ProjectSettings.get_setting(
 		"application/rakugo/punctuation_pause")

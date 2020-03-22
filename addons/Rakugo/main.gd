@@ -1,6 +1,6 @@
 extends Node
 
-const rakugo_version := "2.0.9"
+const rakugo_version := "2.1.00"
 const credits_path := "res://addons/Rakugo/credits.txt"
 const save_folder := "saves"
 
@@ -12,8 +12,12 @@ onready var markup = ProjectSettings.get_setting("application/rakugo/markup")
 onready var debug_on = ProjectSettings.get_setting("application/rakugo/debug")
 onready var test_save = ProjectSettings.get_setting("application/rakugo/test_saves")
 onready var scenes_links = ProjectSettings.get_setting("application/rakugo/scenes_links")
+
 onready var theme = load(ProjectSettings.get_setting("application/rakugo/theme"))
 onready var default_kind = ProjectSettings.get_setting("application/rakugo/default_kind")
+onready var default_mkind = ProjectSettings.get_setting("application/rakugo/default_mkind")
+onready var default_mcolumns = ProjectSettings.get_setting("application/rakugo/default_mcolumns")
+onready var default_manchor = ProjectSettings.get_setting("application/rakugo/default_manchor")
 
 ## init vars for settings
 var _skip_all_text := false
@@ -68,7 +72,7 @@ var variables := {}
 var variables_init := {}
 
 # don't save this
-onready var menu_node := $Menu 
+onready var menu_node: RakugoMenu = $Menu
 var current_scene_path := ""
 var current_root_node: Node = null
 var current_statement: Statement = null
@@ -901,4 +905,3 @@ func save_global_history() -> bool:
 
 func load_global_history() -> bool:
 	return $LoadGlobalHistory.invoke()
-  
