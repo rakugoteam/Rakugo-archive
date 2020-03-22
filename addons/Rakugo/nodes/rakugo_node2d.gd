@@ -111,10 +111,15 @@ func on_load(game_version: String) -> void:
 	if "visible" in node_link.value:
 		visible = node_link.value["visible"]
 
-		if visible:
+	if visible:
+
+		if "state" in node_link.value:
 			_state = node_link.value["state"]
+
+		if "show_args" in node_link.value:
 			last_show_args = node_link.value["show_args"]
-			_on_show(node_id, _state , last_show_args )
+
+		_on_show(node_id, _state, last_show_args)
 
 	else:
 		_on_hide(node_id)

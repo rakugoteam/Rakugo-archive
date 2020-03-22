@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://themes/new_gui/new_gui.tres" type="Theme" id=1]
+[ext_resource path="res://themes/question/question.tres" type="Theme" id=1]
 [ext_resource path="res://gui/Screens/Screens.gd" type="Script" id=2]
 [ext_resource path="res://ubuntu-font-family/UB32outline.tres" type="DynamicFont" id=3]
 [ext_resource path="res://addons/Rakugo/nodes/rakugo_var_label.gd" type="Script" id=4]
@@ -4539,6 +4539,9 @@ margin_top = 560.472
 margin_right = 629.883
 margin_bottom = 594.472
 
+[node name="UnpauseTimer" type="Timer" parent="."]
+one_shot = true
+
 [node name="Layouts" type="AnimationPlayer" parent="."]
 anims/modern_center = SubResource( 2 )
 anims/modern_left = SubResource( 3 )
@@ -4546,6 +4549,3 @@ anims/modern_right = SubResource( 4 )
 anims/small_center = SubResource( 5 )
 anims/small_left = SubResource( 6 )
 anims/small_right = SubResource( 7 )
-
-[node name="UnpauseTimer" type="Timer" parent="."]
-one_shot = true

@@ -5,6 +5,7 @@ var clothes := [
 	"blue",
 	"green"
 	]
+
 var emotions := [
 	"giggle", 
 	"normal",
@@ -14,8 +15,8 @@ var emotions := [
 
 func hide_all(n:Node):
 	for ch in n.get_children():
-			if ch.has_method("hide"):
-				ch.hide()
+		if ch.has_method("hide"):
+			ch.hide()
 
 
 func _on_substate(substate):

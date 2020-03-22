@@ -4,6 +4,7 @@ extends RakugoControl
 export onready var nav_panel: Node = $Navigation
 export var nav_path: NodePath = "Navigation/ScrollContainer/HBoxContainer/VBoxContainer"
 export var in_game_gui_path := "/root/Window/InGameGUI"
+export var viewport_path := "/root/Window/ViewportContainer"
 export onready var scrollbar := $Navigation/ScrollContainer/HBoxContainer/VScrollBar
 export var use_back_button := false
 export onready var back_button: Button = $BackButton
@@ -13,6 +14,7 @@ export onready var qyes_button = $QuitBox/HBoxContainer/Yes
 
 var current_node: Node = self
 var in_game_gui: Node
+var viewport_con : Control
 onready var new_game_button: Button = get_node(str(nav_path) + "/" + "NewGame")
 onready var continue_button: Button = get_node(str(nav_path) + "/" + "Continue")
 onready var return_button: Button = get_node(str(nav_path) + "/" + "Return")
@@ -25,11 +27,18 @@ onready var about_button: Button = get_node(str(nav_path) + "/" + "About")
 onready var help_button: Button = get_node(str(nav_path) + "/" + "Help")
 onready var quit_button: Button = get_node(str(nav_path) + "/" + "Quit")
 
+var blur_shader : ShaderMaterial
+
+func get_viewport() -> Viewport:
+	return viewport_con.get_node("Viewport") as Viewport
+
 func _ready():
 	if(Engine.editor_hint):
 		return
 
 	in_game_gui = get_node(in_game_gui_path)
+	viewport_con = get_node(viewport_path)
+	blur_shader = viewport_con.material as ShaderMaterial
 
 	get_tree().set_auto_accept_quit(false)
 	connect("visibility_changed", self, "_on_visibility_changed")
@@ -70,7 +79,8 @@ func show_page(node):
 	if not use_back_button:
 		if current_node != self:
 			current_node.hide()
-
+	
+	blur_shader.set_shader_param("radius", 5)
 	current_node = node
 	node.show()
 
@@ -110,6 +120,10 @@ func history_menu():
 
 func _on_visibility_changed():
 	if visible:
+		
+		if Rakugo.started:
+			blur_shader.set_shader_param("radius", 5)
+		
 		get_tree().paused = true
 		in_game_gui.hide()
 		return
@@ -122,12 +136,14 @@ func _on_visibility_changed():
 
 ## # if press "Return" or "no" on quit page
 func _on_Return_pressed():
+	blur_shader.set_shader_param("radius", 0)
+	
 	if Rakugo.started:
 		hide()
 		unpause_timer.start()
 		yield(unpause_timer, "timeout")
 		return
-
+	
 	current_node.hide()
 
 
@@ -154,6 +170,7 @@ func _on_game_end():
 	quests_button.hide()
 	scrollbar.hide()
 	show()
+
 
 func _on_NewGame_pressed():
 	hide()

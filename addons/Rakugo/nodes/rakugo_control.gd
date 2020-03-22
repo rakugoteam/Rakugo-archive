@@ -1,6 +1,6 @@
 tool
 extends RakugoBaseControl
-class_name RakugoControl, "res://addons/Rakugo/nodes/rakugo_control.gd"
+class_name RakugoControl, "res://addons/Rakugo/icons/rakugo_control.svg"
 
 signal on_substate(substate)
 
@@ -71,6 +71,7 @@ func _get_node_id() -> String:
 
 
 func _on_show(node_id: String , state_value: Array, show_args: Dictionary) -> void:
+	
 	if self.node_id != node_id:
 		return
 
@@ -135,12 +136,18 @@ func on_load(game_version: String) -> void:
 	if not node_link:
 		push_error("error with loading: %s" %node_id)
 		return
-
-	visible = node_link.value["visible"]
+	
+	if "visible" in node_link.value:
+		visible = node_link.value["visible"]
 
 	if visible:
-		_state = node_link.value["state"]
-		last_show_args = node_link.value["show_args"]
+		
+		if "state" in node_link.value:
+			_state = node_link.value["state"]
+		
+		if "show_args" in node_link.value:
+			last_show_args = node_link.value["show_args"]
+		
 		_on_show(node_id, _state, last_show_args)
 
 	else:
