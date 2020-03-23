@@ -5,16 +5,16 @@
 
 [node name="characters" type="Node2D"]
 
-[node name="Me" type="Node" parent="." groups=[
-"save",
-]]
+[node name="Me" type="Node" parent="."]
 script = ExtResource( 1 )
 character_id = "m"
 character_name = "Me"
 color = Color( 0.784314, 0.784314, 1, 1 )
+kind = "adv"
+mkind = "vertical"
+mcolumns = 2
 stats = {
 
 }
-kind = "adv"
 
 [node name="Sylvie" parent="." instance=ExtResource( 2 )]

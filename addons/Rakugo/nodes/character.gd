@@ -9,6 +9,7 @@ var _avatar: PackedScene
 var _prefix := ""
 var _suffix := ""
 var _id := ""
+var _saveable := true
 var _kind := "adv"
 var _mkind := "vertical"
 var _mcolumns := 0
@@ -16,6 +17,7 @@ var _manchor := "center"
 var _stats := {}
 
 export var character_id := "" setget _set_character_id, _get_character_id
+export var saveable := true setget _set_saveable, _get_saveable
 export var character_name := "" setget _set_character_name, _get_character_name
 export var color := Color("#ffffff") setget _set_color, _get_color
 export var prefix := "" setget _set_prefix, _get_prefix
@@ -27,11 +29,12 @@ export (int, 0, 10) var mcolumns: int setget _set_mcolumns, _get_mcolumns
 export (String, "top_left", "top_right", "bottom_left", "bottom_right", "center_left", "center_top", "center_right", "center_bottom", "center") var manchor:= "center" setget _set_manchor, _get_manchor
 export var stats := {} setget _set_stats, _get_stats
 
+
 func _ready() -> void:
+	_set_saveable(_saveable)
+
 	if(!Engine.editor_hint):
 		Rakugo.connect("started", self, "_on_start")
-
-	add_to_group("save", true)
 
 
 func _on_start() -> void:
@@ -41,7 +44,7 @@ func _on_start() -> void:
 
 
 func _set_character_id(value: String) -> void:
-	if(Engine.editor_hint):
+	if Engine.editor_hint:
 		_id = value
 		return
 
@@ -53,6 +56,20 @@ func _set_character_id(value: String) -> void:
 
 func _get_character_id() -> String:
 	return _id
+
+
+func _set_saveable(value: bool):
+	_saveable = value
+
+	if Engine.editor_hint:
+		return
+
+	if _saveable:
+		Rakugo.debug([name, "added to save"])
+
+
+func _get_saveable() -> bool:
+	return _saveable
 
 
 func _set_character_name(value: String) -> void:
@@ -241,15 +258,11 @@ func get_dict() -> Dictionary:
 
 
 func on_save() -> void:
-	var dict := get_dict()
-	Rakugo.character(_id, dict)
+	if _saveable:
+		var dict := get_dict()
+		Rakugo.character(_id, dict)
 
 
 func on_load(game_version) -> void:
-	character = Rakugo.get_var(_id)
-
-
-func _exit_tree() -> void:
-	if(Engine.editor_hint):
-		remove_from_group("save")
-		return
+	if _saveable:
+		character = Rakugo.get_var(_id)

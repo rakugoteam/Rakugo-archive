@@ -6,29 +6,27 @@ signal on_substate(substate)
 
 onready var rnode := RakugoNodeCore.new()
 
-export var node_id: String = name
+export var node_id: String = name setget _set_node_id, _get_node_id
+export var saveable := true setget _set_saveable, _get_saveable
 export(Array, String) var state: Array setget _set_state, _get_state
 
 var _state := []
 var node_link: NodeLink
 var last_show_args: Dictionary
+var _node_id := ""
+var _saveable := true
 
 func _ready() -> void:
+	_set_saveable(_saveable)
+
 	if Engine.editor_hint:
 		if node_id.empty():
 			node_id = name
-
-		add_to_group("save", true)
 		return
-
-	hide()
 
 	Rakugo.connect("show", self, "_on_show")
 	Rakugo.connect("hide", self, "_on_hide")
 	rnode.connect("on_substate", self, "_on_substate")
-
-	if node_id.empty():
-		node_id = name
 
 	node_link = Rakugo.get_node_link(node_id)
 
@@ -38,11 +36,40 @@ func _ready() -> void:
 	else:
 		node_link.value.node_path = get_path()
 
-	add_to_group("save", true)
-
 
 func _on_rnode_substate(substate):
 	emit_signal("on_substate", substate)
+
+
+func _set_node_id(value: String):
+	_node_id = value
+
+
+func _get_node_id() -> String:
+	if _node_id == "":
+		_node_id = name
+
+	return _node_id
+
+
+func _set_saveable(value: bool):
+	_saveable = value
+
+	if _saveable:
+		add_to_group("save", true)
+
+	elif is_in_group("save"):
+		remove_from_group("save")
+
+	if Engine.editor_hint:
+		return
+
+	if is_in_group("save"):
+		Rakugo.debug([name, "added to save"])
+
+
+func _get_saveable() -> bool:
+	return _saveable
 
 
 func _on_show(node_id: String, state_value: Array, show_args: Dictionary) -> void:
@@ -85,8 +112,7 @@ func _on_hide(_node_id) -> void:
 
 
 func _exit_tree() -> void:
-	if(Engine.editor_hint):
-		remove_from_group("save")
+	if Engine.editor_hint:
 		return
 
 	var id = NodeLink.new("").var_prefix + node_id
@@ -111,10 +137,15 @@ func on_load(game_version: String) -> void:
 	if "visible" in node_link.value:
 		visible = node_link.value["visible"]
 
-		if visible:
+	if visible:
+
+		if "state" in node_link.value:
 			_state = node_link.value["state"]
+
+		if "show_args" in node_link.value:
 			last_show_args = node_link.value["show_args"]
-			_on_show(node_id, _state , last_show_args )
+
+		_on_show(node_id, _state, last_show_args)
 
 	else:
 		_on_hide(node_id)

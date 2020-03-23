@@ -1,35 +1,32 @@
 tool
 extends RakugoBaseControl
-class_name RakugoControl, "res://addons/Rakugo/nodes/rakugo_control.gd"
+class_name RakugoControl, "res://addons/Rakugo/icons/rakugo_control.svg"
 
 signal on_substate(substate)
 
 onready var rnode := RakugoNodeCore.new()
 
-export var register: bool setget _set_register, _get_register
-export var node_id: String setget _set_node_id, _get_node_id
+export var node_id : String = name setget _set_node_id, _get_node_id
+export var saveable := true setget _set_saveable, _get_saveable
 export (Array, String) var state: Array setget _set_state, _get_state
 
 var _state: Array
 var node_link: NodeLink
 var last_show_args: Dictionary
-var _register := true
-
 var _node_id := ""
+var _saveable := true
 
 func _ready() -> void:
-	if(Engine.editor_hint):
+	_set_saveable(_saveable)
+
+	if Engine.editor_hint:
+		if node_id.empty():
+			node_id = name
 		return
 
 	Rakugo.connect("show", self, "_on_show")
 	Rakugo.connect("hide", self, "_on_hide")
 	rnode.connect("on_substate", self, "_on_rnode_substate")
-
-	if not _register:
-		return
-
-	if node_id.empty():
-		node_id = name
 
 	node_link = Rakugo.get_var(node_id)
 
@@ -44,21 +41,6 @@ func _on_rnode_substate(substate):
 	emit_signal("on_substate", substate)
 
 
-func _set_register(value: bool):
-	_register = value
-
-	if _register:
-		add_to_group("save", false)
-		return
-
-	if is_in_group("save"):
-		remove_from_group("save")
-
-
-func _get_register() -> bool:
-	return _register
-
-
 func _set_node_id(value: String):
 	_node_id = value
 
@@ -70,7 +52,28 @@ func _get_node_id() -> String:
 	return _node_id
 
 
+func _set_saveable(value: bool):
+	_saveable = value
+
+	if _saveable:
+		add_to_group("save", true)
+
+	elif is_in_group("save"):
+		remove_from_group("save")
+		
+	if Engine.editor_hint:
+		return
+
+	if is_in_group("save"):
+		Rakugo.debug([name, "added to save"])
+
+
+func _get_saveable() -> bool:
+	return _saveable
+
+
 func _on_show(node_id: String , state_value: Array, show_args: Dictionary) -> void:
+
 	if self.node_id != node_id:
 		return
 
@@ -106,19 +109,13 @@ func _on_hide(_node_id: String) -> void:
 
 
 func _exit_tree() -> void:
-	if(Engine.editor_hint):
-		remove_from_group("save")
+	if Engine.editor_hint:
 		return
 
-	if _register:
-		Rakugo.variables.erase(node_id)
+	Rakugo.variables.erase(node_id)
 
 
 func on_save() -> void:
-	if not _register:
-		remove_from_group("save")
-		return
-
 	if not node_link:
 		push_error("error with saving: %s" %node_id)
 		return
@@ -129,18 +126,22 @@ func on_save() -> void:
 
 
 func on_load(game_version: String) -> void:
-	if not _register:
-		return
 
 	if not node_link:
 		push_error("error with loading: %s" %node_id)
 		return
 
-	visible = node_link.value["visible"]
+	if "visible" in node_link.value:
+		visible = node_link.value["visible"]
 
 	if visible:
-		_state = node_link.value["state"]
-		last_show_args = node_link.value["show_args"]
+
+		if "state" in node_link.value:
+			_state = node_link.value["state"]
+
+		if "show_args" in node_link.value:
+			last_show_args = node_link.value["show_args"]
+
 		_on_show(node_id, _state, last_show_args)
 
 	else:
