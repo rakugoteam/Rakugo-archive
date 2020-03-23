@@ -34,11 +34,18 @@ func load_setting(use_cfg:bool, cfg:ConfigFile) -> void:
 
 	if use_cfg and cfg:
 		mode = cfg.get_value("application", "rakugo/markup")
-
+	
+	if !mode:
+		_on_text_mode(0)
+		return
+	
 	_on_text_mode(modes.find(mode))
 
 
 func save_setting(use_cfg:bool, cfg:ConfigFile) -> void:
+	if !mode:
+		mode = modes[0]
+	
 	if use_cfg and cfg:
 		cfg.set_value("application", "rakugo/markup", mode)
 		return

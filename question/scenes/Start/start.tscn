@@ -25,7 +25,9 @@ scale = Vector2( 0.80048, 0.83293 )
 z_index = -10
 texture = ExtResource( 12 )
 
-[node name="backgrounds" parent="." instance=ExtResource( 2 )]
+[node name="backgrounds" parent="." groups=[
+"save",
+] instance=ExtResource( 2 )]
 position = Vector2( 511.651, 298.479 )
 z_index = -2
 
