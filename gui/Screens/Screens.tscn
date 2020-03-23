@@ -4230,7 +4230,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 use_theme_from_setting = true
-register = true
 node_id = "Screens"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -4348,17 +4347,17 @@ align = 0
 
 [node name="Return" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
 visible = false
-margin_top = 20.0
-margin_right = 140.0
-margin_bottom = 52.0
+margin_top = 128.0
+margin_right = 198.0
+margin_bottom = 162.0
 text = "Return"
 align = 0
 
 [node name="History" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
 visible = false
-margin_top = 72.0
-margin_right = 140.0
-margin_bottom = 104.0
+margin_top = 128.0
+margin_right = 198.0
+margin_bottom = 162.0
 toggle_mode = true
 group = SubResource( 1 )
 text = "History"
@@ -4366,11 +4365,10 @@ align = 0
 
 [node name="Quests" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
 visible = false
-margin_top = 72.0
-margin_right = 140.0
-margin_bottom = 104.0
+margin_top = 128.0
+margin_right = 198.0
+margin_bottom = 162.0
 toggle_mode = true
-pressed = true
 group = SubResource( 1 )
 text = "Quests"
 align = 0
