@@ -25,7 +25,9 @@ scale = Vector2( 0.80048, 0.83293 )
 z_index = -10
 texture = ExtResource( 12 )
 
-[node name="backgrounds" parent="." instance=ExtResource( 2 )]
+[node name="backgrounds" parent="." groups=[
+"save",
+] instance=ExtResource( 2 )]
 position = Vector2( 511.651, 298.479 )
 z_index = -2
 
@@ -60,7 +62,9 @@ dialogs_names = [ "book" ]
 script = ExtResource( 9 )
 dialogs_names = [ "marry" ]
 
-[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+[node name="BGMusic" type="AudioStreamPlayer" parent="." groups=[
+"save",
+]]
 pause_mode = 2
 stream = ExtResource( 10 )
 autoplay = true
