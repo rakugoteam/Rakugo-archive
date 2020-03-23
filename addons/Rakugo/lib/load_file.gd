@@ -14,13 +14,18 @@ func invoke(save_folder: String, save_name: String,  variables: Dictionary):
 
 	var file := File.new()
 
+	if r.test_save:
+		save_file_path += ".tres"
+
+	else:
+		save_file_path += ".res"
+
 	if not file.file_exists(save_file_path):
 		push_error("Save file %s doesn't exist" % save_file_path)
 		r.loading_in_progress = false
 		return false
 
 	var save: Resource = load(save_file_path)
-
 	var game_version = save.game_version
 
 	r.quests.clear()
@@ -77,6 +82,7 @@ func invoke(save_folder: String, save_name: String,  variables: Dictionary):
 	for node in r.get_tree().get_nodes_in_group("save"):
 		if node.has_method("on_load"):
 			node.on_load(r.game_version)
+			continue
 
 	r.loading_in_progress = false
 	return true

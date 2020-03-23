@@ -37,6 +37,7 @@ func _ready() -> void:
 	_setup(StdKindContainer)
 	Rakugo.connect("exec_statement", self, "_on_statement")
 	Rakugo.connect("hide_ui", self, "_on_Hide_toggled")
+	$Button.connect("pressed", self, "_on_ui_accept", [true])
 
 func _setup(kind_container: KindContainer):
 	NameLabel = kind_container.NameLabel
@@ -51,17 +52,10 @@ func _setup(kind_container: KindContainer):
 	CurrentKind = kind_container
 
 
-func _press_accept() -> void:
-	_ui_accept = true
-
-
 func _unhandled_input(event: InputEvent) -> void:
 	var ui_accept = event.is_action_pressed("ui_accept")
 	_on_ui_accept(ui_accept)
 
-func _input(event) -> void:
-	var ui_accept = event.is_action_pressed("ui_accept")
-	_on_ui_accept(ui_accept)
 
 func _on_ui_accept(value: bool) -> void:
 	var ui_accept = value or _ui_accept
@@ -241,7 +235,7 @@ func write_dialog(text: String, _typing: bool) -> void:
 			continue
 
 		Rakugo.dialog_timer.wait_time = Rakugo.get_value("text_time")
-		
+
 		if letter in ",;.!?":
 			var p = ProjectSettings.get_setting(
 		"application/rakugo/punctuation_pause")
