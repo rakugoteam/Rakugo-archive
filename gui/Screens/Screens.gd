@@ -33,7 +33,7 @@ func get_viewport() -> Viewport:
 	return viewport_con.get_node("Viewport") as Viewport
 
 func _ready():
-	if(Engine.editor_hint):
+	if Engine.editor_hint:
 		return
 
 	in_game_gui = get_node(in_game_gui_path)
@@ -265,7 +265,7 @@ func _screenshot_on_input(event):
 
 
 func _input(event):
-	if(Engine.editor_hint):
+	if Engine.editor_hint:
 		return
 
 	if event.is_action_pressed("ui_cancel"):

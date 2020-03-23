@@ -44,7 +44,7 @@ func _on_start() -> void:
 
 
 func _set_character_id(value: String) -> void:
-	if(Engine.editor_hint):
+	if Engine.editor_hint:
 		_id = value
 		return
 
@@ -61,11 +61,11 @@ func _get_character_id() -> String:
 func _set_saveable(value: bool):
 	_saveable = value
 
-	if _saveable:
-		add_to_group("save", true)
+	if Engine.editor_hint:
+		return
 
-	elif is_in_group("save"):
-		remove_from_group("save")
+	if _saveable:
+		Rakugo.debug([name, "added to save"])
 
 
 func _get_saveable() -> bool:
@@ -258,9 +258,11 @@ func get_dict() -> Dictionary:
 
 
 func on_save() -> void:
-	var dict := get_dict()
-	Rakugo.character(_id, dict)
+	if _saveable:
+		var dict := get_dict()
+		Rakugo.character(_id, dict)
 
 
 func on_load(game_version) -> void:
-	character = Rakugo.get_var(_id)
+	if _saveable:
+		character = Rakugo.get_var(_id)

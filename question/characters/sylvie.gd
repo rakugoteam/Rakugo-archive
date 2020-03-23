@@ -1,3 +1,4 @@
+tool
 extends RakugoNode2D
 
 var current_wear : Node2D

@@ -70,6 +70,12 @@ func _set_saveable(value: bool):
 	elif is_in_group("save"):
 		remove_from_group("save")
 
+	if Engine.editor_hint:
+		return
+
+	if is_in_group("save"):
+		Rakugo.debug([name, "added to save"])
+
 
 func _get_saveable() -> bool:
 	return _saveable
@@ -100,7 +106,7 @@ func _get_state() -> Array:
 
 
 func _exit_tree() -> void:
-	if(Engine.editor_hint):
+	if Engine.editor_hint:
 		return
 
 	var id = Avatar.new("").var_prefix + avatar_id
