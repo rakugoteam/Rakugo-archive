@@ -4222,7 +4222,9 @@ tracks/72/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[node name="Screens" type="Control"]
+[node name="Screens" type="Control" groups=[
+"save",
+]]
 mouse_filter = 1
 theme = ExtResource( 1 )
 script = ExtResource( 2 )

@@ -27,14 +27,15 @@ func load_scene(scene_id, force_reload := true):
 	var path = r.current_scene
 	r.current_scene = scene_id
 
-	# to fix #194 bug
-	if "://" in scene_id:
-		path = scene_id
-		if scene_id in scenes_links:
-			scene_id = scenes_links[scene_id]
+	if scene_id in scenes_links:
 
-	elif scene_id in scenes_links:
-		path = scenes_links[scene_id].resource_path
+		var p = scenes_links[scene_id]
+
+		if p is PackedScene:
+			path = p.resource_path
+
+		else:
+			path = p
 
 	if (r.current_scene_path != path) or force_reload:
 		r.current_scene = path
@@ -44,7 +45,7 @@ func load_scene(scene_id, force_reload := true):
 
 		var lscene = load(path)
 		r.current_root_node = lscene.instance()
-		get_tree().get_root().add_child(r.current_root_node)
+		r.viewport.add_child(r.current_root_node)
 
 		r.started = true
 		r.emit_signal("started")

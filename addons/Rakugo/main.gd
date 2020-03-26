@@ -73,6 +73,7 @@ var variables_init := {}
 
 # don't save this
 onready var menu_node: RakugoMenu = $Menu
+var viewport : Viewport
 var current_scene_path := ""
 var current_root_node: Node = null
 var current_statement: Statement = null
@@ -826,8 +827,14 @@ func on_begin(path_to_current_scene: String, node_name: String, dialog_name: Str
 		return
 
 	var resource = load(scenes_links).get_as_dict()
-	debug(resource)
-	current_scene_path = resource[path_to_current_scene].resource_path
+	debug([resource, path_to_current_scene])
+	var path = resource[path_to_current_scene]
+
+	if path is PackedScene:
+		current_scene_path = path.resource_path
+	else:
+		current_scene_path = path
+
 	jump(path_to_current_scene, node_name , dialog_name)
 
 

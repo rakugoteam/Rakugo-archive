@@ -3,6 +3,8 @@ extends Viewport
 func _ready():
 	var s = get_tree().current_scene
 	s.connect("ready", self, "attach")
+	Rakugo.viewport = self
+
 
 func attach():
 	var s = get_tree().current_scene

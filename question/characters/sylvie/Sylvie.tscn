@@ -35,6 +35,7 @@ stats = {
 }
 
 [node name="green" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 4 )
 
 [node name="giggle" type="Sprite" parent="green"]
