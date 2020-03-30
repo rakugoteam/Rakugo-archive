@@ -74,6 +74,7 @@ var variables_init := {}
 # don't save this
 onready var menu_node: RakugoMenu = $Menu
 var viewport : Viewport
+var loading_screen : RakugoControl
 var current_scene_path := ""
 var current_root_node: Node = null
 var current_statement: Statement = null
@@ -414,8 +415,9 @@ func on_stop_audio(node_id: String) -> void:
 ## use to add/register dialog
 ## func_name is name of func that is going to be use as dialog
 func add_dialog(node: Node, func_name: String) -> void:
-	if  not is_connected("story_step", node, func_name):
+	if not is_connected("story_step", node, func_name):
 		connect("story_step", node, func_name)
+		debug(["add dialog", func_name, "from", node.name])
 
 
 ## parse text like in renpy to bbcode if mode == "renpy"

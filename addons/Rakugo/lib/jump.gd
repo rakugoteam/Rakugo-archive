@@ -1,5 +1,7 @@
 extends Node
 
+onready var r = Rakugo
+
 func invoke(
 		scene_id: String,
 		node_name: String,
@@ -8,21 +10,19 @@ func invoke(
 		force_reload := false
 		) -> void:
 
-	var r = Rakugo
+	load_scene(scene_id, force_reload)
 	r.current_node_name = node_name
 	r.current_dialog_name = dialog_name
 	r.story_state = state
 
 	r.debug(["jump to scene:", r.current_scene, "with dialog:", dialog_name, "from:", r.story_state])
 
-	load_scene(scene_id, force_reload)
-
 	if r.started:
 		r.story_step()
 
 
 func load_scene(scene_id, force_reload := true):
-	var r = Rakugo
+	get_tree().paused = true
 	var scenes_links = load(r.scenes_links).get_as_dict()
 	var path = r.current_scene
 	r.current_scene = scene_id
@@ -39,13 +39,9 @@ func load_scene(scene_id, force_reload := true):
 
 	if (r.current_scene_path != path) or force_reload:
 		r.current_scene = path
+		r.loading_screen.load_scene(path)
 
-		if r.current_root_node != null:
-			r.current_root_node.queue_free()
-
-		var lscene = load(path)
-		r.current_root_node = lscene.instance()
-		r.viewport.add_child(r.current_root_node)
-
-		r.started = true
-		r.emit_signal("started")
+	yield(r.loading_screen, "loaded")
+	get_tree().paused = false
+	r.started = true
+	r.emit_signal("started")

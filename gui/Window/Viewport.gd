@@ -1,14 +1,17 @@
 extends Viewport
 
+signal attach
+
 func _ready():
-	var s = get_tree().current_scene
-	s.connect("ready", self, "attach")
+	setup()
 	Rakugo.viewport = self
 
 
-func attach():
-	var s = get_tree().current_scene
-	var p = s.get_parent()
-	p.call_deferred("remove_child", s)
-	call_deferred("add_child", s)
+func setup(scene = get_tree().current_scene):
+	scene.connect("ready", self, "attach_scene", [scene])
 
+
+func attach_scene(scene):
+	var p = scene.get_parent()
+	p.call_deferred("remove_child", scene)
+	call_deferred("add_child", scene)
