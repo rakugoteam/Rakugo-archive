@@ -23,7 +23,7 @@ func _ready() -> void:
 
 func _on_visibility_changed():
 	if visible:
-		load_settings()
+		_ready()
 
 
 func load_settings() -> void:

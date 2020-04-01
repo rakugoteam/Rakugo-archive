@@ -56,5 +56,4 @@ func save_setting(use_cfg:=false, cfg:ConfigFile = null) -> void:
 func _on_fd():
 	$Button.text = $FileDialog.current_path
 	root.cfg_path = $Button.text
-	root.cfg.load($Button.text)
-	root.load_settings()
+	_on_reload()
