@@ -625,28 +625,17 @@ text = "res://question/scenes_links.tres"
 [node name="Choose" parent="VBoxContainer/ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser" index="2"]
 margin_left = 616.0
 margin_right = 644.0
-icon = SubResource( 2 )
 
 [node name="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser" index="3"]
 visible = false
 
-[node name="SetAsDef" parent="VBoxContainer/ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser/HBoxContainer" index="0"]
-icon = SubResource( 2 )
-
-[node name="Apply" parent="VBoxContainer/ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser/HBoxContainer" index="2"]
-icon = SubResource( 2 )
-
 [node name="Cancel" parent="VBoxContainer/ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser" index="4"]
 margin_left = 648.0
 margin_right = 676.0
-icon = SubResource( 2 )
 
 [node name="Control" parent="VBoxContainer/ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser" index="5"]
 margin_left = 680.0
 margin_right = 680.0
-
-[node name="FileDialog" parent="VBoxContainer/ScrollContainer/VBoxContainer/ScenesLinksBox/ScenesLinksChooser/Control" index="0"]
-window_title = "Open a File"
 
 [node name="DebugBox" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
 margin_top = 400.0

@@ -20,6 +20,18 @@ func _ready() -> void:
 	$Cancel.connect("pressed", self, "emit_signal", ["cancel"])
 	$HBoxContainer/Apply.connect("pressed", self, "emit_signal", ["apply"])
 	$HBoxContainer/SetAsDef.connect("pressed", self, "_on_set_as_def")
+	connect("visibility_changed", self, "_on_visible")
+
+
+func _on_visible() -> void:
+	if visible and !_get_only_open():
+		var cfg_path = ProjectSettings.get_setting("application/config/project_settings_override")
+		if cfg_path:
+			var cfg = ConfigFile.new()
+			cfg.load(cfg_path)
+			var path = cfg.get_value("application", "rakugo/scenes_links")
+			$LineEdit.text = path
+			emit_signal("open", path)
 
 
 func _on_browse_file() -> void:
@@ -33,8 +45,20 @@ func _on_tres_dialog() -> void:
 
 
 func _on_set_as_def(use_cfg:=false, cfg:ConfigFile=null) -> void:
-	ProjectSettings.set_setting(
-		"application/rakugo/scenes_links", $LineEdit.text)
+	if not cfg:
+		var cfg_path = ProjectSettings.get_setting("application/config/project_settings_override")
+		if cfg_path:
+			cfg = ConfigFile.new()
+			cfg.load(cfg_path)
+			cfg.set_value("application", "rakugo/scenes_links", $LineEdit.text)
+			cfg.save(cfg_path)
+			
+		else:
+			ProjectSettings.set_setting("application/rakugo/scenes_links", $LineEdit.text)
+		
+	else:
+		ProjectSettings.set_setting("application/rakugo/scenes_links", $LineEdit.text)
+	
 	emit_signal("set_as_def")
 
 

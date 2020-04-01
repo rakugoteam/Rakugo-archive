@@ -6,7 +6,6 @@
 [ext_resource path="res://ubuntu-font-family/UBI22outline.tres" type="DynamicFont" id=4]
 
 [node name="AboutDialog" type="AcceptDialog"]
-visible = true
 margin_right = 529.0
 margin_bottom = 405.0
 rect_min_size = Vector2( 530, 405 )

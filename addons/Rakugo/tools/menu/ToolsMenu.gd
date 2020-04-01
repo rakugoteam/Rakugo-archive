@@ -27,3 +27,7 @@ func _on_id(id:int) -> void:
 		# About Rakugo
 		3:
 			plugin.open_about_dialog()
+		
+		# Rakugo Website:
+		4:
+			plugin.open_website() 
