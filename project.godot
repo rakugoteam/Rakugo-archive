@@ -380,20 +380,20 @@ _global_script_class_icons={
 
 [application]
 
-config/name="New Rakugo Game"
-run/main_scene="res://game/Start/Start.tscn"
+config/name="The Question: Rakugo Editon"
+run/main_scene="res://question/scenes/Start/start.tscn"
 config/project_settings_override="res://question/rakugo.cfg"
 boot_splash/image="res://graphics/splash.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://graphics/window_icon.png"
 config/auto_accept_quit=false
 config/quit_on_go_back=false
-rakugo/version="0.0.1"
-rakugo/game_credits="Jeremi {i}jebedaia360{/i} Biernacki"
+rakugo/version="1.4.0"
+rakugo/game_credits="Jeremi {i}jebedaia360{/i} Biernacki, kurinoku"
 rakugo/debug=false
 rakugo/scenes_links="res://question/scenes_links.tres"
 rakugo/save_folder="saves"
-rakugo/default_kind=""
+rakugo/default_kind="adv"
 rakugo/test_saves=false
 rakugo/markup="renpy"
 rakugo/default_mkind=""
@@ -401,7 +401,7 @@ rakugo/default_mcolumns=2.0
 rakugo/default_manchor=""
 rakugo/punctuation_pause="1"
 rakugo/default_mcolums=2.0
-rakugo/theme="res://themes/new_gui/new_gui.tres"
+rakugo/theme="res://themes/question/question.tres"
 
 [autoload]
 
