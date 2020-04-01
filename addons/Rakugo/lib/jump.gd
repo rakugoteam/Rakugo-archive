@@ -41,7 +41,13 @@ func load_scene(scene_id, force_reload := true) -> bool:
 		else:
 			path = p
 
-	if (r.current_scene_path != path) or force_reload:
+	if (
+		(r.current_scene_path != path)
+		or force_reload
+		):
+			
+		r.clean_dialogs()
+		
 		if r.story_state > 0:
 			r.story_state -= 1
 			
