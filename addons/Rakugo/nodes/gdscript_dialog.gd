@@ -10,9 +10,6 @@ var dialog_init = false
 
 func _ready() -> void:
 	if begin_from.size() == 2:
-		if null in begin_from:
-			add_dialogs()
-			return
 
 		var b = begin_from.duplicate()
 		b.insert(1, name)

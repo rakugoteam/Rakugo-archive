@@ -73,6 +73,8 @@ var variables_init := {}
 
 # don't save this
 onready var menu_node: RakugoMenu = $Menu
+var viewport : Viewport
+var loading_screen : RakugoControl
 var current_scene_path := ""
 var current_root_node: Node = null
 var current_statement: Statement = null
@@ -413,8 +415,9 @@ func on_stop_audio(node_id: String) -> void:
 ## use to add/register dialog
 ## func_name is name of func that is going to be use as dialog
 func add_dialog(node: Node, func_name: String) -> void:
-	if  not is_connected("story_step", node, func_name):
+	if not is_connected("story_step", node, func_name):
 		connect("story_step", node, func_name)
+		debug(["add dialog", func_name, "from", node.name])
 
 
 ## parse text like in renpy to bbcode if mode == "renpy"
@@ -826,8 +829,14 @@ func on_begin(path_to_current_scene: String, node_name: String, dialog_name: Str
 		return
 
 	var resource = load(scenes_links).get_as_dict()
-	debug(resource)
-	current_scene_path = resource[path_to_current_scene].resource_path
+	debug([resource, path_to_current_scene])
+	var path = resource[path_to_current_scene]
+
+	if path is PackedScene:
+		current_scene_path = path.resource_path
+	else:
+		current_scene_path = path
+
 	jump(path_to_current_scene, node_name , dialog_name)
 
 

@@ -4,23 +4,34 @@ class_name ScenesLinks, "res://addons/Rakugo/icons/scenes_links.svg"
 
 export (Array, String) var ids := []
 export (Array, PackedScene) var scenes := []
+export var _dict := {}
+
+func add(id:String, scene) -> void:
+	if scene is String:
+		_dict[id] = load(scene)
+
+	else:
+		_dict[id] = scene
+
 
 func get_as_dict() -> Dictionary:
-	var dict := {}
-	var r = ids.size()
+	if _dict.empty():
+		for i in range(ids.size()):
+			add(ids[i], scenes[i])
 
-	if r != scenes.size():
-		print("id and scenes are in diffrent size!!!")
-		r = min(r, scenes.size())
-		prints("will return only", r, "links")
+	return _dict
 
-	for i in range(r):
-		dict[ids[i]] = scenes[i]
 
-	return dict
+func set_using_dict(dictx:Dictionary) -> void:
+	_dict = dictx.duplicate()
+	ids = _dict.keys()
+	scenes = _dict.values()
 
-func set_using_dict(_ids:Array, _scenes:Array) -> void:
-	ids = _ids
-	for s in _scenes:
-		var ps : PackedScene = load(s)
-		scenes.append(ps)
+
+func set_using_arrays(_ids:Array, _scenes:Array) -> void:
+
+	for i in range(_ids.size()):
+		add(ids[i], scenes[i])
+
+	ids = _dict.keys()
+	scenes = _dict.values()
