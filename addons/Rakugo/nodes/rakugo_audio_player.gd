@@ -30,6 +30,7 @@ func _ready() -> void:
 	if  not node_link:
 		node_link = Rakugo.node_link(node_id, get_path())
 
+
 func _set_node_id(value: String):
 	_node_id = value
 
@@ -81,7 +82,10 @@ func _on_stop(id: String) -> void:
 
 func on_save():
 	if not node_link:
-		push_error("error with saving: %s" %node_id)
+		if node_id != "":
+			push_error("error with saveing: %s" %node_id)
+		else:
+			push_error("error with saveing: %s it propably it don't have id" %name)
 		return
 
 	node_link.value["is_playing"] = is_playing()
@@ -90,7 +94,10 @@ func on_save():
 
 func on_load(game_version: String) -> void:
 	if not node_link:
-		push_error("error with loading: %s" %node_id)
+		if node_id != "":
+			push_error("error with loading: %s" %node_id)
+		else:
+			push_error("error with loading: %s it propably it don't have id" %name)
 		return
 
 	if "is_playing" in node_link:

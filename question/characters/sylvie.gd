@@ -14,6 +14,10 @@ var emotions := [
 	"surprised"
 	]
 
+func _ready() -> void:
+	hide_all(self)
+
+
 func hide_all(n:Node):
 	for ch in n.get_children():
 		if ch.has_method("hide"):

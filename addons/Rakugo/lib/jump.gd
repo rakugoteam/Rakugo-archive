@@ -1,5 +1,7 @@
 extends Node
 
+onready var r = Rakugo
+
 func invoke(
 		scene_id: String,
 		node_name: String,
@@ -7,44 +9,48 @@ func invoke(
 		state := 0,
 		force_reload := false
 		) -> void:
-
-	var r = Rakugo
+	
 	r.current_node_name = node_name
 	r.current_dialog_name = dialog_name
 	r.story_state = state
-
+	
+	if load_scene(scene_id, force_reload):
+		yield(r, "started")
+	
 	r.debug(["jump to scene:", r.current_scene, "with dialog:", dialog_name, "from:", r.story_state])
-
-	load_scene(scene_id, force_reload)
-
+	
 	if r.started:
 		r.story_step()
 
 
-func load_scene(scene_id, force_reload := true):
-	var r = Rakugo
+func load_scene(scene_id, force_reload := true) -> bool:
+	var changed_scene = false
+	
+	get_tree().paused = true
 	var scenes_links = load(r.scenes_links).get_as_dict()
 	var path = r.current_scene
 	r.current_scene = scene_id
 
-	# to fix #194 bug
-	if "://" in scene_id:
-		path = scene_id
-		if scene_id in scenes_links:
-			scene_id = scenes_links[scene_id]
+	if scene_id in scenes_links:
 
-	elif scene_id in scenes_links:
-		path = scenes_links[scene_id].resource_path
+		var p = scenes_links[scene_id]
+
+		if p is PackedScene:
+			path = p.resource_path
+
+		else:
+			path = p
 
 	if (r.current_scene_path != path) or force_reload:
+		if r.story_state > 0:
+			r.story_state -= 1
+			
 		r.current_scene = path
-
-		if r.current_root_node != null:
-			r.current_root_node.queue_free()
-
-		var lscene = load(path)
-		r.current_root_node = lscene.instance()
-		get_tree().get_root().add_child(r.current_root_node)
-
-		r.started = true
-		r.emit_signal("started")
+		r.loading_screen.load_scene(path)
+		yield(r.loading_screen, "loaded")
+		changed_scene = true
+	
+	get_tree().paused = false
+	r.started = true
+	r.emit_signal("started")
+	return changed_scene
