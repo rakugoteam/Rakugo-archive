@@ -8,3 +8,4 @@ func some_dialog(node_name, dialog_name):
 
 	if next_state():
 		say({"what": "Hi this is empty Rakugo Template. Please Edit it."})
+	

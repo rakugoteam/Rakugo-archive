@@ -32,6 +32,7 @@ var blur_shader : ShaderMaterial
 func get_viewport() -> Viewport:
 	return viewport_con.get_node("Viewport") as Viewport
 
+
 func _ready():
 	if Engine.editor_hint:
 		return
@@ -79,7 +80,7 @@ func show_page(node):
 	if not use_back_button:
 		if current_node != self:
 			current_node.hide()
-	
+
 	blur_shader.set_shader_param("radius", 5)
 	current_node = node
 	node.show()
@@ -120,10 +121,10 @@ func history_menu():
 
 func _on_visibility_changed():
 	if visible:
-		
+
 		if Rakugo.started:
 			blur_shader.set_shader_param("radius", 5)
-		
+
 		get_tree().paused = true
 		in_game_gui.hide()
 		return
@@ -137,13 +138,13 @@ func _on_visibility_changed():
 ## # if press "Return" or "no" on quit page
 func _on_Return_pressed():
 	blur_shader.set_shader_param("radius", 0)
-	
+
 	if Rakugo.started:
 		hide()
 		unpause_timer.start()
 		yield(unpause_timer, "timeout")
 		return
-	
+
 	current_node.hide()
 
 
