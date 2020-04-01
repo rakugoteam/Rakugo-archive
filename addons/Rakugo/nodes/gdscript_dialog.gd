@@ -10,13 +10,13 @@ var dialog_init = false
 
 func _ready() -> void:
 	if begin_from.size() == 2:
-
+	
 		var b = begin_from.duplicate()
 		b.insert(1, name)
-
+	
 		if not Rakugo.is_connected("begin", Rakugo, "on_begin"):
 			Rakugo.connect("begin", Rakugo, "on_begin", b)
-
+	
 	add_dialogs()
 
 
