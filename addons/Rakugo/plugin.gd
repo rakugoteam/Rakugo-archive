@@ -131,6 +131,10 @@ func open_rakugo_docs() -> void:
 	OS.shell_open("https://rakugo.readthedocs.io/en/latest/")
 
 
+func open_website():
+	OS.shell_open("https://rakugoteam.github.io/")
+
+
 func open_about_dialog():
 	about_dialog.popup_centered()
 
