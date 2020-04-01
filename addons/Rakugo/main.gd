@@ -83,6 +83,7 @@ var active := false
 var can_alphanumeric := true
 var emoji_size := 16
 var skipping := false
+var current_dialogs := {}
 
 var skip_types := [
 	StatementType.SAY,
@@ -380,7 +381,36 @@ func exit_statement(parameters := {}) -> void:
 	emit_signal("exit_statement", current_statement.type, parameters)
 
 
+func get_dialog_nodes_names() -> Array:
+	var arr = []
+	
+	for n in current_dialogs.keys():
+		arr.append(n.name)
+		
+	return arr
+
+
+func get_dialogs(node_name:String) -> Array:
+	var id := get_dialog_nodes_names().find(node_name)
+	
+	if id > -1:
+		var k = current_dialogs.keys()[id]
+		return current_dialogs[k]
+	
+	return []
+
+
 func story_step() -> void:
+	if (
+		current_node_name != ""
+		and not(current_node_name in get_dialog_nodes_names())
+		):
+		push_error("Node %s is not added to dialogs nodes" % current_node_name)
+
+	elif not(current_dialog_name in get_dialogs(current_node_name)):
+		push_error("Node %s is not added %s to dialogs" 
+			% [current_node_name, current_dialog_name])
+		
 	emit_signal("story_step", current_node_name, current_dialog_name)
 
 
@@ -412,11 +442,24 @@ func on_stop_audio(node_id: String) -> void:
 	emit_signal("stop_audio", node_id)
 
 
+func clean_dialogs() -> void:
+	for n in current_dialogs.keys():
+		for f in current_dialogs[n]:
+			if is_connected("story_step", n, f):
+				disconnect("story_step", n, f)
+				
+		current_dialogs.erase(n)
+
 ## use to add/register dialog
 ## func_name is name of func that is going to be use as dialog
 func add_dialog(node: Node, func_name: String) -> void:
 	if not is_connected("story_step", node, func_name):
 		connect("story_step", node, func_name)
+		
+		if not (node in current_dialogs.keys()):
+			current_dialogs[node] = []
+			
+		current_dialogs[node].append(func_name)
 		debug(["add dialog", func_name, "from", node.name])
 
 
