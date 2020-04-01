@@ -72,8 +72,7 @@ stream = ExtResource( 10 )
 autoplay = true
 bus = "BGM"
 script = ExtResource( 11 )
-node_id = "RakugoAudioPlayer"
-saveable = true
+node_id = "BGMusic"
 [connection signal="later" from="dialogs/start" to="dialogs/start" method="_on_start_later"]
 [connection signal="rightaway" from="dialogs/start" to="dialogs/start" method="_on_start_rightaway"]
 [connection signal="book" from="dialogs/rightaway" to="dialogs/rightaway" method="_on_rightaway_book"]
