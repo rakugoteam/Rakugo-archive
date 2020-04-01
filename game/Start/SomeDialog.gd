@@ -10,4 +10,4 @@ func some_dialog(node_name, dialog_name):
 		say({"what": "Hi this is empty Rakugo Template. Please Edit it."})
 	
 	if next_state():
-		jump("Qtest", "Start", "start")
+		jump("Qtest", "start", "start")
