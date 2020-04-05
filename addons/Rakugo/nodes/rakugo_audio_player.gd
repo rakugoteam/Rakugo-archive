@@ -17,7 +17,7 @@ func _ready() -> void:
 		if node_id.empty():
 			node_id = name
 
-	return
+		return
 
 	Rakugo.connect("play_audio", self, "_on_play")
 	Rakugo.connect("stop_audio", self, "_on_stop")
@@ -27,7 +27,7 @@ func _ready() -> void:
 
 	node_link = Rakugo.get_node_link(node_id)
 
-	if  not node_link:
+	if not node_link:
 		node_link = Rakugo.node_link(node_id, get_path())
 
 

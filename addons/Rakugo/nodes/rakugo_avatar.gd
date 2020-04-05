@@ -18,17 +18,14 @@ var avatar_link: Avatar
 func _ready():
 	_set_saveable(_saveable)
 
+	if avatar_id.empty():
+		avatar_id = name
+
 	if Engine.editor_hint:
-		if avatar_id.empty():
-			avatar_id = name
 		return
 
 	Rakugo.connect("show", self, "_on_show")
 	rnode.connect("on_substate", self, "_on_substate")
-
-	if avatar_id.empty():
-		avatar_id = name
-
 	avatar_link = Rakugo.get_avatar_link(avatar_id)
 
 	if not avatar_link:
@@ -82,7 +79,7 @@ func _get_saveable() -> bool:
 
 
 func _on_show(avatar_id: String, state_value: Array, show_args: Dictionary) -> void:
-	if self.avatar_id != avatar_id:
+	if _avatar_id != avatar_id:
 		return
 
 	_set_state(state_value)
@@ -119,7 +116,7 @@ func on_save() -> void:
 
 func on_load(game_version: String) -> void:
 	_state = avatar_link.value["state"]
-	_on_show(avatar_id, _state , {})
+	_on_show(_avatar_id, _state , {})
 
 
 func _on_substate(substate):
