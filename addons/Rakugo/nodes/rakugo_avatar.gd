@@ -18,25 +18,25 @@ var avatar_link: Avatar
 func _ready():
 	_set_saveable(_saveable)
 
-	if avatar_id.empty():
-		avatar_id = name
+	if _avatar_id.empty():
+		_avatar_id = name
 
 	if Engine.editor_hint:
 		return
 
 	Rakugo.connect("show", self, "_on_show")
 	rnode.connect("on_substate", self, "_on_substate")
-	avatar_link = Rakugo.get_avatar_link(avatar_id)
+	avatar_link = Rakugo.get_avatar_link(_avatar_id)
 
 	if not avatar_link:
-		avatar_link = Rakugo.avatar_link(avatar_id, get_path())
+		avatar_link = Rakugo.avatar_link(_avatar_id, get_path())
 
 	else:
 		avatar_link.node_path = get_path()
 
 	add_to_group("save", true)
 
-	var node_link = Rakugo.get_node_link(avatar_id)
+	var node_link = Rakugo.get_node_link(_avatar_id)
 
 	if node_link:
 		if "state" in node_link.value:
@@ -78,8 +78,8 @@ func _get_saveable() -> bool:
 	return _saveable
 
 
-func _on_show(avatar_id: String, state_value: Array, show_args: Dictionary) -> void:
-	if _avatar_id != avatar_id:
+func _on_show(id: String, state_value: Array, show_args: Dictionary) -> void:
+	if _avatar_id != id:
 		return
 
 	_set_state(state_value)
@@ -106,7 +106,7 @@ func _exit_tree() -> void:
 	if Engine.editor_hint:
 		return
 
-	var id = Avatar.new("").var_prefix + avatar_id
+	var id = Avatar.new("").var_prefix + _avatar_id
 	Rakugo.variables.erase(id)
 
 

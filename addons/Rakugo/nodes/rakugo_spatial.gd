@@ -18,7 +18,7 @@ var last_show_args: Dictionary
 
 func _ready() -> void:
 	_set_saveable(_saveable)
-	
+
 	if _node_id.empty():
 		_node_id = name
 
@@ -72,8 +72,8 @@ func _get_saveable() -> bool:
 	return _saveable
 
 
-func _on_show(node_id: String, state_value: Array, show_args: Dictionary) -> void:
-	if self.node_id != node_id:
+func _on_show(id: String, state_value: Array, show_args: Dictionary) -> void:
+	if _node_id != id:
 		return
 
 	var def_pos = Vector2(translation.x , translation.y)
@@ -108,8 +108,8 @@ func _get_state() -> Array:
 	return _state
 
 
-func _on_hide(_node_id: String) -> void:
-	if _node_id != node_id:
+func _on_hide(id: String) -> void:
+	if _node_id != id:
 		return
 
 	hide()
@@ -135,7 +135,7 @@ func on_save() -> void:
 
 func on_load(game_version: String) -> void:
 	if not node_link:
-		push_error("error with loading: %s" %node_id)
+		push_error("error with loading: %s" % _node_id)
 		return
 
 	visible = node_link.value["visible"]

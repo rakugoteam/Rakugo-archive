@@ -72,8 +72,8 @@ func _get_saveable() -> bool:
 	return _saveable
 
 
-func _on_show(node_id: String, state_value: Array, show_args: Dictionary) -> void:
-	if _node_id != node_id:
+func _on_show(id: String, state_value: Array, show_args: Dictionary) -> void:
+	if _node_id != id:
 		return
 
 	last_show_args = show_args
@@ -104,8 +104,8 @@ func _get_state() -> Array:
 	return _state
 
 
-func _on_hide(_node_id) -> void:
-	if _node_id != node_id:
+func _on_hide(id:String) -> void:
+	if _node_id != id:
 		return
 
 	hide()
