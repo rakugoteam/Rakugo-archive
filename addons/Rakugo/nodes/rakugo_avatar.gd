@@ -100,15 +100,7 @@ func _set_state(value: Array) -> void:
 
 func _get_state() -> Array:
 	return _state
-
-
-func _exit_tree() -> void:
-	if Engine.editor_hint:
-		return
-
-	var id = Avatar.new("").var_prefix + _avatar_id
-	Rakugo.variables.erase(id)
-
+	
 
 func on_save() -> void:
 	avatar_link.value["state"] = _state

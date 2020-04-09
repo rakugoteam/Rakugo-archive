@@ -113,15 +113,7 @@ func _on_hide(id: String) -> void:
 		return
 
 	hide()
-
-
-func _exit_tree() -> void:
-	if Engine.editor_hint:
-		return
-
-	var id = NodeLink.new("").var_prefix + _node_id
-	Rakugo.variables.erase(id)
-
+	
 
 func on_save() -> void:
 	if not node_link:

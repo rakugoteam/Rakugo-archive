@@ -84,7 +84,7 @@ func _on_show(id: String, state_value: Array, show_args: Dictionary) -> void:
 
 	_set_state(state_value)
 
-	if not self.visible:
+	if not visible:
 		show()
 
 
@@ -111,14 +111,6 @@ func _on_hide(id:String) -> void:
 	hide()
 
 
-func _exit_tree() -> void:
-	if Engine.editor_hint:
-		return
-
-	var id = NodeLink.new("").var_prefix + _node_id
-	Rakugo.variables.erase(id)
-
-
 func on_save() -> void:
 	if not node_link:
 		push_error("error with saving: %s" % _node_id)
@@ -127,6 +119,7 @@ func on_save() -> void:
 	node_link.value["visible"] = visible
 	node_link.value["state"] = _state
 	node_link.value["show_args"] = last_show_args
+	Rakugo.debug(["save", name, _node_id, visible, _state, last_show_args])
 
 
 func on_load(game_version: String) -> void:
@@ -137,17 +130,16 @@ func on_load(game_version: String) -> void:
 	if "visible" in node_link.value:
 		visible = node_link.value["visible"]
 
-	if visible:
+	if "state" in node_link.value:
+		_state = node_link.value["state"]
 
-		if "state" in node_link.value:
-			_state = node_link.value["state"]
+	if "show_args" in node_link.value:
+		last_show_args = node_link.value["show_args"]
 
-		if "show_args" in node_link.value:
-			last_show_args = node_link.value["show_args"]
+	Rakugo.debug(["load", name, _node_id, visible, _state, last_show_args])
+	_on_show(_node_id, _state, last_show_args)
 
-		_on_show(_node_id, _state, last_show_args)
-
-	else:
+	if not visible:
 		_on_hide(_node_id)
 
 
