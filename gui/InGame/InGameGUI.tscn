@@ -1,6 +1,5 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=27 format=2]
 
-[ext_resource path="res://themes/new_gui/new_gui.tres" type="Theme" id=1]
 [ext_resource path="res://addons/Rakugo/nodes/rakugo_control.gd" type="Script" id=2]
 [ext_resource path="res://addons/Rakugo/nodes/rakugo_menu.gd" type="Script" id=3]
 [ext_resource path="res://gui/InGame/ChoiceButton.tscn" type="PackedScene" id=4]
@@ -418,7 +417,7 @@ pause_mode = 1
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
-theme = ExtResource( 1 )
+theme = ExtResource( 6 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false

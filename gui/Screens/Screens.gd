@@ -120,6 +120,7 @@ func history_menu():
 
 
 func _on_visibility_changed():
+	blur_shader.set_shader_param("radius", 0)
 	if visible:
 
 		if Rakugo.started:

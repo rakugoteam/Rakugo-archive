@@ -12,6 +12,7 @@ func _ready() -> void:
 	prev = default
 	scale = OS.window_size / default
 
+
 func _on_window_size_changed(prev: Vector2, now: Vector2) -> void:
 	scale = now / default
 	prev = prev
