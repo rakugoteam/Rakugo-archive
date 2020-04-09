@@ -34,13 +34,15 @@ func connect_if_not(sig:String, target:Node, method:String):
 
 
 func upadate_colors():
- if _use_colors_from_theme:
-	 var rt := theme as RakugoTheme
-	 idle_node_color = rt.idle_node_color
-	 focus_node_color = rt.focus_node_color
-	 hover_node_color = rt.hover_node_color
-	 pressed_node_color = rt.pressed_node_color
-	 disable_node_color = rt.disable_node_color
+	load_theme()
+	if _use_colors_from_theme:
+		var rt := theme as RakugoTheme
+		if rt:
+			idle_node_color = rt.idle_node_color
+			focus_node_color = rt.focus_node_color
+			hover_node_color = rt.hover_node_color
+			pressed_node_color = rt.pressed_node_color
+			disable_node_color = rt.disable_node_color
 
 
 func set_colors_from_theme(value: bool):
@@ -104,3 +106,14 @@ func set_disabled(value: bool) -> void:
 		return
 
 	_on_idle()
+
+
+func load_theme():
+	var path = ProjectSettings.get_setting("application/rakugo/theme")
+	var cfg_path = ProjectSettings.get_setting("application/config/project_settings_override")
+	if cfg_path:
+		var cfg := ConfigFile.new()
+		cfg.load(cfg_path)
+		path = cfg.get_value("application", "rakugo/theme")
+
+	theme = load(path)
