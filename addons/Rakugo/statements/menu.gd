@@ -16,7 +16,7 @@ func _init() -> void:
 		"mkind", "manchor",
 		"mcolumns"
 		]
-		
+
 	type = 3 # Rakugo.StatementType.MENU
 	parameters["mkind"] = "vertical"
 	parameters["manchor"] = "center"
@@ -53,5 +53,3 @@ func on_exit(_type: int, new_parameters: Dictionary = {}) -> void:
 
 	if parameters.add_to_history:
 		add_to_history()
-
-	Rakugo.story_step()

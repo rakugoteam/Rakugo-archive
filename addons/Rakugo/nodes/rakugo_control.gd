@@ -54,19 +54,8 @@ func _get_node_id() -> String:
 
 func _set_saveable(value: bool):
 	_saveable = value
-
-	if _saveable:
-		add_to_group("save", true)
-
-	elif is_in_group("save"):
-		remove_from_group("save")
-
-	if Engine.editor_hint:
-		return
-
-	if is_in_group("save"):
-		Rakugo.debug([name, "added to save"])
-
+	rnode.make_saveable(value, self)
+  
 
 func _get_saveable() -> bool:
 	return _saveable
@@ -107,45 +96,13 @@ func _on_hide(id: String) -> void:
 	hide()
 
 
-func _exit_tree() -> void:
-	if Engine.editor_hint:
-		return
-
-	Rakugo.variables.erase(_node_id)
-
-
 func on_save() -> void:
-	if not node_link:
-		push_error("error with saving: %s" % _node_id)
-		return
-
-	node_link.value["visible"] = visible
-	node_link.value["state"] = _state
-	node_link.value["show_args"] = last_show_args
+	rnode.save_visible_node(node_link, self)
 
 
 func on_load(game_version: String) -> void:
-
-	if not node_link:
-		push_error("error with loading: %s" %_node_id)
-		return
-
-	if "visible" in node_link.value:
-		visible = node_link.value["visible"]
-
-	if visible:
-
-		if "state" in node_link.value:
-			_state = node_link.value["state"]
-
-		if "show_args" in node_link.value:
-			last_show_args = node_link.value["show_args"]
-
-		_on_show(_node_id, _state, last_show_args)
-
-	else:
-		_on_hide(_node_id)
-
+	rnode.load_visible_node(self)
+  
 
 func _on_substate(substate):
 	pass

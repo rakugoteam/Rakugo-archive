@@ -2,20 +2,6 @@ tool
 extends Node
 class_name Character, "res://addons/Rakugo/icons/rakugo_character.svg"
 
-var character: CharacterObject
-var _name := ""
-var _color := Color("#ffffff")
-var _avatar: PackedScene
-var _prefix := ""
-var _suffix := ""
-var _id := ""
-var _saveable := true
-var _kind := "adv"
-var _mkind := "vertical"
-var _mcolumns := 0
-var _manchor := "center"
-var _stats := {}
-
 export var character_id := "" setget _set_character_id, _get_character_id
 export var saveable := true setget _set_saveable, _get_saveable
 export var character_name := "" setget _set_character_name, _get_character_name
@@ -29,6 +15,19 @@ export (int, 0, 10) var mcolumns: int setget _set_mcolumns, _get_mcolumns
 export (String, "top_left", "top_right", "bottom_left", "bottom_right", "center_left", "center_top", "center_right", "center_bottom", "center") var manchor:= "center" setget _set_manchor, _get_manchor
 export var stats := {} setget _set_stats, _get_stats
 
+var character: CharacterObject
+var _name := ""
+var _color := Color("#ffffff")
+var _avatar: PackedScene
+var _prefix := ""
+var _suffix := ""
+var _id := ""
+var _saveable := true
+var _kind := "adv"
+var _mkind := "vertical"
+var _mcolumns := 0
+var _manchor := "center"
+var _stats := {}
 
 func _ready() -> void:
 	_set_saveable(_saveable)
@@ -244,13 +243,13 @@ func _get_stats() -> Dictionary:
 
 func get_dict() -> Dictionary:
 	var dict := {}
-	dict["name"]	= _name
-	dict["color"]	= _color.to_html()
+	dict["name"]		= _name
+	dict["color"]		= _color.to_html()
 	dict["prefix"]	= _prefix
 	dict["suffix"]	= _suffix
 
 	if _avatar:
-		dict["avatar"]	= _avatar.resource_path
+		dict["avatar"] = _avatar.resource_path
 
 	dict["stats"]	= _stats
 	dict["kind"]	= _kind

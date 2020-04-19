@@ -48,3 +48,62 @@ func setup_state(state:Array) -> Array:
 		emit_signal("on_substate", s)
 
 	return state
+
+func make_saveable(node:Node, value:bool):
+	if value:
+		node.add_to_group("save", true)
+
+	elif node.is_in_group("save"):
+		node.remove_from_group("save")
+
+	if Engine.editor_hint:
+		return
+
+	if node.is_in_group("save"):
+		Rakugo.debug([node.name, "added to save"])
+
+
+func save_error_node(node_link:NodeLink, node_id:String) -> bool:
+	if not node_link:
+		push_error("error with saving: %s" %node_id)
+		return true
+
+	return false
+
+
+func save_visible_node(node_link:NodeLink, node: Node):
+	if save_error_node(node_link, node.node_id):
+		return
+
+	node_link.value["visible"] = node.visible
+	node_link.value["state"] = node.state
+	node_link.value["show_args"] = node.last_show_args
+
+
+func load_error_node(node_link:NodeLink, node_id:String) -> bool:
+	if not node_link:
+		push_error("error with loading: %s"  %node_id)
+		return true
+
+	return false
+
+
+func load_visible_node(node_link:NodeLink, node: Node):
+	if load_error_node(node_link, node.node_id):
+		return
+
+	if "visible" in node_link.value:
+		node.visible = node_link.value["visible"]
+
+	if node.visible:
+
+		if "state" in node_link.value:
+			node.state = node_link.value["state"]
+
+		if "show_args" in node_link.value:
+			node.last_show_args = node_link.value["show_args"]
+
+		node._on_show(node.node_id, node.state, node.last_show_args)
+
+	else:
+		node._on_hide(node.node_id)
