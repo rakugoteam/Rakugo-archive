@@ -39,7 +39,8 @@ func _ready() -> void:
 func _on_start() -> void:
 	var dict := get_dict()
 	character = Rakugo.character(_id, dict)
-	var dbg = Rakugo.debug_dict(dict, character.parameters_names, "Set Character " + _id + " with ")
+	var dbg = Rakugo.debug_dict(dict,
+	 character.parameters_names, "Set Character with id: " + _id)
 
 
 func _set_character_id(value: String) -> void:

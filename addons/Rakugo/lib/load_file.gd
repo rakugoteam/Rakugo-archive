@@ -79,6 +79,8 @@ func invoke(save_folder: String, save_name: String,  variables: Dictionary):
 		true
 		)
 
+	yield(r, "started")
+
 	for node in r.get_tree().get_nodes_in_group("save"):
 		if node.has_method("on_load"):
 			node.on_load(r.game_version)

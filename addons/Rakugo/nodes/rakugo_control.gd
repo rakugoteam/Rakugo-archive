@@ -18,20 +18,20 @@ var _saveable := true
 
 func _ready() -> void:
 	_set_saveable(_saveable)
+	if _node_id.empty():
+		_node_id = name
 
 	if Engine.editor_hint:
-		if node_id.empty():
-			node_id = name
 		return
 
 	Rakugo.connect("show", self, "_on_show")
 	Rakugo.connect("hide", self, "_on_hide")
 	rnode.connect("on_substate", self, "_on_rnode_substate")
 
-	node_link = Rakugo.get_var(node_id)
+	node_link = Rakugo.get_node_link(_node_id)
 
 	if not node_link:
-		node_link = Rakugo.node_link(node_id, get_path())
+		node_link = Rakugo.node_link(_node_id, get_path())
 
 	else:
 		node_link.value["node_path"] = get_path()
@@ -55,14 +55,14 @@ func _get_node_id() -> String:
 func _set_saveable(value: bool):
 	_saveable = value
 	rnode.make_saveable(value, self)
+  
 
 func _get_saveable() -> bool:
 	return _saveable
 
 
-func _on_show(node_id: String , state_value: Array, show_args: Dictionary) -> void:
-
-	if self.node_id != node_id:
+func _on_show(id: String , state_value: Array, show_args: Dictionary) -> void:
+	if _node_id != id:
 		return
 
 	rect_position = rnode.show_at(show_args, rect_position)
@@ -89,8 +89,8 @@ func _get_state() -> Array:
 	return _state
 
 
-func _on_hide(_node_id: String) -> void:
-	if _node_id != node_id:
+func _on_hide(id: String) -> void:
+	if _node_id != id:
 		return
 
 	hide()
@@ -102,7 +102,7 @@ func on_save() -> void:
 
 func on_load(game_version: String) -> void:
 	rnode.load_visible_node(self)
-
+  
 
 func _on_substate(substate):
 	pass

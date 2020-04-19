@@ -21,8 +21,11 @@ func get_use_theme_form_settings() -> bool:
 
 
 func load_theme():
-	theme = load(
-		ProjectSettings.get_setting(
-			"application/rakugo/theme"
-		)
-	)
+	var path = ProjectSettings.get_setting("application/rakugo/theme")
+	var cfg_path = ProjectSettings.get_setting("application/config/project_settings_override")
+	if cfg_path:
+		var cfg := ConfigFile.new()
+		cfg.load(cfg_path) 
+		path = cfg.get_value("application", "rakugo/theme")
+
+	theme = load(path)
