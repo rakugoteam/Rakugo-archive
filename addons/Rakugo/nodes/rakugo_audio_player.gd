@@ -5,6 +5,7 @@ class_name RakugoAudioPlayer, "res://addons/Rakugo/icons/rakugo_audio_player.svg
 export var node_id : String = name setget _set_node_id, _get_node_id
 export var saveable := true setget _set_saveable, _get_saveable
 
+var rnode := RakugoNodeCore.new()
 var node_link: NodeLink
 var last_pos := 0.0
 var _node_id := ""
@@ -41,18 +42,7 @@ func _get_node_id() -> String:
 
 func _set_saveable(value: bool):
 	_saveable = value
-
-	if _saveable:
-		add_to_group("save", true)
-
-	elif is_in_group("save"):
-		remove_from_group("save")
-
-	if Engine.editor_hint:
-		return
-
-	if is_in_group("save"):
-		Rakugo.debug([name, "added to save"])
+	rnode.make_saveable(value, self)
 
 
 func _get_saveable() -> bool:

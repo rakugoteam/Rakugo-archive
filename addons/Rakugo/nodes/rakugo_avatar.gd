@@ -60,18 +60,7 @@ func _get_avatar_id() -> String:
 
 func _set_saveable(value: bool):
 	_saveable = value
-
-	if _saveable:
-		add_to_group("save", true)
-
-	elif is_in_group("save"):
-		remove_from_group("save")
-
-	if Engine.editor_hint:
-		return
-
-	if is_in_group("save"):
-		Rakugo.debug([name, "added to save"])
+	rnode.make_saveable(value, self)
 
 
 func _get_saveable() -> bool:
