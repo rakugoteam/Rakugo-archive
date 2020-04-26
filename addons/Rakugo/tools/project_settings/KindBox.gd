@@ -56,5 +56,5 @@ func load_setting() -> void:
 	_on_kind(kinds.find(kind))
 
 
-func save_setting(use_cfg:bool, cfg:ConfigFile) -> void:
+func save_setting() -> void:
 	 rps.set_setting("rakugo/default_kind", kind)

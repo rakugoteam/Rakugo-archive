@@ -1,28 +1,22 @@
 tool
 extends Panel
 
-var use_cfg : bool
+func _ready() -> void:
+	$Label.hide()
+	$VBoxContainer/SaveButton.icon = get_icon("Save", "EditorIcons")
+	$VBoxContainer/SaveButton.connect("pressed", self, "_on_ok")
+	connect("visibility_changed", self, "_on_visibility_changed")
+	load_settings()
+
 
 func get_boxes() -> Node:
 	return $VBoxContainer/ScrollContainer/VBoxContainer
 
-func _ready() -> void:
-	$VBoxContainer/SaveButton.icon = get_icon("Save", "EditorIcons")
-	$Label.hide()
-
-	if $RakugoProjectSettings.cfg_path:
-		use_cfg = true
-		
-	load_settings()
-
-	$VBoxContainer/SaveButton.connect("pressed", self, "_on_ok")
-	connect("visibility_changed", self, "_on_visibility_changed")
-
 
 func _on_visibility_changed():
 	if visible:
-		_ready()
-	
+		load_settings()
+		
 	else:
 		_on_ok()
 

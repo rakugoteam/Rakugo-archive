@@ -89,7 +89,7 @@ func _on_anchor(id:int) -> void:
 	anchor = anchors[id]
 
 
-func load_setting(use_cfg:bool, cfg:ConfigFile) -> void:
+func load_setting() -> void:
 	kind = rps.get_setting("rakugo/default_mkind")
 	_on_kind(kinds.find(kind))
 
@@ -106,7 +106,7 @@ func update_box() -> void:
 	$SpinBox.visible = kind == "grid"
 
 
-func save_setting(use_cfg:bool, cfg:ConfigFile) -> void:
+func save_setting() -> void:
 	rps.set_setting("rakugo/default_mkind", kind)
 	rps.set_setting("rakugo/default_mcolumns", $SpinBox.value)
 	rps.set_setting("rakugo/default_manchor", anchor)

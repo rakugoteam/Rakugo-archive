@@ -3,7 +3,7 @@
 [ext_resource path="res://addons/Rakugo/tools/scenes_links/SceneLinksChooser.gd" type="Script" id=1]
 [ext_resource path="res://addons/Rakugo/lib/project_settings.gd" type="Script" id=2]
 
-[sub_resource type="Image" id=5]
+[sub_resource type="Image" id=1]
 data = {
 "data": PoolByteArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ),
 "format": "LumAlpha8",
@@ -12,10 +12,10 @@ data = {
 "width": 16
 }
 
-[sub_resource type="ImageTexture" id=4]
+[sub_resource type="ImageTexture" id=2]
 flags = 4
 flags = 4
-image = SubResource( 5 )
+image = SubResource( 1 )
 size = Vector2( 16, 16 )
 
 [node name="ScenesLinksChooser" type="HBoxContainer"]
@@ -26,6 +26,10 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+rps_path = NodePath("RakugoProjectSettings")
+
+[node name="RakugoProjectSettings" type="Node" parent="."]
+script = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="."]
 margin_top = 5.0
@@ -49,7 +53,7 @@ margin_bottom = 24.0
 rect_min_size = Vector2( 24, 24 )
 hint_tooltip = "Open ScenesLinks"
 size_flags_horizontal = 0
-icon = SubResource( 4 )
+icon = SubResource( 2 )
 clip_text = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -62,7 +66,7 @@ margin_right = 28.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 24, 24 )
 hint_tooltip = "Set as default"
-icon = SubResource( 4 )
+icon = SubResource( 2 )
 clip_text = true
 
 [node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
@@ -76,7 +80,7 @@ margin_right = 68.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 24, 24 )
 hint_tooltip = "Save Changes"
-icon = SubResource( 4 )
+icon = SubResource( 2 )
 clip_text = true
 
 [node name="Cancel" type="Button" parent="."]
@@ -85,7 +89,7 @@ margin_right = 488.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 24, 24 )
 hint_tooltip = "Undo Changes"
-icon = SubResource( 4 )
+icon = SubResource( 2 )
 
 [node name="Control" type="Control" parent="."]
 margin_left = 492.0
@@ -102,6 +106,3 @@ mode = 0
 filters = PoolStringArray( "*.tres" )
 current_dir = "res://game"
 current_path = "res://game/"
-
-[node name="RakugoProjectSettings" type="Node" parent="."]
-script = ExtResource( 2 )

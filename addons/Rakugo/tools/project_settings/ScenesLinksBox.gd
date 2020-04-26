@@ -20,4 +20,4 @@ func save_setting() -> void:
 	$ScenesLinksChooser/LineEdit.text = rps.set_setting(
 	"rakugo/scenes_links", $ScenesLinksChooser/LineEdit.text)
 
-	$ScenesLinksChooser._on_set_as_def(rps.cfg_loaded, rps.cfg)
+	$ScenesLinksChooser._on_set_as_def(rps)
