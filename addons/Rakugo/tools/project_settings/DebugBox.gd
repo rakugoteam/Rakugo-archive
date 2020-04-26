@@ -1,21 +1,16 @@
 tool
 extends HBoxContainer
 
+export var rps_path : NodePath
+onready var rps : RakugoProjectSettings = get_node(rps_path)
+
 func _ready() -> void:
 	$TextureRect.texture = get_icon("Debug", "EditorIcons")
 
 
-func load_setting(use_cfg:bool, cfg:ConfigFile) -> void:
-	if use_cfg and cfg:
-		$CheckButton.pressed = cfg.get_value("application", "rakugo/debug")
-		return
-
-	$CheckButton.pressed = ProjectSettings.get_setting("application/rakugo/debug")
+func load_setting() -> void:
+	$CheckButton.pressed = rps.get_setting("rakugo/debug")
 
 
-func save_setting(use_cfg:bool, cfg:ConfigFile) -> void:
-	if use_cfg and cfg:
-		cfg.set_value("application", "rakugo/debug", $CheckButton.pressed)
-		return
-
-	ProjectSettings.set_setting("application/rakugo/debug", $CheckButton.pressed)
+func save_setting() -> void:
+	rps.set_setting("rakugo/debug", $CheckButton.pressed)

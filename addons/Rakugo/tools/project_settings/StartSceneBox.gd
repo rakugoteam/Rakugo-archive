@@ -1,8 +1,8 @@
 tool
 extends HBoxContainer
 
-export var root_path : NodePath
-onready var root = get_node(root_path)
+export var rps_path : NodePath
+onready var rps : RakugoProjectSettings = get_node(rps_path)
 
 func _ready() -> void:
 	$Button.icon = get_icon("PlayScene", "EditorIcons")
@@ -15,22 +15,12 @@ func _on_toggled() -> void:
 	$Button.text = ""
 
 
-func load_setting(use_cfg:bool, cfg:ConfigFile) -> void:
-	if use_cfg and cfg:
-		$Button.text = cfg.get_value("application", "run/main_scene")
-		return
-	
-	$Button.text = ProjectSettings.get_setting(
-		"application/run/main_scene")
+func load_setting() -> void:
+	$Button.text = rps.get_setting("run/main_scene")
 
 
-func save_setting(use_cfg:bool, cfg:ConfigFile) -> void:
-	if use_cfg and cfg:
-		cfg.set_value("application", "run/main_scene", $Button.text)
-		return
-	
-	ProjectSettings.set_setting(
-		"application/run/main_scene", $Button.text)
+func save_setting() -> void:
+	rps.set_setting("run/main_scene", $Button.text)
 
 
 func _on_fd():

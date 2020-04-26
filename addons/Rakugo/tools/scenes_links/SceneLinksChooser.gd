@@ -1,6 +1,9 @@
 tool
 extends HBoxContainer
 
+export var rps_path : NodePath
+onready var rps : RakugoProjectSettings = get_node(rps_path)
+
 export var only_open := false setget _set_only_open, _get_only_open
 onready var tres_dialog := $Control/FileDialog
 
@@ -52,13 +55,13 @@ func _on_set_as_def(use_cfg:=false, cfg:ConfigFile=null) -> void:
 			cfg.load(cfg_path)
 			cfg.set_value("application", "rakugo/scenes_links", $LineEdit.text)
 			cfg.save(cfg_path)
-			
+
 		else:
 			ProjectSettings.set_setting("application/rakugo/scenes_links", $LineEdit.text)
-		
+
 	else:
 		ProjectSettings.set_setting("application/rakugo/scenes_links", $LineEdit.text)
-	
+
 	emit_signal("set_as_def")
 
 

@@ -1,8 +1,8 @@
 tool
 extends HBoxContainer
 
-export var root_path : NodePath
-onready var root = get_node(root_path)
+export var rps_path : NodePath
+onready var rps : RakugoProjectSettings = get_node(rps_path)
 
 func _ready() -> void:
 	$Button.icon = get_icon("ScriptExtend", "EditorIcons")
@@ -20,40 +20,30 @@ func _on_toggled() -> void:
 
 func _on_reload() -> void:
 	load_setting()
-	
+
 	for ch in get_parent().get_children():
 		if ch != self:
-			ch.load_setting(root.use_cfg, root.cfg)
+			ch.load_setting()
 
 
-func load_setting(use_cfg:=false, cfg:ConfigFile = null) -> void:
+func load_setting() -> void:
 
 	if $Button.text:
 		$CheckButton.pressed = true
-		
-		if root.cfg == null:
-			root.cfg = ConfigFile.new()
-			
-		root.cfg.load($Button.text)
+		rps.load_cfg($Button.text)
 
 
-func save_setting(use_cfg:=false, cfg:ConfigFile = null) -> void:
-	
+func save_setting() -> void:
+
 	for ch in get_parent().get_children():
 		if ch != self:
-			ch.save_setting(root.use_cfg, root.cfg)
+			ch.save_setting()
 
-	if root.use_cfg and root.cfg:
-		root.cfg.save($Button.text)
-		root.cfg_path = $Button.text
-	
-	ProjectSettings.set_setting(
-		"application/config/project_settings_override",
-		 $Button.text
-		)
+	if $CheckButton.pressed and rps.cfg_loaded:
+		rps.save_cfg($Button.text)
 
 
 func _on_fd():
 	$Button.text = $FileDialog.current_path
-	root.cfg_path = $Button.text
+	rps.load_cfg($Button.text)
 	_on_reload()
