@@ -1,10 +1,10 @@
 tool
 extends HBoxContainer
 
-export var rps_path : NodePath
-onready var rps : RakugoProjectSettings = get_node(rps_path)
+var rps : RakugoProjectSettings
 
 func _ready() -> void:
+	$TextureRect.texture = get_icon("PlayScene", "EditorIcons")
 	$Button.icon = get_icon("PlayScene", "EditorIcons")
 	$Button.connect("pressed", $Button/FileDialog, "popup_centered")
 	$Button/FileDialog.connect("confirmed", self, "_on_fd")

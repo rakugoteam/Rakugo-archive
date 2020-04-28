@@ -5,8 +5,8 @@ class_name RakugoProjectSettings
 var cfg := ConfigFile.new()
 var cfg_path := ""
 var cfg_loaded := false
-var pso := "application/config/project_settings_override"
 var app := "application"
+var pso := app + "/config/project_settings_override"
 
 func _ready() -> void:
 	load_cfg()
@@ -47,7 +47,7 @@ func save_cfg(path:="") -> void:
 
 func get_setting(path:String) -> String:
 	if cfg_loaded:
-		return cfg.get_value(app, path)
+			return cfg.get_value(app, path)
 
 	return ProjectSettings.get_setting(app + "/" + path)
 
@@ -56,5 +56,7 @@ func set_setting(path:String, value) -> void:
 	if cfg_loaded:
 		cfg.set_value(app, path, value)
 
-	else:
-		ProjectSettings.set_setting(app + "/" + path, value)
+		if path != "config/name":
+			return
+
+	ProjectSettings.set_setting(app + "/" + path, value)

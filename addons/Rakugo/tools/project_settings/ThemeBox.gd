@@ -1,8 +1,7 @@
 tool
 extends HBoxContainer
 
-export var rps_path : NodePath
-onready var rps : RakugoProjectSettings = get_node(rps_path)
+var rps : RakugoProjectSettings
 
 func _ready() -> void:
 	$Button.icon = get_icon("Theme", "EditorIcons")

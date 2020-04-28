@@ -408,6 +408,7 @@ rakugo/default_manchor="center"
 rakugo/punctuation_pause="1"
 rakugo/default_mcolums=2.0
 rakugo/theme="res://themes/new_gui/new_gui.tres"
+/rakugo/punctuation_pause="1"
 
 [autoload]
 

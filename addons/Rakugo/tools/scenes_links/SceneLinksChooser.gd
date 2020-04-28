@@ -1,11 +1,11 @@
 tool
 extends HBoxContainer
 
-export var rps_path : NodePath
-onready var rps : RakugoProjectSettings = get_node(rps_path)
-
+onready var rps : RakugoProjectSettings = $RakugoProjectSettings
 export var only_open := false setget _set_only_open, _get_only_open
 onready var tres_dialog := $Control/FileDialog
+
+var text setget _set_text, _get_text
 
 signal apply
 signal cancel
@@ -26,9 +26,17 @@ func _ready() -> void:
 	connect("visibility_changed", self, "_on_visible")
 
 
+func _set_text(value:String) -> void:
+	$LineEdit.text = value
+
+
+func _get_text() -> String:
+	return $LineEdit.text
+
+
 func _on_visible() -> void:
 	if visible and !_get_only_open():
-		if rps.cfg_load:
+		if rps.cfg_loaded:
 			var path = rps.get_setting("rakugo/scenes_links")
 			$LineEdit.text = path
 			emit_signal("open", path)
@@ -48,11 +56,17 @@ func _on_set_as_def(_rps:=rps) -> void:
 	if _rps != rps:
 		rps = _rps
 		
-	rps.set_setting("application/rakugo/scenes_links", $LineEdit.text)
+	rps.set_setting("rakugo/scenes_links", $LineEdit.text)
 	emit_signal("set_as_def")
 
 
 func _set_only_open(value:bool) -> void:
+	if value:
+		$Label.size_flags_horizontal = SIZE_EXPAND_FILL
+	
+	else:
+		$Label.size_flags_horizontal = SIZE_FILL
+	
 	$HBoxContainer.visible = !value
 
 
