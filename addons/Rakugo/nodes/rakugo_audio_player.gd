@@ -42,7 +42,7 @@ func _get_node_id() -> String:
 
 func _set_saveable(value: bool):
 	_saveable = value
-	rnode.make_saveable(value, self)
+	rnode.make_saveable(self, value)
 
 
 func _get_saveable() -> bool:
