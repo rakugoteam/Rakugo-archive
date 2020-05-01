@@ -37,6 +37,9 @@ func set_rakugo_file(value: String) -> void:
 	if value.empty():
 		return
 
+	if not file.exists(value):
+		return
+
 	file.open(value, file.READ)
 	rakugo_text = file.get_as_text()
 	file.close()
@@ -44,7 +47,7 @@ func set_rakugo_file(value: String) -> void:
 
 
 func on_visibility_changed() -> void:
-	if visible == false:
+	if not visible:
 		return
 
 	update_label()

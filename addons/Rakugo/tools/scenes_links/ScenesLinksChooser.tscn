@@ -26,7 +26,6 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-rps_path = NodePath("")
 
 [node name="RakugoProjectSettings" type="Node" parent="."]
 script = ExtResource( 2 )
