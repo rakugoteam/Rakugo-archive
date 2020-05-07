@@ -39,6 +39,7 @@ func _ready() -> void:
 	Rakugo.connect("hide_ui", self, "_on_Hide_toggled")
 	$Button.connect("pressed", self, "_on_ui_accept", [true])
 
+
 func _setup(kind_container: KindContainer):
 	NameLabel = kind_container.NameLabel
 	DialogText = kind_container.DialogText
@@ -96,6 +97,11 @@ func _on_statement(type: int, parameters: Dictionary) -> void:
 
 	if not( _type in allowed_statement_types):
 		return
+	
+	$Button.show()
+	
+	if _type != Rakugo.StatementType.SAY:
+		$Button.hide()
 
 	if "kind" in parameters:
 		kind = parameters.kind

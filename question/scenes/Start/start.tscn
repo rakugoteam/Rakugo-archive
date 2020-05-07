@@ -30,8 +30,6 @@ texture = ExtResource( 12 )
 ] instance=ExtResource( 2 )]
 position = Vector2( 511.651, 298.479 )
 z_index = -2
-saveable = true
-state = [  ]
 
 [node name="characters" parent="." instance=ExtResource( 3 )]
 position = Vector2( 558.514, 322.834 )
@@ -73,6 +71,7 @@ autoplay = true
 bus = "BGM"
 script = ExtResource( 11 )
 node_id = "BGMusic"
+saveable = true
 [connection signal="later" from="dialogs/start" to="dialogs/start" method="_on_start_later"]
 [connection signal="rightaway" from="dialogs/start" to="dialogs/start" method="_on_start_rightaway"]
 [connection signal="book" from="dialogs/rightaway" to="dialogs/rightaway" method="_on_rightaway_book"]

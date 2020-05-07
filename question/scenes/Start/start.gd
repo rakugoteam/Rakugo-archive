@@ -71,7 +71,6 @@ func start(node_name, dialog_name):
 		menu({
 		"what":
 			"As soon as she catches my eye, I decide...",
-		"node": self,
 		"choices":
 			{
 				"To ask her right away.": "rightaway",

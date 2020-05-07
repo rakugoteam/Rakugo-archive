@@ -184,6 +184,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/nodes/rakugo_node_core.gd"
 }, {
+"base": "Node",
+"class": "RakugoProjectSettings",
+"language": "GDScript",
+"path": "res://addons/Rakugo/lib/project_settings.gd"
+}, {
 "base": "RakugoBaseButton",
 "class": "RakugoQuestButton",
 "language": "GDScript",
@@ -350,6 +355,7 @@ _global_script_class_icons={
 "RakugoMenu": "res://addons/Rakugo/icons/rakugo_menu_v.svg",
 "RakugoNode2D": "res://addons/Rakugo/icons/rakugo_node2d.svg",
 "RakugoNodeCore": "",
+"RakugoProjectSettings": "",
 "RakugoQuestButton": "res://addons/Rakugo/icons/rakugo_quest_button.svg",
 "RakugoRangedVar": "",
 "RakugoSayPanel": "res://addons/Rakugo/icons/rakugo_panel.svg",
@@ -402,6 +408,7 @@ rakugo/default_manchor="center"
 rakugo/punctuation_pause="1"
 rakugo/default_mcolums=2.0
 rakugo/theme="res://themes/new_gui/new_gui.tres"
+/rakugo/punctuation_pause="1"
 
 [autoload]
 

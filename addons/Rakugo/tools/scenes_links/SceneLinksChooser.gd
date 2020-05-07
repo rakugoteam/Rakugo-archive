@@ -1,8 +1,11 @@
 tool
 extends HBoxContainer
 
+onready var rps : RakugoProjectSettings = $RakugoProjectSettings
 export var only_open := false setget _set_only_open, _get_only_open
 onready var tres_dialog := $Control/FileDialog
+
+var text setget _set_text, _get_text
 
 signal apply
 signal cancel
@@ -23,13 +26,18 @@ func _ready() -> void:
 	connect("visibility_changed", self, "_on_visible")
 
 
+func _set_text(value:String) -> void:
+	$LineEdit.text = value
+
+
+func _get_text() -> String:
+	return $LineEdit.text
+
+
 func _on_visible() -> void:
 	if visible and !_get_only_open():
-		var cfg_path = ProjectSettings.get_setting("application/config/project_settings_override")
-		if cfg_path:
-			var cfg = ConfigFile.new()
-			cfg.load(cfg_path)
-			var path = cfg.get_value("application", "rakugo/scenes_links")
+		if rps.cfg_loaded:
+			var path = rps.get_setting("rakugo/scenes_links")
 			$LineEdit.text = path
 			emit_signal("open", path)
 
@@ -44,25 +52,21 @@ func _on_tres_dialog() -> void:
 	emit_signal("open", tres_dialog.current_path)
 
 
-func _on_set_as_def(use_cfg:=false, cfg:ConfigFile=null) -> void:
-	if not cfg:
-		var cfg_path = ProjectSettings.get_setting("application/config/project_settings_override")
-		if cfg_path:
-			cfg = ConfigFile.new()
-			cfg.load(cfg_path)
-			cfg.set_value("application", "rakugo/scenes_links", $LineEdit.text)
-			cfg.save(cfg_path)
-			
-		else:
-			ProjectSettings.set_setting("application/rakugo/scenes_links", $LineEdit.text)
+func _on_set_as_def(_rps:=rps) -> void:
+	if _rps != rps:
+		rps = _rps
 		
-	else:
-		ProjectSettings.set_setting("application/rakugo/scenes_links", $LineEdit.text)
-	
+	rps.set_setting("rakugo/scenes_links", $LineEdit.text)
 	emit_signal("set_as_def")
 
 
 func _set_only_open(value:bool) -> void:
+	if value:
+		$Label.size_flags_horizontal = SIZE_EXPAND_FILL
+	
+	else:
+		$Label.size_flags_horizontal = SIZE_FILL
+	
 	$HBoxContainer.visible = !value
 
 
