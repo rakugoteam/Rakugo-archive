@@ -1,10 +1,10 @@
 tool
 extends HBoxContainer
 
-export var root_path : NodePath
-onready var root = get_node(root_path)
+var rps : RakugoProjectSettings
 
 func _ready() -> void:
+	$TextureRect.texture = get_icon("ScriptExtend", "EditorIcons")
 	$Button.icon = get_icon("ScriptExtend", "EditorIcons")
 	$Button.connect("pressed", $FileDialog, "popup_centered")
 	$FileDialog.connect("confirmed", self, "_on_fd")
@@ -20,40 +20,33 @@ func _on_toggled() -> void:
 
 func _on_reload() -> void:
 	load_setting()
-	
+
+
+func load_other_setting() -> void:
 	for ch in get_parent().get_children():
-		if ch != self:
-			ch.load_setting(root.use_cfg, root.cfg)
+		if ch != self and ch.name != "Label":
+			ch.load_setting()
 
 
-func load_setting(use_cfg:=false, cfg:ConfigFile = null) -> void:
-
+func load_setting() -> void:
 	if $Button.text:
 		$CheckButton.pressed = true
-		
-		if root.cfg == null:
-			root.cfg = ConfigFile.new()
-			
-		root.cfg.load($Button.text)
-
-
-func save_setting(use_cfg:=false, cfg:ConfigFile = null) -> void:
+		rps.load_cfg($Button.text)
 	
+	load_other_setting()
+
+
+func save_setting() -> void:
+
 	for ch in get_parent().get_children():
-		if ch != self:
-			ch.save_setting(root.use_cfg, root.cfg)
+		if ch != self and ch.name != "Label":
+			ch.save_setting()
 
-	if root.use_cfg and root.cfg:
-		root.cfg.save($Button.text)
-		root.cfg_path = $Button.text
-	
-	ProjectSettings.set_setting(
-		"application/config/project_settings_override",
-		 $Button.text
-		)
+	if $CheckButton.pressed and rps.cfg_loaded:
+		rps.save_cfg($Button.text)
 
 
 func _on_fd():
 	$Button.text = $FileDialog.current_path
-	root.cfg_path = $Button.text
+	rps.load_cfg($Button.text)
 	_on_reload()

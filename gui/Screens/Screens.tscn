@@ -4524,7 +4524,7 @@ size_flags_vertical = 3
 scroll_active = true
 selection_enabled = false
 script = ExtResource( 5 )
-rakugo_text_file = "res://question/about.txt"
+rakugo_text_file = "res://addons/Rakugo/credits.txt"
 
 [node name="QuitBox" parent="." instance=ExtResource( 15 )]
 visible = false

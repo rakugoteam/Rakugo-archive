@@ -1,6 +1,8 @@
 tool
 extends HBoxContainer
 
+var rps : RakugoProjectSettings
+
 var kind : String
 var anchor : String
 var kpopup : PopupMenu
@@ -86,35 +88,16 @@ func _on_anchor(id:int) -> void:
 	anchor = anchors[id]
 
 
-func load_setting(use_cfg:bool, cfg:ConfigFile) -> void:
-	kind = ProjectSettings.get_setting(
-		"application/rakugo/default_mkind")
-
-	if use_cfg and cfg:
-		kind = cfg.get_value("application",
-		"rakugo/default_mkind")
-
+func load_setting() -> void:
+	kind = rps.get_setting("rakugo/default_mkind")
 	_on_kind(kinds.find(kind))
 
 	$SpinBox.value = int(
-		ProjectSettings.get_setting(
-		"application/rakugo/default_mcolumns"))
-
-	if use_cfg and cfg:
-			$SpinBox.value = int(
-				cfg.get_value("application",
-				"rakugo/default_mcolumns"))
+		rps.get_setting("rakugo/default_mcolumns"))
 
 	update_box()
 
-	anchor = ProjectSettings.get_setting(
-		"application/rakugo/default_manchor")
-
-	if use_cfg and cfg:
-			anchor = cfg.get_value(
-				"application",
-				"rakugo/default_manchor")
-
+	anchor = rps.get_setting("rakugo/default_manchor")
 	_on_anchor(anchors.find(anchor))
 
 
@@ -122,20 +105,7 @@ func update_box() -> void:
 	$SpinBox.visible = kind == "grid"
 
 
-func save_setting(use_cfg:bool, cfg:ConfigFile) -> void:
-	if use_cfg and cfg:
-		cfg.set_value("application",
-			"rakugo/default_mkind", kind)
-		cfg.set_value("application",
-			"rakugo/default_mcolumns", $SpinBox.value)
-		cfg.set_value("application", 
-			"rakugo/default_manchor", anchor)
-		return
-
-	ProjectSettings.set_setting(
-		"application/rakugo/default_mkind", kind)
-	ProjectSettings.set_setting(
-		"application/rakugo/default_mcolumns",
-		$SpinBox.value)
-	ProjectSettings.set_setting(
-		"application/rakugo/default_manchor", anchor)
+func save_setting() -> void:
+	rps.set_setting("rakugo/default_mkind", kind)
+	rps.set_setting("rakugo/default_mcolumns", $SpinBox.value)
+	rps.set_setting("rakugo/default_manchor", anchor)
