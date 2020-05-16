@@ -1,5 +1,5 @@
 tool
-extends AcceptDialog
+extends Panel
 
 func _ready() -> void:
 	$VBoxContainer/Label.hide()

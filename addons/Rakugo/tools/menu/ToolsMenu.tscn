@@ -26,7 +26,7 @@ margin_bottom = 23.0
 hint_tooltip = "Rakugo Tools"
 text = "Rakugo"
 icon = ExtResource( 1 )
-items = [ "Rakugo Project Settings", SubResource( 2 ), 0, true, false, 0, 0, null, "", false, "Emoji Panel", ExtResource( 2 ), 0, true, false, 1, 0, null, "", false, "Modify Secnes Links", ExtResource( 3 ), 0, false, false, 2, 0, null, "", false, "Open Rakugo Docs", SubResource( 2 ), 0, false, false, 3, 0, null, "", false, "About Rakugo", SubResource( 2 ), 0, false, false, 4, 0, null, "", false, "Open Rakugo Website", SubResource( 2 ), 0, false, false, 5, 0, null, "", false ]
+items = [ "Emoji Panel", ExtResource( 2 ), 0, true, false, 0, 0, null, "", false, "ScenesLinks Tool", ExtResource( 3 ), 0, true, false, 1, 0, null, "", false, "Open Rakugo Docs", SubResource( 2 ), 0, false, false, 2, 0, null, "", false, "About Rakugo", ExtResource( 1 ), 0, false, false, 3, 0, null, "", false, "Rakugo Website", ExtResource( 1 ), 0, false, false, 4, 0, null, "", false ]
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false

@@ -3,7 +3,8 @@ extends EditorPlugin
 
 var emoji_panel
 var sl_tool
-var rps
+var rakugo_project_settings
+var rps_container
 var tools_menu
 var tm_container
 var about_dialog
@@ -92,9 +93,10 @@ func init_tools():
 	sl_tool.get_node("ScenesLinks").plugin_ready(get_editor_interface())
 	add_child(sl_tool)
 
-	rps = preload("tools/project_settings/RakugoProjectSettings.tscn").instance()
-	rps.theme = theme
-	add_child(rps)
+	rakugo_project_settings = preload("tools/project_settings/RakugoProjectSettings.tscn").instance()
+	rakugo_project_settings.theme = theme
+	rps_container = CONTAINER_PROJECT_SETTING_TAB_LEFT
+	add_control_to_container(rps_container, rakugo_project_settings)
 
 	tools_menu = preload("tools/menu/ToolsMenu.tscn").instance()
 	tools_menu.theme = theme
@@ -115,10 +117,6 @@ func init_tools():
 	about_dialog = preload("tools/about/AboutDialog.tscn").instance()
 	about_dialog.theme = theme
 	add_child(about_dialog)
-
-
-func open_rps() -> void:
-	rps.popup_centered()
 
 
 func open_emojis() -> void:
@@ -200,25 +198,26 @@ func _enter_tree():
 
 func remove_tools():
 	remove_control_from_container(tm_container, tools_menu)
+	remove_control_from_container(rps_container, rakugo_project_settings)
 	# remove_control_from_container(test_container, test_button)
 
 	tools_menu.free()
 	emoji_panel.free()
 	sl_tool.free()
-	rps.free()
+	rakugo_project_settings.free()
 	# test_button.free()
 	about_dialog.free()
 
 
 func remove_custom_types():
-	remove_custom_type("RakugoVarHSlider")
-	remove_custom_type("RakugoVarVSlider")
-	remove_custom_type("RakugoHMenu")
-	remove_custom_type("RakugoVMenu")
-	remove_custom_type("RakugoVarCheckBox")
-	remove_custom_type("RakugoVarCheckButton")
-	remove_custom_type("RakugoProgressBar")
-	remove_custom_type("RakugoTextureProgress")
+		remove_custom_type("RakugoVarHSlider")
+		remove_custom_type("RakugoVarVSlider")
+		remove_custom_type("RakugoHMenu")
+		remove_custom_type("RakugoVMenu")
+		remove_custom_type("RakugoVarCheckBox")
+		remove_custom_type("RakugoVarCheckButton")
+		remove_custom_type("RakugoProgressBar")
+		remove_custom_type("RakugoTextureProgress")
 
 
 func _exit_tree():
