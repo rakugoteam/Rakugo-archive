@@ -15,5 +15,5 @@ func load_setting() -> void:
 
 func save_setting() -> void:
 	rps.set_setting(
-		"/rakugo/punctuation_pause",
+		"rakugo/punctuation_pause",
 		 str($SpinBox.value))

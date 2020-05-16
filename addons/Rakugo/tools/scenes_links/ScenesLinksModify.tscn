@@ -34,6 +34,9 @@ margin_bottom = -5.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 scene_link_edit = ExtResource( 2 )
 
 [node name="ScenesLinksChooser" parent="ScenesLinks" instance=ExtResource( 3 )]
