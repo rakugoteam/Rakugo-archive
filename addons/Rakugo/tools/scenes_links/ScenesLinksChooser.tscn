@@ -38,15 +38,15 @@ text = "ScenesLinks"
 
 [node name="LineEdit" type="LineEdit" parent="."]
 margin_left = 82.0
-margin_right = 352.0
+margin_right = 320.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
-text = "res://game/scenes_links.tres"
+text = "res://question/scenes_links.tres"
 editable = false
 
 [node name="Choose" type="Button" parent="."]
-margin_left = 356.0
-margin_right = 384.0
+margin_left = 324.0
+margin_right = 352.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 24, 24 )
 hint_tooltip = "Open ScenesLinks"
@@ -55,12 +55,22 @@ icon = SubResource( 2 )
 clip_text = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_left = 388.0
+margin_left = 356.0
 margin_right = 456.0
 margin_bottom = 24.0
 
-[node name="SetAsDef" type="Button" parent="HBoxContainer"]
+[node name="New" type="Button" parent="HBoxContainer"]
 margin_right = 28.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+hint_tooltip = "Open ScenesLinks"
+size_flags_horizontal = 0
+icon = SubResource( 2 )
+clip_text = true
+
+[node name="SetAsDef" type="Button" parent="HBoxContainer"]
+margin_left = 32.0
+margin_right = 60.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 24, 24 )
 hint_tooltip = "Set as default"
@@ -68,13 +78,13 @@ icon = SubResource( 2 )
 clip_text = true
 
 [node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
-margin_left = 32.0
-margin_right = 36.0
+margin_left = 64.0
+margin_right = 68.0
 margin_bottom = 24.0
 
 [node name="Apply" type="Button" parent="HBoxContainer"]
-margin_left = 40.0
-margin_right = 68.0
+margin_left = 72.0
+margin_right = 100.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 24, 24 )
 hint_tooltip = "Save Changes"

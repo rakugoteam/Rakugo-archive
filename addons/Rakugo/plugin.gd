@@ -97,6 +97,7 @@ func init_tools():
 	rakugo_project_settings.theme = theme
 	rps_container = CONTAINER_PROJECT_SETTING_TAB_LEFT
 	add_control_to_container(rps_container, rakugo_project_settings)
+	rakugo_project_settings.connect_to_parten()
 
 	tools_menu = preload("tools/menu/ToolsMenu.tscn").instance()
 	tools_menu.theme = theme

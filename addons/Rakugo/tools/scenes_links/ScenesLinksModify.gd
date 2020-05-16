@@ -24,6 +24,7 @@ func _ready() -> void:
 
 	$Add.connect("pressed", self, "on_add")
 	$ScenesLinksChooser.connect("open", self, "_on_open")
+	$ScenesLinksChooser.connect("new_file", self, "_on_new")
 	$ScenesLinksChooser.connect("cancel", self, "_on_cancel")
 	$ScenesLinksChooser.connect("apply", self, "_on_apply")
 	$ScenesLinksChooser.connect("set_as_def", self, "notify",
@@ -69,6 +70,15 @@ func _on_cancel() -> void:
 	notify("Reloaded")
 
 
+func _on_new(_file_path:String) -> void:
+	file_path = _file_path
+
+	for ch in box.get_children():
+		ch.queue_free()
+	
+	scenes_links = ScenesLinks.new()
+
+
 func _on_open(_file_path:String) -> void:
 	file_path = _file_path
 
@@ -78,7 +88,7 @@ func _on_open(_file_path:String) -> void:
 	scenes_links = load(file_path)
 	var sl_dict = scenes_links.get_as_dict()
 
-	prints("dict", sl_dict)
+	# prints("dict", sl_dict)
 
 	for k in sl_dict.keys():
 		var scene_path = sl_dict[k]

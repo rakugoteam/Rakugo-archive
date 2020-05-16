@@ -387,19 +387,19 @@ _global_script_class_icons={
 [application]
 
 config/name="New Rakugo Game"
-run/main_scene="res://game/Start/Start.tscn"
+run/main_scene="res://test/Test.tscn"
 config/project_settings_override="res://game/rakugo.cfg"
 boot_splash/image="res://graphics/splash.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://graphics/window_icon.png"
 config/auto_accept_quit=false
 config/quit_on_go_back=false
-rakugo/version="0.0.1"
+rakugo/version="1.0.0"
 rakugo/game_credits="Jeremi {i}jebedaia360{/i} Biernacki"
-rakugo/debug=true
-rakugo/scenes_links="res://game/scenes_links.tres"
+rakugo/debug=false
+rakugo/scenes_links="res://question/scenes_links.tres"
 rakugo/save_folder="saves"
-rakugo/default_kind="adv"
+rakugo/default_kind="nvl"
 rakugo/test_saves=false
 rakugo/markup="renpy"
 rakugo/default_mkind="grid"
@@ -408,13 +408,14 @@ rakugo/default_manchor="center"
 rakugo/punctuation_pause="1"
 rakugo/default_mcolums=2.0
 rakugo/theme="res://themes/new_gui/new_gui.tres"
-/rakugo/punctuation_pause="1"
 
 [autoload]
 
 Rakugo="*res://addons/Rakugo/Rakugo.tscn"
 settings="*res://gui/settings.gd"
 Window="*res://gui/Window/Window.tscn"
+IconLoader="*res://addons/file-editor/scripts/IconLoader.gd"
+LastOpenedFiles="*res://addons/file-editor/scripts/LastOpenedFiles.gd"
 
 [debug]
 
@@ -428,7 +429,7 @@ gdscript/warnings/return_value_discarded=false
 
 [editor_plugins]
 
-enabled=PoolStringArray( "Rakugo", "editor_icon_previewer", "godot-plugin-refresher" )
+enabled=PoolStringArray( "FontAwesome5", "Rakugo", "editor_icon_previewer", "file-editor", "godot-plugin-refresher", "zylann.editor_debugger" )
 
 [input]
 
