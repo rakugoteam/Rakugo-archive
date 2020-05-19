@@ -97,11 +97,11 @@ func _on_statement(type: int, parameters: Dictionary) -> void:
 
 	if not( _type in allowed_statement_types):
 		return
-	
-	$Button.show()
-	
-	if _type != Rakugo.StatementType.SAY:
-		$Button.hide()
+
+	$Button.disabled = true;
+
+	if _type == Rakugo.StatementType.SAY:
+			$Button.disabled = false;
 
 	if "kind" in parameters:
 		kind = parameters.kind

@@ -387,19 +387,19 @@ _global_script_class_icons={
 [application]
 
 config/name="New Rakugo Game"
-run/main_scene="res://test/Test.tscn"
+run/main_scene="res://game/Start/Start.tscn"
 config/project_settings_override="res://game/rakugo.cfg"
 boot_splash/image="res://graphics/splash.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://graphics/window_icon.png"
 config/auto_accept_quit=false
 config/quit_on_go_back=false
-rakugo/version="1.0.0"
+rakugo/version="0.0.1"
 rakugo/game_credits="Jeremi {i}jebedaia360{/i} Biernacki"
-rakugo/debug=false
-rakugo/scenes_links="res://question/scenes_links.tres"
+rakugo/debug=true
+rakugo/scenes_links="res://game/scenes_links.tres"
 rakugo/save_folder="saves"
-rakugo/default_kind="nvl"
+rakugo/default_kind="adv"
 rakugo/test_saves=false
 rakugo/markup="renpy"
 rakugo/default_mkind="grid"
