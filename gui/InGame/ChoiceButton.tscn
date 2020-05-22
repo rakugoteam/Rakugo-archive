@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://themes/question/question.tres" type="Theme" id=1]
+[ext_resource path="res://themes/new_gui/new_gui.tres" type="Theme" id=1]
 [ext_resource path="res://addons/Rakugo/nodes/rakugo_choice_button.gd" type="Script" id=2]
 [ext_resource path="res://gui/Labels/dialogue_text.tscn" type="PackedScene" id=3]
 
@@ -8,16 +8,14 @@
 margin_right = 250.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 250, 40 )
-size_flags_horizontal = 7
-size_flags_vertical = 7
+size_flags_horizontal = 5
+size_flags_vertical = 5
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 node_to_change_path = NodePath("RichTextLabel")
-focus_node_color = Color( 0.709804, 0.290196, 0.101961, 1 )
-pressed_node_color = Color( 0.819608, 0.392157, 0.203922, 1 )
 
 [node name="RichTextLabel" parent="." instance=ExtResource( 3 )]
 anchor_right = 1.0
