@@ -8,6 +8,8 @@ func _init() -> void:
 	._init()
 	type = 2 # Rakugo.StatementType.ASK
 	parameters_names += ["temp", "variable"]
+	def_parameters["typing"] = false
+	def_parameters["temp"] = "Type some value"
 
 
 func exec() -> void:

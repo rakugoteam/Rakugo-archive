@@ -5,9 +5,13 @@ func _init() -> void:
 	._init()
 	type = 1 # Rakugo.StatementType.SAY
 	parameters_names += ["who", "what", "typing", "kind", "avatar", "avatar_state"]
-	parameters["who"] = ""
-	parameters["add_to_history"] = true
-	parameters_always += ["who", "what", "avatar", "avatar_state"]
+	def_parameters["add_to_history"] = true
+	def_parameters["who"] = "Narrator"
+	def_parameters["what"] = ""
+	def_parameters["typing"] = true
+	def_parameters["kind"] = "adv"
+	def_parameters["avatar"] = ""
+	def_parameters["avatar_state"] = ""
 
 
 func if_who(_parameters:Dictionary, _who:CharacterObject):
