@@ -37,12 +37,12 @@ func _get_text() -> String:
 	return $LineEdit.text
 
 
-func _on_visible() -> void:
-	if visible:
-		var path = rps.get_setting("rakugo/scenes_links")
-		$LineEdit.text = path
-		emit_signal("open", path)
-		
+func load_cfg() -> void:
+	rps.load_cfg()
+	var path = rps.get_setting("rakugo/scenes_links")
+	$LineEdit.text = path
+	emit_signal("open", path)
+
 
 func _on_load_file() -> void:
 	tres_dialog.mode = FileDialog.MODE_OPEN_FILE
@@ -70,7 +70,7 @@ func _on_tres_dialog() -> void:
 		emit_signal("new_file", tres_dialog.current_path)
 
 
-func _on_set_as_def(_rps:=rps) -> void:
+func _on_set_as_def(_rps := rps) -> void:
 	if _rps != rps:
 		rps = _rps
 

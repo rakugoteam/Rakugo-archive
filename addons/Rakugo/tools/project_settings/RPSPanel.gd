@@ -1,7 +1,7 @@
 tool
 extends Panel
 
-onready var rps = $RakugoProjectSettings
+onready var rps : RakugoProjectSettings = $RakugoProjectSettings
 onready var over_box = $VBoxContainer/OverBox
 
 func _ready() -> void:
