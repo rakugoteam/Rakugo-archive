@@ -12,10 +12,8 @@ func _on_reload() -> void:
 
 
 func load_setting() -> void:
-	$ScenesLinksChooser._on_set_as_def(rps)
-#	$ScenesLinksChooser.text = rps.get_setting("rakugo/scenes_links")
+	$ScenesLinksChooser.text = rps.get_setting("rakugo/scenes_links")
 
 
 func save_setting() -> void:
-#	rps.set_setting("rakugo/scenes_links", $ScenesLinksChooser.text)
-	$ScenesLinksChooser._on_set_as_def(rps)
+	rps.set_setting("rakugo/scenes_links", $ScenesLinksChooser.text)

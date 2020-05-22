@@ -26,7 +26,6 @@ func _ready() -> void:
 	$Cancel.connect("pressed", self, "emit_signal", ["cancel"])
 	$HBoxContainer/Apply.connect("pressed", self, "emit_signal", ["apply"])
 	$HBoxContainer/SetAsDef.connect("pressed", self, "_on_set_as_def")
-	connect("visibility_changed", self, "_on_visible")
 
 
 func _set_text(value:String) -> void:
@@ -75,6 +74,7 @@ func _on_set_as_def(_rps := rps) -> void:
 		rps = _rps
 
 	rps.set_setting("rakugo/scenes_links", $LineEdit.text)
+	rps.save_cfg()
 	emit_signal("set_as_def")
 
 
