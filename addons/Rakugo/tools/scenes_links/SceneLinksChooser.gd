@@ -26,7 +26,6 @@ func _ready() -> void:
 	$Cancel.connect("pressed", self, "emit_signal", ["cancel"])
 	$HBoxContainer/Apply.connect("pressed", self, "emit_signal", ["apply"])
 	$HBoxContainer/SetAsDef.connect("pressed", self, "_on_set_as_def")
-	connect("visibility_changed", self, "_on_visible")
 
 
 func _set_text(value:String) -> void:
@@ -37,11 +36,11 @@ func _get_text() -> String:
 	return $LineEdit.text
 
 
-func _on_visible() -> void:
-	if visible:
-		var path = rps.get_setting("rakugo/scenes_links")
-		$LineEdit.text = path
-		emit_signal("open", path)
+func load_cfg() -> void:
+	rps.load_cfg()
+	var path = rps.get_setting("rakugo/scenes_links")
+	$LineEdit.text = path
+	emit_signal("open", path)
 
 
 func _on_load_file() -> void:
@@ -70,11 +69,12 @@ func _on_tres_dialog() -> void:
 		emit_signal("new_file", tres_dialog.current_path)
 
 
-func _on_set_as_def(_rps:=rps) -> void:
+func _on_set_as_def(_rps := rps) -> void:
 	if _rps != rps:
 		rps = _rps
 
 	rps.set_setting("rakugo/scenes_links", $LineEdit.text)
+	rps.save_cfg()
 	emit_signal("set_as_def")
 
 

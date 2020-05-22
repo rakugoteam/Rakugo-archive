@@ -10,7 +10,7 @@ var pso := app + "/config/project_settings_override"
 
 func _ready() -> void:
 	load_cfg()
-
+	
 
 func get_def_cfg_path() -> String:
 	if not cfg_path:

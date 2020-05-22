@@ -41,7 +41,7 @@ margin_left = 82.0
 margin_right = 320.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
-text = "res://question/scenes_links.tres"
+text = "res://game/scenes_links.tres"
 editable = false
 
 [node name="Choose" type="Button" parent="."]

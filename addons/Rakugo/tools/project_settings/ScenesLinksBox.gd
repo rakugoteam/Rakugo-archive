@@ -16,7 +16,4 @@ func load_setting() -> void:
 
 
 func save_setting() -> void:
-	$ScenesLinksChooser.text = rps.set_setting(
-		"rakugo/scenes_links", $ScenesLinksChooser.text)
-	
-	$ScenesLinksChooser._on_set_as_def(rps)
+	rps.set_setting("rakugo/scenes_links", $ScenesLinksChooser.text)

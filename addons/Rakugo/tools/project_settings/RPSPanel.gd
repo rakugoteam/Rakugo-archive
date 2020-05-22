@@ -1,12 +1,15 @@
 tool
 extends Panel
 
+onready var rps : RakugoProjectSettings = $RakugoProjectSettings
+onready var over_box = $VBoxContainer/OverBox
+
 func _ready() -> void:
 	$VBoxContainer/Label.hide()
 
 	for box in $VBoxContainer.get_children():
 		if box.name != "Label":
-			box.rps = $RakugoProjectSettings
+			box.rps = rps
 
 
 func connect_to_parten() -> void:
@@ -16,12 +19,14 @@ func connect_to_parten() -> void:
 
 
 func load_settings() -> void:
-	$VBoxContainer/OverBox.load_setting()
+	rps.load_cfg()
+	over_box.get_node("Button").text = rps.cfg_path
+	over_box.load_other_setting()
 	notify("Loaded");
 
 
 func save() -> void:
-	$VBoxContainer/OverBox.save_setting()
+	over_box.save_setting()
 
 
 func notify(text:String) -> void:

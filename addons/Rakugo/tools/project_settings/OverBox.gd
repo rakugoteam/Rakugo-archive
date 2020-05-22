@@ -12,7 +12,7 @@ func _ready() -> void:
 	$FileDialog.connect("confirmed", self, "_on_fd")
 
 	$New.icon = get_icon("ScriptCreate", "EditorIcons")
-	$New.connect("pressed", self, "on_new_file") 
+	$New.connect("pressed", self, "on_new_file")
 
 	$Reload.icon = get_icon("Reload", "EditorIcons")
 	$Reload.connect("pressed", self, "_on_reload")
@@ -53,7 +53,7 @@ func load_setting() -> void:
 		rps.load_cfg($Button.text)
 
 	load_other_setting()
-
+	
 
 func save_setting() -> void:
 

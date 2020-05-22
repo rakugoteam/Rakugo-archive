@@ -20,6 +20,7 @@ avatar_container_path = NodePath("ViewportContainer")
 line_edit_path = NodePath("../NVL/VBox/RakugoLineEdit")
 
 [node name="ViewportContainer" type="ViewportContainer" parent="."]
+visible = false
 margin_right = 100.0
 margin_bottom = 100.0
 
@@ -30,17 +31,16 @@ transparent_bg = true
 handle_input_locally = false
 hdr = false
 usage = 0
-render_target_update_mode = 3
+render_target_update_mode = 0
 
 [node name="VBox" type="VBoxContainer" parent="."]
-margin_left = 104.0
 margin_right = 1024.0
 margin_bottom = 100.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Label" parent="VBox" instance=ExtResource( 2 )]
-margin_right = 920.0
+margin_right = 1024.0
 rect_clip_content = false
 focus_mode = 0
 mouse_filter = 2
@@ -49,7 +49,7 @@ selection_enabled = false
 
 [node name="Dialogue" parent="VBox" instance=ExtResource( 3 )]
 margin_top = 44.0
-margin_right = 920.0
+margin_right = 1024.0
 margin_bottom = 84.0
 focus_mode = 0
 selection_enabled = false
