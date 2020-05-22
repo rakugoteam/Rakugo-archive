@@ -37,7 +37,7 @@ func set_rakugo_file(value: String) -> void:
 	if value.empty():
 		return
 
-	if not file.exists(value):
+	if not file.file_exists(value):
 		return
 
 	file.open(value, file.READ)

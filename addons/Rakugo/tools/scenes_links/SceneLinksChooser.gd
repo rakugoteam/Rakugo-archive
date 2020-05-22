@@ -42,7 +42,7 @@ func _on_visible() -> void:
 		var path = rps.get_setting("rakugo/scenes_links")
 		$LineEdit.text = path
 		emit_signal("open", path)
-
+		
 
 func _on_load_file() -> void:
 	tres_dialog.mode = FileDialog.MODE_OPEN_FILE
