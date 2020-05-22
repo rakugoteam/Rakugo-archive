@@ -2,9 +2,9 @@ extends Object
 class_name Statement
 
 var type := 0 # Rakugo.StatementType.BASE
-var parameters := {"add_to_history": false} # dict of pairs keyword: argument
-var parameters_names := ["add_to_history"] # possible keywords for this type of statement - to use in RakugoScript in near future
-var parameters_always := ["add_to_history"]
+var def_parameters := {"add_to_history": false} # default parameters
+var parameters := {} # dict of pairs keyword: argument
+var parameters_names := ["add_to_history"] # possible keywords for this type of statement - to use in RakuScript in near future
 
 
 func _ready() -> void:
@@ -20,19 +20,13 @@ func exec() -> void:
 
 func set_parameters(new_parameters: Dictionary) -> void:
 	# update statement
-	set_dict(new_parameters, parameters)
+	parameters = def_parameters.duplicate()
+	add_parameters(new_parameters)
 
 
-func set_dict(new_dict: Dictionary, current_dict: Dictionary) -> void:
-	for kw in current_dict.keys():
-		if kw in parameters_always:
-			continue
-
-		if not (kw in new_dict):
-			current_dict.erase(kw)
-
-	for kw in new_dict.keys():
-		current_dict[kw] = new_dict[kw]
+func add_parameters(new_parameters: Dictionary):
+	for k in new_parameters.keys():
+		parameters[k] = new_parameters[k]
 
 
 func setup_exit(_type: int, new_parameters := {}) -> bool:
@@ -40,7 +34,7 @@ func setup_exit(_type: int, new_parameters := {}) -> bool:
 		return false
 
 	if new_parameters != {}:
-		set_parameters(new_parameters)
+		add_parameters(new_parameters)
 
 	return true
 
