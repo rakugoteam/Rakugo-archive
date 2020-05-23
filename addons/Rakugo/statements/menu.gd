@@ -6,12 +6,7 @@ var choices_labels: Array = []
 func _init() -> void:
 	._init()
 	type = 3 # Rakugo.StatementType.MENU
-	parameters_names += [
-		"node", "choices",
-		"mkind", "manchor",
-		"mcolumns"
-		]
-
+	parameters_names += ["node", "choices",	"mkind", "manchor","mcolumns"]
 	def_parameters["typing"] = false
 	def_parameters["mkind"] = "vertical"
 	def_parameters["manchor"] = "center"

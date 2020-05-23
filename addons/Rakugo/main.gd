@@ -623,6 +623,8 @@ func get_avatar_link(node_id: String) -> Avatar:
 ## possible parameters: "who", "title", "description", "optional", "state", "subquests"
 func subquest(subquest_id: String, parameters := {}) -> Subquest:
 	var new_subq := Subquest.new(subquest_id, parameters)
+	new_subq.save_included = true
+	variables[subquest_id] = new_subq
 	return new_subq
 
 
@@ -631,6 +633,8 @@ func subquest(subquest_id: String, parameters := {}) -> Subquest:
 ## possible parameters: "who", "title", "description", "optional", "state", "subquests"
 func quest(quest_id: String, parameters := {}) -> Quest:
 	var q := Quest.new(quest_id, parameters)
+	q.save_included = true
+	variables[quest_id] = q
 	quests.append(quest_id)
 	return q
 

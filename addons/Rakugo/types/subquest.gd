@@ -16,7 +16,7 @@ signal title_changed(new_title)
 signal description_changed(new_des)
 signal state_changed(new_state)
 
-func _init(var_id:String, var_value:Dictionary, var_type :=Rakugo.Type.SUBQUEST
+func _init(var_id:String, var_value:Dictionary, var_type := Rakugo.Type.SUBQUEST
 		).(var_id, var_value, var_type) -> void:
 	_set_value(_value)
 
