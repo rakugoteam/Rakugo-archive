@@ -10,7 +10,7 @@ var quests_box: BoxContainer
 var is_subquest := false
 
 func _ready() -> void:
-	node_to_change = $RichTextLabel
+	node_to_change = $dialogue_text
 
 
 func _on_resized() -> void:
@@ -34,7 +34,7 @@ func setup(quest_to_use: Subquest) -> void:
 
 
 func on_title_changed(new_title: String) -> void:
-	$RichTextLabel.bbcode_text = quest.title
+	$dialogue_text.bbcode_text = quest.title
 	if pressed:
 		quest_label.text = quest.title
 
