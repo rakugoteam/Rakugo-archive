@@ -10,7 +10,7 @@ var pso := app + "/config/project_settings_override"
 
 func _ready() -> void:
 	load_cfg()
-	
+
 
 func get_def_cfg_path() -> String:
 	if not cfg_path:
@@ -56,7 +56,7 @@ func set_setting(path:String, value) -> void:
 	if cfg_loaded:
 		cfg.set_value(app, path, value)
 
-		if path != "config/name":
+		if not( path in ["config/name", "run/main_scene"]):
 			return
 
 	ProjectSettings.set_setting(app + "/" + path, value)
