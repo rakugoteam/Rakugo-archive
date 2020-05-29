@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://addons/Rakugo/tools/project_settings/RPSPanel.gd" type="Script" id=1]
 [ext_resource path="res://addons/Rakugo/tools/project_settings/OverBox.gd" type="Script" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://addons/Rakugo/icons/save.svg" type="Texture" id=20]
 [ext_resource path="res://addons/Rakugo/tools/project_settings/PunctuationBox.gd" type="Script" id=21]
 [ext_resource path="res://addons/Rakugo/lib/project_settings.gd" type="Script" id=22]
+[ext_resource path="res://addons/Rakugo/nodes/notify_label.gd" type="Script" id=23]
 
 [sub_resource type="Image" id=5]
 data = {
@@ -78,21 +79,18 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-visible = false
-modulate = Color( 0, 0, 0, 0 )
 margin_right = 684.0
 margin_bottom = 14.0
-custom_colors/font_color = Color( 0.0784314, 1, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Loaded"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource( 23 )
 
 [node name="OverBox" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 18.0
 margin_right = 684.0
-margin_bottom = 40.0
+margin_bottom = 58.0
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 
@@ -163,9 +161,9 @@ size_flags_vertical = 4
 icon = SubResource( 2 )
 
 [node name="NameBox" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 44.0
+margin_top = 62.0
 margin_right = 684.0
-margin_bottom = 68.0
+margin_bottom = 86.0
 size_flags_horizontal = 3
 script = ExtResource( 4 )
 
@@ -195,9 +193,9 @@ caret_blink = true
 caret_blink_speed = 0.5
 
 [node name="VersionBox" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 72.0
+margin_top = 90.0
 margin_right = 684.0
-margin_bottom = 96.0
+margin_bottom = 114.0
 size_flags_horizontal = 3
 script = ExtResource( 5 )
 
@@ -227,9 +225,9 @@ caret_blink = true
 caret_blink_speed = 0.5
 
 [node name="StartSceneBox" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 100.0
+margin_top = 118.0
 margin_right = 684.0
-margin_bottom = 124.0
+margin_bottom = 142.0
 size_flags_horizontal = 3
 script = ExtResource( 6 )
 
@@ -271,9 +269,9 @@ mode = 0
 filters = PoolStringArray( "*.tscn" )
 
 [node name="GameCreditsBox" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 128.0
+margin_top = 146.0
 margin_right = 684.0
-margin_bottom = 228.0
+margin_bottom = 246.0
 size_flags_horizontal = 3
 script = ExtResource( 7 )
 
@@ -324,9 +322,9 @@ current_file = "about.txt"
 current_path = "res://game/about.txt"
 
 [node name="MarkupBox" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 232.0
+margin_top = 250.0
 margin_right = 684.0
-margin_bottom = 256.0
+margin_bottom = 274.0
 size_flags_horizontal = 3
 script = ExtResource( 8 )
 
@@ -368,9 +366,9 @@ rect_min_size = Vector2( 24, 24 )
 icon = SubResource( 2 )
 
 [node name="PunctuationBox" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 260.0
+margin_top = 278.0
 margin_right = 684.0
-margin_bottom = 284.0
+margin_bottom = 302.0
 size_flags_horizontal = 3
 script = ExtResource( 21 )
 
@@ -431,9 +429,9 @@ size_flags_vertical = 4
 icon = SubResource( 2 )
 
 [node name="KindBox" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 288.0
+margin_top = 306.0
 margin_right = 684.0
-margin_bottom = 312.0
+margin_bottom = 330.0
 size_flags_horizontal = 3
 script = ExtResource( 10 )
 
@@ -477,9 +475,9 @@ rect_min_size = Vector2( 24, 24 )
 icon = SubResource( 2 )
 
 [node name="MKindBox" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 316.0
+margin_top = 334.0
 margin_right = 684.0
-margin_bottom = 340.0
+margin_bottom = 358.0
 size_flags_horizontal = 3
 script = ExtResource( 12 )
 
@@ -548,9 +546,9 @@ size_flags_vertical = 4
 icon = SubResource( 2 )
 
 [node name="ThemeBox" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 344.0
+margin_top = 362.0
 margin_right = 684.0
-margin_bottom = 368.0
+margin_bottom = 386.0
 size_flags_horizontal = 3
 script = ExtResource( 14 )
 
@@ -602,9 +600,9 @@ rect_min_size = Vector2( 24, 24 )
 icon = SubResource( 2 )
 
 [node name="ScenesLinksBox" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 372.0
+margin_top = 390.0
 margin_right = 684.0
-margin_bottom = 396.0
+margin_bottom = 414.0
 size_flags_horizontal = 3
 script = ExtResource( 15 )
 
@@ -620,9 +618,9 @@ margin_right = 684.0
 only_open = true
 
 [node name="DebugBox" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 400.0
+margin_top = 418.0
 margin_right = 684.0
-margin_bottom = 440.0
+margin_bottom = 458.0
 size_flags_horizontal = 3
 script = ExtResource( 18 )
 
@@ -648,9 +646,9 @@ margin_right = 684.0
 margin_bottom = 40.0
 
 [node name="SaveBox" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 444.0
+margin_top = 462.0
 margin_right = 684.0
-margin_bottom = 484.0
+margin_bottom = 502.0
 size_flags_horizontal = 3
 script = ExtResource( 19 )
 
@@ -693,5 +691,3 @@ margin_left = 608.0
 margin_right = 684.0
 margin_bottom = 40.0
 size_flags_vertical = 3
-
-[node name="Tween" type="Tween" parent="."]

@@ -6,6 +6,7 @@
 [ext_resource path="res://ubuntu-font-family/UBI22outline.tres" type="DynamicFont" id=4]
 
 [node name="AboutDialog" type="AcceptDialog"]
+visible = true
 margin_right = 529.0
 margin_bottom = 405.0
 rect_min_size = Vector2( 530, 405 )
@@ -53,7 +54,7 @@ margin_right = 383.0
 margin_bottom = 80.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.184314, 0.235294, 1, 1 )
-text = "Version 2.1.00"
+text = "Version 2.1.02"
 
 [node name="CodeNameLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 84.0
