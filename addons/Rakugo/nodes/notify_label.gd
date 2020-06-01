@@ -16,6 +16,7 @@ func _ready() -> void:
 	add_child(tween)
 	tween.connect("tween_all_completed", self, "on_tween_all_completed")
 
+
 func on_tween_all_completed() -> void:
 	if hide_on_start:
 		hide()

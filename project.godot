@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/types/avatar.gd"
 }, {
+"base": "Node",
+"class": "BaseGameSettings",
+"language": "GDScript",
+"path": "res://addons/Rakugo/gui/settings.gd"
+}, {
 "base": "Area2D",
 "class": "Button2D",
 "language": "GDScript",
@@ -328,6 +333,7 @@ _global_script_class_icons={
 "Ask": "",
 "AutoTimer": "",
 "Avatar": "",
+"BaseGameSettings": "",
 "Button2D": "res://addons/Rakugo/icons/button_2d.svg",
 "CallNode": "",
 "Character": "res://addons/Rakugo/icons/rakugo_character.svg",
@@ -418,7 +424,7 @@ rakugo/theme="res://themes/new_gui/new_gui.tres"
 [autoload]
 
 Rakugo="*res://addons/Rakugo/Rakugo.tscn"
-settings="*res://gui/settings.gd"
+settings="*res://addons/Rakugo/gui/settings.gd"
 Window="*res://gui/Window/Window.tscn"
 IconLoader="*res://addons/file-editor/scripts/IconLoader.gd"
 LastOpenedFiles="*res://addons/file-editor/scripts/LastOpenedFiles.gd"
