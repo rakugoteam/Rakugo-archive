@@ -24,11 +24,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/types/avatar.gd"
 }, {
-"base": "Node",
-"class": "BaseGameSettings",
-"language": "GDScript",
-"path": "res://addons/Rakugo/gui/settings.gd"
-}, {
 "base": "Area2D",
 "class": "Button2D",
 "language": "GDScript",
@@ -299,6 +294,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/types/scenes_links.gd"
 }, {
+"base": "Node",
+"class": "ScenesOverrider",
+"language": "GDScript",
+"path": "res://addons/Rakugo/gui/scenes_overrider.gd"
+}, {
 "base": "Statement",
 "class": "Show",
 "language": "GDScript",
@@ -333,7 +333,6 @@ _global_script_class_icons={
 "Ask": "",
 "AutoTimer": "",
 "Avatar": "",
-"BaseGameSettings": "",
 "Button2D": "res://addons/Rakugo/icons/button_2d.svg",
 "CallNode": "",
 "Character": "res://addons/Rakugo/icons/rakugo_character.svg",
@@ -388,6 +387,7 @@ _global_script_class_icons={
 "SaveButton": "res://addons/Rakugo/icons/rakugo_save_button.svg",
 "Say": "",
 "ScenesLinks": "res://addons/Rakugo/icons/scenes_links.svg",
+"ScenesOverrider": "",
 "Show": "",
 "SkipTimer": "",
 "Statement": "",
@@ -408,7 +408,7 @@ config/auto_accept_quit=false
 config/quit_on_go_back=false
 rakugo/version="0.0.1"
 rakugo/game_credits="Jeremi {i}jebedaia360{/i} Biernacki"
-rakugo/debug=true
+rakugo/debug=false
 rakugo/scenes_links="res://game/scenes_links.tres"
 rakugo/save_folder="saves"
 rakugo/default_kind="adv"

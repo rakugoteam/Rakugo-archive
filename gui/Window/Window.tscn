@@ -36,8 +36,15 @@ script = ExtResource( 3 )
 
 [node name="InGameGUI" parent="." instance=ExtResource( 2 )]
 visible = false
+theme = ExtResource( 6 )
 
 [node name="Screens" parent="." instance=ExtResource( 4 )]
+saveable = true
+state = [  ]
+nav_path = NodePath("Navigation/ScrollContainer/HBoxContainer/VBoxContainer")
+in_game_gui_path = "/root/Window/InGameGUI"
+viewport_path = "/root/Window/ViewportContainer"
+use_back_button = false
 
 [node name="Loading" type="Control" parent="." groups=[
 "save",
