@@ -38,14 +38,14 @@ func _get_text() -> String:
 
 func load_cfg() -> void:
 	rps.load_cfg()
-	var path = rps.get_setting("rakugo/scenes_links")
+	var path = rps.get_setting("rakugo/scene_links")
 	$LineEdit.text = path
 	emit_signal("open", path)
 
 
 func _on_load_file() -> void:
 	tres_dialog.mode = FileDialog.MODE_OPEN_FILE
-	tres_dialog.window_title = "Open a ScenesLinks File"
+	tres_dialog.window_title = "Open a SceneLinks File"
 
 	tres_dialog.current_path = $LineEdit.text
 	tres_dialog.popup_centered()
@@ -53,7 +53,7 @@ func _on_load_file() -> void:
 
 func _on_new_file() -> void:
 	tres_dialog.mode = FileDialog.MODE_SAVE_FILE
-	tres_dialog.window_title = "Where to Save new ScenesLinks File"
+	tres_dialog.window_title = "Where to Save new SceneLinks File"
 
 	tres_dialog.current_path = $LineEdit.text
 	tres_dialog.popup_centered()
@@ -73,7 +73,7 @@ func _on_set_as_def(_rps := rps) -> void:
 	if _rps != rps:
 		rps = _rps
 
-	rps.set_setting("rakugo/scenes_links", $LineEdit.text)
+	rps.set_setting("rakugo/scene_links", $LineEdit.text)
 	rps.save_cfg()
 	emit_signal("set_as_def")
 

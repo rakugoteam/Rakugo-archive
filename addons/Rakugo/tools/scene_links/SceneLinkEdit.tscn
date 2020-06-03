@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://addons/Rakugo/tools/scenes_links/SceneLinkEdit.gd" type="Script" id=1]
+[ext_resource path="res://addons/Rakugo/tools/scene_links/SceneLinkEdit.gd" type="Script" id=1]
 
 [node name="SceneLinkEdit" type="HBoxContainer"]
 margin_right = 501.0
@@ -81,5 +81,5 @@ dialog_hide_on_ok = true
 mode = 0
 filters = PoolStringArray( "*.tscn" )
 current_dir = "res://game"
-current_file = "scenes_links.tres"
-current_path = "res://game/scenes_links.tres"
+current_file = "scene_links.tres"
+current_path = "res://game/scene_links.tres"

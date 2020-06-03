@@ -1,8 +1,6 @@
 tool
 extends MenuButton
 
-var plugin:EditorPlugin
-
 func _ready() -> void:
 	var docs_icon := get_icon("Help", "EditorIcons")
 	get_popup().set_item_icon(2, docs_icon)
@@ -14,20 +12,20 @@ func _on_id(id:int) -> void:
 	match id:
 		# Emoji Panel
 		0:
-			plugin.emoji_panel.popup_centered()
+			$C/EmojiPopup.popup_centered()
 
-		# ScenesLinks Tool
+		# SceneLinks Tool
 		1:
-			plugin.sl_tool.popup_centered()
+			$C/ScenesLinksManager.popup_centered()
 
 		# Rakugo Docs
 		2:
-			plugin.open_rakugo_docs()
+			OS.shell_open("https://rakugo.readthedocs.io/en/latest/")
 
 		# About Rakugo
 		3:
-			plugin.open_about_dialog()
+			$C/AboutDialog.popup_centered()
 
 		# Rakugo Website:
 		4:
-			plugin.open_website() 
+			OS.shell_open("https://rakugoteam.github.io/")

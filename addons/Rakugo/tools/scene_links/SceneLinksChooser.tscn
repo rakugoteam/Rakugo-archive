@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://addons/Rakugo/tools/scenes_links/SceneLinksChooser.gd" type="Script" id=1]
+[ext_resource path="res://addons/Rakugo/tools/scene_links/SceneLinksChooser.gd" type="Script" id=1]
 [ext_resource path="res://addons/Rakugo/lib/project_settings.gd" type="Script" id=2]
 
 [sub_resource type="Image" id=3]
@@ -18,7 +18,7 @@ flags = 4
 image = SubResource( 3 )
 size = Vector2( 16, 16 )
 
-[node name="ScenesLinksChooser" type="HBoxContainer"]
+[node name="SceneLinksChooser" type="HBoxContainer"]
 margin_right = 492.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
@@ -34,14 +34,14 @@ script = ExtResource( 2 )
 margin_top = 5.0
 margin_right = 78.0
 margin_bottom = 19.0
-text = "ScenesLinks"
+text = "SceneLinks"
 
 [node name="LineEdit" type="LineEdit" parent="."]
 margin_left = 82.0
 margin_right = 320.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
-text = "res://game/scenes_links.tres"
+text = "res://game/scene_links.tres"
 editable = false
 
 [node name="Choose" type="Button" parent="."]
@@ -49,7 +49,7 @@ margin_left = 324.0
 margin_right = 352.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 24, 24 )
-hint_tooltip = "Open ScenesLinks"
+hint_tooltip = "Open SceneLinks"
 size_flags_horizontal = 0
 icon = SubResource( 2 )
 clip_text = true
@@ -63,7 +63,7 @@ margin_bottom = 24.0
 margin_right = 28.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 24, 24 )
-hint_tooltip = "Open ScenesLinks"
+hint_tooltip = "Open SceneLinks"
 size_flags_horizontal = 0
 icon = SubResource( 2 )
 clip_text = true

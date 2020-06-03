@@ -1,6 +1,6 @@
 tool
 extends Resource
-class_name ScenesLinks, "res://addons/Rakugo/icons/scenes_links.svg"
+class_name SceneLinks, "res://addons/Rakugo/icons/scene_links.svg"
 
 export (Array, String) var ids := []
 export (Array, PackedScene) var scenes := []

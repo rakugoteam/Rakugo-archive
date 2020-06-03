@@ -11,7 +11,7 @@ onready var game_credits = ProjectSettings.get_setting("application/rakugo/game_
 onready var markup = ProjectSettings.get_setting("application/rakugo/markup")
 onready var debug_on = ProjectSettings.get_setting("application/rakugo/debug")
 onready var test_save = ProjectSettings.get_setting("application/rakugo/test_saves")
-onready var scenes_links = ProjectSettings.get_setting("application/rakugo/scenes_links")
+onready var scene_links = ProjectSettings.get_setting("application/rakugo/scene_links")
 
 onready var theme = load(ProjectSettings.get_setting("application/rakugo/theme"))
 onready var default_kind = ProjectSettings.get_setting("application/rakugo/default_kind")
@@ -837,7 +837,7 @@ func _get_history_id() -> int:
 
 
 ## use this to change/assign current scene and dialog
-## id_of_current_scene is id to scene defined in scenes_links or full path to scene
+## id_of_current_scene is id to scene defined in scene_links or full path to scene
 func jump(
 		scene_id: String, node_name: String,
 		dialog_name: String, state := 0, force_reload := false
@@ -878,7 +878,7 @@ func on_begin(path_to_current_scene: String, node_name: String, dialog_name: Str
 	if loading_in_progress:
 		return
 
-	var resource = load(scenes_links).get_as_dict()
+	var resource = load(scene_links).get_as_dict()
 	debug([resource, path_to_current_scene])
 	var path = resource[path_to_current_scene]
 

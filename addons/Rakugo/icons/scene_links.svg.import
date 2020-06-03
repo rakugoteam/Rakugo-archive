@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/scenes_links.svg-77045349dade9562b15ca50364ccb873.stex"
+path="res://.import/scene_links.svg-0809e8d522cb0727f39678737c741071.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/Rakugo/icons/scenes_links.svg"
-dest_files=[ "res://.import/scenes_links.svg-77045349dade9562b15ca50364ccb873.stex" ]
+source_file="res://addons/Rakugo/icons/scene_links.svg"
+dest_files=[ "res://.import/scene_links.svg-0809e8d522cb0727f39678737c741071.stex" ]
 
 [params]
 

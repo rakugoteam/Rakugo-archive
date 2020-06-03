@@ -290,9 +290,9 @@ _global_script_classes=[ {
 "path": "res://addons/Rakugo/statements/say.gd"
 }, {
 "base": "Resource",
-"class": "ScenesLinks",
+"class": "SceneLinks",
 "language": "GDScript",
-"path": "res://addons/Rakugo/types/scenes_links.gd"
+"path": "res://addons/Rakugo/types/scene_links.gd"
 }, {
 "base": "Node",
 "class": "ScenesOverrider",
@@ -386,7 +386,7 @@ _global_script_class_icons={
 "Save": "res://addons/Rakugo/icons/save.svg",
 "SaveButton": "res://addons/Rakugo/icons/rakugo_save_button.svg",
 "Say": "",
-"ScenesLinks": "res://addons/Rakugo/icons/scenes_links.svg",
+"SceneLinks": "",
 "ScenesOverrider": "",
 "Show": "",
 "SkipTimer": "",
@@ -409,7 +409,6 @@ config/quit_on_go_back=false
 rakugo/version="0.0.1"
 rakugo/game_credits="Jeremi {i}jebedaia360{/i} Biernacki"
 rakugo/debug=false
-rakugo/scenes_links="res://game/scenes_links.tres"
 rakugo/save_folder="saves"
 rakugo/default_kind="adv"
 rakugo/test_saves=false
@@ -420,6 +419,7 @@ rakugo/default_manchor="center"
 rakugo/punctuation_pause="1"
 rakugo/default_mcolums=2.0
 rakugo/theme="res://themes/new_gui/new_gui.tres"
+rakugo/scene_links="res://game/scene_links.tres"
 
 [autoload]
 

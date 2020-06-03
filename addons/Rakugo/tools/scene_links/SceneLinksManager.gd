@@ -5,12 +5,12 @@ export var scene_link_edit:PackedScene
 
 var editor:EditorInterface
 var file_path:String
-var scenes_links: ScenesLinks
+var scene_links: SceneLinks
 
 onready var box : BoxContainer = $ScrollContainer/VBoxContainer
 onready var tween : Tween = $Label/Tween
 onready var fd : FileDialog = $Control/FileDialog
-onready var le : LineEdit  = $ScenesLinksChooser/LineEdit
+onready var le : LineEdit  = $SceneLinksChooser/LineEdit
 
 func _ready() -> void:
 	for ch in box.get_children():
@@ -19,17 +19,17 @@ func _ready() -> void:
 	$Add.icon = get_icon("CreateNewSceneFrom", "EditorIcons")
 
 	$Add.connect("pressed", self, "on_add")
-	$ScenesLinksChooser.connect("open", self, "_on_open")
-	$ScenesLinksChooser.connect("new_file", self, "_on_new")
-	$ScenesLinksChooser.connect("cancel", self, "_on_cancel")
-	$ScenesLinksChooser.connect("apply", self, "_on_apply")
-	$ScenesLinksChooser.connect("set_as_def", self, "notify", ["Setted as Default "])
+	$SceneLinksChooser.connect("open", self, "_on_open")
+	$SceneLinksChooser.connect("new_file", self, "_on_new")
+	$SceneLinksChooser.connect("cancel", self, "_on_cancel")
+	$SceneLinksChooser.connect("apply", self, "_on_apply")
+	$SceneLinksChooser.connect("set_as_def", self, "notify", ["Setted as Default "])
 	fd.connect("confirmed", self, "_on_file_dialog")
 	get_parent().connect("about_to_show", self, "_on_about_to_show")
 
 
 func _on_about_to_show() -> void:
-	$ScenesLinksChooser.load_cfg()
+	$SceneLinksChooser.load_cfg()
 
 
 func plugin_ready(_editor:EditorInterface) -> void:
@@ -60,7 +60,7 @@ func _on_new(_file_path:String) -> void:
 	for ch in box.get_children():
 		ch.queue_free()
 
-	scenes_links = ScenesLinks.new()
+	scene_links = SceneLinks.new()
 
 
 func _on_open(_file_path:String) -> void:
@@ -69,8 +69,8 @@ func _on_open(_file_path:String) -> void:
 	for ch in box.get_children():
 		ch.queue_free()
 
-	scenes_links = load(file_path)
-	var sl_dict = scenes_links.get_as_dict()
+	scene_links = load(file_path)
+	var sl_dict = scene_links.get_as_dict()
 
 	# prints("dict", sl_dict)
 
@@ -84,26 +84,26 @@ func _on_open(_file_path:String) -> void:
 
 
 func _on_apply() -> void:
-	var exits := scenes_links != null
+	var exits := scene_links != null
 
 	var dict := {}
 	for ch in box.get_children():
 		dict[ch.id] = ch.scene
 
 	if not exits:
-		scenes_links = ScenesLinks.new()
+		scene_links = SceneLinks.new()
 
-	scenes_links.set_using_dict(dict)
+	scene_links.set_using_dict(dict)
 
-	save_sl(file_path, scenes_links)
+	save_sl(file_path, scene_links)
 
 
-func save_sl(_file_path:String, _scenes_links:ScenesLinks):
-	var error := ResourceSaver.save(_file_path, _scenes_links)
+func save_sl(_file_path:String, _scene_links:SceneLinks):
+	var error := ResourceSaver.save(_file_path, _scene_links)
 
 	if error != OK:
 		$Label.notify("error see console")
-		print("There was issue writing ScenesLinks to %s error_number: %s" %
+		print("There was issue writing SceneLinks to %s error_number: %s" %
 			[file_path, error])
 		return
 
@@ -114,4 +114,4 @@ func _on_file_dialog():
 	_ready()
 	file_path = fd.current_path
 	le.text = file_path
-	save_sl(file_path, scenes_links)
+	save_sl(file_path, scene_links)
