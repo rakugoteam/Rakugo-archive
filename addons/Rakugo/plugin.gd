@@ -1,10 +1,15 @@
 tool
 extends EditorPlugin
 
+#var emoji_panel
+#var sl_tool
+#var about_dialog
 var rakugo_project_settings
 var rps_container
+var rakugo_tools
 var tools_menu
 var tm_container
+
 
 func default_setting(setting: String, value):
 	if not ProjectSettings.has_setting(setting):
@@ -38,8 +43,8 @@ func init_project_settings():
 	)
 
 	default_setting(
-		"application/rakugo/scene_links",
-		"res://game/scene_links.tres"
+		"application/rakugo/scenes_links",
+		"res://game/scenes_links.tres"
 	)
 
 	default_setting(
@@ -81,13 +86,52 @@ func init_tools():
 	rps_container = CONTAINER_PROJECT_SETTING_TAB_LEFT
 	add_control_to_container(rps_container, rakugo_project_settings)
 	rakugo_project_settings.connect_to_parten()
+	
+	rakugo_tools = preload("res://addons/Rakugo/tools/RakugoTools.tscn").instance()
+	rakugo_tools.theme = theme
+	add_child(rakugo_tools)
+	
+#	# Load the emoji_panel scene and instance it
+#	emoji_panel = preload("emojis/EmojiPanel.tscn").instance()
+#	emoji_panel.theme = theme
+#	add_child(emoji_panel)
+#
+#	sl_tool = preload("res://addons/Rakugo/tools/scene_links/SceneLinksEditor.tscn")
+#	sl_tool.theme = theme
+#	sl_tool.get_node("ScenesLinks").plugin_ready(get_editor_interface())
+#	add_child(sl_tool)
+
+#	about_dialog = preload("tools/about/AboutDialog.tscn").instance()
+#	about_dialog.theme = theme
+#	add_child(about_dialog)
 
 	tools_menu = preload("tools/menu/ToolsMenu.tscn").instance()
 	tools_menu.theme = theme
+	tools_menu.plugin = self
 	tm_container = CONTAINER_TOOLBAR
 	add_control_to_container(tm_container, tools_menu)
 	var p = tools_menu.get_parent()
 	p.move_child(tools_menu, 0)
+
+
+#func open_emojis() -> void:
+#	emoji_panel.popup_centered()
+#
+#
+#func open_sl_tool() -> void:
+#	sl_tool.popup_centered()
+#
+#
+#func open_rakugo_docs() -> void:
+#	OS.shell_open("https://rakugo.readthedocs.io/en/latest/")
+#
+#
+#func open_website():
+#	OS.shell_open("https://rakugoteam.github.io/")
+#
+#
+#func open_about_dialog():
+#	about_dialog.popup_centered()
 
 
 func add_custom_types():
@@ -139,16 +183,24 @@ func _enter_tree():
 
 	# ProjectSettings for first time
 	init_project_settings()
+
 	add_custom_types()
+
 	init_tools()
+
 	print("Rakugo is enabled")
 
 
 func remove_tools():
 	remove_control_from_container(tm_container, tools_menu)
 	remove_control_from_container(rps_container, rakugo_project_settings)
-	
+	# remove_control_from_container(test_container, test_button)
+
 	tools_menu.free()
+	rakugo_tools.free()
+#	emoji_panel.free()
+#	sl_tool.free()
+#	about_dialog.free()
 	rakugo_project_settings.free()
 
 

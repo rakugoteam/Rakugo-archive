@@ -1,12 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://addons/Rakugo/icons/16x16_icon.png" type="Texture" id=1]
 [ext_resource path="res://addons/Rakugo/emojis/16x16/1f600.png" type="Texture" id=2]
 [ext_resource path="res://addons/Rakugo/icons/scene_links.svg" type="Texture" id=3]
 [ext_resource path="res://addons/Rakugo/tools/menu/ToolsMenu.gd" type="Script" id=4]
-[ext_resource path="res://addons/Rakugo/tools/scene_links/SceneLinksManager.tscn" type="PackedScene" id=5]
-[ext_resource path="res://addons/Rakugo/emojis/EmojiPanel.tscn" type="PackedScene" id=6]
-[ext_resource path="res://addons/Rakugo/tools/about/AboutDialog.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Image" id=3]
 data = {
@@ -29,48 +26,8 @@ margin_bottom = 23.0
 hint_tooltip = "Rakugo Tools"
 text = "Rakugo"
 icon = ExtResource( 1 )
-items = [ "Emoji Panel", ExtResource( 2 ), 0, true, false, 0, 0, null, "", false, "SceneLinks Tool", ExtResource( 3 ), 0, true, false, 1, 0, null, "", false, "Open Rakugo Docs", SubResource( 2 ), 0, false, false, 2, 0, null, "", false, "About Rakugo", ExtResource( 1 ), 0, false, false, 3, 0, null, "", false, "Rakugo Website", ExtResource( 1 ), 0, false, false, 4, 0, null, "", false ]
+items = [ "Emoji Panel", ExtResource( 2 ), 0, true, false, 0, 0, null, "", false, "ScenesLinks Tool", ExtResource( 3 ), 0, true, false, 1, 0, null, "", false, "Open Rakugo Docs", SubResource( 2 ), 0, false, true, 2, 0, null, "", false, "About Rakugo", ExtResource( 1 ), 0, false, false, 3, 0, null, "", false, "Rakugo Website", ExtResource( 1 ), 0, false, false, 4, 0, null, "", false ]
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="C" type="Control" parent="."]
-anchor_right = 13.8649
-anchor_bottom = 26.0435
-__meta__ = {
-"_edit_use_anchors_": true
-}
-
-[node name="EmojiPopup" parent="C" instance=ExtResource( 6 )]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -144.0
-margin_top = -258.0
-margin_right = 144.0
-margin_bottom = 258.0
-
-[node name="AboutDialog" parent="C" instance=ExtResource( 7 )]
-visible = false
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -265.5
-margin_top = -203.0
-margin_right = 265.5
-margin_bottom = 203.0
-
-[node name="ScenesLinksManager" parent="C" instance=ExtResource( 5 )]
-visible = false
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -311.5
-margin_top = -191.5
-margin_right = 311.5
-margin_bottom = 191.5
-window_title = "SceneLinks Manager"
