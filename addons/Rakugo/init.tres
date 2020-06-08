@@ -1,0 +1,773 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/Rakugo/types/save.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+game_version = "0.0.1"
+rakugo_version = "2.1.03"
+history = {
+"Start,SomeDialog,some_dialog,1": {
+"parameters": {
+"add_to_history": true,
+"avatar_state": "",
+"kind": "adv",
+"typing": true,
+"what": "Test some emoji [img]res://addons/Rakugo/emojis/16x16/1f603.tres[/img]",
+"who": ""
+},
+"type": 1
+}
+}
+history_id = 0
+scene = "Start"
+node_name = "SomeDialog"
+dialog_name = "some_dialog"
+story_state = 1
+data = {
+"Narrator": {
+"type": 7,
+"value": {
+"avatar": "",
+"color": "ffffffff",
+"kind": "adv",
+"manchor": "center",
+"mcolumns": 2.0,
+"mkind": "grid",
+"name": "",
+"prefix": "",
+"stats": {
+
+},
+"suffix": ""
+}
+},
+"aliceblue": {
+"type": 13,
+"value": Color( 0.941176, 0.968627, 1, 1 )
+},
+"antiquewhite": {
+"type": 13,
+"value": Color( 0.980392, 0.921569, 0.839216, 1 )
+},
+"aqua": {
+"type": 13,
+"value": Color( 0, 1, 1, 1 )
+},
+"aquamarine": {
+"type": 13,
+"value": Color( 0.501961, 1, 0.831373, 1 )
+},
+"auto_time": {
+"type": 0,
+"value": 1.0
+},
+"azure": {
+"type": 13,
+"value": Color( 0.941176, 1, 1, 1 )
+},
+"beige": {
+"type": 13,
+"value": Color( 0.960784, 0.960784, 0.858824, 1 )
+},
+"bisque": {
+"type": 13,
+"value": Color( 1, 0.890196, 0.768627, 1 )
+},
+"black": {
+"type": 13,
+"value": Color( 0, 0, 0, 1 )
+},
+"blanchedalmond": {
+"type": 13,
+"value": Color( 1, 0.921569, 0.8, 1 )
+},
+"blue": {
+"type": 13,
+"value": Color( 0, 0, 1, 1 )
+},
+"blueviolet": {
+"type": 13,
+"value": Color( 0.541176, 0.168627, 0.890196, 1 )
+},
+"brown": {
+"type": 13,
+"value": Color( 0.65098, 0.160784, 0.160784, 1 )
+},
+"burlywood": {
+"type": 13,
+"value": Color( 0.870588, 0.721569, 0.529412, 1 )
+},
+"cadetblue": {
+"type": 13,
+"value": Color( 0.368627, 0.619608, 0.631373, 1 )
+},
+"chartreuse": {
+"type": 13,
+"value": Color( 0.501961, 1, 0, 1 )
+},
+"chocolate": {
+"type": 13,
+"value": Color( 0.819608, 0.411765, 0.121569, 1 )
+},
+"coral": {
+"type": 13,
+"value": Color( 1, 0.501961, 0.309804, 1 )
+},
+"cornflower": {
+"type": 13,
+"value": Color( 0.388235, 0.580392, 0.929412, 1 )
+},
+"cornsilk": {
+"type": 13,
+"value": Color( 1, 0.968627, 0.858824, 1 )
+},
+"credits": {
+"type": 1,
+"value": "Jeremi {i}jebedaia360{/i} Biernacki"
+},
+"crimson": {
+"type": 13,
+"value": Color( 0.858824, 0.0784314, 0.239216, 1 )
+},
+"cyan": {
+"type": 13,
+"value": Color( 0, 1, 1, 1 )
+},
+"darkblue": {
+"type": 13,
+"value": Color( 0, 0, 0.54902, 1 )
+},
+"darkcyan": {
+"type": 13,
+"value": Color( 0, 0.54902, 0.54902, 1 )
+},
+"darkgoldenrod": {
+"type": 13,
+"value": Color( 0.721569, 0.529412, 0.0392157, 1 )
+},
+"darkgray": {
+"type": 13,
+"value": Color( 0.658824, 0.658824, 0.658824, 1 )
+},
+"darkgreen": {
+"type": 13,
+"value": Color( 0, 0.388235, 0, 1 )
+},
+"darkkhaki": {
+"type": 13,
+"value": Color( 0.741176, 0.721569, 0.419608, 1 )
+},
+"darkmagenta": {
+"type": 13,
+"value": Color( 0.54902, 0, 0.54902, 1 )
+},
+"darkolivegreen": {
+"type": 13,
+"value": Color( 0.329412, 0.419608, 0.180392, 1 )
+},
+"darkorange": {
+"type": 13,
+"value": Color( 1, 0.54902, 0, 1 )
+},
+"darkorchid": {
+"type": 13,
+"value": Color( 0.6, 0.2, 0.8, 1 )
+},
+"darkred": {
+"type": 13,
+"value": Color( 0.54902, 0, 0, 1 )
+},
+"darksalmon": {
+"type": 13,
+"value": Color( 0.909804, 0.588235, 0.478431, 1 )
+},
+"darkseagreen": {
+"type": 13,
+"value": Color( 0.560784, 0.741176, 0.560784, 1 )
+},
+"darkslateblue": {
+"type": 13,
+"value": Color( 0.278431, 0.239216, 0.54902, 1 )
+},
+"darkslategray": {
+"type": 13,
+"value": Color( 0.180392, 0.309804, 0.309804, 1 )
+},
+"darkturquoise": {
+"type": 13,
+"value": Color( 0, 0.811765, 0.819608, 1 )
+},
+"darkviolet": {
+"type": 13,
+"value": Color( 0.580392, 0, 0.831373, 1 )
+},
+"deeppink": {
+"type": 13,
+"value": Color( 1, 0.0784314, 0.580392, 1 )
+},
+"deepskyblue": {
+"type": 13,
+"value": Color( 0, 0.74902, 1, 1 )
+},
+"dimgray": {
+"type": 13,
+"value": Color( 0.411765, 0.411765, 0.411765, 1 )
+},
+"dodgerblue": {
+"type": 13,
+"value": Color( 0.121569, 0.560784, 1, 1 )
+},
+"firebrick": {
+"type": 13,
+"value": Color( 0.701961, 0.129412, 0.129412, 1 )
+},
+"floralwhite": {
+"type": 13,
+"value": Color( 1, 0.980392, 0.941176, 1 )
+},
+"forestgreen": {
+"type": 13,
+"value": Color( 0.129412, 0.54902, 0.129412, 1 )
+},
+"fuchsia": {
+"type": 13,
+"value": Color( 1, 0, 1, 1 )
+},
+"gainsboro": {
+"type": 13,
+"value": Color( 0.858824, 0.858824, 0.858824, 1 )
+},
+"ghostwhite": {
+"type": 13,
+"value": Color( 0.968627, 0.968627, 1, 1 )
+},
+"godot_version": {
+"type": 1,
+"value": "3.2.1"
+},
+"gold": {
+"type": 13,
+"value": Color( 1, 0.839216, 0, 1 )
+},
+"goldenrod": {
+"type": 13,
+"value": Color( 0.85098, 0.65098, 0.129412, 1 )
+},
+"gray": {
+"type": 13,
+"value": Color( 0.74902, 0.74902, 0.74902, 1 )
+},
+"green": {
+"type": 13,
+"value": Color( 0, 1, 0, 1 )
+},
+"greenyellow": {
+"type": 13,
+"value": Color( 0.678431, 1, 0.180392, 1 )
+},
+"honeydew": {
+"type": 13,
+"value": Color( 0.941176, 1, 0.941176, 1 )
+},
+"hotpink": {
+"type": 13,
+"value": Color( 1, 0.411765, 0.709804, 1 )
+},
+"indianred": {
+"type": 13,
+"value": Color( 0.8, 0.360784, 0.360784, 1 )
+},
+"indigo": {
+"type": 13,
+"value": Color( 0.290196, 0, 0.509804, 1 )
+},
+"ivory": {
+"type": 13,
+"value": Color( 1, 1, 0.941176, 1 )
+},
+"khaki": {
+"type": 13,
+"value": Color( 0.941176, 0.901961, 0.54902, 1 )
+},
+"lavender": {
+"type": 13,
+"value": Color( 0.901961, 0.901961, 0.980392, 1 )
+},
+"lavenderblush": {
+"type": 13,
+"value": Color( 1, 0.941176, 0.960784, 1 )
+},
+"lawngreen": {
+"type": 13,
+"value": Color( 0.490196, 0.988235, 0, 1 )
+},
+"lemonchiffon": {
+"type": 13,
+"value": Color( 1, 0.980392, 0.8, 1 )
+},
+"lightblue": {
+"type": 13,
+"value": Color( 0.678431, 0.85098, 0.901961, 1 )
+},
+"lightcoral": {
+"type": 13,
+"value": Color( 0.941176, 0.501961, 0.501961, 1 )
+},
+"lightcyan": {
+"type": 13,
+"value": Color( 0.878431, 1, 1, 1 )
+},
+"lightgoldenrod": {
+"type": 13,
+"value": Color( 0.980392, 0.980392, 0.819608, 1 )
+},
+"lightgray": {
+"type": 13,
+"value": Color( 0.831373, 0.831373, 0.831373, 1 )
+},
+"lightgreen": {
+"type": 13,
+"value": Color( 0.560784, 0.929412, 0.560784, 1 )
+},
+"lightpink": {
+"type": 13,
+"value": Color( 1, 0.709804, 0.760784, 1 )
+},
+"lightsalmon": {
+"type": 13,
+"value": Color( 1, 0.631373, 0.478431, 1 )
+},
+"lightseagreen": {
+"type": 13,
+"value": Color( 0.129412, 0.701961, 0.670588, 1 )
+},
+"lightskyblue": {
+"type": 13,
+"value": Color( 0.529412, 0.811765, 0.980392, 1 )
+},
+"lightslategray": {
+"type": 13,
+"value": Color( 0.470588, 0.529412, 0.6, 1 )
+},
+"lightsteelblue": {
+"type": 13,
+"value": Color( 0.690196, 0.768627, 0.870588, 1 )
+},
+"lightyellow": {
+"type": 13,
+"value": Color( 1, 1, 0.878431, 1 )
+},
+"lime": {
+"type": 13,
+"value": Color( 0, 1, 0, 1 )
+},
+"limegreen": {
+"type": 13,
+"value": Color( 0.2, 0.8, 0.2, 1 )
+},
+"linen": {
+"type": 13,
+"value": Color( 0.980392, 0.941176, 0.901961, 1 )
+},
+"magenta": {
+"type": 13,
+"value": Color( 1, 0, 1, 1 )
+},
+"maroon": {
+"type": 13,
+"value": Color( 0.690196, 0.188235, 0.380392, 1 )
+},
+"mediumaquamarine": {
+"type": 13,
+"value": Color( 0.4, 0.8, 0.670588, 1 )
+},
+"mediumblue": {
+"type": 13,
+"value": Color( 0, 0, 0.8, 1 )
+},
+"mediumorchid": {
+"type": 13,
+"value": Color( 0.729412, 0.329412, 0.831373, 1 )
+},
+"mediumpurple": {
+"type": 13,
+"value": Color( 0.580392, 0.439216, 0.858824, 1 )
+},
+"mediumseagreen": {
+"type": 13,
+"value": Color( 0.239216, 0.701961, 0.439216, 1 )
+},
+"mediumslateblue": {
+"type": 13,
+"value": Color( 0.478431, 0.411765, 0.929412, 1 )
+},
+"mediumspringgreen": {
+"type": 13,
+"value": Color( 0, 0.980392, 0.6, 1 )
+},
+"mediumturquoise": {
+"type": 13,
+"value": Color( 0.278431, 0.819608, 0.8, 1 )
+},
+"mediumvioletred": {
+"type": 13,
+"value": Color( 0.780392, 0.0784314, 0.521569, 1 )
+},
+"midnightblue": {
+"type": 13,
+"value": Color( 0.101961, 0.101961, 0.439216, 1 )
+},
+"mintcream": {
+"type": 13,
+"value": Color( 0.960784, 1, 0.980392, 1 )
+},
+"mistyrose": {
+"type": 13,
+"value": Color( 1, 0.890196, 0.878431, 1 )
+},
+"moccasin": {
+"type": 13,
+"value": Color( 1, 0.890196, 0.709804, 1 )
+},
+"navajowhite": {
+"type": 13,
+"value": Color( 1, 0.870588, 0.678431, 1 )
+},
+"navyblue": {
+"type": 13,
+"value": Color( 0, 0, 0.501961, 1 )
+},
+"node_link_InGameGUI": {
+"type": 4,
+"value": {
+"show_args": {
+
+},
+"state": [  ],
+"visible": false
+}
+},
+"node_link_Loading": {
+"type": 4,
+"value": {
+"show_args": {
+
+},
+"state": [  ],
+"visible": false
+}
+},
+"node_link_SayPanel": {
+"type": 4,
+"value": {
+"show_args": {
+
+},
+"state": [  ],
+"visible": true
+}
+},
+"node_link_Screens": {
+"type": 4,
+"value": {
+"show_args": {
+
+},
+"state": [  ],
+"visible": true
+}
+},
+"notify_time": {
+"type": 0,
+"value": 1.0
+},
+"oldlace": {
+"type": 13,
+"value": Color( 0.988235, 0.960784, 0.901961, 1 )
+},
+"olive": {
+"type": 13,
+"value": Color( 0.501961, 0.501961, 0, 1 )
+},
+"olivedrab": {
+"type": 13,
+"value": Color( 0.419608, 0.560784, 0.141176, 1 )
+},
+"orange": {
+"type": 13,
+"value": Color( 1, 0.65098, 0, 1 )
+},
+"orangered": {
+"type": 13,
+"value": Color( 1, 0.270588, 0, 1 )
+},
+"orchid": {
+"type": 13,
+"value": Color( 0.85098, 0.439216, 0.839216, 1 )
+},
+"palegoldenrod": {
+"type": 13,
+"value": Color( 0.929412, 0.909804, 0.670588, 1 )
+},
+"palegreen": {
+"type": 13,
+"value": Color( 0.6, 0.980392, 0.6, 1 )
+},
+"paleturquoise": {
+"type": 13,
+"value": Color( 0.690196, 0.929412, 0.929412, 1 )
+},
+"palevioletred": {
+"type": 13,
+"value": Color( 0.858824, 0.439216, 0.580392, 1 )
+},
+"papayawhip": {
+"type": 13,
+"value": Color( 1, 0.941176, 0.839216, 1 )
+},
+"peachpuff": {
+"type": 13,
+"value": Color( 1, 0.85098, 0.729412, 1 )
+},
+"peru": {
+"type": 13,
+"value": Color( 0.8, 0.521569, 0.25098, 1 )
+},
+"pink": {
+"type": 13,
+"value": Color( 1, 0.74902, 0.8, 1 )
+},
+"plum": {
+"type": 13,
+"value": Color( 0.870588, 0.631373, 0.870588, 1 )
+},
+"powderblue": {
+"type": 13,
+"value": Color( 0.690196, 0.878431, 0.901961, 1 )
+},
+"purple": {
+"type": 13,
+"value": Color( 0.631373, 0.129412, 0.941176, 1 )
+},
+"rakugo_version": {
+"type": 1,
+"value": "2.1.03"
+},
+"rebeccapurple": {
+"type": 13,
+"value": Color( 0.4, 0.2, 0.6, 1 )
+},
+"red": {
+"type": 13,
+"value": Color( 1, 0, 0, 1 )
+},
+"rosybrown": {
+"type": 13,
+"value": Color( 0.741176, 0.560784, 0.560784, 1 )
+},
+"royalblue": {
+"type": 13,
+"value": Color( 0.25098, 0.411765, 0.878431, 1 )
+},
+"saddlebrown": {
+"type": 13,
+"value": Color( 0.54902, 0.270588, 0.0705882, 1 )
+},
+"salmon": {
+"type": 13,
+"value": Color( 0.980392, 0.501961, 0.45098, 1 )
+},
+"sandybrown": {
+"type": 13,
+"value": Color( 0.960784, 0.639216, 0.380392, 1 )
+},
+"seagreen": {
+"type": 13,
+"value": Color( 0.180392, 0.54902, 0.341176, 1 )
+},
+"seashell": {
+"type": 13,
+"value": Color( 1, 0.960784, 0.929412, 1 )
+},
+"sienna": {
+"type": 13,
+"value": Color( 0.631373, 0.321569, 0.180392, 1 )
+},
+"silver": {
+"type": 13,
+"value": Color( 0.74902, 0.74902, 0.74902, 1 )
+},
+"skip_after_choices": {
+"type": 9,
+"value": false
+},
+"skip_all_text": {
+"type": 9,
+"value": false
+},
+"skyblue": {
+"type": 13,
+"value": Color( 0.529412, 0.811765, 0.921569, 1 )
+},
+"slateblue": {
+"type": 13,
+"value": Color( 0.419608, 0.34902, 0.8, 1 )
+},
+"slategray": {
+"type": 13,
+"value": Color( 0.439216, 0.501961, 0.560784, 1 )
+},
+"snow": {
+"type": 13,
+"value": Color( 1, 0.980392, 0.980392, 1 )
+},
+"some_var": {
+"type": 0,
+"value": 1.0
+},
+"springgreen": {
+"type": 13,
+"value": Color( 0, 1, 0.501961, 1 )
+},
+"steelblue": {
+"type": 13,
+"value": Color( 0.270588, 0.509804, 0.709804, 1 )
+},
+"story_state": {
+"type": 0,
+"value": 1
+},
+"tan": {
+"type": 13,
+"value": Color( 0.819608, 0.709804, 0.54902, 1 )
+},
+"teal": {
+"type": 13,
+"value": Color( 0, 0.501961, 0.501961, 1 )
+},
+"text_time": {
+"type": 0,
+"value": 0.27
+},
+"thistle": {
+"type": 13,
+"value": Color( 0.85098, 0.74902, 0.85098, 1 )
+},
+"title": {
+"type": 1,
+"value": "New Rakugo Game"
+},
+"tomato": {
+"type": 13,
+"value": Color( 1, 0.388235, 0.278431, 1 )
+},
+"turquoise": {
+"type": 13,
+"value": Color( 0.25098, 0.878431, 0.819608, 1 )
+},
+"typing_text": {
+"type": 9,
+"value": true
+},
+"v2_down": {
+"type": 10,
+"value": Vector2( 0, 1 )
+},
+"v2_left": {
+"type": 10,
+"value": Vector2( -1, 0 )
+},
+"v2_one": {
+"type": 10,
+"value": Vector2( 1, 1 )
+},
+"v2_right": {
+"type": 10,
+"value": Vector2( 1, 0 )
+},
+"v2_up": {
+"type": 10,
+"value": Vector2( 0, -1 )
+},
+"v2_zero": {
+"type": 10,
+"value": Vector2( 0, 0 )
+},
+"v3_back": {
+"type": 11,
+"value": Vector3( 0, 0, 1 )
+},
+"v3_down": {
+"type": 11,
+"value": Vector3( 0, -1, 0 )
+},
+"v3_forward": {
+"type": 11,
+"value": Vector3( 0, 0, -1 )
+},
+"v3_left": {
+"type": 11,
+"value": Vector3( -1, 0, 0 )
+},
+"v3_one": {
+"type": 11,
+"value": Vector3( 1, 1, 1 )
+},
+"v3_right": {
+"type": 11,
+"value": Vector3( 1, 0, 0 )
+},
+"v3_up": {
+"type": 11,
+"value": Vector3( 0, 1, 0 )
+},
+"v3_zero": {
+"type": 11,
+"value": Vector3( 0, 0, 0 )
+},
+"version": {
+"type": 1,
+"value": "0.0.1"
+},
+"violet": {
+"type": 13,
+"value": Color( 0.929412, 0.509804, 0.929412, 1 )
+},
+"webgray": {
+"type": 13,
+"value": Color( 0.501961, 0.501961, 0.501961, 1 )
+},
+"webgreen": {
+"type": 13,
+"value": Color( 0, 0.501961, 0, 1 )
+},
+"webmaroon": {
+"type": 13,
+"value": Color( 0.501961, 0, 0, 1 )
+},
+"webpurple": {
+"type": 13,
+"value": Color( 0.501961, 0, 0.501961, 1 )
+},
+"wheat": {
+"type": 13,
+"value": Color( 0.960784, 0.870588, 0.701961, 1 )
+},
+"white": {
+"type": 13,
+"value": Color( 1, 1, 1, 1 )
+},
+"whitesmoke": {
+"type": 13,
+"value": Color( 0.960784, 0.960784, 0.960784, 1 )
+},
+"yellow": {
+"type": 13,
+"value": Color( 1, 1, 0, 1 )
+},
+"yellowgreen": {
+"type": 13,
+"value": Color( 0.6, 0.8, 0.2, 1 )
+}
+}

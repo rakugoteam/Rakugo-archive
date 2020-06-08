@@ -1,31 +1,8 @@
 extends Node
 onready var r = Rakugo
 
-func invoke(save_folder: String, save_name: String,  variables: Dictionary):
-	r.loading_in_progress = true
-
-	var save_folder_path = "user://".plus_file(save_folder)
-
-	if r.test_save:
-		save_folder_path = "res://".plus_file(save_folder)
-
-	var save_file_path = save_folder_path.plus_file(save_name)
-	r.debug(["load data from:", save_name])
-
-	var file := File.new()
-
-	if r.test_save:
-		save_file_path += ".tres"
-
-	else:
-		save_file_path += ".res"
-
-	if not file.file_exists(save_file_path):
-		push_error("Save file %s doesn't exist" % save_file_path)
-		r.loading_in_progress = false
-		return false
-
-	var save: Resource = load(save_file_path)
+func load_data(path:String) -> Resource:
+	var save: Resource = load(path)
 	var game_version = save.game_version
 
 	r.quests.clear()
@@ -63,6 +40,35 @@ func invoke(save_folder: String, save_name: String,  variables: Dictionary):
 	for q_id in r.quests:
 		var q = r.get_var(q_id)
 		q.update_subquests()
+	
+	return save
+
+
+func invoke(save_folder: String, save_name: String):
+	r.loading_in_progress = true
+
+	var save_folder_path = "user://".plus_file(save_folder)
+
+	if r.test_save:
+		save_folder_path = "res://".plus_file(save_folder)
+
+	var save_file_path = save_folder_path.plus_file(save_name)
+	r.debug(["load data from:", save_name])
+
+	var file := File.new()
+
+	if r.test_save:
+		save_file_path += ".tres"
+
+	else:
+		save_file_path += ".res"
+
+	if not file.file_exists(save_file_path):
+		push_error("Save file %s doesn't exist" % save_file_path)
+		r.loading_in_progress = false
+		return false
+
+	var save := load_data(save_file_path)
 
 	r.start(true)
 
