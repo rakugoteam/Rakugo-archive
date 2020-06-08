@@ -1,25 +1,21 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://themes/question/question.tres" type="Theme" id=1]
 [ext_resource path="res://addons/Rakugo/nodes/rakugo_quest_button.gd" type="Script" id=2]
 [ext_resource path="res://gui/Labels/dialogue_text.tscn" type="PackedScene" id=3]
-[ext_resource path="res://gui/Quests/quests-icons/available.png" type="Texture" id=4]
-[ext_resource path="res://gui/Quests/quests-icons/done.png" type="Texture" id=5]
-[ext_resource path="res://gui/Quests/quests-icons/fail.png" type="Texture" id=6]
 [ext_resource path="res://gui/Quests/quests-icons/in-progress.png" type="Texture" id=7]
-[ext_resource path="res://gui/Quests/quests-icons/opt.png" type="Texture" id=8]
 [ext_resource path="res://gui/Quests/quests-icons/opt-done.png" type="Texture" id=9]
 [ext_resource path="res://gui/Quests/quests-icons/opt-fail.png" type="Texture" id=10]
 [ext_resource path="res://gui/Quests/quests-icons/opt-in-progress.png" type="Texture" id=11]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"frames": [ null, null, null, ExtResource( 7 ) ],
 "loop": false,
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"frames": [ null, ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
 "loop": true,
 "name": "opt",
 "speed": 5.0

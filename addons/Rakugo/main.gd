@@ -1,6 +1,6 @@
 extends Node
 
-const rakugo_version := "2.1.01"
+const rakugo_version := "2.1.03"
 const credits_path := "res://addons/Rakugo/credits.txt"
 const save_folder := "saves"
 
@@ -11,7 +11,7 @@ onready var game_credits = ProjectSettings.get_setting("application/rakugo/game_
 onready var markup = ProjectSettings.get_setting("application/rakugo/markup")
 onready var debug_on = ProjectSettings.get_setting("application/rakugo/debug")
 onready var test_save = ProjectSettings.get_setting("application/rakugo/test_saves")
-onready var scenes_links = ProjectSettings.get_setting("application/rakugo/scenes_links")
+onready var scene_links = ProjectSettings.get_setting("application/rakugo/scene_links")
 
 onready var theme = load(ProjectSettings.get_setting("application/rakugo/theme"))
 onready var default_kind = ProjectSettings.get_setting("application/rakugo/default_kind")
@@ -69,7 +69,6 @@ var current_scene := ""
 var history := {}
 var global_history := {}
 var variables := {}
-var variables_init := {}
 
 # don't save this
 onready var menu_node: RakugoMenu = $Menu
@@ -85,7 +84,7 @@ var emoji_size := 16
 var skipping := false
 var current_dialogs := {}
 
-var skip_types := [
+const skip_types := [
 	StatementType.SAY,
 	StatementType.SHOW,
 	StatementType.HIDE,
@@ -153,12 +152,19 @@ signal hide_ui(value)
 signal checkpoint
 signal game_ended
 
+func load_init_data() -> void:
+	$LoadFile.load_data("res://addons/Rakugo/init.tres")
+
+
 func _ready() -> void:
+
+	load_init_data()
+
 	## set by game developer
-	define("title", game_title, false)
-	define("version", game_version, false)
+	define("title", game_title, true)
+	define("version", game_version, true)
 	OS.set_window_title(game_title + " " + game_version)
-	define("credits", game_credits, false)
+	define("credits", game_credits, true)
 
 	## it must be before define rakugo_version and godot_version to parse corretly :o
 	file.open(credits_path, file.READ)
@@ -166,195 +172,14 @@ func _ready() -> void:
 	file.close()
 
 	## set by rakugo
-	define("rakugo_version", rakugo_version, false)
+	define("rakugo_version", rakugo_version, true)
 
 	var gdv = Engine.get_version_info()
 	var gdv_string = str(gdv.major) + "." + str(gdv.minor) + "." + str(gdv.patch)
-	define("godot_version", gdv_string, false)
-
+	define("godot_version", gdv_string, true)
 	define("story_state", 0)
-
-	## vars for rakugo settings
-	## `false` because is loaded from settings and not from save
-	define("skip_all_text", _skip_all_text, false)
-	define("skip_after_choices", _skip_after_choices, false)
-	define("auto_time", _auto_time, false)
-	define("text_time", _text_time, false)
-	define("notify_time", _notify_time, false)
-	define("typing_text", _typing_text, false)
-
-	## consts
-	## Colors
-	character("Narrator")
-	define("gray", Color.gray, false)
-	define("aliceblue", Color.aliceblue, false)
-	define("antiquewhite", Color.antiquewhite, false)
-	define("aqua", Color.aqua, false)
-	define("aquamarine", Color.aquamarine, false)
-	define("azure", Color.azure, false)
-	define("beige", Color.beige, false)
-	define("bisque", Color.bisque, false)
-	define("black", Color.black, false)
-	define("blanchedalmond", Color.blanchedalmond, false)
-	define("blue", Color.blue, false)
-	define("blueviolet", Color.blueviolet, false)
-	define("brown", Color.brown, false)
-	define("burlywood", Color.burlywood, false)
-	define("cadetblue", Color.cadetblue, false)
-	define("chartreuse", Color.chartreuse, false)
-	define("chocolate", Color.chocolate, false)
-	define("coral", Color.coral, false)
-	define("cornflower", Color.cornflower, false)
-	define("cornsilk", Color.cornsilk, false)
-	define("crimson", Color.crimson, false)
-	define("cyan", Color.cyan, false)
-	define("darkblue", Color.darkblue, false)
-	define("darkcyan", Color.darkcyan, false)
-	define("darkgoldenrod", Color.darkgoldenrod, false)
-	define("darkgray", Color.darkgray, false)
-	define("darkgreen", Color.darkgreen, false)
-	define("darkkhaki", Color.darkkhaki, false)
-	define("darkmagenta", Color.darkmagenta, false)
-	define("darkolivegreen", Color.darkolivegreen, false)
-	define("darkorange", Color.darkorange, false)
-	define("darkorchid", Color.darkorchid, false)
-	define("darkred", Color.darkred, false)
-	define("darksalmon", Color.darksalmon, false)
-	define("darkseagreen", Color.darkseagreen, false)
-	define("darkslateblue", Color.darkslateblue, false)
-	define("darkslategray", Color.darkslategray, false)
-	define("darkturquoise", Color.darkturquoise, false)
-	define("darkviolet", Color.darkviolet, false)
-	define("deeppink", Color.deeppink, false)
-	define("deepskyblue", Color.deepskyblue, false)
-	define("dimgray", Color.dimgray, false)
-	define("dodgerblue", Color.dodgerblue, false)
-	define("firebrick", Color.firebrick, false)
-	define("floralwhite", Color.floralwhite, false)
-	define("forestgreen", Color.forestgreen, false)
-	define("fuchsia", Color.fuchsia, false)
-	define("gainsboro", Color.gainsboro, false)
-	define("ghostwhite", Color.ghostwhite, false)
-	define("gold", Color.gold, false)
-	define("goldenrod", Color.goldenrod, false)
-	define("green", Color.green, false)
-	define("greenyellow", Color.greenyellow, false)
-	define("honeydew", Color.honeydew, false)
-	define("hotpink", Color.hotpink, false)
-	define("indianred", Color.indianred, false)
-	define("indigo", Color.indigo, false)
-	define("ivory", Color.ivory, false)
-	define("khaki", Color.khaki, false)
-	define("lavender", Color.lavender, false)
-	define("lavenderblush", Color.lavenderblush, false)
-	define("lawngreen", Color.lawngreen, false)
-	define("lemonchiffon", Color.lemonchiffon, false)
-	define("lightblue", Color.lightblue, false)
-	define("lightcoral", Color.lightcoral, false)
-	define("lightcyan", Color.lightcyan, false)
-	define("lightgoldenrod", Color.lightgoldenrod, false)
-	define("lightgray", Color.lightgray, false)
-	define("lightgreen", Color.lightgreen, false)
-	define("lightpink", Color.lightpink, false)
-	define("lightsalmon", Color.lightsalmon, false)
-	define("lightseagreen", Color.lightseagreen, false)
-	define("lightskyblue", Color.lightskyblue, false)
-	define("lightslategray", Color.lightslategray, false)
-	define("lightsteelblue", Color.lightsteelblue, false)
-	define("lightyellow", Color.lightyellow, false)
-	define("lime", Color.lime, false)
-	define("limegreen", Color.limegreen, false)
-	define("linen", Color.linen, false)
-	define("magenta", Color.magenta, false)
-	define("maroon", Color.maroon, false)
-	define("mediumaquamarine", Color.mediumaquamarine, false)
-	define("mediumblue", Color.mediumblue, false)
-	define("mediumorchid", Color.mediumorchid, false)
-	define("mediumpurple", Color.mediumpurple, false)
-	define("mediumseagreen", Color.mediumseagreen, false)
-	define("mediumslateblue", Color.mediumslateblue, false)
-	define("mediumspringgreen", Color.mediumspringgreen, false)
-	define("mediumturquoise", Color.mediumturquoise, false)
-	define("mediumvioletred", Color.mediumvioletred, false)
-	define("midnightblue", Color.midnightblue, false)
-	define("mintcream", Color.mintcream, false)
-	define("mistyrose", Color.mistyrose, false)
-	define("moccasin", Color.moccasin, false)
-	define("navajowhite", Color.navajowhite, false)
-	define("navyblue", Color.navyblue, false)
-	define("oldlace", Color.oldlace, false)
-	define("olive", Color.olive, false)
-	define("olivedrab", Color.olivedrab, false)
-	define("orange", Color.orange, false)
-	define("orangered", Color.orangered, false)
-	define("orchid", Color.orchid, false)
-	define("palegoldenrod", Color.palegoldenrod, false)
-	define("palegreen", Color.palegreen, false)
-	define("paleturquoise", Color.paleturquoise, false)
-	define("palevioletred", Color.palevioletred, false)
-	define("papayawhip", Color.papayawhip, false)
-	define("peachpuff", Color.peachpuff, false)
-	define("peru", Color.peru, false)
-	define("pink", Color.pink, false)
-	define("plum", Color.plum, false)
-	define("powderblue", Color.powderblue, false)
-	define("purple", Color.purple, false)
-	define("rebeccapurple", Color.rebeccapurple, false)
-	define("red", Color.red, false)
-	define("rosybrown", Color.rosybrown, false)
-	define("royalblue", Color.royalblue, false)
-	define("saddlebrown", Color.saddlebrown, false)
-	define("salmon", Color.salmon, false)
-	define("sandybrown", Color.sandybrown, false)
-	define("seagreen", Color.seagreen, false)
-	define("seashell", Color.seashell, false)
-	define("sienna", Color.sienna, false)
-	define("silver", Color.silver, false)
-	define("skyblue", Color.skyblue, false)
-	define("slateblue", Color.slateblue, false)
-	define("slategray", Color.slategray, false)
-	define("snow", Color.snow, false)
-	define("springgreen", Color.springgreen, false)
-	define("steelblue", Color.steelblue, false)
-	define("tan", Color.tan, false)
-	define("teal", Color.teal, false)
-	define("thistle", Color.thistle, false)
-	define("tomato", Color.tomato, false)
-	define("turquoise", Color.turquoise, false)
-	define("violet", Color.violet, false)
-	define("webgray", Color.webgray, false)
-	define("webgreen", Color.webgreen, false)
-	define("webmaroon", Color.webmaroon, false)
-	define("webpurple", Color.webpurple, false)
-	define("wheat", Color.wheat, false)
-	define("white", Color.white, false)
-	define("whitesmoke", Color.whitesmoke, false)
-	define("yellow", Color.yellow, false)
-	define("yellowgreen", Color.yellowgreen, false)
-
-	## conts
-	## Vectors2
-	define("v2_zero", Vector2.ZERO, false)
-	define("v2_one", Vector2.ONE, false)
 	define("v2_inf", Vector2.INF, false)
-	define("v2_left", Vector2.LEFT, false)
-	define("v2_right", Vector2.RIGHT, false)
-	define("v2_up", Vector2.UP, false)
-	define("v2_down", Vector2.DOWN, false)
-
-	## conts
-	## Vectors3
-	define("v3_zero", Vector3.ZERO, false)
-	define("v3_one", Vector3.ONE, false)
 	define("v3_inf", Vector3.INF, false)
-	define("v3_left", Vector3.LEFT, false)
-	define("v3_right", Vector3.RIGHT, false)
-	define("v3_up", Vector3.UP, false)
-	define("v3_down", Vector3.DOWN, false)
-	define("v3_forward", Vector3.FORWARD, false)
-	define("v3_back", Vector3.BACK, false)
-
-	variables_init = variables.duplicate()
 
 	step_timer.connect("timeout", self, "_on_time_active_timeout")
 
@@ -837,7 +662,7 @@ func _get_history_id() -> int:
 
 
 ## use this to change/assign current scene and dialog
-## id_of_current_scene is id to scene defined in scenes_links or full path to scene
+## id_of_current_scene is id to scene defined in scene_links or full path to scene
 func jump(
 		scene_id: String, node_name: String,
 		dialog_name: String, state := 0, force_reload := false
@@ -867,7 +692,8 @@ func end_game() -> void:
 	quests.clear()
 	history.clear()
 	history_id = 0
-	variables = variables_init.duplicate()
+	variables.clear()
+	load_init_data()
 	emit_signal("game_ended")
 
 
@@ -878,7 +704,7 @@ func on_begin(path_to_current_scene: String, node_name: String, dialog_name: Str
 	if loading_in_progress:
 		return
 
-	var resource = load(scenes_links).get_as_dict()
+	var resource = load(scene_links).get_as_dict()
 	debug([resource, path_to_current_scene])
 	var path = resource[path_to_current_scene]
 

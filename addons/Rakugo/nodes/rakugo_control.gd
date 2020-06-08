@@ -1,6 +1,6 @@
 tool
 extends RakugoBaseControl
-class_name RakugoControl, "res://addons/Rakugo/icons/rakugo_control.svg"
+class_name RakugoControl, "res://addons/Rakugo/icons/rakugo_control.tres"
 
 signal on_substate(substate)
 
@@ -54,6 +54,10 @@ func _get_node_id() -> String:
 
 func _set_saveable(value: bool):
 	_saveable = value
+	
+	if rnode == null:
+		rnode = RakugoNodeCore.new()
+		
 	rnode.make_saveable(self, value)
 
 

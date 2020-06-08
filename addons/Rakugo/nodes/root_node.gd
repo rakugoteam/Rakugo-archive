@@ -1,5 +1,5 @@
 extends Node
-class_name RootNode, "res://addons/Rakugo/icons/rakugo_root_node.svg"
+class_name RootNode, "res://addons/Rakugo/icons/rakugo_root_node.tres"
 
 export var root := true
 

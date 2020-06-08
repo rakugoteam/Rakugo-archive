@@ -57,7 +57,7 @@ func delete_save(caller: String, mod: String):
 
 	update_save_dir()
 	var dir = Directory.new()
-	
+
 	var png_path = saveslots_dir.plus_file(caller + '.png')
 	if filehandler.file_exists(png_path):
 		Rakugo.debug("remove image")
@@ -143,18 +143,18 @@ func new_slot_instance(is_save_mode: bool, filename: String, parent: Node, hide_
 	var delete_save_mod: String = "save" if is_save_mode else "load"
 	var fn_name_to_connect: String = "savepress" if is_save_mode else "loadpress"
 	var fn_name_to_disconnect: String = "savepress" if not is_save_mode else "loadpress"
-	
+
 	var s = slot.instance()
 	parent.add_child(s)
-	
+
 	var png_path = saveslots_dir.plus_file(filename + '.png')
 	if filehandler.file_exists(png_path):
 		Rakugo.debug("slot exist, loading image")
 		var tex = load_img(png_path)
 		s.get_node("Button/TextureRect").texture = tex
-		
+
 	s.get_node("Label").text = filename
-	
+
 	var info_path = saveslots_dir.plus_file(filename + '.info')
 	if filehandler.file_exists(info_path):
 		filehandler.open(info_path, File.READ)
@@ -195,7 +195,6 @@ func savebox() -> void:
 		var s = new_slot_instance(true, x, container, PoolStringArray(["empty"]))
 
 	filehandler.close()
-
 
 
 func loadbox() -> bool:
@@ -245,7 +244,7 @@ func savepress(caller: String) -> bool:
 	screenshot.flip_y()
 	var png_path = saveslots_dir.plus_file(caller + '.png')
 	screenshot.save_png(png_path)
-	
+
 	var info_path = saveslots_dir.plus_file(caller + '.info')
 	filehandler.open(info_path, File.WRITE)
 	var s = Rakugo.get_datetime_str()
@@ -267,7 +266,7 @@ func savepress(caller: String) -> bool:
 func loadpress(caller: String) -> void:
 	if !dirhandler.dir_exists(saveslots_dir):
 		dirhandler.make_dir(saveslots_dir)
-	
+
 	if Rakugo.loadfile(caller):
 		get_parent().in_game()
 		get_parent().hide()

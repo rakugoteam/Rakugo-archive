@@ -1,6 +1,6 @@
 tool
 extends Control
-class_name RakugoBaseControl, "res://addons/Rakugo/icons/rakugo_base_control.svg"
+class_name RakugoBaseControl, "res://addons/Rakugo/icons/rakugo_base_control.tres"
 
 export var use_theme_from_setting: bool setget set_use_theme_form_settings, get_use_theme_form_settings
 

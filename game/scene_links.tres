@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/Rakugo/types/scene_links.gd" type="Script" id=2]
+
+[resource]
+script = ExtResource( 2 )
+ids = [ "Start" ]
+scenes = [ "res://game/Start/Start.tscn" ]
+_dict = {
+"Start": "res://game/Start/Start.tscn"
+}

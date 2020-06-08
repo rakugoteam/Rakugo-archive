@@ -1,6 +1,6 @@
 tool
 extends Node2D
-class_name RakugoNode2D, "res://addons/Rakugo/icons/rakugo_node2d.svg"
+class_name RakugoNode2D, "res://addons/Rakugo/icons/rakugo_node2d.tres"
 
 signal on_substate(substate)
 

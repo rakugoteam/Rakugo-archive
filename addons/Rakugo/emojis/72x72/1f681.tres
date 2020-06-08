@@ -1,0 +1,11 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=2]
+
+[ext_resource path="res://addons/Rakugo/emojis/atlas/72x72-0.png" type="Texture" id=1]
+
+
+
+[resource]
+flags = 7
+atlas = ExtResource( 1 )
+region = Rect2( 519, 1037, 72, 66 )
+margin = Rect2( 0, 6, 0, 6 )

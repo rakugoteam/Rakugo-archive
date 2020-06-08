@@ -1,0 +1,85 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/Rakugo/tools/scene_links/SceneLinkEdit.gd" type="Script" id=1]
+
+[node name="SceneLinkEdit" type="HBoxContainer"]
+margin_right = 501.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+script = ExtResource( 1 )
+menu_rect = Rect2( 0, 3, 200, 100 )
+
+[node name="Icon" type="TextureRect" parent="."]
+margin_right = 24.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+expand = true
+stretch_mode = 4
+
+[node name="SceneEdit" type="LineEdit" parent="."]
+margin_left = 28.0
+margin_right = 210.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="Choose" type="Button" parent="."]
+margin_left = 214.0
+margin_right = 238.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+hint_tooltip = "Choose from open scenes"
+clip_text = true
+
+[node name="Menu" type="PopupMenu" parent="Choose"]
+margin_left = -5.0
+margin_top = 31.0
+margin_right = 187.0
+margin_bottom = 178.0
+
+[node name="Browse" type="Button" parent="."]
+margin_left = 242.0
+margin_right = 266.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+hint_tooltip = "Browse Scene"
+clip_text = true
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 270.0
+margin_top = 5.0
+margin_right = 283.0
+margin_bottom = 19.0
+text = "Id"
+
+[node name="IdEdit" type="LineEdit" parent="."]
+margin_left = 287.0
+margin_right = 469.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="Remove" type="Button" parent="."]
+margin_left = 473.0
+margin_right = 497.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+hint_tooltip = "Remove this scene link"
+clip_text = true
+
+[node name="FreePos" type="Control" parent="."]
+margin_left = 501.0
+margin_right = 501.0
+margin_bottom = 24.0
+
+[node name="TscnDialog" type="FileDialog" parent="FreePos"]
+margin_left = -881.481
+margin_top = 97.5956
+margin_right = -108.481
+margin_bottom = 526.596
+window_title = "Otwórz plik"
+resizable = true
+dialog_hide_on_ok = true
+mode = 0
+filters = PoolStringArray( "*.tscn" )
+current_dir = "res://game"
+current_file = "scene_links.tres"
+current_path = "res://game/scene_links.tres"

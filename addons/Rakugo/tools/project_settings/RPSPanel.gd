@@ -22,26 +22,8 @@ func load_settings() -> void:
 	rps.load_cfg()
 	over_box.get_node("Button").text = rps.cfg_path
 	over_box.load_other_setting()
-	notify("Loaded");
+	$VBoxContainer/Label.notify();
 
 
 func save() -> void:
 	over_box.save_setting()
-
-
-func notify(text:String) -> void:
-	$VBoxContainer/Label.text = text
-	var scolor = Color(0, 0, 0, 0)
-	$VBoxContainer/Label.show()
-
-	$Tween.interpolate_property(
-		$VBoxContainer/Label, "modulate",
-		scolor, Color.green,
-		1, Tween.TRANS_LINEAR,Tween.EASE_IN)
-
-	$Tween.interpolate_property(
-		$VBoxContainer/Label, "modulate",
-		Color.green, scolor,
-		1, Tween.TRANS_LINEAR,Tween.EASE_IN, 0.7)
-
-	$Tween.start()

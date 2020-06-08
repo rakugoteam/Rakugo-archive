@@ -1,29 +1,30 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://addons/Rakugo/tools/project_settings/RPSPanel.gd" type="Script" id=1]
 [ext_resource path="res://addons/Rakugo/tools/project_settings/OverBox.gd" type="Script" id=2]
-[ext_resource path="res://addons/Rakugo/icons/theme.svg" type="Texture" id=3]
+[ext_resource path="res://addons/Rakugo/icons/theme.tres" type="Texture" id=3]
 [ext_resource path="res://addons/Rakugo/tools/project_settings/NameBox.gd" type="Script" id=4]
 [ext_resource path="res://addons/Rakugo/tools/project_settings/VersionBox.gd" type="Script" id=5]
 [ext_resource path="res://addons/Rakugo/tools/project_settings/StartSceneBox.gd" type="Script" id=6]
 [ext_resource path="res://addons/Rakugo/tools/project_settings/GameCreditsBox.gd" type="Script" id=7]
 [ext_resource path="res://addons/Rakugo/tools/project_settings/MarkupBox.gd" type="Script" id=8]
-[ext_resource path="res://addons/Rakugo/icons/ren_py_16x16.png" type="Texture" id=9]
+[ext_resource path="res://addons/Rakugo/icons/ren_py_16x16.tres" type="Texture" id=9]
 [ext_resource path="res://addons/Rakugo/tools/project_settings/KindBox.gd" type="Script" id=10]
-[ext_resource path="res://addons/Rakugo/icons/rakugo_panel.svg" type="Texture" id=11]
+[ext_resource path="res://addons/Rakugo/icons/rakugo_panel.tres" type="Texture" id=11]
 [ext_resource path="res://addons/Rakugo/tools/project_settings/MKindBox.gd" type="Script" id=12]
-[ext_resource path="res://addons/Rakugo/icons/rakugo_menu_v.svg" type="Texture" id=13]
+[ext_resource path="res://addons/Rakugo/icons/rakugo_menu_v.tres" type="Texture" id=13]
 [ext_resource path="res://addons/Rakugo/tools/project_settings/ThemeBox.gd" type="Script" id=14]
-[ext_resource path="res://addons/Rakugo/tools/project_settings/ScenesLinksBox.gd" type="Script" id=15]
-[ext_resource path="res://addons/Rakugo/icons/scenes_links.svg" type="Texture" id=16]
-[ext_resource path="res://addons/Rakugo/tools/scenes_links/ScenesLinksChooser.tscn" type="PackedScene" id=17]
+[ext_resource path="res://addons/Rakugo/tools/project_settings/SceneLinksBox.gd" type="Script" id=15]
+[ext_resource path="res://addons/Rakugo/icons/scene_links.tres" type="Texture" id=16]
+[ext_resource path="res://addons/Rakugo/tools/scene_links/SceneLinksChooser.tscn" type="PackedScene" id=17]
 [ext_resource path="res://addons/Rakugo/tools/project_settings/DebugBox.gd" type="Script" id=18]
 [ext_resource path="res://addons/Rakugo/tools/project_settings/SaveBox.gd" type="Script" id=19]
-[ext_resource path="res://addons/Rakugo/icons/save.svg" type="Texture" id=20]
+[ext_resource path="res://addons/Rakugo/icons/save.tres" type="Texture" id=20]
 [ext_resource path="res://addons/Rakugo/tools/project_settings/PunctuationBox.gd" type="Script" id=21]
 [ext_resource path="res://addons/Rakugo/lib/project_settings.gd" type="Script" id=22]
+[ext_resource path="res://addons/Rakugo/nodes/notify_label.gd" type="Script" id=23]
 
-[sub_resource type="Image" id=5]
+[sub_resource type="Image" id=6]
 data = {
 "data": PoolByteArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ),
 "format": "LumAlpha8",
@@ -35,10 +36,10 @@ data = {
 [sub_resource type="ImageTexture" id=2]
 flags = 4
 flags = 4
-image = SubResource( 5 )
+image = SubResource( 6 )
 size = Vector2( 16, 16 )
 
-[sub_resource type="Image" id=6]
+[sub_resource type="Image" id=7]
 data = {
 "data": PoolByteArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ),
 "format": "LumAlpha8",
@@ -47,10 +48,10 @@ data = {
 "width": 16
 }
 
-[sub_resource type="ImageTexture" id=4]
+[sub_resource type="ImageTexture" id=5]
 flags = 4
 flags = 4
-image = SubResource( 6 )
+image = SubResource( 7 )
 size = Vector2( 16, 16 )
 
 [node name="Rakugo" type="Panel"]
@@ -79,16 +80,13 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 visible = false
-modulate = Color( 0, 0, 0, 0 )
 margin_right = 684.0
 margin_bottom = 14.0
-custom_colors/font_color = Color( 0.0784314, 1, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Loaded"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource( 23 )
 
 [node name="OverBox" type="HBoxContainer" parent="VBoxContainer"]
 margin_right = 684.0
@@ -465,7 +463,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 text = "nvl"
-icon = SubResource( 4 )
+icon = SubResource( 5 )
 flat = false
 items = [ "adv", SubResource( 2 ), 0, false, false, 0, 0, null, "", false, "center", SubResource( 2 ), 0, false, false, 1, 0, null, "", false, "fullscreen", SubResource( 2 ), 0, false, false, 2, 0, null, "", false, "right", SubResource( 2 ), 0, false, false, 3, 0, null, "", false, "left", SubResource( 2 ), 0, false, false, 4, 0, null, "", false, "top", SubResource( 2 ), 0, false, false, 5, 0, null, "", false, "phone-right", SubResource( 2 ), 0, false, false, 6, 0, null, "", false, "phone-left", SubResource( 2 ), 0, false, false, 7, 0, null, "", false, "nvl", SubResource( 2 ), 0, false, false, 8, 0, null, "", false ]
 
@@ -512,7 +510,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.6
 text = "grid"
-icon = SubResource( 4 )
+icon = SubResource( 5 )
 flat = false
 items = [ "vertical", SubResource( 2 ), 0, false, false, 0, 0, null, "", false, "horizontal", SubResource( 2 ), 0, false, false, 1, 0, null, "", false, "grid", SubResource( 2 ), 0, false, false, 2, 0, null, "", false ]
 
@@ -535,7 +533,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.6
 text = "center"
-icon = SubResource( 4 )
+icon = SubResource( 5 )
 flat = false
 items = [ "top_left", SubResource( 2 ), 0, false, false, 0, 0, null, "", false, "top_right", SubResource( 2 ), 0, false, false, 1, 0, null, "", false, "bottom_left", SubResource( 2 ), 0, false, false, 2, 0, null, "", false, "bottom_right", SubResource( 2 ), 0, false, false, 3, 0, null, "", false, "center_left", SubResource( 2 ), 0, false, false, 4, 0, null, "", false, "center_top", SubResource( 2 ), 0, false, false, 5, 0, null, "", false, "center_right", SubResource( 2 ), 0, false, false, 6, 0, null, "", false, "center_bottom", SubResource( 2 ), 0, false, false, 7, 0, null, "", false, "center", SubResource( 2 ), 0, false, false, 8, 0, null, "", false ]
 
@@ -601,20 +599,20 @@ margin_bottom = 24.0
 rect_min_size = Vector2( 24, 24 )
 icon = SubResource( 2 )
 
-[node name="ScenesLinksBox" type="HBoxContainer" parent="VBoxContainer"]
+[node name="SceneLinksBox" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 372.0
 margin_right = 684.0
 margin_bottom = 396.0
 size_flags_horizontal = 3
 script = ExtResource( 15 )
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ScenesLinksBox"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/SceneLinksBox"]
 margin_right = 16.0
 margin_bottom = 24.0
 texture = ExtResource( 16 )
 stretch_mode = 4
 
-[node name="ScenesLinksChooser" parent="VBoxContainer/ScenesLinksBox" instance=ExtResource( 17 )]
+[node name="SceneLinksChooser" parent="VBoxContainer/SceneLinksBox" instance=ExtResource( 17 )]
 margin_left = 20.0
 margin_right = 684.0
 only_open = true
@@ -693,5 +691,3 @@ margin_left = 608.0
 margin_right = 684.0
 margin_bottom = 40.0
 size_flags_vertical = 3
-
-[node name="Tween" type="Tween" parent="."]
