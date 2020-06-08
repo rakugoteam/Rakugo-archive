@@ -1,5 +1,5 @@
 extends Timer
-class_name RakugoTimer, "res://addons/Rakugo/icons/rakugo_timer.svg"
+class_name RakugoTimer, "res://addons/Rakugo/icons/rakugo_timer.tres"
 
 export var var_name := "some_var"
 

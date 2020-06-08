@@ -1,5 +1,5 @@
 extends RakugoControl
-class_name RakugoSayPanel, "res://addons/Rakugo/icons/rakugo_panel.svg"
+class_name RakugoSayPanel, "res://addons/Rakugo/icons/rakugo_panel.tres"
 
 export (String, "adv", "top", "center", "left", "right", "nvl", "fullscreen") var kind = "adv"
 export var main_container_path := NodePath("")

@@ -1,5 +1,5 @@
 extends LineEdit
-class_name RakugoAsk, "res://addons/Rakugo/icons/rakugo_ask.svg"
+class_name RakugoAsk, "res://addons/Rakugo/icons/rakugo_ask.tres"
 
 onready var rtl := RichTextLabel.new()
 var input_placeholder := ""

@@ -86,24 +86,10 @@ func init_tools():
 	rps_container = CONTAINER_PROJECT_SETTING_TAB_LEFT
 	add_control_to_container(rps_container, rakugo_project_settings)
 	rakugo_project_settings.connect_to_parten()
-	
+
 	rakugo_tools = preload("res://addons/Rakugo/tools/RakugoTools.tscn").instance()
 	rakugo_tools.theme = theme
 	add_child(rakugo_tools)
-	
-#	# Load the emoji_panel scene and instance it
-#	emoji_panel = preload("emojis/EmojiPanel.tscn").instance()
-#	emoji_panel.theme = theme
-#	add_child(emoji_panel)
-#
-#	sl_tool = preload("res://addons/Rakugo/tools/scene_links/SceneLinksEditor.tscn")
-#	sl_tool.theme = theme
-#	sl_tool.get_node("ScenesLinks").plugin_ready(get_editor_interface())
-#	add_child(sl_tool)
-
-#	about_dialog = preload("tools/about/AboutDialog.tscn").instance()
-#	about_dialog.theme = theme
-#	add_child(about_dialog)
 
 	tools_menu = preload("tools/menu/ToolsMenu.tscn").instance()
 	tools_menu.theme = theme
@@ -115,67 +101,47 @@ func init_tools():
 	p.move_child(tools_menu, 0)
 
 
-#func open_emojis() -> void:
-#	emoji_panel.popup_centered()
-#
-#
-#func open_sl_tool() -> void:
-#	sl_tool.popup_centered()
-#
-#
-#func open_rakugo_docs() -> void:
-#	OS.shell_open("https://rakugo.readthedocs.io/en/latest/")
-#
-#
-#func open_website():
-#	OS.shell_open("https://rakugoteam.github.io/")
-#
-#
-#func open_about_dialog():
-#	about_dialog.popup_centered()
-
-
 func add_custom_types():
 	add_custom_type(
 		"RakugoVarCheckButton",
 		"CheckButton",
 		preload("nodes/rakugo_var_check.gd"),
-		preload("icons/rakugo_check_box.svg")
+		preload("icons/rakugo_check_button.tres")
 	)
 
 	add_custom_type(
 		"RakugoVarCheckBox",
 		"CheckBox",
 		preload("nodes/rakugo_var_check.gd"),
-		preload("icons/rakugo_check_box.svg")
+		preload("icons/rakugo_check_box.tres")
 	)
 
 	add_custom_type(
 		"RakugoVarHSlider",
 		"HSlider",
 		preload("nodes/rakugo_var_slider.gd"),
-		preload("icons/rakugo_var_h_slider.svg")
+		preload("icons/rakugo_var_h_slider.tres")
 	)
 
 	add_custom_type(
 		"RakugoVarVSlider",
 		"VSlider",
 		preload("nodes/rakugo_var_slider.gd"),
-		preload("icons/rakugo_var_v_slider.svg")
+		preload("icons/rakugo_var_v_slider.tres")
 	)
 
 	add_custom_type(
 		"RakugoProgressBar",
 		"ProgressBar",
 		preload("nodes/rakugo_var_range.gd"),
-		preload("icons/rakugo_progress_bar.svg")
+		preload("icons/rakugo_progress_bar.tres")
 	)
 
 	add_custom_type(
 		"RakugoTextureProgress",
 		"TextureProgress",
 		preload("nodes/rakugo_var_range.gd"),
-		preload("icons/rakugo_texture_progress.svg")
+		preload("icons/rakugo_texture_progress.tres")
 	)
 
 
@@ -195,13 +161,9 @@ func _enter_tree():
 func remove_tools():
 	remove_control_from_container(tm_container, tools_menu)
 	remove_control_from_container(rps_container, rakugo_project_settings)
-	# remove_control_from_container(test_container, test_button)
 
 	tools_menu.free()
 	rakugo_tools.free()
-#	emoji_panel.free()
-#	sl_tool.free()
-#	about_dialog.free()
 	rakugo_project_settings.free()
 
 
