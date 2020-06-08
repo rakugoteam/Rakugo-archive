@@ -108,6 +108,7 @@ func init_tools():
 	tools_menu = preload("tools/menu/ToolsMenu.tscn").instance()
 	tools_menu.theme = theme
 	tools_menu.plugin = self
+	tools_menu.connect_to_plugin()
 	tm_container = CONTAINER_TOOLBAR
 	add_control_to_container(tm_container, tools_menu)
 	var p = tools_menu.get_parent()
@@ -205,14 +206,14 @@ func remove_tools():
 
 
 func remove_custom_types():
-		remove_custom_type("RakugoVarHSlider")
-		remove_custom_type("RakugoVarVSlider")
-		remove_custom_type("RakugoHMenu")
-		remove_custom_type("RakugoVMenu")
-		remove_custom_type("RakugoVarCheckBox")
-		remove_custom_type("RakugoVarCheckButton")
-		remove_custom_type("RakugoProgressBar")
-		remove_custom_type("RakugoTextureProgress")
+	remove_custom_type("RakugoVarHSlider")
+	remove_custom_type("RakugoVarVSlider")
+	remove_custom_type("RakugoHMenu")
+	remove_custom_type("RakugoVMenu")
+	remove_custom_type("RakugoVarCheckBox")
+	remove_custom_type("RakugoVarCheckButton")
+	remove_custom_type("RakugoProgressBar")
+	remove_custom_type("RakugoTextureProgress")
 
 
 func _exit_tree():

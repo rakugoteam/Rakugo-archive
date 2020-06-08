@@ -338,7 +338,7 @@ _global_script_class_icons={
 "Character": "res://addons/Rakugo/icons/rakugo_character.svg",
 "CharacterObject": "",
 "CollapsedList": "",
-"Emojis": "res://addons/Rakugo/emojis/16x16/1f600.png",
+"Emojis": "res://addons/Rakugo/emojis/16x16/1f600.tres",
 "GDScriptDialog": "res://addons/Rakugo/icons/gdscript.svg",
 "Hide": "",
 "HistorySave": "res://addons/Rakugo/icons/save.svg",
@@ -442,7 +442,7 @@ gdscript/warnings/return_value_discarded=false
 
 [editor_plugins]
 
-enabled=PoolStringArray( "FontAwesome5", "Rakugo", "editor_icon_previewer", "file-editor", "godot-plugin-refresher", "zylann.editor_debugger" )
+enabled=PoolStringArray( "FontAwesome5", "Rakugo", "codeandweb.texturepacker", "editor_icon_previewer", "file-editor", "godot-plugin-refresher", "zylann.editor_debugger" )
 
 [input]
 

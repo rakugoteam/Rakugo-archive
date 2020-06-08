@@ -20,6 +20,9 @@ rect_min_size = Vector2( 100, 100 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Emojis" type="Node" parent="Emoji"]
 script = ExtResource( 2 )
@@ -31,6 +34,7 @@ caret_blink = true
 caret_blink_speed = 0.5
 
 [node name="Label" type="Label" parent="Emoji"]
+visible = false
 modulate = Color( 0.176471, 1, 0.305882, 1 )
 margin_top = 28.0
 margin_right = 272.0
@@ -40,7 +44,7 @@ valign = 1
 script = ExtResource( 3 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Emoji"]
-margin_top = 46.0
+margin_top = 28.0
 margin_right = 272.0
 margin_bottom = 499.0
 size_flags_horizontal = 3

@@ -24,7 +24,7 @@
 [ext_resource path="res://addons/Rakugo/lib/project_settings.gd" type="Script" id=22]
 [ext_resource path="res://addons/Rakugo/nodes/notify_label.gd" type="Script" id=23]
 
-[sub_resource type="Image" id=5]
+[sub_resource type="Image" id=6]
 data = {
 "data": PoolByteArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ),
 "format": "LumAlpha8",
@@ -36,10 +36,10 @@ data = {
 [sub_resource type="ImageTexture" id=2]
 flags = 4
 flags = 4
-image = SubResource( 5 )
+image = SubResource( 6 )
 size = Vector2( 16, 16 )
 
-[sub_resource type="Image" id=6]
+[sub_resource type="Image" id=7]
 data = {
 "data": PoolByteArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ),
 "format": "LumAlpha8",
@@ -48,10 +48,10 @@ data = {
 "width": 16
 }
 
-[sub_resource type="ImageTexture" id=4]
+[sub_resource type="ImageTexture" id=5]
 flags = 4
 flags = 4
-image = SubResource( 6 )
+image = SubResource( 7 )
 size = Vector2( 16, 16 )
 
 [node name="Rakugo" type="Panel"]
@@ -79,6 +79,7 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="VBoxContainer"]
+visible = false
 margin_right = 684.0
 margin_bottom = 14.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -88,9 +89,8 @@ valign = 1
 script = ExtResource( 23 )
 
 [node name="OverBox" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 18.0
 margin_right = 684.0
-margin_bottom = 58.0
+margin_bottom = 40.0
 size_flags_horizontal = 3
 script = ExtResource( 2 )
 
@@ -161,9 +161,9 @@ size_flags_vertical = 4
 icon = SubResource( 2 )
 
 [node name="NameBox" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 62.0
+margin_top = 44.0
 margin_right = 684.0
-margin_bottom = 86.0
+margin_bottom = 68.0
 size_flags_horizontal = 3
 script = ExtResource( 4 )
 
@@ -193,9 +193,9 @@ caret_blink = true
 caret_blink_speed = 0.5
 
 [node name="VersionBox" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 90.0
+margin_top = 72.0
 margin_right = 684.0
-margin_bottom = 114.0
+margin_bottom = 96.0
 size_flags_horizontal = 3
 script = ExtResource( 5 )
 
@@ -225,9 +225,9 @@ caret_blink = true
 caret_blink_speed = 0.5
 
 [node name="StartSceneBox" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 118.0
+margin_top = 100.0
 margin_right = 684.0
-margin_bottom = 142.0
+margin_bottom = 124.0
 size_flags_horizontal = 3
 script = ExtResource( 6 )
 
@@ -269,9 +269,9 @@ mode = 0
 filters = PoolStringArray( "*.tscn" )
 
 [node name="GameCreditsBox" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 146.0
+margin_top = 128.0
 margin_right = 684.0
-margin_bottom = 246.0
+margin_bottom = 228.0
 size_flags_horizontal = 3
 script = ExtResource( 7 )
 
@@ -322,9 +322,9 @@ current_file = "about.txt"
 current_path = "res://game/about.txt"
 
 [node name="MarkupBox" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 250.0
+margin_top = 232.0
 margin_right = 684.0
-margin_bottom = 274.0
+margin_bottom = 256.0
 size_flags_horizontal = 3
 script = ExtResource( 8 )
 
@@ -366,9 +366,9 @@ rect_min_size = Vector2( 24, 24 )
 icon = SubResource( 2 )
 
 [node name="PunctuationBox" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 278.0
+margin_top = 260.0
 margin_right = 684.0
-margin_bottom = 302.0
+margin_bottom = 284.0
 size_flags_horizontal = 3
 script = ExtResource( 21 )
 
@@ -429,9 +429,9 @@ size_flags_vertical = 4
 icon = SubResource( 2 )
 
 [node name="KindBox" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 306.0
+margin_top = 288.0
 margin_right = 684.0
-margin_bottom = 330.0
+margin_bottom = 312.0
 size_flags_horizontal = 3
 script = ExtResource( 10 )
 
@@ -463,7 +463,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 text = "nvl"
-icon = SubResource( 4 )
+icon = SubResource( 5 )
 flat = false
 items = [ "adv", SubResource( 2 ), 0, false, false, 0, 0, null, "", false, "center", SubResource( 2 ), 0, false, false, 1, 0, null, "", false, "fullscreen", SubResource( 2 ), 0, false, false, 2, 0, null, "", false, "right", SubResource( 2 ), 0, false, false, 3, 0, null, "", false, "left", SubResource( 2 ), 0, false, false, 4, 0, null, "", false, "top", SubResource( 2 ), 0, false, false, 5, 0, null, "", false, "phone-right", SubResource( 2 ), 0, false, false, 6, 0, null, "", false, "phone-left", SubResource( 2 ), 0, false, false, 7, 0, null, "", false, "nvl", SubResource( 2 ), 0, false, false, 8, 0, null, "", false ]
 
@@ -475,9 +475,9 @@ rect_min_size = Vector2( 24, 24 )
 icon = SubResource( 2 )
 
 [node name="MKindBox" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 334.0
+margin_top = 316.0
 margin_right = 684.0
-margin_bottom = 358.0
+margin_bottom = 340.0
 size_flags_horizontal = 3
 script = ExtResource( 12 )
 
@@ -510,7 +510,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.6
 text = "grid"
-icon = SubResource( 4 )
+icon = SubResource( 5 )
 flat = false
 items = [ "vertical", SubResource( 2 ), 0, false, false, 0, 0, null, "", false, "horizontal", SubResource( 2 ), 0, false, false, 1, 0, null, "", false, "grid", SubResource( 2 ), 0, false, false, 2, 0, null, "", false ]
 
@@ -533,7 +533,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.6
 text = "center"
-icon = SubResource( 4 )
+icon = SubResource( 5 )
 flat = false
 items = [ "top_left", SubResource( 2 ), 0, false, false, 0, 0, null, "", false, "top_right", SubResource( 2 ), 0, false, false, 1, 0, null, "", false, "bottom_left", SubResource( 2 ), 0, false, false, 2, 0, null, "", false, "bottom_right", SubResource( 2 ), 0, false, false, 3, 0, null, "", false, "center_left", SubResource( 2 ), 0, false, false, 4, 0, null, "", false, "center_top", SubResource( 2 ), 0, false, false, 5, 0, null, "", false, "center_right", SubResource( 2 ), 0, false, false, 6, 0, null, "", false, "center_bottom", SubResource( 2 ), 0, false, false, 7, 0, null, "", false, "center", SubResource( 2 ), 0, false, false, 8, 0, null, "", false ]
 
@@ -546,9 +546,9 @@ size_flags_vertical = 4
 icon = SubResource( 2 )
 
 [node name="ThemeBox" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 362.0
+margin_top = 344.0
 margin_right = 684.0
-margin_bottom = 386.0
+margin_bottom = 368.0
 size_flags_horizontal = 3
 script = ExtResource( 14 )
 
@@ -600,9 +600,9 @@ rect_min_size = Vector2( 24, 24 )
 icon = SubResource( 2 )
 
 [node name="SceneLinksBox" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 390.0
+margin_top = 372.0
 margin_right = 684.0
-margin_bottom = 414.0
+margin_bottom = 396.0
 size_flags_horizontal = 3
 script = ExtResource( 15 )
 
@@ -618,9 +618,9 @@ margin_right = 684.0
 only_open = true
 
 [node name="DebugBox" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 418.0
+margin_top = 400.0
 margin_right = 684.0
-margin_bottom = 458.0
+margin_bottom = 440.0
 size_flags_horizontal = 3
 script = ExtResource( 18 )
 
@@ -646,9 +646,9 @@ margin_right = 684.0
 margin_bottom = 40.0
 
 [node name="SaveBox" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 462.0
+margin_top = 444.0
 margin_right = 684.0
-margin_bottom = 502.0
+margin_bottom = 484.0
 size_flags_horizontal = 3
 script = ExtResource( 19 )
 
