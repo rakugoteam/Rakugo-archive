@@ -426,6 +426,7 @@ use_theme_from_setting = true
 node_id = "InGameGUI"
 
 [node name="SayPanel" parent="." instance=ExtResource( 5 )]
+margin_bottom = 602.0
 mouse_filter = 0
 
 [node name="Button" type="Button" parent="SayPanel"]
@@ -449,12 +450,14 @@ margin_left = 256.0
 margin_top = 150.0
 margin_right = 768.0
 margin_bottom = 450.0
+rect_min_size = Vector2( 512, 300 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+screen_size = Vector2( 1024, 450 )
 ChoiceButton = ExtResource( 4 )
 
 [node name="Notify" type="Panel" parent="."]

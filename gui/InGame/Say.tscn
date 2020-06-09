@@ -1651,6 +1651,7 @@ custom_constants/separation = 20
 [node name="NVL" parent="ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 2 )]
 anchor_right = 0.0
 margin_right = 1024.0
+margin_bottom = 84.0
 
 [node name="VScrollBar" type="VScrollBar" parent="ScrollContainer/HBoxContainer"]
 visible = false

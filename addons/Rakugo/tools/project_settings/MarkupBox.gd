@@ -1,6 +1,8 @@
 tool
 extends HBoxContainer
 
+var rps : RakugoProjectSettings
+
 var mode : String
 var popup : PopupMenu
 var modes := [
@@ -28,27 +30,18 @@ func _on_text_mode(id:int) -> void:
 	mode = modes[id]
 
 
-func load_setting(use_cfg:bool, cfg:ConfigFile) -> void:
-	mode = ProjectSettings.get_setting(
-		"application/rakugo/markup")
+func load_setting() -> void:
+	mode = rps.get_setting("rakugo/markup")
 
-	if use_cfg and cfg:
-		mode = cfg.get_value("application", "rakugo/markup")
-	
 	if !mode:
 		_on_text_mode(0)
 		return
-	
+
 	_on_text_mode(modes.find(mode))
 
 
-func save_setting(use_cfg:bool, cfg:ConfigFile) -> void:
+func save_setting() -> void:
 	if !mode:
 		mode = modes[0]
-	
-	if use_cfg and cfg:
-		cfg.set_value("application", "rakugo/markup", mode)
-		return
 
-	ProjectSettings.set_setting(
-		"application/rakugo/markup", mode)
+	rps.set_setting("rakugo/markup", mode)

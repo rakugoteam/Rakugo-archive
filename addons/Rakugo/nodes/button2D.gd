@@ -1,5 +1,5 @@
 extends Area2D
-class_name Button2D, "res://addons/Rakugo/icons/button_2d.svg"
+class_name Button2D, "res://addons/Rakugo/icons/button_2d.tres"
 
 export(int, "LEFT", "RIGHT", "MIDDLE") var mouse_button := 0
 export var toggle_mode := false

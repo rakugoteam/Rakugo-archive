@@ -1,6 +1,6 @@
 tool
 extends AnimationPlayer
-class_name RakugoAnimPlayer, "res://addons/Rakugo/icons/rakugo_animation_player.svg"
+class_name RakugoAnimPlayer, "res://addons/Rakugo/icons/rakugo_animation_player.tres"
 
 export var node_id : String = name setget _set_node_id, _get_node_id
 export var saveable := true setget _set_saveable, _get_saveable
@@ -41,7 +41,7 @@ func _get_node_id() -> String:
 
 func _set_saveable(value: bool):
 	_saveable = value
-	rnode.make_saveable(value, self)
+	rnode.make_saveable(self, value)
 
 
 func _get_saveable() -> bool:

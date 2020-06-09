@@ -1,5 +1,5 @@
 extends RakugoControl
-class_name RakugoSayPanel, "res://addons/Rakugo/icons/rakugo_panel.svg"
+class_name RakugoSayPanel, "res://addons/Rakugo/icons/rakugo_panel.tres"
 
 export (String, "adv", "top", "center", "left", "right", "nvl", "fullscreen") var kind = "adv"
 export var main_container_path := NodePath("")
@@ -38,6 +38,7 @@ func _ready() -> void:
 	Rakugo.connect("exec_statement", self, "_on_statement")
 	Rakugo.connect("hide_ui", self, "_on_Hide_toggled")
 	$Button.connect("pressed", self, "_on_ui_accept", [true])
+
 
 func _setup(kind_container: KindContainer):
 	NameLabel = kind_container.NameLabel
@@ -96,6 +97,11 @@ func _on_statement(type: int, parameters: Dictionary) -> void:
 
 	if not( _type in allowed_statement_types):
 		return
+
+	$Button.disabled = true;
+
+	if _type == Rakugo.StatementType.SAY:
+			$Button.disabled = false;
 
 	if "kind" in parameters:
 		kind = parameters.kind

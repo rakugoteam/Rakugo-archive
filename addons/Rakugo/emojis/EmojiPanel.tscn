@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://addons/Rakugo/emojis/EmojiPanel.gd" type="Script" id=1]
 [ext_resource path="res://addons/Rakugo/emojis/emojis.gd" type="Script" id=2]
+[ext_resource path="res://addons/Rakugo/nodes/notify_label.gd" type="Script" id=3]
 
 [node name="PopupDialog" type="WindowDialog"]
 margin_right = 288.0
@@ -19,6 +20,9 @@ rect_min_size = Vector2( 100, 100 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Emojis" type="Node" parent="Emoji"]
 script = ExtResource( 2 )
@@ -37,8 +41,7 @@ margin_right = 272.0
 margin_bottom = 42.0
 text = "notify"
 valign = 1
-
-[node name="Tween" type="Tween" parent="Emoji/Label"]
+script = ExtResource( 3 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Emoji"]
 margin_top = 28.0

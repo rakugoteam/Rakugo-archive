@@ -1,0 +1,96 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://addons/Rakugo/tools/scene_links/SceneLinksEditor.gd" type="Script" id=1]
+[ext_resource path="res://addons/Rakugo/tools/scene_links/SceneLinkEdit.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/Rakugo/tools/scene_links/SceneLinksChooser.tscn" type="PackedScene" id=3]
+[ext_resource path="res://addons/Rakugo/nodes/notify_label.gd" type="Script" id=4]
+
+[sub_resource type="Image" id=3]
+data = {
+"data": PoolByteArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ),
+"format": "LumAlpha8",
+"height": 16,
+"mipmaps": false,
+"width": 16
+}
+
+[sub_resource type="ImageTexture" id=2]
+flags = 4
+flags = 4
+image = SubResource( 3 )
+size = Vector2( 16, 16 )
+
+[node name="WindowDialog" type="WindowDialog"]
+margin_right = 623.0
+margin_bottom = 383.0
+window_title = "SceneLinks Editor"
+
+[node name="SceneLinks" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 9.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -5.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+scene_link_edit = ExtResource( 2 )
+
+[node name="SceneLinksChooser" parent="SceneLinks" instance=ExtResource( 3 )]
+margin_right = 606.0
+
+[node name="Label" type="Label" parent="SceneLinks"]
+visible = false
+modulate = Color( 0.176471, 1, 0.305882, 1 )
+margin_top = 28.0
+margin_right = 606.0
+margin_bottom = 42.0
+text = "notify"
+valign = 1
+script = ExtResource( 4 )
+
+[node name="HSeparator" type="HSeparator" parent="SceneLinks"]
+margin_top = 46.0
+margin_right = 606.0
+margin_bottom = 50.0
+
+[node name="Add" type="Button" parent="SceneLinks"]
+margin_top = 54.0
+margin_right = 606.0
+margin_bottom = 76.0
+size_flags_horizontal = 9
+size_flags_vertical = 8
+text = "Add New Scene Link"
+icon = SubResource( 2 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="SceneLinks"]
+margin_top = 80.0
+margin_right = 606.0
+margin_bottom = 366.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SceneLinks/ScrollContainer"]
+margin_right = 606.0
+margin_bottom = 286.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="SceneLinks"]
+margin_top = 370.0
+margin_right = 606.0
+margin_bottom = 370.0
+
+[node name="FileDialog" type="FileDialog" parent="SceneLinks/Control"]
+margin_left = -78.6704
+margin_top = -342.274
+margin_right = 437.33
+margin_bottom = 19.7258
+window_title = "Save SceneLinks"
+filters = PoolStringArray( "*.tres" )
+current_file = "scene_links.tres"
+current_path = "res://scene_links.tres"

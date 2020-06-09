@@ -1,6 +1,6 @@
 tool
 extends Node2D
-class_name RakugoNode2D, "res://addons/Rakugo/icons/rakugo_node2d.svg"
+class_name RakugoNode2D, "res://addons/Rakugo/icons/rakugo_node2d.tres"
 
 signal on_substate(substate)
 
@@ -54,7 +54,7 @@ func _get_node_id() -> String:
 
 func _set_saveable(value: bool):
 	_saveable = value
-	rnode.make_saveable(value, self)
+	rnode.make_saveable(self, value)
 
 
 func _get_saveable() -> bool:
@@ -105,7 +105,7 @@ func on_save() -> void:
 
 
 func on_load(game_version: String) -> void:
-	rnode.load_visible_node(self)
+	rnode.load_visible_node(node_link, self)
 
 
 func _on_substate(substate):

@@ -17,3 +17,6 @@ saves/
 .vscode/
 .*.kra
 reference.json
+
+# For now
+test/

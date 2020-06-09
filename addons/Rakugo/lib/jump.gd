@@ -27,13 +27,13 @@ func load_scene(scene_id, force_reload := true) -> bool:
 	var changed_scene = false
 
 	get_tree().paused = true
-	var scenes_links = load(r.scenes_links).get_as_dict()
+	var scene_links = load(r.scene_links).get_as_dict()
 	var path = r.current_scene
 	r.current_scene = scene_id
 
-	if scene_id in scenes_links:
+	if scene_id in scene_links:
 
-		var p = scenes_links[scene_id]
+		var p = scene_links[scene_id]
 
 		if p is PackedScene:
 			path = p.resource_path

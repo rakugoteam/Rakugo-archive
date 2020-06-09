@@ -1,6 +1,6 @@
 tool
 extends Node
-class_name Emojis, "res://addons/Rakugo/emojis/16x16/1f600.png"
+class_name Emojis, "res://addons/Rakugo/emojis/16x16/1f600.tres"
 
 var path_here = "res://addons/Rakugo/emojis/"
 var json_path = path_here + "emojis.json"
@@ -39,5 +39,5 @@ func emoji_list_to_dict(list: Array) -> Dictionary:
 
 func get_path_to_emoji(emoji_name: String, size := 16) -> String:
 	var size_dir := str(size) + "x" + str(size) + "/"
-	var emoji_png: String = emojis_dict[emoji_name] + ".png" 
+	var emoji_png: String = emojis_dict[emoji_name] + ".tres" 
 	return path_here + size_dir + emoji_png

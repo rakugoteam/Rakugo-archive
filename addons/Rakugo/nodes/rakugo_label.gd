@@ -1,5 +1,5 @@
 extends RichTextLabel
-class_name RakugoTextLabel, "res://addons/Rakugo/icons/rakugo_text_label.svg"
+class_name RakugoTextLabel, "res://addons/Rakugo/icons/rakugo_text_label.tres"
 
 export(String, "renpy", "bbcode") var mode := "renpy"
 export(String, FILE, "*.txt") var rakugo_text_file := ""
@@ -37,6 +37,9 @@ func set_rakugo_file(value: String) -> void:
 	if value.empty():
 		return
 
+	if not file.file_exists(value):
+		return
+
 	file.open(value, file.READ)
 	rakugo_text = file.get_as_text()
 	file.close()
@@ -44,7 +47,7 @@ func set_rakugo_file(value: String) -> void:
 
 
 func on_visibility_changed() -> void:
-	if visible == false:
+	if not visible:
 		return
 
 	update_label()

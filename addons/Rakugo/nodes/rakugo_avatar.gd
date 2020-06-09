@@ -1,6 +1,6 @@
 tool
 extends Node
-class_name RakugoAvatar, "res://addons/Rakugo/icons/rakugo_avatar.svg"
+class_name RakugoAvatar, "res://addons/Rakugo/icons/rakugo_avatar.tres"
 
 signal on_substate(substate)
 
@@ -32,7 +32,7 @@ func _ready():
 		avatar_link = Rakugo.avatar_link(_avatar_id, get_path())
 
 	else:
-		avatar_link.node_path = get_path()
+		avatar_link.value.node_path = get_path()
 
 	add_to_group("save", true)
 
@@ -60,7 +60,7 @@ func _get_avatar_id() -> String:
 
 func _set_saveable(value: bool):
 	_saveable = value
-	rnode.make_saveable(value, self)
+	rnode.make_saveable(self, value)
 
 
 func _get_saveable() -> bool:

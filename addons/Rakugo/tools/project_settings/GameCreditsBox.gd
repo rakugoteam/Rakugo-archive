@@ -1,6 +1,8 @@
 tool
 extends HBoxContainer
 
+var rps : RakugoProjectSettings
+
 var file := File.new()
 
 func _ready() -> void:
@@ -10,21 +12,12 @@ func _ready() -> void:
 	$Button/FileDialog.connect("confirmed", self, "_on_fd")
 
 
-func load_setting(use_cfg:bool, cfg:ConfigFile) -> void:
-	if use_cfg and cfg:
-		$TextEdit.text = cfg.get_value("application", "rakugo/game_credits")
-		return
-
-	$TextEdit.text = ProjectSettings.get_setting(
-		"application/rakugo/game_credits")
+func load_setting() -> void:
+	$TextEdit.text = rps.get_setting("rakugo/game_credits")
 
 
-func save_setting(use_cfg:bool, cfg:ConfigFile) -> void:
-	if use_cfg and cfg:
-		cfg.set_value("application", "rakugo/game_credits", $TextEdit.text)
-		return
-
-	ProjectSettings.set_setting("application/rakugo/game_credits", $TextEdit.text)
+func save_setting() -> void:
+	rps.set_setting("rakugo/game_credits", $TextEdit.text)
 
 
 func _on_fd():
