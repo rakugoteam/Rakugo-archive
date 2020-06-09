@@ -1,9 +1,7 @@
 tool
 extends EditorPlugin
 
-#var emoji_panel
-#var sl_tool
-#var about_dialog
+
 var rakugo_project_settings
 var rps_container
 var rakugo_tools

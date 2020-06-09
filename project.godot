@@ -392,9 +392,9 @@ _global_script_class_icons={
 
 [application]
 
-config/name="New Rakugo Game"
-run/main_scene="res://game/Start/Start.tscn"
-config/project_settings_override="res://game/rakugo.cfg"
+config/name="The Question: Rakugo Editon"
+run/main_scene="res://question/scenes/Start/start.tscn"
+config/project_settings_override="res://question/rakugo.cfg"
 boot_splash/image="res://graphics/splash.png"
 boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
