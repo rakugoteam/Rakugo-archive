@@ -294,11 +294,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/types/scene_links.gd"
 }, {
-"base": "Node",
-"class": "ScenesOverrider",
-"language": "GDScript",
-"path": "res://addons/Rakugo/gui/scenes_overrider.gd"
-}, {
 "base": "Statement",
 "class": "Show",
 "language": "GDScript",
@@ -346,7 +341,7 @@ _global_script_class_icons={
 "Menu": "",
 "NodeLink": "",
 "Notify": "",
-"NotifyLabel": "",
+"NotifyLabel": "res://addons/Rakugo/icons/notify_label.png",
 "PlayAnim": "",
 "PlayAudio": "",
 "Quest": "",
@@ -387,7 +382,6 @@ _global_script_class_icons={
 "SaveButton": "res://addons/Rakugo/icons/rakugo_save_button.tres",
 "Say": "",
 "SceneLinks": "res://addons/Rakugo/icons/scene_links.tres",
-"ScenesOverrider": "",
 "Show": "",
 "SkipTimer": "",
 "Statement": "",
