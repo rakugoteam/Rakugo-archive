@@ -1,6 +1,6 @@
 tool
 extends Label
-class_name NotifyLabel
+class_name NotifyLabel, "res://addons/Rakugo/icons/notify_label.png"
 
 export var normal_color := Color.transparent
 export var notify_color := Color.green
@@ -12,7 +12,7 @@ var tween := Tween.new()
 func _ready() -> void:
 	if hide_on_start:
 		hide()
-	
+
 	add_child(tween)
 	tween.connect("tween_all_completed", self, "on_tween_all_completed")
 

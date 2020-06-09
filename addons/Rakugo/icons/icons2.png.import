@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Splash.svg-8455dc7214db8758211ff13d13080a34.stex"
+path="res://.import/icons2.png-a10fcc86d5afd54ba98446a9de85a18b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/Splash.svg"
-dest_files=[ "res://.import/Splash.svg-8455dc7214db8758211ff13d13080a34.stex" ]
+source_file="res://addons/Rakugo/icons/icons2.png"
+dest_files=[ "res://.import/icons2.png-a10fcc86d5afd54ba98446a9de85a18b.stex" ]
 
 [params]
 

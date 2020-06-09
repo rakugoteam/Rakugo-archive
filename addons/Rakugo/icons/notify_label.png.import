@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/RakugoV4.png-de0db37006e3ec1039abd2c16c17de37.stex"
+path="res://.import/notify_label.png-d40cd039760757fbe3118b10d07a6f2c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/RakugoV4.png"
-dest_files=[ "res://.import/RakugoV4.png-de0db37006e3ec1039abd2c16c17de37.stex" ]
+source_file="res://addons/Rakugo/icons/notify_label.png"
+dest_files=[ "res://.import/notify_label.png-d40cd039760757fbe3118b10d07a6f2c.stex" ]
 
 [params]
 

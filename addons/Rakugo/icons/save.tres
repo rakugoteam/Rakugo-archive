@@ -1,6 +1,7 @@
 [gd_resource type="AtlasTexture" load_steps=2 format=2]
 
-[ext_resource path="res://addons/Rakugo/icons2.png" type="Texture" id=1]
+[ext_resource path="res://addons/Rakugo/icons/icons2.png" type="Texture" id=1]
+
 
 [resource]
 flags = 7
