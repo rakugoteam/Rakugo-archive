@@ -14,8 +14,8 @@ func text_passer(
 		mode: String = "renpy",
 		links_color: String = Rakugo.tres.links_color
 		) -> String:
-	## passer for renpy or bbcode markup format
-	## its retrun bbcode
+	# passer for renpy or bbcode markup format
+	# its retrun bbcode
 
 	url_open = url_open.replace("225ebf", links_color)
 

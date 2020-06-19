@@ -5,7 +5,7 @@ export(int, "LEFT", "RIGHT", "MIDDLE") var mouse_button := 0
 export var toggle_mode := false
 export var disabled := false setget set_disabled, get_disabled
 
-## theme (RakugoTheme), if any, will override this
+# theme (RakugoTheme), if any, will override this
 export var use_colors_from_theme := true setget set_colors_from_theme, are_colors_from_theme
 
 export var idle_color : Color setget set_idle_color, get_idle_color

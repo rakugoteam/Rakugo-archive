@@ -264,6 +264,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/types/rakugo_vector3.gd"
 }, {
+"base": "EditorScript",
+"class": "ReferenceCollector",
+"language": "GDScript",
+"path": "res://ReferenceCollector.gd"
+}, {
 "base": "Node",
 "class": "RootNode",
 "language": "GDScript",
@@ -376,6 +381,7 @@ _global_script_class_icons={
 "RakugoVarLabel": "res://addons/Rakugo/icons/rakugo_var_label.tres",
 "RakugoVector2": "",
 "RakugoVector3": "",
+"ReferenceCollector": "",
 "RootNode": "res://addons/Rakugo/icons/rakugo_root_node.tres",
 "RootNode2D": "res://addons/Rakugo/icons/rakugo_root_node2d.tres",
 "Save": "res://addons/Rakugo/icons/save.tres",
@@ -392,9 +398,9 @@ _global_script_class_icons={
 
 [application]
 
-config/name="The Question: Rakugo Editon"
-run/main_scene="res://question/scenes/Start/start.tscn"
-config/project_settings_override="res://question/rakugo.cfg"
+config/name="New Rakugo Game"
+run/main_scene="res://game/Start/Start.tscn"
+config/project_settings_override="res://game/rakugo.cfg"
 boot_splash/image="res://graphics/splash.png"
 boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
