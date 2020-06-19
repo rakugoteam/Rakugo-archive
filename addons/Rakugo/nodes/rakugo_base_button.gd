@@ -5,7 +5,7 @@ class_name RakugoBaseButton, "res://addons/Rakugo/icons/rakugo_base_button.tres"
 export var color_node := true
 export var node_to_change_path := NodePath()
 
-## theme (RakugoTheme), if any, will override this
+# theme (RakugoTheme), if any, will override this
 export var use_colors_from_theme := true setget set_colors_from_theme, are_colors_from_theme
 
 export var idle_node_color := Color(0.533333, 0.533333, 0.533333, 1)

@@ -136,7 +136,7 @@ func _on_visibility_changed():
 	get_tree().paused = false
 
 
-## # if press "Return" or "no" on quit page
+# # if press "Return" or "no" on quit page
 func _on_Return_pressed():
 	blur_shader.set_shader_param("radius", 0)
 

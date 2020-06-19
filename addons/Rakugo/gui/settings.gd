@@ -143,7 +143,7 @@ func save_conf() -> void:
 	conf_set_rakugo_value(config, "Auto_Forward_Time", "auto_time")
 	conf_set_rakugo_value(config, "Notify_Time", "notify_time")
 	
-	## do nothing for now
+	# do nothing for now
 	conf_set_rakugo_value(config, "Skip_All_Text", "skip_all_text")
 	conf_set_rakugo_value(config, "Skip_After_Choices", "skip_after_choices")
 	
@@ -187,7 +187,7 @@ func load_conf() -> void:
 	var auto_time = config.get_value("rakugo", "Auto_Forward_Time", Rakugo._auto_time)
 	var notify_time = config.get_value("rakugo", "Notify_Time", Rakugo._notify_time)
 	
-	## do nothing for now
+	# do nothing for now
 	var skip_all_text = config.get_value("rakugo", "Skip_All_Text", Rakugo._skip_all_text)
 	var skip_after_choices = config.get_value("rakugo", "Skip_After_Choices", Rakugo._skip_after_choices)
 	
@@ -196,7 +196,7 @@ func load_conf() -> void:
 	Rakugo.set_var("auto_time", auto_time)
 	Rakugo.set_var("notify_time", notify_time)
 
-	## do nothing for now
+	# do nothing for now
 	Rakugo.set_var("skip_all_text", skip_all_text)
 	Rakugo.set_var("skip_after_choices", skip_after_choices)
 

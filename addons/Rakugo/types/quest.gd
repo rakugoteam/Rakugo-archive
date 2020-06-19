@@ -3,7 +3,7 @@ class_name Quest
 
 var _subquests: Array = []
 
-## wip
+# wip
 var rewards: Array	= [] setget, _get_rewards # Maybe we need a Object Reward
 
 signal start_quest
@@ -119,12 +119,12 @@ func update_subquests() -> void:
 	_subquests = get_subquests_list(_subquests)
 
 
-## wip
+# wip
 func add_rewards(reward) -> void:
 	rewards.append(reward)
 
 
-## wip
+# wip
 func _get_rewards():
 	return rewards
 

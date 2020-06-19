@@ -64,7 +64,7 @@ func _on_stop(id: String, reset: bool) -> void:
 
 	stop(false)
 
-	## walkaround stop(true) don't reset animation
+	# walkaround stop(true) don't reset animation
 	if reset:
 		seek(0, true)
 
