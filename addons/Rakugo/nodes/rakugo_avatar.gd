@@ -1,6 +1,6 @@
 tool
 extends Node
-class_name RakugoAvatar, "res://addons/Rakugo/icons/rakugo_avatar.tres"
+class_name RakugoAvatar, "res://addons/Rakugo/icons/rakugo_avatar.svg"
 
 signal on_substate(substate)
 

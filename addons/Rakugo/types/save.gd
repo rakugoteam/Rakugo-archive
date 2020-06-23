@@ -1,5 +1,5 @@
 extends Resource
-class_name Save, "res://addons/Rakugo/icons/save.tres"
+class_name Save, "res://addons/Rakugo/icons/save.svg"
 
 export var game_version := ""
 export var rakugo_version := ""

@@ -1,5 +1,5 @@
 extends GridContainer
-class_name RakugoMenu, "res://addons/Rakugo/icons/rakugo_menu_v.tres"
+class_name RakugoMenu, "res://addons/Rakugo/icons/rakugo_menu_v.svg"
 
 export var screen_size := Vector2(1024, 600)
 export var ChoiceButton: PackedScene

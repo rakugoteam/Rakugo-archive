@@ -1,6 +1,6 @@
 tool
 extends AudioStreamPlayer
-class_name RakugoAudioPlayer, "res://addons/Rakugo/icons/rakugo_audio_player.tres"
+class_name RakugoAudioPlayer, "res://addons/Rakugo/icons/rakugo_audio_player.svg"
 
 export var node_id : String = name setget _set_node_id, _get_node_id
 export var saveable := true setget _set_saveable, _get_saveable

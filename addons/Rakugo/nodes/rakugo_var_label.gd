@@ -1,5 +1,5 @@
 extends Label
-class_name RakugoVarLabel, "res://addons/Rakugo/icons/rakugo_var_label.tres"
+class_name RakugoVarLabel, "res://addons/Rakugo/icons/rakugo_var_label.svg"
 
 export var var_name := "some_var"
 export var default = ""

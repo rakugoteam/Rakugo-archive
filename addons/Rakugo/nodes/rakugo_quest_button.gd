@@ -1,5 +1,5 @@
 extends RakugoBaseButton
-class_name RakugoQuestButton, "res://addons/Rakugo/icons/rakugo_quest_button.tres"
+class_name RakugoQuestButton, "res://addons/Rakugo/icons/rakugo_quest_button.svg"
 
 export var sprite_rect := Vector2(64, 64)
 var quest: Subquest
