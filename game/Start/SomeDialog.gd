@@ -7,4 +7,4 @@ func some_dialog(node_name, dialog_name):
 		return
 
 	if next_state():
-		say({"what": "Test some emoji {:smiley:}"})
+		say({"what": "This is empty Rakugo Templte Project edit it."})

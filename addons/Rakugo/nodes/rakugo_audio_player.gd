@@ -42,6 +42,10 @@ func _get_node_id() -> String:
 
 func _set_saveable(value: bool):
 	_saveable = value
+
+	if not rnode:
+		rnode = RakugoNodeCore.new()
+
 	rnode.make_saveable(self, value)
 
 

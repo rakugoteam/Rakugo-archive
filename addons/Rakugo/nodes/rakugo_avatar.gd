@@ -60,6 +60,10 @@ func _get_avatar_id() -> String:
 
 func _set_saveable(value: bool):
 	_saveable = value
+
+	if not rnode:
+		rnode = RakugoNodeCore.new()
+		
 	rnode.make_saveable(self, value)
 
 
@@ -89,7 +93,7 @@ func _set_state(value: Array) -> void:
 
 func _get_state() -> Array:
 	return _state
-	
+
 
 func on_save() -> void:
 	avatar_link.value["state"] = _state
