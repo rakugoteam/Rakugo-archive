@@ -1,6 +1,6 @@
 tool
 extends Label
-class_name NotifyLabel, "res://addons/Rakugo/icons/notify_label.png"
+class_name NotifyLabel, "res://addons/Rakugo/icons/notify_label.svg"
 
 export var normal_color := Color.transparent
 export var notify_color := Color.green

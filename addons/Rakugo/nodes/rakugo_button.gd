@@ -1,6 +1,6 @@
 tool
 extends RakugoBaseButton
-class_name RakugoButton, "res://addons/Rakugo/icons/rakugo_button.tres"
+class_name RakugoButton, "res://addons/Rakugo/icons/rakugo_button.svg"
 
 export var node_path := NodePath()
 export var auto_resize_x := true

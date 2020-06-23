@@ -1,6 +1,6 @@
 tool
 extends Node
-class_name Character, "res://addons/Rakugo/icons/rakugo_character.tres"
+class_name Character, "res://addons/Rakugo/icons/rakugo_character.svg"
 
 export var character_id := "" setget _set_character_id, _get_character_id
 export var saveable := true setget _set_saveable, _get_saveable

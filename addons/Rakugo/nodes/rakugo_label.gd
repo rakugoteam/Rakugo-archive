@@ -1,5 +1,5 @@
 extends RichTextLabel
-class_name RakugoTextLabel, "res://addons/Rakugo/icons/rakugo_text_label.tres"
+class_name RakugoTextLabel, "res://addons/Rakugo/icons/rakugo_text_label.svg"
 
 export(String, "renpy", "bbcode") var mode := "renpy"
 export(String, FILE, "*.txt") var rakugo_text_file := ""

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="16"
+   height="16"
+   viewBox="0 0 16 16"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   inkscape:export-filename="/home/djrm/Projects/godot/tools/editor/icons/icon_packed_scene.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90"
+   sodipodi:docname="scenes_links.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="22.627417"
+     inkscape:cx="5.7980715"
+     inkscape:cy="9.9612352"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     units="px"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-paths="true"
+     inkscape:bbox-nodes="true"
+     inkscape:snap-bbox-edge-midpoints="true"
+     inkscape:snap-bbox-midpoints="false"
+     inkscape:snap-object-midpoints="true"
+     inkscape:snap-center="true"
+     inkscape:window-width="1366"
+     inkscape:window-height="700"
+     inkscape:window-x="0"
+     inkscape:window-y="40"
+     inkscape:window-maximized="1"
+     inkscape:document-rotation="0"
+     inkscape:pagecheckerboard="true"
+     inkscape:snap-global="false">
+    <inkscape:grid
+       type="xygrid"
+       id="grid3336" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-1036.3622)">
+    <path
+       inkscape:connector-curvature="0"
+       style="opacity:1;fill:#a5efac;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 3.1162676,1037.1135 c -1.1045695,0 -2,0.8954 -2,2 5.537e-4,0.714 0.3816774,1.3735 1,1.7305 v 6.541 c -0.6177049,0.3566 -0.998733,1.0152 -1,1.7285 0,1.1046 0.8954305,2 2,2 1.1045695,0 2,-0.8954 2,-2 -5.537e-4,-0.714 -0.3816774,-1.3735 -1,-1.7305 v -5.8554 l 3.1794545,2.8258 1.414062,-1.414 -3.179454,-2.8259 h 5.8574209 c 0.356634,0.6177 1.015249,0.9987 1.728517,1 1.104569,0 2,-0.8954 2,-2 0,-1.1046 -0.895431,-2 -2,-2 -0.713966,6e-4 -1.373486,0.3817 -1.730469,1 H 4.8447832 c -0.3566334,-0.6177 -1.0152477,-0.9987 -1.7285156,-1 z"
+       id="path4198"
+       sodipodi:nodetypes="cccccsccccccccscccc" />
+    <path
+       style="opacity:1;fill:#a5efac;fill-opacity:1;stroke:none;stroke-width:1.09156561;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 14.820552,1043.5442 -1.152312,0.1904 0.420208,1.1024 0.880531,-0.1448 z m -2.168232,0.3569 -1.01592,0.1677 0.420208,1.1036 1.015919,-0.1677 z m -2.032843,0.3354 -1.0159196,0.1678 0.4202076,1.1034 1.01592,-0.1675 z m -2.0318396,0.3353 -0.8805306,0.1451 0.1484265,1.1479 1.152312,-0.1904 z m -0.7321041,1.8731 v 3.4807 c 0,0.6408 0.459782,1.1602 1.0269516,1.1602 h 6.1617091 v -4.6409 z"
+       id="rect4136"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccccccccccccccccscccc" />
+    <circle
+       r="0"
+       style="opacity:1;fill:#6e6e6e;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="ellipse4152"
+       cx="2.5859375"
+       cy="1038.3622" />
+  </g>
+</svg>

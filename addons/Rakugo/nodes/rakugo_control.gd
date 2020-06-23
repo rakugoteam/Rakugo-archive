@@ -1,6 +1,6 @@
 tool
 extends RakugoBaseControl
-class_name RakugoControl, "res://addons/Rakugo/icons/rakugo_control.tres"
+class_name RakugoControl, "res://addons/Rakugo/icons/rakugo_control.svg"
 
 signal on_substate(substate)
 

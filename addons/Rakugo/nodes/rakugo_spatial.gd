@@ -1,6 +1,6 @@
 tool
 extends Spatial
-class_name RakugoSpatial, "res://addons/Rakugo/icons/rakugo_spatial.tres"
+class_name RakugoSpatial, "res://addons/Rakugo/icons/rakugo_spatial.svg"
 
 signal on_substate(substate)
 

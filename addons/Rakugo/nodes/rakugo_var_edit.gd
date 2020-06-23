@@ -1,5 +1,5 @@
 extends LineEdit
-class_name RakugoVarEdit, "res://addons/Rakugo/icons/rakugo_var_edit.tres"
+class_name RakugoVarEdit, "res://addons/Rakugo/icons/rakugo_var_edit.svg"
 
 export var var_name := "some_var"
 

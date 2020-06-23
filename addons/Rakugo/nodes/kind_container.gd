@@ -1,5 +1,5 @@
 extends Control
-class_name KindContainer, "res://addons/Rakugo/icons/rakugo_kind_container.tres"
+class_name KindContainer, "res://addons/Rakugo/icons/rakugo_kind_container.svg"
 
 export var name_label_path := NodePath("")
 export var dialog_label_path := NodePath("")
