@@ -10,7 +10,7 @@ Special Thanks for:
 	Nefaras,
 	txjjzyzqbx,
 	Kurinoku,
-	{a=https://github.com/Sslaxx}Stuart Moore ({i}Sslaxx{\i}){/a},
+	{a=https://github.com/Sslaxx}Stuart Moore ({i}Sslaxx{/i}){/a},
 	InaneFool,
 	Crystalwarrior,
 	{a=https://github.com/kurinoku}kurinoku{/a},
