@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource( 1 )
 game_version = "0.0.1"
-rakugo_version = "2.1.03"
+rakugo_version = "2.1.04"
 history = {
 "Start,SomeDialog,some_dialog,1": {
 "parameters": {
@@ -552,7 +552,7 @@ data = {
 },
 "rakugo_version": {
 "type": 1,
-"value": "2.1.03"
+"value": "2.1.04"
 },
 "rebeccapurple": {
 "type": 13,
