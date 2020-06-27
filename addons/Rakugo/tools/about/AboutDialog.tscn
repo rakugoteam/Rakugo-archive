@@ -54,7 +54,7 @@ margin_right = 383.0
 margin_bottom = 80.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.184314, 0.235294, 1, 1 )
-text = "Version 2.1.03"
+text = "Version 2.1.04"
 
 [node name="CodeNameLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 84.0
