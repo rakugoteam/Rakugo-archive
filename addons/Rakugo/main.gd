@@ -71,7 +71,7 @@ var global_history := {}
 var variables := {}
 
 # don't save this
-onready var menu_node: RakugoMenu = $Menu
+onready var menu_node: = $Menu
 var viewport : Viewport
 var loading_screen : RakugoControl
 var current_scene_path := ""

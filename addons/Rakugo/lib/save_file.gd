@@ -1,7 +1,7 @@
-extends Object
+extends Node
+onready var r = Rakugo
 
 func invoke(save_name: String) -> bool:
-	var r := Rakugo
 	var new_save := Save.new()
 	new_save.game_version = r.game_version
 	new_save.rakugo_version = r.rakugo_version

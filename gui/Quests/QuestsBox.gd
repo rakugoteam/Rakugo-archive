@@ -57,7 +57,7 @@ func _on_visibility_changed() -> void:
 
 		var j = 0
 		var sub_box = VBoxContainer.new()
-		var subquest: Subquest
+
 		for subquest in quest.get_subquests():
 			var subq_button = add_quest_button(subquest, sub_box, true)
 			if j == sub_box.get_child_count():
