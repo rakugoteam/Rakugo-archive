@@ -392,28 +392,28 @@ _global_script_class_icons={
 
 [application]
 
-config/name="New Rakugo Game"
-run/main_scene="res://game/Start/Start.tscn"
-config/project_settings_override="res://game/rakugo.cfg"
+config/name="The Question: Rakugo Editon"
+run/main_scene="res://question/scenes/Start/start.tscn"
+config/project_settings_override="res://question/rakugo.cfg"
 boot_splash/image="res://graphics/splash.png"
 boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://graphics/window_icon.png"
 config/auto_accept_quit=false
 config/quit_on_go_back=false
-rakugo/version="0.0.1"
-rakugo/game_credits="Jeremi {i}jebedaia360{/i} Biernacki"
+rakugo/version="1.4.0"
+rakugo/game_credits="Jeremi {i}jebedaia360{/i} Biernacki, kurinoku"
 rakugo/debug=false
 rakugo/save_folder="saves"
-rakugo/default_kind="adv"
+rakugo/default_kind=""
 rakugo/test_saves=false
 rakugo/markup="renpy"
-rakugo/default_mkind="grid"
+rakugo/default_mkind=""
 rakugo/default_mcolumns=2.0
-rakugo/default_manchor="center"
+rakugo/default_manchor=""
 rakugo/punctuation_pause="1"
 rakugo/default_mcolums=2.0
-rakugo/theme="res://themes/new_gui/new_gui.tres"
+rakugo/theme="res://themes/question/question.tres"
 rakugo/scene_links="res://game/scene_links.tres"
 rakugo/scenes_links="res://game/scenes_links.tres"
 
@@ -422,8 +422,6 @@ rakugo/scenes_links="res://game/scenes_links.tres"
 Rakugo="*res://addons/Rakugo/Rakugo.tscn"
 settings="*res://addons/Rakugo/gui/settings.gd"
 Window="*res://gui/Window/Window.tscn"
-IconLoader="*res://addons/file-editor/scripts/IconLoader.gd"
-LastOpenedFiles="*res://addons/file-editor/scripts/LastOpenedFiles.gd"
 
 [debug]
 
@@ -437,7 +435,7 @@ gdscript/warnings/return_value_discarded=false
 
 [editor_plugins]
 
-enabled=PoolStringArray( "FontAwesome5", "Rakugo", "codeandweb.texturepacker", "editor_icon_previewer", "file-editor", "godot-plugin-refresher", "zylann.editor_debugger" )
+enabled=PoolStringArray( "Rakugo" )
 
 [input]
 

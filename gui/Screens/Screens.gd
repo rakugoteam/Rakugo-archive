@@ -15,23 +15,27 @@ export onready var qyes_button = $QuitBox/HBoxContainer/Yes
 var current_node: Node = self
 var in_game_gui: Node
 var viewport_con : Control
-onready var new_game_button: Button = get_node(str(nav_path) + "/" + "NewGame")
-onready var continue_button: Button = get_node(str(nav_path) + "/" + "Continue")
-onready var return_button: Button = get_node(str(nav_path) + "/" + "Return")
-onready var save_button: Button = get_node(str(nav_path) + "/" + "Save")
-onready var history_button: Button = get_node(str(nav_path) + "/" + "History")
-onready var quests_button: Button = get_node(str(nav_path) + "/" + "Quests")
-onready var load_button: Button = get_node(str(nav_path) + "/" + "Load")
-onready var options_button: Button = get_node(str(nav_path) + "/" + "Options")
-onready var about_button: Button = get_node(str(nav_path) + "/" + "About")
-onready var help_button: Button = get_node(str(nav_path) + "/" + "Help")
-onready var quit_button: Button = get_node(str(nav_path) + "/" + "Quit")
+onready var new_game_button: Button = get_page("NewGame")
+onready var continue_button: Button = get_page("Continue")
+onready var return_button: Button = get_page("Return")
+onready var save_button: Button = get_page("Save")
+onready var history_button: Button = get_page("History")
+onready var quests_button: Button = get_page("Quests")
+onready var load_button: Button = get_page("Load")
+onready var options_button: Button = get_page("Options")
+onready var about_button: Button = get_page("About")
+onready var help_button: Button = get_page("Help")
+onready var quit_button: Button = get_page("Quit")
 
 var blur_shader : ShaderMaterial
 
+func get_page(node_name:String) -> Node:
+	return get_node(str(nav_path).plus_file(node_name))
+
+
 func get_viewport() -> Viewport:
 	return viewport_con.get_node("Viewport") as Viewport
-
+	
 
 func _ready():
 	if Engine.editor_hint:
@@ -53,7 +57,7 @@ func _ready():
 	continue_button.connect("pressed", self, "_on_Continue_pressed")
 	return_button.connect("pressed", self, "_on_Return_pressed")
 	save_button.connect("pressed", self, "_on_Save_pressed")
-	history_button.connect("pressed", self, "_on_History_pressed(")
+	history_button.connect("pressed", self, "_on_History_pressed")
 	quests_button.connect("pressed", self, "_on_Quests_pressed")
 	load_button.connect("pressed", self, "_on_Load_pressed")
 	options_button.connect("pressed", self, "_on_Options_pressed")
@@ -263,7 +267,7 @@ func _screenshot_on_input(event):
 		dir.make_dir(screenshots_dir)
 
 	var s = Rakugo.get_datetime_str().replace(":", " ")
-	get_screenshot().save_png(screenshots_dir + "/" + s + '.png')
+	get_screenshot().save_png(screenshots_dir.plus_file(s + '.png'))
 
 
 func _input(event):
