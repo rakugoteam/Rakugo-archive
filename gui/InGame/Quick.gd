@@ -30,7 +30,6 @@ func _ready() -> void:
 	$Quit.connect("pressed", Screens, "_on_Quit_pressed")
 	$Options.connect("pressed", Screens, "_on_Options_pressed")
 	$Hide.connect("toggled", self, "_on_Hide_toggled")
-	Rakugo.connect("game_ended", self, "on_stop_loop")
 
 
 func _on_checkpoint() -> void:

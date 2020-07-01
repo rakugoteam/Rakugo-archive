@@ -24,7 +24,7 @@
 [ext_resource path="res://addons/Rakugo/lib/project_settings.gd" type="Script" id=22]
 [ext_resource path="res://addons/Rakugo/nodes/notify_label.gd" type="Script" id=23]
 
-[sub_resource type="Image" id=6]
+[sub_resource type="Image" id=1]
 data = {
 "data": PoolByteArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ),
 "format": "LumAlpha8",
@@ -36,10 +36,10 @@ data = {
 [sub_resource type="ImageTexture" id=2]
 flags = 4
 flags = 4
-image = SubResource( 6 )
+image = SubResource( 1 )
 size = Vector2( 16, 16 )
 
-[sub_resource type="Image" id=7]
+[sub_resource type="Image" id=3]
 data = {
 "data": PoolByteArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ),
 "format": "LumAlpha8",
@@ -48,10 +48,10 @@ data = {
 "width": 16
 }
 
-[sub_resource type="ImageTexture" id=5]
+[sub_resource type="ImageTexture" id=4]
 flags = 4
 flags = 4
-image = SubResource( 7 )
+image = SubResource( 3 )
 size = Vector2( 16, 16 )
 
 [node name="Rakugo" type="Panel"]
@@ -87,6 +87,11 @@ text = "Loaded"
 align = 1
 valign = 1
 script = ExtResource( 23 )
+normal_color = Color( 1, 1, 1, 0 )
+notify_color = Color( 0, 1, 0, 1 )
+time_to_show = 1
+time_of_display = 0.7
+hide_on_start = true
 
 [node name="OverBox" type="HBoxContainer" parent="VBoxContainer"]
 margin_right = 684.0
@@ -124,9 +129,8 @@ margin_bottom = 207.0
 window_title = "Open a File"
 mode = 0
 filters = PoolStringArray( "*.cfg" )
-current_dir = "res://game"
 current_file = "rakugo.cfg"
-current_path = "res://game/rakugo.cfg"
+current_path = "res://rakugo.cfg"
 
 [node name="Button" type="Button" parent="VBoxContainer/OverBox"]
 margin_left = 366.0
@@ -187,6 +191,7 @@ valign = 1
 margin_left = 358.0
 margin_right = 684.0
 margin_bottom = 24.0
+mouse_filter = 1
 size_flags_horizontal = 3
 text = "The Question: Rakugo Editon"
 caret_blink = true
@@ -296,9 +301,11 @@ margin_left = 342.0
 margin_right = 652.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 200, 100 )
+mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Jeremi {i}jebedaia360{/i} Biernacki, kurinoku"
+show_line_numbers = true
 
 [node name="Button" type="Button" parent="VBoxContainer/GameCreditsBox"]
 margin_left = 656.0
@@ -317,9 +324,8 @@ window_title = "Open a File"
 mode = 0
 filters = PoolStringArray( "*.txt" )
 show_hidden_files = true
-current_dir = "res://game"
 current_file = "about.txt"
-current_path = "res://game/about.txt"
+current_path = "res://about.txt"
 
 [node name="MarkupBox" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 232.0
@@ -463,7 +469,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 text = "nvl"
-icon = SubResource( 5 )
+icon = SubResource( 4 )
 flat = false
 items = [ "adv", SubResource( 2 ), 0, false, false, 0, 0, null, "", false, "center", SubResource( 2 ), 0, false, false, 1, 0, null, "", false, "fullscreen", SubResource( 2 ), 0, false, false, 2, 0, null, "", false, "right", SubResource( 2 ), 0, false, false, 3, 0, null, "", false, "left", SubResource( 2 ), 0, false, false, 4, 0, null, "", false, "top", SubResource( 2 ), 0, false, false, 5, 0, null, "", false, "phone-right", SubResource( 2 ), 0, false, false, 6, 0, null, "", false, "phone-left", SubResource( 2 ), 0, false, false, 7, 0, null, "", false, "nvl", SubResource( 2 ), 0, false, false, 8, 0, null, "", false ]
 
@@ -510,7 +516,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.6
 text = "grid"
-icon = SubResource( 5 )
+icon = SubResource( 4 )
 flat = false
 items = [ "vertical", SubResource( 2 ), 0, false, false, 0, 0, null, "", false, "horizontal", SubResource( 2 ), 0, false, false, 1, 0, null, "", false, "grid", SubResource( 2 ), 0, false, false, 2, 0, null, "", false ]
 
@@ -533,7 +539,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.6
 text = "center"
-icon = SubResource( 5 )
+icon = SubResource( 4 )
 flat = false
 items = [ "top_left", SubResource( 2 ), 0, false, false, 0, 0, null, "", false, "top_right", SubResource( 2 ), 0, false, false, 1, 0, null, "", false, "bottom_left", SubResource( 2 ), 0, false, false, 2, 0, null, "", false, "bottom_right", SubResource( 2 ), 0, false, false, 3, 0, null, "", false, "center_left", SubResource( 2 ), 0, false, false, 4, 0, null, "", false, "center_top", SubResource( 2 ), 0, false, false, 5, 0, null, "", false, "center_right", SubResource( 2 ), 0, false, false, 6, 0, null, "", false, "center_bottom", SubResource( 2 ), 0, false, false, 7, 0, null, "", false, "center", SubResource( 2 ), 0, false, false, 8, 0, null, "", false ]
 

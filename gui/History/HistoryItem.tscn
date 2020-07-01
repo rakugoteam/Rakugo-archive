@@ -32,22 +32,24 @@ use_filter = true
 font_data = ExtResource( 5 )
 
 [node name="HistoryItem" type="Panel"]
-margin_right = 1024.0
-margin_bottom = 147.0
+margin_right = 700.0
+margin_bottom = 100.0
 rect_min_size = Vector2( 700, 100 )
-size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_horizontal = 13
+size_flags_vertical = 13
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBox" type="VBoxContainer" parent="."]
-margin_left = 2.0
-margin_right = 907.0
-margin_bottom = 100.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 1
 
 [node name="Label" parent="VBox" instance=ExtResource( 1 )]
-margin_right = 905.0
+margin_right = 700.0
 margin_bottom = 49.0
 focus_mode = 0
 mouse_filter = 2
@@ -63,7 +65,7 @@ selection_enabled = false
 
 [node name="Dialog" type="RichTextLabel" parent="VBox"]
 margin_top = 50.0
-margin_right = 905.0
+margin_right = 700.0
 margin_bottom = 100.0
 rect_clip_content = false
 mouse_filter = 2
