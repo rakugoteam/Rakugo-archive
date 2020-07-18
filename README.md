@@ -20,7 +20,7 @@ The idea is to have a ready to use plug-in for stories, so developers can create
 
 Now you can support this project by buing it on [itch.io](https://jebedaia.itch.io/rakugo).
 
-You can download 2.0 for Godot 3.1 [here](https://github.com/rakugoteam/Rakugo/releases).
+You can download 2.1.x for Godot 3.1 [here](https://github.com/rakugoteam/Rakugo/releases).
 
 ## Showcase
 
