@@ -16,7 +16,7 @@ func _set_node(n:Node):
 
 
 func _get_node()->Node:
-	return _node.get_node(value)
+	return _node.get_node(_value["node_path"])
 
 
 func _set_value(dict: Dictionary) -> void:
