@@ -1,12 +1,15 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://themes/question/question.tres" type="Theme" id=1]
-[ext_resource path="res://addons/Rakugo/nodes/rakugo_quest_button.gd" type="Script" id=2]
+[ext_resource path="res://addons/Rakugo/nodes/controls/rakugo_quest_button.gd" type="Script" id=2]
 [ext_resource path="res://gui/Labels/dialogue_text.tscn" type="PackedScene" id=3]
 [ext_resource path="res://gui/Quests/quests-icons/in-progress.png" type="Texture" id=7]
 [ext_resource path="res://gui/Quests/quests-icons/opt-done.png" type="Texture" id=9]
 [ext_resource path="res://gui/Quests/quests-icons/opt-fail.png" type="Texture" id=10]
 [ext_resource path="res://gui/Quests/quests-icons/opt-in-progress.png" type="Texture" id=11]
+
+
+
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {

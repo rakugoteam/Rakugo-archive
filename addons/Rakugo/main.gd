@@ -1,6 +1,6 @@
 extends Node
 
-const rakugo_version := "2.1.04"
+const rakugo_version := "2.1.05"
 const credits_path := "res://addons/Rakugo/credits.txt"
 const save_folder := "saves"
 

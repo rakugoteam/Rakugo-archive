@@ -22,7 +22,10 @@
 [ext_resource path="res://addons/Rakugo/icons/save.svg" type="Texture" id=20]
 [ext_resource path="res://addons/Rakugo/tools/project_settings/PunctuationBox.gd" type="Script" id=21]
 [ext_resource path="res://addons/Rakugo/lib/project_settings.gd" type="Script" id=22]
-[ext_resource path="res://addons/Rakugo/nodes/notify_label.gd" type="Script" id=23]
+[ext_resource path="res://addons/Rakugo/nodes/controls/notify_label.gd" type="Script" id=23]
+
+
+
 
 [sub_resource type="Image" id=1]
 data = {

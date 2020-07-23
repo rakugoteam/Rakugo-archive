@@ -2,7 +2,10 @@
 
 [ext_resource path="res://addons/Rakugo/emojis/EmojiPanel.gd" type="Script" id=1]
 [ext_resource path="res://addons/Rakugo/emojis/emojis.gd" type="Script" id=2]
-[ext_resource path="res://addons/Rakugo/nodes/notify_label.gd" type="Script" id=3]
+[ext_resource path="res://addons/Rakugo/nodes/controls/notify_label.gd" type="Script" id=3]
+
+
+
 
 [node name="PopupDialog" type="WindowDialog"]
 margin_right = 288.0

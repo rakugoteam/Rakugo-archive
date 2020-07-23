@@ -3,7 +3,10 @@
 [ext_resource path="res://addons/Rakugo/tools/scene_links/SceneLinksEditor.gd" type="Script" id=1]
 [ext_resource path="res://addons/Rakugo/tools/scene_links/SceneLinkEdit.tscn" type="PackedScene" id=2]
 [ext_resource path="res://addons/Rakugo/tools/scene_links/SceneLinksChooser.tscn" type="PackedScene" id=3]
-[ext_resource path="res://addons/Rakugo/nodes/notify_label.gd" type="Script" id=4]
+[ext_resource path="res://addons/Rakugo/nodes/controls/notify_label.gd" type="Script" id=4]
+
+
+
 
 [sub_resource type="Image" id=3]
 data = {

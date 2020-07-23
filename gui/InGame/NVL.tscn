@@ -1,9 +1,13 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://addons/Rakugo/nodes/kind_container.gd" type="Script" id=1]
+[ext_resource path="res://addons/Rakugo/nodes/controls/kind_container.gd" type="Script" id=1]
 [ext_resource path="res://gui/Labels/name_text.tscn" type="PackedScene" id=2]
 [ext_resource path="res://gui/Labels/dialogue_text.tscn" type="PackedScene" id=3]
-[ext_resource path="res://addons/Rakugo/nodes/rakugo_ask.gd" type="Script" id=4]
+[ext_resource path="res://addons/Rakugo/nodes/controls/rakugo_ask.gd" type="Script" id=4]
+
+
+
+
 
 [node name="NVL" type="HBoxContainer"]
 anchor_right = 1.0

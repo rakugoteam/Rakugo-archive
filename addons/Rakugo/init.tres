@@ -1,11 +1,13 @@
 [gd_resource type="Resource" load_steps=2 format=2]
 
-[ext_resource path="res://addons/Rakugo/types/save.gd" type="Script" id=1]
+[ext_resource path="res://addons/Rakugo/objects/resources/save.gd" type="Script" id=1]
+
+
 
 [resource]
 script = ExtResource( 1 )
 game_version = "0.0.1"
-rakugo_version = "2.1.04"
+rakugo_version = "2.1.05"
 history = {
 "Start,SomeDialog,some_dialog,1": {
 "parameters": {
@@ -552,7 +554,7 @@ data = {
 },
 "rakugo_version": {
 "type": 1,
-"value": "2.1.04"
+"value": "2.1.05"
 },
 "rebeccapurple": {
 "type": 13,
