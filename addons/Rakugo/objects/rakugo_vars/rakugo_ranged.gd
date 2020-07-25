@@ -16,13 +16,7 @@ func _init(var_id:String, var_value:float, min_value:float, max_value:float
 
 
 func _set_value(var_value: float) -> void:
-	if var_value > max_value:
-		var_value = max_value
-
-	elif var_value < min_value:
-		var_value = min_value
-
-	._set_value(var_value)
+	._set_value(clamp(var_value, _min_value, _max_value))
 
 
 func _set_min_value(new_min_value: float) -> void:
