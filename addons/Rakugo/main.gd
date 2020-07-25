@@ -1,6 +1,6 @@
 extends Node
 
-const rakugo_version := "2.1.05"
+const rakugo_version := "2.1.06"
 const credits_path := "res://addons/Rakugo/credits.txt"
 const save_folder := "saves"
 
@@ -295,7 +295,7 @@ func add_dialog(node: Node, func_name: String) -> void:
 # or parse bbcode with {vars} if mode == "bbcode"
 # default mode = Rakugo.markup
 func text_passer(text: String, mode := markup):
-	return $Text.text_passer(text, variables, mode, theme.links_color.to_html())
+	return TextPasser.text_passer(text, variables, mode, theme.links_color.to_html())
 
 
 # add/overwrite global variable that Rakugo will see

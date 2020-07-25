@@ -367,7 +367,7 @@ _global_script_class_icons={
 "RakugoSayPanel": "",
 "RakugoSpatial": "",
 "RakugoText": "",
-"RakugoTextLabel": "",
+"RakugoTextLabel": "res://addons/Rakugo/icons/rakugo_text_label.svg",
 "RakugoTextPasser": "",
 "RakugoTheme": "",
 "RakugoTimer": "res://addons/Rakugo/icons/rakugo_timer.svg",
@@ -422,6 +422,7 @@ rakugo/scenes_links="res://game/scenes_links.tres"
 Rakugo="*res://addons/Rakugo/Rakugo.tscn"
 settings="*res://addons/Rakugo/gui/settings.gd"
 Window="*res://gui/Window/Window.tscn"
+TextPasser="*res://addons/Rakugo/lib/Text.tscn"
 
 [debug]
 

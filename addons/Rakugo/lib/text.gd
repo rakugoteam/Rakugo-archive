@@ -1,3 +1,4 @@
+tool
 extends Node
 class_name RakugoTextPasser
 
@@ -6,16 +7,22 @@ var url_close: String = "[/url][/color]"
 var new_line: String = "\n"
 var tab: String = "\t"
 
-onready var emojis: Emojis = $Emojis
-
 func text_passer(
 		text: String,
 		variables: Dictionary,
 		mode: String = "renpy",
-		links_color: String = Rakugo.tres.links_color
+		links_color: String = ""
 		) -> String:
 	# passer for renpy or bbcode markup format
 	# its retrun bbcode
+	
+	if links_color == "":
+		if Engine.editor_hint:
+			links_color = Color.aqua.to_html()
+		
+		else:
+			links_color = Rakugo.tres.links_color
+		
 
 	url_open = url_open.replace("225ebf", links_color)
 
@@ -30,8 +37,9 @@ func text_passer(
 
 		"bbcode":
 			text = parse_bbcode_text(text, variables)
-
-	Rakugo.debug(["org: ''", _text, "', bbcode: ''", text , "'"])
+	
+	if !Engine.editor_hint:
+		Rakugo.debug(["org: ''", _text, "', bbcode: ''", text , "'"])
 
 	return text
 
@@ -63,12 +71,12 @@ func parse_text_emojis(
 		close: String) -> String:
 
 	text = text.c_unescape()
-
-	for emoji_name in emojis.emojis_dict.keys():
+	
+	for emoji_name in $Emojis.emojis_dict.keys():
 		if text.find(emoji_name) == -1:
 			continue # no variable in this string
 
-		var emoji_png = emojis.get_path_to_emoji(emoji_name, Rakugo.emoji_size)
+		var emoji_png = $Emojis.get_path_to_emoji(emoji_name, Rakugo.emoji_size)
 		var s = open + emoji_name + close
 		var e = "[img]" + emoji_png + "[/img]"
 		text = text.replace(s, e)
