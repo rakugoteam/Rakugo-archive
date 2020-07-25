@@ -20,7 +20,7 @@ The idea is to have a ready to use plug-in for stories, so developers can create
 
 Now you can support this project by buing it on [itch.io](https://jebedaia.itch.io/rakugo).
 
-You can download 2.1.x for Godot 3.1 [here](https://github.com/rakugoteam/Rakugo/releases).
+You can download 2.0 for Godot 3.1 [here](https://github.com/rakugoteam/Rakugo/releases).
 
 ## Showcase
 
@@ -44,11 +44,11 @@ It means games that are for example:
 
 - [Visual Novels](https://github.com/rakugoteam/Rakugo/tree/the-question) ![](https://img.shields.io/badge/VN-100%25-brightgreen.svg?style=flat-square)
 - Click & Point Adventures ![](https://img.shields.io/badge/Adv-25%25-yellowgreen.svg?style=flat-square)
-- [RPG](https://github.com/rakugoteam/rakugo-open-rpg) ![](https://img.shields.io/badge/RPG-60%25-green.svg?style=flat-square)
+- RPG ![](https://img.shields.io/badge/RPG-40%25-green.svg?style=flat-square)
 
 You can use it with:
 - GDScript
-- RakuScript (ToDo)
+- RakugoScript (ToDo)
 - VisualScript (ToDo)
 
 ## FAQ:
