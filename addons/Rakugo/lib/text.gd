@@ -72,11 +72,15 @@ func parse_text_emojis(
 
 	text = text.c_unescape()
 	
+	var emoj_size :=  16
+	if !Engine.editor_hint:
+		emoj_size = Rakugo.emoji_size
+	
 	for emoji_name in $Emojis.emojis_dict.keys():
 		if text.find(emoji_name) == -1:
 			continue # no variable in this string
 
-		var emoji_png = $Emojis.get_path_to_emoji(emoji_name, Rakugo.emoji_size)
+		var emoji_png = $Emojis.get_path_to_emoji(emoji_name, emoj_size)
 		var s = open + emoji_name + close
 		var e = "[img]" + emoji_png + "[/img]"
 		text = text.replace(s, e)
@@ -84,8 +88,38 @@ func parse_text_emojis(
 	return text
 
 
+func if_empty_variables(text: String, open:String, close : String) -> String:
+	var m := false
+	var val := ""
+	
+	for letter in text:
+		if letter == open:
+			m = true
+			continue
+		
+		if m:
+			if letter == close:
+				m = false
+				
+			else:
+				val += letter
+		
+		else:
+			text = text.replace(
+				open + val + close, 
+				"[code]" + val + "[/code]"
+			)
+	
+	return text
+
+
 func parse_renpy_text(text: String, variables: Dictionary) -> String:
-	text = parse_text_adv(text, variables, "[", "]")
+	if variables.empty():
+		text = if_empty_variables(text, "[", "]")
+	
+	else:
+		text = parse_text_adv(text, variables, "[", "]")
+	
 	text = parse_text_emojis(text, "{:", ":}")
 	text = text.replace("{a=", url_open)
 	text = text.replace("{/a}", url_close)
@@ -97,7 +131,12 @@ func parse_renpy_text(text: String, variables: Dictionary) -> String:
 
 
 func parse_bbcode_text(text: String, variables: Dictionary) -> String:
-	text = parse_text_adv(text, variables, "{", "}")
+	if variables.empty():
+		text = if_empty_variables(text, "{", "}")
+	
+	else:
+		text = parse_text_adv(text, variables, "{", "}")
+	
 	text = parse_text_emojis(text, "[:", ":]")
 	text = text.replace("[url=", url_open)
 	text = text.replace("[/url]", url_close)
