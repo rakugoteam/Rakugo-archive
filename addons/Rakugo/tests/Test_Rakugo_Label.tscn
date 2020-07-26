@@ -18,8 +18,8 @@ node_id = "RakugoControl"
 margin_right = 322.0
 margin_bottom = 38.0
 bbcode_enabled = true
-bbcode_text = "test [i]italic[/i] [b]bold[/b] [[code][code][code][code][code][code][code][code][code][code][code][code][code]some_value[/code][/code][/code][/code][/code][/code][/code][/code][/code][/code][/code][/code][/code]] [img]res://addons/Rakugo/emojis/16x16/1f600.tres[/img]"
-text = "test italic bold [some_value] "
+bbcode_text = "test [i]italic[/i] [b]bold[/b] [code]some_value[/code] [img]res://addons/Rakugo/emojis/16x16/1f600.tres[/img]"
+text = "test italic bold some_value "
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false

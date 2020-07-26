@@ -145,12 +145,9 @@ func add_custom_types():
 
 func _enter_tree():
 	# Initialization of the plugin goes here
-
-	# ProjectSettings for first time
-	init_project_settings()
-
 	add_custom_types()
-
+	
+	init_project_settings()
 	init_tools()
 
 	print("Rakugo is enabled")
