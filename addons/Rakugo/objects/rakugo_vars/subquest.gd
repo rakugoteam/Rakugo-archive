@@ -6,7 +6,15 @@ var description: String = "Overall description of quest." setget _set_title, _ge
 # is this subquest needed for finish whole quest
 var optional: bool = false setget _set_optional, _get_optional
 
-enum {STATE_NOT_AVAILABLE, STATE_AVAILABLE, STATE_IN_PROGRESS, STATE_DONE, STATE_FAIL}
+enum {
+	STATE_NOT_AVAILABLE,
+	STATE_AVAILABLE,
+	STATE_IN_PROGRESS,
+	STATE_DONE,
+	STATE_FAIL,
+	STATE_DELIVERED
+	}
+
 var state: int = STATE_AVAILABLE setget _set_state, _get_state
 
 signal done_subquest

@@ -7,6 +7,7 @@ var parameters_names: Array = [
 	"prefix",
 	"suffix",
 	"avatar",
+	"icon",
 	"stats",
 	"kind",
 	"mkind",
@@ -17,35 +18,39 @@ var parameters_names: Array = [
 var _color := Color("#ffffff")
 var _avatar: String
 
-var name			:= ""
+var name		:= ""
 var prefix		:= ""
 var suffix	 	:= ""
-var kind	 		:= ""
-var mkind	 		:= ""
+var icon		:= ""
+var kind	 	:= ""
+var mkind	 	:= ""
 var mcolumns 	:= 0
 var manchor	 	:= ""
-var stats	 		:= {}
+var stats		:= {}
 
 var color: String = "#ffffff" setget _set_color, _get_color
 var avatar setget _set_avatar, _get_avatar
 
 func _init(var_id: String, var_value: Dictionary
 		).(var_id, var_value, Rakugo.Type.CHARACTER) -> void:
-
+	
 	if not ("name" in _value):
 		_value["name"] = name
-
+	
 	if not ("color" in _value):
 		_value["color"] = _color.to_html()
-
+	
 	if not ("prefix" in _value):
 		_value["prefix"] = prefix
-
+	
 	if not ("suffix" in _value):
 		_value["suffix"] = suffix
-
+	
 	if not ("avatar" in _value):
 		_value["avatar"] = ""
+	
+	if not ("icon" in _value):
+		_value["icon"] = ""
 
 	if not ("kind" in _value):
 		_value["kind"] = Rakugo.default_kind
@@ -135,16 +140,17 @@ func parse_what(what: String) -> String:
 
 func character2dict() -> Dictionary:
 	var dict = {}
-	dict["name"]			= name
-	dict["color"]			= color
+	dict["name"]		= name
+	dict["color"]		= color
 	dict["prefix"]		= prefix
 	dict["suffix"]		= suffix
+	dict["icon"]		= icon
 	dict["avatar"]		= _avatar
-	dict["kind"]			= kind
-	dict["mkind"]			= mkind
-	dict["mcolumns"]		= mcolumns
+	dict["kind"]		= kind
+	dict["mkind"]		= mkind
+	dict["mcolumns"]	= mcolumns
 	dict["manchor"]		= manchor
-	dict["stats"]			= stats
+	dict["stats"]		= stats
 
 	return dict
 
@@ -161,7 +167,10 @@ func dict2character(dict: Dictionary) -> void:
 
 	if dict.has("suffix"):
 		suffix = dict.suffix
-
+	
+	if dict.has("icon"):
+		icon = dict.icon
+	
 	if dict.has("avatar"):
 		_avatar = dict.avatar
 

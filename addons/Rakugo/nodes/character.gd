@@ -9,6 +9,7 @@ export var color := Color("#ffffff") setget _set_color, _get_color
 export var prefix := "" setget _set_prefix, _get_prefix
 export var suffix := "" setget _set_suffix, _get_suffix
 export var avatar: PackedScene setget _set_avatar, _get_avatar
+export var icon: Image
 export (String, "adv", "top", "center", "left", "right", "nvl", "fullscreen") var kind: String setget _set_kind, _get_kind
 export (String, "vertical", "horizontal", "grid") var mkind: String setget _set_mkind, _get_mkind
 export (int, 0, 10) var mcolumns: int setget _set_mcolumns, _get_mcolumns
@@ -19,6 +20,7 @@ var character: CharacterObject
 var _name := ""
 var _color := Color("#ffffff")
 var _avatar: PackedScene
+var _icon: Image
 var _prefix := ""
 var _suffix := ""
 var _id := ""
@@ -130,6 +132,20 @@ func _get_suffix() -> String:
 			return character.suffix
 
 	return _suffix
+
+func _set_icon(value: Image) -> void:
+	_icon = value
+	
+	if character:
+		character.icon = value.resource_path
+
+
+func _get_icon() -> Image:
+	if character:
+		_icon = load(character.icon)
+	
+	return _icon
+
 
 
 func _set_avatar(value: PackedScene) -> void:
