@@ -1,7 +1,7 @@
 [gd_scene load_steps=27 format=2]
 
-[ext_resource path="res://addons/Rakugo/nodes/rakugo_control.gd" type="Script" id=2]
-[ext_resource path="res://addons/Rakugo/nodes/rakugo_menu.gd" type="Script" id=3]
+[ext_resource path="res://addons/Rakugo/nodes/controls/rakugo_control.gd" type="Script" id=2]
+[ext_resource path="res://addons/Rakugo/nodes/controls/rakugo_menu.gd" type="Script" id=3]
 [ext_resource path="res://gui/InGame/ChoiceButton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://gui/InGame/Say.tscn" type="PackedScene" id=5]
 [ext_resource path="res://themes/question/question.tres" type="Theme" id=6]
@@ -14,6 +14,9 @@
 [ext_resource path="res://ubuntu-font-family/Ubuntu-RI.ttf" type="DynamicFontData" id=13]
 [ext_resource path="res://ubuntu-font-family/Ubuntu-R.ttf" type="DynamicFontData" id=14]
 [ext_resource path="res://gui/InGame/hack_button_style.tres" type="StyleBox" id=15]
+
+
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 22

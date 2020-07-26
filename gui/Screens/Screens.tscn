@@ -3,8 +3,8 @@
 [ext_resource path="res://themes/question/question.tres" type="Theme" id=1]
 [ext_resource path="res://gui/Screens/Screens.gd" type="Script" id=2]
 [ext_resource path="res://ubuntu-font-family/UB32outline.tres" type="DynamicFont" id=3]
-[ext_resource path="res://addons/Rakugo/nodes/rakugo_var_label.gd" type="Script" id=4]
-[ext_resource path="res://addons/Rakugo/nodes/rakugo_label.gd" type="Script" id=5]
+[ext_resource path="res://addons/Rakugo/nodes/controls/rakugo_var_label.gd" type="Script" id=4]
+[ext_resource path="res://addons/Rakugo/nodes/controls/rakugo_label.gd" type="Script" id=5]
 [ext_resource path="res://gui/Labels/TitleText.tscn" type="PackedScene" id=6]
 [ext_resource path="res://gui/InGame/QuickMenuButton.tscn" type="PackedScene" id=7]
 [ext_resource path="res://gui/SlotBox/SlotBox.tscn" type="PackedScene" id=8]
@@ -15,6 +15,10 @@
 [ext_resource path="res://gui/Quests/QuestsBox.tscn" type="PackedScene" id=13]
 [ext_resource path="res://gui/Labels/dialogue_text.tscn" type="PackedScene" id=14]
 [ext_resource path="res://gui/Screens/QuitBox.tscn" type="PackedScene" id=15]
+
+
+
+
 
 [sub_resource type="ButtonGroup" id=1]
 

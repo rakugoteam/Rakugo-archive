@@ -2,17 +2,20 @@
 
 [ext_resource path="res://ubuntu-font-family/UB40outline.tres" type="DynamicFont" id=1]
 [ext_resource path="res://ubuntu-font-family/UB32outline.tres" type="DynamicFont" id=2]
-[ext_resource path="res://addons/Rakugo/nodes/rakugo_var_check.gd" type="Script" id=3]
+[ext_resource path="res://addons/Rakugo/nodes/controls/rakugo_var_check.gd" type="Script" id=3]
 [ext_resource path="res://gui/OptionsBox/TypingBox.gd" type="Script" id=4]
 [ext_resource path="res://gui/OptionsBox/TextSpeedBox.gd" type="Script" id=5]
 [ext_resource path="res://gui/OptionsBox/AutoBox.gd" type="Script" id=6]
-[ext_resource path="res://addons/Rakugo/nodes/rakugo_var_slider.gd" type="Script" id=7]
+[ext_resource path="res://addons/Rakugo/nodes/controls/rakugo_var_slider.gd" type="Script" id=7]
 [ext_resource path="res://addons/Rakugo/icons/rakugo_var_h_slider.svg" type="Texture" id=8]
 [ext_resource path="res://gui/OptionsBox/WindowBox.gd" type="Script" id=9]
 [ext_resource path="res://gui/InGame/QuickMenuButton.tscn" type="PackedScene" id=10]
 [ext_resource path="res://gui/OptionsBox/ResolutionBox.gd" type="Script" id=11]
 [ext_resource path="res://gui/OptionsBox/VSyncBox.gd" type="Script" id=12]
 [ext_resource path="res://gui/OptionsBox/SoundBusControl.tscn" type="PackedScene" id=13]
+
+
+
 
 [node name="OptionsBox" type="VBoxContainer"]
 margin_left = 202.0

@@ -90,6 +90,7 @@ func _on_anchor(id:int) -> void:
 
 func load_setting() -> void:
 	kind = rps.get_setting("rakugo/default_mkind")
+	prints(kind, kinds.find(kind))
 	_on_kind(kinds.find(kind))
 
 	$SpinBox.value = int(

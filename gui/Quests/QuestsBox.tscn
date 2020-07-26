@@ -3,7 +3,10 @@
 [ext_resource path="res://gui/Quests/QuestsBox.gd" type="Script" id=1]
 [ext_resource path="res://gui/Quests/QuestButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ubuntu-font-family/UB40outline.tres" type="DynamicFont" id=3]
-[ext_resource path="res://addons/Rakugo/nodes/rakugo_label.gd" type="Script" id=4]
+[ext_resource path="res://addons/Rakugo/nodes/controls/rakugo_label.gd" type="Script" id=4]
+
+
+
 
 [node name="QuestsBox" type="VBoxContainer"]
 margin_left = 257.0

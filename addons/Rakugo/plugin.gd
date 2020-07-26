@@ -103,42 +103,42 @@ func add_custom_types():
 	add_custom_type(
 		"RakugoVarCheckButton",
 		"CheckButton",
-		preload("nodes/rakugo_var_check.gd"),
+		preload("nodes/controls/rakugo_var_check.gd"),
 		preload("icons/rakugo_check_button.svg")
 	)
 
 	add_custom_type(
 		"RakugoVarCheckBox",
 		"CheckBox",
-		preload("nodes/rakugo_var_check.gd"),
+		preload("nodes/controls/rakugo_var_check.gd"),
 		preload("icons/rakugo_check_box.svg")
 	)
 
 	add_custom_type(
 		"RakugoVarHSlider",
 		"HSlider",
-		preload("nodes/rakugo_var_slider.gd"),
+		preload("nodes/controls/rakugo_var_slider.gd"),
 		preload("icons/rakugo_var_h_slider.svg")
 	)
 
 	add_custom_type(
 		"RakugoVarVSlider",
 		"VSlider",
-		preload("nodes/rakugo_var_slider.gd"),
+		preload("nodes/controls/rakugo_var_slider.gd"),
 		preload("icons/rakugo_var_v_slider.svg")
 	)
 
 	add_custom_type(
 		"RakugoProgressBar",
 		"ProgressBar",
-		preload("nodes/rakugo_var_range.gd"),
+		preload("nodes/controls/rakugo_var_range.gd"),
 		preload("icons/rakugo_progress_bar.svg")
 	)
 
 	add_custom_type(
 		"RakugoTextureProgress",
 		"TextureProgress",
-		preload("nodes/rakugo_var_range.gd"),
+		preload("nodes/controls/rakugo_var_range.gd"),
 		preload("icons/rakugo_texture_progress.svg")
 	)
 

@@ -3,7 +3,7 @@ extends HBoxContainer
 
 export var menu_rect:Rect2
 
-onready var editor := EditorPlugin.new().get_editor_interface()
+var editor : EditorInterface
 onready var tscn_dialog = $FreePos/TscnDialog
 
 var scene : String setget _set_scene, _get_scene
