@@ -44,7 +44,7 @@ It means games that are for example:
 
 - [Visual Novels](https://github.com/rakugoteam/Rakugo/tree/the-question) ![](https://img.shields.io/badge/VN-100%25-brightgreen.svg?style=flat-square)
 - Click & Point Adventures ![](https://img.shields.io/badge/Adv-25%25-yellowgreen.svg?style=flat-square)
-- RPG ![](https://img.shields.io/badge/RPG-40%25-green.svg?style=flat-square)
+- [RPG](https://github.com/rakugoteam/rakugo-open-rpg) ![](https://img.shields.io/badge/RPG-55%25-green.svg?style=flat-square)
 
 You can use it with:
 - GDScript
