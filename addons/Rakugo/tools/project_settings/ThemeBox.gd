@@ -1,28 +1,26 @@
 tool
 extends HBoxContainer
 
+var rps : RakugoProjectSettings
+
 func _ready() -> void:
 	$Button.icon = get_icon("Theme", "EditorIcons")
 	$Button.connect("pressed", $Button/FileDialog, "popup_centered")
 	$Button/FileDialog.connect("confirmed", self, "_on_fd")
-	# load_setting()
-
 	$Reload.icon = get_icon("Reload", "EditorIcons")
 	$Reload.connect("pressed", self, "_on_reload")
 
 
 func _on_reload() -> void:
-	$Button.text = "res://themes/question/question.tres"
+	$Button.text = rps.get_setting("rakugo/theme")
 
 
-func load_setting(use_cfg:bool, cfg:ConfigFile) -> void:
-	$Button.text = ProjectSettings.get_setting(
-		"application/rakugo/theme")
+func load_setting() -> void:
+	$Button.text = rps.get_setting("rakugo/theme")
 
 
-func save_setting(use_cfg:bool, cfg:ConfigFile) -> void:
-	 ProjectSettings.set_setting(
-		"application/rakugo/theme", $Button.text)
+func save_setting() -> void:
+	rps.set_setting("rakugo/theme", $Button.text)
 
 
 func _on_fd():

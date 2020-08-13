@@ -1,6 +1,8 @@
 tool
 extends HBoxContainer
 
+var rps : RakugoProjectSettings
+
 var kind : String
 var popup : PopupMenu
 var kinds :=  [
@@ -18,7 +20,7 @@ var kinds :=  [
 func _ready() -> void:
 	$Reload.icon = get_icon("Reload", "EditorIcons")
 	$Reload.connect("pressed", self, "_on_reload")
-	
+
 	var icons := [
 		get_icon("ControlAlignBottomWide", "EditorIcons"), # bottom / adv
 		get_icon("ControlHcenterWide", "EditorIcons"), # center
@@ -48,13 +50,10 @@ func _on_kind(id:int) -> void:
 	kind = kinds[id]
 
 
-func load_setting(use_cfg:bool, cfg:ConfigFile) -> void:
-	kind = ProjectSettings.get_setting(
-		"application/rakugo/default_kind")
-
+func load_setting() -> void:
+	kind = rps.get_setting("rakugo/default_kind")
 	_on_kind(kinds.find(kind))
 
 
-func save_setting(use_cfg:bool, cfg:ConfigFile) -> void:
-	 ProjectSettings.set_setting(
-		"application/rakugo/default_kind", kind)
+func save_setting() -> void:
+	 rps.set_setting("rakugo/default_kind", kind)

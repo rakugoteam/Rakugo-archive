@@ -29,8 +29,9 @@ func invoke() -> bool:
 		r.loading_in_progress = false
 		return false
 
-	save_hist = load(save_path)
-	r.global_history = save_hist.history_data
+		save_hist = load(save_path)
+		r.global_history = save_hist.history_data
+	
 	r.loading_in_progress = false
 
 	return true

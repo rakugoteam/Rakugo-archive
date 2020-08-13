@@ -1,21 +1,25 @@
 extends Node
 
-const rakugo_version := "2.0.9"
+const rakugo_version := "2.1.06"
 const credits_path := "res://addons/Rakugo/credits.txt"
 const save_folder := "saves"
 
 # project settings integration
-onready var game_title = ProjectSettings.get_setting("application/config/name")
-onready var game_version = ProjectSettings.get_setting("application/rakugo/version")
-onready var game_credits = ProjectSettings.get_setting("application/rakugo/game_credits")
-onready var markup = ProjectSettings.get_setting("application/rakugo/markup")
-onready var debug_on = ProjectSettings.get_setting("application/rakugo/debug")
-onready var test_save = ProjectSettings.get_setting("application/rakugo/test_saves")
-onready var scenes_links = ProjectSettings.get_setting("application/rakugo/scenes_links")
-onready var theme = load(ProjectSettings.get_setting("application/rakugo/theme"))
-onready var default_kind = ProjectSettings.get_setting("application/rakugo/default_kind")
+onready var game_title : String = ProjectSettings.get_setting("application/config/name")
+onready var game_version : String = ProjectSettings.get_setting("application/rakugo/version")
+onready var game_credits : String = ProjectSettings.get_setting("application/rakugo/game_credits")
+onready var markup : String = ProjectSettings.get_setting("application/rakugo/markup")
+onready var debug_on : bool = ProjectSettings.get_setting("application/rakugo/debug")
+onready var test_save : bool = ProjectSettings.get_setting("application/rakugo/test_saves")
+onready var scene_links : String = ProjectSettings.get_setting("application/rakugo/scene_links")
 
-## init vars for settings
+onready var theme : RakugoTheme = load(ProjectSettings.get_setting("application/rakugo/theme"))
+onready var default_kind :String = ProjectSettings.get_setting("application/rakugo/default_kind")
+onready var default_mkind : String = ProjectSettings.get_setting("application/rakugo/default_mkind")
+onready var default_mcolumns : int = ProjectSettings.get_setting("application/rakugo/default_mcolumns")
+onready var default_manchor : String = ProjectSettings.get_setting("application/rakugo/default_manchor")
+
+# init vars for settings
 var _skip_all_text := false
 var _skip_after_choices := false
 var _auto_time := 1
@@ -65,10 +69,11 @@ var current_scene := ""
 var history := {}
 var global_history := {}
 var variables := {}
-var variables_init := {}
 
 # don't save this
-onready var menu_node := $Menu 
+onready var menu_node: = $Menu
+var viewport : Viewport
+var loading_screen : RakugoControl
 var current_scene_path := ""
 var current_root_node: Node = null
 var current_statement: Statement = null
@@ -77,8 +82,10 @@ var active := false
 var can_alphanumeric := true
 var emoji_size := 16
 var skipping := false
+var current_dialogs := {}
+var can_save := true
 
-var skip_types := [
+const skip_types := [
 	StatementType.SAY,
 	StatementType.SHOW,
 	StatementType.HIDE,
@@ -127,7 +134,7 @@ onready var step_timer := $StepTimer
 onready var dialog_timer := $DialogTimer
 onready var notify_timer := $NotifyTimer
 
-## saved automatically - it is RagukoVar
+# saved automatically - it is RagukoVar
 var story_state:int setget _set_story_state, _get_story_state
 
 signal started
@@ -146,208 +153,37 @@ signal hide_ui(value)
 signal checkpoint
 signal game_ended
 
+func load_init_data() -> void:
+	$LoadFile.load_data("res://addons/Rakugo/init.tres")
+
+
 func _ready() -> void:
-	## set by game developer
+
+	load_init_data()
+
+	for v in variables:
+		variables[v].save_included = false
+
+	# set by game developer
 	define("title", game_title, false)
 	define("version", game_version, false)
 	OS.set_window_title(game_title + " " + game_version)
 	define("credits", game_credits, false)
 
-	## it must be before define rakugo_version and godot_version to parse corretly :o
+	# it must be before define rakugo_version and godot_version to parse corretly :o
 	file.open(credits_path, file.READ)
 	define("rakugo_credits", file.get_as_text(), false)
 	file.close()
 
-	## set by rakugo
-	define("rakugo_version", rakugo_version, false)
+	# set by rakugo
+	define("rakugo_version", rakugo_version, true)
 
 	var gdv = Engine.get_version_info()
 	var gdv_string = str(gdv.major) + "." + str(gdv.minor) + "." + str(gdv.patch)
-	define("godot_version", gdv_string, false)
-
+	define("godot_version", gdv_string, true)
 	define("story_state", 0)
-
-	## vars for rakugo settings
-	## `false` because is loaded from settings and not from save
-	define("skip_all_text", _skip_all_text, false)
-	define("skip_after_choices", _skip_after_choices, false)
-	define("auto_time", _auto_time, false)
-	define("text_time", _text_time, false)
-	define("notify_time", _notify_time, false)
-	define("typing_text", _typing_text, false)
-
-	## consts
-	## Colors
-	character("Narrator")
-	define("gray", Color.gray, false)
-	define("aliceblue", Color.aliceblue, false)
-	define("antiquewhite", Color.antiquewhite, false)
-	define("aqua", Color.aqua, false)
-	define("aquamarine", Color.aquamarine, false)
-	define("azure", Color.azure, false)
-	define("beige", Color.beige, false)
-	define("bisque", Color.bisque, false)
-	define("black", Color.black, false)
-	define("blanchedalmond", Color.blanchedalmond, false)
-	define("blue", Color.blue, false)
-	define("blueviolet", Color.blueviolet, false)
-	define("brown", Color.brown, false)
-	define("burlywood", Color.burlywood, false)
-	define("cadetblue", Color.cadetblue, false)
-	define("chartreuse", Color.chartreuse, false)
-	define("chocolate", Color.chocolate, false)
-	define("coral", Color.coral, false)
-	define("cornflower", Color.cornflower, false)
-	define("cornsilk", Color.cornsilk, false)
-	define("crimson", Color.crimson, false)
-	define("cyan", Color.cyan, false)
-	define("darkblue", Color.darkblue, false)
-	define("darkcyan", Color.darkcyan, false)
-	define("darkgoldenrod", Color.darkgoldenrod, false)
-	define("darkgray", Color.darkgray, false)
-	define("darkgreen", Color.darkgreen, false)
-	define("darkkhaki", Color.darkkhaki, false)
-	define("darkmagenta", Color.darkmagenta, false)
-	define("darkolivegreen", Color.darkolivegreen, false)
-	define("darkorange", Color.darkorange, false)
-	define("darkorchid", Color.darkorchid, false)
-	define("darkred", Color.darkred, false)
-	define("darksalmon", Color.darksalmon, false)
-	define("darkseagreen", Color.darkseagreen, false)
-	define("darkslateblue", Color.darkslateblue, false)
-	define("darkslategray", Color.darkslategray, false)
-	define("darkturquoise", Color.darkturquoise, false)
-	define("darkviolet", Color.darkviolet, false)
-	define("deeppink", Color.deeppink, false)
-	define("deepskyblue", Color.deepskyblue, false)
-	define("dimgray", Color.dimgray, false)
-	define("dodgerblue", Color.dodgerblue, false)
-	define("firebrick", Color.firebrick, false)
-	define("floralwhite", Color.floralwhite, false)
-	define("forestgreen", Color.forestgreen, false)
-	define("fuchsia", Color.fuchsia, false)
-	define("gainsboro", Color.gainsboro, false)
-	define("ghostwhite", Color.ghostwhite, false)
-	define("gold", Color.gold, false)
-	define("goldenrod", Color.goldenrod, false)
-	define("green", Color.green, false)
-	define("greenyellow", Color.greenyellow, false)
-	define("honeydew", Color.honeydew, false)
-	define("hotpink", Color.hotpink, false)
-	define("indianred", Color.indianred, false)
-	define("indigo", Color.indigo, false)
-	define("ivory", Color.ivory, false)
-	define("khaki", Color.khaki, false)
-	define("lavender", Color.lavender, false)
-	define("lavenderblush", Color.lavenderblush, false)
-	define("lawngreen", Color.lawngreen, false)
-	define("lemonchiffon", Color.lemonchiffon, false)
-	define("lightblue", Color.lightblue, false)
-	define("lightcoral", Color.lightcoral, false)
-	define("lightcyan", Color.lightcyan, false)
-	define("lightgoldenrod", Color.lightgoldenrod, false)
-	define("lightgray", Color.lightgray, false)
-	define("lightgreen", Color.lightgreen, false)
-	define("lightpink", Color.lightpink, false)
-	define("lightsalmon", Color.lightsalmon, false)
-	define("lightseagreen", Color.lightseagreen, false)
-	define("lightskyblue", Color.lightskyblue, false)
-	define("lightslategray", Color.lightslategray, false)
-	define("lightsteelblue", Color.lightsteelblue, false)
-	define("lightyellow", Color.lightyellow, false)
-	define("lime", Color.lime, false)
-	define("limegreen", Color.limegreen, false)
-	define("linen", Color.linen, false)
-	define("magenta", Color.magenta, false)
-	define("maroon", Color.maroon, false)
-	define("mediumaquamarine", Color.mediumaquamarine, false)
-	define("mediumblue", Color.mediumblue, false)
-	define("mediumorchid", Color.mediumorchid, false)
-	define("mediumpurple", Color.mediumpurple, false)
-	define("mediumseagreen", Color.mediumseagreen, false)
-	define("mediumslateblue", Color.mediumslateblue, false)
-	define("mediumspringgreen", Color.mediumspringgreen, false)
-	define("mediumturquoise", Color.mediumturquoise, false)
-	define("mediumvioletred", Color.mediumvioletred, false)
-	define("midnightblue", Color.midnightblue, false)
-	define("mintcream", Color.mintcream, false)
-	define("mistyrose", Color.mistyrose, false)
-	define("moccasin", Color.moccasin, false)
-	define("navajowhite", Color.navajowhite, false)
-	define("navyblue", Color.navyblue, false)
-	define("oldlace", Color.oldlace, false)
-	define("olive", Color.olive, false)
-	define("olivedrab", Color.olivedrab, false)
-	define("orange", Color.orange, false)
-	define("orangered", Color.orangered, false)
-	define("orchid", Color.orchid, false)
-	define("palegoldenrod", Color.palegoldenrod, false)
-	define("palegreen", Color.palegreen, false)
-	define("paleturquoise", Color.paleturquoise, false)
-	define("palevioletred", Color.palevioletred, false)
-	define("papayawhip", Color.papayawhip, false)
-	define("peachpuff", Color.peachpuff, false)
-	define("peru", Color.peru, false)
-	define("pink", Color.pink, false)
-	define("plum", Color.plum, false)
-	define("powderblue", Color.powderblue, false)
-	define("purple", Color.purple, false)
-	define("rebeccapurple", Color.rebeccapurple, false)
-	define("red", Color.red, false)
-	define("rosybrown", Color.rosybrown, false)
-	define("royalblue", Color.royalblue, false)
-	define("saddlebrown", Color.saddlebrown, false)
-	define("salmon", Color.salmon, false)
-	define("sandybrown", Color.sandybrown, false)
-	define("seagreen", Color.seagreen, false)
-	define("seashell", Color.seashell, false)
-	define("sienna", Color.sienna, false)
-	define("silver", Color.silver, false)
-	define("skyblue", Color.skyblue, false)
-	define("slateblue", Color.slateblue, false)
-	define("slategray", Color.slategray, false)
-	define("snow", Color.snow, false)
-	define("springgreen", Color.springgreen, false)
-	define("steelblue", Color.steelblue, false)
-	define("tan", Color.tan, false)
-	define("teal", Color.teal, false)
-	define("thistle", Color.thistle, false)
-	define("tomato", Color.tomato, false)
-	define("turquoise", Color.turquoise, false)
-	define("violet", Color.violet, false)
-	define("webgray", Color.webgray, false)
-	define("webgreen", Color.webgreen, false)
-	define("webmaroon", Color.webmaroon, false)
-	define("webpurple", Color.webpurple, false)
-	define("wheat", Color.wheat, false)
-	define("white", Color.white, false)
-	define("whitesmoke", Color.whitesmoke, false)
-	define("yellow", Color.yellow, false)
-	define("yellowgreen", Color.yellowgreen, false)
-
-	## conts
-	## Vectors2
-	define("v2_zero", Vector2.ZERO, false)
-	define("v2_one", Vector2.ONE, false)
 	define("v2_inf", Vector2.INF, false)
-	define("v2_left", Vector2.LEFT, false)
-	define("v2_right", Vector2.RIGHT, false)
-	define("v2_up", Vector2.UP, false)
-	define("v2_down", Vector2.DOWN, false)
-
-	## conts
-	## Vectors3
-	define("v3_zero", Vector3.ZERO, false)
-	define("v3_one", Vector3.ONE, false)
 	define("v3_inf", Vector3.INF, false)
-	define("v3_left", Vector3.LEFT, false)
-	define("v3_right", Vector3.RIGHT, false)
-	define("v3_up", Vector3.UP, false)
-	define("v3_down", Vector3.DOWN, false)
-	define("v3_forward", Vector3.FORWARD, false)
-	define("v3_back", Vector3.BACK, false)
-
-	variables_init = variables.duplicate()
 
 	step_timer.connect("timeout", self, "_on_time_active_timeout")
 
@@ -374,7 +210,39 @@ func exit_statement(parameters := {}) -> void:
 	emit_signal("exit_statement", current_statement.type, parameters)
 
 
+func get_dialog_nodes_names() -> Array:
+	var arr = []
+
+	for n in current_dialogs.keys():
+		arr.append(n.name)
+
+	return arr
+
+
+func get_dialogs(node_name:String) -> Array:
+	var id := get_dialog_nodes_names().find(node_name)
+
+	if id > -1:
+		var k = current_dialogs.keys()[id]
+		return current_dialogs[k]
+
+	return []
+
+
 func story_step() -> void:
+	if (
+		current_node_name != "" and
+		not(current_node_name in get_dialog_nodes_names())
+		):
+		push_error("Node %s is not added to dialogs nodes" % current_node_name)
+
+	elif (
+		current_dialog_name != "" and
+		not (current_dialog_name in get_dialogs(current_node_name))
+		):
+		push_error("Node %s is not added %s to dialogs"
+			% [current_node_name, current_dialog_name])
+
 	emit_signal("story_step", current_node_name, current_dialog_name)
 
 
@@ -406,22 +274,41 @@ func on_stop_audio(node_id: String) -> void:
 	emit_signal("stop_audio", node_id)
 
 
-## use to add/register dialog
-## func_name is name of func that is going to be use as dialog
+func clean_dialogs() -> void:
+	for n in current_dialogs.keys():
+		for f in current_dialogs[n]:
+			if is_connected("story_step", n, f):
+				disconnect("story_step", n, f)
+
+		current_dialogs.erase(n)
+
+
+# use to add/register dialog
+# func_name is name of func that is going to be use as dialog
 func add_dialog(node: Node, func_name: String) -> void:
-	if  not is_connected("story_step", node, func_name):
+	if not is_connected("story_step", node, func_name):
 		connect("story_step", node, func_name)
 
+		if not (node in current_dialogs.keys()):
+			current_dialogs[node] = []
 
-## parse text like in renpy to bbcode if mode == "renpy"
-## or parse bbcode with {vars} if mode == "bbcode"
-## default mode = Rakugo.markup
+		current_dialogs[node].append(func_name)
+		debug(["add dialog", func_name, "from", node.name])
+
+
+# parse text like in renpy to bbcode if mode == "renpy"
+# or parse bbcode with {vars} if mode == "bbcode"
+# default mode = Rakugo.markup
 func text_passer(text: String, mode := markup):
-	return $Text.text_passer(text, variables, mode, theme.links_color.to_html())
+	var links_color := Color.aqua.to_html()
+	if theme:
+		links_color = theme.links_color.to_html() 
+	
+	return TextPasser.text_passer(text, variables, mode, links_color)
 
 
-## add/overwrite global variable that Rakugo will see
-## and returns it as RakugoVar for easy use
+# add/overwrite global variable that Rakugo will see
+# and returns it as RakugoVar for easy use
 func define(var_name: String, value = null, save_included := true) -> RakugoVar:
 	var v = $Define.invoke(var_name, value , save_included)
 
@@ -447,7 +334,7 @@ func str2value(str_value: String, var_type: String):
 			return float(str_value)
 
 
-## add/overwrite global variable, from string, that Rakugo will see
+# add/overwrite global variable, from string, that Rakugo will see
 func define_from_str(var_name: String, var_str: String, var_type: String) -> RakugoVar:
 	var value = str2value(var_str, var_type)
 	if not variables.has(var_name):
@@ -456,7 +343,7 @@ func define_from_str(var_name: String, var_str: String, var_type: String) -> Rak
 	return set_var(var_name, value)
 
 
-## overwrite existing global variable and returns it as RakugoVar
+# overwrite existing global variable and returns it as RakugoVar
 func set_var(var_name: String, value) -> RakugoVar:
 	if not (var_name in variables):
 		push_warning("%s variable don't exist in Rakugo" %var_name)
@@ -467,14 +354,14 @@ func set_var(var_name: String, value) -> RakugoVar:
 	return var_to_change
 
 
-## returns exiting Rakugo variable as one of RakugoTypes for easy use
-## It must be with out returned type, because we can't set it as list of types
+# returns exiting Rakugo variable as one of RakugoTypes for easy use
+# It must be with out returned type, because we can't set it as list of types
 func get_var(var_name: String) -> RakugoVar:
 	return $GetVar.invoke(var_name)
 
 
-## to use with `define_from_str` func as var_type arg
-## it can't use optional typing
+# to use with `define_from_str` func as var_type arg
+# it can't use optional typing
 func get_def_type(variable) -> String:
 	var type = "str"
 
@@ -491,8 +378,8 @@ func get_def_type(variable) -> String:
 	return type
 
 
-## returns value of variable defined using define
-## It must be with out returned type, because we can't set it as list of types
+# returns value of variable defined using define
+# It must be with out returned type, because we can't set it as list of types
 func get_value(var_name: String):
 	if variables.has(var_name):
 		return variables[var_name].value
@@ -510,12 +397,12 @@ func get_avatar_value(var_name: String) -> Dictionary:
 	return get_value(p + var_name)
 
 
-## returns type of variable defined using define
+# returns type of variable defined using define
 func get_type(var_name: String) -> int:
 	return variables[var_name].type
 
 
-## just faster way to connect signal to rakugo's variable
+# just faster way to connect signal to rakugo's variable
 func connect_var(
 		var_name: String, signal_name: String,
 		node: Object, func_name: String,
@@ -528,23 +415,23 @@ func connect_var(
 	)
 
 
-## crate new RangedVar as global variable that Rakugo will see
+# crate new RangedVar as global variable that Rakugo will see
 func ranged_var(var_name, start_value := 0.0, min_value := 0.0, max_value := 0.0) -> RakugoRangedVar:
 	var rrv = RakugoRangedVar.new(var_name, start_value, min_value, max_value)
 	variables[var_name] = rrv
 	return rrv
 
 
-## crate new character as global variable that Rakugo will see
-## possible parameters: name, color, prefix, suffix, avatar, stats, kind
+# crate new character as global variable that Rakugo will see
+# possible parameters: name, color, prefix, suffix, avatar, stats, kind
 func character(character_id: String, parameters := {}) -> CharacterObject:
 	var new_ch := CharacterObject.new(character_id, parameters)
 	variables[character_id] = new_ch
 	return new_ch
 
 
-## crate new link to node as global variable that Rakugo will see
-## it can have name as other existing varbiable
+# crate new link to node as global variable that Rakugo will see
+# it can have name as other existing varbiable
 func node_link(node_id: String, node: NodePath) -> NodeLink:
 	return $Define.node_link(node_id, node, variables)
 
@@ -554,8 +441,8 @@ func get_node_link(node_id: String) -> NodeLink:
 	return get_var(s + node_id) as NodeLink
 
 
-## crate new link to node avatar as global variable that Rakugo will see
-## it can have name as other existing varbiable
+# crate new link to node avatar as global variable that Rakugo will see
+# it can have name as other existing varbiable
 func avatar_link(node_id: String, node: NodePath) -> Avatar:
 	return $Define.avatar_link(node_id, node, variables)
 
@@ -565,24 +452,28 @@ func get_avatar_link(node_id: String) -> Avatar:
 	return get_var(s + node_id) as Avatar
 
 
-## add/overwrite global subquest that Rakugo will see
-## and returns it as RakugoSubQuest for easy use
-## possible parameters: "who", "title", "description", "optional", "state", "subquests"
+# add/overwrite global subquest that Rakugo will see
+# and returns it as RakugoSubQuest for easy use
+# possible parameters: "who", "title", "description", "optional", "state", "subquests"
 func subquest(subquest_id: String, parameters := {}) -> Subquest:
 	var new_subq := Subquest.new(subquest_id, parameters)
+	new_subq.save_included = true
+	variables[subquest_id] = new_subq
 	return new_subq
 
 
-## add/overwrite global quest that Rakugo will see
-## and returns it as RakugoQuest for easy use
-## possible parameters: "who", "title", "description", "optional", "state", "subquests"
+# add/overwrite global quest that Rakugo will see
+# and returns it as RakugoQuest for easy use
+# possible parameters: "who", "title", "description", "optional", "state", "subquests"
 func quest(quest_id: String, parameters := {}) -> Quest:
 	var q := Quest.new(quest_id, parameters)
+	q.save_included = true
+	variables[quest_id] = q
 	quests.append(quest_id)
 	return q
 
 
-## it should be "node:Statement", but it don't work for now
+# it should be "node:Statement", but it don't work for now
 func _set_statement(node: Node, parameters: Dictionary) -> void:
 	node.set_parameters(parameters)
 	node.exec()
@@ -590,46 +481,46 @@ func _set_statement(node: Node, parameters: Dictionary) -> void:
 	step_timer.start()
 
 
-## statement of type say
-## there can be only one say, ask or menu in story_state at it end
-## its make given character(who) talk (what)
-## with keywords: who, what, typing, type_speed, kind, avatar, avatar_state, add
-## speed is time to show next letter
+# statement of type say
+# there can be only one say, ask or menu in story_state at it end
+# its make given character(who) talk (what)
+# with keywords: who, what, typing, type_speed, kind, avatar, avatar_state, add
+# speed is time to show next letter
 func say(parameters: Dictionary) -> void:
 	_set_statement($Say, parameters)
 
 
-## statement of type ask
-## there can be only one say, ask or menu in story_state at it end
-## its allow player to provide keyboard ask that will be assign to given variable
-## it also will return RakugoVar variable
-## with keywords: who, what, typing, type_speed, kind, variable, value, avatar, avatar_state, add
-## speed is time to show next letter
+# statement of type ask
+# there can be only one say, ask or menu in story_state at it end
+# its allow player to provide keyboard ask that will be assign to given variable
+# it also will return RakugoVar variable
+# with keywords: who, what, typing, type_speed, kind, variable, value, avatar, avatar_state, add
+# speed is time to show next letter
 func ask(parameters: Dictionary) -> void:
 	_set_statement($Ask, parameters)
 
 
-## statement of type menu
-## there can be only one say, ask or menu in story_state at it end
-## its allow player to make choice
-## with keywords:who, what, typing, type_speed, kind, choices, mkind, avatar, avatar_state, add
-## speed is time to show next letter
+# statement of type menu
+# there can be only one say, ask or menu in story_state at it end
+# its allow player to make choice
+# with keywords:who, what, typing, type_speed, kind, choices, mkind, avatar, avatar_state, add
+# speed is time to show next letter
 func menu(parameters: Dictionary) -> void:
 	_set_statement($Menu, parameters)
 
 
-## it show custom rakugo node or character
-## 'state' arg is using to set for example current emotion or/and cloths
-## 'state' example '['happy', 'green uniform']'
-## with keywords:x, y, z, at, pos
-## x, y and pos will use it as protect of screen if between 0 and 1
-## "at" is lists that can have: "top", "center", "bottom", "right", "left"
+# it show custom rakugo node or character
+# 'state' arg is using to set for example current emotion or/and cloths
+# 'state' example '['happy', 'green uniform']'
+# with keywords:x, y, z, at, pos
+# x, y and pos will use it as protect of screen if between 0 and 1
+# "at" is lists that can have: "top", "center", "bottom", "right", "left"
 func show(node_id:String, parameters := {"state": []}):
 	parameters["node_id"] = node_id
 	_set_statement($Show, parameters)
 
 
-## statement of type hide
+# statement of type hide
 func hide(node_id: String) -> void:
 	var parameters = {
 		"node_id":node_id
@@ -638,7 +529,7 @@ func hide(node_id: String) -> void:
 	_set_statement($Hide, parameters)
 
 
-## statement of type notify
+# statement of type notify
 func notify(info: String, length: int = get_value("notify_time")) -> void:
 	var parameters = {
 		"info": info,
@@ -650,8 +541,8 @@ func notify(info: String, length: int = get_value("notify_time")) -> void:
 	notify_timer.start()
 
 
-## statement of type play_anim
-## it will play animation with anim_name form RakugoAnimPlayer with given node_id
+# statement of type play_anim
+# it will play animation with anim_name form RakugoAnimPlayer with given node_id
 func play_anim(node_id: String, anim_name: String) -> void:
 	var parameters = {
 		"node_id":node_id,
@@ -661,9 +552,9 @@ func play_anim(node_id: String, anim_name: String) -> void:
 	_set_statement($PlayAnim, parameters)
 
 
-## statement of type stop_anim
-## it will stop animation form RakugoAnimPlayer with given node_id
-## and by default is reset to 0 pos on exit from statment
+# statement of type stop_anim
+# it will stop animation form RakugoAnimPlayer with given node_id
+# and by default is reset to 0 pos on exit from statment
 func stop_anim(node_id: String, reset := true) -> void:
 	var parameters = {
 		"node_id":node_id,
@@ -673,9 +564,9 @@ func stop_anim(node_id: String, reset := true) -> void:
 	_set_statement($StopAnim, parameters)
 
 
-## statement of type play_audio
-## it will play audio form RakugoAudioPlayer with given node_id
-## it will start playing from given from_pos
+# statement of type play_audio
+# it will play audio form RakugoAudioPlayer with given node_id
+# it will start playing from given from_pos
 func play_audio(node_id: String, from_pos := 0.0) -> void:
 	var parameters = {
 		"node_id":node_id,
@@ -685,8 +576,8 @@ func play_audio(node_id: String, from_pos := 0.0) -> void:
 	_set_statement($PlayAudio, parameters)
 
 
-## statement of type stop_audio
-## it will stop audio form RakugoAudioPlayer with given node_id
+# statement of type stop_audio
+# it will stop audio form RakugoAudioPlayer with given node_id
 func stop_audio(node_id: String) -> void:
 	var parameters = {
 		"node_id":node_id
@@ -695,8 +586,8 @@ func stop_audio(node_id: String) -> void:
 	_set_statement($StopAudio, parameters)
 
 
-## statement of type stop_audio
-## it will stop audio form RakugoAudioPlayer with given node_id
+# statement of type stop_audio
+# it will stop audio form RakugoAudioPlayer with given node_id
 func call_node(node_id: String, func_name: String, args := []) -> void:
 	var parameters = {
 		"node_id":node_id,
@@ -715,7 +606,7 @@ func _get_story_state() -> int:
 	return get_value("story_state")
 
 
-## it starts Rakugo
+# it starts Rakugo
 func start(after_load := false) -> void:
 	load_global_history()
 	history_id = 0
@@ -754,11 +645,14 @@ func debug_dict(
 	return some_custom_text + dbg
 
 
-## for printing debugs is only print if debug_on == true
-## put some string array or string as argument
+# for printing debugs is only print if debug_on == true
+# put some string array or string as argument
 func debug(some_text = []) -> void:
 	if not debug_on:
 		return
+
+	if not started:
+		return	
 
 	if typeof(some_text) == TYPE_ARRAY:
 		var new_text = ""
@@ -779,8 +673,8 @@ func _get_history_id() -> int:
 	return history_id
 
 
-## use this to change/assign current scene and dialog
-## id_of_current_scene is id to scene defined in scenes_links or full path to scene
+# use this to change/assign current scene and dialog
+# id_of_current_scene is id to scene defined in scene_links or full path to scene
 func jump(
 		scene_id: String, node_name: String,
 		dialog_name: String, state := 0, force_reload := false
@@ -793,7 +687,7 @@ func jump(
 	)
 
 
-## use this to load scene don't start with dialog or don't have any
+# use this to load scene don't start with dialog or don't have any
 func load_scene(scene_id: String) -> void:
 	$Jump.load_scene(scene_id)
 
@@ -810,20 +704,27 @@ func end_game() -> void:
 	quests.clear()
 	history.clear()
 	history_id = 0
-	variables = variables_init.duplicate()
+	variables.clear()
+	load_init_data()
 	emit_signal("game_ended")
 
 
-## use this to assign beginning scene and dialog
-## root of path_to_current_scene is scenes_dir
-## provide path_to_current_scene with out ".tscn"
+# use this to assign beginning scene and dialog
+# root of path_to_current_scene is scenes_dir
+# provide path_to_current_scene with out ".tscn"
 func on_begin(path_to_current_scene: String, node_name: String, dialog_name: String) -> void:
 	if loading_in_progress:
 		return
 
-	var resource = load(scenes_links).get_as_dict()
-	debug(resource)
-	current_scene_path = resource[path_to_current_scene].resource_path
+	var resource = load(scene_links).get_as_dict()
+	debug([resource, path_to_current_scene])
+	var path = resource[path_to_current_scene]
+
+	if path is PackedScene:
+		current_scene_path = path.resource_path
+	else:
+		current_scene_path = path
+
 	jump(path_to_current_scene, node_name , dialog_name)
 
 
@@ -901,4 +802,3 @@ func save_global_history() -> bool:
 
 func load_global_history() -> bool:
 	return $LoadGlobalHistory.invoke()
-  

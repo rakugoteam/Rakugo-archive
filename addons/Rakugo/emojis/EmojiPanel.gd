@@ -1,7 +1,7 @@
 tool
 extends Node
 
-onready var grid = $ScrollContainer/GridContainer
+onready var grid := $ScrollContainer/GridContainer
 var file := File.new()
 
 func _ready():
@@ -19,8 +19,10 @@ func _ready():
 	$LineEdit.connect("text_changed", self, "on_text_changed")
 
 
+
 func on_button(button: Button):
-	$Label.text = '"' + button.name + '"' + "copied to clipboard" 
+	var text = '"' + button.name + '"' + "copied to clipboard" 
+	$Label.notify(text)
 	OS.clipboard = button.name
 
 

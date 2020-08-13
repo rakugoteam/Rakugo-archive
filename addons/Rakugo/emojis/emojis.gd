@@ -1,6 +1,6 @@
 tool
 extends Node
-class_name Emojis, "res://addons/Rakugo/emojis/16x16/1f600.png"
+class_name Emojis, "res://addons/Rakugo/emojis/icon.png"
 
 var path_here = "res://addons/Rakugo/emojis/"
 var json_path = path_here + "emojis.json"
@@ -16,11 +16,11 @@ func get_file_content(path: String) -> String:
 	var file = File.new()
 	var error: int = file.open(path, file.READ)
 	var content := ""
-	
+
 	if error == OK:
 		content = file.get_as_text()
 		file.close()
-		
+
 	return content
 
 
@@ -33,11 +33,11 @@ func emoji_list_to_dict(list: Array) -> Dictionary:
 			key = key.replace("regional_indicator_", "")
 			var value: String = emoji.hex
 			dict[key] = value
-	
+
 	return dict
 
 
 func get_path_to_emoji(emoji_name: String, size := 16) -> String:
 	var size_dir := str(size) + "x" + str(size) + "/"
-	var emoji_png: String = emojis_dict[emoji_name] + ".png" 
+	var emoji_png: String = emojis_dict[emoji_name] + ".tres"
 	return path_here + size_dir + emoji_png

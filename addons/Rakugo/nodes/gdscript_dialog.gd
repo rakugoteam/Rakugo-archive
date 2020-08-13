@@ -10,9 +10,6 @@ var dialog_init = false
 
 func _ready() -> void:
 	if begin_from.size() == 2:
-		if null in begin_from:
-			add_dialogs()
-			return
 
 		var b = begin_from.duplicate()
 		b.insert(1, name)
@@ -157,8 +154,8 @@ func call_node(node_id: String, func_name: String, args := []) -> void:
 	Rakugo.call_node(node_id, func_name, args)
 
 
-func jump(id_of_scene: String, node_name: String, dialog_name: String, change := true) -> void:
-	Rakugo.jump(id_of_scene, node_name, dialog_name, change)
+func jump(scene_id: String, node_name: String, dialog_name: String) -> void:
+	Rakugo.jump(scene_id, node_name, dialog_name)
 
 
 func end_game() -> void:

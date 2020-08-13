@@ -2,7 +2,7 @@ extends CollapsedList
 
 func _ready() -> void:
 	settings.connect("window_size_changed", self, "_on_window_size_changed")
-	## taken from https://freegamedev.net/wiki/Screen_Resolutions
+	# taken from https://freegamedev.net/wiki/Screen_Resolutions
 	options_list = [
 		Vector2(640, 480),
 		Vector2(800, 480),

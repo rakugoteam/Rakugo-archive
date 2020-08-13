@@ -4,6 +4,7 @@ extends RakugoControl
 export onready var nav_panel: Node = $Navigation
 export var nav_path: NodePath = "Navigation/ScrollContainer/HBoxContainer/VBoxContainer"
 export var in_game_gui_path := "/root/Window/InGameGUI"
+export var viewport_path := "/root/Window/ViewportContainer"
 export onready var scrollbar := $Navigation/ScrollContainer/HBoxContainer/VScrollBar
 export var use_back_button := false
 export onready var back_button: Button = $BackButton
@@ -13,23 +14,37 @@ export onready var qyes_button = $QuitBox/HBoxContainer/Yes
 
 var current_node: Node = self
 var in_game_gui: Node
-onready var new_game_button: Button = get_node(str(nav_path) + "/" + "NewGame")
-onready var continue_button: Button = get_node(str(nav_path) + "/" + "Continue")
-onready var return_button: Button = get_node(str(nav_path) + "/" + "Return")
-onready var save_button: Button = get_node(str(nav_path) + "/" + "Save")
-onready var history_button: Button = get_node(str(nav_path) + "/" + "History")
-onready var quests_button: Button = get_node(str(nav_path) + "/" + "Quests")
-onready var load_button: Button = get_node(str(nav_path) + "/" + "Load")
-onready var options_button: Button = get_node(str(nav_path) + "/" + "Options")
-onready var about_button: Button = get_node(str(nav_path) + "/" + "About")
-onready var help_button: Button = get_node(str(nav_path) + "/" + "Help")
-onready var quit_button: Button = get_node(str(nav_path) + "/" + "Quit")
+var viewport_con : Control
+
+onready var new_game_button: Button = get_page("NewGame")
+onready var continue_button: Button = get_page("Continue")
+onready var return_button: Button = get_page("Return")
+onready var save_button: Button = get_page("Save")
+onready var history_button: Button = get_page("History")
+onready var quests_button: Button = get_page("Quests")
+onready var load_button: Button = get_page("Load")
+onready var options_button: Button = get_page("Options")
+onready var about_button: Button = get_page("About")
+onready var help_button: Button = get_page("Help")
+onready var quit_button: Button = get_page("Quit")
+
+var blur_shader : ShaderMaterial
+
+func get_page(node_name:String) -> Node:
+	return get_node(str(nav_path).plus_file(node_name))
+
+
+func get_viewport() -> Viewport:
+	return viewport_con.get_node("Viewport") as Viewport
+	
 
 func _ready():
-	if(Engine.editor_hint):
+	if Engine.editor_hint:
 		return
 
 	in_game_gui = get_node(in_game_gui_path)
+	viewport_con = get_node(viewport_path)
+	blur_shader = viewport_con.material as ShaderMaterial
 
 	get_tree().set_auto_accept_quit(false)
 	connect("visibility_changed", self, "_on_visibility_changed")
@@ -43,7 +58,7 @@ func _ready():
 	continue_button.connect("pressed", self, "_on_Continue_pressed")
 	return_button.connect("pressed", self, "_on_Return_pressed")
 	save_button.connect("pressed", self, "_on_Save_pressed")
-	history_button.connect("pressed", self, "_on_History_pressed(")
+	history_button.connect("pressed", self, "_on_History_pressed")
 	quests_button.connect("pressed", self, "_on_Quests_pressed")
 	load_button.connect("pressed", self, "_on_Load_pressed")
 	options_button.connect("pressed", self, "_on_Options_pressed")
@@ -71,6 +86,7 @@ func show_page(node):
 		if current_node != self:
 			current_node.hide()
 
+	blur_shader.set_shader_param("radius", 5)
 	current_node = node
 	node.show()
 
@@ -109,7 +125,14 @@ func history_menu():
 
 
 func _on_visibility_changed():
+	blur_shader.set_shader_param("radius", 0)
 	if visible:
+		
+		if Rakugo.started:
+			blur_shader.set_shader_param("radius", 5)
+			
+			save_button.disabled = !Rakugo.can_save
+
 		get_tree().paused = true
 		in_game_gui.hide()
 		return
@@ -120,8 +143,10 @@ func _on_visibility_changed():
 	get_tree().paused = false
 
 
-## # if press "Return" or "no" on quit page
+# # if press "Return" or "no" on quit page
 func _on_Return_pressed():
+	blur_shader.set_shader_param("radius", 0)
+
 	if Rakugo.started:
 		hide()
 		unpause_timer.start()
@@ -155,6 +180,7 @@ func _on_game_end():
 	scrollbar.hide()
 	show()
 
+
 func _on_NewGame_pressed():
 	hide()
 	in_game()
@@ -182,7 +208,7 @@ func _on_Quests_pressed():
 
 # if press "yes" on quit page
 func _on_Yes_pressed():
-	if Rakugo.started:
+	if Rakugo.started and Rakugo.can_save:
 		Rakugo.savefile("auto")
 		Rakugo.save_global_history()
 
@@ -217,7 +243,7 @@ func _on_About_pressed():
 
 
 func _on_Help_pressed():
-	OS.shell_open("https://rakugo.readthedocs.io/en/latest/")
+	OS.shell_open("https://rakugoteam.github.io/RakugoDocs-new/")
 
 
 func _fullscreen_on_input(event):
@@ -244,11 +270,11 @@ func _screenshot_on_input(event):
 		dir.make_dir(screenshots_dir)
 
 	var s = Rakugo.get_datetime_str().replace(":", " ")
-	get_screenshot().save_png(screenshots_dir + "/" + s + '.png')
+	get_screenshot().save_png(screenshots_dir.plus_file(s + '.png'))
 
 
 func _input(event):
-	if(Engine.editor_hint):
+	if Engine.editor_hint:
 		return
 
 	if event.is_action_pressed("ui_cancel"):

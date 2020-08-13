@@ -1,10 +1,10 @@
 [gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://themes/new_gui/new_gui.theme" type="Theme" id=1]
+[ext_resource path="res://themes/rpgm_like/rpgm_like.tres" type="Theme" id=1]
 [ext_resource path="res://gui/Screens/Screens.gd" type="Script" id=2]
 [ext_resource path="res://ubuntu-font-family/UB32outline.tres" type="DynamicFont" id=3]
-[ext_resource path="res://addons/Rakugo/nodes/rakugo_var_label.gd" type="Script" id=4]
-[ext_resource path="res://addons/Rakugo/nodes/rakugo_label.gd" type="Script" id=5]
+[ext_resource path="res://addons/Rakugo/nodes/controls/rakugo_var_label.gd" type="Script" id=4]
+[ext_resource path="res://addons/Rakugo/nodes/controls/rakugo_label.gd" type="Script" id=5]
 [ext_resource path="res://gui/Labels/TitleText.tscn" type="PackedScene" id=6]
 [ext_resource path="res://gui/InGame/QuickMenuButton.tscn" type="PackedScene" id=7]
 [ext_resource path="res://gui/SlotBox/SlotBox.tscn" type="PackedScene" id=8]
@@ -4222,7 +4222,9 @@ tracks/72/keys = {
 "times": PoolRealArray( 0 )
 }
 
-[node name="Screens" type="Control"]
+[node name="Screens" type="Control" groups=[
+"save",
+]]
 mouse_filter = 1
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
@@ -4230,7 +4232,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 use_theme_from_setting = true
-register = true
 node_id = "Screens"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -4246,6 +4247,9 @@ grow_horizontal = 0
 grow_vertical = 0
 rect_pivot_offset = Vector2( 1.16077, 0.622498 )
 alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TitleNVersion" type="HBoxContainer" parent="VBoxContainer"]
 margin_right = 264.0
@@ -4254,8 +4258,8 @@ grow_horizontal = 0
 alignment = 2
 
 [node name="Title" type="Label" parent="VBoxContainer/TitleNVersion"]
-margin_left = 7.0
-margin_right = 202.0
+margin_left = 11.0
+margin_right = 206.0
 margin_bottom = 38.0
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 3 )
@@ -4266,7 +4270,7 @@ var_name = "title"
 default = "Your new game"
 
 [node name="Version" type="Label" parent="VBoxContainer/TitleNVersion"]
-margin_left = 206.0
+margin_left = 210.0
 margin_right = 264.0
 margin_bottom = 38.0
 size_flags_vertical = 1
@@ -4284,8 +4288,8 @@ rect_min_size = Vector2( 100, 40 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 bbcode_enabled = true
-bbcode_text = "[right]Rakugo 2.0.0"
-text = "Rakugo 2.0.0"
+bbcode_text = "[right]Rakugo [rakugo_version]"
+text = "Rakugo [rakugo_version]"
 script = ExtResource( 5 )
 rakugo_text = "{right}Rakugo [rakugo_version]"
 vars_names = [ "rakugo_version" ]
@@ -4310,52 +4314,53 @@ text = "Your new game"
 [node name="ScrollContainer" type="ScrollContainer" parent="Navigation"]
 margin_left = 13.0
 margin_top = 109.0
-margin_right = 211.0
+margin_right = 207.0
 margin_bottom = 598.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Navigation/ScrollContainer"]
-margin_right = 198.0
+margin_right = 194.0
 margin_bottom = 489.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Navigation/ScrollContainer/HBoxContainer"]
-margin_right = 198.0
+margin_right = 194.0
 margin_bottom = 489.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/separation = 20
-
-[node name="Hack" type="Control" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer"]
-margin_right = 198.0
+alignment = 1
 
 [node name="NewGame" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
-margin_top = 20.0
-margin_right = 198.0
-margin_bottom = 48.0
+margin_top = 132.0
+margin_right = 194.0
+margin_bottom = 166.0
 text = "New Game"
 align = 0
 
 [node name="Continue" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
-margin_top = 68.0
-margin_right = 198.0
-margin_bottom = 96.0
+visible = false
+margin_top = 151.0
+margin_right = 194.0
+margin_bottom = 185.0
 text = "Continue"
 align = 0
 
 [node name="Return" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
 visible = false
-margin_top = 20.0
-margin_right = 140.0
-margin_bottom = 52.0
+margin_top = 128.0
+margin_right = 198.0
+margin_bottom = 162.0
 text = "Return"
 align = 0
 
 [node name="History" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
 visible = false
-margin_top = 72.0
-margin_right = 140.0
-margin_bottom = 104.0
+margin_top = 128.0
+margin_right = 198.0
+margin_bottom = 162.0
 toggle_mode = true
 group = SubResource( 1 )
 text = "History"
@@ -4363,19 +4368,18 @@ align = 0
 
 [node name="Quests" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
 visible = false
-margin_top = 72.0
-margin_right = 140.0
-margin_bottom = 104.0
+margin_top = 170.0
+margin_right = 194.0
+margin_bottom = 204.0
 toggle_mode = true
-pressed = true
 group = SubResource( 1 )
 text = "Quests"
 align = 0
 
 [node name="Load" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
-margin_top = 116.0
-margin_right = 198.0
-margin_bottom = 144.0
+margin_top = 170.0
+margin_right = 194.0
+margin_bottom = 204.0
 toggle_mode = true
 group = SubResource( 1 )
 text = "Load"
@@ -4392,36 +4396,36 @@ text = "Save"
 align = 0
 
 [node name="Options" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
-margin_top = 164.0
-margin_right = 198.0
-margin_bottom = 192.0
+margin_top = 208.0
+margin_right = 194.0
+margin_bottom = 242.0
 toggle_mode = true
 group = SubResource( 1 )
 text = "Options"
 align = 0
 
 [node name="About" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
-margin_top = 212.0
-margin_right = 198.0
-margin_bottom = 240.0
+margin_top = 246.0
+margin_right = 194.0
+margin_bottom = 280.0
 toggle_mode = true
 group = SubResource( 1 )
 text = "About"
 align = 0
 
 [node name="Help" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
-margin_top = 260.0
-margin_right = 198.0
-margin_bottom = 288.0
+margin_top = 284.0
+margin_right = 194.0
+margin_bottom = 318.0
 toggle_mode = true
 group = SubResource( 1 )
 text = "Help"
 align = 0
 
 [node name="Quit" parent="Navigation/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 7 )]
-margin_top = 308.0
-margin_right = 198.0
-margin_bottom = 336.0
+margin_top = 322.0
+margin_right = 194.0
+margin_bottom = 356.0
 toggle_mode = true
 group = SubResource( 1 )
 text = "Quit"
@@ -4517,10 +4521,11 @@ margin_bottom = 457.0
 focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+bbcode_text = ""
+text = ""
 scroll_active = true
 selection_enabled = false
 script = ExtResource( 5 )
-rakugo_text_file = "res://game/about.txt"
 
 [node name="QuitBox" parent="." instance=ExtResource( 15 )]
 visible = false
@@ -4536,6 +4541,9 @@ margin_top = 560.472
 margin_right = 629.883
 margin_bottom = 594.472
 
+[node name="UnpauseTimer" type="Timer" parent="."]
+one_shot = true
+
 [node name="Layouts" type="AnimationPlayer" parent="."]
 anims/modern_center = SubResource( 2 )
 anims/modern_left = SubResource( 3 )
@@ -4543,6 +4551,3 @@ anims/modern_right = SubResource( 4 )
 anims/small_center = SubResource( 5 )
 anims/small_left = SubResource( 6 )
 anims/small_right = SubResource( 7 )
-
-[node name="UnpauseTimer" type="Timer" parent="."]
-one_shot = true
