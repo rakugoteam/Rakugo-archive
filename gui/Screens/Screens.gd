@@ -15,6 +15,7 @@ export onready var qyes_button = $QuitBox/HBoxContainer/Yes
 var current_node: Node = self
 var in_game_gui: Node
 var viewport_con : Control
+
 onready var new_game_button: Button = get_page("NewGame")
 onready var continue_button: Button = get_page("Continue")
 onready var return_button: Button = get_page("Return")
@@ -126,9 +127,11 @@ func history_menu():
 func _on_visibility_changed():
 	blur_shader.set_shader_param("radius", 0)
 	if visible:
-
+		
 		if Rakugo.started:
 			blur_shader.set_shader_param("radius", 5)
+			
+			save_button.disabled = !Rakugo.can_save
 
 		get_tree().paused = true
 		in_game_gui.hide()
@@ -205,7 +208,7 @@ func _on_Quests_pressed():
 
 # if press "yes" on quit page
 func _on_Yes_pressed():
-	if Rakugo.started:
+	if Rakugo.started and Rakugo.can_save:
 		Rakugo.savefile("auto")
 		Rakugo.save_global_history()
 
@@ -240,7 +243,7 @@ func _on_About_pressed():
 
 
 func _on_Help_pressed():
-	OS.shell_open("https://rakugo.readthedocs.io/en/latest/")
+	OS.shell_open("https://rakugoteam.github.io/RakugoDocs-new/")
 
 
 func _fullscreen_on_input(event):

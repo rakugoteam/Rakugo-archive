@@ -5,19 +5,19 @@ const credits_path := "res://addons/Rakugo/credits.txt"
 const save_folder := "saves"
 
 # project settings integration
-onready var game_title = ProjectSettings.get_setting("application/config/name")
-onready var game_version = ProjectSettings.get_setting("application/rakugo/version")
-onready var game_credits = ProjectSettings.get_setting("application/rakugo/game_credits")
-onready var markup = ProjectSettings.get_setting("application/rakugo/markup")
-onready var debug_on = ProjectSettings.get_setting("application/rakugo/debug")
-onready var test_save = ProjectSettings.get_setting("application/rakugo/test_saves")
-onready var scene_links = ProjectSettings.get_setting("application/rakugo/scene_links")
+onready var game_title : String = ProjectSettings.get_setting("application/config/name")
+onready var game_version : String = ProjectSettings.get_setting("application/rakugo/version")
+onready var game_credits : String = ProjectSettings.get_setting("application/rakugo/game_credits")
+onready var markup : String = ProjectSettings.get_setting("application/rakugo/markup")
+onready var debug_on : bool = ProjectSettings.get_setting("application/rakugo/debug")
+onready var test_save : bool = ProjectSettings.get_setting("application/rakugo/test_saves")
+onready var scene_links : String = ProjectSettings.get_setting("application/rakugo/scene_links")
 
-onready var theme = load(ProjectSettings.get_setting("application/rakugo/theme"))
-onready var default_kind = ProjectSettings.get_setting("application/rakugo/default_kind")
-onready var default_mkind = ProjectSettings.get_setting("application/rakugo/default_mkind")
-onready var default_mcolumns = ProjectSettings.get_setting("application/rakugo/default_mcolumns")
-onready var default_manchor = ProjectSettings.get_setting("application/rakugo/default_manchor")
+onready var theme : RakugoTheme = load(ProjectSettings.get_setting("application/rakugo/theme"))
+onready var default_kind :String = ProjectSettings.get_setting("application/rakugo/default_kind")
+onready var default_mkind : String = ProjectSettings.get_setting("application/rakugo/default_mkind")
+onready var default_mcolumns : int = ProjectSettings.get_setting("application/rakugo/default_mcolumns")
+onready var default_manchor : String = ProjectSettings.get_setting("application/rakugo/default_manchor")
 
 # init vars for settings
 var _skip_all_text := false
@@ -83,6 +83,7 @@ var can_alphanumeric := true
 var emoji_size := 16
 var skipping := false
 var current_dialogs := {}
+var can_save := true
 
 const skip_types := [
 	StatementType.SAY,
@@ -160,11 +161,14 @@ func _ready() -> void:
 
 	load_init_data()
 
+	for v in variables:
+		variables[v].save_included = false
+
 	# set by game developer
-	define("title", game_title, true)
-	define("version", game_version, true)
+	define("title", game_title, false)
+	define("version", game_version, false)
 	OS.set_window_title(game_title + " " + game_version)
-	define("credits", game_credits, true)
+	define("credits", game_credits, false)
 
 	# it must be before define rakugo_version and godot_version to parse corretly :o
 	file.open(credits_path, file.READ)
@@ -278,6 +282,7 @@ func clean_dialogs() -> void:
 
 		current_dialogs.erase(n)
 
+
 # use to add/register dialog
 # func_name is name of func that is going to be use as dialog
 func add_dialog(node: Node, func_name: String) -> void:
@@ -295,7 +300,11 @@ func add_dialog(node: Node, func_name: String) -> void:
 # or parse bbcode with {vars} if mode == "bbcode"
 # default mode = Rakugo.markup
 func text_passer(text: String, mode := markup):
-	return TextPasser.text_passer(text, variables, mode, theme.links_color.to_html())
+	var links_color := Color.aqua.to_html()
+	if theme:
+		links_color = theme.links_color.to_html() 
+	
+	return TextPasser.text_passer(text, variables, mode, links_color)
 
 
 # add/overwrite global variable that Rakugo will see
@@ -641,6 +650,9 @@ func debug_dict(
 func debug(some_text = []) -> void:
 	if not debug_on:
 		return
+
+	if not started:
+		return	
 
 	if typeof(some_text) == TYPE_ARRAY:
 		var new_text = ""
