@@ -1,6 +1,7 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
-[ext_resource path="res://addons/Rakugo/nodes/controls/rakugo_control.gd" type="Script" id=2]
+[ext_resource path="res://themes/rpgm_like/rpgm_like.tres" type="Theme" id=1]
+[ext_resource path="res://gui/InGame/InGameGUI.gd" type="Script" id=2]
 [ext_resource path="res://addons/Rakugo/nodes/controls/rakugo_menu.gd" type="Script" id=3]
 [ext_resource path="res://gui/InGame/ChoiceButton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://gui/InGame/Say.tscn" type="PackedScene" id=5]
@@ -14,9 +15,6 @@
 [ext_resource path="res://ubuntu-font-family/Ubuntu-RI.ttf" type="DynamicFontData" id=13]
 [ext_resource path="res://ubuntu-font-family/Ubuntu-R.ttf" type="DynamicFontData" id=14]
 [ext_resource path="res://gui/InGame/hack_button_style.tres" type="StyleBox" id=15]
-
-
-
 
 [sub_resource type="DynamicFont" id=1]
 size = 22
@@ -420,13 +418,11 @@ pause_mode = 1
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
-theme = ExtResource( 6 )
+theme = ExtResource( 1 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-use_theme_from_setting = true
-node_id = "InGameGUI"
 
 [node name="SayPanel" parent="." instance=ExtResource( 5 )]
 margin_bottom = 602.0
@@ -505,15 +501,15 @@ __meta__ = {
 }
 
 [node name="Hide" type="CheckButton" parent="Quick"]
-margin_right = 127.0
+margin_right = 105.0
 margin_bottom = 40.0
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Hide"
 
 [node name="History" parent="Quick" instance=ExtResource( 9 )]
-margin_left = 131.0
-margin_right = 246.0
+margin_left = 109.0
+margin_right = 231.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -521,8 +517,8 @@ custom_fonts/font = SubResource( 1 )
 text = "History"
 
 [node name="Quests" parent="Quick" instance=ExtResource( 9 )]
-margin_left = 250.0
-margin_right = 365.0
+margin_left = 235.0
+margin_right = 357.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -530,32 +526,32 @@ custom_fonts/font = SubResource( 1 )
 text = "Quests"
 
 [node name="Back" parent="Quick" instance=ExtResource( 9 )]
-margin_left = 369.0
-margin_right = 484.0
+margin_left = 361.0
+margin_right = 483.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 
 [node name="Skip" type="CheckButton" parent="Quick"]
-margin_left = 488.0
-margin_right = 610.0
+margin_left = 487.0
+margin_right = 587.0
 margin_bottom = 40.0
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Skip"
 
 [node name="Auto" type="CheckButton" parent="Quick"]
-margin_left = 614.0
-margin_right = 744.0
+margin_left = 591.0
+margin_right = 699.0
 margin_bottom = 40.0
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Auto"
 
 [node name="Save" parent="Quick" instance=ExtResource( 9 )]
-margin_left = 748.0
-margin_right = 863.0
+margin_left = 703.0
+margin_right = 825.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -563,8 +559,8 @@ custom_fonts/font = SubResource( 1 )
 text = "Save"
 
 [node name="Load" parent="Quick" instance=ExtResource( 9 )]
-margin_left = 867.0
-margin_right = 982.0
+margin_left = 829.0
+margin_right = 951.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -572,8 +568,8 @@ custom_fonts/font = SubResource( 1 )
 text = "Load"
 
 [node name="QSave" parent="Quick" instance=ExtResource( 9 )]
-margin_left = 986.0
-margin_right = 1101.0
+margin_left = 955.0
+margin_right = 1077.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -581,8 +577,8 @@ custom_fonts/font = SubResource( 1 )
 text = "Q. Save"
 
 [node name="QLoad" parent="Quick" instance=ExtResource( 9 )]
-margin_left = 1105.0
-margin_right = 1220.0
+margin_left = 1081.0
+margin_right = 1203.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -590,8 +586,8 @@ custom_fonts/font = SubResource( 1 )
 text = "Q. Load"
 
 [node name="Options" parent="Quick" instance=ExtResource( 9 )]
-margin_left = 1224.0
-margin_right = 1339.0
+margin_left = 1207.0
+margin_right = 1329.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -599,7 +595,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Options"
 
 [node name="Quit" parent="Quick" instance=ExtResource( 9 )]
-margin_left = 1343.0
+margin_left = 1333.0
 margin_right = 1463.0
 margin_bottom = 40.0
 size_flags_horizontal = 3

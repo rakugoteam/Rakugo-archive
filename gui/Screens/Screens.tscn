@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://themes/question/question.tres" type="Theme" id=1]
+[ext_resource path="res://themes/rpgm_like/rpgm_like.tres" type="Theme" id=1]
 [ext_resource path="res://gui/Screens/Screens.gd" type="Script" id=2]
 [ext_resource path="res://ubuntu-font-family/UB32outline.tres" type="DynamicFont" id=3]
 [ext_resource path="res://addons/Rakugo/nodes/controls/rakugo_var_label.gd" type="Script" id=4]
@@ -15,10 +15,6 @@
 [ext_resource path="res://gui/Quests/QuestsBox.tscn" type="PackedScene" id=13]
 [ext_resource path="res://gui/Labels/dialogue_text.tscn" type="PackedScene" id=14]
 [ext_resource path="res://gui/Screens/QuitBox.tscn" type="PackedScene" id=15]
-
-
-
-
 
 [sub_resource type="ButtonGroup" id=1]
 
@@ -4237,6 +4233,7 @@ __meta__ = {
 }
 use_theme_from_setting = true
 node_id = "Screens"
+nav_path = NodePath("Navigation/ScrollContainer/HBoxContainer/VBoxContainer")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = 1.0
@@ -4292,8 +4289,8 @@ rect_min_size = Vector2( 100, 40 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 bbcode_enabled = true
-bbcode_text = "[right]Rakugo 2.0.0"
-text = "Rakugo 2.0.0"
+bbcode_text = "[right]Rakugo [rakugo_version]"
+text = "Rakugo [rakugo_version]"
 script = ExtResource( 5 )
 rakugo_text = "{right}Rakugo [rakugo_version]"
 vars_names = [ "rakugo_version" ]
@@ -4525,10 +4522,11 @@ margin_bottom = 457.0
 focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+bbcode_text = ""
+text = ""
 scroll_active = true
 selection_enabled = false
 script = ExtResource( 5 )
-rakugo_text_file = "res://addons/Rakugo/credits.txt"
 
 [node name="QuitBox" parent="." instance=ExtResource( 15 )]
 visible = false

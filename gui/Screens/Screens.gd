@@ -2,10 +2,10 @@ tool
 extends RakugoControl
 
 export onready var nav_panel: Node = $Navigation
-export var nav_path: NodePath = "Navigation/ScrollContainer/HBoxContainer/VBoxContainer"
-export var in_game_gui_path := "/root/Window/InGameGUI"
+export var nav_parent_path := "Navigation/ScrollContainer/HBoxContainer"
+export var nav_path: NodePath = nav_parent_path + "/VBoxContainer"
 export var viewport_path := "/root/Window/ViewportContainer"
-export onready var scrollbar := $Navigation/ScrollContainer/HBoxContainer/VScrollBar
+export onready var scrollbar := get_node(nav_parent_path + "/VScrollBar")
 export var use_back_button := false
 export onready var back_button: Button = $BackButton
 export onready var unpause_timer: Timer = $UnpauseTimer
@@ -13,8 +13,8 @@ export onready var qno_button = $QuitBox/HBoxContainer/No
 export onready var qyes_button = $QuitBox/HBoxContainer/Yes
 
 var current_node: Node = self
-var in_game_gui: Node
 var viewport_con : Control
+
 onready var new_game_button: Button = get_page("NewGame")
 onready var continue_button: Button = get_page("Continue")
 onready var return_button: Button = get_page("Return")
@@ -35,13 +35,12 @@ func get_page(node_name:String) -> Node:
 
 func get_viewport() -> Viewport:
 	return viewport_con.get_node("Viewport") as Viewport
-	
+
 
 func _ready():
 	if Engine.editor_hint:
 		return
 
-	in_game_gui = get_node(in_game_gui_path)
 	viewport_con = get_node(viewport_path)
 	blur_shader = viewport_con.material as ShaderMaterial
 
@@ -126,15 +125,16 @@ func history_menu():
 func _on_visibility_changed():
 	blur_shader.set_shader_param("radius", 0)
 	if visible:
-
+		
 		if Rakugo.started:
 			blur_shader.set_shader_param("radius", 5)
+			save_button.disabled = !Rakugo.can_save
 
 		get_tree().paused = true
-		in_game_gui.hide()
+		Rakugo.hide("InGameGUI")
 		return
 
-	in_game_gui.show()
+	Rakugo.show("InGameGUI")
 	unpause_timer.start()
 	yield(unpause_timer, "timeout")
 	get_tree().paused = false
@@ -205,7 +205,7 @@ func _on_Quests_pressed():
 
 # if press "yes" on quit page
 func _on_Yes_pressed():
-	if Rakugo.started:
+	if Rakugo.started and Rakugo.can_save:
 		Rakugo.savefile("auto")
 		Rakugo.save_global_history()
 
@@ -240,7 +240,7 @@ func _on_About_pressed():
 
 
 func _on_Help_pressed():
-	OS.shell_open("https://rakugo.readthedocs.io/en/latest/")
+	OS.shell_open("https://rakugoteam.github.io/RakugoDocs-new/")
 
 
 func _fullscreen_on_input(event):
