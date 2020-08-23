@@ -4233,6 +4233,7 @@ __meta__ = {
 }
 use_theme_from_setting = true
 node_id = "Screens"
+nav_path = NodePath("Navigation/ScrollContainer/HBoxContainer/VBoxContainer")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = 1.0

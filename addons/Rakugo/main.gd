@@ -65,10 +65,18 @@ var current_dialog_name := ""
 var current_node_name := ""
 var current_scene := ""
 
+# this store log of all dialog up this point in current game
 # {["scene_id", "node_name", "dialog_name", story_step]:{"type":type, "parameters": parameters}}
 var history := {}
+
+# this store log of all dialog that player saw
 var global_history := {}
+
+# this store all RakugoVars
 var variables := {}
+
+# if `false` then InGameGUI will stay hidden even if `Rakugo.show("InGameGUI")` is called
+var can_show_in_game_gui := true setget _set_in_game_gui, _get_in_game_gui
 
 # don't save this
 onready var menu_node: = $Menu
@@ -184,6 +192,7 @@ func _ready() -> void:
 	define("story_state", 0)
 	define("v2_inf", Vector2.INF, false)
 	define("v3_inf", Vector3.INF, false)
+	define("can_show_in_game_gui", true)
 
 	step_timer.connect("timeout", self, "_on_time_active_timeout")
 
@@ -604,6 +613,14 @@ func _set_story_state(state: int) -> void:
 
 func _get_story_state() -> int:
 	return get_value("story_state")
+
+
+func _set_in_game_gui(can_show: bool) -> void:
+	define("can_show_in_game_gui", can_show)
+
+
+func _get_in_game_gui() -> bool:
+	return get_value("can_show_in_game_gui")
 
 
 # it starts Rakugo
