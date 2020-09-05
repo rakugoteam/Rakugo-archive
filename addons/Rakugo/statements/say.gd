@@ -8,7 +8,7 @@ func _init() -> void:
 	def_parameters["add_to_history"] = true
 	def_parameters["who"] = "Narrator"
 	def_parameters["what"] = ""
-	def_parameters["typing"] = true
+	def_parameters["typing"] = false
 	def_parameters["kind"] = "adv"
 	def_parameters["avatar"] = ""
 	def_parameters["avatar_state"] = ""
