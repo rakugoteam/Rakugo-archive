@@ -45,7 +45,11 @@ func _on_nav_button_press(nav):
 		"about":
 			show_page(nav)
 		"main_menu":
-			show_page(nav)
+			if Rakugo.started:
+				Rakugo.end_game()
+				show_page(nav)
+			else:
+				show_page(nav)
 		"return":
 			if Rakugo.started:
 				hide()
@@ -144,7 +148,7 @@ func _input(event):
 
 	if event.is_action_pressed("ui_cancel"):
 		if visible:
-			_on_Return_pressed()
+			_on_nav_button_press("return")
 
 		return
 

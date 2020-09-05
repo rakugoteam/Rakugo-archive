@@ -2,7 +2,7 @@ extends Control
 
 
 func _on_show_menu(menu, game_started):
-	if not game_started and (menu == "main_menu" or menu == "return"):
+	if menu == "main_menu" or (not game_started and menu == "return"):
 		visible = true
 		$"../ReturnButton".visible = false
 		for nb in get_tree().get_nodes_in_group("nav_button"):
