@@ -1,32 +1,44 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://gui/Window/Window.gd" type="Script" id=1]
 [ext_resource path="res://gui/InGame/InGameGUI.tscn" type="PackedScene" id=2]
 [ext_resource path="res://gui/Window/Viewport.gd" type="Script" id=3]
 [ext_resource path="res://gui/Screens/Screens.tscn" type="PackedScene" id=4]
 [ext_resource path="res://gui/Window/blur_shadermaterial.tres" type="Material" id=5]
-[ext_resource path="res://themes/new_gui/new_gui.tres" type="Theme" id=6]
+[ext_resource path="res://themes/Default/default.tres" type="Theme" id=6]
 [ext_resource path="res://gui/Window/Loading.gd" type="Script" id=7]
+
+
+
+[sub_resource type="StyleBoxEmpty" id=1]
 
 [node name="Window" type="Node2D"]
 pause_mode = 2
 z_as_relative = false
 script = ExtResource( 1 )
-root = false
 
-[node name="ViewportContainer" type="ViewportContainer" parent="."]
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1280.0
+margin_bottom = 720.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ViewportContainer" type="ViewportContainer" parent="Panel"]
 material = ExtResource( 5 )
-margin_right = 1024.0
-margin_bottom = 600.0
-rect_min_size = Vector2( 1024, 600 )
+anchor_right = 1.0
+anchor_bottom = 1.0
 mouse_filter = 1
 stretch = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Viewport" type="Viewport" parent="ViewportContainer"]
-size = Vector2( 1024, 600 )
+[node name="Viewport" type="Viewport" parent="Panel/ViewportContainer"]
+size = Vector2( 1280, 720 )
 own_world = true
 handle_input_locally = false
 render_target_update_mode = 3
@@ -34,41 +46,32 @@ audio_listener_enable_2d = true
 audio_listener_enable_3d = true
 script = ExtResource( 3 )
 
-[node name="InGameGUI" parent="." instance=ExtResource( 2 )]
+[node name="InGameGUI" parent="Panel" instance=ExtResource( 2 )]
 visible = false
-theme = ExtResource( 6 )
 
-[node name="Screens" parent="." instance=ExtResource( 4 )]
-saveable = true
-state = [  ]
-nav_path = NodePath("Navigation/ScrollContainer/HBoxContainer/VBoxContainer")
-in_game_gui_path = "/root/Window/InGameGUI"
-viewport_path = "/root/Window/ViewportContainer"
-use_back_button = false
+[node name="Screens" parent="Panel" instance=ExtResource( 4 )]
 
-[node name="Loading" type="Control" parent="." groups=[
+[node name="Loading" type="Control" parent="Panel" groups=[
 "save",
 ]]
 visible = false
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 theme = ExtResource( 6 )
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="Loading"]
+[node name="Panel" type="Panel" parent="Panel/Loading"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 984.0
-margin_bottom = 560.0
 rect_min_size = Vector2( 1024, 600 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Loading/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Loading/Panel"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -82,15 +85,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Loading/Panel/VBoxContainer"]
-margin_right = 512.0
-margin_bottom = 34.0
+[node name="Label" type="Label" parent="Panel/Loading/Panel/VBoxContainer"]
+margin_right = 511.0
+margin_bottom = 35.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Loading"
 align = 1
 
-[node name="ProgressBar" type="ProgressBar" parent="Loading/Panel/VBoxContainer"]
-margin_top = 38.0
-margin_right = 512.0
-margin_bottom = 64.0
+[node name="ProgressBar" type="ProgressBar" parent="Panel/Loading/Panel/VBoxContainer"]
+margin_top = 39.0
+margin_right = 511.0
+margin_bottom = 66.0

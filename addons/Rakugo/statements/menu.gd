@@ -18,7 +18,7 @@ func exec() -> void:
 
 	choices_labels = []
 	for ch in parameters.choices:
-		var l = Rakugo.text_passer(ch)
+		var l = Rakugo.text_parser(ch)
 		choices_labels.append(l)
 
 	.exec()

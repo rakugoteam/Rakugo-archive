@@ -1,260 +1,122 @@
-tool
 extends RakugoControl
 
-export onready var nav_panel: Node = $Navigation
-export var nav_path: NodePath = "Navigation/ScrollContainer/HBoxContainer/VBoxContainer"
-export var in_game_gui_path := "/root/Window/InGameGUI"
-export var viewport_path := "/root/Window/ViewportContainer"
-export onready var scrollbar := $Navigation/ScrollContainer/HBoxContainer/VScrollBar
-export var use_back_button := false
-export onready var back_button: Button = $BackButton
+
 export onready var unpause_timer: Timer = $UnpauseTimer
-export onready var qno_button = $QuitBox/HBoxContainer/No
-export onready var qyes_button = $QuitBox/HBoxContainer/Yes
 
-var current_node: Node = self
-var in_game_gui: Node
-var viewport_con : Control
-onready var new_game_button: Button = get_page("NewGame")
-onready var continue_button: Button = get_page("Continue")
-onready var return_button: Button = get_page("Return")
-onready var save_button: Button = get_page("Save")
-onready var history_button: Button = get_page("History")
-onready var quests_button: Button = get_page("Quests")
-onready var load_button: Button = get_page("Load")
-onready var options_button: Button = get_page("Options")
-onready var about_button: Button = get_page("About")
-onready var help_button: Button = get_page("Help")
-onready var quit_button: Button = get_page("Quit")
-
-var blur_shader : ShaderMaterial
-
-func get_page(node_name:String) -> Node:
-	return get_node(str(nav_path).plus_file(node_name))
-
-
-func get_viewport() -> Viewport:
-	return viewport_con.get_node("Viewport") as Viewport
-	
+signal show_menu(menu, game_started)
 
 func _ready():
 	if Engine.editor_hint:
 		return
 
-	in_game_gui = get_node(in_game_gui_path)
-	viewport_con = get_node(viewport_path)
-	blur_shader = viewport_con.material as ShaderMaterial
-
 	get_tree().set_auto_accept_quit(false)
-	connect("visibility_changed", self, "_on_visibility_changed")
 
-	qno_button.connect("pressed", self, "_on_Return_pressed")
-	qyes_button.connect("pressed", self, "_on_Yes_pressed")
+	#qno_button.connect("pressed", self, "_on_Return_pressed")
 
-	back_button.connect("pressed", self, "_on_back_button")
-
-	new_game_button.connect("pressed", self, "_on_NewGame_pressed")
-	continue_button.connect("pressed", self, "_on_Continue_pressed")
-	return_button.connect("pressed", self, "_on_Return_pressed")
-	save_button.connect("pressed", self, "_on_Save_pressed")
-	history_button.connect("pressed", self, "_on_History_pressed")
-	quests_button.connect("pressed", self, "_on_Quests_pressed")
-	load_button.connect("pressed", self, "_on_Load_pressed")
-	options_button.connect("pressed", self, "_on_Options_pressed")
-	about_button.connect("pressed", self, "_on_About_pressed")
-	help_button.connect("pressed", self, "_on_Help_pressed")
-	quit_button.connect("pressed", self, "_on_Quit_pressed")
 	Rakugo.connect("game_ended", self, "_on_game_end")
-
-	var auto_save_path = str("user://" + Rakugo.save_folder + "/auto.res")
-
-	if Rakugo.test_save:
-		auto_save_path = str("res://" + Rakugo.save_folder + "/auto.tres")
-
-	if not Rakugo.file.file_exists(auto_save_path):
-		continue_button.hide()
-
 
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
-		_on_Quit_pressed()
+		if $QuitScreen.visible:
+			_on_quit_confirm()
+		$QuitScreen.visible = true
+		
 
+func _on_nav_button_press(nav):
+	match nav:
+		"start":
+			hide()
+			in_game()
+			Rakugo.start()
+			Rakugo.emit_signal("begin")
+		"continue":
+			if !Rakugo.loadfile("auto"):
+				return
+			in_game()
+			hide()
+		"save":
+			save_menu(get_screenshot())
+		"load":
+			load_menu()
+		"history":
+			show_page(2)
+		"preferences":
+			show_page(3)
+		"about":
+			show_page(1)
+		"main_menu":
+			show_main_menu()
+		"return":
+			show_main_menu()
+		"quit":
+			$QuitScreen.visible = true
+		
 
-func show_page(node):
-	if not use_back_button:
-		if current_node != self:
-			current_node.hide()
+func show_page(tab):
+	$SubMenus.current_tab = tab
 
-	blur_shader.set_shader_param("radius", 5)
-	current_node = node
-	node.show()
-
-	if use_back_button:
-		nav_panel.hide()
-		back_button.show()
-
+func show_main_menu():
+	show_page(0)
+	show()
 
 func _on_back_button():
-	current_node.hide()
-	nav_panel.show()
-	back_button.hide()
+	show_main_menu()
 
 
 func save_menu(screenshot):
-	save_button.pressed = true
-	show_page($SlotBox)
-	$SlotBox/Title.text = "Save"
-	$SlotBox.savebox()
-	$SlotBox.screenshot = screenshot
+	$SubMenus/SavesSlotScreen.save_mode = true
+	$SubMenus/SavesSlotScreen.screenshot = screenshot
+	show_page(4)
 	show()
 
 
 func load_menu():
-	load_button.pressed = true
-	show_page($SlotBox)
-	$SlotBox/Title.text = "Load"
-	$SlotBox.loadbox()
+	$SubMenus/SavesSlotScreen.save_mode = false
+	show_page(4)
 	show()
-
-
-func history_menu():
-	history_button.pressed = true
-	show_page($HistoryBox)
-	show()
-
 
 func _on_visibility_changed():
-	blur_shader.set_shader_param("radius", 0)
 	if visible:
-
-		if Rakugo.started:
-			blur_shader.set_shader_param("radius", 5)
-
 		get_tree().paused = true
-		in_game_gui.hide()
-		return
-
-	in_game_gui.show()
-	unpause_timer.start()
-	yield(unpause_timer, "timeout")
-	get_tree().paused = false
+		Window.InGameGUI.hide()
+	else:
+		Window.InGameGUI.show()
+		unpause_timer.start()
+		yield(unpause_timer, "timeout")
+		get_tree().paused = false
 
 
 # # if press "Return" or "no" on quit page
 func _on_Return_pressed():
-	blur_shader.set_shader_param("radius", 0)
-
-	if Rakugo.started:
+	if visible:
 		hide()
 		unpause_timer.start()
 		yield(unpause_timer, "timeout")
 		return
 
-	current_node.hide()
-
-
-func _on_Load_pressed():
-	load_menu()
-
 
 func in_game():
-	new_game_button.hide()
-	continue_button.hide()
-	return_button.show()
-	save_button.show()
-	history_button.show()
-	quests_button.show()
-	scrollbar.show()
+	#scrollbar.show()
+	pass
 
 
 func _on_game_end():
-	new_game_button.show()
-	continue_button.show()
-	return_button.hide()
-	save_button.hide()
-	history_button.hide()
-	quests_button.hide()
-	scrollbar.hide()
+	#scrollbar.hide()
 	show()
-
-
-func _on_NewGame_pressed():
-	hide()
-	in_game()
-	Rakugo.start()
-	Rakugo.emit_signal("begin")
-
-
-func _on_History_pressed():
-	history_menu()
-
-
-func _on_Continue_pressed():
-	if !Rakugo.loadfile("auto"):
-		return
-
-	in_game()
-	hide()
-
-
-func _on_Quests_pressed():
-	quests_button.pressed = true
-	show_page($QuestsBox)
-	show()
-
 
 # if press "yes" on quit page
-func _on_Yes_pressed():
+func _on_quit_confirm():
 	if Rakugo.started:
 		Rakugo.savefile("auto")
 		Rakugo.save_global_history()
 
-	settings.save_conf()
+	#settings.save_conf()
 	get_tree().quit()
 
-
-func _on_Quit_pressed():
-	quests_button.pressed = true
-	show_page($QuitBox)
-	show()
-
-
 func get_screenshot():
-	return get_viewport().get_texture().get_data()
-
-
-func _on_Save_pressed():
-	hide()
-	save_menu(get_screenshot())
-
-
-func _on_Options_pressed():
-	options_button.pressed = true
-	show_page($OptionsBox)
-	show()
-
-
-func _on_About_pressed():
-	show_page($AboutBox)
-	show()
-
-
-func _on_Help_pressed():
-	OS.shell_open("https://rakugo.readthedocs.io/en/latest/")
-
-
-func _fullscreen_on_input(event):
-	if !event.is_action_pressed("rakugo_fullscreen"):
-		return
-
-	if settings.window_fullscreen:
-		settings.window_fullscreen = false
-		settings.window_size = settings.default_window_size
-
-	else:
-		settings.window_fullscreen = true
-		settings.window_size = OS.get_screen_size()
-
+	var screenshot:Image = Window.viewport.get_texture().get_data()
+	screenshot.flip_y()
+	return screenshot
 
 func _screenshot_on_input(event):
 	if !event.is_action_pressed("rakugo_screenshot"):
@@ -278,14 +140,20 @@ func _input(event):
 		if visible:
 			_on_Return_pressed()
 
-		elif use_back_button:
-			show()
-
-		else:
-			_on_Options_pressed()
-
 		return
 
-	if Rakugo.can_alphanumeric:
-		_fullscreen_on_input(event)
+	if not get_focus_owner() and Rakugo.can_alphanumeric:
 		_screenshot_on_input(event)
+
+
+func _on_load_file():
+	in_game()
+	hide()
+
+
+
+func _on_SavesSlotScreen_mode_changed(save_mode):
+	if save_mode:
+		emit_signal("show_menu", "save", Rakugo.started)
+	else:
+		emit_signal("show_menu", "load", Rakugo.started)
