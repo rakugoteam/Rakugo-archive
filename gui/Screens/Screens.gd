@@ -4,6 +4,7 @@ extends RakugoControl
 export onready var unpause_timer: Timer = $UnpauseTimer
 
 signal show_menu(menu, game_started)
+signal show_main_menu_confirm()
 
 func _ready():
 	if Engine.editor_hint:
@@ -39,8 +40,7 @@ func _on_nav_button_press(nav):
 			show_page(nav)
 		"main_menu":
 			if Rakugo.started:
-				Rakugo.end_game()
-				show_page(nav)
+				emit_signal("show_main_menu_confirm")
 			else:
 				show_page(nav)
 		"return":

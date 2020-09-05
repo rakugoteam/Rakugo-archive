@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://themes/Default/default.tres" type="Theme" id=1]
 [ext_resource path="res://gui/Screens/Screens.gd" type="Script" id=2]
 [ext_resource path="res://gui/Screens/TitleScreen/TitleScreen.tscn" type="PackedScene" id=3]
+[ext_resource path="res://gui/Screens/MainMenuReturnConfirm.gd" type="Script" id=4]
 [ext_resource path="res://gui/Screens/AboutScreen/AboutScreen.tscn" type="PackedScene" id=5]
+[ext_resource path="res://gui/Screens/MainMenuReturnConfirmPanel.gd" type="Script" id=6]
 [ext_resource path="res://gui/Screens/SavesScreen/SavesScreen.tscn" type="PackedScene" id=7]
 [ext_resource path="res://gui/QuitScreen/QuitScreen.tscn" type="PackedScene" id=8]
 [ext_resource path="res://gui/Screens/HistoryScreen/HistoryScreen.tscn" type="PackedScene" id=9]
@@ -65,13 +67,42 @@ visible = false
 [node name="MenuBar" parent="." instance=ExtResource( 16 )]
 anchor_right = 0.22
 
+[node name="MainMenuReturnConfirmPanel" type="Panel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainMenuReturnConfirm" type="AcceptDialog" parent="MainMenuReturnConfirmPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+popup_exclusive = true
+dialog_text = "Are you sure you want to return to the main menu?
+This will lose unsaved progress."
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="QuitScreen" parent="." instance=ExtResource( 8 )]
 visible = false
 
 [node name="UnpauseTimer" type="Timer" parent="."]
 one_shot = true
+[connection signal="show_main_menu_confirm" from="." to="MainMenuReturnConfirmPanel/MainMenuReturnConfirm" method="_on_show_main_menu_confirm"]
+[connection signal="show_main_menu_confirm" from="." to="MainMenuReturnConfirmPanel" method="_on_show_main_menu_confirm"]
 [connection signal="show_menu" from="." to="MenuBar" method="_show_menu"]
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="mode_changed" from="SubMenus/SavesSlotScreen" to="." method="_on_SavesSlotScreen_mode_changed"]
 [connection signal="nav_button_press" from="MenuBar" to="." method="_on_nav_button_press"]
+[connection signal="confirmed" from="MainMenuReturnConfirmPanel/MainMenuReturnConfirm" to="MainMenuReturnConfirmPanel/MainMenuReturnConfirm" method="_on_confirmed"]
+[connection signal="popup_hide" from="MainMenuReturnConfirmPanel/MainMenuReturnConfirm" to="MainMenuReturnConfirmPanel" method="_on_popup_hide"]
+[connection signal="show_main_menu" from="MainMenuReturnConfirmPanel/MainMenuReturnConfirm" to="." method="_on_nav_button_press"]
 [connection signal="quit_confirm" from="QuitScreen" to="." method="_on_quit_confirm"]
