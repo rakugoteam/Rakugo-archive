@@ -1,0 +1,8 @@
+[gd_scene format=2]
+
+[node name="DummySlot" type="Control"]
+margin_top = 243.0
+margin_right = 387.0
+margin_bottom = 446.0
+size_flags_horizontal = 3
+size_flags_vertical = 3

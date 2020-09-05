@@ -7,7 +7,7 @@ var thread = null
 
 onready var progress = $Panel/VBoxContainer/ProgressBar
 
-var SIMULATED_DELAY_SEC = 1.0
+var SIMULATED_DELAY_SEC = 0.01
 
 func _ready() -> void:
 	hide()
