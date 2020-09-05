@@ -39,41 +39,47 @@ func _on_nav_button_press(nav):
 		"load":
 			load_menu()
 		"history":
-			show_page(2)
+			show_page(nav)
 		"preferences":
-			show_page(3)
+			show_page(nav)
 		"about":
-			show_page(1)
+			show_page(nav)
 		"main_menu":
-			show_main_menu()
+			show_page(nav)
 		"return":
-			show_main_menu()
+			if Rakugo.started:
+				hide()
+			else:
+				show_page(nav)
 		"quit":
 			$QuitScreen.visible = true
 		
 
-func show_page(tab):
-	$SubMenus.current_tab = tab
+const page_action_index:Dictionary = {
+	'main_menu':0,
+	'return':0,
+	'about':1,
+	'help':1,
+	'history':2,
+	'preferences':3,
+	'save':4,
+	'load':4
+}
 
-func show_main_menu():
-	show_page(0)
+func show_page(action):
+	emit_signal("show_menu", action, Rakugo.started)
+	$SubMenus.current_tab = page_action_index[action]
 	show()
-
-func _on_back_button():
-	show_main_menu()
-
 
 func save_menu(screenshot):
 	$SubMenus/SavesSlotScreen.save_mode = true
 	$SubMenus/SavesSlotScreen.screenshot = screenshot
-	show_page(4)
-	show()
+	show_page("save")
 
 
 func load_menu():
 	$SubMenus/SavesSlotScreen.save_mode = false
-	show_page(4)
-	show()
+	show_page("load")
 
 func _on_visibility_changed():
 	if visible:
