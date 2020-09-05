@@ -27,14 +27,14 @@ func set_history_item(hi: Node, type: int, parameters: Dictionary):
 		dialog_text.bbcode_text = parameters.what
 
 	if type in [Rakugo.StatementType.ASK, Rakugo.StatementType.MENU]:
-		dialog_text.bbcode_text += Rakugo.text_passer("{nl}{b}Your answer: ")
+		dialog_text.bbcode_text += Rakugo.text_parser("{nl}{b}Your answer: ")
 
 	if type == Rakugo.StatementType.ASK:
-		dialog_text.bbcode_text += Rakugo.text_passer("{i}" + parameters.value + "{/i}{/b}")
+		dialog_text.bbcode_text += Rakugo.text_parser("{i}" + parameters.value + "{/i}{/b}")
 
 	if type == Rakugo.StatementType.MENU:
 		var fch = Rakugo.menu_node.choices_labels[parameters.final_choice]
-		dialog_text.bbcode_text += Rakugo.text_passer("{i}" + fch + "{/i}{/b}")
+		dialog_text.bbcode_text += Rakugo.text_parser("{i}" + fch + "{/i}{/b}")
 
 
 func _on_visibility_changed() -> void:

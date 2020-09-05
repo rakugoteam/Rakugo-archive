@@ -308,12 +308,12 @@ func add_dialog(node: Node, func_name: String) -> void:
 # parse text like in renpy to bbcode if mode == "renpy"
 # or parse bbcode with {vars} if mode == "bbcode"
 # default mode = Rakugo.markup
-func text_passer(text: String, mode := markup):
+func text_parser(text: String, mode := markup):
 	var links_color := Color.aqua.to_html()
 	if theme:
 		links_color = theme.links_color.to_html() 
 	
-	return TextPasser.text_passer(text, variables, mode, links_color)
+	return TextParser.text_parser(text, variables, mode, links_color)
 
 
 # add/overwrite global variable that Rakugo will see

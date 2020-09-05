@@ -28,9 +28,9 @@ func update_label() -> void:
 	bbcode_enabled = true
 	
 	if Engine.editor_hint:
-		bbcode_text = TextPasser.text_passer(_rakugo_text, {}, mode)
+		bbcode_text = TextParser.text_parser(_rakugo_text, {}, mode)
 	else:
-		bbcode_text = Rakugo.text_passer(_rakugo_text, mode)
+		bbcode_text = Rakugo.text_parser(_rakugo_text, mode)
 
 
 func on_meta_clicked(meta) -> void:

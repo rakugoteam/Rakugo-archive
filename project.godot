@@ -225,7 +225,7 @@ _global_script_classes=[ {
 "path": "res://addons/Rakugo/nodes/controls/rakugo_label.gd"
 }, {
 "base": "Node",
-"class": "RakugoTextPasser",
+"class": "RakugoTextParser",
 "language": "GDScript",
 "path": "res://addons/Rakugo/lib/text.gd"
 }, {
@@ -368,7 +368,7 @@ _global_script_class_icons={
 "RakugoSpatial": "res://addons/Rakugo/icons/rakugo_spatial.svg",
 "RakugoText": "",
 "RakugoTextLabel": "res://addons/Rakugo/icons/rakugo_text_label.svg",
-"RakugoTextPasser": "",
+"RakugoTextParser": "",
 "RakugoTheme": "res://addons/Rakugo/icons/theme.svg",
 "RakugoTimer": "res://addons/Rakugo/icons/rakugo_timer.svg",
 "RakugoVar": "",
@@ -419,7 +419,7 @@ rakugo/scenes_links="res://game/scenes_links.tres"
 
 [autoload]
 
-TextPasser="*res://addons/Rakugo/lib/Text.tscn"
+TextParser="*res://addons/Rakugo/lib/Text.tscn"
 Rakugo="*res://addons/Rakugo/Rakugo.tscn"
 settings="*res://addons/Rakugo/gui/settings.gd"
 Window="*res://gui/Window/Window.tscn"

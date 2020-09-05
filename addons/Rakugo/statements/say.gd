@@ -27,10 +27,10 @@ func if_who(_parameters:Dictionary, _who:CharacterObject):
 
 func if_not_who(_parameters:Dictionary):
 	if "who" in _parameters:
-		_parameters.who = Rakugo.text_passer(_parameters.who)
+		_parameters.who = Rakugo.text_parser(_parameters.who)
 
 	if "what" in _parameters:
-		_parameters.what = Rakugo.text_passer(_parameters.what)
+		_parameters.what = Rakugo.text_parser(_parameters.what)
 
 	if not ("kind" in _parameters):
 		_parameters["kind"] = Rakugo.default_kind

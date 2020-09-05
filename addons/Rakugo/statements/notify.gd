@@ -13,6 +13,6 @@ func exec() -> void:
 	debug(parameters_names)
 	
 	if "info" in parameters:
-		parameters.info = Rakugo.text_passer(parameters.info)
+		parameters.info = Rakugo.text_parser(parameters.info)
 
 	.exec()
