@@ -56,7 +56,7 @@ visible = false
 [node name="HistoryScreen" parent="SubMenus" instance=ExtResource( 9 )]
 visible = false
 
-[node name="OptionScreen" parent="SubMenus" instance=ExtResource( 12 )]
+[node name="PreferencesScreen" parent="SubMenus" instance=ExtResource( 12 )]
 visible = false
 
 [node name="SavesSlotScreen" parent="SubMenus" instance=ExtResource( 7 )]
