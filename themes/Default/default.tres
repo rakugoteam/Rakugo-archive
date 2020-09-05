@@ -1,13 +1,17 @@
-[gd_resource type="Theme" load_steps=33 format=2]
+[gd_resource type="Theme" load_steps=41 format=2]
 
-[ext_resource path="res://fonts/DejaVuSans.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://fonts/DejaVu/DejaVuSans-Oblique.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://addons/Rakugo/objects/resources/rakugo_theme.gd" type="Script" id=2]
+[ext_resource path="res://fonts/DejaVu/DejaVuSans-BoldOblique.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://fonts/DejaVu/DejaVuSans-Bold.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://fonts/DejaVu/DejaVuSansMono.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://fonts/DejaVu/DejaVuSans.ttf" type="DynamicFontData" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
-font_data = ExtResource( 1 )
+font_data = ExtResource( 6 )
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
@@ -75,11 +79,35 @@ bg_color = Color( 0.184314, 0.184314, 0.184314, 1 )
 [sub_resource type="StyleBoxFlat" id=23]
 bg_color = Color( 0, 0, 0, 0.8 )
 
-[sub_resource type="DynamicFont" id=24]
+[sub_resource type="DynamicFont" id=31]
+size = 22
+outline_color = Color( 0, 0, 0, 0 )
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=32]
+size = 22
+outline_color = Color( 0, 0, 0, 0 )
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=33]
 size = 22
 outline_color = Color( 0, 0, 0, 0 )
 use_filter = true
 font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=34]
+size = 22
+outline_color = Color( 0, 0, 0, 0 )
+use_filter = true
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=24]
+size = 22
+outline_color = Color( 0, 0, 0, 0 )
+use_filter = true
+font_data = ExtResource( 6 )
 
 [sub_resource type="StyleBoxEmpty" id=25]
 
@@ -182,10 +210,10 @@ RichTextLabel/constants/shadow_offset_x = 1
 RichTextLabel/constants/shadow_offset_y = 1
 RichTextLabel/constants/table_hseparation = 3
 RichTextLabel/constants/table_vseparation = 3
-RichTextLabel/fonts/bold_font = null
-RichTextLabel/fonts/bold_italics_font = null
-RichTextLabel/fonts/italics_font = null
-RichTextLabel/fonts/mono_font = null
+RichTextLabel/fonts/bold_font = SubResource( 31 )
+RichTextLabel/fonts/bold_italics_font = SubResource( 32 )
+RichTextLabel/fonts/italics_font = SubResource( 33 )
+RichTextLabel/fonts/mono_font = SubResource( 34 )
 RichTextLabel/fonts/normal_font = SubResource( 24 )
 RichTextLabel/styles/focus = null
 RichTextLabel/styles/normal = null
