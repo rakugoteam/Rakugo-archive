@@ -15,13 +15,6 @@ func _ready():
 
 	Rakugo.connect("game_ended", self, "_on_game_end")
 
-func _notification(what):
-	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
-		if $QuitScreen.visible:
-			_on_quit_confirm()
-		$QuitScreen.visible = true
-		
-
 func _on_nav_button_press(nav):
 	match nav:
 		"start":
@@ -96,7 +89,7 @@ func _on_visibility_changed():
 		get_tree().paused = false
 
 
-# # if press "Return" or "no" on quit page
+# Unused at this point I think
 func _on_Return_pressed():
 	if visible:
 		hide()
@@ -113,15 +106,6 @@ func in_game():
 func _on_game_end():
 	#scrollbar.hide()
 	show()
-
-# if press "yes" on quit page
-func _on_quit_confirm():
-	if Rakugo.started:
-		Rakugo.savefile("auto")
-		Rakugo.save_global_history()
-
-	#settings.save_conf()
-	get_tree().quit()
 
 func get_screenshot():
 	var screenshot:Image = Window.viewport.get_texture().get_data()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://themes/Default/default.tres" type="Theme" id=1]
 [ext_resource path="res://gui/InGame/InGameGUI.gd" type="Script" id=2]
@@ -7,10 +7,8 @@
 [ext_resource path="res://gui/InGame/Say.tscn" type="PackedScene" id=5]
 [ext_resource path="res://gui/QuickMenu/QuickMenu.tscn" type="PackedScene" id=6]
 [ext_resource path="res://gui/InGame/Notify.gd" type="Script" id=7]
+[ext_resource path="res://gui/QuitScreen/QuitScreen.tscn" type="PackedScene" id=8]
 [ext_resource path="res://gui/InGame/hack_button_style.tres" type="StyleBox" id=15]
-
-
-
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 0.498039 )
@@ -96,4 +94,7 @@ bbcode_text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a n
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis."
 scroll_active = false
 selection_enabled = true
+
+[node name="QuitScreen" parent="." instance=ExtResource( 8 )]
+visible = false
 [connection signal="quick_button_press" from="Panel/QuickMenu" to="." method="_on_quick_button_press"]

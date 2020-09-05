@@ -5,7 +5,7 @@
 [ext_resource path="res://gui/Screens/TitleScreen/TitleScreen.tscn" type="PackedScene" id=3]
 [ext_resource path="res://gui/Screens/AboutScreen/AboutScreen.tscn" type="PackedScene" id=5]
 [ext_resource path="res://gui/Screens/SavesScreen/SavesScreen.tscn" type="PackedScene" id=7]
-[ext_resource path="res://gui/Screens/QuitScreen/QuitScreen.tscn" type="PackedScene" id=8]
+[ext_resource path="res://gui/QuitScreen/QuitScreen.tscn" type="PackedScene" id=8]
 [ext_resource path="res://gui/Screens/HistoryScreen/HistoryScreen.tscn" type="PackedScene" id=9]
 [ext_resource path="res://gui/Screens/PreferencesScreen/PreferencesScreen.tscn" type="PackedScene" id=12]
 [ext_resource path="res://gui/Screens/MenuBar/MenuBar.tscn" type="PackedScene" id=16]
@@ -62,16 +62,16 @@ visible = false
 [node name="SavesSlotScreen" parent="SubMenus" instance=ExtResource( 7 )]
 visible = false
 
-[node name="QuitScreen" parent="." instance=ExtResource( 8 )]
-visible = false
-
 [node name="MenuBar" parent="." instance=ExtResource( 16 )]
 anchor_right = 0.22
+
+[node name="QuitScreen" parent="." instance=ExtResource( 8 )]
+visible = false
 
 [node name="UnpauseTimer" type="Timer" parent="."]
 one_shot = true
 [connection signal="show_menu" from="." to="MenuBar" method="_show_menu"]
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="mode_changed" from="SubMenus/SavesSlotScreen" to="." method="_on_SavesSlotScreen_mode_changed"]
-[connection signal="quit_confirm" from="QuitScreen" to="." method="_on_quit_confirm"]
 [connection signal="nav_button_press" from="MenuBar" to="." method="_on_nav_button_press"]
+[connection signal="quit_confirm" from="QuitScreen" to="." method="_on_quit_confirm"]
