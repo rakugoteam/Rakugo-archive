@@ -239,16 +239,10 @@ func get_dialogs(node_name:String) -> Array:
 
 
 func story_step() -> void:
-	if (
-		current_node_name != "" and
-		not(current_node_name in get_dialog_nodes_names())
-		):
+	if current_node_name != "" and not(current_node_name in get_dialog_nodes_names()):
 		push_error("Node %s is not added to dialogs nodes" % current_node_name)
 
-	elif (
-		current_dialog_name != "" and
-		not (current_dialog_name in get_dialogs(current_node_name))
-		):
+	elif current_dialog_name != "" and not (current_dialog_name in get_dialogs(current_node_name)):
 		push_error("Node %s is not added %s to dialogs"
 			% [current_node_name, current_dialog_name])
 
