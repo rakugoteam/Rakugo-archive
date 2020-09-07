@@ -20,7 +20,7 @@ func _on_confirmed():
 
 func _on_visibility_changed():#Using self connected signal to also handle external use
 	if visible:
-		$QuitConfirmDialog.popup_centered()
+		$QuitConfirmDialog.call_deferred("popup_centered")
 
 
 func _on_popup_hide():
