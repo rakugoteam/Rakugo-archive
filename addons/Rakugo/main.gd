@@ -704,6 +704,8 @@ func load_scene(scene_id: String) -> void:
 
 func end_game() -> void:
 	if current_root_node != null:
+		if current_root_node.get_parent():
+			current_root_node.get_parent().remove_child(current_root_node)
 		current_root_node.queue_free()
 
 	var start_scene = ProjectSettings.get_setting("application/run/main_scene")
