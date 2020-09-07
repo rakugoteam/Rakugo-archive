@@ -282,8 +282,7 @@ func clean_dialogs() -> void:
 		for f in current_dialogs[n]:
 			if is_connected("story_step", n, f):
 				disconnect("story_step", n, f)
-
-		current_dialogs.erase(n)
+	current_dialogs = {}
 
 
 # use to add/register dialog
