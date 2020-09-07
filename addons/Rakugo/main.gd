@@ -711,6 +711,7 @@ func end_game() -> void:
 	var start_scene = ProjectSettings.get_setting("application/run/main_scene")
 	var lscene = load(start_scene)
 	current_root_node = lscene.instance()
+	clean_dialogs()
 	get_tree().get_root().add_child(current_root_node)
 	started = false
 	quests.clear()
