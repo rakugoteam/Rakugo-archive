@@ -1,22 +1,19 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://addons/Rakugo/nodes/controls/kind_container.gd" type="Script" id=1]
 [ext_resource path="res://gui/Labels/name_text.tscn" type="PackedScene" id=2]
-[ext_resource path="res://ubuntu-font-family/UbuntuMono-R.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://ubuntu-font-family/Ubuntu-B.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://ubuntu-font-family/Ubuntu-RI.ttf" type="DynamicFontData" id=5]
-[ext_resource path="res://ubuntu-font-family/Ubuntu-R.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://fonts/DejaVu/DejaVuSans-Oblique.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://fonts/DejaVu/DejaVuSans-BoldOblique.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://fonts/DejaVu/DejaVuSans-Bold.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://fonts/DejaVu/DejaVuSansMono.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://gui/Labels/dialogue_text.tscn" type="PackedScene" id=7]
 [ext_resource path="res://addons/Rakugo/nodes/controls/rakugo_ask.gd" type="Script" id=8]
-
-
-
-
+[ext_resource path="res://fonts/DejaVu/DejaVuSans.ttf" type="DynamicFontData" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
 use_filter = true
-font_data = ExtResource( 3 )
+font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 30
@@ -26,22 +23,22 @@ font_data = ExtResource( 4 )
 [sub_resource type="DynamicFont" id=3]
 size = 30
 use_filter = true
-font_data = ExtResource( 5 )
+font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 30
 use_filter = true
-font_data = ExtResource( 4 )
+font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=5]
 size = 30
 use_filter = true
-font_data = ExtResource( 6 )
+font_data = ExtResource( 9 )
 
 [sub_resource type="DynamicFont" id=6]
 size = 22
 use_filter = true
-font_data = ExtResource( 3 )
+font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=7]
 size = 22
@@ -51,17 +48,17 @@ font_data = ExtResource( 4 )
 [sub_resource type="DynamicFont" id=8]
 size = 22
 use_filter = true
-font_data = ExtResource( 5 )
+font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=9]
 size = 22
 use_filter = true
-font_data = ExtResource( 4 )
+font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=10]
 size = 22
 use_filter = true
-font_data = ExtResource( 6 )
+font_data = ExtResource( 9 )
 
 [node name="PhoneLeft" type="Panel"]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -69,6 +66,9 @@ anchor_right = 1.0
 rect_min_size = Vector2( 1028, 165 )
 size_flags_horizontal = 3
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 name_label_path = NodePath("HBoxContainer/VBox/Label")
 dialog_label_path = NodePath("HBoxContainer/VBox/Dialogue")
 avatar_viewport_path = NodePath("HBoxContainer/ViewportContainer/CharaterAvatar")
