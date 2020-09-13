@@ -392,28 +392,28 @@ _global_script_class_icons={
 
 [application]
 
-config/name="New Rakugo Game"
-run/main_scene="res://game/Start/Start.tscn"
-config/project_settings_override="res://game/rakugo.cfg"
+config/name="The Question: Rakugo Editon"
+run/main_scene="res://question/scenes/Start/start.tscn"
+config/project_settings_override="res://question/rakugo.cfg"
 boot_splash/image="res://graphics/splash.png"
 boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://graphics/window_icon.png"
 config/auto_accept_quit=false
 config/quit_on_go_back=false
-rakugo/version="0.0.1"
+rakugo/version="1.4.0"
 rakugo/game_credits="Jeremi {i}jebedaia360{/i} Biernacki, kurinoku"
 rakugo/debug=false
 rakugo/save_folder="saves"
 rakugo/default_kind="nvl"
 rakugo/test_saves=false
 rakugo/markup="renpy"
-rakugo/default_mkind=""
+rakugo/default_mkind="grid"
 rakugo/default_mcolumns=2.0
-rakugo/default_manchor=""
+rakugo/default_manchor="center"
 rakugo/punctuation_pause="1"
 rakugo/default_mcolums=2.0
-rakugo/theme="res://themes/Default/default.tres"
+rakugo/theme="res://themes/question/question.tres"
 rakugo/scene_links="res://game/scene_links.tres"
 rakugo/scenes_links="res://game/scenes_links.tres"
 
@@ -443,7 +443,30 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "Rakugo" )
+enabled=PoolStringArray( "Rakugo", "godot-next", "godot-plugin-refresher" )
+
+[importer_defaults]
+
+texture={
+"compress/bptc_ldr": 0,
+"compress/hdr_mode": 0,
+"compress/lossy_quality": 0.7,
+"compress/mode": 0,
+"compress/normal_map": 0,
+"detect_3d": true,
+"flags/anisotropic": false,
+"flags/filter": true,
+"flags/mipmaps": true,
+"flags/repeat": 0,
+"flags/srgb": 2,
+"process/HDR_as_SRGB": false,
+"process/fix_alpha_border": true,
+"process/invert_color": false,
+"process/premult_alpha": false,
+"size_limit": 0,
+"stream": false,
+"svg/scale": 1.0
+}
 
 [input]
 
@@ -505,6 +528,11 @@ left_click={
 right_click={
 "deadzone": 0.5,
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+rollback={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":5,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
 
