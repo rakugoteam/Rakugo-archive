@@ -1,3 +1,6 @@
 [submodule "rpg-game-kit"]
 	path = rpg-game-kit
 	url = https://github.com/rakugoteam/rakugo-open-rpg
+[submodule "question"]
+	path = question
+	url = https://github.com/rakugoteam/the-question-port
