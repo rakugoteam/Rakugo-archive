@@ -29,5 +29,5 @@ func connect_buttons():
 func _on_nav_button_pressed(nav_action):
 	if nav_action != "quit":
 		_show_menu(nav_action, Rakugo.started)
+
 	emit_signal("nav_button_press", nav_action)
-	pass

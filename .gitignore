@@ -10,6 +10,7 @@ mono_crash.*.*.json
 # Project specific
 addons/*
 !addons/Rakugo
+!addons/godot-next
 fontconfig
 refences/
 saves/
