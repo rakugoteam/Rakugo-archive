@@ -623,7 +623,7 @@ boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://graphics/window_icon.png"
 config/auto_accept_quit=false
 config/quit_on_go_back=false
-rakugo/version="0.0.1"
+rakugo/version="1.4.0"
 rakugo/game_credits="Jeremi {i}jebedaia360{/i} Biernacki, kurinoku"
 rakugo/debug=false
 rakugo/save_folder="saves"
@@ -635,7 +635,7 @@ rakugo/default_mcolumns=2.0
 rakugo/default_manchor="center"
 rakugo/punctuation_pause="1"
 rakugo/default_mcolums=2.0
-rakugo/theme="res://themes/Default/default.tres"
+rakugo/theme="res://themes/question/question.tres"
 rakugo/scene_links="res://game/scene_links.tres"
 rakugo/scenes_links="res://game/scenes_links.tres"
 
@@ -661,11 +661,34 @@ gdscript/warnings/return_value_discarded=false
 window/size/width=1280
 window/size/height=720
 window/stretch/mode="2d"
-window/stretch/aspect="expand"
+window/stretch/aspect="keep"
 
 [editor_plugins]
 
 enabled=PoolStringArray( "Rakugo", "godot-next", "godot-plugin-refresher" )
+
+[importer_defaults]
+
+texture={
+"compress/bptc_ldr": 0,
+"compress/hdr_mode": 0,
+"compress/lossy_quality": 0.7,
+"compress/mode": 0,
+"compress/normal_map": 0,
+"detect_3d": true,
+"flags/anisotropic": false,
+"flags/filter": true,
+"flags/mipmaps": true,
+"flags/repeat": 0,
+"flags/srgb": 2,
+"process/HDR_as_SRGB": false,
+"process/fix_alpha_border": true,
+"process/invert_color": false,
+"process/premult_alpha": false,
+"size_limit": 0,
+"stream": false,
+"svg/scale": 1.0
+}
 
 [input]
 

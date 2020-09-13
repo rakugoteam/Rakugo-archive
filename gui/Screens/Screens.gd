@@ -19,6 +19,7 @@ func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
 		if $QuitScreen.visible:
 			_on_quit_confirm()
+
 		$QuitScreen.visible = true
 		
 
@@ -29,25 +30,35 @@ func _on_nav_button_press(nav):
 			in_game()
 			Rakugo.start()
 			Rakugo.emit_signal("begin")
+
 		"continue":
 			if !Rakugo.loadfile("auto"):
 				return
+
 			in_game()
 			hide()
+
 		"save":
 			save_menu(get_screenshot())
+
 		"load":
 			load_menu()
+
 		"history":
 			show_page(2)
+
 		"preferences":
 			show_page(3)
+
 		"about":
 			show_page(1)
+
 		"main_menu":
 			show_main_menu()
+
 		"return":
 			show_main_menu()
+
 		"quit":
 			$QuitScreen.visible = true
 		
@@ -79,6 +90,7 @@ func _on_visibility_changed():
 	if visible:
 		get_tree().paused = true
 		Window.InGameGUI.hide()
+
 	else:
 		Window.InGameGUI.show()
 		unpause_timer.start()
@@ -155,5 +167,6 @@ func _on_load_file():
 func _on_SavesSlotScreen_mode_changed(save_mode):
 	if save_mode:
 		emit_signal("show_menu", "save", Rakugo.started)
-	else:
-		emit_signal("show_menu", "load", Rakugo.started)
+		return
+	
+	emit_signal("show_menu", "load", Rakugo.started)
