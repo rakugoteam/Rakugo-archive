@@ -1,0 +1,3 @@
+[submodule "rpg-game-kit"]
+	path = rpg-game-kit
+	url = https://github.com/rakugoteam/rakugo-open-rpg
