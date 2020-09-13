@@ -22,7 +22,8 @@ func if_who(_parameters:Dictionary, _who:CharacterObject):
 		_parameters.what = _who.parse_what(_parameters.what)
 
 	if not ("kind" in _parameters):
-		_parameters["kind"] = _who.kind
+		_parameters["kind"] = Rakugo.default_kind
+		##_parameters["kind"] = _who.kind
 
 
 func if_not_who(_parameters:Dictionary):

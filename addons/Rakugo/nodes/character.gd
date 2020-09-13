@@ -10,11 +10,11 @@ export var prefix := "" setget _set_prefix, _get_prefix
 export var suffix := "" setget _set_suffix, _get_suffix
 export var avatar: PackedScene setget _set_avatar, _get_avatar
 export var icon: Image
-export (String, "adv", "top", "center", "left", "right", "nvl", "fullscreen") var kind: String setget _set_kind, _get_kind
-export (String, "vertical", "horizontal", "grid") var mkind: String setget _set_mkind, _get_mkind
-export (int, 0, 10) var mcolumns: int setget _set_mcolumns, _get_mcolumns
-export (String, "top_left", "top_right", "bottom_left", "bottom_right", "center_left", "center_top", "center_right", "center_bottom", "center") var manchor:= "center" setget _set_manchor, _get_manchor
-export var stats := {} setget _set_stats, _get_stats
+export var show_parameters: Dictionary setget _set_show_parameters, _get_show_parameters
+export var say_parameters: Dictionary setget _set_say_parameters, _get_say_parameters
+export var variables := {} setget _set_variables, _get_variables
+
+var vars := {} setget _set_variables, _get_variables
 
 var character: CharacterObject
 var _name := ""
@@ -25,11 +25,9 @@ var _prefix := ""
 var _suffix := ""
 var _id := ""
 var _saveable := true
-var _kind := "adv"
-var _mkind := "vertical"
-var _mcolumns := 0
-var _manchor := "center"
-var _stats := {}
+var _show_parameters := {}
+var _say_parameters := {}
+var _vars := {}
 
 func _ready() -> void:
 	_set_saveable(_saveable)
@@ -163,112 +161,61 @@ func _get_avatar() -> PackedScene:
 	return _avatar
 
 
-func _set_kind(value: String) -> void:
-	_kind = value
+func _set_show_parameters(value: Dictionary) -> void:
+	_show_parameters = value
 
 	if character:
-		character.kind = value
+		character.show_parameters = value
 
 
-func _get_kind() -> String:
-	if _kind == "":
-		_kind = ProjectSettings.get_setting(
-			"application/rakugo/default_kind"
-		)
+func _get_show_parameters() -> Dictionary:
+	if character:
+		if character.show_parameters:
+			return character.show_parameters
+	return _show_parameters
+	
+func _set_say_parameters(value: Dictionary) -> void:
+	_say_parameters = value
 
 	if character:
-		if character.kind:
-			return character.kind
-
-	return _kind
+		character.say_parameters = value
 
 
-func _set_mkind(value: String) -> void:
-	_mkind = value
+func _get_say_parameters() -> Dictionary:
+	if character:
+		if character.say_parameters:
+			return character.say_parameters
+	return _say_parameters
+
+
+func _set_variables(value: Dictionary) -> void:
+	_vars = value
 
 	if character:
-		character.mkind = value
+		character.vars = value
 
 
-func _get_mkind() -> String:
-	if _mkind == "":
-		_mkind = ProjectSettings.get_setting(
-			"application/rakugo/default_mkind"
-		)
-
+func _get_variables() -> Dictionary:
 	if character:
-		if character.mkind:
-			return character.mkind
+		if character.vars:
+			return character.vars
 
-	return _mkind
-
-
-func _set_mcolumns(value: int) -> void:
-	_mcolumns = value
-
-	if character:
-		character.mcolumns = value
-
-
-func _get_mcolumns() -> int:
-	if _mcolumns == 0:
-		_mcolumns = int(ProjectSettings.get_setting(
-			"application/rakugo/default_mcolumns"
-		))
-
-	if character:
-		if character.mcolumns:
-			return character.mcolumns
-
-	return _mcolumns
-
-
-func _set_manchor(value: String) -> void:
-	_manchor = value
-
-	if character:
-		character.manchor = value
-
-
-func _get_manchor() -> String:
-	if _manchor == "":
-		_manchor = ProjectSettings.get_setting(
-			"application/rakugo/default_manchor"
-		)
-
-	if character:
-		if character.manchor:
-			return character.manchor
-
-	return _manchor
-
-
-func _set_stats(value: Dictionary) -> void:
-	_stats = value
-
-	if character:
-		character.stats = value
-
-
-func _get_stats() -> Dictionary:
-	if character:
-		if character.stats:
-			return character.stats
-
-	return _stats
+	return _vars
 
 func get_dict() -> Dictionary:
 	var dict := {}
-	dict["name"]		= _name
-	dict["color"]		= _color.to_html()
+	dict["name"]	= _name
+	dict["color"]	= _color.to_html()
 	dict["prefix"]	= _prefix
 	dict["suffix"]	= _suffix
 
 	if _avatar:
 		dict["avatar"] = _avatar.resource_path
 
-	dict["stats"]	= _stats
-	dict["kind"]	= _kind
+	dict["show_parameters"]	= _show_parameters
+	dict["say_parameters"]	= _say_parameters
+	dict["variables"]		= _vars
+	
 
 	return dict
 

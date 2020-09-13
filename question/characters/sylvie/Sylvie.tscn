@@ -26,10 +26,13 @@ character_id = "s"
 character_name = "Sylvie"
 color = Color( 0.784314, 1, 0.784314, 1 )
 avatar = ExtResource( 3 )
-kind = "adv"
-mkind = "vertical"
-mcolumns = 2
-stats = {
+show_parameters = {
+
+}
+say_parameters = {
+
+}
+variables = {
 
 }
 

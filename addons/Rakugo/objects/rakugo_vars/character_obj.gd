@@ -8,25 +8,21 @@ var parameters_names: Array = [
 	"suffix",
 	"avatar",
 	"icon",
-	"stats",
-	"kind",
-	"mkind",
-	"mcolumns",
-	"manchor"
+	"show_parameters",
+	"say_parameters",
+	"variables"
 	]
 
 var _color := Color("#ffffff")
 var _avatar: String
 
-var name		:= ""
-var prefix		:= ""
-var suffix	 	:= ""
-var icon		:= ""
-var kind	 	:= ""
-var mkind	 	:= ""
-var mcolumns 	:= 0
-var manchor	 	:= ""
-var stats		:= {}
+var name			:= ""
+var prefix			:= ""
+var suffix	 		:= ""
+var icon			:= ""
+var show_parameters	:= {}
+var say_parameters	:= {}
+var variables		:= {}
 
 var color: String = "#ffffff" setget _set_color, _get_color
 var avatar setget _set_avatar, _get_avatar
@@ -52,20 +48,14 @@ func _init(var_id: String, var_value: Dictionary
 	if not ("icon" in _value):
 		_value["icon"] = ""
 
-	if not ("kind" in _value):
-		_value["kind"] = Rakugo.default_kind
+	if not ("show_parameters" in _value):
+		_value["show_parameters"] = show_parameters
 
-	if not ("mkind" in _value):
-		_value["mkind"] = Rakugo.default_mkind
+	if not ("say_parameters" in _value):
+		_value["say_parameters"] = say_parameters
 
-	if not ("mcolumns" in _value):
-		_value["mcolumns"] = Rakugo.default_mcolumns
-
-	if not ("manchor" in _value):
-		_value["manchor"] = Rakugo.default_manchor
-
-	if not ("stats" in _value):
-		_value["stats"] = stats
+	if not ("variables" in _value):
+		_value["variables"] = variables
 
 	_set_value(_value)
 
@@ -140,17 +130,15 @@ func parse_what(what: String) -> String:
 
 func character2dict() -> Dictionary:
 	var dict = {}
-	dict["name"]		= name
-	dict["color"]		= color
-	dict["prefix"]		= prefix
-	dict["suffix"]		= suffix
-	dict["icon"]		= icon
-	dict["avatar"]		= _avatar
-	dict["kind"]		= kind
-	dict["mkind"]		= mkind
-	dict["mcolumns"]	= mcolumns
-	dict["manchor"]		= manchor
-	dict["stats"]		= stats
+	dict["name"]			= name
+	dict["color"]			= color
+	dict["prefix"]			= prefix
+	dict["suffix"]			= suffix
+	dict["icon"]			= icon
+	dict["avatar"]			= _avatar
+	dict["show_parameters"]	= show_parameters
+	dict["say_parameters"]	= say_parameters
+	dict["variables"]		= variables
 
 	return dict
 
@@ -174,20 +162,14 @@ func dict2character(dict: Dictionary) -> void:
 	if dict.has("avatar"):
 		_avatar = dict.avatar
 
-	if dict.has("kind"):
-		kind = dict.kind
+	if dict.has("show_parameters"):
+		show_parameters = dict.show_parameters
 
-	if dict.has("mkind"):
-		mkind = dict.mkind
+	if dict.has("say_parameters"):
+		say_parameters = dict.say_parameters
 
-	if dict.has("mcolumns"):
-		mcolumns = dict.mcolumns
-
-	if dict.has("manchor"):
-		manchor = dict.manchor
-
-	if dict.has("stats"):
-		stats = dict.stats
+	if dict.has("variables"):
+		variables = dict.variables
 
 
 func parse_text(text: String, open: String, close: String) -> String:

@@ -10,10 +10,13 @@ script = ExtResource( 1 )
 character_id = "m"
 character_name = "Me"
 color = Color( 0.784314, 0.784314, 1, 1 )
-kind = "adv"
-mkind = "vertical"
-mcolumns = 2
-stats = {
+show_parameters = {
+
+}
+say_parameters = {
+
+}
+variables = {
 
 }
 
