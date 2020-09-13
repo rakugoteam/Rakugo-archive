@@ -14,6 +14,7 @@ onready var le : LineEdit  = $SceneLinksChooser/LineEdit
 
 func _ready() -> void:
 	for ch in box.get_children():
+		box.remove_child(ch)
 		ch.queue_free()
 
 	$Add.icon = get_icon("CreateNewSceneFrom", "EditorIcons")
@@ -58,6 +59,7 @@ func _on_new(_file_path:String) -> void:
 	file_path = _file_path
 
 	for ch in box.get_children():
+		box.remove_child(ch)
 		ch.queue_free()
 
 	scene_links = SceneLinks.new()
@@ -67,6 +69,7 @@ func _on_open(_file_path:String) -> void:
 	file_path = _file_path
 
 	for ch in box.get_children():
+		box.remove_child(ch)
 		ch.queue_free()
 
 	scene_links = load(file_path)

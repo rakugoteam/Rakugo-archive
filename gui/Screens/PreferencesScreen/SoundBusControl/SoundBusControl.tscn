@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends VBoxContainer
@@ -13,7 +13,7 @@ var mute := false
 
 func _ready() -> void:
 	bus_id = AudioServer.get_bus_index(bus_name)
-	$VBox/Label.text = label
+	$Control/Label.text = label
 	
 	mute = false
 	
@@ -21,8 +21,7 @@ func _ready() -> void:
 		mute = bool(settings.audio_buses[bus_name].mute)
 	
 	AudioServer.set_bus_mute(bus_id, mute)
-	$VBox/CheckButton.pressed = !mute
-	$VBox/CheckButton.connect(\"toggled\", self, \"set_bus_on\" )
+	$Control/CheckButton.pressed = mute
 	
 	volume = default_volume
 	
@@ -31,9 +30,6 @@ func _ready() -> void:
 	
 	AudioServer.set_bus_volume_db(bus_id, volume)
 	$Bar.value = volume
-	
-	$Bar.connect(\"value_changed\", self, \"set_bus_volume\")
-	connect(\"visibility_changed\", self, \"_on_visibility_changed\")
 
 
 func _on_visibility_changed() -> void:
@@ -43,7 +39,7 @@ func _on_visibility_changed() -> void:
 	volume = AudioServer.get_bus_volume_db(bus_id)
 	$Bar.value = volume
 	mute = AudioServer.is_bus_mute(bus_id)
-	$VBox/CheckButton.pressed = !mute
+	$Control/CheckButton.pressed = mute
 	settings.audio_buses[bus_name] = {\"mute\":mute, \"volume\":volume}
 #	prints(\"bus:\", bus_name, bus_id,
 #	AudioServer.get_bus_name(bus_id),
@@ -70,50 +66,55 @@ func set_bus_on(value: bool) -> void:
 #	\"mute:\", mute)
 "
 
-[sub_resource type="StreamTexture" id=2]
-flags = 4
-load_path = "res://.import/sound-on.png-c7069ca607a583f763fc164615f5a3ee.stex"
-
 [node name="SoundBusControl" type="VBoxContainer"]
-margin_top = 34.0
-margin_right = 400.0
-margin_bottom = 124.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 300, 0 )
 script = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 default_volume = -20
 
-[node name="VBox" type="HBoxContainer" parent="."]
-margin_right = 400.0
-margin_bottom = 52.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="Control" type="Control" parent="."]
+margin_right = 1280.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
 
-[node name="Label" type="Label" parent="VBox"]
-margin_right = 246.0
-margin_bottom = 52.0
+[node name="Label" type="Label" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Volume"
-align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="CheckButton" type="CheckButton" parent="VBox"]
-margin_left = 250.0
-margin_right = 400.0
-margin_bottom = 52.0
+[node name="CheckButton" type="CheckButton" parent="Control"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
 rect_min_size = Vector2( 150, 0 )
 pressed = true
-icon = SubResource( 2 )
+text = "Mute"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Bar" type="HSlider" parent="."]
-margin_top = 56.0
-margin_right = 400.0
-margin_bottom = 90.0
+margin_top = 44.0
+margin_right = 1280.0
+margin_bottom = 720.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 min_value = -50.0
 max_value = 12.0
 step = 0.1
 rounded = true
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="toggled" from="Control/CheckButton" to="." method="set_bus_on"]
+[connection signal="value_changed" from="Bar" to="." method="set_bus_volume"]

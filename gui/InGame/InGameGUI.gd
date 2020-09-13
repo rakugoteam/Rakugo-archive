@@ -2,10 +2,8 @@ extends Control
 
 func _input(event):
 	if visible:
-		if event.is_action_pressed("rollback"):
-			print("rollback")
 		if event.is_action_pressed("ui_cancel"):
-			Window.Screens.show()
+			Window.Screens._on_nav_button_press("save")
 		
 
 

@@ -56,6 +56,8 @@ func _thread_done(resource):
 	# Instantiate new scene
 	var new_scene = resource.instance()
 	# Free current scene
+	if r.current_root_node.get_parent():
+		r.current_root_node.get_parent().remove_child(r.current_root_node)
 	r.current_root_node.queue_free()
 
 	r.viewport.add_child(new_scene)

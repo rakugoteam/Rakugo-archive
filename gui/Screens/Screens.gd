@@ -4,6 +4,7 @@ extends RakugoControl
 export onready var unpause_timer: Timer = $UnpauseTimer
 
 signal show_menu(menu, game_started)
+signal show_main_menu_confirm()
 
 func _ready():
 	if Engine.editor_hint:
@@ -14,13 +15,6 @@ func _ready():
 	#qno_button.connect("pressed", self, "_on_Return_pressed")
 
 	Rakugo.connect("game_ended", self, "_on_game_end")
-
-func _notification(what):
-	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
-		if $QuitScreen.visible:
-			_on_quit_confirm()
-		$QuitScreen.visible = true
-		
 
 func _on_nav_button_press(nav):
 	match nav:
@@ -39,41 +33,50 @@ func _on_nav_button_press(nav):
 		"load":
 			load_menu()
 		"history":
-			show_page(2)
+			show_page(nav)
 		"preferences":
-			show_page(3)
+			show_page(nav)
 		"about":
-			show_page(1)
+			show_page(nav)
 		"main_menu":
-			show_main_menu()
+			if Rakugo.started:
+				emit_signal("show_main_menu_confirm")
+			else:
+				show_page(nav)
 		"return":
-			show_main_menu()
+			if Rakugo.started:
+				hide()
+			else:
+				show_page(nav)
 		"quit":
 			$QuitScreen.visible = true
 		
 
-func show_page(tab):
-	$SubMenus.current_tab = tab
+const page_action_index:Dictionary = {
+	'main_menu':0,
+	'return':0,
+	'about':1,
+	'help':1,
+	'history':2,
+	'preferences':3,
+	'save':4,
+	'load':4
+}
 
-func show_main_menu():
-	show_page(0)
+func show_page(action):
+	emit_signal("show_menu", action, Rakugo.started)
+	$SubMenus.current_tab = page_action_index[action]
 	show()
-
-func _on_back_button():
-	show_main_menu()
-
 
 func save_menu(screenshot):
 	$SubMenus/SavesSlotScreen.save_mode = true
 	$SubMenus/SavesSlotScreen.screenshot = screenshot
-	show_page(4)
-	show()
+	show_page("save")
 
 
 func load_menu():
 	$SubMenus/SavesSlotScreen.save_mode = false
-	show_page(4)
-	show()
+	show_page("load")
 
 func _on_visibility_changed():
 	if visible:
@@ -86,7 +89,7 @@ func _on_visibility_changed():
 		get_tree().paused = false
 
 
-# # if press "Return" or "no" on quit page
+# Unused at this point I think
 func _on_Return_pressed():
 	if visible:
 		hide()
@@ -103,15 +106,6 @@ func in_game():
 func _on_game_end():
 	#scrollbar.hide()
 	show()
-
-# if press "yes" on quit page
-func _on_quit_confirm():
-	if Rakugo.started:
-		Rakugo.savefile("auto")
-		Rakugo.save_global_history()
-
-	#settings.save_conf()
-	get_tree().quit()
 
 func get_screenshot():
 	var screenshot:Image = Window.viewport.get_texture().get_data()
@@ -138,7 +132,7 @@ func _input(event):
 
 	if event.is_action_pressed("ui_cancel"):
 		if visible:
-			_on_Return_pressed()
+			_on_nav_button_press("return")
 
 		return
 

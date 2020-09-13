@@ -1,13 +1,17 @@
-[gd_resource type="Theme" load_steps=33 format=2]
+[gd_resource type="Theme" load_steps=41 format=2]
 
-[ext_resource path="res://fonts/DejaVuSans.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://fonts/DejaVu/DejaVuSans-Oblique.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://addons/Rakugo/objects/resources/rakugo_theme.gd" type="Script" id=2]
+[ext_resource path="res://fonts/DejaVu/DejaVuSans-BoldOblique.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://fonts/DejaVu/DejaVuSans-Bold.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://fonts/DejaVu/DejaVuSansMono.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://fonts/DejaVu/DejaVuSans.ttf" type="DynamicFontData" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
 outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
-font_data = ExtResource( 1 )
+font_data = ExtResource( 6 )
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
@@ -79,35 +83,59 @@ bg_color = Color( 0, 0, 0, 0.8 )
 size = 22
 outline_color = Color( 0, 0, 0, 0 )
 use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=25]
+size = 22
+outline_color = Color( 0, 0, 0, 0 )
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=26]
+size = 22
+outline_color = Color( 0, 0, 0, 0 )
+use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxEmpty" id=25]
+[sub_resource type="DynamicFont" id=27]
+size = 22
+outline_color = Color( 0, 0, 0, 0 )
+use_filter = true
+font_data = ExtResource( 5 )
 
-[sub_resource type="StyleBoxLine" id=26]
+[sub_resource type="DynamicFont" id=28]
+size = 22
+outline_color = Color( 0, 0, 0, 0 )
+use_filter = true
+font_data = ExtResource( 6 )
+
+[sub_resource type="StyleBoxEmpty" id=29]
+
+[sub_resource type="StyleBoxLine" id=30]
 color = Color( 0.6, 0.8, 1, 1 )
 grow_begin = 11.0
 grow_end = -11.0
 thickness = 10
 vertical = true
 
-[sub_resource type="StyleBoxLine" id=27]
+[sub_resource type="StyleBoxLine" id=31]
 color = Color( 0.756863, 0.878431, 1, 1 )
 grow_begin = 11.0
 grow_end = -11.0
 thickness = 10
 vertical = true
 
-[sub_resource type="StyleBoxLine" id=28]
+[sub_resource type="StyleBoxLine" id=32]
 color = Color( 0.376471, 0.505882, 0.631373, 1 )
 grow_end = -21.0
 thickness = 10
 vertical = true
 
-[sub_resource type="NoiseTexture" id=29]
+[sub_resource type="NoiseTexture" id=33]
 width = 1
 height = 1
 
-[sub_resource type="StyleBoxFlat" id=30]
+[sub_resource type="StyleBoxFlat" id=34]
 bg_color = Color( 0, 0, 0, 1 )
 border_width_left = 5
 border_width_top = 5
@@ -120,7 +148,7 @@ expand_margin_top = 10.0
 expand_margin_bottom = 10.0
 
 [resource]
-default_font = SubResource( 24 )
+default_font = SubResource( 28 )
 Button/colors/font_color = Color( 0.533333, 0.533333, 0.533333, 1 )
 Button/colors/font_color_disabled = Color( 0.533333, 0.533333, 0.533333, 0.498039 )
 Button/colors/font_color_hover = Color( 0.756863, 0.878431, 1, 1 )
@@ -182,22 +210,22 @@ RichTextLabel/constants/shadow_offset_x = 1
 RichTextLabel/constants/shadow_offset_y = 1
 RichTextLabel/constants/table_hseparation = 3
 RichTextLabel/constants/table_vseparation = 3
-RichTextLabel/fonts/bold_font = null
-RichTextLabel/fonts/bold_italics_font = null
-RichTextLabel/fonts/italics_font = null
-RichTextLabel/fonts/mono_font = null
-RichTextLabel/fonts/normal_font = SubResource( 24 )
+RichTextLabel/fonts/bold_font = SubResource( 24 )
+RichTextLabel/fonts/bold_italics_font = SubResource( 25 )
+RichTextLabel/fonts/italics_font = SubResource( 26 )
+RichTextLabel/fonts/mono_font = SubResource( 27 )
+RichTextLabel/fonts/normal_font = SubResource( 28 )
 RichTextLabel/styles/focus = null
 RichTextLabel/styles/normal = null
-TabContainer/styles/panel = SubResource( 25 )
+TabContainer/styles/panel = SubResource( 29 )
 VScrollBar/icons/decrement = null
 VScrollBar/icons/decrement_highlight = null
 VScrollBar/icons/increment = null
 VScrollBar/icons/increment_highlight = null
-VScrollBar/styles/grabber = SubResource( 26 )
-VScrollBar/styles/grabber_highlight = SubResource( 27 )
-VScrollBar/styles/grabber_pressed = SubResource( 27 )
-VScrollBar/styles/scroll = SubResource( 28 )
+VScrollBar/styles/grabber = SubResource( 30 )
+VScrollBar/styles/grabber_highlight = SubResource( 31 )
+VScrollBar/styles/grabber_pressed = SubResource( 31 )
+VScrollBar/styles/scroll = SubResource( 32 )
 VScrollBar/styles/scroll_focus = null
 WindowDialog/colors/title_color = Color( 0, 0, 0, 0 )
 WindowDialog/constants/close_h_ofs = 0
@@ -205,9 +233,9 @@ WindowDialog/constants/close_v_ofs = 0
 WindowDialog/constants/scaleborder_size = 0
 WindowDialog/constants/title_height = 0
 WindowDialog/fonts/title_font = null
-WindowDialog/icons/close = SubResource( 29 )
-WindowDialog/icons/close_highlight = SubResource( 29 )
-WindowDialog/styles/panel = SubResource( 30 )
+WindowDialog/icons/close = SubResource( 33 )
+WindowDialog/icons/close_highlight = SubResource( 33 )
+WindowDialog/styles/panel = SubResource( 34 )
 script = ExtResource( 2 )
 links_color = Color( 0.133333, 0.368627, 0.74902, 1 )
 idle_node_color = Color( 0.533333, 0.533333, 0.533333, 1 )

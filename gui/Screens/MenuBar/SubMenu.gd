@@ -16,14 +16,13 @@ func _on_show_menu(menu, game_started):
 
 	visible = true
 	$"../ReturnButton".visible = true
-	
-	if menu == "main":
-		for nb in get_tree().get_nodes_in_group("nav_button"):
-			if nb.text == menu_names[menu]:
-				nb.pressed = true
-			if "nav_button_main_menu" in nb.get_groups():
-				nb.visible = false
-			elif "nav_button_game" in nb.get_groups():
-				nb.visible = true
+
+	for nb in get_tree().get_nodes_in_group("nav_button"):
+		if nb.text == menu_names[menu]:
+			nb.pressed = true
+		if "nav_button_main_menu" in nb.get_groups():
+			nb.visible = not game_started
+		elif "nav_button_game" in nb.get_groups():
+			nb.visible = game_started
 	
 	$CurrentSubMenu.text = menu_names[menu]

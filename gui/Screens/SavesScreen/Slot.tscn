@@ -7,7 +7,7 @@
 [ext_resource path="res://gui/Screens/SavesScreen/DateLabel.gd" type="Script" id=5]
 [ext_resource path="res://gui/Screens/SavesScreen/SaveNameLabel.gd" type="Script" id=6]
 [ext_resource path="res://gui/Screens/SavesScreen/DeleteButton.gd" type="Script" id=7]
-[ext_resource path="res://fonts/DejaVuSans.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://fonts/DejaVu/DejaVuSans.ttf" type="DynamicFontData" id=8]
 
 [sub_resource type="StyleBoxLine" id=1]
 content_margin_left = 5.0

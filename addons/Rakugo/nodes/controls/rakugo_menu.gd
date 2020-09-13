@@ -84,6 +84,7 @@ func _on_statement(type, parameters):
 	margin_right = get_screen_xy(anchor_right, "x")
 
 	for ch in get_children():
+		self.remove_child(ch)
 		ch.queue_free()
 
 	var i = 0
