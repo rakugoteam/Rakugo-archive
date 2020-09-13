@@ -8,8 +8,6 @@
 [ext_resource path="res://themes/Default/default.tres" type="Theme" id=6]
 [ext_resource path="res://gui/Window/Loading.gd" type="Script" id=7]
 
-
-
 [sub_resource type="StyleBoxEmpty" id=1]
 
 [node name="Window" type="Node2D"]

@@ -409,11 +409,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/nodes/root_node.gd"
 }, {
-"base": "Node2D",
-"class": "RootNode2D",
-"language": "GDScript",
-"path": "res://addons/Rakugo/nodes/2D_nodes/root_node2d.gd"
-}, {
 "base": "Resource",
 "class": "Save",
 "language": "GDScript",
@@ -595,7 +590,6 @@ _global_script_class_icons={
 "ResourceCollection": "",
 "ResourceSet": "",
 "RootNode": "res://addons/Rakugo/icons/rakugo_root_node.svg",
-"RootNode2D": "res://addons/Rakugo/icons/rakugo_root_node2d.svg",
 "Save": "res://addons/Rakugo/icons/save.svg",
 "SaveButton": "res://addons/Rakugo/icons/rakugo_save_button.svg",
 "Say": "",
@@ -620,9 +614,9 @@ _global_script_class_icons={
 
 [application]
 
-config/name="New Rakugo Game"
-run/main_scene="res://game/Start/Start.tscn"
-config/project_settings_override="res://game/rakugo.cfg"
+config/name="The Question: Rakugo Editon"
+run/main_scene="res://question/scenes/Start/start.tscn"
+config/project_settings_override="res://question/rakugo.cfg"
 boot_splash/image="res://graphics/splash.png"
 boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
@@ -669,7 +663,7 @@ window/size/height=720
 
 [editor_plugins]
 
-enabled=PoolStringArray( "Rakugo" )
+enabled=PoolStringArray( "Rakugo", "godot-next", "godot-plugin-refresher" )
 
 [input]
 
@@ -735,6 +729,11 @@ left_click={
 right_click={
 "deadzone": 0.5,
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+rollback={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":5,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
 

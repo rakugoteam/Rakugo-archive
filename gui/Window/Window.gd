@@ -1,4 +1,4 @@
-extends RootNode2D
+extends Node2D
 
 onready var viewport := $Panel/ViewportContainer/Viewport
 onready var Screens := $Panel/Screens
