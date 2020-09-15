@@ -45,7 +45,6 @@ custom_colors/font_color = Color( 0.6, 0.8, 1, 1 )
 valign = 2
 script = ExtResource( 5 )
 var_name = "title"
-default = "Deviant Discoveries"
 
 [node name="GameVersion" type="Label" parent="ScrollContainer/About"]
 margin_top = 204.0
@@ -65,5 +64,6 @@ margin_bottom = 275.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 2 )
+bbcode_text = ""
+text = ""
 script = ExtResource( 3 )
-rakugo_text_file = "res://addons/Rakugo/credits.txt"
