@@ -1,0 +1,141 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://themes/Default/default.tres" type="Theme" id=1]
+[ext_resource path="res://gui/Screens/SavesScreen/SlotButton.gd" type="Script" id=2]
+[ext_resource path="res://gui/Screens/SavesScreen/ScreenshotRect.gd" type="Script" id=3]
+[ext_resource path="res://gui/Screens/SavesScreen/Slot.gd" type="Script" id=4]
+[ext_resource path="res://gui/Screens/SavesScreen/DateLabel.gd" type="Script" id=5]
+[ext_resource path="res://gui/Screens/SavesScreen/SaveNameLabel.gd" type="Script" id=6]
+[ext_resource path="res://gui/Screens/SavesScreen/DeleteButton.gd" type="Script" id=7]
+[ext_resource path="res://fonts/DejaVu/DejaVuSans.ttf" type="DynamicFontData" id=8]
+
+[sub_resource type="StyleBoxLine" id=1]
+content_margin_left = 5.0
+color = Color( 0.756863, 0.878431, 1, 1 )
+grow_begin = 0.0
+grow_end = -42.0
+thickness = 5
+vertical = true
+
+[sub_resource type="StyleBoxEmpty" id=2]
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.376471, 0.505882, 0.631373, 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 14
+font_data = ExtResource( 8 )
+
+[node name="Slot" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 1 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/disabled = SubResource( 2 )
+custom_styles/normal = SubResource( 2 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+screenshot_panel_path = NodePath("VBoxContainer/Panel")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Button/VBoxContainer"]
+margin_right = 1270.0
+margin_bottom = 678.0
+mouse_filter = 2
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScreenshotRect" type="TextureRect" parent="Button/VBoxContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand = true
+stretch_mode = 7
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Delete" type="Button" parent="Button/VBoxContainer/Panel/ScreenshotRect"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -30.0
+margin_bottom = 30.0
+grow_horizontal = 0
+rect_min_size = Vector2( 32, 30 )
+text = "×"
+flat = true
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DateLabel" type="Label" parent="Button/VBoxContainer"]
+margin_top = 682.0
+margin_right = 1270.0
+margin_bottom = 699.0
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.768627, 0.768627, 0.768627, 1 )
+text = "Wednesday, September 30 2020, 00:00"
+align = 1
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveNameLabel" type="Label" parent="Button/VBoxContainer"]
+margin_top = 703.0
+margin_right = 1270.0
+margin_bottom = 720.0
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.768627, 0.768627, 0.768627, 1 )
+text = "save_filename"
+align = 1
+clip_text = true
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="set_datetime" from="." to="Button/VBoxContainer/DateLabel" method="_on_set_datetime"]
+[connection signal="set_delete_button" from="." to="Button/VBoxContainer/Panel/ScreenshotRect/Delete" method="_on_set_delete_button"]
+[connection signal="set_save_name" from="." to="Button/VBoxContainer/SaveNameLabel" method="_on_set_save_name"]
+[connection signal="set_screenshot" from="." to="Button/VBoxContainer/Panel/ScreenshotRect" method="_on_set_screenshot"]
+[connection signal="pressed" from="Button" to="." method="_on_save_select"]
+[connection signal="resized" from="Button/VBoxContainer/Panel" to="Button" method="_on_screenshot_panel_resized"]
+[connection signal="visibility_changed" from="Button/VBoxContainer/Panel" to="Button" method="_on_screenshot_panel_visibility_changed"]
+[connection signal="pressed" from="Button/VBoxContainer/Panel/ScreenshotRect/Delete" to="." method="_on_save_delete"]

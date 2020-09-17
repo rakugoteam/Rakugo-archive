@@ -3,7 +3,7 @@ class_name RakugoNodeCore
 
 signal on_substate(substate)
 
-func is_procent(x: float) -> bool:
+func is_percent(x: float) -> bool:
 	return (x >= 0.0 and x <= 1.0)
 
 
@@ -29,11 +29,11 @@ func show_at(show_args: Dictionary, def_pos:Vector2) -> Vector2:
 		y = y + show_args.y
 		Rakugo.debug(["y", y])
 
-	if is_procent(x) and x != 0:
+	if is_percent(x) and x != 0:
 		x = OS.window_size.x * x
 		Rakugo.debug(["x%", x])
 
-	if is_procent(y) and y != 0:
+	if is_percent(y) and y != 0:
 		y = OS.window_size.y * y
 		Rakugo.debug(["y%", y])
 

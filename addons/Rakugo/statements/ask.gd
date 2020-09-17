@@ -20,7 +20,7 @@ func exec() -> void:
 	variable = parameters.variable
 
 	if "value" in parameters:
-		parameters["value"] = Rakugo.text_passer(parameters.value)
+		parameters["value"] = Rakugo.text_parser(parameters.value)
 
 	.exec()
 

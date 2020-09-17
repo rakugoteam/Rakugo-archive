@@ -53,7 +53,7 @@ func on_state_changed(new_state: int) -> void:
 func _on_pressed() -> void:
 	._on_pressed()
 	quest_label.text = quest.title
-	quest_des_label.bbcode_text = Rakugo.text_passer(quest.description)
+	quest_des_label.bbcode_text = Rakugo.text_parser(quest.description)
 	if is_subquest:
 		return
 
@@ -68,4 +68,4 @@ func _on_pressed() -> void:
 
 func on_description_changed(new_des: String) -> void:
 	if pressed:
-		quest_des_label.bbcode_text = Rakugo.text_passer(new_des)
+		quest_des_label.bbcode_text = Rakugo.text_parser(new_des)

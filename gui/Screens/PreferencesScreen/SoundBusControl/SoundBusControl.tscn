@@ -1,0 +1,120 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends VBoxContainer
+
+export var default_volume := -30
+export(String) var label := \"Volume\"
+export(String) var bus_name := \"Master\"
+var bus_id := 0
+var volume := 0.0
+var mute := false
+
+
+func _ready() -> void:
+	bus_id = AudioServer.get_bus_index(bus_name)
+	$Control/Label.text = label
+	
+	mute = false
+	
+	if bus_name in settings.audio_buses:
+		mute = bool(settings.audio_buses[bus_name].mute)
+	
+	AudioServer.set_bus_mute(bus_id, mute)
+	$Control/CheckButton.pressed = mute
+	
+	volume = default_volume
+	
+	if bus_name in settings.audio_buses:
+		volume = float(settings.audio_buses[bus_name].volume)
+	
+	AudioServer.set_bus_volume_db(bus_id, volume)
+	$Bar.value = volume
+
+
+func _on_visibility_changed() -> void:
+	if not visible:
+		return
+	
+	volume = AudioServer.get_bus_volume_db(bus_id)
+	$Bar.value = volume
+	mute = AudioServer.is_bus_mute(bus_id)
+	$Control/CheckButton.pressed = mute
+	settings.audio_buses[bus_name] = {\"mute\":mute, \"volume\":volume}
+#	prints(\"bus:\", bus_name, bus_id,
+#	AudioServer.get_bus_name(bus_id),
+#	AudioServer.get_bus_index(bus_name),
+#	\"volume:\", volume, \"mute:\", mute)
+
+
+func set_bus_volume(value: int):
+	AudioServer.set_bus_volume_db(bus_id, value)
+	volume = value
+	settings.audio_buses[bus_name] = {\"mute\":mute, \"volume\":volume}
+#	prints(\"bus:\", bus_name, bus_id,
+#	AudioServer.get_bus_name(bus_id),
+#	AudioServer.get_bus_index(bus_name),
+#	\"volume:\", volume)
+
+
+func set_bus_on(value: bool) -> void:
+	AudioServer.set_bus_mute(bus_id, !value)
+	mute = value
+#	prints(\"bus:\", bus_name, bus_id,
+#	AudioServer.get_bus_name(bus_id),
+#	AudioServer.get_bus_index(bus_name),
+#	\"mute:\", mute)
+"
+
+[node name="SoundBusControl" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 300, 0 )
+script = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+default_volume = -20
+
+[node name="Control" type="Control" parent="."]
+margin_right = 1280.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
+
+[node name="Label" type="Label" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Volume"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckButton" type="CheckButton" parent="Control"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+rect_min_size = Vector2( 150, 0 )
+pressed = true
+text = "Mute"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bar" type="HSlider" parent="."]
+margin_top = 44.0
+margin_right = 1280.0
+margin_bottom = 720.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+min_value = -50.0
+max_value = 12.0
+step = 0.1
+rounded = true
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="toggled" from="Control/CheckButton" to="." method="set_bus_on"]
+[connection signal="value_changed" from="Bar" to="." method="set_bus_volume"]

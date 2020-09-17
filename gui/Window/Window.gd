@@ -1,12 +1,9 @@
-extends RootNode2D
+extends Node2D
 
-func _ready() -> void:
-	settings.connect("window_size_changed", self, "_on_window_size_changed")
+onready var viewport := $Panel/ViewportContainer/Viewport
+onready var Screens := $Panel/Screens
+onready var InGameGUI := $Panel/InGameGUI
+onready var Loading := $Panel/Loading
 
-
-func _process(delta: float) -> void:
-	var now = OS.window_size
-
-	if prev != now:
-		settings.temp_window_size = now
-		settings.apply(true)
+func _ready():
+	Rakugo.current_root_node = self

@@ -1,10 +1,12 @@
 extends HBoxContainer
 
-onready var Screens := get_node("../../Screens")
 var save_error_msg: String = "[color=red]Error saving Game[/color]"
 var load_error_msg: String = "[color=red]Error loading Game[/color]"
 
+signal quick_menu_press(quick_action)
+
 func _ready() -> void:
+	return
 	Rakugo.connect("exec_statement", self, "_on_statement")
 	$Auto.connect("pressed", self, "on_auto")
 
@@ -18,22 +20,22 @@ func _ready() -> void:
 	Rakugo.skip_timer.connect("stop_loop", self, "on_stop_loop")
 	Rakugo.auto_timer.connect("stop_loop", self, "on_stop_loop")
 
-	$History.connect("pressed", Screens, "history_menu")
+	$History.connect("pressed", Window.Screens, "history_menu")
 	$History.disabled = true
 
 	$QSave.connect("pressed", self, "_on_qsave")
 	$QLoad.connect("pressed",self, "_on_qload")
 
 	$Save.connect("pressed", self, "full_save")
-	$Load.connect("pressed", Screens, "load_menu")
-	$Quests.connect("pressed", Screens, "_on_Quests_pressed")
-	$Quit.connect("pressed", Screens, "_on_Quit_pressed")
-	$Options.connect("pressed", Screens, "_on_Options_pressed")
+	$Load.connect("pressed", Window.Screens, "load_menu")
+	$Quit.connect("pressed", Window.Screens, "_on_Quit_pressed")
+	$Options.connect("pressed", Window.Screens, "_on_Options_pressed")
 	$Hide.connect("toggled", self, "_on_Hide_toggled")
 
 
 func _on_checkpoint() -> void:
-	$InfoAnim.play("Checkpoint")
+	#$InfoAnim.play("Checkpoint")
+	pass
 
 
 func _on_back() -> void:
@@ -43,22 +45,24 @@ func _on_back() -> void:
 
 func _on_qsave() -> void:
 	if Rakugo.savefile():
-		$InfoAnim.play("Saved")
+		#$InfoAnim.play("Saved")
 		$QLoad.disabled = !Rakugo.can_qload()
 
 	else:
-		$InfoAnim/Panel/Label.bbcode_text = save_error_msg
-		$InfoAnim.play("GeneralNotif")
+		#$InfoAnim/Panel/Label.bbcode_text = save_error_msg
+		#$InfoAnim.play("GeneralNotif")
+		pass
 
 
 func _on_qload() -> void:
 	if Rakugo.loadfile():
-		$InfoAnim.play("Loaded")
+		#$InfoAnim.play("Loaded")
 		Rakugo.story_step()
 
 	else:
-		$InfoAnim/Panel/Label.bbcode_text = load_error_msg
-		$InfoAnim.play("GeneralNotif")
+		#$InfoAnim/Panel/Label.bbcode_text = load_error_msg
+		#$InfoAnim.play("GeneralNotif")
+		pass
 
 
 func _on_statement(type: int, parameters: Dictionary) -> void:
@@ -76,15 +80,15 @@ func on_auto() -> void:
 		on_stop_loop()
 		return
 
-	$InfoAnim.play("Auto")
+	#$InfoAnim.play("Auto")
 
 
 func on_stop_loop() -> void:
 	$Auto.pressed = false
 	$Skip.pressed = false
 	Rakugo.skipping = false
-	$InfoAnim.stop()
-	$InfoAnim/Panel.hide()
+	#$InfoAnim.stop()
+	#$InfoAnim/Panel.hide()
 
 
 func on_skip() -> void:
@@ -96,12 +100,12 @@ func on_skip() -> void:
 		on_stop_loop()
 		return
 
-	$InfoAnim.play("Skip")
+	#$InfoAnim.play("Skip")
 
 
 func full_save() -> void:
-	var screenshot = Screens.get_screenshot()
-	Screens.save_menu(screenshot)
+	var screenshot = Window.Screens.get_screenshot()
+	Window.Screens.save_menu(screenshot)
 
 
 func _hide_on_input(event):

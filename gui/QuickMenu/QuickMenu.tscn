@@ -1,0 +1,124 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://gui/QuickMenu/QuickMenu.gd" type="Script" id=1]
+[ext_resource path="res://gui/QuickMenu/QuickMenuButton.tscn" type="PackedScene" id=4]
+
+[node name="QuickMenu" type="Control"]
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonList" type="HBoxContainer" parent="."]
+anchor_left = 0.3
+anchor_right = 0.7
+anchor_bottom = 1.0
+grow_horizontal = 2
+rect_min_size = Vector2( 0, 40 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Hide" parent="ButtonList" instance=ExtResource( 4 )]
+margin_right = 125.0
+margin_bottom = 144.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+text = "Hide"
+quick_action = "hide"
+
+[node name="History" parent="ButtonList" instance=ExtResource( 4 )]
+visible = false
+margin_left = 142.0
+margin_right = 281.0
+margin_bottom = 144.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "History"
+quick_action = "history"
+
+[node name="Back" parent="ButtonList" instance=ExtResource( 4 )]
+visible = false
+margin_left = 256.0
+margin_right = 509.0
+margin_bottom = 144.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Back"
+quick_action = "back"
+
+[node name="Save" parent="ButtonList" instance=ExtResource( 4 )]
+margin_left = 129.0
+margin_right = 254.0
+margin_bottom = 144.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Save"
+quick_action = "save"
+
+[node name="Load" parent="ButtonList" instance=ExtResource( 4 )]
+margin_left = 258.0
+margin_right = 383.0
+margin_bottom = 144.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Load"
+quick_action = "load"
+
+[node name="Skip" parent="ButtonList" instance=ExtResource( 4 )]
+margin_left = 387.0
+margin_right = 512.0
+margin_bottom = 144.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+text = "Skip"
+quick_action = "skip"
+
+[node name="QSave" parent="ButtonList" instance=ExtResource( 4 )]
+visible = false
+margin_left = 898.0
+margin_right = 1023.0
+margin_bottom = 144.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Q. Save"
+quick_action = "quicksave"
+
+[node name="QLoad" parent="ButtonList" instance=ExtResource( 4 )]
+visible = false
+margin_left = 933.0
+margin_right = 1046.0
+margin_bottom = 144.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Q. Load"
+quick_action = "quickload"
+
+[node name="Preferences" parent="ButtonList" instance=ExtResource( 4 )]
+visible = false
+margin_left = 1070.0
+margin_right = 1280.0
+margin_bottom = 144.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Pref."
+quick_action = "preferences"
+
+[node name="Quit" parent="ButtonList" instance=ExtResource( 4 )]
+visible = false
+margin_left = 1100.0
+margin_right = 1280.0
+margin_bottom = 144.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Quit"
+quick_action = "quit"

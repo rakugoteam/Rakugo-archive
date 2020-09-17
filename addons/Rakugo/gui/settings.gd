@@ -3,84 +3,42 @@ extends Node
 const default_window_size := Vector2(1024, 600)
 
 var _prev_window_size: Vector2
-var _prev_window_minimized: bool
-var _prev_window_maximized: bool
 var _prev_window_fullscreen: bool
 
 var temp_window_size: Vector2
 var temp_vsync_enabled: bool
-var temp_window_type_id: int
+var temp_window_fullscreen: bool
 
 var window_size: Vector2 setget _set_window_size, _get_window_size
-var window_minimized: bool setget _set_window_minimized, _get_window_minimized
-var window_maximized: bool setget _set_window_maximized, _get_window_maximized
 var window_fullscreen: bool setget _set_window_fullscreen, _get_window_fullscreen
 
 var saves_scroll := 0
+var saves_skip_naming := false
+var saves_page_names := {}
 
 var audio_buses := {}
 
+
 signal window_size_changed(prev, now)
-signal window_minimized_changed(value)
-signal window_maximized_changed(value)
 signal window_fullscreen_changed(value)
-signal window_type_changed(value)
 
 func _ready() -> void:
-	temp_window_type_id = get_window_type_id()
+	temp_window_fullscreen = OS.window_fullscreen
 	temp_window_size = OS.window_size
 	temp_vsync_enabled = OS.vsync_enabled
 
 	load_conf()
 
 	_prev_window_size = OS.window_size
-	_prev_window_minimized = OS.window_minimized
-	_prev_window_maximized = OS.window_maximized
 	_prev_window_fullscreen = OS.window_fullscreen
-
-
-func get_window_type_id() -> int:
-	var window_type_id = 0
-	
-	if OS.window_fullscreen:
-		window_type_id = 1
-
-	if OS.window_maximized:
-		window_type_id = 2
-	
-	emit_signal("window_type_changed", window_type_id)
-	return window_type_id
-
 
 func _set_window_size(value: Vector2) -> void:
 	_prev_window_size = OS.window_size
 	OS.window_size = value
 	emit_signal("window_size_changed", _prev_window_size, value)
 
-
 func _get_window_size() -> Vector2:
 	return OS.window_size
-
-
-func _set_window_minimized(value: bool) -> void:
-	_prev_window_minimized = OS.window_minimized
-	OS.window_minimized = value
-	emit_signal("window_minimized_changed", value)
-
-
-func _get_window_minimized() -> bool:
-	return OS.window_minimized
-
-
-func _set_window_maximized(value: bool) -> void:
-	_prev_window_maximized = OS.window_maximized
-	OS.window_maximized = value
-	emit_signal("window_maximized_changed", value)
-
-
-func _get_window_maximized() -> bool:
-	return OS.window_maximized
-
 
 func _set_window_fullscreen(value: bool) -> void:
 	_prev_window_fullscreen = OS.window_fullscreen
@@ -91,23 +49,14 @@ func _set_window_fullscreen(value: bool) -> void:
 func _get_window_fullscreen() -> bool:
 	return OS.window_fullscreen
 
-
 func _process(delta: float) -> void:
 	if OS.window_size != _prev_window_size:
 		emit_signal("window_size_changed", _prev_window_size, OS.window_size)
-	
-	if OS.window_minimized != _prev_window_minimized:
-		emit_signal("window_minimized_changed", OS.window_minimized)
-	
-	if OS.window_maximized != _prev_window_maximized:
-		emit_signal("window_maximized_changed", OS.window_maximized)
 	
 	if OS.window_fullscreen != _prev_window_fullscreen:
 		emit_signal("window_fullscreen_changed", OS.window_fullscreen)
 	
 	_prev_window_size = OS.window_size
-	_prev_window_minimized = OS.window_minimized
-	_prev_window_maximized = OS.window_maximized
 	_prev_window_fullscreen = OS.window_fullscreen
 
 
@@ -117,10 +66,12 @@ func conf_set_rakugo_value(config: ConfigFile, value_name, def_rakugo_value):
 
 func save_conf() -> void:
 	var config = ConfigFile.new()
-	config.set_value("saves", "scroll", saves_scroll) 
+	config.set_value("saves", "scroll", saves_scroll)
+	config.set_value("saves", "skip_naming", saves_skip_naming)
+	config.set_value("saves", "page_names", saves_page_names)
 	config.set_value("display", "width", _get_window_size().x)
 	config.set_value("display", "height", _get_window_size().y)
-	config.set_value("display", "fullscreen", get_window_type_id())
+	config.set_value("display", "fullscreen", _get_window_fullscreen())
 	config.set_value("display", "vsync", OS.vsync_enabled)
 
 	var audio_bus = [
@@ -147,6 +98,8 @@ func save_conf() -> void:
 	conf_set_rakugo_value(config, "Skip_All_Text", "skip_all_text")
 	conf_set_rakugo_value(config, "Skip_After_Choices", "skip_after_choices")
 	
+	
+	
 	# Save the changes by overwriting the previous file
 	config.save("user://settings.cfg")
 
@@ -159,10 +112,12 @@ func load_conf() -> void:
 		return
 		
 	# Look for the display/width pair, and default to 1024 if missing
-	saves_scroll = config.get_value("saves", "scroll", 0) 
+	saves_scroll = config.get_value("saves", "scroll", 0)
+	saves_skip_naming = config.get_value("saves", "skip_naming", false)
+	saves_page_names = config.get_value("saves", "page_names", {})
 	temp_window_size.x = config.get_value("display", "width", default_window_size.x)
 	temp_window_size.y = config.get_value("display", "height", default_window_size.y)
-	temp_window_type_id = config.get_value("display", "fullscreen", 0)
+	temp_window_fullscreen = config.get_value("display", "fullscreen", false)
 	temp_vsync_enabled = config.get_value("display", "vsync", true)
 	
 	apply()
@@ -201,20 +156,7 @@ func load_conf() -> void:
 	Rakugo.set_var("skip_after_choices", skip_after_choices)
 
 
-func set_window_options(fullscreen, maximized):
-	_set_window_fullscreen(fullscreen)
-	_set_window_maximized(maximized)
 
-
-func apply(skip_window_type := false) -> void:
-	if not skip_window_type:
-		match temp_window_type_id:
-			0: # Windowed
-				set_window_options(false, false)
-			1: # Fullscreen
-				set_window_options(true, false)
-			2: # Maximized
-				set_window_options(false, true)
-		
-	_set_window_size(temp_window_size)
+func apply() -> void:
+	_set_window_fullscreen(temp_window_fullscreen)
 	OS.vsync_enabled = temp_vsync_enabled

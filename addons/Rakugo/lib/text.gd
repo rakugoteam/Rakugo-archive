@@ -1,19 +1,19 @@
 tool
 extends Node
-class_name RakugoTextPasser
+class_name RakugoTextParser
 
 var url_open: String = "[color=225ebf][url="
 var url_close: String = "[/url][/color]"
 var new_line: String = "\n"
 var tab: String = "\t"
 
-func text_passer(
+func text_parser(
 		text: String,
 		variables: Dictionary,
 		mode: String = "renpy",
 		links_color: String = ""
 		) -> String:
-	# passer for renpy or bbcode markup format
+	# parser for renpy or bbcode markup format
 	# its retrun bbcode
 	
 	if links_color == "":

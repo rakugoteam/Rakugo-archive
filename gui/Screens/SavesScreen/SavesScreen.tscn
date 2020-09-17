@@ -1,0 +1,385 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://gui/Screens/SavesScreen/Slot.tscn" type="PackedScene" id=1]
+[ext_resource path="res://gui/Screens/SavesScreen/SkipNamingButton.gd" type="Script" id=2]
+[ext_resource path="res://gui/Screens/SavesScreen/GridContainer.gd" type="Script" id=3]
+[ext_resource path="res://gui/Screens/SavesScreen/ScrollContainer.gd" type="Script" id=4]
+[ext_resource path="res://gui/Screens/SavesScreen/SavesScreen.gd" type="Script" id=5]
+[ext_resource path="res://gui/Screens/SavesScreen/page_buttons.tres" type="ButtonGroup" id=7]
+[ext_resource path="res://themes/Default/default.tres" type="Theme" id=8]
+[ext_resource path="res://gui/Screens/SavesScreen/ConfirmationDialog.gd" type="Script" id=9]
+[ext_resource path="res://gui/Screens/SavesScreen/DummySlot.tscn" type="PackedScene" id=10]
+[ext_resource path="res://gui/Screens/SavesScreen/PageNavBar.gd" type="Script" id=11]
+[ext_resource path="res://gui/Screens/SavesScreen/SavesScreenPageButton.gd" type="Script" id=12]
+[ext_resource path="res://gui/Screens/SavesScreen/PageLabel.gd" type="Script" id=13]
+[ext_resource path="res://fonts/DejaVu/DejaVuSans.ttf" type="DynamicFontData" id=14]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="DynamicFont" id=4]
+size = 28
+font_data = ExtResource( 14 )
+
+[sub_resource type="StyleBoxEmpty" id=5]
+content_margin_left = 40.0
+content_margin_right = 40.0
+content_margin_top = 40.0
+content_margin_bottom = 40.0
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="DynamicFont" id=7]
+size = 32
+font_data = ExtResource( 14 )
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[node name="SavesScreen" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+slot = ExtResource( 1 )
+dummy_slot = ExtResource( 10 )
+use_pages = true
+
+[node name="PageLabel" type="LineEdit" parent="." groups=[
+"save_screen_page_ui_element",
+]]
+anchor_left = 0.5
+anchor_top = 0.15
+anchor_right = 0.5
+anchor_bottom = 0.15
+grow_horizontal = 2
+size_flags_horizontal = 3
+custom_styles/read_only = SubResource( 1 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.6, 0.8, 1, 1 )
+text = "Page 1"
+align = 1
+expand_to_text_length = true
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="SavePage" type="Panel" parent="."]
+anchor_left = 0.04
+anchor_top = 0.25
+anchor_right = 0.96
+anchor_bottom = 0.87
+custom_styles/panel = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="SavePage" groups=[
+"save_screen_scroll_ui_element",
+]]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_vertical = 3
+theme = ExtResource( 8 )
+follow_focus = true
+scroll_horizontal_enabled = false
+scroll_vertical_enabled = false
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="SavePage/ScrollContainer"]
+margin_right = 1177.6
+margin_bottom = 50.0
+size_flags_horizontal = 3
+custom_constants/vseparation = 50
+custom_constants/hseparation = 7
+columns = 3
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot" parent="SavePage/ScrollContainer/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 387.0
+
+[node name="Slot2" parent="SavePage/ScrollContainer/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 394.0
+margin_right = 781.0
+
+[node name="Slot3" parent="SavePage/ScrollContainer/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 788.0
+margin_right = 1175.0
+
+[node name="Slot4" parent="SavePage/ScrollContainer/GridContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 50.0
+margin_right = 387.0
+margin_bottom = 50.0
+
+[node name="PageNavBar" type="HBoxContainer" parent="." groups=[
+"save_screen_page_ui_element",
+]]
+anchor_left = 0.2
+anchor_top = 0.9
+anchor_right = 0.8
+anchor_bottom = 0.95
+custom_constants/separation = 20
+alignment = 1
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PreviousPage" type="Button" parent="PageNavBar"]
+margin_left = 120.0
+margin_right = 147.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 0, 30 )
+theme = ExtResource( 8 )
+custom_styles/focus = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
+text = "<"
+flat = true
+script = ExtResource( 12 )
+
+[node name="QuisavePage" type="Button" parent="PageNavBar"]
+margin_left = 167.0
+margin_right = 186.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 0, 30 )
+theme = ExtResource( 8 )
+custom_styles/focus = SubResource( 8 )
+toggle_mode = true
+group = ExtResource( 7 )
+text = "Q"
+flat = true
+script = ExtResource( 12 )
+
+[node name="Page1" type="Button" parent="PageNavBar"]
+margin_left = 206.0
+margin_right = 221.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 0, 30 )
+theme = ExtResource( 8 )
+custom_styles/focus = SubResource( 6 )
+toggle_mode = true
+pressed = true
+group = ExtResource( 7 )
+text = "1"
+flat = true
+script = ExtResource( 12 )
+
+[node name="Page2" type="Button" parent="PageNavBar"]
+margin_left = 241.0
+margin_right = 256.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 0, 30 )
+theme = ExtResource( 8 )
+custom_styles/focus = SubResource( 6 )
+toggle_mode = true
+group = ExtResource( 7 )
+text = "2"
+flat = true
+script = ExtResource( 12 )
+
+[node name="Page3" type="Button" parent="PageNavBar"]
+margin_left = 276.0
+margin_right = 291.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 0, 30 )
+theme = ExtResource( 8 )
+custom_styles/focus = SubResource( 6 )
+toggle_mode = true
+group = ExtResource( 7 )
+text = "3"
+flat = true
+script = ExtResource( 12 )
+
+[node name="Page4" type="Button" parent="PageNavBar"]
+margin_left = 311.0
+margin_right = 326.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 0, 30 )
+theme = ExtResource( 8 )
+custom_styles/focus = SubResource( 6 )
+toggle_mode = true
+group = ExtResource( 7 )
+text = "4"
+flat = true
+script = ExtResource( 12 )
+
+[node name="Page5" type="Button" parent="PageNavBar"]
+margin_left = 346.0
+margin_right = 361.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 0, 30 )
+theme = ExtResource( 8 )
+custom_styles/focus = SubResource( 6 )
+toggle_mode = true
+group = ExtResource( 7 )
+text = "5"
+flat = true
+script = ExtResource( 12 )
+
+[node name="Page6" type="Button" parent="PageNavBar"]
+margin_left = 381.0
+margin_right = 396.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 0, 30 )
+theme = ExtResource( 8 )
+custom_styles/focus = SubResource( 6 )
+toggle_mode = true
+group = ExtResource( 7 )
+text = "6"
+flat = true
+script = ExtResource( 12 )
+
+[node name="Page7" type="Button" parent="PageNavBar"]
+margin_left = 416.0
+margin_right = 431.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 0, 30 )
+theme = ExtResource( 8 )
+custom_styles/focus = SubResource( 6 )
+toggle_mode = true
+group = ExtResource( 7 )
+text = "7"
+flat = true
+script = ExtResource( 12 )
+
+[node name="Page8" type="Button" parent="PageNavBar"]
+margin_left = 451.0
+margin_right = 466.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 0, 30 )
+theme = ExtResource( 8 )
+custom_styles/focus = SubResource( 6 )
+toggle_mode = true
+group = ExtResource( 7 )
+text = "8"
+flat = true
+script = ExtResource( 12 )
+
+[node name="Page9" type="Button" parent="PageNavBar"]
+margin_left = 486.0
+margin_right = 501.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 0, 30 )
+theme = ExtResource( 8 )
+custom_styles/focus = SubResource( 6 )
+toggle_mode = true
+group = ExtResource( 7 )
+text = "9"
+flat = true
+script = ExtResource( 12 )
+
+[node name="Page10" type="Button" parent="PageNavBar"]
+margin_left = 521.0
+margin_right = 551.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 0, 30 )
+theme = ExtResource( 8 )
+custom_styles/focus = SubResource( 6 )
+toggle_mode = true
+group = ExtResource( 7 )
+text = "10"
+flat = true
+script = ExtResource( 12 )
+
+[node name="Page11" type="Button" parent="PageNavBar"]
+margin_left = 571.0
+margin_right = 601.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 0, 30 )
+theme = ExtResource( 8 )
+custom_styles/focus = SubResource( 6 )
+toggle_mode = true
+group = ExtResource( 7 )
+text = "11"
+flat = true
+script = ExtResource( 12 )
+
+[node name="NextPage" type="Button" parent="PageNavBar"]
+margin_left = 621.0
+margin_right = 648.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 0, 30 )
+theme = ExtResource( 8 )
+custom_styles/focus = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
+text = ">"
+flat = true
+script = ExtResource( 12 )
+
+[node name="SkipNamingButton" type="CheckButton" parent="."]
+anchor_left = 0.8
+anchor_top = 0.9
+anchor_right = 0.9
+anchor_bottom = 0.95
+theme = ExtResource( 8 )
+text = "Skip Naming"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConfirmationPopup" type="AcceptDialog" parent="."]
+visible = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource( 8 )
+window_title = ""
+dialog_text = "Are you sure you want to overwrite your save?"
+dialog_hide_on_ok = false
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit" type="LineEdit" parent="ConfirmationPopup"]
+anchor_left = 0.1
+anchor_right = 0.9
+margin_left = -45.1
+margin_top = 35.0
+margin_right = 45.1
+margin_bottom = 62.0
+theme = ExtResource( 8 )
+align = 1
+caret_blink = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="add_save_slot" from="." to="SavePage/ScrollContainer/GridContainer" method="_on_add_save_slot"]
+[connection signal="clear_save_slots" from="." to="SavePage/ScrollContainer/GridContainer" method="_on_clear_save_slots"]
+[connection signal="mode_changed" from="." to="SkipNamingButton" method="_on_save_mode_changed"]
+[connection signal="page_changed" from="." to="PageNavBar" method="_on_page_changed"]
+[connection signal="page_changed" from="." to="PageLabel" method="_on_page_changed"]
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="text_changed" from="PageLabel" to="PageLabel" method="_on_text_changed"]
+[connection signal="scroll_ended" from="SavePage/ScrollContainer" to="SavePage/ScrollContainer" method="_on_scroll_ended"]
+[connection signal="visibility_changed" from="SavePage/ScrollContainer" to="SavePage/ScrollContainer" method="_on_visibility_changed"]
+[connection signal="change_page" from="PageNavBar" to="." method="_on_change_page"]
+[connection signal="toggled" from="SkipNamingButton" to="SkipNamingButton" method="_on_toggled"]
+[connection signal="confirmed" from="ConfirmationPopup" to="ConfirmationPopup" method="_on_confirmed"]
+[connection signal="popup_hide" from="ConfirmationPopup" to="ConfirmationPopup" method="_on_popup_hide"]

@@ -5,13 +5,9 @@
 [ext_resource path="res://gui/Labels/dialogue_text.tscn" type="PackedScene" id=3]
 [ext_resource path="res://addons/Rakugo/nodes/controls/rakugo_ask.gd" type="Script" id=4]
 
-
-
-
-
 [node name="NVL" type="HBoxContainer"]
 anchor_right = 1.0
-margin_bottom = 100.0
+anchor_bottom = 1.0
 size_flags_horizontal = 3
 script = ExtResource( 1 )
 __meta__ = {
@@ -26,7 +22,7 @@ line_edit_path = NodePath("../NVL/VBox/RakugoLineEdit")
 [node name="ViewportContainer" type="ViewportContainer" parent="."]
 visible = false
 margin_right = 100.0
-margin_bottom = 100.0
+margin_bottom = 720.0
 
 [node name="CharaterAvatar" type="Viewport" parent="ViewportContainer"]
 size = Vector2( 100, 100 )
@@ -38,30 +34,34 @@ usage = 0
 render_target_update_mode = 0
 
 [node name="VBox" type="VBoxContainer" parent="."]
-margin_right = 1024.0
-margin_bottom = 100.0
+margin_right = 1280.0
+margin_bottom = 720.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Label" parent="VBox" instance=ExtResource( 2 )]
-margin_right = 1024.0
+margin_right = 1280.0
+rect_min_size = Vector2( 0, 40 )
 rect_clip_content = false
 focus_mode = 0
 mouse_filter = 2
+size_flags_horizontal = 3
 scroll_active = false
 selection_enabled = false
 
 [node name="Dialogue" parent="VBox" instance=ExtResource( 3 )]
 margin_top = 44.0
-margin_right = 1024.0
-margin_bottom = 84.0
+margin_right = 1280.0
+margin_bottom = 720.0
 focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 selection_enabled = false
 
 [node name="RakugoLineEdit" type="LineEdit" parent="VBox"]
 visible = false
-margin_top = 76.0
-margin_right = 905.0
-margin_bottom = 100.0
+margin_top = 696.0
+margin_right = 1176.0
+margin_bottom = 720.0
 caret_blink = true
 script = ExtResource( 4 )

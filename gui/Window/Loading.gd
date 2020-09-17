@@ -7,7 +7,7 @@ var thread = null
 
 onready var progress = $Panel/VBoxContainer/ProgressBar
 
-var SIMULATED_DELAY_SEC = 1.0
+var SIMULATED_DELAY_SEC = 0.01
 
 func _ready() -> void:
 	hide()
@@ -56,6 +56,8 @@ func _thread_done(resource):
 	# Instantiate new scene
 	var new_scene = resource.instance()
 	# Free current scene
+	if r.current_root_node.get_parent():
+		r.current_root_node.get_parent().remove_child(r.current_root_node)
 	r.current_root_node.queue_free()
 
 	r.viewport.add_child(new_scene)

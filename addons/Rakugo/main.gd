@@ -239,16 +239,10 @@ func get_dialogs(node_name:String) -> Array:
 
 
 func story_step() -> void:
-	if (
-		current_node_name != "" and
-		not(current_node_name in get_dialog_nodes_names())
-		):
+	if current_node_name != "" and not(current_node_name in get_dialog_nodes_names()):
 		push_error("Node %s is not added to dialogs nodes" % current_node_name)
 
-	elif (
-		current_dialog_name != "" and
-		not (current_dialog_name in get_dialogs(current_node_name))
-		):
+	elif current_dialog_name != "" and not (current_dialog_name in get_dialogs(current_node_name)):
 		push_error("Node %s is not added %s to dialogs"
 			% [current_node_name, current_dialog_name])
 
@@ -288,8 +282,7 @@ func clean_dialogs() -> void:
 		for f in current_dialogs[n]:
 			if is_connected("story_step", n, f):
 				disconnect("story_step", n, f)
-
-		current_dialogs.erase(n)
+	current_dialogs = {}
 
 
 # use to add/register dialog
@@ -308,12 +301,12 @@ func add_dialog(node: Node, func_name: String) -> void:
 # parse text like in renpy to bbcode if mode == "renpy"
 # or parse bbcode with {vars} if mode == "bbcode"
 # default mode = Rakugo.markup
-func text_passer(text: String, mode := markup):
+func text_parser(text: String, mode := markup):
 	var links_color := Color.aqua.to_html()
 	if theme:
 		links_color = theme.links_color.to_html() 
 	
-	return TextPasser.text_passer(text, variables, mode, links_color)
+	return TextParser.text_parser(text, variables, mode, links_color)
 
 
 # add/overwrite global variable that Rakugo will see
@@ -711,11 +704,14 @@ func load_scene(scene_id: String) -> void:
 
 func end_game() -> void:
 	if current_root_node != null:
+		if current_root_node.get_parent():
+			current_root_node.get_parent().remove_child(current_root_node)
 		current_root_node.queue_free()
 
 	var start_scene = ProjectSettings.get_setting("application/run/main_scene")
 	var lscene = load(start_scene)
 	current_root_node = lscene.instance()
+	clean_dialogs()
 	get_tree().get_root().add_child(current_root_node)
 	started = false
 	quests.clear()
