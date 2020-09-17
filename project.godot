@@ -224,16 +224,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/objects/rakugo_vars/quest.gd"
 }, {
-"base": "RakugoButton",
-"class": "RPGButton",
-"language": "GDScript",
-"path": "res://rpg-game-kit/rpg/CombatArea/RPGButton.gd"
-}, {
-"base": "Character",
-"class": "RPGCharacter",
-"language": "GDScript",
-"path": "res://rpg-game-kit/rpg/Characters/RPGCharacter.gd"
-}, {
 "base": "AnimationPlayer",
 "class": "RakugoAnimPlayer",
 "language": "GDScript",
@@ -444,11 +434,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/lib/SkipTimer.gd"
 }, {
-"base": "Node",
-"class": "StartCombat",
-"language": "GDScript",
-"path": "res://rpg-game-kit/rpg/CombatArea/StartCombat.gd"
-}, {
 "base": "Object",
 "class": "Statement",
 "language": "GDScript",
@@ -553,8 +538,6 @@ _global_script_class_icons={
 "PropertyInfo": "",
 "PropertyInfoFactory": "",
 "Quest": "",
-"RPGButton": "",
-"RPGCharacter": "",
 "RakugoAnimPlayer": "res://addons/Rakugo/icons/rakugo_animation_player.svg",
 "RakugoAsk": "res://addons/Rakugo/icons/rakugo_ask.svg",
 "RakugoAudioPlayer": "res://addons/Rakugo/icons/rakugo_audio_player.svg",
@@ -597,7 +580,6 @@ _global_script_class_icons={
 "Show": "",
 "Singletons": "",
 "SkipTimer": "",
-"StartCombat": "",
 "Statement": "",
 "StopAnim": "",
 "StopAudio": "",
@@ -614,8 +596,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="The Question: Rakugo Editon"
-run/main_scene="res://question/scenes/Start/start.tscn"
+config/name="New Rakugo Game"
+run/main_scene="res://game/Start/Start.tscn"
 config/project_settings_override="res://question/rakugo.cfg"
 boot_splash/image="res://graphics/splash.png"
 boot_splash/fullsize=false
@@ -665,7 +647,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "Rakugo", "godot-next", "godot-plugin-refresher" )
+enabled=PoolStringArray( "Rakugo", "godot-next" )
 
 [importer_defaults]
 
