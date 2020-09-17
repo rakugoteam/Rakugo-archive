@@ -208,6 +208,6 @@ margin_right = 133.0
 margin_bottom = 35.0
 text = "Return"
 nav_action = "return"
-[connection signal="show_menu" from="." to="MainMenu" method="_on_show_menu"]
 [connection signal="show_menu" from="." to="SubMenu" method="_on_show_menu"]
+[connection signal="show_menu" from="." to="MainMenu" method="_on_show_menu"]
 [connection signal="pressed" from="NavList/Continue" to="." method="_on_Continue_pressed"]
