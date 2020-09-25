@@ -19,7 +19,6 @@ func disable_continue_button():
 			n.disabled = true
 
 func _show_menu(menu, game_started):
-	print(Rakugo.started,"  ", game_started)
 	emit_signal("show_menu", menu, game_started)
 
 func connect_buttons():
