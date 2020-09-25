@@ -15,14 +15,6 @@ func _ready():
 	Rakugo.connect("game_ended", self, "_on_game_end")
 
 
-func _notification(what):
-	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
-		if $QuitScreen.visible:
-			_on_quit_confirm()
-
-		$QuitScreen.visible = true
-
-
 func _on_nav_button_press(nav):
 	match nav:
 		"start":
@@ -52,14 +44,14 @@ func _on_nav_button_press(nav):
 			show_page(nav)
 		"main_menu":
 			if Rakugo.started:
-				emit_signal("show_main_menu_confirm"
+				emit_signal("show_main_menu_confirm")
 			else:
 				show_page(nav)
 
 		"return":
 			if Rakugo.started:
 				hide()
-			  return
+				return
 
 			show_page(nav)
 
