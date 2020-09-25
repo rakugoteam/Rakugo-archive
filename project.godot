@@ -94,6 +94,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/godot-next/gui/debug_label.gd"
 }, {
+"base": "Node",
+"class": "Dialogue",
+"language": "GDScript",
+"path": "res://addons/Rakugo/nodes/dialogue.gd"
+}, {
 "base": "ImageTexture",
 "class": "DiscreteGradientTexture",
 "language": "GDScript",
@@ -118,11 +123,6 @@ _global_script_classes=[ {
 "class": "FileSystemLink",
 "language": "GDScript",
 "path": "res://addons/godot-next/global/file_system_link.gd"
-}, {
-"base": "Node",
-"class": "GDScriptDialog",
-"language": "GDScript",
-"path": "res://addons/Rakugo/nodes/gdscript_dialog.gd"
 }, {
 "base": "CollisionShape2D",
 "class": "Geometry2D",
@@ -512,12 +512,12 @@ _global_script_class_icons={
 "CollapsedList": "",
 "Cycle": "res://addons/godot-next/icons/icon_cycle.svg",
 "DebugLabel": "",
+"Dialogue": "res://addons/Rakugo/icons/gdscript.svg",
 "DiscreteGradientTexture": "",
 "EditorTools": "",
 "Emojis": "res://addons/Rakugo/emojis/icon.png",
 "FileSearch": "",
 "FileSystemLink": "",
-"GDScriptDialog": "res://addons/Rakugo/icons/gdscript.svg",
 "Geometry2D": "res://addons/godot-next/icons/icon_geometry_2d.svg",
 "Hide": "",
 "HistorySave": "res://addons/Rakugo/icons/save.svg",
@@ -598,28 +598,28 @@ _global_script_class_icons={
 
 config/name="New Rakugo Game"
 run/main_scene="res://game/Start/Start.tscn"
-config/project_settings_override="res://question/rakugo.cfg"
+config/project_settings_override="res://game/rakugo.cfg"
 boot_splash/image="res://graphics/splash.png"
 boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://graphics/window_icon.png"
 config/auto_accept_quit=false
 config/quit_on_go_back=false
-rakugo/version="1.4.0"
+rakugo/version="0.0.1"
 rakugo/game_credits="Jeremi {i}jebedaia360{/i} Biernacki, kurinoku"
 rakugo/debug=false
 rakugo/save_folder="saves"
 rakugo/default_kind="nvl"
-rakugo/test_saves=false
+rakugo/test_saves=true
 rakugo/markup="renpy"
 rakugo/default_mkind="grid"
 rakugo/default_mcolumns=2.0
 rakugo/default_manchor="center"
 rakugo/punctuation_pause="1"
 rakugo/default_mcolums=2.0
-rakugo/theme="res://themes/question/question.tres"
 rakugo/scene_links="res://game/scene_links.tres"
 rakugo/scenes_links="res://game/scenes_links.tres"
+rakugo/theme="res://themes/Default/default.tres"
 
 [autoload]
 

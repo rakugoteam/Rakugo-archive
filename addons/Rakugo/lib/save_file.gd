@@ -1,27 +1,26 @@
 extends Node
-onready var r = Rakugo
+
 
 func invoke(save_name: String) -> bool:
 	var new_save := Save.new()
-	new_save.game_version = r.game_version
-	new_save.rakugo_version = r.rakugo_version
-	new_save.history = r.history.duplicate()
-	new_save.scene = r.current_scene
-	new_save.node_name = r.current_node_name
-	new_save.dialog_name = r.current_dialog_name
-	new_save.story_state = r.story_state
+	new_save.game_version = Rakugo.game_version
+	new_save.rakugo_version = Rakugo.rakugo_version
+	new_save.history = Rakugo.history.duplicate()
+	new_save.scene = Rakugo.current_scene_name
 
-	var save_folder_path = "user://".plus_file(r.save_folder)
+	var save_folder_path = "user://".plus_file(Rakugo.save_folder)
 
-	if r.test_save:
-		save_folder_path = "res://".plus_file(r.save_folder)
+	if Rakugo.test_save:
+		save_folder_path = "res://".plus_file(Rakugo.save_folder)
 
-	for node in r.get_tree().get_nodes_in_group("save"):
+	for node in Rakugo.get_tree().get_nodes_in_group("save"):
 		if node.has_method("on_save"):
 			node.on_save()
 			continue
+	
+	get_tree().get_root().propagate_call('_save', [new_save])
 
-	for v in r.variables.values():
+	for v in Rakugo.variables.values():
 		v.save_to(new_save.data)
 
 	var dir := Directory.new()
@@ -31,7 +30,7 @@ func invoke(save_name: String) -> bool:
 
 	var save_path = save_folder_path.plus_file(save_name)
 
-	if r.test_save:
+	if Rakugo.test_save:
 		save_path += ".tres"
 
 	else:

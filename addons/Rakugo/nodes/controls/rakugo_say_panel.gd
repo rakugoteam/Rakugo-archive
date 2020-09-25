@@ -132,7 +132,7 @@ func _on_statement(type: int, parameters: Dictionary) -> void:
 		if "typing" in parameters:
 			_typing = parameters.typing
 
-		var dtime = Rakugo.get_value("text_time")
+		var dtime = Rakugo.get_value("text_time", 0.2)
 
 		if "type_speed" in parameters:
 			_typing = true
@@ -146,7 +146,7 @@ func _on_statement(type: int, parameters: Dictionary) -> void:
 				typing = false
 				dtime = 0.01
 
-		Rakugo.dialog_timer.wait_time = dtime
+		Rakugo.dialogue_timer.wait_time = dtime
 
 		add_text = false
 

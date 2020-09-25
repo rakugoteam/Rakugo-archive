@@ -6,5 +6,5 @@
 
 [node name="SomeDialog" type="Node" parent="."]
 script = ExtResource( 1 )
-begin_from = [ "Start", "some_dialog" ]
-dialogs_names = [ "some_dialog" ]
+default_starting_event = "some_dialog"
+auto_start = true

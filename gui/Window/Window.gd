@@ -6,4 +6,4 @@ onready var InGameGUI := $Panel/InGameGUI
 onready var Loading := $Panel/Loading
 
 func _ready():
-	Rakugo.current_root_node = self
+	Rakugo.current_scene_node = self

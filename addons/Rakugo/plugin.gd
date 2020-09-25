@@ -47,7 +47,7 @@ func init_project_settings():
 
 	default_setting(
 		"application/rakugo/theme",
-		"res://themes/question/question.tres"
+		"res://themes/Default/default.tres"
 	)
 
 	default_setting(

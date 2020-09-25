@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://gui/Window/Window.gd" type="Script" id=1]
 [ext_resource path="res://gui/InGame/InGameGUI.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://gui/Window/blur_shadermaterial.tres" type="Material" id=5]
 [ext_resource path="res://themes/Default/default.tres" type="Theme" id=6]
 [ext_resource path="res://gui/Window/Loading.gd" type="Script" id=7]
+[ext_resource path="res://gui/Window/LoadingProgressBar.gd" type="Script" id=8]
 
 [node name="Window" type="Node2D"]
 pause_mode = 2
@@ -45,18 +46,12 @@ node_id = "InGameGUI"
 
 [node name="Screens" parent="Panel" instance=ExtResource( 4 )]
 
-[node name="Loading" type="Control" parent="Panel" groups=[
-"save",
-]]
+[node name="Loading" type="Control" parent="Panel"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 6 )
 script = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-use_theme_from_setting = true
 
 [node name="Panel" type="Panel" parent="Panel/Loading"]
 anchor_right = 1.0
@@ -88,7 +83,8 @@ size_flags_vertical = 3
 text = "Loading"
 align = 1
 
-[node name="ProgressBar" type="ProgressBar" parent="Panel/Loading/Panel/VBoxContainer"]
+[node name="LoadingProgressBar" type="ProgressBar" parent="Panel/Loading/Panel/VBoxContainer"]
 margin_top = 39.0
 margin_right = 511.0
 margin_bottom = 66.0
+script = ExtResource( 8 )

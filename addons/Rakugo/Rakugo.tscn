@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://addons/Rakugo/main.gd" type="Script" id=1]
 [ext_resource path="res://addons/Rakugo/lib/define.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://addons/Rakugo/lib/save_file.gd" type="Script" id=6]
 [ext_resource path="res://addons/Rakugo/lib/save_global_history.gd" type="Script" id=7]
 [ext_resource path="res://addons/Rakugo/lib/load_global_history.gd" type="Script" id=8]
+[ext_resource path="res://addons/Rakugo/lib/load_scene.gd" type="Script" id=9]
 [ext_resource path="res://addons/Rakugo/statements/say.gd" type="Script" id=11]
 [ext_resource path="res://addons/Rakugo/statements/ask.gd" type="Script" id=12]
 [ext_resource path="res://addons/Rakugo/statements/menu.gd" type="Script" id=13]
@@ -35,6 +36,9 @@ script = ExtResource( 3 )
 
 [node name="Jump" type="Node" parent="."]
 script = ExtResource( 4 )
+
+[node name="LoadScene" type="Node" parent="."]
+script = ExtResource( 9 )
 
 [node name="LoadFile" type="Node" parent="."]
 script = ExtResource( 5 )
@@ -88,9 +92,10 @@ var_name = "auto_time"
 [node name="SkipTimer" type="Timer" parent="."]
 script = ExtResource( 23 )
 
-[node name="DialogTimer" type="Timer" parent="."]
+[node name="DialogueTimer" type="Timer" parent="."]
 one_shot = true
 script = ExtResource( 24 )
+var_name = "text_time"
 
 [node name="StepTimer" type="Timer" parent="."]
 wait_time = 0.01

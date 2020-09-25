@@ -51,10 +51,10 @@ func on_exit(_type: int, new_parameters := {}) -> void:
 
 func get_history_id() -> Array:
 	var id_list = [
-		Rakugo.current_scene,
-		Rakugo.current_node_name,
-		Rakugo.current_dialog_name,
-		Rakugo.story_state
+		Rakugo.current_scene_name,
+		Rakugo.current_dialogue.name,
+		Rakugo.current_dialogue.event_stack[0][0],
+		Rakugo.current_dialogue.event_stack[0][1]
 	]
 
 	var id = PoolStringArray(id_list).join(",")
