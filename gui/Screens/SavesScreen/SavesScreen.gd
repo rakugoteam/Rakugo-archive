@@ -173,6 +173,8 @@ func _on_save_select(save_filename, page_index):
 		else:
 			save_save(save_filename)
 	else:
+		if use_pages:
+			save_filename = "%d_%d_%s" % [page_index.x, page_index.y, save_filename]
 		load_save(save_filename)
 
 func save_save(caller: String) -> bool:
@@ -212,7 +214,7 @@ func save_save(caller: String) -> bool:
 	screenshot.save_png(png_path)
 
 	Rakugo.debug(["caller:", caller])
-	Rakugo.savefile(caller)
+	Rakugo.save_game(caller)
 
 	update_grid()
 
@@ -252,7 +254,7 @@ func save_page_save(caller: String, page_index:Vector2) -> bool:
 	screenshot.save_png(png_path)
 
 	Rakugo.debug(["caller:", caller])
-	Rakugo.savefile(caller)
+	Rakugo.save_game(caller)
 
 	update_grid()
 	#get_parent().in_game()
@@ -281,7 +283,7 @@ func load_save(caller: String) -> void:
 	if !dir.dir_exists(saveslots_dir):
 		dir.make_dir(saveslots_dir)
 
-	if Rakugo.loadfile(caller):
+	if Rakugo.load_game(caller):
 		emit_signal("load_file")
 
 

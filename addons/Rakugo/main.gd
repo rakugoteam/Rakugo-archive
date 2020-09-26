@@ -74,12 +74,13 @@ var global_history := {}
 
 # this store all RakugoVars
 var variables := {}
+var store = null setget set_current_store, get_current_store 
 
 # if `false` then InGameGUI will stay hidden even if `Rakugo.show("InGameGUI")` is called
 var can_show_in_game_gui := true setget _set_in_game_gui, _get_in_game_gui
 
 # don't save this
-onready var menu_node: = $Menu
+onready var menu_node: = $Statements/Menu
 var viewport : Viewport
 var loading_screen : RakugoControl
 var current_scene_path := ""
@@ -91,7 +92,6 @@ var can_alphanumeric := true
 var emoji_size := 16
 var skipping := false
 var can_save := true
-var step_semaphore:Semaphore = Semaphore.new()
 
 const skip_types := [
 	StatementType.SAY,
@@ -142,6 +142,8 @@ onready var step_timer := $StepTimer
 onready var dialogue_timer := $DialogueTimer
 onready var notify_timer := $NotifyTimer
 
+onready var SceneLoader: = $SceneLoader
+
 # saved automatically - it is RagukoVar
 var story_state:int setget _set_story_state, _get_story_state
 
@@ -160,14 +162,11 @@ signal begin()
 signal hide_ui(value)
 signal checkpoint()
 signal game_ended()
-signal load_scene(resource_interactive_loader)
-signal loading_scene()
-signal scene_loaded()
 
 
 func _ready() -> void:
 
-
+	$StoreManager.init()
 	for v in variables:
 		variables[v].save_included = false
 
@@ -227,8 +226,15 @@ func get_dialogue_nodes_names() -> Array:
 	return arr
 
 
+func clean_viewport():
+	for c in self.viewport.get_children():
+		self.viewport.remove_child(c)
+
+
 func story_step() -> void:
-	self.step_semaphore.post()
+	$StoreManager.stack_next_store()
+	print("emitting _step")
+	get_tree().get_root().propagate_call('_step')
 	#emit_signal("story_step", current_dialogue_name, current_event_name)
 
 
@@ -260,8 +266,9 @@ func on_stop_audio(node_id: String) -> void:
 	emit_signal("stop_audio", node_id)
 
 
-func clean_dialogues() -> void:
-	self.current_dialogue.exit()
+func exit_dialogue() -> void:
+	if self.current_dialogue:
+		self.current_dialogue.exit()
 
 # parse text like in renpy to bbcode if mode == "renpy"
 # or parse bbcode with {vars} if mode == "bbcode"
@@ -277,7 +284,7 @@ func text_parser(text: String, mode := markup):
 # add/overwrite global variable that Rakugo will see
 # and returns it as RakugoVar for easy use
 func define(var_name: String, value = null, save_included := true) -> RakugoVar:
-	var v = $Define.invoke(var_name, value , save_included)
+	var v = $Statements/Define.invoke(var_name, value , save_included)
 
 	if v:
 		return v
@@ -324,7 +331,7 @@ func set_var(var_name: String, value) -> RakugoVar:
 # returns exiting Rakugo variable as one of RakugoTypes for easy use
 # It must be with out returned type, because we can't set it as list of types
 func get_var(var_name: String) -> RakugoVar:
-	return $GetVar.invoke(var_name)
+	return $Statements/GetVar.invoke(var_name)
 
 
 # to use with `define_from_str` func as var_type arg
@@ -400,7 +407,7 @@ func character(character_id: String, parameters := {}) -> CharacterObject:
 # crate new link to node as global variable that Rakugo will see
 # it can have name as other existing varbiable
 func node_link(node_id: String, node: NodePath) -> NodeLink:
-	return $Define.node_link(node_id, node, variables)
+	return $Statements/Define.node_link(node_id, node, variables)
 
 
 func get_node_link(node_id: String) -> NodeLink:
@@ -411,7 +418,7 @@ func get_node_link(node_id: String) -> NodeLink:
 # crate new link to node avatar as global variable that Rakugo will see
 # it can have name as other existing varbiable
 func avatar_link(node_id: String, node: NodePath) -> Avatar:
-	return $Define.avatar_link(node_id, node, variables)
+	return $Statements/Define.avatar_link(node_id, node, variables)
 
 
 func get_avatar_link(node_id: String) -> Avatar:
@@ -454,7 +461,7 @@ func _set_statement(node: Node, parameters: Dictionary) -> void:
 # with keywords: who, what, typing, type_speed, kind, avatar, avatar_state, add
 # speed is time to show next letter
 func say(parameters: Dictionary) -> void:
-	_set_statement($Say, parameters)
+	_set_statement($Statements/Say, parameters)
 
 
 # statement of type ask
@@ -464,7 +471,7 @@ func say(parameters: Dictionary) -> void:
 # with keywords: who, what, typing, type_speed, kind, variable, value, avatar, avatar_state, add
 # speed is time to show next letter
 func ask(parameters: Dictionary) -> void:
-	_set_statement($Ask, parameters)
+	_set_statement($Statements/Ask, parameters)
 
 
 # statement of type menu
@@ -473,7 +480,7 @@ func ask(parameters: Dictionary) -> void:
 # with keywords:who, what, typing, type_speed, kind, choices, mkind, avatar, avatar_state, add
 # speed is time to show next letter
 func menu(parameters: Dictionary) -> void:
-	_set_statement($Menu, parameters)
+	_set_statement($Statements/Menu, parameters)
 
 
 # it show custom rakugo node or character
@@ -484,7 +491,7 @@ func menu(parameters: Dictionary) -> void:
 # "at" is lists that can have: "top", "center", "bottom", "right", "left"
 func show(node_id:String, parameters := {"state": []}):
 	parameters["node_id"] = node_id
-	_set_statement($Show, parameters)
+	_set_statement($Statements/Show, parameters)
 
 
 # statement of type hide
@@ -493,7 +500,7 @@ func hide(node_id: String) -> void:
 		"node_id":node_id
 	}
 
-	_set_statement($Hide, parameters)
+	_set_statement($Statements/Hide, parameters)
 
 
 # statement of type notify
@@ -503,7 +510,7 @@ func notify(info: String, length: int = get_value("notify_time")) -> void:
 		"length":length
 	}
 
-	_set_statement($Notify, parameters)
+	_set_statement($Statements/Notify, parameters)
 	notify_timer.wait_time = parameters.length
 	notify_timer.start()
 
@@ -516,7 +523,7 @@ func play_anim(node_id: String, anim_name: String) -> void:
 		"anim_name":anim_name
 	}
 
-	_set_statement($PlayAnim, parameters)
+	_set_statement($Statements/PlayAnim, parameters)
 
 
 # statement of type stop_anim
@@ -528,7 +535,7 @@ func stop_anim(node_id: String, reset := true) -> void:
 		"reset":reset
 	}
 
-	_set_statement($StopAnim, parameters)
+	_set_statement($Statements/StopAnim, parameters)
 
 
 # statement of type play_audio
@@ -540,7 +547,7 @@ func play_audio(node_id: String, from_pos := 0.0) -> void:
 		"from_pos":from_pos
 	}
 
-	_set_statement($PlayAudio, parameters)
+	_set_statement($Statements/PlayAudio, parameters)
 
 
 # statement of type stop_audio
@@ -550,7 +557,7 @@ func stop_audio(node_id: String) -> void:
 		"node_id":node_id
 	}
 
-	_set_statement($StopAudio, parameters)
+	_set_statement($Statements/StopAudio, parameters)
 
 
 # statement of type stop_audio
@@ -562,7 +569,7 @@ func call_node(node_id: String, func_name: String, args := []) -> void:
 		"args":args
 	}
 
-	_set_statement($CallNode, parameters)
+	_set_statement($Statements/CallNode, parameters)
 
 
 func _set_story_state(state: int) -> void:
@@ -589,7 +596,6 @@ func start(after_load := false) -> void:
 
 	if not after_load:
 		emit_signal("started")
-		story_step()
 
 
 func savefile(save_name := "quick") -> bool:
@@ -598,7 +604,16 @@ func savefile(save_name := "quick") -> bool:
 
 
 func loadfile(save_name := "quick") -> bool:
+	
 	return $LoadFile.invoke(save_folder, save_name, variables)
+
+
+func save_game(save_name := "quick") -> bool:
+	debug(["save data to :", save_name])
+	return $StoreManager.save_store_stack(save_name)
+
+func load_game(save_name := "quick") -> bool:
+	return $StoreManager.load_store_stack(save_name)
 
 
 func debug_dict(
@@ -651,11 +666,11 @@ func _get_history_id() -> int:
 # use this to change/assign current scene and dialogue
 # id_of_current_scene is id to scene defined in scene_links or full path to scene
 func jump(scene_id: String, dialogue_name: String, event_name: String, force_reload:bool = false) -> void:
-	$Jump.invoke(scene_id, dialogue_name, event_name, force_reload)
+	$Statements/Jump.invoke(scene_id, dialogue_name, event_name, force_reload)
 
 
 func load_scene(scene_id: String, force_reload:bool = false) -> void:
-	$LoadScene.invoke(scene_id, force_reload)
+	$SceneLoader.load_scene(scene_id, force_reload)
 
 
 func end_game() -> void:
@@ -667,7 +682,7 @@ func end_game() -> void:
 	var start_scene = ProjectSettings.get_setting("application/run/main_scene")
 	var lscene = load(start_scene)
 	current_scene_node = lscene.instance()
-	clean_dialogues()
+	exit_dialogue()
 	get_tree().get_root().add_child(current_scene_node)
 	started = false
 	quests.clear()
@@ -694,19 +709,6 @@ func on_begin(path_to_current_scene: String, dialogue_name: String, event_name: 
 		current_scene_path = path
 
 	jump(path_to_current_scene, dialogue_name , event_name)
-
-
-func can_go_back():
-	return is_save_exits("back")
-
-
-func checkpoint():
-	if savefile("back"):
-		emit_signal("checkpoint")
-
-
-func go_back():
-	loadfile("back")
 
 
 func is_current_statement_in_global_history() -> bool:
@@ -770,3 +772,16 @@ func save_global_history() -> bool:
 
 func load_global_history() -> bool:
 	return $LoadGlobalHistory.invoke()
+
+func get_current_store():
+	return $StoreManager.get_current_store()
+	
+func set_current_store(value):
+	return 
+	
+func prepare_quitting():
+	if self.started:
+		self.save_game("auto")
+		self.save_global_history()
+
+	settings.save_conf()

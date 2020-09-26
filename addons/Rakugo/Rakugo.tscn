@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://addons/Rakugo/main.gd" type="Script" id=1]
 [ext_resource path="res://addons/Rakugo/lib/define.gd" type="Script" id=2]
@@ -8,7 +8,8 @@
 [ext_resource path="res://addons/Rakugo/lib/save_file.gd" type="Script" id=6]
 [ext_resource path="res://addons/Rakugo/lib/save_global_history.gd" type="Script" id=7]
 [ext_resource path="res://addons/Rakugo/lib/load_global_history.gd" type="Script" id=8]
-[ext_resource path="res://addons/Rakugo/lib/load_scene.gd" type="Script" id=9]
+[ext_resource path="res://addons/Rakugo/lib/scene_loader.gd" type="Script" id=9]
+[ext_resource path="res://addons/Rakugo/lib/store_manager.gd" type="Script" id=10]
 [ext_resource path="res://addons/Rakugo/statements/say.gd" type="Script" id=11]
 [ext_resource path="res://addons/Rakugo/statements/ask.gd" type="Script" id=12]
 [ext_resource path="res://addons/Rakugo/statements/menu.gd" type="Script" id=13]
@@ -28,16 +29,10 @@
 pause_mode = 2
 script = ExtResource( 1 )
 
-[node name="Define" type="Node" parent="."]
-script = ExtResource( 2 )
+[node name="StoreManager" type="Node" parent="."]
+script = ExtResource( 10 )
 
-[node name="GetVar" type="Node" parent="."]
-script = ExtResource( 3 )
-
-[node name="Jump" type="Node" parent="."]
-script = ExtResource( 4 )
-
-[node name="LoadScene" type="Node" parent="."]
+[node name="SceneLoader" type="Node" parent="."]
 script = ExtResource( 9 )
 
 [node name="LoadFile" type="Node" parent="."]
@@ -52,38 +47,49 @@ script = ExtResource( 7 )
 [node name="LoadGlobalHistory" type="Node" parent="."]
 script = ExtResource( 8 )
 
-[node name="Say" type="Node" parent="."]
+[node name="Statements" type="Node" parent="."]
+
+[node name="Say" type="Node" parent="Statements"]
 script = ExtResource( 11 )
 
-[node name="Ask" type="Node" parent="."]
+[node name="Ask" type="Node" parent="Statements"]
 script = ExtResource( 12 )
 
-[node name="Menu" type="Node" parent="."]
+[node name="Menu" type="Node" parent="Statements"]
 script = ExtResource( 13 )
 
-[node name="Show" type="Node" parent="."]
+[node name="Show" type="Node" parent="Statements"]
 script = ExtResource( 14 )
 
-[node name="Hide" type="Node" parent="."]
+[node name="Hide" type="Node" parent="Statements"]
 script = ExtResource( 15 )
 
-[node name="Notify" type="Node" parent="."]
+[node name="Notify" type="Node" parent="Statements"]
 script = ExtResource( 16 )
 
-[node name="PlayAnim" type="Node" parent="."]
+[node name="PlayAnim" type="Node" parent="Statements"]
 script = ExtResource( 17 )
 
-[node name="StopAnim" type="Node" parent="."]
+[node name="StopAnim" type="Node" parent="Statements"]
 script = ExtResource( 18 )
 
-[node name="PlayAudio" type="Node" parent="."]
+[node name="PlayAudio" type="Node" parent="Statements"]
 script = ExtResource( 19 )
 
-[node name="StopAudio" type="Node" parent="."]
+[node name="StopAudio" type="Node" parent="Statements"]
 script = ExtResource( 20 )
 
-[node name="CallNode" type="Node" parent="."]
+[node name="CallNode" type="Node" parent="Statements"]
 script = ExtResource( 21 )
+
+[node name="Define" type="Node" parent="Statements"]
+script = ExtResource( 2 )
+
+[node name="GetVar" type="Node" parent="Statements"]
+script = ExtResource( 3 )
+
+[node name="Jump" type="Node" parent="Statements"]
+script = ExtResource( 4 )
 
 [node name="AutoTimer" type="Timer" parent="."]
 script = ExtResource( 22 )

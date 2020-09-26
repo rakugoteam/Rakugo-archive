@@ -2,7 +2,7 @@ extends Node
 
 
 func invoke(save_name: String) -> bool:
-	var new_save := Save.new()
+	var new_save := Store.new()
 	new_save.game_version = Rakugo.game_version
 	new_save.rakugo_version = Rakugo.rakugo_version
 	new_save.history = Rakugo.history.duplicate()
@@ -18,7 +18,7 @@ func invoke(save_name: String) -> bool:
 			node.on_save()
 			continue
 	
-	get_tree().get_root().propagate_call('_save', [new_save])
+	get_tree().get_root().propagate_call('_store', [new_save])
 
 	for v in Rakugo.variables.values():
 		v.save_to(new_save.data)

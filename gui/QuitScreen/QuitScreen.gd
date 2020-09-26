@@ -10,11 +10,7 @@ func _notification(what):
 
 
 func _on_confirmed():
-	if Rakugo.started:
-		Rakugo.savefile("auto")
-		Rakugo.save_global_history()
-
-	settings.save_conf()
+	Rakugo.prepare_quitting()
 	get_tree().quit()
 
 

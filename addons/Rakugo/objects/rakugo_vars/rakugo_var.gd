@@ -66,7 +66,7 @@ func save_to(dict: Dictionary) -> void:
 
 	dict[_id] = save
 
-	Rakugo.debug(["saveing", _id])
+	Rakugo.debug(["saving", _id])
 
 
 func load_from(dict: Dictionary) -> void :

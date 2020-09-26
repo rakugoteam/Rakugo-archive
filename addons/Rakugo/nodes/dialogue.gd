@@ -4,9 +4,6 @@ class_name Dialogue, "res://addons/Rakugo/icons/gdscript.svg"
 export var default_starting_event = ""
 export var auto_start = false
 
-var dialog_step_counter = 0
-var step_counter = 0
-
 var exiting = false
 var target = 0
 
@@ -15,15 +12,54 @@ var condition_stacks = []#LIFO stack of a FIFO stack, hehe
 
 var var_access = Mutex.new()
 var thread = Thread.new()
+var step_semaphore = Semaphore.new()
 
 var jump_target = null
+
+func reset():
+	exiting = false
+	target = 0
+	thread = Thread.new()
+	print("Posting semaphore 2")
+	step_semaphore = Semaphore.new()
+	var_access = Mutex.new()
+	jump_target = null
+
 
 func _ready() -> void:
 	if self.auto_start and not Rakugo.current_dialogue:
 		start()
 
-func _save(save):
-	pass
+func _store(save):
+	print("Storing stuff")
+	if Rakugo.current_dialogue == self:
+		save.current_dialogue = self.name
+		save.current_dialogue_event_stack = self.event_stack
+		save.current_dialogue_condition_stacks = self.condition_stacks
+
+func _restore(save):
+	print(save)
+	if save.current_dialogue == self.name:
+		print("is thread active ", thread.is_active())
+		self.exit()
+		if thread and thread.is_active():
+			print("waiting for the thread to finish")
+			thread.wait_to_finish()
+			print("thread finished")
+		self.reset()
+			
+		self.event_stack = save.current_dialogue_event_stack
+		self.condition_stacks = save.current_dialogue_condition_stacks
+		print("stack pre-start ",self.event_stack)
+		Rakugo.current_dialogue = self
+		thread.start(self, "run")
+
+func _step():
+	print("_step received")
+	if thread.is_active():
+		print("Posting semaphore 1")
+		self.step_semaphore.post()
+	print(self, " ", Rakugo.current_dialogue)
 
 func start(event_name=''):
 	if event_name:
@@ -38,7 +74,7 @@ func start(event_name=''):
 
 
 func run(_a):
-	print("starting threaded dialog")
+	print("starting threaded dialog ", self, " ", Rakugo.current_dialogue)
 	while event_stack:
 		var e = event_stack.pop_front()
 		print("calling ",e)
@@ -50,6 +86,7 @@ func run(_a):
 	if Rakugo.current_dialogue == self:
 		Rakugo.current_dialogue = null
 	print("ending threaded dialog")
+	thread.call_deferred('wait_to_finish')
 
 func call_event(event, _target = 0):
 	if is_active():
@@ -57,17 +94,17 @@ func call_event(event, _target = 0):
 		self.call(event)
 
 func start_event(event_name):
-	#var_access.lock()
+	var_access.lock()
 	if event_stack:
 		event_stack[0][1] += 1
-	if not is_active() or self.exiting:
+	if not is_active():
 		self.target = INF
 	
 	event_stack.push_front([event_name, 0, self.target])#Should be "get_stack()[1]['function']" instead of passing event_name
 	if self.target:
 		self.target = 0
 	condition_stacks.push_front([])
-	#var_access.unlock()
+	var_access.unlock()
 	
 
 func end_event():
@@ -81,21 +118,24 @@ func step():
 	var_access.lock()
 	if is_active():
 		var_access.unlock()
-		Rakugo.step_semaphore.wait()
+		step_semaphore.wait()
 	var_access.unlock()
 	event_stack[0][1] += 1
 
 
 func exit():
-	var_access.lock()
+	#var_access.lock()
 	self.exiting = true
-	Rakugo.step_semaphore.post()
-	var_access.unlock()
-	
+	print("Posting semaphore 0")
+	step_semaphore.post()
+	#var_access.unlock()
+
+
 func is_active():
 	if event_stack:
-		return event_stack[0][1] >= event_stack[0][2]
-	return true
+		return not self.exiting and event_stack[0][1] >= event_stack[0][2]
+	return not self.exiting
+
 
 func get_event_stack():
 	var output
@@ -103,9 +143,11 @@ func get_event_stack():
 	output = event_stack.duplicate(true)
 	var_access.unlock()
 	return output
-	
+
+
 func get_step():
 	return event_stack[0][1]
+
 
 func get_target():
 	return event_stack[0][1]

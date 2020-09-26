@@ -50,6 +50,8 @@ func on_exit(_type: int, new_parameters := {}) -> void:
 
 
 func get_history_id() -> Array:
+	if not Rakugo.current_scene_name or not Rakugo.current_dialogue:
+		return []
 	var id_list = [
 		Rakugo.current_scene_name,
 		Rakugo.current_dialogue.name,

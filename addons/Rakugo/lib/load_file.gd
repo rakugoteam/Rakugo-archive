@@ -72,18 +72,8 @@ func invoke(save_folder: String, save_name: String):
 
 	r.start(true)
 
-	var story_state = save.story_state
 
-	if story_state > 0:
-		story_state -= 1
-
-	r.jump(
-		save.scene,
-		save.node_name,
-		save.dialog_name,
-		story_state,
-		true
-		)
+	r.jump(save.scene, save.node_name, save.dialog_name, true)
 
 	yield(r, "started")
 
@@ -91,6 +81,8 @@ func invoke(save_folder: String, save_name: String):
 		if node.has_method("on_load"):
 			node.on_load(r.game_version)
 			continue
+			
+	get_tree().get_root().propagate_call('_restore', [save])
 
 	r.loading_in_progress = false
 	return true

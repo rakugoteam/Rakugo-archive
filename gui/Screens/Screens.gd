@@ -153,7 +153,6 @@ func _on_load_file():
 	hide()
 
 
-
 func _on_SavesSlotScreen_mode_changed(save_mode):
 	if save_mode:
 		emit_signal("show_menu", "save", Rakugo.started)

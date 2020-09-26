@@ -399,11 +399,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/nodes/root_node.gd"
 }, {
-"base": "Resource",
-"class": "Save",
-"language": "GDScript",
-"path": "res://addons/Rakugo/objects/resources/save.gd"
-}, {
 "base": "RakugoBaseButton",
 "class": "SaveButton",
 "language": "GDScript",
@@ -448,6 +443,16 @@ _global_script_classes=[ {
 "class": "StopAudio",
 "language": "GDScript",
 "path": "res://addons/Rakugo/statements/stop_audio.gd"
+}, {
+"base": "Resource",
+"class": "Store",
+"language": "GDScript",
+"path": "res://addons/Rakugo/objects/resources/store.gd"
+}, {
+"base": "Resource",
+"class": "StoreStack",
+"language": "GDScript",
+"path": "res://addons/Rakugo/objects/resources/store_stack.gd"
 }, {
 "base": "RakugoVar",
 "class": "Subquest",
@@ -573,7 +578,6 @@ _global_script_class_icons={
 "ResourceCollection": "",
 "ResourceSet": "",
 "RootNode": "res://addons/Rakugo/icons/rakugo_root_node.svg",
-"Save": "res://addons/Rakugo/icons/save.svg",
 "SaveButton": "res://addons/Rakugo/icons/rakugo_save_button.svg",
 "Say": "",
 "SceneLinks": "res://addons/Rakugo/icons/scene_links.svg",
@@ -583,6 +587,8 @@ _global_script_class_icons={
 "Statement": "",
 "StopAnim": "",
 "StopAudio": "",
+"Store": "res://addons/Rakugo/icons/save.svg",
+"StoreStack": "",
 "Subquest": "",
 "Trail2D": "res://addons/godot-next/icons/icon_trail_2d.svg",
 "Trail3D": "res://addons/godot-next/icons/icon_trail_3d.svg",
