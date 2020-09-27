@@ -1,5 +1,5 @@
 extends Node
-class_name Dialogue, "res://addons/Rakugo/icons/gdscript.svg"
+class_name Dialogue, "res://addons/Rakugo/icons/dialogue.svg"
 
 export var default_starting_event = ""
 export var auto_start = false
