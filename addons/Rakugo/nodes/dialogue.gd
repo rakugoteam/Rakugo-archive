@@ -17,13 +17,15 @@ var step_semaphore = Semaphore.new()
 var jump_target = null
 
 func reset():
+	print("Resetting dialogue")
 	exiting = false
 	target = 0
 	thread = Thread.new()
-	print("Posting semaphore 2")
 	step_semaphore = Semaphore.new()
 	var_access = Mutex.new()
 	jump_target = null
+	if self.has_method(default_starting_event):
+		event_stack = [[default_starting_event, 0, 0]]
 
 
 func _ready() -> void:
@@ -31,27 +33,28 @@ func _ready() -> void:
 		start()
 
 func _store(save):
-	print("Storing stuff")
 	if Rakugo.current_dialogue == self:
+		print("Storing dialogue ",self.name, "  ", self.event_stack)
 		save.current_dialogue = self.name
-		save.current_dialogue_event_stack = self.event_stack
-		save.current_dialogue_condition_stacks = self.condition_stacks
+		save.current_dialogue_event_stack = self.event_stack.duplicate(true)
+		save.current_dialogue_condition_stacks = self.condition_stacks.duplicate(true)
 
 func _restore(save):
-	print(save)
 	if save.current_dialogue == self.name:
-		print("is thread active ", thread.is_active())
+		print("Restoring dialogue ", self.name, self,"  ", save.current_dialogue_event_stack)
 		self.exit()
-		if thread and thread.is_active():
-			print("waiting for the thread to finish")
+		if not is_ended():
+			print("Waiting for the thread to finish")
 			thread.wait_to_finish()
-			print("thread finished")
+			print("Thread finished")
 		self.reset()
-			
+	
+		print("Setting event_stack to  ", save.current_dialogue_event_stack)
 		self.event_stack = save.current_dialogue_event_stack
+		print("Setting condition_stacks to  ", save.current_dialogue_condition_stacks)
 		self.condition_stacks = save.current_dialogue_condition_stacks
-		print("stack pre-start ",self.event_stack)
 		Rakugo.current_dialogue = self
+		print("Setting Rakugo.current_dialogue to  ",self, "  ", (Rakugo.current_dialogue == self))
 		thread.start(self, "run")
 
 func _step():
@@ -74,7 +77,7 @@ func start(event_name=''):
 
 
 func run(_a):
-	print("starting threaded dialog ", self, " ", Rakugo.current_dialogue)
+	print("Starting threaded dialog ", self, " ", event_stack)
 	while event_stack:
 		var e = event_stack.pop_front()
 		print("calling ",e)
@@ -83,8 +86,8 @@ func run(_a):
 			break
 	if jump_target:
 		Rakugo.call_deferred('jump', jump_target[0], jump_target[1], jump_target[2])
-	if Rakugo.current_dialogue == self:
-		Rakugo.current_dialogue = null
+	#if Rakugo.current_dialogue == self:
+	#	Rakugo.current_dialogue = null
 	print("ending threaded dialog")
 	thread.call_deferred('wait_to_finish')
 
@@ -124,9 +127,9 @@ func step():
 
 
 func exit():
+	print("Exitting Dialogue")
 	#var_access.lock()
 	self.exiting = true
-	print("Posting semaphore 0")
 	step_semaphore.post()
 	#var_access.unlock()
 
@@ -136,6 +139,9 @@ func is_active():
 		return not self.exiting and event_stack[0][1] >= event_stack[0][2]
 	return not self.exiting
 
+
+func is_ended():
+	return not thread or not thread.is_active()
 
 func get_event_stack():
 	var output

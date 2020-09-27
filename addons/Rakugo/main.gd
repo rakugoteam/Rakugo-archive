@@ -143,6 +143,7 @@ onready var dialogue_timer := $DialogueTimer
 onready var notify_timer := $NotifyTimer
 
 onready var SceneLoader: = $SceneLoader
+onready var StoreManager: = $StoreManager
 
 # saved automatically - it is RagukoVar
 var story_state:int setget _set_story_state, _get_story_state

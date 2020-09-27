@@ -32,8 +32,9 @@ func call_for_restoring():
 		if node.has_method("on_load"):
 			node.on_load(Rakugo.game_version)
 			continue
-			
-	get_tree().get_root().propagate_call('_restore', [get_current_store()])
+	for s in store_stack.size():
+		print(s, "  ", store_stack[s],  "  ", store_stack[s].current_dialogue_event_stack)
+	get_tree().get_root().propagate_call('_restore', [get_current_store().duplicate(true)])
 
 
 func call_for_storing():
@@ -60,7 +61,7 @@ func stack_next_store():
 	self.call_for_storing()
 	self.prune_front_stack()
 	
-	var next_store = store_stack[0].duplicate()
+	var next_store = (store_stack[0] as Resource).duplicate(true)
 	store_stack[0].replace_connections(next_store)
 	store_stack.push_front(next_store)
 	
@@ -68,9 +69,11 @@ func stack_next_store():
 
 
 func change_current_stack_index(index):
-	if index < store_stack.size():
-		store_stack[current_store_id].replace_connections(store_stack[index])
-		current_store_id = index
+	index = clamp(index, 0, store_stack.size()-1)
+	store_stack[current_store_id].replace_connections(store_stack[index])
+	current_store_id = index
+	
+	call_for_restoring()
 
 
 func get_savefile_path(savefile_name):
@@ -135,7 +138,10 @@ func unpack_data(path:String) -> Resource:
 	var packed_stack:StoreStack = load(path) as StoreStack
 
 	packed_stack = packed_stack.duplicate()
-	self.store_stack = packed_stack.stack
+	
+	self.store_stack = []
+	for s in packed_stack.stack:
+		self.store_stack.append(s.duplicate(true))
 	self.current_store_id = packed_stack.current_id
 
 	var save = get_current_store()

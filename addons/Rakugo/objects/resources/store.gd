@@ -8,7 +8,7 @@ export var history_id := 0
 export var scene := ""
 export var data := {}
 export var properties := {}
-var property_signals = []
+var property_signals := []
 
 func _get(property):
 	if property in self.get_property_list():
@@ -36,7 +36,7 @@ func disconnect_on_property_changed(property:String, target:Object, method:Strin
 	if self.is_connected("on_%s_changed" % property, target, method):
 		self.disconnect("on_%s_changed" % property, target, method)
 
-func replace_connections(new_store:Store):
+func replace_connections(new_store):
 	new_store.property_signals = self.property_signals.duplicate(true)
 	for p in property_signals:
 		new_store.add_user_signal("on_%s_changed" % p, [{'name':'property', 'type':TYPE_STRING}, {'name':'value', 'type':TYPE_NIL}])
@@ -46,3 +46,9 @@ func replace_connections(new_store:Store):
 			new_store.connect(s, c.target, c.method)
 			self.disconnect(s, c.target, c.method)
 	pass
+	
+#func duplicate(deep:bool=true) -> Resource:
+#	var output = .duplicate(deep)
+#	print("Property signal duplication ", self.property_signals, "  ", output.property_signals)
+#	output.property_signals = output.property_signals.duplicate()
+#	return output
