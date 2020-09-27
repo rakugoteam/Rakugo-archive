@@ -599,19 +599,10 @@ func start(after_load := false) -> void:
 		emit_signal("started")
 
 
-func savefile(save_name := "quick") -> bool:
-	debug(["save data to :", save_name])
-	return $SaveFile.invoke(save_name)
-
-
-func loadfile(save_name := "quick") -> bool:
-	
-	return $LoadFile.invoke(save_folder, save_name, variables)
-
-
 func save_game(save_name := "quick") -> bool:
 	debug(["save data to :", save_name])
 	return $StoreManager.save_store_stack(save_name)
+
 
 func load_game(save_name := "quick") -> bool:
 	return $StoreManager.load_store_stack(save_name)
