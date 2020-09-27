@@ -36,8 +36,8 @@ func _store(save):
 	if Rakugo.current_dialogue == self:
 		print("Storing dialogue ",self.name, "  ", self.event_stack)
 		save.current_dialogue = self.name
-		save.current_dialogue_event_stack = self.event_stack.duplicate(true)
-		save.current_dialogue_condition_stacks = self.condition_stacks.duplicate(true)
+		save.current_dialogue_event_stack = self.event_stack
+		save.current_dialogue_condition_stacks = self.condition_stacks
 
 func _restore(save):
 	if save.current_dialogue == self.name:

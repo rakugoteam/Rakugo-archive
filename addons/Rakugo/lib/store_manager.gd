@@ -61,9 +61,9 @@ func stack_next_store():
 	self.call_for_storing()
 	self.prune_front_stack()
 	
-	var next_store = (store_stack[0] as Resource).duplicate(true)
-	store_stack[0].replace_connections(next_store)
-	store_stack.push_front(next_store)
+	var previous_store = (store_stack[0] as Resource).duplicate(true)
+	previous_store.replace_connections(store_stack[0])
+	store_stack.insert(1, previous_store)
 	
 	self.prune_back_stack()
 
