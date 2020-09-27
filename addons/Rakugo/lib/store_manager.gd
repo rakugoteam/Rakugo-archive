@@ -61,7 +61,7 @@ func stack_next_store():
 	self.call_for_storing()
 	self.prune_front_stack()
 	
-	var previous_store = (store_stack[0] as Resource).duplicate(true)
+	var previous_store = store_stack[0].duplicate()
 	previous_store.replace_connections(store_stack[0])
 	store_stack.insert(1, previous_store)
 	
@@ -144,7 +144,7 @@ func unpack_data(path:String) -> Resource:
 	
 	self.store_stack = []
 	for s in packed_stack.stack:
-		self.store_stack.append(s.duplicate(true))
+		self.store_stack.append(s.duplicate())
 	self.current_store_id = packed_stack.current_id
 
 	var save = get_current_store()
