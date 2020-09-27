@@ -1,5 +1,4 @@
 extends RakugoTimer
-class_name AutoTimer
 
 signal stop_loop
 

@@ -1,5 +1,4 @@
 extends Timer
-class_name SkipTimer
 
 signal stop_loop
 

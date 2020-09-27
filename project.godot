@@ -289,11 +289,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/godot-next/global/singletons.gd"
 }, {
-"base": "Timer",
-"class": "SkipTimer",
-"language": "GDScript",
-"path": "res://addons/Rakugo/lib/SkipTimer.gd"
-}, {
 "base": "Object",
 "class": "Statement",
 "language": "GDScript",
@@ -381,7 +376,6 @@ _global_script_class_icons={
 "SceneLinks": "res://addons/Rakugo/icons/scene_links.svg",
 "Show": "",
 "Singletons": "",
-"SkipTimer": "",
 "Statement": "",
 "StopAnim": "",
 "StopAudio": "",
