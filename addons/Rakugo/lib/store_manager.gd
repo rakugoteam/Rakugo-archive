@@ -34,7 +34,7 @@ func call_for_restoring():
 			continue
 	for s in store_stack.size():
 		print(s, "  ", store_stack[s],  "  ", store_stack[s].current_dialogue_event_stack)
-	get_tree().get_root().propagate_call('_restore', [get_current_store().duplicate(true)])
+	get_tree().get_root().propagate_call('_restore', [get_current_store()])
 
 
 func call_for_storing():
@@ -70,6 +70,9 @@ func stack_next_store():
 
 func change_current_stack_index(index):
 	index = clamp(index, 0, store_stack.size()-1)
+	if index == current_store_id:
+		return
+	
 	store_stack[current_store_id].replace_connections(store_stack[index])
 	current_store_id = index
 	
