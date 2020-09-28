@@ -24,8 +24,8 @@ func _ready() -> void:
 	if Engine.editor_hint:
 		return
 
-	Rakugo.connect("show", self, "_on_show")
-	Rakugo.connect("hide", self, "_on_hide")
+	#Rakugo.connect("show", self, "_on_show")
+	#Rakugo.connect("hide", self, "_on_hide")
 	rnode.connect("on_substate", self, "_on_rnode_substate")
 
 	node_link = Rakugo.get_node_link(_node_id)

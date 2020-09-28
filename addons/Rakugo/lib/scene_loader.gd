@@ -17,6 +17,7 @@ func _ready():
 	for k in scene_links.keys():
 		if scene_links[k] == current_scene:
 			current_scene = k
+
 	Rakugo.current_scene_node = get_tree().current_scene
 
 func _store(store):
@@ -75,8 +76,9 @@ func _thread_done(resource):
 
 	# Instantiate new scene
 	var new_scene = resource.instance()
-	# Free current scene
+	Rakugo.ShowableManager.declare_showables(new_scene)
 	
+	# Free current scene
 	Rakugo.clean_viewport()
 
 	Rakugo.viewport.add_child(new_scene)

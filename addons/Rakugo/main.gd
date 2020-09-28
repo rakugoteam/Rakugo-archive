@@ -144,6 +144,7 @@ onready var notify_timer := $NotifyTimer
 
 onready var SceneLoader: = $SceneLoader
 onready var StoreManager: = $StoreManager
+onready var ShowableManager: = $ShowableManager
 
 # saved automatically - it is RagukoVar
 var story_state:int setget _set_story_state, _get_story_state
@@ -152,8 +153,6 @@ signal started()
 signal exec_statement(type, parameters)
 signal exit_statement(previous_type, parameters)
 signal notified()
-signal show(node_id, state, show_args)
-signal hide(node_id)
 signal story_step(dialogue_name, event_name)
 signal play_anim(node_id, anim_name)
 signal stop_anim(node_id, reset)
@@ -167,7 +166,7 @@ signal game_ended()
 
 func _ready() -> void:
 
-	$StoreManager.init()
+	StoreManager.init()
 	for v in variables:
 		variables[v].save_included = false
 
@@ -233,7 +232,7 @@ func clean_viewport():
 
 
 func story_step() -> void:
-	$StoreManager.stack_next_store()
+	StoreManager.stack_next_store()
 	print("emitting _step")
 	get_tree().get_root().propagate_call('_step')
 	#emit_signal("story_step", current_dialogue_name, current_event_name)
@@ -490,18 +489,13 @@ func menu(parameters: Dictionary) -> void:
 # with keywords:x, y, z, at, pos
 # x, y and pos will use it as protect of screen if between 0 and 1
 # "at" is lists that can have: "top", "center", "bottom", "right", "left"
-func show(node_id:String, parameters := {"state": []}):
-	parameters["node_id"] = node_id
-	_set_statement($Statements/Show, parameters)
+func show(showable_tag:String, parameters := {}):
+	ShowableManager.show(showable_tag, parameters)
 
 
 # statement of type hide
-func hide(node_id: String) -> void:
-	var parameters = {
-		"node_id":node_id
-	}
-
-	_set_statement($Statements/Hide, parameters)
+func hide(showable_tag: String) -> void:
+	ShowableManager.hide(showable_tag)
 
 
 # statement of type notify
@@ -601,11 +595,11 @@ func start(after_load := false) -> void:
 
 func save_game(save_name := "quick") -> bool:
 	debug(["save data to :", save_name])
-	return $StoreManager.save_store_stack(save_name)
+	return StoreManager.save_store_stack(save_name)
 
 
 func load_game(save_name := "quick") -> bool:
-	return $StoreManager.load_store_stack(save_name)
+	return StoreManager.load_store_stack(save_name)
 
 
 func debug_dict(
@@ -662,7 +656,7 @@ func jump(scene_id: String, dialogue_name: String, event_name: String, force_rel
 
 
 func load_scene(scene_id: String, force_reload:bool = false) -> void:
-	$SceneLoader.load_scene(scene_id, force_reload)
+	SceneLoader.load_scene(scene_id, force_reload)
 
 
 func end_game() -> void:
@@ -766,7 +760,7 @@ func load_global_history() -> bool:
 	return $LoadGlobalHistory.invoke()
 
 func get_current_store():
-	return $StoreManager.get_current_store()
+	return StoreManager.get_current_store()
 	
 func set_current_store(value):
 	return 
