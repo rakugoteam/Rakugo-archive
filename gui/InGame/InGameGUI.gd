@@ -7,6 +7,9 @@ func _input(event):
 		if event.is_action_pressed("rollback"):
 			print("Rolling back to id ", Rakugo.StoreManager.current_store_id + 1, " ")
 			Rakugo.StoreManager.change_current_stack_index(Rakugo.StoreManager.current_store_id + 1)
+		if event.is_action_pressed("rollforward"):
+			print("Rolling forward to id ", Rakugo.StoreManager.current_store_id - 1, " ")
+			Rakugo.StoreManager.change_current_stack_index(Rakugo.StoreManager.current_store_id - 1)
 
 
 func _on_quick_button_press(quick_action):
