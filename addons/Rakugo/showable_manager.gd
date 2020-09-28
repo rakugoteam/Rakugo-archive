@@ -71,18 +71,18 @@ func show(showable_tag, args):
 				is_shown = true
 				break
 		if is_shown:
-			show_showable(n, args)
+			show_showable(n, showable_tag, args)
 		else:
 			n.hide()
 
 
-func show_showable(node, args):
+func show_showable(node, tag, args):
 	if node.has_method("_show"):
-		node._show()
+		node._show(tag, args)
 	elif node.has_method("show"):
 		node.show()
 	else:
-		push_error(str("Node ", node, " is not showable."))
+		push_error(str("Node ", node, " tagged ", tag, " is not showable."))
 
 
 func hide(showable_tag):
