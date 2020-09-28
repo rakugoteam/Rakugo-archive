@@ -25,7 +25,7 @@ func declare_showables_recursively(node):
 
 	var groups = node.get_groups().duplicate()
 	for g in groups:
-		if g.begins_with("showable"):
+		if g.begins_with("showable "):
 			node.add_to_group(get_showable_group_tag(g, true))
 
 
