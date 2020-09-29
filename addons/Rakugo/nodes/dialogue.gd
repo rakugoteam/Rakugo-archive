@@ -1,8 +1,12 @@
 extends Node
 class_name Dialogue, "res://addons/Rakugo/icons/dialogue.svg"
 
+onready var _class_script_version = _get_dialogue_script_hash()
+onready var _script_version = _get_script_hash()
+
 export var default_starting_event = ""
 export var auto_start = false
+export var version_control = false
 
 var exiting = false
 
@@ -39,9 +43,21 @@ func _store(save):
 		print("Storing dialogue ",self.name, "  ", self.event_stack)
 		save.current_dialogue = self.name
 		save.current_dialogue_event_stack = self.event_stack
+		save.current_dialogue_script_version = _script_version
+		save.dialogue_class_script_version = _class_script_version
 
 func _restore(save):
 	if save.current_dialogue == self.name:
+		#print(save.get_script().source_code)
+		if save.dialogue_class_script_version != _class_script_version:
+				push_warning("Dialogue class script mismatched.")
+		if save.current_dialogue_script_version != _script_version:
+			if version_control:
+				push_error("The loaded save is not compatible with this version of the game.")
+				return
+			else:
+				push_warning("Dialogue script mismatched, that may corrupt the game state.")
+		
 		print("Restoring dialogue ", self.name, self,"  ", save.current_dialogue_event_stack)
 		self.exit()
 		if not is_ended():
@@ -202,6 +218,14 @@ func get_parent_event_name():
 func story_step() -> void:
 	Rakugo.story_step()#Don't remember why I put that here, probably a leftover from the old system
 
+## Version control
+# 
+
+func _get_dialogue_script_hash():
+	return load("res://addons/Rakugo/nodes/dialogue.gd").new()._get_script_hash()
+
+func _get_script_hash(object=self):
+	return object.get_script().source_code.hash()
 
 
 ## Rakugo statement wrap
