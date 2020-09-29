@@ -242,14 +242,6 @@ func notified() -> void:
 	emit_signal("notified")
 
 
-func on_show(node_id: String, state: Array, show_args: Dictionary) -> void:
-	emit_signal("show", node_id, state, show_args)
-
-
-func on_hide(node_id: String) -> void:
-	emit_signal("hide", node_id)
-
-
 func on_play_anim(node_id: String, anim_name: String) -> void:
 	emit_signal("play_anim", node_id, anim_name)
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://addons/Rakugo/main.gd" type="Script" id=1]
 [ext_resource path="res://addons/Rakugo/lib/define.gd" type="Script" id=2]
@@ -12,8 +12,6 @@
 [ext_resource path="res://addons/Rakugo/statements/say.gd" type="Script" id=11]
 [ext_resource path="res://addons/Rakugo/statements/ask.gd" type="Script" id=12]
 [ext_resource path="res://addons/Rakugo/statements/menu.gd" type="Script" id=13]
-[ext_resource path="res://addons/Rakugo/statements/show.gd" type="Script" id=14]
-[ext_resource path="res://addons/Rakugo/statements/hide.gd" type="Script" id=15]
 [ext_resource path="res://addons/Rakugo/statements/notify.gd" type="Script" id=16]
 [ext_resource path="res://addons/Rakugo/statements/play_anim.gd" type="Script" id=17]
 [ext_resource path="res://addons/Rakugo/statements/stop_anim.gd" type="Script" id=18]
@@ -53,12 +51,6 @@ script = ExtResource( 12 )
 
 [node name="Menu" type="Node" parent="Statements"]
 script = ExtResource( 13 )
-
-[node name="Show" type="Node" parent="Statements"]
-script = ExtResource( 14 )
-
-[node name="Hide" type="Node" parent="Statements"]
-script = ExtResource( 15 )
 
 [node name="Notify" type="Node" parent="Statements"]
 script = ExtResource( 16 )

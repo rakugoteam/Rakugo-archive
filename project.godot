@@ -54,11 +54,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/emojis/emojis.gd"
 }, {
-"base": "Statement",
-"class": "Hide",
-"language": "GDScript",
-"path": "res://addons/Rakugo/statements/hide.gd"
-}, {
 "base": "Resource",
 "class": "HistorySave",
 "language": "GDScript",
@@ -279,11 +274,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/objects/resources/scene_links.gd"
 }, {
-"base": "Statement",
-"class": "Show",
-"language": "GDScript",
-"path": "res://addons/Rakugo/statements/show.gd"
-}, {
 "base": "Object",
 "class": "Statement",
 "language": "GDScript",
@@ -324,7 +314,6 @@ _global_script_class_icons={
 "CollapsedList": "",
 "Dialogue": "res://addons/Rakugo/icons/dialogue.svg",
 "Emojis": "res://addons/Rakugo/emojis/icon.png",
-"Hide": "",
 "HistorySave": "res://addons/Rakugo/icons/save.svg",
 "KindContainer": "res://addons/Rakugo/icons/rakugo_kind_container.svg",
 "Menu": "",
@@ -369,7 +358,6 @@ _global_script_class_icons={
 "SaveButton": "res://addons/Rakugo/icons/rakugo_save_button.svg",
 "Say": "",
 "SceneLinks": "res://addons/Rakugo/icons/scene_links.svg",
-"Show": "",
 "Statement": "",
 "StopAnim": "",
 "StopAudio": "",
