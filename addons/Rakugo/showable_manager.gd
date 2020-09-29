@@ -12,6 +12,10 @@ func _store(store):
 
 func _restore(store):
 	self.shown = store.showable_shown
+	
+	if store.current_scene != Rakugo.SceneLoader.current_scene:
+		yield(Rakugo.SceneLoader, "scene_loaded")
+
 	for k in self.shown.keys():
 		show(k, self.shown[k])
 
