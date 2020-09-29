@@ -60,20 +60,29 @@ func show(showable_tag, args):
 	for i in tags.size() - 1:#only postfix with wildcard non-exact matches
 		tags[i] = tags[i]+" *"
 	tags.invert()#invert to have the exact tag first
-	remove_from_shown(group_tag)
-	self.shown[showable_tag] = args
 	
-	var is_shown
-	for n in get_tree().get_nodes_in_group(group_tag):
-		is_shown = false
-		for t in tags:
-			if n.is_in_group(t):
-				is_shown = true
-				break
-		if is_shown:
-			show_showable(n, showable_tag, args)
-		else:
-			n.hide()
+	
+	var is_any_shown = false
+	for t in tags:
+		if get_tree().get_nodes_in_group(t):
+			is_any_shown = true
+			break
+	
+	if is_any_shown:
+		remove_from_shown(group_tag)
+		self.shown[showable_tag] = args
+		
+		var is_shown
+		for n in get_tree().get_nodes_in_group(group_tag):
+			is_shown = false
+			for t in tags:
+				if n.is_in_group(t):
+					is_shown = true
+					break
+			if is_shown:
+				show_showable(n, showable_tag, args)
+			else:
+				n.hide()
 
 
 func show_showable(node, tag, args):
