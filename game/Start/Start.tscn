@@ -1,10 +1,78 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://game/Start/SomeDialog.gd" type="Script" id=1]
 
+[sub_resource type="ButtonGroup" id=1]
+
 [node name="Start" type="Node2D"]
+
+[node name="RedRectangle" type="ColorRect" parent="." groups=[
+"showable rect red",
+]]
+margin_left = 434.811
+margin_top = 69.7564
+margin_right = 474.811
+margin_bottom = 109.757
+color = Color( 1, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GreenRectangle" type="ColorRect" parent="." groups=[
+"showable rect green",
+]]
+margin_left = 359.612
+margin_top = 122.511
+margin_right = 399.612
+margin_bottom = 162.511
+color = Color( 0.156863, 0.909804, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BlueRectangle" type="ColorRect" parent="." groups=[
+"showable rect blue",
+]]
+margin_left = 520.818
+margin_top = 119.509
+margin_right = 560.818
+margin_bottom = 159.509
+color = Color( 0.0745098, 0, 0.972549, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="SomeDialog" type="Node" parent="."]
 script = ExtResource( 1 )
 default_starting_event = "some_dialog"
 auto_start = true
+
+[node name="GreenChoice" type="Button" parent="." groups=[
+"showable pathchoice",
+]]
+visible = false
+margin_left = 346.117
+margin_top = 232.382
+margin_right = 429.117
+margin_bottom = 252.382
+group = SubResource( 1 )
+text = "Green Path"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BlueChoice" type="Button" parent="." groups=[
+"showable pathchoice",
+]]
+visible = false
+margin_left = 496.31
+margin_top = 233.166
+margin_right = 579.31
+margin_bottom = 253.166
+group = SubResource( 1 )
+text = "Blue Path"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="GreenChoice" to="SomeDialog" method="_on_green_path_chosen"]
+[connection signal="pressed" from="BlueChoice" to="SomeDialog" method="_on_blue_path_chosen"]
