@@ -77,7 +77,6 @@ func _step():
 	#print("_step received")
 	if thread.is_active():
 		self.step_semaphore.post()
-	print(self, " ", Rakugo.current_dialogue)
 
 func start(event_name=''):
 	var_access.lock()
