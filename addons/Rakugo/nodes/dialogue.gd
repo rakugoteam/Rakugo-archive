@@ -5,30 +5,32 @@ export var default_starting_event = ""
 export var auto_start = false
 
 var exiting = false
+
+#Those are only used as analogues of arguments
 var target = 0
+var condition_stack = []
 
-var event_stack = []#LIFO stack
-var condition_stacks = []#LIFO stack of a FIFO stack, hehe
 
-var var_access = Mutex.new()
+var event_stack = []#LIFO stack of elements [event_name, current_counter, target, condition_stack(FIFO stack)]
+
+var var_access = Mutex.new()#That mutex is probably completely useless
 var thread = Thread.new()
 var step_semaphore = Semaphore.new()
 
 var jump_target = null
 
-func reset():
+func reset(): ## Need to check if this is actually needed.
 	print("Resetting dialogue")
 	exiting = false
-	target = 0
 	thread = Thread.new()
 	step_semaphore = Semaphore.new()
 	var_access = Mutex.new()
 	jump_target = null
 	if self.has_method(default_starting_event):
-		event_stack = [[default_starting_event, 0, 0]]
+		event_stack = [[default_starting_event, 0, 0, []]]
 
 
-func _ready() -> void:
+func _ready():
 	if self.auto_start and not Rakugo.current_dialogue:
 		start()
 
@@ -37,7 +39,6 @@ func _store(save):
 		print("Storing dialogue ",self.name, "  ", self.event_stack)
 		save.current_dialogue = self.name
 		save.current_dialogue_event_stack = self.event_stack
-		save.current_dialogue_condition_stacks = self.condition_stacks
 
 func _restore(save):
 	if save.current_dialogue == self.name:
@@ -50,12 +51,12 @@ func _restore(save):
 		self.reset()
 	
 		print("Setting event_stack to  ", save.current_dialogue_event_stack)
-		self.event_stack = save.current_dialogue_event_stack
-		print("Setting condition_stacks to  ", save.current_dialogue_condition_stacks)
-		self.condition_stacks = save.current_dialogue_condition_stacks
+		var_access.lock()
+		event_stack = save.current_dialogue_event_stack
+		self.var_access.unlock()
 		Rakugo.current_dialogue = self
 		print("Setting Rakugo.current_dialogue to  ",self, "  ", (Rakugo.current_dialogue == self))
-		thread.start(self, "run")
+		thread.start(self, "dialogue_loop")
 
 func _step():
 	print("_step received")
@@ -65,83 +66,113 @@ func _step():
 	print(self, " ", Rakugo.current_dialogue)
 
 func start(event_name=''):
+	var_access.lock()
 	if event_name:
-		event_stack = [[event_name, 0, 0]]
+		event_stack = [[event_name, 0, 0, []]]
 	elif self.has_method(default_starting_event):
-		event_stack = [[default_starting_event, 0, 0]]
+		event_stack = [[default_starting_event, 0, 0, []]]
 	else:
 		push_error("Dialog '"+self.name+"' started without given event nor default event.")
+	var_access.unlock()
 	Rakugo.current_dialogue = self
-	
-	thread.start(self, "run")
+	thread.start(self, "dialogue_loop")
 
 
-func run(_a):
+
+## Thread life cycle
+
+func dialogue_loop(_a):
+	var_access.lock()
 	print("Starting threaded dialog ", self, " ", event_stack)
 	while event_stack:
 		var e = event_stack.pop_front()
-		print("calling ",e)
-		self.call_event(e[0], e[1])
+		var_access.unlock()
+		print("Calling event ",e)
+		self.call_event(e[0], e[1], e[3])
+		var_access.lock()
 		if self.exiting:
 			break
 	if jump_target:
 		Rakugo.call_deferred('jump', jump_target[0], jump_target[1], jump_target[2])
-	#if Rakugo.current_dialogue == self:
-	#	Rakugo.current_dialogue = null
-	print("ending threaded dialog")
+	var_access.unlock()
+
+	print("Ending threaded dialog")
 	thread.call_deferred('wait_to_finish')
 
-func call_event(event, _target = 0):
+
+func exit():
+	if not is_ended():## Not checking for active thread makes the mutex deadlocks somehow
+		print("Exitting Dialogue")
+		var_access.lock()
+		self.exiting = true
+		var_access.unlock()
+		step_semaphore.post()
+
+
+func is_ended():
+	return not thread or not thread.is_active()
+
+
+
+## Events Flow control and Administration
+
+func call_event(event, _target = 0, _condition_stack = []):
 	if is_active():
+		#Using class vars to make event methods argument less.
+		var_access.lock()
 		self.target = _target
+		self.condition_stack = _condition_stack.duplicate()
+		var_access.unlock()
 		self.call(event)
 
 func start_event(event_name):
 	var_access.lock()
 	if event_stack:
-		event_stack[0][1] += 1
+		event_stack[0][1] += 1# Disalign step counter in case of saving before returning
 	if not is_active():
-		self.target = INF
-	
-	event_stack.push_front([event_name, 0, self.target])#Should be "get_stack()[1]['function']" instead of passing event_name
-	if self.target:
-		self.target = 0
-	condition_stacks.push_front([])
+		event_stack.push_front([event_name, 0, INF, self.condition_stack])
+	else:
+		event_stack.push_front([event_name, 0, self.target, self.condition_stack])#Should be "get_stack()[1]['function']" instead of passing event_name, if get_stack() worked
 	var_access.unlock()
-	
+
+func cond(condition:bool):
+	var_access.lock()
+	if is_active(true):
+		event_stack[0][3].push_front(condition)
+	else:
+		condition = event_stack[0][3].pop_back()
+	var_access.unlock()
+	return condition
+
+func step():
+	if is_active():
+		step_semaphore.wait()
+	var_access.lock()
+	event_stack[0][1] += 1
+	var_access.unlock()
 
 func end_event():
 	var_access.lock()
 	event_stack.pop_front()
-	event_stack[0][1] -= 1
-	condition_stacks.pop_front()
+	event_stack[0][1] -= 1# Realign step counter before returning
 	var_access.unlock()
 
-func step():
+
+func is_active(_strict=false):
 	var_access.lock()
-	if is_active():
-		var_access.unlock()
-		step_semaphore.wait()
-	var_access.unlock()
-	event_stack[0][1] += 1
-
-
-func exit():
-	print("Exitting Dialogue")
-	#var_access.lock()
-	self.exiting = true
-	step_semaphore.post()
-	#var_access.unlock()
-
-
-func is_active():
+	var output:bool = not self.exiting
 	if event_stack:
-		return not self.exiting and event_stack[0][1] >= event_stack[0][2]
-	return not self.exiting
+		if _strict:# Allow to check if it's the last step until waiting for semaphore
+			output = output and event_stack[0][1] > event_stack[0][2]
+		else:
+			output = output and event_stack[0][1] >= event_stack[0][2]
+	var_access.unlock()
+	return output
 
 
-func is_ended():
-	return not thread or not thread.is_active()
+
+## The "Framework" section
+# ,the section of methods there "just in case" that should probably be removed
 
 func get_event_stack():
 	var output
@@ -151,25 +182,27 @@ func get_event_stack():
 	return output
 
 
-func get_step():
-	return event_stack[0][1]
+func get_event_step():
+	var output
+	var_access.lock()
+	output = event_stack[0][1]
+	var_access.unlock()
+	return output
 
 
-func get_target():
-	return event_stack[0][1]
+func get_parent_event_name():
+	var output = ''
+	var_access.lock()
+	if event_stack.size() > 1:
+		output = event_stack[1][0]
+	var_access.unlock()
+	return output
 
 
 func story_step() -> void:
-	Rakugo.story_step()
+	Rakugo.story_step()#Don't remember why I put that here, probably a leftover from the old system
 
 
-func cond(condition:bool):
-	if is_active():
-		condition_stacks[0].push_front(condition)
-	else:
-		condition = condition_stacks[0].pop_back()
-	return condition
-	
 
 ## Rakugo statement wrap
 
