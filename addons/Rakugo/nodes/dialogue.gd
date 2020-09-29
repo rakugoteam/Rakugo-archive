@@ -24,7 +24,7 @@ var step_semaphore = Semaphore.new()
 var jump_target = null
 
 func reset(): ## Need to check if this is actually needed.
-	print("Resetting dialogue")
+	#print("Resetting dialogue")
 	exiting = false
 	thread = Thread.new()
 	step_semaphore = Semaphore.new()
@@ -40,7 +40,7 @@ func _ready():
 
 func _store(save):
 	if Rakugo.current_dialogue == self:
-		print("Storing dialogue ",self.name, "  ", self.event_stack)
+		#print("Storing dialogue ",self.name, "  ", self.event_stack)
 		save.current_dialogue = self.name
 		save.current_dialogue_event_stack = self.event_stack
 		save.current_dialogue_script_version = _script_version
@@ -48,7 +48,6 @@ func _store(save):
 
 func _restore(save):
 	if save.current_dialogue == self.name:
-		#print(save.get_script().source_code)
 		if save.dialogue_class_script_version != _class_script_version:
 				push_warning("Dialogue class script mismatched.")
 		if save.current_dialogue_script_version != _script_version:
@@ -58,26 +57,25 @@ func _restore(save):
 			else:
 				push_warning("Dialogue script mismatched, that may corrupt the game state.")
 		
-		print("Restoring dialogue ", self.name, self,"  ", save.current_dialogue_event_stack)
+		#print("Restoring dialogue ", self.name, self,"  ", save.current_dialogue_event_stack)
 		self.exit()
 		if not is_ended():
-			print("Waiting for the thread to finish")
+			#print("Waiting for the thread to finish")
 			thread.wait_to_finish()
-			print("Thread finished")
+			#print("Thread finished")
 		self.reset()
 	
-		print("Setting event_stack to  ", save.current_dialogue_event_stack)
+		#print("Setting event_stack to  ", save.current_dialogue_event_stack)
 		var_access.lock()
 		event_stack = save.current_dialogue_event_stack
 		self.var_access.unlock()
 		Rakugo.current_dialogue = self
-		print("Setting Rakugo.current_dialogue to  ",self, "  ", (Rakugo.current_dialogue == self))
+		#print("Setting Rakugo.current_dialogue to  ",self, "  ", (Rakugo.current_dialogue == self))
 		thread.start(self, "dialogue_loop")
 
 func _step():
-	print("_step received")
+	#print("_step received")
 	if thread.is_active():
-		print("Posting semaphore 1")
 		self.step_semaphore.post()
 	print(self, " ", Rakugo.current_dialogue)
 
@@ -99,11 +97,11 @@ func start(event_name=''):
 
 func dialogue_loop(_a):
 	var_access.lock()
-	print("Starting threaded dialog ", self, " ", event_stack)
+	#print("Starting threaded dialog ", self, " ", event_stack)
 	while event_stack:
 		var e = event_stack.pop_front()
 		var_access.unlock()
-		print("Calling event ",e)
+		#print("Calling event ",e)
 		self.call_event(e[0], e[1], e[3])
 		var_access.lock()
 		if self.exiting:
@@ -112,13 +110,13 @@ func dialogue_loop(_a):
 		Rakugo.call_deferred('jump', jump_target[0], jump_target[1], jump_target[2])
 	var_access.unlock()
 
-	print("Ending threaded dialog")
+	#print("Ending threaded dialog")
 	thread.call_deferred('wait_to_finish')
 
 
 func exit():
 	if not is_ended():## Not checking for active thread makes the mutex deadlocks somehow
-		print("Exitting Dialogue")
+		#print("Exitting Dialogue")
 		var_access.lock()
 		self.exiting = true
 		var_access.unlock()
