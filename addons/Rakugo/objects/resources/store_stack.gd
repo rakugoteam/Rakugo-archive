@@ -1,6 +1,6 @@
 extends Resource
 class_name StoreStack
 
-export var stack = []
+export(Array, Resource) var stack = []
 export var current_id = 0
 

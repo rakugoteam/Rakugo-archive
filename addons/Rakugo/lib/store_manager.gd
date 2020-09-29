@@ -137,7 +137,7 @@ func load_store_stack(save_name: String):
 
 
 
-func unpack_data(path:String) -> Resource:
+func unpack_data(path:String) -> Store:
 	var packed_stack:StoreStack = load(path) as StoreStack
 
 	packed_stack = packed_stack.duplicate()
