@@ -76,9 +76,6 @@ var global_history := {}
 var variables := {}
 var store = null setget set_current_store, get_current_store 
 
-# if `false` then InGameGUI will stay hidden even if `Rakugo.show("InGameGUI")` is called
-var can_show_in_game_gui := true setget _set_in_game_gui, _get_in_game_gui
-
 # don't save this
 onready var menu_node: = $Statements/Menu
 var viewport : Viewport
@@ -105,31 +102,6 @@ const skip_types := [
 	StatementType.CALL_NODE,
 ]
 
-const weekdays = {
-	0: 'Sunday',
-	1: 'Monday',
-	2: 'Tuesday',
-	3: 'Wednesday',
-	4: 'Thrusday',
-	5: 'Friday',
-	6: 'Saturday',
-}
-
-const months = {
-	1: 'January',
-	2: 'February',
-	3: 'March',
-	4: 'April',
-	5: 'May',
-	6: 'June',
-	7: 'July',
-	8: 'August',
-	9: 'September',
-	10: 'October',
-	11: 'November',
-	12: 'December',
-}
-
 var file := File.new()
 var loading_in_progress := false
 var started := false
@@ -145,9 +117,6 @@ onready var notify_timer := $NotifyTimer
 onready var SceneLoader: = $SceneLoader
 onready var StoreManager: = $StoreManager
 onready var ShowableManager: = $ShowableManager
-
-# saved automatically - it is RagukoVar
-var story_state:int setget _set_story_state, _get_story_state
 
 signal started()
 signal exec_statement(type, parameters)
@@ -187,23 +156,10 @@ func _ready() -> void:
 	var gdv = Engine.get_version_info()
 	var gdv_string = str(gdv.major) + "." + str(gdv.minor) + "." + str(gdv.patch)
 	define("godot_version", gdv_string, true)
-	define("story_state", 0)
 	define("v2_inf", Vector2.INF, false)
 	define("v3_inf", Vector3.INF, false)
-	define("can_show_in_game_gui", true)
 
 	step_timer.connect("timeout", self, "_on_time_active_timeout")
-
-
-func get_datetime_str() -> String:
-	var d = OS.get_datetime()
-	var s: String = weekdays[d['weekday']] + ' '
-	s += months[d['month']] + ' '
-	s += str(d['day']) + ', '
-	s += str(d['hour']) + ':'
-	s += str(d['minute'])
-	return s
-
 
 func _on_time_active_timeout() -> void:
 	active = true
@@ -215,15 +171,6 @@ func exec_statement(type: int, parameters := {}) -> void:
 
 func exit_statement(parameters := {}) -> void:
 	emit_signal("exit_statement", current_statement.type, parameters)
-
-
-func get_dialogue_nodes_names() -> Array:
-	var arr = []
-
-	#for n in current_dialogues.keys():
-	#	arr.append(n.name)
-
-	return arr
 
 
 func clean_viewport():
@@ -475,12 +422,7 @@ func menu(parameters: Dictionary) -> void:
 	_set_statement($Statements/Menu, parameters)
 
 
-# it show custom rakugo node or character
-# 'state' arg is using to set for example current emotion or/and cloths
-# 'state' example '['happy', 'green uniform']'
-# with keywords:x, y, z, at, pos
-# x, y and pos will use it as protect of screen if between 0 and 1
-# "at" is lists that can have: "top", "center", "bottom", "right", "left"
+# it show nod tagged with "showable <space separated tag>"
 func show(showable_tag:String, parameters := {}):
 	ShowableManager.show(showable_tag, parameters)
 
@@ -557,22 +499,6 @@ func call_node(node_id: String, func_name: String, args := []) -> void:
 	}
 
 	_set_statement($Statements/CallNode, parameters)
-
-
-func _set_story_state(state: int) -> void:
-	define("story_state", state)
-
-
-func _get_story_state() -> int:
-	return get_value("story_state")
-
-
-func _set_in_game_gui(can_show: bool) -> void:
-	define("can_show_in_game_gui", can_show)
-
-
-func _get_in_game_gui() -> bool:
-	return get_value("can_show_in_game_gui")
 
 
 # it starts Rakugo

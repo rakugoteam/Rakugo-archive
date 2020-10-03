@@ -61,5 +61,4 @@ func exec() -> void:
 	.exec()
 
 func on_exit(_type: int, new_parameters := {}) -> void:
-	Rakugo.story_state += 1
 	.on_exit(_type, new_parameters)

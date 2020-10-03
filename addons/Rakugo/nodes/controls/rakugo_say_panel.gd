@@ -74,7 +74,6 @@ func _on_ui_accept(value: bool) -> void:
 		return
 
 	Rakugo.debug(["ui_accept:", ui_accept])
-	Rakugo.debug(["story_state", Rakugo.story_state])
 
 	if Rakugo.skip_auto:
 		Rakugo.auto_timer.stop_loop()

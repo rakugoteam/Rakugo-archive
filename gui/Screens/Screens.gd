@@ -130,8 +130,9 @@ func _screenshot_on_input(event):
 	if !dir.dir_exists(screenshots_dir):
 		dir.make_dir(screenshots_dir)
 
-	var s = Rakugo.get_datetime_str().replace(":", " ")
-	get_screenshot().save_png(screenshots_dir.plus_file(s + '.png'))
+	var datetime = OS.get_datetime()
+	var s = "{day}-{month}-{year}_{hour}-{minute}-{second}.png".format(datetime)
+	get_screenshot().save_png(screenshots_dir.plus_file(s))
 
 
 func _input(event):
