@@ -1,30 +1,14 @@
-extends RakugoTimer
-
-signal stop_loop
-
-func _ready() -> void:
-	connect("timeout", self, "on_loop")
+extends Timer
 
 
-func stop_loop() -> void:
-	stop()
-	emit_signal("stop_loop")
-	Rakugo.skip_auto = false
-
-
-func run() -> bool:
-	if not is_stopped():
-		stop_loop()
-		return false
-	
+func run():
 	Rakugo.skip_auto = true
 	start()
-	return true
 
 
-func on_loop() -> void:
-	if Rakugo.can_auto():
-		Rakugo.exit_statement()
-	
+func on_loop():
+	if Rakugo.skip_auto and Rakugo.can_auto():
+		Rakugo.story_step()
 	else:
-		stop_loop()
+		Rakugo.skip_auto = false
+		stop()

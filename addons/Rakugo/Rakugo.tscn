@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://addons/Rakugo/main.gd" type="Script" id=1]
 [ext_resource path="res://addons/Rakugo/statements/say.gd" type="Script" id=2]
@@ -18,7 +18,6 @@
 [ext_resource path="res://addons/Rakugo/statements/call_node.gd" type="Script" id=21]
 [ext_resource path="res://addons/Rakugo/lib/AutoTimer.gd" type="Script" id=22]
 [ext_resource path="res://addons/Rakugo/lib/SkipTimer.gd" type="Script" id=23]
-[ext_resource path="res://addons/Rakugo/nodes/rakugo_timer.gd" type="Script" id=24]
 
 [node name="Rakugo" type="Node"]
 pause_mode = 2
@@ -73,15 +72,9 @@ script = ExtResource( 4 )
 
 [node name="AutoTimer" type="Timer" parent="."]
 script = ExtResource( 22 )
-var_name = "auto_time"
 
 [node name="SkipTimer" type="Timer" parent="."]
 script = ExtResource( 23 )
-
-[node name="DialogueTimer" type="Timer" parent="."]
-one_shot = true
-script = ExtResource( 24 )
-var_name = "text_time"
 
 [node name="StepTimer" type="Timer" parent="."]
 wait_time = 0.01
@@ -89,3 +82,5 @@ one_shot = true
 
 [node name="NotifyTimer" type="Timer" parent="."]
 one_shot = true
+[connection signal="timeout" from="AutoTimer" to="AutoTimer" method="on_loop"]
+[connection signal="timeout" from="SkipTimer" to="SkipTimer" method="on_loop"]
