@@ -1,0 +1,66 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://gui/InGame/DialogueBox/AskEntry.gd" type="Script" id=1]
+[ext_resource path="res://gui/InGame/DialogueBox/SpeakerName.gd" type="Script" id=2]
+[ext_resource path="res://gui/InGame/DialogueBox/Text.gd" type="Script" id=3]
+
+[node name="DialogueBox" type="HBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ViewportContainer" type="ViewportContainer" parent="."]
+visible = false
+margin_right = 100.0
+margin_bottom = 720.0
+
+[node name="CharaterAvatar" type="Viewport" parent="ViewportContainer"]
+size = Vector2( 100, 100 )
+own_world = true
+transparent_bg = true
+handle_input_locally = false
+hdr = false
+usage = 0
+render_target_update_mode = 0
+
+[node name="VBox" type="VBoxContainer" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SpeakerName" type="RichTextLabel" parent="VBox"]
+margin_right = 1280.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 0, 30 )
+mouse_filter = 2
+bbcode_enabled = true
+scroll_active = false
+script = ExtResource( 2 )
+
+[node name="Text" type="RichTextLabel" parent="VBox"]
+margin_top = 34.0
+margin_right = 1280.0
+margin_bottom = 49.0
+mouse_filter = 2
+bbcode_enabled = true
+text = "Some text displayed"
+fit_content_height = true
+scroll_active = false
+script = ExtResource( 3 )
+
+[node name="TypingTimer" type="Timer" parent="VBox/Text"]
+wait_time = 0.1
+
+[node name="AskEntry" type="LineEdit" parent="VBox"]
+visible = false
+margin_top = 53.0
+margin_right = 1280.0
+margin_bottom = 77.0
+caret_blink = true
+caret_blink_speed = 0.5
+script = ExtResource( 1 )
+[connection signal="text_entered" from="VBox/AskEntry" to="VBox/AskEntry" method="_on_text_entered"]

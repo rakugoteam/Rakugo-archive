@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://themes/Default/default.tres" type="Theme" id=1]
 [ext_resource path="res://gui/Screens/PreferencesScreen/FullscreenCheck.gd" type="Script" id=3]
@@ -6,7 +6,6 @@
 [ext_resource path="res://addons/Rakugo/nodes/controls/rakugo_var_check.gd" type="Script" id=5]
 [ext_resource path="res://gui/Screens/PreferencesScreen/TextSpeedSlider.gd" type="Script" id=6]
 [ext_resource path="res://gui/Screens/PreferencesScreen/AutoSpeedSlider.gd" type="Script" id=7]
-[ext_resource path="res://gui/Screens/PreferencesScreen/SoundBusControl/SoundBusControl.tscn" type="PackedScene" id=8]
 
 [node name="PreferencesScreen" type="Panel"]
 anchor_right = 1.0
@@ -97,59 +96,6 @@ theme = ExtResource( 1 )
 text = "After Choices"
 script = ExtResource( 5 )
 var_name = "skip_after_choices"
-
-[node name="AudioBox" type="VBoxContainer" parent="Rows/OptionScreen"]
-visible = false
-margin_left = 513.0
-margin_right = 813.0
-margin_bottom = 299.0
-grow_horizontal = 0
-alignment = 1
-
-[node name="Title" type="Label" parent="Rows/OptionScreen/AudioBox"]
-margin_right = 300.0
-margin_bottom = 27.0
-grow_horizontal = 0
-text = "Audio"
-align = 1
-
-[node name="MasterBusControl" parent="Rows/OptionScreen/AudioBox" instance=ExtResource( 8 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 31.0
-margin_right = 300.0
-margin_bottom = 95.0
-grow_horizontal = 0
-
-[node name="BGMBusControl3" parent="Rows/OptionScreen/AudioBox" instance=ExtResource( 8 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 99.0
-margin_right = 300.0
-margin_bottom = 163.0
-grow_horizontal = 0
-label = "Music"
-bus_name = "BGM"
-
-[node name="SFXBusControl2" parent="Rows/OptionScreen/AudioBox" instance=ExtResource( 8 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 167.0
-margin_right = 300.0
-margin_bottom = 231.0
-grow_horizontal = 0
-label = "Sounds"
-bus_name = "SFX"
-
-[node name="MasterBusControl4" parent="Rows/OptionScreen/AudioBox" instance=ExtResource( 8 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 235.0
-margin_right = 300.0
-margin_bottom = 299.0
-grow_horizontal = 0
-label = "Dialogs"
-bus_name = "Dialogs"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Rows"]
 margin_top = 133.0

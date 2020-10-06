@@ -1,6 +1,5 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://gui/Labels/name_text.tscn" type="PackedScene" id=1]
 [ext_resource path="res://fonts/DejaVu/DejaVuSans-Oblique.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://fonts/DejaVu/DejaVuSans-BoldOblique.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://fonts/DejaVu/DejaVuSans-Bold.ttf" type="DynamicFontData" id=4]
@@ -49,10 +48,10 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 1
 
-[node name="Label" parent="VBox" instance=ExtResource( 1 )]
+[node name="Label" type="RichTextLabel" parent="VBox"]
 margin_right = 700.0
 margin_bottom = 49.0
-focus_mode = 0
+rect_min_size = Vector2( 100, 40 )
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -61,8 +60,16 @@ custom_fonts/bold_italics_font = SubResource( 2 )
 custom_fonts/italics_font = SubResource( 3 )
 custom_fonts/bold_font = SubResource( 4 )
 custom_fonts/normal_font = SubResource( 5 )
+custom_colors/default_color = Color( 0, 0.6, 0.8, 1 )
+custom_colors/selection_color = Color( 0, 0.6, 0.8, 1 )
+custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "Speaker"
+text = "Speaker"
 scroll_active = false
-selection_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Dialog" type="RichTextLabel" parent="VBox"]
 margin_top = 50.0

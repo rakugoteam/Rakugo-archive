@@ -1,10 +1,10 @@
-extends Panel
+extends Panel#TODO rewrite that
 
 export var pixels_per_leter := 20
 export var screen_width = 1024
 
 func _ready() -> void:
-	Rakugo.connect("exec_statement", self, "_on_statement")
+	#Rakugo.connect("exec_statement", self, "_on_statement")
 	Rakugo.notify_timer.connect("timeout", self, "hide")
 
 

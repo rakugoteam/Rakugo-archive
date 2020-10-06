@@ -1,14 +1,20 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://themes/Default/default.tres" type="Theme" id=1]
-[ext_resource path="res://gui/InGame/InGameGUI.gd" type="Script" id=2]
-[ext_resource path="res://addons/Rakugo/nodes/controls/rakugo_menu.gd" type="Script" id=3]
-[ext_resource path="res://gui/InGame/ChoiceButton.tscn" type="PackedScene" id=4]
-[ext_resource path="res://gui/InGame/Say.tscn" type="PackedScene" id=5]
+[ext_resource path="res://gui/InGame/DialogueBox/DialogueBox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://gui/QuickMenu/QuickMenu.tscn" type="PackedScene" id=6]
 [ext_resource path="res://gui/InGame/Notify.gd" type="Script" id=7]
 [ext_resource path="res://gui/QuitScreen/QuitScreen.tscn" type="PackedScene" id=8]
-[ext_resource path="res://gui/InGame/hack_button_style.tres" type="StyleBox" id=15]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Control
+
+
+func _gui_input(event):
+	if event.is_action_pressed(\"left_click\"):
+		Rakugo.story_step()
+	pass
+"
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 0.498039 )
@@ -22,7 +28,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
 theme = ExtResource( 1 )
-script = ExtResource( 2 )
+script = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -31,43 +37,26 @@ __meta__ = {
 anchor_top = 0.7
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 1
 custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SayPanel" parent="Panel" instance=ExtResource( 5 )]
-anchor_bottom = 0.8
-mouse_filter = 0
-
-[node name="Button" type="Button" parent="Panel/SayPanel"]
-anchor_right = 1.0
+[node name="Control" type="Control" parent="Panel"]
+anchor_left = 0.15
+anchor_right = 0.85
 anchor_bottom = 1.0
 mouse_filter = 1
-custom_styles/hover = ExtResource( 15 )
-custom_styles/pressed = ExtResource( 15 )
-custom_styles/focus = ExtResource( 15 )
-custom_styles/disabled = ExtResource( 15 )
-custom_styles/normal = ExtResource( 15 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="DialogueBox" parent="Panel/Control" instance=ExtResource( 5 )]
+anchor_bottom = 0.8
 
 [node name="QuickMenu" parent="Panel" instance=ExtResource( 6 )]
-
-[node name="RakugoMenu" type="GridContainer" parent="."]
-anchor_left = 0.3
-anchor_top = 0.1
-anchor_right = 0.7
-anchor_bottom = 0.6
-size_flags_horizontal = 3
-size_flags_vertical = 3
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-screen_size = Vector2( 160, 90 )
-ChoiceButton = ExtResource( 4 )
+margin_top = -1.52588e-05
 
 [node name="Notify" type="Panel" parent="."]
 visible = false
