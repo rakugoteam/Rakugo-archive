@@ -47,7 +47,7 @@ var store = null setget set_current_store, get_current_store
 # don't save this
 onready var menu_node: = $Statements/Menu
 var viewport : Viewport
-var loading_screen : RakugoControl
+#var loading_screen : Control
 var current_scene_path := ""
 var current_scene_node: Node = null
 var current_statement: Statement = null
@@ -67,7 +67,6 @@ var quests := [] # list of all quests ids
 onready var auto_timer := $AutoTimer
 onready var skip_timer := $SkipTimer
 onready var step_timer := $StepTimer
-onready var dialogue_timer := $DialogueTimer
 onready var notify_timer := $NotifyTimer
 
 onready var SceneLoader: = $SceneLoader
@@ -348,6 +347,7 @@ func text_parser(text: String, mode := markup):
 	
 	return TextParser.text_parser(text, variables, mode, links_color)
 
+
 # overwrite existing global variable and returns it as RakugoVar
 func set_var(var_name: String, value) -> RakugoVar:
 	if not (var_name in variables):
@@ -361,30 +361,8 @@ func set_var(var_name: String, value) -> RakugoVar:
 
 # returns exiting Rakugo variable as one of RakugoTypes for easy use
 # It must be with out returned type, because we can't set it as list of types
-func get_var(var_name: String) -> RakugoVar:
-	return $Statements/GetVar.invoke(var_name)
-
-
-
-
-# returns value of variable defined using define
-# It must be with out returned type, because we can't set it as list of types
-func get_value(var_name: String, default = null):
-	if variables.has(var_name):
-		return variables[var_name].value
-
-	return default
-
-
-func get_node_value(var_name:String) -> Dictionary:
-	var p = NodeLink.new("").var_prefix
-	return get_value(p + var_name)
-
-
-func get_avatar_value(var_name: String) -> Dictionary:
-	var p = Avatar.new("").var_prefix
-	return get_value(p + var_name)
-
+func get_var(var_name: String):
+	return get_current_store().get(var_name)
 
 
 # just faster way to connect signal to rakugo's variable
@@ -479,15 +457,14 @@ func hide(showable_tag: String) -> void:
 
 
 # statement of type notify
-func notify(info: String, length: int = get_value("notify_time")) -> void:
-	var parameters = {
-		"info": info,
-		"length":length
-	}
-
-	_set_statement($Statements/Notify, parameters)
-	notify_timer.wait_time = parameters.length
-	notify_timer.start()
+#func notify(info: String, length: int = get_value("notify_time")) -> void:
+#	var parameters = {
+#		"info": info,
+#		"length":length
+#	}
+#	_set_statement($Statements/Notify, parameters)
+#	notify_timer.wait_time = parameters.length
+#	notify_timer.start()
 
 
 # statement of type play_anim

@@ -1,4 +1,4 @@
-extends RakugoControl
+extends Control
 
 func _input(event):
 	if visible:

@@ -1,4 +1,4 @@
-extends RakugoControl
+extends Control
 
 
 export onready var unpause_timer: Timer = $UnpauseTimer

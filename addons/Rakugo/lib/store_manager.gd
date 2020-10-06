@@ -153,35 +153,6 @@ func unpack_data(path:String) -> Store:
 	Rakugo.quests.clear()
 	Rakugo.history = save.history.duplicate()
 
-	for i in range(save.data.size()):
-		var k = save.data.keys()[i]
-		var v = save.data.values()[i]
-
-		Rakugo.debug([k, v])
-
-		match v.type:
-			Rakugo.Type.CHARACTER:
-				Rakugo.character(k, v.value)
-
-			Rakugo.Type.SUBQUEST:
-				Rakugo.subquest(k, v.value)
-
-			Rakugo.Type.QUEST:
-				Rakugo.quest(k, v.value)
-
-				if k in Rakugo.quests:
-					continue
-
-				Rakugo.quests.append(k)
-
-			Rakugo.Type.NODE:
-				var n = NodeLink.new(k)
-				n.load_from(v.value)
-				Rakugo.variables[k] = n
-
-			_:
-				Rakugo.define(k, v.value)
-
 	for q_id in Rakugo.quests:
 		var q = Rakugo.get_var(q_id)
 		q.update_subquests()

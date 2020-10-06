@@ -1,4 +1,4 @@
-extends RakugoVar
+extends Object
 class_name RakugoText
 
 var bold: bool setget _set_bold, _get_bold
@@ -21,9 +21,9 @@ var color: String setget _set_color, _get_color
 var _prevfont: String
 var _prevurl: String
 var _prevcolor: String
+var _value:String
 
-func _init(var_id:String, var_value:String
-	).(var_id, var_value, Rakugo.Type.TEXT):
+func _init(var_id:String, var_value:String):
 	pass
 
 func _set_value(var_value:String) -> void:
@@ -243,7 +243,7 @@ func is_valid_float() -> bool:
 	return _value.is_valid_float()
 
 func is_valid_hex_number(with_prefix := false) -> bool:
-	return _value.s_valid_hex_number(with_prefix)
+	return _value.is_valid_hex_number(with_prefix)
 
 func is_valid_html_color() -> bool:
 	return _value.is_valid_html_color()
@@ -293,11 +293,11 @@ func pad_decimals(digits: int) -> String:
 func pad_zeros(digits: int) -> String:
 	return _value.pad_zeros(digits)
 
-func percent_detext() -> String:
-	return _value.percent_detext()
+func percent_decode() -> String:
+	return _value.percent_decode()
 
-func percent_entext() -> String:
-	return _value.percent_entext()
+func percent_encode() -> String:
+	return _value.percent_encode()
 
 func plus_file(file: String) -> String:
 	return _value.plus_file(file)
@@ -373,17 +373,3 @@ func xml_unescape() -> String:
 
 func to_string() -> String:
 	return _value
-
-
-func parse_text(text: String, open: String, close: String) -> String:
-	text = .parse_text(text, open, close)
-
-	for i in range(_value.length() ):
-		var sa = open + _id + "[" + str(i) + "]" + close
-
-		if text.find(sa) == -1:
-			continue # no variable in this string
-
-		text = text.replace(sa, _value[i])
-
-	return text

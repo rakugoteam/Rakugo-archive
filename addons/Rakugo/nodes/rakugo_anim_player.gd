@@ -5,10 +5,10 @@ class_name RakugoAnimPlayer, "res://addons/Rakugo/icons/rakugo_animation_player.
 export var node_id : String = name setget _set_node_id, _get_node_id
 export var saveable := true setget _set_saveable, _get_saveable
 
-var rnode := RakugoNodeCore.new()
+#var rnode := RakugoNodeCore.new()
 var _node_id := ""
 var _saveable := true
-var node_link: NodeLink
+#var node_link: NodeLink
 
 func _ready() -> void:
 	_set_saveable(_saveable)
@@ -22,10 +22,10 @@ func _ready() -> void:
 	Rakugo.connect("play_anim", self, "_on_play")
 	Rakugo.connect("stop_anim", self, "_on_stop")
 
-	node_link = Rakugo.get_node_link(_node_id)
+	#node_link = Rakugo.get_node_link(_node_id)
 
-	if  not node_link:
-		node_link = Rakugo.node_link(_node_id, get_path())
+	#if  not node_link:
+	#	node_link = Rakugo.node_link(_node_id, get_path())
 
 
 func _set_node_id(value: String):
@@ -42,10 +42,10 @@ func _get_node_id() -> String:
 func _set_saveable(value: bool):
 	_saveable = value
 
-	if not rnode:
-		rnode = RakugoNodeCore.new()
+	#if not rnode:
+	#	rnode = RakugoNodeCore.new()
 
-	rnode.make_saveable(self, value)
+	#rnode.make_saveable(self, value)
 
 
 func _get_saveable() -> bool:
@@ -74,21 +74,23 @@ func _on_stop(id: String, reset: bool) -> void:
 
 
 func on_save():
-	if not node_link:
-		push_error("error with saving: %s"  %_node_id)
-		return
+	#if not node_link:
+	#	push_error("error with saving: %s"  %_node_id)
+	#	return
 
-	node_link.value["anim_name"] = current_animation
-	node_link.value["is_playing"] = is_playing()
+	#node_link.value["anim_name"] = current_animation
+	#node_link.value["is_playing"] = is_playing()
+	pass
 
 
 func on_load(game_version: String) -> void:
-	if not node_link:
-		push_error("error with loading: %s" %_node_id)
-		return
+	#if not node_link:
+	#	push_error("error with loading: %s" %_node_id)
+	#	return
 
-	if "is_playing" in node_link.value:
-		if node_link.value["is_playing"]:
-			if "anim_name" in node_link.value:
-				var anim_name = node_link.value["anim_name"]
-				_on_play(node_id, anim_name)
+	#if "is_playing" in node_link.value:
+	#	if node_link.value["is_playing"]:
+	#		if "anim_name" in node_link.value:
+	#			var anim_name = node_link.value["anim_name"]
+	#			_on_play(node_id, anim_name)
+	pass

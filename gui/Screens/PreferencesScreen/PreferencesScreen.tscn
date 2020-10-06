@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://themes/Default/default.tres" type="Theme" id=1]
 [ext_resource path="res://gui/Screens/PreferencesScreen/FullscreenCheck.gd" type="Script" id=3]
 [ext_resource path="res://gui/Screens/PreferencesScreen/VSyncCheck.gd" type="Script" id=4]
-[ext_resource path="res://addons/Rakugo/nodes/controls/rakugo_var_check.gd" type="Script" id=5]
 [ext_resource path="res://gui/Screens/PreferencesScreen/TextSpeedSlider.gd" type="Script" id=6]
 [ext_resource path="res://gui/Screens/PreferencesScreen/AutoSpeedSlider.gd" type="Script" id=7]
 
@@ -84,8 +83,6 @@ margin_right = 175.0
 margin_bottom = 60.0
 theme = ExtResource( 1 )
 text = "Unseen Text"
-script = ExtResource( 5 )
-var_name = "skip_all_text"
 
 [node name="AfterChoicesCheck" type="CheckButton" parent="Rows/OptionScreen/Skip"]
 margin_top = 64.0
@@ -94,8 +91,6 @@ margin_bottom = 93.0
 grow_horizontal = 0
 theme = ExtResource( 1 )
 text = "After Choices"
-script = ExtResource( 5 )
-var_name = "skip_after_choices"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Rows"]
 margin_top = 133.0

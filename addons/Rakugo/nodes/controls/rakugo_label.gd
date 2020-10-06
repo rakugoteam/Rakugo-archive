@@ -9,7 +9,6 @@ export(Array, String) var vars_names := []
 
 var _rakugo_text := ""
 var _rakugo_text_file := ""
-
 var file := File.new()
 
 func _ready() -> void:
@@ -17,8 +16,6 @@ func _ready() -> void:
 	_set_rakugo_file(rakugo_text_file)
 	update_label()
 
-	for vn in vars_names:
-		Rakugo.connect_var(vn, "value_changed", self, "on_value_changed")
 
 	connect("meta_clicked", self, "on_meta_clicked")
 	connect("visibility_changed", self, "on_visibility_changed")

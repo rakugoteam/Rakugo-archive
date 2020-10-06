@@ -6,7 +6,6 @@ export var rakugo_version := ""
 export var history := {}
 export var history_id := 0
 export var scene := ""
-export var data := {}
 export var properties := {}
 var property_signals := []
 

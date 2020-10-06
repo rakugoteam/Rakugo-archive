@@ -7,10 +7,6 @@ var parameters := {} # dict of pairs keyword: argument
 var parameters_names := ["add_to_history"] # possible keywords for this type of statement - to use in RakuScript in near future
 
 
-func _ready() -> void:
-	Rakugo.connect("exit_statement", self, "on_exit")
-
-
 func exec() -> void:
 	debug(parameters_names)
 
