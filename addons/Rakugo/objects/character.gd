@@ -49,7 +49,7 @@ func apply_default(input:Dictionary, default:Dictionary):
 			output[k] = default[k]
 	return output
 
-func get_composite_name(_affixes=true) -> String:
+func get_composite_name(_markup_override="", _affixes=true) -> String:
 	var composite_name = ""
 
 	if name != "":
@@ -57,9 +57,9 @@ func get_composite_name(_affixes=true) -> String:
 			composite_name = prefix + name + suffix
 		else:
 			composite_name = name
-		if Rakugo.markup == "bbcode":
+		if _markup_override == "bbcode" or Rakugo.markup == "bbcode":
 			composite_name = "[color=#%s]%s[/color]" % [color.to_html(), composite_name]
-		elif Rakugo.markup == "renpy":
+		elif _markup_override == "renpy" or Rakugo.markup == "renpy":
 			composite_name = "{color=#%s}%s{/color}" % [color.to_html(), composite_name]
 
 	return composite_name
@@ -68,10 +68,6 @@ func get_composite_name(_affixes=true) -> String:
 
 func say(text:String, parameters:Dictionary = {}) -> void:
 	Rakugo.say(self, text, parameters)
-
-
-func ask(text:String, parameters:Dictionary = {}) -> void:
-	Rakugo.ask(self, text, parameters)
 
 
 func show(parameters:Dictionary = {}) -> void:
