@@ -44,9 +44,7 @@ func text_parser(
 	return text
 
 
-func parse_text_adv(
-		text: String, variables: Dictionary,
-		open: String, close: String) -> String:
+func parse_text_adv(text: String, variables: Dictionary, open: String, close: String) -> String:
 
 	if text == null:
 		return ""
@@ -56,12 +54,7 @@ func parse_text_adv(
 	for var_name in variables.keys():
 		if text.find(var_name) == -1:
 			continue # no variable in this string
-
-		var variable:RakugoVar = variables[var_name]
-		var type = Rakugo.Type.keys()[variable.type]
-
-		Rakugo.debug([var_name, type, variable.value])
-		text = variable.parse_text(text, open, close)
+		#TODO Replace occerences of var_name in text by the value referenced by var_name
 
 	return text
 

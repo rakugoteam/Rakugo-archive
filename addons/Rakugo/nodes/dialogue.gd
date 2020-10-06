@@ -227,7 +227,7 @@ func _get_script_hash(object=self):
 
 ## Rakugo statement wrap
 
-func set_var(var_name: String, value) -> RakugoVar:
+func set_var(var_name: String, value):
 	if is_active():
 		return Rakugo.set_var(var_name, value)
 	return null

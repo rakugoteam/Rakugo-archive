@@ -349,7 +349,7 @@ func text_parser(text: String, mode := markup):
 
 
 # overwrite existing global variable and returns it as RakugoVar
-func set_var(var_name: String, value) -> RakugoVar:
+func set_var(var_name: String, value):
 	if not (var_name in variables):
 		push_warning("%s variable don't exist in Rakugo" %var_name)
 		return null
@@ -384,38 +384,6 @@ func define_character(character_name: String, character_tag: String, parameters 
 	var new_character := Character.new(character_name, character_tag, parameters)
 	StoreManager.get_current_store()[character_tag] = new_character
 	return new_character
-
-
-# crate new link to node avatar as global variable that Rakugo will see
-# it can have name as other existing varbiable
-func avatar_link(node_id: String, node: NodePath) -> Avatar:
-	return $Statements/Define.avatar_link(node_id, node, variables)
-
-
-func get_avatar_link(node_id: String) -> Avatar:
-	var s = Avatar.new("").var_prefix
-	return get_var(s + node_id) as Avatar
-
-
-# add/overwrite global subquest that Rakugo will see
-# and returns it as RakugoSubQuest for easy use
-# possible parameters: "who", "title", "description", "optional", "state", "subquests"
-func subquest(subquest_id: String, parameters := {}) -> Subquest:
-	var new_subq := Subquest.new(subquest_id, parameters)
-	new_subq.save_included = true
-	variables[subquest_id] = new_subq
-	return new_subq
-
-
-# add/overwrite global quest that Rakugo will see
-# and returns it as RakugoQuest for easy use
-# possible parameters: "who", "title", "description", "optional", "state", "subquests"
-func quest(quest_id: String, parameters := {}) -> Quest:
-	var q := Quest.new(quest_id, parameters)
-	q.save_included = true
-	variables[quest_id] = q
-	quests.append(quest_id)
-	return q
 
 
 # it should be "node:Statement", but it don't work for now

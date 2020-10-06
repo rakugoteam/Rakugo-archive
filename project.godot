@@ -14,11 +14,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/statements/ask.gd"
 }, {
-"base": "RakugoVar",
-"class": "Avatar",
-"language": "GDScript",
-"path": "res://addons/Rakugo/objects/rakugo_vars/avatar.gd"
-}, {
 "base": "Statement",
 "class": "CallNode",
 "language": "GDScript",
@@ -74,11 +69,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/statements/play_audio.gd"
 }, {
-"base": "Subquest",
-"class": "Quest",
-"language": "GDScript",
-"path": "res://addons/Rakugo/objects/rakugo_vars/quest.gd"
-}, {
 "base": "AnimationPlayer",
 "class": "RakugoAnimPlayer",
 "language": "GDScript",
@@ -92,7 +82,7 @@ _global_script_classes=[ {
 "base": "Object",
 "class": "RakugoText",
 "language": "GDScript",
-"path": "res://addons/Rakugo/objects/rakugo_vars/rakugo_text.gd"
+"path": "res://addons/Rakugo/objects/rakugo_text.gd"
 }, {
 "base": "RichTextLabel",
 "class": "RakugoTextLabel",
@@ -108,11 +98,6 @@ _global_script_classes=[ {
 "class": "RakugoTheme",
 "language": "GDScript",
 "path": "res://addons/Rakugo/objects/resources/rakugo_theme.gd"
-}, {
-"base": "Object",
-"class": "RakugoVar",
-"language": "GDScript",
-"path": "res://addons/Rakugo/objects/rakugo_vars/rakugo_var.gd"
 }, {
 "base": "Node",
 "class": "Say",
@@ -148,15 +133,9 @@ _global_script_classes=[ {
 "class": "StoreStack",
 "language": "GDScript",
 "path": "res://addons/Rakugo/objects/resources/store_stack.gd"
-}, {
-"base": "RakugoVar",
-"class": "Subquest",
-"language": "GDScript",
-"path": "res://addons/Rakugo/objects/rakugo_vars/subquest.gd"
 } ]
 _global_script_class_icons={
 "Ask": "",
-"Avatar": "",
 "CallNode": "",
 "Character": "",
 "CollapsedList": "",
@@ -168,14 +147,12 @@ _global_script_class_icons={
 "NotifyLabel": "res://addons/Rakugo/icons/notify_label.svg",
 "PlayAnim": "",
 "PlayAudio": "",
-"Quest": "",
 "RakugoAnimPlayer": "res://addons/Rakugo/icons/rakugo_animation_player.svg",
 "RakugoProjectSettings": "",
 "RakugoText": "",
 "RakugoTextLabel": "res://addons/Rakugo/icons/rakugo_text_label.svg",
 "RakugoTextParser": "",
 "RakugoTheme": "res://addons/Rakugo/icons/theme.svg",
-"RakugoVar": "",
 "Say": "",
 "SceneLinks": "res://addons/Rakugo/icons/scene_links.svg",
 "Statement": "",
@@ -183,7 +160,6 @@ _global_script_class_icons={
 "StopAudio": "",
 "Store": "res://addons/Rakugo/icons/save.svg",
 "StoreStack": "",
-"Subquest": ""
 }
 
 [application]
