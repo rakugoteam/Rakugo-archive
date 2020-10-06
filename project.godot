@@ -9,7 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Say",
+"base": "Node",
 "class": "Ask",
 "language": "GDScript",
 "path": "res://addons/Rakugo/statements/ask.gd"
@@ -64,7 +64,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/nodes/controls/kind_container.gd"
 }, {
-"base": "Say",
+"base": "Node",
 "class": "Menu",
 "language": "GDScript",
 "path": "res://addons/Rakugo/statements/menu.gd"
@@ -229,7 +229,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/nodes/controls/save_button.gd"
 }, {
-"base": "Statement",
+"base": "Node",
 "class": "Say",
 "language": "GDScript",
 "path": "res://addons/Rakugo/statements/say.gd"

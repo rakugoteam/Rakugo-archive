@@ -1,45 +1,25 @@
-extends Say
+extends Node
 class_name Menu
 
-var choices_labels: Array = []
-
-func _init() -> void:
-	._init()
-	type = 3 # Rakugo.StatementType.MENU
-	parameters_names += ["node", "choices",	"mkind", "manchor","mcolumns"]
-	def_parameters["typing"] = false
-	def_parameters["mkind"] = "vertical"
-	def_parameters["manchor"] = "center"
+var default_parameters = {#TODO make those set by the project settings
+	
+	}
 
 
-func exec() -> void:
-	Rakugo.checkpoint()
-	debug(parameters_names)
-
-	choices_labels = []
-	for ch in parameters.choices:
-		var l = Rakugo.text_parser(ch)
-		choices_labels.append(l)
-
-	.exec()
+func exec(choices:Array, parameters = {}) -> void:
+	parameters = _apply_default(parameters, default_parameters)
+	
+	Rakugo.emit_signal("menu", choices, parameters)
 
 
-func on_exit(_type: int, new_parameters: Dictionary = {}) -> void:
-	if !setup_exit(_type, new_parameters):
-		return
+#Utils functions
 
-	if "final_choice" in parameters:
-		var final_choice: String = parameters.choices.values()[parameters.final_choice]
+func _apply_default(input:Dictionary, default:Dictionary):
+	var output = input.duplicate()
+	for k in default.keys():
+		if not output.has(k):
+			output[k] = default[k]
+	return output
 
-		var n = parameters.node
-		if n:
-			n.emit_signal(final_choice)
 
-		else:
-			push_warning("no node recived")
-
-	else:
-		push_warning("no final_choice recived")
-
-	if parameters.add_to_history:
-		add_to_history()
+#This class is actually pretty empty other than the boilerplate _apply_default, but adding when the default_parameter will be in the settings then it should get some specific code

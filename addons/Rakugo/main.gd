@@ -27,38 +27,6 @@ var _text_time := 0.3
 var _notify_time := 3
 var _typing_text := true
 
-enum Type {
-	VAR,		# 0
-	TEXT,		# 1
-	DICT,		# 2
-	LIST,		# 3
-	NODE,		# 4
-	QUEST,		# 5
-	SUBQUEST,	# 6
-	CHARACTER,	# 7
-	RANGED,		# 8
-	BOOL,		# 9
-	VECT2, # 10
-	VECT3, # 11
-	AVATAR, # 12
-	COLOR, # 13
-}
-
-enum StatementType {
-	BASE,		# 0
-	SAY,		# 1
-	ASK,		# 2
-	MENU,		# 3
-	SHOW,		# 4
-	HIDE,		# 5
-	NOTIFY,		# 6
-	PLAY_ANIM,	# 7
-	STOP_ANIM,	# 8
-	PLAY_AUDIO,	# 9
-	STOP_AUDIO,	# 10
-	CALL_NODE,	# 11
-}
-
 # this must be saved
 var history_id := 0 setget _set_history_id, _get_history_id
 
@@ -90,18 +58,6 @@ var emoji_size := 16
 var skipping := false
 var can_save := true
 
-const skip_types := [
-	StatementType.SAY,
-	StatementType.SHOW,
-	StatementType.HIDE,
-	StatementType.NOTIFY,
-	StatementType.PLAY_ANIM,
-	StatementType.STOP_ANIM,
-	StatementType.PLAY_AUDIO,
-	StatementType.STOP_AUDIO,
-	StatementType.CALL_NODE,
-]
-
 var file := File.new()
 var loading_in_progress := false
 var started := false
@@ -117,21 +73,27 @@ onready var notify_timer := $NotifyTimer
 onready var SceneLoader: = $SceneLoader
 onready var StoreManager: = $StoreManager
 onready var ShowableManager: = $ShowableManager
+onready var Say = $Statements/Say
+onready var Ask = $Statements/Ask
+onready var Menu = $Statements/Menu
 
+signal say(character, text, parameters)
+signal ask(variable_name, parameters)
+signal menu(choices, parameters)
+#TODO clean those
 signal started()
-signal exec_statement(type, parameters)
-signal exit_statement(previous_type, parameters)
-signal notified()
+signal begin()#TODO Looks redundant with started, look into it
 signal story_step(dialogue_name, event_name)
+signal checkpoint()
+signal game_ended()
+#TODO assert the need of those
+signal notified()
+signal hide_ui(value)
+#TODO prune those
 signal play_anim(node_id, anim_name)
 signal stop_anim(node_id, reset)
 signal play_audio(node_id, from_pos)
 signal stop_audio(node_id)
-signal begin()
-signal hide_ui(value)
-signal checkpoint()
-signal game_ended()
-
 
 func _ready() -> void:
 
@@ -140,29 +102,125 @@ func _ready() -> void:
 		variables[v].save_included = false
 
 	# set by game developer
-	define("title", game_title, false)
-	define("version", game_version, false)
+	#define("title", game_title, false)
+	#define("version", game_version, false)
 	OS.set_window_title(game_title + " " + game_version)
-	define("credits", game_credits, false)
+	#define("credits", game_credits, false)
 
 	# it must be before define rakugo_version and godot_version to parse corretly :o
 	file.open(credits_path, file.READ)
-	define("rakugo_credits", file.get_as_text(), false)
+	#define("rakugo_credits", file.get_as_text(), false)
 	file.close()
 
 	# set by rakugo
-	define("rakugo_version", rakugo_version, true)
+	#define("rakugo_version", rakugo_version, true)
 
 	var gdv = Engine.get_version_info()
 	var gdv_string = str(gdv.major) + "." + str(gdv.minor) + "." + str(gdv.patch)
-	define("godot_version", gdv_string, true)
-	define("v2_inf", Vector2.INF, false)
-	define("v3_inf", Vector3.INF, false)
+	#define("godot_version", gdv_string, true)
+	#define("v2_inf", Vector2.INF, false)
+	#define("v3_inf", Vector3.INF, false)
 
 	step_timer.connect("timeout", self, "_on_time_active_timeout")
 
-func _on_time_active_timeout() -> void:
-	active = true
+
+## Rakugo flow control
+
+
+# it starts Rakugo
+func start(after_load := false) -> void:
+	load_global_history()
+	history_id = 0
+	started = true
+
+	if not after_load:
+		emit_signal("started")
+
+
+func save_game(save_name := "quick") -> bool:
+	debug(["save data to :", save_name])
+	return StoreManager.save_store_stack(save_name)
+
+
+func load_game(save_name := "quick") -> bool:
+	return StoreManager.load_store_stack(save_name)
+
+
+func prepare_quitting():
+	if self.started:
+		self.save_game("auto")
+		self.save_global_history()
+
+	settings.save_conf()
+
+
+func load_scene(scene_id: String, force_reload:bool = false) -> void:
+	SceneLoader.load_scene(scene_id, force_reload)
+
+func clean_viewport():
+	for c in self.viewport.get_children():
+		self.viewport.remove_child(c)
+
+func end_game() -> void:
+	if current_scene_node != null:
+		if current_scene_node.get_parent():
+			current_scene_node.get_parent().remove_child(current_scene_node)
+		current_scene_node.queue_free()
+
+	var start_scene = ProjectSettings.get_setting("application/run/main_scene")
+	var lscene = load(start_scene)
+	current_scene_node = lscene.instance()
+	exit_dialogue()
+	get_tree().get_root().add_child(current_scene_node)
+	started = false
+	quests.clear()
+	history.clear()
+	history_id = 0
+	variables.clear()
+	emit_signal("game_ended")
+
+
+# use this to assign beginning scene and dialogue
+# root of path_to_current_scene is scenes_dir
+# provide path_to_current_scene with out ".tscn"
+func on_begin(path_to_current_scene: String, dialogue_name: String, event_name: String) -> void:
+	if loading_in_progress:
+		return
+
+	var resource = load(scene_links).get_as_dict()
+	debug([resource, path_to_current_scene])
+	var path = resource[path_to_current_scene]
+
+	if path is PackedScene:
+		current_scene_path = path.resource_path
+	else:
+		current_scene_path = path
+
+	jump(path_to_current_scene, dialogue_name , event_name)
+
+# use this to change/assign current scene and dialogue
+# id_of_current_scene is id to scene defined in scene_links or full path to scene
+func jump(scene_id: String, dialogue_name: String, event_name: String, force_reload:bool = false) -> void:
+	$Statements/Jump.invoke(scene_id, dialogue_name, event_name, force_reload)
+
+## Dialogue flow control
+
+func story_step() -> void:
+	StoreManager.stack_next_store()
+	print("emitting _step")
+	get_tree().get_root().propagate_call('_step')
+	#emit_signal("story_step", current_dialogue_name, current_event_name)
+
+
+
+func exit_dialogue() -> void:
+	if self.current_dialogue:
+		self.current_dialogue.exit()
+
+
+
+
+## Signal Emission
 
 
 func exec_statement(type: int, parameters := {}) -> void:
@@ -171,18 +229,6 @@ func exec_statement(type: int, parameters := {}) -> void:
 
 func exit_statement(parameters := {}) -> void:
 	emit_signal("exit_statement", current_statement.type, parameters)
-
-
-func clean_viewport():
-	for c in self.viewport.get_children():
-		self.viewport.remove_child(c)
-
-
-func story_step() -> void:
-	StoreManager.stack_next_store()
-	print("emitting _step")
-	get_tree().get_root().propagate_call('_step')
-	#emit_signal("story_step", current_dialogue_name, current_event_name)
 
 
 func notified() -> void:
@@ -205,9 +251,92 @@ func on_stop_audio(node_id: String) -> void:
 	emit_signal("stop_audio", node_id)
 
 
-func exit_dialogue() -> void:
-	if self.current_dialogue:
-		self.current_dialogue.exit()
+
+
+## Global history
+
+
+func _set_history_id(value: int) -> void:
+	history_id = value
+
+
+func _get_history_id() -> int:
+	return history_id
+
+
+func is_current_statement_in_global_history() -> bool:
+
+	if not current_statement.parameters.add_to_history:
+		return true
+
+	var id = current_statement.get_history_id()
+	var c_item = current_statement.get_as_history_item()
+
+	if global_history.has(id):
+		var type = c_item.type
+		var parameters = c_item.parameters
+
+		if type == global_history[id].type:
+			var hi_parameters = global_history[id].parameters
+
+			if parameters.size() == hi_parameters.size():
+				var keys = parameters.keys()
+				var hi_keys = hi_parameters.keys()
+
+				for i in range(parameters.size()):
+					var p = parameters[keys[i]]
+					var hi_p = hi_parameters[hi_keys[i]]
+
+					if p != hi_p:
+						return false
+
+	return true
+
+
+func can_auto() -> bool:
+	return true #TODO rewrite this method once the statements are rewritten
+
+
+func can_skip() -> bool:
+	var seen = is_current_statement_in_global_history()
+	return can_auto() and seen
+
+
+func can_qload() -> bool:
+	return is_save_exits("quick")
+
+
+func is_save_exits(save_name: String) -> bool:
+	loading_in_progress = true
+	var save_folder_path = "user://".plus_file(save_folder)
+
+	if test_save:
+		save_folder_path = "res://".plus_file(save_folder)
+
+	var save_file_path = save_folder_path.plus_file(save_name)
+	save_file_path += ".tres"
+
+	return file.file_exists(save_file_path)
+
+
+func save_global_history() -> bool:
+	return $SaveGlobalHistory.invoke()
+
+
+func load_global_history() -> bool:
+	return $LoadGlobalHistory.invoke()
+
+
+
+
+
+
+func _on_time_active_timeout() -> void:
+	active = true
+
+
+
+## Utils
 
 # parse text like in renpy to bbcode if mode == "renpy"
 # or parse bbcode with {vars} if mode == "bbcode"
@@ -218,43 +347,6 @@ func text_parser(text: String, mode := markup):
 		links_color = theme.links_color.to_html() 
 	
 	return TextParser.text_parser(text, variables, mode, links_color)
-
-
-# add/overwrite global variable that Rakugo will see
-# and returns it as RakugoVar for easy use
-func define(var_name: String, value = null, save_included := true) -> RakugoVar:
-	var v = $Statements/Define.invoke(var_name, value , save_included)
-
-	if v:
-		return v
-
-	else:
-		return set_var(var_name, value)
-
-
-func str2value(str_value: String, var_type: String):
-	match var_type:
-		"str":
-			return str_value
-
-		"bool":
-			return bool(str_value)
-
-		"int":
-			return int(str_value)
-
-		"float":
-			return float(str_value)
-
-
-# add/overwrite global variable, from string, that Rakugo will see
-func define_from_str(var_name: String, var_str: String, var_type: String) -> RakugoVar:
-	var value = str2value(var_str, var_type)
-	if not variables.has(var_name):
-		return define(var_name, value)
-
-	return set_var(var_name, value)
-
 
 # overwrite existing global variable and returns it as RakugoVar
 func set_var(var_name: String, value) -> RakugoVar:
@@ -273,22 +365,6 @@ func get_var(var_name: String) -> RakugoVar:
 	return $Statements/GetVar.invoke(var_name)
 
 
-# to use with `define_from_str` func as var_type arg
-# it can't use optional typing
-func get_def_type(variable) -> String:
-	var type = "str"
-
-	match typeof(variable):
-		TYPE_BOOL:
-			type = "bool"
-
-		TYPE_INT:
-			type = "int"
-
-		TYPE_REAL:
-			type = "float"
-
-	return type
 
 
 # returns value of variable defined using define
@@ -310,10 +386,6 @@ func get_avatar_value(var_name: String) -> Dictionary:
 	return get_value(p + var_name)
 
 
-# returns type of variable defined using define
-func get_type(var_name: String) -> int:
-	return variables[var_name].type
-
 
 # just faster way to connect signal to rakugo's variable
 func connect_var(
@@ -328,30 +400,12 @@ func connect_var(
 	)
 
 
-# crate new RangedVar as global variable that Rakugo will see
-func ranged_var(var_name, start_value := 0.0, min_value := 0.0, max_value := 0.0) -> RakugoRangedVar:
-	var rrv = RakugoRangedVar.new(var_name, start_value, min_value, max_value)
-	variables[var_name] = rrv
-	return rrv
-
-
 # crate new character as global variable that Rakugo will see
-# possible parameters: name, color, prefix, suffix, avatar, stats, kind
-func character(character_id: String, parameters := {}) -> CharacterObject:
-	var new_ch := CharacterObject.new(character_id, parameters)
-	variables[character_id] = new_ch
-	return new_ch
-
-
-# crate new link to node as global variable that Rakugo will see
-# it can have name as other existing varbiable
-func node_link(node_id: String, node: NodePath) -> NodeLink:
-	return $Statements/Define.node_link(node_id, node, variables)
-
-
-func get_node_link(node_id: String) -> NodeLink:
-	var s = NodeLink.new("").var_prefix
-	return get_var(s + node_id) as NodeLink
+# possible parameters: name, color, prefix, suffix, avatar, stats
+func define_character(character_name: String, character_tag: String, parameters := {}) -> Character:
+	var new_character := Character.new(character_name, character_tag, parameters)
+	StoreManager.get_current_store()[character_tag] = new_character
+	return new_character
 
 
 # crate new link to node avatar as global variable that Rakugo will see
@@ -395,31 +449,23 @@ func _set_statement(node: Node, parameters: Dictionary) -> void:
 
 
 # statement of type say
-# there can be only one say, ask or menu in story_state at it end
-# its make given character(who) talk (what)
-# with keywords: who, what, typing, type_speed, kind, avatar, avatar_state, add
+# its make given 'character' say 'text'
+# 'parameters' keywords:typing, type_speed, avatar, avatar_state, add
 # speed is time to show next letter
-func say(parameters: Dictionary) -> void:
-	_set_statement($Statements/Say, parameters)
+func say(character, text:String, parameters: Dictionary) -> void:
+	Say.exec(character, text, parameters)
 
 
 # statement of type ask
-# there can be only one say, ask or menu in story_state at it end
-# its allow player to provide keyboard ask that will be assign to given variable
-# it also will return RakugoVar variable
-# with keywords: who, what, typing, type_speed, kind, variable, value, avatar, avatar_state, add
+# with keywords: placeholder
 # speed is time to show next letter
-func ask(parameters: Dictionary) -> void:
-	_set_statement($Statements/Ask, parameters)
+func ask(variable_name:String, parameters: Dictionary) -> void:
+	Ask.exec(variable_name, parameters)
 
 
 # statement of type menu
-# there can be only one say, ask or menu in story_state at it end
-# its allow player to make choice
-# with keywords:who, what, typing, type_speed, kind, choices, mkind, avatar, avatar_state, add
-# speed is time to show next letter
-func menu(parameters: Dictionary) -> void:
-	_set_statement($Statements/Menu, parameters)
+func menu(choices:Array, parameters: Dictionary) -> void:
+	Menu.exec(choices, parameters)
 
 
 # it show nod tagged with "showable <space separated tag>"
@@ -501,25 +547,6 @@ func call_node(node_id: String, func_name: String, args := []) -> void:
 	_set_statement($Statements/CallNode, parameters)
 
 
-# it starts Rakugo
-func start(after_load := false) -> void:
-	load_global_history()
-	history_id = 0
-	started = true
-
-	if not after_load:
-		emit_signal("started")
-
-
-func save_game(save_name := "quick") -> bool:
-	debug(["save data to :", save_name])
-	return StoreManager.save_store_stack(save_name)
-
-
-func load_game(save_name := "quick") -> bool:
-	return StoreManager.load_store_stack(save_name)
-
-
 func debug_dict(
 		parameters: Dictionary,
 		parameters_names := [],
@@ -558,134 +585,9 @@ func debug(some_text = []) -> void:
 
 	print(some_text)
 
-
-func _set_history_id(value: int) -> void:
-	history_id = value
-
-
-func _get_history_id() -> int:
-	return history_id
-
-
-# use this to change/assign current scene and dialogue
-# id_of_current_scene is id to scene defined in scene_links or full path to scene
-func jump(scene_id: String, dialogue_name: String, event_name: String, force_reload:bool = false) -> void:
-	$Statements/Jump.invoke(scene_id, dialogue_name, event_name, force_reload)
-
-
-func load_scene(scene_id: String, force_reload:bool = false) -> void:
-	SceneLoader.load_scene(scene_id, force_reload)
-
-
-func end_game() -> void:
-	if current_scene_node != null:
-		if current_scene_node.get_parent():
-			current_scene_node.get_parent().remove_child(current_scene_node)
-		current_scene_node.queue_free()
-
-	var start_scene = ProjectSettings.get_setting("application/run/main_scene")
-	var lscene = load(start_scene)
-	current_scene_node = lscene.instance()
-	exit_dialogue()
-	get_tree().get_root().add_child(current_scene_node)
-	started = false
-	quests.clear()
-	history.clear()
-	history_id = 0
-	variables.clear()
-	emit_signal("game_ended")
-
-
-# use this to assign beginning scene and dialogue
-# root of path_to_current_scene is scenes_dir
-# provide path_to_current_scene with out ".tscn"
-func on_begin(path_to_current_scene: String, dialogue_name: String, event_name: String) -> void:
-	if loading_in_progress:
-		return
-
-	var resource = load(scene_links).get_as_dict()
-	debug([resource, path_to_current_scene])
-	var path = resource[path_to_current_scene]
-
-	if path is PackedScene:
-		current_scene_path = path.resource_path
-	else:
-		current_scene_path = path
-
-	jump(path_to_current_scene, dialogue_name , event_name)
-
-
-func is_current_statement_in_global_history() -> bool:
-
-	if not current_statement.parameters.add_to_history:
-		return true
-
-	var id = current_statement.get_history_id()
-	var c_item = current_statement.get_as_history_item()
-
-	if global_history.has(id):
-		var type = c_item.type
-		var parameters = c_item.parameters
-
-		if type == global_history[id].type:
-			var hi_parameters = global_history[id].parameters
-
-			if parameters.size() == hi_parameters.size():
-				var keys = parameters.keys()
-				var hi_keys = hi_parameters.keys()
-
-				for i in range(parameters.size()):
-					var p = parameters[keys[i]]
-					var hi_p = hi_parameters[hi_keys[i]]
-
-					if p != hi_p:
-						return false
-
-	return true
-
-
-func can_auto() -> bool:
-	return current_statement.type in skip_types
-
-
-func can_skip() -> bool:
-	var seen = is_current_statement_in_global_history()
-	return can_auto() and seen
-
-
-func can_qload() -> bool:
-	return is_save_exits("quick")
-
-
-func is_save_exits(save_name: String) -> bool:
-	loading_in_progress = true
-	var save_folder_path = "user://".plus_file(save_folder)
-
-	if test_save:
-		save_folder_path = "res://".plus_file(save_folder)
-
-	var save_file_path = save_folder_path.plus_file(save_name)
-	save_file_path += ".tres"
-
-	return file.file_exists(save_file_path)
-
-
-func save_global_history() -> bool:
-	return $SaveGlobalHistory.invoke()
-
-
-func load_global_history() -> bool:
-	return $LoadGlobalHistory.invoke()
-
 func get_current_store():
 	return StoreManager.get_current_store()
 	
 func set_current_store(value):
 	return 
 	
-func prepare_quitting():
-	if self.started:
-		self.save_game("auto")
-		self.save_global_history()
-
-	settings.save_conf()

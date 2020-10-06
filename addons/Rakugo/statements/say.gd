@@ -1,64 +1,35 @@
-extends Statement
+extends Node
 class_name Say
 
-func _init() -> void:
-	._init()
-	type = 1 # Rakugo.StatementType.SAY
-	parameters_names += ["who", "what", "typing", "kind", "avatar", "avatar_state"]
-	def_parameters["add_to_history"] = true
-	def_parameters["who"] = "Narrator"
-	def_parameters["what"] = ""
-	def_parameters["typing"] = false
-	def_parameters["kind"] = "adv"
-	def_parameters["avatar"] = ""
-	def_parameters["avatar_state"] = ""
+var default_parameters = {#TODO make those set by the project settings
+	"add_to_history" : true,
+	"typing" : false,
+	}
+
+var default_narrator = Character.new("Narrator", "")#TODO same as above
 
 
-func if_who(_parameters:Dictionary, _who:CharacterObject):
-	if "avatar" in _who.value:
-		_parameters["avatar"] = _who.avatar
-
-	if "what" in _parameters:
-		_parameters.what = _who.parse_what(_parameters.what)
-
-	if not ("kind" in _parameters):
-		_parameters["kind"] = Rakugo.default_kind
-		##_parameters["kind"] = _who.kind
+func exec(character:Character, text:String, parameters = {}) -> void:
+	character = _get_character(character)
+	parameters = _apply_default(parameters, character.say_parameters)# parameters > character default parameters > project parameters
+	parameters = _apply_default(parameters, default_parameters)
+	
+	Rakugo.emit_signal("say", character, text, parameters)
 
 
-func if_not_who(_parameters:Dictionary):
-	if "who" in _parameters:
-		_parameters.who = Rakugo.text_parser(_parameters.who)
+#Utils functions
 
-	if "what" in _parameters:
-		_parameters.what = Rakugo.text_parser(_parameters.what)
-
-	if not ("kind" in _parameters):
-		_parameters["kind"] = Rakugo.default_kind
-
-
-func exec() -> void:
-	debug(parameters_names)
-
-	if not ("avatar_state" in parameters):
-		parameters["avatar_state"] = []
-
-	if not ("who" in parameters):
-		parameters["who"] = "Narrator"
-
-	if "who" in parameters:
-		if parameters.who in Rakugo.variables:
-			if Rakugo.get_type(parameters.who) == Rakugo.Type.CHARACTER:
-				var org_who = parameters.who
-				var who = Rakugo.get_var(org_who)
-				parameters.who = who.parse_name()
-
-				if_who(parameters, who)
+func _get_character(character):
+	if character is String:
+		character = Rakugo.get_current_store().get(character)
+	if not character:
+		character = default_narrator
+	return character
 
 
-	if_not_who(parameters)
-
-	.exec()
-
-func on_exit(_type: int, new_parameters := {}) -> void:
-	.on_exit(_type, new_parameters)
+func _apply_default(input:Dictionary, default:Dictionary):
+	var output = input.duplicate()
+	for k in default.keys():
+		if not output.has(k):
+			output[k] = default[k]
+	return output

@@ -1,16 +1,14 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://addons/Rakugo/main.gd" type="Script" id=1]
-[ext_resource path="res://addons/Rakugo/lib/define.gd" type="Script" id=2]
-[ext_resource path="res://addons/Rakugo/lib/get_var.gd" type="Script" id=3]
+[ext_resource path="res://addons/Rakugo/statements/say.gd" type="Script" id=2]
+[ext_resource path="res://addons/Rakugo/statements/ask.gd" type="Script" id=3]
 [ext_resource path="res://addons/Rakugo/lib/jump.gd" type="Script" id=4]
 [ext_resource path="res://addons/Rakugo/showable_manager.gd" type="Script" id=5]
 [ext_resource path="res://addons/Rakugo/lib/save_global_history.gd" type="Script" id=7]
 [ext_resource path="res://addons/Rakugo/lib/load_global_history.gd" type="Script" id=8]
 [ext_resource path="res://addons/Rakugo/lib/scene_loader.gd" type="Script" id=9]
 [ext_resource path="res://addons/Rakugo/lib/store_manager.gd" type="Script" id=10]
-[ext_resource path="res://addons/Rakugo/statements/say.gd" type="Script" id=11]
-[ext_resource path="res://addons/Rakugo/statements/ask.gd" type="Script" id=12]
 [ext_resource path="res://addons/Rakugo/statements/menu.gd" type="Script" id=13]
 [ext_resource path="res://addons/Rakugo/statements/notify.gd" type="Script" id=16]
 [ext_resource path="res://addons/Rakugo/statements/play_anim.gd" type="Script" id=17]
@@ -26,11 +24,14 @@
 pause_mode = 2
 script = ExtResource( 1 )
 
+[node name="SceneLoader" type="Node" parent="."]
+script = ExtResource( 9 )
+
 [node name="StoreManager" type="Node" parent="."]
 script = ExtResource( 10 )
 
-[node name="SceneLoader" type="Node" parent="."]
-script = ExtResource( 9 )
+[node name="ShowableManager" type="Node" parent="."]
+script = ExtResource( 5 )
 
 [node name="SaveGlobalHistory" type="Node" parent="."]
 script = ExtResource( 7 )
@@ -38,16 +39,13 @@ script = ExtResource( 7 )
 [node name="LoadGlobalHistory" type="Node" parent="."]
 script = ExtResource( 8 )
 
-[node name="ShowableManager" type="Node" parent="."]
-script = ExtResource( 5 )
-
 [node name="Statements" type="Node" parent="."]
 
 [node name="Say" type="Node" parent="Statements"]
-script = ExtResource( 11 )
+script = ExtResource( 2 )
 
 [node name="Ask" type="Node" parent="Statements"]
-script = ExtResource( 12 )
+script = ExtResource( 3 )
 
 [node name="Menu" type="Node" parent="Statements"]
 script = ExtResource( 13 )
@@ -69,12 +67,6 @@ script = ExtResource( 20 )
 
 [node name="CallNode" type="Node" parent="Statements"]
 script = ExtResource( 21 )
-
-[node name="Define" type="Node" parent="Statements"]
-script = ExtResource( 2 )
-
-[node name="GetVar" type="Node" parent="Statements"]
-script = ExtResource( 3 )
 
 [node name="Jump" type="Node" parent="Statements"]
 script = ExtResource( 4 )

@@ -1,49 +1,22 @@
-extends Say
+extends Node
 class_name Ask
 
-var value = "value"
-var variable := "variable"
-
-func _init() -> void:
-	._init()
-	type = 2 # Rakugo.StatementType.ASK
-	parameters_names += ["temp", "variable"]
-	def_parameters["typing"] = false
-	def_parameters["temp"] = "Type some value"
+var default_parameters = {#TODO make those set by the project settings
+	"placeholder" : "Type here",
+	}
 
 
-func exec() -> void:
-	Rakugo.checkpoint()
-	debug(parameters_names)
-
-	value = parameters.value
-	variable = parameters.variable
-
-	if "value" in parameters:
-		parameters["value"] = Rakugo.text_parser(parameters.value)
-
-	.exec()
+func exec(variable_name:String, parameters = {}) -> void:
+	parameters = _apply_default(parameters, default_parameters)
+	
+	Rakugo.emit_signal("ask", variable_name, parameters)
 
 
-func on_exit(_type: int, new_parameters: Dictionary = {}) -> void:
-	if !setup_exit(_type, new_parameters):
-		return
+#Utils functions
 
-	if "value" in parameters:
-		value = parameters.value
-
-	if "variable" in parameters:
-		variable = parameters.variable
-
-	if value.is_valid_integer():
-		value = int(value)
-
-	elif value.is_valid_float():
-		value = float(value)
-
-	Rakugo.define(variable, value)
-
-	if parameters.add_to_history:
-		add_to_history()
-
-	Rakugo.story_step()
+func _apply_default(input:Dictionary, default:Dictionary):
+	var output = input.duplicate()
+	for k in default.keys():
+		if not output.has(k):
+			output[k] = default[k]
+	return output

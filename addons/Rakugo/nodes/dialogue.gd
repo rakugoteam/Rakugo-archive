@@ -233,21 +233,19 @@ func set_var(var_name: String, value) -> RakugoVar:
 	return null
 
 
-func say(parameters: Dictionary) -> void:
+func say(character, text:String, parameters: Dictionary) -> void:
 	if is_active():
-		Rakugo.call_deferred('say', parameters)
+		Rakugo.call_deferred('say', character, text, parameters)
 
 
-func ask(parameters: Dictionary) -> void:
+func ask(variable_name:String, parameters: Dictionary) -> void:
 	if is_active():
-		Rakugo.call_deferred('ask', parameters)
+		Rakugo.call_deferred('ask', variable_name, parameters)
 
 
-func menu(parameters: Dictionary) -> void:
+func menu(choices:Array, parameters: Dictionary) -> void:
 	if is_active():
-		if not ("node" in parameters):
-			parameters["node"] = self
-		Rakugo.call_deferred('menu', parameters)
+		Rakugo.call_deferred('menu', choices, parameters)
 
 
 func show(node_id: String, parameters := {"state": []}):
