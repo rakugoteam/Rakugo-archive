@@ -1,6 +1,6 @@
 tool
 extends Node
-class_name Character, "res://addons/Rakugo/icons/rakugo_character.svg"
+class_name CharacterNode, "res://addons/Rakugo/icons/rakugo_character.svg"
 
 export var character_id := "" setget _set_character_id, _get_character_id
 export var saveable := true setget _set_saveable, _get_saveable
@@ -16,7 +16,7 @@ export var variables := {} setget _set_variables, _get_variables
 
 var vars := {} setget _set_variables, _get_variables
 
-var character: CharacterObject
+var character: Character
 var _name := ""
 var _color := Color("#ffffff")
 var _avatar: PackedScene
