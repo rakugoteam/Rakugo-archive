@@ -19,7 +19,7 @@ func some_dialog():
 	step()
 	
 	say(null, "Little test of the choice menu")
-	var choice = menu([["Choice 1", 1, {'visible':true}], ["Choice 2", 2, {'visible':true}],["Choice 3", 3, {'visible':false}]])
+	var choice = menu([["Choice 1", 1, {}], ["Choice 2", 2, {'visible':true}],["Choice 3", 3, {'visible':false}]])
 	step()
 	
 	say(null, "You chose '%s' (not saved)" % str(choice))
