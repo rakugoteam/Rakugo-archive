@@ -18,4 +18,4 @@ func _on_ask(_variable_name, _parameters):
 func _on_text_entered(new_text):
 	hide()
 	Rakugo.get_current_store()[variable_name] = new_text
-	Rakugo.story_step()
+	Rakugo.story_step(true)
