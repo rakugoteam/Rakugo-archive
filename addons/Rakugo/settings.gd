@@ -61,7 +61,8 @@ func _process(delta: float) -> void:
 
 
 func conf_set_rakugo_value(config: ConfigFile, value_name, def_rakugo_value):
-	config.set_value("rakugo", value_name, Rakugo.get_value(def_rakugo_value))
+	#config.set_value("rakugo", value_name, Rakugo.get_value(def_rakugo_value))#TODO fix that
+	pass
 
 
 func save_conf() -> void:
