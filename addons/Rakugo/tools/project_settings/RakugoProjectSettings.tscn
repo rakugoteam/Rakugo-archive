@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://addons/Rakugo/tools/project_settings/RPSPanel.gd" type="Script" id=1]
 [ext_resource path="res://addons/Rakugo/tools/project_settings/OverBox.gd" type="Script" id=2]
@@ -9,10 +9,6 @@
 [ext_resource path="res://addons/Rakugo/tools/project_settings/GameCreditsBox.gd" type="Script" id=7]
 [ext_resource path="res://addons/Rakugo/tools/project_settings/MarkupBox.gd" type="Script" id=8]
 [ext_resource path="res://addons/Rakugo/icons/ren_py_16x16.png" type="Texture" id=9]
-[ext_resource path="res://addons/Rakugo/tools/project_settings/KindBox.gd" type="Script" id=10]
-[ext_resource path="res://addons/Rakugo/icons/rakugo_panel.svg" type="Texture" id=11]
-[ext_resource path="res://addons/Rakugo/tools/project_settings/MKindBox.gd" type="Script" id=12]
-[ext_resource path="res://addons/Rakugo/icons/rakugo_menu_v.svg" type="Texture" id=13]
 [ext_resource path="res://addons/Rakugo/tools/project_settings/ThemeBox.gd" type="Script" id=14]
 [ext_resource path="res://addons/Rakugo/tools/project_settings/SceneLinksBox.gd" type="Script" id=15]
 [ext_resource path="res://addons/Rakugo/icons/scene_links.svg" type="Texture" id=16]
@@ -37,21 +33,6 @@ data = {
 flags = 4
 flags = 4
 image = SubResource( 1 )
-size = Vector2( 16, 16 )
-
-[sub_resource type="Image" id=3]
-data = {
-"data": PoolByteArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ),
-"format": "LumAlpha8",
-"height": 16,
-"mipmaps": false,
-"width": 16
-}
-
-[sub_resource type="ImageTexture" id=4]
-flags = 4
-flags = 4
-image = SubResource( 3 )
 size = Vector2( 16, 16 )
 
 [node name="Rakugo" type="Panel"]
@@ -90,14 +71,9 @@ text = "Loaded"
 align = 1
 valign = 1
 script = ExtResource( 23 )
-normal_color = Color( 1, 1, 1, 0 )
-notify_color = Color( 0, 1, 0, 1 )
-time_to_show = 1
-time_of_display = 0.7
-hide_on_start = true
 
 [node name="OverBox" type="HBoxContainer" parent="VBoxContainer"]
-margin_right = 684.0
+margin_right = 859.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 script = ExtResource( 2 )
@@ -118,7 +94,7 @@ pressed = true
 [node name="Label" type="Label" parent="VBoxContainer/OverBox"]
 margin_left = 108.0
 margin_top = 13.0
-margin_right = 362.0
+margin_right = 449.0
 margin_bottom = 27.0
 size_flags_horizontal = 3
 text = "Use Project Settings Override"
@@ -137,9 +113,9 @@ current_file = "rakugo.cfg"
 current_path = "res://game/rakugo.cfg"
 
 [node name="Button" type="Button" parent="VBoxContainer/OverBox"]
-margin_left = 366.0
+margin_left = 453.0
 margin_top = 9.0
-margin_right = 620.0
+margin_right = 795.0
 margin_bottom = 31.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -149,9 +125,9 @@ text = "res://game/rakugo.cfg"
 icon = SubResource( 2 )
 
 [node name="New" type="Button" parent="VBoxContainer/OverBox"]
-margin_left = 624.0
+margin_left = 799.0
 margin_top = 8.0
-margin_right = 652.0
+margin_right = 827.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 24, 24 )
 size_flags_horizontal = 5
@@ -159,9 +135,9 @@ size_flags_vertical = 4
 icon = SubResource( 2 )
 
 [node name="Reload" type="Button" parent="VBoxContainer/OverBox"]
-margin_left = 656.0
+margin_left = 831.0
 margin_top = 8.0
-margin_right = 684.0
+margin_right = 859.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 24, 24 )
 size_flags_horizontal = 5
@@ -170,7 +146,7 @@ icon = SubResource( 2 )
 
 [node name="NameBox" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 44.0
-margin_right = 684.0
+margin_right = 859.0
 margin_bottom = 68.0
 size_flags_horizontal = 3
 script = ExtResource( 4 )
@@ -185,15 +161,15 @@ stretch_mode = 4
 [node name="Label" type="Label" parent="VBoxContainer/NameBox"]
 margin_left = 28.0
 margin_top = 5.0
-margin_right = 354.0
+margin_right = 441.0
 margin_bottom = 19.0
 size_flags_horizontal = 3
 text = "Name"
 valign = 1
 
 [node name="LineEdit" type="LineEdit" parent="VBoxContainer/NameBox"]
-margin_left = 358.0
-margin_right = 684.0
+margin_left = 445.0
+margin_right = 859.0
 margin_bottom = 24.0
 mouse_filter = 1
 size_flags_horizontal = 3
@@ -203,7 +179,7 @@ caret_blink_speed = 0.5
 
 [node name="VersionBox" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 72.0
-margin_right = 684.0
+margin_right = 859.0
 margin_bottom = 96.0
 size_flags_horizontal = 3
 script = ExtResource( 5 )
@@ -218,15 +194,15 @@ stretch_mode = 4
 [node name="Label" type="Label" parent="VBoxContainer/VersionBox"]
 margin_left = 28.0
 margin_top = 5.0
-margin_right = 354.0
+margin_right = 441.0
 margin_bottom = 19.0
 size_flags_horizontal = 3
 text = "Version"
 valign = 1
 
 [node name="LineEdit" type="LineEdit" parent="VBoxContainer/VersionBox"]
-margin_left = 358.0
-margin_right = 684.0
+margin_left = 445.0
+margin_right = 859.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 text = "0.0.1"
@@ -235,7 +211,7 @@ caret_blink_speed = 0.5
 
 [node name="StartSceneBox" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 100.0
-margin_right = 684.0
+margin_right = 859.0
 margin_bottom = 124.0
 size_flags_horizontal = 3
 script = ExtResource( 6 )
@@ -250,16 +226,16 @@ stretch_mode = 4
 [node name="Label" type="Label" parent="VBoxContainer/StartSceneBox"]
 margin_left = 28.0
 margin_top = 5.0
-margin_right = 354.0
+margin_right = 441.0
 margin_bottom = 19.0
 size_flags_horizontal = 3
 text = "Start Scene"
 valign = 1
 
 [node name="Button" type="Button" parent="VBoxContainer/StartSceneBox"]
-margin_left = 358.0
+margin_left = 445.0
 margin_top = 1.0
-margin_right = 684.0
+margin_right = 859.0
 margin_bottom = 23.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -283,7 +259,7 @@ filters = PoolStringArray( "*.tscn" )
 
 [node name="GameCreditsBox" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 128.0
-margin_right = 684.0
+margin_right = 859.0
 margin_bottom = 228.0
 size_flags_horizontal = 3
 script = ExtResource( 7 )
@@ -298,15 +274,15 @@ stretch_mode = 4
 [node name="Label" type="Label" parent="VBoxContainer/GameCreditsBox"]
 margin_left = 28.0
 margin_top = 43.0
-margin_right = 338.0
+margin_right = 425.0
 margin_bottom = 57.0
 size_flags_horizontal = 3
 text = "Game Credits"
 valign = 1
 
 [node name="TextEdit" type="TextEdit" parent="VBoxContainer/GameCreditsBox"]
-margin_left = 342.0
-margin_right = 652.0
+margin_left = 429.0
+margin_right = 827.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 200, 100 )
 mouse_filter = 1
@@ -316,8 +292,8 @@ text = "Jeremi {i}jebedaia360{/i} Biernacki, kurinoku"
 show_line_numbers = true
 
 [node name="Button" type="Button" parent="VBoxContainer/GameCreditsBox"]
-margin_left = 656.0
-margin_right = 684.0
+margin_left = 831.0
+margin_right = 859.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 24, 24 )
 size_flags_vertical = 0
@@ -341,7 +317,7 @@ current_path = "res://about.txt"
 
 [node name="MarkupBox" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 232.0
-margin_right = 684.0
+margin_right = 859.0
 margin_bottom = 256.0
 size_flags_horizontal = 3
 script = ExtResource( 8 )
@@ -356,16 +332,16 @@ stretch_mode = 4
 [node name="Label" type="Label" parent="VBoxContainer/MarkupBox"]
 margin_left = 28.0
 margin_top = 5.0
-margin_right = 338.0
+margin_right = 425.0
 margin_bottom = 19.0
 size_flags_horizontal = 3
 text = "Markup"
 valign = 1
 
 [node name="MenuButton" type="MenuButton" parent="VBoxContainer/MarkupBox"]
-margin_left = 342.0
+margin_left = 429.0
 margin_top = 1.0
-margin_right = 652.0
+margin_right = 827.0
 margin_bottom = 23.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -377,15 +353,15 @@ flat = false
 items = [ "Ren'Py Like", ExtResource( 9 ), 0, false, false, 0, 0, null, "", false, "BBCode Like", SubResource( 2 ), 0, false, false, 1, 0, null, "", false ]
 
 [node name="Reload" type="Button" parent="VBoxContainer/MarkupBox"]
-margin_left = 656.0
-margin_right = 684.0
+margin_left = 831.0
+margin_right = 859.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 24, 24 )
 icon = SubResource( 2 )
 
 [node name="PunctuationBox" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 260.0
-margin_right = 684.0
+margin_right = 859.0
 margin_bottom = 284.0
 size_flags_horizontal = 3
 script = ExtResource( 21 )
@@ -400,7 +376,7 @@ stretch_mode = 4
 [node name="Label" type="Label" parent="VBoxContainer/PunctuationBox"]
 margin_left = 28.0
 margin_top = 5.0
-margin_right = 274.0
+margin_right = 361.0
 margin_bottom = 19.0
 hint_tooltip = "Dialog Menu Display Style"
 mouse_filter = 1
@@ -409,9 +385,9 @@ text = "Punctuation Pause"
 valign = 1
 
 [node name="Label2" type="Label" parent="VBoxContainer/PunctuationBox"]
-margin_left = 278.0
+margin_left = 365.0
 margin_top = 5.0
-margin_right = 524.0
+margin_right = 699.0
 margin_bottom = 19.0
 hint_tooltip = "Dialog Menu Display Style"
 mouse_filter = 1
@@ -421,16 +397,16 @@ align = 2
 valign = 1
 
 [node name="SpinBox" type="SpinBox" parent="VBoxContainer/PunctuationBox"]
-margin_left = 528.0
-margin_right = 602.0
+margin_left = 703.0
+margin_right = 777.0
 margin_bottom = 24.0
 min_value = 1.0
 max_value = 10.0
 value = 1.0
 
 [node name="Label3" type="Label" parent="VBoxContainer/PunctuationBox"]
-margin_left = 606.0
-margin_right = 652.0
+margin_left = 781.0
+margin_right = 827.0
 margin_bottom = 24.0
 hint_tooltip = "Dialog Menu Display Style"
 mouse_filter = 1
@@ -439,135 +415,17 @@ text = "letters."
 valign = 1
 
 [node name="Reload" type="Button" parent="VBoxContainer/PunctuationBox"]
-margin_left = 656.0
-margin_right = 684.0
-margin_bottom = 24.0
-rect_min_size = Vector2( 24, 24 )
-size_flags_vertical = 4
-icon = SubResource( 2 )
-
-[node name="KindBox" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 288.0
-margin_right = 684.0
-margin_bottom = 312.0
-size_flags_horizontal = 3
-script = ExtResource( 10 )
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/KindBox"]
-margin_right = 24.0
-margin_bottom = 24.0
-rect_min_size = Vector2( 24, 24 )
-texture = ExtResource( 11 )
-stretch_mode = 4
-
-[node name="Label" type="Label" parent="VBoxContainer/KindBox"]
-margin_left = 28.0
-margin_top = 5.0
-margin_right = 338.0
-margin_bottom = 19.0
-hint_tooltip = "Dialog Display Style"
-mouse_filter = 1
-size_flags_horizontal = 3
-text = "Default Kind"
-valign = 1
-
-[node name="MenuButton" type="MenuButton" parent="VBoxContainer/KindBox"]
-margin_left = 342.0
-margin_top = 1.0
-margin_right = 652.0
-margin_bottom = 23.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-text = "adv"
-icon = SubResource( 4 )
-flat = false
-items = [ "adv", SubResource( 2 ), 0, false, false, 0, 0, null, "", false, "center", SubResource( 2 ), 0, false, false, 1, 0, null, "", false, "fullscreen", SubResource( 2 ), 0, false, false, 2, 0, null, "", false, "right", SubResource( 2 ), 0, false, false, 3, 0, null, "", false, "left", SubResource( 2 ), 0, false, false, 4, 0, null, "", false, "top", SubResource( 2 ), 0, false, false, 5, 0, null, "", false, "phone-right", SubResource( 2 ), 0, false, false, 6, 0, null, "", false, "phone-left", SubResource( 2 ), 0, false, false, 7, 0, null, "", false, "nvl", SubResource( 2 ), 0, false, false, 8, 0, null, "", false ]
-
-[node name="Reload" type="Button" parent="VBoxContainer/KindBox"]
-margin_left = 656.0
-margin_right = 684.0
-margin_bottom = 24.0
-rect_min_size = Vector2( 24, 24 )
-icon = SubResource( 2 )
-
-[node name="MKindBox" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 316.0
-margin_right = 684.0
-margin_bottom = 340.0
-size_flags_horizontal = 3
-script = ExtResource( 12 )
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MKindBox"]
-margin_right = 24.0
-margin_bottom = 24.0
-rect_min_size = Vector2( 24, 24 )
-texture = ExtResource( 13 )
-stretch_mode = 4
-
-[node name="Label" type="Label" parent="VBoxContainer/MKindBox"]
-margin_left = 28.0
-margin_top = 5.0
-margin_right = 308.0
-margin_bottom = 19.0
-hint_tooltip = "Dialog Menu Display Style"
-mouse_filter = 1
-size_flags_horizontal = 3
-text = "Default MKind"
-valign = 1
-
-[node name="MKindButton" type="MenuButton" parent="VBoxContainer/MKindBox"]
-margin_left = 312.0
-margin_top = 1.0
-margin_right = 480.0
-margin_bottom = 23.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-size_flags_stretch_ratio = 0.6
-text = "vertical"
-icon = SubResource( 4 )
-flat = false
-items = [ "vertical", SubResource( 2 ), 0, false, false, 0, 0, null, "", false, "horizontal", SubResource( 2 ), 0, false, false, 1, 0, null, "", false, "grid", SubResource( 2 ), 0, false, false, 2, 0, null, "", false ]
-
-[node name="SpinBox" type="SpinBox" parent="VBoxContainer/MKindBox"]
-visible = false
-margin_left = 426.0
-margin_right = 500.0
-margin_bottom = 24.0
-min_value = 1.0
-max_value = 10.0
-value = 2.0
-
-[node name="MAnchorButton" type="MenuButton" parent="VBoxContainer/MKindBox"]
-margin_left = 484.0
-margin_top = 1.0
-margin_right = 652.0
-margin_bottom = 23.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-size_flags_stretch_ratio = 0.6
-text = "adv"
-icon = SubResource( 4 )
-flat = false
-items = [ "top_left", SubResource( 2 ), 0, false, false, 0, 0, null, "", false, "top_right", SubResource( 2 ), 0, false, false, 1, 0, null, "", false, "bottom_left", SubResource( 2 ), 0, false, false, 2, 0, null, "", false, "bottom_right", SubResource( 2 ), 0, false, false, 3, 0, null, "", false, "center_left", SubResource( 2 ), 0, false, false, 4, 0, null, "", false, "center_top", SubResource( 2 ), 0, false, false, 5, 0, null, "", false, "center_right", SubResource( 2 ), 0, false, false, 6, 0, null, "", false, "center_bottom", SubResource( 2 ), 0, false, false, 7, 0, null, "", false, "center", SubResource( 2 ), 0, false, false, 8, 0, null, "", false ]
-
-[node name="Reload" type="Button" parent="VBoxContainer/MKindBox"]
-margin_left = 656.0
-margin_right = 684.0
+margin_left = 831.0
+margin_right = 859.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 24, 24 )
 size_flags_vertical = 4
 icon = SubResource( 2 )
 
 [node name="ThemeBox" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 344.0
-margin_right = 684.0
-margin_bottom = 368.0
+margin_top = 288.0
+margin_right = 859.0
+margin_bottom = 312.0
 size_flags_horizontal = 3
 script = ExtResource( 14 )
 
@@ -581,16 +439,16 @@ stretch_mode = 4
 [node name="Label" type="Label" parent="VBoxContainer/ThemeBox"]
 margin_left = 28.0
 margin_top = 5.0
-margin_right = 338.0
+margin_right = 425.0
 margin_bottom = 19.0
 size_flags_horizontal = 3
 text = "Theme"
 valign = 1
 
 [node name="Button" type="Button" parent="VBoxContainer/ThemeBox"]
-margin_left = 342.0
+margin_left = 429.0
 margin_top = 1.0
-margin_right = 652.0
+margin_right = 827.0
 margin_bottom = 23.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -615,16 +473,16 @@ current_file = "new_gui.tres"
 current_path = "res://themes/new_gui/new_gui.tres"
 
 [node name="Reload" type="Button" parent="VBoxContainer/ThemeBox"]
-margin_left = 656.0
-margin_right = 684.0
+margin_left = 831.0
+margin_right = 859.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 24, 24 )
 icon = SubResource( 2 )
 
 [node name="SceneLinksBox" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 372.0
-margin_right = 684.0
-margin_bottom = 396.0
+margin_top = 316.0
+margin_right = 859.0
+margin_bottom = 340.0
 size_flags_horizontal = 3
 script = ExtResource( 15 )
 
@@ -636,13 +494,13 @@ stretch_mode = 4
 
 [node name="SceneLinksChooser" parent="VBoxContainer/SceneLinksBox" instance=ExtResource( 17 )]
 margin_left = 20.0
-margin_right = 684.0
+margin_right = 859.0
 only_open = true
 
 [node name="DebugBox" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 400.0
-margin_right = 684.0
-margin_bottom = 440.0
+margin_top = 344.0
+margin_right = 859.0
+margin_bottom = 384.0
 size_flags_horizontal = 3
 script = ExtResource( 18 )
 
@@ -656,21 +514,21 @@ stretch_mode = 4
 [node name="Label" type="Label" parent="VBoxContainer/DebugBox"]
 margin_left = 28.0
 margin_top = 13.0
-margin_right = 604.0
+margin_right = 779.0
 margin_bottom = 27.0
 size_flags_horizontal = 3
 text = "Debug"
 valign = 1
 
 [node name="CheckButton" type="CheckButton" parent="VBoxContainer/DebugBox"]
-margin_left = 608.0
-margin_right = 684.0
+margin_left = 783.0
+margin_right = 859.0
 margin_bottom = 40.0
 
 [node name="SaveBox" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 444.0
-margin_right = 684.0
-margin_bottom = 484.0
+margin_top = 388.0
+margin_right = 859.0
+margin_bottom = 428.0
 size_flags_horizontal = 3
 script = ExtResource( 19 )
 
@@ -684,7 +542,7 @@ stretch_mode = 4
 
 [node name="Label2" type="Label" parent="VBoxContainer/SaveBox"]
 margin_left = 28.0
-margin_right = 363.0
+margin_right = 538.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -692,8 +550,8 @@ text = "Test saves"
 valign = 1
 
 [node name="TextureRect2" type="TextureRect" parent="VBoxContainer/SaveBox"]
-margin_left = 367.0
-margin_right = 391.0
+margin_left = 542.0
+margin_right = 566.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 24, 24 )
 size_flags_vertical = 3
@@ -701,15 +559,15 @@ texture = SubResource( 2 )
 stretch_mode = 4
 
 [node name="Label3" type="Label" parent="VBoxContainer/SaveBox"]
-margin_left = 395.0
+margin_left = 570.0
 margin_top = 13.0
-margin_right = 604.0
+margin_right = 779.0
 margin_bottom = 27.0
 text = "Must set it to OFF before export."
 align = 2
 
 [node name="CheckButton" type="CheckButton" parent="VBoxContainer/SaveBox"]
-margin_left = 608.0
-margin_right = 684.0
+margin_left = 783.0
+margin_right = 859.0
 margin_bottom = 40.0
 size_flags_vertical = 3

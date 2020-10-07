@@ -14,10 +14,6 @@ onready var test_save : bool = ProjectSettings.get_setting("application/rakugo/t
 onready var scene_links : String = ProjectSettings.get_setting("application/rakugo/scene_links")
 
 onready var theme : RakugoTheme = load(ProjectSettings.get_setting("application/rakugo/theme"))
-onready var default_kind :String = ProjectSettings.get_setting("application/rakugo/default_kind")
-onready var default_mkind : String = ProjectSettings.get_setting("application/rakugo/default_mkind")
-onready var default_mcolumns : int = ProjectSettings.get_setting("application/rakugo/default_mcolumns")
-onready var default_manchor : String = ProjectSettings.get_setting("application/rakugo/default_manchor")
 
 # init vars for settings
 var _skip_all_text := false
