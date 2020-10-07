@@ -18,10 +18,12 @@ var condition_stack = []
 var event_stack = []#LIFO stack of elements [event_name, current_counter, target, condition_stack(FIFO stack)]
 
 var var_access = Mutex.new()#That mutex is probably completely useless
+var menu_lock = Semaphore.new()
 var thread = Thread.new()
 var step_semaphore = Semaphore.new()
 
 var jump_target = null
+var menu_return = null
 
 func reset(): ## Need to check if this is actually needed.
 	#print("Resetting dialogue")
@@ -243,9 +245,18 @@ func ask(variable_name:String, parameters: Dictionary = {}) -> void:
 		Rakugo.call_deferred('ask', variable_name, parameters)
 
 
-func menu(choices:Array, parameters: Dictionary = {}) -> void:
+func menu(choices:Array, parameters: Dictionary = {}):
 	if is_active():
 		Rakugo.call_deferred('menu', choices, parameters)
+		menu_lock = Semaphore.new()#In case the semaphore had multiple .post() done.
+		_menu_yield()
+		menu_lock.wait()
+		return menu_return
+	return null
+
+func _menu_yield():
+	menu_return = yield(Rakugo, "menu_return")
+	menu_lock.post()
 
 
 func show(node_id: String, parameters := {}):

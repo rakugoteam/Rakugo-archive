@@ -18,6 +18,13 @@ func some_dialog():
 	hide("rect red")
 	step()
 	
+	say(null, "Little test of the choice menu")
+	var choice = menu([["Choice 1", 1, {'visible':true}], ["Choice 2", 1, {'visible':true}],["Choice 3", 1, {'visible':false}]])
+	step()
+	
+	say(null, "You chose '%s' (not saved)" % str(choice))
+	step()
+	
 	say(null, "Show 'rect'(inexistant), step #%d" % get_event_step())
 	show("rect")
 	step()

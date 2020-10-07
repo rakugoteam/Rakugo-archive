@@ -8,7 +8,7 @@ var default_parameters = {#TODO make those set by the project settings
 
 func exec(choices:Array, parameters = {}) -> void:
 	parameters = _apply_default(parameters, default_parameters)
-	
+	Rakugo.block_stepping()
 	Rakugo.emit_signal("menu", choices, parameters)
 
 

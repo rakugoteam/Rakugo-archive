@@ -80,6 +80,7 @@ onready var Menu = $Statements/Menu
 signal say(character, text, parameters)
 signal ask(variable_name, parameters)
 signal menu(choices, parameters)
+signal menu_return(result)
 #TODO clean those
 signal started()
 signal begin()#TODO Looks redundant with started, look into it

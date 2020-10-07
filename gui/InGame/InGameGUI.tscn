@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://themes/Default/default.tres" type="Theme" id=1]
+[ext_resource path="res://gui/InGame/ChoiceMenu/ChoiceMenu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://gui/InGame/DialogueBox/DialogueBox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://gui/QuickMenu/QuickMenu.tscn" type="PackedScene" id=6]
 [ext_resource path="res://gui/InGame/Notify.gd" type="Script" id=7]
@@ -28,6 +29,14 @@ anchor_bottom = 1.0
 mouse_filter = 1
 theme = ExtResource( 1 )
 script = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ChoiceMenu" parent="." instance=ExtResource( 2 )]
+anchor_left = 0.15
+anchor_right = 0.85
+anchor_bottom = 0.7
 
 [node name="Panel" type="Panel" parent="."]
 anchor_top = 0.7
@@ -39,16 +48,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Control" type="Control" parent="Panel"]
+[node name="DialogueBox" parent="Panel" instance=ExtResource( 5 )]
 anchor_left = 0.15
 anchor_right = 0.85
-anchor_bottom = 1.0
-mouse_filter = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="DialogueBox" parent="Panel/Control" instance=ExtResource( 5 )]
 anchor_bottom = 0.8
 
 [node name="QuickMenu" parent="Panel" instance=ExtResource( 6 )]
