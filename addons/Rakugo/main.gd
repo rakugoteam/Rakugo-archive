@@ -61,7 +61,6 @@ var can_save := true
 var file := File.new()
 var loading_in_progress := false
 var started := false
-var quests := [] # list of all quests ids
 
 # timers use by rakugo
 onready var auto_timer := $AutoTimer
@@ -172,7 +171,6 @@ func end_game() -> void:
 	exit_dialogue()
 	get_tree().get_root().add_child(current_scene_node)
 	started = false
-	quests.clear()
 	history.clear()
 	history_id = 0
 	variables.clear()
