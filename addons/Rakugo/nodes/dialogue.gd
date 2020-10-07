@@ -122,6 +122,7 @@ func exit():
 		self.exiting = true
 		var_access.unlock()
 		step_semaphore.post()
+		menu_lock.post()
 
 
 func is_ended():
