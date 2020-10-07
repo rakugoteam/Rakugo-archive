@@ -62,6 +62,8 @@ var file := File.new()
 var loading_in_progress := false
 var started := false
 
+var stepping_blocked = false
+
 # timers use by rakugo
 onready var auto_timer := $AutoTimer
 onready var skip_timer := $SkipTimer
@@ -201,12 +203,20 @@ func jump(scene_id: String, dialogue_name: String, event_name: String, force_rel
 	$Statements/Jump.invoke(scene_id, dialogue_name, event_name, force_reload)
 
 ## Dialogue flow control
+func block_stepping():
+	stepping_blocked = true
 
-func story_step() -> void:
-	StoreManager.stack_next_store()
-	print("emitting _step")
-	get_tree().get_root().propagate_call('_step')
-	#emit_signal("story_step", current_dialogue_name, current_event_name)
+func unblock_stepping():
+	stepping_blocked = false
+
+func story_step(_unblock=false) -> void:
+	if stepping_blocked and _unblock:
+		stepping_blocked = false
+	if not stepping_blocked:
+		StoreManager.stack_next_store()
+		print("emitting _step")
+		get_tree().get_root().propagate_call('_step')
+		#emit_signal("story_step", current_dialogue_name, current_event_name)
 
 
 
