@@ -43,6 +43,13 @@ func init_project_settings():
 	)
 
 	ProjectTools.set_setting(
+		"rakugo/gui/save_screen_layout",
+		"save_pages", PropertyInfo.new(
+			"", TYPE_STRING, PROPERTY_HINT_ENUM, 
+			"save_pages,save_list", PROPERTY_USAGE_DEFAULT)
+	)
+
+	ProjectTools.set_setting(
 		"rakugo/default/punctuation_pause",
 		"0", PropertyInfo.new(
 			"", TYPE_INT, PROPERTY_HINT_RANGE, 
@@ -62,6 +69,8 @@ func init_project_settings():
 			"", TYPE_COLOR, PROPERTY_HINT_NONE, 
 			"", PROPERTY_USAGE_DEFAULT)
 	)
+
+
 
 	ProjectTools.set_setting(
 		"rakugo/editor/debug",
