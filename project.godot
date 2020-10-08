@@ -69,6 +69,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/statements/play_audio.gd"
 }, {
+"base": "Reference",
+"class": "ProjectTools",
+"language": "GDScript",
+"path": "res://addons/Rakugo/tools/project_settings/project_tools.gd"
+}, {
+"base": "Reference",
+"class": "PropertyInfo",
+"language": "GDScript",
+"path": "res://addons/Rakugo/tools/project_settings/property_info.gd"
+}, {
 "base": "AnimationPlayer",
 "class": "RakugoAnimPlayer",
 "language": "GDScript",
@@ -147,6 +157,8 @@ _global_script_class_icons={
 "NotifyLabel": "res://addons/Rakugo/icons/notify_label.svg",
 "PlayAnim": "",
 "PlayAudio": "",
+"ProjectTools": "",
+"PropertyInfo": "",
 "RakugoAnimPlayer": "res://addons/Rakugo/icons/rakugo_animation_player.svg",
 "RakugoProjectSettings": "",
 "RakugoText": "",
@@ -159,30 +171,19 @@ _global_script_class_icons={
 "StopAnim": "",
 "StopAudio": "",
 "Store": "res://addons/Rakugo/icons/save.svg",
-"StoreStack": "",
+"StoreStack": ""
 }
 
 [application]
 
 config/name="New Rakugo Game"
 run/main_scene="res://game/Start/Start.tscn"
-config/project_settings_override="res://game/rakugo.cfg"
 boot_splash/image="res://graphics/splash.png"
 boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://graphics/window_icon.png"
 config/auto_accept_quit=false
 config/quit_on_go_back=false
-rakugo/version="0.0.1"
-rakugo/game_credits="Jeremi {i}jeremi360{/i} Biernacki, kurinoku, Vaasref"
-rakugo/debug=false
-rakugo/save_folder="saves"
-rakugo/test_saves=true
-rakugo/markup="renpy"
-rakugo/punctuation_pause="1"
-rakugo/scene_links="res://game/scene_links.tres"
-rakugo/scenes_links="res://game/scenes_links.tres"
-rakugo/theme="res://themes/Default/default.tres"
 
 [autoload]
 
