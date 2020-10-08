@@ -16,7 +16,7 @@ onready var scene_links : String = ProjectSettings.get_setting("application/raku
 onready var theme : RakugoTheme = load(ProjectSettings.get_setting("application/rakugo/theme"))
 
 # init vars for settings
-var _skip_all_text := false
+var _skip_all_text := false#TODO update those with once the new parameters system is made
 var _skip_after_choices := false
 var _auto_time := 1
 var _text_time := 0.3
@@ -36,8 +36,6 @@ var history := {}
 # this store log of all dialogue that player saw
 var global_history := {}
 
-# this store all RakugoVars
-var variables := {}
 var store = null setget set_current_store, get_current_store 
 
 # don't save this
@@ -47,23 +45,24 @@ var viewport : Viewport
 var current_scene_path := ""
 var current_scene_node: Node = null
 var current_statement: Statement = null
-var skip_auto := false
+
 var active := false
 var can_alphanumeric := true
 var emoji_size := 16
-var skipping := false
+
 var can_save := true
 
 var file := File.new()
 var loading_in_progress := false
 var started := false
 
+var auto_stepping := false
+var skipping := false
 var stepping_blocked = false
 
 # timers use by rakugo
 onready var auto_timer := $AutoTimer
 onready var skip_timer := $SkipTimer
-onready var step_timer := $StepTimer
 onready var notify_timer := $NotifyTimer
 
 onready var SceneLoader: = $SceneLoader
@@ -95,8 +94,6 @@ signal stop_audio(node_id)
 func _ready() -> void:
 
 	StoreManager.init()
-	for v in variables:
-		variables[v].save_included = false
 
 	# set by game developer
 	#define("title", game_title, false)
@@ -114,12 +111,6 @@ func _ready() -> void:
 
 	var gdv = Engine.get_version_info()
 	var gdv_string = str(gdv.major) + "." + str(gdv.minor) + "." + str(gdv.patch)
-	#define("godot_version", gdv_string, true)
-	#define("v2_inf", Vector2.INF, false)
-	#define("v3_inf", Vector3.INF, false)
-
-	step_timer.connect("timeout", self, "_on_time_active_timeout")
-
 
 ## Rakugo flow control
 
@@ -141,6 +132,27 @@ func save_game(save_name := "quick") -> bool:
 
 func load_game(save_name := "quick") -> bool:
 	return StoreManager.load_store_stack(save_name)
+
+
+func rollback(amount=1):
+	self.unblock_stepping()
+	self.StoreManager.change_current_stack_index(self.StoreManager.current_store_id + amount)
+
+
+func activate_skipping():
+	self.skipping = true
+	skip_timer.start()
+
+func deactivate_skipping():
+	self.skipping = false
+
+
+func activate_auto_stepping():
+	self.auto_stepping = true
+	auto_timer.start()
+
+func deactivate_auto_stepping():
+	self.auto_stepping = false
 
 
 func prepare_quitting():
@@ -172,7 +184,6 @@ func end_game() -> void:
 	started = false
 	history.clear()
 	history_id = 0
-	variables.clear()
 	emit_signal("game_ended")
 
 
@@ -269,7 +280,7 @@ func _get_history_id() -> int:
 
 
 func is_current_statement_in_global_history() -> bool:
-
+	return true
 	if not current_statement.parameters.add_to_history:
 		return true
 
@@ -297,15 +308,6 @@ func is_current_statement_in_global_history() -> bool:
 	return true
 
 
-func can_auto() -> bool:
-	return true #TODO rewrite this method once the statements are rewritten
-
-
-func can_skip() -> bool:
-	var seen = is_current_statement_in_global_history()
-	return can_auto() and seen
-
-
 func can_qload() -> bool:
 	return is_save_exits("quick")
 
@@ -331,15 +333,6 @@ func load_global_history() -> bool:
 	return $LoadGlobalHistory.invoke()
 
 
-
-
-
-
-func _on_time_active_timeout() -> void:
-	active = true
-
-
-
 ## Utils
 
 # parse text like in renpy to bbcode if mode == "renpy"
@@ -350,18 +343,7 @@ func text_parser(text: String, mode := markup):
 	if theme:
 		links_color = theme.links_color.to_html() 
 	
-	return TextParser.text_parser(text, variables, mode, links_color)
-
-
-# overwrite existing global variable and returns it as RakugoVar
-func set_var(var_name: String, value):
-	if not (var_name in variables):
-		push_warning("%s variable don't exist in Rakugo" %var_name)
-		return null
-
-	var var_to_change = variables[var_name]
-	var_to_change.value = value
-	return var_to_change
+	return text#TextParser.text_parser(text, variables, mode, links_color)#TODO 
 
 
 # returns exiting Rakugo variable as one of RakugoTypes for easy use
@@ -389,14 +371,6 @@ func define_character(character_name: String, character_tag: String, parameters 
 	var new_character := Character.new(character_name, character_tag, parameters)
 	StoreManager.get_current_store()[character_tag] = new_character
 	return new_character
-
-
-# it should be "node:Statement", but it don't work for now
-func _set_statement(node: Node, parameters: Dictionary) -> void:
-	node.set_parameters(parameters)
-	node.exec()
-	active = false
-	step_timer.start()
 
 
 # statement of type say
@@ -448,7 +422,7 @@ func play_anim(node_id: String, anim_name: String) -> void:
 		"anim_name":anim_name
 	}
 
-	_set_statement($Statements/PlayAnim, parameters)
+	#_set_statement($Statements/PlayAnim, parameters)
 
 
 # statement of type stop_anim
@@ -460,7 +434,7 @@ func stop_anim(node_id: String, reset := true) -> void:
 		"reset":reset
 	}
 
-	_set_statement($Statements/StopAnim, parameters)
+	#_set_statement($Statements/StopAnim, parameters)
 
 
 # statement of type play_audio
@@ -472,7 +446,7 @@ func play_audio(node_id: String, from_pos := 0.0) -> void:
 		"from_pos":from_pos
 	}
 
-	_set_statement($Statements/PlayAudio, parameters)
+	#_set_statement($Statements/PlayAudio, parameters)
 
 
 # statement of type stop_audio
@@ -482,7 +456,7 @@ func stop_audio(node_id: String) -> void:
 		"node_id":node_id
 	}
 
-	_set_statement($Statements/StopAudio, parameters)
+	#_set_statement($Statements/StopAudio, parameters)
 
 
 # statement of type stop_audio
@@ -494,7 +468,7 @@ func call_node(node_id: String, func_name: String, args := []) -> void:
 		"args":args
 	}
 
-	_set_statement($Statements/CallNode, parameters)
+	#_set_statement($Statements/CallNode, parameters)
 
 
 func debug_dict(

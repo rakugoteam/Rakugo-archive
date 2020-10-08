@@ -28,25 +28,11 @@ func init_store_stack():
 	store_stack = [new_save]
 
 func call_for_restoring():
-	for node in Rakugo.get_tree().get_nodes_in_group("save"):
-		if node.has_method("on_load"):
-			node.on_load(Rakugo.game_version)
-			continue
-	for s in store_stack.size():
-		print(s, "  ", store_stack[s],  "  ", store_stack[s].current_dialogue_event_stack)
 	get_tree().get_root().propagate_call('_restore', [get_current_store()])
 
 
 func call_for_storing():
-	for node in Rakugo.get_tree().get_nodes_in_group("save"):
-		if node.has_method("on_save"):
-			node.on_save()
-			continue
-	
 	get_tree().get_root().propagate_call('_store', [get_current_store()])
-	
-	for v in Rakugo.variables.values():
-		v.save_to(get_current_store().data)
 
 func prune_front_stack():
 	if current_store_id:
@@ -130,8 +116,6 @@ func load_store_stack(save_name: String):
 	
 	yield(Rakugo, "started")
 
-	
-
 	Rakugo.loading_in_progress = false
 	return true
 
@@ -150,11 +134,6 @@ func unpack_data(path:String) -> Store:
 	var save = get_current_store()
 	var game_version = save.game_version
 
-	Rakugo.quests.clear()
 	Rakugo.history = save.history.duplicate()
-
-	for q_id in Rakugo.quests:
-		var q = Rakugo.get_var(q_id)
-		q.update_subquests()
 	
 	return save

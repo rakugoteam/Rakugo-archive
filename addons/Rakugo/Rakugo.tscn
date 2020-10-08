@@ -5,10 +5,12 @@
 [ext_resource path="res://addons/Rakugo/statements/ask.gd" type="Script" id=3]
 [ext_resource path="res://addons/Rakugo/lib/jump.gd" type="Script" id=4]
 [ext_resource path="res://addons/Rakugo/showable_manager.gd" type="Script" id=5]
+[ext_resource path="res://addons/Rakugo/lib/skip_timer.gd" type="Script" id=6]
 [ext_resource path="res://addons/Rakugo/lib/save_global_history.gd" type="Script" id=7]
 [ext_resource path="res://addons/Rakugo/lib/load_global_history.gd" type="Script" id=8]
 [ext_resource path="res://addons/Rakugo/lib/scene_loader.gd" type="Script" id=9]
 [ext_resource path="res://addons/Rakugo/lib/store_manager.gd" type="Script" id=10]
+[ext_resource path="res://addons/Rakugo/lib/auto_timer.gd" type="Script" id=11]
 [ext_resource path="res://addons/Rakugo/statements/menu.gd" type="Script" id=13]
 [ext_resource path="res://addons/Rakugo/statements/notify.gd" type="Script" id=16]
 [ext_resource path="res://addons/Rakugo/statements/play_anim.gd" type="Script" id=17]
@@ -16,8 +18,6 @@
 [ext_resource path="res://addons/Rakugo/statements/play_audio.gd" type="Script" id=19]
 [ext_resource path="res://addons/Rakugo/statements/stop_audio.gd" type="Script" id=20]
 [ext_resource path="res://addons/Rakugo/statements/call_node.gd" type="Script" id=21]
-[ext_resource path="res://addons/Rakugo/lib/AutoTimer.gd" type="Script" id=22]
-[ext_resource path="res://addons/Rakugo/lib/SkipTimer.gd" type="Script" id=23]
 
 [node name="Rakugo" type="Node"]
 pause_mode = 2
@@ -71,14 +71,10 @@ script = ExtResource( 21 )
 script = ExtResource( 4 )
 
 [node name="AutoTimer" type="Timer" parent="."]
-script = ExtResource( 22 )
+script = ExtResource( 11 )
 
 [node name="SkipTimer" type="Timer" parent="."]
-script = ExtResource( 23 )
-
-[node name="StepTimer" type="Timer" parent="."]
-wait_time = 0.01
-one_shot = true
+script = ExtResource( 6 )
 
 [node name="NotifyTimer" type="Timer" parent="."]
 one_shot = true

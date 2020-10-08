@@ -147,14 +147,14 @@ func load_conf() -> void:
 	var skip_all_text = config.get_value("rakugo", "Skip_All_Text", Rakugo._skip_all_text)
 	var skip_after_choices = config.get_value("rakugo", "Skip_After_Choices", Rakugo._skip_after_choices)
 	
-	Rakugo.set_var("typing_text", typing_text)
-	Rakugo.set_var("text_time", text_time)
-	Rakugo.set_var("auto_time", auto_time)
-	Rakugo.set_var("notify_time", notify_time)
+	#Rakugo.set_var("typing_text", typing_text)
+	#Rakugo.set_var("text_time", text_time)
+	#Rakugo.set_var("auto_time", auto_time)
+	#Rakugo.set_var("notify_time", notify_time)
 
 	# do nothing for now
-	Rakugo.set_var("skip_all_text", skip_all_text)
-	Rakugo.set_var("skip_after_choices", skip_after_choices)
+	#Rakugo.set_var("skip_all_text", skip_all_text)
+	#Rakugo.set_var("skip_after_choices", skip_after_choices)
 
 
 

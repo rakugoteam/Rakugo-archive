@@ -4,12 +4,25 @@ func _input(event):
 	if visible:
 		if event.is_action_pressed("ui_cancel"):
 			Window.Screens._on_nav_button_press("save")
-		if event.is_action_pressed("rollback"):
-			print("Rolling back to id ", Rakugo.StoreManager.current_store_id + 1, " ")
-			Rakugo.StoreManager.change_current_stack_index(Rakugo.StoreManager.current_store_id + 1)
-		if event.is_action_pressed("rollforward"):
-			print("Rolling forward to id ", Rakugo.StoreManager.current_store_id - 1, " ")
-			Rakugo.StoreManager.change_current_stack_index(Rakugo.StoreManager.current_store_id - 1)
+		if event.is_action_pressed("rakugo_skip"):
+			Rakugo.activate_skipping()
+		if event.is_action_released("rakugo_skip"):
+			Rakugo.deactivate_skipping()
+		if event.is_action_pressed("rakugo_skip_toggle"):
+			if Rakugo.skipping:
+				Rakugo.deactivate_skipping()
+			else:
+				Rakugo.activate_skipping()
+		if event.is_action_pressed("rakugo_rollback"):
+			Rakugo.rollback(1)
+		if event.is_action_pressed("rakugo_rollforward"):
+			Rakugo.rollback(-1)
+
+
+func _gui_input(event):
+	if event.is_action_pressed("ui_left_click"):
+		Rakugo.story_step()
+
 
 
 func _on_quick_button_press(quick_action):

@@ -2,33 +2,23 @@
 
 [ext_resource path="res://themes/Default/default.tres" type="Theme" id=1]
 [ext_resource path="res://gui/InGame/ChoiceMenu/ChoiceMenu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://gui/InGame/InGameGUI.gd" type="Script" id=3]
 [ext_resource path="res://gui/InGame/DialogueBox/DialogueBox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://gui/QuickMenu/QuickMenu.tscn" type="PackedScene" id=6]
 [ext_resource path="res://gui/InGame/Notify.gd" type="Script" id=7]
 [ext_resource path="res://gui/QuitScreen/QuitScreen.tscn" type="PackedScene" id=8]
 
-[sub_resource type="GDScript" id=1]
-script/source = "extends Control
-
-
-func _gui_input(event):
-	if event.is_action_pressed(\"left_click\"):
-		Rakugo.story_step()
-"
-
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0, 0, 0, 0.498039 )
 border_color = Color( 0.603922, 0, 0.603922, 1 )
 
-[node name="InGameGUI" type="Control" groups=[
-"save",
-]]
+[node name="InGameGUI" type="Control"]
 pause_mode = 1
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
 theme = ExtResource( 1 )
-script = SubResource( 1 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -84,3 +74,4 @@ selection_enabled = true
 
 [node name="QuitScreen" parent="." instance=ExtResource( 8 )]
 visible = false
+[connection signal="quick_button_press" from="Panel/QuickMenu" to="." method="_on_quick_button_press"]

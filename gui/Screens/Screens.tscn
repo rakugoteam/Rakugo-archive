@@ -14,9 +14,7 @@
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
-[node name="Screens" type="Control" groups=[
-"save",
-]]
+[node name="Screens" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 0
@@ -29,8 +27,6 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-use_theme_from_setting = true
-node_id = "Screens"
 
 [node name="BackgroundColor" type="ColorRect" parent="."]
 visible = false
@@ -97,8 +93,8 @@ visible = false
 
 [node name="UnpauseTimer" type="Timer" parent="."]
 one_shot = true
-[connection signal="show_main_menu_confirm" from="." to="MainMenuReturnConfirmPanel" method="_on_show_main_menu_confirm"]
 [connection signal="show_main_menu_confirm" from="." to="MainMenuReturnConfirmPanel/MainMenuReturnConfirm" method="_on_show_main_menu_confirm"]
+[connection signal="show_main_menu_confirm" from="." to="MainMenuReturnConfirmPanel" method="_on_show_main_menu_confirm"]
 [connection signal="show_menu" from="." to="MenuBar" method="_show_menu"]
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="mode_changed" from="SubMenus/SavesSlotScreen" to="." method="_on_SavesSlotScreen_mode_changed"]
