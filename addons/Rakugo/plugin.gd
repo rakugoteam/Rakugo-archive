@@ -14,7 +14,7 @@ func init_project_settings():
 	)
 
 	ProjectTools.try_set_setting(
-		"rakugo/game/game_credits",
+		"rakugo/game/credits",
 		"Your Company", PropertyInfo.new(
 			"", TYPE_STRING, PROPERTY_HINT_MULTILINE_TEXT, 
 			"", PROPERTY_USAGE_DEFAULT)
