@@ -6,35 +6,56 @@ var tools_menu
 var tm_container
 
 func init_project_settings():
-	ProjectTools.set_setting(
+	ProjectTools.try_set_setting(
 		"rakugo/game/version",
 		"0.0.1", PropertyInfo.new(
 			"", TYPE_STRING, PROPERTY_HINT_NONE, 
 			"", PROPERTY_USAGE_DEFAULT)
 	)
 
-	ProjectTools.set_setting(
+	ProjectTools.try_set_setting(
 		"rakugo/game/game_credits",
 		"Your Company", PropertyInfo.new(
 			"", TYPE_STRING, PROPERTY_HINT_MULTILINE_TEXT, 
 			"", PROPERTY_USAGE_DEFAULT)
 	)
 
-	ProjectTools.set_setting(
+	ProjectTools.try_set_setting(
 		"rakugo/game/scenes_links",
 		"res://game/scenes_links.tres", PropertyInfo.new(
 			"", TYPE_STRING, PROPERTY_HINT_FILE, 
 			"*.tres", PROPERTY_USAGE_DEFAULT)
 	)
 
-	ProjectTools.set_setting(
+	ProjectTools.try_set_setting(
 		"rakugo/gui/markup",
 		"renpy", PropertyInfo.new(
 			"", TYPE_STRING, PROPERTY_HINT_ENUM, 
 			"renpy,bbcode", PROPERTY_USAGE_CATEGORY)
 	)
 
-	ProjectTools.set_setting(
+	ProjectTools.try_set_setting(
+		"rakugo/game/rollback_steps",
+		10, PropertyInfo.new(
+			"", TYPE_INT, PROPERTY_HINT_NONE, 
+			"", PROPERTY_USAGE_DEFAULT)
+	)
+
+	ProjectTools.try_set_setting(
+		"rakugo/game/history_length",
+		30, PropertyInfo.new(
+			"", TYPE_INT, PROPERTY_HINT_NONE, 
+			"", PROPERTY_USAGE_DEFAULT)
+	)
+
+	ProjectTools.try_set_setting(
+		"rakugo/game/saved_steps",
+		10, PropertyInfo.new(
+			"", TYPE_INT, PROPERTY_HINT_NONE, 
+			"", PROPERTY_USAGE_DEFAULT)
+	)
+
+	ProjectTools.try_set_setting(
 		"rakugo/gui/theme",
 		"res://themes/Default/default.tres",
 		PropertyInfo.new(
@@ -42,63 +63,63 @@ func init_project_settings():
 			"*.tres", PROPERTY_USAGE_DEFAULT)
 	)
 
-	ProjectTools.set_setting(
+	ProjectTools.try_set_setting(
 		"rakugo/gui/save_screen_layout",
 		"save_pages", PropertyInfo.new(
 			"", TYPE_STRING, PROPERTY_HINT_ENUM, 
 			"save_pages,save_list", PROPERTY_USAGE_DEFAULT)
 	)
 
-	ProjectTools.set_setting(
+	ProjectTools.try_set_setting(
 		"rakugo/default/narrator_label",
 		"", PropertyInfo.new(
 			"", TYPE_STRING, PROPERTY_HINT_NONE, 
 			"", PROPERTY_USAGE_DEFAULT)
 	)
 
-	ProjectTools.set_setting(
+	ProjectTools.try_set_setting(
 		"rakugo/default/narrator_color",
 		Color.white, PropertyInfo.new(
 			"", TYPE_COLOR, PROPERTY_HINT_NONE, 
 			"", PROPERTY_USAGE_DEFAULT)
 	)
 
-	ProjectTools.set_setting(
+	ProjectTools.try_set_setting(
 		"rakugo/default/punctuation_pause",
 		"0", PropertyInfo.new(
 			"", TYPE_INT, PROPERTY_HINT_RANGE, 
 			"0,10", PROPERTY_USAGE_DEFAULT)
 	)
 
-	ProjectTools.set_setting(
+	ProjectTools.try_set_setting(
 		"rakugo/default/typing_speed",
 		-0.3, PropertyInfo.new(
 			"", TYPE_REAL, PROPERTY_HINT_RANGE, 
 			"-0.3,-0.01", PROPERTY_USAGE_DEFAULT)
 	)
 
-	ProjectTools.set_setting(
+	ProjectTools.try_set_setting(
 		"rakugo/default/auto_speed",
 		-3, PropertyInfo.new(
 			"", TYPE_REAL, PROPERTY_HINT_RANGE, 
 			"-5,-0.5", PROPERTY_USAGE_DEFAULT)
 	)
 
-	ProjectTools.set_setting(
+	ProjectTools.try_set_setting(
 		"rakugo/default/skip_speed",
 		-1, PropertyInfo.new(
 			"", TYPE_REAL, PROPERTY_HINT_RANGE, 
 			"-5,-0.5", PROPERTY_USAGE_DEFAULT)
 	)
 
-	ProjectTools.set_setting(
+	ProjectTools.try_set_setting(
 		"rakugo/editor/debug",
 		false, PropertyInfo.new(
 			"", TYPE_BOOL, PROPERTY_HINT_NONE, 
 			"", PROPERTY_USAGE_EDITOR)
 	)
 
-	ProjectTools.set_setting(
+	ProjectTools.try_set_setting(
 		"rakugo/editor/test_saves",
 		false, PropertyInfo.new(
 			"", TYPE_BOOL, PROPERTY_HINT_NONE, 
