@@ -21,8 +21,8 @@ func init_project_settings():
 	)
 
 	ProjectTools.try_set_setting(
-		"rakugo/game/scenes_links",
-		"res://game/scenes_links.tres", PropertyInfo.new(
+		"rakugo/game/scene_links",
+		"res://game/scene_links.tres", PropertyInfo.new(
 			"", TYPE_STRING, PROPERTY_HINT_FILE, 
 			"*.tres", PROPERTY_USAGE_DEFAULT)
 	)
