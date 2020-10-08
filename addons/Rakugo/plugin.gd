@@ -50,13 +50,6 @@ func init_project_settings():
 	)
 
 	ProjectTools.set_setting(
-		"rakugo/default/punctuation_pause",
-		"0", PropertyInfo.new(
-			"", TYPE_INT, PROPERTY_HINT_RANGE, 
-			"0,10", PROPERTY_USAGE_DEFAULT)
-	)
-
-	ProjectTools.set_setting(
 		"rakugo/default/narrator_label",
 		"", PropertyInfo.new(
 			"", TYPE_STRING, PROPERTY_HINT_NONE, 
@@ -70,7 +63,33 @@ func init_project_settings():
 			"", PROPERTY_USAGE_DEFAULT)
 	)
 
+	ProjectTools.set_setting(
+		"rakugo/default/punctuation_pause",
+		"0", PropertyInfo.new(
+			"", TYPE_INT, PROPERTY_HINT_RANGE, 
+			"0,10", PROPERTY_USAGE_DEFAULT)
+	)
 
+	ProjectTools.set_setting(
+		"rakugo/default/typing_speed",
+		-0.3, PropertyInfo.new(
+			"", TYPE_REAL, PROPERTY_HINT_RANGE, 
+			"-0.3,-0.01", PROPERTY_USAGE_DEFAULT)
+	)
+
+	ProjectTools.set_setting(
+		"rakugo/default/auto_speed",
+		-3, PropertyInfo.new(
+			"", TYPE_REAL, PROPERTY_HINT_RANGE, 
+			"-5,-0.5", PROPERTY_USAGE_DEFAULT)
+	)
+
+	ProjectTools.set_setting(
+		"rakugo/default/skip_speed",
+		-1, PropertyInfo.new(
+			"", TYPE_REAL, PROPERTY_HINT_RANGE, 
+			"-5,-0.5", PROPERTY_USAGE_DEFAULT)
+	)
 
 	ProjectTools.set_setting(
 		"rakugo/editor/debug",
