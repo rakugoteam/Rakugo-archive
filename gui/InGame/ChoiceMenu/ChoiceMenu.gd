@@ -9,6 +9,9 @@ func _ready():
 	Rakugo.connect("menu", self, "build")
 
 
+func _restore(_store):
+	purge_childs()
+
 func on_choice_button_pressed(_choice_button):
 	var return_value = _choice_button.get_meta('return_value')
 	purge_childs()
@@ -17,6 +20,7 @@ func on_choice_button_pressed(_choice_button):
 
 
 func build(choices:Array, parameters:Dictionary):
+	purge_childs()
 	for i in choices.size():
 		if _is_entry_visible(choices[i]):
 			var button:Button = choice_button.instance()
@@ -30,7 +34,7 @@ func build(choices:Array, parameters:Dictionary):
 
 func purge_childs():
 	for c in self.get_children():
-		self.remove_child(c)
+		self.call_deferred('remove_child', c)
 
 
 func _is_entry_visible(entry):
