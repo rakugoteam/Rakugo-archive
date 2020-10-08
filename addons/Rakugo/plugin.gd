@@ -7,35 +7,35 @@ var tm_container
 
 func init_project_settings():
 	ProjectTools.set_setting(
-		"application/rakugo/version",
+		"rakugo/game/version",
 		"0.0.1", PropertyInfo.new(
 			"", TYPE_STRING, PROPERTY_HINT_NONE, 
 			"", PROPERTY_USAGE_DEFAULT)
 	)
 
 	ProjectTools.set_setting(
-		"application/rakugo/game_credits",
+		"rakugo/game/game_credits",
 		"Your Company", PropertyInfo.new(
 			"", TYPE_STRING, PROPERTY_HINT_MULTILINE_TEXT, 
 			"", PROPERTY_USAGE_DEFAULT)
 	)
 
 	ProjectTools.set_setting(
-		"application/rakugo/markup",
-		"renpy", PropertyInfo.new(
-			"", TYPE_STRING, PROPERTY_HINT_ENUM, 
-			"renpy,bbcode", PROPERTY_USAGE_CATEGORY)
-	)
-
-	ProjectTools.set_setting(
-		"application/rakugo/scenes_links",
+		"rakugo/game/scenes_links",
 		"res://game/scenes_links.tres", PropertyInfo.new(
 			"", TYPE_STRING, PROPERTY_HINT_FILE, 
 			"*.tres", PROPERTY_USAGE_DEFAULT)
 	)
 
 	ProjectTools.set_setting(
-		"application/rakugo/theme",
+		"rakugo/gui/markup",
+		"renpy", PropertyInfo.new(
+			"", TYPE_STRING, PROPERTY_HINT_ENUM, 
+			"renpy,bbcode", PROPERTY_USAGE_CATEGORY)
+	)
+
+	ProjectTools.set_setting(
+		"rakugo/gui/theme",
 		"res://themes/Default/default.tres",
 		PropertyInfo.new(
 			"", TYPE_STRING, PROPERTY_HINT_FILE, 
@@ -43,21 +43,35 @@ func init_project_settings():
 	)
 
 	ProjectTools.set_setting(
-		"application/rakugo/punctuation_pause",
+		"rakugo/default/punctuation_pause",
 		"0", PropertyInfo.new(
 			"", TYPE_INT, PROPERTY_HINT_RANGE, 
 			"0,10", PROPERTY_USAGE_DEFAULT)
 	)
 
 	ProjectTools.set_setting(
-		"application/rakugo/debug",
+		"rakugo/default/narrator_label",
+		"", PropertyInfo.new(
+			"", TYPE_STRING, PROPERTY_HINT_NONE, 
+			"", PROPERTY_USAGE_DEFAULT)
+	)
+
+	ProjectTools.set_setting(
+		"rakugo/default/narrator_color",
+		Color.white, PropertyInfo.new(
+			"", TYPE_COLOR, PROPERTY_HINT_NONE, 
+			"", PROPERTY_USAGE_DEFAULT)
+	)
+
+	ProjectTools.set_setting(
+		"rakugo/editor/debug",
 		false, PropertyInfo.new(
 			"", TYPE_BOOL, PROPERTY_HINT_NONE, 
 			"", PROPERTY_USAGE_EDITOR)
 	)
 
 	ProjectTools.set_setting(
-		"application/rakugo/test_saves",
+		"rakugo/editor/test_saves",
 		false, PropertyInfo.new(
 			"", TYPE_BOOL, PROPERTY_HINT_NONE, 
 			"", PROPERTY_USAGE_EDITOR)
