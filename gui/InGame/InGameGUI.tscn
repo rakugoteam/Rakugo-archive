@@ -8,7 +8,7 @@
 [ext_resource path="res://gui/InGame/Notify.gd" type="Script" id=7]
 [ext_resource path="res://gui/QuitScreen/QuitScreen.tscn" type="PackedScene" id=8]
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 0.498039 )
 border_color = Color( 0.603922, 0, 0.603922, 1 )
 
@@ -33,7 +33,7 @@ anchor_top = 0.7
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
