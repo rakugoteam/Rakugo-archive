@@ -201,7 +201,7 @@ config/quit_on_go_back=false
 
 TextParser="*res://addons/Rakugo/lib/Text.tscn"
 Rakugo="*res://addons/Rakugo/Rakugo.tscn"
-settings="*res://addons/Rakugo/settings.gd"
+Settings="*res://addons/Rakugo/settings.gd"
 Window="*res://gui/Window/Window.tscn"
 
 [debug]
