@@ -1,71 +1,136 @@
 tool
 extends EditorPlugin
 
-
-var rakugo_project_settings
-var rps_container
 var rakugo_tools
 var tools_menu
 var tm_container
 
-
-func default_setting(setting: String, value):
-	if not ProjectSettings.has_setting(setting):
-		ProjectSettings.set_setting(setting, value)
-
-
 func init_project_settings():
-	default_setting(
-		"application/rakugo/version",
-		"0.0.1"
+	ProjectTools.try_set_setting(
+		"rakugo/game/version",
+		"0.0.1", PropertyInfo.new(
+			"", TYPE_STRING, PROPERTY_HINT_NONE, 
+			"", PROPERTY_USAGE_DEFAULT)
 	)
 
-	default_setting(
-		"application/rakugo/game_credits",
-		"Your Company"
+	ProjectTools.try_set_setting(
+		"rakugo/game/credits",
+		"Your Company", PropertyInfo.new(
+			"", TYPE_STRING, PROPERTY_HINT_MULTILINE_TEXT, 
+			"", PROPERTY_USAGE_DEFAULT)
 	)
 
-	default_setting(
-		"application/rakugo/markup",
-		"renpy"
+	ProjectTools.try_set_setting(
+		"rakugo/game/scene_links",
+		"res://game/scene_links.tres", PropertyInfo.new(
+			"", TYPE_STRING, PROPERTY_HINT_FILE, 
+			"*.tres", PROPERTY_USAGE_DEFAULT)
 	)
 
-	default_setting(
-		"application/rakugo/debug",
-		false
+	ProjectTools.try_set_setting(
+		"rakugo/gui/markup",
+		"renpy", PropertyInfo.new(
+			"", TYPE_STRING, PROPERTY_HINT_ENUM, 
+			"renpy,bbcode", PROPERTY_USAGE_CATEGORY)
 	)
 
-	default_setting(
-		"application/rakugo/test_saves",
-		false
+	ProjectTools.try_set_setting(
+		"rakugo/game/rollback_steps",
+		10, PropertyInfo.new(
+			"", TYPE_INT, PROPERTY_HINT_NONE, 
+			"", PROPERTY_USAGE_DEFAULT)
 	)
 
-	default_setting(
-		"application/rakugo/scenes_links",
-		"res://game/scenes_links.tres"
+	ProjectTools.try_set_setting(
+		"rakugo/game/history_length",
+		30, PropertyInfo.new(
+			"", TYPE_INT, PROPERTY_HINT_NONE, 
+			"", PROPERTY_USAGE_DEFAULT)
 	)
 
-	default_setting(
-		"application/rakugo/theme",
-		"res://themes/Default/default.tres"
+	ProjectTools.try_set_setting(
+		"rakugo/game/saved_steps",
+		10, PropertyInfo.new(
+			"", TYPE_INT, PROPERTY_HINT_NONE, 
+			"", PROPERTY_USAGE_DEFAULT)
 	)
 
-	default_setting(
-		"application/rakugo/punctuation_pause",
-		"adv"
+	ProjectTools.try_set_setting(
+		"rakugo/gui/theme",
+		"res://themes/Default/default.tres",
+		PropertyInfo.new(
+			"", TYPE_STRING, PROPERTY_HINT_FILE, 
+			"*.tres", PROPERTY_USAGE_DEFAULT)
+	)
+
+	ProjectTools.try_set_setting(
+		"rakugo/gui/save_screen_layout",
+		"save_pages", PropertyInfo.new(
+			"", TYPE_STRING, PROPERTY_HINT_ENUM, 
+			"save_pages,save_list", PROPERTY_USAGE_DEFAULT)
+	)
+
+	ProjectTools.try_set_setting(
+		"rakugo/default/narrator_label",
+		"", PropertyInfo.new(
+			"", TYPE_STRING, PROPERTY_HINT_NONE, 
+			"", PROPERTY_USAGE_DEFAULT)
+	)
+
+	ProjectTools.try_set_setting(
+		"rakugo/default/narrator_color",
+		Color.white, PropertyInfo.new(
+			"", TYPE_COLOR, PROPERTY_HINT_NONE, 
+			"", PROPERTY_USAGE_DEFAULT)
+	)
+
+	ProjectTools.try_set_setting(
+		"rakugo/default/punctuation_pause",
+		"0", PropertyInfo.new(
+			"", TYPE_INT, PROPERTY_HINT_RANGE, 
+			"0,10", PROPERTY_USAGE_DEFAULT)
+	)
+
+	ProjectTools.try_set_setting(
+		"rakugo/default/typing_speed",
+		-0.3, PropertyInfo.new(
+			"", TYPE_REAL, PROPERTY_HINT_RANGE, 
+			"-0.3,-0.01", PROPERTY_USAGE_DEFAULT)
+	)
+
+	ProjectTools.try_set_setting(
+		"rakugo/default/auto_speed",
+		-3, PropertyInfo.new(
+			"", TYPE_REAL, PROPERTY_HINT_RANGE, 
+			"-5,-0.5", PROPERTY_USAGE_DEFAULT)
+	)
+
+	ProjectTools.try_set_setting(
+		"rakugo/default/skip_speed",
+		-1, PropertyInfo.new(
+			"", TYPE_REAL, PROPERTY_HINT_RANGE, 
+			"-5,-0.5", PROPERTY_USAGE_DEFAULT)
+	)
+
+	ProjectTools.try_set_setting(
+		"rakugo/editor/debug",
+		false, PropertyInfo.new(
+			"", TYPE_BOOL, PROPERTY_HINT_NONE, 
+			"", PROPERTY_USAGE_EDITOR)
+	)
+
+	ProjectTools.try_set_setting(
+		"rakugo/editor/test_saves",
+		false, PropertyInfo.new(
+			"", TYPE_BOOL, PROPERTY_HINT_NONE, 
+			"", PROPERTY_USAGE_EDITOR)
 	)
 
 
 func init_tools():
 	var theme = get_editor_interface().get_base_control().theme
 
-	rakugo_project_settings = preload("tools/project_settings/RakugoProjectSettings.tscn").instance()
-	rakugo_project_settings.theme = theme
-	rps_container = CONTAINER_PROJECT_SETTING_TAB_LEFT
-	add_control_to_container(rps_container, rakugo_project_settings)
-	rakugo_project_settings.connect_to_parten()
-
-	rakugo_tools = preload("res://addons/Rakugo/tools/RakugoTools.tscn").instance()
+	rakugo_tools = preload("res://addons/rakugo/tools/RakugoTools.tscn").instance()
 	rakugo_tools.theme = theme
 	add_child(rakugo_tools)
 
@@ -90,11 +155,9 @@ func _enter_tree():
 
 func remove_tools():
 	remove_control_from_container(tm_container, tools_menu)
-	remove_control_from_container(rps_container, rakugo_project_settings)
 
 	tools_menu.free()
 	rakugo_tools.free()
-	rakugo_project_settings.free()
 
 
 func _exit_tree():

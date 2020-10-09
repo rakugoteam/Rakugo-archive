@@ -12,7 +12,7 @@ signal loading_scene()
 signal scene_loaded()
 
 func _ready():
-	scene_links = load(ProjectSettings.get_setting("application/rakugo/scene_links")).get_as_dict()
+	scene_links = load(ProjectSettings.get_setting("rakugo/game/scene_links")).get_as_dict()
 	current_scene = ProjectSettings.get_setting("application/run/main_scene")
 	for k in scene_links.keys():
 		if scene_links[k] == current_scene:

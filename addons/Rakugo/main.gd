@@ -6,14 +6,13 @@ const save_folder := "saves"
 
 # project settings integration
 onready var game_title : String = ProjectSettings.get_setting("application/config/name")
-onready var game_version : String = ProjectSettings.get_setting("application/rakugo/version")
-onready var game_credits : String = ProjectSettings.get_setting("application/rakugo/game_credits")
-onready var markup : String = ProjectSettings.get_setting("application/rakugo/markup")
-onready var debug_on : bool = ProjectSettings.get_setting("application/rakugo/debug")
-onready var test_save : bool = ProjectSettings.get_setting("application/rakugo/test_saves")
-onready var scene_links : String = ProjectSettings.get_setting("application/rakugo/scene_links")
-
-onready var theme : RakugoTheme = load(ProjectSettings.get_setting("application/rakugo/theme"))
+onready var game_version : String = ProjectSettings.get_setting("rakugo/game/version")
+onready var game_credits : String = ProjectSettings.get_setting("rakugo/game/credits")
+onready var markup : String = ProjectSettings.get_setting("rakugo/gui/markup")
+onready var debug_on : bool = ProjectSettings.get_setting("rakugo/editor/debug")
+onready var test_save : bool = ProjectSettings.get_setting("rakugo/editor/test_saves")
+onready var scene_links : String = ProjectSettings.get_setting("rakugo/game/scene_links")
+onready var theme : RakugoTheme = load(ProjectSettings.get_setting("rakugo/gui/theme"))
 
 # init vars for settings
 var _skip_all_text := false#TODO update those with once the new parameters system is made
