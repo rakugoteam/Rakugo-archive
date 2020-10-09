@@ -191,7 +191,7 @@ func get(property, default=null):
 	if property in property_list:
 		return property_list[property]
 	if ProjectSettings.has_setting(property):
-		return Settings.get(property)
+		return ProjectSettings.get_setting(property)
 	if property in default_property_list:
 		return default_property_list[property][0]
 	if default:
