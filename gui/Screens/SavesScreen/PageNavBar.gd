@@ -23,13 +23,14 @@ func _on_page_button_pressed(action):
 				emit_signal("change_page", int(action), 0)
 
 
-func _on_page_changed(page):
+func _on_page_changed():
+	var page = Settings.get('rakugo/saves/current_page')
 	for b in get_children():
 		if b.text == str(page):
 			b.pressed = true
-		elif b.text == "Q" and str(page) == "quick":
+		elif b.text == "Q" and page == -1:
 			b.pressed = true
-		elif b.text == "A" and str(page) == "auto":
+		elif b.text == "A" and page == -2:
 			b.pressed = true
 		else:
 			b.pressed = false

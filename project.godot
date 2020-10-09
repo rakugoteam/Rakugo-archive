@@ -125,6 +125,11 @@ _global_script_classes=[ {
 "path": "res://addons/Rakugo/objects/resources/scene_links.gd"
 }, {
 "base": "Object",
+"class": "SettingsList",
+"language": "GDScript",
+"path": "res://addons/Rakugo/settings_list.gd"
+}, {
+"base": "Object",
 "class": "Statement",
 "language": "GDScript",
 "path": "res://addons/Rakugo/statements/statement.gd"
@@ -173,6 +178,7 @@ _global_script_class_icons={
 "RakugoTheme": "res://addons/Rakugo/icons/theme.svg",
 "Say": "",
 "SceneLinks": "res://addons/Rakugo/icons/scene_links.svg",
+"SettingsList": "",
 "Statement": "",
 "StopAnim": "",
 "StopAudio": "",

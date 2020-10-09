@@ -33,6 +33,8 @@ func hash_say(character:Character, text:String, parameters:Dictionary):
 	var output = str(text.hash()) + Rakugo.current_dialogue.get_event_name()
 	if character:
 		output += character.name + character.tag
+	else:
+		output += Rakugo.Say.get_narrator().name
 	if parameters and parameters.get("hash_parameters_in_history"):
 		output += str(parameters.hash())
 	

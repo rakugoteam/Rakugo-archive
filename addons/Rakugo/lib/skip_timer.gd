@@ -1,6 +1,10 @@
 extends Timer
 
-#TODO add the necessary to set the timer once settings are reworked
+
+func _ready():
+	self.wait_time = Settings.get("rakugo/default/delays/skip_delay")
+
+
 func on_loop():
 	if can_skip():
 		Rakugo.story_step()

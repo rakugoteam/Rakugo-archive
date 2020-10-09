@@ -10,21 +10,14 @@ var default_narrator = null#TODO same as above
 
 func _ready():
 	default_narrator = Character.new()
-	default_narrator.init("Narrator", "narrator")
-
-
-func _store(store):
-	if not store.get('narrator'):
-		store.narrator = default_narrator
-
-func _restore(store):
-	if store.get('narrator'):
-		default_narrator = store.narrator
+	print(Settings.get("rakugo/default/narrator/name"), " ", Settings.get("rakugo/default/narrator/color"))
+	default_narrator.init(Settings.get("rakugo/default/narrator/name"), "", Settings.get("rakugo/default/narrator/color"))
 
 
 func exec(character:Character, text:String, parameters = {}) -> void:
 	character = _get_character(character)
-	parameters = _apply_default(parameters, character.say_parameters)# parameters > character default parameters > project parameters
+	if character:
+		parameters = _apply_default(parameters, character.say_parameters)# parameters > character default parameters > project parameters
 	parameters = _apply_default(parameters, default_parameters)
 	
 	Rakugo.emit_signal("say", character, text, parameters)
@@ -35,9 +28,11 @@ func exec(character:Character, text:String, parameters = {}) -> void:
 func _get_character(character):
 	if character is String:
 		character = Rakugo.get_current_store().get(character)
-	if not character:
-		character = default_narrator
 	return character
+
+
+func get_narrator():
+	return default_narrator#TODO improve upon that at some point
 
 
 func _apply_default(input:Dictionary, default:Dictionary):

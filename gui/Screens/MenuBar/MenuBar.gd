@@ -11,7 +11,7 @@ func _ready():
 func disable_continue_button():
 	var auto_save_path = str("user://" + Rakugo.save_folder + "/auto.res")
 
-	if Rakugo.test_save:
+	if Settings.get('rakugo/saves/test_mode'):
 		auto_save_path = str("res://" + Rakugo.save_folder + "/auto.tres")
 
 	if not Rakugo.file.file_exists(auto_save_path):

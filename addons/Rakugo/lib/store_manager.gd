@@ -8,7 +8,7 @@ var current_store_id = 0
 var save_folder_path
 
 func init():
-	if Rakugo.test_save:
+	if Settings.get('rakugo/saves/test_mode'):
 		save_folder_path = "res://".plus_file(Rakugo.save_folder)
 	else:
 		save_folder_path = "user://".plus_file(Rakugo.save_folder)
@@ -69,7 +69,7 @@ func change_current_stack_index(index):
 func get_savefile_path(savefile_name):
 	var savefile_path = save_folder_path.plus_file(savefile_name)
 
-	if Rakugo.test_save:
+	if Settings.get('rakugo/saves/test_mode'):
 		savefile_path += ".tres"
 	else:
 		savefile_path += ".res"

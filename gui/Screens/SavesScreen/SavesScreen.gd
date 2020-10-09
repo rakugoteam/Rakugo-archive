@@ -21,22 +21,25 @@ var save_list:Array = []
 var save_pages:Dictionary = {}
 
 
-export var use_pages:bool = false
+var use_pages:bool = false
 
 signal load_file
 
 signal mode_changed(save_mode)
 signal clear_save_slots()
 signal add_save_slot(save_slot)
-signal page_changed(page)
+signal page_changed()
 
 func _ready() -> void:
+	use_pages = Settings.get('rakugo/saves/save_screen_layout') == "save_pages"
+	
 	for e in get_tree().get_nodes_in_group("save_screen_page_ui_element"):
 		e.visible = use_pages
 	for e in get_tree().get_nodes_in_group("save_screen_scroll_ui_element"):
 		e.scroll_vertical_enabled = not use_pages
-	if use_pages and settings.saves_scroll == 0:
-		settings.saves_scroll = 1
+		
+	if use_pages:
+		Settings.get('rakugo/saves/current_page', 1)#Set the default
 		#_on_change_page(1, 0)
 	update_save_dir()
 	return
@@ -49,7 +52,7 @@ func update_save_dir():
 	saveslots_dir = "user://" +  Rakugo.save_folder
 	file_ext = "res"
 
-	if Rakugo.test_save:
+	if Settings.get('rakugo/saves/test_mode'):
 		saveslots_dir = "res://" + Rakugo.save_folder
 		file_ext = "tres"
 
@@ -121,8 +124,9 @@ func populate_grid_page():
 	
 
 	var saves = []
+	var current_page = Settings.get('rakugo/saves/current_page', 1) 
 	for i in range(6):
-		var index = Vector2(settings.saves_scroll, i)
+		var index = Vector2(current_page, i)
 		if save_pages.has(index):
 			saves.append(new_slot_instance(save_pages[index], index, false))
 		else:
@@ -183,7 +187,7 @@ func save_save(caller: String) -> bool:
 
 	var new_save = false
 	if caller == "empty":
-		if settings.saves_skip_naming:
+		if Settings.get('saves_skip_naming'):#TODO rename setting
 			caller = get_next_iterative_name(default_save_name)
 		else:
 			new_save = true
@@ -230,7 +234,7 @@ func save_page_save(caller: String, page_index:Vector2) -> bool:
 		if not yield(popup, "return_output"):
 			return false
 
-	if settings.saves_skip_naming:
+	if Settings.get('rakugo/saves/skip_naming', true):#TODO rename setting
 		caller = default_save_name
 	else:
 		popup.name_save_confirm()
@@ -290,7 +294,7 @@ func load_save(caller: String) -> void:
 func _on_visibility_changed():
 	if visible:
 		if use_pages:
-			_on_change_page(settings.saves_scroll, 0)
+			_on_change_page(Settings.get('rakugo/saves/current_page', 1), 0)
 		else:
 			update_grid()
 
@@ -303,17 +307,15 @@ func _on_change_page(page, incremental_change):
 			page = "A"
 	match page:
 		0:
-			settings.saves_scroll += incremental_change
-			emit_signal("page_changed", settings.saves_scroll)
+			var value = clamp(Settings.get('rakugo/saves/current_page', 1) + incremental_change, -2, 1000)
+			Settings.set('rakugo/saves/current_page', value)
 		"Q":
-			settings.saves_scroll = -1
-			emit_signal("page_changed", "quick")
+			Settings.set('rakugo/saves/current_page', -1)
 		"A":
-			settings.saves_scroll = -2
-			emit_signal("page_changed", "auto")
+			Settings.set('rakugo/saves/current_page', -2)
 		_:
-			settings.saves_scroll = int(page)
-			emit_signal("page_changed", settings.saves_scroll)
+			Settings.set('rakugo/saves/current_page', int(page))
+	emit_signal("page_changed")
 	update_grid()
 
 func split_paged_savename(savename):

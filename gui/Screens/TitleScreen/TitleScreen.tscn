@@ -13,7 +13,7 @@ script/source = "extends Label
 
 
 func _ready():
-	self.text = ProjectSettings.get_setting(\"application/config/name\")
+	self.text = Settings.get(\"application/config/name\")
 "
 
 [sub_resource type="GDScript" id=3]
@@ -21,7 +21,7 @@ script/source = "extends Label
 
 
 func _ready():
-	self.text =  ProjectSettings.get_setting(\"rakugo/game/version\")
+	self.text =  Settings.get(\"rakugo/game/info/version\")
 "
 
 [node name="TitleScreen" type="Control"]

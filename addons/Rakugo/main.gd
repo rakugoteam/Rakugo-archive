@@ -5,14 +5,13 @@ const credits_path := "res://addons/Rakugo/credits.txt"
 const save_folder := "saves"
 
 # project settings integration
-onready var game_title : String = ProjectSettings.get_setting("application/config/name")
-onready var game_version : String = ProjectSettings.get_setting("rakugo/game/version")
-onready var game_credits : String = ProjectSettings.get_setting("rakugo/game/credits")
-onready var markup : String = ProjectSettings.get_setting("rakugo/gui/markup")
-onready var debug_on : bool = ProjectSettings.get_setting("rakugo/editor/debug")
-onready var test_save : bool = ProjectSettings.get_setting("rakugo/editor/test_saves")
-onready var scene_links : String = ProjectSettings.get_setting("rakugo/game/scene_links")
-onready var theme : RakugoTheme = load(ProjectSettings.get_setting("rakugo/gui/theme"))
+onready var game_title : String = Settings.get("application/config/name")
+onready var game_version : String = Settings.get("rakugo/game/info/version")
+onready var game_credits : String = Settings.get("rakugo/game/info/credits")
+onready var markup : String = Settings.get("rakugo/gui/markup")
+onready var debug_on : bool = Settings.get("rakugo/editor/debug")
+onready var scene_links : String = Settings.get("rakugo/game/scenes/scene_links")
+onready var theme : RakugoTheme = load(Settings.get("rakugo/gui/theme"))
 
 # init vars for settings
 var _skip_all_text := false#TODO update those with once the new parameters system is made
@@ -146,8 +145,9 @@ func deactivate_auto_stepping():
 func prepare_quitting():
 	if self.started:
 		self.save_game("auto")
-
-	settings.save_conf()
+	
+	Settings.save_property_list()
+	#Settings.save_conf()
 
 
 func load_scene(scene_id: String, force_reload:bool = false) -> void:
@@ -163,7 +163,7 @@ func end_game() -> void:
 			current_scene_node.get_parent().remove_child(current_scene_node)
 		current_scene_node.queue_free()
 
-	var start_scene = ProjectSettings.get_setting("application/run/main_scene")
+	var start_scene = Settings.get("application/run/main_scene")
 	var lscene = load(start_scene)
 	current_scene_node = lscene.instance()
 	exit_dialogue()
@@ -267,7 +267,7 @@ func is_save_exits(save_name: String) -> bool:
 	loading_in_progress = true
 	var save_folder_path = "user://".plus_file(save_folder)
 
-	if test_save:
+	if Settings.get('rakugo/saves/test_mode'):
 		save_folder_path = "res://".plus_file(save_folder)
 
 	var save_file_path = save_folder_path.plus_file(save_name)

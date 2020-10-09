@@ -52,10 +52,10 @@ func _get_window_fullscreen() -> bool:
 func _process(delta: float) -> void:
 	if OS.window_size != _prev_window_size:
 		emit_signal("window_size_changed", _prev_window_size, OS.window_size)
-	
+
 	if OS.window_fullscreen != _prev_window_fullscreen:
 		emit_signal("window_fullscreen_changed", OS.window_fullscreen)
-	
+
 	_prev_window_size = OS.window_size
 	_prev_window_fullscreen = OS.window_fullscreen
 
@@ -88,19 +88,19 @@ func save_conf() -> void:
 		var volume = AudioServer.get_bus_volume_db(bus_id)
 		config.set_value("audio", bus_name + "_mute", mute)
 		config.set_value("audio", bus_name + "_volume", volume)
-		audio_buses[bus_name] = {"mute": mute, "volume": volume}
-	
+		audio_buses[bus_name] = {"mute":mute, "volume": volume}
+
 	conf_set_rakugo_value(config, "Typing_Text", "typing_text")
 	conf_set_rakugo_value(config, "Text_Time", "text_time")
 	conf_set_rakugo_value(config, "Auto_Forward_Time", "auto_time")
 	conf_set_rakugo_value(config, "Notify_Time", "notify_time")
-	
+
 	# do nothing for now
 	conf_set_rakugo_value(config, "Skip_All_Text", "skip_all_text")
 	conf_set_rakugo_value(config, "Skip_After_Choices", "skip_after_choices")
-	
-	
-	
+
+
+
 	# Save the changes by overwriting the previous file
 	config.save("user://settings.cfg")
 
@@ -108,10 +108,10 @@ func save_conf() -> void:
 func load_conf() -> void:
 	var config = ConfigFile.new()
 	var err = config.load("user://settings.cfg")
-	
+
 	if err != OK: # if not, something went wrong with the file loading
 		return
-		
+
 	# Look for the display/width pair, and default to 1024 if missing
 	saves_scroll = config.get_value("saves", "scroll", 0)
 	saves_skip_naming = config.get_value("saves", "skip_naming", false)
@@ -120,7 +120,7 @@ func load_conf() -> void:
 	temp_window_size.y = config.get_value("display", "height", default_window_size.y)
 	temp_window_fullscreen = config.get_value("display", "fullscreen", false)
 	temp_vsync_enabled = config.get_value("display", "vsync", true)
-	
+
 	apply()
 
 	var audio_bus = [
@@ -142,11 +142,11 @@ func load_conf() -> void:
 	var text_time = config.get_value("rakugo", "Text_Time", Rakugo._text_time)
 	var auto_time = config.get_value("rakugo", "Auto_Forward_Time", Rakugo._auto_time)
 	var notify_time = config.get_value("rakugo", "Notify_Time", Rakugo._notify_time)
-	
+
 	# do nothing for now
 	var skip_all_text = config.get_value("rakugo", "Skip_All_Text", Rakugo._skip_all_text)
 	var skip_after_choices = config.get_value("rakugo", "Skip_After_Choices", Rakugo._skip_after_choices)
-	
+
 	#Rakugo.set_var("typing_text", typing_text)
 	#Rakugo.set_var("text_time", text_time)
 	#Rakugo.set_var("auto_time", auto_time)
@@ -161,3 +161,53 @@ func load_conf() -> void:
 func apply() -> void:
 	_set_window_fullscreen(temp_window_fullscreen)
 	OS.vsync_enabled = temp_vsync_enabled
+
+
+
+
+
+func load_property_list():
+	var config = ConfigFile.new()
+	property_list = {}
+	var err = config.load("user://settings.cfg")#TODO replace it with a setting set path
+	if err == OK:
+		for section in config.get_sections():
+			for key in config.get_section_keys(section):
+				var property_key = "rakugo/%s/%s" % [section, key]
+				property_list[property_key] = config.get_value(section, key)
+
+
+func save_property_list():
+	var config = ConfigFile.new()
+	var key = []
+	for property in property_list.keys():
+		key = property.split("/", false, 2)
+		config.set_value(key[1], key[2], property_list[property])
+	config.save("user://settings.cfg")#TODO replace it with a setting set path
+
+
+func get(property, default=null):
+	print("Prout ",property, "  ", ProjectSettings.has_setting(property), "  ",ProjectSettings.property_get_revert(property))
+	if property in property_list:
+		return property_list[property]
+	if ProjectSettings.has_setting(property):
+		return Settings.get(property)
+	if property in default_property_list:
+		return default_property_list[property][0]
+	if default:
+		property_list[property] = default
+	return default
+
+
+func set(property, value, save_changes=true):
+	property_list[property] = value
+	if save_changes:
+		var config = ConfigFile.new()
+		var key = property.split("/", false, 2)
+		config.set_value(key[1], key[2], property_list[property])
+		config.save("user://settings.cfg")#TODO replace it with a setting set path
+
+
+var property_list:Dictionary = {}
+
+var default_property_list:Dictionary = SettingsList.new().default_property_list

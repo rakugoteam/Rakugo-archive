@@ -20,12 +20,9 @@ func simulate_typing():
 		self.visible_characters += 1
 		if regex.search(ch):
 			if ch in ",;.!?":
-				$TypingTimer.start(
-					float(ProjectSettings.get_setting(
-						"rakugo/default/punctuation_pause"
-				)))
+				$TypingTimer.start(float(Settings.get("rakugo/default/delays/typing_effect_punctuation_delay")))
 			else:
-				$TypingTimer.start(0.1)
+				$TypingTimer.start(float(Settings.get("rakugo/default/delays/typing_effect_delay")))
 			yield($TypingTimer, "timeout")
 			$TypingTimer.set_wait_time(0.1)
 		if Rakugo.skipping:

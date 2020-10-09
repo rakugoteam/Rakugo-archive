@@ -47,7 +47,6 @@ __meta__ = {
 }
 slot = ExtResource( 1 )
 dummy_slot = ExtResource( 10 )
-use_pages = true
 
 [node name="PageLabel" type="LineEdit" parent="." groups=[
 "save_screen_page_ui_element",
@@ -373,11 +372,10 @@ __meta__ = {
 [connection signal="add_save_slot" from="." to="SavePage/ScrollContainer/GridContainer" method="_on_add_save_slot"]
 [connection signal="clear_save_slots" from="." to="SavePage/ScrollContainer/GridContainer" method="_on_clear_save_slots"]
 [connection signal="mode_changed" from="." to="SkipNamingButton" method="_on_save_mode_changed"]
-[connection signal="page_changed" from="." to="PageNavBar" method="_on_page_changed"]
 [connection signal="page_changed" from="." to="PageLabel" method="_on_page_changed"]
+[connection signal="page_changed" from="." to="PageNavBar" method="_on_page_changed"]
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="text_changed" from="PageLabel" to="PageLabel" method="_on_text_changed"]
-[connection signal="scroll_ended" from="SavePage/ScrollContainer" to="SavePage/ScrollContainer" method="_on_scroll_ended"]
 [connection signal="visibility_changed" from="SavePage/ScrollContainer" to="SavePage/ScrollContainer" method="_on_visibility_changed"]
 [connection signal="change_page" from="PageNavBar" to="." method="_on_change_page"]
 [connection signal="toggled" from="SkipNamingButton" to="SkipNamingButton" method="_on_toggled"]
