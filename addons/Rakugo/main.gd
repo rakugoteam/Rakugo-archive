@@ -23,23 +23,12 @@ var _text_time := 0.3
 var _notify_time := 3
 var _typing_text := true
 
-# this must be saved
-var history_id := 0 setget _set_history_id, _get_history_id
-
 var current_scene_name := ""
 var current_dialogue:Node = null
-
-# this store log of all dialogue up this point in current game
-# {["scene_id", "dialogue_name", "event_name", story_step]:{"type":type, "parameters": parameters}}
-var history := {}
-
-# this store log of all dialogue that player saw
-var global_history := {}
 
 var store = null setget set_current_store, get_current_store 
 
 # don't save this
-onready var menu_node: = $Statements/Menu
 var viewport : Viewport
 #var loading_screen : Control
 var current_scene_path := ""
@@ -68,6 +57,7 @@ onready var notify_timer := $NotifyTimer
 onready var SceneLoader: = $SceneLoader
 onready var StoreManager: = $StoreManager
 onready var ShowableManager: = $ShowableManager
+onready var History: = $History
 onready var Say = $Statements/Say
 onready var Ask = $Statements/Ask
 onready var Menu = $Statements/Menu
@@ -117,8 +107,6 @@ func _ready() -> void:
 
 # it starts Rakugo
 func start(after_load := false) -> void:
-	load_global_history()
-	history_id = 0
 	started = true
 
 	if not after_load:
@@ -131,6 +119,7 @@ func save_game(save_name := "quick") -> bool:
 
 
 func load_game(save_name := "quick") -> bool:
+	self.unblock_stepping()
 	return StoreManager.load_store_stack(save_name)
 
 
@@ -158,7 +147,6 @@ func deactivate_auto_stepping():
 func prepare_quitting():
 	if self.started:
 		self.save_game("auto")
-		self.save_global_history()
 
 	settings.save_conf()
 
@@ -182,8 +170,6 @@ func end_game() -> void:
 	exit_dialogue()
 	get_tree().get_root().add_child(current_scene_node)
 	started = false
-	history.clear()
-	history_id = 0
 	emit_signal("game_ended")
 
 
@@ -222,7 +208,7 @@ func story_step(_unblock=false) -> void:
 		stepping_blocked = false
 	if not stepping_blocked:
 		StoreManager.stack_next_store()
-		print("emitting _step")
+		print("Emitting _step")
 		get_tree().get_root().propagate_call('_step')
 		#emit_signal("story_step", current_dialogue_name, current_event_name)
 
@@ -270,42 +256,8 @@ func on_stop_audio(node_id: String) -> void:
 
 ## Global history
 
-
-func _set_history_id(value: int) -> void:
-	history_id = value
-
-
-func _get_history_id() -> int:
-	return history_id
-
-
 func is_current_statement_in_global_history() -> bool:
-	return true
-	if not current_statement.parameters.add_to_history:
-		return true
-
-	var id = current_statement.get_history_id()
-	var c_item = current_statement.get_as_history_item()
-
-	if global_history.has(id):
-		var type = c_item.type
-		var parameters = c_item.parameters
-
-		if type == global_history[id].type:
-			var hi_parameters = global_history[id].parameters
-
-			if parameters.size() == hi_parameters.size():
-				var keys = parameters.keys()
-				var hi_keys = hi_parameters.keys()
-
-				for i in range(parameters.size()):
-					var p = parameters[keys[i]]
-					var hi_p = hi_parameters[hi_keys[i]]
-
-					if p != hi_p:
-						return false
-
-	return true
+	return true#TODO write that
 
 
 func can_qload() -> bool:
@@ -323,14 +275,6 @@ func is_save_exits(save_name: String) -> bool:
 	save_file_path += ".tres"
 
 	return file.file_exists(save_file_path)
-
-
-func save_global_history() -> bool:
-	return $SaveGlobalHistory.invoke()
-
-
-func load_global_history() -> bool:
-	return $LoadGlobalHistory.invoke()
 
 
 ## Utils
@@ -352,23 +296,11 @@ func get_var(var_name: String):
 	return get_current_store().get(var_name)
 
 
-# just faster way to connect signal to rakugo's variable
-func connect_var(
-		var_name: String, signal_name: String,
-		node: Object, func_name: String,
-		binds := [], flags := 0
-		) -> void:
-
-	get_var(var_name).connect(
-		signal_name, node, func_name,
-		binds, flags
-	)
-
-
 # crate new character as global variable that Rakugo will see
 # possible parameters: name, color, prefix, suffix, avatar, stats
 func define_character(character_name: String, character_tag: String, parameters := {}) -> Character:
-	var new_character := Character.new(character_name, character_tag, parameters)
+	var new_character := Character.new()
+	new_character.init(character_name, character_tag, parameters)
 	StoreManager.get_current_store()[character_tag] = new_character
 	return new_character
 

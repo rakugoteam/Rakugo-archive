@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
+[ext_resource path="res://gui/Screens/HistoryScreen/ScrollContainer.gd" type="Script" id=1]
 [ext_resource path="res://gui/Screens/HistoryScreen/HistoryItem.tscn" type="PackedScene" id=2]
 [ext_resource path="res://gui/Screens/HistoryScreen/History.gd" type="Script" id=3]
 
@@ -11,18 +12,26 @@ __meta__ = {
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
-margin_top = 4.0
-margin_right = 1280.0
-margin_bottom = 720.0
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+grow_vertical = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+follow_focus = true
 scroll_horizontal_enabled = false
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="History" type="VBoxContainer" parent="ScrollContainer"]
-margin_right = 1280.0
-margin_bottom = 716.0
+margin_right = 1024.0
+margin_bottom = 576.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 5
+alignment = 1
 script = ExtResource( 3 )
 HistoryItemTemplate = ExtResource( 2 )

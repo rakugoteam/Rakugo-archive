@@ -2,21 +2,21 @@ extends Resource
 class_name Character
 
 
-var name:String
-var tag:String
-var color:Color setget _set_color
+export var name:String
+export var tag:String
+export var color:Color setget _set_color
 
 #Affixies to be used with the character name
-var prefix:String = ""
-var suffix:String = ""
+export var prefix:String = ""
+export var suffix:String = ""
 
-var show_parameters:Dictionary = {}
-var say_parameters:Dictionary = {}
-var variables:Dictionary = {}
+export var show_parameters:Dictionary = {}
+export var say_parameters:Dictionary = {}
+export var variables:Dictionary = {}
 
 
 
-func _init(_name:String, _tag:String, _color="ffffff"):
+func init(_name:String, _tag:String, _color="ffffff"):
 	name = _name
 	tag = _tag
 	color = _color
@@ -38,8 +38,20 @@ func _set(property, value):
 	return true
 
 
+func duplicate(_deep:bool=true) -> Resource:##Store duplication should always be deep
+	var output = .duplicate(true)
+	for p in self.get_property_list():
+		if p.type == TYPE_DICTIONARY or p.type == TYPE_ARRAY:
+			var a = output.get(p.name)
+			output.set(p.name, a.duplicate(true))
+	return output
+
+
 func _set_color(_color) -> void:## That setter is to convert potential color given in string or int
-	color = Color(color)
+	if _color is Color:
+		color = Color(_color.r, _color.g, _color.b, _color.a)
+	else:
+		color = Color(color)
 
 
 func apply_default(input:Dictionary, default:Dictionary):

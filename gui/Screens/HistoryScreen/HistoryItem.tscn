@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
+[ext_resource path="res://gui/Screens/HistoryScreen/HistoryItem.gd" type="Script" id=1]
 [ext_resource path="res://fonts/DejaVu/DejaVuSans-Oblique.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://fonts/DejaVu/DejaVuSans-BoldOblique.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://fonts/DejaVu/DejaVuSans-Bold.ttf" type="DynamicFontData" id=4]
@@ -37,6 +38,7 @@ margin_bottom = 100.0
 rect_min_size = Vector2( 700, 100 )
 size_flags_horizontal = 13
 size_flags_vertical = 13
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -48,7 +50,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 1
 
-[node name="Label" type="RichTextLabel" parent="VBox"]
+[node name="CharacterName" type="RichTextLabel" parent="VBox"]
 margin_right = 700.0
 margin_bottom = 49.0
 rect_min_size = Vector2( 100, 40 )
@@ -71,7 +73,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Dialog" type="RichTextLabel" parent="VBox"]
+[node name="Text" type="RichTextLabel" parent="VBox"]
 margin_top = 50.0
 margin_right = 700.0
 margin_bottom = 100.0

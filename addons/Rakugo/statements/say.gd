@@ -6,7 +6,20 @@ var default_parameters = {#TODO make those set by the project settings
 	"typing" : false,
 	}
 
-var default_narrator = Character.new("Narrator", "")#TODO same as above
+var default_narrator = null#TODO same as above
+
+func _ready():
+	default_narrator = Character.new()
+	default_narrator.init("Narrator", "narrator")
+
+
+func _store(store):
+	if not store.get('narrator'):
+		store.narrator = default_narrator
+
+func _restore(store):
+	if store.get('narrator'):
+		default_narrator = store.narrator
 
 
 func exec(character:Character, text:String, parameters = {}) -> void:

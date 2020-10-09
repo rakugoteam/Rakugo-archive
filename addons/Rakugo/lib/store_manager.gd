@@ -23,8 +23,8 @@ func init_store_stack():
 	var new_save := Store.new()
 	new_save.game_version = Rakugo.game_version
 	new_save.rakugo_version = Rakugo.rakugo_version
-	new_save.history = Rakugo.history.duplicate()
 	new_save.scene = Rakugo.current_scene_name
+	new_save.history = []
 	store_stack = [new_save]
 
 func call_for_restoring():
@@ -55,14 +55,15 @@ func stack_next_store():
 
 
 func change_current_stack_index(index):
+	if current_store_id == 0:
+		self.call_for_storing()
 	index = clamp(index, 0, store_stack.size()-1)
 	if index == current_store_id:
 		return
-	
 	store_stack[current_store_id].replace_connections(store_stack[index])
 	current_store_id = index
 	
-	call_for_restoring()
+	self.call_for_restoring()
 
 
 func get_savefile_path(savefile_name):
@@ -133,7 +134,5 @@ func unpack_data(path:String) -> Store:
 
 	var save = get_current_store()
 	var game_version = save.game_version
-
-	Rakugo.history = save.history.duplicate()
 	
 	return save

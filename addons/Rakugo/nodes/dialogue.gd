@@ -44,21 +44,14 @@ func _store(save):
 	if Rakugo.current_dialogue == self:
 		#print("Storing dialogue ",self.name, "  ", self.event_stack)
 		save.current_dialogue = self.name
-		save.current_dialogue_event_stack = self.event_stack
+		save.current_dialogue_event_stack = self.event_stack.duplicate(true)
 		save.current_dialogue_script_version = _script_version
 		save.dialogue_class_script_version = _class_script_version
 
 func _restore(save):
 	if save.current_dialogue == self.name:
-		if save.dialogue_class_script_version != _class_script_version:
-				push_warning("Dialogue class script mismatched.")
-		if save.current_dialogue_script_version != _script_version:
-			if version_control:
-				push_error("The loaded save is not compatible with this version of the game.")
-				return
-			else:
-				push_warning("Dialogue script mismatched, that may corrupt the game state.")
-		
+		if check_for_version_error(save):
+			return
 		#print("Restoring dialogue ", self.name, self,"  ", save.current_dialogue_event_stack)
 		self.exit()
 		if not is_ended():
@@ -69,8 +62,8 @@ func _restore(save):
 	
 		#print("Setting event_stack to  ", save.current_dialogue_event_stack)
 		var_access.lock()
-		event_stack = save.current_dialogue_event_stack
-		self.var_access.unlock()
+		event_stack = save.current_dialogue_event_stack.duplicate(true)
+		var_access.unlock()
 		Rakugo.current_dialogue = self
 		#print("Setting Rakugo.current_dialogue to  ",self, "  ", (Rakugo.current_dialogue == self))
 		thread.start(self, "dialogue_loop")
@@ -97,19 +90,17 @@ func start(event_name=''):
 ## Thread life cycle
 
 func dialogue_loop(_a):
-	var_access.lock()
 	#print("Starting threaded dialog ", self, " ", event_stack)
 	while event_stack:
+		var_access.lock()
 		var e = event_stack.pop_front()
 		var_access.unlock()
 		#print("Calling event ",e)
 		self.call_event(e[0], e[1], e[3])
-		var_access.lock()
 		if self.exiting:
 			break
 	if jump_target:
 		Rakugo.call_deferred('jump', jump_target[0], jump_target[1], jump_target[2])
-	var_access.unlock()
 
 	#print("Ending threaded dialog")
 	thread.call_deferred('wait_to_finish')
@@ -118,9 +109,7 @@ func dialogue_loop(_a):
 func exit():
 	if not is_ended():## Not checking for active thread makes the mutex deadlocks somehow
 		#print("Exitting Dialogue")
-		var_access.lock()
 		self.exiting = true
-		var_access.unlock()
 		step_semaphore.post()
 		menu_lock.post()
 
@@ -135,16 +124,14 @@ func is_ended():
 func call_event(event, _target = 0, _condition_stack = []):
 	if is_active():
 		#Using class vars to make event methods argument less.
-		var_access.lock()
 		self.target = _target
 		self.condition_stack = _condition_stack.duplicate()
-		var_access.unlock()
 		self.call(event)
 
 func start_event(event_name):
-	var_access.lock()
 	if event_stack:
 		event_stack[0][1] += 1# Disalign step counter in case of saving before returning
+	var_access.lock()
 	if not is_active():
 		event_stack.push_front([event_name, 0, INF, self.condition_stack])
 	else:
@@ -152,20 +139,16 @@ func start_event(event_name):
 	var_access.unlock()
 
 func cond(condition:bool):
-	var_access.lock()
 	if is_active(true):
 		event_stack[0][3].push_front(condition)
 	else:
 		condition = event_stack[0][3].pop_back()
-	var_access.unlock()
 	return condition
 
 func step():
 	if is_active():
 		step_semaphore.wait()
-	var_access.lock()
 	event_stack[0][1] += 1
-	var_access.unlock()
 
 func end_event():
 	var_access.lock()
@@ -175,14 +158,12 @@ func end_event():
 
 
 func is_active(_strict=false):
-	var_access.lock()
 	var output:bool = not self.exiting
 	if event_stack:
 		if _strict:# Allow to check if it's the last step until waiting for semaphore
 			output = output and event_stack[0][1] > event_stack[0][2]
 		else:
 			output = output and event_stack[0][1] >= event_stack[0][2]
-	var_access.unlock()
 	return output
 
 
@@ -197,21 +178,23 @@ func get_event_stack():
 	var_access.unlock()
 	return output
 
+func get_event_name():
+	var output = ""
+	if event_stack:
+		output = event_stack[0][0]
+	return output
 
 func get_event_step():
-	var output
-	var_access.lock()
-	output = event_stack[0][1]
-	var_access.unlock()
+	var output = -1
+	if event_stack:
+		output = event_stack[0][1]
 	return output
 
 
 func get_parent_event_name():
 	var output = ''
-	var_access.lock()
 	if event_stack.size() > 1:
 		output = event_stack[1][0]
-	var_access.unlock()
 	return output
 
 
@@ -226,6 +209,17 @@ func _get_dialogue_script_hash():
 
 func _get_script_hash(object=self):
 	return object.get_script().source_code.hash()
+
+func check_for_version_error(store):
+	if store.dialogue_class_script_version != _class_script_version:
+		push_warning("Dialogue class script mismatched.")
+	if store.current_dialogue_script_version != _script_version:
+		if version_control:
+			push_error("The loaded save is not compatible with this version of the game.")
+			return true
+		else:
+			push_warning("Dialogue script mismatched, that may corrupt the game state.")
+	return false
 
 
 ## Rakugo statement wrap

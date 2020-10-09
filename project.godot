@@ -40,6 +40,11 @@ _global_script_classes=[ {
 "path": "res://addons/Rakugo/emojis/emojis.gd"
 }, {
 "base": "Resource",
+"class": "HistoryEntry",
+"language": "GDScript",
+"path": "res://addons/Rakugo/objects/resources/history_entry.gd"
+}, {
+"base": "Resource",
 "class": "HistorySave",
 "language": "GDScript",
 "path": "res://addons/Rakugo/objects/resources/history_save.gd"
@@ -141,6 +146,7 @@ _global_script_class_icons={
 "CollapsedList": "",
 "Dialogue": "res://addons/Rakugo/icons/dialogue.svg",
 "Emojis": "res://addons/Rakugo/emojis/icon.png",
+"HistoryEntry": "",
 "HistorySave": "res://addons/Rakugo/icons/save.svg",
 "Menu": "",
 "Notify": "",

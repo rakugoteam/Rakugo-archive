@@ -45,7 +45,7 @@ func load_scene(scene_id, force_reload = false):
 		self.current_scene = scene_id
 		
 		yield(self, "scene_loaded")
-
+	
 	get_tree().paused = false
 
 func _thread_load(path):
