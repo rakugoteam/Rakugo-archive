@@ -187,7 +187,6 @@ func save_property_list():
 
 
 func get(property, default=null):
-	print("Prout ",property, "  ", ProjectSettings.has_setting(property), "  ",ProjectSettings.property_get_revert(property))
 	if property in property_list:
 		return property_list[property]
 	if ProjectSettings.has_setting(property):
