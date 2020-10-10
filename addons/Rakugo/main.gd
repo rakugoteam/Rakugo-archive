@@ -83,6 +83,7 @@ signal stop_audio(node_id)
 func _ready() -> void:
 
 	StoreManager.init()
+	History.init()
 
 	# set by game developer
 	#define("title", game_title, false)
