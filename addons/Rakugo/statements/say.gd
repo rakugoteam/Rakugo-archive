@@ -9,7 +9,7 @@ var default_parameters = {#TODO make those set by the project settings
 var default_narrator = null#TODO same as above
 
 func _ready():
-	default_narrator = Character.new()
+	default_narrator = Character.new().duplicate()
 	default_narrator.init(Settings.get("rakugo/default/narrator/name"), "", Settings.get("rakugo/default/narrator/color"))
 
 
