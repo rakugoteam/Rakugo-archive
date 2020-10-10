@@ -138,7 +138,12 @@ func start_event(event_name):
 		event_stack.push_front([event_name, 0, self.target, self.condition_stack])#Should be "get_stack()[1]['function']" instead of passing event_name, if get_stack() worked
 	var_access.unlock()
 
-func cond(condition:bool):
+func cond(condition):
+	if condition:#transform 'condition' into a bool
+		condition = true
+	else:
+		condition = false
+	
 	if is_active(true):
 		event_stack[0][3].push_front(condition)
 	else:
