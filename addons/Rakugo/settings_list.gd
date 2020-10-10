@@ -108,6 +108,13 @@ var default_property_list:Dictionary = {
 	],
 
 
+	"rakugo/saves/save_folder" : [
+		"res://saves", PropertyInfo.new(
+			"", TYPE_STRING, PROPERTY_HINT_DIR, 
+			"", PROPERTY_USAGE_DEFAULT)
+	],
+
+
 	"rakugo/saves/save_screen_layout" : [
 		"save_pages", PropertyInfo.new(
 			"", TYPE_STRING, PROPERTY_HINT_ENUM, 

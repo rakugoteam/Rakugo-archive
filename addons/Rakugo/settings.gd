@@ -31,6 +31,7 @@ func _ready() -> void:
 
 	_prev_window_size = OS.window_size
 	_prev_window_fullscreen = OS.window_fullscreen
+	load_property_list()
 
 func _set_window_size(value: Vector2) -> void:
 	_prev_window_size = OS.window_size
@@ -167,23 +168,15 @@ func apply() -> void:
 
 
 func load_property_list():
-	var config = ConfigFile.new()
-	property_list = {}
-	var err = config.load("user://settings.cfg")#TODO replace it with a setting set path
-	if err == OK:
-		for section in config.get_sections():
-			for key in config.get_section_keys(section):
-				var property_key = "rakugo/%s/%s" % [section, key]
-				property_list[property_key] = config.get_value(section, key)
+	if Rakugo.persistent.get('settings'):
+		property_list = Rakugo.persistent.get('settings')
+	else:
+		save_property_list()
 
 
 func save_property_list():
-	var config = ConfigFile.new()
-	var key = []
-	for property in property_list.keys():
-		key = property.split("/", false, 2)
-		config.set_value(key[1], key[2], property_list[property])
-	config.save("user://settings.cfg")#TODO replace it with a setting set path
+	Rakugo.persistent.settings = property_list
+	Rakugo.StoreManager.save_persistent_store()
 
 
 func get(property, default=null):
@@ -201,10 +194,7 @@ func get(property, default=null):
 func set(property, value, save_changes=true):
 	property_list[property] = value
 	if save_changes:
-		var config = ConfigFile.new()
-		var key = property.split("/", false, 2)
-		config.set_value(key[1], key[2], property_list[property])
-		config.save("user://settings.cfg")#TODO replace it with a setting set path
+		Rakugo.StoreManager.save_persistent_store()
 
 
 var property_list:Dictionary = {}

@@ -3,8 +3,6 @@ class_name Store, "res://addons/Rakugo/icons/save.svg"
 
 export var game_version := ""
 export var rakugo_version := ""
-export var history := []
-export var scene := ""
 export var properties := {}
 var property_signals := []
 

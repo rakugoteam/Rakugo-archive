@@ -24,7 +24,8 @@ var _typing_text := true
 var current_scene_name := ""
 var current_dialogue:Node = null
 
-var store = null setget set_current_store, get_current_store 
+var store = null setget set_current_store, get_current_store
+var persistent = null setget set_persistent_store, get_persistent_store 
 
 # don't save this
 var viewport : Viewport
@@ -112,6 +113,7 @@ func start(after_load := false) -> void:
 
 
 func save_game(save_name := "quick") -> bool:
+	StoreManager.save_persistent_store()
 	debug(["save data to :", save_name])
 	return StoreManager.save_store_stack(save_name)
 
@@ -145,7 +147,7 @@ func deactivate_auto_stepping():
 func prepare_quitting():
 	if self.started:
 		self.save_game("auto")
-	
+	StoreManager.save_persistent_store()
 	Settings.save_property_list()
 	#Settings.save_conf()
 
@@ -445,4 +447,9 @@ func get_current_store():
 	
 func set_current_store(value):
 	return 
+
+func get_persistent_store():
+	return StoreManager.get_persistent_store()
 	
+func set_persistent_store(value):
+	return 

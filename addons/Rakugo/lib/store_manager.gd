@@ -3,24 +3,46 @@ extends Node
 var store_stack = []
 var store_stack_max_length = 5
 var current_store_id = 0
+var persistent_store = null
 
 
 var save_folder_path
 
 func init():
-	if Settings.get('rakugo/saves/test_mode'):
-		save_folder_path = "res://".plus_file(Rakugo.save_folder)
-	else:
-		save_folder_path = "user://".plus_file(Rakugo.save_folder)
-		
+	save_folder_path = Settings.get("rakugo/saves/save_folder")
+	if not Settings.get("rakugo/saves/test_mode"):
+		save_folder_path.replace("res://", "user://")
+	save_folder_path = save_folder_path.trim_suffix("/") + "/"
+	self.init_persistent_store()
 	self.init_store_stack()
 
+
+func get_persistent_store():
+	return persistent_store
+
+func init_persistent_store():
+	var file = File.new()
+	var persistent_path = save_folder_path + "persistent.tres"
+	if file.file_exists(persistent_path):
+		persistent_store = load(persistent_path)
+		print("Loading persistent : ", persistent_store.properties)
+	else:
+		persistent_store = Store.new().duplicate()
+		print(persistent_store.properties)
+	persistent_store.game_version = Rakugo.game_version
+	persistent_store.rakugo_version = Rakugo.rakugo_version
+
+func save_persistent_store():
+	var error = ResourceSaver.save(save_folder_path + "persistent.tres", persistent_store)
+	if error != OK:
+		print("Error writing persistent store %s to %s error_number: %s" % ["persistent.tres", save_folder_path, error])
 
 func get_current_store():
 	return store_stack[current_store_id]
 
+
 func init_store_stack():
-	var new_save := Store.new()
+	var new_save := Store.new().duplicate()
 	new_save.game_version = Rakugo.game_version
 	new_save.rakugo_version = Rakugo.rakugo_version
 	new_save.scene = Rakugo.current_scene_name
