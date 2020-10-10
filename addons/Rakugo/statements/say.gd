@@ -10,7 +10,6 @@ var default_narrator = null#TODO same as above
 
 func _ready():
 	default_narrator = Character.new()
-	print(Settings.get("rakugo/default/narrator/name"), " ", Settings.get("rakugo/default/narrator/color"))
 	default_narrator.init(Settings.get("rakugo/default/narrator/name"), "", Settings.get("rakugo/default/narrator/color"))
 
 

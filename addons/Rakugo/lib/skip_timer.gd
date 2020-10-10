@@ -16,5 +16,4 @@ func can_skip() -> bool:
 	var output = Rakugo.skipping
 	output = output and (not Rakugo.History.step_has_unseen or Rakugo._skip_all_text)
 	output = output and (not Rakugo.stepping_blocked) #A bit redundant
-	print("Can skip ? ",output, " ", (not Rakugo.History.step_has_unseen))
 	return output

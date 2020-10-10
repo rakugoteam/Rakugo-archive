@@ -12,7 +12,6 @@ func init():
 
 func _on_say(character, text, parameters):
 	last_say_hash = hash_say(character, text, parameters)
-	print(last_say_hash, "  ",global_history)
 	if not last_say_hash in global_history:
 		step_has_unseen = true
 	if log_step:

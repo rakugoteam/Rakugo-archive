@@ -25,10 +25,8 @@ func init_persistent_store():
 	var persistent_path = save_folder_path + "persistent.tres"
 	if file.file_exists(persistent_path):
 		persistent_store = load(persistent_path)
-		print("Loading persistent : ", persistent_store.properties)
 	else:
 		persistent_store = Store.new().duplicate()
-		print(persistent_store.properties)
 	persistent_store.game_version = Rakugo.game_version
 	persistent_store.rakugo_version = Rakugo.rakugo_version
 
