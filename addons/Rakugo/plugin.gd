@@ -10,6 +10,7 @@ var default_property_list = SettingsList.new().default_property_list
 func init_project_settings():
 	for property_key in default_property_list.keys():
 		ProjectTools.set_setting(property_key, default_property_list[property_key][0], default_property_list[property_key][1])
+	ProjectSettings.set_order("rakugo/game/info/version", 1)
 
 
 func init_tools():

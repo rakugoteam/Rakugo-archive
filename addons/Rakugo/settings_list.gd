@@ -17,7 +17,7 @@ var default_property_list:Dictionary = {
 
 	
 	"rakugo/game/scenes/scene_links" : [
-		"", PropertyInfo.new(
+		"res://game/scene_links.tres", PropertyInfo.new(
 			"", TYPE_STRING, PROPERTY_HINT_FILE, 
 			"*.tres", PROPERTY_USAGE_DEFAULT)
 	],
@@ -44,63 +44,84 @@ var default_property_list:Dictionary = {
 	],
 
 	
-	"rakugo/gui/markup" : [
+	"rakugo/game/text/markup" : [
 		"renpy", PropertyInfo.new(
 			"", TYPE_STRING, PROPERTY_HINT_ENUM, 
 			"renpy,bbcode", PROPERTY_USAGE_CATEGORY)
 	],
 
 
-	"rakugo/gui/theme" : [
-		"res://themes/Default/default.tres",
-		PropertyInfo.new(
-			"", TYPE_STRING, PROPERTY_HINT_FILE, 
-			"*.tres", PROPERTY_USAGE_DEFAULT)
-	],
-
-	
 	"rakugo/default/narrator/name" : [
 		"Narrator", PropertyInfo.new(
 			"", TYPE_STRING, PROPERTY_HINT_NONE, 
 			"", PROPERTY_USAGE_DEFAULT)
 	],
 
-	
+
 	"rakugo/default/narrator/color" : [
 		Color.white, PropertyInfo.new(
 			"", TYPE_COLOR, PROPERTY_HINT_NONE, 
 			"", PROPERTY_USAGE_DEFAULT)
 	],
 
-	
+
+	"rakugo/default/gui/theme" : [
+		"res://themes/Default/default.tres",
+		PropertyInfo.new(
+			"", TYPE_STRING, PROPERTY_HINT_FILE, 
+			"*.tres", PROPERTY_USAGE_DEFAULT)
+	],
+
+
 	"rakugo/default/delays/typing_effect_delay" : [
 		0.2, PropertyInfo.new(
 			"", TYPE_REAL, PROPERTY_HINT_RANGE, 
 			"0.05, 1.0", PROPERTY_USAGE_DEFAULT)
 	],
 
-	
+
 	"rakugo/default/delays/typing_effect_punctuation_delay" : [
 		0.4, PropertyInfo.new(
 			"", TYPE_REAL, PROPERTY_HINT_RANGE, 
 			"0.05, 10.0", PROPERTY_USAGE_DEFAULT)
 	],
 
-	
+
 	"rakugo/default/delays/auto_mode_delay" : [
 		3, PropertyInfo.new(
 			"", TYPE_REAL, PROPERTY_HINT_RANGE, 
 			"0.1, 10.0", PROPERTY_USAGE_DEFAULT)
 	],
 
-	
+
 	"rakugo/default/delays/skip_delay" : [
 		0.1, PropertyInfo.new(
 			"", TYPE_REAL, PROPERTY_HINT_RANGE, 
 			"0.0, 2.0", PROPERTY_USAGE_DEFAULT)
 	],
 
-	
+
+	"rakugo/default/statements/default_say_parameters" : [
+		{}, PropertyInfo.new(
+			"", TYPE_DICTIONARY, PROPERTY_HINT_NONE, 
+			"", PROPERTY_USAGE_EDITOR)
+	],
+
+
+	"rakugo/default/statements/default_ask_parameters" : [
+		{}, PropertyInfo.new(
+			"", TYPE_DICTIONARY, PROPERTY_HINT_NONE, 
+			"", PROPERTY_USAGE_EDITOR)
+	],
+
+
+	"rakugo/default/statements/default_show_parameters" : [
+		{}, PropertyInfo.new(
+			"", TYPE_DICTIONARY, PROPERTY_HINT_NONE, 
+			"", PROPERTY_USAGE_EDITOR)
+	],
+
+
 	"rakugo/editor/debug" : [
 		false, PropertyInfo.new(
 			"", TYPE_BOOL, PROPERTY_HINT_NONE, 

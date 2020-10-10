@@ -8,10 +8,10 @@ const save_folder := "saves"
 onready var game_title : String = Settings.get("application/config/name")
 onready var game_version : String = Settings.get("rakugo/game/info/version")
 onready var game_credits : String = Settings.get("rakugo/game/info/credits")
-onready var markup : String = Settings.get("rakugo/gui/markup")
+onready var markup : String = Settings.get("rakugo/game/text/markup")
 onready var debug_on : bool = Settings.get("rakugo/editor/debug")
 onready var scene_links : String = Settings.get("rakugo/game/scenes/scene_links")
-onready var theme : RakugoTheme = load(Settings.get("rakugo/gui/theme"))
+onready var theme : RakugoTheme = load(Settings.get("rakugo/default/gui/theme"))
 
 # init vars for settings
 var _skip_all_text := false#TODO update those with once the new parameters system is made

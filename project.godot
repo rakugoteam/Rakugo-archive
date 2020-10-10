@@ -338,10 +338,6 @@ rakugo_quickload={
  ]
 }
 
-[rakugo]
-
-game/scenes/scene_links="res://game/scene_links.tres"
-
 [rendering]
 
 environment/default_environment="res://default_env.tres"
