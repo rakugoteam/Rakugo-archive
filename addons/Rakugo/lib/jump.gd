@@ -2,10 +2,11 @@ extends Node
 
 
 func invoke(scene_id: String, dialogue_name: String, event_name: String, force_reload := false) -> void:
+	if Rakugo.current_dialogue:
+		Rakugo.current_dialogue.exit()
 	Rakugo.load_scene(scene_id, force_reload)
-	yield(Rakugo, "started")
-
-	Rakugo.debug(["jump to scene:", Rakugo.current_scene, "with dialog:", Rakugo.current_dialogue_name, "from:", Rakugo.story_state])
+	#yield(Rakugo, "started")
+	#Rakugo.debug(["jump to scene:", Rakugo.current_scene, "with dialog:", Rakugo.current_dialogue_name, "from:", Rakugo.story_state])
 
 	if Rakugo.started:
 		var dialogue_node = get_dialogue(Rakugo.current_scene_node, dialogue_name)
