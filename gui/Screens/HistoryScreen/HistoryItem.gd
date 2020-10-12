@@ -1,10 +1,10 @@
-extends Panel
+extends PanelContainer
 
-var entry:HistoryEntry
-
-func init():
+func init(entry):
 	if entry.character:
-		$VBox/CharacterName.bbcode_text = entry.character.name
+		$VBoxContainer/CharacterName.bbcode_text = entry.character.get_composite_name('bbcode')
 	else:
-		$VBox/CharacterName.bbcode_text = Rakugo.Say.get_narrator().name
-	$VBox/Text.bbcode_text = entry.text
+		$VBoxContainer/CharacterName.bbcode_text = Rakugo.Say.get_narrator().get_composite_name('bbcode')
+	if not $VBoxContainer/CharacterName.text:
+		$VBoxContainer/CharacterName.visible = false
+	$VBoxContainer/Text.bbcode_text = entry.text

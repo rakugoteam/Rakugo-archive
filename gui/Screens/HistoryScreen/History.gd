@@ -17,7 +17,6 @@ func _on_visibility_changed() -> void:
 	var new_item:Control = null
 	for i in range(Rakugo.store.history.size()-1, -1, -1): #Inverting the array without data manipulation
 		new_item = HistoryItem.instance()
-		new_item.entry = Rakugo.store.history[i]
-		new_item.init()
+		new_item.init(Rakugo.store.history[i])
 		add_child(new_item)
 	get_parent().call_deferred('scroll_to_bottom')
