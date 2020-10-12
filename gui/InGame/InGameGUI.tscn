@@ -20,6 +20,7 @@ mouse_filter = 1
 theme = ExtResource( 1 )
 script = ExtResource( 3 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -35,6 +36,7 @@ anchor_bottom = 1.0
 mouse_filter = 1
 custom_styles/panel = SubResource( 1 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -56,7 +58,7 @@ margin_bottom = 70.0
 rect_min_size = Vector2( 100, 20 )
 script = ExtResource( 7 )
 __meta__ = {
-"_edit_group_": true
+"_edit_lock_": true
 }
 
 [node name="Label" type="RichTextLabel" parent="Notify"]
