@@ -47,6 +47,7 @@ func _ready() -> void:
 func set_mode(mode):
 	save_mode = mode
 	emit_signal("mode_changed", mode)
+	_on_visibility_changed()
 
 func update_save_dir():
 	saveslots_dir = "user://" +  Rakugo.save_folder
