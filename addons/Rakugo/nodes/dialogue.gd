@@ -22,7 +22,6 @@ var menu_lock = Semaphore.new()
 var thread = Thread.new()
 var step_semaphore = Semaphore.new()
 
-var jump_target = null
 var menu_return = null
 
 func reset(): ## Need to check if this is actually needed.
@@ -31,7 +30,6 @@ func reset(): ## Need to check if this is actually needed.
 	thread = Thread.new()
 	step_semaphore = Semaphore.new()
 	var_access = Mutex.new()
-	jump_target = null
 	if self.has_method(default_starting_event):
 		event_stack = [[default_starting_event, 0, 0, []]]
 
@@ -99,8 +97,6 @@ func dialogue_loop(_a):
 		self.call_event(e[0], e[1], e[3])
 		if self.exiting:
 			break
-	if jump_target:
-		Rakugo.call_deferred('jump', jump_target[0], jump_target[1], jump_target[2])
 
 	#print("Ending threaded dialog")
 	thread.call_deferred('wait_to_finish')
@@ -301,8 +297,7 @@ func call_node(node_id: String, func_name: String, args := []) -> void:
 
 func jump(scene_id: String, dialogue_name: String, event_name: String) -> void:
 	if is_active():
-		self.jump_target = [scene_id, dialogue_name, event_name]
-		self.exit()
+		Rakugo.call_deferred('jump', scene_id, dialogue_name, event_name)
 
 
 func end_game() -> void:
