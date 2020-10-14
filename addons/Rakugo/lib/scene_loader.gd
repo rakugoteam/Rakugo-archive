@@ -6,7 +6,6 @@ onready var scene_links:Dictionary = {}
 onready var current_scene:String = ''
 
 
-
 signal load_scene(resource_interactive_loader)
 signal loading_scene()
 signal scene_loaded()
@@ -18,7 +17,6 @@ func _ready():
 		if scene_links[k] == current_scene:
 			current_scene = k
 
-	Rakugo.current_scene_node = get_tree().current_scene
 
 func _store(store):
 	store.current_scene = current_scene
@@ -26,27 +24,26 @@ func _store(store):
 func _restore(store):
 	load_scene(store.current_scene)
 
+
 func load_scene(scene_id, force_reload = false):
-	if thread and thread.is_active():
-		return
-	get_tree().paused = true
-
-	if not scene_id in scene_links:
+	if self.thread and self.thread.is_active():
+		push_warning("A scene is already being loaded")
+	
+	elif not scene_id in scene_links:
 		push_error("Scene '"+scene_id+"' not found in linker")
-
-
-	if force_reload or self.current_scene != scene_id:
+	
+	elif force_reload or self.current_scene != scene_id:
+		get_tree().paused = true
 		Rakugo.exit_dialogue()
 
-		thread = Thread.new()
-		thread.start( self, "_thread_load", self.scene_links[scene_id])
+		self.thread = Thread.new()
+		self.thread.start( self, "_thread_load", self.scene_links[scene_id])
 
-		#Rakugo.current_scene = scene_id
 		self.current_scene = scene_id
+		return true
+	
+	return false
 
-		yield(self, "scene_loaded")
-
-	get_tree().paused = false
 
 func _thread_load(path):
 	var ril = ResourceLoader.load_interactive(path)
@@ -56,7 +53,6 @@ func _thread_load(path):
 	var res = null
 
 	while not res:
-		#OS.delay_msec(SIMULATED_DELAY_SEC * 1000.0)
 
 		var err = ril.poll()
 		self.call_deferred('emit_signal', 'loading_scene')
@@ -82,6 +78,7 @@ func _thread_done(resource):
 	Rakugo.clean_viewport()
 
 	Rakugo.viewport.add_child(new_scene)
-	Rakugo.current_scene_node = new_scene
-
+	get_tree().current_scene = new_scene
+	
+	get_tree().paused = false
 	self.emit_signal("scene_loaded")
