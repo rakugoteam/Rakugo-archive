@@ -1,8 +1,5 @@
 extends Control
 
-
-export onready var unpause_timer: Timer = $UnpauseTimer
-
 signal show_menu(menu, game_started)
 signal show_main_menu_confirm()
 
@@ -19,7 +16,6 @@ func _on_nav_button_press(nav):
 	match nav:
 		"start":
 			hide()
-			in_game()
 			Rakugo.start()
 			Rakugo.emit_signal("begin")
 
@@ -27,7 +23,6 @@ func _on_nav_button_press(nav):
 			if !Rakugo.loadfile("auto"):
 				return
 
-			in_game()
 			hide()
 
 		"save":
@@ -87,32 +82,12 @@ func load_menu():
 
 func _on_visibility_changed():
 	if visible:
-		get_tree().paused = true
 		Window.InGameGUI.hide()
-
 	else:
 		Window.InGameGUI.show()
-		unpause_timer.start()
-		yield(unpause_timer, "timeout")
-		get_tree().paused = false
-
-
-# Unused at this point I think
-func _on_Return_pressed():
-	if visible:
-		hide()
-		unpause_timer.start()
-		yield(unpause_timer, "timeout")
-		return
-
-
-func in_game():
-	#scrollbar.show()
-	pass
 
 
 func _on_game_end():
-	#scrollbar.hide()
 	show()
 
 func get_screenshot():
@@ -150,7 +125,6 @@ func _input(event):
 
 
 func _on_load_file():
-	in_game()
 	hide()
 
 

@@ -94,9 +94,6 @@ __meta__ = {
 
 [node name="QuitScreen" parent="." instance=ExtResource( 8 )]
 visible = false
-
-[node name="UnpauseTimer" type="Timer" parent="."]
-one_shot = true
 [connection signal="show_main_menu_confirm" from="." to="MainMenuReturnConfirmPanel/MainMenuReturnConfirm" method="_on_show_main_menu_confirm"]
 [connection signal="show_main_menu_confirm" from="." to="MainMenuReturnConfirmPanel" method="_on_show_main_menu_confirm"]
 [connection signal="show_menu" from="." to="MenuBar" method="_show_menu"]
