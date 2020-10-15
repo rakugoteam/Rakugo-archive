@@ -13,7 +13,7 @@ func _ready():
 	default_narrator.init(Settings.get("rakugo/default/narrator/name"), "", Settings.get("rakugo/default/narrator/color"))
 
 
-func exec(character:Character, text:String, parameters = {}) -> void:
+func exec(character, text:String, parameters = {}) -> void:
 	character = _get_character(character)
 	if character:
 		parameters = _apply_default(parameters, character.say_parameters)# parameters > character default parameters > project parameters
