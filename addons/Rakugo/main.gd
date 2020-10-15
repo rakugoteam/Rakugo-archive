@@ -300,9 +300,9 @@ func get_var(var_name: String):
 
 # crate new character as global variable that Rakugo will see
 # possible parameters: name, color, prefix, suffix, avatar, stats
-func define_character(character_name: String, character_tag: String, parameters := {}) -> Character:
+func define_character(character_name: String, character_tag: String) -> Character:
 	var new_character = Character.new().duplicate()
-	new_character.init(character_name, character_tag, parameters)
+	new_character.init(character_name, character_tag)
 	StoreManager.get_current_store()[character_tag] = new_character
 	return new_character
 
