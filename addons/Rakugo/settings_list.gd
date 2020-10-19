@@ -74,16 +74,16 @@ var default_property_list:Dictionary = {
 
 
 	"rakugo/default/delays/typing_effect_delay" : [
-		0.2, PropertyInfo.new(
-			"", TYPE_REAL, PROPERTY_HINT_RANGE, 
-			"0.05, 1.0", PROPERTY_USAGE_DEFAULT)
+		0.1, PropertyInfo.new(
+			"", TYPE_REAL, PROPERTY_HINT_EXP_RANGE, 
+			"0.005, 1.0,or_greater", PROPERTY_USAGE_DEFAULT)
 	],
 
 
-	"rakugo/default/delays/typing_effect_punctuation_delay" : [
-		0.4, PropertyInfo.new(
-			"", TYPE_REAL, PROPERTY_HINT_RANGE, 
-			"0.05, 10.0", PROPERTY_USAGE_DEFAULT)
+	"rakugo/default/delays/typing_effect_punctuation_factor" : [
+		4.0, PropertyInfo.new(
+			"", TYPE_REAL, PROPERTY_HINT_EXP_RANGE, 
+			"0.1, 5.0,or_greater", PROPERTY_USAGE_DEFAULT)
 	],
 
 
@@ -96,7 +96,7 @@ var default_property_list:Dictionary = {
 
 	"rakugo/default/delays/skip_delay" : [
 		0.1, PropertyInfo.new(
-			"", TYPE_REAL, PROPERTY_HINT_RANGE, 
+			"", TYPE_REAL, PROPERTY_HINT_EXP_RANGE, 
 			"0.0, 2.0", PROPERTY_USAGE_DEFAULT)
 	],
 
