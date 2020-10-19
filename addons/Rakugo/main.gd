@@ -46,7 +46,7 @@ var started := false
 
 var auto_stepping := false
 var skipping := false
-var stepping_blocked = false
+var stepping_block = 0
 
 # timers use by rakugo
 onready var auto_timer := $AutoTimer
@@ -125,7 +125,7 @@ func load_game(save_name := "quick") -> bool:
 
 
 func rollback(amount=1):
-	self.unblock_stepping()
+	self.unblock_stepping(true)
 	self.StoreManager.change_current_stack_index(self.StoreManager.current_store_id + amount)
 
 
@@ -200,19 +200,23 @@ func jump(scene_id: String, dialogue_name: String, event_name: String, force_rel
 
 ## Dialogue flow control
 func block_stepping():
-	stepping_blocked = true
+	stepping_block += 1
 
-func unblock_stepping():
-	stepping_blocked = false
+func unblock_stepping(_all=false):
+	stepping_block += -1
+	if _all or stepping_block < 0:
+		stepping_block = 0
 
 func story_step(_unblock=false) -> void:
-	if stepping_blocked and _unblock:
-		stepping_blocked = false
-	if not stepping_blocked:
+	if _unblock or stepping_block == 0:
+		stepping_block = 0
 		StoreManager.stack_next_store()
 		print("Emitting _step")
 		get_tree().get_root().propagate_call('_step')
 		#emit_signal("story_step", current_dialogue_name, current_event_name)
+	else:
+		print("Emitting _blocked_step")
+		get_tree().get_root().propagate_call('_blocked_step')
 
 
 
