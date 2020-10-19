@@ -10,9 +10,9 @@
 "showable rect red",
 ]]
 margin_left = 434.811
-margin_top = 69.7564
+margin_top = 71.5382
 margin_right = 474.811
-margin_bottom = 109.757
+margin_bottom = 111.539
 color = Color( 1, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -22,9 +22,9 @@ __meta__ = {
 "showable rect green",
 ]]
 margin_left = 359.612
-margin_top = 122.511
+margin_top = 124.293
 margin_right = 399.612
-margin_bottom = 162.511
+margin_bottom = 164.293
 color = Color( 0.156863, 0.909804, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
