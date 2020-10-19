@@ -63,4 +63,5 @@ margin_bottom = 77.0
 caret_blink = true
 caret_blink_speed = 0.5
 script = ExtResource( 1 )
+[connection signal="timeout" from="VBox/Text/TypingTimer" to="VBox/Text" method="_on_timer_tick"]
 [connection signal="text_entered" from="VBox/AskEntry" to="VBox/AskEntry" method="_on_text_entered"]

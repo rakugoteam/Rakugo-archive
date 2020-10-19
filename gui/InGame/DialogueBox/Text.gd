@@ -1,31 +1,75 @@
 extends RichTextLabel
 
+var regex = RegEx.new()
+var skip_typing = false
+
+var delay = 0 
+var punc_delay = 0
+
+var blocking = false
+
+signal typing_effect_tick
+signal typing_effect_started
+signal typing_effect_ended
+
 func _ready():
 	Rakugo.connect("say" ,self, "_on_say")
+	regex.compile("[[:graph:]]")
+
+
+func _blocked_step():
+	end_typing_effect()
 
 
 func _on_say(_character, _text, _parameters):
 	self.visible_characters = -1
 	self.bbcode_text = _text
 	if not Rakugo.skipping and _parameters.get('typing'):
-		simulate_typing()
+		if _parameters.get('typing_effect_delay'):
+			delay = _parameters.get('typing_effect_delay')
+		else:
+			delay = float(Settings.get("rakugo/default/delays/typing_effect_delay"))
+		
+		if _parameters.get('typing_effect_punctuation_factor'):
+			punc_delay = _parameters.get('typing_effect_punctuation_factor')
+		else:
+			punc_delay = delay * float(Settings.get("rakugo/default/delays/typing_effect_punctuation_factor"))
+		start_typing_effect()
 
-func simulate_typing():
-	self.visible_characters = 0
-	
-	var regex = RegEx.new()
-	regex.compile("[[:graph:]]")
-	
-	for ch in self.text:
-		self.visible_characters += 1
-		if regex.search(ch):
-			if ch in ",;.!?":
-				$TypingTimer.start(float(Settings.get("rakugo/default/delays/typing_effect_punctuation_delay")))
-			else:
-				$TypingTimer.start(float(Settings.get("rakugo/default/delays/typing_effect_delay")))
-			yield($TypingTimer, "timeout")
-			$TypingTimer.set_wait_time(0.1)
-		if Rakugo.skipping:
-			break
-	self.visible_characters = -1
+
+func start_typing_effect():
+	$TypingTimer.start(delay)
+	skip_typing = false
+	self.visible_characters = 1
+	if not blocking:
+		Rakugo.block_stepping()
+	blocking = true
+	emit_signal('typing_effect_started')
+
+
+func end_typing_effect():
 	$TypingTimer.stop()
+	skip_typing = true
+	self.visible_characters = -1
+	if blocking:
+		Rakugo.unblock_stepping()
+		blocking = false
+	emit_signal('typing_effect_ended')
+
+
+func _on_timer_tick():
+	if Rakugo.skipping or skip_typing:
+		end_typing_effect()
+	else:
+		self.visible_characters += 1
+		emit_signal('typing_effect_tick')
+		if self.visible_characters < self.text.length():
+			var ch = self.text[self.visible_characters]
+			if regex.search(ch):
+				if ch in ",;.!?":
+					$TypingTimer.start(punc_delay)
+				else:
+					$TypingTimer.start(delay)
+			else:
+				_on_timer_tick()
+
