@@ -1,10 +1,11 @@
 extends Node
 class_name Ask
 
-var default_parameters = {#TODO make those set by the project settings
-	"placeholder" : "Type here",
-	}
+var default_parameters = {}
 
+
+func _ready():
+	default_parameters = Settings.get("rakugo/default/statements/default_ask_parameters", {}, false)
 
 func exec(variable_name:String, parameters = {}) -> void:
 	parameters = _apply_default(parameters, default_parameters)

@@ -179,14 +179,14 @@ func save_property_list():
 	Rakugo.StoreManager.save_persistent_store()
 
 
-func get(property, default=null):
+func get(property, default=null, set_default=true):
 	if property in property_list:
 		return property_list[property]
 	if ProjectSettings.has_setting(property):
 		return ProjectSettings.get_setting(property)
 	if property in default_property_list:
 		return default_property_list[property][0]
-	if default:
+	if default and set_default:
 		property_list[property] = default
 	return default
 

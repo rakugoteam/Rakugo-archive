@@ -1,16 +1,13 @@
 extends Node
 class_name Say
 
-var default_parameters = {#TODO make those set by the project settings
-	"add_to_history" : true,
-	"typing" : false,
-	}
-
-var default_narrator = null#TODO same as above
+var default_parameters = {}
+var default_narrator = null
 
 func _ready():
 	default_narrator = Character.new().duplicate()
 	default_narrator.init(Settings.get("rakugo/default/narrator/name"), "", Settings.get("rakugo/default/narrator/color"))
+	default_parameters = Settings.get("rakugo/default/statements/default_say_parameters", {}, false)
 
 
 func exec(character, text:String, parameters = {}) -> void:
