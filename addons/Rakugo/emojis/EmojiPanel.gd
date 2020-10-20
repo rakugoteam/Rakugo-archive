@@ -4,9 +4,11 @@ extends Node
 onready var grid := $ScrollContainer/GridContainer
 var file := File.new()
 
+var emojis = Emojis.new()
+
 func _ready():
-	for e in $Emojis.emojis_dict.keys():
-		var png = $Emojis.get_path_to_emoji(e, 36)
+	for e in emojis.emojis_dict.keys():
+		var png = emojis.get_path_to_emoji(e, 36)
 		if not file.file_exists(png):
 			continue
 			

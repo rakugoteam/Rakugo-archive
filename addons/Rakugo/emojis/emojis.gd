@@ -1,12 +1,11 @@
 tool
-extends Node
-class_name Emojis, "res://addons/Rakugo/emojis/icon.png"
+class_name Emojis#, "res://addons/Rakugo/emojis/icon.png"
 
 var path_here = "res://addons/Rakugo/emojis/"
 var json_path = path_here + "emojis.json"
 var emojis_dict: Dictionary
 
-func _ready():
+func _init():
 	var content := get_file_content(json_path)
 	var emojis_list: Array = parse_json(content)
 	emojis_dict = emoji_list_to_dict(emojis_list)
@@ -33,6 +32,7 @@ func emoji_list_to_dict(list: Array) -> Dictionary:
 			key = key.replace("regional_indicator_", "")
 			var value: String = emoji.hex
 			dict[key] = value
+			dict[value] = value
 
 	return dict
 
