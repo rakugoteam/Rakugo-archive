@@ -58,18 +58,19 @@ func end_typing_effect():
 
 
 func _on_timer_tick():
-	if Rakugo.skipping or skip_typing:
-		end_typing_effect()
-	else:
-		self.visible_characters += 1
-		emit_signal('typing_effect_tick')
-		if self.visible_characters < self.text.length():
-			var ch = self.text[self.visible_characters]
-			if regex.search(ch):
-				if ch in ",;.!?":
-					$TypingTimer.start(punc_delay)
+	if is_visible_in_tree():
+		if Rakugo.skipping or skip_typing:
+			end_typing_effect()
+		else:
+			self.visible_characters += 1
+			emit_signal('typing_effect_tick')
+			if self.visible_characters < self.text.length():
+				var ch = self.text[self.visible_characters]
+				if regex.search(ch):
+					if ch in ",;.!?":
+						$TypingTimer.start(punc_delay)
+					else:
+						$TypingTimer.start(delay)
 				else:
-					$TypingTimer.start(delay)
-			else:
-				_on_timer_tick()
+					_on_timer_tick()
 
