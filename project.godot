@@ -99,11 +99,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/objects/rakugo_text.gd"
 }, {
-"base": "Node",
-"class": "RakugoTextParser",
-"language": "GDScript",
-"path": "res://addons/Rakugo/lib/text.gd"
-}, {
 "base": "Theme",
 "class": "RakugoTheme",
 "language": "GDScript",
@@ -155,7 +150,7 @@ _global_script_class_icons={
 "Character": "",
 "CollapsedList": "",
 "Dialogue": "res://addons/Rakugo/icons/dialogue.svg",
-"Emojis": "res://addons/Rakugo/emojis/icon.png",
+"Emojis": "",
 "HistoryEntry": "",
 "HistorySave": "res://addons/Rakugo/icons/save.svg",
 "Menu": "",
@@ -168,7 +163,6 @@ _global_script_class_icons={
 "RakugoAnimPlayer": "res://addons/Rakugo/icons/rakugo_animation_player.svg",
 "RakugoProjectSettings": "",
 "RakugoText": "",
-"RakugoTextParser": "",
 "RakugoTheme": "res://addons/Rakugo/icons/theme.svg",
 "Say": "",
 "SceneLinks": "res://addons/Rakugo/icons/scene_links.svg",
@@ -193,7 +187,6 @@ config/quit_on_go_back=false
 
 [autoload]
 
-TextParser="*res://addons/Rakugo/lib/Text.tscn"
 Rakugo="*res://addons/Rakugo/Rakugo.tscn"
 Settings="*res://addons/Rakugo/settings.gd"
 Window="*res://gui/Window/Window.tscn"
@@ -330,6 +323,13 @@ rakugo_quickload={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777252,"unicode":0,"echo":false,"script":null)
  ]
+}
+
+[rakugo]
+
+default/narrator/name=""
+default/statements/default_say_parameters={
+"typing": true
 }
 
 [rendering]

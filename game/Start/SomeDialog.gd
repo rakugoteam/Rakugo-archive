@@ -6,26 +6,26 @@ func some_dialog():
 	start_event("some_dialog")
 
 
-	say(null, "Show 'rect red', step #%d" % get_event_step())
+	say(null, "Show 'rect {color=red}red{/color}', step #%d" % get_event_step(), {"typing":true})
 	show("rect red")
 	step()
 	
-	say(null, "Show 'rect blue', step #%d" % get_event_step())
+	say(null, "Show 'rect {color=blue}blue{/color}', step #%d" % get_event_step(), {"typing":true})
 	show("rect blue")
 	step()
 	
-	say(null, "Hide 'rect red', step #%d" % get_event_step())
+	say(null, "Hide 'rect red', step #%d" % get_event_step(), {"typing":true})
 	hide("rect red")
 	step()
 	
-	say(null, "Little test of the choice menu")
+	say(null, "Little test of the choice menu", {"typing":true})
 	var choice = menu([["Choice 1", 1, {}], ["Choice 2", 2, {'visible':true}],["Choice 3", 3, {'visible':false}]])
 	step()
 	
-	say(null, "You chose '%s' (not saved)" % str(choice))
+	say(null, "You chose '%s' (not saved)  image tag test :{img=res://addons/Rakugo/emojis/16x16/1f1e6.tres}" % str(choice))
 	step()
 	
-	say(null, "Show 'rect'(inexistant), step #%d" % get_event_step())
+	say(null, "Show 'rect'(inexistant), step #%d  emoji tag test {:1f1e6:}" % get_event_step())
 	show("rect")
 	step()
 	
@@ -44,6 +44,9 @@ func some_dialog():
 		hide("pathchoice")
 		step()
 		
+		say(null, "I confirm {color=[path_color]}[path_color]{/color} chosen")
+		step()
+		
 		say(null, "Step #%d Green" % get_event_step())
 		step()
 		say(null, "Step #%d Green" % get_event_step())
@@ -54,6 +57,9 @@ func some_dialog():
 		say(null, "Blue FTW, Green is for tards, amiright")
 		show("rect blue")
 		hide("pathchoice")
+		step()
+		
+		say(null, "I confirm {color=[path_color]}[path_color]{/color} chosen")
 		step()
 		
 		say(null, "Step #%d Blue" % get_event_step())
@@ -90,9 +96,11 @@ func some_dialog():
 
 func _on_green_path_chosen():
 	self.path_choice = "green"
+	Rakugo.store.path_color = "green"
 	Rakugo.story_step()
 
 
 func _on_blue_path_chosen():
 	self.path_choice = "blue"
+	Rakugo.store.path_color = "blue"
 	Rakugo.story_step()

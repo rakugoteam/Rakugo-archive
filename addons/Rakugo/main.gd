@@ -57,6 +57,7 @@ onready var SceneLoader: = $SceneLoader
 onready var StoreManager: = $StoreManager
 onready var ShowableManager: = $ShowableManager
 onready var History: = $History
+onready var TextParser: = $TextParser
 onready var Say = $Statements/Say
 onready var Ask = $Statements/Ask
 onready var Menu = $Statements/Menu
@@ -285,15 +286,11 @@ func is_save_exits(save_name: String) -> bool:
 
 ## Utils
 
-# parse text like in renpy to bbcode if mode == "renpy"
-# or parse bbcode with {vars} if mode == "bbcode"
-# default mode = Rakugo.markup
-func text_parser(text: String, mode := markup):
-	var links_color := Color.aqua.to_html()
-	if theme:
-		links_color = theme.links_color.to_html() 
-	
-	return text#TextParser.text_parser(text, variables, mode, links_color)#TODO 
+# parse text like in renpy to bbcode if markup == "renpy"
+# or parse bbcode if markup == "bbcode"
+# defaults to project setting if null
+func text_parser(text: String, markup = null):
+	return TextParser.parse(text, markup)
 
 
 # returns exiting Rakugo variable as one of RakugoTypes for easy use

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://addons/Rakugo/main.gd" type="Script" id=1]
 [ext_resource path="res://addons/Rakugo/statements/say.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://addons/Rakugo/lib/jump.gd" type="Script" id=4]
 [ext_resource path="res://addons/Rakugo/showable_manager.gd" type="Script" id=5]
 [ext_resource path="res://addons/Rakugo/lib/skip_timer.gd" type="Script" id=6]
+[ext_resource path="res://addons/Rakugo/lib/text_parser.gd" type="Script" id=7]
 [ext_resource path="res://addons/Rakugo/lib/scene_loader.gd" type="Script" id=9]
 [ext_resource path="res://addons/Rakugo/lib/store_manager.gd" type="Script" id=10]
 [ext_resource path="res://addons/Rakugo/lib/auto_timer.gd" type="Script" id=11]
@@ -33,6 +34,9 @@ script = ExtResource( 5 )
 
 [node name="History" type="Node" parent="."]
 script = ExtResource( 12 )
+
+[node name="TextParser" type="Node" parent="."]
+script = ExtResource( 7 )
 
 [node name="Statements" type="Node" parent="."]
 
