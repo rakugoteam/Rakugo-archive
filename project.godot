@@ -99,11 +99,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/objects/rakugo_text.gd"
 }, {
-"base": "RichTextLabel",
-"class": "RakugoTextLabel",
-"language": "GDScript",
-"path": "res://addons/Rakugo/nodes/controls/rakugo_label.gd"
-}, {
 "base": "Node",
 "class": "RakugoTextParser",
 "language": "GDScript",
@@ -173,7 +168,6 @@ _global_script_class_icons={
 "RakugoAnimPlayer": "res://addons/Rakugo/icons/rakugo_animation_player.svg",
 "RakugoProjectSettings": "",
 "RakugoText": "",
-"RakugoTextLabel": "res://addons/Rakugo/icons/rakugo_text_label.svg",
 "RakugoTextParser": "",
 "RakugoTheme": "res://addons/Rakugo/icons/theme.svg",
 "Say": "",
