@@ -20,17 +20,31 @@ func convert_markdown_markup(text:String):
 	var offset = 0
 	var replacement = ""
 
-	re.compile("\\*\\*([^\\*]*)\\*\\*")# bold **
+	re.compile("\\*\\*([^\\*]*)\\*\\*")# **bold**
 	for result in re.search_all(text):
 		if result.get_string():
 			replacement = "[b]" + result.get_string(1) + "[/b]"
 			output = regex_replace(result, output, replacement)
 	text = output
 	
-	re.compile("\\*([^\\*]*)\\*")# italic *
+	re.compile("\\*([^\\*]*)\\*")# *italic*
 	for result in re.search_all(text):
 		if result.get_string():
 			replacement = "[i]" + result.get_string(1) + "[/i]"
+			output = regex_replace(result, output, replacement)
+	text = output
+
+	re.compile("~~([^~~]*)~~")# ~~strikethrough~~
+	for result in re.search_all(text):
+		if result.get_string():
+			replacement = "[s]" + result.get_string(1) + "[/s]"
+			output = regex_replace(result, output, replacement)
+	text = output
+
+	re.compile("`([^`]*)`")# `code`
+	for result in re.search_all(text):
+		if result.get_string():
+			replacement = "[code]" + result.get_string(1) + "[/code]"
 			output = regex_replace(result, output, replacement)
 	text = output
 	
