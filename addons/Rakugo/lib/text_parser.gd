@@ -14,6 +14,27 @@ func parse(text:String, _markup=null):
 	text = replace_variables(text)
 	return text
 
+func convert_markdown_markup(text:String):
+	var re = RegEx.new()
+	var output = "" + text
+	var offset = 0
+	var replacement = ""
+
+	re.compile("\\*\\*([^\\*]*)\\*\\*")# bold **
+	for result in re.search_all(output):
+		if result.get_string():
+			replacement = "[b]" + result.get_string(1) + "[/b]"
+			output = output.left(result.get_start() + offset) + replacement + output.right(result.get_end() + offset)
+			offset += replacement.length() - result.get_string().length()
+	
+	re.compile("\\*([^\\*]*)\\*")# italic *
+	for result in re.search_all(output):
+		if result.get_string():
+			replacement = "[i]" + result.get_string(1) + "[/i]"
+			output = output.left(result.get_start() + offset) + replacement + output.right(result.get_end() + offset)
+			offset += replacement.length() - result.get_string().length()
+	
+	return output
 
 func convert_renpy_markup(text:String):
 	var re = RegEx.new()
