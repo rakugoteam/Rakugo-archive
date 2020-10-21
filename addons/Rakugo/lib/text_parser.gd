@@ -20,6 +20,21 @@ func convert_markdown_markup(text:String):
 	var offset = 0
 	var replacement = ""
 
+	re.compile("(?<space>[^(])(?<url>https?:\\/\\/.+)")# clear url
+	for result in re.search_all(text):
+		if result.get_string():
+			replacement = result.get_string("space") + "[url]" + result.get_string("url") + "[/url]"
+			output = regex_replace(result, output, replacement)
+	text = output
+
+	re.compile("\\[(?<link>[^\\]\\)]+)\\]\\((?<url>[^\\)]+)\\)")# [link](url)
+	for result in re.search_all(text):
+		if result.get_string():
+			replacement = "[url=" + result.get_string("url") + "]"
+			replacement += result.get_string("link") + "[/url]"
+			output = regex_replace(result, output, replacement)
+	text = output
+
 	re.compile("\\*\\*([^\\*]*)\\*\\*")# **bold**
 	for result in re.search_all(text):
 		if result.get_string():
@@ -47,7 +62,7 @@ func convert_markdown_markup(text:String):
 			replacement = "[code]" + result.get_string(1) + "[/code]"
 			output = regex_replace(result, output, replacement)
 	text = output
-	
+
 	return text
 
 func convert_renpy_markup(text:String):
