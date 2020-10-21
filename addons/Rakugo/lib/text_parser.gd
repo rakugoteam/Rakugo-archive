@@ -14,70 +14,66 @@ func parse(text:String, _markup=null):
 	text = replace_variables(text)
 	return text
 
+
 func convert_renpy_markup(text:String):
 	var re = RegEx.new()
 	var output = "" + text
-	var offset = 0
 	var replacement = ""
 	
 	re.compile("(?<!\\[)\\[([\\w.]+)\\]")#Convert compatible variable inclusion
-	for result in re.search_all(output):
+	for result in re.search_all(text):
 		if result.get_string():
-			output = output.left(result.get_start()) + "<" + result.get_string(1) + ">" + output.right(result.get_end())
+			output = regex_replace(result, output, "<" + result.get_string(1) + ">")
+	text = output
 	
 	re.compile("(?<!\\[)\\[([^\\]]+)\\]")#Check there is still some variable inclusion and complain if so
-	for result in re.search_all(output):
+	for result in re.search_all(text):
 		if result.get_string():
 			push_error("Incompatible variable inclusion '%s'" % result.get_string())
 	
-	re.compile("(?<!\\{)\\{(\\/{0,1})a(?:(=)|\\})")#match unescaped "{a=" and "{/a}"
+	re.compile("(?<!\\{)\\{(\\/{0,1})a(?:(=[^\\}]+)\\}|\\})")#match unescaped "{a=" and "{/a}"
 	for result in re.search_all(text):
 		if result.get_string():
-			replacement = "[" + result.get_string(1) + "url"
-			if result.get_string(2):
-				replacement += "="
-			else:
-				replacement += "]"
-			output = output.left(result.get_start() + offset) + replacement + output.right(result.get_end() + offset)
-			offset += replacement.length() - result.get_string().length()
-
+			replacement = "[" + result.get_string(1) + "url" + result.get_string(2) + "]"
+			output = regex_replace(result, output, replacement)
+	text = output
+	
 	re.compile("(?<!\\{)\\{img=([^\\}]+)\\}")#match unescaped "{img=<path>}"
 	for result in re.search_all(text):
 		if result.get_string():
 			replacement = "[img]" + result.get_string(1) + "[/img]"
-			output = output.left(result.get_start() + offset) + replacement + output.right(result.get_end() + offset)
-			offset += replacement.length() - result.get_string().length()
+			output = regex_replace(result, output, replacement)
+	text = output
 	
 	re.compile("(?:(?<!\\{)\\{[^\\{\\}]+)(\\})")#math "}" part of a valid tag
-	for result in re.search_all(output):
+	for result in re.search_all(text):
 		if result.get_string():
-			output = output.left(result.get_start(1)) + "]" + output.right(result.get_end(1))
+			output = regex_replace(result, output, "]", 1)
+	text = output
 	
 	re.compile("(?<!\\{)\\{(?!\\{)")#match unescaped "{"
-	for result in re.search_all(output):
+	for result in re.search_all(text):
 		if result.get_string():
-			output = output.left(result.get_start()) + "[" + output.right(result.get_end())
+			output = regex_replace(result, output, "[")
+	text = output
 	
 	re.compile("([\\{]+)")#match escaped braces "{{" transform them into "{"
-	for result in re.search_all(output):
+	for result in re.search_all(text):
 		if result.get_string():
-			output = output.left(result.get_start()) + "{" + output.right(result.get_end())
-	
+			output = regex_replace(result, output, "{")
+	text = output
 
-	return output
+	return text
 
 
 func dirty_escaping(text:String):
 	var re = RegEx.new()
 	var output = "" + text
-	var offset = 0
 	
 	re.compile("(\\\\)(.)")
 	for result in re.search_all(text):
 		if result.get_string():
-			print("'", result.get_string(0),"'  '",result.get_string(1),"'  '", result.get_string(2),"'")
-			output = output.left(result.get_start() + offset) + "\u200B" + result.get_string(2) + "\u200B" + output.right(result.get_end() + offset)
-			offset += 1
+			output = regex_replace(result, output, "\u200B" + result.get_string(2) + "\u200B")
 	
 	return output
 
@@ -90,32 +86,35 @@ func dirty_escaping_sub(text:String, substring:String):
 func replace_variables(text:String):
 	var re = RegEx.new()
 	var output = "" + text
-	var offset = 0
 	var replacement = ""
 	
 	re.compile("<([\\w.]+)>")
 	for result in re.search_all(text):
 		if result.get_string():
 			replacement = str(get_variable(result.get_string(1)))
-			output = output.left(result.get_start() + offset) + replacement + output.right(result.get_end() + offset)
-			offset += replacement.length() - result.get_string().length()
+			output = regex_replace(result, output, replacement)
 	
 	return output
+
 
 func replace_emojis(text:String):
 	var re = RegEx.new()
 	var output = "" + text
-	var offset = 0
 	var replacement = ""
 	
 	re.compile("\\[\\:([\\w.]+)\\:\\]")
 	for result in re.search_all(text):
 		if result.get_string():
 			replacement = "[img]" + emojis.get_path_to_emoji(result.get_string(1)) + "[/img]"
-			output = output.left(result.get_start() + offset) + replacement + output.right(result.get_end() + offset)
-			offset += replacement.length() - result.get_string().length()
+			output = regex_replace(result, output, replacement)
 	
 	return output
+
+
+func regex_replace(result:RegExMatch, output:String, replacement:String, string_to_replace=0):
+	var offset = output.length() - result.subject.length()
+	return output.left(result.get_start(string_to_replace) + offset) + replacement + output.right(result.get_end(string_to_replace) + offset)
+
 
 func get_variable(var_name:String):
 	var parts = var_name.split('.', false)
