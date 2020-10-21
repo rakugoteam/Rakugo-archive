@@ -35,6 +35,13 @@ func convert_markdown_markup(text:String):
 			output = regex_replace(result, output, replacement)
 	text = output
 
+	re.compile("!\\[\\]\\(([^\\)]+)\\)")# ![](path/to/img)
+	for result in re.search_all(text):
+		if result.get_string():
+			replacement = "[img]" + result.get_string(1) + "[/img]"
+			output = regex_replace(result, output, replacement)
+	text = output
+
 	re.compile("\\*\\*([^\\*]*)\\*\\*")# **bold**
 	for result in re.search_all(text):
 		if result.get_string():
