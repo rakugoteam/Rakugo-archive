@@ -73,3 +73,4 @@ func save_sl(_file_path:String, _scene_links:SceneLinks):
 func _on_removed_link(link_node):
 	box.remove_child(link_node)
 	link_node.queue_free()
+	_on_apply()
