@@ -21,20 +21,20 @@ func convert_markdown_markup(text:String):
 	var replacement = ""
 
 	re.compile("\\*\\*([^\\*]*)\\*\\*")# bold **
-	for result in re.search_all(output):
+	for result in re.search_all(text):
 		if result.get_string():
 			replacement = "[b]" + result.get_string(1) + "[/b]"
-			output = output.left(result.get_start() + offset) + replacement + output.right(result.get_end() + offset)
-			offset += replacement.length() - result.get_string().length()
+			output = regex_replace(result, output, replacement)
+	text = output
 	
 	re.compile("\\*([^\\*]*)\\*")# italic *
-	for result in re.search_all(output):
+	for result in re.search_all(text):
 		if result.get_string():
 			replacement = "[i]" + result.get_string(1) + "[/i]"
-			output = output.left(result.get_start() + offset) + replacement + output.right(result.get_end() + offset)
-			offset += replacement.length() - result.get_string().length()
+			output = regex_replace(result, output, replacement)
+	text = output
 	
-	return output
+	return text
 
 func convert_renpy_markup(text:String):
 	var re = RegEx.new()
