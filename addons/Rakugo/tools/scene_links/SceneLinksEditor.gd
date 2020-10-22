@@ -22,6 +22,9 @@ func init() -> void:
 		ch.queue_free()
 
 	scene_links = load(file_path)
+	if not scene_links:
+		scene_links = SceneLinks.new().duplicate()
+		Directory.new().make_dir_recursive(file_path.get_base_dir())
 	var sl_dict = scene_links.get_as_dict()
 	for k in sl_dict.keys():
 		var scene_path = sl_dict[k]
