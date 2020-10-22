@@ -1,15 +1,17 @@
 extends CheckButton
 
-func _ready() -> void:
-	#settings.connect("window_fullscreen_changed", self, "_on_window_fullscreen_changed")#TODO sort that out
-	pass
 
-func _on_toggle(value: bool) -> void:
-
-	#settings.temp_window_fullscreen = value#TODO sort that out too
-	#settings.apply()
-	pass
+func _ready():
+	get_tree().get_root().connect("size_changed", self, "_on_window_resized")
 
 
-func _on_window_fullscreen_changed(value) -> void:
-	pressed = value
+func _on_toggled(value):
+	OS.window_fullscreen = value
+
+
+func _on_visibility_changed():
+	pressed = OS.window_fullscreen
+
+
+func _on_window_resized():
+	pressed = OS.window_fullscreen
