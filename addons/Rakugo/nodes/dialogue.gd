@@ -65,8 +65,7 @@ func _restore(save):
 		thread.start(self, "dialogue_loop")
 
 func _step():
-	#print("_step received")
-	if thread.is_active():
+	if thread.is_active() and Rakugo.current_dialogue == self:
 		self.step_semaphore.post()
 
 func start(event_name=''):
@@ -78,6 +77,7 @@ func start(event_name=''):
 	else:
 		push_error("Dialog '"+self.name+"' started without given event nor default event.")
 	var_access.unlock()
+	Rakugo.current_dialogue = self
 	thread.start(self, "dialogue_loop")
 
 
