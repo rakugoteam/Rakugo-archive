@@ -60,7 +60,6 @@ func _restore(save):
 		var_access.lock()
 		event_stack = save.current_dialogue_event_stack.duplicate(true)
 		var_access.unlock()
-		Rakugo.current_dialogue = self
 		#print("Setting Rakugo.current_dialogue to  ",self, "  ", (Rakugo.current_dialogue == self))
 		thread.start(self, "dialogue_loop")
 
@@ -77,7 +76,6 @@ func start(event_name=''):
 	else:
 		push_error("Dialog '"+self.name+"' started without given event nor default event.")
 	var_access.unlock()
-	Rakugo.current_dialogue = self
 	thread.start(self, "dialogue_loop")
 
 
@@ -86,6 +84,7 @@ func start(event_name=''):
 
 func dialogue_loop(_a):
 	#print("Starting threaded dialog ", self, " ", event_stack)
+	Rakugo.current_dialogue = self
 	while event_stack:
 		var_access.lock()
 		var e = event_stack.pop_front()
