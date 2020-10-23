@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://addons/Rakugo/main.gd" type="Script" id=1]
 [ext_resource path="res://addons/Rakugo/statements/say.gd" type="Script" id=2]
@@ -13,11 +13,6 @@
 [ext_resource path="res://addons/Rakugo/lib/history.gd" type="Script" id=12]
 [ext_resource path="res://addons/Rakugo/statements/menu.gd" type="Script" id=13]
 [ext_resource path="res://addons/Rakugo/statements/notify.gd" type="Script" id=16]
-[ext_resource path="res://addons/Rakugo/statements/play_anim.gd" type="Script" id=17]
-[ext_resource path="res://addons/Rakugo/statements/stop_anim.gd" type="Script" id=18]
-[ext_resource path="res://addons/Rakugo/statements/play_audio.gd" type="Script" id=19]
-[ext_resource path="res://addons/Rakugo/statements/stop_audio.gd" type="Script" id=20]
-[ext_resource path="res://addons/Rakugo/statements/call_node.gd" type="Script" id=21]
 
 [node name="Rakugo" type="Node"]
 pause_mode = 2
@@ -51,21 +46,6 @@ script = ExtResource( 13 )
 
 [node name="Notify" type="Node" parent="Statements"]
 script = ExtResource( 16 )
-
-[node name="PlayAnim" type="Node" parent="Statements"]
-script = ExtResource( 17 )
-
-[node name="StopAnim" type="Node" parent="Statements"]
-script = ExtResource( 18 )
-
-[node name="PlayAudio" type="Node" parent="Statements"]
-script = ExtResource( 19 )
-
-[node name="StopAudio" type="Node" parent="Statements"]
-script = ExtResource( 20 )
-
-[node name="CallNode" type="Node" parent="Statements"]
-script = ExtResource( 21 )
 
 [node name="Jump" type="Node" parent="Statements"]
 script = ExtResource( 4 )

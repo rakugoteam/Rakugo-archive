@@ -72,36 +72,34 @@ signal stop_anim(node_id, reset)
 signal play_audio(node_id, from_pos)
 signal stop_audio(node_id)
 
-func _ready() -> void:
+func _ready():
 	self.viewport = get_tree().get_root()
 	StoreManager.init()
 	History.init()
 
 	OS.set_window_title(game_title + " " + game_version)
 
-	# it must be before define rakugo_version and godot_version to parse corretly :o
-	file.open(credits_path, file.READ)
+	#file.open(credits_path, file.READ)
 	#define("rakugo_credits", file.get_as_text(), false)
-	file.close()
+	#file.close()
 
 ## Rakugo flow control
 
 
 # it starts Rakugo
-func start(after_load := false) -> void:
+func start(after_load := false):
 	started = true
-
 	if not after_load:
 		emit_signal("started")
 
 
-func save_game(save_name := "quick") -> bool:
+func save_game(save_name := "quick"):
 	StoreManager.save_persistent_store()
 	debug(["save data to :", save_name])
 	return StoreManager.save_store_stack(save_name)
 
 
-func load_game(save_name := "quick") -> bool:
+func load_game(save_name := "quick"):
 	self.unblock_stepping()
 	return StoreManager.load_store_stack(save_name)
 
@@ -134,14 +132,17 @@ func prepare_quitting():
 	Settings.save_property_list()
 
 
-func load_scene(scene_id: String, force_reload:bool = false) -> void:
+func load_scene(scene_id: String, force_reload:bool = false):
 	SceneLoader.load_scene(scene_id, force_reload)
 
-func clean_viewport():
-	for c in self.viewport.get_children():
-		self.viewport.remove_child(c)
 
-func end_game() -> void:
+func clean_viewport():
+	if self.viewport != get_tree().get_root():
+		for c in self.viewport.get_children():
+			self.viewport.remove_child(c)
+
+
+func reset_game():#TODO rewrite that
 	if current_scene_node != null:
 		if current_scene_node.get_parent():
 			current_scene_node.get_parent().remove_child(current_scene_node)
@@ -157,7 +158,7 @@ func end_game() -> void:
 
 # use this to change/assign current scene and dialogue
 # id_of_current_scene is id to scene defined in scene_links or full path to scene
-func jump(scene_id: String, dialogue_name: String, event_name: String, force_reload:bool = false) -> void:
+func jump(scene_id: String, dialogue_name: String, event_name: String, force_reload:bool = false):
 	$Statements/Jump.invoke(scene_id, dialogue_name, event_name, force_reload)
 
 ## Dialogue flow control
@@ -171,7 +172,7 @@ func unblock_stepping(_all=false):
 		stepping_block = 0
 
 
-func story_step(_unblock=false) -> void:
+func story_step(_unblock=false):
 	if _unblock or stepping_block == 0:
 		stepping_block = 0
 		StoreManager.stack_next_store()
@@ -183,7 +184,7 @@ func story_step(_unblock=false) -> void:
 		get_tree().get_root().propagate_call('_blocked_step')
 
 
-func exit_dialogue() -> void:
+func exit_dialogue():
 	if self.current_dialogue:
 		self.current_dialogue.exit()
 
@@ -192,65 +193,24 @@ func exit_dialogue() -> void:
 
 ## Signal Emission
 
-func exit_statement(parameters := {}) -> void:
-	emit_signal("exit_statement", current_statement.type, parameters)
-
-
-func notified() -> void:
+func notified():
 	emit_signal("notified")
-
-
-func on_play_anim(node_id: String, anim_name: String) -> void:
-	emit_signal("play_anim", node_id, anim_name)
-
-
-func on_stop_anim(node_id: String, reset: bool) -> void:
-	emit_signal("stop_anim", node_id, reset)
-
-
-func on_play_audio(node_id: String, from_pos: float) -> void:
-	emit_signal("play_audio", node_id, from_pos)
-
-
-func on_stop_audio(node_id: String) -> void:
-	emit_signal("stop_audio", node_id)
-
 
 
 
 ## Global history
 
-func can_qload() -> bool:
-	return is_save_exits("quick")
-
-
-func is_save_exits(save_name: String) -> bool:
-	#loading_in_progress = true
-	#var save_folder = Settings.get('rakugo/saves/save_folder', 'res://')
-	#var save_folder_path = "user://".plus_file(save_folder)
-
-	#if Settings.get('rakugo/saves/test_mode'):
-	#	save_folder_path = "res://".plus_file(save_folder)
-
-	#var save_file_path = save_folder_path.plus_file(save_name)
-	#save_file_path += ".tres"
-
-	return false #file.file_exists(save_file_path)
+func can_qload():
+	return false
+	
 
 
 ## Utils
 
-# parse text like in renpy to bbcode if markup == "renpy"
-# or parse bbcode if markup == "bbcode"
+# parse text like in renpy to bbcode
 # defaults to project setting if null
-func text_parser(text: String, markup = null):
+func parse_rich_text(text: String, markup = null):
 	return TextParser.parse(text, markup)
-
-
-# returns exiting Rakugo variable as one of RakugoTypes for easy use
-# It must be with out returned type, because we can't set it as list of types
-func get_var(var_name: String):
-	return get_current_store().get(var_name)
 
 
 # crate new character as global variable that Rakugo will see
@@ -266,19 +226,19 @@ func define_character(character_name: String, character_tag: String) -> Characte
 # its make given 'character' say 'text'
 # 'parameters' keywords:typing, type_speed, avatar, avatar_state, add
 # speed is time to show next letter
-func say(character, text:String, parameters: Dictionary) -> void:
+func say(character, text:String, parameters: Dictionary):
 	Say.exec(character, text, parameters)
 
 
 # statement of type ask
 # with keywords: placeholder
 # speed is time to show next letter
-func ask(variable_name:String, parameters: Dictionary) -> void:
+func ask(variable_name:String, parameters: Dictionary):
 	Ask.exec(variable_name, parameters)
 
 
 # statement of type menu
-func menu(choices:Array, parameters: Dictionary) -> void:
+func menu(choices:Array, parameters: Dictionary):
 	Menu.exec(choices, parameters)
 
 
@@ -288,12 +248,12 @@ func show(showable_tag:String, parameters := {}):
 
 
 # statement of type hide
-func hide(showable_tag: String) -> void:
+func hide(showable_tag: String):
 	ShowableManager.hide(showable_tag)
 
 
 # statement of type notify
-#func notify(info: String, length: int = get_value("notify_time")) -> void:
+#func notify(info: String, length: int = get_value("notify_time")):
 #	var parameters = {
 #		"info": info,
 #		"length":length
@@ -301,64 +261,6 @@ func hide(showable_tag: String) -> void:
 #	_set_statement($Statements/Notify, parameters)
 #	notify_timer.wait_time = parameters.length
 #	notify_timer.start()
-
-
-# statement of type play_anim
-# it will play animation with anim_name form RakugoAnimPlayer with given node_id
-func play_anim(node_id: String, anim_name: String) -> void:
-	var parameters = {
-		"node_id":node_id,
-		"anim_name":anim_name
-	}
-
-	#_set_statement($Statements/PlayAnim, parameters)
-
-
-# statement of type stop_anim
-# it will stop animation form RakugoAnimPlayer with given node_id
-# and by default is reset to 0 pos on exit from statment
-func stop_anim(node_id: String, reset := true) -> void:
-	var parameters = {
-		"node_id":node_id,
-		"reset":reset
-	}
-
-	#_set_statement($Statements/StopAnim, parameters)
-
-
-# statement of type play_audio
-# it will play audio form RakugoAudioPlayer with given node_id
-# it will start playing from given from_pos
-func play_audio(node_id: String, from_pos := 0.0) -> void:
-	var parameters = {
-		"node_id":node_id,
-		"from_pos":from_pos
-	}
-
-	#_set_statement($Statements/PlayAudio, parameters)
-
-
-# statement of type stop_audio
-# it will stop audio form RakugoAudioPlayer with given node_id
-func stop_audio(node_id: String) -> void:
-	var parameters = {
-		"node_id":node_id
-	}
-
-	#_set_statement($Statements/StopAudio, parameters)
-
-
-# statement of type stop_audio
-# it will stop audio form RakugoAudioPlayer with given node_id
-func call_node(node_id: String, func_name: String, args := []) -> void:
-	var parameters = {
-		"node_id":node_id,
-		"func_name":func_name,
-		"args":args
-	}
-
-	#_set_statement($Statements/CallNode, parameters)
-
 
 func debug_dict(parameters: Dictionary, parameters_names := [], some_custom_text := "") -> String:
 	var dbg = ""
@@ -376,7 +278,7 @@ func debug_dict(parameters: Dictionary, parameters_names := [], some_custom_text
 
 # for printing debugs is only print if debug_on == true
 # put some string array or string as argument
-func debug(some_text = []) -> void:
+func debug(some_text = []):
 	if not debug_on:
 		return
 

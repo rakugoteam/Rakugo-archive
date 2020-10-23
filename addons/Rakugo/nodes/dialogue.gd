@@ -298,8 +298,3 @@ func call_node(node_id: String, func_name: String, args := []) -> void:
 func jump(scene_id: String, dialogue_name: String, event_name: String) -> void:
 	if is_active():
 		Rakugo.call_deferred('jump', scene_id, dialogue_name, event_name)
-
-
-func end_game() -> void:
-	if is_active():
-		Rakugo.call_deferred('end_game')
