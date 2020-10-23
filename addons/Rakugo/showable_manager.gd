@@ -11,11 +11,17 @@ func _store(store):
 	store.showable_shown = self.shown
 
 func _restore(store):
+	var to_hide = self.shown.duplicate()
+	for k in shown.keys():
+		if k in store.showable_shown:
+			to_hide.erase(k)
 	self.shown = store.showable_shown
 	
 	if store.current_scene != Rakugo.SceneLoader.current_scene:
 		yield(Rakugo.SceneLoader, "scene_loaded")
-
+	
+	for k in to_hide.keys():
+		hide(k)
 	for k in self.shown.keys():
 		show(k, self.shown[k])
 
