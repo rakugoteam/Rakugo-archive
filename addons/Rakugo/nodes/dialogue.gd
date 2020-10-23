@@ -18,11 +18,9 @@ var condition_stack = []
 var event_stack = []#LIFO stack of elements [event_name, current_counter, target, condition_stack(FIFO stack)]
 
 var var_access = Mutex.new()#That mutex is probably completely useless
-var menu_lock = Semaphore.new()
 var thread = Thread.new()
 var step_semaphore = Semaphore.new()
-
-var menu_return = null
+var return_lock:Semaphore = Semaphore.new()
 
 func reset(): ## Need to check if this is actually needed.
 	#print("Resetting dialogue")
@@ -80,7 +78,6 @@ func start(event_name=''):
 	else:
 		push_error("Dialog '"+self.name+"' started without given event nor default event.")
 	var_access.unlock()
-	Rakugo.current_dialogue = self
 	thread.start(self, "dialogue_loop")
 
 
@@ -107,7 +104,7 @@ func exit():
 		#print("Exitting Dialogue")
 		self.exiting = true
 		step_semaphore.post()
-		menu_lock.post()
+		return_lock.post()
 
 
 func is_ended():
@@ -236,23 +233,25 @@ func say(character, text:String, parameters: Dictionary = {}) -> void:
 		Rakugo.call_deferred('say', character, text, parameters)
 
 
-func ask(variable_name:String, parameters: Dictionary = {}) -> void:
+func ask(variable_name:String, parameters: Dictionary = {}) -> void:#TODO make those block like menus
 	if is_active():
 		Rakugo.call_deferred('ask', variable_name, parameters)
 
 
 func menu(choices:Array, parameters: Dictionary = {}):
 	if is_active():
+		return_lock = Semaphore.new()
+		var returns = [null]
+		_menu_yield(returns)
 		Rakugo.call_deferred('menu', choices, parameters)
-		menu_lock = Semaphore.new()#In case the semaphore had multiple .post() done.
-		_menu_yield()
-		menu_lock.wait()
-		return menu_return
+		return_lock.wait()
+		return returns[0]
 	return null
 
-func _menu_yield():
-	menu_return = yield(Rakugo, "menu_return")
-	menu_lock.post()
+func _menu_yield(returns:Array):
+	returns[0] = yield(Rakugo, "menu_return")
+	return_lock.post()
+	
 
 
 func show(node_id: String, parameters := {}):
@@ -270,29 +269,25 @@ func notify(info: String, length: int = -1) -> void:
 		Rakugo.call_deferred('notify', info, length)
 
 
-func play_anim( node_id: String, anim_name: String) -> void:
+func call_ext(object, func_name:String, args := []) -> void:
 	if is_active():
-		Rakugo.call_deferred('play_anim', node_id, anim_name)
+		if object:
+			object.call_deferred("callv", func_name, args)
 
 
-func stop_anim(node_id: String, reset := true) -> void:
+func call_ext_ret(object, func_name:String, args := []):
 	if is_active():
-		Rakugo.call_deferred('stop_anim', node_id, reset)
+		if object:
+			return_lock = Semaphore.new()
+			var returns = [null]
+			self.call_deferred("_call_ext_ret_call", returns,  object, func_name, args)
+			return_lock.wait()
+			return returns[0]
+	return null
 
-
-func play_audio(node_id: String, from_pos := 0.0) -> void:
-	if is_active():
-		Rakugo.call_deferred('play_audio', node_id, from_pos)
-
-
-func stop_audio(node_id: String) -> void:
-	if is_active():
-		Rakugo.call_deferred('stop_audio', node_id)
-
-
-func call_node(node_id: String, func_name: String, args := []) -> void:
-	if is_active():
-		Rakugo.call_deferred('call_node', node_id, func_name, args)
+func _call_ext_ret_call(returns:Array, object, func_name:String, args:Array):
+	returns[0] = object.callv(func_name, args)
+	return_lock.post()
 
 
 func jump(scene_id: String, dialogue_name: String, event_name: String) -> void:
