@@ -22,7 +22,6 @@ func _on_nav_button_press(nav):
 		"continue":
 			if !Rakugo.loadfile("auto"):
 				return
-
 			hide()
 
 		"save":
@@ -120,7 +119,7 @@ func _input(event):
 
 		return
 
-	if not get_focus_owner() and Rakugo.can_alphanumeric:
+	if not get_focus_owner():
 		_screenshot_on_input(event)
 
 

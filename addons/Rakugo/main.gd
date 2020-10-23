@@ -2,7 +2,6 @@ extends Node
 
 const rakugo_version := "2.1.06"
 const credits_path := "res://addons/Rakugo/credits.txt"
-const save_folder := "saves"
 
 # project settings integration
 onready var game_title : String = Settings.get("application/config/name")
@@ -13,29 +12,21 @@ onready var debug_on : bool = Settings.get("rakugo/editor/debug")
 onready var scene_links : String = Settings.get("rakugo/game/scenes/scene_links")
 onready var theme : RakugoTheme = load(Settings.get("rakugo/default/gui/theme"))
 
-# init vars for settings
-var _skip_all_text := false#TODO update those with once the new parameters system is made
-var _skip_after_choices := false
-var _auto_time := 1
-var _text_time := 0.3
-var _notify_time := 3
-var _typing_text := true
 
 var current_scene_name := ""
+var current_scene_path := ""
+var current_scene_node: Node = null
 var current_dialogue:Node = null
+var current_statement: Statement = null
 
 var store = null setget set_current_store, get_current_store
 var persistent = null setget set_persistent_store, get_persistent_store 
 
 # don't save this
 var viewport : Viewport
-#var loading_screen : Control
-var current_scene_path := ""
-var current_scene_node: Node = null
-var current_statement: Statement = null
+
 
 var active := false
-var can_alphanumeric := true
 var emoji_size := 16
 
 var can_save := true
@@ -82,26 +73,16 @@ signal play_audio(node_id, from_pos)
 signal stop_audio(node_id)
 
 func _ready() -> void:
-
+	self.viewport = get_tree().get_root()
 	StoreManager.init()
 	History.init()
 
-	# set by game developer
-	#define("title", game_title, false)
-	#define("version", game_version, false)
 	OS.set_window_title(game_title + " " + game_version)
-	#define("credits", game_credits, false)
 
 	# it must be before define rakugo_version and godot_version to parse corretly :o
 	file.open(credits_path, file.READ)
 	#define("rakugo_credits", file.get_as_text(), false)
 	file.close()
-
-	# set by rakugo
-	#define("rakugo_version", rakugo_version, true)
-
-	var gdv = Engine.get_version_info()
-	var gdv_string = str(gdv.major) + "." + str(gdv.minor) + "." + str(gdv.patch)
 
 ## Rakugo flow control
 
@@ -151,7 +132,6 @@ func prepare_quitting():
 		self.save_game("auto")
 	StoreManager.save_persistent_store()
 	Settings.save_property_list()
-	#Settings.save_conf()
 
 
 func load_scene(scene_id: String, force_reload:bool = false) -> void:
@@ -175,25 +155,6 @@ func end_game() -> void:
 	started = false
 	emit_signal("game_ended")
 
-
-# use this to assign beginning scene and dialogue
-# root of path_to_current_scene is scenes_dir
-# provide path_to_current_scene with out ".tscn"
-func on_begin(path_to_current_scene: String, dialogue_name: String, event_name: String) -> void:
-	if loading_in_progress:
-		return
-
-	var resource = load(scene_links).get_as_dict()
-	debug([resource, path_to_current_scene])
-	var path = resource[path_to_current_scene]
-
-	if path is PackedScene:
-		current_scene_path = path.resource_path
-	else:
-		current_scene_path = path
-
-	jump(path_to_current_scene, dialogue_name , event_name)
-
 # use this to change/assign current scene and dialogue
 # id_of_current_scene is id to scene defined in scene_links or full path to scene
 func jump(scene_id: String, dialogue_name: String, event_name: String, force_reload:bool = false) -> void:
@@ -203,10 +164,12 @@ func jump(scene_id: String, dialogue_name: String, event_name: String, force_rel
 func block_stepping():
 	stepping_block += 1
 
+
 func unblock_stepping(_all=false):
 	stepping_block += -1
 	if _all or stepping_block < 0:
 		stepping_block = 0
+
 
 func story_step(_unblock=false) -> void:
 	if _unblock or stepping_block == 0:
@@ -220,7 +183,6 @@ func story_step(_unblock=false) -> void:
 		get_tree().get_root().propagate_call('_blocked_step')
 
 
-
 func exit_dialogue() -> void:
 	if self.current_dialogue:
 		self.current_dialogue.exit()
@@ -229,11 +191,6 @@ func exit_dialogue() -> void:
 
 
 ## Signal Emission
-
-
-func exec_statement(type: int, parameters := {}) -> void:
-	emit_signal("exec_statement", type, parameters)
-
 
 func exit_statement(parameters := {}) -> void:
 	emit_signal("exit_statement", current_statement.type, parameters)
@@ -263,25 +220,22 @@ func on_stop_audio(node_id: String) -> void:
 
 ## Global history
 
-func is_current_statement_in_global_history() -> bool:
-	return true#TODO write that
-
-
 func can_qload() -> bool:
 	return is_save_exits("quick")
 
 
 func is_save_exits(save_name: String) -> bool:
-	loading_in_progress = true
-	var save_folder_path = "user://".plus_file(save_folder)
+	#loading_in_progress = true
+	#var save_folder = Settings.get('rakugo/saves/save_folder', 'res://')
+	#var save_folder_path = "user://".plus_file(save_folder)
 
-	if Settings.get('rakugo/saves/test_mode'):
-		save_folder_path = "res://".plus_file(save_folder)
+	#if Settings.get('rakugo/saves/test_mode'):
+	#	save_folder_path = "res://".plus_file(save_folder)
 
-	var save_file_path = save_folder_path.plus_file(save_name)
-	save_file_path += ".tres"
+	#var save_file_path = save_folder_path.plus_file(save_name)
+	#save_file_path += ".tres"
 
-	return file.file_exists(save_file_path)
+	return false #file.file_exists(save_file_path)
 
 
 ## Utils
@@ -406,12 +360,7 @@ func call_node(node_id: String, func_name: String, args := []) -> void:
 	#_set_statement($Statements/CallNode, parameters)
 
 
-func debug_dict(
-		parameters: Dictionary,
-		parameters_names := [],
-		some_custom_text := ""
-		) -> String:
-
+func debug_dict(parameters: Dictionary, parameters_names := [], some_custom_text := "") -> String:
 	var dbg = ""
 
 	for k in parameters_names:

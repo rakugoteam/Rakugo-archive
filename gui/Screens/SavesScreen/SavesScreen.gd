@@ -3,8 +3,6 @@ extends Panel
 export var slot: PackedScene
 export var dummy_slot: PackedScene
 
-var saveslots_dir: String
-
 export var popup_path:NodePath = 'ConfirmationPopup'
 onready var popup := get_node(popup_path)
 
@@ -41,21 +39,12 @@ func _ready() -> void:
 	if use_pages:
 		Settings.get('rakugo/saves/current_page', 1)#Set the default
 		#_on_change_page(1, 0)
-	update_save_dir()
 	return
 
 func set_mode(mode):
 	save_mode = mode
 	emit_signal("mode_changed", mode)
 	_on_visibility_changed()
-
-func update_save_dir():
-	saveslots_dir = "user://" +  Rakugo.save_folder
-	file_ext = "res"
-
-	if Settings.get('rakugo/saves/test_mode'):
-		saveslots_dir = "res://" + Rakugo.save_folder
-		file_ext = "tres"
 
 func update_save_pages():
 	save_pages = {}
@@ -69,7 +58,7 @@ func update_save_pages():
 
 func update_save_list(ignores = [""]):
 	var contents = []
-	if dir.open(saveslots_dir) == OK:
+	if dir.open(Rakugo.StoreManager.get_save_folder_path()) == OK:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 
@@ -143,7 +132,7 @@ func populate_grid_page():
 func new_slot_instance(filename: String, page_index:Vector2, hide_dl_btn:bool) -> Node:
 	var s = slot.instance()
 	
-	s.init(saveslots_dir, filename, page_index, file_ext, hide_dl_btn)
+	s.init(filename, page_index, hide_dl_btn)
 
 	s.connect("select_save", self, "_on_save_select")
 	if not hide_dl_btn:
@@ -157,14 +146,12 @@ func _on_delete_save(save_filename):
 	if not yield(popup, "return_output"):
 		return false
 
-	update_save_dir()
-
-	var png_path = saveslots_dir.plus_file(save_filename + '.png')
+	var png_path = Rakugo.StoreManager.get_save_path(save_filename, true)+".png"
 	if file.file_exists(png_path):
 		Rakugo.debug("remove image")
 		dir.remove(png_path)
 
-	var save_path = saveslots_dir.plus_file(save_filename + '.' + file_ext)
+	var save_path = Rakugo.StoreManager.get_save_path(save_filename)
 	if file.file_exists(save_path):
 		Rakugo.debug("remove save")
 		dir.remove(save_path)
@@ -183,12 +170,9 @@ func _on_save_select(save_filename, page_index):
 		load_save(save_filename)
 
 func save_save(caller: String) -> bool:
-	if !dir.dir_exists(saveslots_dir):
-		dir.make_dir(saveslots_dir)
-
 	var new_save = false
 	if caller == "empty":
-		if Settings.get('saves_skip_naming'):#TODO rename setting
+		if Settings.get('rakugo/saves/skip_naming', true):
 			caller = get_next_iterative_name(default_save_name)
 		else:
 			new_save = true
@@ -215,7 +199,7 @@ func save_save(caller: String) -> bool:
 		return false
 
 	#screenshot.flip_y()
-	var png_path = saveslots_dir.plus_file(caller + '.png')
+	var png_path = Rakugo.StoreManager.get_save_path(caller, true) + '.png'
 	screenshot.save_png(png_path)
 
 	Rakugo.debug(["caller:", caller])
@@ -227,15 +211,12 @@ func save_save(caller: String) -> bool:
 	return true
 	
 func save_page_save(caller: String, page_index:Vector2) -> bool:
-	if !dir.dir_exists(saveslots_dir):
-		dir.make_dir(saveslots_dir)
-		
 	if page_index in save_pages:
 		popup.overwrite_confirm()
 		if not yield(popup, "return_output"):
 			return false
 
-	if Settings.get('rakugo/saves/skip_naming', true):#TODO rename setting
+	if Settings.get('rakugo/saves/skip_naming', true):
 		caller = default_save_name
 	else:
 		popup.name_save_confirm()
@@ -255,7 +236,7 @@ func save_page_save(caller: String, page_index:Vector2) -> bool:
 		return false
 
 	#screenshot.flip_y()
-	var png_path = saveslots_dir.plus_file(caller + '.png')
+	var png_path = Rakugo.StoreManager.get_save_path(caller, true) + '.png'
 	screenshot.save_png(png_path)
 
 	Rakugo.debug(["caller:", caller])
@@ -285,9 +266,6 @@ func get_next_iterative_name(file_name):
 	
 
 func load_save(caller: String) -> void:
-	if !dir.dir_exists(saveslots_dir):
-		dir.make_dir(saveslots_dir)
-
 	if Rakugo.load_game(caller):
 		emit_signal("load_file")
 
