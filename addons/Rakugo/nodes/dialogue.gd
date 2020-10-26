@@ -146,6 +146,7 @@ func step():
 	if is_active():
 		step_semaphore.wait()
 	event_stack[0][1] += 1
+	step_semaphore = Semaphore.new()# Preventing a case of multiple post skipping steps
 
 func end_event():
 	var_access.lock()
