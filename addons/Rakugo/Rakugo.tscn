@@ -4,7 +4,7 @@
 [ext_resource path="res://addons/Rakugo/statements/say.gd" type="Script" id=2]
 [ext_resource path="res://addons/Rakugo/statements/ask.gd" type="Script" id=3]
 [ext_resource path="res://addons/Rakugo/lib/jump.gd" type="Script" id=4]
-[ext_resource path="res://addons/Rakugo/showable_manager.gd" type="Script" id=5]
+[ext_resource path="res://addons/Rakugo/lib/showable_manager.gd" type="Script" id=5]
 [ext_resource path="res://addons/Rakugo/lib/skip_timer.gd" type="Script" id=6]
 [ext_resource path="res://addons/Rakugo/lib/text_parser.gd" type="Script" id=7]
 [ext_resource path="res://addons/Rakugo/lib/step_blocker.gd" type="Script" id=8]
@@ -14,6 +14,7 @@
 [ext_resource path="res://addons/Rakugo/lib/history.gd" type="Script" id=12]
 [ext_resource path="res://addons/Rakugo/statements/menu.gd" type="Script" id=13]
 [ext_resource path="res://addons/Rakugo/statements/notify.gd" type="Script" id=16]
+
 
 [node name="Rakugo" type="Node"]
 pause_mode = 2
