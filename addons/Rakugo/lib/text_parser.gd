@@ -105,7 +105,7 @@ func replace_emojis(text:String):
 	re.compile("\\[\\:([\\w.]+)\\:\\]")
 	for result in re.search_all(text):
 		if result.get_string():
-			replacement = "[img]" + emojis.get_path_to_emoji(result.get_string(1)) + "[/img]"
+			replacement = emojis.get_emoji_bbcode(result.get_string(1))
 			output = regex_replace(result, output, replacement)
 	
 	return output

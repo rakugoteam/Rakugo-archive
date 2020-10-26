@@ -27,7 +27,6 @@ var viewport : Viewport
 
 
 var active := false
-var emoji_size := 16
 
 var can_save := true
 
