@@ -224,7 +224,7 @@ func menu_return(result):
 	Menu.return(result)
 
 
-# it show nod tagged with "showable <space separated tag>"
+# it show nodes tagged with "showable <space separated tag>" depending of the tagging rules
 func show(showable_tag:String, parameters := {}):
 	ShowableManager.show(showable_tag, parameters)
 
