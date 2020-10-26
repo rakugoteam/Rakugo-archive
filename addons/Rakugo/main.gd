@@ -41,7 +41,6 @@ var stepping_block = 0
 # timers use by rakugo
 onready var auto_timer := $AutoTimer
 onready var skip_timer := $SkipTimer
-onready var notify_timer := $NotifyTimer
 
 onready var SceneLoader: = $SceneLoader
 onready var StoreManager: = $StoreManager
@@ -54,6 +53,7 @@ onready var Ask = $Statements/Ask
 onready var Menu = $Statements/Menu
 
 signal say(character, text, parameters)
+signal notify(text, parameters)
 signal ask(variable_name, parameters)
 signal menu(choices, parameters)
 signal menu_return(result)
@@ -64,7 +64,6 @@ signal story_step(dialogue_name, event_name)
 signal checkpoint()
 signal game_ended()
 #TODO assert the need of those
-signal notified()
 signal hide_ui(value)
 #TODO prune those
 signal play_anim(node_id, anim_name)
@@ -177,14 +176,6 @@ func exit_dialogue():
 
 
 
-
-## Signal Emission
-
-func notified():
-	emit_signal("notified")
-
-
-
 ## Global history
 
 func can_qload():
@@ -239,15 +230,9 @@ func hide(showable_tag: String):
 	ShowableManager.hide(showable_tag)
 
 
-# statement of type notify
-#func notify(info: String, length: int = get_value("notify_time")):
-#	var parameters = {
-#		"info": info,
-#		"length":length
-#	}
-#	_set_statement($Statements/Notify, parameters)
-#	notify_timer.wait_time = parameters.length
-#	notify_timer.start()
+func notify(text:String, parameters:Dictionary):
+	emit_signal('notify', text, parameters)
+
 
 func debug_dict(parameters: Dictionary, parameters_names := [], some_custom_text := "") -> String:
 	var dbg = ""

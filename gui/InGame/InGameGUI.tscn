@@ -3,9 +3,9 @@
 [ext_resource path="res://themes/Default/default.tres" type="Theme" id=1]
 [ext_resource path="res://gui/InGame/ChoiceMenu/ChoiceMenu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://gui/InGame/InGameGUI.gd" type="Script" id=3]
+[ext_resource path="res://gui/InGame/NotifyDisplay/NotifyDisplay.tscn" type="PackedScene" id=4]
 [ext_resource path="res://gui/InGame/DialogueBox/DialogueBox.tscn" type="PackedScene" id=5]
 [ext_resource path="res://gui/QuickMenu/QuickMenu.tscn" type="PackedScene" id=6]
-[ext_resource path="res://gui/InGame/Notify.gd" type="Script" id=7]
 [ext_resource path="res://gui/QuitScreen/QuitScreen.tscn" type="PackedScene" id=8]
 
 [sub_resource type="StyleBoxFlat" id=1]
@@ -48,31 +48,8 @@ anchor_bottom = 0.8
 [node name="QuickMenu" parent="Panel" instance=ExtResource( 6 )]
 margin_top = -1.52588e-05
 
-[node name="Notify" type="Panel" parent="."]
+[node name="NotifyDisplay" parent="." instance=ExtResource( 4 )]
 visible = false
-anchor_right = 1.0
-margin_left = -2.0
-margin_top = 36.0
-margin_right = -260.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 100, 20 )
-script = ExtResource( 7 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Label" type="RichTextLabel" parent="Notify"]
-margin_left = -1.0
-margin_right = 763.0
-margin_bottom = 32.0
-focus_mode = 2
-size_flags_horizontal = 15
-size_flags_vertical = 3
-bbcode_enabled = true
-bbcode_text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis."
-text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a neque turpis."
-scroll_active = false
-selection_enabled = true
 
 [node name="QuitScreen" parent="." instance=ExtResource( 8 )]
 visible = false

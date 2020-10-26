@@ -12,6 +12,7 @@ func some_dialog():
 	
 	say(null, "Show 'rect {color=blue}blue{/color}', step #%d" % get_event_step(), {"typing":true})
 	show("rect blue")
+	notify("Some notification that is really important to show")
 	step()
 	
 	say(null, "Hide 'rect red', step #%d" % get_event_step(), {"typing":true})
