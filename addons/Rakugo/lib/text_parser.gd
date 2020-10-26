@@ -40,6 +40,12 @@ func convert_markdown_markup(text:String):
 				replacement = "[url=" + result.get_string(3) + "]" + result.get_string(2) + "[/url]" #That can can be the user eroneously writing "[b](url)[\b]" need to be pointed in the doc
 			output = regex_replace(result, output, replacement)
 	text = output
+	
+	re.compile(":[a-zA-Z0-9_-]+:")# :emoji:
+	for result in re.search_all(text):
+		if result.get_string():
+			output = regex_replace(result, output, "[" + result.get_string() + "]")
+	text = output
 
 	re.compile("\\*\\*([^\\*]+)\\*\\*")# **bold**
 	for result in re.search_all(text):
