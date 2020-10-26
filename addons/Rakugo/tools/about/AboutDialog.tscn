@@ -104,7 +104,7 @@ text = "The Legend of Node"
 margin_left = 322.0
 margin_right = 390.0
 margin_bottom = 31.0
-text = "Raport bug"
+text = "Report bug"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
 margin_top = 134.0
