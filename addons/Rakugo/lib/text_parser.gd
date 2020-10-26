@@ -11,59 +11,58 @@ func parse(text:String, _markup=null):
 	match _markup:
 		"renpy":
 			text = convert_renpy_markup(text)
+		"markdown_simple":
+			text = dirty_escaping_sub(text, "[")
+			text = convert_markdown_markup(text)
+		"markdown":
+			text = convert_markdown_markup(text)
 	text = replace_variables(text)
 	return text
 
 func convert_markdown_markup(text:String):
 	var re = RegEx.new()
 	var output = "" + text
-	var offset = 0
 	var replacement = ""
-
-	re.compile("(?<space>[^(])(?<url>https?:\\/\\/.+)")# clear url
-	for result in re.search_all(text):
-		if result.get_string():
-			replacement = result.get_string("space") + "[url]" + result.get_string("url") + "[/url]"
-			output = regex_replace(result, output, replacement)
-	text = output
-
-	re.compile("\\[(?<link>[^\\]\\)]+)\\]\\((?<url>[^\\)]+)\\)")# [link](url)
-	for result in re.search_all(text):
-		if result.get_string():
-			replacement = "[url=" + result.get_string("url") + "]"
-			replacement += result.get_string("link") + "[/url]"
-			output = regex_replace(result, output, replacement)
-	text = output
-
-	re.compile("!\\[\\]\\(([^\\)]+)\\)")# ![](path/to/img)
+	
+	re.compile("!\u200B?\\[\u200B?\\]\\(([^\\(\\)\\[\\]]+)\\)")# ![](path/to/img)
 	for result in re.search_all(text):
 		if result.get_string():
 			replacement = "[img]" + result.get_string(1) + "[/img]"
 			output = regex_replace(result, output, replacement)
 	text = output
 
-	re.compile("\\*\\*([^\\*]*)\\*\\*")# **bold**
+	re.compile("(\\[img\\][^\\[\\]]*\\[\\/img\\])|(?:(?:\\[([^\\]\\)]+)\\]\\(([a-zA-Z]+:\\/\\/[^\\)]+)\\))|([a-zA-Z]+:\\/\\/[^ \\[\\]]*[a-zA-Z0-9_]))")# either plain "prot://url" and "[link](url)" and not "[img]url[\img]"
+	for result in re.search_all(text):
+		if result.get_string() and not result.get_string(1): # having anything in 1 meant it matched "[img]url[\img]"
+			if result.get_string(4):
+				replacement = "[url]" + result.get_string(4) + "[/url]"
+			else:
+				replacement = "[url=" + result.get_string(3) + "]" + result.get_string(2) + "[/url]" #That can can be the user eroneously writing "[b](url)[\b]" need to be pointed in the doc
+			output = regex_replace(result, output, replacement)
+	text = output
+
+	re.compile("\\*\\*([^\\*]+)\\*\\*")# **bold**
 	for result in re.search_all(text):
 		if result.get_string():
 			replacement = "[b]" + result.get_string(1) + "[/b]"
 			output = regex_replace(result, output, replacement)
 	text = output
 	
-	re.compile("\\*([^\\*]*)\\*")# *italic*
+	re.compile("\\*([^\\*]+)\\*")# *italic*
 	for result in re.search_all(text):
 		if result.get_string():
 			replacement = "[i]" + result.get_string(1) + "[/i]"
 			output = regex_replace(result, output, replacement)
 	text = output
 
-	re.compile("~~([^~~]*)~~")# ~~strikethrough~~
+	re.compile("~~([^~]+)~~")# ~~strikethrough~~
 	for result in re.search_all(text):
 		if result.get_string():
 			replacement = "[s]" + result.get_string(1) + "[/s]"
 			output = regex_replace(result, output, replacement)
 	text = output
 
-	re.compile("`([^`]*)`")# `code`
+	re.compile("`([^`]+)`")# `code`
 	for result in re.search_all(text):
 		if result.get_string():
 			replacement = "[code]" + result.get_string(1) + "[/code]"
