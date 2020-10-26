@@ -6,16 +6,13 @@ func _ready():
 	Rakugo.connect("ask" ,self, "_on_ask")
 
 
-func _on_ask(_variable_name, _parameters):
+func _on_ask(default_answer, _parameters):
 	if _parameters.has('placeholder'):
 		self.placeholder_text = _parameters['placeholder']
-	elif Rakugo.get_current_store().get(_variable_name):
-		self.text = Rakugo.get_current_store().get(variable_name)
-	variable_name = _variable_name
+	self.text = default_answer
 	show()
 
 
 func _on_text_entered(new_text):
 	hide()
-	Rakugo.get_current_store()[variable_name] = new_text
-	Rakugo.story_step(true)
+	Rakugo.ask_return(new_text)

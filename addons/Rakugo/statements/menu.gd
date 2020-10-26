@@ -14,6 +14,11 @@ func exec(choices:Array, parameters = {}) -> void:
 	Rakugo.emit_signal("menu", choices, parameters)
 
 
+func return(result):
+	Rakugo.emit_signal('menu_return', result)
+	Rakugo.StepBlocker.unblock('menu')
+	Rakugo.story_step()
+
 #Utils functions
 
 func _apply_default(input:Dictionary, default:Dictionary):

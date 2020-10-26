@@ -15,8 +15,7 @@ func _restore(_store):
 func on_choice_button_pressed(_choice_button):
 	var return_value = _choice_button.get_meta('return_value')
 	purge_childs()
-	Rakugo.emit_signal("menu_return", return_value)
-	Rakugo.story_step(true)
+	Rakugo.menu_return(return_value)
 
 
 func build(choices:Array, parameters:Dictionary):

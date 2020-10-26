@@ -232,9 +232,19 @@ func say(character, text:String, parameters: Dictionary = {}) -> void:
 		Rakugo.call_deferred('say', character, text, parameters)
 
 
-func ask(variable_name:String, parameters: Dictionary = {}) -> void:#TODO make those block like menus
+func ask(default_answer:String, parameters: Dictionary = {}):
 	if is_active():
-		Rakugo.call_deferred('ask', variable_name, parameters)
+		return_lock = Semaphore.new()
+		var returns = [null]
+		_ask_yield(returns)
+		Rakugo.call_deferred('ask', default_answer, parameters)
+		return_lock.wait()
+		return returns[0]
+	return null
+
+func _ask_yield(returns:Array):
+	returns[0] = yield(Rakugo, "ask_return")
+	return_lock.post()
 
 
 func menu(choices:Array, parameters: Dictionary = {}):

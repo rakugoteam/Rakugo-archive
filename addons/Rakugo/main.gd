@@ -54,7 +54,8 @@ onready var Menu = $Statements/Menu
 
 signal say(character, text, parameters)
 signal notify(text, parameters)
-signal ask(variable_name, parameters)
+signal ask(default_answer, parameters)
+signal ask_return(result)
 signal menu(choices, parameters)
 signal menu_return(result)
 #TODO clean those
@@ -210,14 +211,17 @@ func say(character, text:String, parameters: Dictionary):
 
 # statement of type ask
 # with keywords: placeholder
-# speed is time to show next letter
-func ask(variable_name:String, parameters: Dictionary):
-	Ask.exec(variable_name, parameters)
+func ask(default_answer:String, parameters: Dictionary):
+	Ask.exec(default_answer, parameters)
+func ask_return(result:String):
+	Ask.return(result)
 
 
 # statement of type menu
 func menu(choices:Array, parameters: Dictionary):
 	Menu.exec(choices, parameters)
+func menu_return(result):
+	Menu.return(result)
 
 
 # it show nod tagged with "showable <space separated tag>"
