@@ -17,7 +17,9 @@ func parse(text:String, _markup=null):
 		"markdown":
 			text = convert_markdown_markup(text)
 	text = replace_variables(text)
+	text = replace_emojis(text)
 	return text
+
 
 func convert_markdown_markup(text:String):
 	var re = RegEx.new()
@@ -41,7 +43,7 @@ func convert_markdown_markup(text:String):
 			output = regex_replace(result, output, replacement)
 	text = output
 	
-	re.compile(":[a-zA-Z0-9_-]+:")# :emoji:
+	re.compile("(?<!\\[):[\\w-]+:(?!\\])")# :emoji: not [:emoji:]
 	for result in re.search_all(text):
 		if result.get_string():
 			output = regex_replace(result, output, "[" + result.get_string() + "]")
@@ -76,6 +78,7 @@ func convert_markdown_markup(text:String):
 	text = output
 
 	return text
+
 
 func convert_renpy_markup(text:String):
 	var re = RegEx.new()
@@ -164,7 +167,7 @@ func replace_emojis(text:String):
 	var output = "" + text
 	var replacement = ""
 	
-	re.compile("\\[\\:([\\w.]+)\\:\\]")
+	re.compile("\\[\\:([\\w.-]+)\\:\\]")
 	for result in re.search_all(text):
 		if result.get_string():
 			replacement = emojis.get_emoji_bbcode(result.get_string(1))
