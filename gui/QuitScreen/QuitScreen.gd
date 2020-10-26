@@ -18,7 +18,7 @@ func _on_confirmed():
 
 func _on_visibility_changed():#Using self connected signal to also handle external use
 	if visible:
-		Rakugo.block_stepping()
+		Rakugo.StepBlocker.block('quit_screen')
 		$QuitConfirmDialog.call_deferred("popup_centered")
 
 
@@ -28,5 +28,5 @@ func _on_popup_hide():
 
 func _delayed_unblock_stepping():
 	yield(get_tree().create_timer(0.1), "timeout")#prevent the input that cancelled quitting to trigger the step
-	Rakugo.unblock_stepping()
+	Rakugo.StepBlocker.unblock('quit_screen')
 	

@@ -48,6 +48,7 @@ onready var StoreManager: = $StoreManager
 onready var ShowableManager: = $ShowableManager
 onready var History: = $History
 onready var TextParser: = $TextParser
+onready var StepBlocker = $StepBlocker
 onready var Say = $Statements/Say
 onready var Ask = $Statements/Ask
 onready var Menu = $Statements/Menu
@@ -99,12 +100,10 @@ func save_game(save_name := "quick"):
 
 
 func load_game(save_name := "quick"):
-	self.unblock_stepping()
 	return StoreManager.load_store_stack(save_name)
 
 
 func rollback(amount=1):
-	self.unblock_stepping(true)
 	self.StoreManager.change_current_stack_index(self.StoreManager.current_store_id + amount)
 
 
@@ -161,23 +160,12 @@ func jump(scene_id: String, dialogue_name: String, event_name: String, force_rel
 	$Statements/Jump.invoke(scene_id, dialogue_name, event_name, force_reload)
 
 ## Dialogue flow control
-func block_stepping():
-	stepping_block += 1
-
-
-func unblock_stepping(_all=false):
-	stepping_block += -1
-	if _all or stepping_block < 0:
-		stepping_block = 0
-
 
 func story_step(_unblock=false):
-	if _unblock or stepping_block == 0:
-		stepping_block = 0
+	if _unblock or not StepBlocker.is_blocking():
 		StoreManager.stack_next_store()
 		print("Emitting _step")
 		get_tree().get_root().propagate_call('_step')
-		#emit_signal("story_step", current_dialogue_name, current_event_name)
 	else:
 		print("Emitting _blocked_step")
 		get_tree().get_root().propagate_call('_blocked_step')

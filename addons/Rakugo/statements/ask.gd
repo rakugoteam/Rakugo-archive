@@ -9,7 +9,7 @@ func _ready():
 
 func exec(variable_name:String, parameters = {}) -> void:
 	parameters = _apply_default(parameters, default_parameters)
-	Rakugo.block_stepping()
+	Rakugo.StepBlocker.block('ask')
 	Rakugo.emit_signal("ask", variable_name, parameters)
 
 

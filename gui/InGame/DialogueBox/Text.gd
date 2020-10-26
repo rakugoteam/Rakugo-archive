@@ -42,7 +42,7 @@ func start_typing_effect():
 	skip_typing = false
 	self.visible_characters = 1
 	if not blocking:
-		Rakugo.block_stepping()
+		Rakugo.StepBlocker.block('typing_effect')
 	blocking = true
 	emit_signal('typing_effect_started')
 
@@ -52,7 +52,7 @@ func end_typing_effect():
 	skip_typing = true
 	self.visible_characters = -1
 	if blocking:
-		Rakugo.unblock_stepping()
+		Rakugo.StepBlocker.unblock('typing_effect')
 		blocking = false
 	emit_signal('typing_effect_ended')
 

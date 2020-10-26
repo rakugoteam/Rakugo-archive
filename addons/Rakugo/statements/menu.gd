@@ -10,7 +10,7 @@ func _ready():
 
 func exec(choices:Array, parameters = {}) -> void:
 	parameters = _apply_default(parameters, default_parameters)
-	Rakugo.block_stepping()
+	Rakugo.StepBlocker.block('menu')
 	Rakugo.emit_signal("menu", choices, parameters)
 
 
