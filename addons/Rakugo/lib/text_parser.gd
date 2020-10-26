@@ -14,6 +14,63 @@ func parse(text:String, _markup=null):
 	text = replace_variables(text)
 	return text
 
+func convert_markdown_markup(text:String):
+	var re = RegEx.new()
+	var output = "" + text
+	var offset = 0
+	var replacement = ""
+
+	re.compile("(?<space>[^(])(?<url>https?:\\/\\/.+)")# clear url
+	for result in re.search_all(text):
+		if result.get_string():
+			replacement = result.get_string("space") + "[url]" + result.get_string("url") + "[/url]"
+			output = regex_replace(result, output, replacement)
+	text = output
+
+	re.compile("\\[(?<link>[^\\]\\)]+)\\]\\((?<url>[^\\)]+)\\)")# [link](url)
+	for result in re.search_all(text):
+		if result.get_string():
+			replacement = "[url=" + result.get_string("url") + "]"
+			replacement += result.get_string("link") + "[/url]"
+			output = regex_replace(result, output, replacement)
+	text = output
+
+	re.compile("!\\[\\]\\(([^\\)]+)\\)")# ![](path/to/img)
+	for result in re.search_all(text):
+		if result.get_string():
+			replacement = "[img]" + result.get_string(1) + "[/img]"
+			output = regex_replace(result, output, replacement)
+	text = output
+
+	re.compile("\\*\\*([^\\*]*)\\*\\*")# **bold**
+	for result in re.search_all(text):
+		if result.get_string():
+			replacement = "[b]" + result.get_string(1) + "[/b]"
+			output = regex_replace(result, output, replacement)
+	text = output
+	
+	re.compile("\\*([^\\*]*)\\*")# *italic*
+	for result in re.search_all(text):
+		if result.get_string():
+			replacement = "[i]" + result.get_string(1) + "[/i]"
+			output = regex_replace(result, output, replacement)
+	text = output
+
+	re.compile("~~([^~~]*)~~")# ~~strikethrough~~
+	for result in re.search_all(text):
+		if result.get_string():
+			replacement = "[s]" + result.get_string(1) + "[/s]"
+			output = regex_replace(result, output, replacement)
+	text = output
+
+	re.compile("`([^`]*)`")# `code`
+	for result in re.search_all(text):
+		if result.get_string():
+			replacement = "[code]" + result.get_string(1) + "[/code]"
+			output = regex_replace(result, output, replacement)
+	text = output
+
+	return text
 
 func convert_renpy_markup(text:String):
 	var re = RegEx.new()
