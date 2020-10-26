@@ -2,9 +2,7 @@
 
 [ext_resource path="res://gui/InGame/NotifyDisplay/NotifyDisplay.gd" type="Script" id=1]
 
-
 [node name="NotifyDisplay" type="PopupPanel"]
-visible = true
 anchor_top = 0.1
 anchor_bottom = 0.1
 rect_min_size = Vector2( 100, 20 )
@@ -16,10 +14,10 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
-margin_left = 6.0
+margin_left = 4.0
 margin_top = 4.0
-margin_right = 183.0
-margin_bottom = 31.0
+margin_right = 107.0
+margin_bottom = 18.0
 size_flags_horizontal = 9
 size_flags_vertical = 3
 text = "Notification text"
@@ -28,4 +26,3 @@ __meta__ = {
 }
 
 [node name="Tween" type="Tween" parent="."]
-[connection signal="about_to_show" from="." to="." method="_about_to_show"]
