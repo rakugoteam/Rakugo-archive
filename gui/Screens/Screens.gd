@@ -17,7 +17,6 @@ func _on_nav_button_press(nav):
 		"start":
 			hide()
 			Rakugo.start()
-			Rakugo.emit_signal("begin")
 
 		"continue":
 			if !Rakugo.loadfile("auto"):

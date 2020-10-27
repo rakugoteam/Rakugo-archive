@@ -1,8 +1,7 @@
 extends Panel
 
-var stepping_blocked = false
-
 signal quit_confirm()
+
 
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
@@ -25,6 +24,7 @@ func _on_visibility_changed():#Using self connected signal to also handle extern
 func _on_popup_hide():
 	visible = false
 	_delayed_unblock_stepping()
+
 
 func _delayed_unblock_stepping():
 	yield(get_tree().create_timer(0.1), "timeout")#prevent the input that cancelled quitting to trigger the step

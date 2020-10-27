@@ -27,15 +27,12 @@ var viewport : Viewport
 
 var active := false
 
-var can_save := true
-
 var file := File.new()
 var loading_in_progress := false
 var started := false
 
 var auto_stepping := false
 var skipping := false
-var stepping_block = 0
 
 # timers use by rakugo
 onready var auto_timer := $AutoTimer
@@ -59,9 +56,6 @@ signal menu(choices, parameters)
 signal menu_return(result)
 #TODO clean those
 signal started()
-signal begin()#TODO Looks redundant with started, look into it
-signal story_step(dialogue_name, event_name)
-signal checkpoint()
 signal game_ended()
 #TODO assert the need of those
 signal hide_ui(value)
