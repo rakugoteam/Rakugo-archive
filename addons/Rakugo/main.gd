@@ -76,8 +76,9 @@ func _ready():
 	#define("rakugo_credits", file.get_as_text(), false)
 	#file.close()
 
-## Rakugo flow control
 
+
+## Rakugo flow control
 
 # it starts Rakugo
 func start(after_load := false):
@@ -90,30 +91,12 @@ func save_game(save_name := "quick"):
 	StoreManager.save_persistent_store()
 	debug(["save data to :", save_name])
 	return StoreManager.save_store_stack(save_name)
-
-
 func load_game(save_name := "quick"):
 	return StoreManager.load_store_stack(save_name)
 
 
 func rollback(amount=1):
 	self.StoreManager.change_current_stack_index(self.StoreManager.current_store_id + amount)
-
-
-func activate_skipping():
-	self.skipping = true
-	skip_timer.start()
-
-func deactivate_skipping():
-	self.skipping = false
-
-
-func activate_auto_stepping():
-	self.auto_stepping = true
-	auto_timer.start()
-
-func deactivate_auto_stepping():
-	self.auto_stepping = false
 
 
 func prepare_quitting():
@@ -125,12 +108,6 @@ func prepare_quitting():
 
 func load_scene(scene_id: String, force_reload:bool = false):
 	SceneLoader.load_scene(scene_id, force_reload)
-
-
-func clean_viewport():
-	if self.viewport != get_tree().get_root():
-		for c in self.viewport.get_children():
-			self.viewport.remove_child(c)
 
 
 func reset_game():#TODO rewrite that
@@ -147,10 +124,7 @@ func reset_game():#TODO rewrite that
 	started = false
 	emit_signal("game_ended")
 
-# use this to change/assign current scene and dialogue
-# id_of_current_scene is id to scene defined in scene_links or full path to scene
-func jump(scene_id: String, dialogue_name: String, event_name: String, force_reload:bool = false):
-	$Statements/Jump.invoke(scene_id, dialogue_name, event_name, force_reload)
+
 
 ## Dialogue flow control
 
@@ -169,30 +143,79 @@ func exit_dialogue():
 		self.current_dialogue.exit()
 
 
+func activate_skipping():
+	self.skipping = true
+	skip_timer.start()
+func deactivate_skipping():
+	self.skipping = false
 
-## Global history
 
-func can_qload():
-	return false
-	
+func activate_auto_stepping():
+	self.auto_stepping = true
+	auto_timer.start()
+func deactivate_auto_stepping():
+	self.auto_stepping = false
+
 
 
 ## Utils
 
-# parse text like in renpy to bbcode
+func clean_viewport():
+	if self.viewport != get_tree().get_root():
+		for c in self.viewport.get_children():
+			self.viewport.remove_child(c)
+
+
+# parse rich text markups to bbcode for RichTextLabel
 # defaults to project setting if null
 func parse_rich_text(text: String, markup = null):
 	return TextParser.parse(text, markup)
 
 
-# crate new character as global variable that Rakugo will see
-# possible parameters: name, color, prefix, suffix, avatar, stats
+# create new character, store it into current store ising its tag, then return it
 func define_character(character_name: String, character_tag: String) -> Character:
 	var new_character = Character.new().duplicate()
 	new_character.init(character_name, character_tag)
 	StoreManager.get_current_store()[character_tag] = new_character
 	return new_character
 
+
+func debug_dict(parameters: Dictionary, parameters_names := [], some_custom_text := "") -> String:
+	var dbg = ""
+
+	for k in parameters_names:
+		if k in parameters:
+			if not k in [null, ""]:
+				dbg += k + ":" + str(parameters[k]) + ", "
+
+	if parameters_names.size() > 0:
+		dbg.erase(dbg.length() - 2, 2)
+
+	return some_custom_text + dbg
+
+
+# for printing debugs is only print if debug_on == true
+# put some string array or string as argument
+func debug(some_text = []):
+	if not debug_on:
+		return
+
+	if not started:
+		return	
+
+	if typeof(some_text) == TYPE_ARRAY:
+		var new_text = ""
+
+		for i in some_text:
+			new_text += str(i) + " "
+
+		some_text = new_text
+
+	print(some_text)
+
+
+
+## Statements
 
 # statement of type say
 # its make given 'character' say 'text'
@@ -231,47 +254,21 @@ func notify(text:String, parameters:Dictionary):
 	emit_signal('notify', text, parameters)
 
 
-func debug_dict(parameters: Dictionary, parameters_names := [], some_custom_text := "") -> String:
-	var dbg = ""
-
-	for k in parameters_names:
-		if k in parameters:
-			if not k in [null, ""]:
-				dbg += k + ":" + str(parameters[k]) + ", "
-
-	if parameters_names.size() > 0:
-		dbg.erase(dbg.length() - 2, 2)
-
-	return some_custom_text + dbg
+# use this to change/assign current scene and dialogue
+# id_of_current_scene is id to scene defined in scene_links or full path to scene
+func jump(scene_id: String, dialogue_name: String, event_name: String, force_reload:bool = false):
+	$Statements/Jump.invoke(scene_id, dialogue_name, event_name, force_reload)
 
 
-# for printing debugs is only print if debug_on == true
-# put some string array or string as argument
-func debug(some_text = []):
-	if not debug_on:
-		return
 
-	if not started:
-		return	
-
-	if typeof(some_text) == TYPE_ARRAY:
-		var new_text = ""
-
-		for i in some_text:
-			new_text += str(i) + " "
-
-		some_text = new_text
-
-	print(some_text)
+## Wrapper getters setters
 
 func get_current_store():
 	return StoreManager.get_current_store()
-	
 func set_current_store(value):
 	return 
 
 func get_persistent_store():
 	return StoreManager.get_persistent_store()
-	
 func set_persistent_store(value):
 	return 
