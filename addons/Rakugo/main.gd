@@ -17,7 +17,6 @@ var current_scene_name := ""
 var current_scene_path := ""
 var current_scene_node: Node = null
 var current_dialogue:Node = null
-var current_statement: Statement = null
 
 var store = null setget set_current_store, get_current_store
 var persistent = null setget set_persistent_store, get_persistent_store 

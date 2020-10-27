@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://addons/Rakugo/emojis/EmojiPanel.gd" type="Script" id=1]
-[ext_resource path="res://addons/Rakugo/emojis/NotificationLabel.gd" type="Script" id=2]
-[ext_resource path="res://addons/Rakugo/emojis/MarkupOptionButton.gd" type="Script" id=3]
-[ext_resource path="res://addons/Rakugo/emojis/GridContainer.gd" type="Script" id=4]
+[ext_resource path="res://addons/Rakugo/tools/emojis_panel/MarkupOptionButton.gd" type="Script" id=1]
+[ext_resource path="res://addons/Rakugo/tools/emojis_panel/NotificationLabel.gd" type="Script" id=2]
+[ext_resource path="res://addons/Rakugo/tools/emojis_panel/GridContainer.gd" type="Script" id=3]
+[ext_resource path="res://addons/Rakugo/tools/emojis_panel/EmojiPanel.gd" type="Script" id=4]
 
 [node name="PopupDialog" type="WindowDialog"]
 margin_right = 288.0
@@ -23,7 +23,7 @@ margin_bottom = -9.0
 rect_min_size = Vector2( 100, 100 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource( 1 )
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -48,7 +48,7 @@ size_flags_horizontal = 3
 text = "none"
 items = [ "none", null, false, 0, null, "bbcode", null, false, 1, null, "renpy", null, false, 2, null, "markdown", null, false, 3, null ]
 selected = 0
-script = ExtResource( 3 )
+script = ExtResource( 1 )
 
 [node name="Filter" type="LineEdit" parent="Emoji"]
 margin_top = 24.0
@@ -80,7 +80,7 @@ margin_bottom = 7862.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 5
-script = ExtResource( 4 )
+script = ExtResource( 3 )
 
 [node name="HSeparator2" type="HSeparator" parent="Emoji"]
 margin_top = 477.0
