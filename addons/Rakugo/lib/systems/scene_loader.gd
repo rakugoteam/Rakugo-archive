@@ -30,7 +30,7 @@ func load_scene(scene_id, force_reload = false):
 		push_warning("A scene is already being loaded")
 	
 	elif not scene_id in scene_links:
-		push_error("Scene '"+scene_id+"' not found in linker")
+		push_error("Scene '%s' not found in linker" % scene_id)
 	
 	elif force_reload or self.current_scene != scene_id:
 		get_tree().paused = true
@@ -43,6 +43,27 @@ func load_scene(scene_id, force_reload = false):
 		return true
 	
 	return false
+
+
+func load_packed_scene(packed_scene_path):
+	if self.thread and self.thread.is_active():
+		push_warning("A scene is already being loaded")
+	elif not packed_scene_path in scene_links.values():
+		push_warning("Scene '%s' not found in linker" % packed_scene_path)
+
+	var scene_id = packed_scene_path
+	for k in scene_links.keys():
+		if self.scene_links[k] == packed_scene_path:
+			scene_id = k
+			break
+		
+	get_tree().paused = true
+	Rakugo.exit_dialogue()
+
+	self.thread = Thread.new()
+	self.thread.start( self, "_thread_load", packed_scene_path)
+
+	self.current_scene = scene_id
 
 
 func _thread_load(path):

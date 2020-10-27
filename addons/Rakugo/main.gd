@@ -7,8 +7,8 @@ const credits_path := "res://addons/Rakugo/credits.txt"
 onready var game_title : String = Settings.get("application/config/name")
 onready var game_version : String = Settings.get("rakugo/game/info/version")
 onready var game_credits : String = Settings.get("rakugo/game/info/credits")
-onready var markup : String = Settings.get("rakugo/game/text/markup")
-onready var debug_on : bool = Settings.get("rakugo/editor/debug")
+onready var markup : String = Settings.get("rakugo/game/text/markup")#TODO remove that line 
+onready var debug_on : bool = Settings.get("rakugo/editor/debug")#Same same
 onready var scene_links : String = Settings.get("rakugo/game/scenes/scene_links")
 onready var theme : RakugoTheme = load(Settings.get("rakugo/default/gui/theme"))
 
@@ -26,11 +26,8 @@ var viewport : Viewport
 
 
 var active := false
-
-var file := File.new()
 var loading_in_progress := false
 var started := false
-
 var auto_stepping := false
 var skipping := false
 
@@ -95,7 +92,7 @@ func load_game(save_name := "quick"):
 	return StoreManager.load_store_stack(save_name)
 
 
-func rollback(amount=1):
+func rollback(amount:int =1):
 	self.StoreManager.change_current_stack_index(self.StoreManager.current_store_id + amount)
 
 
@@ -106,21 +103,12 @@ func prepare_quitting():
 	Settings.save_property_list()
 
 
-func load_scene(scene_id: String, force_reload:bool = false):
+func load_scene(scene_id:String, force_reload:bool = false):
 	SceneLoader.load_scene(scene_id, force_reload)
 
 
-func reset_game():#TODO rewrite that
-	if current_scene_node != null:
-		if current_scene_node.get_parent():
-			current_scene_node.get_parent().remove_child(current_scene_node)
-		current_scene_node.queue_free()
-
-	var start_scene = Settings.get("application/run/main_scene")
-	var lscene = load(start_scene)
-	current_scene_node = lscene.instance()
-	exit_dialogue()
-	get_tree().get_root().add_child(current_scene_node)
+func reset_game():
+	SceneLoader.load_packed_scene(Settings.get("application/run/main_scene"))
 	started = false
 	emit_signal("game_ended")
 
