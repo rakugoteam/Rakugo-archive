@@ -1,6 +1,6 @@
 extends Node
 
-const rakugo_version := "2.1.06"
+const rakugo_version := "3.0.0"
 const credits_path := "res://addons/Rakugo/credits.txt"
 
 # project settings integration
