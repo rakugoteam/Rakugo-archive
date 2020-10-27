@@ -6,8 +6,6 @@ var skip_typing = false
 var delay = 0 
 var punc_delay = 0
 
-var blocking = false
-
 signal typing_effect_tick
 signal typing_effect_started
 signal typing_effect_ended
@@ -41,9 +39,7 @@ func start_typing_effect():
 	$TypingTimer.start(delay)
 	skip_typing = false
 	self.visible_characters = 1
-	if not blocking:
-		Rakugo.StepBlocker.block('typing_effect')
-	blocking = true
+	Rakugo.StepBlocker.set_block('typing_effect', 1)
 	emit_signal('typing_effect_started')
 
 
@@ -51,9 +47,7 @@ func end_typing_effect():
 	$TypingTimer.stop()
 	skip_typing = true
 	self.visible_characters = -1
-	if blocking:
-		Rakugo.StepBlocker.unblock('typing_effect')
-		blocking = false
+	Rakugo.StepBlocker.unblock('typing_effect')
 	emit_signal('typing_effect_ended')
 
 
