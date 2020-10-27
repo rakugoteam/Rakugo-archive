@@ -203,7 +203,7 @@ func story_step() -> void:
 # 
 
 func _get_dialogue_script_hash():
-	return load("res://addons/Rakugo/nodes/dialogue.gd").new()._get_script_hash()
+	return load("res://addons/Rakugo/lib/nodes/dialogue.gd").new()._get_script_hash()
 
 func _get_script_hash(object=self):
 	return object.get_script().source_code.hash()

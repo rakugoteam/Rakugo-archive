@@ -1,9 +1,9 @@
 [gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://addons/Rakugo/main.gd" type="Script" id=1]
-[ext_resource path="res://addons/Rakugo/lib/statement/say.gd" type="Script" id=2]
-[ext_resource path="res://addons/Rakugo/lib/statement/ask.gd" type="Script" id=3]
-[ext_resource path="res://addons/Rakugo/lib/statement/jump.gd" type="Script" id=4]
+[ext_resource path="res://addons/Rakugo/lib/statements/say.gd" type="Script" id=2]
+[ext_resource path="res://addons/Rakugo/lib/statements/ask.gd" type="Script" id=3]
+[ext_resource path="res://addons/Rakugo/lib/statements/jump.gd" type="Script" id=4]
 [ext_resource path="res://addons/Rakugo/lib/systems/showable_manager.gd" type="Script" id=5]
 [ext_resource path="res://addons/Rakugo/lib/systems/timers/skip_timer.gd" type="Script" id=6]
 [ext_resource path="res://addons/Rakugo/lib/utils/text_parser.gd" type="Script" id=7]
@@ -12,7 +12,8 @@
 [ext_resource path="res://addons/Rakugo/lib/systems/store_manager.gd" type="Script" id=10]
 [ext_resource path="res://addons/Rakugo/lib/systems/timers/auto_timer.gd" type="Script" id=11]
 [ext_resource path="res://addons/Rakugo/lib/systems/history.gd" type="Script" id=12]
-[ext_resource path="res://addons/Rakugo/lib/statement/menu.gd" type="Script" id=13]
+[ext_resource path="res://addons/Rakugo/lib/statements/menu.gd" type="Script" id=13]
+
 
 
 

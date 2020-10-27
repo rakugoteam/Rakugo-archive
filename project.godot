@@ -12,12 +12,12 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "Ask",
 "language": "GDScript",
-"path": "res://addons/Rakugo/lib/statement/ask.gd"
+"path": "res://addons/Rakugo/lib/statements/ask.gd"
 }, {
 "base": "Resource",
 "class": "Character",
 "language": "GDScript",
-"path": "res://addons/Rakugo/lib/objects/resources/character.gd"
+"path": "res://addons/Rakugo/lib/resources/character.gd"
 }, {
 "base": "BoxContainer",
 "class": "CollapsedList",
@@ -37,12 +37,12 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "HistoryEntry",
 "language": "GDScript",
-"path": "res://addons/Rakugo/lib/objects/resources/history_entry.gd"
+"path": "res://addons/Rakugo/lib/resources/history_entry.gd"
 }, {
 "base": "Node",
 "class": "Menu",
 "language": "GDScript",
-"path": "res://addons/Rakugo/lib/statement/menu.gd"
+"path": "res://addons/Rakugo/lib/statements/menu.gd"
 }, {
 "base": "Reference",
 "class": "ProjectTools",
@@ -67,17 +67,17 @@ _global_script_classes=[ {
 "base": "Theme",
 "class": "RakugoTheme",
 "language": "GDScript",
-"path": "res://addons/Rakugo/lib/objects/resources/rakugo_theme.gd"
+"path": "res://addons/Rakugo/lib/resources/rakugo_theme.gd"
 }, {
 "base": "Node",
 "class": "Say",
 "language": "GDScript",
-"path": "res://addons/Rakugo/lib/statement/say.gd"
+"path": "res://addons/Rakugo/lib/statements/say.gd"
 }, {
 "base": "Resource",
 "class": "SceneLinks",
 "language": "GDScript",
-"path": "res://addons/Rakugo/lib/objects/resources/scene_links.gd"
+"path": "res://addons/Rakugo/lib/resources/scene_links.gd"
 }, {
 "base": "Object",
 "class": "SettingsList",
@@ -87,12 +87,12 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "Store",
 "language": "GDScript",
-"path": "res://addons/Rakugo/lib/objects/resources/store.gd"
+"path": "res://addons/Rakugo/lib/resources/store.gd"
 }, {
 "base": "Resource",
 "class": "StoreStack",
 "language": "GDScript",
-"path": "res://addons/Rakugo/lib/objects/resources/store_stack.gd"
+"path": "res://addons/Rakugo/lib/resources/store_stack.gd"
 } ]
 _global_script_class_icons={
 "Ask": "",
@@ -128,7 +128,7 @@ config/quit_on_go_back=false
 [autoload]
 
 Rakugo="*res://addons/Rakugo/Rakugo.tscn"
-Settings="*res://addons/Rakugo/settings.gd"
+Settings="*res://addons/Rakugo/Settings.gd"
 Window="*res://gui/Window/Window.tscn"
 
 [debug]

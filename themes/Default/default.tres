@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=41 format=2]
 
 [ext_resource path="res://fonts/DejaVu/DejaVuSans-Oblique.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://addons/Rakugo/lib/objects/resources/rakugo_theme.gd" type="Script" id=2]
+[ext_resource path="res://addons/Rakugo/lib/resources/rakugo_theme.gd" type="Script" id=2]
 [ext_resource path="res://fonts/DejaVu/DejaVuSans-BoldOblique.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://fonts/DejaVu/DejaVuSans-Bold.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://fonts/DejaVu/DejaVuSansMono.ttf" type="DynamicFontData" id=5]
