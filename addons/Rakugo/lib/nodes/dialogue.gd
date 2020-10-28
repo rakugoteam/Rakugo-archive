@@ -128,6 +128,8 @@ func start_event(event_name):
 		event_stack.push_front([event_name, 0, INF, self.condition_stack])
 	else:
 		event_stack.push_front([event_name, 0, self.target, self.condition_stack])#Should be "get_stack()[1]['function']" instead of passing event_name, if get_stack() worked
+	if is_active():
+		Rakugo.History.log_event(self.name ,event_name)
 	var_access.unlock()
 
 func cond(condition):
