@@ -161,9 +161,12 @@ func parse_rich_text(text: String, markup = null):
 
 
 # create new character, store it into current store ising its tag, then return it
-func define_character(character_name: String, character_tag: String) -> Character:
+func define_character(character_name:String, character_tag:String, color=null) -> Character:
 	var new_character = Character.new().duplicate()
-	new_character.init(character_name, character_tag)
+	if color:
+		new_character.init(character_name, character_tag, color)
+	else:
+		new_character.init(character_name, character_tag)
 	StoreManager.get_current_store()[character_tag] = new_character
 	return new_character
 
