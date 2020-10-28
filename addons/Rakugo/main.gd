@@ -78,13 +78,13 @@ func _ready():
 ## Rakugo flow control
 
 # it starts Rakugo
-func start(after_load := false):
+func start(after_load:bool = false):
 	started = true
 	if not after_load:
 		emit_signal("started")
 
 
-func save_game(save_name := "quick"):
+func save_game(save_name:String = "quick"):
 	StoreManager.save_persistent_store()
 	debug(["save data to :", save_name])
 	return StoreManager.save_store_stack(save_name)
@@ -92,7 +92,7 @@ func load_game(save_name := "quick"):
 	return StoreManager.load_store_stack(save_name)
 
 
-func rollback(amount:int =1):
+func rollback(amount:int = 1):
 	self.StoreManager.change_current_stack_index(self.StoreManager.current_store_id + amount)
 
 
@@ -156,7 +156,7 @@ func clean_viewport():
 
 # parse rich text markups to bbcode for RichTextLabel
 # defaults to project setting if null
-func parse_rich_text(text: String, markup = null):
+func parse_rich_text(text:String, markup = null):
 	return TextParser.parse(text, markup)
 
 
@@ -171,7 +171,7 @@ func define_character(character_name:String, character_tag:String, color=null) -
 	return new_character
 
 
-func debug_dict(parameters: Dictionary, parameters_names := [], some_custom_text := "") -> String:
+func debug_dict(parameters:Dictionary, parameters_names:Array = [], some_custom_text:String = "") -> String:
 	var dbg = ""
 
 	for k in parameters_names:
@@ -212,20 +212,20 @@ func debug(some_text = []):
 # its make given 'character' say 'text'
 # 'parameters' keywords:typing, type_speed, avatar, avatar_state, add
 # speed is time to show next letter
-func say(character, text:String, parameters: Dictionary):
+func say(character, text:String, parameters:Dictionary):
 	Say.exec(character, text, parameters)
 
 
 # statement of type ask
 # with keywords: placeholder
-func ask(default_answer:String, parameters: Dictionary):
+func ask(default_answer:String, parameters:Dictionary):
 	Ask.exec(default_answer, parameters)
 func ask_return(result:String):
 	Ask.return(result)
 
 
 # statement of type menu
-func menu(choices:Array, parameters: Dictionary):
+func menu(choices:Array, parameters:Dictionary):
 	Menu.exec(choices, parameters)
 func menu_return(result):
 	Menu.return(result)
@@ -237,7 +237,7 @@ func show(showable_tag:String, parameters := {}):
 
 
 # statement of type hide
-func hide(showable_tag: String):
+func hide(showable_tag:String):
 	ShowableManager.hide(showable_tag)
 
 
@@ -247,7 +247,7 @@ func notify(text:String, parameters:Dictionary):
 
 # use this to change/assign current scene and dialogue
 # id_of_current_scene is id to scene defined in scene_links or full path to scene
-func jump(scene_id: String, dialogue_name: String, event_name: String, force_reload:bool = false):
+func jump(scene_id:String, dialogue_name:String, event_name:String, force_reload:bool = false):
 	$Statements/Jump.invoke(scene_id, dialogue_name, event_name, force_reload)
 
 
