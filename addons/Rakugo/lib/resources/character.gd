@@ -20,6 +20,7 @@ func init(_name:String, _tag:String, _color="ffffff"):
 	name = _name
 	tag = _tag
 	color = _color
+	return self
 
 
 func _get(property):
