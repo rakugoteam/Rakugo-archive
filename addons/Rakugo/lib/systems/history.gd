@@ -41,9 +41,12 @@ func _restore(store):
 		event_played = store.get("event_played").duplicate()
 
 
-func is_event_played(dialogue_name:String, event_name:String):
-	var event_hash = hash_event(dialogue_name, event_name)
-	return event_hash in event_played
+func is_event_played(event_name:String, dialogue_name:String=""):
+	if dialogue_name:
+		var event_hash = hash_event(dialogue_name, event_name)
+		return event_hash in event_played
+	else:
+		return event_name.hash() in event_played
 
 
 func log_event(dialogue_name:String, event_name:String):
@@ -52,6 +55,12 @@ func log_event(dialogue_name:String, event_name:String):
 		event_played[event_hash] += 1# Counting because why not ?
 	else: 
 		event_played[event_hash] = 1
+	
+	var only_event_hash = event_name.hash()
+	if only_event_hash in event_played:
+		event_played[only_event_hash] += 1
+	else: 
+		event_played[only_event_hash] = 1
 
 
 func hash_event(dialogue_name:String, event_name:String):
