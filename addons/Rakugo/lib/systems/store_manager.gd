@@ -16,7 +16,7 @@ func init():
 func init_save_folder():
 	save_folder_path = Settings.get("rakugo/saves/save_folder")
 	if not Settings.get("rakugo/saves/test_mode"):
-		save_folder_path.replace("res://", "user://")
+		save_folder_path = save_folder_path.replace("res://", "user://")
 	Directory.new().make_dir_recursive(save_folder_path)
 	save_folder_path = save_folder_path.trim_suffix("/") + "/"
 
