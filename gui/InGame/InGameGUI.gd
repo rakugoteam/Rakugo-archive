@@ -43,5 +43,10 @@ func _on_quick_button_press(quick_action):
 		"hide":
 			hide_toggle = true
 			hide()
+		"skip":
+			if Rakugo.skipping:
+				Rakugo.deactivate_skipping()
+			else:
+				Rakugo.activate_skipping()
 		_:
 			Window.Screens._on_nav_button_press(quick_action)
