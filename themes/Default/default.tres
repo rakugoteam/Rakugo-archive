@@ -113,7 +113,7 @@ outline_color = Color( 0, 0, 0, 0 )
 use_filter = true
 font_data = ExtResource( 6 )
 
-[sub_resource type="StyleBoxEmpty" id=29]
+[sub_resource type="StyleBoxEmpty" id=35]
 
 [sub_resource type="StyleBoxLine" id=30]
 color = Color( 0.6, 0.8, 1, 1 )
@@ -222,7 +222,7 @@ RichTextLabel/fonts/mono_font = SubResource( 27 )
 RichTextLabel/fonts/normal_font = SubResource( 28 )
 RichTextLabel/styles/focus = null
 RichTextLabel/styles/normal = null
-TabContainer/styles/panel = SubResource( 29 )
+TabContainer/styles/panel = SubResource( 35 )
 VScrollBar/icons/decrement = null
 VScrollBar/icons/decrement_highlight = null
 VScrollBar/icons/increment = null

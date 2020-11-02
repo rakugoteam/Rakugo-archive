@@ -19,6 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 1280.0
 margin_bottom = 720.0
+theme = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -42,19 +43,27 @@ audio_listener_enable_2d = true
 audio_listener_enable_3d = true
 script = ExtResource( 3 )
 
-[node name="InGameGUI" parent="Panel" instance=ExtResource( 2 )]
+[node name="TabContainer" type="TabContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+tabs_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Screens" parent="Panel/TabContainer" instance=ExtResource( 4 )]
+
+[node name="InGameGUI" parent="Panel/TabContainer" instance=ExtResource( 2 )]
 visible = false
 
-[node name="Screens" parent="Panel" instance=ExtResource( 4 )]
-
-[node name="Loading" type="Control" parent="Panel"]
+[node name="Loading" type="Control" parent="Panel/TabContainer"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 6 )
 script = ExtResource( 7 )
 
-[node name="Panel" type="Panel" parent="Panel/Loading"]
+[node name="Panel" type="Panel" parent="Panel/TabContainer/Loading"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 1024, 600 )
@@ -62,7 +71,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Loading/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/TabContainer/Loading/Panel"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -76,7 +85,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Panel/Loading/Panel/VBoxContainer"]
+[node name="Label" type="Label" parent="Panel/TabContainer/Loading/Panel/VBoxContainer"]
 margin_right = 511.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
@@ -84,7 +93,7 @@ size_flags_vertical = 3
 text = "Loading"
 align = 1
 
-[node name="LoadingProgressBar" type="ProgressBar" parent="Panel/Loading/Panel/VBoxContainer"]
+[node name="LoadingProgressBar" type="ProgressBar" parent="Panel/TabContainer/Loading/Panel/VBoxContainer"]
 margin_top = 37.0
 margin_right = 511.0
 margin_bottom = 64.0

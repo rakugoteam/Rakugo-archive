@@ -97,7 +97,6 @@ visible = false
 [connection signal="show_main_menu_confirm" from="." to="MainMenuReturnConfirmPanel/MainMenuReturnConfirm" method="_on_show_main_menu_confirm"]
 [connection signal="show_main_menu_confirm" from="." to="MainMenuReturnConfirmPanel" method="_on_show_main_menu_confirm"]
 [connection signal="show_menu" from="." to="MenuBar" method="_show_menu"]
-[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="mode_changed" from="SubMenus/SavesSlotScreen" to="." method="_on_SavesSlotScreen_mode_changed"]
 [connection signal="nav_button_press" from="MenuBar" to="." method="_on_nav_button_press"]
 [connection signal="confirmed" from="MainMenuReturnConfirmPanel/MainMenuReturnConfirm" to="MainMenuReturnConfirmPanel/MainMenuReturnConfirm" method="_on_confirmed"]

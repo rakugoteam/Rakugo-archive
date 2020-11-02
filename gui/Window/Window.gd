@@ -1,9 +1,9 @@
 extends Node2D
 
 onready var viewport := $Panel/ViewportContainer/Viewport
-onready var Screens := $Panel/Screens
-onready var InGameGUI := $Panel/InGameGUI
-onready var Loading := $Panel/Loading
+onready var Screens := $Panel/TabContainer/Screens
+onready var InGameGUI := $Panel/TabContainer/InGameGUI
+onready var Loading := $Panel/TabContainer/Loading
 
 func _ready():
 	Rakugo.current_scene_node = self
@@ -41,3 +41,9 @@ func _on_window_resized():
 	if not OS.window_fullscreen and not OS.window_maximized:
 		Settings.set("display/window/size/width", OS.window_size.x)
 		Settings.set("display/window/size/height", OS.window_size.y)
+
+func select_ui_tab(tab:int):
+	$Panel/TabContainer.current_tab = tab
+
+func get_current_ui():
+	return $Panel/TabContainer.get_current_tab_control()

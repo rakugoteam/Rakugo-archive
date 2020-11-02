@@ -15,13 +15,14 @@ func _ready():
 func _on_nav_button_press(nav):
 	match nav:
 		"start":
-			hide()
+			Window.select_ui_tab(1)
 			Rakugo.start()
 
 		"continue":
 			if !Rakugo.loadfile("auto"):
 				return
-			hide()
+			else:
+				Window.select_ui_tab(1)
 
 		"save":
 			save_menu(get_screenshot())
@@ -43,10 +44,9 @@ func _on_nav_button_press(nav):
 
 		"return":
 			if Rakugo.started:
-				hide()
-				return
-
-			show_page(nav)
+				Window.select_ui_tab(1)
+			else:
+				show_page(nav)
 
 		"quit":
 			$QuitScreen.visible = true
@@ -66,7 +66,8 @@ const page_action_index:Dictionary = {
 func show_page(action):
 	emit_signal("show_menu", action, Rakugo.started)
 	$SubMenus.current_tab = page_action_index[action]
-	show()
+	Window.select_ui_tab(0)
+
 
 func save_menu(screenshot):
 	$SubMenus/SavesSlotScreen.save_mode = true
@@ -78,15 +79,9 @@ func load_menu():
 	$SubMenus/SavesSlotScreen.save_mode = false
 	show_page("load")
 
-func _on_visibility_changed():
-	if visible:
-		Window.InGameGUI.hide()
-	else:
-		Window.InGameGUI.show()
-
 
 func _on_game_end():
-	show()
+	Window.select_ui_tab(0)
 
 func get_screenshot():
 	var screenshot:Image = Window.viewport.get_texture().get_data()
@@ -109,26 +104,13 @@ func _screenshot_on_input(event):
 
 
 func _input(event):
-	if Engine.editor_hint:
-		return
-
-	if event.is_action_pressed("ui_cancel"):
-		if visible:
+	if visible:
+		if event.is_action_pressed("ui_cancel"):
 			_on_nav_button_press("return")
-
-		return
-
-	if not get_focus_owner():
-		_screenshot_on_input(event)
-
-
-func _on_load_file():
-	hide()
 
 
 func _on_SavesSlotScreen_mode_changed(save_mode):
 	if save_mode:
 		emit_signal("show_menu", "save", Rakugo.started)
-		return
-
-	emit_signal("show_menu", "load", Rakugo.started)
+	else:
+		emit_signal("show_menu", "load", Rakugo.started)
