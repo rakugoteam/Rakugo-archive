@@ -3,19 +3,23 @@
 [ext_resource path="res://gui/QuickMenu/QuickMenu.gd" type="Script" id=1]
 [ext_resource path="res://gui/QuickMenu/QuickMenuButton.tscn" type="PackedScene" id=4]
 
-[node name="QuickMenu" type="Control"]
-anchor_top = 0.8
+[node name="QuickMenu" type="MarginContainer"]
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_vertical = 0
+mouse_filter = 1
+custom_constants/margin_right = 200
+custom_constants/margin_left = 200
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ButtonList" type="HBoxContainer" parent="."]
-anchor_left = 0.3
-anchor_right = 0.7
-anchor_bottom = 1.0
+margin_left = 200.0
+margin_right = 1080.0
+margin_bottom = 40.0
 grow_horizontal = 2
 rect_min_size = Vector2( 0, 40 )
 size_flags_horizontal = 3
@@ -27,8 +31,8 @@ __meta__ = {
 }
 
 [node name="Hide" parent="ButtonList" instance=ExtResource( 4 )]
-margin_right = 125.0
-margin_bottom = 144.0
+margin_right = 217.0
+margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 toggle_mode = true
@@ -56,27 +60,27 @@ text = "Back"
 quick_action = "back"
 
 [node name="Save" parent="ButtonList" instance=ExtResource( 4 )]
-margin_left = 129.0
-margin_right = 254.0
-margin_bottom = 144.0
+margin_left = 221.0
+margin_right = 438.0
+margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Save"
 quick_action = "save"
 
 [node name="Load" parent="ButtonList" instance=ExtResource( 4 )]
-margin_left = 258.0
-margin_right = 383.0
-margin_bottom = 144.0
+margin_left = 442.0
+margin_right = 659.0
+margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Load"
 quick_action = "load"
 
 [node name="Skip" parent="ButtonList" instance=ExtResource( 4 )]
-margin_left = 387.0
-margin_right = 512.0
-margin_bottom = 144.0
+margin_left = 663.0
+margin_right = 880.0
+margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 toggle_mode = true
