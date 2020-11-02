@@ -4,6 +4,7 @@ onready var viewport := $Panel/ViewportContainer/Viewport
 onready var Screens := $Panel/TabContainer/Screens
 onready var InGameGUI := $Panel/TabContainer/InGameGUI
 onready var Loading := $Panel/TabContainer/Loading
+onready var QuitScreen := $Panel/QuitScreen
 
 func _ready():
 	Rakugo.current_scene_node = self

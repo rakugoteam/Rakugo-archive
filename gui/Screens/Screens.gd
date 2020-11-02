@@ -49,7 +49,7 @@ func _on_nav_button_press(nav):
 				show_page(nav)
 
 		"quit":
-			$QuitScreen.visible = true
+			Window.QuitScreen.show()
 
 
 const page_action_index:Dictionary = {

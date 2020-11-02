@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://themes/Default/default.tres" type="Theme" id=1]
 [ext_resource path="res://gui/Screens/Screens.gd" type="Script" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://gui/Screens/AboutScreen/AboutScreen.tscn" type="PackedScene" id=5]
 [ext_resource path="res://gui/Screens/MainMenuReturnConfirmPanel.gd" type="Script" id=6]
 [ext_resource path="res://gui/Screens/SavesScreen/SavesScreen.tscn" type="PackedScene" id=7]
-[ext_resource path="res://gui/QuitScreen/QuitScreen.tscn" type="PackedScene" id=8]
 [ext_resource path="res://gui/Screens/HistoryScreen/HistoryScreen.tscn" type="PackedScene" id=9]
 [ext_resource path="res://gui/Screens/PreferencesScreen/PreferencesScreen.tscn" type="PackedScene" id=12]
 [ext_resource path="res://gui/Screens/MenuBar/MenuBar.tscn" type="PackedScene" id=16]
@@ -91,9 +90,6 @@ script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="QuitScreen" parent="." instance=ExtResource( 8 )]
-visible = false
 [connection signal="show_main_menu_confirm" from="." to="MainMenuReturnConfirmPanel/MainMenuReturnConfirm" method="_on_show_main_menu_confirm"]
 [connection signal="show_main_menu_confirm" from="." to="MainMenuReturnConfirmPanel" method="_on_show_main_menu_confirm"]
 [connection signal="show_menu" from="." to="MenuBar" method="_show_menu"]

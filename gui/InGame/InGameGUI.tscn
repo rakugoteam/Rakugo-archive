@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://themes/Default/default.tres" type="Theme" id=1]
 [ext_resource path="res://gui/InGame/ChoiceMenu/ChoiceMenu.tscn" type="PackedScene" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://gui/InGame/NotifyDisplay/NotifyDisplay.tscn" type="PackedScene" id=4]
 [ext_resource path="res://gui/InGame/DialoguePanel/DialoguePanel.tscn" type="PackedScene" id=5]
 [ext_resource path="res://gui/QuickMenu/QuickMenu.tscn" type="PackedScene" id=6]
-[ext_resource path="res://gui/QuitScreen/QuitScreen.tscn" type="PackedScene" id=8]
 
 [node name="InGameGUI" type="Control"]
 pause_mode = 1
@@ -30,7 +29,4 @@ anchor_bottom = 0.7
 [node name="QuickMenu" parent="." instance=ExtResource( 6 )]
 
 [node name="NotifyDisplay" parent="." instance=ExtResource( 4 )]
-
-[node name="QuitScreen" parent="." instance=ExtResource( 8 )]
-visible = false
 [connection signal="quick_button_press" from="QuickMenu" to="." method="_on_quick_button_press"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://gui/Window/Window.gd" type="Script" id=1]
 [ext_resource path="res://gui/InGame/InGameGUI.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://themes/Default/default.tres" type="Theme" id=6]
 [ext_resource path="res://gui/Window/Loading.gd" type="Script" id=7]
 [ext_resource path="res://gui/Window/LoadingProgressBar.gd" type="Script" id=8]
+[ext_resource path="res://gui/QuitScreen/QuitScreen.tscn" type="PackedScene" id=9]
 
 [node name="Window" type="Node2D"]
 pause_mode = 2
@@ -98,3 +99,6 @@ margin_top = 37.0
 margin_right = 511.0
 margin_bottom = 64.0
 script = ExtResource( 8 )
+
+[node name="QuitScreen" parent="Panel" instance=ExtResource( 9 )]
+visible = false
