@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var viewport := $Panel/ViewportContainer/Viewport
+onready var SceneAnchor := $Panel/SceneAnchor
 onready var Screens := $Panel/TabContainer/Screens
 onready var InGameGUI := $Panel/TabContainer/InGameGUI
 onready var Loading := $Panel/TabContainer/Loading

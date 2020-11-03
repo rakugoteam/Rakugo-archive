@@ -22,7 +22,7 @@ var store = null setget set_current_store, get_current_store
 var persistent = null setget set_persistent_store, get_persistent_store 
 
 # don't save this
-var viewport : Viewport
+var scene_anchor:Node
 
 
 var active := false
@@ -63,7 +63,7 @@ signal play_audio(node_id, from_pos)
 signal stop_audio(node_id)
 
 func _ready():
-	self.viewport = get_tree().get_root()
+	self.scene_anchor = get_tree().get_root()
 	StoreManager.init()
 	History.init()
 
@@ -148,10 +148,10 @@ func deactivate_auto_stepping():
 
 ## Utils
 
-func clean_viewport():
-	if self.viewport != get_tree().get_root():
-		for c in self.viewport.get_children():
-			self.viewport.remove_child(c)
+func clean_scene_anchor():
+	if self.scene_anchor != get_tree().get_root():
+		for c in self.scene_anchor.get_children():
+			self.scene_anchor.remove_child(c)
 
 
 # parse rich text markups to bbcode for RichTextLabel

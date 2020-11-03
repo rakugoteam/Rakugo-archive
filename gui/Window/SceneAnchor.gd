@@ -1,10 +1,9 @@
-extends Viewport
+extends Control
 
-signal attach
 
 func _ready():
 	setup()
-	Rakugo.viewport = self
+	Rakugo.scene_anchor = self
 
 
 func setup(scene = get_tree().current_scene):

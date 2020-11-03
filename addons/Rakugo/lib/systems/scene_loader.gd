@@ -96,9 +96,9 @@ func _thread_done(resource):
 	Rakugo.ShowableManager.declare_showables(new_scene)
 
 	# Free current scene
-	Rakugo.clean_viewport()
+	Rakugo.clean_scene_anchor()
 
-	Rakugo.viewport.add_child(new_scene)
+	Rakugo.scene_anchor.add_child(new_scene)
 	get_tree().current_scene = new_scene
 	
 	get_tree().paused = false
