@@ -9,11 +9,6 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node",
-"class": "Ask",
-"language": "GDScript",
-"path": "res://addons/Rakugo/lib/statements/ask.gd"
-}, {
 "base": "Resource",
 "class": "Character",
 "language": "GDScript",
@@ -38,11 +33,6 @@ _global_script_classes=[ {
 "class": "HistoryEntry",
 "language": "GDScript",
 "path": "res://addons/Rakugo/lib/resources/history_entry.gd"
-}, {
-"base": "Node",
-"class": "Menu",
-"language": "GDScript",
-"path": "res://addons/Rakugo/lib/statements/menu.gd"
 }, {
 "base": "Reference",
 "class": "ProjectTools",
@@ -69,11 +59,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Rakugo/lib/resources/rakugo_theme.gd"
 }, {
-"base": "Node",
-"class": "Say",
-"language": "GDScript",
-"path": "res://addons/Rakugo/lib/statements/say.gd"
-}, {
 "base": "Resource",
 "class": "SceneLinks",
 "language": "GDScript",
@@ -95,19 +80,16 @@ _global_script_classes=[ {
 "path": "res://addons/Rakugo/lib/resources/store_stack.gd"
 } ]
 _global_script_class_icons={
-"Ask": "",
 "Character": "",
 "CollapsedList": "",
 "Dialogue": "res://addons/Rakugo/icons/dialogue.svg",
 "Emojis": "",
 "HistoryEntry": "",
-"Menu": "",
 "ProjectTools": "",
 "PropertyInfo": "",
 "RakugoAnimPlayer": "",
 "RakugoText": "",
 "RakugoTheme": "res://addons/Rakugo/icons/theme.svg",
-"Say": "",
 "SceneLinks": "res://addons/Rakugo/icons/scene_links.svg",
 "SettingsList": "",
 "Store": "res://addons/Rakugo/icons/save.svg",

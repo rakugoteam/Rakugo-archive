@@ -1,5 +1,4 @@
 extends Node
-class_name Say
 
 var default_parameters = {}
 var default_narrator = null

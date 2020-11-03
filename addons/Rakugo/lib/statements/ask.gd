@@ -1,5 +1,4 @@
 extends Node
-class_name Ask
 
 var default_parameters = {}
 

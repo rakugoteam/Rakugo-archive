@@ -1,5 +1,4 @@
 extends Node
-class_name Menu
 
 var default_parameters = {}
 
