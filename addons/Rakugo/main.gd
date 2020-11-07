@@ -16,7 +16,7 @@ onready var theme : RakugoTheme = load(Settings.get("rakugo/default/gui/theme"))
 var current_scene_name := ""
 var current_scene_path := ""
 var current_scene_node: Node = null
-var current_dialogue:Node = null
+var current_dialogue:Node = null setget set_current_dialogue
 
 var store = null setget set_current_store, get_current_store
 var persistent = null setget set_persistent_store, get_persistent_store 
@@ -130,6 +130,9 @@ func exit_dialogue():
 	if self.current_dialogue:
 		self.current_dialogue.exit()
 
+func set_current_dialogue(new_dialogue:Dialogue):
+	exit_dialogue()
+	current_dialogue = new_dialogue
 
 func activate_skipping():
 	self.skipping = true
