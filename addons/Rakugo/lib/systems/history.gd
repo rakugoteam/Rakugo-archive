@@ -17,8 +17,11 @@ func _on_say(character, text, parameters):
 	if not last_say_hash in global_history:
 		step_has_unseen = true
 	if log_step:
-		var entry = HistoryEntry.new().duplicate()
-		entry.init(character, text, parameters)
+		var entry = HistoryEntry.new()
+		var tag = ""
+		if character:
+			tag = character.tag
+		entry.init(tag, text, parameters)
 		Rakugo.store.history.push_front(entry)
 		global_history[last_say_hash] = true #Using Dictionary as a python Set to benefit from the lookup table
 

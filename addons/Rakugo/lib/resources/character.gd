@@ -14,6 +14,10 @@ export var show_parameters:Dictionary = {}
 export var say_parameters:Dictionary = {}
 export var variables:Dictionary = {}
 
+func _init():
+	show_parameters = {}
+	say_parameters = {}
+	variables = {}
 
 
 func init(_name:String, _tag:String, _color="ffffff"):
@@ -41,10 +45,7 @@ func _set(property, value):
 
 func duplicate(_deep:bool=true) -> Resource:##Store duplication should always be deep
 	var output = .duplicate(true)
-	for p in self.get_property_list():
-		if p.type == TYPE_DICTIONARY or p.type == TYPE_ARRAY:
-			var a = output.get(p.name)
-			output.set(p.name, a.duplicate(true))
+	output.script = self.script
 	return output
 
 

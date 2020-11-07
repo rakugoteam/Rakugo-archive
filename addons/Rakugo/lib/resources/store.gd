@@ -1,11 +1,14 @@
 extends Resource
 class_name Store, "res://addons/Rakugo/icons/save.svg"
 
-export var game_version := ""
-export var rakugo_version := ""
-export var properties := {}
-var property_signals := []
+export var game_version:String = ""
+export var rakugo_version:String = ""
+export var properties:Dictionary = {}
+var property_signals:Array = []
 
+func _init():
+	properties = {}
+	property_signals = []
 
 func _get(property):
 	if property in self.get_property_list():
@@ -51,8 +54,15 @@ func replace_connections(new_store):
 
 func duplicate(_deep:bool=true) -> Resource:##Store duplication should always be deep
 	var output = .duplicate(true)
-	for p in self.get_property_list():
-		if p.type == TYPE_DICTIONARY or p.type == TYPE_ARRAY:
-			var a = output.get(p.name)
-			output.set(p.name, a.duplicate(true))
+	output.script = self.script
+	for k in self.properties.keys():
+		if _to_duplicate(self.properties[k]):
+			print("duplicating %s" % k)
+			output.properties[k] = self.properties[k].duplicate(true)
+	return output
+
+
+func _to_duplicate(v):
+	var output = false
+	output = output or v is Object and v.has_method('duplicate')
 	return output

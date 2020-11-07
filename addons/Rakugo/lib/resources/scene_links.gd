@@ -2,9 +2,14 @@ tool
 extends Resource
 class_name SceneLinks, "res://addons/Rakugo/icons/scene_links.svg"
 
-export (Array, String) var ids := []
-export (Array, PackedScene) var scenes := []
-export var _dict := {}
+export (Array, String) var ids:Array = []
+export (Array, PackedScene) var scenes:Array = []
+export var _dict:Dictionary = {}
+
+func _init():
+	ids = []
+	scenes = []
+	_dict = {}
 
 func add(id:String, scene) -> void:
 	if scene is String:

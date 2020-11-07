@@ -4,7 +4,7 @@ var default_parameters = {}
 var default_narrator = null
 
 func _ready():
-	default_narrator = Character.new().duplicate()
+	default_narrator = Character.new()
 	default_narrator.init(Settings.get("rakugo/default/narrator/name"), "", Settings.get("rakugo/default/narrator/color"))
 	default_parameters = Settings.get("rakugo/default/statements/default_say_parameters", {}, false)
 

@@ -86,7 +86,7 @@ func change_current_stack_index(index):
 ### Store Stack
 
 func init_store_stack():
-	var new_save := Store.new().duplicate()
+	var new_save := Store.new()
 	new_save.game_version = Rakugo.game_version
 	new_save.rakugo_version = Rakugo.rakugo_version
 	new_save.scene = Rakugo.current_scene_name
@@ -177,7 +177,7 @@ func init_persistent_store():
 	if file.file_exists(persistent_path):
 		persistent_store = load(persistent_path)
 	else:
-		persistent_store = Store.new().duplicate()
+		persistent_store = Store.new()
 	persistent_store.game_version = Rakugo.game_version
 	persistent_store.rakugo_version = Rakugo.rakugo_version
 
