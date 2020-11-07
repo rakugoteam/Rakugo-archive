@@ -38,6 +38,7 @@ func _on_choose() -> void:
 
 func _set_scene(value:String) -> void:
 	$SceneEdit.text = value
+	emit_signal("changed")
 
 
 func _get_scene() -> String:
@@ -62,7 +63,6 @@ func _on_browse() -> void:
 
 func _on_tscn_dialog() -> void:
 	_set_scene(tscn_dialog.current_path)
-	
 
 
 func _on_remove() -> void:
