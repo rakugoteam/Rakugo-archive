@@ -84,7 +84,7 @@ func _on_game_end():
 	Window.select_ui_tab(0)
 
 func get_screenshot():
-	var screenshot:Image = Window.viewport.get_texture().get_data()
+	var screenshot:Image = get_tree().get_root().get_texture().get_data()
 	screenshot.flip_y()
 	return screenshot
 
