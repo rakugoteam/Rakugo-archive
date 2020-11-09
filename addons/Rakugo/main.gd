@@ -131,8 +131,9 @@ func exit_dialogue():
 		self.current_dialogue.exit()
 
 func set_current_dialogue(new_dialogue:Dialogue):
-	exit_dialogue()
-	current_dialogue = new_dialogue
+	if current_dialogue != new_dialogue:
+		exit_dialogue()
+		current_dialogue = new_dialogue
 
 func activate_skipping():
 	self.skipping = true
