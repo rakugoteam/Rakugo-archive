@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=41 format=2]
 
 [ext_resource path="res://fonts/DejaVu/DejaVuSans-Oblique.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://addons/Rakugo/objects/resources/rakugo_theme.gd" type="Script" id=2]
+[ext_resource path="res://addons/Rakugo/lib/resources/rakugo_theme.gd" type="Script" id=2]
 [ext_resource path="res://fonts/DejaVu/DejaVuSans-BoldOblique.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://fonts/DejaVu/DejaVuSans-Bold.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://fonts/DejaVu/DejaVuSansMono.ttf" type="DynamicFontData" id=5]
@@ -77,6 +77,10 @@ border_color = Color( 0.333333, 0.333333, 0.333333, 1 )
 bg_color = Color( 0.184314, 0.184314, 0.184314, 1 )
 
 [sub_resource type="StyleBoxFlat" id=23]
+content_margin_left = 6.0
+content_margin_right = 10.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
 bg_color = Color( 0, 0, 0, 0.8 )
 
 [sub_resource type="DynamicFont" id=24]
@@ -200,6 +204,7 @@ LineEdit/styles/normal = SubResource( 22 )
 LineEdit/styles/read_only = SubResource( 22 )
 Panel/styles/panel = SubResource( 23 )
 PanelContainer/styles/panel = SubResource( 23 )
+PopupPanel/styles/panel = SubResource( 23 )
 RichTextLabel/colors/default_color = Color( 1, 1, 1, 1 )
 RichTextLabel/colors/font_color_selected = Color( 0.490196, 0.490196, 0.490196, 1 )
 RichTextLabel/colors/font_color_shadow = Color( 0, 0, 0, 0 )

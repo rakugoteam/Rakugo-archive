@@ -1,0 +1,105 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://addons/Rakugo/tools/emojis_panel/MarkupOptionButton.gd" type="Script" id=1]
+[ext_resource path="res://addons/Rakugo/tools/emojis_panel/NotificationLabel.gd" type="Script" id=2]
+[ext_resource path="res://addons/Rakugo/tools/emojis_panel/GridContainer.gd" type="Script" id=3]
+[ext_resource path="res://addons/Rakugo/tools/emojis_panel/EmojiPanel.gd" type="Script" id=4]
+
+[node name="PopupDialog" type="WindowDialog"]
+margin_right = 288.0
+margin_bottom = 516.0
+window_title = "Emoji"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Emoji" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -9.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarkupBox" type="HBoxContainer" parent="Emoji"]
+margin_right = 272.0
+margin_bottom = 20.0
+
+[node name="MarkupLabel" type="Label" parent="Emoji/MarkupBox"]
+margin_top = 3.0
+margin_right = 134.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+text = "Markup used :"
+align = 1
+
+[node name="MarkupOptionButton" type="OptionButton" parent="Emoji/MarkupBox"]
+margin_left = 138.0
+margin_right = 272.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "none"
+items = [ "none", null, false, 0, null, "bbcode", null, false, 1, null, "renpy", null, false, 2, null, "markdown", null, false, 3, null ]
+selected = 0
+script = ExtResource( 1 )
+
+[node name="Filter" type="LineEdit" parent="Emoji"]
+margin_top = 24.0
+margin_right = 272.0
+margin_bottom = 48.0
+placeholder_text = "Filter"
+placeholder_alpha = 0.3
+caret_blink = true
+caret_blink_speed = 0.5
+
+[node name="HSeparator" type="HSeparator" parent="Emoji"]
+margin_top = 52.0
+margin_right = 272.0
+margin_bottom = 56.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Emoji"]
+margin_top = 60.0
+margin_right = 272.0
+margin_bottom = 473.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="Emoji/ScrollContainer"]
+margin_right = 272.0
+margin_bottom = 7862.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 5
+script = ExtResource( 3 )
+
+[node name="HSeparator2" type="HSeparator" parent="Emoji"]
+margin_top = 477.0
+margin_right = 272.0
+margin_bottom = 481.0
+
+[node name="NotificationLabel" type="Label" parent="Emoji"]
+margin_top = 485.0
+margin_right = 272.0
+margin_bottom = 499.0
+valign = 1
+clip_text = true
+max_lines_visible = 2
+script = ExtResource( 2 )
+
+[node name="Timer" type="Timer" parent="Emoji/NotificationLabel"]
+one_shot = true
+[connection signal="emoji_selected" from="Emoji" to="Emoji/NotificationLabel" method="_on_emoji_selected"]
+[connection signal="item_selected" from="Emoji/MarkupBox/MarkupOptionButton" to="Emoji/MarkupBox/MarkupOptionButton" method="_on_item_selected"]
+[connection signal="markup_selected" from="Emoji/MarkupBox/MarkupOptionButton" to="Emoji" method="_on_markup_selected"]
+[connection signal="text_changed" from="Emoji/Filter" to="Emoji/ScrollContainer/GridContainer" method="_on_filter_changed"]
+[connection signal="timeout" from="Emoji/NotificationLabel/Timer" to="Emoji/NotificationLabel" method="_on_timeout"]

@@ -3,9 +3,6 @@
 [ext_resource path="res://themes/Default/default.tres" type="Theme" id=1]
 [ext_resource path="res://gui/QuickMenu/QuickMenuButton.gd" type="Script" id=2]
 
-
-
-
 [node name="QuickButton" type="Button" groups=[
 "quick_button",
 ]]
@@ -13,7 +10,6 @@ theme = ExtResource( 1 )
 action_mode = 0
 text = "Quick"
 flat = true
-align = 0
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false

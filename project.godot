@@ -9,641 +9,108 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Reference",
-"class": "Array2D",
-"language": "GDScript",
-"path": "res://addons/godot-next/references/array_2d.gd"
-}, {
-"base": "Say",
-"class": "Ask",
-"language": "GDScript",
-"path": "res://addons/Rakugo/statements/ask.gd"
-}, {
-"base": "RakugoTimer",
-"class": "AutoTimer",
-"language": "GDScript",
-"path": "res://addons/Rakugo/lib/AutoTimer.gd"
-}, {
-"base": "RakugoVar",
-"class": "Avatar",
-"language": "GDScript",
-"path": "res://addons/Rakugo/objects/rakugo_vars/avatar.gd"
-}, {
 "base": "Resource",
-"class": "Behavior",
-"language": "GDScript",
-"path": "res://addons/godot-next/resources/behavior.gd"
-}, {
-"base": "Reference",
-"class": "BitFlag",
-"language": "GDScript",
-"path": "res://addons/godot-next/references/bit_flag.gd"
-}, {
-"base": "Reference",
-"class": "Bitset",
-"language": "GDScript",
-"path": "res://addons/godot-next/references/bitset.gd"
-}, {
-"base": "Area2D",
-"class": "Button2D",
-"language": "GDScript",
-"path": "res://addons/Rakugo/nodes/2D_nodes/button2D.gd"
-}, {
-"base": "Reference",
-"class": "CSVFile",
-"language": "GDScript",
-"path": "res://addons/godot-next/references/csv_file.gd"
-}, {
-"base": "Statement",
-"class": "CallNode",
-"language": "GDScript",
-"path": "res://addons/Rakugo/statements/call_node.gd"
-}, {
-"base": "Node",
-"class": "CallbackDelegator",
-"language": "GDScript",
-"path": "res://addons/godot-next/nodes/callback_delegator.gd"
-}, {
-"base": "Node",
 "class": "Character",
 "language": "GDScript",
-"path": "res://addons/Rakugo/nodes/character.gd"
-}, {
-"base": "RakugoVar",
-"class": "CharacterObject",
-"language": "GDScript",
-"path": "res://addons/Rakugo/objects/rakugo_vars/character_obj.gd"
-}, {
-"base": "Reference",
-"class": "ClassType",
-"language": "GDScript",
-"path": "res://addons/godot-next/references/class_type.gd"
+"path": "res://addons/Rakugo/lib/resources/character.gd"
 }, {
 "base": "BoxContainer",
 "class": "CollapsedList",
 "language": "GDScript",
 "path": "res://gui/Screens/PreferencesScreen/SoundBusControl/CollapsedList.gd"
 }, {
-"base": "TabContainer",
-"class": "Cycle",
+"base": "Node",
+"class": "Dialogue",
 "language": "GDScript",
-"path": "res://addons/godot-next/gui/cycle.gd"
-}, {
-"base": "Label",
-"class": "DebugLabel",
-"language": "GDScript",
-"path": "res://addons/godot-next/gui/debug_label.gd"
-}, {
-"base": "ImageTexture",
-"class": "DiscreteGradientTexture",
-"language": "GDScript",
-"path": "res://addons/godot-next/resources/discrete_gradient_texture.gd"
+"path": "res://addons/Rakugo/lib/nodes/dialogue.gd"
 }, {
 "base": "Reference",
-"class": "EditorTools",
-"language": "GDScript",
-"path": "res://addons/godot-next/global/editor_tools.gd"
-}, {
-"base": "Node",
 "class": "Emojis",
 "language": "GDScript",
-"path": "res://addons/Rakugo/emojis/emojis.gd"
-}, {
-"base": "Reference",
-"class": "FileSearch",
-"language": "GDScript",
-"path": "res://addons/godot-next/global/file_search.gd"
-}, {
-"base": "Reference",
-"class": "FileSystemLink",
-"language": "GDScript",
-"path": "res://addons/godot-next/global/file_system_link.gd"
-}, {
-"base": "Node",
-"class": "GDScriptDialog",
-"language": "GDScript",
-"path": "res://addons/Rakugo/nodes/gdscript_dialog.gd"
-}, {
-"base": "CollisionShape2D",
-"class": "Geometry2D",
-"language": "GDScript",
-"path": "res://addons/godot-next/2d/geometry_2d.gd"
-}, {
-"base": "Statement",
-"class": "Hide",
-"language": "GDScript",
-"path": "res://addons/Rakugo/statements/hide.gd"
+"path": "res://addons/Rakugo/lib/utils/emojis.gd"
 }, {
 "base": "Resource",
-"class": "HistorySave",
+"class": "HistoryEntry",
 "language": "GDScript",
-"path": "res://addons/Rakugo/objects/resources/history_save.gd"
-}, {
-"base": "Reference",
-"class": "Icons",
-"language": "GDScript",
-"path": "res://addons/godot-next/singletons/icons.gd"
-}, {
-"base": "Reference",
-"class": "Inflector",
-"language": "GDScript",
-"path": "res://addons/godot-next/references/inflector.gd"
-}, {
-"base": "Reference",
-"class": "InspectorControls",
-"language": "GDScript",
-"path": "res://addons/godot-next/global/inspector_controls.gd"
-}, {
-"base": "Control",
-"class": "KindContainer",
-"language": "GDScript",
-"path": "res://addons/Rakugo/nodes/controls/kind_container.gd"
-}, {
-"base": "Say",
-"class": "Menu",
-"language": "GDScript",
-"path": "res://addons/Rakugo/statements/menu.gd"
-}, {
-"base": "Reference",
-"class": "MessageDispatcher",
-"language": "GDScript",
-"path": "res://addons/godot-next/references/message_dispatcher.gd"
-}, {
-"base": "Node",
-"class": "MessageDispatcherWrapper",
-"language": "GDScript",
-"path": "res://addons/godot-next/nodes/message_dispatcher_wrapper.gd"
-}, {
-"base": "RakugoVar",
-"class": "NodeLink",
-"language": "GDScript",
-"path": "res://addons/Rakugo/objects/rakugo_vars/node_link.gd"
-}, {
-"base": "Statement",
-"class": "Notify",
-"language": "GDScript",
-"path": "res://addons/Rakugo/statements/notify.gd"
-}, {
-"base": "Label",
-"class": "NotifyLabel",
-"language": "GDScript",
-"path": "res://addons/Rakugo/nodes/controls/notify_label.gd"
-}, {
-"base": "Resource",
-"class": "PhysicsLayers",
-"language": "GDScript",
-"path": "res://addons/godot-next/global/physics_layers.gd"
-}, {
-"base": "Statement",
-"class": "PlayAnim",
-"language": "GDScript",
-"path": "res://addons/Rakugo/statements/play_anim.gd"
-}, {
-"base": "Statement",
-"class": "PlayAudio",
-"language": "GDScript",
-"path": "res://addons/Rakugo/statements/play_audio.gd"
+"path": "res://addons/Rakugo/lib/resources/history_entry.gd"
 }, {
 "base": "Reference",
 "class": "ProjectTools",
 "language": "GDScript",
-"path": "res://addons/godot-next/global/project_tools.gd"
+"path": "res://addons/Rakugo/tools/project_settings/project_tools.gd"
 }, {
 "base": "Reference",
 "class": "PropertyInfo",
 "language": "GDScript",
-"path": "res://addons/godot-next/references/property_info.gd"
-}, {
-"base": "Reference",
-"class": "PropertyInfoFactory",
-"language": "GDScript",
-"path": "res://addons/godot-next/references/property_info_factory.gd"
-}, {
-"base": "Subquest",
-"class": "Quest",
-"language": "GDScript",
-"path": "res://addons/Rakugo/objects/rakugo_vars/quest.gd"
-}, {
-"base": "RakugoButton",
-"class": "RPGButton",
-"language": "GDScript",
-"path": "res://rpg-game-kit/rpg/CombatArea/RPGButton.gd"
-}, {
-"base": "Character",
-"class": "RPGCharacter",
-"language": "GDScript",
-"path": "res://rpg-game-kit/rpg/Characters/RPGCharacter.gd"
+"path": "res://addons/Rakugo/tools/project_settings/property_info.gd"
 }, {
 "base": "AnimationPlayer",
 "class": "RakugoAnimPlayer",
 "language": "GDScript",
-"path": "res://addons/Rakugo/nodes/rakugo_anim_player.gd"
-}, {
-"base": "LineEdit",
-"class": "RakugoAsk",
-"language": "GDScript",
-"path": "res://addons/Rakugo/nodes/controls/rakugo_ask.gd"
-}, {
-"base": "AudioStreamPlayer",
-"class": "RakugoAudioPlayer",
-"language": "GDScript",
-"path": "res://addons/Rakugo/nodes/rakugo_audio_player.gd"
-}, {
-"base": "Node",
-"class": "RakugoAvatar",
-"language": "GDScript",
-"path": "res://addons/Rakugo/nodes/rakugo_avatar.gd"
-}, {
-"base": "Button",
-"class": "RakugoBaseButton",
-"language": "GDScript",
-"path": "res://addons/Rakugo/nodes/controls/rakugo_base_button.gd"
-}, {
-"base": "Control",
-"class": "RakugoBaseControl",
-"language": "GDScript",
-"path": "res://addons/Rakugo/nodes/controls/rakugo_base_control.gd"
-}, {
-"base": "RakugoVar",
-"class": "RakugoBool",
-"language": "GDScript",
-"path": "res://addons/Rakugo/objects/rakugo_vars/rakugo_bool.gd"
-}, {
-"base": "RakugoBaseButton",
-"class": "RakugoButton",
-"language": "GDScript",
-"path": "res://addons/Rakugo/nodes/controls/rakugo_button.gd"
-}, {
-"base": "RakugoBaseButton",
-"class": "RakugoChoiceButton",
-"language": "GDScript",
-"path": "res://addons/Rakugo/nodes/controls/rakugo_choice_button.gd"
-}, {
-"base": "RakugoVar",
-"class": "RakugoColor",
-"language": "GDScript",
-"path": "res://addons/Rakugo/objects/rakugo_vars/rakugo_color.gd"
-}, {
-"base": "RakugoBaseControl",
-"class": "RakugoControl",
-"language": "GDScript",
-"path": "res://addons/Rakugo/nodes/controls/rakugo_control.gd"
-}, {
-"base": "RakugoVar",
-"class": "RakugoDict",
-"language": "GDScript",
-"path": "res://addons/Rakugo/objects/rakugo_vars/rakugo_dict.gd"
-}, {
-"base": "RakugoVar",
-"class": "RakugoList",
-"language": "GDScript",
-"path": "res://addons/Rakugo/objects/rakugo_vars/rakugo_list.gd"
-}, {
-"base": "GridContainer",
-"class": "RakugoMenu",
-"language": "GDScript",
-"path": "res://addons/Rakugo/nodes/controls/rakugo_menu.gd"
-}, {
-"base": "Node2D",
-"class": "RakugoNode2D",
-"language": "GDScript",
-"path": "res://addons/Rakugo/nodes/2D_nodes/rakugo_node2d.gd"
+"path": "res://addons/Rakugo/lib/nodes/rakugo_anim_player.gd"
 }, {
 "base": "Object",
-"class": "RakugoNodeCore",
-"language": "GDScript",
-"path": "res://addons/Rakugo/objects/rakugo_node_core.gd"
-}, {
-"base": "Node",
-"class": "RakugoProjectSettings",
-"language": "GDScript",
-"path": "res://addons/Rakugo/lib/project_settings.gd"
-}, {
-"base": "RakugoBaseButton",
-"class": "RakugoQuestButton",
-"language": "GDScript",
-"path": "res://addons/Rakugo/nodes/controls/rakugo_quest_button.gd"
-}, {
-"base": "RakugoVar",
-"class": "RakugoRangedVar",
-"language": "GDScript",
-"path": "res://addons/Rakugo/objects/rakugo_vars/rakugo_ranged.gd"
-}, {
-"base": "RakugoControl",
-"class": "RakugoSayPanel",
-"language": "GDScript",
-"path": "res://addons/Rakugo/nodes/controls/rakugo_say_panel.gd"
-}, {
-"base": "Spatial",
-"class": "RakugoSpatial",
-"language": "GDScript",
-"path": "res://addons/Rakugo/nodes/3D_nodes/rakugo_spatial.gd"
-}, {
-"base": "RakugoVar",
 "class": "RakugoText",
 "language": "GDScript",
-"path": "res://addons/Rakugo/objects/rakugo_vars/rakugo_text.gd"
-}, {
-"base": "RichTextLabel",
-"class": "RakugoTextLabel",
-"language": "GDScript",
-"path": "res://addons/Rakugo/nodes/controls/rakugo_label.gd"
-}, {
-"base": "Node",
-"class": "RakugoTextParser",
-"language": "GDScript",
-"path": "res://addons/Rakugo/lib/text.gd"
+"path": "res://addons/Rakugo/lib/objects/rakugo_text.gd"
 }, {
 "base": "Theme",
 "class": "RakugoTheme",
 "language": "GDScript",
-"path": "res://addons/Rakugo/objects/resources/rakugo_theme.gd"
-}, {
-"base": "Timer",
-"class": "RakugoTimer",
-"language": "GDScript",
-"path": "res://addons/Rakugo/nodes/rakugo_timer.gd"
-}, {
-"base": "Object",
-"class": "RakugoVar",
-"language": "GDScript",
-"path": "res://addons/Rakugo/objects/rakugo_vars/rakugo_var.gd"
-}, {
-"base": "LineEdit",
-"class": "RakugoVarEdit",
-"language": "GDScript",
-"path": "res://addons/Rakugo/nodes/controls/rakugo_var_edit.gd"
-}, {
-"base": "Label",
-"class": "RakugoVarLabel",
-"language": "GDScript",
-"path": "res://addons/Rakugo/nodes/controls/rakugo_var_label.gd"
-}, {
-"base": "RakugoVar",
-"class": "RakugoVector2",
-"language": "GDScript",
-"path": "res://addons/Rakugo/objects/rakugo_vars/rakugo_vector2.gd"
-}, {
-"base": "RakugoVar",
-"class": "RakugoVector3",
-"language": "GDScript",
-"path": "res://addons/Rakugo/objects/rakugo_vars/rakugo_vector3.gd"
-}, {
-"base": "ResourceCollection",
-"class": "ResourceArray",
-"language": "GDScript",
-"path": "res://addons/godot-next/resources/resource_collections/resource_array.gd"
-}, {
-"base": "Resource",
-"class": "ResourceCollection",
-"language": "GDScript",
-"path": "res://addons/godot-next/resources/resource_collections/resource_collection.gd"
-}, {
-"base": "ResourceCollection",
-"class": "ResourceSet",
-"language": "GDScript",
-"path": "res://addons/godot-next/resources/resource_collections/resource_set.gd"
-}, {
-"base": "Node",
-"class": "RootNode",
-"language": "GDScript",
-"path": "res://addons/Rakugo/nodes/root_node.gd"
-}, {
-"base": "Resource",
-"class": "Save",
-"language": "GDScript",
-"path": "res://addons/Rakugo/objects/resources/save.gd"
-}, {
-"base": "RakugoBaseButton",
-"class": "SaveButton",
-"language": "GDScript",
-"path": "res://addons/Rakugo/nodes/controls/save_button.gd"
-}, {
-"base": "Statement",
-"class": "Say",
-"language": "GDScript",
-"path": "res://addons/Rakugo/statements/say.gd"
+"path": "res://addons/Rakugo/lib/resources/rakugo_theme.gd"
 }, {
 "base": "Resource",
 "class": "SceneLinks",
 "language": "GDScript",
-"path": "res://addons/Rakugo/objects/resources/scene_links.gd"
-}, {
-"base": "Statement",
-"class": "Show",
-"language": "GDScript",
-"path": "res://addons/Rakugo/statements/show.gd"
-}, {
-"base": "Reference",
-"class": "Singletons",
-"language": "GDScript",
-"path": "res://addons/godot-next/global/singletons.gd"
-}, {
-"base": "Timer",
-"class": "SkipTimer",
-"language": "GDScript",
-"path": "res://addons/Rakugo/lib/SkipTimer.gd"
-}, {
-"base": "Node",
-"class": "StartCombat",
-"language": "GDScript",
-"path": "res://rpg-game-kit/rpg/CombatArea/StartCombat.gd"
+"path": "res://addons/Rakugo/lib/resources/scene_links.gd"
 }, {
 "base": "Object",
-"class": "Statement",
+"class": "SettingsList",
 "language": "GDScript",
-"path": "res://addons/Rakugo/statements/statement.gd"
+"path": "res://addons/Rakugo/settings_list.gd"
 }, {
-"base": "Statement",
-"class": "StopAnim",
+"base": "Resource",
+"class": "Store",
 "language": "GDScript",
-"path": "res://addons/Rakugo/statements/stop_anim.gd"
+"path": "res://addons/Rakugo/lib/resources/store.gd"
 }, {
-"base": "Statement",
-"class": "StopAudio",
+"base": "Resource",
+"class": "StoreStack",
 "language": "GDScript",
-"path": "res://addons/Rakugo/statements/stop_audio.gd"
-}, {
-"base": "RakugoVar",
-"class": "Subquest",
-"language": "GDScript",
-"path": "res://addons/Rakugo/objects/rakugo_vars/subquest.gd"
-}, {
-"base": "Line2D",
-"class": "Trail2D",
-"language": "GDScript",
-"path": "res://addons/godot-next/2d/trail_2d.gd"
-}, {
-"base": "ImmediateGeometry",
-"class": "Trail3D",
-"language": "GDScript",
-"path": "res://addons/godot-next/3d/trail_3d.gd"
-}, {
-"base": "Reference",
-"class": "TweenSequence",
-"language": "GDScript",
-"path": "res://addons/godot-next/references/tween_sequence/tween_sequence.gd"
-}, {
-"base": "Reference",
-"class": "Tweener",
-"language": "GDScript",
-"path": "res://addons/godot-next/references/tween_sequence/tweener.gd"
-}, {
-"base": "VBoxContainer",
-"class": "VBoxItemList",
-"language": "GDScript",
-"path": "res://addons/godot-next/gui/v_box_item_list.gd"
-}, {
-"base": "Reference",
-"class": "Variant",
-"language": "GDScript",
-"path": "res://addons/godot-next/global/variant.gd"
-}, {
-"base": "Node",
-"class": "VectorDisplay2D",
-"language": "GDScript",
-"path": "res://addons/godot-next/2d/vector_display_2d.gd"
-}, {
-"base": "Node",
-"class": "VectorDisplay3D",
-"language": "GDScript",
-"path": "res://addons/godot-next/3d/vector_display_3d.gd"
+"path": "res://addons/Rakugo/lib/resources/store_stack.gd"
 } ]
 _global_script_class_icons={
-"Array2D": "",
-"Ask": "",
-"AutoTimer": "",
-"Avatar": "",
-"Behavior": "",
-"BitFlag": "",
-"Bitset": "",
-"Button2D": "res://addons/Rakugo/icons/button_2d.svg",
-"CSVFile": "",
-"CallNode": "",
-"CallbackDelegator": "",
-"Character": "res://addons/Rakugo/icons/rakugo_character.svg",
-"CharacterObject": "",
-"ClassType": "",
+"Character": "",
 "CollapsedList": "",
-"Cycle": "res://addons/godot-next/icons/icon_cycle.svg",
-"DebugLabel": "",
-"DiscreteGradientTexture": "",
-"EditorTools": "",
-"Emojis": "res://addons/Rakugo/emojis/icon.png",
-"FileSearch": "",
-"FileSystemLink": "",
-"GDScriptDialog": "res://addons/Rakugo/icons/gdscript.svg",
-"Geometry2D": "res://addons/godot-next/icons/icon_geometry_2d.svg",
-"Hide": "",
-"HistorySave": "res://addons/Rakugo/icons/save.svg",
-"Icons": "",
-"Inflector": "",
-"InspectorControls": "",
-"KindContainer": "res://addons/Rakugo/icons/rakugo_kind_container.svg",
-"Menu": "",
-"MessageDispatcher": "",
-"MessageDispatcherWrapper": "",
-"NodeLink": "",
-"Notify": "",
-"NotifyLabel": "res://addons/Rakugo/icons/notify_label.svg",
-"PhysicsLayers": "",
-"PlayAnim": "",
-"PlayAudio": "",
+"Dialogue": "res://addons/Rakugo/icons/dialogue.svg",
+"Emojis": "",
+"HistoryEntry": "",
 "ProjectTools": "",
 "PropertyInfo": "",
-"PropertyInfoFactory": "",
-"Quest": "",
-"RPGButton": "",
-"RPGCharacter": "",
-"RakugoAnimPlayer": "res://addons/Rakugo/icons/rakugo_animation_player.svg",
-"RakugoAsk": "res://addons/Rakugo/icons/rakugo_ask.svg",
-"RakugoAudioPlayer": "res://addons/Rakugo/icons/rakugo_audio_player.svg",
-"RakugoAvatar": "res://addons/Rakugo/icons/rakugo_avatar.svg",
-"RakugoBaseButton": "res://addons/Rakugo/icons/rakugo_base_button.svg",
-"RakugoBaseControl": "res://addons/Rakugo/icons/rakugo_base_control.svg",
-"RakugoBool": "",
-"RakugoButton": "res://addons/Rakugo/icons/rakugo_button.svg",
-"RakugoChoiceButton": "res://addons/Rakugo/icons/rakugo_choice_button.svg",
-"RakugoColor": "",
-"RakugoControl": "res://addons/Rakugo/icons/rakugo_control.svg",
-"RakugoDict": "",
-"RakugoList": "",
-"RakugoMenu": "res://addons/Rakugo/icons/rakugo_menu_v.svg",
-"RakugoNode2D": "res://addons/Rakugo/icons/rakugo_node2d.svg",
-"RakugoNodeCore": "",
-"RakugoProjectSettings": "",
-"RakugoQuestButton": "res://addons/Rakugo/icons/rakugo_quest_button.svg",
-"RakugoRangedVar": "",
-"RakugoSayPanel": "res://addons/Rakugo/icons/rakugo_panel.svg",
-"RakugoSpatial": "res://addons/Rakugo/icons/rakugo_spatial.svg",
+"RakugoAnimPlayer": "",
 "RakugoText": "",
-"RakugoTextLabel": "res://addons/Rakugo/icons/rakugo_text_label.svg",
-"RakugoTextParser": "",
 "RakugoTheme": "res://addons/Rakugo/icons/theme.svg",
-"RakugoTimer": "res://addons/Rakugo/icons/rakugo_timer.svg",
-"RakugoVar": "",
-"RakugoVarEdit": "res://addons/Rakugo/icons/rakugo_var_edit.svg",
-"RakugoVarLabel": "res://addons/Rakugo/icons/rakugo_var_label.svg",
-"RakugoVector2": "",
-"RakugoVector3": "",
-"ResourceArray": "",
-"ResourceCollection": "",
-"ResourceSet": "",
-"RootNode": "res://addons/Rakugo/icons/rakugo_root_node.svg",
-"Save": "res://addons/Rakugo/icons/save.svg",
-"SaveButton": "res://addons/Rakugo/icons/rakugo_save_button.svg",
-"Say": "",
 "SceneLinks": "res://addons/Rakugo/icons/scene_links.svg",
-"Show": "",
-"Singletons": "",
-"SkipTimer": "",
-"StartCombat": "",
-"Statement": "",
-"StopAnim": "",
-"StopAudio": "",
-"Subquest": "",
-"Trail2D": "res://addons/godot-next/icons/icon_trail_2d.svg",
-"Trail3D": "res://addons/godot-next/icons/icon_trail_3d.svg",
-"TweenSequence": "",
-"Tweener": "",
-"VBoxItemList": "res://addons/godot-next/icons/icon_v_box_item_list.svg",
-"Variant": "",
-"VectorDisplay2D": "",
-"VectorDisplay3D": ""
+"SettingsList": "",
+"Store": "res://addons/Rakugo/icons/save.svg",
+"StoreStack": ""
 }
 
 [application]
 
-config/name="The Question: Rakugo Editon"
-run/main_scene="res://question/scenes/Start/start.tscn"
-config/project_settings_override="res://question/rakugo.cfg"
+config/name="New Rakugo Game"
+run/main_scene="res://game/Start/Start.tscn"
 boot_splash/image="res://graphics/splash.png"
 boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://graphics/window_icon.png"
 config/auto_accept_quit=false
 config/quit_on_go_back=false
-rakugo/version="1.4.0"
-rakugo/game_credits="Jeremi {i}jebedaia360{/i} Biernacki, kurinoku"
-rakugo/debug=false
-rakugo/save_folder="saves"
-rakugo/default_kind="nvl"
-rakugo/test_saves=false
-rakugo/markup="renpy"
-rakugo/default_mkind="grid"
-rakugo/default_mcolumns=2.0
-rakugo/default_manchor="center"
-rakugo/punctuation_pause="1"
-rakugo/default_mcolums=2.0
-rakugo/theme="res://themes/question/question.tres"
-rakugo/scene_links="res://game/scene_links.tres"
-rakugo/scenes_links="res://game/scenes_links.tres"
 
 [autoload]
 
-TextParser="*res://addons/Rakugo/lib/Text.tscn"
 Rakugo="*res://addons/Rakugo/Rakugo.tscn"
-settings="*res://addons/Rakugo/gui/settings.gd"
+Settings="*res://addons/Rakugo/Settings.gd"
 Window="*res://gui/Window/Window.tscn"
 
 [debug]
@@ -665,7 +132,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "Rakugo", "godot-next", "godot-plugin-refresher" )
+enabled=PoolStringArray( "Rakugo" )
 
 [importer_defaults]
 
@@ -697,67 +164,109 @@ ui_accept={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777221,"unicode":0,"echo":false,"script":null)
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777222,"unicode":0,"echo":false,"script":null)
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
-, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":0,"pressure":0.0,"pressed":false,"script":null)
  ]
 }
 ui_select={
 "deadzone": 0.5,
-"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":3,"pressure":0.0,"pressed":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":72,"unicode":0,"echo":false,"script":null)
- ]
+"events": [  ]
 }
 ui_cancel={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"unicode":0,"echo":false,"script":null)
-, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":1,"pressure":0.0,"pressed":false,"script":null)
 , Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
 ui_focus_next={
 "deadzone": 0.5,
-"events": [  ]
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_focus_prev={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_left_click={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+rakugo_rollback={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":4,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+rakugo_rollforward={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":5,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+rakugo_skip_toggle={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777218,"unicode":0,"echo":false,"script":null)
+ ]
+}
+rakugo_skip={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777238,"unicode":0,"echo":false,"script":null)
+ ]
 }
 rakugo_screenshot={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"unicode":0,"echo":false,"script":null)
  ]
 }
-rakugo_qsave={
+rakugo_quicksave={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777248,"unicode":0,"echo":false,"script":null)
  ]
 }
-rakugo_qload={
+rakugo_quickload={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777252,"unicode":0,"echo":false,"script":null)
  ]
 }
-rakugo_skipping_ctrl={
+rakugo_hide_ui={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777238,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":3,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
-rakugo_skipping={
+rakugo_hide_ui_toggle={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777218,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":72,"unicode":0,"echo":false,"script":null)
  ]
 }
-left_click={
-"deadzone": 0.5,
-"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
- ]
-}
-right_click={
-"deadzone": 0.5,
-"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
- ]
-}
-rollback={
-"deadzone": 0.5,
-"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":5,"pressed":false,"doubleclick":false,"script":null)
- ]
+
+[rakugo]
+
+default/narrator/name=""
+default/statements/default_say_parameters={
+"typing": true
 }
 
 [rendering]
 
+quality/intended_usage/framebuffer_allocation=0
+quality/intended_usage/framebuffer_allocation.mobile=0
+quality/2d/use_pixel_snap=true
 environment/default_environment="res://default_env.tres"

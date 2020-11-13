@@ -1,100 +1,60 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://addons/Rakugo/main.gd" type="Script" id=1]
-[ext_resource path="res://addons/Rakugo/lib/define.gd" type="Script" id=2]
-[ext_resource path="res://addons/Rakugo/lib/get_var.gd" type="Script" id=3]
-[ext_resource path="res://addons/Rakugo/lib/jump.gd" type="Script" id=4]
-[ext_resource path="res://addons/Rakugo/lib/load_file.gd" type="Script" id=5]
-[ext_resource path="res://addons/Rakugo/lib/save_file.gd" type="Script" id=6]
-[ext_resource path="res://addons/Rakugo/lib/save_global_history.gd" type="Script" id=7]
-[ext_resource path="res://addons/Rakugo/lib/load_global_history.gd" type="Script" id=8]
-[ext_resource path="res://addons/Rakugo/statements/say.gd" type="Script" id=11]
-[ext_resource path="res://addons/Rakugo/statements/ask.gd" type="Script" id=12]
-[ext_resource path="res://addons/Rakugo/statements/menu.gd" type="Script" id=13]
-[ext_resource path="res://addons/Rakugo/statements/show.gd" type="Script" id=14]
-[ext_resource path="res://addons/Rakugo/statements/hide.gd" type="Script" id=15]
-[ext_resource path="res://addons/Rakugo/statements/notify.gd" type="Script" id=16]
-[ext_resource path="res://addons/Rakugo/statements/play_anim.gd" type="Script" id=17]
-[ext_resource path="res://addons/Rakugo/statements/stop_anim.gd" type="Script" id=18]
-[ext_resource path="res://addons/Rakugo/statements/play_audio.gd" type="Script" id=19]
-[ext_resource path="res://addons/Rakugo/statements/stop_audio.gd" type="Script" id=20]
-[ext_resource path="res://addons/Rakugo/statements/call_node.gd" type="Script" id=21]
-[ext_resource path="res://addons/Rakugo/lib/AutoTimer.gd" type="Script" id=22]
-[ext_resource path="res://addons/Rakugo/lib/SkipTimer.gd" type="Script" id=23]
-[ext_resource path="res://addons/Rakugo/nodes/rakugo_timer.gd" type="Script" id=24]
+[ext_resource path="res://addons/Rakugo/lib/statements/say.gd" type="Script" id=2]
+[ext_resource path="res://addons/Rakugo/lib/statements/ask.gd" type="Script" id=3]
+[ext_resource path="res://addons/Rakugo/lib/statements/jump.gd" type="Script" id=4]
+[ext_resource path="res://addons/Rakugo/lib/systems/showable_manager.gd" type="Script" id=5]
+[ext_resource path="res://addons/Rakugo/lib/systems/timers/skip_timer.gd" type="Script" id=6]
+[ext_resource path="res://addons/Rakugo/lib/systems/text_parser.gd" type="Script" id=7]
+[ext_resource path="res://addons/Rakugo/lib/systems/step_blocker.gd" type="Script" id=8]
+[ext_resource path="res://addons/Rakugo/lib/systems/scene_loader.gd" type="Script" id=9]
+[ext_resource path="res://addons/Rakugo/lib/systems/store_manager.gd" type="Script" id=10]
+[ext_resource path="res://addons/Rakugo/lib/systems/timers/auto_timer.gd" type="Script" id=11]
+[ext_resource path="res://addons/Rakugo/lib/systems/history.gd" type="Script" id=12]
+[ext_resource path="res://addons/Rakugo/lib/statements/menu.gd" type="Script" id=13]
 
 [node name="Rakugo" type="Node"]
 pause_mode = 2
 script = ExtResource( 1 )
 
-[node name="Define" type="Node" parent="."]
-script = ExtResource( 2 )
+[node name="SceneLoader" type="Node" parent="."]
+script = ExtResource( 9 )
 
-[node name="GetVar" type="Node" parent="."]
-script = ExtResource( 3 )
+[node name="StoreManager" type="Node" parent="."]
+script = ExtResource( 10 )
 
-[node name="Jump" type="Node" parent="."]
-script = ExtResource( 4 )
-
-[node name="LoadFile" type="Node" parent="."]
+[node name="ShowableManager" type="Node" parent="."]
 script = ExtResource( 5 )
 
-[node name="SaveFile" type="Node" parent="."]
-script = ExtResource( 6 )
-
-[node name="SaveGlobalHistory" type="Node" parent="."]
-script = ExtResource( 7 )
-
-[node name="LoadGlobalHistory" type="Node" parent="."]
-script = ExtResource( 8 )
-
-[node name="Say" type="Node" parent="."]
-script = ExtResource( 11 )
-
-[node name="Ask" type="Node" parent="."]
+[node name="History" type="Node" parent="."]
 script = ExtResource( 12 )
 
-[node name="Menu" type="Node" parent="."]
+[node name="TextParser" type="Node" parent="."]
+script = ExtResource( 7 )
+
+[node name="StepBlocker" type="Node" parent="."]
+script = ExtResource( 8 )
+
+[node name="Statements" type="Node" parent="."]
+
+[node name="Say" type="Node" parent="Statements"]
+script = ExtResource( 2 )
+
+[node name="Ask" type="Node" parent="Statements"]
+script = ExtResource( 3 )
+
+[node name="Menu" type="Node" parent="Statements"]
 script = ExtResource( 13 )
 
-[node name="Show" type="Node" parent="."]
-script = ExtResource( 14 )
-
-[node name="Hide" type="Node" parent="."]
-script = ExtResource( 15 )
-
-[node name="Notify" type="Node" parent="."]
-script = ExtResource( 16 )
-
-[node name="PlayAnim" type="Node" parent="."]
-script = ExtResource( 17 )
-
-[node name="StopAnim" type="Node" parent="."]
-script = ExtResource( 18 )
-
-[node name="PlayAudio" type="Node" parent="."]
-script = ExtResource( 19 )
-
-[node name="StopAudio" type="Node" parent="."]
-script = ExtResource( 20 )
-
-[node name="CallNode" type="Node" parent="."]
-script = ExtResource( 21 )
+[node name="Jump" type="Node" parent="Statements"]
+script = ExtResource( 4 )
 
 [node name="AutoTimer" type="Timer" parent="."]
-script = ExtResource( 22 )
-var_name = "auto_time"
+script = ExtResource( 11 )
 
 [node name="SkipTimer" type="Timer" parent="."]
-script = ExtResource( 23 )
-
-[node name="DialogTimer" type="Timer" parent="."]
-one_shot = true
-script = ExtResource( 24 )
-
-[node name="StepTimer" type="Timer" parent="."]
-wait_time = 0.01
-one_shot = true
-
-[node name="NotifyTimer" type="Timer" parent="."]
-one_shot = true
+script = ExtResource( 6 )
+[connection signal="say" from="." to="History" method="_on_say"]
+[connection signal="timeout" from="AutoTimer" to="AutoTimer" method="on_loop"]
+[connection signal="timeout" from="SkipTimer" to="SkipTimer" method="on_loop"]

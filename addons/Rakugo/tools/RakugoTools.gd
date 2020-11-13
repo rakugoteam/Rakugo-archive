@@ -11,6 +11,10 @@ func _on_menu(id:int) -> void:
 		1:
 			$SceneLinksEditor.popup_centered()
 		
+		# Open Rakugo Docs
+		2:
+			OS.shell_open("https://rakugoteam.github.io/RakugoDocs-new/")
+		
 		# About Rakugo
-		5:
+		3:
 			$AboutDialog.popup_centered()

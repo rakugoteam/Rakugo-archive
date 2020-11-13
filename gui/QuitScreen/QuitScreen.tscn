@@ -26,6 +26,9 @@ resizable = true
 dialog_text = "Are you sure you want to quit?"
 dialog_hide_on_ok = false
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="confirmed" from="QuitConfirmDialog" to="." method="_on_confirmed"]
 [connection signal="popup_hide" from="QuitConfirmDialog" to="." method="_on_popup_hide"]

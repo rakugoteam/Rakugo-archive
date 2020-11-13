@@ -9,17 +9,11 @@ func _ready():
 	_show_menu("main_menu", Rakugo.started)
 
 func disable_continue_button():
-	var auto_save_path = str("user://" + Rakugo.save_folder + "/auto.res")
-
-	if Rakugo.test_save:
-		auto_save_path = str("res://" + Rakugo.save_folder + "/auto.tres")
-
-	if not Rakugo.file.file_exists(auto_save_path):
+	if not File.new().file_exists(Rakugo.StoreManager.get_save_path("auto")):
 		for n in get_tree().get_nodes_in_group("nav_button_continue"):
 			n.disabled = true
 
 func _show_menu(menu, game_started):
-	print(Rakugo.started,"  ", game_started)
 	emit_signal("show_menu", menu, game_started)
 
 func connect_buttons():

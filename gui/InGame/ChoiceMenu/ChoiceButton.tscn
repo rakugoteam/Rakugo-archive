@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://gui/InGame/ChoiceMenu/ChoiceButton.gd" type="Script" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 0.2432, 0.2816, 0.32, 0.784314 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 0.4028, 0.4664, 0.53, 0.784314 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 0, 0, 0, 0.784314 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.435294, 0.435294, 0.435294, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 0, 0, 0, 0.352941 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color( 0, 0, 0, 0.501961 )
+
+[node name="ChoiceButton" type="Button"]
+margin_top = 333.0
+margin_right = 1280.0
+margin_bottom = 347.0
+focus_mode = 0
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/disabled = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_colors/font_color_disabled = Color( 0.443137, 0.443137, 0.443137, 1 )
+custom_colors/font_color = Color( 0.709804, 0.709804, 0.709804, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+enabled_focus_mode = 0
+text = "Choice Button"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="." to="." method="_on_pressed"]

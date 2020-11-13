@@ -3,8 +3,6 @@ extends Panel
 export var slot: PackedScene
 export var dummy_slot: PackedScene
 
-var saveslots_dir: String
-
 export var popup_path:NodePath = 'ConfirmationPopup'
 onready var popup := get_node(popup_path)
 
@@ -21,37 +19,32 @@ var save_list:Array = []
 var save_pages:Dictionary = {}
 
 
-export var use_pages:bool = false
+var use_pages:bool = false
 
 signal load_file
 
 signal mode_changed(save_mode)
 signal clear_save_slots()
 signal add_save_slot(save_slot)
-signal page_changed(page)
+signal page_changed()
 
 func _ready() -> void:
+	use_pages = Settings.get('rakugo/saves/save_screen_layout') == "save_pages"
+	
 	for e in get_tree().get_nodes_in_group("save_screen_page_ui_element"):
 		e.visible = use_pages
 	for e in get_tree().get_nodes_in_group("save_screen_scroll_ui_element"):
 		e.scroll_vertical_enabled = not use_pages
-	if use_pages and settings.saves_scroll == 0:
-		settings.saves_scroll = 1
+		
+	if use_pages:
+		Settings.get('rakugo/saves/current_page', 1)#Set the default
 		#_on_change_page(1, 0)
-	update_save_dir()
 	return
 
 func set_mode(mode):
 	save_mode = mode
 	emit_signal("mode_changed", mode)
-
-func update_save_dir():
-	saveslots_dir = "user://" +  Rakugo.save_folder
-	file_ext = "res"
-
-	if Rakugo.test_save:
-		saveslots_dir = "res://" + Rakugo.save_folder
-		file_ext = "tres"
+	_on_visibility_changed()
 
 func update_save_pages():
 	save_pages = {}
@@ -65,7 +58,7 @@ func update_save_pages():
 
 func update_save_list(ignores = [""]):
 	var contents = []
-	if dir.open(saveslots_dir) == OK:
+	if dir.open(Rakugo.StoreManager.get_save_folder_path()) == OK:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 
@@ -121,8 +114,9 @@ func populate_grid_page():
 	
 
 	var saves = []
+	var current_page = Settings.get('rakugo/saves/current_page', 1) 
 	for i in range(6):
-		var index = Vector2(settings.saves_scroll, i)
+		var index = Vector2(current_page, i)
 		if save_pages.has(index):
 			saves.append(new_slot_instance(save_pages[index], index, false))
 		else:
@@ -138,7 +132,7 @@ func populate_grid_page():
 func new_slot_instance(filename: String, page_index:Vector2, hide_dl_btn:bool) -> Node:
 	var s = slot.instance()
 	
-	s.init(saveslots_dir, filename, page_index, file_ext, hide_dl_btn)
+	s.init(filename, page_index, hide_dl_btn)
 
 	s.connect("select_save", self, "_on_save_select")
 	if not hide_dl_btn:
@@ -152,14 +146,12 @@ func _on_delete_save(save_filename):
 	if not yield(popup, "return_output"):
 		return false
 
-	update_save_dir()
-
-	var png_path = saveslots_dir.plus_file(save_filename + '.png')
+	var png_path = Rakugo.StoreManager.get_save_path(save_filename, true)+".png"
 	if file.file_exists(png_path):
 		Rakugo.debug("remove image")
 		dir.remove(png_path)
 
-	var save_path = saveslots_dir.plus_file(save_filename + '.' + file_ext)
+	var save_path = Rakugo.StoreManager.get_save_path(save_filename)
 	if file.file_exists(save_path):
 		Rakugo.debug("remove save")
 		dir.remove(save_path)
@@ -173,15 +165,14 @@ func _on_save_select(save_filename, page_index):
 		else:
 			save_save(save_filename)
 	else:
+		if use_pages:
+			save_filename = "%d_%d_%s" % [page_index.x, page_index.y, save_filename]
 		load_save(save_filename)
 
 func save_save(caller: String) -> bool:
-	if !dir.dir_exists(saveslots_dir):
-		dir.make_dir(saveslots_dir)
-
 	var new_save = false
 	if caller == "empty":
-		if settings.saves_skip_naming:
+		if Settings.get('rakugo/saves/skip_naming', true):
 			caller = get_next_iterative_name(default_save_name)
 		else:
 			new_save = true
@@ -208,11 +199,11 @@ func save_save(caller: String) -> bool:
 		return false
 
 	#screenshot.flip_y()
-	var png_path = saveslots_dir.plus_file(caller + '.png')
+	var png_path = Rakugo.StoreManager.get_save_path(caller, true) + '.png'
 	screenshot.save_png(png_path)
 
 	Rakugo.debug(["caller:", caller])
-	Rakugo.savefile(caller)
+	Rakugo.save_game(caller)
 
 	update_grid()
 
@@ -220,15 +211,12 @@ func save_save(caller: String) -> bool:
 	return true
 	
 func save_page_save(caller: String, page_index:Vector2) -> bool:
-	if !dir.dir_exists(saveslots_dir):
-		dir.make_dir(saveslots_dir)
-		
 	if page_index in save_pages:
 		popup.overwrite_confirm()
 		if not yield(popup, "return_output"):
 			return false
 
-	if settings.saves_skip_naming:
+	if Settings.get('rakugo/saves/skip_naming', true):
 		caller = default_save_name
 	else:
 		popup.name_save_confirm()
@@ -248,11 +236,11 @@ func save_page_save(caller: String, page_index:Vector2) -> bool:
 		return false
 
 	#screenshot.flip_y()
-	var png_path = saveslots_dir.plus_file(caller + '.png')
+	var png_path = Rakugo.StoreManager.get_save_path(caller, true) + '.png'
 	screenshot.save_png(png_path)
 
 	Rakugo.debug(["caller:", caller])
-	Rakugo.savefile(caller)
+	Rakugo.save_game(caller)
 
 	update_grid()
 	#get_parent().in_game()
@@ -278,17 +266,14 @@ func get_next_iterative_name(file_name):
 	
 
 func load_save(caller: String) -> void:
-	if !dir.dir_exists(saveslots_dir):
-		dir.make_dir(saveslots_dir)
-
-	if Rakugo.loadfile(caller):
+	if Rakugo.load_game(caller):
 		emit_signal("load_file")
 
 
 func _on_visibility_changed():
 	if visible:
 		if use_pages:
-			_on_change_page(settings.saves_scroll, 0)
+			_on_change_page(Settings.get('rakugo/saves/current_page', 1), 0)
 		else:
 			update_grid()
 
@@ -301,17 +286,15 @@ func _on_change_page(page, incremental_change):
 			page = "A"
 	match page:
 		0:
-			settings.saves_scroll += incremental_change
-			emit_signal("page_changed", settings.saves_scroll)
+			var value = clamp(Settings.get('rakugo/saves/current_page', 1) + incremental_change, -2, 1000)
+			Settings.set('rakugo/saves/current_page', value)
 		"Q":
-			settings.saves_scroll = -1
-			emit_signal("page_changed", "quick")
+			Settings.set('rakugo/saves/current_page', -1)
 		"A":
-			settings.saves_scroll = -2
-			emit_signal("page_changed", "auto")
+			Settings.set('rakugo/saves/current_page', -2)
 		_:
-			settings.saves_scroll = int(page)
-			emit_signal("page_changed", settings.saves_scroll)
+			Settings.set('rakugo/saves/current_page', int(page))
+	emit_signal("page_changed")
 	update_grid()
 
 func split_paged_savename(savename):

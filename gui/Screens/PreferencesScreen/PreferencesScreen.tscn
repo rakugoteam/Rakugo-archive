@@ -1,12 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://themes/Default/default.tres" type="Theme" id=1]
+[ext_resource path="res://gui/Screens/PreferencesScreen/WindowCheck.gd" type="Script" id=2]
 [ext_resource path="res://gui/Screens/PreferencesScreen/FullscreenCheck.gd" type="Script" id=3]
-[ext_resource path="res://gui/Screens/PreferencesScreen/VSyncCheck.gd" type="Script" id=4]
-[ext_resource path="res://addons/Rakugo/nodes/controls/rakugo_var_check.gd" type="Script" id=5]
 [ext_resource path="res://gui/Screens/PreferencesScreen/TextSpeedSlider.gd" type="Script" id=6]
 [ext_resource path="res://gui/Screens/PreferencesScreen/AutoSpeedSlider.gd" type="Script" id=7]
-[ext_resource path="res://gui/Screens/PreferencesScreen/SoundBusControl/SoundBusControl.tscn" type="PackedScene" id=8]
+
+[sub_resource type="ButtonGroup" id=1]
 
 [node name="PreferencesScreen" type="Panel"]
 anchor_right = 1.0
@@ -48,21 +48,22 @@ theme = ExtResource( 1 )
 text = "Display"
 valign = 1
 
-[node name="FullscreenCheck" type="CheckButton" parent="Rows/OptionScreen/Display"]
+[node name="WindowCheck" type="CheckButton" parent="Rows/OptionScreen/Display"]
 margin_top = 31.0
 margin_right = 138.0
 margin_bottom = 60.0
 theme = ExtResource( 1 )
-text = "Fullscreen"
-script = ExtResource( 3 )
+group = SubResource( 1 )
+text = "Window"
+script = ExtResource( 2 )
 
-[node name="VSyncCheck" type="CheckButton" parent="Rows/OptionScreen/Display"]
+[node name="FullscreenCheck" type="CheckButton" parent="Rows/OptionScreen/Display"]
 margin_top = 64.0
 margin_right = 138.0
 margin_bottom = 93.0
 theme = ExtResource( 1 )
-text = "VSync"
-script = ExtResource( 4 )
+text = "Fullscreen"
+script = ExtResource( 3 )
 
 [node name="Skip" type="VBoxContainer" parent="Rows/OptionScreen"]
 margin_left = 238.0
@@ -85,8 +86,6 @@ margin_right = 175.0
 margin_bottom = 60.0
 theme = ExtResource( 1 )
 text = "Unseen Text"
-script = ExtResource( 5 )
-var_name = "skip_all_text"
 
 [node name="AfterChoicesCheck" type="CheckButton" parent="Rows/OptionScreen/Skip"]
 margin_top = 64.0
@@ -95,61 +94,6 @@ margin_bottom = 93.0
 grow_horizontal = 0
 theme = ExtResource( 1 )
 text = "After Choices"
-script = ExtResource( 5 )
-var_name = "skip_after_choices"
-
-[node name="AudioBox" type="VBoxContainer" parent="Rows/OptionScreen"]
-visible = false
-margin_left = 513.0
-margin_right = 813.0
-margin_bottom = 299.0
-grow_horizontal = 0
-alignment = 1
-
-[node name="Title" type="Label" parent="Rows/OptionScreen/AudioBox"]
-margin_right = 300.0
-margin_bottom = 27.0
-grow_horizontal = 0
-text = "Audio"
-align = 1
-
-[node name="MasterBusControl" parent="Rows/OptionScreen/AudioBox" instance=ExtResource( 8 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 31.0
-margin_right = 300.0
-margin_bottom = 95.0
-grow_horizontal = 0
-
-[node name="BGMBusControl3" parent="Rows/OptionScreen/AudioBox" instance=ExtResource( 8 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 99.0
-margin_right = 300.0
-margin_bottom = 163.0
-grow_horizontal = 0
-label = "Music"
-bus_name = "BGM"
-
-[node name="SFXBusControl2" parent="Rows/OptionScreen/AudioBox" instance=ExtResource( 8 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 167.0
-margin_right = 300.0
-margin_bottom = 231.0
-grow_horizontal = 0
-label = "Sounds"
-bus_name = "SFX"
-
-[node name="MasterBusControl4" parent="Rows/OptionScreen/AudioBox" instance=ExtResource( 8 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 235.0
-margin_right = 300.0
-margin_bottom = 299.0
-grow_horizontal = 0
-label = "Dialogs"
-bus_name = "Dialogs"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Rows"]
 margin_top = 133.0
@@ -181,10 +125,10 @@ grow_horizontal = 0
 rect_min_size = Vector2( 300, 0 )
 size_flags_vertical = 1
 theme = ExtResource( 1 )
-min_value = -0.3
-max_value = -0.01
-step = 0.01
-value = -0.3
+min_value = -1.0
+max_value = -0.005
+step = 0.005
+value = -0.05
 ticks_on_borders = true
 script = ExtResource( 6 )
 
@@ -209,14 +153,15 @@ grow_horizontal = 0
 rect_min_size = Vector2( 300, 0 )
 size_flags_vertical = 1
 theme = ExtResource( 1 )
-min_value = -5.0
-max_value = -0.5
+min_value = -10.0
+max_value = -0.1
 step = 0.1
 value = -3.0
 script = ExtResource( 7 )
-[connection signal="toggled" from="Rows/OptionScreen/Display/FullscreenCheck" to="Rows/OptionScreen/Display/FullscreenCheck" method="_on_toggle"]
-[connection signal="toggled" from="Rows/OptionScreen/Display/VSyncCheck" to="Rows/OptionScreen/Display/VSyncCheck" method="_on_toggle"]
-[connection signal="visibility_changed" from="Rows/OptionScreen/Display/VSyncCheck" to="Rows/OptionScreen/Display/VSyncCheck" method="_on_visibility_changed"]
+[connection signal="toggled" from="Rows/OptionScreen/Display/WindowCheck" to="Rows/OptionScreen/Display/WindowCheck" method="_on_toggled"]
+[connection signal="visibility_changed" from="Rows/OptionScreen/Display/WindowCheck" to="Rows/OptionScreen/Display/WindowCheck" method="_on_visibility_changed"]
+[connection signal="toggled" from="Rows/OptionScreen/Display/FullscreenCheck" to="Rows/OptionScreen/Display/FullscreenCheck" method="_on_toggled"]
+[connection signal="visibility_changed" from="Rows/OptionScreen/Display/FullscreenCheck" to="Rows/OptionScreen/Display/FullscreenCheck" method="_on_visibility_changed"]
 [connection signal="value_changed" from="Rows/HBoxContainer/VBoxContainer/TextSpeedBox/TextSpeedSlider" to="Rows/HBoxContainer/VBoxContainer/TextSpeedBox/TextSpeedSlider" method="_on_value_changed"]
 [connection signal="visibility_changed" from="Rows/HBoxContainer/VBoxContainer/TextSpeedBox/TextSpeedSlider" to="Rows/HBoxContainer/VBoxContainer/TextSpeedBox/TextSpeedSlider" method="_on_visibility_changed"]
 [connection signal="value_changed" from="Rows/HBoxContainer/VBoxContainer/AutoBox/AutoSpeedSlider" to="Rows/HBoxContainer/VBoxContainer/AutoBox/AutoSpeedSlider" method="_on_value_changed"]

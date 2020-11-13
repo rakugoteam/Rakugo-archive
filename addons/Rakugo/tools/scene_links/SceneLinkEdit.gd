@@ -11,6 +11,9 @@ var id : String setget _set_id, _get_id
 
 var menu_rect_offset : Rect2
 
+signal changed
+signal removed(link)
+
 func _ready() -> void:
 	menu_rect_offset = menu_rect
 	
@@ -18,13 +21,6 @@ func _ready() -> void:
 	$Choose.icon = get_icon("GuiDropdown", "EditorIcons")
 	$Browse.icon = get_icon("InstanceOptions", "EditorIcons")
 	$Remove.icon = get_icon("GuiClose", "EditorIcons")
-	
-	$Choose.connect("pressed", self, "_on_choose")
-	$Choose/Menu.connect("index_pressed", self, "_on_item")
-	$Choose/Menu.connect("id_pressed", self, "_on_item")
-	$Browse.connect("pressed", self, "_on_browse")
-	tscn_dialog.connect("confirmed", self, "_on_tscn_dialog")
-	$Remove.connect("pressed", self, "_on_remove")
 
 
 func _on_choose() -> void:
@@ -42,6 +38,7 @@ func _on_choose() -> void:
 
 func _set_scene(value:String) -> void:
 	$SceneEdit.text = value
+	emit_signal("changed")
 
 
 func _get_scene() -> String:
@@ -69,4 +66,8 @@ func _on_tscn_dialog() -> void:
 
 
 func _on_remove() -> void:
-	queue_free()
+	emit_signal("removed", self)
+
+
+func _on_changed(new_text):
+	emit_signal("changed")
